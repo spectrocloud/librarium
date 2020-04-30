@@ -24,7 +24,7 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, title, items, 
   const calculatedClassName = `${className} item ${active ? 'active' : ''}`;
 
   return (
-    <li className={calculatedClassName}>
+    <div className={calculatedClassName}>
       {title && (
         <Link to={url}>
           {title}
@@ -37,18 +37,16 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, title, items, 
       )}
 
       {!isCollapsed && hasChildren ? (
-        <ul>
-          {items.map((item, index) => (
+          items.map((item, index) => (
             <TreeNode
               key={item.url + index.toString()}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
               {...item}
             />
-          ))}
-        </ul>
+          ))
       ) : null}
-    </li>
+    </div>
   );
 };
 
