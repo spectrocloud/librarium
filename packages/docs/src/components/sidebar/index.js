@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { ExternalLink } from 'react-feather';
 import config from '../../../config';
+import menuBackground from "assets/menu-background.png"
 
 // eslint-disable-next-line no-unused-vars
 const ListItem = styled(({ className, active, level, ...props }) => {
@@ -16,6 +17,7 @@ const ListItem = styled(({ className, active, level, ...props }) => {
   );
 })`
   list-style: none;
+
 
   a {
     color: #5c6975;
@@ -46,17 +48,14 @@ const ListItem = styled(({ className, active, level, ...props }) => {
 `;
 
 const Sidebar = styled.aside`
-  width: 100%;
-  height: 100vh;
-  overflow: auto;
+  width: 323px;
   position: fixed;
-  padding-left: 0px;
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: sticky;
   top: 0;
-  padding-right: 0;
-  -webkit-box-shadow: -1px 0px 4px 1px rgba(175, 158, 232, 0.4);
+  left: 0;
+  overflow-y: auto;
+  height: 100%;
+  background: url(${menuBackground}), linear-gradient(127.94deg, #F9F9F9 51.53%, #F5F5F5 72.26%);
+
 
   @media only screen and (max-width: 1023px) {
     width: 100%;
