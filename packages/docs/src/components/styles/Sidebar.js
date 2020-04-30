@@ -4,14 +4,10 @@ import styled from 'styled-components';
 export const Sidebar = styled.aside`
   width: 100%;
   border-right: 1px solid #ede7f3;
-  height: 100vh;
   overflow: auto;
-  position: fixed;
-  padding-left: 24px;
-  position: -webkit-sticky;
-  position: -moz-sticky;
   position: sticky;
-  top: 0;
+  padding-left: 24px;
+  top: 80px;
 
   background: ${props => props.theme.colors.background};
 

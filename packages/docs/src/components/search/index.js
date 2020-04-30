@@ -117,6 +117,10 @@ const useClickOutside = (ref, handler, events) => {
 export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
   const ref = createRef();
 
+  if (!config.header.search.algoliaAppId) {
+    return null;
+  }
+
   const [query, setQuery] = useState(``);
 
   const [focus, setFocus] = useState(false);
