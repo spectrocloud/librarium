@@ -11,6 +11,9 @@ import Header from './Header';
 import "./styles.css"
 
 
+// Move this in shared
+// with sidebar and header
+
 const Wrapper = styled.div`
   display: flex;
   overflow: hidden;

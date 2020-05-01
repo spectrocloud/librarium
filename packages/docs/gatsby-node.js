@@ -109,7 +109,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'icon',
       node,
-      value: node.frontmatter.icon || null,
+      value: node.frontmatter.icon,
     });
   }
 };

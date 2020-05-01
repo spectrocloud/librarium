@@ -34,8 +34,17 @@ const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon }) => {
   if (typeof document != 'undefined') {
     location = document.location;
   }
-  const isActive =
+  const expanded =
     !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
+
+  let isActive = false
+  if (expanded) {
+    isActive = true;
+  }
+
+  if (url === '/' && location.pathname !== "/") {
+    isActive = false;
+  }
 
   return (
     <MenuNode active={isActive}>
@@ -45,7 +54,7 @@ const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon }) => {
           {title}
         </Link>
       )}
-      {isActive && hasChildren ? (
+      {expanded && hasChildren ? (
         <ChildrenItems>
           {items.map((item, index) => (
             <TreeNode

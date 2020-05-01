@@ -31,7 +31,7 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/home', // add trailing slash if enabled above
+      '/home',
       '/introduction',
       '/getting-started',
       '/cluster-profiles',

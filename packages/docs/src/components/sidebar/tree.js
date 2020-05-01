@@ -3,15 +3,7 @@ import config from '../../../config';
 import TreeNode from './treeNode';
 
 const calculateTreeData = edges => {
-  const originalData = config.sidebar.ignoreIndex
-    ? edges.filter(
-        ({
-          node: {
-            fields: { slug },
-          },
-        }) => slug !== '/'
-      )
-    : edges;
+  const originalData = edges;
 
   const tree = originalData.reduce(
     (
@@ -57,7 +49,7 @@ const calculateTreeData = edges => {
           url: slug,
           items: [],
           title,
-          icon
+          icon,
         });
       }
       return accu;
@@ -138,13 +130,7 @@ const Tree = ({ edges }) => {
     });
   };
 
-  return (
-    <TreeNode
-      setCollapsed={toggle}
-      collapsed={collapsed}
-      {...treeData}
-    />
-  );
+  return <TreeNode setCollapsed={toggle} collapsed={collapsed} {...treeData} />;
 };
 
 export default Tree;

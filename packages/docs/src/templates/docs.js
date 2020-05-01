@@ -65,10 +65,14 @@ export default class MDXRuntimeTest extends Component {
         }
       });
 
+      if (!mdx) {
+      return  <Layout {...this.props}>{null}</Layout>;
+      }
+
     // meta tags
     const metaTitle = mdx.frontmatter?.metaTitle;
 
-    const metaDescription = mdx.frontmatter.metaDescription;
+    const metaDescription = mdx.frontmatter?.metaDescription;
 
     let canonicalUrl = config.gatsby.siteUrl;
 
