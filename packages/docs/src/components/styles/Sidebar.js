@@ -2,7 +2,6 @@ import React from "react";
 import styled from 'styled-components';
 
 export const Sidebar = styled.aside`
-  width: 100%;
   border-right: 1px solid #ede7f3;
   overflow: auto;
   position: sticky;
