@@ -22,7 +22,7 @@ const ChildrenItems = styled.div`
   margin: 10px 0 10px 26px;
 
   ${MenuNode} {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 `;
 

@@ -118,7 +118,7 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
   const ref = createRef();
 
   if (!config.header.search.algoliaAppId) {
-    return null;
+    return <div></div>;
   }
 
   const [query, setQuery] = useState(``);

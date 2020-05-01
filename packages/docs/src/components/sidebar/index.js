@@ -39,6 +39,9 @@ const LogoWrap = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+  position: sticky;
+  background: url(${menuBackground}), #f9f9f9;
+  top: 0;
 
   strong {
     font-family: Rubik;
@@ -56,6 +59,8 @@ const Divider = styled.div`
   width: 100%;
   background: radial-gradient(41.9% 100% at 50% 0%, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
   margin-bottom: 20px;
+  position: sticky;
+  top: 80px;
 `
 
 const SidebarLayout = () => (
