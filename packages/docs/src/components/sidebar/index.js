@@ -58,7 +58,6 @@ const Divider = styled.div`
   height: 44px;
   width: 100%;
   background: radial-gradient(41.9% 100% at 50% 0%, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
-  margin-bottom: 20px;
   position: sticky;
   top: 80px;
 `

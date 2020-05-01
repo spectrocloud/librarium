@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledHeading = styled.h1`
-  font-size: 32px;
-  line-height: 1.5;
-  font-weight: 500;
-  border-left: 2px solid #1ed3c6;
-  padding: 0 16px;
-  flex: 1;
-  margin-top: 0;
-  padding-top: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: -0.02em;
+  color: #0D1440;
   color: ${props => props.theme.colors.heading};
 `;
 

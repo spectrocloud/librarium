@@ -1,10 +1,10 @@
 import React from 'react';
-const githubIcon = require('./components/images/github.svg');
+import { Github } from 'styled-icons/fa-brands';
 
 const GithubLink = ({ link, text }) => {
   return (
     <a href={link} className="githubSection">
-      <img className="githubIcon" src={githubIcon} alt="github" />
+      <Github icon="github" width="16px" />
       {text}
     </a>
   );
