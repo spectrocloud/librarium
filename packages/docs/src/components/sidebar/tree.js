@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import config from '../../../config';
 import TreeNode from './treeNode';
 
@@ -18,7 +18,7 @@ const calculateTreeData = edges => {
       accu,
       {
         node: {
-          fields: { slug, title },
+          fields: { slug, title, icon },
         },
       }
     ) => {
@@ -50,12 +50,14 @@ const calculateTreeData = edges => {
       if (existingItem) {
         existingItem.url = slug;
         existingItem.title = title;
+        existingItem.icon = icon;
       } else {
         prevItems.push({
           label: parts[slicedLength],
           url: slug,
           items: [],
           title,
+          icon
         });
       }
       return accu;
@@ -69,8 +71,6 @@ const calculateTreeData = edges => {
 
   const tmp = [...forcedNavOrder];
 
-  if (config.gatsby && config.gatsby.trailingSlash) {
-  }
   tmp.reverse();
   return tmp.reduce((accu, slug) => {
     const parts = slug.split('/');
@@ -116,9 +116,9 @@ const calculateTreeData = edges => {
 };
 
 const Tree = ({ edges }) => {
-  let [treeData] = useState(() => {
+  const treeData = useMemo(() => {
     return calculateTreeData(edges);
-  });
+  }, [edges]);
 
   const defaultCollapsed = {};
 
@@ -140,7 +140,6 @@ const Tree = ({ edges }) => {
 
   return (
     <TreeNode
-      className={`${config.sidebar.frontLine ? 'showFrontLine' : 'hideFrontLine'} firstLevel`}
       setCollapsed={toggle}
       collapsed={collapsed}
       {...treeData}

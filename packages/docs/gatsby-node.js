@@ -105,5 +105,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.title || startCase(parent.name),
     });
+
+    createNodeField({
+      name: 'icon',
+      node,
+      value: node.frontmatter.icon || null,
+    });
   }
 };

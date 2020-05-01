@@ -8,24 +8,13 @@ import Sidebar from './sidebar';
 import RightSidebar from './rightSidebar';
 import Header from './Header';
 
+import "./styles.css"
+
+
 const Wrapper = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.colors.background};
-
-  .sideBarUL li a {
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-  .sideBarUL .item > a:hover {
-    background-color: #1ed3c6;
-    color: #fff !important;
-
-    /* background: #F8F8F8 */
-  }
-
-  @media only screen and (max-width: 767px) {
-    display: block;
-  }
+  overflow: hidden;
+  height: 100%;
 `;
 
 const Content = styled.main`
@@ -63,12 +52,11 @@ const RightSideBarWidth = styled.div`
 
 const ContentWrap = styled.div`
   display: flex;
-  margin-top: 80px;
 `
 
 const MainWrap = styled.div`
-  position: relative;
   flex-grow: 1;
+  overflow-y: auto;
 `
 
 const Layout = ({ children, location }) => (

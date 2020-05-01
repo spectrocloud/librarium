@@ -1,0 +1,14 @@
+html, body, #___gatsby, #gatsby-focus-wrapper {
+  height: 100%;
+  font-family: Poppins;
+}
+
+body {
+  margin: 0;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

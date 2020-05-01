@@ -1,16 +1,32 @@
 import React from 'react';
-import OpenedSvg from '../images/opened';
-import ClosedSvg from '../images/closed';
+import styled, { css } from 'styled-components';
+
 import config from '../../../config';
 import Link from '../link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+const MenuNode = styled.div`
+  color: #78909c;
+  margin: 20px 0;
 
-const TreeNode = ({ className = '', setCollapsed, collapsed, url, title, items, ...rest }) => {
-  const isCollapsed = collapsed[url];
+  .svg-inline--fa {
+    margin-right: 10px;
+  }
+  ${props => props.active && css`
+    > a {
+      color: #4432F5;
+    }
+  `}
+`;
 
-  const collapse = () => {
-    setCollapsed(url);
-  };
+const ChildrenItems = styled.div`
+  margin: 10px 0 10px 26px;
 
+  ${MenuNode} {
+    margin: 10px 0;
+  }
+`;
+
+const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon }) => {
   const hasChildren = items.length !== 0;
 
   let location;
@@ -18,35 +34,30 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, title, items, 
   if (typeof document != 'undefined') {
     location = document.location;
   }
-  const active =
-    location && (location.pathname === url || location.pathname === config.gatsby.pathPrefix + url);
-
-  const calculatedClassName = `${className} item ${active ? 'active' : ''}`;
+  const isActive =
+    !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
 
   return (
-    <div className={calculatedClassName}>
+    <MenuNode active={isActive}>
       {title && (
         <Link to={url}>
+          {icon && <FontAwesomeIcon icon={icon} />}
           {title}
-          {!config.sidebar.frontLine && title && hasChildren ? (
-            <button onClick={collapse} aria-label="collapse" className="collapser">
-              {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}
-            </button>
-          ) : null}
         </Link>
       )}
-
-      {!isCollapsed && hasChildren ? (
-          items.map((item, index) => (
+      {isActive && hasChildren ? (
+        <ChildrenItems>
+          {items.map((item, index) => (
             <TreeNode
               key={item.url + index.toString()}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
               {...item}
             />
-          ))
+          ))}
+        </ChildrenItems>
       ) : null}
-    </div>
+    </MenuNode>
   );
 };
 

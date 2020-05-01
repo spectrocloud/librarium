@@ -2,11 +2,6 @@ import * as React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import { lightTheme, darkTheme } from './index';
-import { baseStyles } from '../styles/GlobalStyles';
-
-const GlobalStyle = createGlobalStyle`
-  ${baseStyles}
-`
 
 class Themer extends React.Component {
   state = {
@@ -35,7 +30,6 @@ class Themer extends React.Component {
 
     return (
       <>
-        <GlobalStyle />
         <ThemeProvider theme={currentActiveTheme}>{this.props.children}</ThemeProvider>
       </>
     );
