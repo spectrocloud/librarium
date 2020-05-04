@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
-import { Layout, Link } from '$components';
+import { Layout, Link } from '@librarium/shared';
 import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledMainWrapper } from '../components/styles/Docs';
@@ -96,7 +96,7 @@ export default class MDXRuntimeTest extends Component {
         <div>
           <Edit>
             {docsLocation && (
-              <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
+              <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
                 <Github icon="github" width="16px" /> Edit on GitHub
               </Link>
             )}
@@ -105,7 +105,7 @@ export default class MDXRuntimeTest extends Component {
         <StyledMainWrapper>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </StyledMainWrapper>
-        <div className={'addPaddTopBottom'}>
+        <div>
           <NextPrevious mdx={mdx} nav={nav} />
         </div>
       </Layout>

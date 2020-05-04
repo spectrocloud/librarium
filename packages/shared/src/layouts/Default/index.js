@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MDXProvider } from '@mdx-js/react';
 
-import ThemeProvider from './theme/Provider';
-import mdxComponents from './mdxComponents';
+import ThemeProvider from '../theme/Provider';
 import Sidebar from './sidebar';
 import RightSidebar from './rightSidebar';
 import Header from './Header';
@@ -62,26 +60,26 @@ const MainWrap = styled.div`
   overflow-y: auto;
 `
 
+// TODO move the theme provider outside
+
 const Layout = ({ children, location }) => (
   <ThemeProvider location={location}>
-    <MDXProvider components={mdxComponents}>
-      <Wrapper>
-        <LeftSideBarWidth className={'hiddenMobile'}>
-          <Sidebar location={location} />
-        </LeftSideBarWidth>
-        <MainWrap>
-          <Header location={location} />
-          <ContentWrap>
-            <Content>
-              <MaxWidth>{children}</MaxWidth>
-            </Content>
-            <RightSideBarWidth className={'hiddenMobile'}>
-              <RightSidebar location={location} />
-            </RightSideBarWidth>
-          </ContentWrap>
-        </MainWrap>
-      </Wrapper>
-    </MDXProvider>
+    <Wrapper>
+      <LeftSideBarWidth className={'hiddenMobile'}>
+        <Sidebar location={location} />
+      </LeftSideBarWidth>
+      <MainWrap>
+        <Header location={location} />
+        <ContentWrap>
+          <Content>
+            <MaxWidth>{children}</MaxWidth>
+          </Content>
+          <RightSideBarWidth className={'hiddenMobile'}>
+            <RightSidebar location={location} />
+          </RightSideBarWidth>
+        </ContentWrap>
+      </MainWrap>
+    </Wrapper>
   </ThemeProvider>
 );
 
