@@ -3,11 +3,13 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
-import { Layout, Link } from '$components';
+import { Layout, Link } from '@librarium/shared';
 import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledMainWrapper } from '../components/styles/Docs';
 import { Github } from 'styled-icons/fa-brands';
+import App from "../App";
+
 
 const forcedNavOrder = config.sidebar.forcedNavOrder;
 
@@ -80,35 +82,37 @@ export default class MDXRuntimeTest extends Component {
     canonicalUrl = canonicalUrl + mdx.fields.slug;
 
     return (
-      <Layout {...this.props}>
-        <Helmet>
-          {metaTitle ? <title>{metaTitle}</title> : null}
-          {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-          {metaDescription ? <meta name="description" content={metaDescription} /> : null}
-          {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-          {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
-          {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
-          {metaDescription ? (
-            <meta property="twitter:description" content={metaDescription} />
-          ) : null}
-          <link rel="canonical" href={canonicalUrl} />
-        </Helmet>
-        <div>
-          <Edit>
-            {docsLocation && (
-              <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                <Github icon="github" width="16px" /> Edit on GitHub
-              </Link>
-            )}
-          </Edit>
-        </div>
-        <StyledMainWrapper>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </StyledMainWrapper>
-        <div className={'addPaddTopBottom'}>
-          <NextPrevious mdx={mdx} nav={nav} />
-        </div>
-      </Layout>
+      <App>
+        <Layout {...this.props} edges={allMdx.edges}>
+          <Helmet>
+            {metaTitle ? <title>{metaTitle}</title> : null}
+            {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+            {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+            {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
+            {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+            {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+            {metaDescription ? (
+              <meta property="twitter:description" content={metaDescription} />
+            ) : null}
+            <link rel="canonical" href={canonicalUrl} />
+          </Helmet>
+          <div>
+            <Edit>
+              {docsLocation && (
+                <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                  <Github icon="github" width="16px" /> Edit on GitHub
+                </Link>
+              )}
+            </Edit>
+          </div>
+          <StyledMainWrapper>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </StyledMainWrapper>
+          <div>
+            <NextPrevious mdx={mdx} nav={nav} />
+          </div>
+        </Layout>
+      </App>
     );
   }
 }
@@ -145,6 +149,7 @@ export const pageQuery = graphql`
           fields {
             slug
             title
+            icon
           }
         }
       }

@@ -12,6 +12,7 @@
     "@mdx-js/loader": "^1.6.0",
     "@mdx-js/mdx": "^1.6.0",
     "@mdx-js/react": "^1.6.0",
+    "@librarium/shared": "^0.0.0",
     "@philpl/buble": "^0.19.7",
     "@playlyfe/gql": "^2.6.2",
     "algoliasearch": "^3.35.1",

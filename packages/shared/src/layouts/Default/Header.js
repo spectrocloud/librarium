@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Loadable from 'react-loadable';
 
-import LoadingProvider from './mdxComponents/loading';
+import Loader from "../../components/Loader";
 
 const SearchComponent = Loadable({
   loader: () => import('./search/index'),
-  loading: LoadingProvider,
+  loading: Loader,
 });
 
 const Wrap = styled.div`
