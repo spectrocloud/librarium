@@ -1,3 +1,6 @@
+import React, {useState, useEffect} from 'react';
+import { ThemeProvider } from 'styled-components';
+
 const baseTheme = {
   fonts: {
     mono: '"SF Mono", "Roboto Mono", Menlo, monospace',
@@ -26,4 +29,19 @@ const darkTheme = {
   },
 };
 
-export { lightTheme, darkTheme };
+export function useThemeManager() {
+  const [theme, updateTheme] = useState(window.localStorage.getItem('theme') || "light");
+  useEffect(() => {
+    window.localStorage.setItem('theme', theme);
+  }, [theme])
+
+  return {theme, updateTheme}
+}
+
+export default function ThemeManager({children}) {
+  const {theme} = useThemeManager();
+  const currentActiveTheme = theme === "dark" ? darkTheme : lightTheme;
+  return (
+    <ThemeProvider theme={currentActiveTheme}>{children}</ThemeProvider>
+  )
+};

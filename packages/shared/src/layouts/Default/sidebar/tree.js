@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import config from '../../../config';
 import TreeNode from './treeNode';
 
-const calculateTreeData = edges => {
+const calculateTreeData = (edges, config) => {
   const originalData = edges;
 
   const tree = originalData.reduce(
@@ -107,9 +106,9 @@ const calculateTreeData = edges => {
   }, tree);
 };
 
-const Tree = ({ edges }) => {
+const Tree = ({ edges, config = {sidebar: {}} }) => {
   const treeData = useMemo(() => {
-    return calculateTreeData(edges);
+    return calculateTreeData(edges, config);
   }, [edges]);
 
   const defaultCollapsed = {};

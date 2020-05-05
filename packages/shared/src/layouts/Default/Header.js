@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Loadable from 'react-loadable';
 
+import Loader from "../../components/Loader";
+
 const SearchComponent = Loadable({
   loader: () => import('./search/index'),
+  loading: Loader,
 });
 
 const Wrap = styled.div`

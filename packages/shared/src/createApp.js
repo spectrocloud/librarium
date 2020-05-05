@@ -6,11 +6,11 @@ import DefaultThemeProvider from "./theme";
 import DefaultMdxProvider from "./mdx";
 
 library.add(fas)
-
+// TODO add a confiig provider
 export default function createDocsApp({
   ThemeProvider = DefaultThemeProvider,
   MdxProvider = DefaultMdxProvider
-}) {
+} = {}) {
   function App({children}) {
     return (
       <ThemeProvider>

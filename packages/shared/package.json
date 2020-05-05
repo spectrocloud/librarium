@@ -2,11 +2,11 @@
   "name": "@librarium/shared",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "Codrin iftimie <iceboxic@gmail.com>",
   "homepage": "",
   "license": "ISC",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+  "scripts": {},
+  "dependencies": {
+    "is-absolute-url": "^3.0.3"
   }
 }

@@ -1,13 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import ThemeProvider from '../theme/Provider';
-import Sidebar from './sidebar';
-import RightSidebar from './rightSidebar';
-import Header from './Header';
+import Sidebar from "./sidebar";
+import Header from "./Header";
 
-import "./styles.css"
-
+import "./layout.css";
 
 // Move this in shared
 // with sidebar and header
@@ -53,20 +50,18 @@ const RightSideBarWidth = styled.div`
 
 const ContentWrap = styled.div`
   display: flex;
-`
+`;
 
 const MainWrap = styled.div`
   flex-grow: 1;
   overflow-y: auto;
-`
+`;
 
-// TODO move the theme provider outside
-
-const Layout = ({ children, location }) => (
-  <ThemeProvider location={location}>
+export default function Layout({ children, location, edges }) {
+  return (
     <Wrapper>
-      <LeftSideBarWidth className={'hiddenMobile'}>
-        <Sidebar location={location} />
+      <LeftSideBarWidth className={"hiddenMobile"}>
+        <Sidebar location={location} edges={edges}/>
       </LeftSideBarWidth>
       <MainWrap>
         <Header location={location} />
@@ -74,13 +69,8 @@ const Layout = ({ children, location }) => (
           <Content>
             <MaxWidth>{children}</MaxWidth>
           </Content>
-          <RightSideBarWidth className={'hiddenMobile'}>
-            <RightSidebar location={location} />
-          </RightSideBarWidth>
         </ContentWrap>
       </MainWrap>
     </Wrapper>
-  </ThemeProvider>
-);
-
-export default Layout;
+  );
+}
