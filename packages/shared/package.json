@@ -2,18 +2,11 @@
   "name": "@librarium/shared",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "Codrin iftimie <iceboxic@gmail.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+  "main": "src/index.js",
+  "scripts": {},
+  "dependencies": {
+    "is-absolute-url": "^3.0.3"
   }
 }

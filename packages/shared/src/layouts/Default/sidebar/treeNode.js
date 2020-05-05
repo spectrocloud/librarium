@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-
-import config from '../../../config';
-import Link from '../link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Link from "../../../components/Link";
+
 const MenuNode = styled.div`
   color: #78909c;
   margin: 20px 0;
@@ -26,7 +26,7 @@ const ChildrenItems = styled.div`
   }
 `;
 
-const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon }) => {
+const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon, config = {gatsby: {}} }) => {
   const hasChildren = items.length !== 0;
 
   let location;

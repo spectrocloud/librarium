@@ -4,16 +4,13 @@ import {
   Index,
   Hits,
   Configure,
-  Pagination,
   connectStateResults,
 } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
-import config from '../../../config.js';
 
-import styled from 'styled-components';
-import { css } from 'styled-components';
-import { PoweredBy } from './styles';
+import styled, {css} from 'styled-components';
 import { Search } from 'styled-icons/fa-solid/Search';
+import { PoweredBy } from './styles';
 import Input from './input';
 import * as hitComps from './hitComps';
 
@@ -114,10 +111,10 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
+export default function SearchComponent({ indices, collapse, hitsAsGrid, config }) {
   const ref = createRef();
 
-  if (!config.header.search.algoliaAppId) {
+  if (!config?.header?.search?.algoliaAppId) {
     return <div></div>;
   }
 
