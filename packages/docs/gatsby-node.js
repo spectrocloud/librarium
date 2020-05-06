@@ -76,6 +76,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     let value = parent.relativePath.replace(parent.ext, '');
 
+    const slugs = value.split('/').map((slugPart, index, slugs) => {
+      const [_, ...rest] = slugPart.split('-')
+
+      if (index === slugs.length - 1) {
+        createNodeField({
+          name: `index`,
+          node,
+          value: _
+        });
+      }
+
+      return rest.join('-')
+    })
+
+    value = slugs.join('/');
     if (value === 'index') {
       value = '';
     }
