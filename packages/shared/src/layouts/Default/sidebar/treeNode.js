@@ -26,7 +26,10 @@ const ChildrenItems = styled.div`
   }
 `;
 
-const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon, config = {gatsby: {}} }) => {
+const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon, hiddenFromNav, config = {gatsby: {}} }) => {
+  if (hiddenFromNav) {
+    return null;
+  }
   const hasChildren = items.length !== 0;
 
   let location;

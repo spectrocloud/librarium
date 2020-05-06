@@ -9,7 +9,7 @@ const calculateTreeData = (edges, config) => {
       accu,
       {
         node: {
-          fields: { slug, title, icon },
+          fields: { slug, title, icon, hideFromNav },
         },
       }
     ) => {
@@ -42,6 +42,7 @@ const calculateTreeData = (edges, config) => {
         existingItem.url = slug;
         existingItem.title = title;
         existingItem.icon = icon;
+        existingItem.hideFromNav = hideFromNav;
       } else {
         prevItems.push({
           label: parts[slicedLength],
@@ -49,6 +50,7 @@ const calculateTreeData = (edges, config) => {
           items: [],
           title,
           icon,
+          hideFromNav
         });
       }
       return accu;

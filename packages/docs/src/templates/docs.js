@@ -45,7 +45,7 @@ export default class MDXRuntimeTest extends Component {
           }
 
           if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
-            return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] };
+            return { ...acc, [`/${prefix}`]: [...(acc[`/${prefix}`] || []), cur] };
           } else {
             return { ...acc, items: [...acc.items, cur] };
           }
@@ -66,9 +66,9 @@ export default class MDXRuntimeTest extends Component {
         }
       });
 
-      if (!mdx) {
+    if (!mdx) {
       return  <Layout {...this.props}>{null}</Layout>;
-      }
+    }
 
     // meta tags
     const metaTitle = mdx.frontmatter?.metaTitle;
@@ -151,6 +151,7 @@ export const pageQuery = graphql`
             title
             icon
             index
+            hiddenFromNav
           }
         }
       }

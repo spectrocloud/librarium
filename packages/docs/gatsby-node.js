@@ -126,5 +126,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.icon,
     });
+
+    createNodeField({
+      name: 'hiddenFromNav',
+      node,
+      value: node.frontmatter.hiddenFromNav,
+    });
   }
 };
