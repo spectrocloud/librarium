@@ -9,24 +9,42 @@ const StyledPre = styled.pre`
   background: ${props => props.theme.colors.preFormattedText};
 `;
 
+function generateHeadingId(children) {
+  let title = children;
+  if (Array.isArray(children)) {
+    title = children.reduce((accumulator, child) => {
+      if (typeof child === "string") {
+        return `${accumulator} ${child}`
+      }
+      if (child?.props?.children) {
+        return `${accumulator} ${generateHeadingId(child.props.children)}`
+      }
+
+      return accumulator;
+    }, '')
+  }
+
+  return title.replace(/\s+/g, '').toLowerCase()
+}
+
 export default {
-  h1: props => (
-    <h1 className="heading1" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
-  ),
+  h1: props => {
+    return <h1 id={generateHeadingId(props.children)} {...props} />
+  },
   h2: props => (
-    <h2 className="heading2" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
+    <h2 id={generateHeadingId(props.children)} {...props} />
   ),
   h3: props => (
-    <h3 className="heading3" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
+    <h3 id={generateHeadingId(props.children)} {...props} />
   ),
   h4: props => (
-    <h4 className="heading4" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
+    <h4 id={generateHeadingId(props.children)} {...props} />
   ),
   h5: props => (
-    <h5 className="heading5" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
+    <h5 id={generateHeadingId(props.children)} {...props} />
   ),
   h6: props => (
-    <h6 className="heading6" id={props.children.replace(/\s+/g, '').toLowerCase()} {...props} />
+    <h6 id={generateHeadingId(props.children)} {...props} />
   ),
   p: props => <p className="paragraph" {...props} />,
   pre: props => (
