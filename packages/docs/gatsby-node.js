@@ -135,5 +135,17 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.hiddenFromNav,
     });
+
+    createNodeField({
+      name: 'hideToC',
+      node,
+      value: node.frontmatter.hideToC,
+    });
+
+    createNodeField({
+      name: 'fullWidth',
+      node,
+      value: node.frontmatter.fullWidth,
+    });
   }
 };

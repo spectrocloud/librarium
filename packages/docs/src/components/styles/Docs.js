@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const StyledHeading = styled.h1`
   font-style: normal;
@@ -40,6 +40,10 @@ export const Edit = styled.div`
 export const StyledMainWrapper = styled.div`
   max-width: 750px;
   color: ${props => props.theme.colors.text};
+  flex-grow: 1;
+  ${props => props.fullWidth && css`
+    max-width: none;
+  `};
 
   ul,
   ol {

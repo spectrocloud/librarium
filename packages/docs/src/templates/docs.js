@@ -125,9 +125,11 @@ export default function MDXLayout({ data = {} }) {
     config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
   canonicalUrl = canonicalUrl + mdx.fields.slug;
 
+  console.log(mdx.frontmatter)
+
   return (
     <App>
-      <Layout menu={menu}>
+      <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
         <Helmet>
           {metaTitle ? <title>{metaTitle}</title> : null}
           {metaTitle ? <meta name="title" content={metaTitle} /> : null}
@@ -142,24 +144,26 @@ export default function MDXLayout({ data = {} }) {
         </Helmet>
 
         <ContentWrap>
-          <StyledMainWrapper>
+          <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
             <div>
               <NextPrevious mdx={mdx} nav={activeMenu} />
             </div>
           </StyledMainWrapper>
-          <RightSidebar>
-            <StickyWrap>
-              <Edit>
-                {docsLocation && (
-                  <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                    <Github icon="github" width="16px" /> Edit on GitHub
-                  </Link>
-                )}
-              </Edit>
-            <TableOfContents location={window.location} />
-            </StickyWrap>
-          </RightSidebar>
+          {!mdx.frontmatter?.hideToC && (
+            <RightSidebar>
+              <StickyWrap>
+                <Edit>
+                  {docsLocation && (
+                    <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                      <Github icon="github" width="16px" /> Edit on GitHub
+                    </Link>
+                  )}
+                </Edit>
+              <TableOfContents location={window.location} />
+              </StickyWrap>
+            </RightSidebar>
+          )}
         </ContentWrap>
       </Layout>
     </App>
@@ -190,6 +194,8 @@ export const pageQuery = graphql`
       frontmatter {
         metaTitle
         metaDescription
+        fullWidth
+        hideToC
       }
     }
     allMdx {
