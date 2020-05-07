@@ -11,8 +11,9 @@ export const StyledHeading = styled.h1`
 `;
 
 export const Edit = styled.div`
-  padding: 1rem 1.5rem;
   text-align: right;
+  white-space: nowrap;
+
 
   a {
     font-size: 14px;

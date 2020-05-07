@@ -1,20 +1,23 @@
-import React, { Component, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import styled from 'styled-components';
 
 import { Layout, Link } from '@librarium/shared';
 import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledMainWrapper } from '../components/styles/Docs';
+import TableOfContents from '../components/TableOfContents';
 import { Github } from 'styled-icons/fa-brands';
-import App from "../App";
-
+import App from '../App';
 
 const calculateTreeData = (edges, config) => {
-  const originalData = edges.filter(edge => !edge.node.fields.hiddenFromNav).sort((edge1, edge2) => {
-    return edge1.node.fields.index - edge2.node.fields.index
-  });
+  const originalData = edges
+    .filter(edge => !edge.node.fields.hiddenFromNav)
+    .sort((edge1, edge2) => {
+      return edge1.node.fields.index - edge2.node.fields.index;
+    });
   const tree = originalData.reduce(
     (
       accu,
@@ -67,82 +70,101 @@ const calculateTreeData = (edges, config) => {
     { items: [] }
   );
 
-  return tree
+  return tree;
 };
 
-export default function MDXLayout({data = {}}) {
-    const {
-      allMdx,
-      mdx,
-      site: {
-        siteMetadata: { docsLocation },
-      },
-    } = data;
+const ContentWrap = styled.div`
+  display: flex;
+`;
 
-    const menu = useMemo(() => {
-      return calculateTreeData(allMdx.edges, config)
-    }, [allMdx.edges])
+const RightSidebar = styled.div`
+  margin-left: 20px;
+`
 
-    const activeMenu = useMemo(() => {
-      const mainUrl = window.location.pathname.split('/')[1];
-      const nav = menu.items.find(item => item.label === mainUrl);
-      if (!nav) {
-        return []
-      }
+const StickyWrap = styled.div`
+  position: sticky;
+  top: 100px;
+  width: 150px;
+`
 
-      return [nav, ...nav.items]
-    })
+export default function MDXLayout({ data = {} }) {
+  const {
+    allMdx,
+    mdx,
+    site: {
+      siteMetadata: { docsLocation },
+    },
+  } = data;
 
+  const menu = useMemo(() => {
+    return calculateTreeData(allMdx.edges, config);
+  }, [allMdx.edges]);
 
-    if (!mdx) {
-      return  <Layout>{null}</Layout>;
+  const activeMenu = useMemo(() => {
+    const mainUrl = window.location.pathname.split('/')[1];
+    const nav = menu.items.find(item => item.label === mainUrl);
+    if (!nav) {
+      return [];
     }
 
-    // meta tags
-    const metaTitle = mdx.frontmatter?.metaTitle;
+    return [nav, ...nav.items];
+  });
 
-    const metaDescription = mdx.frontmatter?.metaDescription;
+  if (!mdx) {
+    return <Layout>{null}</Layout>;
+  }
 
-    let canonicalUrl = config.gatsby.siteUrl;
+  // meta tags
+  const metaTitle = mdx.frontmatter?.metaTitle;
 
-    canonicalUrl =
-      config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
-    canonicalUrl = canonicalUrl + mdx.fields.slug;
+  const metaDescription = mdx.frontmatter?.metaDescription;
 
-    return (
-      <App>
-        <Layout menu={menu}>
-          <Helmet>
-            {metaTitle ? <title>{metaTitle}</title> : null}
-            {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-            {metaDescription ? <meta name="description" content={metaDescription} /> : null}
-            {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-            {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
-            {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
-            {metaDescription ? (
-              <meta property="twitter:description" content={metaDescription} />
-            ) : null}
-            <link rel="canonical" href={canonicalUrl} />
-          </Helmet>
-          <div>
-            <Edit>
-              {docsLocation && (
-                <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                  <Github icon="github" width="16px" /> Edit on GitHub
-                </Link>
-              )}
-            </Edit>
-          </div>
+  let canonicalUrl = config.gatsby.siteUrl;
+
+  canonicalUrl =
+    config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
+  canonicalUrl = canonicalUrl + mdx.fields.slug;
+
+  return (
+    <App>
+      <Layout menu={menu}>
+        <Helmet>
+          {metaTitle ? <title>{metaTitle}</title> : null}
+          {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+          {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+          {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
+          {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+          {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+          {metaDescription ? (
+            <meta property="twitter:description" content={metaDescription} />
+          ) : null}
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+
+        <ContentWrap>
           <StyledMainWrapper>
             <MDXRenderer>{mdx.body}</MDXRenderer>
+            <div>
+              <NextPrevious mdx={mdx} nav={activeMenu} />
+            </div>
           </StyledMainWrapper>
-          <div>
-            <NextPrevious mdx={mdx} nav={activeMenu} />
-          </div>
-        </Layout>
-      </App>
-    );
-  }
+          <RightSidebar>
+            <StickyWrap>
+              <Edit>
+                {docsLocation && (
+                  <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                    <Github icon="github" width="16px" /> Edit on GitHub
+                  </Link>
+                )}
+              </Edit>
+            <TableOfContents location={window.location} />
+            </StickyWrap>
+          </RightSidebar>
+        </ContentWrap>
+      </Layout>
+    </App>
+  );
+}
 
 export const pageQuery = graphql`
   query($id: String!) {

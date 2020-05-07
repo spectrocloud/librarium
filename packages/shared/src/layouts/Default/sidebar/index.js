@@ -9,24 +9,6 @@ const Sidebar = styled.aside`
   height: 100%;
   background: url(${menuBackground}),
     linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
-
-  @media only screen and (max-width: 1023px) {
-    width: 100%;
-    /* position: relative; */
-    height: 100vh;
-  }
-
-  @media (min-width: 767px) and (max-width: 1023px) {
-    padding-left: 0;
-  }
-
-  @media only screen and (max-width: 767px) {
-    padding-left: 0px;
-    height: auto;
-  }
-
-  a {
-  }
 `;
 
 const MenuWrap = styled.div`
