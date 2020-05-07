@@ -65,7 +65,7 @@ const Divider = styled.div`
   top: 80px;
 `;
 
-const SidebarLayout = ({edges}) => (
+const SidebarLayout = ({menu}) => (
   <Sidebar>
     <LogoWrap>
       <Logo>
@@ -77,7 +77,7 @@ const SidebarLayout = ({edges}) => (
     </LogoWrap>
     <Divider />
     <MenuWrap>
-      <Tree edges={edges} />
+      <Tree menu={menu} />
     </MenuWrap>
   </Sidebar>
 );

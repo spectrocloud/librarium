@@ -78,13 +78,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     const slugs = value.split('/').map((slugPart, index, slugs) => {
       const [_, ...rest] = slugPart.split('-')
-
       if (index === slugs.length - 1) {
         createNodeField({
           name: `index`,
           node,
           value: _
         });
+      }
+
+      if (rest.length === 0) {
+        return _;
       }
 
       return rest.join('-')

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useMemo } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
@@ -11,63 +11,91 @@ import { Github } from 'styled-icons/fa-brands';
 import App from "../App";
 
 
-const forcedNavOrder = config.sidebar.forcedNavOrder;
+const calculateTreeData = (edges, config) => {
+  const originalData = edges.filter(edge => !edge.node.fields.hiddenFromNav).sort((edge1, edge2) => {
+    return edge1.node.fields.index - edge2.node.fields.index
+  });
+  const tree = originalData.reduce(
+    (
+      accu,
+      {
+        node: {
+          fields: { slug, title, icon },
+        },
+      }
+    ) => {
+      const parts = slug.split('/');
 
-export default class MDXRuntimeTest extends Component {
-  render() {
-    const { data } = this.props;
+      let { items: prevItems } = accu;
 
-    if (!data) {
-      return null;
-    }
+      const slicedParts =
+        config.gatsby && config.gatsby.trailingSlash ? parts.slice(1, -2) : parts.slice(1, -1);
+
+      for (const part of slicedParts) {
+        let tmp = prevItems && prevItems.find(({ label }) => label == part);
+
+        if (tmp) {
+          if (!tmp.items) {
+            tmp.items = [];
+          }
+        } else {
+          tmp = { label: part, items: [] };
+          prevItems.push(tmp);
+        }
+        prevItems = tmp.items;
+      }
+      const slicedLength =
+        config.gatsby && config.gatsby.trailingSlash ? parts.length - 2 : parts.length - 1;
+
+      const existingItem = prevItems.find(({ label }) => label === parts[slicedLength]);
+
+      if (existingItem) {
+        existingItem.url = slug;
+        existingItem.title = title;
+        existingItem.icon = icon;
+      } else {
+        prevItems.push({
+          label: parts[slicedLength],
+          url: slug,
+          items: [],
+          title,
+          icon,
+        });
+      }
+      return accu;
+    },
+    { items: [] }
+  );
+
+  return tree
+};
+
+export default function MDXLayout({data = {}}) {
     const {
       allMdx,
       mdx,
       site: {
-        siteMetadata: { docsLocation, title },
+        siteMetadata: { docsLocation },
       },
     } = data;
 
-    const navItems = allMdx.edges
-      .sort((e1, e2) => e1.node.fields.index - e2.node.fields.index)
-      .map(({ node }) => node.fields.slug)
-      .filter(slug => slug !== '/')
-      .reduce(
-        (acc, cur) => {
-          if (forcedNavOrder.find(url => url === cur)) {
-            return { ...acc, [cur]: [cur] };
-          }
+    const menu = useMemo(() => {
+      return calculateTreeData(allMdx.edges, config)
+    }, [allMdx.edges])
 
-          let prefix = cur.split('/')[1];
+    const activeMenu = useMemo(() => {
+      const mainUrl = window.location.pathname.split('/')[1];
+      const nav = menu.items.find(item => item.label === mainUrl);
+      if (!nav) {
+        return []
+      }
 
-          if (config.gatsby && config.gatsby.trailingSlash) {
-            prefix = prefix + '/';
-          }
+      return [nav, ...nav.items]
+    })
 
-          if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
-            return { ...acc, [`/${prefix}`]: [...(acc[`/${prefix}`] || []), cur] };
-          } else {
-            return { ...acc, items: [...acc.items, cur] };
-          }
-        },
-        { items: [] }
-      );
-
-    const nav = forcedNavOrder
-      .reduce((acc, cur) => {
-        return acc.concat(navItems[cur]);
-      }, [])
-      .concat(navItems.items)
-      .map(slug => {
-        if (slug) {
-          const { node } = allMdx.edges.find(({ node }) => node.fields.slug === slug);
-
-          return { title: node.fields.title, url: node.fields.slug };
-        }
-      });
 
     if (!mdx) {
-      return  <Layout {...this.props}>{null}</Layout>;
+      return  <Layout>{null}</Layout>;
     }
 
     // meta tags
@@ -83,7 +111,7 @@ export default class MDXRuntimeTest extends Component {
 
     return (
       <App>
-        <Layout {...this.props} edges={allMdx.edges}>
+        <Layout menu={menu}>
           <Helmet>
             {metaTitle ? <title>{metaTitle}</title> : null}
             {metaTitle ? <meta name="title" content={metaTitle} /> : null}
@@ -109,13 +137,12 @@ export default class MDXRuntimeTest extends Component {
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </StyledMainWrapper>
           <div>
-            <NextPrevious mdx={mdx} nav={nav} />
+            <NextPrevious mdx={mdx} nav={activeMenu} />
           </div>
         </Layout>
       </App>
     );
   }
-}
 
 export const pageQuery = graphql`
   query($id: String!) {

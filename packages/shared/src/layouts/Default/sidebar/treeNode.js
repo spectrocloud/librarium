@@ -26,7 +26,7 @@ const ChildrenItems = styled.div`
   }
 `;
 
-const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon, hiddenFromNav, config = {gatsby: {}} }) => {
+const TreeNode = ({ url, title, items, icon, hiddenFromNav, config = {gatsby: {}} }) => {
   if (hiddenFromNav) {
     return null;
   }
@@ -62,8 +62,6 @@ const TreeNode = ({ setCollapsed, collapsed, url, title, items, icon, hiddenFrom
           {items.map((item, index) => (
             <TreeNode
               key={item.url + index.toString()}
-              setCollapsed={setCollapsed}
-              collapsed={collapsed}
               {...item}
             />
           ))}
