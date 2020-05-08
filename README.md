@@ -24,7 +24,7 @@ Clone the repository and run the initialization script
 
 ```sh
 cd Work
-git clone git@github.com:spectrocloud/librarium.git
+git clone https://github.com/spectrocloud/librarium.git
 cd librarium
 make initialize
 ```
@@ -32,6 +32,7 @@ make initialize
 ## Documentation Content
 
 Create a branch if needed. This will keep your work separated from the rest of your changes.
+
 ```sh
 git branch -b <branch_name>
 ```
@@ -51,4 +52,5 @@ When you are done with some changes you can create a commit
 ```sh
 make commit "<your message here>"
 ```
+
 This will open your browser with the commit. Once the pull request is created a link will be added in the comments to preview the change in a staging environment.
