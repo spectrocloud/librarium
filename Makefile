@@ -3,7 +3,7 @@
 
 
 initialize:
-	npx lerna bootstrap
+	npx lerna bootstrap --hoist
 
 start:
 	(cd packages/docs && npm run start -- --open)
