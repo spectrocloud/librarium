@@ -1,13 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 import Sidebar from "./sidebar";
 import Header from "./Header";
 
 import "./layout.css";
-
-// Move this in shared
-// with sidebar and header
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +13,6 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.main`
-  display: flex;
-  flex-grow: 1;
   margin: 0px 88px;
   padding-top: 3rem;
   background: ${({ theme }) => theme.colors.background};
@@ -26,30 +21,13 @@ const Content = styled.main`
     background: ${({ theme }) => theme.colors.background};
   }
 
-  @media only screen and (max-width: 1023px) {
-    padding-left: 0;
-    margin: 0 10px;
-    padding-top: 3rem;
-  }
-`;
-
-const MaxWidth = styled.div`
-  @media only screen and (max-width: 50rem) {
-    width: 100%;
-    position: relative;
-  }
+  ${props => props.fullWidth && css`
+    margin: 0;
+  `}
 `;
 
 const LeftSideBarWidth = styled.div`
   width: 323px;
-`;
-
-const RightSideBarWidth = styled.div`
-  width: 224px;
-`;
-
-const ContentWrap = styled.div`
-  display: flex;
 `;
 
 const MainWrap = styled.div`
@@ -57,19 +35,15 @@ const MainWrap = styled.div`
   overflow-y: auto;
 `;
 
-export default function Layout({ children, location, edges }) {
+export default function Layout({ children, location, menu, fullWidth }) {
   return (
     <Wrapper>
       <LeftSideBarWidth className={"hiddenMobile"}>
-        <Sidebar location={location} edges={edges}/>
+        <Sidebar location={location} menu={menu} />
       </LeftSideBarWidth>
       <MainWrap>
         <Header location={location} />
-        <ContentWrap>
-          <Content>
-            <MaxWidth>{children}</MaxWidth>
-          </Content>
-        </ContentWrap>
+        <Content fullWidth={fullWidth}>{children}</Content>
       </MainWrap>
     </Wrapper>
   );

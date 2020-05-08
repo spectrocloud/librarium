@@ -76,6 +76,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     let value = parent.relativePath.replace(parent.ext, '');
 
+    const slugs = value.split('/').map((slugPart, index, slugs) => {
+      const [_, ...rest] = slugPart.split('-')
+      if (index === slugs.length - 1) {
+        createNodeField({
+          name: `index`,
+          node,
+          value: _
+        });
+      }
+
+      if (rest.length === 0) {
+        return _;
+      }
+
+      return rest.join('-')
+    })
+
+    value = slugs.join('/');
     if (value === 'index') {
       value = '';
     }
@@ -110,6 +128,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: 'icon',
       node,
       value: node.frontmatter.icon,
+    });
+
+    createNodeField({
+      name: 'hiddenFromNav',
+      node,
+      value: node.frontmatter.hiddenFromNav,
+    });
+
+    createNodeField({
+      name: 'hideToC',
+      node,
+      value: node.frontmatter.hideToC,
+    });
+
+    createNodeField({
+      name: 'fullWidth',
+      node,
+      value: node.frontmatter.fullWidth,
     });
   }
 };

@@ -64,11 +64,7 @@ const SidebarLayout = ({ location }) => (
           </Sidebar>
         );
       } else {
-        return (
-          <Sidebar>
-            <ul></ul>
-          </Sidebar>
-        );
+        return null;
       }
     }}
   />
