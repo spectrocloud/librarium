@@ -1,13 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 
+// TODO clean up these styles
 export const Sidebar = styled.aside`
-  border-right: 1px solid #ede7f3;
   overflow: auto;
-  position: sticky;
-  padding-left: 24px;
-  top: 80px;
-
   background: ${props => props.theme.colors.background};
 
   .rightSideTitle {
@@ -25,6 +21,7 @@ export const Sidebar = styled.aside`
 
   .rightSideBarUL {
     margin-top: 32px;
+    padding: 0;
   }
 
   .rightSideBarUL li {
@@ -40,11 +37,6 @@ export const Sidebar = styled.aside`
     padding: 7px 24px 7px 16px;
 
     color: ${props => props.theme.colors.text};
-  }
-
-  @media only screen and (max-width: 50rem) {
-    width: 100%;
-    position: relative;
   }
 `;
 

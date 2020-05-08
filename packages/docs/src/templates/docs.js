@@ -1,120 +1,173 @@
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import styled from 'styled-components';
 
 import { Layout, Link } from '@librarium/shared';
 import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledMainWrapper } from '../components/styles/Docs';
+import TableOfContents from '../components/TableOfContents';
 import { Github } from 'styled-icons/fa-brands';
-import App from "../App";
+import App from '../App';
 
-
-const forcedNavOrder = config.sidebar.forcedNavOrder;
-
-export default class MDXRuntimeTest extends Component {
-  render() {
-    const { data } = this.props;
-
-    if (!data) {
-      return null;
-    }
-    const {
-      allMdx,
-      mdx,
-      site: {
-        siteMetadata: { docsLocation, title },
-      },
-    } = data;
-
-    const navItems = allMdx.edges
-      .map(({ node }) => node.fields.slug)
-      .filter(slug => slug !== '/')
-      .sort()
-      .reduce(
-        (acc, cur) => {
-          if (forcedNavOrder.find(url => url === cur)) {
-            return { ...acc, [cur]: [cur] };
-          }
-
-          let prefix = cur.split('/')[1];
-
-          if (config.gatsby && config.gatsby.trailingSlash) {
-            prefix = prefix + '/';
-          }
-
-          if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
-            return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] };
-          } else {
-            return { ...acc, items: [...acc.items, cur] };
-          }
+const calculateTreeData = (edges, config) => {
+  const originalData = edges
+    .filter(edge => !edge.node.fields.hiddenFromNav)
+    .sort((edge1, edge2) => {
+      return edge1.node.fields.index - edge2.node.fields.index;
+    });
+  const tree = originalData.reduce(
+    (
+      accu,
+      {
+        node: {
+          fields: { slug, title, icon },
         },
-        { items: [] }
-      );
-
-    const nav = forcedNavOrder
-      .reduce((acc, cur) => {
-        return acc.concat(navItems[cur]);
-      }, [])
-      .concat(navItems.items)
-      .map(slug => {
-        if (slug) {
-          const { node } = allMdx.edges.find(({ node }) => node.fields.slug === slug);
-
-          return { title: node.fields.title, url: node.fields.slug };
-        }
-      });
-
-      if (!mdx) {
-      return  <Layout {...this.props}>{null}</Layout>;
       }
+    ) => {
+      const parts = slug.split('/');
 
-    // meta tags
-    const metaTitle = mdx.frontmatter?.metaTitle;
+      let { items: prevItems } = accu;
 
-    const metaDescription = mdx.frontmatter?.metaDescription;
+      const slicedParts =
+        config.gatsby && config.gatsby.trailingSlash ? parts.slice(1, -2) : parts.slice(1, -1);
 
-    let canonicalUrl = config.gatsby.siteUrl;
+      for (const part of slicedParts) {
+        let tmp = prevItems && prevItems.find(({ label }) => label == part);
 
-    canonicalUrl =
-      config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
-    canonicalUrl = canonicalUrl + mdx.fields.slug;
+        if (tmp) {
+          if (!tmp.items) {
+            tmp.items = [];
+          }
+        } else {
+          tmp = { label: part, items: [] };
+          prevItems.push(tmp);
+        }
+        prevItems = tmp.items;
+      }
+      const slicedLength =
+        config.gatsby && config.gatsby.trailingSlash ? parts.length - 2 : parts.length - 1;
 
-    return (
-      <App>
-        <Layout {...this.props} edges={allMdx.edges}>
-          <Helmet>
-            {metaTitle ? <title>{metaTitle}</title> : null}
-            {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-            {metaDescription ? <meta name="description" content={metaDescription} /> : null}
-            {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-            {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
-            {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
-            {metaDescription ? (
-              <meta property="twitter:description" content={metaDescription} />
-            ) : null}
-            <link rel="canonical" href={canonicalUrl} />
-          </Helmet>
-          <div>
-            <Edit>
-              {docsLocation && (
-                <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                  <Github icon="github" width="16px" /> Edit on GitHub
-                </Link>
-              )}
-            </Edit>
-          </div>
-          <StyledMainWrapper>
-            <MDXRenderer>{mdx.body}</MDXRenderer>
-          </StyledMainWrapper>
-          <div>
-            <NextPrevious mdx={mdx} nav={nav} />
-          </div>
-        </Layout>
-      </App>
-    );
+      const existingItem = prevItems.find(({ label }) => label === parts[slicedLength]);
+
+      if (existingItem) {
+        existingItem.url = slug;
+        existingItem.title = title;
+        existingItem.icon = icon;
+      } else {
+        prevItems.push({
+          label: parts[slicedLength],
+          url: slug,
+          items: [],
+          title,
+          icon,
+        });
+      }
+      return accu;
+    },
+    { items: [] }
+  );
+
+  return tree;
+};
+
+const ContentWrap = styled.div`
+  display: flex;
+`;
+
+const RightSidebar = styled.div`
+  margin-left: 20px;
+`
+
+const StickyWrap = styled.div`
+  position: sticky;
+  top: 100px;
+  width: 150px;
+`
+
+export default function MDXLayout({ data = {} }) {
+  const {
+    allMdx,
+    mdx,
+    site: {
+      siteMetadata: { docsLocation },
+    },
+  } = data;
+
+  const menu = useMemo(() => {
+    return calculateTreeData(allMdx.edges, config);
+  }, [allMdx.edges]);
+
+  const activeMenu = useMemo(() => {
+    const mainUrl = window.location.pathname.split('/')[1];
+    const nav = menu.items.find(item => item.label === mainUrl);
+    if (!nav) {
+      return [];
+    }
+
+    return [nav, ...nav.items];
+  });
+
+  if (!mdx) {
+    return <Layout>{null}</Layout>;
   }
+
+  // meta tags
+  const metaTitle = mdx.frontmatter?.metaTitle;
+
+  const metaDescription = mdx.frontmatter?.metaDescription;
+
+  let canonicalUrl = config.gatsby.siteUrl;
+
+  canonicalUrl =
+    config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
+  canonicalUrl = canonicalUrl + mdx.fields.slug;
+
+  console.log(mdx.frontmatter)
+
+  return (
+    <App>
+      <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+        <Helmet>
+          {metaTitle ? <title>{metaTitle}</title> : null}
+          {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+          {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+          {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
+          {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+          {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+          {metaDescription ? (
+            <meta property="twitter:description" content={metaDescription} />
+          ) : null}
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+
+        <ContentWrap>
+          <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth}>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+            <div>
+              <NextPrevious mdx={mdx} nav={activeMenu} />
+            </div>
+          </StyledMainWrapper>
+          {!mdx.frontmatter?.hideToC && (
+            <RightSidebar>
+              <StickyWrap>
+                <Edit>
+                  {docsLocation && (
+                    <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                      <Github icon="github" width="16px" /> Edit on GitHub
+                    </Link>
+                  )}
+                </Edit>
+              <TableOfContents location={window.location} />
+              </StickyWrap>
+            </RightSidebar>
+          )}
+        </ContentWrap>
+      </Layout>
+    </App>
+  );
 }
 
 export const pageQuery = graphql`
@@ -141,6 +194,8 @@ export const pageQuery = graphql`
       frontmatter {
         metaTitle
         metaDescription
+        fullWidth
+        hideToC
       }
     }
     allMdx {
@@ -150,6 +205,8 @@ export const pageQuery = graphql`
             slug
             title
             icon
+            index
+            hiddenFromNav
           }
         }
       }
