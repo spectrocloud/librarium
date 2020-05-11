@@ -125,8 +125,6 @@ export default function MDXLayout({ data = {} }) {
     config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
   canonicalUrl = canonicalUrl + mdx.fields.slug;
 
-  console.log(mdx.frontmatter)
-
   return (
     <App>
       <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
