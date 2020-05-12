@@ -10,4 +10,4 @@ Spectro Cloud provides flexibility for organizations to roll and maintain their 
 
 The diagram below shows several examples of cluster profiles, each defining an infrastructure stack for a specific use case:
 
-![Image](https://www.spectrocloud.com/static/spectrocloud.com_1-447ecbf5b54c6029bcb8e2e70185cc0d.png)
+![Image](create_profile.png)
