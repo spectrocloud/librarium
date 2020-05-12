@@ -1,11 +1,12 @@
 import * as React from 'react';
+import Link from "../../components/Link"
 
 const AnchorTag = ({ children: link, ...props }) => {
   if (link) {
     return (
-      <a href={props.href} target="_blank" rel="noopener noreferrer">
+      <Link to={props.href} target="_blank" rel="noopener noreferrer">
         {link}
-      </a>
+      </Link>
     );
   } else {
     return null;
