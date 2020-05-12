@@ -1,50 +1,35 @@
----
-title: "What is spectrocloud"
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
----
+# What is Spectro Cloud? (and concepts)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview and Architecture
 
-## Available Scripts
+Spectro Cloud's SaaS based product brings the managed Kubernetes experience to users' own unique enterprise. Kubernetes stacks running in any publi clod, private cloud, or bare-metal environments, allowing users to not have to trade-off between ease of use and control. Spectro Cloud provides an as-a-service experience to users by automating the deployment, management and maintenance of multiple Kubernetes clusters based on user-defined Kubernetes stacks.
 
-In the project directory, you can run:
+Spectro Cloud consists of three main pieces:
+    - the SaaS management component,
+    - a Registry and Repository, and
+    - the managed clusters themselves.
+    
+Registries and repositories can be Spectro Cloud managed or hosted by users themselves. Repositories host Kubernetes infrastructure stack components and versions.
 
-### npm start
+The Spectro Cloud SaaS component is the "multi tenant nerve centre" of Spectro Cloud deployments. This component is a cloud based offer that provides central visibility and management of Spectro Cloud Kubernetes deployments. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.<br><br>
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A Spectro Cloud managed Kubernetes cluster contains two main pieces - the Kubernetes tenant cluster, as well as a Spectro Cloud Management Agent. The Spectro Cloud Management Agent is responsible for:
+    - Communicating with the SaaS platform for heartbeat, cluster status and system metrics
+    - Taking commands from the SaaS platform for checking cluster desired state changes and updating cluster to conform with the desired state, and
+    - Establishing an optional on-demand secured tunnel to allow the SaaS platform access to the Kubernetes API server via a cloud shell.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+<br>
 
-### npm test
+<br>
 
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Organization
 
-### npm run build
+Spectro Cloud is a multi-tenant SaaS platform. Each customer is a *tenant* on the platform. Tenants are isolated from one another.
 
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Each tenant has some number of *users* and *projects.* Users are members of the tenant organization, each with their own login accounts. Users can be members of one or more *teams*, a convenient structure for consistent management of users as a group.
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+A project is a grouping of resoures that are a part of a logical application. A project may be shared amongst multiple users or teams.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### npm run i18n:scan
-
-This will scan the `src` code and generate files based on the namespace for each page,
-an `all.json` file and a `common.json` for components.
-The `all.json` file is required for the `i18n:prepare` step
-
-### npm run i18n:prepare
-
-This will create a `missing.json` file for each language that will be sent to the translation team.
-Once translated this file will be used in the next step
-
-### npm run i18n:consume
-
-This will take the translated `missing.json` files and populate the rest of the files with the translations provided.
-Next we need to force add the updated json files.
+<br>
