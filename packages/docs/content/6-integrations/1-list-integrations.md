@@ -8,7 +8,7 @@ The following sections describe various aspects pertaining to support for privat
 
 vSphere versions XX+
 
-<br>
+<br />
 
 #### Spectro Cloud Gateway
 
