@@ -28,3 +28,7 @@ h2 {
 button {
   font-family: Poppins;
 }
+
+.paragraph img {
+  max-width: 100%;
+}

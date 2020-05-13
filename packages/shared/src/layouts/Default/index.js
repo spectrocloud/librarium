@@ -26,7 +26,8 @@ const Content = styled.main`
 `;
 
 const LeftSideBarWidth = styled.div`
-  width: 323px;
+  max-width: 323px;
+  width: 100%;
 `;
 
 const MainWrap = styled.div`
