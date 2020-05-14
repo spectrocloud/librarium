@@ -1,3 +1,10 @@
+---
+title: "ABCCD"
+metaTitle: "Spectrocloud Concepts"
+metaDescription: "Most important concepts of Spectro Cloud"
+icon: ""
+---
+
 # What is Spectro Cloud? (and concepts)
 
 ## Overview and Architecture
