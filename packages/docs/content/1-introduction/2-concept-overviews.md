@@ -2,9 +2,9 @@
 
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Please ensure that your cloud acount meets the [minimum set of permissions.](https://spectrocloud.atlassian.net/wiki/spaces/BETA/pages/115048450/Cloud+Account+Permissions)
 
-<br>
+<br />
 
-<br>
+<br />
 
 ### Projects
 
