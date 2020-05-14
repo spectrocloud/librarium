@@ -18,16 +18,16 @@ Spectro Cloud consists of three main pieces:
     
 Registries and repositories can be Spectro Cloud managed or hosted by users themselves. Repositories host Kubernetes infrastructure stack components and versions.
 
-The Spectro Cloud SaaS component is the "multi tenant nerve centre" of Spectro Cloud deployments. This component is a cloud based offer that provides central visibility and management of Spectro Cloud Kubernetes deployments. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.<br><br>
+The Spectro Cloud SaaS component is the "multi tenant nerve centre" of Spectro Cloud deployments. This component is a cloud based offer that provides central visibility and management of Spectro Cloud Kubernetes deployments. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.<br /><br />
 
 A Spectro Cloud managed Kubernetes cluster contains two main pieces - the Kubernetes tenant cluster, as well as a Spectro Cloud Management Agent. The Spectro Cloud Management Agent is responsible for:
     - Communicating with the SaaS platform for heartbeat, cluster status and system metrics
     - Taking commands from the SaaS platform for checking cluster desired state changes and updating cluster to conform with the desired state, and
     - Establishing an optional on-demand secured tunnel to allow the SaaS platform access to the Kubernetes API server via a cloud shell.
 
-<br>
+<br />
 
-<br>
+<br />
 
 ## Organization
 
@@ -37,6 +37,6 @@ Each tenant has some number of *users* and *projects.* Users are members of the 
 
 A project is a grouping of resoures that are a part of a logical application. A project may be shared amongst multiple users or teams.
 
-<br>
+<br />
 
-<br>
+<br />
