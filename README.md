@@ -127,4 +127,3 @@ The same rules apply though. You can reference it from a different section using
 ```md
 ![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
-
