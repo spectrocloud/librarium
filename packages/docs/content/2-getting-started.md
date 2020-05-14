@@ -1,8 +1,10 @@
 ---
-title: "3rd item"
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
-icon: "folder"
+title: "Getting Started"
+metaTitle: "Spectrocloud Concepts"
+metaDescription: "Most important concepts of Spectro Cloud"
+icon: ""
+hideToC: true
+fullWidth: true
 ---
 
-Spectrocloud lorem
+# Spectrocloud lorem
