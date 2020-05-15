@@ -11,6 +11,9 @@ import TableOfContents from '../components/TableOfContents';
 import { Github } from 'styled-icons/fa-brands';
 import App from '../App';
 
+// TODO: This is the same on docs
+// There should be an easy way to send this
+
 const calculateTreeData = (edges, config) => {
   const originalData = edges
     .filter(edge => !edge.node.fields.hiddenFromNav)
