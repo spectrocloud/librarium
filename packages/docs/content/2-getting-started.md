@@ -7,4 +7,6 @@ hideToC: true
 fullWidth: true
 ---
 
-# Spectrocloud lorem
+# Hello World!
+
+This section will help you get your first cluster deployed through Spectro Cloud, providing you with an example of the concepts mentioned in the previous section.

@@ -1,13 +1,24 @@
-### Clusters
+---
+title: "Creating Cluster Profiles"
+metaTitle: "Cluster Profile"
+metaDescription: "The method for creating a Cluster Profile"
+icon: ""
+hideToC: true
+fullWidth: true
+---
 
-Kubernetes clusters are collections of master and worker nodes that cooperate to execute workloads.
+# Creating your first Cluster Profile
 
-Within a project, *Clusters* are where you provision and manage Kubernetes clusters. The clusters are provisioned and managed in your own cloud account environment. Each cluster is provisioned from a template called a 'cluster profile.'
+After logging in, select the `Cluster Profiles` option from the left pane. This is the place where the user accesses the cluster profiles available.
 
-#### Cluster Profiles
+P.S.: There __can__ be profiles that you see even though you have logged in for the first time. This is a part of the [User Management](link) and is explained in detail in that section.
 
-Spectro Cloud provides flexibility for organizations to roll and maintain their own Kubernetes infrastructure stacks, whether for distinct organizations or for distinct use cases. A Kubernetes infrastructure stack is composed of layers that are combined into cluster construction templates called 'cluster profiles'. The layers in a Cluster Profile include base operating system, Kubernetes, network, storage, security and other infrastruture components such as logging, monitoring, load balancing, and others. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions - but users can bring their own implementations and content.
+Click on the `Add Cluster Profile` button. This opens up the profile creation page where the name of the profile and an (optional) short description can be added. The profiles created can be assigned with tags, if needed, to help in faster identification.
 
-The diagram below shows several examples of cluster profiles, each defining an infrastructure stack for a specific use case:
+Choose your cloud service provider and proceed with the configuration. Note that the configuration options change depending on the choice of the service provider. Check the [Examples (AWS, VMWare, Azure)](link)" for detailed configuration steps for various cloud service providers.
 
-![Image](https://www.spectrocloud.com/static/spectrocloud.com_1-447ecbf5b54c6029bcb8e2e70185cc0d.png)
+Once the configuration is done, you can review the configuration before saving it. If some changes are in order, clicking the texts (`Basic Information`, `Cloud Type` or `Profile Layers`) will open the corresponding screens.
+
+You can click the `API` button to get the POST API URL for creating clusters as per the cluster profile that you created.
+
+When everything is set, the `Finish` button on the top right corner will confirm the creation of the new cluster profile.
