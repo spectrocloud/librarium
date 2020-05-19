@@ -9,6 +9,6 @@ fullWidth: true
 
 # Hello World!
 
-This is a blank page which will eventually have some content. After reading that content, use one of the links to proceed further.
+Welcome to Spectro Cloud. This is the documentation section where you should be able to find answers to most queries. And to learn about the product as well.
 
 First stop - [What is Spectro Cloud?](/1-introduction/1-what-is)
