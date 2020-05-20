@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: true
 ---
 
+## Updating Cluster Profiles
+
 Cluster profiles are typically updated to change the configuration of various layers in a Kubernetes stack. Basic information like name, description and tags can also be updated. However the environment associated with the profile cannot be updated.
 
 Following are the steps to update a cluster profile:-

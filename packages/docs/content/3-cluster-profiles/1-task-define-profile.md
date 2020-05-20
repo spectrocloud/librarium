@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: true
 ---
 
+## Creating Cluster Profiles
+
 Cluster profiles are created by configuring various layers of the Kubernetes Infrastructure stack. The following steps need to be performed to create a new cluster profile:
 
 * Provide basic profile information such as Name, Description and Tags. Tags on a cluster profile are propagated to the VMs deployed on the cloud / data center environments when clusters are created from the cluster profile.
