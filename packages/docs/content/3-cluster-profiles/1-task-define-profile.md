@@ -7,18 +7,21 @@ hideToC: true
 fullWidth: true
 ---
 
-# Creating your first Cluster Profile
+Cluster profiles are created by configuring various layers of the Kubernetes Infrastructure stack. The following steps need to be performed to create a new cluster profile:
 
-After logging in, select the `Cluster Profiles` option from the left pane. This is the place where the user accesses the cluster profiles available.
+* Provide basic profile information such as Name, Description and Tags. Tags on a cluster profile are propagated to the VMs deployed on the cloud / data center environments when clusters are created from the cluster profile.
+* Select a cloud / data center environment. Cluster profiles are environment specific.
+* Configure the layers of the infrastructure stack. The following layers are considered “core” layers. Configuring these layers is mandatory for every cluster profile:
+  * OS
+  * Kubernetes
+  * Network
+  * Storage.
+  * Additional layers such as Monitoring, Security, Load
+Balancers, etc. may be added and configured as desired.
 
-P.S.: There __can__ be profiles that you see even though you have logged in for the first time. This is a part of the [User Management](link) and is explained in detail in that section.
+* Configure each layer as follows:
+    * Select from one of the configuration options (packs) provided for the layer. Spectro Cloud provides several packs out of the box. These are synchronized from Spectro Cloud's **Public Repo**. The platform allows extending or customizing the choice of packs. Users may *define their own Pack Repository and link it to Spectro Cloud*. When configuring layers in the cluster profile, users can select packs from Spectro Cloud's Public Repo or from their own private pack repository.
+    * Choose the desired version for the selected pack. Choices include pinning to specific version of the pack (e.g. 1.1.1), or picking a major or minor train such as 1.x or 1.1.x. Picking a major/minor train results in a dynamic version association. The latest release from that train is linked to the pack at any given point. Future release updates in the train result in the pack being relinked to the newest version. This allows clusters to always be at the latest released version, without having to make subsequent updates to the profile.
+    * The configuration option and version selected might provide configuration parameters to provide granular control or fine tune certain aspects of the functionality. For the packs provided out of the box, the configuration parameters are set to values based on common best practices. Users may override these parameters as desired.
 
-Click on the `Add Cluster Profile` button. This opens up the profile creation page where the name of the profile and an (optional) short description can be added. The profiles created can be assigned with tags, if needed, to help in faster identification.
-
-Choose your cloud service provider and proceed with the configuration. Note that the configuration options change depending on the choice of the service provider. Check the [Examples (AWS, VMWare, Azure)](link)" for detailed configuration steps for various cloud service providers.
-
-Once the configuration is done, you can review the configuration before saving it. If some changes are in order, clicking the texts (`Basic Information`, `Cloud Type` or `Profile Layers`) will open the corresponding screens.
-
-You can click the `API` button to get the POST API URL for creating clusters as per the cluster profile that you created.
-
-When everything is set, the `Finish` button on the top right corner will confirm the creation of the new cluster profile.
+* Review your changes and save the cluster profile.
