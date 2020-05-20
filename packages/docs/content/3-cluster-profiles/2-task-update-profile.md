@@ -1,5 +1,5 @@
 ---
-title: "Creating Cluster Profiles"
+title: "Updating Cluster Profiles"
 metaTitle: "Cluster Profile"
 metaDescription: "The method for creating a Cluster Profile"
 icon: ""
@@ -7,12 +7,18 @@ hideToC: true
 fullWidth: true
 ---
 
-# Updating a Cluster Profile
+Cluster profiles are typically updated to change the configuration of various layers in a Kubernetes stack. Basic information like name, description and tags can also be updated. However the environment associated with the profile cannot be updated.
 
-Follow the steps in the [Create Profile](link) section to create a cluster profile. Once created, a cluster profile can be accessed from the `Cluster Profiles` section on the left pane. Click on an existing cluster profile to view further information about it. This opens a page containing the following tabs: `Basic Information` and `Layers & Parameters`.
+Following are the steps to update a cluster profile:-
 
-The `Basic Information` tab shows the name, description (if any) and tags (if any) as well as the profile creation's timestamp. The basic information of the profile can be edited using the `Edit Info` button or deleted using the `Delete` button.
+* Navigate  to the desired cluster profile’s details page.
 
-Note: Deleting the profile is *_not_* possible until there are active clusters deployed using these cluster profiles.
+* To update the basic information, invoke the edit dialog and make changes to name, description and tags as required. Updates to the tags are not propagated to the cloud environment for previously created clusters. However, any new clusters created from the profile will have their virtual machines tags in the cloud environment.
 
-Clicking the `Layers & Parameters` button opens up the configuration tab. Additional layers can be added using the `New Layer` tab on the top right corner. Existing layers can be changed by clicking on either the layer icons on the stack or by clicking on the corresponding buttons on the right.
+* To make updates to the profile configuration, navigate to the ‘Layers and Parameter’ section. Make or or more of the following changes as relevant.
+    * Add and configure a new layer
+    * Remove an existing layer. Please note that OS, Kubernetes, Networking and Storage are considered as core layers and these cannot be removed.
+    * Reconfigure an existing layer to change to a different pack version or  pick a different pack or update pack parameters.
+* Save your changes. Optionally provide a comment to describe the reason for the change. This is useful for audit purposes.
+
+All clusters previously created from this profile will be notified of the changes made to the profile. The clusters can be updated to the latest definition of the profile whenever deemed appropriate.
