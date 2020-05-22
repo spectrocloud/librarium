@@ -8,9 +8,21 @@ import { Layout, Link } from '@librarium/shared';
 import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledMainWrapper } from '../components/styles/Docs';
+import ApiSidebar from "../components/ApiSidebar";
 import TableOfContents from '../components/TableOfContents';
+import Swagger from '../components/Swagger';
 import { Github } from 'styled-icons/fa-brands';
 import App from '../App';
+
+// TODO use graphql to get api.jsons
+import v1 from "../../content/v1/api.json";
+import v2 from "../../content/v2/api.json";
+
+const APIS = {
+  v1,
+  v2
+}
+
 
 const calculateTreeData = (edges, config) => {
   const originalData = edges
@@ -20,16 +32,16 @@ const calculateTreeData = (edges, config) => {
     });
   const tree = originalData.reduce(
     (
-      accu,
+      accumulator,
       {
         node: {
-          fields: { slug, title, icon },
+          fields: { slug, title, icon, version, api },
         },
       }
     ) => {
       const parts = slug.split('/');
 
-      let { items: prevItems } = accu;
+      let { items: prevItems } = accumulator;
 
       const slicedParts =
         config.gatsby && config.gatsby.trailingSlash ? parts.slice(1, -2) : parts.slice(1, -1);
@@ -57,6 +69,9 @@ const calculateTreeData = (edges, config) => {
         existingItem.title = title;
         existingItem.icon = icon;
       } else {
+        if (api) {
+          return accumulator;
+        }
         prevItems.push({
           label: parts[slicedLength],
           url: slug,
@@ -65,7 +80,8 @@ const calculateTreeData = (edges, config) => {
           icon,
         });
       }
-      return accu;
+
+      return accumulator;
     },
     { items: [] }
   );
@@ -125,6 +141,30 @@ export default function MDXLayout({ data = {} }) {
     config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
   canonicalUrl = canonicalUrl + mdx.fields.slug;
 
+  function renderAPIDoc() {
+    const paths = mdx.frontmatter?.paths;
+    if (!paths || !mdx?.fields?.version) {
+      return null;
+    }
+
+    const api = APIS[mdx?.fields?.version];
+    console.log(Object.keys(api.paths), paths)
+    const endpoints = Object.keys(api.paths).filter(path => paths.some(entry => path.startsWith(entry))).map(path => {
+      return {
+        path,
+        operations: Object.keys(api.paths[path]).map(method => ({
+          method,
+          ...api.paths[path][method],
+          parameters: api.paths[path][method].parameters || [],
+          responseMessages: Object.keys(api.paths[path][method].responses || {}).map(response => ({
+            ...api.paths[path][method].responses[response]
+          }))
+        }))
+      }
+    })
+    return <Swagger documentation={{apis: endpoints}} prefix="https://api.spectrocloud.com" />
+  }
+
   return (
     <App>
       <Layout
@@ -136,6 +176,7 @@ export default function MDXLayout({ data = {} }) {
             fill="url(#paint1_linear)"
           />
         }
+        extraMenu={<ApiSidebar allMdx={allMdx}/>}
       >
         <Helmet>
           {metaTitle ? <title>{metaTitle}</title> : null}
@@ -153,6 +194,7 @@ export default function MDXLayout({ data = {} }) {
         <ContentWrap>
           <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
+            {renderAPIDoc()}
             <div>
               <NextPrevious mdx={mdx} nav={activeMenu} />
             </div>
@@ -190,6 +232,7 @@ export const pageQuery = graphql`
         id
         title
         slug
+        version
       }
       body
       tableOfContents
@@ -203,6 +246,7 @@ export const pageQuery = graphql`
         metaDescription
         fullWidth
         hideToC
+        paths
       }
     }
     allMdx {
@@ -214,6 +258,8 @@ export const pageQuery = graphql`
             icon
             index
             hiddenFromNav
+            api
+            version
           }
         }
       }
