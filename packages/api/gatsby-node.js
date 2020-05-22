@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    resolve(() => {
+    resolve(
       graphql(
         `
           {
@@ -46,38 +46,7 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
       })
-
-      graphql(
-        `
-          {
-            allFile(filter: {name: {eq: "api"}}) {
-              edges {
-                node {
-                  id
-                  absolutePath
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors); // eslint-disable-line no-console
-          reject(result.errors);
-        }
-
-        // Create blog posts pages.
-        result.data.allFile.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve('./src/templates/docs.js'),
-            context: {
-              id: node.fields.id,
-            },
-          });
-        });
-      })
-    });
+    );
   });
 };
 
@@ -177,5 +146,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.fullWidth,
     });
+
+    createNodeField({
+      name: 'api',
+      node,
+      value: node.frontmatter.api,
+    });
+
+
+
+    if (node.frontmatter.api) {
+      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/')
+      const versionDirectory = fileAbsolutePaths[1].split('/').shift();
+      const endpointsPath = [fileAbsolutePaths[0], 'api', 'content', versionDirectory, "api.json"].join('/');
+      createNodeField({
+        name: 'version',
+        node,
+        value: versionDirectory,
+      });
+    }
   }
 };

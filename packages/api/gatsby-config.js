@@ -4,6 +4,7 @@ const queries = require('./src/utils/algolia');
 const config = require('./config');
 
 const plugins = [
+  'gatsby-plugin-antd',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
   {
@@ -19,13 +20,6 @@ const plugins = [
     options: {
       name: 'docs',
       path: `${__dirname}/content/`,
-    },
-  },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'apis',
-      path: `${__dirname}/apis/`,
     },
   },
   {
