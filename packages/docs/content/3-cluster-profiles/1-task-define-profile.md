@@ -4,7 +4,7 @@ metaTitle: "Cluster Profile"
 metaDescription: "The method for creating a Cluster Profile"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 ## Creating Cluster Profiles
