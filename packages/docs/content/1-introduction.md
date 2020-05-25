@@ -4,7 +4,7 @@ metaTitle: "What is Spectro Cloud?"
 metaDescription: "A brief introduction to Spectro Cloud"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 # Hello World!
