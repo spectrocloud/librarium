@@ -4,7 +4,7 @@ metaTitle: "Spectrocloud Concepts"
 metaDescription: "Most important concepts of Spectro Cloud"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 # Cluster Profiles
