@@ -4,11 +4,12 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import styled from "styled-components";
 
 import { Link, NextPrevious } from "../../components";
-import { Edit, StyledMainWrapper } from "../components/styles/Docs";
-import TableOfContents from "../components/TableOfContents";
+import { Edit, StyledMainWrapper } from "../../components/styles/Docs";
+import TableOfContents from "../../components/TableOfContents";
+import {useConfig} from "../../config"
 import { Github } from "styled-icons/fa-brands";
 
-const calculateTreeData = (edges, config) => {
+export const calculateMenuTree = (edges, config) => {
   const originalData = edges
     .filter((edge) => !edge.node.fields.hiddenFromNav)
     .sort((edge1, edge2) => {
@@ -93,20 +94,8 @@ const StickyWrap = styled.div`
   width: 150px;
 `;
 
-export default function MDXLayout({ data = {}, extraContent }) {
-  const {
-    allMdx,
-    mdx,
-    site: {
-      siteMetadata: { docsLocation },
-    },
-  } = data;
-
-  const config = useConfig()
-
-  const menu = useMemo(() => {
-    return calculateTreeData(allMdx.edges, config);
-  }, [allMdx.edges]);
+export default function MDXLayout({ mdx, edges, menu, docsLocation, extraContent }) {
+  const config = useConfig();
 
   const activeMenu = useMemo(() => {
     const mainUrl = window.location.pathname.split("/")[1];
@@ -116,18 +105,18 @@ export default function MDXLayout({ data = {}, extraContent }) {
     }
 
     return [nav, ...nav.items];
-  });
+  }, [menu]);
 
   // meta tags
   const metaTitle = mdx.frontmatter?.metaTitle;
 
   const metaDescription = mdx.frontmatter?.metaDescription;
 
-  let canonicalUrl = config.gatsby.siteUrl;
+  let canonicalUrl = config?.gatsby?.siteUrl;
 
   canonicalUrl =
-    config.gatsby.pathPrefix !== "/"
-      ? canonicalUrl + config.gatsby.pathPrefix
+    config?.gatsby?.pathPrefix !== "/"
+      ? canonicalUrl + config?.gatsby?.pathPrefix
       : canonicalUrl;
   canonicalUrl = canonicalUrl + mdx.fields.slug;
 
@@ -170,7 +159,7 @@ export default function MDXLayout({ data = {}, extraContent }) {
                   </Link>
                 )}
               </Edit>
-              <TableOfContents location={window.location} />
+              <TableOfContents location={window.location} edges={edges} />
             </StickyWrap>
           </RightSidebar>
         )}
@@ -178,3 +167,5 @@ export default function MDXLayout({ data = {}, extraContent }) {
     </>
   );
 }
+
+MDXLayout.calculateMenuTree = calculateMenuTree;

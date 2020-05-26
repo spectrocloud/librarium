@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Link} from '@librarium/shared';
+import Link from './Link';
 
 import { StyledNextPrevious } from './styles/PageNavigationButtons';
 

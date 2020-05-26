@@ -4,6 +4,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 import DefaultThemeProvider from "./theme";
 import DefaultMdxProvider from "./mdx";
+import ConfigProvider from "./config";
 
 library.add(fas);
 // TODO add a config provider
