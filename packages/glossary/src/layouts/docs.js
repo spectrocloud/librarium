@@ -4,11 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from 'styled-components';
 
-import { Layout, Link } from '@librarium/shared';
+import { Layout } from '@librarium/shared';
 import config from '../../config';
-import { Edit, StyledMainWrapper } from '../components/styles/Docs';
-import TableOfContents from '../components/TableOfContents';
-import { Github } from 'styled-icons/fa-brands';
 import App from '../App';
 
 // TODO: This is the same on docs
@@ -96,8 +93,6 @@ const menuQuery = graphql`
 export default function DocsLayout({children}) {
   const data = useStaticQuery(menuQuery)
   const { allMdx } = data
-
-  console.log(data);
 
   const menu = useMemo(() => {
     return calculateTreeData(allMdx.edges, config);
