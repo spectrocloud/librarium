@@ -2,10 +2,20 @@ import React, { useMemo, useState } from "react";
 import { graphql, useStaticQuery } from 'gatsby';
 import { Pagination } from 'antd';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import styled from "styled-components";
 
 import DocsLayout from "../layouts/docs";
 
 //
+
+const LetterWrap = styled.span`
+  display: inline-block;
+  width: 20px;
+  line-height: 21px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 0 4px;
+`;
 
 const menuQuery = graphql`
 {
@@ -23,7 +33,7 @@ const menuQuery = graphql`
 }
 `;
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 20;
 
 export default function GlossaryList() {
   const {allMdx} = useStaticQuery(menuQuery);
@@ -41,7 +51,7 @@ export default function GlossaryList() {
   }, [allMdx.edges])
 
   function renderLetter(letter) {
-    return letter;
+  return <LetterWrap>{letter}</LetterWrap>;
   }
 
   function renderItem({node}) {
@@ -54,11 +64,13 @@ export default function GlossaryList() {
     return allMdx.edges.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE )
   }, [allMdx.edges, page])
 
+  const pageCount = allMdx.edges.length / ITEMS_PER_PAGE;
+
   return (
     <DocsLayout>
       {letters.map(renderLetter)}
       {items.map(renderItem)}
-      <Pagination current={page} total={allMdx.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />
+      {pageCount > 1 && <Pagination current={page} total={allMdx.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}
     </DocsLayout>
   )
 }
