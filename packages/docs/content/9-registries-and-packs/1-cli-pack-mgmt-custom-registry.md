@@ -15,3 +15,5 @@ Spectro Cloud provides the ability to extend the capabilities of the platform. A
 #### Spectro CLI
 
 Spectro Cloud provides a simple Command Line Utility to manage pack content in the registry. The CLI utility can be run on any Linux or MacOS based system that has connectivity to the registry server.
+
+[Text](/introduction/what-is#organization)
