@@ -6,7 +6,7 @@ initialize:
 	npx lerna bootstrap --hoist
 
 start:
-	(cd packages/docs && npm run start -- --open)
+	npm run start
 
 commit:
 	git add .

@@ -26,7 +26,7 @@ const ChildrenItems = styled.div`
   }
 `;
 
-const TreeNode = ({ url, title, items, icon, hiddenFromNav, config = {gatsby: {}} }) => {
+const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsby: {}} }) => {
   if (hiddenFromNav) {
     return null;
   }

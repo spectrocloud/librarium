@@ -1,6 +1,6 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
+    pathPrefix: '/glossary',
     siteUrl: 'https://docs.spectrocloud.com',
     gaTrackingId: null,
     trailingSlash: false,
@@ -20,25 +20,6 @@ const config = {
     ogImage: null,
     docsLocation: 'https://github.com/spectrocloud/librarium/tree/master/content',
     favicon: '',
-  },
-  pwa: {
-    enabled: false, // disabling this will also remove the existing service worker.
-    manifest: {
-      name: 'Spectro cloud documentation',
-      short_name: 'Spectro cloud docs',
-      start_url: '/',
-      background_color: '#4432F5',
-      theme_color: '#4432F5',
-      display: 'standalone',
-      crossOrigin: 'use-credentials',
-      icons: [
-        {
-          src: 'src/pwa-512.png',
-          sizes: `512x512`,
-          type: `image/png`,
-        },
-      ],
-    },
   },
 };
 
