@@ -30,7 +30,7 @@ const darkTheme = {
 };
 
 export function useThemeManager() {
-  const [theme, updateTheme] = useState(window.localStorage.getItem('theme') || "light");
+  const [theme, updateTheme] = useState((typeof window !== 'undefined' && window.localStorage.getItem('theme')) || "light");
   useEffect(() => {
     window.localStorage.setItem('theme', theme);
   }, [theme])

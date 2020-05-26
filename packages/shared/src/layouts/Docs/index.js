@@ -94,11 +94,14 @@ const StickyWrap = styled.div`
   width: 150px;
 `;
 
-export default function MDXLayout({ mdx, edges, menu, docsLocation, extraContent }) {
+export default function MDXLayout({ location, mdx, edges, menu, docsLocation, extraContent }) {
   const config = useConfig();
 
   const activeMenu = useMemo(() => {
-    const mainUrl = window.location.pathname.split("/")[1];
+    if (!location) {
+      return [];
+    }
+    const mainUrl = location.pathname.split("/")[1];
     const nav = menu.items.find((item) => item.label === mainUrl);
     if (!nav) {
       return [];
@@ -159,7 +162,7 @@ export default function MDXLayout({ mdx, edges, menu, docsLocation, extraContent
                   </Link>
                 )}
               </Edit>
-              <TableOfContents location={window.location} edges={edges} />
+              <TableOfContents location={location} edges={edges} />
             </StickyWrap>
           </RightSidebar>
         )}
