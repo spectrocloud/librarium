@@ -54,8 +54,6 @@ export default function GlossaryList() {
     return allMdx.edges.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE )
   }, [allMdx.edges, page])
 
-  console.log(allMdx.edges.length / ITEMS_PER_PAGE)
-
   return (
     <DocsLayout>
       {letters.map(renderLetter)}

@@ -35,11 +35,11 @@ const MainWrap = styled.div`
   overflow-y: auto;
 `;
 
-export default function Layout({ children, location, menu, fullWidth }) {
+export default function Layout({ children, location, menu, fullWidth, subLogo, extraMenu }) {
   return (
     <Wrapper>
       <LeftSideBarWidth className={"hiddenMobile"}>
-        <Sidebar location={location} menu={menu} />
+        <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu}/>
       </LeftSideBarWidth>
       <MainWrap>
         <Header location={location} />
