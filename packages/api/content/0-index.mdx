@@ -7,9 +7,8 @@ hideToC: true
 fullWidth: true
 hiddenFromNav: true
 ---
-import Intro from "components/Intro"
-import IntroButtons from "components/IntroButtons"
-import {ContentWrap} from "components/Layout"
+import {Intro, IntroButtons} from "@librarium/shared/src/components"
+import {Layout} from "@librarium/shared"
 
 
 <Intro>
@@ -24,11 +23,11 @@ Have different groups with different needs? Give everyone the infrastructure sta
 
 <IntroButtons />
 </Intro>
-<ContentWrap>
+<Layout.ContentWrap>
 
 ## Other content
 
 Have different groups with different needs? Give everyone the infrastructure stack that suits them without giving up the tools you need to operate at scale.
 Your enterprise is unique, so use exactly the components you need, not what a vendor forces on you.
 
-</ContentWrap>
+</Layout.ContentWrap>

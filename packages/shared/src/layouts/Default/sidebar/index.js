@@ -1,7 +1,7 @@
 import React from "react";
 import Tree from "./tree";
 import styled from "styled-components";
-import menuBackground from "assets/menu-background.png";
+import menuBackground from "../../../assets/menu-background.png";
 import Logo from "../../../components/Logo";
 
 const Sidebar = styled.aside`

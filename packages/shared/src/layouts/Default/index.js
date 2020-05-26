@@ -48,3 +48,9 @@ export default function Layout({ children, location, menu, fullWidth, subLogo, e
     </Wrapper>
   );
 }
+
+export const ContentWrap = styled.div`
+  margin: 0 46px;
+`
+
+Layout.ContentWrap = ContentWrap;
