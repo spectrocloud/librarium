@@ -2,7 +2,7 @@
 title: "Cluster Profiles"
 metaTitle: "Spectrocloud Concepts"
 metaDescription: "Most important concepts of Spectro Cloud"
-icon: ""
+icon: "users"
 hideToC: true
 fullWidth: false
 ---
