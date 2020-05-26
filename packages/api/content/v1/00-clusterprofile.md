@@ -7,4 +7,7 @@ api: true
 paths: ["/v1alpha1/clusterprofiles"]
 ---
 
-profiles
+# Content
+
+
+This api
