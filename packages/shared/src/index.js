@@ -3,3 +3,4 @@ export {default as DocsLayout} from "./layouts/Docs";
 export {default as SidebarTree} from "./layouts/Default/sidebar/tree";
 export {default as Link} from "./components/Link";
 export {default as createApplication} from "./createApp";
+export {useConfig} from "./config";
