@@ -1,0 +1,26 @@
+{
+  "os": [
+    {
+      "packName" :"ubuntu",
+      "logo": ""
+    },
+    {
+      "packName" :"cent-os",
+      "logo": ""
+    },
+     {
+      "packName" :"rhel",
+      "logo": ""
+    }
+  ],
+  "networking": [
+    {
+      "packName" :"calico",
+      "logo": ""
+    },
+    {
+      "packName" :"flannel",
+      "logo": ""
+    }
+  ]
+}
