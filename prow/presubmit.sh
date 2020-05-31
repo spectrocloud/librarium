@@ -5,4 +5,6 @@
 
 set -x
 source prow/functions.sh
+
+commenter
 build_docs
