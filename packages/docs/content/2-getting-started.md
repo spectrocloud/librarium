@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
-metaTitle: "Spectrocloud Concepts"
-metaDescription: "Most important concepts of Spectro Cloud"
+metaTitle: "Spectrocloud 101"
+metaDescription: "How to use Spectro Cloud"
 icon: ""
 hideToC: true
 fullWidth: false

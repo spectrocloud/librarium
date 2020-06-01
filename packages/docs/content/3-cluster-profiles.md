@@ -1,7 +1,7 @@
 ---
 title: "Cluster Profiles"
-metaTitle: "Spectrocloud Concepts"
-metaDescription: "Most important concepts of Spectro Cloud"
+metaTitle: "Understanding Spectrocloud's Cluster Profiles Concept"
+metaDescription: "How Cluster Profiles make Spectro Cloud poweful"
 icon: "users"
 hideToC: true
 fullWidth: false
