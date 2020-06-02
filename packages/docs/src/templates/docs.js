@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Layout, DocsLayout, useConfig } from '@librarium/shared';
 import App from '../App';
 
-function MDXLayout({ data = {} }) {
+function MDXLayout({ data = {}, location }) {
   const {
     allMdx,
     mdx,
@@ -19,18 +19,27 @@ function MDXLayout({ data = {} }) {
   }, [allMdx.edges]);
 
   return (
-      <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
-        <DocsLayout menu={menu} mdx={mdx} edges={allMdx.edges} docsLocation={docsLocation}/>
-      </Layout>
+    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+      <DocsLayout
+        menu={menu}
+        mdx={mdx}
+        edges={allMdx.edges}
+        docsLocation={docsLocation}
+        location={location}
+      />
+    </Layout>
   );
 }
 
-export default function AppWrap({children, data}) {
-  return <App>
-    <MDXLayout data={data}>{children}</MDXLayout>
-  </App>
+export default function AppWrap({ children, data, location }) {
+  return (
+    <App>
+      <MDXLayout data={data} location={location}>
+        {children}
+      </MDXLayout>
+    </App>
+  );
 }
-
 
 export const pageQuery = graphql`
   query($id: String!) {
