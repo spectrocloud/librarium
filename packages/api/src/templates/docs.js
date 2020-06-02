@@ -15,7 +15,7 @@ const APIS = {
   v2,
 };
 
-export default function MDXLayout({ data = {} }) {
+export default function MDXLayout({ data = {}, location }) {
   const {
     allMdx,
     mdx,
@@ -76,6 +76,7 @@ export default function MDXLayout({ data = {} }) {
           docsLocation={docsLocation}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
+          location={location}
         />
       </Layout>
     </App>
