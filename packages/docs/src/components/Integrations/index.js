@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "@librarium/shared/src/components/Link";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import icons from "assets/icons/integrations";
+import CategorySelector from "../CategorySorter";
 
 const query = graphql`
   query GetIntegrations {
@@ -21,6 +22,27 @@ const query = graphql`
     }
   }
 `
+
+const categories = [
+  "all",
+  "cloud",
+  "aws",
+  "azure",
+  "vmware",
+  "google_cloud",
+  "monitoring",
+  "kubernetes",
+  "security",
+  "networking",
+  "logging",
+  "storage",
+  "os",
+  "load_balancer",
+  "ingress",
+  "authentication",
+  "system_app",
+  "provisioning"
+];
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,8 +79,8 @@ const Title = styled.div`
   color: #555555;
 `;
 
-
 export default function Integrations() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const data = useStaticQuery(query);
   const packs = [...data.allMdx.edges];
 
@@ -85,7 +107,7 @@ export default function Integrations() {
     cloud: getOrderedCategoryPacks("cloud"),
     os: getOrderedCategoryPacks("os"),
     kubernetes: getOrderedCategoryPacks("kubernetes"),
-    network: getOrderedCategoryPacks("network"),
+    networking: getOrderedCategoryPacks("networking"),
     monitoring: getOrderedCategoryPacks("monitoring"),
     storage: getOrderedCategoryPacks("storage"),
     authentication: getOrderedCategoryPacks("authentication"),
@@ -95,23 +117,36 @@ export default function Integrations() {
     security: getOrderedCategoryPacks("security"),
   }
 
-  const orderedPacks = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
+  let orderedPacks;
+
+  if (selectedCategory !== "all") {
+    orderedPacks = categoryPacks[selectedCategory] || [];
+  } else {
+    orderedPacks = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
+  }
 
   return (
-    <Wrapper>
-      {orderedPacks.map(({ node }) => {
-        const { icon, title, slug } = node.fields;
-        return (
-          <Link to={slug}>
-            <Card>
-              <ImageWrapper>
-                <img src={icons[icon]} alt={`${title} logo`} />
-              </ImageWrapper>
-              <Title>{title}</Title>
-            </Card>
-          </Link>
-        );
-      })}
-    </Wrapper>
+    <>
+      <CategorySelector
+        categories={categories}
+        selectCategory={setSelectedCategory}
+        selected={selectedCategory}
+      />
+      <Wrapper>
+        {orderedPacks.map(({ node }) => {
+          const { icon, title, slug } = node.fields;
+          return (
+            <Link to={slug}>
+              <Card>
+                <ImageWrapper>
+                  <img src={icons[icon]} alt={`${title} logo`} />
+                </ImageWrapper>
+                <Title>{title}</Title>
+              </Card>
+            </Link>
+          );
+        })}
+      </Wrapper>
+    </>
   );
 }
