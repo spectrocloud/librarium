@@ -4,10 +4,7 @@ import { graphql } from 'gatsby';
 import { Layout, DocsLayout, useConfig } from '@librarium/shared';
 import App from '../App';
 
-import Integrations from '../components/Integrations';
-import integrations from '../../content/6-integrations/integrations.json';
-
-function MDXLayout({ data = {} }) {
+function MDXLayout({ data = {}, location }) {
   const {
     allMdx,
     mdx,
@@ -19,8 +16,8 @@ function MDXLayout({ data = {} }) {
 
 
   function renderIntegration() {
-    if(integrations[mdx.frontmatter?.category]) {
-      return <Integrations data={integrations[mdx.frontmatter?.category]}/>;
+    if (integrations[mdx.frontmatter?.category]) {
+      return <Integrations data={integrations[mdx.frontmatter?.category]} />;
     }
   }
 
@@ -29,18 +26,27 @@ function MDXLayout({ data = {} }) {
   }, [allMdx.edges]);
 
   return (
-      <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
-        <DocsLayout menu={menu} mdx={mdx} edges={allMdx.edges} docsLocation={docsLocation} extraContent={renderIntegration()}/>
-      </Layout>
+    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+      <DocsLayout
+        menu={menu}
+        mdx={mdx}
+        edges={allMdx.edges}
+        docsLocation={docsLocation}
+        location={location}
+      />
+    </Layout>
   );
 }
 
-export default function AppWrap({children, data}) {
-  return <App>
-    <MDXLayout data={data}>{children}</MDXLayout>
-  </App>
+export default function AppWrap({ children, data, location }) {
+  return (
+    <App>
+      <MDXLayout data={data} location={location}>
+        {children}
+      </MDXLayout>
+    </App>
+  );
 }
-
 
 export const pageQuery = graphql`
   query($id: String!) {
