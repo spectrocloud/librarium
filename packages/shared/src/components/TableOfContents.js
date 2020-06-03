@@ -4,7 +4,6 @@ import {useConfig} from "../config";
 
 const SidebarLayout = ({ edges }) => {
   const config = useConfig();
-  console.log(edges)
   let finalNavItems = [];
   if (edges !== undefined && edges.length > 0) {
     edges.forEach((item, index) => {
