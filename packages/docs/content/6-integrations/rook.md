@@ -1,0 +1,11 @@
+---
+title: 'Rook'
+metaTitle: 'Spectrocloud Concepts'
+metaDescription: 'Most important concepts of Spectro Cloud'
+hiddenFromNav: true
+isIntegration: true
+category: ['storage']
+icon: 'rook'
+---
+
+# Rook
