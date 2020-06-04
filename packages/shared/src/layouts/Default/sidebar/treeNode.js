@@ -45,7 +45,7 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsb
     isActive = true;
   }
 
-  if (url === '/' && location.pathname !== "/") {
+  if (url === '/' && location && location.pathname !== "/") {
     isActive = false;
   }
 
