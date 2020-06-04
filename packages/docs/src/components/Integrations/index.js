@@ -48,7 +48,7 @@ const categories = [
   "provisioning"
 ];
 
-const Wrapper = styled.div`
+const IntegrationsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
@@ -96,7 +96,7 @@ export default function Integrations() {
 
   function getOrderedCategoryPacks(category) {
     return packs
-      .filter(({ node }) => node.fields.category.includes(category))
+      .filter(({ node }) => node.fields.category[0] === category)
       .sort((pack1, pack2) => {
         const title1 = pack1.node.fields.title;
         const title2 = pack2.node.fields.title;
@@ -130,7 +130,8 @@ export default function Integrations() {
   let integrations;
 
   if (selectedCategory !== "all") {
-    integrations = categoryPacks[selectedCategory] || [];
+    integrations = packs
+      .filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
   } else {
     integrations = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
   }
@@ -140,8 +141,6 @@ export default function Integrations() {
     integrations = fuse.search(searchValue).map(({ item }) => item);
   }
 
-  console.log(integrations);
-
   return (
     <>
       <CategorySelector
@@ -150,7 +149,7 @@ export default function Integrations() {
         selected={selectedCategory}
       />
       <IntegrationSearch onSearch={setSearchValue} />
-      <Wrapper>
+      <IntegrationsWrapper>
         {integrations.map(({ node }) => {
           const { icon, title, slug } = node.fields;
           return (
@@ -164,7 +163,7 @@ export default function Integrations() {
             </Link>
           );
         })}
-      </Wrapper>
+      </IntegrationsWrapper>
     </>
   );
 }
