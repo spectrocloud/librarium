@@ -1,4 +1,5 @@
 import React from "react";
+import 'antd/dist/antd.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
