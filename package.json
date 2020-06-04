@@ -6,5 +6,8 @@
   },
   "scripts": {
     "start": "lerna run --parallel start"
+  },
+  "dependencies": {
+    "fuse.js": "^6.0.2"
   }
 }

@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 15px;
+  margin-bottom: 15px;
 `;
 
 const SelectorCard = styled.div`
