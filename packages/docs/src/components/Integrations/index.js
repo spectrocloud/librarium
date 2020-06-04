@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "@librarium/shared/src/components/Link";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
@@ -69,35 +69,39 @@ const searchOptions = {
 }
 
 export default function Integrations() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const data = useStaticQuery(query);
+  const { edges } = data.allMdx;
 
-  let integrations = [...data.allMdx.edges].sort((pack1, pack2) => {
-    const category1 = pack1.node.fields.category[0];
-    const category2 = pack2.node.fields.category[0];
+  let memorizedIntegrations = useMemo(() => {
+    let integrations = [...edges].sort((pack1, pack2) => {
+      const category1 = pack1.node.fields.category[0];
+      const category2 = pack2.node.fields.category[0];
 
-    if (category1 < category2) {
-      return -1;
+      if (category1 < category2) {
+        return -1;
+      }
+
+      if (category1 > category2) {
+        return 1;
+      };
+
+      return 0;
+    });
+
+    if (searchValue) {
+      const fuse = new Fuse(integrations, searchOptions);
+      integrations = fuse.search(searchValue).map(({ item }) => item);
     }
 
-    if (category1 > category2) {
-      return 1;
-    };
-
-    return 0;
-  });
-
-  if (searchValue) {
-    const fuse = new Fuse(integrations, searchOptions);
-    integrations = fuse.search(searchValue).map(({ item }) => item);
-  }
+    return integrations;
+  }, [edges, searchValue]);
 
   return (
     <Wrapper>
       <IntegrationSearch onSearch={setSearchValue} />
       <IntegrationsWrapper>
-        {integrations.map(({ node }) => {
+        {memorizedIntegrations.map(({ node }) => {
           const { icon, title, slug, logoUrl } = node.fields;
           return (
             <Link to={slug}>
