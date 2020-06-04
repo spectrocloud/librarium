@@ -4,9 +4,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
-import icons from "assets/icons/integrations";
-
-import CategorySelector from "./CategorySorter";
 import IntegrationSearch from "./IntegrationSearch";
 
 const query = graphql`
@@ -19,7 +16,7 @@ const query = graphql`
             title
             slug
             category
-            icon
+            logoUrl
           }
         }
       }
@@ -27,26 +24,9 @@ const query = graphql`
   }
 `
 
-const categories = [
-  "all",
-  "cloud",
-  "aws",
-  "azure",
-  "vmware",
-  "google_cloud",
-  "monitoring",
-  "kubernetes",
-  "security",
-  "networking",
-  "logging",
-  "storage",
-  "os",
-  "load_balancer",
-  "ingress",
-  "authentication",
-  "system_app",
-  "provisioning"
-];
+const Wrapper = styled.div`
+  padding: 15px 0;
+`;
 
 const IntegrationsWrapper = styled.div`
   display: flex;
@@ -92,49 +72,21 @@ export default function Integrations() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const data = useStaticQuery(query);
-  const packs = [...data.allMdx.edges];
 
-  function getOrderedCategoryPacks(category) {
-    return packs
-      .filter(({ node }) => node.fields.category[0] === category)
-      .sort((pack1, pack2) => {
-        const title1 = pack1.node.fields.title;
-        const title2 = pack2.node.fields.title;
+  let integrations = [...data.allMdx.edges].sort((pack1, pack2) => {
+    const category1 = pack1.node.fields.category[0];
+    const category2 = pack2.node.fields.category[0];
 
-        if (title1 < title2) {
-          return -1;
-        }
+    if (category1 < category2) {
+      return -1;
+    }
 
-        if (title1 > title2) {
-          return 1;
-        };
+    if (category1 > category2) {
+      return 1;
+    };
 
-        return 0;
-      });
-  }
-
-  const categoryPacks = {
-    cloud: getOrderedCategoryPacks("cloud"),
-    os: getOrderedCategoryPacks("os"),
-    kubernetes: getOrderedCategoryPacks("kubernetes"),
-    networking: getOrderedCategoryPacks("networking"),
-    monitoring: getOrderedCategoryPacks("monitoring"),
-    storage: getOrderedCategoryPacks("storage"),
-    authentication: getOrderedCategoryPacks("authentication"),
-    ingress: getOrderedCategoryPacks("ingress"),
-    load_balancer: getOrderedCategoryPacks("load_balancer"),
-    logging: getOrderedCategoryPacks("logging"),
-    security: getOrderedCategoryPacks("security"),
-  }
-
-  let integrations;
-
-  if (selectedCategory !== "all") {
-    integrations = packs
-      .filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
-  } else {
-    integrations = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
-  }
+    return 0;
+  });
 
   if (searchValue) {
     const fuse = new Fuse(integrations, searchOptions);
@@ -142,21 +94,16 @@ export default function Integrations() {
   }
 
   return (
-    <>
-      <CategorySelector
-        categories={categories}
-        selectCategory={setSelectedCategory}
-        selected={selectedCategory}
-      />
+    <Wrapper>
       <IntegrationSearch onSearch={setSearchValue} />
       <IntegrationsWrapper>
         {integrations.map(({ node }) => {
-          const { icon, title, slug } = node.fields;
+          const { icon, title, slug, logoUrl } = node.fields;
           return (
             <Link to={slug}>
               <Card>
                 <ImageWrapper>
-                  <img src={icons[icon]} alt={`${title} logo`} />
+                  <img src={logoUrl} alt={`${title} logo`} />
                 </ImageWrapper>
                 <Title>{title}</Title>
               </Card>
@@ -164,6 +111,6 @@ export default function Integrations() {
           );
         })}
       </IntegrationsWrapper>
-    </>
+    </Wrapper>
   );
 }

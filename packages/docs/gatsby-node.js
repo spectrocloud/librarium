@@ -159,5 +159,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.category,
     });
+
+    createNodeField({
+      name: 'logoUrl',
+      node,
+      value: node.frontmatter.logoUrl,
+    });
   }
 };
