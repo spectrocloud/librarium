@@ -1,6 +1,6 @@
 import React from "react";
 import { Sidebar, ListItem } from "./styles/Sidebar";
-import {useConfig} from "../config";
+import { useConfig } from "../config";
 
 const SidebarLayout = ({ edges, location }) => {
   const config = useConfig();

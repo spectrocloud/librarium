@@ -147,5 +147,23 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.fullWidth,
     });
+
+    createNodeField({
+      name: 'isIntegration',
+      node,
+      value: node.frontmatter.isIntegration,
+    });
+
+    createNodeField({
+      name: 'category',
+      node,
+      value: node.frontmatter.category,
+    });
+
+    createNodeField({
+      name: 'logoUrl',
+      node,
+      value: node.frontmatter.logoUrl,
+    });
   }
 };

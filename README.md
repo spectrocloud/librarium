@@ -43,7 +43,9 @@ To preview your changes use the following.
 make start
 ```
 
-This will open your browser to this address: http://localhost:8000
+This will open your browser to this address: http://localhost:8010
+For the glossary documentations use http://localhost:8020
+For the API documentations use http://localhost:8030
 
 Open `~/Work/librarium/packages/docs/content` in your editor and make changes. They should be synced up in the browser window.
 
@@ -70,13 +72,13 @@ On it's right there will be a **table of contents** menu that will extract all o
 This will follow the user as he scroll the page.
 On top of the table of contents there will be a **github link** to the content of the file. This can be used by users to submit changes to different sections of our documentation
 
-
 ### Main pages
 
 You can create a main page by creating a `<number>-<url-using-dashes>.md` file in the root of the `content` directory.
 The number will be the position of the item in the menu. Each of the main pages can be configured by sending attributes at the start of the file's content.
 
 **Example of attributes**
+
 ```markdown
 ---
 title: "Home"
