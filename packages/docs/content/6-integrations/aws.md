@@ -4,7 +4,7 @@ metaTitle: 'Spectrocloud Concepts'
 metaDescription: 'Most important concepts of Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
-category: ['cloud']
+category: ['cloud', 'aws']
 icon: 'aws'
 ---
 
