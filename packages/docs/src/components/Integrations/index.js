@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import Link from "@librarium/shared/src/components/Link";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
+import Fuse from "fuse.js";
+
 import icons from "assets/icons/integrations";
-import CategorySelector from "../CategorySorter";
+
+import CategorySelector from "./CategorySorter";
+import IntegrationSearch from "./IntegrationSearch";
 
 const query = graphql`
   query GetIntegrations {
@@ -79,8 +83,14 @@ const Title = styled.div`
   color: #555555;
 `;
 
+const searchOptions = {
+  threshold: 0.5,
+  keys: ['node.fields.title']
+}
+
 export default function Integrations() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchValue, setSearchValue] = useState("");
   const data = useStaticQuery(query);
   const packs = [...data.allMdx.edges];
 
@@ -117,13 +127,20 @@ export default function Integrations() {
     security: getOrderedCategoryPacks("security"),
   }
 
-  let orderedPacks;
+  let integrations;
 
   if (selectedCategory !== "all") {
-    orderedPacks = categoryPacks[selectedCategory] || [];
+    integrations = categoryPacks[selectedCategory] || [];
   } else {
-    orderedPacks = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
+    integrations = Object.keys(categoryPacks).map(category => categoryPacks[category]).flat();
   }
+
+  if (searchValue) {
+    const fuse = new Fuse(integrations, searchOptions);
+    integrations = fuse.search(searchValue).map(({ item }) => item);
+  }
+
+  console.log(integrations);
 
   return (
     <>
@@ -132,8 +149,9 @@ export default function Integrations() {
         selectCategory={setSelectedCategory}
         selected={selectedCategory}
       />
+      <IntegrationSearch onSearch={setSearchValue} />
       <Wrapper>
-        {orderedPacks.map(({ node }) => {
+        {integrations.map(({ node }) => {
           const { icon, title, slug } = node.fields;
           return (
             <Link to={slug}>
