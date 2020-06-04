@@ -4,7 +4,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
-import IntegrationSearch from "./IntegrationSearch";
+import Search from "./Search";
+import CategorySelector from "./CategorySelector";
 
 const query = graphql`
   query GetIntegrations {
@@ -69,11 +70,19 @@ const searchOptions = {
 }
 
 export default function Integrations() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const data = useStaticQuery(query);
   const { edges } = data.allMdx;
 
-  let memorizedIntegrations = useMemo(() => {
+  let categories = useMemo(() => {
+    return edges.reduce((accumulator, integration) => {
+      accumulator.add(...(integration.node.fields.category || []));
+      return accumulator;
+    }, new Set(["all"]))
+  }, [edges]);
+
+  let integrations = useMemo(() => {
     let integrations = [...edges].sort((pack1, pack2) => {
       const category1 = pack1.node.fields.category[0];
       const category2 = pack2.node.fields.category[0];
@@ -94,14 +103,24 @@ export default function Integrations() {
       integrations = fuse.search(searchValue).map(({ item }) => item);
     }
 
+    if (selectedCategory !== "all") {
+      integrations = integrations
+        .filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
+    }
+
     return integrations;
-  }, [edges, searchValue]);
+  }, [edges, searchValue, selectedCategory]);
 
   return (
     <Wrapper>
-      <IntegrationSearch onSearch={setSearchValue} />
+      <CategorySelector
+        categories={[...categories]}
+        selectCategory={setSelectedCategory}
+        selected={selectedCategory}
+      />
+      <Search onSearch={setSearchValue} />
       <IntegrationsWrapper>
-        {memorizedIntegrations.map(({ node }) => {
+        {integrations.map(({ node }) => {
           const { icon, title, slug, logoUrl } = node.fields;
           return (
             <Link to={slug}>
