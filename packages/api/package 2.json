@@ -1,0 +1,11 @@
+{
+	"name": "@literarum/api",
+	"private": true,
+	"description": "Documentation, built with mdx",
+	"version": "0.0.1",
+	"dependencies": {
+		"antd": "^4.2.4"
+	},
+	"license": "MIT",
+	"main": "n/a"
+}

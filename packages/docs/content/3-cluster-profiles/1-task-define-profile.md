@@ -1,7 +1,7 @@
 ---
 title: "Creating Cluster Profiles"
-metaTitle: "Cluster Profile"
-metaDescription: "The method for creating a Cluster Profile"
+metaTitle: "Creating Cluster Profiles"
+metaDescription: "The method for creating a Cluster Profile on Spectro Cloud"
 icon: ""
 hideToC: true
 fullWidth: false

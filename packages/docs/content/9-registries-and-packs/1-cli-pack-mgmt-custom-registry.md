@@ -1,3 +1,10 @@
+---
+title: "CLI based pack management"
+metaTitle: "CLI based pack management"
+metaDescription: "Using Spectro Cloud's CLI to create and use custom made packs and registries"
+icon: ""
+---
+
 ### Pack Registry
 
 Spectro Cloud provides multiple configuration options in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These configuration options are provided in the form of *Packs*. A pack is a Spectro Cloud content package that decribes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. For example, Spectro Cloud also provides packs for core layers of the Kubernetes stack; Operating Systems; Kubernetes distributions, Networking and Storage.

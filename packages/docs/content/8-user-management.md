@@ -1,21 +1,21 @@
 ---
 title: "User management"
-metaTitle: "About adding and managing access to users on Spectro Cloud"
-metaDescription: "Learn about how RBAC, SAML based SSO, users and tenant admins have been setup on Spectro Cloud"
+metaTitle: "User management"
+metaDescription: "Learn about adding and managing access to users on Spectro Cloud using SAML based SSO. Also explains how users and tenant admins have been setup on Spectro Cloud"
 icon: ""
 hideToC: true
 fullWidth: false
 ---
 
-# User Management
+# User management
 
-Apart from the *Email ID + Password* combination, Spectro Cloud uses SAML based SSO authentication and authorisation to enable user login and management. This is separate from the Role-based Access Control (RBAC) used for the team members within Projects and will be explained in the relevant section.
+This section touches upon the initial login aspects for tenant admins and non-admin users; and about RBAC setup within Spectro Cloud.
 
-The tenant admin's login credentials are created with a temporary password by Spectro Cloud for the initial login. Once the tenant admin has changed the password, they can add other users.
+# User Login
 
-These users can be provided with the following options to log on:-
+For a tenant admin, the password shall be set upon the initial login. Non-admin users can be added by the tenant admin. For all users, login can be made available using the following options:-
 
-* Email ID and Password Combination on the Spectro Cloud login page.
+* Using Spectro Cloud credentials on the login page.
 * SSO using Identity Providers that use SAML 2.0:
   * Azure Active Directory
   * Okta
@@ -27,8 +27,12 @@ These users can be provided with the following options to log on:-
 To setup IdP based SSO, login to the Spectro Cloud console as the tenant admin. Access the admin settings area by clicking the "Admin" button on the left panel.
 Select the "Settings" from the "Admin menu" and then click "SAML" on the dashboard to view the SAML panel. Toggle the `Enable SSO` button to bring up the configuration boxes.
 Choose the IdP from the dropdown menu. Click the name of your preferred IdP below to see detailed instructions.
-* [Okta](/8-user-management/1-okta)
-* [Azure Active Directory](/8-user-management/2-azure-ad)
-* [KeyCloak](/8-user-management/3-keycloak)
-* [OneLogin](/8-user-management/4-onelogin)
-* [MSFT ADFS](/8-user-management/5-msft-adfs)
+* [Okta](/user-management/okta)
+* [Azure Active Directory](/user-management/azure-ad)
+* [KeyCloak](/user-management/keycloak)
+* [OneLogin](/user-management/ßonelogin)
+* [MSFT ADFS](/user-management/msft-adfs)
+
+## RBAC
+
+Spectro Cloud allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the [RBAC](/user-management/rbac) page.

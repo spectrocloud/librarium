@@ -1,7 +1,7 @@
 ---
-title: "Clusters"
-metaTitle: "Creating and deploying clusters on Spectro Cloud"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
+title: "Clouds"
+metaTitle: ""
+metaDescription: ""
 icon: ""
 hideToC: true
 fullWidth: false

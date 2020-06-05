@@ -1,7 +1,7 @@
 ---
 title: "Your First Cluster"
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
+metaTitle: "Your First Cluster"
+metaDescription: "Detailed processes for deploying your first Kubernetes cluster on any CSP through Spectro Cloud"
 ---
 
 # Deploying your first cluster
