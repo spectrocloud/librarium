@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require("path");
 const queries = require('./src/utils/algolia');
 
 const config = require('./config');
@@ -18,7 +19,7 @@ const plugins = [
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'docs',
-      path: `${__dirname}/content/`,
+      path: path.resolve(__dirname,  'content/'),
     },
   },
   {

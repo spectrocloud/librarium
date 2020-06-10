@@ -48,14 +48,8 @@ const defaultMenu = [
     title: "API",
     link: process.env.GATSBY_API_URL,
   }, {
-    title: "Integrations",
-    link: process.env.GATSBY_INTEGRATIONS_URL,
-  }, {
     title: "Glossary",
     link: process.env.GATSBY_GLOSSARY_URL,
-  },{
-    title: "FAQ",
-    link: process.env.GATSBY_FAQ_URL,
   }
 ]
 
