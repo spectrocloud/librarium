@@ -7,24 +7,6 @@ import Fuse from "fuse.js";
 import Search from "./Search";
 import CategorySelector from "./CategorySelector";
 
-const query = graphql`
-  query GetIntegrations {
-    allMdx(filter: {fields: {isIntegration: {eq: true}}}) {
-      edges {
-        node {
-          fields {
-            id
-            title
-            slug
-            category
-            logoUrl
-          }
-        }
-      }
-    }
-  }
-`
-
 const Wrapper = styled.div`
   padding: 15px 0;
 `;
@@ -70,10 +52,27 @@ const searchOptions = {
 }
 
 export default function Integrations() {
+  const query = graphql`
+    query GetIntegrations {
+      allMdx(filter: {fields: {isIntegration: {eq: true}}}) {
+        edges {
+          node {
+            fields {
+              id
+              title
+              slug
+              category
+              logoUrl
+            }
+          }
+        }
+      }
+    }
+  `;
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const data = useStaticQuery(query);
-  const { edges } = data.allMdx;
+  const { edges = [] } = data.allMdx;
 
   let categories = useMemo(() => {
     return edges.reduce((accumulator, integration) => {

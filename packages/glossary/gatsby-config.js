@@ -51,6 +51,9 @@ const plugins = [
         },
       ],
       extensions: ['.mdx', '.md'],
+      shouldBlockNodeFromTransformation(node) {
+        return node.sourceInstanceName === "docs"
+      }
     },
   },
   {
