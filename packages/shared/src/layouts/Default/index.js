@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 import Sidebar from "./sidebar";
 import Header from "./Header";
@@ -20,9 +20,11 @@ const Content = styled.main`
     background: ${({ theme }) => theme.colors.background};
   }
 
-  ${props => props.fullWidth && css`
-    margin: 0;
-  `}
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      margin: 0;
+    `}
 `;
 
 const LeftSideBarWidth = styled.div`
@@ -35,11 +37,25 @@ const MainWrap = styled.div`
   overflow-y: auto;
 `;
 
-export default function Layout({ children, location, menu, fullWidth, subLogo, extraMenu }) {
+export default function Layout({
+  children,
+  location,
+  menu,
+  fullWidth,
+  subLogo,
+  extraMenu,
+  logoLocation,
+}) {
   return (
     <Wrapper>
       <LeftSideBarWidth className={"hiddenMobile"}>
-        <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu}/>
+        <Sidebar
+          location={location}
+          menu={menu}
+          subLogo={subLogo}
+          extraMenu={extraMenu}
+          logoLocation={logoLocation}
+        />
       </LeftSideBarWidth>
       <MainWrap>
         <Header location={location} />
@@ -51,6 +67,6 @@ export default function Layout({ children, location, menu, fullWidth, subLogo, e
 
 export const ContentWrap = styled.div`
   margin: 0 46px;
-`
+`;
 
 Layout.ContentWrap = ContentWrap;

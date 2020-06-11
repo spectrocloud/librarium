@@ -1,14 +1,16 @@
 .PHONY: initialize start commit build
 
-GATSBY_DOCS_URL ?= https://docs.spectrocloud.com
-GATSBY_API_URL ?= https://docs.spectrocloud.com/api
-GATSBY_GLOSSARY_URL ?= https://docs.spectrocloud.com/glossary
+GATSBY_DOCS_URL ?= '/'
+GATSBY_API_URL ?= '/api'
+GATSBY_GLOSSARY_URL ?= '/glossary'
+GATSBY_SITE_URL ?= 'https://docs.spectrocloud.com'
+DEFAULT_PARAMS = GATSBY_SITE_URL=$(GATSBY_SITE_URL) GATSBY_DOCS_URL=$(GATSBY_DOCS_URL) GATSBY_API_URL=$(GATSBY_API_URL) GATSBY_GLOSSARY_URL=$(GATSBY_GLOSSARY_URL)
 
 initialize:
 	npx lerna bootstrap --hoist
 
 start:
-	npm run start
+	$(DEFAULT_PARAMS) npm run start
 
 commit:
 	git add .
@@ -17,4 +19,4 @@ commit:
 	./scripts/open-pr.sh
 
 build:
-	GATSBY_DOCS_URL=$(GATSBY_DOCS_URL) GATSBY_API_URL=$(GATSBY_API_URL) GATSBY_GLOSSARY_URL=$(GATSBY_GLOSSARY_URL) npm run build
+	$(DEFAULT_PARAMS) npm run build

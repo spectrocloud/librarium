@@ -61,6 +61,7 @@ export default function MDXLayout({ data = {}, location }) {
     <App>
       <Layout
         menu={menu}
+        location={location}
         fullWidth={mdx.frontmatter?.fullWidth}
         subLogo={
           <path
@@ -68,6 +69,7 @@ export default function MDXLayout({ data = {}, location }) {
             fill="url(#paint1_linear)"
           />
         }
+        logoLocation={`${process.env.GATSBY_SITE_URL}${process.env.GATSBY_API_URL}`}
         extraMenu={<ApiSidebar allMdx={allMdx} />}
       >
         <DocsLayout

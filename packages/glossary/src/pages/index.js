@@ -35,7 +35,7 @@ const menuQuery = graphql`
 
 const ITEMS_PER_PAGE = 20;
 
-export default function GlossaryList() {
+export default function GlossaryList({location}) {
   const {allMdx} = useStaticQuery(menuQuery);
   const [page, updatePage] = useState(1)
 
@@ -67,7 +67,7 @@ export default function GlossaryList() {
   const pageCount = allMdx.edges.length / ITEMS_PER_PAGE;
 
   return (
-    <DocsLayout>
+    <DocsLayout location={location}>
       {letters.map(renderLetter)}
       {items.map(renderItem)}
       {pageCount > 1 && <Pagination current={page} total={allMdx.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}

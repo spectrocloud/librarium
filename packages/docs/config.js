@@ -1,7 +1,7 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
-    siteUrl: 'https://docs.spectrocloud.com',
+    pathPrefix: process.env.GATSBY_DOCS_URL,
+    siteUrl: process.env.GATSBY_SITE_URL,
     gaTrackingId: null,
     trailingSlash: false,
   },
@@ -18,7 +18,7 @@ const config = {
     title: 'Spectro cloud documentation',
     description: 'Spectro cloud documentation, guides, API documentation, integrations and more',
     ogImage: null,
-    docsLocation: 'https://github.com/spectrocloud/librarium/tree/master/content',
+    docsLocation: 'https://github.com/spectrocloud/librarium/tree/master/packages/docs/content',
     favicon: '',
   },
   pwa: {

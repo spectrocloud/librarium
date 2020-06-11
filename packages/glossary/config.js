@@ -1,7 +1,7 @@
 const config = {
   gatsby: {
-    pathPrefix: '/glossary',
-    siteUrl: 'https://docs.spectrocloud.com',
+    pathPrefix: process.env.GATSBY_GLOSSARY_URL,
+    siteUrl: process.env.GATSBY_SITE_URL,
     gaTrackingId: null,
     trailingSlash: false,
   },

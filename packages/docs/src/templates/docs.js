@@ -19,7 +19,7 @@ function MDXLayout({ data = {}, location }) {
   }, [allMdx.edges]);
 
   return (
-    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+    <Layout menu={menu} location={location} fullWidth={mdx.frontmatter?.fullWidth}>
       <DocsLayout
         menu={menu}
         mdx={mdx}
