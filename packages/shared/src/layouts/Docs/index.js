@@ -106,7 +106,7 @@ const ContentWrap = styled.div`
 `;
 
 const RightSidebar = styled.div`
-  margin-left: 20px;
+  margin-left: 50px;
 `;
 
 const StickyWrap = styled.div`
