@@ -122,7 +122,7 @@ export default function Integrations() {
         {integrations.map(({ node }) => {
           const { icon, title, slug, logoUrl } = node.fields;
           return (
-            <Link to={slug}>
+            <Link key={title} to={slug}>
               <Card>
                 <ImageWrapper>
                   <img src={logoUrl} alt={`${title} logo`} />
