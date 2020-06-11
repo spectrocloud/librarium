@@ -1,7 +1,7 @@
 ---
 title: "Updating Cluster Profiles"
-metaTitle: "Cluster Profile"
-metaDescription: "The method for creating a Cluster Profile"
+metaTitle: "Updating Cluster Profiles"
+metaDescription: "The method for updating or editing an existing Cluster Profile on Spectro Cloud"
 icon: ""
 hideToC: true
 fullWidth: false
