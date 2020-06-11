@@ -17,13 +17,13 @@ For e. g.: In */v1alpha1/spectroclusters/* the component will be *spectrocluster
 
 Every resource can exist in multiple scopes. For more details, please refer to the [RBAC's Resource Scope Matrix](/user-management/rbac). As mentioned previously, a *permission* contains multiple *scopes.* The Hubble permission model will be of the following format:
 
-```
+```go
     type Permission struct {
                 Component       string
                 Operations      []string
                 DisplayName     string
                 Scope           []AclScope
-}
+    }
 ```
 | Component | Operations | Scopes |
 |---|:---:|---:|

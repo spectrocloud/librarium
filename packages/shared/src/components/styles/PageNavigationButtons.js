@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledNextPrevious = styled.div`
-  margin: 0px;
+  margin: 40px 0;
   padding: 0px;
   width: auto;
   display: grid;
@@ -15,9 +15,9 @@ export const StyledNextPrevious = styled.div`
     -moz-box-direction: normal;
     -moz-box-orient: horizontal;
     margin: 0px;
-    padding: 0px;
     position: relative;
     display: flex;
+    padding: 8px 16px;
     flex-direction: row;
     align-items: center;
     place-self: stretch;
@@ -37,11 +37,12 @@ export const StyledNextPrevious = styled.div`
     -moz-box-direction: normal;
     -moz-box-orient: horizontal;
     margin: 0px;
-    padding: 0px;
     position: relative;
     display: flex;
+    padding: 8px 16px;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     place-self: stretch;
     border-radius: 3px;
     border: 1px solid rgb(230, 236, 241);
@@ -66,28 +67,23 @@ export const StyledNextPrevious = styled.div`
 
   .leftArrow {
     display: block;
-    margin: 0px;
     color: rgb(157, 170, 182);
     flex: 0 0 auto;
+    margin-right: 16px;
     font-size: 24px;
     transition: color 200ms ease 0s;
-    padding: 16px;
-    padding-right: 16px;
   }
 
   .rightArrow {
     flex: 0 0 auto;
     font-size: 24px;
     transition: color 200ms ease 0s;
-    padding: 16px;
-    padding-left: 16px;
     display: block;
-    margin: 0px;
+    margin-left: 16px;
     color: rgb(157, 170, 182);
   }
 
   .nextPreviousTitle {
-    display: block;
     margin: 0px;
     padding: 0px;
     transition: color 200ms ease 0s;
@@ -97,6 +93,10 @@ export const StyledNextPrevious = styled.div`
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
+  }
+
+  .nextRightWrapper {
+    height: 100%;
   }
 
   @media (max-width: 767px) {
