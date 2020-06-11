@@ -6,6 +6,7 @@ GATSBY_GLOSSARY_URL ?= '/glossary'
 GATSBY_SITE_URL ?= 'https://docs.spectrocloud.com'
 DEFAULT_PARAMS = GATSBY_SITE_URL=$(GATSBY_SITE_URL) GATSBY_DOCS_URL=$(GATSBY_DOCS_URL) GATSBY_API_URL=$(GATSBY_API_URL) GATSBY_GLOSSARY_URL=$(GATSBY_GLOSSARY_URL)
 
+
 initialize:
 	npx lerna bootstrap --hoist
 
