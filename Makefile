@@ -1,8 +1,8 @@
 .PHONY: initialize start commit build
 
-GATSBY_DOCS_URL ?= https://docs.spectrocloud.com
-GATSBY_API_URL ?= https://docs.spectrocloud.com/api
-GATSBY_GLOSSARY_URL ?= https://docs.spectrocloud.com/glossary
+GATSBY_DOCS_URL ?= /
+GATSBY_API_URL ?= /api
+GATSBY_GLOSSARY_URL ?= /glossary
 
 initialize:
 	npx lerna bootstrap --hoist
