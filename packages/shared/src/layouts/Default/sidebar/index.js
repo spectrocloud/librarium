@@ -12,7 +12,7 @@ const Sidebar = styled.aside`
 `;
 
 const MenuWrap = styled.div`
-  padding-left: 6px;
+  padding: 0 10px 0 32px;
 `;
 
 const LogoWrap = styled.div`

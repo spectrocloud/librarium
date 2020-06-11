@@ -28,7 +28,7 @@ const plugins = [
       fonts: [
         {
           family: `Poppins`,
-          variants: [`400`, `700`, 'latin']
+          variants: [`400`, `500`, `700`, 'latin']
         },
       ],
     },
