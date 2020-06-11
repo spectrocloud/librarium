@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const StyledHeading = styled.h1`
   font-style: normal;
@@ -6,14 +6,12 @@ export const StyledHeading = styled.h1`
   font-size: 40px;
   line-height: 52px;
   letter-spacing: -0.02em;
-  color: #0D1440;
-  color: ${props => props.theme.colors.heading};
+  color: #0d1440;
+  color: ${(props) => props.theme.colors.heading};
 `;
 
 export const Edit = styled.div`
-  text-align: right;
   white-space: nowrap;
-
 
   a {
     font-size: 14px;
@@ -39,11 +37,35 @@ export const Edit = styled.div`
 
 export const StyledMainWrapper = styled.div`
   max-width: 750px;
-  color: ${props => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.text};
   flex-grow: 1;
-  ${props => props.fullWidth && css`
-    max-width: none;
-  `};
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      max-width: none;
+    `};
+
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 52px;
+    margin: 30px 0;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 42px;
+    margin: 30px 0;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 30px 0;
+  }
 
   ul,
   ol {
@@ -54,7 +76,6 @@ export const StyledMainWrapper = styled.div`
     padding: 0px 0px 0px 2em;
 
     li {
-      font-size: 16px;
       line-height: 1.8;
       font-weight: 400;
     }
@@ -62,7 +83,7 @@ export const StyledMainWrapper = styled.div`
 
   a {
     transition: color 0.15s;
-    color: ${props => props.theme.colors.link};
+    color: ${(props) => props.theme.colors.link};
   }
 
   code {
@@ -71,7 +92,7 @@ export const StyledMainWrapper = styled.div`
     padding: 2px 6px;
     font-size: 0.9375em;
 
-    background: ${props => props.theme.colors.background};
+    background: ${(props) => props.theme.colors.background};
   }
 
   @media (max-width: 767px) {

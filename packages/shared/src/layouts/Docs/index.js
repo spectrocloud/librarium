@@ -85,13 +85,13 @@ const ContentWrap = styled.div`
 `;
 
 const RightSidebar = styled.div`
-  margin-left: 20px;
+  margin-left: 50px;
 `;
 
 const StickyWrap = styled.div`
   position: sticky;
   top: 100px;
-  width: 150px;
+  width: 100%;
 `;
 
 export default function MDXLayout({ location, mdx, edges, menu, docsLocation, extraContent }) {
