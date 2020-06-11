@@ -14,16 +14,16 @@ export const calculateMenuTree = (edges, config) => {
   .filter((edge) => !edge.node.fields.hiddenFromNav)
   .sort((edge1, edge2) => {
     const edgeSlug1Length = edge1.node.fields.slug.split("/").length;
-    const slug2Length = edge2.node.fields.slug.split("/").length;
+    const edgeSlug2Length = edge2.node.fields.slug.split("/").length;
 
     const edgeIndex1 = edge1.node.fields.index;
     const edgeIndex2 = edge2.node.fields.index;
 
-     if(edgeSlug1Length < slug2Length) {
+     if(edgeSlug1Length < edgeSlug2Length) {
        return -1;
      };
 
-     if(edgeSlug1Length > slug2Length) {
+     if(edgeSlug1Length > edgeSlug2Length) {
       return 1;
     };
 
