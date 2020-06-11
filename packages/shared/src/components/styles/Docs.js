@@ -95,6 +95,56 @@ export const StyledMainWrapper = styled.div`
     background: ${(props) => props.theme.colors.background};
   }
 
+  table {
+    margin: 24px 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 4px 4px 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    thead > tr {
+      background: #fafafa;
+      box-shadow: 0px 1px 0px #ddd;
+    }
+
+    th {
+      padding: 16px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+      color: #777;
+    }
+
+    th:first-child {
+      border-top-left-radius: 4px;
+    }
+    th:last-child {
+      border-top-right-radius: 4px;
+    }
+
+    tbody > tr {
+      box-shadow: 0px 1px 0px #f2f2f2;
+    }
+
+    tbody > tr > td {
+      padding: 16px;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      color: #555;
+      vertical-align: top;
+      text-align: left;
+    }
+  }
+
+  pre {
+    margin: 18px 0;
+    background: transparent;
+  }
+
   @media (max-width: 767px) {
     padding: 0 15px;
   }

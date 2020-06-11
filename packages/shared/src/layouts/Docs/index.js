@@ -91,7 +91,7 @@ const RightSidebar = styled.div`
 const StickyWrap = styled.div`
   position: sticky;
   top: 100px;
-  width: 100%;
+  width: 150px;
 `;
 
 export default function MDXLayout({ location, mdx, edges, menu, docsLocation, extraContent }) {
