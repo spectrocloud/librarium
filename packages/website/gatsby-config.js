@@ -1,25 +1,27 @@
 require('dotenv').config();
 const queries = require('./src/utils/algolia');
+const path = require("path");
 
 const config = require('./config');
 
 const plugins = [
-  'gatsby-plugin-antd',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
-  {
-    resolve: `gatsby-plugin-layout`,
-    options: {
-      component: require.resolve(`./src/templates/docs.js`),
-    },
-  },
   'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
+  'gatsby-plugin-antd',
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'glossary',
+      path:  path.resolve(__dirname, "../glossary/content/"),
+    },
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'docs',
-      path: `${__dirname}/content/`,
+      path: path.resolve(__dirname, "../docs/content/"),
     },
   },
   {

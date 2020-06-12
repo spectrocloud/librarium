@@ -1,7 +1,5 @@
 const componentWithMDXScope = require('gatsby-plugin-mdx/component-with-mdx-scope');
-
 const path = require('path');
-
 const startCase = require('lodash.startcase');
 
 const config = require('./config');
@@ -38,12 +36,12 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         result.data.allMdx.edges.forEach(({ node }) => {
-          if (node.fields.isDocsPage) {
+          if (!node.fields.isDocsPage) {
             return;
           }
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve('./src/layouts/docs.js'),
+            component: path.resolve("../docs/src/templates/docs.js"),
             context: {
               id: node.fields.id,
             },

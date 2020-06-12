@@ -23,20 +23,18 @@ const menuQuery = graphql`
 }
 `;
 
-export function MDXLayout({children}) {
-  const data = useStaticQuery(menuQuery)
-  const { allMdx } = data
+export function MDXLayout({children, menuEdges}) {
   const config = useConfig();
 
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, config);
-  }, [allMdx.edges]);
+    return DocsLayout.calculateMenuTree(menuEdges, config);
+  }, [menuEdges]);
 
-  return <Layout menu={menu}>{children}</Layout>;
+  return <Layout menu={menu} location={location}>{children}</Layout>;
 }
 
-export default function AppWrap({children}) {
+export default function AppWrap({children, location}) {
   return <App>
-    <MDXLayout> {children} </MDXLayout>
+    <MDXLayout location={location}> {children} </MDXLayout>
   </App>
 }

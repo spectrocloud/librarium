@@ -4,7 +4,7 @@ import { Pagination } from 'antd';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from "styled-components";
 
-import DocsLayout from "../layouts/docs";
+import DocsLayout from "@librarium/glossary/layouts/docs";
 
 //
 
