@@ -41,6 +41,10 @@ const Label = styled.div`
   margin-right: 10px;
 `;
 
+const ResponseCodes = styled(Label)`
+  margin-top: 90px;
+`;
+
 const Hr = styled.hr`
   border: 0;
   margin-top: 80px;
@@ -107,7 +111,7 @@ export default function Swagger(props) {
                 ))}
               </tbody>
             </table>
-            <h5>Response codes:</h5>
+            <ResponseCodes>Response codes:</ResponseCodes>
             <table className="table table-striped table-hover">
               <thead>
                 <tr>
