@@ -1,67 +1,73 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react';
 import { SidebarTree } from '@librarium/shared';
 import { Select } from 'antd';
+import styled from 'styled-components';
 
-const getVersions = (edges) => {
-  const versions = edges.reduce(
-    (
-      accumulator,
-      {
-        node: {
-          fields: { version, api },
-        },
-      }
-    ) => {
-      if (api) {
-        accumulator.add(version)
-      }
+const Wrap = styled.div`
+  padding: 0 30px;
+  &:focus {
+      outline: none;
+    }
 
-      return accumulator;
-    }, new Set());
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #d9d9d9;
+    &:focus {
+      outline: none;
+    }
+  }
+`;
 
+const StyledSelect = styled(Select)`
+  width: 100%;
+`;
 
-  return [...versions].sort().reverse(); s
+const getVersions = edges => {
+  const versions = edges.reduce((accumulator, { node: { fields: { version, api } } }) => {
+    if (api) {
+      accumulator.add(version);
+    }
+
+    return accumulator;
+  }, new Set());
+
+  return [...versions].sort().reverse();
+  s;
 };
 
 const extractApiMenu = (edges, selectedVersion) => {
-  return edges.reduce(
-    (
-      accumulator,
-      {
-        node: {
-          fields: { slug, title, icon, version, api },
-        },
-      }
-    ) => {
-      if (selectedVersion === version && api) {
-        accumulator.push({
-          url: slug,
-          title,
-          icon,
-        })
-      }
+  return edges.reduce((accumulator, { node: { fields: { slug, title, icon, version, api } } }) => {
+    if (selectedVersion === version && api) {
+      accumulator.push({
+        url: slug,
+        title,
+        icon,
+      });
+    }
 
-      return accumulator;
-
-    }, []);
+    return accumulator;
+  }, []);
 };
 
 export default function ApiSidebar({ allMdx }) {
-
   const versions = useMemo(() => {
     return getVersions(allMdx.edges);
-  }, [allMdx.edges])
+  }, [allMdx.edges]);
 
   const [selectedVersion, updateSelectedVersion] = useState(versions[0]);
   const apiMenu = useMemo(() => {
     return extractApiMenu(allMdx.edges, selectedVersion);
   }, [allMdx.edges, selectedVersion]);
 
-  return <div>
-    <Select value={selectedVersion} onChange={updateSelectedVersion}>
-      {versions.map(version => <Select.Option value={version}>{version}</Select.Option>)}
-    </Select>
-    <SidebarTree menu={{ items: apiMenu }} />
-
-  </div>
+  return (
+    <Wrap>
+      <StyledSelect value={selectedVersion} onChange={updateSelectedVersion}>
+        {versions.map(version => (
+          <Select.Option value={version}>{version}</Select.Option>
+        ))}
+      </StyledSelect>
+      <SidebarTree menu={{ items: apiMenu }} />
+    </Wrap>
+  );
 }
