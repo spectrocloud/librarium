@@ -6,3 +6,7 @@ icon: ""
 hideToC: true
 fullWidth: false
 ---
+
+import Integrations from "../src/components/Integrations"
+
+<Integrations />

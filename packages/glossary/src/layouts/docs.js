@@ -24,8 +24,8 @@ const menuQuery = graphql`
 `;
 
 export function MDXLayout({children}) {
-  const data = useStaticQuery(menuQuery)
-  const { allMdx } = data
+  const data = useStaticQuery(menuQuery);
+  const { allMdx } = data;
   const config = useConfig();
 
   const menu = useMemo(() => {

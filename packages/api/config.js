@@ -1,7 +1,7 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
-    siteUrl: 'https://docs.spectrocloud.com/api',
+    pathPrefix: '/api',
+    siteUrl: 'https://docs.spectrocloud.com',
     gaTrackingId: null,
     trailingSlash: false,
   },

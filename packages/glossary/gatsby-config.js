@@ -30,7 +30,7 @@ const plugins = [
       fonts: [
         {
           family: `Poppins`,
-          variants: [`400`, `700`, 'latin']
+          variants: [`400`, `500`, `700`, 'latin']
         },
       ],
     },
@@ -51,6 +51,9 @@ const plugins = [
         },
       ],
       extensions: ['.mdx', '.md'],
+      shouldBlockNodeFromTransformation(node) {
+        return node.sourceInstanceName === "docs"
+      }
     },
   },
   {

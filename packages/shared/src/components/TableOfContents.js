@@ -1,19 +1,20 @@
 import React from "react";
 import { Sidebar, ListItem } from "./styles/Sidebar";
-import {useConfig} from "../config";
+import { useConfig } from "../config";
 
-const SidebarLayout = ({ edges }) => {
+const TableOfContents = ({ edges, location }) => {
   const config = useConfig();
-  console.log(edges)
+
   let finalNavItems = [];
   if (edges !== undefined && edges.length > 0) {
     edges.forEach((item, index) => {
       let innerItems;
 
       if (item !== undefined) {
+        const pathname = location && location.pathname;
         if (
-          item.node.fields.slug === location.pathname ||
-          config.gatsby.pathPrefix + item.node.fields.slug === location.pathname
+          item.node.fields.slug === pathname ||
+          item.node.fields.slug === config.gatsby.pathPrefix + pathname
         ) {
           if (item.node.tableOfContents.items) {
             innerItems = item.node.tableOfContents.items.map(
@@ -52,4 +53,4 @@ const SidebarLayout = ({ edges }) => {
   }
 };
 
-export default SidebarLayout;
+export default TableOfContents;

@@ -11,6 +11,13 @@ const MenuNode = styled.div`
   .svg-inline--fa {
     margin-right: 10px;
   }
+
+  > a {
+    text-decoration: none;
+    color: #78909C;
+    font-weight: 500;
+  }
+
   ${props => props.active && css`
     > a {
       color: #4432F5;
@@ -22,7 +29,11 @@ const ChildrenItems = styled.div`
   margin: 10px 0 10px 26px;
 
   ${MenuNode} {
-    margin: 5px 0;
+    margin: 10px 0;
+
+    > a {
+      font-weight: normal;
+    }
   }
 `;
 
@@ -45,7 +56,7 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsb
     isActive = true;
   }
 
-  if (url === '/' && location.pathname !== "/") {
+  if (url === '/' && location && location.pathname !== "/") {
     isActive = false;
   }
 

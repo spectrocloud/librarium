@@ -8,14 +8,12 @@ import App from '../App';
 
 // TODO use graphql to get api.jsons
 import v1 from '../../content/v1/api.json';
-import v2 from '../../content/v2/api.json';
 
 const APIS = {
   v1,
-  v2,
 };
 
-export default function MDXLayout({ data = {} }) {
+export default function MDXLayout({ data = {}, location }) {
   const {
     allMdx,
     mdx,
@@ -76,6 +74,7 @@ export default function MDXLayout({ data = {} }) {
           docsLocation={docsLocation}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
+          location={location}
         />
       </Layout>
     </App>
