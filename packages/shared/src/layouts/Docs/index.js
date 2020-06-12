@@ -68,7 +68,7 @@ export const calculateMenuTree = (edges, config) => {
         prevItems = tmp.items;
       }
       const slicedLength =
-        config.gatsby && config.gatsby.trailingSlash
+        config?.gatsby?.trailingSlash
           ? parts.length - 2
           : parts.length - 1;
 

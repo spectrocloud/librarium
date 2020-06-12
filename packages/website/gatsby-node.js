@@ -18,9 +18,6 @@ exports.createPages = ({ graphql, actions }) => {
                   fields {
                     id
                     isDocsPage
-                  }
-                  tableOfContents
-                  fields {
                     slug
                   }
                 }
@@ -36,12 +33,17 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         result.data.allMdx.edges.forEach(({ node }) => {
+          console.log(node);
           if (!node.fields.isDocsPage) {
             return;
           }
+
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve("../docs/src/templates/docs.js"),
+            component:
+              node.fields.slug === '/integrations'
+                ? path.resolve('../docs/src/templates/integrations.js')
+                : path.resolve('../docs/src/templates/docs.js'),
             context: {
               id: node.fields.id,
             },
@@ -52,7 +54,7 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -74,18 +76,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
-    const isDocsPage = !!node.fileAbsolutePath.includes('/docs/content/')
+    const isDocsPage = !!node.fileAbsolutePath.includes('/docs/content/');
     const parent = getNode(node.parent);
 
     let value = parent.relativePath.replace(parent.ext, '');
 
     const slugs = value.split('/').map((slugPart, index, slugs) => {
-      const [_, ...rest] = slugPart.split('-')
+      const [_, ...rest] = slugPart.split('-');
       if (index === slugs.length - 1) {
         createNodeField({
           name: `index`,
           node,
-          value: _
+          value: _,
         });
       }
 
@@ -93,15 +95,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         return _;
       }
 
-      return rest.join('-')
-    })
+      return rest.join('-');
+    });
 
     value = slugs.join('/');
     if (value === 'index') {
       value = '';
     }
 
-    const prefix = isDocsPage ? '': '/glossary'
+    const prefix = isDocsPage ? '' : '/glossary';
 
     if (config.gatsby && config.gatsby.trailingSlash) {
       createNodeField({
@@ -156,7 +158,25 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'isDocsPage',
       node,
-      value: !!node.fileAbsolutePath.includes('/docs/content/')
+      value: !!node.fileAbsolutePath.includes('/docs/content/'),
+    });
+
+    createNodeField({
+      name: 'isIntegration',
+      node,
+      value: node.frontmatter.isIntegration,
+    });
+
+    createNodeField({
+      name: 'category',
+      node,
+      value: node.frontmatter.category,
+    });
+
+    createNodeField({
+      name: 'logoUrl',
+      node,
+      value: node.frontmatter.logoUrl,
     });
   }
 };

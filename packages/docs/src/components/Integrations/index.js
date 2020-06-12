@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from "react";
-import Link from "@librarium/shared/src/components/Link";
-import { graphql, useStaticQuery } from "gatsby";
-import styled from "styled-components";
-import Fuse from "fuse.js";
+import React, { useState, useMemo } from 'react';
+import styled from 'styled-components';
+import Fuse from 'fuse.js';
+import Link from '@librarium/shared/src/components/Link';
 
-import Search from "./Search";
-import CategorySelector from "./CategorySelector";
+import Search from './Search';
+import CategorySelector from './CategorySelector';
 
 const Wrapper = styled.div`
   padding: 15px 0;
@@ -48,37 +47,18 @@ const Title = styled.div`
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ['node.fields.title']
-}
+  keys: ['node.fields.title'],
+};
 
-export default function Integrations() {
-  const query = graphql`
-    query GetIntegrations {
-      allMdx(filter: {fields: {isIntegration: {eq: true}}}) {
-        edges {
-          node {
-            fields {
-              id
-              title
-              slug
-              category
-              logoUrl
-            }
-          }
-        }
-      }
-    }
-  `;
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchValue, setSearchValue] = useState("");
-  const data = useStaticQuery(query);
-  const { edges = [] } = data.allMdx;
+export default function Integrations({edges = []}) {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchValue, setSearchValue] = useState('');
 
   let categories = useMemo(() => {
     return edges.reduce((accumulator, integration) => {
       accumulator.add(...(integration.node.fields.category || []));
       return accumulator;
-    }, new Set(["all"]))
+    }, new Set(['all']));
   }, [edges]);
 
   let integrations = useMemo(() => {
@@ -92,7 +72,7 @@ export default function Integrations() {
 
       if (category1 > category2) {
         return 1;
-      };
+      }
 
       return 0;
     });
@@ -102,9 +82,9 @@ export default function Integrations() {
       integrations = fuse.search(searchValue).map(({ item }) => item);
     }
 
-    if (selectedCategory !== "all") {
-      integrations = integrations
-        .filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
+    if (selectedCategory !== 'all') {
+      integrations =
+        integrations.filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
     }
 
     return integrations;
@@ -120,7 +100,7 @@ export default function Integrations() {
       <Search onSearch={setSearchValue} />
       <IntegrationsWrapper>
         {integrations.map(({ node }) => {
-          const { icon, title, slug, logoUrl } = node.fields;
+          const { title, slug, logoUrl } = node.fields;
           return (
             <Link key={title} to={slug}>
               <Card>

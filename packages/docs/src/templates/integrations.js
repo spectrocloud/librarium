@@ -1,41 +1,22 @@
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
-
-import { Layout, DocsLayout, useConfig } from '@librarium/shared';
+import { Layout, DocsLayout } from '@librarium/shared';
 import App from '../App';
+import Integrations from '../components/Integrations';
 
-function MDXLayout({ data = {}, location, children, ...rest }) {
-  const {
-    allMdx,
-    mdx,
-    site: {
-      siteMetadata: { docsLocation },
-    },
-  } = data;
-  const config = useConfig();
+//
 
+export default function IntegrationsTemplate({ children, data, ...rest }) {
+  const integrations = data.allMdx.edges.filter(edge => edge.node.fields.isIntegration);
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, config);
-  }, [allMdx.edges]);
+    return DocsLayout.calculateMenuTree(data.allMdx.edges);
+  }, [data.allMdx.edges]);
 
-  return (
-    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
-      <DocsLayout
-        menu={menu}
-        mdx={mdx}
-        edges={allMdx.edges}
-        docsLocation={docsLocation}
-        location={location}
-        {...rest}
-      />
-    </Layout>
-  );
-}
-
-export default function AppWrap(props) {
   return (
     <App>
-      <MDXLayout {...props} />
+      <Layout menu={menu} {...rest}>
+        <Integrations edges={integrations} />
+      </Layout>
     </App>
   );
 }
@@ -71,13 +52,16 @@ export const pageQuery = graphql`
     allMdx {
       edges {
         node {
-          tableOfContents
           fields {
+            id
             slug
             title
             icon
             index
             hiddenFromNav
+            category
+            isIntegration
+            logoUrl
           }
         }
       }

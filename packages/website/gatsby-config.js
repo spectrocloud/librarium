@@ -50,10 +50,7 @@ const plugins = [
           resolve: 'gatsby-remark-copy-linked-files',
         },
       ],
-      extensions: ['.mdx', '.md'],
-      shouldBlockNodeFromTransformation(node) {
-        return node.sourceInstanceName === "docs"
-      }
+      extensions: ['.mdx', '.md']
     },
   },
   {

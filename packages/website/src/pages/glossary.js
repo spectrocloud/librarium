@@ -4,7 +4,7 @@ import { Pagination } from 'antd';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from "styled-components";
 
-import DocsLayout from "@librarium/glossary/layouts/docs";
+import DocsLayout from "@librarium/glossary/src/layouts/docs";
 
 //
 
@@ -17,15 +17,19 @@ const LetterWrap = styled.span`
   margin: 0 4px;
 `;
 
-const menuQuery = graphql`
+const query = graphql`
 {
-  allMdx(filter: {fileAbsolutePath: {regex: "/glossary/content/"}}, sort: {fields: frontmatter___title}) {
+  allMdx(sort: {fields: frontmatter___title}) {
     edges {
       node {
         body
         fields {
           slug
           title
+          icon
+          index
+          hiddenFromNav
+          isDocsPage
         }
       }
     }
@@ -36,11 +40,18 @@ const menuQuery = graphql`
 const ITEMS_PER_PAGE = 20;
 
 export default function GlossaryList() {
-  const {allMdx} = useStaticQuery(menuQuery);
-  const [page, updatePage] = useState(1)
+  const {allMdx} = useStaticQuery(query);
+  const glossary = {
+    edges: allMdx.edges.filter(edge => !edge.node.fields.isDocsPage)
+  }
 
+  const menu = {
+    edges: allMdx.edges.filter(edge => edge.node.fields.isDocsPage)
+  }
+
+  const [page, updatePage] = useState(1)
   const letters = useMemo(() => {
-    const letters = allMdx.edges.reduce((accumulator, {node}) => {
+    const letters = glossary.edges.reduce((accumulator, {node}) => {
       const letter = node.fields.slug.split('/')[2]
       accumulator.add(letter)
 
@@ -48,7 +59,7 @@ export default function GlossaryList() {
     }, new Set())
 
     return [...letters];
-  }, [allMdx.edges])
+  }, [glossary.edges])
 
   function renderLetter(letter) {
   return <LetterWrap>{letter}</LetterWrap>;
@@ -61,16 +72,16 @@ export default function GlossaryList() {
   }
 
   const items = useMemo(() => {
-    return allMdx.edges.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE )
-  }, [allMdx.edges, page])
+    return glossary.edges.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE )
+  }, [glossary.edges, page])
 
-  const pageCount = allMdx.edges.length / ITEMS_PER_PAGE;
+  const pageCount = glossary.edges.length / ITEMS_PER_PAGE;
 
   return (
-    <DocsLayout>
+    <DocsLayout menuEdges={menu.edges || []}>
       {letters.map(renderLetter)}
       {items.map(renderItem)}
-      {pageCount > 1 && <Pagination current={page} total={allMdx.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}
+      {pageCount > 1 && <Pagination current={page} total={glossary.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}
     </DocsLayout>
   )
 }

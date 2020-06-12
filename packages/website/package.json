@@ -60,6 +60,7 @@
   "main": "n/a",
   "scripts": {
     "start": "gatsby develop --port 9000",
+    "clean": "gatsby clean",
     "build": "gatsby build --prefix-paths",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "lint": "eslint --fix \"src/**/*.{js,jsx}\""
