@@ -1,8 +1,8 @@
 import React from "react";
 import { Sidebar, ListItem } from "./styles/Sidebar";
-import {useConfig} from "../config";
+import { useConfig } from "../config";
 
-const SidebarLayout = ({ edges, location }) => {
+const TableOfContents = ({ edges, location }) => {
   const config = useConfig();
 
   let finalNavItems = [];
@@ -14,7 +14,7 @@ const SidebarLayout = ({ edges, location }) => {
         const pathname = location && location.pathname;
         if (
           item.node.fields.slug === pathname ||
-          config.gatsby.pathPrefix + pathname
+          item.node.fields.slug === config.gatsby.pathPrefix + pathname
         ) {
           if (item.node.tableOfContents.items) {
             innerItems = item.node.tableOfContents.items.map(
@@ -53,4 +53,4 @@ const SidebarLayout = ({ edges, location }) => {
   }
 };
 
-export default SidebarLayout;
+export default TableOfContents;

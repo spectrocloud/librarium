@@ -24,7 +24,7 @@
     "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-layout": "^1.3.0",
     "gatsby-plugin-manifest": "^2.4.1",
-    "gatsby-plugin-mdx": "^1.2.4",
+    "gatsby-plugin-mdx": "^1.2.15",
     "gatsby-plugin-offline": "^3.2.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.3.0",
@@ -56,6 +56,7 @@
   "main": "n/a",
   "scripts": {
     "start": "gatsby develop --port 8030",
+    "clean": "gatsby clean",
     "build": "gatsby build --prefix-paths",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "lint": "eslint --fix \"src/**/*.{js,jsx}\""
