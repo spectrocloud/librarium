@@ -7,6 +7,18 @@ hideToC: true
 fullWidth: false
 ---
 
+# Integrations
+
+Integrations are the additional entities that are used to ensure and/or improve on the functionality of Kubernetes. Integrations are better understood as the options that are available for the various "layers" of the Spectro Cloud SaaS.
+
+# Layers
+
+Kubernetes, as the official document [says](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#what-kubernetes-is-not), is "not a traditional, all-inclusive PaaS system". As such, it requires a lot of [add-ons](https://kubernetes.io/docs/concepts/overview/components/#addons) tailored for specific uses. A full [list of add-ons](https://kubernetes.io/docs/concepts/cluster-administration/addons/) is available here.
+
+The specific uses (or the functionalities) that the add-ons provide are called "Layers" in the Spectro Cloud universe. For example, authentication is a layer which has the options of Dex and Permission Manager. Monitoring is another layer with options of Kubernetes Dashboard, Prometheus Grafana and a whole lot more.
+
+To learn more about individual integrations, use the search bar below to find a specific option. Alternatively, use the filter buttons to see the available options.
+
 import Integrations from "../src/components/Integrations"
 
 <Integrations />
