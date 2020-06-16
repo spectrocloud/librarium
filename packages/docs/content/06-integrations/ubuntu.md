@@ -1,6 +1,6 @@
 ---
 title: 'Ubuntu'
-metaTitle: 'Spectrocloud Concepts'
+metaTitle: 'Ubuntu in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['os']

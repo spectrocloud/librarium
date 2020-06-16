@@ -1,7 +1,7 @@
 ---
 title: 'CentOS'
-metaTitle: 'Spectrocloud Concepts'
-metaDescription: 'Most important concepts of Spectro Cloud'
+metaTitle: 'CentOS in Spectro Cloud'
+metaDescription: 'Using CentOS in a Spectro Cloud cluster profile'
 hiddenFromNav: true
 isIntegration: true
 category: ['os']

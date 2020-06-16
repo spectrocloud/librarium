@@ -1,7 +1,7 @@
 ---
 title: 'Calico'
-metaTitle: 'Spectrocloud Concepts'
-metaDescription: 'Most important concepts of Spectro Cloud'
+metaTitle: 'Calico Networking in Spectro Cloud'
+metaDescription: 'Choosing Calico for Kubernetes Networking within the Spectro Cloud dashboard'
 hiddenFromNav: true
 isIntegration: true
 category: ['networking']
