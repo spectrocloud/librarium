@@ -1,7 +1,7 @@
 ---
 title: 'Prometheus'
-metaTitle: 'Spectrocloud Concepts'
-metaDescription: 'Most important concepts of Spectro Cloud'
+metaTitle: 'Prometheus in Spectro Cloud'
+metaDescription: 'Integration of Prometheus into the Spectro Cloud SaaS'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
