@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "lerna run --parallel clean && lerna run --parallel start",
-    "build": "NODE_ENV='production' lerna run --parallel clean && lerna run --parallel build"
+    "build": "NODE_ENV='production' lerna run clean && lerna run build"
   },
   "dependencies": {
     "fuse.js": "^6.0.2"
