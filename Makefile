@@ -1,9 +1,5 @@
 .PHONY: initialize start commit build
 
-GATSBY_DOCS_URL ?= /
-GATSBY_API_URL ?= /api
-GATSBY_GLOSSARY_URL ?= /glossary
-
 initialize:
 	npx lerna bootstrap --hoist
 
@@ -17,4 +13,4 @@ commit:
 	./scripts/open-pr.sh
 
 build:
-	GATSBY_DOCS_URL=$(GATSBY_DOCS_URL) GATSBY_API_URL=$(GATSBY_API_URL) GATSBY_GLOSSARY_URL=$(GATSBY_GLOSSARY_URL) npm run build
+	npm run build

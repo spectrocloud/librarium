@@ -117,8 +117,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       prefix = '/api';
     }
 
-    console.log(prefix, node.fileAbsolutePath)
-
     if (config.gatsby && config.gatsby.trailingSlash) {
       createNodeField({
         name: `slug`,
