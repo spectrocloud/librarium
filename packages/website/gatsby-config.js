@@ -25,6 +25,13 @@ const plugins = [
     },
   },
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'api',
+      path: path.resolve(__dirname, "../api/content/"),
+    },
+  },
+  {
     resolve: `gatsby-plugin-prefetch-google-fonts`,
     options: {
       fonts: [

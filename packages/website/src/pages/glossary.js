@@ -4,7 +4,7 @@ import { Pagination } from 'antd';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from "styled-components";
 
-import DocsLayout from "@librarium/glossary/src/layouts/docs";
+import DocsLayout from "@librarium/glossary/src/templates/docs";
 
 //
 
@@ -30,6 +30,7 @@ const query = graphql`
           index
           hiddenFromNav
           isDocsPage
+          isApiPage
         }
       }
     }
@@ -39,10 +40,10 @@ const query = graphql`
 
 const ITEMS_PER_PAGE = 20;
 
-export default function GlossaryList() {
+export default function GlossaryList({location}) {
   const {allMdx} = useStaticQuery(query);
   const glossary = {
-    edges: allMdx.edges.filter(edge => !edge.node.fields.isDocsPage)
+    edges: allMdx.edges.filter(edge => !edge.node.fields.isDocsPage && !edge.node.fields.isApiPage)
   }
 
   const menu = {
@@ -78,7 +79,7 @@ export default function GlossaryList() {
   const pageCount = glossary.edges.length / ITEMS_PER_PAGE;
 
   return (
-    <DocsLayout menuEdges={menu.edges || []}>
+    <DocsLayout menuEdges={menu.edges || []} location={location}>
       {letters.map(renderLetter)}
       {items.map(renderItem)}
       {pageCount > 1 && <Pagination current={page} total={glossary.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Loadable from 'react-loadable';
 
 import Loader from "../../components/Loader";
+import Link from "../../components/Link";
 
 const SearchComponent = Loadable({
   loader: () => import('./search/index'),
@@ -38,24 +39,39 @@ const NavWrap = styled.div`
     }
   }
 `
+function isMenuActive(location, link) {
+  return location.pathname.startsWith(link)
+}
 
-const defaultMenu = [
+const DEFAULT_MENU = [
   {
     title: "Docs",
-    link: process.env.GATSBY_DOCS_URL,
-    isActive() {return true}
+    link: '/',
+    isActive(location) {
+      const othersAreActive = DEFAULT_MENU.filter(item => item.title !== "Docs").some(item => {
+        return item.isActive(location)
+      });
+
+      return !othersAreActive;
+    }
   }, {
     title: "API",
-    link: process.env.GATSBY_API_URL,
+    link: '/api',
+    isActive(location) {
+      return isMenuActive(location, '/api')
+    }
   }, {
     title: "Glossary",
-    link: process.env.GATSBY_GLOSSARY_URL,
+    link: '/glossary',
+    isActive(location) {
+      return isMenuActive(location, '/glossary')
+    }
   }
 ]
 
-export default function Header({menu = defaultMenu}) {
+export default function Header({menu = DEFAULT_MENU, location}) {
   function renderMenuItem({link, title, isActive = () =>  false}) {
-    return <a target="_blank" className={isActive() ? "isActive" : ""} href={link}>{title}</a>
+    return <Link className={isActive(location) ? "isActive" : ""} to={link}>{title}</Link>
   }
 
   return (

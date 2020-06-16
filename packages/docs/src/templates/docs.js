@@ -14,12 +14,15 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
   } = data;
   const config = useConfig();
 
+
+
+
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, config);
+    return DocsLayout.calculateMenuTree(allMdx.edges.filter(edge => !!edge.node.fields.isDocsPage), config);
   }, [allMdx.edges]);
 
   return (
-    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+    <Layout menu={menu} location={location} fullWidth={mdx.frontmatter?.fullWidth}>
       <DocsLayout
         menu={menu}
         mdx={mdx}
@@ -78,6 +81,7 @@ export const pageQuery = graphql`
             icon
             index
             hiddenFromNav
+            isDocsPage
           }
         }
       }

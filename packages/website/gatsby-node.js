@@ -33,17 +33,21 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         result.data.allMdx.edges.forEach(({ node }) => {
-          console.log(node);
-          if (!node.fields.isDocsPage) {
+          if (node.fields.slug === '/integrations' || node.fields.slug === '/glossary') {
             return;
+          }
+          let component =  path.resolve('../docs/src/templates/docs.js');
+          if (node.fields.slug.startsWith('/glossary')) {
+            component = path.resolve('../glossary/src/templates/docs.js')
+          }
+
+          if (node.fields.slug.startsWith('/api')) {
+            component = path.resolve('../api/src/templates/docs.js')
           }
 
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component:
-              node.fields.slug === '/integrations'
-                ? path.resolve('../docs/src/templates/integrations.js')
-                : path.resolve('../docs/src/templates/docs.js'),
+            component,
             context: {
               id: node.fields.id,
             },
@@ -77,6 +81,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === `Mdx`) {
     const isDocsPage = !!node.fileAbsolutePath.includes('/docs/content/');
+    const isApiPage = !!node.fileAbsolutePath.includes('/api/content/');
     const parent = getNode(node.parent);
 
     let value = parent.relativePath.replace(parent.ext, '');
@@ -103,7 +108,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value = '';
     }
 
-    const prefix = isDocsPage ? '' : '/glossary';
+    let prefix = '/glossary';
+    if (isDocsPage) {
+      prefix = ''
+    }
+
+    if (isApiPage) {
+      prefix = '/api';
+    }
+
+    console.log(prefix, node.fileAbsolutePath)
 
     if (config.gatsby && config.gatsby.trailingSlash) {
       createNodeField({
@@ -158,7 +172,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'isDocsPage',
       node,
-      value: !!node.fileAbsolutePath.includes('/docs/content/'),
+      value: isDocsPage,
     });
 
     createNodeField({
@@ -178,5 +192,29 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.logoUrl,
     });
+
+    createNodeField({
+      name: 'isApiPage',
+      node,
+      value: isApiPage,
+    });
+
+    createNodeField({
+      name: 'api',
+      node,
+      value: node.frontmatter.api,
+    });
+
+    if (node.frontmatter.api) {
+      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/')
+      const versionDirectory = fileAbsolutePaths[1].split('/').shift();
+      const endpointsPath = [fileAbsolutePaths[0], 'api', 'content', versionDirectory, "api.json"].join('/');
+
+      createNodeField({
+        name: 'version',
+        node,
+        value: versionDirectory,
+      });
+    }
   }
 };

@@ -1,58 +1,60 @@
-import React, { useMemo } from "react";
-import Helmet from "react-helmet";
-import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
-import styled from "styled-components";
+import React, { useMemo } from 'react';
+import Helmet from 'react-helmet';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import styled from 'styled-components';
 
-import { Link, NextPrevious } from "../../components";
-import { Edit, StyledMainWrapper } from "../../components/styles/Docs";
-import TableOfContents from "../../components/TableOfContents";
-import {useConfig} from "../../config"
-import { Github } from "styled-icons/fa-brands";
+import { Link, NextPrevious } from '../../components';
+import { Edit, StyledMainWrapper } from '../../components/styles/Docs';
+import TableOfContents from '../../components/TableOfContents';
+import { useConfig } from '../../config';
+import { Github } from 'styled-icons/fa-brands';
 
 export const calculateMenuTree = (edges, config) => {
   const originalData = edges
-  .filter((edge) => !edge.node.fields.hiddenFromNav)
-  .sort((edge1, edge2) => {
-    const edgeSlug1Length = edge1.node.fields.slug.split("/").length;
-    const edgeSlug2Length = edge2.node.fields.slug.split("/").length;
+    .filter(edge => !edge.node.fields.hiddenFromNav)
+    .sort((edge1, edge2) => {
+      const edgeSlug1Length = edge1.node.fields.slug.split('/').length;
+      const edgeSlug2Length = edge2.node.fields.slug.split('/').length;
 
-    const edgeIndex1 = edge1.node.fields.index;
-    const edgeIndex2 = edge2.node.fields.index;
+      const edgeIndex1 = edge1.node.fields.index;
+      const edgeIndex2 = edge2.node.fields.index;
 
-     if(edgeSlug1Length < edgeSlug2Length) {
-       return -1;
-     };
+      if (edgeSlug1Length < edgeSlug2Length) {
+        return -1;
+      }
 
-     if(edgeSlug1Length > edgeSlug2Length) {
-      return 1;
-    };
+      if (edgeSlug1Length > edgeSlug2Length) {
+        return 1;
+      }
 
-    if(edgeIndex1 < edgeIndex2) {
-      return -1;
-    };
+      if (edgeIndex1 < edgeIndex2) {
+        return -1;
+      }
 
-    if(edgeIndex1 > edgeIndex2) {
-      return 1;
-    };
-  });
+      if (edgeIndex1 > edgeIndex2) {
+        return 1;
+      }
+    });
 
   const tree = originalData.reduce(
     (
       accumulator,
       {
         node: {
-          fields: { slug, title, icon, version, api },
+          fields: { slug, title, icon, api },
         },
       }
     ) => {
-      const parts = slug.split("/");
+      let slugWithoutBase = slug;
+      if (config?.base) {
+        slugWithoutBase = slug.split(config.base).pop();
+      }
+      const parts = slugWithoutBase.split('/');
 
       let { items: prevItems } = accumulator;
 
       const slicedParts =
-        config?.gatsby && config?.gatsby?.trailingSlash
-          ? parts.slice(1, -2)
-          : parts.slice(1, -1);
+        config?.gatsby && config?.gatsby?.trailingSlash ? parts.slice(1, -2) : parts.slice(1, -1);
 
       for (const part of slicedParts) {
         let tmp = prevItems && prevItems.find(({ label }) => label == part);
@@ -67,14 +69,9 @@ export const calculateMenuTree = (edges, config) => {
         }
         prevItems = tmp.items;
       }
-      const slicedLength =
-        config?.gatsby?.trailingSlash
-          ? parts.length - 2
-          : parts.length - 1;
+      const slicedLength = config?.gatsby?.trailingSlash ? parts.length - 2 : parts.length - 1;
 
-      const existingItem = prevItems.find(
-        ({ label }) => label === parts[slicedLength]
-      );
+      const existingItem = prevItems.find(({ label }) => label === parts[slicedLength]);
 
       if (existingItem) {
         existingItem.url = slug;
@@ -115,15 +112,24 @@ const StickyWrap = styled.div`
   width: 150px;
 `;
 
-export default function MDXLayout({ location, mdx, edges, menu, docsLocation, extraContent }) {
+export default function MDXLayout({
+  location,
+  mdx,
+  edges,
+  menu,
+  docsLocation,
+  extraContent,
+  hideToC,
+  fullWidth
+}) {
   const config = useConfig();
 
   const activeMenu = useMemo(() => {
     if (!location) {
       return [];
     }
-    const mainUrl = location.pathname.split("/")[1];
-    const nav = menu.items.find((item) => item.label === mainUrl);
+    const mainUrl = location.pathname.split('/')[1];
+    const nav = menu.items.find(item => item.label === mainUrl);
     if (!nav) {
       return [];
     }
@@ -139,9 +145,7 @@ export default function MDXLayout({ location, mdx, edges, menu, docsLocation, ex
   let canonicalUrl = config?.gatsby?.siteUrl;
 
   canonicalUrl =
-    config?.gatsby?.pathPrefix !== "/"
-      ? canonicalUrl + config?.gatsby?.pathPrefix
-      : canonicalUrl;
+    config?.gatsby?.pathPrefix !== '/' ? canonicalUrl + config?.gatsby?.pathPrefix : canonicalUrl;
   canonicalUrl = canonicalUrl + mdx.fields.slug;
 
   return (
@@ -149,31 +153,23 @@ export default function MDXLayout({ location, mdx, edges, menu, docsLocation, ex
       <Helmet>
         {metaTitle ? <title>{metaTitle}</title> : null}
         {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-        {metaDescription ? (
-          <meta name="description" content={metaDescription} />
-        ) : null}
+        {metaDescription ? <meta name="description" content={metaDescription} /> : null}
         {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-        {metaDescription ? (
-          <meta property="og:description" content={metaDescription} />
-        ) : null}
-        {metaTitle ? (
-          <meta property="twitter:title" content={metaTitle} />
-        ) : null}
-        {metaDescription ? (
-          <meta property="twitter:description" content={metaDescription} />
-        ) : null}
+        {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+        {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+        {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <ContentWrap>
-        <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth}>
+        <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth || fullWidth}>
           <MDXRenderer>{mdx.body}</MDXRenderer>
           {extraContent}
           <div>
             <NextPrevious mdx={mdx} nav={activeMenu} />
           </div>
         </StyledMainWrapper>
-        {!mdx.frontmatter?.hideToC && (
+        {(!hideToC && !mdx.frontmatter?.hideToC) && (
           <RightSidebar>
             <StickyWrap>
               <Edit>
