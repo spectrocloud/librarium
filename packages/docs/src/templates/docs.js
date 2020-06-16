@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Layout, DocsLayout, useConfig } from '@librarium/shared';
 import App from '../App';
 
-function MDXLayout({ data = {}, location }) {
+function MDXLayout({ data = {}, location, children, ...rest }) {
   const {
     allMdx,
     mdx,
@@ -14,29 +14,31 @@ function MDXLayout({ data = {}, location }) {
   } = data;
   const config = useConfig();
 
+
+
+
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, config);
+    return DocsLayout.calculateMenuTree(allMdx.edges.filter(edge => !!edge.node.fields.isDocsPage), config);
   }, [allMdx.edges]);
 
   return (
-    <Layout menu={menu} fullWidth={mdx.frontmatter?.fullWidth}>
+    <Layout menu={menu} location={location} fullWidth={mdx.frontmatter?.fullWidth}>
       <DocsLayout
         menu={menu}
         mdx={mdx}
         edges={allMdx.edges}
         docsLocation={docsLocation}
         location={location}
+        {...rest}
       />
     </Layout>
   );
 }
 
-export default function AppWrap({ children, data, location }) {
+export default function AppWrap(props) {
   return (
     <App>
-      <MDXLayout data={data} location={location}>
-        {children}
-      </MDXLayout>
+      <MDXLayout {...props} />
     </App>
   );
 }
@@ -79,6 +81,7 @@ export const pageQuery = graphql`
             icon
             index
             hiddenFromNav
+            isDocsPage
           }
         }
       }

@@ -14,7 +14,7 @@ const plugins = [
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'glossary',
-      path: `${__dirname}/content/`,
+      path:  path.resolve(__dirname, "../glossary/content/"),
     },
   },
   {
@@ -22,6 +22,13 @@ const plugins = [
     options: {
       name: 'docs',
       path: path.resolve(__dirname, "../docs/content/"),
+    },
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'api',
+      path: path.resolve(__dirname, "../api/content/"),
     },
   },
   {
@@ -43,17 +50,13 @@ const plugins = [
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 1035,
-            sizeByPixelDensity: true,
           },
         },
         {
           resolve: 'gatsby-remark-copy-linked-files',
         },
       ],
-      extensions: ['.mdx', '.md'],
-      shouldBlockNodeFromTransformation(node) {
-        return node.sourceInstanceName === "docs"
-      }
+      extensions: ['.mdx', '.md']
     },
   },
   {

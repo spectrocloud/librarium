@@ -1,7 +1,5 @@
 const componentWithMDXScope = require('gatsby-plugin-mdx/component-with-mdx-scope');
-
 const path = require('path');
-
 const startCase = require('lodash.startcase');
 
 const config = require('./config');
@@ -19,9 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   fields {
                     id
-                  }
-                  tableOfContents
-                  fields {
+                    isDocsPage
                     slug
                   }
                 }
@@ -37,9 +33,21 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         result.data.allMdx.edges.forEach(({ node }) => {
+          if (node.fields.slug === '/integrations' || node.fields.slug === '/glossary') {
+            return;
+          }
+          let component =  path.resolve('../docs/src/templates/docs.js');
+          if (node.fields.slug.startsWith('/glossary')) {
+            component = path.resolve('../glossary/src/templates/docs.js')
+          }
+
+          if (node.fields.slug.startsWith('/api')) {
+            component = path.resolve('../api/src/templates/docs.js')
+          }
+
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve('./src/templates/docs.js'),
+            component,
             context: {
               id: node.fields.id,
             },
@@ -50,7 +58,7 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -72,17 +80,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
+    const isDocsPage = !!node.fileAbsolutePath.includes('/docs/content/');
+    const isApiPage = !!node.fileAbsolutePath.includes('/api/content/');
     const parent = getNode(node.parent);
 
     let value = parent.relativePath.replace(parent.ext, '');
 
     const slugs = value.split('/').map((slugPart, index, slugs) => {
-      const [_, ...rest] = slugPart.split('-')
+      const [_, ...rest] = slugPart.split('-');
       if (index === slugs.length - 1) {
         createNodeField({
           name: `index`,
           node,
-          value: _
+          value: _,
         });
       }
 
@@ -90,25 +100,34 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         return _;
       }
 
-      return rest.join('-')
-    })
+      return rest.join('-');
+    });
 
     value = slugs.join('/');
     if (value === 'index') {
       value = '';
     }
 
+    let prefix = '/glossary';
+    if (isDocsPage) {
+      prefix = ''
+    }
+
+    if (isApiPage) {
+      prefix = '/api';
+    }
+
     if (config.gatsby && config.gatsby.trailingSlash) {
       createNodeField({
         name: `slug`,
         node,
-        value: value === '' ? `/` : `/${value}/`,
+        value: value === '' ? `${prefix}/` : `${prefix}/${value}/`,
       });
     } else {
       createNodeField({
         name: `slug`,
         node,
-        value: `/${value}`,
+        value: `${prefix}/${value}`,
       });
     }
 
@@ -149,6 +168,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
 
     createNodeField({
+      name: 'isDocsPage',
+      node,
+      value: isDocsPage,
+    });
+
+    createNodeField({
       name: 'isIntegration',
       node,
       value: node.frontmatter.isIntegration,
@@ -165,5 +190,29 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       value: node.frontmatter.logoUrl,
     });
+
+    createNodeField({
+      name: 'isApiPage',
+      node,
+      value: isApiPage,
+    });
+
+    createNodeField({
+      name: 'api',
+      node,
+      value: node.frontmatter.api,
+    });
+
+    if (node.frontmatter.api) {
+      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/')
+      const versionDirectory = fileAbsolutePaths[1].split('/').shift();
+      const endpointsPath = [fileAbsolutePaths[0], 'api', 'content', versionDirectory, "api.json"].join('/');
+
+      createNodeField({
+        name: 'version',
+        node,
+        value: versionDirectory,
+      });
+    }
   }
 };
