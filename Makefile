@@ -13,4 +13,6 @@ commit:
 	./scripts/open-pr.sh
 
 build:
+	rm -rf public
 	npm run build
+	mv packages/website/public/ public
