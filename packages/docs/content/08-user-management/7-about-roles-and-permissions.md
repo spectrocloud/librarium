@@ -9,7 +9,7 @@ fullWidth: false
 
 # Permissions
 
-Permissions are of the format `component.operation` where *&lt;component&gt;* refers to a resource. Every resource can exist in multiple scopes. For more details, please refer to the [RBAC's Resource Scope Matrix](/user-management/rbac). As mentioned previously, a *permission* contains multiple *scopes.*
+Permissions are of the format `component.operation` where *&lt;component&gt;* refers to a resource. Every resource can exist in multiple scopes. As mentioned previously, a *permission* contains multiple *scopes.*
 
 | Component | Operations | Scopes |
 |---|:---:|---:|
