@@ -40,10 +40,10 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 # Tenant Portal - Launch Cloud Gateway
 
-*Close the 'Create New Gateway' dialog if still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
-* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the SaaS portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue. 
+* Close the 'Create New Gateway' dialog if still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
+* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the SaaS portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
 * Click on "Configure" button to invoke the Spectro Cloud Configuration Dialog. Provide vCenter credentials and proceed to the next configuration step.
-* Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses. 
+* Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
 * Click on Deploy, to initiate provisioning of the gateway cluster. The status on the UI should change to 'Provisioning' and eventually 'Running' when gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors, or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
 * Once the Gateway transitions to Running state, it is fully provisioned and ready to bootstrap tenant cluster requests.
 

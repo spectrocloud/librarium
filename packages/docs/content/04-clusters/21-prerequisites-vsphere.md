@@ -13,7 +13,7 @@ Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/prod
 
 [ESXi 6.5 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
 
-[ESXi 7.0 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html#:~:text=ESXi%207.0%20requires%20a%20minimum,be%20enabled%20on%20x64%20CPUs)
+[ESXi 7.0 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
 
 # Configuration Requirements
 
@@ -22,71 +22,6 @@ The vSphere environment should be configured with a **DHCP service** in the prim
 # Permissions
 
 The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the`‘Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
-
-# User requirements to allow upload of OVA/OVF
-
-* Datastore > Allocate space
-* Network > Assign network
-* Virtual machine > Configuration > Add new disk
-* Virtual machine > Configuration > Advanced
-* vApp > Import
-
-# User requirements to allow Spectro orchestrator functionality
-
-## Create Virtual Machine Permissions
-
-A role can be added on the Datacenter:
-
-* Virtual machine.Configuration.Add new disk (if creating a new virtual disk)
-* Virtual machine.Configuration.Add existing disk (if using an existing virtual disk)
-* Virtual machine.Configuration.Configure Raw device (if using an RDM or SCSI pass-through device)
-
-On the destination Host, Compute Cluster, or Resource Pool:
-
-* Resource.Assign virtual machine to resource pool
-
-On the destination Datastore or the Datastore Folder:
-
-* Datastore.Allocate space
-
-On the Network that the Virtual Machine will be assigned to:
-
-* Network.Assign network
-
-# Power Management on Virtual Machines
-
-A role can be added on the Datacenter in which the Virtual Machine is deployed:
-
-* Virtual machine .Interaction .Power On
-
-On the Virtual Machine or Virtual Machine Folder:
-
-* Virtual machine .Interaction .Power On
-
-# Deploy a Virtual Machine from Template
-
-A role can be added on the destination VM Folder or Datacenter:
-
-* Virtual machine .Inventory.Create from existing
-* Virtual machine.Configuration.Add new disk
-
-On the Template or Template Folder:
-
-* Virtual machine .Provisioning.Deploy template
-
-On the destination Host, Cluster or Resource Pool:
-
-* Resource.Assign virtual machine to resource pool
-
-On the destination Datastore or Datastore Folder:
-
-* Datastore.Allocate space
-
-On the Network that the Virtual Machine will be assigned to:
-
-* Network.Assign network
-
-___
 
 | vSphere Object | Privileges |
 | --- | --- |
@@ -182,4 +117,3 @@ ___
 | | vApp instance configuration
 | vSphere Tagging| Create vSphere Tag
 | | Edit vSphere Tag
-
