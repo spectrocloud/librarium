@@ -11,7 +11,7 @@ fullWidth: false
 
 RBAC stands for Role-Based Access Control. This is a method that allows for the same user to have a different type of access control based on the resource being accessed. In other words, whereas a user logged in to a computer as an admin can access all parts and data of the system, a guest user cannot. RBAC is an expansion as well as a modification of this scenario. RBAC allows the admin to grant full and unrestricted access to some parts of the system and withhold it in some others. A few files can be made read-only for the guest. The alternative would be to make the guest either an admin or to make all types of access partially restricted. Both cases are undesirable and that is where RBAC is helpful.
 
-This page captures Spectro Cloud's RBAC design on how to grant granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
+Spectro Cloud's RBAC design allows granting granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
 
 These settings can be accessed by the tenant admin in the Spectro Cloud dashboard: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
 
@@ -21,32 +21,18 @@ A scope defines the resources on which the role has a coverage. The scope will b
 
 # Creating roles
 
-Clicking on a role will show the permissions available under this role. Default roles (built-in into the Spectro Cloud system) cannot be edited or deleted. A new role can be created either under the tenant scope or the project scope but not both. Note that roles must have unique names. The names are case sensitive (JOHN_DOE is different from john_doe.) After entering the role name, use the checkboxes to select the permissions. The checkbox list can be expanded to fine tune the required permissions.
+Clicking on a role will show the permissions available under this role. Default roles (built-in into the Spectro Cloud system) cannot be edited or deleted. A new role can be created either under the tenant scope or the project scope but not both. Note that roles must have unique names. The names are case insensitive (JOHN_DOE is the same as john_doe.) After entering the role name, use the checkboxes to select the permissions. The checkbox list can be expanded to fine tune the required permissions.
 
 * **Permissions** determine what operations are allowed on a resource.
 * A **Role** is a collection of permissions.
 
 ## Permissions
 
-Permissions can be defined in the format `component.operation` like `cluster.create`, `cluster.edit`, `cluster.activate`, etc. For a resource, the permissions spectrum fall into five categories - *Create, Get, Update, Delete, Admin.* Any other permissions on thet resource will be under the *Edit* and the *Admin* spectrum.
-
-* For example, if user-A has the `clusterProfile.publish` permission then user-A can publish the cluster profile. However, if user-A does not have `clusterProfile.publish` but has the `clusterProfile.edit` permission, then user-A can still publish the cluster profile.
+Permissions can be defined in the format `component.operation` like `cluster.create`, `cluster.edit`, `cluster.activate`, etc.
 
 ## Roles
 
 A *role* is a collection of permissions. The role will have a *type* and a *scope*. The type signifies the creator's scope and the scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under tenant and the project scopes cannot be modified by the tenant or the project admin.
-
-### Resource Scope Matrix
-
-| Type             	| Tenant 	                                      | Project 	                                    |
-|-------------------|-----------------------------------------------|-----------------------------------------------|
-| Roles            	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
-| Cloud Accounts   	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
-| Pack Registries  	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Users/Team       	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| SAML             	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Projects         	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Cluster Profiles 	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
 
 ## Scenarios
 
