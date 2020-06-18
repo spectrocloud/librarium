@@ -12,7 +12,6 @@ Spectro Cloud provisions cluster infrastructure and cluster resources using your
 # AWS Cloud Account Permissions
 
 Ensure that the IAM user or the ROOT user has the following minimum permissions:
-
 ```
 {
     "Version": "2012-10-17",
