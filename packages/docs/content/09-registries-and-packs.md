@@ -15,13 +15,15 @@ As detailed in the [Concept Overviews](introduction/concept-overviews) section, 
 
 ## Overview
 
-A pack is a collection of files like manifest files, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers like os, kubernetes, network, storage, and addon. It is a collection of metadata definition as an implementation for a layer. In other words, a pack is a set of options for the layers. It has to be remembered that the packs can only contain non-conflicting layer options. For example, a pack can have either Calico or Flannel for the CNI layer, but not both.
+A pack is a collection of files like manifest files, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as the operating systems, Kubernetes, network, storage, and add-ons. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
+
+It is a collection of metadata definition as an implementation for a layer. In other words, a pack is a set of options for the layers. It has to be remembered that the packs can only contain non-conflicting layer options. For example, a pack can have either Calico or Flannel for the CNI layer, but not both.
 
 Read more about packs [here](/introduction/concept-overviews#packregistry-publicandprivate).
 
 ## Structure
 
-Spectro Cloud provides a rich collection of out-of-the-box packs, but a pack can also be custom-built by following the structure shown below:
+Spectro Cloud provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom built packs. The following is a typical structure of a pack:
 
     | - PACKNAME           ==> pack directory name
         | - pack.json        ==> mandatory : pack config
@@ -35,21 +37,21 @@ Spectro Cloud provides a rich collection of out-of-the-box packs, but a pack can
 
 ## Overview
 
-The registry is a server-side application that stores the packs locally or external file system and distribution of packs to the clients. It can be though of as a central location where resources are stored and maintained. Generally, Kubernetes as well as all associated add-ons are maintained in public registries. However, there are options available to use private registries, for example, if a user wants to have their own hardened security OS. Spectro Cloud makes it easy to pull add-ons from private registries within the packs by using a CLI. The details are found in the [CLI based pack management](/registries-and-packs/cli-pack-mgmt-custom-registry) section.
+The registry is a server-side application to store and serve packs to its clients. Packs from a registry are retrieved and presented as options during the creation of a cluster profile. Spectro cloud supports configuration of multiple registries.
 
 ## Default Registry
 
-The default registry is public and managed by Spectro Cloud. All the basic packs are available by default and make it easier for a user to launch a cluster without any additional setup. Spectro Cloud also takes care of upgrading the existing packs in the registry whenever upgrades are available.
+The default registry is Spectro Cloud’s public registry. It consists of several packs that make it easy for a user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Spectro Cloud maintains all packs in this registry and takes care of upgrading packs in the registry whenever required.
 
 ## Custom Registry
 
-In addition to the default registry, a user can set up the custom registry easily using the Spectro registry docker image and upload the custom packs using the Spectro CLI. A custom registry is suitable mainly for users who want to have a tight control over the registry and packs content.
+Users can set up a custom registry using a docker image provided by Spectro Cloud to upload and maintain custom packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the registry. Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
 
 # Spectro CLI
 
 ## Overview
 
-Spectro CLI is a Command Line Interface to the Spectro registry server for uploading or downloading the packs using commands. CLI must authenticate with the registry before performing executing any CLI command.
+Spectro CLI is a Command Line Interface to interact with the Spectro Cloud Registry server for uploads and downloads of packs. CLI must authenticate with the registry before executing any CLI command.
 
 ## Download
 

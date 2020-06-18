@@ -7,9 +7,11 @@ icon: ""
 
 # Add-on packs
 
-An add-on pack is an integration layer that will be installed on top of the Kubernetes stack. Examples of add-on packs are logging, monitoring, load balancers, security, etc. The below example shows how to build the Permission Manager auth pack and how to push it to the custom registry server using Spectro CLI commands.
+Add-on packs can be built using Kubernetes manifests. These manifest contain deployment specifications for Kuberntes objects like pods, services, deployments, namespaces, secrets etc.
 
-1. Create the pack directory named “permission-manager”.
+The example below shows how to build the Permission Manager auth pack and push to the pack registry server using the Spectro Cloud CLI.
+
+1. Create the pack directory named `permission-manager`.
 2. Create the metadata file named `pack.json`.
 ```
 {
@@ -25,11 +27,137 @@ An add-on pack is an integration layer that will be installed on top of the Kube
 }
 ```
 
-3. Create the `manifests` directory under the pack directory.
-4. Copy the manifest files into the `manifests` directory and refer the manifest in the `pack.json` as shown in step 2.
-5. Copy all the parameters or values to the `values.yaml`.
-6. The following Spectro CLI command can be used to push the custom built pack into the custom registry:
+3. Create a sub-directory called `manifests`.
+4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, *{{ .Values.namespace}}*. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
+
+permission-manager.yaml (partial)
+```
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace | quote }}
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auth-password-secret
+  namespace: {{ .Values.namespace | quote }}
+type: Opaque
+stringData:
+  password: {{ .Values.authPassword }}
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: template-namespaced-resources___operator
+rules:
+  - apiGroups:
+      - "*"
+    resources:
+      - "*"
+    verbs:
+      - "*"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: template-namespaced-resources___developer
+rules:
+  - apiGroups:
+      - "*"
+    resources:
+      # - "bindings"
+      - "configmaps"
+      - "endpoints"
+      # - "limitranges"
+      - "persistentvolumeclaims"
+      - "pods"
+      - "pods/log"
+      - "pods/portforward"
+      - "podtemplates"
+      - "replicationcontrollers"
+      - "resourcequotas"
+      - "secrets"
+      # - "serviceaccounts"
+      - "services"
+      # - "controllerrevisions"
+      # - "statefulsets"
+      # - "localsubjectaccessreviews"
+      # - "horizontalpodautoscalers"
+      # - "cronjobs"
+      # - "jobs"
+      # - "leases"
+      - "events"
+      - "daemonsets"
+      - "deployments"
+      - "replicasets"
+      - "ingresses"
+      - "networkpolicies"
+      - "poddisruptionbudgets"
+      # - "rolebindings"
+      # - "roles"
+    verbs:
+      - "*"
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: template-namespaced-resources___read-only
+rules:
+  - apiGroups:
+      - "*"
+    resources:
+      - "configmaps"
+      - "endpoints"
+      - "persistentvolumeclaims"
+      - "pods"
+      - "pods/log"
+      - "pods/portforward"
+      - "podtemplates"
+      - "replicationcontrollers"
+      - "resourcequotas"
+      - "secrets"
+      - "services"
+      - "statefulsets"
+      - "cronjobs"
+      - "jobs"
+      - "events"
+      - "daemonsets"
+      - "deployments"
+      - "replicasets"
+      - "ingresses"
+      - "networkpolicies"
+      - "poddisruptionbudgets"
+    verbs: ["get", "list", "watch"]
+
+---
+...
+```
+
+5.  Create a file called “values.yaml” to provide configurable manifest parameters.
+
+values.yaml
+```
+manifests:
+  permission-manager:
+  
+    #Namespace under which permission-manager will be deployed
+    namespace: "permission-manager"
+
+    #Login password for permission-manager
+    authPassword: "welcome123"
+```
+
+6. Using Spectro Cloud CLI  push the newly built pack to the pack registry:
 
 ```
-$spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
+$spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
 ```
