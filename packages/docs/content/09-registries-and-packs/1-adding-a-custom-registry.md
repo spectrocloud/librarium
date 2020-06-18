@@ -7,19 +7,23 @@ icon: ""
 
 # Adding custom registries
 
-In the event of the default registries not meeting a user's requirements, custom registries can be easily created.
+Setting up a custom pack registry involves the installation of a registry server and configuring it with the tenant console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the registry. Pack contents are periodically synchronized with the tenant console.
 
 # Deploying a registry server
 
-* Configure the user credentials by using the `htpasswd` utility. Store the credentials in a file and mount it inside a docker container.
+Spectro Cloud provides a docker image for the registry server. The following steps need to be performed to deploy registry server using this docker image:-
+
+* Configure the user credentials by using the `htpasswd` utility. Store the credentials in a file locally. This file will be mounted inside a docker container.
     ```
     htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
+    ```
 
-* Create the directory named "certs" and copy the TLS certificates into this directory. This directory also is to be mounted inside the docket container.
-* The registry's data volume can be configured locally or in an external file system for storing the packs content. An external file system is recommended as the pack content will never be lost in case the host is terminated.
+* Create a directory for certificates and copy the desired tls certificates into this directory. This directory will be mounted inside the registry docker container. Example : `/root/certs`
+* Pack contents in a registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can easily mounted on another registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro registry docker image using docker CLI.
  ```
     docker pull spectro-registry:latest
+```
 
 * Create the docker container using the docker `run` command
     * HTTPS mode
@@ -52,13 +56,18 @@ In the event of the default registries not meeting a user's requirements, custom
             -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
             -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             spectro-registry:latest
+        ```
+* Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via envirnment-specific constructs like Security Groups, Firewalls, etc.
+* Verify installation by ...
+
+# VERIFICATION OF THE INSTALLATION PENDING!
 
 # Create a custom registry in Spectro Cloud SaaS
 
-Once the deployment of the registry server is completed, then it is required to create the registry in the Spectro Cloud SaaS platform.
+Once the deployment of the registry server is complete, configure it with the tenant console as follows:-
 
-1. In the Spectro Cloud dashboard, go to Admin -> Settings -> Pack Registries
+1. Sign in to the Spectro Cloud dashboard as a tenant admin. Go to Admin -> Settings -> Pack Registries
 1. Click on "Add new Pack Registry" and provide the registry name, endpoint and user credentials.
 1. Click on "Confirm" once the details are filled.
 
-After successfully creating a registry, the Spectro Cloud SaaS will sync all the packs from the registry periodically. So, the user can start pushing the packs via the Spectro CLI and all these packs are available in the Spectro Cloud dashboard for the user to start creating a profile.
+Upon successful registration, users can build and deploy custom packs on to the custom registry and use these packs in their cluster profiles.

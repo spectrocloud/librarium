@@ -9,94 +9,44 @@ fullWidth: false
 
 # RBAC
 
-This page captures the Hubble (Spectro Cloud's Engine) RBAC's design on how to grant granular access to resources and its operations. This is achieved using Roles and Resources Access Control List. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
+RBAC stands for Role-Based Access Control. This is a method that allows for the same user to have a different type of access control based on the resource being accessed. In other words, whereas a user logged in to a computer as an admin can access all parts and data of the system, a guest user cannot. RBAC is an expansion as well as a modification of this scenario. RBAC allows the admin to grant full and unrestricted access to some parts of the system and withhold it in some others. A few files can be made read-only for the guest. The alternative would be to make the guest either an admin or to make all types of access partially restricted. Both cases are undesirable and that is where RBAC is helpful.
 
-* **Permissions** determine what operations are allowed on a resource
-* A **Role** is a collection of permissions
-* A **Member** can be a user, team/user-group, or project
+This page captures Spectro Cloud's RBAC design on how to grant granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
 
-## Design
+These settings can be accessed by the tenant admin in the Spectro Cloud dashboard: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
 
-The design is based on the [GCP IAM](https://cloud.google.com/iam/docs/overview).
+## Scope
 
-### Scopes
+A scope defines the resources on which the role has a coverage. The scope will be either tenant or project. For example, a role with the scope "project" can operate on only the projects. A combination of the user and the roles given to a user indicates the totality of the accesses made available to this user. The [Scenarios](/user-management/rbac#scenarios) section of the page clarifies this with an example.
 
-![hubble_rbac_scope](hubble_rbac_scope.png)
+# Creating roles
 
-* Scopes control the visibility of the resource
-  * There are 3 scopes: System, Tenant and Project
-* Resources created in the higher scope will be visible in the lower scope as read-only
-  * Profile created by a tenant will be available in all the tenant's created projects
-* Resource Isolation: Resources within the same scope will be restricted to the respective scope entity
-  * Profiles created in project-1 will not be available in project-2 of the same tenant
-* Resources with the same name can co-exist across scopes and will be distinguished with a scope prefix (icon)
-  * A profile with the same name can be created in the tenant scope as well as the project scope. This resource will have the scope information which helps to distinguish between the two.
+Clicking on a role will show the permissions available under this role. Default roles (built-in into the Spectro Cloud system) cannot be edited or deleted. A new role can be created either under the tenant scope or the project scope but not both. Note that roles must have unique names. The names are case sensitive (JOHN_DOE is different from john_doe.) After entering the role name, use the checkboxes to select the permissions. The checkbox list can be expanded to fine tune the required permissions.
 
-### Permissions
+* **Permissions** determine what operations are allowed on a resource.
+* A **Role** is a collection of permissions.
 
-* The granularity of Permissions will be mapped to API operations.
-* Permissions can be defined in the format `component.operation` like `spectrocluster.create`, `spectrocluster.edit`, `spectrocluster.activate`, etc.
-* Permissions will have a *scope* defined. Based on the scope type, the permissions will be limited during the role creation.
- * If a tenant creates a role, only then will the permissions with tenant and project scope be shown.
-For a resource, the permissions spectrum fall into five categories - *Create, Read, Edit, Delete, Admin.* Any other permissions on thet resource will be under the *Edit* and the *Admin* spectrum.
- * For example, if user-A has the `bundle.publish` permission then user-A can publish the bundle. However, if user-A does not have `bundle.publish` but has the `bundle.edit` permission, then user-A can still publish the bundle.
+## Permissions
 
-### Roles
+Permissions can be defined in the format `component.operation` like `cluster.create`, `cluster.edit`, `cluster.activate`, etc. For a resource, the permissions spectrum fall into five categories - *Create, Get, Update, Delete, Admin.* Any other permissions on thet resource will be under the *Edit* and the *Admin* spectrum.
 
- * A *role* is a collection of permissions.
- * The role will have a *type* and a *scope*. The type signifies the creator's scope and the scope signifies the role visibility.
-   * A SuperAdmin (the tenant admin) can create a role with the scope as *tenant* and this role type will be *system*. This role will be visible in the tenant namespace alone. Based on the role's scope, the permissions will be restricted to the permission's scope list.
-   So the SuperAdmin can create a role like *ProfileEditor* of the scope *project* and the *type* will be *system*. The *ProfileEditor* will be visible under tenant and the project scopes cannot be modified by the tenant or the project admin.
+* For example, if user-A has the `clusterProfile.publish` permission then user-A can publish the cluster profile. However, if user-A does not have `clusterProfile.publish` but has the `clusterProfile.edit` permission, then user-A can still publish the cluster profile.
 
-### SuperAdmin, Tenant, Project and User
+## Roles
 
-* Everyone is a user. A user with the *SuperAdmin* role will become a *SuperAdmin* as well as a tenant.
-
-* A project acts as a namespace for the resource management.
-
-### Access Control
-
-* The *SuperAdmin*, *Tenant*, *Project* and *User* will have roles. Every operation requires a set of permissions to operate on. The access control will be derived from the resource and user context.
-
-* The access control will be the union of the permissions from the roles and the inherited roles from a membership.
-  * Consider a user-A belonging to a team *team-A* where *team-A* has the role permission `spectrocluster.creator`. Now even if the user-A has only the `spectrocluster.viewer` then user-A still gets the role permissions of `spectrocluster.creator` because of the team membership. The same applies to project memberships.
-
-### ACL Meta & Operations
-
-* For each resource, the Access Control List (ACL) is captured. The ACL meta contains the following information:
-  * TenantUid: Under which tenant the resource is created
-  * ProjectUid: Under which project the resource is created
-  * OwnerUid: ID of the user that created the resource.
-  * Type: The creator's scope, like *System*, *Tenant* or *Project*.
-
-* Using the ACL Meta, the access control can be derived for a user's operation.
-
-* Access control operations:
-  * Viewing a resource will be based on membership.
-    * If a user is a part of a project then the user can view the Systems, its tenants and the project's cluster profiles.
-  * Resource creation and modification operations will be based on members and membership roles
-    * If a user is a part of a project-1 with the membership role `ClusterProfileAdmin` and also a part of another project project-2 with the membership role `ClusterProfileViewer`, then the user can create and modify cluster profiles from project-1 but can only view the profiles in the project-2.
-    * If the same user has a role `ClusterProfileAdmin` associated with them, then the user can create and modify the cluster profile in project-2.
-  * Resource modification operations will be applicable within the same scope
-    * A resource created at the tenant level cannot be modified at the project level.
-  ![permissions](permissions.png)
-  * Resource listings are based on the scope context. At the project scope level, the system and tenant scope resources are inherited with a read-only permmission.
-  ![permissions inherited](permissions_inherited.png)
+A *role* is a collection of permissions. The role will have a *type* and a *scope*. The type signifies the creator's scope and the scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under tenant and the project scopes cannot be modified by the tenant or the project admin.
 
 ### Resource Scope Matrix
 
-|                  	| System 	                                      | Tenant 	                                      | Project 	                                    |
-|------------------	|:---------------------------------------------:|:---------------------------------------------:|:---------------------------------------------:|
-| Roles            	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
-| Cloud Accounts   	|        	                                      |    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
-| Pack Registries  	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Git Registries   	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Users/Team       	|         	                                    |    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| SAML             	|         	                                    |    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Tenant           	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |         	                                    |
-| Projects         	|         	                                    |    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
-| Cluster Profiles 	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
-| SpectroCluster   	|         	                                    |         	                                    |    ![check_mark_64](check_mark_64_e1.png)    	|
+| Type             	| Tenant 	                                      | Project 	                                    |
+|-------------------|-----------------------------------------------|-----------------------------------------------|
+| Roles            	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
+| Cloud Accounts   	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
+| Pack Registries  	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
+| Users/Team       	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
+| SAML             	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
+| Projects         	|    ![check_mark_64](check_mark_64_e1.png)   	|         	                                    |
+| Cluster Profiles 	|    ![check_mark_64](check_mark_64_e1.png)   	|    ![check_mark_64](check_mark_64_e1.png)    	|
 
 ## Scenarios
 
@@ -107,7 +57,7 @@ The SuperAdmin creates the cluster profile CP1 and the tenant T1 creates the clu
 
 |   |   |   |
 |---|---|---|
-| Projects listed for User U1 <br />| P1 and P2<br />| U1 is associated only with P1 and P2 <br />|
+| Projects listed for User U1 | P1 and P2| U1 is associated only with P1 and P2 |
 |   |   |   |
 | Cluster profiles that can be viewed by U1 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />| Under Project P1 - CP1, CP2, CP4<br /><br /><br />Under Project P2 - CP1, CP2, CP5<br /><br /><br />Under Project P3 - None <br /><br /><br />| CP1 and CP2 are inherited as read-only from the system and tenant scopes<br /><br /><br />Under P2, U1 gets access due to the team membership<br /><br /><br />U1 is not associated with P3 in any way<br /><br /><br />|
 |   |   |   |
@@ -116,12 +66,3 @@ The SuperAdmin creates the cluster profile CP1 and the tenant T1 creates the clu
 | Cluster profiles that can be deleted by U1<br /><br /><br /> | Under Project P1 - CP4<br /><br /><br /> | Under P1, U1 has the cluster profile admin role <br /><br /><br />|
 |   |   |   |
 | Cluster profiles that are not visible to U1 | CP3 and CP6 | CP3 belongs to a different tenant and CP6 belongs to a project where U1 is not associated |
-
-## Implementation
-
-* Every request's JWT token contains the user context. The user context contains the user uid and the tenant uid.
-* Every resource has the AclMeta information associated with it.
-* The access control will be derived using the user context and the resource's AclMeta.
-* TenantUid will be created when a SuperAdmin creates a tenant. Tenant us a user with the role TenantAdmin.
-* The tenant can create users. Every user will be assigned a user uid and will be associated with the tenant uid.
-* The tenant uid and user uid will be set in the JWT when the user is successfully authenticated.

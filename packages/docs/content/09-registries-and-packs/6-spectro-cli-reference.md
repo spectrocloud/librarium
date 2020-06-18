@@ -7,7 +7,7 @@ icon: ""
 
 # Overview
 
-The Spectro CLI is a command-line interface for the Spectro Registry server to upload or download the packs using CLI.
+The Spectro CLI is a command-line interface for the Spectro Registry server to upload or download the packs using commands.
 
 # Pre-requisites
 

@@ -7,12 +7,12 @@ icon: ""
 
 # Add custom packs
 
-Spectro Cloud allows users to create their own custom packs for reasons such as having a hardened OS, an integration or an add-on that has been modified for a specific use, etc.
+Custom packs are built by users and deployed to custom registries using Spectro Cloud’s CLI tool.
 
 # Steps to create a custom pack
 
-1. Create a directory with the same name as the custom pack name needed. All the pack contents should reside in this directory.
-2. Create a metadata file named `pack.json` which describes the pack.
+1. Create a directory with a suitable name for all the pack contents. Example: `prmoetheus_1_0`
+2. Create a metadata file named `pack.json` to describe the pack. Example:
     * An example of a `pack.json` is shown below:
     ```
     {
@@ -30,6 +30,7 @@ Spectro Cloud allows users to create their own custom packs for reasons such as 
         "name": "<PACK_NAME>",
         "version": "<PACK_VERSION>"
     }
+    ```
 
 An explanation for the parameters of the JSON is given in the table below:
 
@@ -46,15 +47,35 @@ An explanation for the parameters of the JSON is given in the table below:
 | kubeManifests | Array | False | Reference to the Kubernetes manifest files |
 | ansibleRoles | Array | False | Reference to the Ansible roles |
 
-3. Create a file named `values.yaml` which contains the pack parameters or the heml charts values.
+3. Create a file named “values.yaml”. This file consists of configurable parameters that need to be exposed to the end users during creation of a cluster profile. Parameters for all charts, manifests and Ansible roles defined in the pack are defined in this file. Helm charts natively support values override. Any values defined are merged with those defined within a chart. Manifests and Ansible roles need to be explicitly templatized if parameter configuration is desired.
+```
+pack:
+  namespace : <default namespace for charts and manifests>
+charts:
+  chart1:
+    <configurable chart1 parameters>
+  chart2:
+    <configurable chart2 parameters>
+manifests:
+  manifest1:
+  	<templatized manifest1 parameters>
+  manifest2:
+  	<templatized manifest2 parameters>
+ansibleRoles:
+  role1:
+    <templatized role1 parameters>
+  role2:
+  	<templatized role2 parameters>
+```
+
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
-5. With this, all the required files for a pack are created and are eligible for uploading to the registry. This is the simplest pack that does not contain the manifests, helm charts or ansible roles. With the help of Spectro CLI, a newly created pack can be pushed to the custom registry.
+5. Push the newly defined pack to the registry using the following command:
 
 ```
 $spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
 ```
 
-6. The pack can be configured to have the Kubernetes manifest files, Ansible roles, or Helm charts and are referred in the metadata file `pack.json` as shown in the above example. After the pack is configured, using Spectro CLI the existing pack in the registry can be overwritten using the force option.
+6. To overwrite contents of a previously deployed pack, use the force option as follows:
 
 ```
 $spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
