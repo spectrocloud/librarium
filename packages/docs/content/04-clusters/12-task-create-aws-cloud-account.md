@@ -5,9 +5,13 @@ metaDescription: "Task: Create AWS Cloud Account"
 icon: ""
 ---
 
-# Keys
+# Cloud Account Permissions
 
-To create an AWS account, the user needs to have an Access key as well as a Secret access key. Please ensure that the IAM user or the ROOT user has the following minimum permissions:
+Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud have the minimum set of permissions needed to create the infrastructure and resources.
+
+# AWS Cloud Account Permissions
+
+Ensure that the IAM user or the ROOT user has the following minimum permissions:
 ```
 {
     "Version": "2012-10-17",
@@ -15,6 +19,90 @@ To create an AWS account, the user needs to have an Access key as well as a Secr
         {
             "Effect": "Allow",
             "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:UpdateStack",
+                "ec2:AllocateAddress",
+                "ec2:AssociateRouteTable",
+                "ec2:AttachInternetGateway",
+                "ec2:AttachVolume",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:CreateInternetGateway",
+                "ec2:CreateNatGateway",
+                "ec2:CreateRoute",
+                "ec2:CreateRouteTable",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateSubnet",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:CreateVpc",
+                "ec2:DeleteInternetGateway",
+                "ec2:DeleteNatGateway",
+                "ec2:DeleteRouteTable",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DeleteSubnet",
+                "ec2:DeleteVpc",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeAddresses",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeImages",
+                "ec2:DescribeInstances",
+                "ec2:DescribeInternetGateways",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeNatGateways",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeRegions",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeVpcAttribute",
+                "ec2:DescribeVpcs",
+                "ec2:DetachInternetGateway",
+                "ec2:DisassociateAddress",
+                "ec2:DisassociateRouteTable",
+                "ec2:ModifySubnetAttribute",
+                "ec2:ModifyVpcAttribute",
+                "ec2:ReleaseAddress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:RunInstances",
+                "ec2:TerminateInstances",
+                "elasticloadbalancing:AddTags",
+                "elasticloadbalancing:ConfigureHealthCheck",
+                "elasticloadbalancing:CreateLoadBalancer",
+                "elasticloadbalancing:DeleteLoadBalancer",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeTags",
+                "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "elasticloadbalancing:RemoveTags",
+                "iam:AddRoleToInstanceProfile",
+                "iam:AddUserToGroup",
+                "iam:AttachGroupPolicy",
+                "iam:AttachRolePolicy",
+                "iam:CreateGroup",
+                "iam:CreateInstanceProfile",
+                "iam:CreatePolicy",
+                "iam:CreateRole",
+                "iam:CreateServiceLinkedRole",
+                "iam:CreateUser",
+                "iam:DeleteGroup",
+                "iam:DeleteInstanceProfile",
+                "iam:DeletePolicy",
+                "iam:DeleteRole",
+                "iam:DetachGroupPolicy",
+                "iam:DetachRolePolicy",
+                "iam:GetGroup",
+                "iam:GetInstanceProfile",
+                "iam:GetPolicy",
+                "iam:GetRole",
+                "iam:GetUser",
+                "iam:PassRole",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:RemoveUserFromGroup",
+                "pricing:GetProducts",
+                "tag:GetResources",
                 "ec2:DescribeInstances",
                 "ec2:DescribeRegions",
                 "ecr:GetAuthorizationToken",
@@ -177,3 +265,5 @@ To create an AWS account, the user needs to have an Access key as well as a Secr
     ]
 }
 ```
+
+> Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.
