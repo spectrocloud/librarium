@@ -33,6 +33,10 @@ Choose the IdP from the dropdown menu. Click the name of your preferred IdP belo
 * [OneLogin](/user-management/ßonelogin)
 * [MSFT ADFS](/user-management/msft-adfs)
 
-## RBAC
+# RBAC
 
 Spectro Cloud allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the [RBAC](/user-management/rbac) page.
+
+## Roles and permissions
+
+The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The [Roles and Permissions](/user-management/about-roles-and-permissions) page provides more details on this.
