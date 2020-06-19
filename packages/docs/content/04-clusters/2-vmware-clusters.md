@@ -30,7 +30,7 @@ The vSphere environment should be configured with a **DHCP service** in the prim
 
 ## Permissions
 
-The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the`‘Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
+The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the`Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
 
 | vSphere Object | Privileges |
 | --- | --- |
@@ -146,6 +146,8 @@ In addition to the default cloud account already associated with the private clo
 # Creating a cloud gateway
 
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere and launching the cloud gateway from the tenant portal.
+
+By default, 4GB of memory is allocated for private gateways. Please ensure that this memory allocation is increased based on the number of clusters that need to be created.
 
 ## Tenant Portal - Initiate Install
 
