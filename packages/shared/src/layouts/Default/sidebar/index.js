@@ -6,7 +6,6 @@ import Logo from "../../../components/Logo";
 import Link from "../../../components/Link";
 
 const Sidebar = styled.aside`
-  overflow-y: auto;
   height: 100%;
   background: url(${menuBackground}),
     linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
@@ -20,7 +19,7 @@ const LogoWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 15px 0;
   position: sticky;
   background: url(${menuBackground}), #f9f9f9;
   top: 0;
@@ -45,7 +44,12 @@ const Divider = styled.div`
     rgba(0, 0, 0, 0) 100%
   );
   position: sticky;
-  top: 80px;
+  top: 0;
+`;
+
+const Content = styled.div`
+  height: calc(100% - 81px);
+  overflow-y: auto;
 `;
 
 const SidebarLayout = ({
@@ -67,11 +71,13 @@ const SidebarLayout = ({
           </Logo>
         </Link>
       </LogoWrap>
-      <Divider />
-      <MenuWrap>
-        <Tree menu={menu} />
-      </MenuWrap>
-      {extraMenu}
+      <Content>
+        <Divider />
+        <MenuWrap>
+          <Tree menu={menu} />
+        </MenuWrap>
+        {extraMenu}
+      </Content>
     </Sidebar>
   );
 
