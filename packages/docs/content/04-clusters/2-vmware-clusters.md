@@ -4,7 +4,14 @@ metaTitle: "Creating VMware Clusters in Spectro Cloud"
 metaDescription: "Detailed instructions on how to create clusters on VMware within Spectro Cloud"
 icon: ""
 ---
-# Deployment Architecture
+
+# Overview
+
+Spectro Cloud SaaS does not need direct access to the VMware environment. A private cloud gateway needs to be setup within the VMware environment, to facilitate  communication between Spectro Cloud SaaS and the vcenter, to create and delete target k8s clusters.
+
+The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If configured through proxy, the Proxy server needs to support both http proxy and socks proxy.
+
+A HAProxy Load balancer VM will be created for each of the k8s cluster, as the LB for apiserver endpoint.
 
 ![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
 
@@ -165,7 +172,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 |---|---|---|
 |HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
 | HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
-| SOCKS PROXY | The endpoint for the SOCKS Proxy server | This setting will be propagated to all the nodes running in the proxy network. Eg., PROXYIP:PROXYPORT |
+| SOCKS PROXY | The endpoint for the SOCKS Proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., PROXYIP:PROXYPORT |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on Virtual Machine
