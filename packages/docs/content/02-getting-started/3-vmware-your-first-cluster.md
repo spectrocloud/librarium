@@ -1,7 +1,7 @@
 ---
-title: "AWS: Your First Cluster"
-metaTitle: "AWS: Your First Cluster"
-metaDescription: "Spectro Cloud page listing the steps for deploying AWS clusters"
+title: "VMware: Your First Cluster"
+metaTitle: "VMware: Your First Cluster"
+metaDescription: "Spectro Cloud page listing the steps for deploying VMware clusters"
 ---
 
 # Your First Cluster
@@ -12,10 +12,10 @@ Spectro Cloud supports provisioning and managing Kubernetes clusters on public c
 
 > **The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.**
 
-The following steps will be taken to provision your first AWS cluster:
+The following steps will be taken to provision your first VMware cluster:
 
 * Create Cluster Profile
-* Add AWS Cloud Account
+* Add VMware Cloud Account
 * Provision Cluster
 
 # Cluster Profile
@@ -23,14 +23,14 @@ The following steps will be taken to provision your first AWS cluster:
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view)
 1. Switch to the *Cluster Profiles* page from the left navigation bar
 1. Click on the *Create Cluster Profile* button
-1. Specify the name **ProductionAWS** and click *Next*
-1. Select **Amazon (AWS)** for the cloud selection
+1. Specify the name **ProductionVMware** and click *Next*
+1. Select **VMware (VMware)** for the cloud selection
 1. Click on Edit Layers
 1. Please designate the following selections for each layer, leaving the default configuration:
     * OS: Ubuntu, 18.4.X (LTS)
     * Kubernetes: select version 1.16.8
     * Network: Calico 3.10.X
-    * Storage: Amazon EBS 1.0.X
+    * Storage: VMware EBS 1.0.X
     * Additional layers:
         * Monitoring: Prometheus - Grafana 9.7.X
         * Monitoring: Kubernetes Dashboard 2.0.X
@@ -51,10 +51,10 @@ The following steps will be taken to provision your first AWS cluster:
 
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view)
 1. From the left-hand main-menu, select Settings
-1. Click on *Add AWS Cloud Account*
+1. Click on *Add VMware Cloud Account*
     * name: ca1
-    * Access Key: your &lt;AWS access key&gt;
-    * Secret Key: your &lt;AWS secret key&gt;
+    * Access Key: your &lt;VMware access key&gt;
+    * Secret Key: your &lt;VMware secret key&gt;
 1. Click on *Validate*
 1. Click on *Confirm* to finish creating your cloud account
 
@@ -68,7 +68,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 1. Navigate to the *Clusters* page from the left-hand menu.
 1. Click on *Create cluster* (and follow the wizard):
     * Name: c1
-    * Select the cluster profile: ProductionAWS, click *Next*
+    * Select the cluster profile: ProductionVMware, click *Next*
     * Leave the pack parameter overrides as-is, click *Next*
     * Cloud Properties:
         * Cloud Account: ca1
