@@ -8,10 +8,6 @@ const MenuNode = styled.div`
   color: #78909c;
   margin: 20px 0;
 
-  .svg-inline--fa {
-    margin-right: 10px;
-  }
-
   > a {
     text-decoration: none;
     color: #78909C;
@@ -35,6 +31,21 @@ const ChildrenItems = styled.div`
       font-weight: normal;
     }
   }
+`;
+
+const IconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-bottom: 2px;
+`;
+
+const MenuItem = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsby: {}} }) => {
@@ -64,8 +75,10 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsb
     <MenuNode active={isActive}>
       {title && (
         <Link to={url}>
-          {icon && <FontAwesomeIcon icon={icon} />}
-          {title}
+          <MenuItem>
+            {icon && <IconWrapper><FontAwesomeIcon icon={icon} /></IconWrapper>}
+            {title}
+          </MenuItem>
         </Link>
       )}
       {expanded && hasChildren ? (
