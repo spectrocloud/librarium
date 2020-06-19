@@ -441,7 +441,7 @@ The example below shows how to build the Permission Manager auth pack and push t
 ```
 {
   "addonType":"authentication",
-  "cloudType": "all",
+  "cloudTypes": ["all"],
   "displayName": "Permission Manager",
   "kubeManifests": [
     "manifests/permission-manager.yaml"
