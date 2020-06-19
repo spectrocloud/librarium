@@ -5,7 +5,11 @@ metaDescription: "Detailed instructions on how to create clusters on Azure withi
 icon: ""
 ---
 
-# Deployment Architecture
+# Overview
+
+Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto created or pre-existing, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
+
+None of the control plane nodes and worker nodes have public IPs attached. The APIServer endpoint is accessed through a public LB.
 
 ![azure_cluster_architecture.png](azure_cluster_architecture.png)
 
