@@ -4,6 +4,7 @@ metaTitle: "Creating VMware Clusters in Spectro Cloud"
 metaDescription: "Detailed instructions on how to create clusters on VMware within Spectro Cloud"
 icon: ""
 ---
+
 # Overview
 
 Spectro Cloud SaaS does not need direct access to the VMware environment. A private cloud gateway needs to be setup within the VMware environment, to facilitate  communication between Spectro Cloud SaaS and the vcenter, to create and delete target k8s clusters.
