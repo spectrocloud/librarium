@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   background: rgba(255, 204, 0, 0.1);
   border: 1px solid rgba(255, 204, 0, 0.4);
   border-radius: 4px;
+  margin-bottom: 1em;
 `;
 
 const IconWrapper = styled.div`
