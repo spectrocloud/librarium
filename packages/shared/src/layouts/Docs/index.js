@@ -143,6 +143,7 @@ export default function MDXLayout({
   const metaDescription = mdx.frontmatter?.metaDescription;
 
   let canonicalUrl = config?.gatsby?.siteUrl;
+  let favicon = config?.siteMetadata?.favicon;
 
   canonicalUrl =
     config?.gatsby?.pathPrefix !== '/' ? canonicalUrl + config?.gatsby?.pathPrefix : canonicalUrl;
@@ -159,6 +160,8 @@ export default function MDXLayout({
         {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
         {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
         <link rel="canonical" href={canonicalUrl} />
+        <link rel="icon" href={favicon} type="image/x-icon" />
+  ]}
       </Helmet>
 
       <ContentWrap>
