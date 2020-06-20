@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Overview
 
 Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consisys of a reference to a cluster profile, cloud configuration, and cluster size and placement confuguration. The following high level tasks are performed as part of the cluster creation:
@@ -60,7 +62,12 @@ Kubernetes components and configuration are hardened in accordance the Kubernete
 Spectro Cloud follows security best practices recommenced by the various cloud providers when provisioning and configuring the compute, network and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
 
 **WARNING:**
-> *The security measures mentioned above are implemented for Spectro Cloud’s out of the box OS and Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters.*
+
+<WarningBox>
+  The security measures mentioned above are implemented for Spectro Cloud’s out of the box OS and
+  Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the
+  relevant measures to secure their clusters.
+</WarningBox>
 
 # Day-2 Management
 
