@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import backgroundImage from "@librarium/shared/assets/images/404.jpg"
-import spaceMan from "@librarium/shared/assets/images/man_space_lost.png"
+import backgroundImage from "@librarium/shared/src/assets/404.jpg"
+import spaceMan from "@librarium/shared/src/assets/man_space_lost.png"
 
 const ContentWrapper = styled.div`
   background-image: url(${backgroundImage});

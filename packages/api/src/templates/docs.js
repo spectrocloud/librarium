@@ -36,19 +36,22 @@ export default function MDXLayout({ data = {}, location }) {
 
     const endpoints = Object.keys(api.paths)
       .filter(path => paths.some(entry => path.startsWith(entry)))
+      .filter(path => !path.split("/").includes("internal"))
       .map(path => {
         return {
           path,
-          operations: Object.keys(api.paths[path]).map(method => ({
-            method,
-            ...api.paths[path][method],
-            parameters: api.paths[path][method].parameters || [],
-            responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
-              response => ({
-                ...api.paths[path][method].responses[response],
-              })
-            ),
-          })),
+          operations: Object.keys(api.paths[path])
+            .filter(method => !api.paths[path][method]?.tags?.includes("private"))
+            .map(method => ({
+              method,
+              ...api.paths[path][method],
+              parameters: api.paths[path][method].parameters || [],
+              responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
+                response => ({
+                  ...api.paths[path][method].responses[response],
+                })
+              ),
+            })),
         };
       });
 
