@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SidebarIcon from "../../../components/styles/SidebarIcon";
 
 import Link from "../../../components/Link";
 
@@ -8,14 +9,14 @@ const MenuNode = styled.div`
   color: #78909c;
   margin: 20px 0;
 
-  > a {
+  > a, a:hover {
     text-decoration: none;
     color: #78909C;
     font-weight: 500;
   }
 
   ${props => props.active && css`
-    > a {
+    > a, a:hover {
       color: #4432F5;
     }
   `}
@@ -41,6 +42,19 @@ const IconWrapper = styled.div`
   justify-content: center;
   margin-right: 10px;
   margin-bottom: 2px;
+
+  svg {
+    stroke-width: 0;
+    fill: #78909C;
+    stroke: #78909C;
+  }
+
+  ${props => props.active && css`
+    svg {
+        fill: #4432F5;
+        stroke: #4432F5;
+      }
+  `}
 `;
 
 const MenuItem = styled.div`
@@ -48,7 +62,7 @@ const MenuItem = styled.div`
   align-items: center;
 `;
 
-const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsby: {}} }) => {
+const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gatsby: {} } }) => {
   if (hiddenFromNav) {
     return null;
   }
@@ -76,7 +90,7 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = {gatsb
       {title && (
         <Link to={url}>
           <MenuItem>
-            {icon && <IconWrapper><FontAwesomeIcon icon={icon} /></IconWrapper>}
+            {icon && <IconWrapper active={isActive}><SidebarIcon type={icon} /></IconWrapper>}
             {title}
           </MenuItem>
         </Link>

@@ -6,6 +6,7 @@ import Logo from "../../../components/Logo";
 import Link from "../../../components/Link";
 
 const Sidebar = styled.aside`
+  min-width: 323px;
   height: 100%;
   background: url(${menuBackground}),
     linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
