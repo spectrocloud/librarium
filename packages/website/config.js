@@ -19,7 +19,7 @@ const config = {
     description: 'Spectro cloud documentation, guides, API documentation, integrations and more',
     ogImage: null,
     docsLocation: 'https://github.com/spectrocloud/librarium/tree/master/content',
-    favicon: '',
+    favicon: '@librarium/shared/src/assets/icons/favicon.png',
   },
 };
 
