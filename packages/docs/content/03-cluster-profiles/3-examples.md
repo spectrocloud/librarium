@@ -7,6 +7,8 @@ hideToC: false
 fullWidth: false
 ---
 
+# Examples
+
 Cluster profiles can be built to launch clusters for specific use cases. Clusters launched for development purposes are typically minimal and do no require advanced integrations. Production clusters on the other hand tend be mode comprehensive with many more integrations. Following are examples of cluster profiles built for development and production purposes:
 
 
