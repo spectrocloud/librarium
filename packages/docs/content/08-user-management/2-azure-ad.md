@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # SAML 2.0 based SSO with Azure AD
 
 Detailed instructions can be found at the bottom.

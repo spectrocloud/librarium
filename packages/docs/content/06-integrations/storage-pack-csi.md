@@ -8,9 +8,11 @@ category: ['storage']
 logoUrl: 'https://kubernetes.io/images/blog-logging/2018-04-10-container-storage-interface-beta/csi-logo.png'
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Setup
 
-Spectro Storage Pack(s) helps provision StorageClasses on the kubernetes infrastructure. StorageClasses in kubernetes are essentially blueprints that abstract away the underlying storage provider, as well as other parameters, like disk-type (e.g.; solid-state vs standard disks).
+Spectro Storage Pack(s) helps provision StorageClasses on the Kubernetes infrastructure. StorageClasses in Kubernetes are essentially blueprints that abstract away the underlying storage provider, as well as other parameters, like disk-type (e.g.; solid-state vs standard disks).
 
 Storage classes are cloud specific and are detailed below:
 

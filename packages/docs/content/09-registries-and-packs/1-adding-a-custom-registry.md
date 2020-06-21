@@ -5,6 +5,8 @@ metaDescription: "How to create and use custom made packs and registries in Spec
 icon: ""
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Adding custom registries
 
 Setting up a custom pack registry involves the installation of a registry server and configuring it with the tenant console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the registry. Pack contents are periodically synchronized with the tenant console.
@@ -24,8 +26,9 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 ```
     docker pull spectro-registry:latest
 ```
-* Create the docker container using the docker `run` command
-    * HTTPS mode
+
+* Create the docker container using the docker `run` command:
+    * HTTPS mode -
         ```
         docker run -d \
         -p 443:5000 \
@@ -56,7 +59,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
             -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             spectro-registry:latest
         ```
-* Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via envirnment-specific constructs like Security Groups, Firewalls, etc.
+* Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify installation by ...
 
 # VERIFICATION OF THE INSTALLATION PENDING!
@@ -65,7 +68,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 
 Once the deployment of the registry server is complete, configure it with the tenant console as follows:-
 
-1. Sign in to the Spectro Cloud dashboard as a tenant admin. Go to Admin -> Settings -> Pack Registries
+1. Sign in to the Spectro Cloud dashboard as a tenant admin. Go to Admin -> Settings -> Pack Registries.
 1. Click on "Add new Pack Registry" and provide the registry name, endpoint and user credentials.
 1. Click on "Confirm" once the details are filled.
 
