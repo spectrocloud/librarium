@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # About Audit Logs
 
 The Spectro Cloud SaaS application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
@@ -19,6 +21,7 @@ Audits can be accessed for the tenant scope and the project scope. The tenant sc
 
 * The tenant scope audit logs can be accessed in the Spectro Cloud Dashboard under the **Admin > Audit Logs**. The user should have the *Tenant Admin* role or at least the `audit.get` and `audit.list` permissions at the tenant scope to access the audit logs.
 * The project scope audit logs can be accessed under the **Project** *selection* > **Audit Logs**. The user should have at least the *Project Viewer* role with `audit.get` and `audit.list` permissions for the selected project to access the audit logs.
+* Tenant admins (or users with appropriate permissions) can download the audit logs as a *.csv file.
 
 # Filtering Audit Logs
 
