@@ -17,11 +17,16 @@ const IntegrationsWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 52px;
+  width: 100%;
   margin: 10px 0 15px;
 
   > img {
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
   }
 `;
 
@@ -30,6 +35,7 @@ const Card = styled.div`
   height: 120px;
   margin-right: 32px;
   margin-bottom: 32px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,6 +49,7 @@ const Title = styled.div`
   line-height: 14px;
   letter-spacing: 0.02em;
   color: #555555;
+  text-align: center;
 `;
 
 const searchOptions = {
