@@ -6,3 +6,5 @@ icon: "teams"
 hideToC: true
 fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
