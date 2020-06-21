@@ -1,8 +1,11 @@
 ---
-title: "CNI Network Pack"
-metaTitle: "CNI Network Pack"
-metaDescription: "Creating a Network Pack in Spectro Cloud using CNI"
-icon: ""
+title: 'CNI'
+metaTitle: 'CNI Integration with Spectro Cloud'
+metaDescription: 'Integration of the CNI add on into Spectro Cloud'
+hiddenFromNav: true
+isIntegration: true
+category: ['networking']
+logoUrl: 'https://avatars3.githubusercontent.com/u/18357459?s=400&v=4'
 ---
 
 # Overview
@@ -11,6 +14,6 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
 
 ## Supported Networking Packs
 
-* [Calico](integrations/calico)
+* [Calico](/integrations/calico)
     * v3.9
     * v3.10
