@@ -11,10 +11,15 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # What is Spectro Cloud?
 
-Spectro Cloud offers a SaaS product built for customers with significant Kubernetes usage. It offers enterprise grade security whilst making it easy to automate the deployment, maintenance and management of multiple clusters.
+Spectro Cloud’s SaaS based product brings the managed Kubernetes experience to users' own unique enterprise Kubernetes infrastructure stacks running in any public cloud, private cloud, or bare-metal environments, allowing users to not have to trade-off between ease of use and control. Spectro Cloud provides an as-a-service experience to users by automating the deployment, management, and maintenance of multiple Kubernetes clusters based on user defined Kubernetes infrastructure stacks.
 
-Spectro Cloud provides flexibility for organizations to roll and maintain their own Kubernetes infrastructure stacks, whether for distinct organizations or for distinct use cases.
+Spectro Cloud consists of three main pieces: the SaaS management component, a Registry and Repository, and the managed clusters themselves. Registries and repositories can be Spectro Cloud managed or hosted by users themselves. Repositories host Kubernetes infrastructure stack components and versions.
 
-This novel approach helps in reducing costs and increasing efficiency while simultaneously providing a centralized governance. Spectro Cloud works flawlessly irrespective of whether the customer uses a private cloud service provider or a public cloud or a mix of both.
+The Spectro Cloud SaaS component is the “multi tenant  nerve center” of Spectro Cloud deployments. This component is a cloud based offer that provides central visibility and management of Spectro Cloud Kubernetes deployments. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.
 
-Spectro Cloud has a simple, single, centralized console that allows for administrating clusters on different CSPs. It allows for user management in terms of allowing access to the Spectro Cloud SaaS. For a user that has access to Spectro Cloud, the tenant admin can allow or restrict access to the clusters selectively. Analogous to a real-world scenario, a marketing team member would (generally) not have to be interfacing with a DevOps team member. Similarly, the [teams](/user-management/okta) and [projects](/introduction/concept-overviews#projects) would allow to set such boundaries on Spectro Cloud.
+A Spectro Cloud managed Kubernetes cluster contains two main pieces - the Kubernetes tenant cluster, as well as a Spectro Cloud Management Agent. The Spectro Cloud Management Agent is responsible for:
+* Communicating with the SaaS platform for heartbeat, cluster status and system metrics.
+* Taking commands from the SaaS platform for checking cluster desired state changes and updating clusters to conform with the desired state, and
+* Establishing an optional on-demand secured tunnel to allow the SaaS platform access to the Kubernetes API server via a cloud shell.
+
+![spectro_cloud](/spectro_cloud.png)

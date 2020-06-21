@@ -25,9 +25,17 @@ Sticking with the building analogy, a tenant is free to create as many rooms as 
 
 A user is anyone with access to the tenant area/s. Again, just as an occupant of the building can move about within the tenant's space, a user can be created on Spectro Cloud to have access to multiple areas. And just as an occupant can be given access to a particular room (or prevented access from it) a user can be given access to one or more projects, with one or more permissions being granted. More on this in later pages.
 
+# Clusters
+
+Kubernetes clusters are collections of master and worker nodes that cooperate to execute workloads.
+
+Within a project, *Clusters* are where you provision and manage Kubernetes clusters. The clusters are provisioned and managed in your own cloud account environment. Each cluster is provisioned from a template called a 'cluster profile'.
+
 # Cluster Profiles
 
-Cluster profiles are easily one of the most important features of the Spectro Cloud platform. Cluster profiles are a declarative model of a Kubernetes infrastructure stack; they are what you create to preconfigure the components of your cluster to enable an easier and faster deployment. It is essentially a configuration that you create based on your needs, which you can recall every time you need to deploy a cluster matching that configuration. For example, let us say for your testing requirements, you have to have a setup with a load balancer and some monitoring. But your DevOps teams need an auth layer more than the other two. So you create a cluster profile for each of them.
+Cluster profiles are easily one of the most important features of the Spectro Cloud platform. Cluster profiles are a declarative model of a Kubernetes infrastructure stack; they are what you create to preconfigure the components of your cluster to enable an easier and faster deployment. It is essentially a configuration that you create based on your needs, which you can recall every time you need to deploy a cluster matching that configuration. For example, let us say for your testing requirements, you have to have a setup with a load balancer and some monitoring. But your DevOps teams need an auth layer more than the other two. So you create a cluster profile for each of them. The following image helps visualize this concept.
+
+![cluster_profile](/cluster_profile.png)
 
 # Cloud Accounts
 
@@ -52,10 +60,6 @@ Spectro Cloud provides the ability to extend the capabilities of the platform. A
 Spectro Cloud supports end to end lifecycle and management of Kubernetes Clusters in private cloud environments. Private cloud deployments look different from public cloud ones due to the need for a Spectro Cloud Gateway, an on-prem component to serve as a bridge to the Spectro Cloud SaaS.
 
 The following sections describe various aspects pertaining to support for private cloud environments.
-
-### Supported Environments
-
-vSphere versions XX+
 
 ### Spectro Cloud Gateway
 
