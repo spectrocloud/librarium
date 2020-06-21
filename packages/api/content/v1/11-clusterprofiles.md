@@ -1,12 +1,11 @@
 ---
-title: 'Cluster profiles'
-metaTitle: 'Cluster profiles'
+title: 'Cluster Profiles'
+metaTitle: 'Cluster Profiles'
 metaDescription: 'This is the meta description'
-icon: 'puzzle-piece'
 api: true
 paths: ['/v1alpha1/clusterprofiles']
 ---
 
-# Cluster profiles
+# Cluster Profiles
 
 Add introduction here

@@ -2,7 +2,7 @@
 title: "Getting Started"
 metaTitle: "Getting Started"
 metaDescription: "Spectro Cloud getting started"
-icon: ""
+icon: "overview"
 hideToC: true
 fullWidth: false
 ---
