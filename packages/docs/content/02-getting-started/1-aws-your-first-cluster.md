@@ -12,6 +12,8 @@ Spectro Cloud supports provisioning and managing Kubernetes clusters on public c
 
 > **The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.**
 
+# On AWS
+
 The following steps will be taken to provision your first AWS cluster:
 
 * Create Cluster Profile
