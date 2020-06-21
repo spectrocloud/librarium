@@ -6,15 +6,15 @@ icon: ""
 ---
 # Overview
 
-Spectro Cloud SaaS does not need direct access to the VMware environment. A private cloud gateway needs to be setup within the VMware environment, to facilitate  communication between Spectro Cloud SaaS and the vcenter, to create and delete target k8s clusters.
+Spectro Cloud SaaS does not need direct access to the VMware environment. A Private Cloud Gateway needs to be setup within the VMware environment, to facilitate communication between the Spectro Cloud SaaS and the vCenter, to create and delete target kubernetes clusters.
 
-The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If configured through proxy, the Proxy server needs to support both http proxy and socks proxy.
+The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
 
-A HAProxy Load balancer VM will be created for each of the k8s cluster, as the LB for apiserver endpoint.
+A HAProxy Load balancer VM will be created for each of the kubernetes clusters, as the LB for the apiserver endpoints.
 
 ![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
 
-# Prerequisites - vSphere
+# Prerequisites
 
 Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/products/vsphere.html)
 
@@ -22,11 +22,11 @@ Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/prod
 
 [ESXi 6.5 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
 
-[ESXi 7.0 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
+[ESXi 6.7 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
 
 ## Configuration Requirements
 
-The vSphere environment should be configured with a **DHCP service** in the primary VM Network for your workload Kubernetes clusters. You will also need to configure one resource pool across the hosts onto which the workload clusters will be provisioned. Every host in the resource pool will need access to shared storage, such as VSAN in order to be able to make use of MachineDeployments and high-availability control planes.
+The vSphere environment should be configured with a **DHCP service** in the primary VM Network for the workload Kubernetes clusters. A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage such as VSAN, in order to be able to make use of high-availability control planes.
 
 ## Permissions
 
@@ -205,11 +205,10 @@ Another potential issue is a lack of outgoing connectivity from the VM. The inst
 
 If the above steps do not resolve your issues, copy the **following script** to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance.
 
-# SCRIPT NEEDED as per the previous paragraph
 
-## Gateway Cluster - Provisioning failure or stuck
+## Gateway Cluster - Provisioning stalled/failure
 
-Installation of the gateway cluster may run into errors or might get stuck in provisioning state for a variety of reasons: a lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, several other reasons could be the reasons. These might possibly be based on the underlying environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower level operations being performed for various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
+Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower level operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
 
 
 # Upgrading a cloud gateway
