@@ -26,6 +26,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 ```
     docker pull spectro-registry:latest
 ```
+
 * Create the docker container using the docker `run` command:
     * HTTPS mode -
         ```

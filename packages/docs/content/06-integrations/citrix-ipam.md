@@ -16,7 +16,7 @@ The integration helps with IP address management and provides load balancing cap
 
 ## Components
 
-Integration deploys the following components
+Integration deploys the following components:
 * IPAM controller.
 * Ingress controller.
 

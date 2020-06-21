@@ -16,7 +16,7 @@ Kubevious integration provides a graphical interface which renders easy to under
 
 ## Components
 
-This integration deploys the following components
+This integration deploys the following components:
 * Deployment.
 * MySql DB.
 * UI.
