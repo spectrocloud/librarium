@@ -3,6 +3,8 @@ title: "Concept Overviews"
 metaTitle: "Spectrocloud Concepts"
 metaDescription: "Most important concepts of Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -29,7 +31,7 @@ Cluster profiles are easily one of the most important features of the Spectro Cl
 
 # Cloud Accounts
 
-If you have had to handle more than one cloud account, you know how much of a chore it is to have a look-see on multiple dashboards. They look different and work differently. Spectro Cloud's dashboard brings in all of your cloud accounts - public and private - into one place and simplifies managing your accounts. In combination with the cluster profile management, you won't have to move away from Spectro Cloud into your cloud service providers dashboards.
+If you have had to handle more than one cloud account, you know how much of a chore it is to have a look-see on multiple consoles. They look different and work differently. Spectro Cloud's console brings in all of your cloud accounts - public and private - into one place and simplifies managing your accounts. In combination with the cluster profile management, you won't have to move away from Spectro Cloud into your cloud service providers consoles.
 
 # Pack Registry - public and private
 

@@ -5,7 +5,7 @@ metaDescription: 'Dex Authentication pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['authentication']
-logoUrl: 'https://raw.githubusercontent.com/dexidp/dex/master/Documentation/logos/dex-horizontal-color.png'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/experimental/addon/auth/dex/logo.png?token=APOFE6WZEUYZFQMKQPS4RTS67CU6I'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

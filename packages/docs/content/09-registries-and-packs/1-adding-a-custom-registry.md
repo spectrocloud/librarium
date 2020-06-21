@@ -3,6 +3,8 @@ title: "Adding a custom registry"
 metaTitle: "Adding a custom registry"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -67,7 +69,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 
 Once the deployment of the registry server is complete, configure it with the tenant console as follows:-
 
-1. Sign in to the Spectro Cloud dashboard as a tenant admin. Go to Admin -> Settings -> Pack Registries.
+1. Sign in to the Spectro Cloud console as a tenant admin. Go to Admin -> Settings -> Pack Registries.
 1. Click on "Add new Pack Registry" and provide the registry name, endpoint and user credentials.
 1. Click on "Confirm" once the details are filled.
 

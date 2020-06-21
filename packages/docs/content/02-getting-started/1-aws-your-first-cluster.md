@@ -2,6 +2,8 @@
 title: "AWS: Your First Cluster"
 metaTitle: "AWS: Your First Cluster"
 metaDescription: "Spectro Cloud page listing the steps for deploying AWS clusters"
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -96,6 +98,6 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 
 Once the cluster is provisioned - feel free to try the following:
 
-* View deployed applications [as described here](). (!! EMPTY LINK !!)
+* View deployed applications [as described here](/clusters).
 * Scale up-down worker nodes [as described here](/clusters/aws-clusters#clusterscaling).
 * Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
