@@ -24,9 +24,9 @@ Calico manifest used for networking does the following:
 * The `calico-config` ConfigMap, which contains parameters for configuring the install.
 
 <WarningBox>
-Limitations:<br>  
-<br>AWS, VMWare supports IP-in-IP encapsulation type.  
-<br>Azure supports VXLAN encapsulation type.
+Limitations:
+AWS, VMWare supports IP-in-IP encapsulation type.  
+Azure supports VXLAN encapsulation type.
 </WarningBox>
 
 # Notable Parameters
