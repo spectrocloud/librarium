@@ -89,6 +89,15 @@ Updates to pack configuration may result in a conflict, if the configuration was
 
 Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
 
+# Cluster Health
+
+Spectro Clodud monitors cluster infrastructure on a regular basis and reports health on the tenant console.
+Overall health is computed based on the following factors:
+
+* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the tenant console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster. 
+* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the tenant console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
+* Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
+
 # Troubleshooting
 
 Typically when a cluster lifecycle action such as provisioning, upgrade or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
