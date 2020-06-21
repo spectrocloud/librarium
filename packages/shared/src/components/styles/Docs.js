@@ -114,7 +114,6 @@ export const StyledMainWrapper = styled.div`
       font-size: 12px;
       line-height: 18px;
       letter-spacing: 0.02em;
-      text-transform: capitalize;
       color: #777;
     }
 

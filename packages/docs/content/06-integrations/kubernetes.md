@@ -8,16 +8,17 @@ category: ['kubernetes']
 logoUrl: 'https://www.servethehome.com/wp-content/uploads/2018/06/Kubernetes-Logo-265x198.jpg'
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Kubernetes
 
 This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes hardening standards recommended by Center for Internet Security is enabled by default.
 
-WarningBox
-    **Info**
-    Only kubernetes versions 1.16 and above is supported
-WarningBox
+<WarningBox>
+Info: Only Kubernetes versions 1.16 and above is supported
+</WarningBox>
 
-# Supported kubernetes versions
+# Supported Kubernetes versions
 
 * 1.16.3
 * 1.16.4
@@ -34,7 +35,7 @@ WarningBox
 
 | Name | Supported values | Default value | Description |
 | --- | --- | --- | --- |
-| pack.k8sHardening | True, False | True | Flag to decide if kubernetes hardening should be applied. |
+| pack.k8sHardening | True, False | True | Flag to decide if Kubernetes hardening should be applied. |
 | | | | When set to True, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. |
 | | | | When set to True, additional flags configured in kubeadmconfig will be honored and will be set to the corresponding components. |
 | pack.podCIDR | `192.168.0.0/16` | CIDR range for the pod networking. This should match the networking layer property `calicoNetworkCIDR`. | CIDR range for Pods in cluster |
@@ -83,4 +84,4 @@ kubeadmconfig:
     - 'echo "Executing preKubeadmCmds"'
   postKubeadmCommands:
     - 'echo "Executing postKubeadmCmds"'
-    ```
+```

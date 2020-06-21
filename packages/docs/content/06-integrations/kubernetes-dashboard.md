@@ -18,7 +18,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run kubernetes dashboard deployment |
+| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run Kubernetes dashboard deployment |
 | k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
 | | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
@@ -64,11 +64,10 @@ Use the LB service IP & port to connect to the dashboard
 
 ## Troubleshooting
 
-* If the Dashboard is not accessible, check the dashboard pod for any errors and ensure the Dashboard service is in the Running state
-* When the namespace is customized while deploying Dashboard, make sure to replace the namespace values in the above commands
+* If the Dashboard is not accessible, check the dashboard pod for any errors and ensure the Dashboard service is in the Running state.
+* When the namespace is customized while deploying Dashboard, make sure to replace the namespace values in the above commands.
 
 ## References
 
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 https://github.com/kubernetes/dashboard/tree/master/docs
-

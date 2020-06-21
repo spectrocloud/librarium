@@ -3,7 +3,7 @@ title: "Clusters"
 metaTitle: "Creating clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 icon: "clusters"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
 
-Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consisys of a reference to a cluster profile, cloud configuration, and cluster size and placement confuguration. The following high level tasks are performed as part of the cluster creation:
+Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consists of a reference to a cluster profile, cloud configuration, and cluster size and placement confuguration. The following high level tasks are performed as part of the cluster creation:
 
 * Orchestration of compute, network and storage resources on the cloud environments along with the required placement infrastructure.
 * Installation and configuration of various Kubernetes components like Kubelet, API servers, etcd, scheduler, etc.
@@ -23,7 +23,7 @@ Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A c
 
 Spectro Cloud provides VM images for cluster compute infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
-The out of the box images are hotes either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
+The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
 #  Customization
 
@@ -55,11 +55,11 @@ Spectro Cloud’s out of the box VM images are hardened in accordance with the r
 
 ## Kubernetes
 
-Kubernetes components and configuration are hardened in accordance the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured in a secure fashion.
+Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured in a secure fashion.
 
 ## Cloud
 
-Spectro Cloud follows security best practices recommenced by the various cloud providers when provisioning and configuring the compute, network and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
+Spectro Cloud follows security best practices recommended by the various cloud providers when provisioning and configuring the compute, network and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
 
 <WarningBox>
   The security measures mentioned above are implemented for Spectro Cloud’s out of the box OS and
@@ -107,4 +107,6 @@ Spectro Cloud maintains an event stream with low level details of the various or
   Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However the errors clear up once the node comes up.
 </WarningBox>
 
-*Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.*
+<WarningBox>
+Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
+</WarningBox>

@@ -3,7 +3,11 @@ title: "Adding a custom registry"
 metaTitle: "Adding a custom registry"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Adding custom registries
 
@@ -21,12 +25,11 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 * Create a directory for certificates and copy the desired tls certificates into this directory. This directory will be mounted inside the registry docker container. Example : `/root/certs`
 * Pack contents in a registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can easily mounted on another registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro registry docker image using docker CLI.
- ```
+```
     docker pull spectro-registry:latest
 ```
-
-* Create the docker container using the docker `run` command
-    * HTTPS mode
+* Create the docker container using the docker `run` command:
+    * HTTPS mode -
         ```
         docker run -d \
         -p 443:5000 \
@@ -57,7 +60,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
             -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             spectro-registry:latest
         ```
-* Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via envirnment-specific constructs like Security Groups, Firewalls, etc.
+* Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify installation by ...
 
 # VERIFICATION OF THE INSTALLATION PENDING!
@@ -66,7 +69,7 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 
 Once the deployment of the registry server is complete, configure it with the tenant console as follows:-
 
-1. Sign in to the Spectro Cloud dashboard as a tenant admin. Go to Admin -> Settings -> Pack Registries
+1. Sign in to the Spectro Cloud console as a tenant admin. Go to Admin -> Settings -> Pack Registries.
 1. Click on "Add new Pack Registry" and provide the registry name, endpoint and user credentials.
 1. Click on "Confirm" once the details are filled.
 

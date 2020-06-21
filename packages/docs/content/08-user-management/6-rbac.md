@@ -3,7 +3,7 @@ title: "RBAC"
 metaTitle: "RBAC in Spectro Cloud"
 metaDescription: "Spectro Cloud's RBAC set up and the methods of restricting or allowing access"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
@@ -13,7 +13,7 @@ RBAC stands for Role-Based Access Control. This is a method that allows for the 
 
 Spectro Cloud's RBAC design allows granting granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
 
-These settings can be accessed by the tenant admin in the Spectro Cloud dashboard: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
+These settings can be accessed by the tenant admin in the Spectro Cloud console: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
 
 ## Scope
 

@@ -3,9 +3,11 @@ title: "Introduction to Spectro Cloud"
 metaTitle: "What is Spectro Cloud?"
 metaDescription: "A brief introduction to Spectro Cloud"
 icon: "graph"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Hello World!
 

@@ -3,11 +3,15 @@ title: "Creating AWS Clusters"
 metaTitle: "Creating AWS Clusters in Spectro Cloud"
 metaDescription: "Detailed instructions on how to create clusters on Amazon AWS within Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
 
-The deployment architecture for AWS cluster is shown below.
+The following is the deployment architecture for an AWS cluster.
 
 The Kubernetes nodes are distributed across multiple AZs to achieve high availability. For each of the AZ that you choose, a public subnet and a private subnet is created.
 
@@ -15,7 +19,7 @@ All the control plane nodes and worker nodes are created within the private subn
 
 A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet be able to go out to the internet or call other AWS services.
 
-An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into kubernetes nodes is only available through the Bastion node.
+An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node.
 
 The APIServer endpoint is accessible through an ELB, which load balancing across all the control plane nodes.
 
@@ -38,7 +42,14 @@ A sufficient capacity in the desired AWS region should exist for the creation of
 
 ## AWS Cloud Account Permissions
 
-Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud as well as the IAM users or the ROOT users have the minimum set of permissions needed to create the infrastructure and resources:
+Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud as well as the IAM users or the ROOT users have the minimum set of permissions needed to create the infrastructure and resources.
+
+Ensure that the IAM user or the ROOT user has the following minimum permissions:
+
+<WarningBox>
+The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespaced character limit by AWS.
+</WarningBox>
+
 ```
 {
     "Version": "2012-10-17",
@@ -293,9 +304,14 @@ Spectro Cloud provisions cluster infrastructure and cluster resources using your
 }
 ```
 
-> Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.
+> **Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.**
 
-# Create Cluster
+<WarningBox>
+The following warning on this policy is expected:
+This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+</WarningBox>
+
+# Create an AWS Cluster
 
 The following steps need to be performed to provision a new AWS cluster:
 
@@ -306,45 +322,46 @@ The following steps need to be performed to provision a new AWS cluster:
     * Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
     * Region - Choose the desired AWS region where you would like cluster be be provisioned.
     * SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    * Static Placement - By default Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into pre-existing VPCs and subnets.
+    * Static Placement - By default Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 * Configure master and worker node pools. A master and a worker node pool is configured by default.
-    * Name - a descriptive name for the node pool
-    * Size - Number of VMs to be provisioned for the node pool. For master pool, this number can be 1, 3 or 5
-    * Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes
-    * Instance type - Select the AWS instance type to be used for all nodes in the node pool
+    * Name - a descriptive name for the node pool.
+    * Size - Number of VMs to be provisioned for the node pool. For master pool, this number can be 1, 3 or 5.
+    * Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
+    * Instance type - Select the AWS instance type to be used for all nodes in the node pool.
     * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures etc. by provisioning nodes across availability zones if multiple zones are selected.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-**WARNING:**
+<WarningBox>
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+</WarningBox>
 
-> *New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.*
-
-# Cluster scaling
+# Scaling an AWS Cluster
 
 Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an AWS cluster.
 
 * Access the ‘nodes’ view for the cluster
 * For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
 * After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
-* Provisioning status is updated with ongoing progress of the scale operation. 
+* Provisioning status is updated with ongoing progress of the scale operation.
 
-**WARNING:**
-> *Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.*
+<WarningBox>
+Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
+</WarningBox>
 
-# Add worker pool
+# Add an AWS worker pool
 
 The following steps need to be performed to add a new worker node pool to a cluster:-
 
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page
+* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 
 * Provide node pool settings as follows:
-    * A descriptive name for the node pool
-    * Number of nodes in the node pool
+    * A descriptive name for the node pool.
+    * Number of nodes in the node pool.
     * One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
-    * Instance type to be used for all the nodes lunched in the node pool
+    * Instance type to be used for all the nodes lunched in the node pool.
     * Save node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
 
-# Remove a worker pool
+# Remove an AWS worker pool
 
 The following steps need to be performed to remove a worker pool from the cluster:-
 
@@ -352,12 +369,12 @@ The following steps need to be performed to remove a worker pool from the cluste
 * Delete the desired worker pool and confirm deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
-# Reconfigure nodes
+# Reconfigure AWS nodes
 
 The following steps need to be performed to reconfigure worker pool nodes:-
 
-* Access the nodes view for the the cluster
-* Edit settings of the desired node pool
-* Change the instance type to the desired instance type
+* Access the nodes view for the the cluster.
+* Edit settings of the desired node pool.
+* Change the instance type to the desired instance type.
 * Save node pool settings. After node pool settings are updated node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with new instance type configured.
 * Provisioning status is updated with ongoing progress of nodes being deleted and added.
