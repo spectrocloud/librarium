@@ -3,7 +3,7 @@ title: "Projects"
 metaTitle: "Concept: Projects"
 metaDescription: "Understanding what Spectro Cloud projects are"
 icon: "cog"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

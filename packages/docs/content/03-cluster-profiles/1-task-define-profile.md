@@ -3,7 +3,7 @@ title: "Creating Cluster Profiles"
 metaTitle: "Creating Cluster Profiles"
 metaDescription: "The method for creating a Cluster Profile on Spectro Cloud"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

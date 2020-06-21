@@ -3,7 +3,7 @@ title: "Updating Cluster Profiles"
 metaTitle: "Updating Cluster Profiles"
 metaDescription: "The method for updating or editing an existing Cluster Profile on Spectro Cloud"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

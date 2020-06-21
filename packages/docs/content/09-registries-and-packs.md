@@ -3,7 +3,7 @@ title: "Registries and packs"
 metaTitle: "Registries and packs"
 metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make Kubernetes truly yours."
 icon: "audits"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

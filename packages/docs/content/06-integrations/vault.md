@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
-logoUrl: 'https://raw.githubusercontent.com/docker-library/docs/fab4b16599d1424cee888d47af850e0ba07e6a37/vault/logo.svg?sanitize=true'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/security/vault_0.3.1/logo.png?token=APOFE6ULTRCKIEMWLNO77F267CUNQ'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
