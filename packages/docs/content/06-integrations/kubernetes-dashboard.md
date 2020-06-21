@@ -1,51 +1,14 @@
 ---
-title: "Logging and Monitoring Packs"
-metaTitle: "Logging and Monitoring Packs"
-metaDescription: "Creating Logging and Monitoring Packs in Spectro Cloud"
-icon: ""
+title: 'Kubernetes Dashboard'
+metaTitle: 'Kubernetes Dashboard'
+metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
+hiddenFromNav: true
+isIntegration: true
+category: ['monitoring']
+logoUrl: 'https://raw.githubusercontent.com/instrumentisto/grafana-dashboard-kubernetes-prometheus/master/logo.png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
-
-# Available packs
-
-[Elasticsearch-Fluentd-Kibana](/integrations/logging-and-monitoring#elasticsearch-fluentd-kibana)
-[Fluent-Bit](/integrations/logging-and-monitoring#fluentbit)
-[Kubernetes Dashboard](/integrations/logging-and-monitoring#kubernetesdashboard)
-[Kubevious](/integrations/logging-and-monitoring#kubevious)
-[Prometheus Operator](/integrations/logging-and-monitoring#prometheusoperator)
-
-# Elasticsearch-Fluentd-Kibana
-
-The logging integration installs a production grade ElasticSearch cluster with Kibana and Fluentd by default on the Kubernetes cluster. This integration provides a rich set of logging features like forwarding,  aggregating & parsing logs from the Kubernetes cluster.
-
-## Contents
-
-The default integration deployed will have the following components:
-* ElasticSearch Master (3 replicas)
-* ElasticSearch Data (2 replicas)
-* ElasticSearch Client (2 replicas)
-* ElasticSearch Curator
-* Fluentd (one per node)
-* Kibana
-
-## References
-
-https://github.com/helm/charts/tree/master/stable/elasticsearch
-https://github.com/helm/charts/tree/master/stable/fluentd 
-https://github.com/helm/charts/tree/master/stable/kibana
-
-# Fluentbit
-
-Fluent-Bit is a multi-platform log forwarder. The default integration will help forward logs from the Kubernetes cluster to an external ElasticSearch cluster
-
-## Contents
-
-Fluent-Bit is installed as a DaemonSet & so, an instance of fluent-bit will be running on all the nodes in the cluster.
-
-## References
-
-https://github.com/helm/charts/tree/master/stable/fluent-bit
 
 # Kubernetes Dashboard
 
@@ -109,45 +72,3 @@ Use the LB service IP & port to connect to the dashboard
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 https://github.com/kubernetes/dashboard/tree/master/docs
 
-# Kubevious
-
-Kubevious integration provides a graphical interface which renders easy to understand, application centric Kubernetes configurations.
-
-## Components
-
-This integration deploys the following components
-* Deployment
-* MySql DB
-* UI
-* Parser
-
-## References
-
-https://github.com/kubevious/kubevious
-
-# Prometheus Operator
-
-The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to simplify the deployment and configuration of Prometheus, Alertmanager, and related monitoring components. The default installation is intended to suit monitoring a kubernetes cluster the chart is deployed onto.
-
-## Contents
-
-A Default integration will install the following components:
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://prometheus.io/)    
-* [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
-* [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
-* service monitors to scrape internal kubernetes components
-    * kube-apiserver
-    * kube-scheduler
-    * kube-controller-manager
-    * etcd
-    * kube-dns/coredns
-    * kube-proxy
-
-This integration also includes dashboards and alerts.
-
-## References
-
-https://github.com/coreos/prometheus-operator

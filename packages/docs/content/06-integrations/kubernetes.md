@@ -1,8 +1,11 @@
 ---
-title: "Kubernetes Pack"
-metaTitle: "Kubernetes Pack"
-metaDescription: "Creating a Kubernetes Pack in Spectro Cloud using CNI"
-icon: ""
+title: 'Kubernetes'
+metaTitle: 'Kubernetes with Spectro Cloud'
+metaDescription: 'Kubernetes pack in Spectro Cloud'
+hiddenFromNav: true
+isIntegration: true
+category: ['kubernetes']
+logoUrl: 'https://www.servethehome.com/wp-content/uploads/2018/06/Kubernetes-Logo-265x198.jpg'
 ---
 
 # Kubernetes

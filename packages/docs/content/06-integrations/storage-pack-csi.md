@@ -1,52 +1,75 @@
 ---
-title: "CSI Storage Pack"
-metaTitle: "CSI Storage Pack"
-metaDescription: "Creating a Storage Pack in Spectro Cloud using CSI"
-icon: ""
+title: 'CSI'
+metaTitle: 'CSI Integration with Spectro Cloud'
+metaDescription: 'Integration of the Vault add on into Spectro Cloud'
+hiddenFromNav: true
+isIntegration: true
+category: ['storage']
+logoUrl: 'https://kubernetes.io/images/blog-logging/2018-04-10-container-storage-interface-beta/csi-logo.png'
 ---
-
-# Overviews
-
-## CSI - Container Storage Interface
-
-The goal of [CSI](https://kubernetes.io/blog/2018/01/introducing-container-storage-interface/#what-is-csi) is to establish a standardized mechanism for Container Orchestration Systems (COs) to expose arbitrary storage systems to their containerized workloads.
-
-## Spectro Storage Packs
-
-Spectro Storage Pack(s) helps provision StorageClasses on the kubernetes infrastructure. StorageClasses in kubernetes are essentially blueprints that abstract away the underlying storage provider, as well as other parameters, like disk-type (e.g.; solid-state vs standard disks).
 
 # Setup
 
+Spectro Storage Pack(s) helps provision StorageClasses on the kubernetes infrastructure. StorageClasses in kubernetes are essentially blueprints that abstract away the underlying storage provider, as well as other parameters, like disk-type (e.g.; solid-state vs standard disks).
+
 Storage classes are cloud specific and are detailed below:
 
-## Parameters
+# AWS EBS
+
+## Notable Parameters
 
 | Name | Supported Values | Default Value | Description |
 | --- | --- | --- | --- |
-| `aws_ebs.storageType` | gp2, sc1, st1, io1 | gp2 | AWS Volume type to be used |
-| `aws_ebs.reclaimPolicy` | Delete, Retain | Delete | Defines whether volumes will be retained or deleted |
-| `aws_ebs.allowVolumeExpansion` | true, false | true | Flag to allow resizing volume |
-| `aws_ebs.isDefaultClass` |  true, false | true | Flag to denote if this StorageClass will be the default |
-| `aws_ebs.volumeBindingMode` | WaitForFirstConsumer, Immediate | WaitForFirstConsumer | Controls when volumeBinding and dynamic provisioning should happen |
-| `azure_disk.storageaccounttype` | Standard_LRS, Premium_LRS | Standard_LRS | |
-| `azure_disk.kind` | managed, shared, dedicated | managed | |
-| `azure_disk.reclaimPolicy` | Delete, Retain | Delete | |
-| `azure_disk.allowVolumeExpansion` | true, false | true | |
-| `azure_disk.isDefaultClass`  | true, false | true | |
-| `azure_disk.volumeBindingMode` | WaitForFirstConsumer, Immediate | WaitForFirstConsumer | |
-| `vsphere.diskformat` | thin, zeroedthick and eagerzeroedthick | zeroedthick | |
-| `vsphere.isDefaultClass` | true, false | true |  |
-| `vsphere.datastore` | Datastore Name | | |
+| storageType | gp2, sc1, st1, io1 | gp2 | AWS Volume type to be used |
+| reclaimPolicy | Delete, Retain | Delete | Defines whether volumes will be retained or deleted |
+| allowVolumeExpansion | true, false | true | Flag to allow resizing volume |
+| isDefaultClass |  true, false | true | Flag to denote if this StorageClass will be the default |
+| volumeBindingMode | WaitForFirstConsumer, Immediate | WaitForFirstConsumer | Controls when volumeBinding and dynamic provisioning should happen |
+
+**References:**
+
+https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs
+
+# vSphere Volume
+
+## Notable Parameters
+
+| Name | Supported Values | Default Value | Description |
+| --- | --- | --- | --- |
+| diskformat | thin, zeroedthick and eagerzeroedthick | zeroedthick | The storage account type to use |
+| datastore | Datastore Name | | If specified, the volume will be created on the datastore specified in the storage class |
+| isDefaultClass | true, false | true | Flag to denote if this StorageClass will be the default |
+
+**References:**
+
+https://kubernetes.io/docs/concepts/storage/storage-classes/#vsphere
+
+# Azure Disk
+
+## Notable Parameters
+
+| Name | Supported Values | Default Value | Description |
+| --- | --- | --- | --- |
+| storageaccounttype | Standard_LRS, Premium_LRS | Standard_LRS | The storage account type to use |
+| kind | managed, shared, dedicated | managed | The disk kind |
+| reclaimPolicy | Delete, Retain | Delete | Defines whether volumes will be retained or deleted |
+| allowVolumeExpansion | true, false | true | Flag to allow resizing volume |
+| isDefaultClass  | true, false | true | Flag to denote if this StorageClass will be the default |
+| volumeBindingMode | WaitForFirstConsumer, Immediate | WaitForFirstConsumer | Controls when volumeBinding and dynamic provisioning should happen |
+
+**References:**
+
+https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-disk-storage-class
+
+# Further Info
 
 More info about Storage classes can be found in the following links:
 
 https://kubernetes.io/docs/concepts/storage/storage-classes/
-https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs
-https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-disk-storage-class
-https://kubernetes.io/docs/concepts/storage/storage-classes/#vsphere
 
 # Troubleshooting
 
 Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
-
-`kubectl get storageclass`
+```
+kubectl get storageclass
+```
