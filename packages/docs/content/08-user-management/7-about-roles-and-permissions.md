@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Permissions
 
 Permissions are of the format `component.operation` where *&lt;component&gt;* refers to a resource. Every resource can exist in multiple scopes. As mentioned previously, a *permission* contains multiple *scopes.*

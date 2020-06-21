@@ -5,13 +5,15 @@ metaDescription: "Most important concepts of Spectro Cloud"
 icon: ""
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Concept Overviews
 
-This page gives a quick introduction to various concepts that constitute the USP of Spectro Cloud.
+This page gives a quick introduction to various concepts that constitute the unique selling proposition of Spectro Cloud.
 
 # Tenant
 
-Every user is added into the Spectro Cloud platform as  a "tenant." Visualising an actual building with multiple floors where each floor hosts a tenant might help. The floors are accessible only to the respective tenants, making it highly secure. Spectro Cloud ensures a high level of security to prevent breaches.
+Every user is added into the Spectro Cloud platform as  a "tenant." Visualizing an actual building with multiple floors where each floor hosts a tenant might help. The floors are accessible only to the respective tenants, making it highly secure. Spectro Cloud ensures a high level of security to prevent breaches.
 
 # Projects
 
@@ -23,7 +25,7 @@ A user is anyone with access to the tenant area/s. Again, just as an occupant of
 
 # Cluster Profiles
 
-Cluster profiles are easily one of the most important features of the Spectro Cloud platform. Cluster profiles are what you create to preconfigure the components of your cluster to enable an easier and faster deployment. It is essentially a configuration that you create based on your needs, which you can recall every time you need to deploy a cluster matching that configuration. For example, let us say for your testing requirements, you have to have a setup with a load balancer and some monitoring. But your DevOps teams need an auth layer more than the other two. So you create a cluster profile for each of them.
+Cluster profiles are easily one of the most important features of the Spectro Cloud platform. Cluster profiles are a declarative model of a Kubernetes infrastructure stack; they are what you create to preconfigure the components of your cluster to enable an easier and faster deployment. It is essentially a configuration that you create based on your needs, which you can recall every time you need to deploy a cluster matching that configuration. For example, let us say for your testing requirements, you have to have a setup with a load balancer and some monitoring. But your DevOps teams need an auth layer more than the other two. So you create a cluster profile for each of them.
 
 # Cloud Accounts
 
@@ -31,7 +33,7 @@ If you have had to handle more than one cloud account, you know how much of a ch
 
 # Pack Registry - public and private
 
-Spectro Cloud provides multiple configuration options in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These configuration options are provided in the form of _Packs._ A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artefacts required to deploy and manage that integration. For example, Spectro Cloud provides packs for ELK Stack, Prometheus, Sysdig Falco etc. Besides these integrations, Spectro Cloud also provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage. Spectro Cloud maintains a public registry containing various packs that can be used in any cluster profile. The pack content in this registry is constantly updated with new integrations. Optionally, a customer can host their own Private Pack Registry.
+Spectro Cloud provides multiple configuration options in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These configuration options are provided in the form of _Packs._ A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artefacts required to deploy and manage that integration. For example, Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage. Besides these integrations, Spectro Cloud also provides packs for ELK Stack, Prometheus, Sysdig Falco etc. Spectro Cloud maintains a public registry containing various packs that can be used in any cluster profile. The pack content in this registry is constantly updated with new integrations. Optionally, a customer can host their own Private Pack Registry.
 
 ## Pack Content
 
@@ -55,7 +57,7 @@ vSphere versions XX+
 
 ### Spectro Cloud Gateway
 
-Spectro Cloud Gateway is Spectro Cloud's on-prem component to enable support for isolated private datacenre environments. The Spectro Cloud Gateway, once installed on-prem, registers itself with the Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+Spectro Cloud Gateway is Spectro Cloud's on-prem component to enable support for isolated private datacentre environments. The Spectro Cloud Gateway, once installed on-prem, registers itself with the Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 The Spectro Cloud Gateway is itself a multi-node Kubernetes cluster, which is installed and set up from the Spectro Cloud SaaS portal like any other Kubernetes cluster managed by Spectro Cloud. This ensures serviceability and lifecycle management of this component that facilitates the installation of the Spectro Cloud Gateway. Once the gateway is installed, the Spectro Cloud Gateway installer VM can be safely powered down and deleted. Installation and configuration of the gateway involve actions on both the SaaS portal as well as the vSphere environment.
 
@@ -72,4 +74,4 @@ A new vSphere cloud account is auto-created using the vSphere credentials provid
 
 ### Private Cloud Private Pack Registry
 
-An instance of the Spectro Cloud Pack registry is installed on the Spectro Ckoud Gateway by default, and Spectro Cloud's SaaS portal is configured to regularly synchronize content with this registry. This registry can be used to host customized packs for operating systems, Kubernetes and other integrations that may not be available on Spectro Cloud's public registry by default. Packs from this registry can be combined with those from Spectro Cloud's public registry when constructing Cluster proiles. Spectro Cloud provides a simple CLI tool to manage pack content in this registry.
+An instance of the Spectro Cloud Pack registry is installed on the Spectro Cloud Gateway by default, and Spectro Cloud's SaaS portal is configured to regularly synchronize content with this registry. This registry can be used to host customized packs for operating systems, Kubernetes and other integrations that may not be available on Spectro Cloud's public registry by default. Packs from this registry can be combined with those from Spectro Cloud's public registry when constructing Cluster profiles. Spectro Cloud provides a simple CLI tool to manage pack content in this registry.
