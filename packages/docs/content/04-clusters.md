@@ -25,15 +25,15 @@ Spectro Cloud provides VM images for cluster compute infrastructure out of the b
 
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
-#  Customization
+##  Customization
 
 Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be setup with customized OS packs.
 
-## Customize out of the box images
+### Customize out of the box images
 
 Spectro Cloud's out of the box images are security hardened and have Kubernetes components pre-installed. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Spectro Cloud’s orchestration engine creates a new image by instantiating a VM instance from the out of box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
-## Bring your own Image
+### Bring your own Image
 
 Users can bring used their own OS image by building custom OS packs and providing a reference to the desired image in pack annotations. These images can be:
 
