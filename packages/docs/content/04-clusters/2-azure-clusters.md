@@ -3,6 +3,8 @@ title: "Creating Azure Clusters"
 metaTitle: "Creating Azure Clusters in Spectro Cloud"
 metaDescription: "Detailed instructions on how to create clusters on Azure within Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 # Overview

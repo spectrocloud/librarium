@@ -3,6 +3,8 @@ title: "Adding a custom pack using helm charts"
 metaTitle: "Adding a custom pack using helm charts"
 metaDescription: "How to create custom made packs using Helm Charts and registries in Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

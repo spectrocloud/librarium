@@ -5,7 +5,7 @@ metaDescription: 'Nginx Ingress pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['ingress']
-logoUrl: 'https://proyectosbeta.net/wp-content/uploads/2015/08/nginx.png'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/addon/ingress/nginx_0.26.1/logo.png?token=APOFE6VPSO6KG2ZITSBIFFK67CVHC'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

@@ -3,6 +3,8 @@ title: "Creating AWS Clusters"
 metaTitle: "Creating AWS Clusters in Spectro Cloud"
 metaDescription: "Detailed instructions on how to create clusters on Amazon AWS within Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

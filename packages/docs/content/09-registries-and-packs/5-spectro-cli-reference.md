@@ -3,6 +3,8 @@ title: "Spectro Cloud CLI Tool"
 metaTitle: "Spectro Cloud CLI Tool"
 metaDescription: "A reference sheet for the Spectro Cloud CLI tool"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

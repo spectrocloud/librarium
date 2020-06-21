@@ -3,6 +3,8 @@ title: "Adding a custom pack using manifests"
 metaTitle: "Adding a custom pack using manifests"
 metaDescription: "How to create custom made packs using manifests and registries in Spectro Cloud"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -30,7 +32,7 @@ The example below shows how to build the Permission Manager auth pack and push t
 ```
 
 3. Create a sub-directory called `manifests`.
-4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, *{{ .Values.namespace}}*. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
+4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, *{{.Values.namespace}}*. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
 
 permission-manager.yaml (partial)
 ```

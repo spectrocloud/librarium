@@ -3,7 +3,7 @@ title: "About Roles and Permissions"
 metaTitle: "About Roles and Permissions"
 metaDescription: "Details about scopes, permissions and roles within Spectro Cloud"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
