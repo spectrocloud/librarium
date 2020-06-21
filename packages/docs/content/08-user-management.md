@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # User management
 
 This section touches upon the initial login aspects for tenant admins and non-admin users; and about RBAC setup within Spectro Cloud.
