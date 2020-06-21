@@ -21,10 +21,9 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 * Create a directory for certificates and copy the desired tls certificates into this directory. This directory will be mounted inside the registry docker container. Example : `/root/certs`
 * Pack contents in a registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can easily mounted on another registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro registry docker image using docker CLI.
- ```
+```
     docker pull spectro-registry:latest
 ```
-
 * Create the docker container using the docker `run` command
     * HTTPS mode
         ```

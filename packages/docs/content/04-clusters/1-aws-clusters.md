@@ -5,6 +5,8 @@ metaDescription: "Detailed instructions on how to create clusters on Amazon AWS 
 icon: ""
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # Overview
 
 The deployment architecture for AWS cluster is shown below.
@@ -38,7 +40,14 @@ A sufficient capacity in the desired AWS region should exist for the creation of
 
 ## AWS Cloud Account Permissions
 
-Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud as well as the IAM users or the ROOT users have the minimum set of permissions needed to create the infrastructure and resources:
+Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud as well as the IAM users or the ROOT users have the minimum set of permissions needed to create the infrastructure and resources.
+
+Ensure that the IAM user or the ROOT user has the following minimum permissions:
+
+<WarningBox>
+The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespaced character limit by aws.
+</WarningBox>
+
 ```
 {
     "Version": "2012-10-17",
@@ -293,7 +302,12 @@ Spectro Cloud provisions cluster infrastructure and cluster resources using your
 }
 ```
 
-> Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.
+> **Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.**
+
+<WarningBox>
+The following warning on this policy is expected:
+This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+</WarningBox>
 
 # Create Cluster
 
@@ -315,9 +329,9 @@ The following steps need to be performed to provision a new AWS cluster:
     * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures etc. by provisioning nodes across availability zones if multiple zones are selected.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-**WARNING:**
-
-> *New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.*
+<WarningBox>
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+</WarningBox>
 
 # Cluster scaling
 
@@ -328,8 +342,9 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 * After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
 * Provisioning status is updated with ongoing progress of the scale operation. 
 
-**WARNING:**
-> *Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.*
+<WarningBox>
+Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
+</WarningBox>
 
 # Add worker pool
 
