@@ -14,7 +14,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 The following features are included as part of Spectro Cloud 1.0:- 
 * Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure and VMWare. 
 * Security hardened, compliant and conformant Kubernetes clusters out of the box.
-* Cluster construction templates called Cluster Profiles. 
+* Cluster construction templates called Cluster Profiles.
 * Platform extensibility through custom integration packs.
 * Grouping of clusters logically into Projects for governance and control.
 * Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs etc.

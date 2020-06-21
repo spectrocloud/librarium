@@ -16,8 +16,8 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 ## Components
 
-* MetalLB controller
-* Speaker (runs on all nodes, deployed as DaemonSet)
+* MetalLB controller.
+* Speaker (runs on all nodes, deployed as DaemonSet).
 
 ## References
 

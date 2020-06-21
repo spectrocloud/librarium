@@ -7,6 +7,8 @@ hideToC: true
 fullWidth: false
 ---
 
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+
 # SAML 2.0 based SSO with Okta
 
 Detailed instructions can be found at the bottom.
@@ -17,8 +19,8 @@ Spectro Cloud offers IdP based SSO using SAML 2.0 for user login apart from emai
 
 Create a new application in Okta with the same name as `ENTITYID` from the Spectro Cloud console. For this application, copy the following attributes from Spectro Cloud;
 
-* `Login URL` into "Single Sign On URL"
-* `ENTITYID` into "Audience URI"
+* `Login URL` into "Single Sign On URL".
+* `ENTITYID` into "Audience URI".
 * Use `EmailAddress` as the "NameID format" and provide the following "ATTRIBUTE STATEMENTS":
 
 | Name  | Name Format (Optional)| Value|
@@ -28,7 +30,7 @@ Create a new application in Okta with the same name as `ENTITYID` from the Spect
 | Email       | unspecified            | user.email                                    |
 | SpectroTeam | unspecified            | *Enter < default team > here. See explanation below.* |
 
-Finish the Okta app config using the *"I'm a software vendor"* option. From the newly created Okta app, copy the IdP Metadata and paste into the corresponding box in the Spectro Cloud SAML config panel. Click `Confirm` to finalise the changes.
+Finish the Okta app config using the *"I'm a software vendor"* option. From the newly created Okta app, copy the IdP Metadata and paste into the corresponding box in the Spectro Cloud SAML config panel. Click `Confirm` to finalize the changes.
 
 The tenant admin can now add the users available in the Okta dashboard. The tenant admin should provide the `LOGIN URL` found in the Spectro Cloud SAML config panel to the users for logging into their Spectro Cloud dashboards.
 
