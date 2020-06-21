@@ -20,7 +20,7 @@ The following steps will be taken to provision your first AWS cluster:
 * Add AWS Cloud Account
 * Provision Cluster
 
-## Cluster Profile
+# Cluster Profile
 
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view)
 1. Switch to the *Cluster Profiles* page from the left navigation bar
@@ -41,7 +41,7 @@ The following steps will be taken to provision your first AWS cluster:
 1. Click on *Next* and review the *Cluster Profile*.
 1. Click on *Finish* to create the Cluster Profile.
 
-## Cloud Account
+# Cloud Account
 
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
 
@@ -60,7 +60,7 @@ The following steps will be taken to provision your first AWS cluster:
 1. Click on *Validate*
 1. Click on *Confirm* to finish creating your cloud account
 
-## Cluster
+# Cluster
 
 For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:
 

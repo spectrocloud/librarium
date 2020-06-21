@@ -70,6 +70,14 @@ const plugins = [
       anonymize: false,
     },
   },
+  {
+    resolve: "gatsby-plugin-react-svg",
+    options: {
+      rule: {
+        include: /icons/,
+      }
+    }
+  },
 ];
 
 // check and add algolia
