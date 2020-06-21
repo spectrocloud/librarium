@@ -10,47 +10,43 @@ logoUrl: 'https://raw.githubusercontent.com/docker-library/docs/fab4b16599d1424c
 
 # Vault
 
-[Vault](https://www.vaultproject.io/docs/platform/k8s/injector) is an [injector](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) for Kubernetes that makes the handling of *"[secrets](https://kubernetes.io/docs/concepts/configuration/secret/)"* easier.
+[Vault](https://www.vaultproject.io/) helps secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
 
-## Overview
+## Components
 
-Vault helps secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API. This page aims to capture Vault integration support provided by Spectro Cloud.
+Vault integration has the following components:
+* Vault server
+* UI (Optional)
+* [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional)
 
-### Supported use cases
+## Versions
 
-* Injecting application secrets from an external Vault into pods (client-only)
-* Provision and manage a Vault server in the Kubernetes cluster
+* 0.6.0
+* 0.3.1
 
-## Setup
+## Supported Use cases
 
-<Limitations>Only supported on K8s 1.17+</Limitations>
-<Limitation>Only supported on AWS clusters / cluster profiles</Limitation>
-<Constraints> ..... </Constraints>
+1. Running a Vault Service
+    * Vault is setup to run in **Dev mode** by default and so, vault will be unsealed and initialized
+    * For production use cases, we recommend disabling Dev mode and enable HA
+    * Also, see [Production Checklist](https://www.vaultproject.io/docs/platform/k8s/helm/run#architecture) recommendations
+1. Injecting application secrets from an external Vault into pods (**Agent Injector**)
+    * For running agent injector alone in the cluster, use v0.6.0 of Vault pack
+    * Make sure to set `injector.externalVaultAddr` to point to the external Vault server
 
-### Notable Parameters
+## How secrets are injected in deployments?
 
-| code | function |
-| --- | --- |
-| `vault.ha` | Enable multiple replicas of the Vault control plane |
-| `vault.unseal` | Automatically enable automatic unsealing support |
-| `vault.namespace` | Namespaces to monitor |
+In Kubernetes clusters with Vault integrated, secrets can be injected into the application pods by adding the following annotations
+```
+vault.hashicorp.com/agent-inject: "true"
+vault.hashicorp.com/agent-inject-secret-<unique_name>: /path/to/secret
+vault.hashicorp.com/role: "<role using which the secret can be fetced>"
+```
+More information on consuming Vault secrets can be found in [Vault docs](https://www.vaultproject.io/docs/platform/k8s/injector)
 
-## Usage
+## References
 
-In Kubernetes clusters where the Vault injector is integrated, secrets can be injected into the application pods by adding the following annotations:
-
-`vault.hashicorp.com/agent-inject-secret-<unique-name>: /path/to/secret`
-
-More information on consuming Vault secrets available on the [Vault K8s injector](https://www.vaultproject.io/docs) docs page.
-
-## Troubleshooting
-
-Ensure Vault server integration is successfully running: kubectl -n vault-system logs vault-pod. 
-
-Additional information on Vault integration: [Vault K8s Injector](https://www.vaultproject.io/docs/platform/k8s/injector).
-
-Need help? Contact Spectro Cloud support.
-
-## Changes
-
-* Version 0.3.2 released with critical bug fix X
+* [Vault Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/)
+* Injecting Vault Secrets Into Kubernetes Pods via a Sidecar - [Blog](https://www.hashicorp.com/blog/injecting-vault-secrets-into-kubernetes-pods-via-a-sidecar/)
+* Vault Agent injector - [Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/)
+* https://www.vaultproject.io/docs/platform/k8s/helm/run
