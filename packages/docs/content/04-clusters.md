@@ -98,6 +98,17 @@ Overall health is computed based on the following factors:
 * Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the tenant console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
 * Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
+# Usage Monitoring
+Spectro Cloud continuously monitors cluster resources and reports usage for the cluster as well as individual nodes. The following metrics are reported on cluster overview page of the tenant console. By default the metrics are only displayed for the worker nodes in the cluster:
+
+* Cores Used - A cluster-wise break down of the number of cores used.
+* CPU Usage - Current CPUs used across all cluster nodes. Additionally usage over a period of time is presented as a chart
+* Memory Usage - Current memory used across all cluster nodes. Additionally usage over a period of time is presented as a chart
+* CPU Requests - Total CPUs requested across all pods.
+* Memory Requests - Total memory requested across all pods.
+
+Additionally, usage metrics for individual nodes as well as node conditions are accessible from the node details page.
+
 # Troubleshooting
 
 Typically when a cluster lifecycle action such as provisioning, upgrade or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
