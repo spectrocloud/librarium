@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # What is Spectro Cloud?
 
-Spectro Cloud’s SaaS based product brings the managed Kubernetes experience to users' own unique enterprise Kubernetes infrastructure stacks running in any public cloud, private cloud, or bare-metal environments, allowing users to not have to trade-off between flexibility and manageability. Spectro Cloud provides an as-a-service experience to users by automating the deployment, management, and maintenance of multiple Kubernetes clusters based on user defined Kubernetes infrastructure stacks.
+Spectro Cloud’s SaaS based product brings the managed Kubernetes experience to users' own unique enterprise Kubernetes infrastructure stacks running in any public cloud, or private cloud environments, allowing users to not have to trade-off between flexibility and manageability. Spectro Cloud provides an as-a-service experience to users by automating the deployment, management, and maintenance of multiple Kubernetes clusters based on user defined Kubernetes infrastructure stacks.
 
 Spectro Cloud consists of three main pieces: the SaaS management component, a Registry and Repository, and the managed clusters themselves. Registries and repositories can be Spectro Cloud managed or hosted by users themselves. Repositories host Kubernetes infrastructure stack components and versions.
 
