@@ -41,7 +41,7 @@ export default function MDXLayout({ data = {}, location }) {
         return {
           path,
           operations: Object.keys(api.paths[path])
-            .filter(method => !api.paths[path][method]?.tags?.includes("private"))
+            .filter(method => !api.paths[path][method]?.tags?.some(tag => ["private", "system"].includes(tag)))
             .map(method => ({
               method,
               ...api.paths[path][method],
