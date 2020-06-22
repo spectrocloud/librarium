@@ -10,14 +10,10 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# Your First Cluster
-
-This document provides a quick setup guide for Spectro Cloud. If you haven’t already, we recommend reviewing the [Spectro Cloud Overview](/introduction/concept-overviews) first.
-
-Spectro Cloud supports provisioning and managing Kubernetes clusters on public clouds, private clouds, and bare-metal environments.
+# Your First AWS Cluster
 
 <InfoBox>
-The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
+The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first AWS cluster.
 </InfoBox>
 
 The following steps will be taken to provision your first AWS cluster:
@@ -30,19 +26,19 @@ The following steps will be taken to provision your first AWS cluster:
 
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
 1. Switch to the *Cluster Profiles* page from the left navigation bar.
-1. Click on the *Create Cluster Profile* button.
+1. Click on the *Add Cluster Profile* button.
 1. Specify the name **ExperimentalAWS** and click *Next*.
 1. Select **Amazon (AWS)** for the cloud selection.
 1. Click on Edit Layers.
 1. Please designate the following selections for each layer, leaving the default configuration:
     * OS: Ubuntu, 18.4.X (LTS)
-    * Kubernetes: select version 1.18.X
+    * Kubernetes: select version 1.17.X
     * Network: Calico 3.10.X
     * Storage: Amazon EBS 1.0.X
     * Additional layers:
         * Monitoring: Prometheus - Grafana 9.7.X
         * Monitoring: Kubernetes Dashboard 2.0.X
-        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.0
+        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X
     * Click on *Finish* to close the Layer dialogue.
 1. Click on *Next* and review the *Cluster Profile*.
 1. Click on *Finish* to create the Cluster Profile.
@@ -63,7 +59,7 @@ The following steps will be taken to provision your first AWS cluster:
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
 1. From the left-hand main-menu, select Settings.
 1. Click on *Add AWS Cloud Account*.
-    * name: ca1
+    * name: ca-aws-1
     * Access Key: your &lt;AWS access key&gt;
     * Secret Key: your &lt;AWS secret key&gt;
 1. Click on *Validate*.
@@ -78,11 +74,11 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 1. Navigate to the Default Project (select back to Default p.roject if you’re in the Admin view)
 1. Navigate to the *Clusters* page from the left-hand menu.
 1. Click on *Create cluster* (and follow the wizard):
-    * Name: c1
+    * Name: cluster-aws-1
     * Select the cluster profile: ProductionAWS, click *Next*.
     * Leave the pack parameter overrides as-is, click *Next*.
     * Cloud Properties:
-        * Cloud Account: ca1
+        * Cloud Account: ca-aws-1
         * Region: us-east-1
         * SSH keyname: &lt;select imported key&gt;
         * Do not select (deselect): Static Placement
