@@ -15,6 +15,6 @@ Welcome to Spectro Cloud. This is the documentation section where you should be 
 
 Feel free to skip around and jump to a section as needed. But as with most structured content, the order would help build the familiarity one after the other.
 
-First stop - [What is Spectro Cloud?](/1-introduction/what-is)
+First stop - [What is Spectro Cloud?](/introduction/what-is)
 
 At any point, please feel free to use the [FAQ](x.com) for more information.
