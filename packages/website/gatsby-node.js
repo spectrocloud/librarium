@@ -162,6 +162,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
 
     createNodeField({
+      name: 'hideToCSidebar',
+      node,
+      value: node.frontmatter.hideToCSidebar,
+    });
+
+    createNodeField({
       name: 'fullWidth',
       node,
       value: node.frontmatter.fullWidth,
