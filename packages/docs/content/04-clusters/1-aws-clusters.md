@@ -204,7 +204,7 @@ The policy below cannot be used as an inline policy, as it exceeds the 2048 non-
 </WarningBox>
 
 <WarningBox>
-The following warning on this policy is expected:
+The following warning on this policy is expected:<p></p>
 This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 

@@ -53,9 +53,9 @@ The following steps need to be performed to provision a new VMware cluster:-
 
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-<WarningBox>
+<InfoBox>
 New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
-</WarningBox>
+</InfoBox>
 
 # Scaling an Azure cluster
 
@@ -65,6 +65,10 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 * For the desired node pool, change the size directly from the nodes panel or by editing node pool settings.
 * After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
 * Provisioning status is updated with ongoing progress of the scale operation.
+
+<InfoBox>
+The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
+</InfoBox>
 
 # Adding an Azure worker pool
 

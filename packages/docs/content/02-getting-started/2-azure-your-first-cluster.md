@@ -6,6 +6,8 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Your First Cluster
@@ -14,9 +16,9 @@ This document provides a quick setup guide for Spectro Cloud. If you haven’t a
 
 Spectro Cloud supports provisioning and managing Kubernetes clusters on public clouds, private clouds, and bare-metal environments.
 
-<WarningBox>
+<InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
-</WarningBox>
+</InfoBox>
 
 The following steps will be taken to provision your first Azure cluster:
 
@@ -50,11 +52,10 @@ The following steps will be taken to provision your first Azure cluster:
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
 
 <WarningBox>
-Prerequisites: You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters/aws-clusters#prerequisites). Please import an SSH keypair into your account in the region `us-east-1`.
-</WarningBox>
-
-<WarningBox>
-Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.
+<strong>Prerequisites:</strong><p></p>
+<p>You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/aws-clusters#prerequisites">Cloud Account Permissions</a>. Please import an SSH keypair into your account in the region <b>us-east-1</b>.</p>
+<p></p>
+<p>Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.</p>
 </WarningBox>
 
 **Steps:**
@@ -99,5 +100,5 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 Once the cluster is provisioned - feel free to try the following:
 
 * View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters/aws-clusters#clusterscaling).
+* Scale up-down worker nodes [as described here](/clusters/azure-clusters#reconfiguringazurenodes).
 * Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
