@@ -5,10 +5,9 @@
 
 set -x
 set -e
+set -u
 
 source prow/functions.sh
 
 build_docs
 # sync_s3
-
-exit 0
