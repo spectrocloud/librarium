@@ -8,9 +8,15 @@ fullWidth: false
 hideToCSidebar: true
 ---
 
+import {Intro} from "@librarium/shared/src/components"
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+<Intro>
+
 # Welcome to Spectro Cloud!
+
+</Intro>
+
 
 Welcome to Spectro Cloud. This is the documentation section where you should be able to find answers to most queries. And to learn about the product as well. We start off with an overview of the most important concepts. These help make the most out of Spectro Cloud.
 
