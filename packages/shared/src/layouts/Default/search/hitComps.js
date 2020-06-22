@@ -10,10 +10,10 @@ const Wrap = styled.div`
   }
 `;
 
-export const PageHit = clickHandler => ({ hit }) => (
+export const PageHit = ({ hit, onClick }) => (
   <Wrap>
     <div>
-      <Link to={hit.slug} onClick={clickHandler}>
+      <Link to={hit.slug} onClick={onClick}>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </Link>
     </div>

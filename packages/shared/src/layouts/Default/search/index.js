@@ -51,6 +51,7 @@ const HitsWrapper = styled.div`
   }
 
   mark {
+    padding: 0 0.2em;
     border-radius: 3px;
     background-color: rgba(68, 50, 245, 0.05);
   }
@@ -86,6 +87,8 @@ const HitsWrapper = styled.div`
   .poweredBy {
     padding: 10px;
     border-top: 1px solid #ddd;
+    font-size: 12px;
+    color: #555;
   }
 
   .front {
@@ -166,14 +169,15 @@ export default function SearchComponent({ indices = [], collapse, hitsAsGrid, co
       <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
       <HitsWrapper
         className={'hitWrapper ' + displayResult}
-        show={query.length > 0 && focus}
+        show={query?.length > 0 && focus}
         asGrid={hitsAsGrid}
       >
         {indices.map(({ name, title, hitComp, type }) => {
+          const Component = hitComps[hitComp];
           return (
             <Index key={name} indexName={name}>
               <Results />
-              <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+              <Hits hitComponent={Component ? (props) => <Component {...props} onClick={() => setFocus(false)} /> : () => null} />
             </Index>
           );
         })}
