@@ -5,6 +5,7 @@ metaDescription: "A brief introduction to Spectro Cloud"
 icon: "graph"
 hideToC: true
 fullWidth: false
+hideToCSidebar: true
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
