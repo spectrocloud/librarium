@@ -20,13 +20,19 @@ build_docs() {
 	make build
 }
 
+# Sync docs to s3
 sync_s3() {
-	[[ $? == 0 ]] && aws --profile default s3 sync \
-		--cache-control 'max-age=604800' \
-		--exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' \
-		public/ s3://docs-latest.spectrocloud.com --delete
-	[[ $? == 0 ]] && aws --profile default s3 sync --cache-control 'max-age=0, s-maxage=604800' \
-		public/ s3://docs-latest.spectrocloud.com --delete
-	[[ $? == 0 ]] && aws --profile default cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
+
+	set +x
+	mkdir ${HOME}/.aws
+	echo '[default]' > ${HOME}/.aws/credentials 
+	echo 'aws_access_key_id = AKIAYUH46N6WLT7SAB5Z' >> ${HOME}/.aws/credentials
+	echo 'aws_secret_access_key = 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' >> ${HOME}/.aws/credentials
+
+	aws --profile default s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete
+	aws --profile default s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs-latest.spectrocloud.com --delete
+	aws --profile default cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
+	set -x
+	return 0
 }
 
