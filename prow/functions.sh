@@ -17,11 +17,10 @@ commenter() {
 
 build_docs() {
 	make initialize
-	make start
+	make build
 }
 
-post_submit() {
-	make build
+sync_s3() {
 	[[ $? == 0 ]] && aws --profile default s3 sync \
 		--cache-control 'max-age=604800' \
 		--exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' \
@@ -30,3 +29,4 @@ post_submit() {
 		public/ s3://docs-latest.spectrocloud.com --delete
 	[[ $? == 0 ]] && aws --profile default cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
 }
+
