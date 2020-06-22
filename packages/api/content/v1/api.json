@@ -4077,7 +4077,8 @@
       "put": {
         "description": "Subscribe components events with the message broker",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Subscribe components events with the message broker",
         "operationId": "v1alpha1EventsComponentsSubscriberUpdate",
@@ -4215,7 +4216,8 @@
     "/v1alpha1/git/webhook/configuration": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Syncs configuration with the Git on an event",
         "operationId": "v1alpha1GitWebhookConfigurationCreate",
@@ -4244,7 +4246,8 @@
     "/v1alpha1/git/webhook/release": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Sync service release version with the Git on a push event",
         "operationId": "v1alpha1GitWebhookReleaseCreate",
@@ -4292,7 +4295,8 @@
       "get": {
         "description": "Ping Service",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Ping Service",
         "operationId": "V1alpha1HealthPing",
@@ -4650,7 +4654,8 @@
       "get": {
         "description": "Returns Nats Configuration",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Get Nats Configuration",
         "operationId": "V1Alpha1NatsConfiguration",
@@ -4668,7 +4673,8 @@
       "post": {
         "description": "Returns Nats Credentials",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Get Nats Credentials",
         "operationId": "V1Alpha1NatsCredentials",
@@ -5449,7 +5455,8 @@
     "/v1alpha1/plans": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Retrieves a list of plans",
         "operationId": "v1alpha1PlansList",
@@ -5498,7 +5505,8 @@
       },
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Creates a user plan",
         "operationId": "v1alpha1PlansCreate",
@@ -5530,7 +5538,8 @@
     "/v1alpha1/plans/{uid}": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the specified plan",
         "operationId": "v1alpha1PlansUidGet",
@@ -5546,7 +5555,8 @@
       "put": {
         "description": "Updates the specified plan",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Update a plan",
         "operationId": "v1alpha1PlansUidUpdate",
@@ -5577,7 +5587,8 @@
     "/v1alpha1/plans/{uid}/credits/{creditUid}": {
       "put": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Updates the specified Plan's credit data",
         "operationId": "v1alpha1PlansUidCreditsUidUpdate",
@@ -5598,7 +5609,8 @@
       },
       "delete": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Deletes the specified Plan's credit data",
         "operationId": "v1alpha1PlansUidCreditsUidDelete",
@@ -5626,7 +5638,8 @@
     "/v1alpha1/plans/{uid}/freeCredit": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Adds free credit to the specified plan",
         "operationId": "v1alpha1PlansUidFreeCreditAdd",
@@ -5666,7 +5679,8 @@
     "/v1alpha1/plans/{uid}/planLimit": {
       "put": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Updates the specified plan's limit",
         "operationId": "v1alpha1PlansUidPlanLimitUpdate",
@@ -5697,7 +5711,8 @@
     "/v1alpha1/plans/{uid}/planType": {
       "put": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Changes the plan type for the specified plan",
         "operationId": "v1alpha1PlansUidPlanTypeUpdate",
@@ -5728,7 +5743,8 @@
     "/v1alpha1/plans/{uid}/renewal": {
       "patch": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Adds renewal data to the existing plan",
         "operationId": "v1alpha1PlansUidRenewal",
@@ -5759,7 +5775,8 @@
     "/v1alpha1/plans/{uid}/slaCredit": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Adds sla breach credit to the specified plan",
         "operationId": "v1alpha1PlansUidSlaCreditAdd",
@@ -5961,7 +5978,8 @@
     "/v1alpha1/registries/git": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Retrieves a list of Git registries",
         "operationId": "v1alpha1RegistriesGitList",
@@ -6010,7 +6028,8 @@
       },
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Creates a Git registry",
         "operationId": "v1alpha1RegistriesGitCreate",
@@ -6055,7 +6074,8 @@
     "/v1alpha1/registries/git/summary": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Retrieves a list of git registries as summary",
         "operationId": "v1alpha1RegistriesGitSummaryList",
@@ -6119,7 +6139,8 @@
     "/v1alpha1/registries/git/{uid}": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Returns the specified Git registry",
         "operationId": "v1alpha1RegistriesGitGet",
@@ -6134,7 +6155,8 @@
       },
       "put": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Updates the specified Git registry",
         "operationId": "v1alpha1RegistriesGitUpdate",
@@ -6155,7 +6177,8 @@
       },
       "delete": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Deletes the specified Git registry",
         "operationId": "v1alpha1RegistriesGitDelete",
@@ -6167,7 +6190,8 @@
       },
       "patch": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Patches the specified Git registry",
         "operationId": "v1alpha1RegistriesGitPatch",
@@ -6809,7 +6833,8 @@
       "get": {
         "description": "To orchestrate the cluster for the K8 deployment, a lock will be applied on the cluster for 5 minutes, so that the same cluster can't be acquired for orchestration\n",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Acquires a cluster with a lock",
         "operationId": "V1Alpha1SpectroClusterAcquire",
@@ -7332,7 +7357,8 @@
     "/v1alpha1/spectroclusters/{uid}/cleanup": {
       "delete": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Clean up the resources associated with the deleted cluster",
         "operationId": "v1alpha1SpectroClustersCleanUp",
@@ -7928,7 +7954,8 @@
     "/v1alpha1/tenants": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Retrieves a list of tenants",
         "operationId": "v1alpha1TenantsList",
@@ -7977,7 +8004,8 @@
       },
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Creates a tenant",
         "operationId": "v1alpha1TenantsCreate",
@@ -8034,7 +8062,8 @@
     "/v1alpha1/tenants/{tenantUid}": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the specified tenant",
         "operationId": "v1alpha1TenantsGet",
@@ -8049,7 +8078,8 @@
       },
       "put": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Updates the specified tenant",
         "operationId": "v1alpha1TenantsUpdate",
@@ -8070,7 +8100,8 @@
       },
       "delete": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Deletes the specified tenant",
         "operationId": "v1alpha1TenantsDelete",
@@ -8082,7 +8113,8 @@
       },
       "patch": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Patches the specified tenant",
         "operationId": "v1alpha1TenantsPatch",
@@ -8114,7 +8146,8 @@
     "/v1alpha1/tenants/{tenantUid}/plan": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the current tenant's plan",
         "operationId": "v1alpha1TenantsUidPlanGet",
@@ -8139,7 +8172,8 @@
     "/v1alpha1/tenants/{tenantUid}/plans/usage/monthly": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the tenant's monthly planUsage grouped by projects",
         "operationId": "v1Alpha1PlansUsageMonthlyGet",
@@ -8254,7 +8288,8 @@
     "/v1alpha1/tenants/{tenantUid}/usage/cpuCoreHours": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the tenant's cpu corehours usages grouped by projects",
         "operationId": "v1Alpha1UsageCpuCoreHours",
@@ -8293,7 +8328,8 @@
     "/v1alpha1/tenants/{tenantUid}/user": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "system"
         ],
         "summary": "Returns the user object of the specified tenant",
         "operationId": "v1alpha1TenantsUserGet",
@@ -8309,7 +8345,8 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "private"
+          "private",
+          "system"
         ],
         "summary": "Updates the user object of the tenant",
         "operationId": "v1alpha1TenantsUserUpdate",
@@ -8331,7 +8368,8 @@
       "post": {
         "tags": [
           "v1alpha1",
-          "private"
+          "private",
+          "system"
         ],
         "summary": "Creates an user using sysadmin privileges on behalf of the tenant",
         "operationId": "v1alpha1TenantsUserCreate",
@@ -8372,7 +8410,8 @@
       "put": {
         "description": "Subscribe timeseries with the message broker",
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Subscribe timeseries with the message broker",
         "operationId": "v1alpha1TimeseriesSubscriberUpdate",
