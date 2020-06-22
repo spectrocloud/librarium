@@ -3,7 +3,7 @@ title: "Adding a custom pack using helm charts"
 metaTitle: "Adding a custom pack using helm charts"
 metaDescription: "How to create custom made packs using Helm Charts and registries in Spectro Cloud"
 icon: ""
-hideToC: false
+hideToC: true
 fullWidth: false
 ---
 
@@ -217,7 +217,13 @@ charts:
  ...
 ```
 
-6. Using Spectro CLI, push the newly built pack to the pack registry:
+6. Login to the pack registry using the following command:
+
+```
+$spectro registry login [REGISTRY_SERVER]
+```
+
+7. Using Spectro CLI, push the newly built pack to the pack registry:
 
 ```
 $spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
