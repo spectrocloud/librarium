@@ -3,7 +3,7 @@ title: "Adding a custom pack using manifests"
 metaTitle: "Adding a custom pack using manifests"
 metaDescription: "How to create custom made packs using manifests and registries in Spectro Cloud"
 icon: ""
-hideToC: false
+hideToC: true
 fullWidth: false
 ---
 
@@ -160,7 +160,13 @@ manifests:
     authPassword: "welcome123"
 ```
 
-6. Using Spectro Cloud CLI  push the newly built pack to the pack registry:
+6. Login to the pack registry using the following command:
+
+```
+$spectro registry login [REGISTRY_SERVER]
+```
+
+7. Using Spectro Cloud CLI  push the newly built pack to the pack registry:
 
 ```
 $spectro pack push permission-manager --registry-server [REGISTRY-SERVER]

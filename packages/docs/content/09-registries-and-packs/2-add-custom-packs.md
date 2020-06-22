@@ -78,13 +78,19 @@ ansibleRoles:
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
-5. Push the newly defined pack to the registry using the following command:
+5. Login to the pack registry using the following command:
+
+```
+$spectro registry login [REGISTRY_SERVER]
+```
+
+6. Push the newly defined pack to the registry using the following command:
 
 ```
 $spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
 ```
 
-6. To overwrite contents of a previously deployed pack, use the force option as follows:
+7. To overwrite contents of a previously deployed pack, use the force option as follows:
 
 ```
 $spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
