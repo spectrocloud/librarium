@@ -4,7 +4,8 @@
 ########################################
 
 set -x
+set -e
+set -u
 source prow/functions.sh
 
-commenter
 build_docs
