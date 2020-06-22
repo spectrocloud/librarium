@@ -21,3 +21,7 @@ button {
 .paragraph img {
   max-width: 100%;
 }
+
+a:hover {
+  color: #206CD1;
+}

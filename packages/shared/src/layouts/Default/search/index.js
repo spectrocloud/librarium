@@ -8,30 +8,25 @@ import {
 } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
 
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Search } from 'styled-icons/fa-solid/Search';
 import { PoweredBy } from './styles';
 import Input from './input';
 import * as hitComps from './hitComps';
 
-const SearchIcon = styled(Search)`
-  width: 1em;
-  pointer-events: none;
-`;
-
 const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
   max-height: 80vh;
-  overflow: scroll;
+  overflow: auto;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
   position: absolute;
-  right: 0;
-  top: calc(100% + 0.5em);
-  width: 80vw;
-  max-width: 30em;
-  box-shadow: 0 0 5px 0;
-  padding: 0.7em 1em 0.4em;
+  left: 5px;
+  top: 85px;
+  width: 500px;
+  box-shadow: 0 2px 64px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 1px solid #ddd;
   background: white;
   @media only screen and (max-width: 991px) {
     width: 400px;
@@ -41,27 +36,32 @@ const HitsWrapper = styled.div`
     width: 100%;
     max-width: 500px;
   }
-  border-radius: ${props => props.theme.smallBorderRadius};
-  > * + * {
-    padding-top: 1em !important;
-    border-top: 2px solid ${props => props.theme.darkGray};
+
+  li {
+    padding: 10px;
+
+    &:hover {
+      background-color: rgba(68, 50, 245, 0.05);
+
+      mark {
+        color: #4432f5;
+        background-color: #fff;
+      }
+    }
   }
+
+  mark {
+    border-radius: 3px;
+    background-color: rgba(68, 50, 245, 0.05);
+  }
+
   li + li {
-    margin-top: 0.7em;
-    padding-top: 0.7em;
-    border-top: 1px solid ${props => props.theme.lightGray};
-  }
-  * {
-    margin-top: 0;
-    padding: 0;
-    color: black !important;
+    border-top: 1px solid #ddd;
   }
   ul {
     list-style: none;
-  }
-  mark {
-    color: ${props => props.theme.lightBlue};
-    background: ${props => props.theme.darkBlue};
+    padding: 0;
+    margin: 0;
   }
   header {
     display: flex;
@@ -82,6 +82,20 @@ const HitsWrapper = styled.div`
     color: black;
     margin-bottom: 0.3em;
   }
+
+  .poweredBy {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+
+  .front {
+    padding: 10px;
+    color: #ddd;
+
+    :empty {
+      padding: 0;
+    }
+  }
 `;
 
 const Root = styled.div`
@@ -93,13 +107,15 @@ const Root = styled.div`
   }
 `;
 
-const Results = connectStateResults(
-  ({ searching, searchState: state, searchResults: res }) =>
-    (searching && `Searching...`) || (res && res.nbHits === 0 && `No results for '${state.query}'`)
-);
+const Results = connectStateResults(({ searching, searchState: state, searchResults: res }) => (
+  <div className="front">
+    {(searching && `Searching...`) ||
+      (res && res.nbHits === 0 && `No results for '${state.query}'`)}
+  </div>
+));
 
 const useClickOutside = (ref, handler, events) => {
-  if (!events) events = [`mousedown`, `touchstart`];
+  if (!events) events = [`click`, `touch`];
   const detectClickOutside = event =>
     ref && ref.current && !ref.current.contains(event.target) && handler();
 
@@ -111,7 +127,7 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-export default function SearchComponent({ indices, collapse, hitsAsGrid, config }) {
+export default function SearchComponent({ indices = [], collapse, hitsAsGrid, config }) {
   const ref = createRef();
 
   if (!config?.header?.search?.algoliaAppId) {
@@ -127,13 +143,23 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid, config 
     config.header.search.algoliaSearchKey
   );
 
+  if (config?.header?.search?.indexName) {
+    indices = [
+      {
+        name: `${config.header.search.indexName}`,
+        title: `Results`,
+        hitComp: `PageHit`,
+      },
+    ];
+  }
+
   useClickOutside(ref, () => setFocus(false));
   const displayResult = query.length > 0 && focus ? 'showResults' : 'hideResults';
 
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={indices[0].name}
+      indexName={indices[0]?.name}
       onSearchStateChange={({ query }) => setQuery(query)}
       root={{ Root, props: { ref } }}
     >

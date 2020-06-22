@@ -4,6 +4,7 @@ import Loadable from 'react-loadable';
 
 import Loader from "../../components/Loader";
 import Link from "../../components/Link";
+import {useConfig} from "../../config"
 
 const SearchComponent = Loadable({
   loader: () => import('./search/index'),
@@ -71,9 +72,11 @@ export default function Header({menu = DEFAULT_MENU, location}) {
     return <Link className={isActive(location) ? "isActive" : ""} to={link}>{title}</Link>
   }
 
+  const config = useConfig();
+
   return (
     <Wrap>
-      <SearchComponent />
+      <SearchComponent config={config}/>
       <NavWrap>
         {menu.map(renderMenuItem)}
       </NavWrap>
