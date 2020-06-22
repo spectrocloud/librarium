@@ -31,7 +31,7 @@ The following steps will be taken to provision your first AWS cluster:
 1. Select **Amazon (AWS)** for the cloud selection.
 1. Click on Edit Layers.
 1. Please designate the following selections for each layer, leaving the default configuration:
-    * OS: Ubuntu, 18.4.X (LTS)
+    * OS: Ubuntu, 18.04.X (LTS)
     * Kubernetes: select version 1.17.X
     * Network: Calico 3.10.X
     * Storage: Amazon EBS 1.0.X
