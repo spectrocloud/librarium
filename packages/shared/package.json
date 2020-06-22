@@ -5,8 +5,7 @@
   "homepage": "",
   "license": "ISC",
   "main": "src/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "is-absolute-url": "^3.0.3"
   },
