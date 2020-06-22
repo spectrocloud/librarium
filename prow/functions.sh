@@ -4,7 +4,7 @@
 # Variables expected from CI - PULL_NUMBER , JOB_TYPE , ARTIFACTS
 set -x
 
-# Build 
+# Build  docs
 build_docs() {
 	make initialize
 	make build
