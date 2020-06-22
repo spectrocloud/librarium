@@ -84,17 +84,17 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
         * Subscription: your &lt;Azure Subscription&gt;
         * Region: East US
         * Resource Group: an &lt;Azure Resource availble in Ease US&gt;
-        * SSH keys: Create a new ssh key pair (or pick one your existing ones). Enter the public key in this field.
+        * SSH keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field.
         * Do not select (deselect): Static Placement
         * Click on *Next*.
     * In the node pool configuration:
         * For the *Master* node pool, pick the following properties:
-            * Instance type: Standard_B2S (General Purpose)
-            * Managed Disk: Standard LRS
+            * Instance type: Standard_D2s_v3, (General Purpose)
+            * Managed Disk: Premium LRS
             * Managed Disk: 60
         * For the *Worker* node pool, pick the following properties:
-            * Instance type: Standard_B2S (General Purpose)
-            * Managed Disk: Standard LRS
+            * Instance type: Standard_D2s_v3, (General Purpose)
+            * Managed Disk: Premium LRS
             * Managed Disk: 60
             * Availability Zones: select  *1*
     * In the final Review step, click on *Deploy*.
