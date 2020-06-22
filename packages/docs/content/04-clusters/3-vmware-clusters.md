@@ -233,7 +233,6 @@ The following steps need to performed to delete a cloud gateway.
 * The system performs a validation to ensure there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry deletion of the cloud gateway.
 * Delete the gateway Virtual Machines from vSphere.
 
-
 # Resizing a VMware cloud gateway
 
 A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially setup with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
