@@ -37,7 +37,21 @@ const getVersions = edges => {
 };
 
 const extractApiMenu = (edges, selectedVersion) => {
-  return edges.reduce((accumulator, { node: { fields: { slug, title, icon, version, api } } }) => {
+  return edges.sort((edge1, edge2) => {
+    const title1 = edge1.node.fields.title;
+    const title2 = edge2.node.fields.title;
+
+    if (title1 < title2) {
+      return -1;
+    }
+
+    if (title1 > title2) {
+      return 1;
+    }
+
+    return 0;
+
+  }).reduce((accumulator, { node: { fields: { slug, title, icon, version, api } } }) => {
     if (selectedVersion === version && api) {
       accumulator.push({
         url: slug,
