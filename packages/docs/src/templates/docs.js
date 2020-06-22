@@ -69,6 +69,7 @@ export const pageQuery = graphql`
         metaDescription
         fullWidth
         hideToC
+        hideToCSidebar
       }
     }
     allMdx {

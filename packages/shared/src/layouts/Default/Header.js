@@ -24,6 +24,8 @@ const Wrap = styled.div`
 `;
 
 const NavWrap = styled.div`
+  margin-right: 20px;
+
   a {
     padding: 0 10px;
     margin: 0 20px;
@@ -54,19 +56,14 @@ const DEFAULT_MENU = [
 
       return !othersAreActive;
     }
-  }, {
+  },
+  {
     title: "API",
     link: '/api',
     isActive(location) {
       return isMenuActive(location, '/api')
     }
-  }, {
-    title: "Glossary",
-    link: '/glossary',
-    isActive(location) {
-      return isMenuActive(location, '/glossary')
-    }
-  }
+  },
 ]
 
 export default function Header({menu = DEFAULT_MENU, location}) {

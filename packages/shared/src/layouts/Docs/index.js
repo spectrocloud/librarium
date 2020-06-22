@@ -121,7 +121,8 @@ export default function MDXLayout({
   docsLocation,
   extraContent,
   hideToC,
-  fullWidth
+  fullWidth,
+  hideToCSidebar,
 }) {
   const config = useConfig();
 
@@ -162,7 +163,6 @@ export default function MDXLayout({
         {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
         <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href={favicon} type="image/x-icon" />
-  ]}
       </Helmet>
 
       <ContentWrap>
@@ -173,7 +173,7 @@ export default function MDXLayout({
             <NextPrevious mdx={mdx} nav={activeMenu} />
           </div>
         </StyledMainWrapper>
-        {(!hideToC && !mdx.frontmatter?.hideToC) && (
+        {(!hideToCSidebar && !mdx.frontmatter?.hideToCSidebar) && (
           <RightSidebar>
             <StickyWrap>
               <Edit>
@@ -183,7 +183,9 @@ export default function MDXLayout({
                   </Link>
                 )}
               </Edit>
-              <TableOfContents location={location} edges={edges} />
+              {(!hideToC && !mdx.frontmatter?.hideToC) && (
+                <TableOfContents location={location} edges={edges} />
+              )}
             </StickyWrap>
           </RightSidebar>
         )}
