@@ -17,21 +17,23 @@ Setting up a custom pack registry involves the installation of a registry server
 
 Spectro Cloud provides a docker image for the registry server. The following steps need to be performed to deploy registry server using this docker image:-
 
-* Configure the user credentials by using the `htpasswd` utility. Store the credentials in a file locally. This file will be mounted inside a docker container.
+* Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the registry docker container.
     ```
     htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
     ```
 
 * Create a directory for certificates and copy the desired tls certificates into this directory. This directory will be mounted inside the registry docker container. Example : `/root/certs`
-* Pack contents in a registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can easily mounted on another registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
+* Pack contents in a registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro registry docker image using docker CLI.
+
 ```
-    docker pull spectro-registry:latest
+    docker pull gcr.io/spectro-images-public/release/spectro-registry:1.0.0
 ```
+
 * Create the docker container using the docker `run` command:
     * HTTPS mode -
-        ```
-        docker run -d \
+    ```
+    docker run -d \
         -p 443:5000 \
         --restart=always \
         --name spectro-registry \
@@ -44,22 +46,22 @@ Spectro Cloud provides a docker image for the registry server. The following ste
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-        spectro-registry:latest
-
+        gcr.io/spectro-images-public/release/spectro-registry:1.0.0
+    ```
     * HTTP mode - **not recommended**
-        ```
-        docker run -d \
-            -p 80:5000 \
-            --restart=always \
-            --name spectre-registry \
-            --mount type=bind,source=/root/auth,target=/auth,readonly \
-            --mount type=bind,source=/root/data,target=/data \
-            -e  REGISTRY_LOG_LEVEL=info \
-            -e  REGISTRY_AUTH=htpasswd \
-            -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
-            -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-            spectro-registry:latest
-        ```
+    ```
+    docker run -d \
+        -p 80:5000 \
+        --restart=always \
+        --name spectre-registry \
+        --mount type=bind,source=/root/auth,target=/auth,readonly \
+        --mount type=bind,source=/root/data,target=/data \
+        -e  REGISTRY_LOG_LEVEL=info \
+        -e  REGISTRY_AUTH=htpasswd \
+        -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
+        -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
+        gcr.io/spectro-images-public/release/spectro-registry:1.0.0 
+    ```
 * Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify installation by ...
 

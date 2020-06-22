@@ -7,6 +7,9 @@ hideToC: false
 fullWidth: false
 ---
 
+
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
@@ -19,7 +22,7 @@ All the control plane nodes and worker nodes are created within the private subn
 
 A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet be able to go out to the internet or call other AWS services.
 
-An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node.
+An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the ec2 instances. This is because the ec2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
 
 The APIServer endpoint is accessible through an ELB, which load balancing across all the control plane nodes.
 
@@ -27,7 +30,7 @@ The APIServer endpoint is accessible through an ELB, which load balancing across
 
 # Prerequisites
 
-Spectro Cloud creates compute, network and storage resources on AWS during provisioning of Kubernetes clusters. The following pre-requisites should be met for successful creation of clusters.
+Spectro Cloud creates compute, network and storage resources on AWS during provisioning of Kubernetes clusters. The following pre-requisites should be met for a successful creation of clusters.
 
 ## Resource Capacity
 
@@ -42,13 +45,9 @@ A sufficient capacity in the desired AWS region should exist for the creation of
 
 ## AWS Cloud Account Permissions
 
-Spectro Cloud provisions cluster infrastructure and cluster resources using your *Cloud Accounts* stored in the system. For proper functioning, please ensure that the *Cloud Accounts* registered with Spectro Cloud as well as the IAM users or the ROOT users have the minimum set of permissions needed to create the infrastructure and resources.
+To create an AWS cloud account, an access key as well as a secret access key will be needed.
 
 Ensure that the IAM user or the ROOT user has the following minimum permissions:
-
-<WarningBox>
-The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespaced character limit by AWS.
-</WarningBox>
 
 ```
 {
@@ -200,7 +199,9 @@ The policy below cannot be used as an inline policy, as it exceeds the 2048 non-
 }
 ```
 
-> **Support for “Access Key”-less provisioning using AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) is coming soon! Please do let us know if you have any unique security requirements with AWS credentials.**
+<WarningBox>
+The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespaced character limit by AWS.
+</WarningBox>
 
 <WarningBox>
 The following warning on this policy is expected:
@@ -227,22 +228,22 @@ The following steps need to be performed to provision a new AWS cluster:
     * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures etc. by provisioning nodes across availability zones if multiple zones are selected.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-<WarningBox>
+<InfoBox>
 New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
-</WarningBox>
+</InfoBox>
 
 # Scaling an AWS Cluster
 
 Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an AWS cluster.
 
-* Access the ‘nodes’ view for the cluster
+* Access the ‘nodes’ view for the cluster.
 * For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
 * After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
 * Provisioning status is updated with ongoing progress of the scale operation.
 
-<WarningBox>
+<InfoBox>
 Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
-</WarningBox>
+</InfoBox>
 
 # Add an AWS worker pool
 
@@ -254,8 +255,8 @@ The following steps need to be performed to add a new worker node pool to a clus
     * A descriptive name for the node pool.
     * Number of nodes in the node pool.
     * One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
-    * Instance type to be used for all the nodes lunched in the node pool.
-    * Save node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
+    * The instance type to be used for all the nodes launched in the node pool.
+    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
 
 # Remove an AWS worker pool
 
@@ -270,7 +271,7 @@ The following steps need to be performed to remove a worker pool from the cluste
 The following steps need to be performed to reconfigure worker pool nodes:-
 
 * Access the nodes view for the the cluster.
-* Edit settings of the desired node pool.
+* Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
-* Save node pool settings. After node pool settings are updated node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with new instance type configured.
-* Provisioning status is updated with ongoing progress of nodes being deleted and added.
+* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
+* The provisioning status is updated with ongoing progress of nodes being deleted and added.
