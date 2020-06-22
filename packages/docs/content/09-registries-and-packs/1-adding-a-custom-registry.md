@@ -65,11 +65,11 @@ Spectro Cloud provides a docker image for the registry server. The following ste
 
 # VERIFICATION OF THE INSTALLATION PENDING!
 
-# Create a custom registry in Spectro Cloud SaaS
+# Create a custom registry on the Tenant Console
 
 Once the deployment of the registry server is complete, configure it with the tenant console as follows:-
 
-1. Sign in to the Spectro Cloud console as a tenant admin. Go to Admin -> Settings -> Pack Registries.
+1. As a tenant administrator, navigate to Admin -> Settings -> Pack Registries.
 1. Click on "Add new Pack Registry" and provide the registry name, endpoint and user credentials.
 1. Click on "Confirm" once the details are filled.
 

@@ -17,11 +17,7 @@ As detailed in the [Concept Overviews](/introduction/concept-overviews) section,
 
 ## Overview
 
-A pack is a collection of files like manifest files, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as the operating systems, Kubernetes, network, storage, and add-ons. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
-
-It is a collection of metadata definition as an implementation for a layer. In other words, a pack is a set of options for the layers. It has to be remembered that the packs can only contain non-conflicting layer options. For example, a pack can have either Calico or Flannel for the CNI layer, but not both.
-
-Read more about packs [here](/introduction/concept-overviews#packregistry-publicandprivate).
+A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as operating system, kubernetes, network, storage, and add-ons.  Ansible roles if provided, are used to customize cluster VM images whereas kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
 
 ## Structure
 
