@@ -3,7 +3,7 @@ title: "What is Spectro Cloud?"
 metaTitle: "About Spectro Cloud"
 metaDescription: "Most important concepts of Spectro Cloud"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
