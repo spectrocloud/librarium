@@ -173,20 +173,20 @@ export default function MDXLayout({
             <NextPrevious mdx={mdx} nav={activeMenu} />
           </div>
         </StyledMainWrapper>
-        {(!hideToC && !mdx.frontmatter?.hideToC) && (
-          <RightSidebar>
-            <StickyWrap>
-              <Edit>
-                {docsLocation && (
-                  <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                    <Github icon="github" width="16px" /> Edit on GitHub
-                  </Link>
-                )}
-              </Edit>
+        <RightSidebar>
+          <StickyWrap>
+            <Edit>
+              {docsLocation && (
+                <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                  <Github icon="github" width="16px" /> Edit on GitHub
+                </Link>
+              )}
+            </Edit>
+            {(!hideToC && !mdx.frontmatter?.hideToC) && (
               <TableOfContents location={location} edges={edges} />
-            </StickyWrap>
-          </RightSidebar>
-        )}
+            )}
+          </StickyWrap>
+        </RightSidebar>
       </ContentWrap>
     </>
   );
