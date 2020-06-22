@@ -33,7 +33,7 @@ Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/prod
 
 ## Configuration Requirements
 
-The vSphere environment should be configured with a **DHCP service** in the primary VM Network for the workload Kubernetes clusters. A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage, such as VSAN, in order to be able to make use of high-availability control planes.
+The vSphere environment should be configured with a **DHCP service** in the primary VM Network for the workload Kubernetes clusters. A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 ## Permissions
 
