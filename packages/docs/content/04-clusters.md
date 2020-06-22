@@ -109,6 +109,11 @@ Spectro Cloud continuously monitors cluster resources and reports usage for the 
 
 Additionally, usage metrics for individual nodes as well as node conditions are accessible from the node details page.
 
+
+# Application Services
+
+Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing link to those on the tenant console. These include not only the applications and services deployed through Spectro Cloud, but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NorePort are displayed on the  tenant console.
+
 # Troubleshooting
 
 Typically when a cluster lifecycle action such as provisioning, upgrade or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
