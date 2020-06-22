@@ -51,6 +51,14 @@ export const StyledMainWrapper = styled.div`
     line-height: 52px;
     margin: 30px 0;
     letter-spacing: -0.02em;
+
+   ::before {
+      display: block;
+      content: " ";
+      margin-top: -110px;
+      height: 110px;
+      visibility: hidden;
+    }
   }
 
   h2 {
