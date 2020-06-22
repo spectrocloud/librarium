@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # About Packs, Layers and Registries
 
-As detailed in the [Concept Overviews](introduction/concept-overviews) section, [Cluster Profiles](http://localhost:8010/introduction/concept-overviews#clusterprofiles) are one of the unique and smart features of the Spectro Cloud solution. This profile based management of Kubernetes infrastructure (and its packs) enables organizations to have control through flexibilty. Users define cluster profiles customized for their own integrations and requirements based on what is needed for their organizations. Since cluster profiles can be different from group to group and can be setup in a flash, they help you avoid the complexity and scalability of a do-it-yourself project. To have a clear understanding of a pack in this context, please have a look at what a [layer](/integrations#layers) is.
+As detailed in the [Concept Overviews](/introduction/concept-overviews) section, [Cluster Profiles](/introduction/concept-overviews#clusterprofiles) are one of the unique and smart features of the Spectro Cloud solution. This profile based management of Kubernetes infrastructure (and its packs) enables organizations to have control through flexibilty. Users define cluster profiles customized for their own integrations and requirements based on what is needed for their organizations. Since cluster profiles can be different from group to group and can be setup in a flash, they help you avoid the complexity and scalability of a do-it-yourself project. To have a clear understanding of a pack in this context, please have a look at what a [layer](/integrations#layers) is.
 
 # Packs
 

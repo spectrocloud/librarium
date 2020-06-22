@@ -17,7 +17,6 @@ Custom packs are built by users and deployed to custom registries using Spectro 
 
 1. Create a directory with a suitable name for all the pack contents. Example: `prometheus_1_0`
 2. Create a metadata file named `pack.json` to describe the pack. Example:
-    * An example of a `pack.json` is shown below:
     ```
     {
         "annotations": {
@@ -42,10 +41,10 @@ An explanation for the parameters of the JSON is given in the table below:
 | --- | --- | --- | --- |
 | name | String | True | Name of the pack |
 | displayName | String | True | Name of the pack as it is to be displayed on the Spectro Cloud console |
-| layer | String | True | Pack type like os, Kubernetes, cni, csi, addon |
-| addon-type | String | False | Addon-type must be set for packs that have layer set to ‘add-on’. Value must be one of : logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the tenant console making it easy for profile authors to find packs. |
+| layer | String | True | A valid pack type. Supported values are ```os, Kubernetes, cni, csi, addon``` |
+| addon-type | String | False | Addon-type must be set for packs that have layer set to ‘add-on’. Value must be one of : ```logging, monitoring, load balancer, authentication, ingress, security, servicemesh```. Setting a relevant correct add-on type ensures packs are organized correctly on the tenant console making it easy for profile authors to find packs. |
 | version | String | True | A Sematic version for the pack. It is recommended that pack version be the same as the underlying integration it is being created for. For example, the version for pack that will install prometheus 2.3.4, should set to 2.3.4. |
-| cloudTypes | Array | True | Supported cloud types like aws, azure, vmware. One or more types can be provided for pack. |
+| cloudTypes | Array | True | Supported cloud types are ```aws, azure, vsphere, all```. One or more types can be provided for pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
 | annotations | Array | False | Optional key-value pairs required during pack installation. Typically custom packs do not need to set annotations. Some packs like the ones for OS require annotations need to be set with an image id. |
 | eol | String | False | End of life date for integration. |
