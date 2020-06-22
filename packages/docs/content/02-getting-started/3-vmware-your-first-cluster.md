@@ -41,9 +41,9 @@ The following steps will be taken to provision your first VMware cluster:
         * Console  Endpoint: https://console.spectrocloud.com
         * Pairing Code: <4 digit pairing code from code from step#2>
         * ssh public keys: Create a new ssh key pair (or pick one your existing ones). Enter the public key in this field. The public will be installed in the installer VM to provide ssh access as the user 'ubuntu'. This is useful for troubleshooting purposes. 
-        * HTTP Proxy: <endpoint for the http proxy server. Example:http://USERNAME:PASSWORD@PROXYIP:PROXYPORT>. Optional setting required only if a proxy is used for outbound connections
-        * HTTPS Proxy: <endpoint for the https proxy server. Example:http://USERNAME:PASSWORD@PROXYIP:PROXYPORT>. Optional setting required only if a proxy is used for outbound connections
-        * SOCKS Proxy: <endpoint for the SOCKS proxy server. Example:PROXYIP:PROXYPORT> . Optional setting required only if a proxy is used for outbound connections.
+        * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_. Optional setting required only if a proxy is used for outbound connections
+        * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_. Optional setting required only if a proxy is used for outbound connections
+        * SOCKS Proxy: &lt;endpoint for the SOCKS proxy server&gt;, e.g: _PROXYIP:PROXYPORT_. Optional setting required only if a proxy is used for outbound connections.
     * Finish OVF deployment wizard and wait for template fo be created. This make take a few minutes as the template is initially downloaded. 
 9. Power on SpectroCloudGateway VM. 
 10. Switch back to Spectro Cloud tenant console's admin view. Close the Cloud Gateway Installation Instructions if you still have it open. If you have been logged out or navigated away, you can access the page by clicking on Settings>Private Cloud Gateways in the left navigation bar.

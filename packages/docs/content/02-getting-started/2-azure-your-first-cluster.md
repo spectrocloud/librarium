@@ -49,10 +49,9 @@ The following steps will be taken to provision your first Azure cluster:
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
 
 <WarningBox>
-<strong>Prerequisites:</strong><p></p>
-<p>You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables etc. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/azure-clusters#prerequisites">Cloud Account Permissions</a>. 
-<p></p>
-<p>Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.</p>
+    <p><strong>Prerequisites:</strong></p>
+    <p>You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables etc. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/azure-clusters#prerequisites">Cloud Account Permissions</a>.</p>
+    <p>Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.</p>
 </WarningBox>
 
 **Steps:**
