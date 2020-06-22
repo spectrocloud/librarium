@@ -4,8 +4,11 @@
 ########################################
 
 set -x
+set -e
 
 source prow/functions.sh
 
-post_submit
+build_docs
+sync_s3
 
+exit 0
