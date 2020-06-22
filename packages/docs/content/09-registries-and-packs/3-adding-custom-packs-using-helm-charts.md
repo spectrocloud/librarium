@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Add-on packs using helm charts
 
-An add-on pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster. Spectro Cloud provides several add-on packs out of the box for various layers of the Kubernetes stack. For example:
+An add-on pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster. Spectro Cloud provides several add-on packs out-of-the-box for various layers of the Kubernetes stack. For example:
 
 Logging  - elastic search, fluentd.
 
@@ -25,7 +25,7 @@ Service Mesh - Istio.
 
 Custom add-on packs can be built to extend the list of integrations.
 
-The following example shows how build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
+The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
 
 1. Create the pack directory named "prometheus-grafana".
 2. Create the metadata file named `pack.json`.
@@ -52,9 +52,9 @@ The following example shows how build the Prometheus-Grafana monitoring pack and
 }
 ```
 
-3. Download the desired version of prometheus-grafana helm charts archive.
-4. Create a sub-directory called ‘charts’ and copy the downloaded helm chart archive to this directory.  Refer to the relative location of this archive in the pack manifest file, pack.json as shown the step 2.
-5. Create a file called ‘values.yaml’ for configurable chart parameters. This can be a subset of the values.yaml file shipped within the chart. Copy the entire file as is if all chat parameters need to be made configurable. For the promethus-grafana pack, the values.yaml could look like this:-
+3. Download the desired version of the prometheus-grafana helm charts archive.
+4. Create a sub-directory called `charts` and copy the downloaded helm chart archive to this directory.  Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
+5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chat parameters need to be made configurable. For the promethus-grafana pack, the `values.yaml` could look like this:-
 
 ```
 pack:
@@ -179,7 +179,42 @@ charts:
               receiver: 'null'
         receivers:
           - name: 'null'
-    ...
+
+      ## Pass the Alertmanager configuration directives through Helm's templating
+      ## engine. If the Alertmanager configuration contains Alertmanager templates,
+      ## they'll need to be properly escaped so that they are not interpreted by
+      ## Helm
+      ## ref: https://helm.sh/docs/developing_charts/#using-the-tpl-function
+      ##      https://prometheus.io/docs/alerting/configuration/#%3Ctmpl_string%3E
+      ##      https://prometheus.io/docs/alerting/notifications/
+      ##      https://prometheus.io/docs/alerting/notification_examples/
+      tplConfig: false
+
+      ## Alertmanager template files to format alerts
+      ## ref: https://prometheus.io/docs/alerting/notifications/
+      ##      https://prometheus.io/docs/alerting/notification_examples/
+      ##
+      templateFiles: {}
+      #
+      ## An example template:
+      #   template_1.tmpl: |-
+      #       {{ define "cluster" }}{{ .ExternalURL | reReplaceAll ".*alertmanager\\.(.*)" "$1" }}{{ end }}
+      #
+      #       {{ define "slack.myorg.text" }}
+      #       {{- $root := . -}}
+      #       {{ range .Alerts }}
+      #         *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+      #         *Cluster:*  {{ template "cluster" $root }}
+      #         *Description:* {{ .Annotations.description }}
+      #         *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
+      #         *Runbook:* <{{ .Annotations.runbook }}|:spiral_note_pad:>
+      #         *Details:*
+      #           {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+      #           {{ end }}
+
+      ingress:
+        enabled: false
+ ...
 ```
 
 6. Using Spectro CLI, push the newly built pack to the pack registry:
