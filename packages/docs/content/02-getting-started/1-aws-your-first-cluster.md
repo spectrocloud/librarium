@@ -7,7 +7,6 @@ fullWidth: false
 ---
 
 import InfoBox from '@librarium/shared/src/components/InfoBox';
-
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Your First AWS Cluster
