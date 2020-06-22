@@ -3,7 +3,7 @@ title: "Introduction to Spectro Cloud"
 metaTitle: "What is Spectro Cloud?"
 metaDescription: "A brief introduction to Spectro Cloud"
 icon: "graph"
-hideToC: false
+hideToC: true
 fullWidth: false
 ---
 
@@ -17,4 +17,4 @@ Feel free to skip around and jump to a section as needed. But as with most struc
 
 First stop - [What is Spectro Cloud?](/1-introduction/what-is)
 
-At any point, please feel free to use the [Glossary](/glossary) or the [FAQ](x.com) for more information.
+At any point, please feel free to use the [FAQ](x.com) for more information.
