@@ -15,7 +15,7 @@ Spectro Cloud SaaS does not need direct access to the VMware environment. A Priv
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
 
-A HAProxy Load balancer VM will be created for each of the Kubernetes cluster, as the LB for the apiserver endpoints.
+A HAProxy Load balancer VM will be created for each of the Kubernetes clusters, as the LB for the apiserver endpoints.
 
 ![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
 
@@ -31,7 +31,7 @@ Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/prod
 
 ## Configuration Requirements
 
-The vSphere environment should be configured with a **DHCP service** in the primary VM Network for the workload Kubernetes clusters. A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage, such as VSAN, in order to be able to make use of MachineDeployments and high-availability control planes.
+The vSphere environment should be configured with a **DHCP service** in the primary VM Network for the workload Kubernetes clusters. A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage, such as VSAN, in order to be able to make use of high-availability control planes.
 
 ## Permissions
 
@@ -212,6 +212,7 @@ The installer VM, when powered on, goes through a bootstrap process and register
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections. 
 
 If the above steps do not resolve your issues, copy the **following script** to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance.
+
 
 ## Gateway Cluster - Provisioning stalled/failure
 
