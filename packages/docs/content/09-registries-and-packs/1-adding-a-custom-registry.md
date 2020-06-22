@@ -13,6 +13,16 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 Setting up a custom pack registry involves the installation of a registry server and configuring it with the tenant console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the registry. Pack contents are periodically synchronized with the tenant console.
 
+# Pre Requisites
+
+* Need container runtime docker to be installed on the machine
+  
+* HTTP utility htpasswd  is required to be installed for user auth encryption
+  
+* Required minimum machine compute specifications - 1 vCPU and 2GB Memory
+  
+* Firewall ports 443/80 are required to be opened on the machine to allow traffic from tenant console and Spectro CLI tool
+
 # Deploying a registry server
 
 Spectro Cloud provides a docker image for the registry server. The following steps need to be performed to deploy registry server using this docker image:-
