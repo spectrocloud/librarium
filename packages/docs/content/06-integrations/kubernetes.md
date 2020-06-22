@@ -5,7 +5,7 @@ metaDescription: 'Kubernetes pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['kubernetes']
-logoUrl: 'https://www.servethehome.com/wp-content/uploads/2018/06/Kubernetes-Logo-265x198.jpg'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/7c1f55525bd65f1cb6d99829de871ecda832a2ec/stable/kubernetes/k8s_1.17.3/logo.png?token=APOFE6S66YFG2LQBAFQCWV267GGDU'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

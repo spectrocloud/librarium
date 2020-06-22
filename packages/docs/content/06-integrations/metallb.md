@@ -5,7 +5,7 @@ metaDescription: 'MetalLB Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['load balancers']
-logoUrl: 'https://v0-2-0--metallb.netlify.app/images/logo.png'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/ace05fdbc01d0168d9b4762106cb2bd94e8d49ff/stable/addon/loadbalancers/metallb/logo.png?token=APOFE6VHQEQC2CKJVSWKSZ267GGPG'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -21,5 +21,5 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 ## References
 
-https://metallb.universe.tf/
+https://metallb.universe.tf/ <br />
 https://github.com/metallb/metallb
