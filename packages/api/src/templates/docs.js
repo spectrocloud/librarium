@@ -115,6 +115,7 @@ export const pageQuery = graphql`
         fullWidth
         hideToC
         paths
+        hideToCSidebar
       }
     }
     allMdx(filter: {fields: {isApiPage: {eq: true}}}) {
