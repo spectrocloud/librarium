@@ -25,7 +25,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 1. Download the CLI binary file:
 
 ```
-OSX   : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/osx/spectro > spectro
+OSX   : $wget https://spectro-cli.s3.amazonaws.com/v0.3.0/osx/spectro > spectro
 Linux : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectro
 ```
 
