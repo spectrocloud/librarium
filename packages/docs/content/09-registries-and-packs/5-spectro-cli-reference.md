@@ -37,7 +37,7 @@ $chmod +x spectro
 
 # Global Arguments
 
-* List of Arguments available to all the Spectro CLI commands:
+List of Arguments available to all the Spectro CLI commands
 
 # Global Flags
 
@@ -66,7 +66,7 @@ SERVER - Spectro registry server in the format [host:port]
 
 -d, --default - Set the server as default Spectro registry for all the CLI commands
 
-**Note:** In case of HTTPS, if you have access to the registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/\<SPECTRO_REGISTRY\>/ca.crt
+**Note:** In case of HTTPS, if you have access to the registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/&lt;SPECTRO_REGISTRY&gt;/ca.crt
 
 ## PUSH
 
@@ -134,7 +134,7 @@ Example : $./spectro pack tag add ubuntu:lts__14.4.3 stable
 
 **Note:** Tag is a combination of label and the group name. The label is mandatory whereas the group is optional.
 
-tag → \<group\>__\<label\>
+tag → &lt;group&gt;__&lt;label&gt;
 
 Ex. lts___14.4.3 : lts → group, 14.4.3 → label
 
