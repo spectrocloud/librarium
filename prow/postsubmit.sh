@@ -10,4 +10,4 @@ set -u
 source prow/functions.sh
 
 build_docs
-# sync_s3
+sync_s3
