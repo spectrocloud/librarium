@@ -84,33 +84,38 @@ export default function Swagger(props) {
                 <Label>Summary:</Label> {operation.summary}
               </Summary>
             )}
-            <Label>Parameters:</Label>
-            <table className="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>Context</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                  <th>Required</th>
-                </tr>
-              </thead>
-              <tbody>
-                {operation.parameters.map(parameter => (
-                  <tr key={api.path + operation.method + parameter.name + parameter.paramType}>
-                    <td>{parameter.paramType}</td>
-                    <td>{parameter.name}</td>
-                    <td>{parameter.type}</td>
-                    <td>{parameter.description}</td>
-                    <td>
-                      {typeof parameter.required == 'undefined' || parameter.required == false
-                        ? 'no'
-                        : 'yes'}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {operation.parameters?.length > 0 ?
+              <>
+                <Label>Parameters:</Label>
+                <table className="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Context</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                      <th>Required</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {operation.parameters.map(parameter => (
+                      <tr key={api.path + operation.method + parameter.name + parameter.paramType}>
+                        <td>{parameter.paramType}</td>
+                        <td>{parameter.name}</td>
+                        <td>{parameter.type}</td>
+                        <td>{parameter.description}</td>
+                        <td>
+                          {typeof parameter.required == 'undefined' || parameter.required == false
+                            ? 'no'
+                            : 'yes'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </>
+              : <Summary><Label>Parameters:</Label> No Parameters</Summary>
+            }
             <ResponseCodes>Response codes:</ResponseCodes>
             <table className="table table-striped table-hover">
               <thead>
@@ -130,8 +135,8 @@ export default function Swagger(props) {
                         {response.responseModel ? (
                           <a href={'#' + response.responseModel}>{response.responseModel}</a>
                         ) : (
-                          'N/A'
-                        )}
+                            'N/A'
+                          )}
                       </td>
                     </tr>
                   ))}
