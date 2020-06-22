@@ -5,7 +5,7 @@ metaDescription: 'Integration of the CNI add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['networking']
-logoUrl: 'https://avatars3.githubusercontent.com/u/18357459?s=400&v=4'
+logoUrl: ''
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

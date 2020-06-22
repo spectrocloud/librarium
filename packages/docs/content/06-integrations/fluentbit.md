@@ -5,7 +5,7 @@ metaDescription: 'Fluentbit Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
-logoUrl: 'https://fluentbit.io/assets/img/logo1-default.png'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/3890a6c1a85c8e791bee741d50284d4318cfb94d/stable/loggging_and_monitoring/fluent-bit/logo.png?token=APOFE6S4ZG33KEZM37EUZTS67GEZW'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
