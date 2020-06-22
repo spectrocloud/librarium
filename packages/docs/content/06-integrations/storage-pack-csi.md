@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['storage']
-logoUrl: 'https://kubernetes.io/images/blog-logging/2018-04-10-container-storage-interface-beta/csi-logo.png'
+logoUrl: ''
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
