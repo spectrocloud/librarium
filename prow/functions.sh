@@ -12,14 +12,9 @@ build_docs() {
 
 # Sync docs to s3
 sync_s3() {
-
-	set +x
-	# mkdir ${HOME}/.aws
-
-	aws --profile default s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete
-	aws --profile default s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs-latest.spectrocloud.com --delete
-	aws --profile default cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
-	set -x
+	aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete
+	aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs-latest.spectrocloud.com --delete
+	aws cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
 	return 0
 }
 
