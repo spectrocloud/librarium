@@ -5,7 +5,14 @@ const startCase = require('lodash.startcase');
 const config = require('./config');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
 
   return new Promise((resolve, reject) => {
     resolve(
