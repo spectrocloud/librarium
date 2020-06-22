@@ -84,6 +84,11 @@ export default function Swagger(props) {
                 <Label>Summary:</Label> {operation.summary}
               </Summary>
             )}
+            {operation.description && (
+              <Summary>
+                <Label>Description:</Label> {operation.description}
+              </Summary>
+            )}
             {operation.parameters?.length > 0 ?
               <>
                 <Label>Parameters:</Label>
