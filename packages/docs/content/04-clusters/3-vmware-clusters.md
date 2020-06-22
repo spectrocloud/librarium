@@ -7,6 +7,8 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
@@ -134,9 +136,9 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 
 # Creating a VMware cloud account
 
-<WarningBox>
+<InfoBox>
 Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
-</WarningBox>
+</InfoBox>
 
 In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can be created for the different vSphere users.
 
@@ -196,12 +198,10 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 * Power off installer OVA which was initially imported at the start of this installation process.
 
-<WarningBox>
-Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used provisioning of clusters across all tenant Projects.
-</WarningBox>
-<WarningBox>
-A Pack registry instance is setup on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries [here](/registries-and-packs).
-</WarningBox>
+<InfoBox>
+Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used provisioning of clusters across all tenant Projects.<p></p>
+A Pack registry instance is setup on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries <a href="/registries-and-packs">here</a>.
+</InfoBox>
 
 # Troubleshooting
 
@@ -244,9 +244,9 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production e
 
 * The gateway upgrade begins shortly after the update. Two new nodes are created on vSphere and the gateway is upgraded to a 3-node cluster.
 
-<WarningBox>
-Scaling a 3-node cluster down to a 1-node cluster is not permitted. A load balancer instance is launched even for a 1-node gateway to support future expansion.
-</WarningBox>
+<InfoBox>
+Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node gateway to support future expansion.
+</InfoBox>
 
 # Creating a VMware Cluster
 
@@ -274,9 +274,9 @@ The following steps need to be performed to provision a new VMware cluster :-
     * Disk - Storage disk size in GB to be attached to the node.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-<WarningBox>
+<InfoBox>
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8GB of memory for general purpose workloads and another worker pool with 8CPU, 16 GB of memory for advanced workloads that demand larger resources.
-</WarningBox>
+</InfoBox>
 
 # Deleting a VMware Cluster
 
@@ -287,9 +287,9 @@ Deletion of a VMware cluster results in removal of all Virtual machines and asso
 * Confirm delete action
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
 
-<WarningBox>
+<InfoBox>
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, ‘Abort’ action is available to stop provisioning and delete all resources.
-</WarningBox>
+</InfoBox>
 
 # Scaling a VMware Cluster
 
@@ -300,9 +300,9 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 * After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
 * Provisioning status is updated with ongoing progress of the scale operation.
 
-<WarningBox>
+<InfoBox>
 The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
-</WarningBox>
+</InfoBox>
 
 # Reconfiguring VMware Nodes
 
