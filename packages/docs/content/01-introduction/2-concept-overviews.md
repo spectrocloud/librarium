@@ -58,5 +58,3 @@ A pack is a zip archive that consists of a manifest file called `pack.json` that
 # Private Cloud Gateway
 
 Private Cloud Gateway is Spectro Cloud's on-prem component to enable support for isolated private datacentre environments. The Private Cloud Gateway, once installed on-prem, registers itself with the Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
-
-
