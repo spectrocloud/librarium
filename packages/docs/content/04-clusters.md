@@ -7,6 +7,8 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
@@ -61,19 +63,19 @@ Kubernetes components and configuration are hardened in accordance with the Kube
 
 Spectro Cloud follows security best practices recommended by the various cloud providers when provisioning and configuring the compute, network and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
 
-<WarningBox>
+<InfoBox>
   The security measures mentioned above are implemented for Spectro Cloud’s out of the box OS and
   Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the
   relevant measures to secure their clusters.
-</WarningBox>
+</InfoBox>
 
 # Day-2 Management
 
 Spectro Cloud provides several options to manage Kubernetes clusters on an ongoing basis. These include options to scale up/down the cluster by adding/reducing number of nodes in a node pool, add additional worker pools, resize nodes in a node pool by modifying the instance type, and add additional fault domains such as availability zones to a node pool.
 
-<WarningBox>
+<InfoBox>
   Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. The  cluster control plane subsequently reconciles the changes to bring associated clusters to their desired state.
-</WarningBox>
+</InfoBox>
 
 # Updates
 
@@ -128,10 +130,7 @@ For example, failure to create a virtual machine in AWS due to the vCPU limit be
 
 Spectro Cloud maintains an event stream with low level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
 
-<WarningBox>
-  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However the errors clear up once the node comes up.
-</WarningBox>
-
-<WarningBox>
-Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
-</WarningBox>
+<InfoBox>
+  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However the errors clear up once the node comes up.<p></p>
+  Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
+</InfoBox>

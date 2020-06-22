@@ -6,13 +6,19 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# AWS:Your First Cluster
+# Your First Cluster
 
-<WarningBox>
+This document provides a quick setup guide for Spectro Cloud. If you haven’t already, we recommend reviewing the [Spectro Cloud Overview](/introduction/concept-overviews) first.
+
+Spectro Cloud supports provisioning and managing Kubernetes clusters on public clouds, private clouds, and bare-metal environments.
+
+<InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
-</WarningBox>
+</InfoBox>
 
 The following steps will be taken to provision your first AWS cluster:
 
@@ -46,11 +52,10 @@ The following steps will be taken to provision your first AWS cluster:
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
 
 <WarningBox>
-Prerequisites: You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters/aws-clusters#prerequisites). Please import an SSH keypair into your account in the region `us-east-1`.
-</WarningBox>
-
-<WarningBox>
-Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.
+<strong>Prerequisites:</strong><p></p>
+<p>You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/aws-clusters#prerequisites">Cloud Account Permissions</a>. Please import an SSH keypair into your account in the region <b>us-east-1</b>.</p>
+<p></p>
+<p>Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.</p>
 </WarningBox>
 
 **Steps:**

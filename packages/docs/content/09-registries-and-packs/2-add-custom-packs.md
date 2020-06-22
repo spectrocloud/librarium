@@ -7,6 +7,8 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Add custom packs
@@ -220,10 +222,10 @@ In all the examples above, an additional customization in the form of an Ansible
 
 Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is constructed, push it to the pack registry using the Spectro CLI tool.
 
-<WarningBox>
-A "values.yaml" file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
-</WarningBox>
+<InfoBox>
+A <i>values.yaml</i> file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
+</InfoBox>
 
-<WarningBox>
+<InfoBox>
 During the image customization phase of a cluster deployment, failures related to missing packages or package version mismatch might occur when using a custom OS pack. These errors are presented on the console. The image needs to be updated to resolve any such issues.
-</WarningBox>
+</InfoBox>
