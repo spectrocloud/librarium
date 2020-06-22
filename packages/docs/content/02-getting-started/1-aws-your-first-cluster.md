@@ -8,11 +8,7 @@ fullWidth: false
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# Your First Cluster
-
-This document provides a quick setup guide for Spectro Cloud. If you haven’t already, we recommend reviewing the [Spectro Cloud Overview](/introduction/concept-overviews) first.
-
-Spectro Cloud supports provisioning and managing Kubernetes clusters on public clouds, private clouds, and bare-metal environments.
+# AWS:Your First Cluster
 
 <WarningBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
@@ -29,12 +25,12 @@ The following steps will be taken to provision your first AWS cluster:
 1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
 1. Switch to the *Cluster Profiles* page from the left navigation bar.
 1. Click on the *Create Cluster Profile* button.
-1. Specify the name **ProductionAWS** and click *Next*.
+1. Specify the name **ExperimentalAWS** and click *Next*.
 1. Select **Amazon (AWS)** for the cloud selection.
 1. Click on Edit Layers.
 1. Please designate the following selections for each layer, leaving the default configuration:
     * OS: Ubuntu, 18.4.X (LTS)
-    * Kubernetes: select version 1.16.8
+    * Kubernetes: select version 1.18.X
     * Network: Calico 3.10.X
     * Storage: Amazon EBS 1.0.X
     * Additional layers:
