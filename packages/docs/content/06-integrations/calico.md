@@ -1,12 +1,14 @@
 ---
 title: 'Calico'
 metaTitle: 'Calico Networking in Spectro Cloud'
-metaDescription: 'Choosing Calico for Kubernetes Networking within the Spectro Cloud dashboard'
+metaDescription: 'Choosing Calico for Kubernetes Networking within the Spectro Cloud console'
 hiddenFromNav: true
 isIntegration: true
 category: ['networking']
 logoUrl: 'https://registry.spectrocloud.com/v1/cni-calico/blobs/sha256:9a08103ccd797857a81b6ce55fa4f84a48bcb2bddfc7a4ff27878819c87e1e30?type=image/png'
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Calico
 
@@ -21,10 +23,11 @@ Calico manifest used for networking does the following:
 * The `calico-etcd-secrets` secret, which optionally allows for providing etcd TLS assets.
 * The `calico-config` ConfigMap, which contains parameters for configuring the install.
 
-> Limitations
->
-> * AWS, VMWare supports IP-in-IP encapsulation type
-> * Azure supports VXLAN encapsulation type
+<WarningBox>
+Limitations:
+AWS, VMWare supports IP-in-IP encapsulation type.  
+Azure supports VXLAN encapsulation type.
+</WarningBox>
 
 # Notable Parameters
 
@@ -37,5 +40,5 @@ Calico manifest used for networking does the following:
 
 # Troubleshooting
 
-* A daemon set is installed and so a calico-node pod should run on all the nodes in the cluster to provide networking
-* For any issues with networking, check calico-node and calico-kube-controller pods on the cluster
+* A daemon set is installed and so a calico-node pod should run on all the nodes in the cluster to provide networking.
+* For any issues with networking, check calico-node and calico-kube-controller pods on the cluster.

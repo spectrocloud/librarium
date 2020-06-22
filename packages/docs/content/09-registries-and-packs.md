@@ -1,9 +1,9 @@
 ---
 title: "Registries and packs"
 metaTitle: "Registries and packs"
-metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make K8s truly yours."
+metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make Kubernetes truly yours."
 icon: "audits"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
@@ -11,17 +11,13 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # About Packs, Layers and Registries
 
-As detailed in the [Concept Overviews](introduction/concept-overviews) section, [Cluster Profiles](http://localhost:8010/introduction/concept-overviews#clusterprofiles) are one of the unique and smart features of the Spectro Cloud solution. This profile based management of Kubernetes infrastructure (and its packs) enables organisations to have control through flexibilty. Users define cluster profiles customised for their own integrations and requirements based on what is needed for their organisations. Since cluster profiles can be different from group to group and can be setup in a flash, avoiding the complexity and scalability of a do-it-yourself project. To have a clear understanding of a pack in this context, please have a look at what a [layer](/integrations#layers) is.
+As detailed in the [Concept Overviews](/introduction/concept-overviews) section, [Cluster Profiles](/introduction/concept-overviews#clusterprofiles) are one of the unique and smart features of the Spectro Cloud solution. This profile based management of Kubernetes infrastructure (and its packs) enables organizations to have control through flexibilty. Users define cluster profiles customized for their own integrations and requirements based on what is needed for their organizations. Since cluster profiles can be different from group to group and can be setup in a flash, they help you avoid the complexity and scalability of a do-it-yourself project. To have a clear understanding of a pack in this context, please have a look at what a [layer](/integrations#layers) is.
 
 # Packs
 
 ## Overview
 
-A pack is a collection of files like manifest files, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as the operating systems, Kubernetes, network, storage, and add-ons. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
-
-It is a collection of metadata definition as an implementation for a layer. In other words, a pack is a set of options for the layers. It has to be remembered that the packs can only contain non-conflicting layer options. For example, a pack can have either Calico or Flannel for the CNI layer, but not both.
-
-Read more about packs [here](/introduction/concept-overviews#packregistry-publicandprivate).
+A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as operating system, kubernetes, network, storage, and add-ons.  Ansible roles if provided, are used to customize cluster VM images whereas kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
 
 ## Structure
 
@@ -39,7 +35,7 @@ Spectro Cloud provides a rich collection of out-of-the-box packs for various int
 
 ## Overview
 
-The registry is a server-side application to store and serve packs to its clients. Packs from a registry are retrieved and presented as options during the creation of a cluster profile. Spectro cloud supports configuration of multiple registries.
+The registry is a server-side application to store and serve packs to its clients. Packs from a registry are retrieved and presented as options during the creation of a cluster profile. Spectro Cloud supports configuration of multiple registries.
 
 ## Default Registry
 

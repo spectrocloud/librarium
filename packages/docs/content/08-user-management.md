@@ -3,7 +3,7 @@ title: "User management"
 metaTitle: "User management"
 metaDescription: "Learn about adding and managing access to users on Spectro Cloud using SAML based SSO. Also explains how users and tenant admins have been setup on Spectro Cloud"
 icon: "audits"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
@@ -19,21 +19,21 @@ For a tenant admin, the password shall be set upon the initial login. Non-admin 
 
 * Using Spectro Cloud credentials on the login page.
 * SSO using Identity Providers that use SAML 2.0:
-  * Azure Active Directory
-  * Okta
-  * Keycloak
-  * OneLogin
-  * Microsoft ADFS
-  * Others
+  * Azure Active Directory.
+  * Okta.
+  * Keycloak.
+  * OneLogin.
+  * Microsoft ADFS.
+  * Others.
 
-To setup IdP based SSO, login to the Spectro Cloud console as the tenant admin. Access the admin settings area by clicking the "Admin" button on the left panel.
-Select the "Settings" from the "Admin menu" and then click "SAML" on the dashboard to view the SAML panel. Toggle the `Enable SSO` button to bring up the configuration boxes.
+To setup IdP based SSO, login to the Spectro Cloud console as the tenant admin. Access the tenant admin settings area by clicking the "Admin" button on the left panel.
+Select the "Settings" from the "Admin menu" and then click "SAML" on the Spectro Cloud console to view the SAML panel. Toggle the `Enable SSO` button to bring up the configuration boxes.
 Choose the IdP from the dropdown menu. Click the name of your preferred IdP below to see detailed instructions.
-* [Okta](/user-management/okta)
-* [Azure Active Directory](/user-management/azure-ad)
-* [KeyCloak](/user-management/keycloak)
-* [OneLogin](/user-management/ßonelogin)
-* [MSFT ADFS](/user-management/msft-adfs)
+* [Okta](/user-management/okta).
+* [Azure Active Directory](/user-management/azure-ad).
+* [KeyCloak](/user-management/keycloak).
+* [OneLogin](/user-management/ßonelogin).
+* [MSFT ADFS](/user-management/msft-adfs).
 
 # RBAC
 

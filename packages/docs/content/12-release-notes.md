@@ -3,23 +3,23 @@ title: "Release Notes"
 metaTitle: "Release Notes"
 metaDescription: "Spectro Cloud recommendations for the best manner of operations"
 icon: "audits"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# -6/23/2020 - Release 1.0
+# June 23, 2020 - Release 1.0
 
-The following features are included as part of Spectro Cloud 1.0:- 
+The following features are included as part of Spectro Cloud 1.0:
 * Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure and VMWare. 
 * Security hardened, compliant and conformant Kubernetes clusters out of the box.
-* Cluster construction templates called Cluster Profiles. 
+* Cluster construction templates called Cluster Profiles.
 * Platform extensibility through custom integration packs.
 * Grouping of clusters logically into Projects for governance and control.
 * Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs etc.
 
-# Known Issues
+## Known Issues
 
 * **BET-403:** Spectro Cloud does not validate dependencies in cloud configuration. For example, for Azure cloud, not all instance types support every available storage type. Choosing an incompatible combination does not result in a validation error. Runtime failures might result from such configuration, which would then need to be corrected by the users.
 * **BET-768:** On Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.

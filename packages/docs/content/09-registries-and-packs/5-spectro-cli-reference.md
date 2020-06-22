@@ -3,7 +3,11 @@ title: "Spectro Cloud CLI Tool"
 metaTitle: "Spectro Cloud CLI Tool"
 metaDescription: "A reference sheet for the Spectro Cloud CLI tool"
 icon: ""
+hideToC: false
+fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
 
@@ -25,7 +29,7 @@ OSX   : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/osx/spectro > spectro
 Linux : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectro
 ```
 
-2. Provide the executable permission to the CLI spectro
+2. Provide the executable permission to the CLI spectro.
 
 ```
 $chmod +x spectro
@@ -33,11 +37,11 @@ $chmod +x spectro
 
 # Global Arguments
 
-* List of Arguments available to all the Spectro CLI commands
+List of Arguments available to all the Spectro CLI commands
 
 # Global Flags
 
-* List of Flags available to all the Spectro CLI commands
+* List of Flags available to all the Spectro CLI commands:
 
     * h, --help - help for each command
 
@@ -45,7 +49,7 @@ $chmod +x spectro
 
 ## LOGIN
 
-Authenticate user with Spectro registry by using the login command
+Authenticate user with Spectro registry by using the login command:
 ```
 Usage   : $./spectro registry login [SERVER] 
 Example : $./spectro registry login spectro.io:5000
@@ -54,7 +58,7 @@ Example : $./spectro registry login spectro.io:5000
 
 ### Args
 
-SERVER - Spectro registry server in the format  [host:port]
+SERVER - Spectro registry server in the format [host:port]
 
 ### Flags
 
@@ -62,7 +66,7 @@ SERVER - Spectro registry server in the format  [host:port]
 
 -d, --default - Set the server as default Spectro registry for all the CLI commands
 
-**Note:** In case of HTTPS, if you have access to the registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/\<SPECTRO_REGISTRY\>/ca.crt
+**Note:** In case of HTTPS, if you have access to the registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/&lt;SPECTRO_REGISTRY&gt;/ca.crt
 
 ## PUSH
 
@@ -84,7 +88,7 @@ PACK_SOURCE_DIR: Directory location where pack content is located
 
 ## LIST
 
-List all the packs from the Spectro registry
+List all the packs from the Spectro registry:
 ```
 Usage   : $./spectro pack ls [flags]
 Example : $./spectro pack ls spectro.io:5000
@@ -99,7 +103,7 @@ Example : $./spectro pack ls spectro.io:5000
 
 ## PULL
 
-Download the packs from the Spectro registry to a pack target location
+Download the packs from the Spectro registry to a pack target location:
 
 ```
 Usage   : $./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
@@ -121,16 +125,16 @@ PACK_TARGET_DIR - Directory location where pack content will be pulled
 
 ### ADD
 
-Create a new tag to a pack which is already pushed to the Spectro registry
+Create a new tag to a pack which is already pushed to the Spectro registry:
 ```
 Usage   : $./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 Example : $./spectro pack tag add ubuntu:lts__14.4.3 stable
           $./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
 ```
 
-**Note:** Tag is a combination of label and the group name. The label is mandatory whereas the group is optional
+**Note:** Tag is a combination of label and the group name. The label is mandatory whereas the group is optional.
 
-tag → \<group\>__\<label\>
+tag → &lt;group&gt;__&lt;label&gt;
 
 Ex. lts___14.4.3 : lts → group, 14.4.3 → label
 

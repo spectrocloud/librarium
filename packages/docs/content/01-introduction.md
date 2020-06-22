@@ -3,13 +3,13 @@ title: "Introduction to Spectro Cloud"
 metaTitle: "What is Spectro Cloud?"
 metaDescription: "A brief introduction to Spectro Cloud"
 icon: "graph"
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# Hello World!
+# Welcome to Spectro Cloud!
 
 Welcome to Spectro Cloud. This is the documentation section where you should be able to find answers to most queries. And to learn about the product as well. We start off with an overview of the most important concepts. These help make the most out of Spectro Cloud.
 

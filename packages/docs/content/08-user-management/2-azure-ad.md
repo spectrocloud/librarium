@@ -3,9 +3,11 @@ title: "Azure AD SSO Setup"
 metaTitle: "Azure AD SSO Setup"
 metaDescription: "Detailed instructions on creating SSO to log in to Spectro Cloud using SAML 2.0 with Azure Active Directory as the Identity Provider"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
+
+import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # SAML 2.0 based SSO with Azure AD
 
@@ -34,6 +36,6 @@ Once the configuration is saved, download the `Federation Metadata XML` in the `
 
 ## About the `SpectroTeam` attribute
 
-Any non-admin user that is added to a tenant must be added into at least one team when being created by the admin. This team can be changed later on if needed. See the teams section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the dashboard. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as from Azure Active Directory. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the dashboards. A team created on Azure AD which is not mentioned in the Spectro Cloud will be ignored.
+Any non-admin user that is added to a tenant must be added into at least one team when being created by the admin. This team can be changed later on if needed. See the teams section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as from Azure Active Directory. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on Azure AD which is not mentioned in the Spectro Cloud will be ignored.
 
 A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team which is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the Azure AD dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
