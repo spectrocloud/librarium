@@ -10,6 +10,17 @@ logoUrl: 'https://registry.spectrocloud.com/v1/cni-calico/blobs/sha256:9a08103cc
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# Overview
+
+Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
+
+## Supported Networking Packs
+
+* [Calico](/integrations/calico)
+    * v3.9.
+    * v3.10.
+
+
 # Calico
 
 [Project Calico](http://docs.projectcalico.org/) is an open source container networking provider and network policy engine.
