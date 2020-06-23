@@ -7,5 +7,3 @@ paths: ['/v1alpha1/services']
 ---
 
 # Services
-
-Add introduction here

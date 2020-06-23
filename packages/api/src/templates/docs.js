@@ -23,16 +23,68 @@ export default function MDXLayout({ data = {}, location }) {
   } = data;
 
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, {...config, base: '/api'});
+    return DocsLayout.calculateMenuTree(allMdx.edges, { ...config, base: '/api' });
   }, [allMdx.edges]);
 
+
   function renderAPIDoc() {
+    // TODO refactor this function
+
     const paths = mdx.frontmatter?.paths;
     if (!paths || !mdx?.fields?.version) {
       return null;
     }
 
     const api = APIS[mdx?.fields?.version];
+
+    function extractDefinition(ref) {
+      const definitionArray = ref?.split("/") || [];
+      const def = definitionArray[definitionArray.length - 1];
+      const defObject = api.definitions[def];
+
+      // the response has no schema
+      if (!defObject) {
+        return null;
+      }
+
+      // the response schema is type array - encounter only 2 times and seems to always have the items prop
+      if (defObject?.type === "array") {
+        return ({
+          items: extractDefinition(defObject.items.$ref)
+        });
+      }
+
+      function renderProperties(defObject) {
+        return defObject?.properties && Object.keys(defObject?.properties)
+          .reduce((propertiesAcc, property) => {
+            const definitionProperty = defObject.properties[property];
+            const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref
+
+            return definitionPropertyRef ?
+              // if the property contains a ref, call again extractDefinition
+              {
+                ...propertiesAcc,
+                [property]: definitionProperty.type === "array" ?
+                  [extractDefinition(definitionPropertyRef)] :
+                  extractDefinition(definitionPropertyRef)
+              } :
+              {
+                // if property value is an array, render what type the elements are
+                ...propertiesAcc, [property]:
+                  definitionProperty.type === "array" ?
+                    [definitionProperty?.items.type || definitionProperty.type] :
+                    // if the property value is an object that contains the properties key
+                    // call again renderProperties function in case it has refs inside
+                    // otherwise render the property type
+                    definitionProperty?.properties ?
+                      renderProperties(definitionProperty) :
+                      definitionProperty.type
+              }
+          }, {}) || (defObject?.format || defObject.type) // if there are no properties render the format or type (this was seems to apply only for timestamps)
+      }
+
+      return renderProperties(defObject);
+    }
 
     const endpoints = Object.keys(api.paths)
       .filter(path => paths.some(entry => path.startsWith(entry)))
@@ -48,9 +100,13 @@ export default function MDXLayout({ data = {}, location }) {
               ...api.paths[path][method],
               parameters: api.paths[path][method].parameters || [],
               responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
-                response => ({
-                  ...api.paths[path][method].responses[response],
-                })
+                response => {
+                  return ({
+                    code: response,
+                    ...api.paths[path][method].responses[response],
+                    schema: JSON.stringify(extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref), null, 2),
+                  })
+                }
               ),
             })),
         };
@@ -77,8 +133,9 @@ export default function MDXLayout({ data = {}, location }) {
         <DocsLayout
           menu={menu}
           mdx={mdx}
+          fullWidth={mdx.frontmatter?.fullWidth|| mdx.frontmatter?.api}
           docsLocation={docsLocation}
-          hideToC={mdx.frontmatter?.api}
+          hideToCSidebar={mdx.frontmatter?.api}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
           location={location}
