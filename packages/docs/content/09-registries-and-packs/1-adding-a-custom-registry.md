@@ -73,9 +73,12 @@ Spectro Cloud provides a docker image for the registry server. The following ste
         gcr.io/spectro-images-public/release/spectro-registry:1.0.0 
     ```
 * Expose the container host's port publicly to allow the tenant console to interact with the registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
-* Verify installation by ...
+* Verify installation by invoking the pack registry API’s using the curl command. The curl command returns the status code 200 if the registry installation is successful.
 
-# VERIFICATION OF THE INSTALLATION PENDING!
+    ```
+    $curl -v [REGISTRY_SERVER]/health   
+    $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+    ```
 
 # Create a custom registry on the Tenant Console
 
