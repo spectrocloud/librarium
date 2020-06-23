@@ -23,7 +23,7 @@ The following steps will be taken to provision your first AWS cluster:
 
 # Cluster Profile
 
-1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
+1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
 1. Switch to the *Cluster Profiles* page from the left navigation bar.
 1. Click on the *Add Cluster Profile* button.
 1. Specify the name **ExperimentalAWS** and click *Next*.
@@ -55,8 +55,8 @@ The following steps will be taken to provision your first AWS cluster:
 
 **Steps:**
 
-1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
-1. From the left-hand main-menu, select Settings.
+1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
+1. From the left-hand main menu, select Settings.
 1. Click on *Add AWS Cloud Account*.
     * name: ca-aws-1
     * Access Key: your &lt;AWS access key&gt;
@@ -87,7 +87,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
             * Instance type: t3.large (General Compute)
             * Availability Zone: us-east-1a
         * For the *Worker* node pool, pick the following properties:
-            * nstance type: t3.large (General Compute)
+            * Instance type: t3.large (General Compute)
             * Availability Zone: us-east-1a
     * In the final Review step, click on *Deploy*.
 1. Wait for the cluster to become Active (check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
