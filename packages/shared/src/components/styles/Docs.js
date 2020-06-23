@@ -144,6 +144,10 @@ export const StyledMainWrapper = styled.div`
       color: #555;
       vertical-align: top;
       text-align: left;
+
+      pre {
+        margin: 0;
+      }
     }
   }
 

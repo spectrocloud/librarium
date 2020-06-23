@@ -40,36 +40,48 @@ export default function MDXLayout({ data = {}, location }) {
       const def = definitionArray[definitionArray.length - 1];
       const defObject = api.definitions[def];
 
+      // the response has no schema
       if (!defObject) {
-        return {};
+        return null;
       }
 
-      if(defObject?.type === "array") {
+      // the response schema is type array - encounter only 2 times and seems to always have the items prop
+      if (defObject?.type === "array") {
         return ({
           items: extractDefinition(defObject.items.$ref)
         });
       }
 
+      function renderProperties(defObject) {
+        return defObject?.properties && Object.keys(defObject?.properties)
+          .reduce((propertiesAcc, property) => {
+            const definitionProperty = defObject.properties[property];
+            const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref
 
-      return defObject?.properties && Object.keys(defObject?.properties)
-        .reduce((propertiesAcc, property) => {
-          const defObjectProperty = defObject.properties[property];
-          const defObjectPropertyRef = defObjectProperty?.$ref || defObjectProperty?.items?.$ref
+            return definitionPropertyRef ?
+              // if the property contains a ref, call again extractDefinition
+              {
+                ...propertiesAcc,
+                [property]: definitionProperty.type === "array" ?
+                  [extractDefinition(definitionPropertyRef)] :
+                  extractDefinition(definitionPropertyRef)
+              } :
+              {
+                // if property value is an array, render what type the elements are
+                ...propertiesAcc, [property]:
+                  definitionProperty.type === "array" ?
+                    [definitionProperty?.items.type || definitionProperty.type] :
+                    // if the property value is an object that contains the properties key
+                    // call again renderProperties function in case it has refs inside
+                    // otherwise render the property type
+                    definitionProperty?.properties ?
+                      renderProperties(definitionProperty) :
+                      definitionProperty.type
+              }
+          }, {}) || (defObject?.format || defObject.type) // if there are no properties render the format or type (this was seems to apply only for timestamps)
+      }
 
-          return defObjectPropertyRef ?
-            { ...propertiesAcc, [property]: defObjectProperty.type === "array" ?
-            [extractDefinition(defObjectPropertyRef)] :
-            extractDefinition(defObjectPropertyRef)
-            } :
-            { ...propertiesAcc, [property]:
-              defObjectProperty.type === "array" ?
-              [defObjectProperty?.items.type || defObjectProperty.type] :
-              // if there's a chance defObjectProperty.properties contains ref this is screwed :)
-              defObjectProperty?.properties ?
-                {...defObjectProperty.properties} :
-                defObjectProperty.type
-            }
-        }, {}) || defObject.type
+      return renderProperties(defObject);
     }
 
     const endpoints = Object.keys(api.paths)
