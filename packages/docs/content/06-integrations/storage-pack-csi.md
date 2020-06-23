@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['storage']
-logoUrl: ''
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/bbfcd3cd7acc6c33e7904caa443bfdd7727e1c1b/experimental/storage/vsphere_volume_csi/logo.png?token=AH6GVUGW5N2UZJ7BT6UB4E267MTK4'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
