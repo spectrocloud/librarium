@@ -126,8 +126,8 @@ export default function Swagger(props) {
               <thead>
                 <tr>
                   <th>HTTP code</th>
-                  <th>Reason</th>
-                  <td>Response model</td>
+                  <th>Message</th>
+                  <th>Response model</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,10 +135,10 @@ export default function Swagger(props) {
                   operation.responseMessages.map(response => (
                     <tr key={api.path + operation.method + response.code}>
                       <td>{response.code}</td>
-                      <td>{response.message}</td>
+                      <td>{response.description}</td>
                       <td>
-                        {response.responseModel ? (
-                          <a href={'#' + response.responseModel}>{response.responseModel}</a>
+                        {response.schema?.$ref ? (
+                          <a href={response.schema.$ref}>{response.schema.$ref}</a>
                         ) : (
                             'N/A'
                           )}

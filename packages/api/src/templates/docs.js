@@ -23,8 +23,9 @@ export default function MDXLayout({ data = {}, location }) {
   } = data;
 
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, {...config, base: '/api'});
+    return DocsLayout.calculateMenuTree(allMdx.edges, { ...config, base: '/api' });
   }, [allMdx.edges]);
+
 
   function renderAPIDoc() {
     const paths = mdx.frontmatter?.paths;
@@ -33,6 +34,19 @@ export default function MDXLayout({ data = {}, location }) {
     }
 
     const api = APIS[mdx?.fields?.version];
+
+    function extractDefinition(ref) {
+      const definitionArray = ref?.split("/") || [];
+      const def = definitionArray[definitionArray.length - 1];
+      const defObject = api.definitions[def];
+
+      return defObject?.properties && Object.keys(defObject?.properties)
+          .reduce((propertiesAcc, property) => {
+              return defObject.properties[property]?.$ref || defObject.properties[property]?.items?.$ref ?
+              { ...propertiesAcc, [property]: extractDefinition(defObject.properties[property]?.$ref || defObject.properties[property]?.items?.$ref)} :
+              { ...propertiesAcc, [property]: defObject.properties[property] }
+            }, {}) || {...defObject}
+    }
 
     const endpoints = Object.keys(api.paths)
       .filter(path => paths.some(entry => path.startsWith(entry)))
@@ -48,9 +62,14 @@ export default function MDXLayout({ data = {}, location }) {
               ...api.paths[path][method],
               parameters: api.paths[path][method].parameters || [],
               responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
-                response => ({
-                  ...api.paths[path][method].responses[response],
-                })
+                response => {
+                  console.log("schema", extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref));
+                  return ({
+                    code: response,
+                    schema: extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref),
+                    ...api.paths[path][method].responses[response],
+                  })
+                }
               ),
             })),
         };
