@@ -5,27 +5,35 @@ const pageQuery = `{
     edges {
       node {
         objectID: id
+        parent {
+          ... on File {
+            modifiedTime(formatString: "MM/DD/YYYY")
+          }
+        }
         fields {
           slug
+          isApiPage
+          isDocsPage
         }
         headings {
           value
         }
         frontmatter {
           title
-          metaDescription 
+          metaDescription
         }
-        excerpt(pruneLength: 50000)
+        excerpt(pruneLength: 5000)
       }
     }
   }
 }`;
 
 const flatten = arr =>
-  arr.map(({ node: { frontmatter, fields, ...rest } }) => ({
+  arr.map(({ node: { frontmatter, fields, parent, ...rest } }) => ({
     ...frontmatter,
     ...fields,
     ...rest,
+    ...parent,
   }));
 
 const settings = { attributesToSnippet: [`excerpt:20`] };
@@ -35,7 +43,9 @@ const indexName = config.header.search ? config.header.search.indexName : '';
 const queries = [
   {
     query: pageQuery,
-    transformer: ({ data }) => flatten(data.pages.edges),
+    transformer: ({ data }) => {
+      return flatten(data.pages.edges).filter(edge => edge.isApiPage || edge.isDocsPage);
+    },
     indexName: `${indexName}`,
     settings,
   },

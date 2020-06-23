@@ -94,6 +94,8 @@ if (
       apiKey: config.header.search.algoliaAdminKey, // algolia admin key to index
       queries,
       chunkSize: 10000, // default: 1000
+      enablePartialUpdates: true,
+      matchFields: ['slug', 'modifiedTime']
     },
   });
 }
