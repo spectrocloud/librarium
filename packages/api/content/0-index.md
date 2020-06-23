@@ -5,8 +5,14 @@ metaDescription: "This is the meta description"
 icon: "graph"
 hideToC: false
 ---
+import {Intro, IntroButtons} from "@librarium/shared/src/components"
+import {Layout} from "@librarium/shared"
+
+<Intro>
 
 # Spectro Cloud API
+
+</Intro>
 
 Spectro Cloud API provides APIs for a subset of features. The Spectro Cloud APIs are based on REST APIs. The APIs can be used to create and modify the tenant and project scope resources as well as for integrating with other applications.
 
