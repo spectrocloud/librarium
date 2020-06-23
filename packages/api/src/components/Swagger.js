@@ -127,7 +127,7 @@ export default function Swagger(props) {
                 <tr>
                   <th>HTTP code</th>
                   <th>Message</th>
-                  <th>Response model</th>
+                  <th>Response body</th>
                 </tr>
               </thead>
               <tbody>
@@ -137,8 +137,8 @@ export default function Swagger(props) {
                       <td>{response.code}</td>
                       <td>{response.description}</td>
                       <td>
-                        {response.schema?.$ref ? (
-                          <a href={response.schema.$ref}>{response.schema.$ref}</a>
+                        {response?.schema ? (
+                          <pre>{response.schema}</pre>
                         ) : (
                             'N/A'
                           )}

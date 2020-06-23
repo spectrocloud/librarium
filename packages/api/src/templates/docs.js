@@ -40,12 +40,36 @@ export default function MDXLayout({ data = {}, location }) {
       const def = definitionArray[definitionArray.length - 1];
       const defObject = api.definitions[def];
 
+      if (!defObject) {
+        return {};
+      }
+
+      if(defObject?.type === "array") {
+        return ({
+          items: extractDefinition(defObject.items.$ref)
+        });
+      }
+
+
       return defObject?.properties && Object.keys(defObject?.properties)
-          .reduce((propertiesAcc, property) => {
-              return defObject.properties[property]?.$ref || defObject.properties[property]?.items?.$ref ?
-              { ...propertiesAcc, [property]: extractDefinition(defObject.properties[property]?.$ref || defObject.properties[property]?.items?.$ref)} :
-              { ...propertiesAcc, [property]: defObject.properties[property] }
-            }, {}) || {...defObject}
+        .reduce((propertiesAcc, property) => {
+          const defObjectProperty = defObject.properties[property];
+          const defObjectPropertyRef = defObjectProperty?.$ref || defObjectProperty?.items?.$ref
+
+          return defObjectPropertyRef ?
+            { ...propertiesAcc, [property]: defObjectProperty.type === "array" ?
+            [extractDefinition(defObjectPropertyRef)] :
+            extractDefinition(defObjectPropertyRef)
+            } :
+            { ...propertiesAcc, [property]:
+              defObjectProperty.type === "array" ?
+              [defObjectProperty?.items.type || defObjectProperty.type] :
+              // if there's a chance defObjectProperty.properties contains ref this is screwed :)
+              defObjectProperty?.properties ?
+                {...defObjectProperty.properties} :
+                defObjectProperty.type
+            }
+        }, {}) || defObject.type
     }
 
     const endpoints = Object.keys(api.paths)
@@ -63,11 +87,10 @@ export default function MDXLayout({ data = {}, location }) {
               parameters: api.paths[path][method].parameters || [],
               responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
                 response => {
-                  console.log("schema", extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref));
                   return ({
                     code: response,
-                    schema: extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref),
                     ...api.paths[path][method].responses[response],
+                    schema: JSON.stringify(extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref), null, 2),
                   })
                 }
               ),
