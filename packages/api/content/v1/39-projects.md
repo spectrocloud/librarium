@@ -7,5 +7,3 @@ paths: ['/v1alpha1/projects']
 ---
 
 # Projects
-
-Add introduction here

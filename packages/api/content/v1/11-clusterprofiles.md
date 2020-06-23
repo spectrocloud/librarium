@@ -7,5 +7,3 @@ paths: ['/v1alpha1/clusterprofiles']
 ---
 
 # Cluster Profiles
-
-Add introduction here

@@ -7,5 +7,3 @@ paths: ['/v1alpha1/dashboard']
 ---
 
 # Dashboard
-
-Add introduction here

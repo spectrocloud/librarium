@@ -7,5 +7,3 @@ paths: ['/v1alpha1/audits']
 ---
 
 # Audit Logs
-
-Add introduction here

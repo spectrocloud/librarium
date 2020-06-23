@@ -7,5 +7,3 @@ paths: ['/v1alpha1/spectroclusters']
 ---
 
 # Clusters
-
-Add introduction here

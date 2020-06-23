@@ -7,5 +7,3 @@ paths: ['/v1alpha1/auth']
 ---
 
 # Authentication
-
-Add introduction here

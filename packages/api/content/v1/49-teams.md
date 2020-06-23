@@ -7,5 +7,3 @@ paths: ['/v1alpha1/teams']
 ---
 
 # Teams
-
-Add introduction here
