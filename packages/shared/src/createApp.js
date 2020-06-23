@@ -14,6 +14,7 @@ export default function createDocsApp({
   MdxProvider = DefaultMdxProvider,
   config,
 } = {}) {
+
   function App({ children }) {
     return (
       <ConfigProvider config={config}>

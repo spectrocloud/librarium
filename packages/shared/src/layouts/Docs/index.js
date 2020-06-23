@@ -110,7 +110,7 @@ const RightSidebar = styled.div`
 const StickyWrap = styled.div`
   position: sticky;
   top: 100px;
-  width: 150px;
+  width: auto;
 `;
 
 export default function MDXLayout({
