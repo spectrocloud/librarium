@@ -59,7 +59,7 @@ const DEFAULT_MENU = [
   },
   {
     title: "API",
-    link: '/api',
+    link: '/api/',
     isActive(location) {
       return isMenuActive(location, '/api')
     }

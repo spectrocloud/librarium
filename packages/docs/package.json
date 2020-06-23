@@ -12,7 +12,9 @@
   },
   "license": "MIT",
   "main": "n/a",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "lint": "eslint --fix \"src/**/*.{js,jsx}\""
