@@ -10,7 +10,8 @@ import Button from "./ui/Button";
 const IntroWrapper = styled.div`
   background-image: url(${background});
   background-size: cover;
-  padding: 43px 0;
+  padding: 43px;
+  margin: 0 -43px 20px -43px;
 `
 
 export default function IntroSection({children}) {
