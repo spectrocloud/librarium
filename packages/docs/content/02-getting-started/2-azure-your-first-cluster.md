@@ -25,7 +25,7 @@ The following steps will be taken to provision your first Azure cluster:
 
 # Cluster Profile
 
-1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
+1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
 1. Switch to the *Cluster Profiles* page from the left navigation bar.
 1. Click on the *Create Cluster Profile* button.
 1. Specify the name **ExperimentalAzure** and click *Next*.
@@ -50,19 +50,19 @@ The following steps will be taken to provision your first Azure cluster:
 
 <WarningBox>
     <p><strong>Prerequisites:</strong></p>
-    <p>You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables etc. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/azure-clusters#prerequisites">Cloud Account Permissions</a>.</p>
+    <p>You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables, etc. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/azure-clusters#prerequisites">Cloud Account Permissions</a>.</p>
     <p>Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.</p>
 </WarningBox>
 
 **Steps:**
 
-1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
-1. From the left-hand main-menu, select Settings.
+1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
+1. From the left-hand main menu, select Settings.
 1. Click on *Add Azure Cloud Account*.
     * name: ca-azure-1
     * Tenant Id: your &lt;Azure Tenant Id&gt;
-    * Cient Id: your &lt;Azure Client Id&gt;
-    * Cient Secret: your &lt;Azure Client Secret&gt;    
+    * Client Id: your &lt;Azure Client Id&gt;
+    * Client Secret: your &lt;Azure Client Secret&gt;    
 1. Click on *Validate*.
 1. Click on *Confirm* to finish creating your cloud account.
 
@@ -72,7 +72,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 
 **Steps:**
 
-1. Navigate to the Default Project (select back to Default project if you’re in the Admin view).
+1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
 1. Navigate to the *Clusters* page from the left-hand menu.
 1. Click on *Create cluster* (and follow the wizard):
     * Name: cluster-azure-1
@@ -83,7 +83,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
         * Cloud Account: ca-azure-1
         * Subscription: your &lt;Azure Subscription&gt;
         * Region: East US
-        * Resource Group: an &lt;Azure Resource availble in Ease US&gt;
+        * Resource Group: an &lt;Azure Resource available in East US&gt;
         * SSH keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field.
         * Do not select (deselect): Static Placement
         * Click on *Next*.
