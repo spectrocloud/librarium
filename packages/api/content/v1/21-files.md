@@ -7,5 +7,3 @@ paths: ['/v1alpha1/files']
 ---
 
 # Files
-
-Add introduction here

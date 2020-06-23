@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'underscore';
 import styled from 'styled-components';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import prismTheme from 'prism-react-renderer/themes/oceanicNext';
 
 const colors = {
   get: '#4aa908',
@@ -41,26 +43,50 @@ const Label = styled.div`
   margin-right: 10px;
 `;
 
-const ResponseCodes = styled(Label)`
-  margin-top: 90px;
-`;
-
 const Hr = styled.hr`
   border: 0;
   margin-top: 80px;
   height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(68, 50, 245, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+  background-color: #ddd;
 `;
 
 const Summary = styled.div`
   display: flex;
   flex-direction: row;
   margin: 20px 0;
+`;
+
+const ResponsesWrapper = styled.div`
+  margin-left: 60px;
+`;
+const OperationWrap = styled.div`
+  display: flex;
+  > * {
+    width: 50%;
+  }
+`;
+
+const Response = styled.div`
+  background-color: rgb(40, 44, 52);
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 4px;
+  position: sticky;
+  top: 100px;
+  font-size: 14px;
+  max-height: 600px;
+  overflow-y: auto;
+
+  pre {
+    margin: 0;
+  }
+
+  label {
+    font-weight: 500;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
 `;
 
 const normalizePath = path => {
@@ -70,6 +96,7 @@ const normalizePath = path => {
 };
 
 export default function Swagger(props) {
+  // TODO refactor this :)
   return (
     <div>
       {props.documentation.apis.map(api =>
@@ -79,111 +106,88 @@ export default function Swagger(props) {
               <Button color={colors[operation.method]}>{operation.method}</Button>&#8594;
               <h4>{props.prefix + normalizePath(api.path)}</h4>
             </Signature>
-            {operation.summary && (
-              <Summary>
-                <Label>Summary:</Label> {operation.summary}
-              </Summary>
-            )}
-            {operation.description && (
-              <Summary>
-                <Label>Description:</Label> {operation.description}
-              </Summary>
-            )}
-            {operation.parameters?.length > 0 ?
-              <>
-                <Label>Parameters:</Label>
-                <table className="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>Context</th>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Description</th>
-                      <th>Required</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {operation.parameters.map(parameter => (
-                      <tr key={api.path + operation.method + parameter.name + parameter.paramType}>
-                        <td>{parameter.paramType}</td>
-                        <td>{parameter.name}</td>
-                        <td>{parameter.type}</td>
-                        <td>{parameter.description}</td>
-                        <td>
-                          {typeof parameter.required == 'undefined' || parameter.required == false
-                            ? 'no'
-                            : 'yes'}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </>
-              : <Summary><Label>Parameters:</Label> No Parameters</Summary>
-            }
-            <ResponseCodes>Response codes:</ResponseCodes>
-            <table className="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>HTTP code</th>
-                  <th>Message</th>
-                  <th>Response body</th>
-                </tr>
-              </thead>
-              <tbody>
-                {operation.responseMessages &&
-                  operation.responseMessages.map(response => (
-                    <tr key={api.path + operation.method + response.code}>
-                      <td>{response.code}</td>
-                      <td>{response.description}</td>
-                      <td>
-                        {response?.schema ? (
-                          <pre>{response.schema}</pre>
-                        ) : (
-                            'N/A'
+            <OperationWrap>
+              <div>
+                {operation.summary && (
+                  <Summary>
+                    <Label>Summary:</Label> {operation.summary}
+                  </Summary>
+                )}
+                {operation.description && (
+                  <Summary>
+                    <Label>Description:</Label> {operation.description}
+                  </Summary>
+                )}
+                {operation.parameters?.length > 0 ? (
+                  <>
+                    <Label>Parameters:</Label>
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Context</th>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Description</th>
+                          <th>Required</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {operation.parameters.map(parameter => (
+                          <tr
+                            key={api.path + operation.method + parameter.name + parameter.paramType}
+                          >
+                            <td>{parameter.paramType}</td>
+                            <td>{parameter.name}</td>
+                            <td>{parameter.type}</td>
+                            <td>{parameter.description}</td>
+                            <td>
+                              {typeof parameter.required == 'undefined' ||
+                              parameter.required == false
+                                ? 'no'
+                                : 'yes'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </>
+                ) : (
+                  <Summary>
+                    <Label>Parameters:</Label> No Parameters
+                  </Summary>
+                )}
+              </div>
+              <ResponsesWrapper>
+                {operation.responseMessages.map(response => (
+                  <Response>
+                    <label>HTTP code:</label> {response.code} <br />
+                    <label>Description:</label> {response.description} <br />
+                    {response.schema && response.schema !== "null" && (
+                      <>
+                        <label>Response body:</label>
+                        <Highlight {...defaultProps} code={response.schema} language="json" theme={prismTheme}>
+                          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                            <pre className={className} style={style}>
+                              {tokens.map((line, i) => (
+                                <div {...getLineProps({ line, key: i })}>
+                                  {line.map((token, key) => (
+                                    <span {...getTokenProps({ token, key })} />
+                                  ))}
+                                </div>
+                              ))}
+                            </pre>
                           )}
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                        </Highlight>
+                      </>
+                    )}
+                  </Response>
+                ))}
+              </ResponsesWrapper>
+            </OperationWrap>
             <Hr />
           </Operation>
         ))
       )}
-
-      {props.documentation.models &&
-        Object.keys(props.documentation.models).map(modelKey => {
-          const model = props.documentation.models[modelKey];
-          return (
-            <div key={modelKey} id={modelKey}>
-              <h4>{modelKey}</h4>
-              {model.description && <p>{model.description}</p>}
-              <h5>Properties:</h5>
-              <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <td>Format</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.keys(model.properties).map(propertyKey => {
-                    const property = model.properties[propertyKey];
-                    return (
-                      <tr key={modelKey + propertyKey}>
-                        <td>{property.type}</td>
-                        <td>{property.description}</td>
-                        <td>{property.format}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          );
-        })}
     </div>
   );
 }

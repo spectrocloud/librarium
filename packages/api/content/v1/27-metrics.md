@@ -7,5 +7,3 @@ paths: ['/v1alpha1/metrics']
 ---
 
 # Metrics
-
-Add introduction here

@@ -7,5 +7,3 @@ paths: ['/v1alpha1/clouds']
 ---
 
 # Clouds
-
-Add introduction here

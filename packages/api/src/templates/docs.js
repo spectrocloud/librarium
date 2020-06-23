@@ -28,6 +28,8 @@ export default function MDXLayout({ data = {}, location }) {
 
 
   function renderAPIDoc() {
+    // TODO refactor this function
+
     const paths = mdx.frontmatter?.paths;
     if (!paths || !mdx?.fields?.version) {
       return null;
@@ -131,8 +133,9 @@ export default function MDXLayout({ data = {}, location }) {
         <DocsLayout
           menu={menu}
           mdx={mdx}
+          fullWidth={mdx.frontmatter?.fullWidth|| mdx.frontmatter?.api}
           docsLocation={docsLocation}
-          hideToC={mdx.frontmatter?.api}
+          hideToCSidebar={mdx.frontmatter?.api}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
           location={location}
