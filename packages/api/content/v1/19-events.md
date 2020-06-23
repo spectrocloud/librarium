@@ -7,5 +7,3 @@ paths: ['/v1alpha1/events']
 ---
 
 # Events
-
-Add introduction here

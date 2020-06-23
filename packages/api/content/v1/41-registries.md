@@ -7,5 +7,3 @@ paths: ['/v1alpha1/registries']
 ---
 
 # Registries
-
-Add introduction here

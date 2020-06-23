@@ -7,5 +7,3 @@ paths: ['/v1alpha1/packs']
 ---
 
 # Packs
-
-Add introduction here

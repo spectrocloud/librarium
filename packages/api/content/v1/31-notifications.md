@@ -7,5 +7,3 @@ paths: ['/v1alpha1/notifications']
 ---
 
 # Notifications
-
-Add introduction here

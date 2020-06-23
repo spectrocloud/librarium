@@ -7,5 +7,3 @@ paths: ['/v1alpha1/users']
 ---
 
 # Users
-
-Add introduction here
