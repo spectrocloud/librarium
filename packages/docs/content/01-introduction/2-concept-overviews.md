@@ -15,7 +15,7 @@ This page gives a quick introduction to various concepts that constitute the uni
 
 # Tenant
 
-Spectro Cloud is a multi-tenant platform. Every customer or organization is added to Spectro Cloud as a unique tenant. All tenant resources are isolated from other tenants. Users from a tenant do not  have access to resources in another tenant.
+Tenant represents a customer or an organization in Spectro Cloud. Spectro Cloud is a multi-tenant platform. All tenant resources are isolated from other tenants. Users from a tenant do not  have access to resources in another tenant.
 
 # Project
 
@@ -67,7 +67,7 @@ Spectro Cloud maintains a public registry containing various packs that can be u
 
 # Private Registry
 
-Spectro Cloud provides extensibility by providing a way for users to define packs for integrations beyond the ones provided by default tin Specto Cloud's public registry. These user defined packs need to be hosted in a private registry which users can bring up in their own environment using Spectro Cloud's registry software.
+Spectro Cloud provides extensibility by providing a way for users to define packs for integrations beyond the ones provided by default in Specto Cloud's public registry. These user defined packs need to be hosted in a private registry which users can bring up in their own environment using Spectro Cloud's registry software.
 
 # Private Cloud Gateway
 
