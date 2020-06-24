@@ -181,7 +181,7 @@ export default function Swagger(props) {
               </div>
               <ResponsesWrapper>
                 {operation.responseMessages.map(response => (
-                  <Response type="reponse">
+                  <Response type="response">
                     <label>HTTP code:</label> {response.code} <br />
                     <label>Description:</label> {response.description} <br />
                     {response.schema && response.schema !== "null" && (
