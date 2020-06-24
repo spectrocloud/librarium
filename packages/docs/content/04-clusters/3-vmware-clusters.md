@@ -211,7 +211,36 @@ The installer VM, when powered on, goes through a bootstrap process and register
 
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections. 
 
-If the above steps do not resolve your issues, copy the **following script** to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance.
+If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
+```
+#!/bin/bash
+
+DESTDIR="/tmp/"
+
+CONTAINER_LOGS_DIR="/var/log/containers/"
+CLOUD_INIT_OUTPUT_LOG="/var/log/cloud-init-output.log"
+CLOUD_INIT_LOG="/var/log/cloud-init.log"
+KERN_LOG="/var/log/kern.log"
+KUBELET_LOG="/tmp/kubelet.log"
+SYSLOGS="/var/log/syslog*"
+
+FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
+
+
+journalctl -u kubelet > $KUBELET_LOG
+
+tar --create --gzip -h --file=$DESTDIR$FILENAME $CONTAINER_LOGS_DIR $CLOUD_INIT_LOG $CLOUD_INIT_OUTPUT_LOG $KERN_LOG $KUBELET_LOG $SYSLOGS
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Error creating spectro logs package"
+else
+	echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
+fi
+
+
+
+```
 
 ## Gateway Cluster - Provisioning stalled/failure
 
