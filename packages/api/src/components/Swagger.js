@@ -139,7 +139,6 @@ export default function Swagger(props) {
                     <table className="table table-striped table-hover">
                       <thead>
                         <tr>
-                          <th>Context</th>
                           <th>Name</th>
                           <th>Type</th>
                           <th>Description</th>
@@ -151,7 +150,6 @@ export default function Swagger(props) {
                           <tr
                             key={api.path + operation.method + parameter.name + parameter.paramType}
                           >
-                            <td>{parameter.paramType}</td>
                             <td>{parameter.name}</td>
                             <td>{parameter.type}</td>
                             <td>{parameter.description}</td>
