@@ -160,8 +160,8 @@ export default function Swagger(props) {
                 }
                 {operation.body && (
                   <>
-                    <Label>Body</Label>
                     <Response>
+                    <label>Body</label>
                       <CodeHighlight code={operation.body} />
                     </Response>
                   </>
