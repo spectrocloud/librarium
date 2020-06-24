@@ -33,7 +33,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 The following steps need to be performed to provision a new VMware cluster:-
 
-* Provide the basic cluster information like name, description and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
+* Provide the basic cluster information like name, description and tags.
 * Select a cluster profile created for the Azure environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide Azure Cloud account and placement information.
