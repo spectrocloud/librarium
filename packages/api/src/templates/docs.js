@@ -29,13 +29,41 @@ export default function MDXLayout({ data = {}, location }) {
 
   function renderAPIDoc() {
     // TODO refactor this function
-
     const paths = mdx.frontmatter?.paths;
     if (!paths || !mdx?.fields?.version) {
       return null;
     }
 
     const api = APIS[mdx?.fields?.version];
+
+    function renderProperties(defObject) {
+      return defObject?.properties && Object.keys(defObject?.properties)
+        .reduce((propertiesAcc, property) => {
+          const definitionProperty = defObject.properties[property];
+          const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref
+
+          return definitionPropertyRef ?
+            // if the property contains a ref, call again extractDefinition
+            {
+              ...propertiesAcc,
+              [property]: definitionProperty.type === "array" ?
+                [extractDefinition(definitionPropertyRef)] :
+                extractDefinition(definitionPropertyRef)
+            } :
+            {
+              // if property value is an array, render what type the elements are
+              ...propertiesAcc, [property]:
+                definitionProperty.type === "array" ?
+                  [definitionProperty?.items.type || definitionProperty.type] :
+                  // if the property value is an object that contains the properties key
+                  // call again renderProperties function in case it has refs inside
+                  // otherwise render the property type
+                  definitionProperty?.properties ?
+                    renderProperties(definitionProperty) :
+                    definitionProperty.type
+            }
+        }, {}) || (defObject?.format || defObject.type) // if there are no properties render the format or type (this was seems to apply only for timestamps)
+    }
 
     function extractDefinition(ref) {
       const definitionArray = ref?.split("/") || [];
@@ -54,34 +82,6 @@ export default function MDXLayout({ data = {}, location }) {
         });
       }
 
-      function renderProperties(defObject) {
-        return defObject?.properties && Object.keys(defObject?.properties)
-          .reduce((propertiesAcc, property) => {
-            const definitionProperty = defObject.properties[property];
-            const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref
-
-            return definitionPropertyRef ?
-              // if the property contains a ref, call again extractDefinition
-              {
-                ...propertiesAcc,
-                [property]: definitionProperty.type === "array" ?
-                  [extractDefinition(definitionPropertyRef)] :
-                  extractDefinition(definitionPropertyRef)
-              } :
-              {
-                // if property value is an array, render what type the elements are
-                ...propertiesAcc, [property]:
-                  definitionProperty.type === "array" ?
-                    [definitionProperty?.items.type || definitionProperty.type] :
-                    // if the property value is an object that contains the properties key
-                    // call again renderProperties function in case it has refs inside
-                    // otherwise render the property type
-                    definitionProperty?.properties ?
-                      renderProperties(definitionProperty) :
-                      definitionProperty.type
-              }
-          }, {}) || (defObject?.format || defObject.type) // if there are no properties render the format or type (this was seems to apply only for timestamps)
-      }
 
       return renderProperties(defObject);
     }
@@ -94,21 +94,36 @@ export default function MDXLayout({ data = {}, location }) {
           path,
           operations: Object.keys(api.paths[path])
             .filter(method => method !== "parameters")
-            .filter(method => !api.paths[path][method]?.tags?.some(tag => ["private", "system"].includes(tag)))
-            .map(method => ({
-              method,
-              ...api.paths[path][method],
-              parameters: api.paths[path][method].parameters || [],
-              responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
-                response => {
-                  return ({
-                    code: response,
-                    ...api.paths[path][method].responses[response],
-                    schema: JSON.stringify(extractDefinition(api.paths[path][method].responses[response]?.schema?.$ref), null, 2),
-                  })
-                }
-              ),
-            })),
+            .filter(method => !method?.tags?.some(tag => ["private", "system"].includes(tag)))
+            .map(method => {
+              const apiMethod = api.paths[path][method]
+              const parameters = apiMethod?.parameters;
+              const responses = apiMethod?.responses;
+              const bodyParameter = parameters?.find(parameter => parameter.name === "body");
+              let body;
+
+              if (bodyParameter) {
+                body = bodyParameter.schema?.$ref ?
+                  extractDefinition(bodyParameter.schema?.$ref) :
+                  renderProperties(bodyParameter.schema);
+              }
+
+              return ({
+                method,
+                ...apiMethod,
+                body: JSON.stringify(body, null, 2),
+                parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                responseMessages: Object.keys(responses || {}).map(
+                  response => {
+                    return ({
+                      code: response,
+                      ...responses[response],
+                      schema: JSON.stringify(extractDefinition(responses[response]?.schema?.$ref), null, 2),
+                    })
+                  }
+                ),
+              })
+            }),
         };
       });
 
@@ -133,7 +148,7 @@ export default function MDXLayout({ data = {}, location }) {
         <DocsLayout
           menu={menu}
           mdx={mdx}
-          fullWidth={mdx.frontmatter?.fullWidth|| mdx.frontmatter?.api}
+          fullWidth={mdx.frontmatter?.fullWidth || mdx.frontmatter?.api}
           docsLocation={docsLocation}
           hideToCSidebar={mdx.frontmatter?.api}
           edges={allMdx.edges}

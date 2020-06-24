@@ -1,8 +1,8 @@
 import React from 'react';
 import _ from 'underscore';
 import styled from 'styled-components';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/oceanicNext';
+
+import CodeHighlight from "./CodeHighlight";
 
 const colors = {
   get: '#4aa908',
@@ -41,6 +41,7 @@ const Label = styled.div`
   font-weight: bold;
   color: #555;
   margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 const Hr = styled.hr`
@@ -142,7 +143,7 @@ export default function Swagger(props) {
                             <td>{parameter.description}</td>
                             <td>
                               {typeof parameter.required == 'undefined' ||
-                              parameter.required == false
+                                parameter.required == false
                                 ? 'no'
                                 : 'yes'}
                             </td>
@@ -152,9 +153,18 @@ export default function Swagger(props) {
                     </table>
                   </>
                 ) : (
-                  <Summary>
-                    <Label>Parameters:</Label> No Parameters
-                  </Summary>
+                    <Summary>
+                      <Label>Parameters:</Label> No Parameters
+                    </Summary>
+                  )
+                }
+                {operation.body && (
+                  <>
+                    <Response>
+                    <label>Body</label>
+                      <CodeHighlight code={operation.body} />
+                    </Response>
+                  </>
                 )}
               </div>
               <ResponsesWrapper>
@@ -165,19 +175,7 @@ export default function Swagger(props) {
                     {response.schema && response.schema !== "null" && (
                       <>
                         <label>Response body:</label>
-                        <Highlight {...defaultProps} code={response.schema} language="json" theme={prismTheme}>
-                          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                            <pre className={className} style={style}>
-                              {tokens.map((line, i) => (
-                                <div {...getLineProps({ line, key: i })}>
-                                  {line.map((token, key) => (
-                                    <span {...getTokenProps({ token, key })} />
-                                  ))}
-                                </div>
-                              ))}
-                            </pre>
-                          )}
-                        </Highlight>
+                        <CodeHighlight code={response.schema} />
                       </>
                     )}
                   </Response>

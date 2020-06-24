@@ -15,6 +15,20 @@ exports.createPages = ({ graphql, actions }) => {
     isPermanent: true,
   })
 
+  createRedirect({
+    fromPath: `/api/`,
+    toPath: `/api/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
+
+  createRedirect({
+    fromPath: `/api`,
+    toPath: `/api/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
+
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
