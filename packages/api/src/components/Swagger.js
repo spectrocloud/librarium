@@ -156,7 +156,8 @@ export default function Swagger(props) {
                     <Summary>
                       <Label>Parameters:</Label> No Parameters
                     </Summary>
-                  )}
+                  )
+                }
                 {operation.body && (
                   <>
                     <Label>Body</Label>
