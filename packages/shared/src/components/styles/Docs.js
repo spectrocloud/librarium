@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const StyledHeading = styled.h1`
   font-style: normal;
@@ -7,7 +7,7 @@ export const StyledHeading = styled.h1`
   line-height: 52px;
   letter-spacing: -0.02em;
   color: #0d1440;
-  color: ${(props) => props.theme.colors.heading};
+  color: ${props => props.theme.colors.heading};
 `;
 
 export const Edit = styled.div`
@@ -37,9 +37,9 @@ export const Edit = styled.div`
 
 export const StyledMainWrapper = styled.div`
   max-width: 750px;
-  color: ${(props) => props.theme.colors.text};
+  color: ${props => props.theme.colors.text};
   flex-grow: 1;
-  ${(props) =>
+  ${props =>
     props.fullWidth &&
     css`
       max-width: none;
@@ -52,12 +52,12 @@ export const StyledMainWrapper = styled.div`
     margin: 30px 0;
     letter-spacing: -0.02em;
 
-   ::before {
+    ::before {
       display: block;
-      content: " ";
+      content: '';
+      width: 1px;
       margin-top: -110px;
       height: 110px;
-      visibility: hidden;
     }
   }
 
@@ -91,7 +91,7 @@ export const StyledMainWrapper = styled.div`
 
   a {
     transition: color 0.15s;
-    color: ${(props) => props.theme.colors.link};
+    color: ${props => props.theme.colors.link};
   }
 
   code {
@@ -100,7 +100,7 @@ export const StyledMainWrapper = styled.div`
     padding: 2px 6px;
     font-size: 0.9375em;
 
-    background: ${(props) => props.theme.colors.background};
+    background: ${props => props.theme.colors.background};
   }
 
   table {

@@ -1,6 +1,6 @@
 import React from "react";
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/oceanicNext';
+import prismTheme from 'prism-react-renderer/themes/nightOwlLight';
 
 function CodeHighlight({ code, language = "json", theme=prismTheme }) {
   return (

@@ -68,9 +68,9 @@ const OperationWrap = styled.div`
 `;
 
 const Response = styled.div`
-  background-color: rgb(40, 44, 52);
+  background-color: rgb(251, 251, 251);
   padding: 10px 20px;
-  color: #fff;
+  color: #555;
   border-radius: 4px;
   position: sticky;
   top: 100px;
@@ -89,7 +89,7 @@ const Response = styled.div`
     color: #fff;
     padding: 2px 10px;
     border-radius: 0px 0px 5px 5px;
-    background: #4432F5;
+    background: #78909C;
   }
 
   pre {
