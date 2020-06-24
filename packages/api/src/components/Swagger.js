@@ -78,6 +78,20 @@ const Response = styled.div`
   max-height: 600px;
   overflow-y: auto;
 
+  &:after {
+    content: "${props => props.type}";
+    position: absolute;
+    top: 0px;
+    right: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 0px 0px 5px 5px;
+    background: #4432F5;
+  }
+
   pre {
     margin: 0;
   }
@@ -160,7 +174,7 @@ export default function Swagger(props) {
                 }
                 {operation.body && (
                   <>
-                    <Response>
+                    <Response type="request">
                     <label>Body</label>
                       <CodeHighlight code={operation.body} />
                     </Response>
@@ -169,7 +183,7 @@ export default function Swagger(props) {
               </div>
               <ResponsesWrapper>
                 {operation.responseMessages.map(response => (
-                  <Response>
+                  <Response type="reponse">
                     <label>HTTP code:</label> {response.code} <br />
                     <label>Description:</label> {response.description} <br />
                     {response.schema && response.schema !== "null" && (
