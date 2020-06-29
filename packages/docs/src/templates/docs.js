@@ -22,7 +22,12 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
   }, [allMdx.edges]);
 
   return (
-    <Layout menu={menu} location={location} fullWidth={mdx.frontmatter?.fullWidth}>
+    <Layout
+      menu={menu}
+      location={location}
+      fullWidth={mdx.frontmatter?.fullWidth}
+      hideMenuSidebar={mdx.frontmatter?.hideMenuSidebar}
+    >
       <DocsLayout
         menu={menu}
         mdx={mdx}
@@ -70,6 +75,7 @@ export const pageQuery = graphql`
         fullWidth
         hideToC
         hideToCSidebar
+        hideMenuSidebar
       }
     }
     allMdx {

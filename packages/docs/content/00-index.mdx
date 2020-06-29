@@ -9,4 +9,44 @@ hiddenFromNav: true
 isIntegration: false
 category: []
 hideToCSidebar: true
+hideMenuSidebar: true
 ---
+import MainHeader from "@librarium/shared/src/components/common/MainHeader";
+import QuickSetupCards from "@librarium/shared/src/components/common/QuickSetupCards";
+
+<MainHeader />
+<QuickSetupCards options={
+  [
+    {
+      title: "Your first cluster",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "clusters"
+    },
+    {
+      title: "Define cluster profile",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "bundles"
+    },
+    {
+      title: "Integrations",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "folder"
+    },
+    {
+      title: "Project setup",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "project"
+    },
+    {
+      title: "Pack configuration",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "cog"
+    },
+    {
+      title: "Cloud configuration",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "admin"
+    }
+  ]
+}
+ />

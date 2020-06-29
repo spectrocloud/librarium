@@ -150,7 +150,7 @@ export default function MDXLayout({ data = {}, location }) {
           mdx={mdx}
           fullWidth={mdx.frontmatter?.fullWidth || mdx.frontmatter?.api}
           docsLocation={docsLocation}
-          hideToCSidebar={mdx.frontmatter?.api}
+          hideToCSidebar={mdx.frontmatter?.hideToCSidebar}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
           location={location}
@@ -189,6 +189,7 @@ export const pageQuery = graphql`
         hideToC
         paths
         hideToCSidebar
+        hideMenuSidebar
         api
       }
     }
