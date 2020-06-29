@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import background from "../assets/hero-background.png"
 import Button from "./ui/Button";
@@ -41,12 +42,7 @@ const ButtonsWrapper = styled.div`
   `}
 `
 
-export function IntroButtons({
-  children,
-  display = "horizontal",
-  introductionHref,
-  demoHref
- }) {
+export function IntroButtons({ children, display = "horizontal" }) {
   return <ButtonsWrapper display={display}>
     <Link to={introductionHref}>
       <Button>What is Spectro Cloud?</Button>

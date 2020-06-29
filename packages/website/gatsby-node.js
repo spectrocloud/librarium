@@ -34,6 +34,14 @@ const GRAPHQL = {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
+  // TODO (saamalik) remove after homepage comes back
+  // createRedirect({
+  //   fromPath: `/`,
+  //   toPath: `/introduction`,
+  //   redirectInBrowser: true,
+  //   isPermanent: true,
+  // })
+
   createRedirect({
     fromPath: `/api/`,
     toPath: `/api/introduction`,
@@ -261,7 +269,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'hideMenuSidebar',
       node,
-      value: node.frontmatter.hideMenuSidebar,
+      value: node.frontmatter.api,
     });
 
     if (node.frontmatter.api) {
