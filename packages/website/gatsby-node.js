@@ -234,7 +234,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       name: 'hideMenuSidebar',
       node,
-      value: node.frontmatter.api,
+      value: node.frontmatter.hideMenuSidebar,
     });
 
     if (node.frontmatter.api) {
