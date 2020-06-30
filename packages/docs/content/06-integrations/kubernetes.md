@@ -5,7 +5,7 @@ metaDescription: 'Kubernetes pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['kubernetes']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/7c1f55525bd65f1cb6d99829de871ecda832a2ec/stable/kubernetes/k8s_1.17.3/logo.png?token=APOFE6S66YFG2LQBAFQCWV267GGDU'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/kubernetes/k8s_1.18.1/logo.png?token=APOFE6W6B5I6IZBMC4X6DYS7AR7RG'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

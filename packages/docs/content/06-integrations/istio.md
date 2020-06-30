@@ -5,7 +5,7 @@ metaDescription: 'Choosing Istio as a Service Mesh app within the Spectro Cloud 
 hiddenFromNav: true
 isIntegration: true
 category: ['service mesh']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/c6e1c139a36f72ec0dbe37e1e07f14d5ebf6274f/experimental/addon/service_mesh/istio-1.6.2/logo.png?token=APOFE6WV24PGQZLD4L2S6R267G2M2'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/experimental/addon/service_mesh/istio-1.6.2/logo.png?token=APOFE6X6LCN55TPY3BMRTFK7AR6WI'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

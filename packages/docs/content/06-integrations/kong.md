@@ -5,7 +5,7 @@ metaDescription: 'Kong Ingress pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['ingress']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/ccc4145d9e41965ae825a7caa4706cf046bf079c/stable/addon/ingress/kong_1.4/logo.png?token=APOFE6VTOYZSR5ZRHQXXWPC67GEXS'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/addon/ingress/kong_1.4/logo.png?token=APOFE6VMOK2C4S3DBHWPCT27AR5AE'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

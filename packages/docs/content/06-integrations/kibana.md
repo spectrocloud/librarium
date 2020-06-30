@@ -5,7 +5,7 @@ metaDescription: 'Kibana Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/e25cdb78865b7ce427a222ef6c313a86c8b0493f/stable/loggging_and_monitoring/elastic-fluentd-kibana-6.7.0/logo.png?token=APOFE6QWHNBO52IA4JJEXV267GFBM'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/loggging_and_monitoring/elastic-fluentd-kibana-6.7.0/logo.png?token=APOFE6URVNHZHTVKIW2F7BS7AR652'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
