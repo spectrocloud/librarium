@@ -32,4 +32,4 @@ Spectro Cloud allows the users that have been added to be allowed or restricted 
 
 ## Roles and permissions
 
-The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The [Roles and Permissions](/user-management/about-roles-and-permissions) page provides more details on this.
+The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The [Roles](/user-management/rbac#roles) and [Permissions](/user-management/rbac#permissions) sections in the RBAC page provide more details on this.

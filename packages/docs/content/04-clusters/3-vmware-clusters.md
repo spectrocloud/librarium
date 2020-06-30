@@ -23,7 +23,7 @@ A HAProxy Load balancer VM will be created for each of the Kubernetes clusters, 
 
 # Prerequisites
 
-Spectro Cloud supports vSphere 6.5 or 6.7 [Update 3](https://www.vmware.com/products/vsphere.html)
+Spectro Cloud supports vSphere 6.5 [Update 3](https://docs.vmware.com/en/VMware-vSphere/6.5/rn/vsphere-esxi-65u3-release-notes.html) and vSphere 6.7 [Update 3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html).
 
 ## Hardware Requirements
 
