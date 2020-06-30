@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   margin-top: -80px;
   height: 492px;
   background: url(${background});
+  background-size: cover;
   padding: 105px 45px 45px;
 
   display: flex;
