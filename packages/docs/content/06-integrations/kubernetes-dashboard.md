@@ -5,7 +5,7 @@ metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/c10b4a7722c15da56d7bc5f2928cdf56f38e4b30/stable/loggging_and_monitoring/kubernetes-dashboard-2.0.1/logo.png?token=APOFE6RUAXIOBZU4EK6XWWK67GGAA'
+logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/loggging_and_monitoring/kubernetes-dashboard-2.0.1/logo.png?token=APOFE6QKYHZGGAV4BPV2TJC7AR7AO'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
