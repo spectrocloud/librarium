@@ -10,7 +10,7 @@ hideToCSidebar: false
 ---
 import {Intro, IntroButtons} from "@librarium/shared/src/components"
 import {Layout} from "@librarium/shared"
-import InfoBox from '@librarium/shared/src/components/InfoBox
+import InfoBox from "@librarium/shared/src/components/InfoBox"
 
 <Intro>
 
