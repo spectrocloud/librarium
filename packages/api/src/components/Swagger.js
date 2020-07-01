@@ -42,6 +42,7 @@ const Label = styled.div`
   color: #555;
   margin-right: 10px;
   margin-bottom: 10px;
+  text-transform: capitalize;
 `;
 
 const Hr = styled.hr`
@@ -110,8 +111,88 @@ const normalizePath = path => {
   return path.substring(0, path.length - 9);
 };
 
+function renderProperty(label, value) {
+  return (
+    <Summary>
+      <Label>{label}:</Label> {value || `No ${label}`}
+    </Summary>
+  )
+}
+
+function renderParameters(parameters, method, path) {
+  return (
+    parameters?.length > 0 ? (
+      <>
+        <Label>Parameters:</Label>
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parameters.map(parameter => (
+              <tr
+                key={path + method + parameter.name + parameter.paramType}
+              >
+                <td>{parameter.name}</td>
+                <td>{parameter.type}</td>
+                <td>{parameter.description}</td>
+                <td>
+                  {typeof parameter.required == 'undefined' ||
+                    parameter.required == false
+                    ? 'no'
+                    : 'yes'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ) : (
+        <Summary>
+          <Label>Parameters:</Label> No parameters
+        </Summary>
+      )
+  )
+}
+
+function renderBody(body) {
+  if(!body) {
+    return null;
+  }
+
+  return (
+    <Response type="request">
+      <label>Body</label>
+      <CodeHighlight code={body} />
+    </Response>
+  )
+}
+
+function renderResponseMessage(responseMessages) {
+  if(!responseMessages || responseMessages.length === 0) {
+    return null;
+  }
+
+  return responseMessages.map(response => (
+    <Response type="response">
+      <label>HTTP code:</label> {response.code} <br />
+      <label>Description:</label> {response.description} <br />
+      {response.schema && response.schema !== "null" && (
+        <>
+          <label>Response body:</label>
+          <CodeHighlight code={response.schema} />
+        </>
+      )}
+    </Response>
+  ));
+}
+
 export default function Swagger(props) {
-  // TODO refactor this :)
   return (
     <div>
       {props.documentation.apis.map(api =>
@@ -123,75 +204,13 @@ export default function Swagger(props) {
             </Signature>
             <OperationWrap>
               <div>
-                {operation.summary && (
-                  <Summary>
-                    <Label>Summary:</Label> {operation.summary}
-                  </Summary>
-                )}
-                {operation.description && (
-                  <Summary>
-                    <Label>Description:</Label> {operation.description}
-                  </Summary>
-                )}
-                {operation.parameters?.length > 0 ? (
-                  <>
-                    <Label>Parameters:</Label>
-                    <table className="table table-striped table-hover">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th>Description</th>
-                          <th>Required</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {operation.parameters.map(parameter => (
-                          <tr
-                            key={api.path + operation.method + parameter.name + parameter.paramType}
-                          >
-                            <td>{parameter.name}</td>
-                            <td>{parameter.type}</td>
-                            <td>{parameter.description}</td>
-                            <td>
-                              {typeof parameter.required == 'undefined' ||
-                                parameter.required == false
-                                ? 'no'
-                                : 'yes'}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </>
-                ) : (
-                    <Summary>
-                      <Label>Parameters:</Label> No Parameters
-                    </Summary>
-                  )
-                }
-                {operation.body && (
-                  <>
-                    <Response type="request">
-                    <label>Body</label>
-                      <CodeHighlight code={operation.body} />
-                    </Response>
-                  </>
-                )}
+                {renderProperty("summary", operation.summary)}
+                {renderProperty("description", operation.description)}
+                {renderParameters(operation?.parameters, operation.method, api?.path)}
+                {renderBody(operation.body)}
               </div>
               <ResponsesWrapper>
-                {operation.responseMessages.map(response => (
-                  <Response type="response">
-                    <label>HTTP code:</label> {response.code} <br />
-                    <label>Description:</label> {response.description} <br />
-                    {response.schema && response.schema !== "null" && (
-                      <>
-                        <label>Response body:</label>
-                        <CodeHighlight code={response.schema} />
-                      </>
-                    )}
-                  </Response>
-                ))}
+                {renderResponseMessage(operation.responseMessages)}
               </ResponsesWrapper>
             </OperationWrap>
             <Hr />
