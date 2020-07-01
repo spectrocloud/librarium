@@ -10,6 +10,7 @@ fullWidth: false
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 
 # Overview
 
@@ -20,6 +21,23 @@ Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A c
 * Installation and configuration of cloud specific network (CNI) and storage (CSI) plugins.
 * Securing of the cluster infrastructure and configuration in accordance with relevant OS, Kubernetes and cloud security best practices.
 * Deployment of additional add-ons such as Prometheus, Permissions Manager, Vault, etc., as specified in the cluster profile.
+
+<Tabs>
+  <Tabs.TabPane tab="AWS" key="aws">
+
+# AWS cluster
+
+Lorem ipsum about aws cluster.
+
+  </Tabs.TabPane>
+  <Tabs.TabPane tab="VMware" key="vmware">
+
+# VMware cluster
+
+Lorem ipsum about vmware cluster.
+
+  </Tabs.TabPane>
+</Tabs>
 
 # Images
 
