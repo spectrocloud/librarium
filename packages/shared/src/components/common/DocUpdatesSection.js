@@ -44,18 +44,6 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "bundle"
-          },
-          "excerpt": "Bundle test",
-          "parent": {
-            "name": "bundle",
-            "modifiedTime": "2020-06-20T07:06:47.089Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "cluster"
           },
           "excerpt": "Cluster lorem",
@@ -68,35 +56,11 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "annotation"
-          },
-          "excerpt": "annotation annotation",
-          "parent": {
-            "name": "annotation",
-            "modifiedTime": "2020-06-20T07:06:47.088Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "accent"
           },
           "excerpt": "accent accent",
           "parent": {
             "name": "accent",
-            "modifiedTime": "2020-06-20T07:06:47.088Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "API"
-          },
-          "excerpt": "API ipsum",
-          "parent": {
-            "name": "api",
             "modifiedTime": "2020-06-20T07:06:47.088Z"
           }
         }
@@ -116,12 +80,36 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Getting Started"
+            "title": "bundle"
           },
-          "excerpt": "Getting Started: Deploying your first cluster Deploying your first  cluster  should be a walk in the park. As an overview, Spectro Cloud…",
+          "excerpt": "Bundle test",
           "parent": {
-            "name": "02-getting-started",
-            "modifiedTime": "2020-06-24T08:12:26.809Z"
+            "name": "bundle",
+            "modifiedTime": "2020-06-20T07:06:47.089Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "API"
+          },
+          "excerpt": "API ipsum",
+          "parent": {
+            "name": "api",
+            "modifiedTime": "2020-06-20T07:06:47.088Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "annotation"
+          },
+          "excerpt": "annotation annotation",
+          "parent": {
+            "name": "annotation",
+            "modifiedTime": "2020-06-20T07:06:47.088Z"
           }
         }
       },
@@ -133,7 +121,19 @@ const mock = {
           "excerpt": "",
           "parent": {
             "name": "00-index",
-            "modifiedTime": "2020-06-30T12:39:30.701Z"
+            "modifiedTime": "2020-06-30T13:27:16.261Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Getting Started"
+          },
+          "excerpt": "Getting Started: Deploying your first cluster Deploying your first  cluster  should be a walk in the park. As an overview, Spectro Cloud…",
+          "parent": {
+            "name": "02-getting-started",
+            "modifiedTime": "2020-06-24T08:12:26.809Z"
           }
         }
       },
@@ -152,12 +152,36 @@ const mock = {
       {
         "node": {
           "fields": {
+            "title": "Cluster Profiles"
+          },
+          "excerpt": "Cluster Profiles Cluster profiles are like templates that are created with pre-configured layers/components needed for cluster deployments…",
+          "parent": {
+            "name": "03-cluster-profiles",
+            "modifiedTime": "2020-06-22T08:01:00.041Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
             "title": "Pack Integrations"
           },
           "excerpt": "",
           "parent": {
             "name": "06-integrations",
             "modifiedTime": "2020-06-22T08:01:00.055Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "User management"
+          },
+          "excerpt": "User management This section touches upon the initial login aspects for tenant admins and non-admin users; and about RBAC setup within…",
+          "parent": {
+            "name": "08-user-management",
+            "modifiedTime": "2020-06-24T08:12:26.840Z"
           }
         }
       },
@@ -176,12 +200,12 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "User management"
+            "title": "Registries and packs"
           },
-          "excerpt": "User management This section touches upon the initial login aspects for tenant admins and non-admin users; and about RBAC setup within…",
+          "excerpt": "Packs Overview A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building…",
           "parent": {
-            "name": "08-user-management",
-            "modifiedTime": "2020-06-24T08:12:26.840Z"
+            "name": "09-registries-and-packs",
+            "modifiedTime": "2020-06-24T08:12:26.841Z"
           }
         }
       },
@@ -212,30 +236,6 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Audit Logs"
-          },
-          "excerpt": "About Audit Logs The Spectro Cloud SaaS application captures audit logs to track the user interaction with the application resources along…",
-          "parent": {
-            "name": "10-audit-logs",
-            "modifiedTime": "2020-06-22T08:01:00.073Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Registries and packs"
-          },
-          "excerpt": "Packs Overview A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building…",
-          "parent": {
-            "name": "09-registries-and-packs",
-            "modifiedTime": "2020-06-24T08:12:26.841Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "Spectro Cloud CLI Tool"
           },
           "excerpt": "Overview The Spectro CLI is a command-line interface for the Spectro Registry server to upload or download the packs using commands. Pre…",
@@ -248,12 +248,12 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Adding a custom pack using manifests"
+            "title": "Audit Logs"
           },
-          "excerpt": "Add-on packs using manifests Add-on packs can be built using Kubernetes manifests. These manifests contain deployment specifications for…",
+          "excerpt": "About Audit Logs The Spectro Cloud SaaS application captures audit logs to track the user interaction with the application resources along…",
           "parent": {
-            "name": "5-add-custom-packs-manifests",
-            "modifiedTime": "2020-06-23T06:54:44.710Z"
+            "name": "10-audit-logs",
+            "modifiedTime": "2020-06-22T08:01:00.073Z"
           }
         }
       },
@@ -272,48 +272,12 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "RBAC"
+            "title": "Adding a custom pack using manifests"
           },
-          "excerpt": "RBAC RBAC stands for Role-Based Access Control. This is a method that allows for the same user to have a different type of access control…",
+          "excerpt": "Add-on packs using manifests Add-on packs can be built using Kubernetes manifests. These manifests contain deployment specifications for…",
           "parent": {
-            "name": "2-rbac",
-            "modifiedTime": "2020-06-24T08:12:26.841Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Calico"
-          },
-          "excerpt": "Overview Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for Kubernetes…",
-          "parent": {
-            "name": "calico",
-            "modifiedTime": "2020-06-24T08:12:26.840Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Dex"
-          },
-          "excerpt": "Dex Dex is an identity service to drive authentication for Kubernetes API Server through the  OpenID Connect  plugin. Clients such as…",
-          "parent": {
-            "name": "dex",
-            "modifiedTime": "2020-06-22T08:01:00.057Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Citrix IPAM"
-          },
-          "excerpt": "Citrix IPAM and Ingress controller The integration helps with IP address management and provides load balancing capabilities for external…",
-          "parent": {
-            "name": "citrix-ipam",
-            "modifiedTime": "2020-06-22T08:01:00.056Z"
+            "name": "5-add-custom-packs-manifests",
+            "modifiedTime": "2020-06-23T06:54:44.710Z"
           }
         }
       },
@@ -332,11 +296,71 @@ const mock = {
       {
         "node": {
           "fields": {
+            "title": "Calico"
+          },
+          "excerpt": "Overview Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for Kubernetes…",
+          "parent": {
+            "name": "calico",
+            "modifiedTime": "2020-06-24T08:12:26.840Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Citrix IPAM"
+          },
+          "excerpt": "Citrix IPAM and Ingress controller The integration helps with IP address management and provides load balancing capabilities for external…",
+          "parent": {
+            "name": "citrix-ipam",
+            "modifiedTime": "2020-06-22T08:01:00.056Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Falco"
+          },
+          "excerpt": "Falco The Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco…",
+          "parent": {
+            "name": "falco",
+            "modifiedTime": "2020-06-22T08:01:00.057Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Dex"
+          },
+          "excerpt": "Dex Dex is an identity service to drive authentication for Kubernetes API Server through the  OpenID Connect  plugin. Clients such as…",
+          "parent": {
+            "name": "dex",
+            "modifiedTime": "2020-06-22T08:01:00.057Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
             "title": "Fluentbit"
           },
           "excerpt": "Fluentbit Fluent-Bit is a multi-platform log forwarder. The default integration will help forward logs from the Kubernetes cluster to an…",
           "parent": {
             "name": "fluentbit",
+            "modifiedTime": "2020-06-22T08:01:00.058Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Kibana"
+          },
+          "excerpt": "Elasticsearch-Fluentd-Kibana The logging integration installs a production grade ElasticSearch cluster with Kibana and Fluentd by default on…",
+          "parent": {
+            "name": "kibana",
             "modifiedTime": "2020-06-22T08:01:00.058Z"
           }
         }
@@ -350,18 +374,6 @@ const mock = {
           "parent": {
             "name": "istio",
             "modifiedTime": "2020-06-22T15:57:17.591Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Falco"
-          },
-          "excerpt": "Falco The Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco…",
-          "parent": {
-            "name": "falco",
-            "modifiedTime": "2020-06-22T08:01:00.057Z"
           }
         }
       },
@@ -392,12 +404,12 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Kibana"
+            "title": "Kubernetes"
           },
-          "excerpt": "Elasticsearch-Fluentd-Kibana The logging integration installs a production grade ElasticSearch cluster with Kibana and Fluentd by default on…",
+          "excerpt": "Kubernetes This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes…",
           "parent": {
-            "name": "kibana",
-            "modifiedTime": "2020-06-22T08:01:00.058Z"
+            "name": "kubernetes",
+            "modifiedTime": "2020-06-22T08:01:00.060Z"
           }
         }
       },
@@ -410,18 +422,6 @@ const mock = {
           "parent": {
             "name": "kubevious",
             "modifiedTime": "2020-06-22T08:01:00.061Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Kubernetes"
-          },
-          "excerpt": "Kubernetes This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes…",
-          "parent": {
-            "name": "kubernetes",
-            "modifiedTime": "2020-06-22T08:01:00.060Z"
           }
         }
       },
@@ -512,24 +512,12 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Creating Azure Clusters"
-          },
-          "excerpt": "Overview Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that…",
-          "parent": {
-            "name": "2-azure-clusters",
-            "modifiedTime": "2020-06-29T07:49:45.748Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "Creating Cluster Profiles"
           },
           "excerpt": "Creating Cluster Profiles Cluster profiles are created by configuring various layers of the Kubernetes Infrastructure stack. The following…",
           "parent": {
             "name": "1-task-define-profile",
-            "modifiedTime": "2020-06-22T08:01:00.041Z"
+            "modifiedTime": "2020-07-01T07:01:34.571Z"
           }
         }
       },
@@ -572,24 +560,24 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Azure: Your First Cluster"
+            "title": "Creating Azure Clusters"
           },
-          "excerpt": "Your First Azure Cluster The following steps will be taken to provision your first Azure cluster: Create Cluster Profile. Add Azure Cloud…",
+          "excerpt": "Overview Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that…",
           "parent": {
-            "name": "2-azure-your-first-cluster",
-            "modifiedTime": "2020-06-24T08:12:26.810Z"
+            "name": "2-azure-clusters",
+            "modifiedTime": "2020-06-29T07:49:45.748Z"
           }
         }
       },
       {
         "node": {
           "fields": {
-            "title": "What is Spectro Cloud?"
+            "title": "Azure: Your First Cluster"
           },
-          "excerpt": "What is Spectro Cloud? Spectro Cloud’s SaaS-based product brings the managed Kubernetes experience to users' own unique enterprise…",
+          "excerpt": "Your First Azure Cluster The following steps will be taken to provision your first Azure cluster: Create Cluster Profile. Add Azure Cloud…",
           "parent": {
-            "name": "1-what-is",
-            "modifiedTime": "2020-06-24T08:12:26.785Z"
+            "name": "2-azure-your-first-cluster",
+            "modifiedTime": "2020-06-24T08:12:26.810Z"
           }
         }
       },
@@ -668,18 +656,6 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Cluster Profiles"
-          },
-          "excerpt": "Cluster Profiles Cluster profiles are like templates that are created with pre-configured layers/components needed for cluster deployments…",
-          "parent": {
-            "name": "03-cluster-profiles",
-            "modifiedTime": "2020-06-22T08:01:00.041Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "Creating VMware Clusters"
           },
           "excerpt": "Overview Spectro Cloud SaaS does not need direct access to the VMware environment. A Private Cloud Gateway needs to be setup within the…",
@@ -698,18 +674,6 @@ const mock = {
           "parent": {
             "name": "0-index",
             "modifiedTime": "2020-06-29T07:49:45.735Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Introduction"
-          },
-          "excerpt": "Spectro Cloud API Spectro Cloud API provides APIs for a subset of features. The Spectro Cloud APIs are based on REST APIs. The APIs can be…",
-          "parent": {
-            "name": "1-introduction",
-            "modifiedTime": "2020-06-30T11:14:41.305Z"
           }
         }
       },
@@ -740,18 +704,6 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Clouds"
-          },
-          "excerpt": "Clouds",
-          "parent": {
-            "name": "09-clouds",
-            "modifiedTime": "2020-06-24T08:12:26.778Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "Cloud Accounts"
           },
           "excerpt": "Cloud Accounts",
@@ -764,11 +716,35 @@ const mock = {
       {
         "node": {
           "fields": {
+            "title": "Introduction"
+          },
+          "excerpt": "Spectro Cloud API Spectro Cloud API provides APIs for a subset of features. The Spectro Cloud APIs are based on REST APIs. The APIs can be…",
+          "parent": {
+            "name": "1-introduction",
+            "modifiedTime": "2020-06-30T11:14:41.305Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
             "title": "Cloud Config"
           },
           "excerpt": "Cloud Config",
           "parent": {
             "name": "07-cloudconfig",
+            "modifiedTime": "2020-06-24T08:12:26.778Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Clouds"
+          },
+          "excerpt": "Clouds",
+          "parent": {
+            "name": "09-clouds",
             "modifiedTime": "2020-06-24T08:12:26.778Z"
           }
         }
@@ -812,11 +788,11 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Files"
+            "title": "Events"
           },
-          "excerpt": "Files",
+          "excerpt": "Events",
           "parent": {
-            "name": "21-files",
+            "name": "19-events",
             "modifiedTime": "2020-06-24T08:12:26.780Z"
           }
         }
@@ -824,11 +800,11 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Events"
+            "title": "Files"
           },
-          "excerpt": "Events",
+          "excerpt": "Files",
           "parent": {
-            "name": "19-events",
+            "name": "21-files",
             "modifiedTime": "2020-06-24T08:12:26.780Z"
           }
         }
@@ -860,11 +836,11 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Packs"
+            "title": "Private Cloud Gateway"
           },
-          "excerpt": "Packs",
+          "excerpt": "Private Cloud Gateway",
           "parent": {
-            "name": "35-packs",
+            "name": "33-overlords",
             "modifiedTime": "2020-06-24T08:12:26.781Z"
           }
         }
@@ -872,11 +848,11 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Private Cloud Gateway"
+            "title": "Packs"
           },
-          "excerpt": "Private Cloud Gateway",
+          "excerpt": "Packs",
           "parent": {
-            "name": "33-overlords",
+            "name": "35-packs",
             "modifiedTime": "2020-06-24T08:12:26.781Z"
           }
         }
@@ -896,30 +872,6 @@ const mock = {
       {
         "node": {
           "fields": {
-            "title": "Roles"
-          },
-          "excerpt": "Roles",
-          "parent": {
-            "name": "43-roles",
-            "modifiedTime": "2020-06-24T08:12:26.782Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
-            "title": "Teams"
-          },
-          "excerpt": "Teams",
-          "parent": {
-            "name": "49-teams",
-            "modifiedTime": "2020-06-24T08:12:26.782Z"
-          }
-        }
-      },
-      {
-        "node": {
-          "fields": {
             "title": "Registries"
           },
           "excerpt": "Registries",
@@ -932,11 +884,35 @@ const mock = {
       {
         "node": {
           "fields": {
+            "title": "Roles"
+          },
+          "excerpt": "Roles",
+          "parent": {
+            "name": "43-roles",
+            "modifiedTime": "2020-06-24T08:12:26.782Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
             "title": "Services"
           },
           "excerpt": "Services",
           "parent": {
             "name": "45-services",
+            "modifiedTime": "2020-06-24T08:12:26.782Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "Teams"
+          },
+          "excerpt": "Teams",
+          "parent": {
+            "name": "49-teams",
             "modifiedTime": "2020-06-24T08:12:26.782Z"
           }
         }
@@ -962,6 +938,30 @@ const mock = {
           "parent": {
             "name": "53-users",
             "modifiedTime": "2020-06-24T08:12:26.783Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "RBAC"
+          },
+          "excerpt": "RBAC RBAC stands for Role-Based Access Control. This is a method that allows for the same user to have a different type of access control…",
+          "parent": {
+            "name": "2-rbac",
+            "modifiedTime": "2020-07-01T07:29:45.644Z"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "title": "What is Spectro Cloud?"
+          },
+          "excerpt": "What is Spectro Cloud? Spectro Cloud’s SaaS-based product brings the managed Kubernetes experience to users' own unique enterprise…",
+          "parent": {
+            "name": "1-what-is",
+            "modifiedTime": "2020-07-01T07:31:33.772Z"
           }
         }
       }
@@ -998,7 +998,7 @@ function DocUpdatesSection({ title }) {
     return moment(modifiedTime2).diff(modifiedTime1);
   });
 
-  lastChanges.splice(3, lastChanges.length - 4);
+  lastChanges.splice(4, lastChanges.length - 4);
 
   return (
     <Wrapper>
