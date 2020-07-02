@@ -111,7 +111,7 @@ const normalizePath = path => {
   return path.substring(0, path.length - 9);
 };
 
-function renderProperty(label, value) {
+function Property({label, value}) {
   return (
     <Summary>
       <Label>{label}:</Label> {value || `No ${label}`}
@@ -119,7 +119,7 @@ function renderProperty(label, value) {
   )
 }
 
-function renderParameters(parameters, method, path) {
+function Parameters({parameters, method, path}) {
   return (
     parameters?.length > 0 ? (
       <>
@@ -160,7 +160,7 @@ function renderParameters(parameters, method, path) {
   )
 }
 
-function renderBody(body) {
+function RequestBody({body}) {
   if(!body) {
     return null;
   }
@@ -173,7 +173,7 @@ function renderBody(body) {
   )
 }
 
-function renderResponseMessage(responseMessages) {
+function ResponseMessages({responseMessages}) {
   if(!responseMessages || responseMessages.length === 0) {
     return null;
   }
@@ -204,13 +204,17 @@ export default function Swagger(props) {
             </Signature>
             <OperationWrap>
               <div>
-                {renderProperty("summary", operation.summary)}
-                {renderProperty("description", operation.description)}
-                {renderParameters(operation?.parameters, operation.method, api?.path)}
-                {renderBody(operation.body)}
+                <Property label="summary" value={operation.summary} />
+                <Property label="description" value={operation.description} />
+                <Parameters
+                  parameters={operation?.parameters}
+                  method={operation.method}
+                  path={api?.path}
+                />
+                <RequestBody body={operation.body} />
               </div>
               <ResponsesWrapper>
-                {renderResponseMessage(operation.responseMessages)}
+                <ResponseMessages responseMessages={operation.responseMessages} />
               </ResponsesWrapper>
             </OperationWrap>
             <Hr />
