@@ -111,7 +111,7 @@ const normalizePath = path => {
   return path.substring(0, path.length - 9);
 };
 
-function Property({label, value}) {
+function Property({ label, value }) {
   return (
     <Summary>
       <Label>{label}:</Label> {value || `No ${label}`}
@@ -119,49 +119,54 @@ function Property({label, value}) {
   )
 }
 
-function Parameters({parameters, method, path}) {
+function Parameters({ parameters, method, path }) {
+  if (!parameters?.length) {
+    return (
+      <Summary>
+        <Label>Parameters:</Label> No parameters
+      </Summary>)
+  }
+
+  function renderParameter(parameter) {
+    return (
+      <tr
+        key={path + method + parameter.name + parameter.paramType}
+      >
+        <td>{parameter.name}</td>
+        <td>{parameter.type}</td>
+        <td>{parameter.description}</td>
+        <td>
+          {typeof parameter.required == 'undefined' ||
+            parameter.required == false
+            ? 'no'
+            : 'yes'}
+        </td>
+      </tr>
+    );
+  }
+
   return (
-    parameters?.length > 0 ? (
-      <>
-        <Label>Parameters:</Label>
-        <table className="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Description</th>
-              <th>Required</th>
-            </tr>
-          </thead>
-          <tbody>
-            {parameters.map(parameter => (
-              <tr
-                key={path + method + parameter.name + parameter.paramType}
-              >
-                <td>{parameter.name}</td>
-                <td>{parameter.type}</td>
-                <td>{parameter.description}</td>
-                <td>
-                  {typeof parameter.required == 'undefined' ||
-                    parameter.required == false
-                    ? 'no'
-                    : 'yes'}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
-    ) : (
-        <Summary>
-          <Label>Parameters:</Label> No parameters
-        </Summary>
-      )
+    <>
+      <Label>Parameters:</Label>
+      <table className="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          {parameters.map(renderParameter)}
+        </tbody>
+      </table>
+    </>
   )
 }
 
-function RequestBody({body}) {
-  if(!body) {
+function RequestBody({ body }) {
+  if (!body) {
     return null;
   }
 
@@ -173,8 +178,8 @@ function RequestBody({body}) {
   )
 }
 
-function ResponseMessages({responseMessages}) {
-  if(!responseMessages || responseMessages.length === 0) {
+function ResponseMessages({ responseMessages }) {
+  if (!responseMessages || responseMessages.length === 0) {
     return null;
   }
 

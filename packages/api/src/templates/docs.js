@@ -48,7 +48,7 @@ export default function MDXLayout({ data = {}, location }) {
           const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
 
           // if the property contains a ref, call again extractDefinition
-          if(definitionPropertyRef) {
+          if (definitionPropertyRef) {
             return ({
               ...propertiesAcc,
               [property]: definitionProperty.type === "array" ?
