@@ -31,13 +31,17 @@ const Wrapper = styled.div`
   }
 `;
 
-function MainHeader({ }) {
+function MainHeader({introductionHref, demoHref}) {
   return (
     <Wrapper>
       <h1>Documentation</h1>
       <h3>Introductive Tutorial</h3>
       <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed faucibus nisi, a porta nisi. In hac habitasse platea dictumst.</span>
-      <IntroButtons display="vertical" />
+      <IntroButtons
+       display="vertical"
+       introductionHref={introductionHref}
+       demoHref={demoHref}
+      />
     </Wrapper>
   )
 }

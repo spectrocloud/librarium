@@ -42,7 +42,12 @@ const ButtonsWrapper = styled.div`
   `}
 `
 
-export function IntroButtons({ children, display = "horizontal" }) {
+export function IntroButtons({
+  children,
+  display = "horizontal",
+  introductionHref,
+  demoHref
+ }) {
   return <ButtonsWrapper display={display}>
     <Link to={introductionHref}>
       <Button>What is Spectro Cloud?</Button>
