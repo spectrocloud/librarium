@@ -17,6 +17,7 @@ This Integration aims to automate and simplify rollout of the various Istio comp
 ## Contents
 
 The integration deploys the Istio Operator with the 'demo' profile which deploys the following components:
+
 * Istiod
 * Istio Ingress Gateway
 * Istio Egress Gateway

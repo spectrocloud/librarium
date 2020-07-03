@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
 
-Spectro Cloud SaaS does not need direct access to the VMware environment. A Private Cloud Gateway needs to be setup within the VMware environment, to facilitate  communication between Spectro Cloud SaaS and the vCenter, to create and delete target Kubernetes clusters.
+The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be setup within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and the vCenter, to create and delete target Kubernetes clusters.
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
 
@@ -170,8 +170,8 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 | Parameter | Value | Remarks |
 |---|---|---|
 |Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be setup, however multiple gateways might be required for managing clusters in multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
-| Console End Point | URL to Spectro Cloud SaaS portal | https://console.spectrocloud.com by default |
-|Pairing Code | PIN displayed on SaaS portal's 'Create new gateway' dialogue. | |
+| Console End Point | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
+|Pairing Code | PIN displayed on Spectro Cloud management platform portal's 'Create new gateway' dialogue. | |
 | SSH Public Key | Optional key, userful for troubleshooting purposes (Recommnded) | Enables SSH access to the VM as 'ubuntu' user |
 
 Additional properties that are required to be set only for a Proxy Environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
@@ -188,7 +188,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 ## Tenant Portal - Launch Cloud Gateway
 
 * Close the 'Create New Gateway' dialogue if still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
-* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the SaaS portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
+* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the Spectro Cloud management platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
 * Click on "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 * Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
 * Click on Deploy, to initiate provisioning of the gateway cluster. The status on the UI should change to 'Provisioning' and eventually 'Running' when gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors, or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
@@ -207,11 +207,12 @@ A Pack registry instance is setup on the gateway cluster by default and it is re
 
 ## Gateway installer - Unable to register with tenant portal
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the the installer to  register with tenant portal within this duration, might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the SaaS portal, authenticating or downloading installation artifacts. A common cause for these errors is that the SaaS console end point or the pairing code is typed incorrectly. Ensure that the tenant portal console end point does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the the installer to  register with tenant portal within this duration, might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console end point or the pairing code is typed incorrectly. Ensure that the tenant portal console end point does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
 
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections. 
 
 If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
+
 ```
 #!/bin/bash
 

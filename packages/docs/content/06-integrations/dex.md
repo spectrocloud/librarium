@@ -17,6 +17,7 @@ Dex is an identity service to drive authentication for Kubernetes API Server thr
 ## Components
 
 Dex integration in Spectro Cloud will deploy the following components:
+
 * Dex.
 * Dex Client (dex-k8s-authenticator).
 

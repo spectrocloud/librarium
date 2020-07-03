@@ -21,9 +21,10 @@ This integration provides a graphical user interface for RBAC management in Kube
 | namespace| Any valid namespace string | The namespace under which this integration should be deployed onto|
 | authPassword | | Login password for the web interface |
 
-## How to customize the permission templates?
+## Customizing the permission templates
 
 Create a ClusterRole starting with `template-namespaced-resources___` or `template-cluster-resources___` and apply it to the cluster. Permission manager will honor any custom resources with this naming convention and will populate on the user interface.
 
 ## References
-https://github.com/sighupio/permission-manager
+
+<https://github.com/sighupio/permission-manager>

@@ -17,6 +17,7 @@ The logging integration installs a production grade ElasticSearch cluster with K
 ## Contents
 
 The default integration deployed will have the following components:
+
 * ElasticSearch Master (3 replicas).
 * ElasticSearch Data (2 replicas).
 * ElasticSearch Client (2 replicas).

@@ -72,6 +72,7 @@ https://kubernetes.io/docs/concepts/storage/storage-classes/
 # Troubleshooting
 
 Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+
 ```
 kubectl get storageclass
 ```

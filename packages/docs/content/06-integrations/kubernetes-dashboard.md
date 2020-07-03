@@ -29,19 +29,27 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 ## Accessing the dashboard
 
 * **ClusterIP service type**
+
 When connected to the cluster remotely, run the following command to establish a connection to dashboard deployment on port 8080
+
 ```
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
+
 To access Kubernetes Dashboard, go to the below URL in a browser of your choice
+
 ```
 https://localhost:8080
 ```
-When you’re in the Dashboard login page, to get the bearer token, you can run the below command from Terminal window
+
+In the Dashboard login page, to get the bearer token, run the below command from Terminal window:
+
 ```
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
+
 The output of the above command will look like this, where the token value is in the last line
+
 ```
 Name:         kubernetes-dashboard-token-h4lnf
 Namespace:    kubernetes-dashboard

@@ -62,7 +62,7 @@ The following steps will be taken to provision your first Azure cluster:
     * name: ca-azure-1
     * Tenant Id: your &lt;Azure Tenant Id&gt;
     * Client Id: your &lt;Azure Client Id&gt;
-    * Client Secret: your &lt;Azure Client Secret&gt;    
+    * Client Secret: your &lt;Azure Client Secret&gt;
 1. Click on *Validate*.
 1. Click on *Confirm* to finish creating your cloud account.
 
@@ -76,7 +76,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 1. Navigate to the *Clusters* page from the left-hand menu.
 1. Click on *Create cluster* (and follow the wizard):
     * Name: cluster-azure-1
-    * Select Azure cloud from the top environment selection bar. 
+    * Select Azure cloud from the top environment selection bar.
     * Select the cluster profile: ExperimentalAzure, click *Next*.
     * Leave the pack parameter overrides as-is, click *Next*.
     * Cloud Properties:

@@ -17,6 +17,7 @@ Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable 
 ## Components
 
 Integration creates the following components:
+
 * Ingress Controller.
 * Default Backend.
 
@@ -26,4 +27,5 @@ For basic troubleshooting, refer the below troubleshooting guide:
 https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
 
 ## References
+
 https://www.nginx.com/products/nginx/kubernetes-ingress-controller/

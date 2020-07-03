@@ -19,4 +19,5 @@ Kong integration is an [Ingress controller](https://kubernetes.io/docs/concepts/
 Integration will add Kong Ingress Controller which will expose a service of type LoadBalancer
 
 ## References
+
 https://github.com/Kong/kubernetes-ingress-controller
