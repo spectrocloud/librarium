@@ -7,14 +7,6 @@ const config = require('./config');
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
-  // TODO (saamalik) remove after homepage comes back
-  // createRedirect({
-  //   fromPath: `/`,
-  //   toPath: `/introduction`,
-  //   redirectInBrowser: true,
-  //   isPermanent: true,
-  // })
-
   createRedirect({
     fromPath: `/api/`,
     toPath: `/api/introduction`,
