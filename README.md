@@ -131,12 +131,12 @@ The same rules apply though. You can reference it from a different section using
 ```
 #### Tabs component
 
-You can add a tabs component with
+To use the tabs component you have to import it from the *shared* folder
 ```js
 import Tabs from '@librarium/shared/src/components/styles/Tabs';
 ```
 
-And use it like this
+After that, you can use it like this
 
 ```js
 <Tabs>
