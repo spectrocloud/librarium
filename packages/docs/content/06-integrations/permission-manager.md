@@ -5,7 +5,7 @@ metaDescription: 'Permission Manager Authentication pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['authentication']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/addon/auth/permission-manager/logo.png?token=APOFE6S6ATEXXYQRMN4WG227AR45C'
+logoUrl: 'https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:15d08b02d78823c12616b72d1b5adb0520940016b89bae1f758e6f1a105597ff?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

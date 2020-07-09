@@ -5,7 +5,7 @@ metaDescription: 'Kubevious Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/experimental/addon/logging_and_monitoring/kubevious-0.5.9/logo.png?token=APOFE6URWB7AYB4U6QH5MH27AR7D4'
+logoUrl: 'https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

@@ -5,7 +5,7 @@ metaDescription: 'Citrix IPAM Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['load balancers']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/addon/loadbalancers/citrix-adc/logo.png?token=APOFE6VXGQF7QLHA5PELK5K7AR52S'
+logoUrl: 'https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
