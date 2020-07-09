@@ -152,6 +152,7 @@ export const StyledMainWrapper = styled.div`
   }
 
   pre {
+    padding: 10px 5px;
     margin: 18px 0;
     background: transparent;
   }
