@@ -1,12 +1,62 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import ClipboardJS from "clipboard";
+import { CopyOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
 
 import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
 
-const StyledPre = styled.pre`
-  background: ${props => props.theme.colors.preFormattedText};
+const PreContainer = styled.div`
+  display: flex;
 `;
+
+const Copy = styled.button`
+  opacity: 0.3;
+  position: sticky;
+  top: 90px;
+  border-radius: 4px;
+  background: #fefefe;
+  overflow: hidden;
+  border: none;
+  transition: opacity 0.1s ease-in;
+  margin-left: -40px;
+
+  :hover {
+    opacity: 0.9;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+    margin: 10px 0;
+    width: 0px;
+`;
+
+function Pre(props) {
+  const preRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    new ClipboardJS(buttonRef.current, {
+      text: (trigger) => {
+        return preRef.current.innerText;
+      }
+    });
+  }, []);
+
+  return (
+    <PreContainer>
+      <div ref={preRef} {...props} />
+      <ButtonWrapper>
+        <Tooltip title="Copy to clipboard" placement="top">
+          <Copy ref={buttonRef}>
+            <CopyOutlined />
+          </Copy>
+        </Tooltip>
+      </ButtonWrapper>
+    </PreContainer>
+  );
+}
 
 function generateHeadingId(children) {
   let title = children;
@@ -46,11 +96,7 @@ export default {
     <h6 id={generateHeadingId(props.children)} {...props} />
   ),
   p: props => <p className="paragraph" {...props} />,
-  pre: props => (
-    <StyledPre>
-      <pre {...props} />
-    </StyledPre>
-  ),
+  pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
   // TODO add `img`
