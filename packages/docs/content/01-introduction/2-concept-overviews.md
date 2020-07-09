@@ -39,7 +39,7 @@ Permissions are associated with specific actions within the platform such as Cre
 
 # Cluster Profile
 
-A Cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled. 
+A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled.
 
 The diagram below shows an example of a cluster profile:
 
@@ -49,7 +49,7 @@ The diagram below shows an example of a cluster profile:
 
 A Kubernetes cluster is collections of master and worker nodes that cooperate to execute container application workloads.
 
-Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within projects and they are provisioned and managed in user's cloud environment. Each cluster is provisioned from a *Cluster Profile* with additional configuration overrides and cloud specific settings.
+Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within projects and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a *cluster profile* with additional configuration overrides and cloud specific settings.
 
 # Cloud Account
 
@@ -58,7 +58,6 @@ Cloud Accounts are where access credentials are stored for public and private cl
 # Pack
 
 Spectro Cloud provides multiple integrations/technologies in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco etc.
-
 
 # Public Pack Registry
 

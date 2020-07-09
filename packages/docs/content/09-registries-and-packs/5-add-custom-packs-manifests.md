@@ -17,6 +17,7 @@ The example below shows how to build the Permission Manager auth pack and push t
 
 1. Create the pack directory named `permission-manager`.
 2. Create the metadata file named `pack.json`.
+
 ```
 {
   "addonType":"authentication",
@@ -35,6 +36,7 @@ The example below shows how to build the Permission Manager auth pack and push t
 4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, *{{.Values.namespace}}*. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
 
 permission-manager.yaml (partial)
+
 ```
 ---
 
@@ -146,9 +148,10 @@ rules:
 ...
 ```
 
-5.  Create a file called `values.yaml` to provide configurable manifest parameters.
+5. Create a file called `values.yaml` to provide configurable manifest parameters.
 
 values.yaml
+
 ```
 manifests:
   permission-manager:

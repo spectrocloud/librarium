@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/security/vault_0.3.1/logo.png?token=APOFE6VJQWPJILOKJ7AQ7HC7AR6OE'
+logoUrl: 'https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -17,6 +17,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 ## Components
 
 Vault integration has the following components:
+
 * Vault server.
 * UI (Optional).
 * [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional).
@@ -39,11 +40,13 @@ Vault integration has the following components:
 ## How secrets are injected in deployments?
 
 In Kubernetes clusters with Vault integrated, secrets can be injected into the application pods by adding the following annotations:
+
 ```
 vault.hashicorp.com/agent-inject: "true"
 vault.hashicorp.com/agent-inject-secret-<unique_name>: /path/to/secret
 vault.hashicorp.com/role: "<role using which the secret can be fetced>"
 ```
+
 More information on consuming Vault secrets can be found in [Vault docs](https://www.vaultproject.io/docs/platform/k8s/injector)
 
 ## References

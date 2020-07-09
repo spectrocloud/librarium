@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['storage']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/storage/vsphere_volume/logo.png?token=APOFE6VELEWITIQKWD3A7EK7AR7NW'
+logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -72,6 +72,7 @@ https://kubernetes.io/docs/concepts/storage/storage-classes/
 # Troubleshooting
 
 Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+
 ```
 kubectl get storageclass
 ```

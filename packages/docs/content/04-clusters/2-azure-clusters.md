@@ -82,7 +82,7 @@ The following steps need to be performed to add a new worker node pool to a clus
     * Instance type to be used for all the nodes lunched in the node pool.
     * Managed Disk and Size of the storage to be used.
     * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
-    
+
 # Removing an Azure worker pool
 
 The following steps need to be performed to remove a worker pool from the cluster:-

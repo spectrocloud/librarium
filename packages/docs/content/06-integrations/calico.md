@@ -20,7 +20,6 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
     * v3.9.
     * v3.10.
 
-
 # Calico
 
 [Project Calico](http://docs.projectcalico.org/) is an open source container networking provider and network policy engine.
@@ -28,6 +27,7 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
 Calico provides a highly scalable networking and network policy solution for connecting Kubernetes pods based on the same IP networking principles as the internet, for both Linux (open source) and Windows (proprietary - available from [Tigera](https://www.tigera.io/essentials/)). Calico can be deployed without encapsulation or overlays to provide high-performance, high-scale data center networking. Calico also provides fine-grained, intent based network security policy for Kubernetes pods via its distributed firewall.
 
 Calico manifest used for networking does the following:
+
 * Installs the `calico/node` container on each host using a DaemonSet.
 * Installs the Calico CNI binaries and network config on each host using a DaemonSet.
 * Runs `calico/kube-controllers` as a deployment.

@@ -11,10 +11,22 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# July 3, 2020 - Release 1.0.2
+
+* Minor bug fixes for release 1.0.1.
+* Updates to the [orchestration engine](https://www.spectrocloud.com/webinars/cluster-api-and-the-spectro-cloud-orchestration-engine/) for the new regions.
+* Minor updates to the Istio integration.
+
+# July 3, 2020 - Release 1.0.1
+
+* New Regions for AWS - Spectro Cloud is now available for deploying AWS clusters in the European regions.
+* Changes to the pricing structures - more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
+
 # June 23, 2020 - Release 1.0
 
 The following features are included as part of Spectro Cloud 1.0:
-* Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure and VMWare. 
+
+* Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure and VMWare.
 * Security hardened, compliant and conformant Kubernetes clusters out of the box.
 * Cluster construction templates called Cluster Profiles.
 * Platform extensibility through custom integration packs.

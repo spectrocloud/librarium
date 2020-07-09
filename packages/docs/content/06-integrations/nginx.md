@@ -5,7 +5,7 @@ metaDescription: 'Nginx Ingress pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['ingress']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/addon/ingress/nginx_0.26.1/logo.png?token=APOFE6RYJ6VQMB2RVKIJCQS7AR5CK'
+logoUrl: 'https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -17,6 +17,7 @@ Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable 
 ## Components
 
 Integration creates the following components:
+
 * Ingress Controller.
 * Default Backend.
 
@@ -26,4 +27,5 @@ For basic troubleshooting, refer the below troubleshooting guide:
 https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
 
 ## References
+
 https://www.nginx.com/products/nginx/kubernetes-ingress-controller/

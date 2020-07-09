@@ -183,7 +183,7 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
             "Resource": [
                 "*"
             ]
-        }, 
+        },
         {
             "Effect": "Allow",
             "Action": [
