@@ -37,32 +37,44 @@ export default function MDXLayout({ data = {}, location }) {
     const api = APIS[mdx?.fields?.version];
 
     function renderProperties(defObject) {
-      return defObject?.properties && Object.keys(defObject?.properties)
+      // if there are no properties, render the format or type (this seems to apply only for timestamps)
+      if (!defObject?.properties) {
+        return defObject?.format || defObject.type;
+      }
+
+      return Object.keys(defObject?.properties)
         .reduce((propertiesAcc, property) => {
           const definitionProperty = defObject.properties[property];
-          const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref
+          const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
 
-          return definitionPropertyRef ?
-            // if the property contains a ref, call again extractDefinition
-            {
+          // if the property contains a ref, call again extractDefinition
+          if (definitionPropertyRef) {
+            return ({
               ...propertiesAcc,
               [property]: definitionProperty.type === "array" ?
                 [extractDefinition(definitionPropertyRef)] :
                 extractDefinition(definitionPropertyRef)
-            } :
-            {
-              // if property value is an array, render what type the elements are
-              ...propertiesAcc, [property]:
-                definitionProperty.type === "array" ?
-                  [definitionProperty?.items.type || definitionProperty.type] :
-                  // if the property value is an object that contains the properties key
-                  // call again renderProperties function in case it has refs inside
-                  // otherwise render the property type
-                  definitionProperty?.properties ?
-                    renderProperties(definitionProperty) :
-                    definitionProperty.type
+            });
+          } else {
+            // if property value is an array, render what type the elements are
+            if(definitionProperty.type === "array") {
+              return ({
+                ...propertiesAcc,
+                [property]: [definitionProperty?.items.type || definitionProperty.type]
+              });
+            } else {
+              // if the property value is an object that contains the properties key
+              // call again renderProperties function in case it has refs inside
+              // otherwise render the property type
+              return ({
+                ...propertiesAcc,
+                [property]: definitionProperty?.properties ?
+                  renderProperties(definitionProperty) :
+                  definitionProperty.type
+              });
             }
-        }, {}) || (defObject?.format || defObject.type) // if there are no properties render the format or type (this was seems to apply only for timestamps)
+          }
+        }, {});
     }
 
     function extractDefinition(ref) {
@@ -81,7 +93,6 @@ export default function MDXLayout({ data = {}, location }) {
           items: extractDefinition(defObject.items.$ref)
         });
       }
-
 
       return renderProperties(defObject);
     }
