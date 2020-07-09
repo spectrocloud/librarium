@@ -8,21 +8,19 @@ import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
 
 const PreContainer = styled.div`
-  position:relative;
-  background: transparent;
+  display: flex;
 `;
 
 const Copy = styled.button`
   opacity: 0.3;
   position: sticky;
   top: 90px;
-  left: 100%;
-  margin-right: 10px;
   border-radius: 4px;
   background: #fefefe;
   overflow: hidden;
   border: none;
   transition: opacity 0.1s ease-in;
+  margin-left: -40px;
 
   :hover {
     opacity: 0.9;
@@ -30,11 +28,8 @@ const Copy = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: calc(100% - 40px);
     margin: 10px 0;
+    width: 0px;
 `;
 
 function Pre(props) {
@@ -44,13 +39,14 @@ function Pre(props) {
   useEffect(() => {
     new ClipboardJS(buttonRef.current, {
       text: (trigger) => {
-        return preRef.current.textContent;
+        return preRef.current.innerText;
       }
     });
   }, []);
 
   return (
     <PreContainer>
+      <div ref={preRef} {...props} />
       <ButtonWrapper>
         <Tooltip title="Copy to clipboard" placement="top">
           <Copy ref={buttonRef}>
@@ -58,7 +54,6 @@ function Pre(props) {
           </Copy>
         </Tooltip>
       </ButtonWrapper>
-      <div ref={preRef} {...props} />
     </PreContainer>
   );
 }
