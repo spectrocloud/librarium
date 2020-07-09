@@ -4,8 +4,8 @@ metaTitle: 'Elasticsearch-Fluentd-Kibana'
 metaDescription: 'Kibana Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
-category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/loggging_and_monitoring/elastic-fluentd-kibana-6.7.0/logo.png?token=APOFE6URVNHZHTVKIW2F7BS7AR652'
+category: ['logging']
+logoUrl: 'https://registry.spectrocloud.com/v1/elastic-fluentd-kibana/blobs/sha256:3b6d6486eb216d46164fc8b7cb784b0be6b851a85726f18bdf4450d5ed1386eb?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -17,6 +17,7 @@ The logging integration installs a production grade ElasticSearch cluster with K
 ## Contents
 
 The default integration deployed will have the following components:
+
 * ElasticSearch Master (3 replicas).
 * ElasticSearch Data (2 replicas).
 * ElasticSearch Client (2 replicas).

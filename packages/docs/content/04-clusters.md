@@ -27,7 +27,7 @@ Spectro Cloud provides VM images for cluster compute infrastructure out of the b
 
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
-##  Customization
+## Customization
 
 Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be setup with customized OS packs.
 
@@ -93,15 +93,16 @@ Configuration for packs can be updated in a cluster at any time. The changes are
 
 # Cluster Health
 
-Spectro Clodud monitors cluster infrastructure on a regular basis and reports health on the tenant console.
+Spectro Clodud monitors cluster infrastructure on a regular basis and reports health on the management console.
 Overall health is computed based on the following factors:
 
-* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the tenant console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster. 
-* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the tenant console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
+* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the management console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster. 
+* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
 * Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
 # Usage Monitoring
-Spectro Cloud continuously monitors cluster resources and reports usage for the cluster as well as individual nodes. The following metrics are reported on cluster overview page of the tenant console. By default the metrics are only displayed for the worker nodes in the cluster:
+
+Spectro Cloud continuously monitors cluster resources and reports usage for the cluster as well as individual nodes. The following metrics are reported on cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
 
 * Cores Used - A cluster-wise break down of the number of cores used.
 * CPU Usage - Current CPUs used across all cluster nodes. Additionally usage over a period of time is presented as a chart
@@ -111,10 +112,9 @@ Spectro Cloud continuously monitors cluster resources and reports usage for the 
 
 Additionally, usage metrics for individual nodes as well as node conditions are accessible from the node details page.
 
-
 # Application Services
 
-Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing link to those on the tenant console. These include not only the applications and services deployed through Spectro Cloud, but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NorePort are displayed on the  tenant console.
+Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing link to those on the management console. These include not only the applications and services deployed through Spectro Cloud, but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
 # Troubleshooting
 
@@ -122,7 +122,7 @@ Typically when a cluster lifecycle action such as provisioning, upgrade or delet
 
 ## Cluster conditions
 
-Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image etc. The active condition gives an indication for what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues. 
+Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image etc. The active condition gives an indication for what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 

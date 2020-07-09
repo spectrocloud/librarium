@@ -5,7 +5,7 @@ metaDescription: 'Prometheus Operator Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/loggging_and_monitoring/prometheus-operator/logo.png?token=APOFE6UPYZBHHWGUANCYPGS7AR7G4'
+logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
