@@ -7,9 +7,17 @@ hideToC: true
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+
 # Examples
 
 Cluster profiles can be built to launch clusters for specific use cases. Clusters launched for development purposes are typically minimal and do no require advanced integrations. Production clusters on the other hand tend be mode comprehensive with many more integrations. Following are examples of cluster profiles built for development and production purposes:
+
+<Tabs>
+
+<Tabs.TabPane tab="Development" key="dev_cp">
 
 ## Development Cluster Profile
 
@@ -17,6 +25,10 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 
 * All layers are built with smart tags to enable automatic upgrades of clusters to newest releases.
 * Kubernetes dashboard is the only integration enabled.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Production" key="prod_cp">
 
 ## Production Cluster Profile
 
@@ -29,3 +41,7 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 * Service observability enabled -  Istio.
 * Role based access control enabled - Permissions Manager.
 * Load balancer to expose services externally - MetalLB.
+
+</Tabs.TabPane>
+
+</Tabs>
