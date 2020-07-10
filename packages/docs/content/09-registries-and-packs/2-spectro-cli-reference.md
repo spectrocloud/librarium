@@ -7,7 +7,9 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Overview
 
@@ -47,6 +49,10 @@ List of Arguments available to all the Spectro CLI commands -
 
 # Commands
 
+<Tabs>
+
+<Tabs.TabPane tab="LOGIN" key="cli_login">
+
 ## LOGIN
 
 Authenticate user with Spectro Cloud pack registry by using the login command:
@@ -69,6 +75,10 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 **Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/&lt;SPECTRO_REGISTRY&gt;/ca.crt
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="PUSH" key="cli_push">
+
 ## PUSH
 
 Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
@@ -87,6 +97,10 @@ PACK_SOURCE_DIR: Directory location where pack content is located.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="LIST" key="cli_list">
+
 ## LIST
 
 List all the packs from the Spectro Cloud pack registry:
@@ -102,6 +116,10 @@ Example : $./spectro pack ls spectro.io:5000
 -n, --name string - packs can be filtered by pack name
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="PULL" key="cli_pull">
 
 ## PULL
 
@@ -123,9 +141,11 @@ PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
 
-## TAG
+</Tabs.TabPane>
 
-### ADD
+<Tabs.TabPane tab="ADD" key="cli_tag_add">
+
+## ADD (Add a Tag)
 
 Create a new tag to a pack which is already pushed to the Spectro Cloud pack registry:
 
@@ -153,7 +173,11 @@ TARGET_LABEL - Target tag label.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
 
-### DELETE
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="DELETE" key="cli_tag_delete">
+
+## DELETE (Delete a tag)
 
 Delete a tag to a pack which is already pushed to the Spectro Cloud pack registry.
 
@@ -172,3 +196,7 @@ PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 ### Flags
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
+
+</Tabs.TabPane>
+
+</Tabs>

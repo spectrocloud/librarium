@@ -7,9 +7,9 @@ hideToC: false
 fullWidth: false
 ---
 
-import InfoBox from '@librarium/shared/src/components/InfoBox';
-
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Add custom packs
 
@@ -108,7 +108,13 @@ Additionally, for both the scenarios additional components or packages may need 
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Spectro Cloud installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, the flag `skipK8sInstall` should be set to true.
 
-# Example 1 - AWS Custom-OS Pack
+# Examples
+
+<Tabs>
+
+<Tabs.TabPane tab="AWS Custom OS Pack" key="aws_custom_os_pack">
+
+## AWS Custom-OS Pack
 
 ```
 {
@@ -135,7 +141,42 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-# Example 2 - VMWare Custom OS Pack - Local Image
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Azure Custom OS Pack" key="azure_custom_os_pack">
+
+## Azure Custom OS Pack
+
+```
+{
+    "annotations": {
+        "imageOffer": "CentOS", 
+        "imagePublisher": "OpenLogic", 
+        "imageSKU": "7.7", 
+        "osName": "centos", 
+        "os_spectro_version": "0", 
+        "sshUsername": "centos",
+        "skipK8sInstall": "true"
+    }, 
+    "ansibleRoles": [
+        "harden_os"
+    ], 
+    "cloudTypes": ["azure"], 
+    "displayName": "CentOS", 
+    "eol": "2024-06-30", 
+    "group": "", 
+    "kubeManifests": [], 
+    "layer": "os", 
+    "name": "golden-centos-azure", 
+    "version": "7.7.1908"
+}
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
+
+## VMWare Custom OS Pack - Local Image
 
 ```
 {
@@ -162,7 +203,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-# Example 3 - VMWare Custom OS Pack - Remote Image
+## VMWare Custom OS Pack - Remote Image
 
 ```
 {
@@ -188,32 +229,11 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-# Example 4 - Azure Custom OS Pack
+</Tabs.TabPane>
 
-```
-{
-    "annotations": {
-        "imageOffer": "CentOS", 
-        "imagePublisher": "OpenLogic", 
-        "imageSKU": "7.7", 
-        "osName": "centos", 
-        "os_spectro_version": "0", 
-        "sshUsername": "centos",
-        "skipK8sInstall": "true"
-    }, 
-    "ansibleRoles": [
-        "harden_os"
-    ], 
-    "cloudTypes": ["azure"], 
-    "displayName": "CentOS", 
-    "eol": "2024-06-30", 
-    "group": "", 
-    "kubeManifests": [], 
-    "layer": "os", 
-    "name": "golden-centos-azure", 
-    "version": "7.7.1908"
-}
-```
+</Tabs>
+
+## Ansible Roles
 
 In all the examples above, an additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
 
