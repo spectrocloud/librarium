@@ -7,7 +7,9 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # SAML 2.0 Based SSO
 
@@ -27,6 +29,10 @@ Using these parameters, Spectro Cloud should be added as the Service Provider (S
 The next step is to copy the `Identity Provider Metadata` from the IdP into the Spectro Cloud SAML panel. Click on *"Confirm"* to complete the setup.
 
 # Detailed instructions
+
+<Tabs>
+
+<Tabs.TabPane tab="Okta" key="okta">
 
 ## Okta
 
@@ -59,10 +65,6 @@ In the "NameID format", select `EmailAddress` from the dropdown. In the "ATTRIBU
 | Email       | unspecified            | user.email                                    |
 | SpectroTeam | unspecified            | *Enter default team. See explanation below* |
 
-Any non-admin user that is added to a tenant must be added into at least one team when being created by the admin. This team can be changed later on if needed. See the teams section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as Okta. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on Okta which is not mentioned in the Spectro Cloud will be ignored.
-
-A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team which is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the Okta dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
-
 Finish the teams configuration and click `Next` to access the last tab on the Okta dashboard, which is the `Feedback` tab. Here, select the "***I'm a software vendor***" option and click `Finish` to complete the Okta configuration.
 
 This will return to the Okta `Applications` page. The Spectro Cloud should now be visible. Under the `Sign On` tab, click on the `View Setup Instructions` button. This opens a new tab showing the IdP SAML details. Copy the `IDP Metadata` and paste it into the corresponding box in the Spectro Cloud SAML Console. Click `Confirm` to finish the process. A success banner should be visible on the top left which ensures the completion of the configuration.
@@ -73,9 +75,13 @@ Now a user can log in with the `LOGIN URL`. This will automatically redirect to 
 
 This completes the sign-in process for the user.
 
-### References
+## References
 
 https://developer.okta.com/docs/guides/build-sso-integration/saml2/before-you-begin/
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Azure AD" key="azure_ad">
 
 ## Azure Active Directory
 
@@ -98,29 +104,45 @@ Edit the `User Attributes and Claims` box on the Azure portal, to configure the 
 
 Once the configuration is saved, download the `Federation Metadata XML` in the `SAML Signing Certificate` module. The contents of this XML are to be provided into the `IDENTITY PROVIDER METADATA` on the Spectro Cloud SAML panel. This completes the SAML based SSO for Azure AD into Spectro Cloud.
 
-### References
+## References
 
 https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="KeyCloak" key="keycloak">
+
 ## KeyCloak
 
-### References
+## References
 
 https://www.keycloak.org/docs/latest/server_admin/#saml-clients
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="OneLogin" key="onelogin">
+
 ## OneLogin
 
-### References
+## References
 
 https://developers.onelogin.com/saml/app-catalog
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="MSFT AD FS" key="msft_adfs">
+
 ## Microsoft AD FS
 
-### References
+## References
 
 https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp
 
-## About the `SpectroTeam` Parameter
+</Tabs.TabPane>
+
+</Tabs>
+
+# About the `SpectroTeam` Parameter
 
 Any non-admin user that is added to a tenant must be added into at least one team when being created by the admin. This team can be changed later on if needed. See the teams section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as Okta. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
 
