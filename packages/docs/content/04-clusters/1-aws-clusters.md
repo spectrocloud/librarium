@@ -178,9 +178,9 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
             "Effect": "Allow",
             "Action": [
                 "secretsmanager:CreateSecret",
-                "secretsmanager:TagResource",
                 "secretsmanager:DeleteSecret",
                 "secretsmanager:GetSecretValue"
+                "secretsmanager:TagResource",
             ],
             "Resource": [
                 "arn:aws:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
