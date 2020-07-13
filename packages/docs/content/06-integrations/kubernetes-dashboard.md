@@ -4,6 +4,7 @@ metaTitle: 'Kubernetes Dashboard'
 metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
+hideToC: false
 category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
@@ -69,6 +70,17 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 * **LoadBalancer service type**
 
 Use the LB service IP & port to connect to the dashboard
+
+# Ingress
+
+Follow below steps to configure Ingress on Kubernetes Dashboard
+
+1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #17)
+2. Ingress (line #23)
+   * Enable Ingress ; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts etc.
+
+With these config changes, you can access Kubernetes Dashboard service on the Ingress Controller LoadBalancer hostname / IP
 
 ## Troubleshooting
 
