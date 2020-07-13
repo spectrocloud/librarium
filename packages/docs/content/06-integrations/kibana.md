@@ -4,6 +4,7 @@ metaTitle: 'Elasticsearch-Fluentd-Kibana'
 metaDescription: 'Kibana Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
+hideToC: false
 category: ['logging']
 logoUrl: 'https://registry.spectrocloud.com/v1/elastic-fluentd-kibana/blobs/sha256:3b6d6486eb216d46164fc8b7cb784b0be6b851a85726f18bdf4450d5ed1386eb?type=image/png'
 ---
@@ -24,6 +25,17 @@ The default integration deployed will have the following components:
 * ElasticSearch Curator.
 * Fluentd (one per node).
 * Kibana.
+
+# Ingress
+
+Follow below steps to configure Ingress on Kibana
+
+1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #643)
+2. Ingress (line #670)
+   * Enable Ingress, change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts etc.
+
+With these config changes, you can access Kibana service on the Ingress Controller LoadBalancer hostname / IP
 
 ## References
 
