@@ -187,9 +187,6 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
         {
             "Effect": "Allow",
             "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:DescribeTags",
                 "cloudformation:CreateStack",
                 "cloudformation:DescribeStacks",
                 "cloudformation:UpdateStack",
@@ -246,13 +243,6 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RunInstances",
                 "ec2:TerminateInstances",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:BatchGetImage",
-                "ecr:DescribeRepositories",
-                "ecr:GetAuthorizationToken",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:ListImages",
                 "elasticloadbalancing:AddTags",
                 "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
