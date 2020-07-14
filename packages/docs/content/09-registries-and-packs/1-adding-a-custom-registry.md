@@ -131,7 +131,7 @@ openssl req \
     $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
-# Configure custom registry on Tenant Console
+# Configure a custom pack registry on the management Console
 
 Once the deployment of the pack registry server is complete, configure it with the management console as follows:-
 
