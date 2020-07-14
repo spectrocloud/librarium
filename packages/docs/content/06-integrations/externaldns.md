@@ -6,7 +6,7 @@ hiddenFromNav: true
 isIntegration: true
 hideToC: false
 category: ['load balancers']
-logoUrl: 'https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image/png'
+logoUrl: 'https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image/png'
 ---
 
 # ExternalDNS
@@ -15,7 +15,7 @@ The integration helps configure public DNS servers with information about Kubern
 
 # Prerequisites
 
-Providers have to be setup for this pack to get deployed and work seamlessly. For a list of supported providers, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
+Providers have to be setup for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be setup, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
 
 ## Components
 
