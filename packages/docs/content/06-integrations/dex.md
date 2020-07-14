@@ -24,7 +24,7 @@ Dex integration in Spectro Cloud will deploy the following components:
 
 The integration will create self-signed certificates, will cross-configure Dex, Dex Client components & will set appropriate flags on the Kubernetes API Server.
 
-#Ingress
+# Ingress
 
 Follow below steps to configure Ingress on Dex
 

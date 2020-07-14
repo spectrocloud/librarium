@@ -55,8 +55,8 @@ More information on consuming Vault secrets can be found in [Vault docs](https:/
 Follow below steps to configure Ingress on Vault Server
 
 1. Make sure serviceType is not set for Vault Server. That way, serviceType will default to ClusterIP
-   * Version 0.6.0 - line # 289
-   * Version 0.3.1 - line # 96
+   * Version 0.6.0 - line #289
+   * Version 0.3.1 - line #96
 2. Ingress
    * Enable Ingress ; Change enabled from false to "true"
    * Set Ingress rules like annotations, path, hosts etc.
