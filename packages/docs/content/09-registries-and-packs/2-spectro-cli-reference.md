@@ -13,7 +13,7 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Overview
 
-The Spectro CLI is a command-line interface for the Spectro Cloud Pack Registry server to upload or download the packs using commands.
+The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Registry server to upload or download the packs using commands.
 
 # Pre-requisites
 
@@ -58,7 +58,7 @@ List of Arguments available to all the Spectro CLI commands -
 Authenticate user with Spectro Cloud pack registry by using the login command:
 
 ```
-Usage   : $./spectro registry login [SERVER] 
+Usage   : $./spectro registry login [SERVER]
 Example : $./spectro registry login spectro.io:5000
           $./spectro registry login spectro.io:5000 --insecure --default
 ```
@@ -73,7 +73,7 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 -d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
 
-**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/&lt;SPECTRO_REGISTRY&gt;/ca.crt
+**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]]/ca.crt
 
 </Tabs.TabPane>
 
