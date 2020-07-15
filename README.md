@@ -129,3 +129,30 @@ The same rules apply though. You can reference it from a different section using
 ```md
 ![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
+#### Tabs component
+
+To use the tabs component you have to import it from the *shared* folder
+```js
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
+```
+
+After that, you can use it like this
+
+```js
+<Tabs>
+  <Tabs.TabPane tab="AWS" key="aws">
+
+# AWS cluster
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+  </Tabs.TabPane>
+  <Tabs.TabPane tab="VMware" key="vmware">
+
+# VMware cluster
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+  </Tabs.TabPane>
+</Tabs>
+```

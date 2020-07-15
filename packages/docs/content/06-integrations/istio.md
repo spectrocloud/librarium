@@ -5,7 +5,7 @@ metaDescription: 'Choosing Istio as a Service Mesh app within the Spectro Cloud 
 hiddenFromNav: true
 isIntegration: true
 category: ['service mesh']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/c6e1c139a36f72ec0dbe37e1e07f14d5ebf6274f/experimental/addon/service_mesh/istio-1.6.2/logo.png?token=APOFE6WV24PGQZLD4L2S6R267G2M2'
+logoUrl: 'https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d4859261ab892e987f835bd11161bd139dd8e4147b652c6b93924cb2?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -17,6 +17,7 @@ This Integration aims to automate and simplify rollout of the various Istio comp
 ## Contents
 
 The integration deploys the Istio Operator with the 'demo' profile which deploys the following components:
+
 * Istiod
 * Istio Ingress Gateway
 * Istio Egress Gateway

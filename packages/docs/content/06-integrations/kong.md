@@ -5,7 +5,7 @@ metaDescription: 'Kong Ingress pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['ingress']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/ccc4145d9e41965ae825a7caa4706cf046bf079c/stable/addon/ingress/kong_1.4/logo.png?token=APOFE6VTOYZSR5ZRHQXXWPC67GEXS'
+logoUrl: 'https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85ccad4c515e51542f74aa9acb851d5b03ecb0e7b3435eb51ecf56?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -19,4 +19,5 @@ Kong integration is an [Ingress controller](https://kubernetes.io/docs/concepts/
 Integration will add Kong Ingress Controller which will expose a service of type LoadBalancer
 
 ## References
+
 https://github.com/Kong/kubernetes-ingress-controller

@@ -7,9 +7,9 @@ hideToC: false
 fullWidth: false
 ---
 
-import InfoBox from '@librarium/shared/src/components/InfoBox';
-
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Add custom packs
 
@@ -19,32 +19,33 @@ Custom packs are built by users and deployed to custom registries using Spectro 
 
 1. Create a directory with a suitable name for all the pack contents. Example: `prometheus_1_0`
 2. Create a metadata file named `pack.json` to describe the pack. Example:
-    ```
-    {
-        "annotations": {
-            "name": "value",
-        },
-        "ansibleRoles": [],
-        "displayName": "<PACK_DISPLAY_NAME>",
-        "eol": "2028-04-30",
-        "group": "<PACK_GROUP>",
-        "kubeManifests": [
-            "manifests/deployment.yaml"
-        ],
-        "layer": "<LAYER>",
-        "name": "<PACK_NAME>",
-        "version": "<PACK_VERSION>"
-    }
-    ```
+
+```
+{
+    "annotations": {
+        "name": "value",
+    },
+    "ansibleRoles": [],
+    "displayName": "<PACK_DISPLAY_NAME>",
+    "eol": "2028-04-30",
+    "group": "<PACK_GROUP>",
+    "kubeManifests": [
+        "manifests/deployment.yaml"
+    ],
+    "layer": "<LAYER>",
+    "name": "<PACK_NAME>",
+    "version": "<PACK_VERSION>"
+}
+```
 
 An explanation for the parameters of the JSON is given in the table below:
 
 | Property Name | Data type | Required | Description |
 | --- | --- | --- | --- |
 | name | String | True | Name of the pack |
-| displayName | String | True | Name of the pack as it is to be displayed on the Spectro tenant console |
+| displayName | String | True | Name of the pack as it is to be displayed on the Spectro Cloud management console |
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
-| addon-type | String | False | Addon-type must be set for packs that have layer set to ‘add-on’. Value must be one of : logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the tenant console making it easy for profile authors to find packs. |
+| addon-type | String | False | Addon-type must be set for packs that have layer set to ‘add-on’. Value must be one of : logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version | String | True | A Sematic version for the pack. It is recommended that pack version be the same as the underlying integration it is being created for. For example, the version for pack that will install prometheus 2.3.4, should set to 2.3.4. |
 | cloudTypes | Array | True | Supported cloud types are aws, azure, vmware. One or more types can be provided for a pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
@@ -84,7 +85,7 @@ ansibleRoles:
 $spectro registry login [REGISTRY_SERVER]
 ```
 
-6. Push the newly defined pack to the registry using the following command:
+6. Push the newly defined pack to the pack registry using the following command:
 
 ```
 $spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
@@ -107,7 +108,13 @@ Additionally, for both the scenarios additional components or packages may need 
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Spectro Cloud installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, the flag `skipK8sInstall` should be set to true.
 
-# Example 1 - AWS Custom-OS Pack
+# Examples
+
+<Tabs>
+
+<Tabs.TabPane tab="AWS Custom OS Pack" key="aws_custom_os_pack">
+
+## AWS Custom-OS Pack
 
 ```
 {
@@ -134,60 +141,11 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-# Example 2 - VMWare Custom OS Pack - Local Image
+</Tabs.TabPane>
 
-```
-{
-    "annotations": {
-        "folder": "spectro-templates", 
-        "imageId": "/Datacenter/vm/spectro-templates/base-images/centos-7-vanilla-with-vm-tools", 
-        "osName": "centos", 
-        "os_spectro_version": "0", 
-        "sshPassword": "password", 
-        "sshUsername": "root",
-        "skipK8sInstall": "false"
-    }, 
-    "ansibleRoles": [
-        "harden_os"
-    ], 
-    "cloudTypes": ["vsphere"], 
-    "displayName": "CentOS", 
-    "eol": "2024-06-30", 
-    "group": "", 
-    "kubeManifests": [], 
-    "layer": "os", 
-    "name": "golden-centos-vsphere", 
-    "version": "7.7.1908"
-}
-```
+<Tabs.TabPane tab="Azure Custom OS Pack" key="azure_custom_os_pack">
 
-# Example 3 - VMWare Custom OS Pack - Remote Image
-
-```
-{
-    "annotations": {
-        "folder": "spectro-templates", 
-        "imageId": "https://cloud-images.ubuntu.com/releases/18.04/release/ubuntu-18.04-server-cloudimg-amd64.ova", 
-        "osName": "ubuntu", 
-        "os_spectro_version": "0", 
-        "sshUsername": "ubuntu",
-        "skipK8sInstall": "false"
-    }, 
-    "ansibleRoles": [
-        "harden_os"
-    ], 
-    "cloudTypes": ["vsphere"], 
-    "displayName": "Ubuntu", 
-    "eol": "2028-04-30", 
-    "group": "LTS", 
-    "kubeManifests": [], 
-    "layer": "os", 
-    "name": "golden-ubuntu-vsphere", 
-    "version": "18.04.4"
-}
-```
-
-# Example 4 - Azure Custom OS Pack
+## Azure Custom OS Pack
 
 ```
 {
@@ -214,7 +172,71 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
+
+## VMWare Custom OS Pack - Local Image
+
+```
+{
+    "annotations": {
+        "folder": "spectro-templates", 
+        "imageId": "/Datacenter/vm/spectro-templates/base-images/centos-7-vanilla-with-vm-tools", 
+        "osName": "centos", 
+        "os_spectro_version": "0", 
+        "sshPassword": "password", 
+        "sshUsername": "root",
+        "skipK8sInstall": "false"
+    }, 
+    "ansibleRoles": [
+        "harden_os"
+    ], 
+    "cloudTypes": ["vsphere"], 
+    "displayName": "CentOS", 
+    "eol": "2024-06-30", 
+    "group": "", 
+    "kubeManifests": [], 
+    "layer": "os", 
+    "name": "golden-centos-vsphere", 
+    "version": "7.7.1908"
+}
+```
+
+## VMWare Custom OS Pack - Remote Image
+
+```
+{
+    "annotations": {
+        "folder": "spectro-templates", 
+        "imageId": "https://cloud-images.ubuntu.com/releases/18.04/release/ubuntu-18.04-server-cloudimg-amd64.ova", 
+        "osName": "ubuntu", 
+        "os_spectro_version": "0", 
+        "sshUsername": "ubuntu",
+        "skipK8sInstall": "false"
+    }, 
+    "ansibleRoles": [
+        "harden_os"
+    ], 
+    "cloudTypes": ["vsphere"], 
+    "displayName": "Ubuntu", 
+    "eol": "2028-04-30", 
+    "group": "LTS", 
+    "kubeManifests": [], 
+    "layer": "os", 
+    "name": "golden-ubuntu-vsphere", 
+    "version": "18.04.4"
+}
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+## Ansible Roles
+
 In all the examples above, an additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
+
 ```
 ./pack.json
 ./logo.png

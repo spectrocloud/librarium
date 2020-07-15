@@ -7,16 +7,18 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/styles/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Overview
 
-The Spectro CLI is a command-line interface for the Spectro Registry server to upload or download the packs using commands.
+The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Registry server to upload or download the packs using commands.
 
 # Pre-requisites
 
 1. The Spectro CLI tool must be installed.
-2. A custom registry server must be up and running.
+2. A custom pack registry server must be up and running.
 
 # Installation
 
@@ -37,7 +39,7 @@ $chmod +x spectro
 
 # Global Arguments
 
-List of Arguments available to all the Spectro CLI commands
+List of Arguments available to all the Spectro CLI commands -
 
 # Global Flags
 
@@ -47,30 +49,39 @@ List of Arguments available to all the Spectro CLI commands
 
 # Commands
 
+<Tabs>
+
+<Tabs.TabPane tab="LOGIN" key="cli_login">
+
 ## LOGIN
 
-Authenticate user with Spectro registry by using the login command:
+Authenticate user with Spectro Cloud pack registry by using the login command:
+
 ```
-Usage   : $./spectro registry login [SERVER] 
+Usage   : $./spectro registry login [SERVER]
 Example : $./spectro registry login spectro.io:5000
           $./spectro registry login spectro.io:5000 --insecure --default
 ```
 
 ### Args
 
-SERVER - Spectro registry server in the format [host:port]
+SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 ### Flags
 
--i, --insecure - Insecure is used when the registry is private and supports only HTTP or HTTPS with unknown CA certificates.
+-i, --insecure - Insecure is used when the pack registry is installed in HTTP or HTTPS with self-signed certificates.
 
--d, --default - Set the server as default Spectro registry for all the CLI commands
+-d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
 
-**Note:** In case of HTTPS, if you have access to the registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/&lt;SPECTRO_REGISTRY&gt;/ca.crt
+**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the insecure flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]/ca.crt
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="PUSH" key="cli_push">
 
 ## PUSH
 
-Upload the pack content from the pack source dir to the Spectro registry.
+Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
 
 ```
 Usage   : $./spectro pack push [PACK_SOURCE_DIR] [flags]
@@ -80,15 +91,20 @@ Example : $./spectro pack push /tmp/packs/nginx-1.16.1
 
 ### Args
 
-PACK_SOURCE_DIR: Directory location where pack content is located
+PACK_SOURCE_DIR: Directory location where pack content is located.
 
 ### Flags
 
--r, --registry-server string - To override the default Spectro registry
+-r, --registry-server string - To override the default Spectro Cloud pack registry
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="LIST" key="cli_list">
 
 ## LIST
 
-List all the packs from the Spectro registry:
+List all the packs from the Spectro Cloud pack registry:
+
 ```
 Usage   : $./spectro pack ls [flags]
 Example : $./spectro pack ls spectro.io:5000
@@ -99,11 +115,15 @@ Example : $./spectro pack ls spectro.io:5000
 
 -n, --name string - packs can be filtered by pack name
 
--r, --registry-server string - To override the default Spectro registry
+-r, --registry-server string - To override the default Spectro Cloud pack registry
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="PULL" key="cli_pull">
 
 ## PULL
 
-Download the packs from the Spectro registry to a pack target location:
+Download the packs from the Spectro Cloud pack registry to a pack target location:
 
 ```
 Usage   : $./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
@@ -113,19 +133,22 @@ Example : $./spectro pack pull nginx:1.16.1 /tmp/packs
 
 ### Args
 
-PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest
+PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest.
 
-PACK_TARGET_DIR - Directory location where pack content will be pulled
+PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
 ### Flags
 
--r, --registry-server string - To override the default Spectro registry
+-r, --registry-server string - To override the default Spectro Cloud pack registry.
 
-## TAG
+</Tabs.TabPane>
 
-### ADD
+<Tabs.TabPane tab="ADD" key="cli_tag_add">
 
-Create a new tag to a pack which is already pushed to the Spectro registry:
+## ADD (Add a Tag)
+
+Create a new tag to a pack which is already pushed to the Spectro Cloud pack registry:
+
 ```
 Usage   : $./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 Example : $./spectro pack tag add ubuntu:lts__14.4.3 stable
@@ -140,30 +163,40 @@ Ex. lts___14.4.3 : lts → group, 14.4.3 → label
 
 ### Args
 
-PACK_NAME: TAG - Name of the pack for a particular tag to which new tag will be created
+PACK_NAME: TAG - Name of the pack for a particular tag to which new tag will be created.
 
-TARGET_LABEL - Target tag label
+TARGET_LABEL - Target tag label.
 
 ### Flags
 
--g, --group string - Target tag group
+-g, --group string - Target tag group.
 
--r, --registry-server string - To override the default Spectro registry
+-r, --registry-server string - To override the default Spectro Cloud pack registry.
 
-### DELETE
+</Tabs.TabPane>
 
-Delete a tag to a pack which is already pushed to the Spectro registry
+<Tabs.TabPane tab="DELETE" key="cli_tag_delete">
+
+## DELETE (Delete a tag)
+
+Delete a tag to a pack which is already pushed to the Spectro Cloud pack registry.
+
 ```
 Usage   : $./spectro pack tag delete PACK:TAG [flags]
 Example : $./spectro pack tag delete ubuntu:14.4.3 
           $./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
 ```
+
 **Note:** Parent tags like major version (Ex: 14.x) and minor version (Ex: 14.4.x) can not be deleted as these are auto-generated by the system. So, when no tags are associated with the pack then these are auto-deleted by the system. When a tag (Ex: 14.4.3) is deleted then the major and minor version tags are auto-linked to the remaining tags of a pack.
 
 ### Args
 
-PACK_NAME: TAG - Pack name and Tag which needs to be deleted
+PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 
 ### Flags
 
--r, --registry-server string - To override the default Spectro registry
+-r, --registry-server string - To override the default Spectro Cloud pack registry.
+
+</Tabs.TabPane>
+
+</Tabs>

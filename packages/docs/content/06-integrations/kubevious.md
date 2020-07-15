@@ -4,8 +4,9 @@ metaTitle: 'Kubevious'
 metaDescription: 'Kubevious Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
+hideToC: false
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/660dc856c682f3b5f3655eef67b388118168f917/experimental/addon/logging_and_monitoring/kubevious-0.5.9/logo.png?token=APOFE6WDIVLIZT53FMWREJK67GGJG'
+logoUrl: 'https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -22,6 +23,17 @@ This integration deploys the following components:
 * MySql DB.
 * UI.
 * Parser.
+
+# Ingress
+
+Follow below steps to configure Ingress on Kubevious
+
+1. Change kubevious.ui.svcType from "LoadBalancer" to "ClusterIP" (line #60)
+2. Ingress (line #118)
+   * Enable Ingress ; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts etc.
+
+With these config changes, you can access Kubevious service on the Ingress Controller LoadBalancer hostname / IP
 
 ## References
 
