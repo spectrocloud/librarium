@@ -14,9 +14,6 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
   } = data;
   const config = useConfig();
 
-
-
-
   const menu = useMemo(() => {
     return DocsLayout.calculateMenuTree(allMdx.edges.filter(edge => !!edge.node.fields.isDocsPage), config);
   }, [allMdx.edges]);
@@ -42,7 +39,7 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
 
 export default function AppWrap(props) {
   return (
-    <App>
+    <App pageContext={props.pageContext}>
       <MDXLayout {...props} />
     </App>
   );
