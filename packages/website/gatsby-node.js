@@ -8,7 +8,7 @@ const GRAPHQL = {
   '/': () => {
     return `
     {
-      latestUpdates: allMdx(filter: {fields: {isDocsPage: {eq: true}}}) {
+      latestUpdates: allMdx {
           edges {
             node {
               fields {
