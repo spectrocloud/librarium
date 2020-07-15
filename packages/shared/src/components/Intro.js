@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import background from "../assets/hero-background.png"
 import Button from "./ui/Button";
