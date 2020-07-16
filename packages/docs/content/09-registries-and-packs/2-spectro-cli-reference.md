@@ -69,11 +69,11 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 ### Flags
 
--i, --insecure - Insecure is used when the pack registry is private and supports only HTTP or HTTPS with unknown CA certificates.
+-i, --insecure - Insecure is used when the pack registry is installed in HTTP or HTTPS with self-signed certificates.
 
 -d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
 
-**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]]/ca.crt
+**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the insecure flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]/ca.crt
 
 </Tabs.TabPane>
 

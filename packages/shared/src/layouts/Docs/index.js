@@ -123,6 +123,7 @@ export default function MDXLayout({
   hideToC,
   fullWidth,
   hideToCSidebar,
+  hideMenuSidebar
 }) {
   const config = useConfig();
 

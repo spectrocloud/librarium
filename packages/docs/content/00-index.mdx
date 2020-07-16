@@ -9,4 +9,91 @@ hiddenFromNav: true
 isIntegration: false
 category: []
 hideToCSidebar: true
+hideMenuSidebar: true
 ---
+import MainHeader from "@librarium/shared/src/components/common/MainHeader";
+import QuickSetup from "@librarium/shared/src/components/common/QuickSetup";
+import CloudsSection from "@librarium/shared/src/components/common/CloudsSection";
+import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdatesSection";
+
+<MainHeader
+  introductionHref="/introduction/what-is"
+  demoHref="https://www.spectrocloud.com/contact"
+ >
+  <h1>Documentation</h1>
+  <h3>Introductive Tutorial</h3>
+  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed faucibus nisi, a porta nisi. In hac habitasse platea dictumst.</span>
+</MainHeader>
+<QuickSetup
+  title="Quick Setup"
+  options={[
+    {
+      title: "Your first cluster",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "clusters",
+      href: "/clusters",
+    },
+    {
+      title: "Define cluster profile",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "bundles",
+      href: "/cluster-profiles"
+    },
+    {
+      title: "Integrations",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "folder",
+      href: "/integrations"
+    },
+    {
+      title: "Project setup",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "project",
+      href: "/projects"
+    },
+    {
+      title: "Pack configuration",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "cog",
+      href: "/registries-and-packs"
+    },
+    {
+      title: "Cloud configuration",
+      description: "Lorem ipsum dolor sit amet.",
+      icon: "logout",
+      href: "/"
+    }
+  ]}
+ />
+<CloudsSection
+  title="Public clouds, private clouds, on bare metal or edge"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed faucibus nisi, a porta nisi. In hac habitasse platea dictumst."
+  options={[
+    {
+      title: "AWS",
+      cloud: "aws",
+      href: "",
+    },
+    {
+      title: "Azure",
+      cloud: "azure",
+      href: "",
+    },
+    {
+      title: "Google Cloud",
+      cloud: "google_cloud",
+      href: "",
+    },
+    {
+      title: "VMware",
+      cloud: "vmware",
+      href: "",
+    },
+    {
+      title: "Bare Metal",
+      cloud: "bare_metal",
+      href: "",
+    }
+  ]}
+/>
+<DocUpdatesSection title={"What’s new in the docs"}/>
