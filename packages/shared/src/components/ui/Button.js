@@ -8,8 +8,9 @@ const StyledButton = styled.button`
   line-height: 20px;
   padding: 8px 16px;
   border: none;
-  color: #78909C;
+  color: #4432F5;
   font-size: 16px;
+  cursor: pointer;
 
   ${props => props.primary && css`
     background-color: #4432F5;

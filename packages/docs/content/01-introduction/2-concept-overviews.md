@@ -45,6 +45,8 @@ The diagram below shows an example of a cluster profile:
 
 ![cluster_profile_new](/cluster_profile_new.png)
 
+Read more about Cluster Profiles [here](/cluster-profiles).
+
 # Workload Cluster
 
 A Kubernetes cluster is collections of master and worker nodes that cooperate to execute container application workloads.
