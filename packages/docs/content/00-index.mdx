@@ -21,79 +21,69 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
   demoHref="https://www.spectrocloud.com/contact"
  >
   <h1>Documentation</h1>
-  <h3>Introductive Tutorial</h3>
-  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed faucibus nisi, a porta nisi. In hac habitasse platea dictumst.</span>
+  <h3>How-to's, helps, guides and explanations.</h3>
+  <span>A deep-dive into the Spectro Cloud Tenant Console: <p>Concepts, details, step-by-step DIYs and everything in between.</p></span>
 </MainHeader>
 <QuickSetup
   title="Quick Setup"
   options={[
     {
-      title: "Your first cluster",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "About Cluster Profiles",
+      description: "Pre-configured settings for cluster deployments.",
       icon: "clusters",
-      href: "/clusters",
+      href: "/introduction/concept-overviews#clusterprofile",
     },
     {
-      title: "Define cluster profile",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "Your First Cluster",
+      description: "A step-by-step guide to create your first cluster.",
+      icon: "folder",
+      href: "/getting-started"
+    },
+    {
+      title: "Integrations (Add-ons)",
+      description: "Installation instructions for the available add-ons.",
       icon: "bundles",
       href: "/cluster-profiles"
     },
     {
-      title: "Integrations",
-      description: "Lorem ipsum dolor sit amet.",
-      icon: "folder",
-      href: "/integrations"
-    },
-    {
-      title: "Project setup",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "Projects and Teams",
+      description: "Grouping a set of resources for specific use-cases.",
       icon: "project",
       href: "/projects"
     },
     {
-      title: "Pack configuration",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "Packs and Registries",
+      description: "Pack management options for Kubernetes.",
       icon: "cog",
       href: "/registries-and-packs"
     },
     {
-      title: "Cloud configuration",
-      description: "Lorem ipsum dolor sit amet.",
+      title: "User Management",
+      description: "Setting up RBAC and enabling SAML-SSO.",
       icon: "logout",
       href: "/"
     }
   ]}
  />
 <CloudsSection
-  title="Public clouds, private clouds, on bare metal or edge"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed faucibus nisi, a porta nisi. In hac habitasse platea dictumst."
+  title="Detailed Setup"
+  description="An insight into the procedures for creating clusters on public clouds as well as private clouds. Google Cloud Platform and Bare-metal coming soon!"
   options={[
     {
       title: "AWS",
       cloud: "aws",
-      href: "",
+      href: "/clusters#creatingclusters",
     },
     {
       title: "Azure",
       cloud: "azure",
-      href: "",
-    },
-    {
-      title: "Google Cloud",
-      cloud: "google_cloud",
-      href: "",
+      href: "/clusters#creatingclusters",
     },
     {
       title: "VMware",
       cloud: "vmware",
-      href: "",
-    },
-    {
-      title: "Bare Metal",
-      cloud: "bare_metal",
-      href: "",
+      href: "/clusters#creatingclusters",
     }
   ]}
 />
-<DocUpdatesSection title={"What’s new in the docs"}/>
+<DocUpdatesSection title={"What’s new in Docs"}/>
