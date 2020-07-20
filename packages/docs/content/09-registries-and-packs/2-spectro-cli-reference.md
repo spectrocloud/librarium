@@ -33,7 +33,7 @@ Linux : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectr
 
 2. Provide the executable permission to the CLI spectro.
 
-```
+```bash
 $chmod +x spectro
 ```
 
@@ -57,7 +57,7 @@ List of Arguments available to all the Spectro CLI commands -
 
 Authenticate user with Spectro Cloud pack registry by using the login command:
 
-```
+```bash
 Usage   : $./spectro registry login [SERVER]
 Example : $./spectro registry login spectro.io:5000
           $./spectro registry login spectro.io:5000 --insecure --default
@@ -83,7 +83,7 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
 
-```
+```bash
 Usage   : $./spectro pack push [PACK_SOURCE_DIR] [flags]
 Example : $./spectro pack push /tmp/packs/nginx-1.16.1
           $./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000
@@ -105,7 +105,7 @@ PACK_SOURCE_DIR: Directory location where pack content is located.
 
 List all the packs from the Spectro Cloud pack registry:
 
-```
+```bash
 Usage   : $./spectro pack ls [flags]
 Example : $./spectro pack ls spectro.io:5000
           $./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
@@ -125,7 +125,7 @@ Example : $./spectro pack ls spectro.io:5000
 
 Download the packs from the Spectro Cloud pack registry to a pack target location:
 
-```
+```bash
 Usage   : $./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
 Example : $./spectro pack pull nginx:1.16.1 /tmp/packs
           $./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000
@@ -149,7 +149,7 @@ PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
 Create a new tag to a pack which is already pushed to the Spectro Cloud pack registry:
 
-```
+```bash
 Usage   : $./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 Example : $./spectro pack tag add ubuntu:lts__14.4.3 stable
           $./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
@@ -181,9 +181,9 @@ TARGET_LABEL - Target tag label.
 
 Delete a tag to a pack which is already pushed to the Spectro Cloud pack registry.
 
-```
+```bash
 Usage   : $./spectro pack tag delete PACK:TAG [flags]
-Example : $./spectro pack tag delete ubuntu:14.4.3 
+Example : $./spectro pack tag delete ubuntu:14.4.3
           $./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
 ```
 

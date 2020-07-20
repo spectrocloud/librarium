@@ -29,11 +29,11 @@ Integration deploys the following components:
 
 ## ExternalDNS for Services on AWS Route53 Example
 
-### Setup prerequisites for AWS Route53 
+### Setup prerequisites for AWS Route53
 
 * Create the following IAM policy in AWS account. This is needed for externalDNS to list and create Route53 resources.
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -60,23 +60,23 @@ Integration deploys the following components:
 }
 ```
 * Create an IAM role and associate the policy created above. Make a note of the role ARN which will be used in ExternalDNS deployment later
-* Setup hosted zone in AWS Route53 
-  ```
+* Setup hosted zone in AWS Route53
+  ```bash
   # Create a DNS zone through AWS CLI
   aws route53 create-hosted-zone --name "external-dns-test.my-org.com." --caller-reference "external-dns-test-$(date +%s)"
   ```
 
 ### Deploy ExternalDNS on the cluster
 
-* Add ExternalDNS pack to the desired profile and deploy it to the cluster. 
-  You may want to configure the following in pack values.yaml 
+* Add ExternalDNS pack to the desired profile and deploy it to the cluster.
+  You may want to configure the following in pack values.yaml
   * Configure AWS provider details (line #86)
     * Credentials, Zone Type
     * AssumeRoleArn with the Role ARN created above
-    
+
   * Configure txtOwnerId with the ID of the hosted zone created above (line #366)
-    ```
-    aws route53 list-hosted-zones-by-name --output json --dns-name "external-dns-test.my-org.com." | jq -r '.HostedZones[0].Id'    
+    ```bash
+    aws route53 list-hosted-zones-by-name --output json --dns-name "external-dns-test.my-org.com." | jq -r '.HostedZones[0].Id'
     ```
   * Optionally change externalDNS policy and logLevel
 
@@ -86,25 +86,25 @@ Integration deploys the following components:
 
 ### Deploy Applications with Ingress on the cluster
 
-* Add Prometheus-Operator addon to the same profile where ExternalDNS is aded 
+* Add Prometheus-Operator addon to the same profile where ExternalDNS is aded
   * Change serviceType to ClusterIP (line #408)
-  * Enable Ingress for the addon packs. In this example, lets use Prometheus-Operator integration. 
+  * Enable Ingress for the addon packs. In this example, lets use Prometheus-Operator integration.
     Ingress config for Grafana will look like the following :
-    ```
+    ```yaml
     #Ingress config
     ingress:
       ## If true, Grafana Ingress will be created
       ##
       enabled: true
-    
-      hosts: 
+
+      hosts:
         - grafana.external-dns-test.my-org.com
-    
+
       ## Path for grafana ingress
-      path: / 
+      path: /
     ```
     When Prometheus-Operator gets deployed in the Cluster, Ingress resource for Grafana will also get created and will look like
-    ```
+    ```yaml
     apiVersion: extensions/v1beta1
     kind: Ingress
     metadata:
@@ -128,13 +128,13 @@ Integration deploys the following components:
 ### Verify ExternalDNS (Ingress example)
 
   * If all goes well, after 2 minutes, ExternalDNS would have inserted 2 records on your hosted zone
-    ```
+    ```bash
     aws route53 list-resource-record-sets --output json --hosted-zone-id "/hostedzone/ZEWFWZ4R16P7IB" \
-        --query "ResourceRecordSets[?Name == 'grafana.external-dns-test.my-org.com.']|[?Type == 'A']"  
-    ``` 
-  * After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you should be able to see Grafana login page 
+        --query "ResourceRecordSets[?Name == 'grafana.external-dns-test.my-org.com.']|[?Type == 'A']"
+    ```
+  * After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you should be able to see Grafana login page
 
 ### Troubleshooting
 
-* Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set on the Ingress resource 
+* Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set on the Ingress resource
 * Check `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change logLevel to debug to see additional info on the logs
