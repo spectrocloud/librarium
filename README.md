@@ -75,7 +75,7 @@ On top of the table of contents there will be a **github link** to the content o
 ### Main pages
 
 You can create a main page by creating a `<number>-<url-using-dashes>.md` file in the root of the `content` directory.
-The number will be the position of the item in the menu. Each of the main pages can be configured by sending attributes at the start of the file's content.
+The number will be the position of the item in the menu. Each of the main pages can be configured by sending attributes at the start of the file"s content.
 
 **Example of attributes**
 
@@ -129,11 +129,13 @@ The same rules apply though. You can reference it from a different section using
 ```md
 ![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
+
 #### Tabs component
 
-To use the tabs component you have to import it from the *shared* folder
+To use the tabs component you have to import it from the _shared_ folder
+
 ```js
-import Tabs from '@librarium/shared/src/components/styles/Tabs';
+import Tabs from "@librarium/shared/src/components/ui/Tabs";
 ```
 
 After that, you can use it like this
@@ -142,17 +144,19 @@ After that, you can use it like this
 <Tabs>
   <Tabs.TabPane tab="AWS" key="aws">
 
-# AWS cluster
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
+    # AWS cluster
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
   <Tabs.TabPane tab="VMware" key="vmware">
 
-# VMware cluster
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
+    # VMware cluster
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
 </Tabs>
 ```
+
+**Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
+
+- provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>
+- when creating the link to this page, include (in the query) the identifier provided and the value you want (eg: /clusters?clusterType=aws#section1)
+- additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)

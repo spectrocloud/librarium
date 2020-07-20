@@ -7,7 +7,7 @@ hideToC: false
 fullWidth: false
 ---
 
-import Tabs from '@librarium/shared/src/components/styles/Tabs';
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 
@@ -259,7 +259,7 @@ The following steps will be taken to provision your first VMware cluster:
         * Installer Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
         * Console  Endpoint: https://console.spectrocloud.com
         * Pairing Code: <4 digit pairing code from step#2>
-        * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes. 
+        * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections
         * SOCKS Proxy: &lt;endpoint for the SOCKS proxy server&gt;, e.g: _PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
