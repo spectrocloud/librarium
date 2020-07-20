@@ -139,7 +139,7 @@ Spectro Cloud maintains an event stream with low level details of the various or
 
 The detailed steps for creating clusters (as well as scaling/removing/reconfiguring etc.) on different cloud service providers are detailed here.
 
-<Tabs identifier="creatingClusters">
+<Tabs identifier="clusterType">
 
 <Tabs.TabPane tab="AWS Cluster" key="aws_cluster">
 
