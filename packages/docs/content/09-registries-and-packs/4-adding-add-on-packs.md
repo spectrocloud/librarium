@@ -1,8 +1,8 @@
 ---
-title: "Adding add-on packs"
-metaTitle: "Adding add-on packs"
-metaDescription: "How to create custom made packs using Helm Charts and Manifests in Spectro Cloud"
-icon: ""
+title: 'Adding add-on packs'
+metaTitle: 'Adding add-on packs'
+metaDescription: 'How to create custom made packs using Helm Charts and Manifests in Spectro Cloud'
+icon: ''
 hideToC: true
 fullWidth: false
 ---
@@ -15,10 +15,10 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 An add-on pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster. Spectro Cloud provides several add-on packs out-of-the-box for various layers of the Kubernetes stack. For example:
 
-Logging  - elastic search, fluentd.  
-Monitoring -  Kubernetes dashboard, prometheus.  
-Load Balancers - Citrix.  
-Security  - Dex, Vault, Permissions manager.  
+Logging - elastic search, fluentd.
+Monitoring - Kubernetes dashboard, prometheus.
+Load Balancers - Citrix.
+Security - Dex, Vault, Permissions manager.
 Service Mesh - Istio.
 
 Custom add-on packs can be built to extend the list of integrations. Two different methods are used in the following examples to create custom add-on packs.
@@ -34,7 +34,7 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 1. Create the pack directory named "prometheus-grafana".
 2. Create the metadata file named `pack.json`.
 
-```
+```json
 {
     "addonType": "monitoring",
     "annotations": {
@@ -57,10 +57,10 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 ```
 
 3. Download the desired version of the prometheus-grafana helm charts archive.
-4. Create a sub-directory called `charts` and copy the downloaded helm chart archive to this directory.  Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
+4. Create a sub-directory called `charts` and copy the downloaded helm chart archive to this directory. Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
 5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the promethus-grafana pack, the `values.yaml` could look like this:-
 
-```
+```yaml
 pack:
   #The namespace (on the target cluster) to install this chart
   #When not found, a new namespace will be created
@@ -223,14 +223,14 @@ charts:
 
 6. Login to the pack registry using the following command:
 
-```
-$spectro registry login [REGISTRY_SERVER]
+```bash
+$ spectro registry login [REGISTRY_SERVER]
 ```
 
 7. Using Spectro CLI, push the newly built pack to the pack registry:
 
-```
-$spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
+```bash
+$ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
 ```
 
 </Tabs.TabPane>
@@ -246,7 +246,7 @@ The example below shows how to build the Permission Manager auth pack and push t
 1. Create the pack directory named `permission-manager`.
 2. Create the metadata file named `pack.json`.
 
-```
+```json
 {
   "addonType":"authentication",
   "cloudTypes": ["all"],
@@ -261,13 +261,11 @@ The example below shows how to build the Permission Manager auth pack and push t
 ```
 
 3. Create a sub-directory called `manifests`.
-4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, *{{.Values.namespace}}*. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
+4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, _{{.Values.namespace}}_. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
 
 permission-manager.yaml (partial)
 
-```
----
-
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -297,6 +295,7 @@ rules:
       - "*"
     verbs:
       - "*"
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -380,10 +379,10 @@ rules:
 
 values.yaml:
 
-```
+```yaml
 manifests:
   permission-manager:
-  
+
     #Namespace under which permission-manager will be deployed
     namespace: "permission-manager"
 
@@ -393,14 +392,14 @@ manifests:
 
 6. Login to the pack registry using the following command:
 
-```
-$spectro registry login [REGISTRY_SERVER]
+```bash
+$ spectro registry login [REGISTRY_SERVER]
 ```
 
-7. Using Spectro Cloud CLI  push the newly built pack to the pack registry:
+7. Using Spectro Cloud CLI push the newly built pack to the pack registry:
 
-```
-$spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
+```bash
+$ spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
 ```
 
 </Tabs.TabPane>

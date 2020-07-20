@@ -46,11 +46,11 @@ Info: Only Kubernetes versions 1.16 and above is supported
 | kubeadmconfig.scheduler.extraArgs | | | List of additional Kube Scheduler flags to be set|
 | kubeadmconfig.files | | | List of additional files to be copied over to the nodes |
 | kubeadmconfig.preKubeadmCommands | | | List of additional commands to be executed **before** kubeadm commands are run |
-| kubeadmconfig.postKubeadmCommands | | | List of additional commands to be executed **after** kubeadm commands are run | 
+| kubeadmconfig.postKubeadmCommands | | | List of additional commands to be executed **after** kubeadm commands are run |
 
 ## Example Kubeadm config
 
-```
+```yaml
 kubeadmconfig:
   apiServer:
     extraArgs:
