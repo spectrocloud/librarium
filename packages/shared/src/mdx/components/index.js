@@ -8,19 +8,20 @@ import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
 
 const PreContainer = styled.div`
-  display: flex;
+  position: relative;
+
+  pre {
+    max-height: 450px;
+  }
 `;
 
 const Copy = styled.button`
   opacity: 0.3;
-  position: sticky;
-  top: 90px;
   border-radius: 4px;
   background: #fefefe;
   overflow: hidden;
   border: none;
   transition: opacity 0.1s ease-in;
-  margin-left: -40px;
 
   :hover {
     opacity: 0.9;
@@ -28,8 +29,9 @@ const Copy = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
-    margin: 10px 0;
-    width: 0px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
 
 function Pre(props) {

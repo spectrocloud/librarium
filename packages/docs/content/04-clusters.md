@@ -83,7 +83,7 @@ Spectro Cloud supports various kids of updates to running clusters. Based on the
 
 ## Cluster update notifications
 
-Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, need to be applied to the cluster profile. These changes result in update notifications on the clusters and can be propagated to the clusters at an appropriate time. The update notification consists of detailed information about all the changes applied to the profile since initial installation or since previous update. 
+Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, need to be applied to the cluster profile. These changes result in update notifications on the clusters and can be propagated to the clusters at an appropriate time. The update notification consists of detailed information about all the changes applied to the profile since initial installation or since previous update.
 
 Updates to pack configuration may result in a conflict, if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes are applied to the cluster.
 
@@ -96,7 +96,7 @@ Configuration for packs can be updated in a cluster at any time. The changes are
 Spectro Clodud monitors cluster infrastructure on a regular basis and reports health on the management console.
 Overall health is computed based on the following factors:
 
-* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the management console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster. 
+* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the management console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster.
 * Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
 * Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
@@ -180,7 +180,7 @@ To create an AWS cloud account, an access key as well as a secret access key wil
 
 Ensure that the IAM user or the ROOT user has the following minimum permissions:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -699,11 +699,11 @@ A Pack registry instance is setup on the gateway cluster by default and it is re
 
 The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the the installer to  register with tenant portal within this duration, might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console end point or the pairing code is typed incorrectly. Ensure that the tenant portal console end point does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
 
-Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections. 
+Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
 
 If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
 
-```
+```bash
 #!/bin/bash
 
 DESTDIR="/tmp/"

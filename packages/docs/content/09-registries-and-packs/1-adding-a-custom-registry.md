@@ -18,11 +18,11 @@ Setting up a custom pack registry involves the installation of a registry server
 # Pre Requisites
 
 * Need container runtime docker to be installed on the machine.
-  
+
 * HTTP utility *htpasswd* is required to be installed for user auth encryption.
-  
+
 * Required minimum machine compute specifications - 1 vCPU and 2GB Memory.
-  
+
 * Firewall ports 443/80 are required to be opened on the machine to allow traffic from the management console and Spectro CLI tool.
 
 # Deploying a pack registry server
@@ -31,26 +31,26 @@ Spectro Cloud provides a docker image for the pack registry server. The followin
 
 * Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
 
-```
+```bash
 mkdir -p /root/auth
 htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
 ```
 
 * If HTTPS mode is being used, create a directory called `certs`.
 
-```
+```bash
 mkdir -p /root/certs
 ```
 
 * For self-signed certificates, use the following command to generate certificates.
 
-```
+```bash
 openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
   -x509 -days 365 -out tls.crt
 ```
 
-* 
+*
     * Provide the appropriate values while ensuring that the Common Name matches with the registry hostname.
 
     ```
@@ -60,7 +60,7 @@ openssl req \
     Organization Name (eg, company) [Default Company Ltd]:
     Organizational Unit Name (eg, section) []:
     Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-    Email Address []:  
+    Email Address []:
 
     Example:
     REGISTRY_HOST_DNS - registry.com
@@ -71,13 +71,13 @@ openssl req \
 * Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
-```
+```bash
     docker pull gcr.io/spectro-images-public/release/spectro-registry:1.0.0
 ```
 
 * Create the docker container using the docker `run` command:
     * HTTPS mode -
-    ```
+    ```bash
     docker run -d \
         -p 443:5000 \
         --restart=always \
@@ -96,9 +96,9 @@ openssl req \
     <InfoBox>
     Spectro Cloud CLI registry login command fails with the error message “x509: certificate signed by unknown authority” in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
     </InfoBox>
-    
+
     * HTTP mode - **not recommended**
-    ```
+    ```bash
     docker run -d \
         -p 80:5000 \
         --restart=always \
@@ -109,7 +109,7 @@ openssl req \
         -e  REGISTRY_AUTH=htpasswd \
         -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
         -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-        gcr.io/spectro-images-public/release/spectro-registry:1.0.0 
+        gcr.io/spectro-images-public/release/spectro-registry:1.0.0
     ```
 
     <InfoBox>
@@ -120,14 +120,14 @@ openssl req \
 * Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
     * HTTPS mode -
-    ```
-    $curl --cacert tls.crt -v [REGISTRY_SERVER]/health   
+    ```bash
+    $curl --cacert tls.crt -v [REGISTRY_SERVER]/health
     $curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
-    
+
     * HTTP mode -
-    ```
-    $curl -v [REGISTRY_SERVER]/health   
+    ```bash
+    $curl -v [REGISTRY_SERVER]/health
     $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 

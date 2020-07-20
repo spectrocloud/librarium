@@ -42,7 +42,7 @@ Vault integration has the following components:
 
 In Kubernetes clusters with Vault integrated, secrets can be injected into the application pods by adding the following annotations:
 
-```
+```yaml
 vault.hashicorp.com/agent-inject: "true"
 vault.hashicorp.com/agent-inject-secret-<unique_name>: /path/to/secret
 vault.hashicorp.com/role: "<role using which the secret can be fetced>"
