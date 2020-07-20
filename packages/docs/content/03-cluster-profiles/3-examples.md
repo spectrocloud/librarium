@@ -7,7 +7,7 @@ hideToC: true
 fullWidth: false
 ---
 
-import Tabs from '@librarium/shared/src/components/styles/Tabs';
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 

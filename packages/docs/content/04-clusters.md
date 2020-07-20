@@ -7,7 +7,7 @@ hideToC: false
 fullWidth: false
 ---
 
-import Tabs from '@librarium/shared/src/components/styles/Tabs';
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 
@@ -139,7 +139,7 @@ Spectro Cloud maintains an event stream with low level details of the various or
 
 The detailed steps for creating clusters (as well as scaling/removing/reconfiguring etc.) on different cloud service providers are detailed here.
 
-<Tabs>
+<Tabs identifier="clusterType">
 
 <Tabs.TabPane tab="AWS Cluster" key="aws_cluster">
 
