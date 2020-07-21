@@ -61,10 +61,33 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       title: "User Management",
       description: "Setting up RBAC and enabling SAML-SSO.",
       icon: "logout",
-      href: "/"
+      href: "/user-management"
     }
   ]}
  />
+ <QuickSetup
+  title="Getting familiar with the dashboard"
+  options={[
+    {
+      title: "Default View",
+      description: "Details of the options available on logging in.",
+      icon: "cog",
+      href: "",
+    },
+    {
+      title: "Administrator View",
+      description: "Details of the options under the Administrator section.",
+      icon: "cog",
+      href: "",
+    },
+    {
+      title: "API docs",
+      description: "Details of the APIs currently available and the payloads.",
+      icon: "cog",
+      href: "/api/introduction"
+    }
+  ]}
+  />
 <CloudsSection
   title="Detailed Setup"
   description="An insight into the procedures for creating clusters on public clouds as well as private clouds. Google Cloud Platform and Bare-metal coming soon!"

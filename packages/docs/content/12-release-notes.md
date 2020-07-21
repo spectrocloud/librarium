@@ -19,8 +19,8 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # July 3, 2020 - Release 1.0.1
 
-* New Regions for AWS - Spectro Cloud is now available for deploying AWS clusters in the European regions.
-* Changes to the pricing structures - more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
+* New Regions for AWS -> Spectro Cloud is now available for deploying AWS clusters in the European regions.
+* Changes to the pricing structures -> more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
 
 # June 23, 2020 - Release 1.0
 

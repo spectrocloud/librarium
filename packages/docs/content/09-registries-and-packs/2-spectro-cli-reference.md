@@ -26,10 +26,21 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
 1. Download the CLI binary file:
 
-```
-OSX   : $wget https://spectro-cli.s3.amazonaws.com/v0.3.0/osx/spectro > spectro
-Linux : $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectro
-```
+<Tabs>
+
+<Tabs.TabPane tab="OSX" key="osx_cli">
+<code>
+$wget https://spectro-cli.s3.amazonaws.com/v0.3.0/osx/spectro > spectro
+</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Linux" key="linux_cli">
+<code>
+$wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectro
+</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 2. Provide the executable permission to the CLI spectro.
 
@@ -57,11 +68,24 @@ List of Arguments available to all the Spectro CLI commands -
 
 Authenticate user with Spectro Cloud pack registry by using the login command:
 
-```bash
-Usage   : $./spectro registry login [SERVER]
-Example : $./spectro registry login spectro.io:5000
-          $./spectro registry login spectro.io:5000 --insecure --default
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_login_usage">
+<code>
+$./spectro registry login [SERVER]
+</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_login_example">
+<code>
+$./spectro registry login spectro.io:5000
+</code>
+<code>
+$./spectro registry login spectro.io:5000 --insecure --default
+</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 ### Args
 
@@ -83,11 +107,18 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
 
-```bash
-Usage   : $./spectro pack push [PACK_SOURCE_DIR] [flags]
-Example : $./spectro pack push /tmp/packs/nginx-1.16.1
-          $./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_push_usage">
+<code>$./spectro pack push [PACK_SOURCE_DIR] [flags]</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_push_example">
+<code>$./spectro pack push /tmp/packs/nginx-1.16.1</code>
+<code>$./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 ### Args
 
@@ -105,11 +136,18 @@ PACK_SOURCE_DIR: Directory location where pack content is located.
 
 List all the packs from the Spectro Cloud pack registry:
 
-```bash
-Usage   : $./spectro pack ls [flags]
-Example : $./spectro pack ls spectro.io:5000
-          $./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_list_usage">
+<code>$./spectro pack ls [flags]</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_list_example">
+<code>$./spectro pack ls spectro.io:5000</code>
+<code>$./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 ### Flags
 
@@ -125,11 +163,18 @@ Example : $./spectro pack ls spectro.io:5000
 
 Download the packs from the Spectro Cloud pack registry to a pack target location:
 
-```bash
-Usage   : $./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
-Example : $./spectro pack pull nginx:1.16.1 /tmp/packs
-          $./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_pull_usage">
+<code>$./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_pull_example">
+<code>$./spectro pack pull nginx:1.16.1 /tmp/packs</code>
+<code>$./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 ### Args
 
@@ -149,11 +194,18 @@ PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
 Create a new tag to a pack which is already pushed to the Spectro Cloud pack registry:
 
-```bash
-Usage   : $./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
-Example : $./spectro pack tag add ubuntu:lts__14.4.3 stable
-          $./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_add_usage">
+<code>$./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_add_example">
+<code>$./spectro pack tag add ubuntu:lts__14.4.3 stable</code>
+<code>$./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 **Note:** Tag is a combination of label and the group name. The label is mandatory whereas the group is optional.
 
@@ -181,11 +233,18 @@ TARGET_LABEL - Target tag label.
 
 Delete a tag to a pack which is already pushed to the Spectro Cloud pack registry.
 
-```bash
-Usage   : $./spectro pack tag delete PACK:TAG [flags]
-Example : $./spectro pack tag delete ubuntu:14.4.3
-          $./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
-```
+<Tabs>
+
+<Tabs.TabPane tab="Usage" key="cli_delete_usage">
+<code>$./spectro pack tag delete PACK:TAG [flags]</code>
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Example" key="cli_delete_example">
+<code>$./spectro pack tag delete ubuntu:14.4.3</code>
+<code>$./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000</code>
+</Tabs.TabPane>
+
+</Tabs>
 
 **Note:** Parent tags like major version (Ex: 14.x) and minor version (Ex: 14.4.x) can not be deleted as these are auto-generated by the system. So, when no tags are associated with the pack then these are auto-deleted by the system. When a tag (Ex: 14.4.3) is deleted then the major and minor version tags are auto-linked to the remaining tags of a pack.
 
