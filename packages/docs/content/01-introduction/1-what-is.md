@@ -19,7 +19,7 @@ Spectro Cloud consists of three main components: the management console, a pack 
 The Spectro Cloud management console provides centralized visibility and management of Spectro Cloud provisioned workload clusters. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.
 
 ## Pack Registry
-Specto Cloud cluster profiles are templates that describe various integrations/technologies for each layer of the kubernetes infrastructure stack. These integrations are modeled as packs that are hosted on a pack registry. Spectro Cloud provides several integrations out of the box which are hosted on a default pack registry. Security patches and updates are maintained for all out of the box packs. Optionally users can also host packs on their self-hosted pack registry.
+Spectro Cloud cluster profiles are templates that describe various integrations/technologies for each layer of the Kubernetes infrastructure stack. These integrations are modeled as packs that are hosted on a pack registry. Spectro Cloud provides several integrations out of the box which are hosted on a default pack registry. Security patches and updates are maintained for all out of the box packs. Optionally users can also host packs on their self-hosted pack registry.
 
 ## Management Agent
 The Spectro Cloud Management Agent which runs inside workload clusters is responsible for:
