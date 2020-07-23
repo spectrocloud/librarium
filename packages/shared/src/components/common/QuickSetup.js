@@ -24,6 +24,7 @@ const CardsWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: -30px;
+  width: 100%;
 `
 
 const Card = styled.div`
