@@ -49,7 +49,7 @@ export function IntroButtons({
  }) {
   return <ButtonsWrapper display={display}>
     <Link to={introductionHref}>
-      <Button>What is spectrocloud</Button>
+      <Button>What is Spectro Cloud?</Button>
     </Link>
     <Link target="_blank" to={demoHref}>Request Demo</Link>
   </ButtonsWrapper>
