@@ -29,15 +29,19 @@ The Spectro CLI tool is currently available for OSX and Linux.
 <Tabs>
 
 <Tabs.TabPane tab="OSX" key="osx_cli">
-<code>
+
+```bash
 $wget https://spectro-cli.s3.amazonaws.com/v0.3.0/osx/spectro > spectro
-</code>
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Linux" key="linux_cli">
-<code>
+
+```bash
 $wget https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro > spectro
-</code>
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -71,18 +75,23 @@ Authenticate user with Spectro Cloud pack registry by using the login command:
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_login_usage">
-<code>
+
+```bash
 $./spectro registry login [SERVER]
-</code>
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_login_example">
-<code>
+
+```bash
 $./spectro registry login spectro.io:5000
-</code>
-<code>
+```
+
+```bash
 $./spectro registry login spectro.io:5000 --insecure --default
-</code>
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -110,12 +119,23 @@ Upload the pack content from the pack source dir to the Spectro Cloud pack regis
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_push_usage">
-<code>$./spectro pack push [PACK_SOURCE_DIR] [flags]</code>
+
+```bash
+$./spectro pack push [PACK_SOURCE_DIR] [flags]
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_push_example">
-<code>$./spectro pack push /tmp/packs/nginx-1.16.1</code>
-<code>$./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000</code>
+
+```bash
+$./spectro pack push /tmp/packs/nginx-1.16.1
+```
+
+```bash
+$./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -139,12 +159,23 @@ List all the packs from the Spectro Cloud pack registry:
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_list_usage">
-<code>$./spectro pack ls [flags]</code>
+
+```bash
+$./spectro pack ls [flags
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_list_example">
-<code>$./spectro pack ls spectro.io:5000</code>
-<code>$./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000</code>
+
+```bash
+$./spectro pack ls spectro.io:5000
+```
+
+```bash
+$./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -166,12 +197,23 @@ Download the packs from the Spectro Cloud pack registry to a pack target locatio
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_pull_usage">
-<code>$./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]</code>
+
+```bash
+$./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_pull_example">
-<code>$./spectro pack pull nginx:1.16.1 /tmp/packs</code>
-<code>$./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000</code>
+
+```bash
+$./spectro pack pull nginx:1.16.1 /tmp/packs
+```
+
+```bash
+$./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -197,12 +239,23 @@ Create a new tag to a pack which is already pushed to the Spectro Cloud pack reg
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_add_usage">
-<code>$./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]</code>
+
+```bash
+$./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_add_example">
-<code>$./spectro pack tag add ubuntu:lts__14.4.3 stable</code>
-<code>$./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000</code>
+
+```bash
+$./spectro pack tag add ubuntu:lts__14.4.3 stable
+```
+
+```bash
+$./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
+```
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -236,12 +289,23 @@ Delete a tag to a pack which is already pushed to the Spectro Cloud pack registr
 <Tabs>
 
 <Tabs.TabPane tab="Usage" key="cli_delete_usage">
-<code>$./spectro pack tag delete PACK:TAG [flags]</code>
+
+```bash
+$./spectro pack tag delete PACK:TAG [flags]
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Example" key="cli_delete_example">
-<code>$./spectro pack tag delete ubuntu:14.4.3</code>
-<code>$./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000</code>
+
+```bash
+$./spectro pack tag delete ubuntu:14.4.3
+```
+
+```bash
+$./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
+```
+
 </Tabs.TabPane>
 
 </Tabs>
