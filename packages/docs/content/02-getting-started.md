@@ -19,15 +19,15 @@ This section is a tour of the two main dashboards of the tenant console. It also
 
 The Spectro Cloud tenant console contains two main dashboards. The first one is mainly for the Kubernetes-related options while the other is for the settings related to operations.
 
-## Default Dashboard
+# Default Dashboard
 
 Upon login, the dashboard shows the [cluster profiles](/cluster-profiles) (marked as 1) of the default project. [Projects](/projects) (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard contains further options for [Clusters](/clusters) (3) and [audit logs](/audit-logs) (4). The bottom left contains buttons for the user's profile (5) and the Admin dashboard (6).
 
 The "Settings" section (7) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard.
 
-**IMAGE TO BE ADDED**
+![default_dashboard](default_dashboard.png)
 
-## Admin Dashboard
+# Admin Dashboard
 
 The menu within the Admin dashboard also contains the Projects button. This is different from the Projects menu in the default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside of the project.
 
@@ -39,7 +39,7 @@ Settings under the Admin dashboard provide access to the [pack registries](/regi
 
 Finally, [audit logs](/audit-logs) allows the admin to track the user interaction with the application resources along with the timeline.
 
-**IMAGE TO BE ADDED**
+![admin_dashboard](admin_dashboard.png)
 
 # Deploying your first cluster
 
