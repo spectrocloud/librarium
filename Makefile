@@ -1,6 +1,7 @@
 .PHONY: initialize start commit build
 
 initialize:
+	npx lerna clean --yes
 	npx lerna bootstrap --hoist
 
 start:

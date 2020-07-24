@@ -23,16 +23,79 @@ export default function MDXLayout({ data = {}, location }) {
   } = data;
 
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, {...config, base: '/api'});
+    return DocsLayout.calculateMenuTree(allMdx.edges, { ...config, base: '/api' });
   }, [allMdx.edges]);
 
+
   function renderAPIDoc() {
+    // TODO refactor this function
     const paths = mdx.frontmatter?.paths;
     if (!paths || !mdx?.fields?.version) {
       return null;
     }
 
     const api = APIS[mdx?.fields?.version];
+
+    function renderProperties(defObject) {
+      // if there are no properties, render the format or type (this seems to apply only for timestamps)
+      if (!defObject?.properties) {
+        return defObject?.format || defObject.type;
+      }
+
+      return Object.keys(defObject?.properties)
+        .reduce((propertiesAcc, property) => {
+          const definitionProperty = defObject.properties[property];
+          const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
+
+          // if the property contains a ref, call again extractDefinition
+          if (definitionPropertyRef) {
+            return ({
+              ...propertiesAcc,
+              [property]: definitionProperty.type === "array" ?
+                [extractDefinition(definitionPropertyRef)] :
+                extractDefinition(definitionPropertyRef)
+            });
+          } else {
+            // if property value is an array, render what type the elements are
+            if(definitionProperty.type === "array") {
+              return ({
+                ...propertiesAcc,
+                [property]: [definitionProperty?.items.type || definitionProperty.type]
+              });
+            } else {
+              // if the property value is an object that contains the properties key
+              // call again renderProperties function in case it has refs inside
+              // otherwise render the property type
+              return ({
+                ...propertiesAcc,
+                [property]: definitionProperty?.properties ?
+                  renderProperties(definitionProperty) :
+                  definitionProperty.type
+              });
+            }
+          }
+        }, {});
+    }
+
+    function extractDefinition(ref) {
+      const definitionArray = ref?.split("/") || [];
+      const def = definitionArray[definitionArray.length - 1];
+      const defObject = api.definitions[def];
+
+      // the response has no schema
+      if (!defObject) {
+        return null;
+      }
+
+      // the response schema is type array - encounter only 2 times and seems to always have the items prop
+      if (defObject?.type === "array") {
+        return ({
+          items: extractDefinition(defObject.items.$ref)
+        });
+      }
+
+      return renderProperties(defObject);
+    }
 
     const endpoints = Object.keys(api.paths)
       .filter(path => paths.some(entry => path.startsWith(entry)))
@@ -42,17 +105,36 @@ export default function MDXLayout({ data = {}, location }) {
           path,
           operations: Object.keys(api.paths[path])
             .filter(method => method !== "parameters")
-            .filter(method => !api.paths[path][method]?.tags?.some(tag => ["private", "system"].includes(tag)))
-            .map(method => ({
-              method,
-              ...api.paths[path][method],
-              parameters: api.paths[path][method].parameters || [],
-              responseMessages: Object.keys(api.paths[path][method].responses || {}).map(
-                response => ({
-                  ...api.paths[path][method].responses[response],
-                })
-              ),
-            })),
+            .filter(method => !method?.tags?.some(tag => ["private", "system"].includes(tag)))
+            .map(method => {
+              const apiMethod = api.paths[path][method]
+              const parameters = apiMethod?.parameters;
+              const responses = apiMethod?.responses;
+              const bodyParameter = parameters?.find(parameter => parameter.name === "body");
+              let body;
+
+              if (bodyParameter) {
+                body = bodyParameter.schema?.$ref ?
+                  extractDefinition(bodyParameter.schema?.$ref) :
+                  renderProperties(bodyParameter.schema);
+              }
+
+              return ({
+                method,
+                ...apiMethod,
+                body: JSON.stringify(body, null, 2),
+                parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                responseMessages: Object.keys(responses || {}).map(
+                  response => {
+                    return ({
+                      code: response,
+                      ...responses[response],
+                      schema: JSON.stringify(extractDefinition(responses[response]?.schema?.$ref), null, 2),
+                    })
+                  }
+                ),
+              })
+            }),
         };
       });
 
@@ -77,8 +159,9 @@ export default function MDXLayout({ data = {}, location }) {
         <DocsLayout
           menu={menu}
           mdx={mdx}
+          fullWidth={mdx.frontmatter?.fullWidth || mdx.frontmatter?.api}
           docsLocation={docsLocation}
-          hideToC={mdx.frontmatter?.api}
+          hideToCSidebar={mdx.frontmatter?.hideToCSidebar}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
           location={location}
@@ -117,6 +200,7 @@ export const pageQuery = graphql`
         hideToC
         paths
         hideToCSidebar
+        hideMenuSidebar
         api
       }
     }

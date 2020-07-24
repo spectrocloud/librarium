@@ -4,8 +4,9 @@ metaTitle: 'Permission Manager'
 metaDescription: 'Permission Manager Authentication pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
+hideToC: false
 category: ['authentication']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/dac6ceda2b0f88f1dc2c4337d871c0ed003bdea1/stable/addon/auth/permission-manager/logo.png?token=APOFE6WC2CV7YPAZOPB4FDS67GDTE'
+logoUrl: 'https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:15d08b02d78823c12616b72d1b5adb0520940016b89bae1f758e6f1a105597ff?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -21,9 +22,21 @@ This integration provides a graphical user interface for RBAC management in Kube
 | namespace| Any valid namespace string | The namespace under which this integration should be deployed onto|
 | authPassword | | Login password for the web interface |
 
-## How to customize the permission templates?
+## Customizing the permission templates
 
 Create a ClusterRole starting with `template-namespaced-resources___` or `template-cluster-resources___` and apply it to the cluster. Permission manager will honor any custom resources with this naming convention and will populate on the user interface.
 
+# Ingress
+
+Follow below steps to configure Ingress on Permission Manager
+
+1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #10)
+2. Ingress (line #13)
+   * Enable Ingress ; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts etc.
+
+With these config changes, you can access Permission manager service on the Ingress Controller LoadBalancer hostname / IP
+
 ## References
-https://github.com/sighupio/permission-manager
+
+<https://github.com/sighupio/permission-manager>

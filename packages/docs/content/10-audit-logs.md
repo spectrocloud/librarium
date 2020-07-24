@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # About Audit Logs
 
-The Spectro Cloud SaaS application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
+The Spectro Cloud management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
 
 The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update* and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
 

@@ -7,5 +7,3 @@ paths: ['/v1alpha1/cloudaccounts']
 ---
 
 # Cloud Accounts
-
-Add introduction here

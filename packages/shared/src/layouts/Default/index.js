@@ -1,10 +1,11 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-import Sidebar from "./sidebar";
-import Header from "./Header";
+import Sidebar from './sidebar';
+import Header from './Header';
 
-import "./layout.css";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import './layout.css';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const Content = styled.main`
   margin: 0px 43px;
   background: ${({ theme }) => theme.colors.background};
 
-  ${(props) =>
+  ${props =>
     props.fullWidth &&
     css`
       margin: 0;
@@ -33,24 +34,14 @@ const MainWrap = styled.div`
   overflow-y: auto;
 `;
 
-export default function Layout({
-  children,
-  location,
-  menu,
-  fullWidth,
-  subLogo,
-  extraMenu,
-}) {
+export default function Layout({ children, location, menu, fullWidth, subLogo, extraMenu, hideMenuSidebar = false }) {
   return (
     <Wrapper>
-      <LeftSideBarWidth className={"hiddenMobile"}>
-        <Sidebar
-          location={location}
-          menu={menu}
-          subLogo={subLogo}
-          extraMenu={extraMenu}
-        />
-      </LeftSideBarWidth>
+      {!hideMenuSidebar && (
+        <LeftSideBarWidth className={'hiddenMobile'}>
+          <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
+        </LeftSideBarWidth>
+      )}
       <MainWrap>
         <Header location={location} />
         <Content fullWidth={fullWidth}>{children}</Content>

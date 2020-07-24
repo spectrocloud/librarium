@@ -1,19 +1,20 @@
 import React from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled, { css } from "styled-components";
 
 import background from "../assets/hero-background.png"
 import Button from "./ui/Button";
+import Link from "./Link";
 
 //
 
 const IntroWrapper = styled.div`
   background-image: url(${background});
   background-size: cover;
-  padding: 43px 0;
+  padding: 43px;
+  margin: 0 -43px 20px -43px;
 `
 
-export default function IntroSection({children}) {
+export default function IntroSection({ children }) {
   return <IntroWrapper>{children}</IntroWrapper>
 }
 
@@ -23,11 +24,33 @@ const ButtonsWrapper = styled.div`
   button {
     margin: 0 16px;
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  ${props => props.display === "vertical" && css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      margin: 10px 0;
+    }
+  `}
 `
 
-export function IntroButtons({children}) {
-  return <ButtonsWrapper>
-    <Button primary> <FontAwesomeIcon icon="play-circle"/> What is spectrocloud</Button>
-    <Button>Request Demo</Button>
+export function IntroButtons({
+  children,
+  display = "horizontal",
+  introductionHref,
+  demoHref
+ }) {
+  return <ButtonsWrapper display={display}>
+    <Link to={introductionHref}>
+      <Button>What is Spectro Cloud?</Button>
+    </Link>
+    <Link target="_blank" to={demoHref}>Request Demo</Link>
   </ButtonsWrapper>
 }

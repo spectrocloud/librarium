@@ -9,10 +9,6 @@ fullWidth: false
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# About Packs, Layers and Registries
-
-As detailed in the [Concept Overviews](/introduction/concept-overviews) section, [Cluster Profiles](/introduction/concept-overviews#clusterprofile) are one of the unique and smart features of the Spectro Cloud solution. This profile based management of Kubernetes infrastructure (and its packs) enables organizations to have control through flexibilty. Users define cluster profiles customized for their own integrations and requirements based on what is needed for their organizations. Since cluster profiles can be different from group to group and can be setup in a flash, they help you avoid the complexity and scalability of a do-it-yourself project. To have a clear understanding of a pack in this context, please have a look at what a [layer](/integrations#layers) is.
-
 # Packs
 
 ## Overview
@@ -35,21 +31,21 @@ Spectro Cloud provides a rich collection of out-of-the-box packs for various int
 
 ## Overview
 
-The registry is a server-side application to store and serve packs to its clients. Packs from a registry are retrieved and presented as options during the creation of a cluster profile. Spectro Cloud supports configuration of multiple registries.
+The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Spectro Cloud supports configuration of multiple registries.
 
 ## Default Registry
 
-The default registry is Spectro Cloud’s public registry. It consists of several packs that make it easy for a user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Spectro Cloud maintains all packs in this registry and takes care of upgrading packs in the registry whenever required.
+The default pack registry is Spectro Cloud’s public pack registry. It consists of several packs that make it easy for a user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Spectro Cloud maintains all packs in this pack registry and takes care of upgrading packs in the pack registry whenever required.
 
-## Custom Registry
+## Custom Pack Registry
 
-Users can set up a custom registry using a docker image provided by Spectro Cloud to upload and maintain custom packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the registry. Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
+Users can set up a custom pack registry using a docker image provided by Spectro Cloud to upload and maintain custom packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
 
 # Spectro CLI
 
 ## Overview
 
-Spectro CLI is a Command Line Interface to interact with the Spectro Cloud Registry server for uploads and downloads of packs. CLI must authenticate with the registry before executing any CLI command.
+Spectro CLI is a Command Line Interface to interact with the Spectro Cloud Pack Registry server for uploads and downloads of packs. CLI must authenticate with the pack registry before executing any CLI command.
 
 ## Download
 

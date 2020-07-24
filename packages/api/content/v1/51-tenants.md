@@ -7,5 +7,3 @@ paths: ['/v1alpha1/tenants']
 ---
 
 # Tenants
-
-Add introduction here

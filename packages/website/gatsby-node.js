@@ -4,16 +4,49 @@ const startCase = require('lodash.startcase');
 
 const config = require('./config');
 
+const GRAPHQL = {
+  '/': () => {
+    return `
+    {
+      latestUpdates: allMdx(filter: {fields: {isDocsPage: {eq: true}}}) {
+          edges {
+            node {
+              fields {
+                title
+                slug
+              }
+              excerpt
+              parent {
+                ... on File {
+                  id
+                  name
+                  modifiedTime
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+  },
+};
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
-  // TODO(saamalik) remove after homepage comes back
   createRedirect({
-    fromPath: `/`,
-    toPath: `/introduction`,
+    fromPath: `/api/`,
+    toPath: `/api/introduction`,
     redirectInBrowser: true,
     isPermanent: true,
-  })
+  });
+
+  createRedirect({
+    fromPath: `/api`,
+    toPath: `/api/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
 
   return new Promise((resolve, reject) => {
     resolve(
@@ -39,28 +72,36 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        // Create blog posts pages.
-        result.data.allMdx.edges.forEach(({ node }) => {
+        // Create blog docs pages.
+        const promises = result.data.allMdx.edges.map(({ node }) => {
           if (node.fields.slug === '/integrations' || node.fields.slug === '/glossary') {
             return;
           }
-          let component =  path.resolve('../docs/src/templates/docs.js');
+          let component = path.resolve('../docs/src/templates/docs.js');
           if (node.fields.slug.startsWith('/glossary')) {
-            component = path.resolve('../glossary/src/templates/docs.js')
+            component = path.resolve('../glossary/src/templates/docs.js');
           }
 
           if (node.fields.slug.startsWith('/api')) {
-            component = path.resolve('../api/src/templates/docs.js')
+            component = path.resolve('../api/src/templates/docs.js');
           }
 
-          createPage({
-            path: node.fields.slug ? node.fields.slug : '/',
-            component,
-            context: {
-              id: node.fields.id,
-            },
-          });
+          const slug = node.fields.slug ? node.fields.slug : '/';
+          const promise = GRAPHQL[slug] ? graphql(GRAPHQL[slug]()) : Promise.resolve({})
+
+          return promise.then((result) => {
+            createPage({
+              path: slug,
+              component,
+              context: {
+                ...(result.data || {}),
+                id: node.fields.id,
+              },
+            });
+          })
         });
+
+        return Promise.all(promises)
       })
     );
   });
@@ -118,7 +159,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     let prefix = '/glossary';
     if (isDocsPage) {
-      prefix = ''
+      prefix = '';
     }
 
     if (isApiPage) {
@@ -217,10 +258,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: node.frontmatter.api,
     });
 
+    createNodeField({
+      name: 'hideMenuSidebar',
+      node,
+      value: node.frontmatter.hideMenuSidebar,
+    });
+
     if (node.frontmatter.api) {
-      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/')
+      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/');
       const versionDirectory = fileAbsolutePaths[1].split('/').shift();
-      const endpointsPath = [fileAbsolutePaths[0], 'api', 'content', versionDirectory, "api.json"].join('/');
+      const endpointsPath = [
+        fileAbsolutePaths[0],
+        'api',
+        'content',
+        versionDirectory,
+        'api.json',
+      ].join('/');
 
       createNodeField({
         name: 'version',

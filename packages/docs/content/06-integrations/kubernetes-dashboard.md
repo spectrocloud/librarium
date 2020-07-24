@@ -4,8 +4,9 @@ metaTitle: 'Kubernetes Dashboard'
 metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
+hideToC: false
 category: ['monitoring']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/c10b4a7722c15da56d7bc5f2928cdf56f38e4b30/stable/loggging_and_monitoring/kubernetes-dashboard-2.0.1/logo.png?token=APOFE6RUAXIOBZU4EK6XWWK67GGAA'
+logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
@@ -29,20 +30,24 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 ## Accessing the dashboard
 
 * **ClusterIP service type**
+
 When connected to the cluster remotely, run the following command to establish a connection to dashboard deployment on port 8080
-```
+
+```bash
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
-To access Kubernetes Dashboard, go to the below URL in a browser of your choice
-```
-https://localhost:8080
-```
-When you’re in the Dashboard login page, to get the bearer token, you can run the below command from Terminal window
-```
+
+To access Kubernetes Dashboard, go to the below URL in a browser of your choice `https://localhost:8080`
+
+In the Dashboard login page, to get the bearer token, run the below command from Terminal window:
+
+```bash
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
+
 The output of the above command will look like this, where the token value is in the last line
-```
+
+```yaml
 Name:         kubernetes-dashboard-token-h4lnf
 Namespace:    kubernetes-dashboard
 Labels:       <none>
@@ -61,6 +66,17 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 * **LoadBalancer service type**
 
 Use the LB service IP & port to connect to the dashboard
+
+# Ingress
+
+Follow below steps to configure Ingress on Kubernetes Dashboard
+
+1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #17)
+2. Ingress (line #23)
+   * Enable Ingress ; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts etc.
+
+With these config changes, you can access Kubernetes Dashboard service on the Ingress Controller LoadBalancer hostname / IP
 
 ## Troubleshooting
 

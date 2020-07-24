@@ -1,34 +1,51 @@
 ---
 title: "Introduction"
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
+metaTitle: "Introduction"
+metaDescription: "Spectro Cloud API Introduction"
 icon: "graph"
 hideToC: false
+fullWidth: false
+hiddenFromNav: false
+hideToCSidebar: false
 ---
+import {Intro, IntroButtons} from "@librarium/shared/src/components"
+import {Layout} from "@librarium/shared"
+import InfoBox from "@librarium/shared/src/components/InfoBox"
+
+<Intro>
 
 # Spectro Cloud API
 
-Spectro Cloud API provides APIs for a subset of features. The Spectro Cloud APIs are based on REST APIs. The APIs can be used to create and modify the tenant and project scope resources as well as for integrating with other applications.
+</Intro>
+
+
+Spectro Cloud platform capabilities are exposed via REST APIs that comply with open API standards. 
 
 # Paths
 
-Every API's URI has the prefix of the version and the Spectro Cloud resource: `version/resource/...`
+Every API's URI has the prefix of the version and the Spectro Cloud resource, such as: `v1alpha1/spectroclusters/...`
 
 # Authentication
 
-All requests must be authenticated with an API token. Use the HTTP header `Authorization` with the value &lt;token&gt; obtained using the authenticate API.
-
-After the user creation, if the authentication type is password-based, then the user has to manually activate and reset the password received via email. Post that, the user can use the `/auth/authenticate` API to authenticate and obtain the Authorization token. Not all of the `/auth/` prefixed APIs require an Authentication token.
+All requests must be authenticated with an API token that are passed using the HTTP request header `Authorization`. Activated users can use the `/auth/authenticate` API to authenticate and obtain the Authorization token. 
 
 # Requests
 
-All the requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*. The *metadata* is a common definition for all the resources and the *spec* takes the resource definition whereas *status* contains the derived or the status information of the resource. The API does not support creating or modifying the status section. However, certain update request schema have restricted spec resource definition and certain fields like uid, creation timestamp are not allowed to be modified post creation.
+All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.
+
+* *metadata* consists of common attributes for all the resources such as ids, names, creation timestamps etc. 
+* *spec* consists of attributes that define the resource
+* *status* contains the status information of the resource. The API does not support creating or modifying the status section. 
+
+<InfoBox>
+Certain update request schema have restricted spec resource definition and certain fields like uid, creation timestamp are not allowed to be modified post creation.
+</InfoBox>
 
 | HTTP Method | Documentation |
 | --- | --- |
 | POST | To create a resource or a sub-resource. |
-| PUT | To update the resource or a sub-resource. The PUT request will overwrite the resource data. |
-| PATCH | To add, modify, remove a specific item or sub-resource within a resource. |
+| PUT | To update the resource or a sub-resource. The PUT request will overwrite the existing resource data. |
+| PATCH | To add, modify, remove a specific attribute or sub-resource within a resource. |
 | DELETE | To delete the resource. |
 
 # Response Codes
@@ -48,7 +65,7 @@ The API returns standard HTTP response codes:
 
 # Versioning
 
-The version information is part of the API URI like `v1alpha1`, `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will undergo changes like adding new attributes or query params with backward compatibility of earlier schema. While advancing to the next version, ample notice to migrate to the new API will be provided based on contracted agreements.
+The version information is part of the API URI like `v1alpha1`, `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will undergo changes like adding new attributes or query params with backward compatibility of earlier schema. While advancing to the next version, ample notice to migrate to the new API will be provided.
 
 # Scope
 

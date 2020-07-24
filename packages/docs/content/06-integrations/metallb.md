@@ -5,7 +5,7 @@ metaDescription: 'MetalLB Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['load balancers']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/ace05fdbc01d0168d9b4762106cb2bd94e8d49ff/stable/addon/loadbalancers/metallb/logo.png?token=APOFE6VHQEQC2CKJVSWKSZ267GGPG'
+logoUrl: 'https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab856a03d5b821062dcd1da624256e8f1e2ede404d88cb088d3adb945?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

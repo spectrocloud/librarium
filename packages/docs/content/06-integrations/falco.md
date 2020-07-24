@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Falco add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
-logoUrl: 'https://raw.githubusercontent.com/spectrocloud/pax/master/stable/security/falco_1.0.10/logo.png?token=APOFE6SH5VHQK6VRZY2OTGC67CUSG'
+logoUrl: 'https://registry.spectrocloud.com/v1/falco/blobs/sha256:4e37461d0a31959ca8af65128329750ca3417e883e7e4ba17ee085b01a383a27?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
