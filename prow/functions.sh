@@ -18,3 +18,11 @@ sync_s3() {
 	return 0
 }
 
+# Sync docs to docs
+sync_s3_release() {
+	aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs.spectrocloud.com --delete
+	aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs.spectrocloud.com --delete
+	aws cloudfront create-invalidation --distribution-id E1LK6TRNPR90DX --paths "/*"
+	return 0
+}
+
