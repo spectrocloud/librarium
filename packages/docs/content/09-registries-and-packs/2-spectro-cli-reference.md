@@ -31,7 +31,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 <Tabs.TabPane tab="OSX" key="osx_cli">
 
 ```bash
-$wget https://spectro-cli.s3.amazonaws.com/v0.3.0/osx/spectro > spectro
+$wget https://spectro-cli.s3.amazonaws.com/v1.0.0/osx/spectro > spectro
 ```
 
 </Tabs.TabPane>
