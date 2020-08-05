@@ -34,6 +34,49 @@ A Default integration will install the following components:
 
 This integration also includes dashboards and alerts.
 
+## Use custom secrets for alertmanager
+
+For Alertmanager to work fine, alerting config should be set while deploying the inetrgation. This config also includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below
+
+* Add Prometheus-Operator integration in the Cluster profile with changes to the following values
+   * `alertmanager.alertmanagerSpec.useExistingSecret` - Set to true. This will skip creating the default Alertmanager secret
+   * `alertmanager.alertmanagerSpec.configSecret` - Provide the name of the custom Kubernetes Secret (should exist in the same namespace as the Alertmanager object) which contains configuration for the Alertmanager instance
+* Deploy the cluster with Prometheus-Operator integration. At this point, Alertmanager pod will crash (as the custom secret defined is not yet available)
+* Create the secret manually in the same namespace as that of Alertmanager object
+
+   **Prepare alertmanager.yaml contents**
+   ```
+   global:
+     resolve_timeout: 5m
+   receivers:
+   - email_configs:
+     - auth_identity: noreply@spectrocloud.com
+       auth_password: abcd
+       auth_username: noreply@spectrocloud.com
+       from: noreply@spectrocloud.com
+       send_resolved: true
+       smarthost: smtp.gmail.com:587
+       to: mark@spectrocloud.com
+     name: prom-alert
+   route:
+     group_by:
+     - job
+     group_interval: 5m
+     group_wait: 30s
+     receiver: prom-alert
+     repeat_interval: 4h
+     routes:
+     - match:
+         alertname: Watchdog
+       receiver: prom-alert
+   ```
+
+   **Create the Secret using the Alertmanager config prepared above**
+   ```
+   kubectl create secret generic alertmanager-secret -n monitoring --from-file=./alertmanager.yaml
+   ```
+* Alertmanager pod will recover from the crash in the next reconciliation
+
 # Ingress
 
 Follow below steps to configure Ingress on Grafana
