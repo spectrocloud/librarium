@@ -22,6 +22,8 @@ Setting up a custom pack registry involves the installation of a registry server
 * HTTP utility *htpasswd* is required to be installed for user auth encryption.
 
 * Required minimum machine compute specifications - 1 vCPU and 2GB Memory.
+
+* Firewall ports 443/80 are required to be opened on the machine to allow traffic from the management console and Spectro CLI tool.
   
 # Deploying a pack registry server
 
