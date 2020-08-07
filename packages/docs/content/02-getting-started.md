@@ -346,7 +346,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
     * Cloud Properties:
         * Cloud Account: spectro-cloud-gateway
         * Choose the desired setting for Datacenter, Compute Cluster, Network, and Resource Pool.
-	* Folder: Spectro
+        * Folder: Spectro
         * SSH Keys - Create a new ssh key pair (or pick one of your existing ones).  Enter the public key in this field. The public key will be installed in the cluster VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
         * Leave the NTP Server field blank, only if NTP is already configured on each of the ESXi hosts.
         * Click on *Next*.
