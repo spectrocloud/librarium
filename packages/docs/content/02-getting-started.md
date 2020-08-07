@@ -95,7 +95,7 @@ The guided documentation guide below is prescriptive with the names and selectio
 <p><em>Cloud Accounts</em> are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.</p>
 <WarningBox>
 <strong>Prerequisites:</strong><p></p>
-<p>You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/aws-clusters#prerequisites">Cloud Account Permissions</a>. Please import an SSH keypair into your account in the region <strong>us-east-1</strong>.</p>
+<p>You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: <a href="/clusters#prerequisites">Cloud Account Permissions</a>. Please import an SSH keypair into your account in the region <strong>us-east-1</strong>.</p>
 <p></p>
 <p>Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.</p>
 </WarningBox>
