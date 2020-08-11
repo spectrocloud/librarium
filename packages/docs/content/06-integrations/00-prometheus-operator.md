@@ -20,7 +20,7 @@ The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io
 A Default integration will install the following components:
 * [prometheus-operator](https://github.com/coreos/prometheus-operator).
 * [prometheus](https://prometheus.io/).
-* [alertmanager](https://prometheus.io/).
+* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter).
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics).
 * [grafana](https://github.com/helm/charts/tree/master/stable/grafana).

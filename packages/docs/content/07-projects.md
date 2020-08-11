@@ -23,7 +23,7 @@ Enter the name, description, and tags to create a project.
 
 The user and teams can be associated via *Admin > User & Teams* page. Select the user or team and select *Add Roles* under Project Roles for the project association.
 
-[User and Team](/introduction/concept-overviews#userandteam)
+[Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team).
 
 The user permission is always the union of the Tenant and Project roles along with the roles inherited from the team association. Hence, if a user is a *Tenant Admin*, then the user has the *Project Admin* role to all the projects, even if an explicit project role is not assigned. If a user has *Project Viewer* role at tenant scope, then the user gets "view" permissions on all the projects and the user can be provided a *Project Admin* role for a specific project using the *Project Roles*.
 
