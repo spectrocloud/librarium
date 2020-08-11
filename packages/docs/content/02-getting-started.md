@@ -55,106 +55,98 @@ Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/c
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first AWS cluster.
 </InfoBox>
 
-<p>The following steps will be taken to provision your first AWS cluster:</p>
-<ul>
-<li>Create Cluster Profile.</li>
-<li>Add AWS Cloud Account.</li>
-<li>Provision Cluster.</li>
-</ul>
+The following steps will be taken to provision your first AWS cluster:
 
-<h2 id="cluster-profile">Cluster Profile</h2>
+* Create Cluster Profile.
+* Add AWS Cloud Account.
+* Provision Cluster.
 
-<ol>
+## Cluster Profile
 
-<li>Navigate to the Default Project (select back to the Default project if you’re in the Admin view).</li>
-<li>Switch to the <em>Cluster Profiles</em> page from the left navigation bar.</li>
-<li>Click on the <em>Add Cluster Profile</em> button.</li>
-<li>Specify the name <strong>ExperimentalAWS</strong> and click <em>Next</em>.</li>
-<li>Select <strong>Amazon (AWS)</strong> for the cloud selection.</li>
-<li>Click on Edit Layers.</li>
-<li>Please designate the following selections for each layer, leaving the default configuration:
+* Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
+* Switch to the *Cluster Profiles* page from the left navigation bar.
+* Click on the *Add Cluster Profile* button.
+* Specify the name **ExperimentalAWS** and click *Next*.
+* Select **Amazon (AWS)**for the cloud selection.
+* Click on Edit Layers.
+* Please designate the following selections for each layer, leaving the default configuration:
 
-<ul>
-<li>OS: Ubuntu, 18.04.X (LTS)</li>
-<li>Kubernetes: select version 1.17.X</li>
-<li>Network: Calico 3.10.X</li>
-<li>Storage: Amazon EBS 1.0.X</li>
-<li>Additional layers:<ul>
-<li>Monitoring: Prometheus - Grafana 9.7.X</li>
-<li>Monitoring: Kubernetes Dashboard 2.0.X</li>
-<li>Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X</li>
-</ul></li>
-<li>Click on <em>Finish</em> to close the Layer dialogue.</li>
-</ul></li>
+    * OS: Ubuntu, 18.04.X (LTS)
+    * Kubernetes: select version 1.17.X
+    * Network: Calico 3.10.X
+    * Storage: Amazon EBS 1.0.X
+    * Additional layers:
+        * Monitoring: Prometheus - Grafana 9.7.X
+        * Monitoring: Kubernetes Dashboard 2.0.X
+        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X
 
-<li>Click on <em>Next</em> and review the <em>Cluster Profile</em>.</li>
-<li>Click on <em>Finish</em> to create the Cluster Profile.</li>
-</ol>
+* Click on *Finish* to close the Layer dialogue.
 
-<h2 id="cloud-account">Cloud Account</h2>
-<p><em>Cloud Accounts</em> are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.</p>
+* Click on *Next* and review the Cluster Profile.
+* Click on *Finish* to create the Cluster Profile.
+
+## Cloud Account
+
+*Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
+
 <WarningBox>
-<strong>Prerequisites:</strong><p></p>
-<p>You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: <a href="/clusters#prerequisites">Cloud Account Permissions</a>. Please import an SSH keypair into your account in the region <strong>us-east-1</strong>.</p>
-<p></p>
-<p>Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.</p>
+
+**Prerequisites:**
+You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=aws_cluster#prerequisites). Please import an SSH keypair into your account in the region **us-east-1**.
+
+Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.
+
 </WarningBox>
 
-<p><strong>Steps:</strong></p>
-<ol>
-<li>Navigate to the Default Project (select back to the Default project if you’re in the Admin view).</li>
-<li>From the left-hand main menu, select Settings.</li>
-<li>Click on <em>Add AWS Cloud Account</em>.<ul>
-<li>name: ca-aws-1</li>
-<li>Access Key: your &lt;AWS access key&gt;</li>
-<li>Secret Key: your &lt;AWS secret key&gt;</li>
-</ul>
-</li>
-<li>Click on <em>Validate</em>.</li>
-<li>Click on <em>Confirm</em> to finish creating your cloud account.</li>
-</ol>
-<h2 id="cluster">Cluster</h2>
-<p>For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:</p>
-<p><strong>Steps:</strong></p>
-<ol>
-<li>Navigate to the Default Project (select back to Default p.roject if you’re in the Admin view)</li>
-<li>Navigate to the <em>Clusters</em> page from the left-hand menu.</li>
-<li>Click on <em>Create cluster</em> (and follow the wizard):<ul>
-<li>Name: cluster-aws-1</li>
-<li>Select the cluster profile: ProductionAWS, click <em>Next</em>.</li>
-<li>Leave the pack parameter overrides as-is, click <em>Next</em>.</li>
-<li>Cloud Properties:<ul>
-<li>Cloud Account: ca-aws-1</li>
-<li>Region: us-east-1</li>
-<li>SSH keyname: &lt;select imported key&gt;</li>
-<li>Do not select (deselect): Static Placement</li>
-<li>Click on <em>Next</em>.</li>
-</ul>
-</li>
-<li>In the node pool configuration:<ul>
-<li>For the <em>Master</em> node pool, pick the following properties:<ul>
-<li>Instance type: t3.large (General Compute)</li>
-<li>Availability Zone: us-east-1a</li>
-</ul>
-</li>
-<li>For the <em>Worker</em> node pool, pick the following properties:<ul>
-<li>Instance type: t3.large (General Compute)</li>
-<li>Availability Zone: us-east-1a</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>In the final Review step, click on <em>Deploy</em>.</li>
-</ul>
-</li>
-<li>Wait for the cluster to become Active (check the <em>Overview</em> tab). Feel free to click on the Events tab to see the orchestration steps.</li>
-</ol>
-<p>Once the cluster is provisioned - feel free to try the following:</p>
-<ul>
-<li>View deployed applications <a href="/clusters">as described here</a>.</li>
-<li>Scale up-down worker nodes <a href="/clusters/aws-clusters#clusterscaling">as described here</a>.</li>
-<li>Upgrade Kubernetes to a new version <a href="/cluster-profiles/task-update-profile">as described here</a>.</li>
-</ul>
+**Steps:**
+
+* Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
+* From the left-hand main menu, select Settings.
+* Click on *Add AWS Cloud Account*.
+    * name: ca-aws-1
+    * Access Key: your &lt;AWS access key&gt;
+    * Secret Key: your &lt;AWS secret key&gt;
+
+* Click on *Validate*.
+* Click on *Confirm* to finish creating your cloud account.
+
+## Cluster
+
+For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:
+
+**Steps:**
+
+* Navigate to the Default Project (select back to Default p.roject if you’re in the Admin view)
+* Navigate to the *Clusters* page from the left-hand menu.
+* Click on *Create cluster* (and follow the wizard):
+    * Name: cluster-aws-1
+    * Select the cluster profile: ProductionAWS, click *Next*.
+    * Leave the pack parameter overrides as-is, click *Next*.
+    * Cloud Properties:
+* Cloud Account: ca-aws-1
+* Region: us-east-1
+* SSH keyname: &lt;select imported key&gt;
+* Do not select (deselect): Static Placement
+* Click on *Next*.
+
+* In the node pool configuration:
+    * For the *Master* node pool, pick the following properties:
+* Instance type: t3.large (General Compute)
+* Availability Zone: us-east-1a
+
+* For the *Worker* node pool, pick the following properties:
+    * Instance type: t3.large (General Compute)
+* Availability Zone: us-east-1a
+
+* In the final Review step, click on *Deploy*.
+
+* Wait for the cluster to become Active (check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
+
+Once the cluster is provisioned - feel free to try the following:
+
+* View deployed applications [as described here](/clusters).
+* Scale up-down worker nodes [as described here](/clusters?clusterType=aws_cluster#scalinganawscluster).
+* Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
 
 </Tabs.TabPane>
 
@@ -198,9 +190,11 @@ The following steps will be taken to provision your first Azure cluster:
 *Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
 
 <WarningBox>
-    <p><strong>Prerequisites:</strong></p>
-    <p>You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables, etc. Please ensure that your cloud account has at least the following configurations: <a href="/clusters/azure-clusters#prerequisites">Cloud Account Permissions</a>.</p>
-    <p>Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.</p>
+
+**Prerequisites:**
+You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables, etc. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=azure_cluster#creatinganazurecloudaccount).
+Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.
+
 </WarningBox>
 
 **Steps:**
@@ -252,7 +246,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 Once the cluster is provisioned - feel free to try the following:
 
 * View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters/azure-clusters#reconfiguringazurenodes).
+* Scale up-down worker nodes [as described here](/clusters?clusterType=azure_cluster#scalinganazurecluster).
 * Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
 
 </Tabs.TabPane>
@@ -360,7 +354,7 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
 Once the cluster is provisioned - feel free to try the following:
 
 * View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters/vmware-clusters#clusterscaling).
+* Scale up-down worker nodes [as described here](/clusters?clusterType=vmware_cluster#scalingavmwarecluster).
 * Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
 
 </Tabs.TabPane>
