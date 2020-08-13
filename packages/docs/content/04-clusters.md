@@ -499,6 +499,38 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="GCP Cluster" key="google_cloud_cluster">
+
+## Overview
+
+On the GCP cluster, control plane nodes and worker nodes are placed within a single private subnet which spans across different availability zones within a region.
+
+A new VPC Network is created together with all the network infrastructure components like Cloud NAT and a Cloud Router. Firewall rules are created to protect all the API endpoints.
+
+API server endpoint is exposed through a Global Load Balancer. Applications running with the cluster use a Regional Load Balancer to expose the loadbalancer services.
+
+![gcp_cluster_architecture.png](gcp_cluster_architecture.png)
+
+## Creating a GCP Cloud Account
+
+To create a GCP cloud account, you need the JSON credentials (service account key) file of the service account.
+
+In order to create service account, user should have one of the following IAM roles:
+`roles/iam.serviceAccountAdmin` or `roles/iam.serviceAccountAdmin`.
+
+To create a service account, refer to: https://cloud.google.com/iam/docs/creating-managing-service-accounts.
+
+The service account should have the following minimum roles:
+
+1. Compute Admin
+1. Service Account User
+1. Storage Object Viewer
+1. Viewer
+
+The process of creating the JSON credential files is available here: https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="VMware Cluster" key="vmware_cluster">
 
 ## Overview
