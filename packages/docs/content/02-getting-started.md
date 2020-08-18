@@ -49,7 +49,7 @@ Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/c
 
 <Tabs.TabPane tab="AWS" key="aws">
 
-## Your First AWS Cluster!
+## Your First AWS Cluster
 
 <InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first AWS cluster.
