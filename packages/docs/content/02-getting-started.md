@@ -45,11 +45,11 @@ Finally, [audit logs](/audit-logs) allows the admin to track the user interactio
 
 Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the [Cluster Profile](/cluster-profiles/task-define-profile) contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
 
-<Tabs>
+<Tabs identifier="getting_started">
 
 <Tabs.TabPane tab="AWS" key="aws">
 
-# Your First AWS Cluster
+## Your First AWS Cluster
 
 <InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first AWS cluster.
@@ -152,7 +152,7 @@ Once the cluster is provisioned - feel free to try the following:
 
 <Tabs.TabPane tab="Azure" key="azure">
 
-# Your First Azure Cluster
+## Your First Azure Cluster
 
 <InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
@@ -253,7 +253,7 @@ Once the cluster is provisioned - feel free to try the following:
 
 <Tabs.TabPane tab="VMware" key="vmware">
 
-# Your First VMWare Cluster
+## Your First VMWare Cluster
 
 <InfoBox>
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
