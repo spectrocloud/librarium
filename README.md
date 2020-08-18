@@ -157,6 +157,7 @@ After that, you can use it like this
 
 **Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
 
-- provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>
+- provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>`
 - when creating the link to this page, include (in the query) the identifier provided and the value you want (eg: /clusters?clusterType=aws#section1)
+- the values can be one of the tab panel keys 
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
