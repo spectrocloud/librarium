@@ -721,7 +721,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 * Power off installer OVA which was initially imported at the start of this installation process.
 
 <InfoBox>
-Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used provisioning of clusters across all tenant Projects.<p></p>
+Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects.<p></p>
 A Pack registry instance is setup on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries <a href="/registries-and-packs">here</a>.
 </InfoBox>
 
