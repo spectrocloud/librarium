@@ -339,14 +339,15 @@ For the quick-start guide, we’ll provision a new cluster consisting of a singl
     * Leave the pack parameter overrides as-is, click *Next*.
     * Cloud Properties:
         * Cloud Account: spectro-cloud-gateway
-        * Choose the desired setting for Datacenter, Compute Cluster, Network, and Resource Pool.
+        * Choose the Datacenter in which the 'Spectro' folder was created while creating the [Private Cloud Gateway](/getting-started?clusterType=vmware_cluster#privatecloudgateway).
         * Folder: Spectro
+        * Select DHCP as the IP management protocol. (Details of the static IP settings are available in the [VMware Clusters](/clusters?clusterType=vmware_cluster#creatingavmwarecluster) section.)
         * SSH Keys - Create a new ssh key pair (or pick one of your existing ones).  Enter the public key in this field. The public key will be installed in the cluster VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
         * Leave the NTP Server field blank, only if NTP is already configured on each of the ESXi hosts.
         * Click on *Next*.
     * In the node pool configuration:
-        * For the *Master* node pool, keep the default options
-        * For the *Worker* node pool, change the number of nodes in the pool to 2. Keep the default selection for rest of the fields
+        * For the *Master* node pool, keep the default options. For the Compute Cluster, Resource Pool, and Network values as used while creating the Private Cloud Gateway. Select a datastore as required.
+        * For the *Worker* node pool, change the number of nodes in the pool to 2. Keep the default selection for the rest of the fields. Select 'Scale Out' under the rolling updates. Click the `Copy from Master Pool` button for the 'Cloud Configuration'.
         * Click on *Next*.
     * In the final Review step, click on *Deploy*.
 1. Wait for the cluster to transition to  Running state(check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
