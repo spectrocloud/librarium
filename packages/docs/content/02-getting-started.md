@@ -261,47 +261,60 @@ The guided documentation guide below is prescriptive with the names and selectio
 
 The following steps will be taken to provision your first VMware cluster:
 
-* Create a Private Cloud Gateway.
+* Create Private Cloud Gateway.
+* Deploy Private Cloud Gateway Installer VM.
+* Configure Private Cloud Gateway.
 * Create Cluster Profile.
 * Provision Cluster.
 
-## Private Cloud Gateway
+## Create Private Cloud Gateway
 
 1. Switch to the Admin view if you are in a project view by selecting Admin from the left navigation bar.
 2. Navigate to settings in the admin view from the left navigation bar and select Private Cloud Gateways.
 3. Click on Create Private Cloud Gateway.
 4. Copy the location of the gateway installer OVF template. Also, note down the 4 digit pairing code displayed on the UI.
-5. Login to vSphere console and navigate to VMs and Templates.
-6. Pick a Datacenter you would like to use and under that, create a folder called 'Spectro'.
-7. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
-8. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
+
+## Deploy Private Cloud Gateway Installer VM
+
+1. Login to vSphere console and navigate to VMs and Templates.
+2. Pick a Datacenter you would like to use and under that, create a folder called 'Spectro'.
+3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
+4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
     * URL: <Location of the gateway installer from step #2>
     * Virtual Machine Name: spectro-cloud-gateway
     * Folder: Spectro
     * Select the desired Datacenter, Storage, and Network for the gateway installer VM as you proceed through the next few steps. Private Cloud Gateway VMs require an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
     * Customize the template as follows:
-        * Installer Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
-        * Console  Endpoint: https://console.spectrocloud.com
+    * Gateway Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
+        * Console Endpoint: https://console.spectrocloud.com
         * Pairing Code: <4 digit pairing code from step#2>
         * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
+        * Static IP Address;&lt;VM IP Address&rt;Optional IP address(eg., 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
+        * Static IP subnet prefix;&lt;Network Prefix&rt;Network gateway IP (eg., 192.168.0.1), required only for static IP allocation
+        * Static IP gateway;&lt;Gateway IP Address&rt;Static IP subnet prefix(eg., 18), required only for static IP allocation
+        * Static IP DNS;&lt;Name servers&rt;Comma separated DNS addresses (eg., 8.8.8.8, 192.168.0.8), required only for static IP allocation
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections
         * SOCKS Proxy: &lt;endpoint for the SOCKS proxy server&gt;, e.g: _PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
-9. Power on the spectro-cloud-gateway VM.
-10. Switch back to the Spectro Cloud management console's admin view. Close the Cloud Gateway Installation Instructions dialog, if you still have it open. If you have been logged out or navigated away, you can access the page by clicking on Settings > Private Cloud Gateways in the left navigation bar.
-11. Within a few minutes of having powered on the VM on the vSphere console, it should register back as a Private Cloud Gateway on this page with the name spectro-cloud-gateway.
-12. From the actions menu for the gateway, click on Configure. It may take an additional minute or two for the configure action to be available as the gateway goes through a configuration process after initially registering with the console.
-13. Enter server address, username, and password for your vCenter. Leave the 'Use self-signed certificate' option selected, if  vSphere is configured with a self-signed certificate.
-14. Leave the 'Share the account with projects' option selected.
-15. Click on 'Validate' to validate Credentials.
-16. Click on 'Proceed to Configure'
-17. Enter the desired settings for Datacenter, Compute Cluster, Network, and Resource Pool. Select 'Spectro' as the folder.
-18. Select '1' for the Number of Nodes.
-19. SSH Keys - Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the gateway VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
-20. Leave the NTP servers option blank, only if NTP is already configured on each of the ESXi hosts.
-21. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
-22. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
+5. Power on the spectro-cloud-gateway VM.
+
+## Configure Private Cloud Gateway
+
+1. Switch back to the Spectro Cloud management console's admin view. Close the Cloud Gateway Installation Instructions dialog, if you still have it open. If you have been logged out or navigated away, you can access the page by clicking on Settings > Private Cloud Gateways in the left navigation bar.
+2. Within a few minutes of having powered on the VM on the vSphere console, it should register back as a Private Cloud Gateway on this page with the name spectro-cloud-gateway.
+3. From the actions menu for the gateway, click on Configure. It may take an additional minute or two for the configure action to be available as the gateway goes through a configuration process after initially registering with the console.
+4. Enter server address, username, and password for your vCenter. Leave the 'Use self-signed certificate' option selected, if  vSphere is configured with a self-signed certificate.
+5. Leave the 'Share the account with projects' option selected.
+6. Click on 'Validate' to validate Credentials.
+7. Click on 'Proceed to Configure'
+8. Enter the desired settings for Datacenter, Compute Cluster, Network, and Resource Pool. Select 'Spectro' as the folder.
+9. Select '1' for the Number of Nodes.
+10. SSH Keys - Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the gateway VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
+10. Leave the NTP servers option blank, only if NTP is already configured on each of the ESXi hosts.
+11. Select DHCP as IP allocation strategy. 
+12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
+13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
 
 ## Cluster Profile
 
