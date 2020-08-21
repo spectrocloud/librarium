@@ -79,7 +79,7 @@ Authenticate user with Spectro Cloud pack registry by using the login command:
 <Tabs.TabPane tab="Usage" key="cli_login_usage">
 
 ```bash
-$./spectro registry login [SERVER]
+$ spectro registry login [SERVER]
 ```
 
 </Tabs.TabPane>
@@ -87,11 +87,11 @@ $./spectro registry login [SERVER]
 <Tabs.TabPane tab="Example" key="cli_login_example">
 
 ```bash
-$./spectro registry login spectro.io:5000
+$ spectro registry login spectro.io:5000
 ```
 
 ```bash
-$./spectro registry login spectro.io:5000 --insecure --default
+$ spectro registry login spectro.io:5000 --insecure --default
 ```
 
 </Tabs.TabPane>
@@ -123,7 +123,7 @@ Upload the pack content from the pack source dir to the Spectro Cloud pack regis
 <Tabs.TabPane tab="Usage" key="cli_push_usage">
 
 ```bash
-$./spectro pack push [PACK_SOURCE_DIR] [flags]
+$ spectro pack push [PACK_SOURCE_DIR] [flags]
 ```
 
 </Tabs.TabPane>
@@ -131,11 +131,15 @@ $./spectro pack push [PACK_SOURCE_DIR] [flags]
 <Tabs.TabPane tab="Example" key="cli_push_example">
 
 ```bash
-$./spectro pack push /tmp/packs/nginx-1.16.1
+$ spectro pack push /tmp/packs/nginx-1.16.1
 ```
 
 ```bash
-$./spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000
+$ spectro pack push /tmp/packs/nginx-1.16.1 --registry-server spectro.io:5000
+```
+
+```bash
+$ spectro pack push /tmp/packs/nginx-1.16.1 --force --message "updated nginx pack values"
 ```
 
 </Tabs.TabPane>
@@ -150,6 +154,12 @@ PACK_SOURCE_DIR: Directory location where pack content is located.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry
 
+-f, --force - If a pack with the same tag already exists in the registry, then the *force* option can be used to overwrite the pack contents in the registry.
+
+-m, --message - A short description about the pack changes. It is mandatory to set this flag when the force option is enabled.
+
+--skip-digest-check - By default, the *force* option can push the pack only if the pack content digest is different than the registry pack digest. So the *skip digest* command can be used to skip the comparison of the digests.
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="LIST" key="cli_list">
@@ -163,7 +173,7 @@ List all the packs from the Spectro Cloud pack registry:
 <Tabs.TabPane tab="Usage" key="cli_list_usage">
 
 ```bash
-$./spectro pack ls [flags
+$ spectro pack ls [flags
 ```
 
 </Tabs.TabPane>
@@ -171,11 +181,11 @@ $./spectro pack ls [flags
 <Tabs.TabPane tab="Example" key="cli_list_example">
 
 ```bash
-$./spectro pack ls spectro.io:5000
+$ spectro pack ls spectro.io:5000
 ```
 
 ```bash
-$./spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
+$ spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
 ```
 
 </Tabs.TabPane>
@@ -201,7 +211,7 @@ Download the packs from the Spectro Cloud pack registry to a pack target locatio
 <Tabs.TabPane tab="Usage" key="cli_pull_usage">
 
 ```bash
-$./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
+$ spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
 ```
 
 </Tabs.TabPane>
@@ -209,11 +219,11 @@ $./spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
 <Tabs.TabPane tab="Example" key="cli_pull_example">
 
 ```bash
-$./spectro pack pull nginx:1.16.1 /tmp/packs
+$ spectro pack pull nginx:1.16.1 /tmp/packs
 ```
 
 ```bash
-$./spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000
+$ spectro pack pull nginx@sha256:5269f073ac8e3c2536270b496ca1cc537e32e44186a5a014b8c48cddca3c6e87 /tmp/packs --registry-server spectro.io:5000
 ```
 
 </Tabs.TabPane>
@@ -243,7 +253,7 @@ Create a new tag to a pack which is already pushed to the Spectro Cloud pack reg
 <Tabs.TabPane tab="Usage" key="cli_add_usage">
 
 ```bash
-$./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
+$ spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 ```
 
 </Tabs.TabPane>
@@ -251,11 +261,11 @@ $./spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 <Tabs.TabPane tab="Example" key="cli_add_example">
 
 ```bash
-$./spectro pack tag add ubuntu:lts__14.4.3 stable
+$ spectro pack tag add ubuntu:lts__14.4.3 stable
 ```
 
 ```bash
-$./spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
+$ spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
 ```
 
 </Tabs.TabPane>
@@ -293,7 +303,7 @@ Delete a tag to a pack which is already pushed to the Spectro Cloud pack registr
 <Tabs.TabPane tab="Usage" key="cli_delete_usage">
 
 ```bash
-$./spectro pack tag delete PACK:TAG [flags]
+$ spectro pack tag delete PACK:TAG [flags]
 ```
 
 </Tabs.TabPane>
@@ -301,11 +311,11 @@ $./spectro pack tag delete PACK:TAG [flags]
 <Tabs.TabPane tab="Example" key="cli_delete_example">
 
 ```bash
-$./spectro pack tag delete ubuntu:14.4.3
+$ spectro pack tag delete ubuntu:14.4.3
 ```
 
 ```bash
-$./spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
+$ spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
 ```
 
 </Tabs.TabPane>
