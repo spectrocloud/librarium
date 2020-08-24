@@ -9,7 +9,7 @@ const SearchIcon = styled(Search)`
   pointer-events: none;
   margin-right: 10px;
   left: 15px;
-  color: #dadada;
+  color: #999;
 `;
 
 const Input = styled.input`
@@ -22,7 +22,7 @@ const Input = styled.input`
   flex-grow: 1;
 
   ::placeholder {
-    color: #dadada;
+    color: #999;
   }
 `;
 

@@ -123,7 +123,6 @@ export default function MDXLayout({
   hideToC,
   fullWidth,
   hideToCSidebar,
-  hideMenuSidebar
 }) {
   const config = useConfig();
 
@@ -142,15 +141,7 @@ export default function MDXLayout({
 
   // meta tags
   const metaTitle = mdx.frontmatter?.metaTitle;
-
   const metaDescription = mdx.frontmatter?.metaDescription;
-
-  let canonicalUrl = config?.gatsby?.siteUrl;
-  // let favicon = config?.siteMetadata?.favicon;
-
-  canonicalUrl =
-    config?.gatsby?.pathPrefix !== '/' ? canonicalUrl + config?.gatsby?.pathPrefix : canonicalUrl;
-  canonicalUrl = canonicalUrl + mdx.fields.slug;
 
   return (
     <>
@@ -162,7 +153,6 @@ export default function MDXLayout({
         {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
         {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
         {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
-        <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href={favicon} type="image/x-icon" />
       </Helmet>
 
