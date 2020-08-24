@@ -287,12 +287,12 @@ The following steps will be taken to provision your first VMware cluster:
     * Customize the template as follows:
     * Gateway Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
         * Console Endpoint: https://console.spectrocloud.com
-        * Pairing Code: <4 digit pairing code from step#2>
+        * Pairing Code: <4 digit pairing code from step #2>
         * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
-        * Static IP Address;&lt;VM IP Address&rt;Optional IP address(eg., 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
-        * Static IP subnet prefix;&lt;Network Prefix&rt;Network gateway IP (eg., 192.168.0.1), required only for static IP allocation
-        * Static IP gateway;&lt;Gateway IP Address&rt;Static IP subnet prefix(eg., 18), required only for static IP allocation
-        * Static IP DNS;&lt;Name servers&rt;Comma separated DNS addresses (eg., 8.8.8.8, 192.168.0.8), required only for static IP allocation
+        * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
+        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation
+        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation
+        * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections
         * SOCKS Proxy: &lt;endpoint for the SOCKS proxy server&gt;, e.g: _PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
