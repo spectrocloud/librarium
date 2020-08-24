@@ -1,5 +1,8 @@
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
+import Helmet from "react-helmet";
+import favicon from "../../../shared/src/assets/favicon.png"
+
 import { Layout, DocsLayout, Link } from '@librarium/shared';
 import Integrations from '@librarium/docs/src/components/Integrations';
 import App from '../App';
@@ -14,8 +17,21 @@ export default function IntegrationsTemplate({ children, data, ...rest }) {
     );
   }, [data.allMdx.edges]);
 
+  const metaTitle = "Integrations"
+  const metaDescription = "Integrations are packages that enhances your Kubernetes cluster with different capabilities like: networking, load balancing, security, logging, ingress or monitoring"
+
   return (
     <App>
+      <Helmet>
+        {metaTitle ? <title>{metaTitle}</title> : null}
+        {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+        {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+        {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
+        {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+        {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+        {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
+        <link rel="icon" href={favicon} type="image/x-icon" />
+      </Helmet>
       <Layout menu={menu} {...rest}>
         <h1>Integrations</h1>
         <p>
