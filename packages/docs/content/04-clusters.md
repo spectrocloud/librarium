@@ -713,7 +713,9 @@ Additional properties that are required to be set only for a Proxy Environment. 
 * Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the Spectro Cloud management platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
 * Click on "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 * Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
-* Click on Deploy, to initiate provisioning of the gateway cluster. The status on the UI should change to 'Provisioning' and eventually 'Running' when gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors, or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
+* Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
+* Choose IP Allocaton Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to gateway cluster. By default, the IP Pool is available for us by other tenant clusters. This can be prevented by selecting the "..." options. Detailed description of all the fields involved in creation of an IP pool can be found here "..."
+* Click on Confirm, to initiate provisioning of the gateway cluster. The status on the UI should change to 'Provisioning' and eventually 'Running' when gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors, or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
 * Once the Gateway transitions to Running state, it is fully provisioned and ready to bootstrap tenant cluster requests.
 
 ## vSphere - Clean up installer
@@ -797,6 +799,23 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production e
 Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node gateway to support future expansion.
 </InfoBox>
 
+## IP Address Management
+
+Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. Following is a description of various IP Pool properties:
+
+| Property | Description |
+|---|---|
+| Name | Descriptive name for the IP Pool. This name will be displayed for IP Pool selection when static IP is chosen as IP allocation strategy |
+| Network Type | Select 'Range' to provide a start and an end IP addrress. IPs within this range will become part of this pool. Alternately select 'Subnet' to provide the IP range in CIDR format.|
+| Start | First IP address for a range based IP Pool E.g. 10.10.183.1| 
+| End | Last IP address for a range based IP Pool.  E.g. 10.10.183.100 |
+| Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 | 
+| Subnet Prefix | Network subnet prefix. E.g. /18| 
+| Gateway | Network Gateway E.g. 10.128.1.1 | 
+| Nameserver addresses | Comma separated list of name servers. Eg. 8.8.8.8 | 
+| Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared cross clusters.|
+
+
 ## Creating a VMware Cluster
 
 The following steps need to be performed to provision a new VMware cluster :-
@@ -807,13 +826,10 @@ The following steps need to be performed to provision a new VMware cluster :-
 * Provide vSphere Cloud account and placement information.
     * Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters, if permitted by the administrator.
     * Datacenter -The vSphere datacenter where the cluster nodes will be launched.
-    * Compute Cluster - A Compute cluster under the selected Datacenter.
-    * Datastore - The vSphere storage in the selected Datacenter.
-    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.
-    * Resource Pool- The vSphere resource pool where the cluster nodes will be launched.
     * Folder - The vSphere VM Folder where the cluster nodes will be launched.
     * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
     * NTP Server (Optional) - Setup time synchronization for all the running nodes.
+    * IP Allocation strategy - DHCP or Static IP
 * Configure master and worker node pools. A master and a worker node pool is configured by default.
     * Name - A descriptive name for the node pool.
     * Size - Number of nodes to be provisioned for the node pool. For master pool, this number can be 1, 3 or 5.
@@ -821,6 +837,13 @@ The following steps need to be performed to provision a new VMware cluster :-
     * CPU - Number of CPUs to be allocated to the nodes.
     * Memory - Amount of memory in GB to be allocated to the nodes.
     * Disk - Storage disk size in GB to be attached to the node.
+    * One or more placement domains. VMs are distributed across multiple placement domains on a round robin basis. Curerntly only one placement domain is supported for master pool. 
+	    * Compute Cluster - A Compute cluster under the selected Datacenter.
+	    * Datastore - The vSphere storage in the selected Datacenter.
+	    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.
+	    * Resource Pool- The vSphere resource pool where the cluster nodes will be launched.
+	    * IP Pool - An IP pool to be used for allocation IP addresses to cluster VMs. Required only for Static IP allocation. IP pools need to be predefined for private cloud gateways.  
+    
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
