@@ -272,7 +272,7 @@ The following steps will be taken to provision your first VMware cluster:
 1. Switch to the Admin view if you are in a project view by selecting Admin from the left navigation bar.
 2. Navigate to settings in the admin view from the left navigation bar and select Private Cloud Gateways.
 3. Click on Create Private Cloud Gateway.
-4. Copy the location of the gateway installer OVF template. Also, note down the 4 digit pairing code displayed on the UI.
+4. Copy the location of the gateway installer OVF template. Also, note down the 5 digit pairing code displayed on the UI.
 
 ## Deploy Private Cloud Gateway Installer VM
 
@@ -287,7 +287,7 @@ The following steps will be taken to provision your first VMware cluster:
     * Customize the template as follows:
     * Gateway Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
         * Console Endpoint: https://console.spectrocloud.com
-        * Pairing Code: <4 digit pairing code from step #2>
+        * Pairing Code: <5 digit pairing code from step #2>
         * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
         * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation
