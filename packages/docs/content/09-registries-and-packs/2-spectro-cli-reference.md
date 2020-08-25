@@ -66,7 +66,7 @@ List of Arguments available to all the Spectro CLI commands -
 
 # Commands
 
-<Tabs>
+<Tabs identifier="cliCommands">
 
 <Tabs.TabPane tab="LOGIN" key="cli_login">
 
@@ -74,7 +74,7 @@ List of Arguments available to all the Spectro CLI commands -
 
 Authenticate user with Spectro Cloud pack registry by using the login command:
 
-<Tabs>
+<Tabs identifier="cliLogin">
 
 <Tabs.TabPane tab="Usage" key="cli_login_usage">
 
@@ -118,7 +118,7 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
 
-<Tabs>
+<Tabs identifier="cliPush">
 
 <Tabs.TabPane tab="Usage" key="cli_push_usage">
 
