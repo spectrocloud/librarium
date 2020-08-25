@@ -19,7 +19,6 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 </Intro>
 
 <PointsOfInterest
-  useIndex={true}
   points={[
     {
       x: 20,
