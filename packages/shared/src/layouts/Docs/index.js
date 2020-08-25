@@ -169,7 +169,7 @@ export default function MDXLayout({
             <StickyWrap>
               <Edit>
                 {docsLocation && (
-                  <Link to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                  <Link target="_blank" to={`${docsLocation}/${mdx.parent.relativePath}`}>
                     <Github icon="github" width="16px" /> Edit on GitHub
                   </Link>
                 )}
