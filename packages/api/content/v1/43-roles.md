@@ -1,7 +1,7 @@
 ---
 title: 'Roles'
 metaTitle: 'Roles'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that is used to list, create or update roles'
 api: true
 paths: ['/v1alpha1/roles']
 ---

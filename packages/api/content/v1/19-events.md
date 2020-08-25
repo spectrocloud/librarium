@@ -1,7 +1,7 @@
 ---
 title: 'Events'
 metaTitle: 'Events'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to get generic events for different components like clusters'
 api: true
 paths: ['/v1alpha1/events']
 ---

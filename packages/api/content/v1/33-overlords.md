@@ -1,7 +1,7 @@
 ---
 title: 'Private Cloud Gateway'
 metaTitle: 'Private Cloud Gateway'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that is used to list, create or configure private cloud gateways'
 api: true
 paths: ['/v1alpha1/overlords']
 ---

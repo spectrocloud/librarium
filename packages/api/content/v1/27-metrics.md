@@ -1,7 +1,7 @@
 ---
 title: 'Metrics'
 metaTitle: 'Metrics'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that is used to get detailed metrics for different components'
 api: true
 paths: ['/v1alpha1/metrics']
 ---
