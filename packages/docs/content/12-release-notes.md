@@ -11,6 +11,16 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# August 21, 2020 - Release 1.1.0
+
+Release 1.1.0 is all about enhancing the user experience, providing tighter controls on clusters and important bug fixes.
+
+* On the UI side, the login has been made faster. Additionally, users can now setup alerts to monitor cluster health. A `Revert to default values` button for cluster profiles is added.
+* Clusters are easier to launch with the `Copy from Master` button; bad deployments are now prevented for certain instances; scaling is easier with the `Scale Strategy`.
+* Private gateways can now be provisioned on static IPs with greater control on IP allocation using [IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
+* Updates to the CLI tool include more flags to the `PUSH` command for forcibly overwriting registry packs.
+* Bug Fixes: BET-806 related to SSO login and BET-403 related to validation of dependencies for availability zones have been resolved.
+
 # July 3, 2020 - Release 1.0.2
 
 * Minor bug fixes for release 1.0.1.
@@ -35,9 +45,7 @@ The following features are included as part of Spectro Cloud 1.0:
 
 ## Known Issues
 
-* **BET-403:** Spectro Cloud does not validate dependencies in cloud configuration. For example, for Azure cloud, not all instance types support every available storage type. Choosing an incompatible combination does not result in a validation error. Runtime failures might result from such configuration, which would then need to be corrected by the users.
 * **BET-768:** On Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
-* **BET-806:** For accounts configured with Single Sign-On, a session timeout on the UI console does not redirect to the login screen of the Single sign-on provider. Instead the Spectro Cloud login screen is shown to the user. As a work around, the user would need to change the browser link manually to their tenant root address. This will ensure they are directed to the single sign-on provider's login screen.
 
 <InfoBox>
 Spectro Cloud adopts relevant security best practices for operating systems, Kubernetes components, and cloud environments. All Spectro Cloud container images are scanned for CVEs before a release. While Spectro Cloud takes ownership of securing the cluster infrastructure, there maybe additional 3rd party integrations installed on the Kubernetes clusters provisioned. Security of such 3rd party integrations, including their container images and associated configurations, is the responsibility of the provider.
