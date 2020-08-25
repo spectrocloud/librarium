@@ -88,10 +88,10 @@ function Point({description, placement = "right", x , y, index, useIndex}) {
 }
 
 function PointsOfInterest({
-  options = [],
+  points = [],
   useIndex = false,
 }) {
-  return options.map((point, index) => <Point {...point} index={index} useIndex={useIndex} />);
+  return points.map((point, index) => <Point {...point} index={index} useIndex={useIndex} />);
 }
 
 export default PointsOfInterest;

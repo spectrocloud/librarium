@@ -20,7 +20,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 <PointsOfInterest
   useIndex={true}
-  options={[
+  points={[
     {
       x: 20,
       y: 20,
