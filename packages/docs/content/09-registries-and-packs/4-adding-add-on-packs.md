@@ -256,7 +256,7 @@ The example below shows how to build the Permission Manager auth pack and push t
   ],
   "layer": "addon",
   "name": "permission-manager",
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
 ```
 

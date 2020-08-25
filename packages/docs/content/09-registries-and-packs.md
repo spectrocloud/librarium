@@ -51,6 +51,6 @@ Spectro CLI is a Command Line Interface to interact with the Spectro Cloud Pack 
 
 Spectro CLI is currently available in two platforms - OSX & Linux:
 
-OSX     : https://spectro-cli.s3.amazonaws.com/v1.0.0/osx/spectro
+OSX     : https://spectro-cli.s3.amazonaws.com/v1.1.0/osx/spectro
 
-Linux   : https://spectro-cli.s3.amazonaws.com/v1.0.0/linux/spectro
+Linux   : https://spectro-cli.s3.amazonaws.com/v1.1.0/linux/spectro
