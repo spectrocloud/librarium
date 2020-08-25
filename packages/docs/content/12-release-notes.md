@@ -18,7 +18,7 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 * On the UI side, the login has been made faster. Additionally, users can now setup alerts to monitor cluster health. A `Revert to default values` button for cluster profiles is added.
 * Clusters are easier to launch with the `Copy from Master` button; bad deployments are now prevented for certain instances; scaling is easier with the `Scale Strategy`.
 * Private gateways can now be provisioned on static IPs with greater control on IP allocation using [IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
-* Updates to the CLI tool include more flags to the `PUSH` command for forcibly overwriting registry packs.
+* Updates to the CLI tool include more [flags](/registries-and-packs/spectro-cli-reference?cliCommands=cli_push#flags) to the `PUSH` command for forcibly overwriting registry packs.
 * Bug Fixes: BET-806 related to SSO login and BET-403 related to validation of dependencies for availability zones have been resolved.
 
 # July 3, 2020 - Release 1.0.2
