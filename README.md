@@ -163,7 +163,7 @@ After that, you can use it like this
 
 ### Points of interest component
 
-To use this components you will have to import if from the _shared_, under the _common_ folder
+To use this components you will have to import if from the _shared_ folder
 
 ```js
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
