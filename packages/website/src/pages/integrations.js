@@ -53,8 +53,8 @@ export default function IntegrationsTemplate({ children, data, ...rest }) {
           </Link>{' '}
           is available here. The specific uses (or the functionalities) that the add-ons provide are
           called "Layers" in the Spectro Cloud universe. For example, authentication is a layer
-          which has the options of Dex and Permission Manager. Monitoring is another layer with
-          options of Kubernetes Dashboard, Prometheus Grafana and a whole lot more. To learn more
+          that has the options of Dex and Permission Manager. Monitoring is another layer with
+          options of Kubernetes Dashboard, Prometheus Grafana, and a whole lot more. To learn more
           about individual integrations, use the search bar below to find a specific option.
           Alternatively, use the filter buttons to see the available options.
         </p>

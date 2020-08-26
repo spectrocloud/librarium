@@ -12,7 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Falco
 
-The Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco to monitor run-time security of your Kubernetes applications and internal components.
+Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco to monitor the run-time security of your Kubernetes applications and internal components.
 
 ## Versions
 

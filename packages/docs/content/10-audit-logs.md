@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 The Spectro Cloud management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
 
-The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update* and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
+The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update*, and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
 
 # Accessing Audit Logs
 
@@ -28,7 +28,7 @@ Audits can be accessed for the tenant scope and the project scope. The tenant sc
 The audit logs can be filtered based on user and resource attributes. The following attributes can be used to filter the audit logs:
 
 * Type - The action type on the resource.
-* Resource Type - The resources type. (The resources are grouped based on the type).
+* Resource Type - The resource type. (The resources are grouped based on the type).
 * Start Date and End Date - Period range for the audit logs.
 
 # Adding Update Note

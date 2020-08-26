@@ -12,7 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # MetalLB
 
-MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for on-prem cloud(s) and will help external service(s) get IP address, when service type is set as LoadBalancer.
+MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for the on-prem cloud(s) and will help external service(s) get an IP address when the service type is set as LoadBalancer.
 
 ## Components
 
