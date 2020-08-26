@@ -194,9 +194,14 @@ After that you can use it like this
       tooltipPlacement: "rightTop",
     },
   ]}
+>
+
+  *Markdown content*
+
+</PointsOfInterest>
 ```
 
-**x** and **y** properties refer to the coordinates of the point starting from the **top-left corner**.
+**x** and **y** properties refer to the coordinates of the point starting from the **top-left corner** of the markdown container.
 
 **Note**: ***x***, ***y***, ***description*** properties are **mandatory**. ***label*** and ***tooltipPlacement*** properties are optional.
 
