@@ -160,3 +160,46 @@ After that, you can use it like this
 - provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>
 - when creating the link to this page, include (in the query) the identifier provided and the value you want (eg: /clusters?clusterType=aws#section1)
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
+
+### Points of interest component
+
+To use this components you will have to import if from the _shared_, under the _common_ folder
+
+```js
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+```
+
+After that you can use it like this
+
+```js
+<PointsOfInterest
+  points={[
+    {
+      x: 20,
+      y: 20,
+      label: 1,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 80,
+      y: 100,
+      label: 2,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      x: 220,
+      y: 230,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+```
+
+*x* and *y* properties refer to the distance between the top-left corner of the page and the point.
+
+**Note**: *x*, *y*, *description* properties are mandatory. *label* and *tooltipPlacement* properties are optional.
+
+If no label is specified, the default one is "+".
+
+Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (default), _rightBottom_, _bottomRight_, _bottom_, _bottomLeft_, _leftBottom_, _left_, _leftTop_.

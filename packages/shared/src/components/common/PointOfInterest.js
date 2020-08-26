@@ -5,16 +5,16 @@ import { Tooltip } from "antd";
 const pulse = keyframes`
  0% {
     transform: scale(1);
-    box-shadow: inset 0 0 1px 1px rgba(217, 83, 83, 0.8);
+    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0.8);
   }
 
   50% {
-    box-shadow: inset 0 0 1px 1px rgba(217, 83, 83, 0.8);
+    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0.8);
   }
 
   100% {
     transform: scale(1.6);
-    box-shadow: inset 0 0 1px 1px rgba(217, 83, 83, 0);
+    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0);
   }
 `;
 
@@ -26,7 +26,7 @@ const Circle = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #d95353;
+  background: #4432F5;
   box-shadow: 0 0 10px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3);
   color: white;
   text-align: center;
@@ -54,15 +54,9 @@ const Circle = styled.div`
       animation: none;
     }
   `}
-
-  ${props => props.isOpened && !props.useIndex && css`
-    > div {
-      transform: rotate(135deg);
-    }
-  `}
 `;
 
-function Point({description, placement = "right", x , y, index, useIndex}) {
+function Point({description, tooltipPlacement = "right", x , y, label}) {
   const [isVisited, setIsVisited] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
 
@@ -70,17 +64,16 @@ function Point({description, placement = "right", x , y, index, useIndex}) {
     <Tooltip
       trigger={["click"]}
       title={description}
-      placement={placement}
+      placement={tooltipPlacement}
       onVisibleChange={(visible) => setIsOpened(visible)}>
         <Circle
           x={x}
           y={y}
-          useIndex={useIndex}
           isOpened={isOpened}
           isVisited={isVisited}
           onClick={() => setIsVisited(true)}>
             <div>
-              {useIndex ? index + 1 : "+"}
+              {label || "+"}
             </div>
         </Circle>
     </Tooltip>
@@ -89,9 +82,8 @@ function Point({description, placement = "right", x , y, index, useIndex}) {
 
 function PointsOfInterest({
   points = [],
-  useIndex = false,
 }) {
-  return points.map((point, index) => <Point {...point} index={index} useIndex={useIndex} />);
+  return points.map((point, index) => <Point {...point} index={index} />);
 }
 
 export default PointsOfInterest;

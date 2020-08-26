@@ -10,28 +10,12 @@ hideToCSidebar: true
 
 import {Intro} from "@librarium/shared/src/components"
 import WarningBox from '@librarium/shared/src/components/WarningBox';
-import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 <Intro>
 
 # Welcome to Spectro Cloud!
 
 </Intro>
-
-<PointsOfInterest
-  points={[
-    {
-      x: 20,
-      y: 20,
-      description: "Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1Lorem ipsum 1",
-      placement: "rightTop"
-    },
-      {
-      x: 80,
-      y: 100,
-      description: "Lorem ipsum 2",
-    }
-]} />
 
 Welcome to Spectro Cloud. This is the documentation section where you should be able to find answers to most queries and learn about the Spectro Cloud platform. We start off with an overview of the most important concepts. These help make the most out of Spectro Cloud.
 
