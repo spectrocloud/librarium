@@ -5,28 +5,33 @@ import { Tooltip } from "antd";
 const pulse = keyframes`
  0% {
     transform: scale(1);
-    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0.8);
+    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0.8);
   }
 
   50% {
-    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0.8);
+    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0.8);
   }
 
   100% {
     transform: scale(1.6);
-    box-shadow: inset 0 0 1px 1px rgba(69, 50, 245, 0);
+    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0);
   }
+`;
+
+const Wrapper = styled.div`
+  position: relative;
 `;
 
 const Circle = styled.div`
   position: absolute;
   top: ${props => `${props.y}px}`};
   left: ${props => `${props.x}px}`};
+  transform: translate(-12px, -12px);
   z-index: 1;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #4432F5;
+  background: #2682fa;
   box-shadow: 0 0 10px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3);
   color: white;
   text-align: center;
@@ -82,8 +87,14 @@ function Point({description, tooltipPlacement = "right", x , y, label}) {
 
 function PointsOfInterest({
   points = [],
+  children
 }) {
-  return points.map((point, index) => <Point {...point} index={index} />);
+  return (
+      <Wrapper>
+        {points.map((point, index) => <Point {...point} index={index} />)}
+        {children}
+      </Wrapper>
+    );
 }
 
 export default PointsOfInterest;
