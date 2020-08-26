@@ -45,18 +45,18 @@ An explanation for the parameters of the JSON is given in the table below:
 | name | String | True | Name of the pack |
 | displayName | String | True | Name of the pack as it is to be displayed on the Spectro Cloud management console |
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
-| addon-type | String | False | Addon-type must be set for packs that have layer set to ‘add-on’. Value must be one of : logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
-| version | String | True | A Sematic version for the pack. It is recommended that pack version be the same as the underlying integration it is being created for. For example, the version for pack that will install prometheus 2.3.4, should set to 2.3.4. |
+| addon-type | String | False | Addon-type must be set for packs that have the layer set to ‘add-on’. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
+| version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
 | cloudTypes | Array | True | Supported cloud types are aws, azure, vmware. One or more types can be provided for a pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
-| annotations | Array | False | Optional key-value pairs required during pack installation. Typically custom packs do not need to set annotations. Some packs like the ones for OS require annotations need to be set with an image id. |
+| annotations | Array | False | Optional key-value pairs required during pack installation. Typically custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
 | eol | String | False | End of life date for integration. |
 | kubeManifests | Array | False | Relative path to kubernetes manifest yaml files |
 | ansibleRoles | Array | False | Relative part to the Ansible role folders. These folders should contain all the artifacts required by Ansible. Please refer to Ansible documentation for more details on how Ansible roles are constructed. |
-| | | | In Spectro Cloud, Ansible roles are used to customize OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents etc. |
+| | | | In Spectro Cloud, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
 
-3. Create a file named “values.yaml”. This file consists of configurable parameters that need to be exposed to the end users during creation of a cluster profile. Parameters for all charts, manifests and Ansible roles defined in the pack are defined in this file. Helm charts natively support values override. Any values defined are merged with those defined within a chart. Manifests and Ansible roles need to be explicitly templatized if parameter configuration is desired.
+3. Create a file named “values.yaml”. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in this file. Helm charts natively support values override. Any values defined are merged with those defined within a chart. Manifests and Ansible roles need to be explicitly templatized if parameter configuration is desired.
 
 ```yaml
 pack:
@@ -235,7 +235,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 ## Ansible Roles
 
-In all the examples above, an additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
+In all the examples above, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
 
 ```
 ./pack.json

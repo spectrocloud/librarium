@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Elasticsearch-Fluentd-Kibana
 
-The logging integration installs a production grade ElasticSearch cluster with Kibana and Fluentd by default on the Kubernetes cluster. This integration provides a rich set of logging features like forwarding,  aggregating & parsing logs from the Kubernetes cluster.
+The logging integration installs a production-grade ElasticSearch cluster with Kibana and Fluentd by default on the Kubernetes cluster. This integration provides a rich set of logging features like forwarding,  aggregating & parsing logs from the Kubernetes cluster.
 
 ## Contents
 
@@ -32,8 +32,8 @@ Follow below steps to configure Ingress on Kibana
 
 1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #643)
 2. Ingress (line #670)
-   * Enable Ingress, change enabled from false to "true"
-   * Set Ingress rules like annotations, path, hosts etc.
+   * Enable Ingress; change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts, etc.
 
 With these config changes, you can access Kibana service on the Ingress Controller LoadBalancer hostname / IP
 

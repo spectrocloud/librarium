@@ -36,7 +36,7 @@ This integration also includes dashboards and alerts.
 
 ## Use custom secrets for alertmanager
 
-For Alertmanager to work fine, alerting config should be set while deploying the inetrgation. This config also includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below
+For Alertmanager to work fine, alerting config should be set while deploying the intergation. This config also includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below
 
 * Add Prometheus-Operator integration in the Cluster profile with changes to the following values
    * `alertmanager.alertmanagerSpec.useExistingSecret` - Set to true. This will skip creating the default Alertmanager secret
@@ -83,8 +83,8 @@ Follow below steps to configure Ingress on Grafana
 
 1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #408)
 2. Ingress (line #416)
-   * Enable Ingress, change enabled from false to "true"
-   * Set Ingress rules like annotations, path, hosts etc.
+   * Enable Ingress; change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts, etc.
 
 With these changes, you can access Grafana service on the Ingress Controller LoadBalancer hostname / IP
 

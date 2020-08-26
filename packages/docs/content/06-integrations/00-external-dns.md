@@ -15,7 +15,7 @@ The integration helps configure public DNS servers with information about Kubern
 
 # Prerequisites
 
-Providers have to be setup for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be setup, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
+Providers have to be set up for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be set up, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
 
 ## Components
 
@@ -31,7 +31,7 @@ Integration deploys the following components:
 
 ### Setup prerequisites for AWS Route53
 
-* Create the following IAM policy in AWS account. This is needed for externalDNS to list and create Route53 resources.
+* Create the following IAM policy in the AWS account. This is needed for externalDNS to list and create Route53 resources.
 
 ```json
 {
@@ -86,9 +86,9 @@ Integration deploys the following components:
 
 ### Deploy Applications with Ingress on the cluster
 
-* Add Prometheus-Operator addon to the same profile where ExternalDNS is aded
+* Add Prometheus-Operator addon to the same profile where ExternalDNS is added
   * Change serviceType to ClusterIP (line #408)
-  * Enable Ingress for the addon packs. In this example, lets use Prometheus-Operator integration.
+  * Enable Ingress for the add-on packs. In this example, let us use Prometheus-Operator integration.
     Ingress config for Grafana will look like the following :
     ```yaml
     #Ingress config

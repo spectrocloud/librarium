@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Vault
 
-[Vault](https://www.vaultproject.io/) helps secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
+[Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
 
 ## Components
 
@@ -31,7 +31,7 @@ Vault integration has the following components:
 ## Supported Use cases
 
 1. Running a Vault Service:
-    * Vault is setup to run in **Dev mode** by default and so, vault will be unsealed and initialized.
+    * Vault is set up to run in **Dev mode** by default and so, Vault will be unsealed and initialized.
     * For production use cases, we recommend disabling Dev mode and enable HA.
     * Also, see [Production Checklist](https://www.vaultproject.io/docs/platform/k8s/helm/run#architecture) recommendations.
 1. Injecting application secrets from an external Vault into pods (**Agent Injector**).

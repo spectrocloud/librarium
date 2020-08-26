@@ -12,7 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Overview
 
-Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
+Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
 ## Supported Networking Packs
 
@@ -22,9 +22,9 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
 
 # Calico
 
-[Project Calico](http://docs.projectcalico.org/) is an open source container networking provider and network policy engine.
+[Project Calico](http://docs.projectcalico.org/) is an open-source container networking provider and network policy engine.
 
-Calico provides a highly scalable networking and network policy solution for connecting Kubernetes pods based on the same IP networking principles as the internet, for both Linux (open source) and Windows (proprietary - available from [Tigera](https://www.tigera.io/essentials/)). Calico can be deployed without encapsulation or overlays to provide high-performance, high-scale data center networking. Calico also provides fine-grained, intent based network security policy for Kubernetes pods via its distributed firewall.
+Calico provides highly scalable networking and network policy solution for connecting Kubernetes pods based on the same IP networking principles as the internet, for both Linux (open source) and Windows (proprietary - available from [Tigera](https://www.tigera.io/essentials/)). Calico can be deployed without encapsulation or overlays to provide high-performance, high-scale data center networking. Calico also provides a fine-grained, intent-based network security policy for Kubernetes pods via its distributed firewall.
 
 Calico manifest used for networking does the following:
 
@@ -44,7 +44,7 @@ Azure supports VXLAN encapsulation type.
 
 | Name | Supported Values | Default value | Description |
 | --- | --- | --- | --- |
-| calico.encapsulationType | `CALICO_IPV4POOL_IPIP`, `CALICO_IPV4POOL_VXLAN` | `CALICO_IPV4POOL_IPIP` - AWS, VMware clouds | The encapsulation type to be used for networking (depends on cloud) |
+| calico.encapsulationType | `CALICO_IPV4POOL_IPIP`, `CALICO_IPV4POOL_VXLAN` | `CALICO_IPV4POOL_IPIP` - AWS, VMware clouds | The encapsulation type to be used for networking (depends on the cloud) |
 | | | `CALICO_IPV4POOL_VXLAN` - Azure cloud | |
 | calico.encapsulationMode | `Always, CrossSubnet, Never` | Always | The mode to use the IPv4 POOL created at start up |
 | calico.calicoNetworkCIDR | CIDR range | `192.168.0.0/16` | CIDR range to be assigned for Pods. This range should match the `podCIDR` range specified in the Kubernetes layer |

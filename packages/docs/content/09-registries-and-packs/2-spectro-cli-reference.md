@@ -280,7 +280,7 @@ Ex. lts___14.4.3 : lts → group, 14.4.3 → label
 
 ### Args
 
-PACK_NAME: TAG - Name of the pack for a particular tag to which new tag will be created.
+PACK_NAME: TAG - Name of the pack for a particular tag to which a new tag will be created.
 
 TARGET_LABEL - Target tag label.
 
@@ -296,7 +296,7 @@ TARGET_LABEL - Target tag label.
 
 ## DELETE (Delete a tag)
 
-Delete a tag to a pack which is already pushed to the Spectro Cloud pack registry.
+Delete a tag to a pack that is already pushed to the Spectro Cloud pack registry.
 
 <Tabs>
 
