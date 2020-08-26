@@ -46,7 +46,7 @@ Click `Add Application` and then click the `Create New App` option.
 
 In the window that opens next, under "General Settings", choose "Web" as the "Platform" and select `SAML 2.0` as the sign-on method. Click `Create` to add the new app.
 
-Your new app is added on Okta and needs to be configured. Give a name to the app that has been created.
+Your new app is added to Okta and needs to be configured. Give a name to the app that has been created.
 
 **We strongly recommend using the** `ENTITYID` **as it is from the Spectro Cloud SAML Panel as the app name.**
 
@@ -65,7 +65,7 @@ In the "NameID format", select `EmailAddress` from the dropdown. In the "ATTRIBU
 | Email       | unspecified            | user.email                                    |
 | SpectroTeam | unspecified            | *Enter default team. See explanation below* |
 
-Finish the teams configuration and click `Next` to access the last tab on the Okta dashboard, which is the `Feedback` tab. Here, select the "***I'm a software vendor***" option and click `Finish` to complete the Okta configuration.
+Finish the "teams" configuration and click `Next` to access the last tab on the Okta dashboard, which is the `Feedback` tab. Here, select the "***I'm a software vendor***" option and click `Finish` to complete the Okta configuration.
 
 This will return to the Okta `Applications` page. The Spectro Cloud should now be visible. Under the `Sign On` tab, click on the `View Setup Instructions` button. This opens a new tab showing the IdP SAML details. Copy the `IDP Metadata` and paste it into the corresponding box in the Spectro Cloud SAML Console. Click `Confirm` to finish the process. A success banner should be visible on the top left which ensures the completion of the configuration.
 
@@ -144,6 +144,6 @@ https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fe
 
 # About the `SpectroTeam` Parameter
 
-Any non-admin user that is added to a tenant must be added into at least one team when being created by the admin. This team can be changed later on if needed. See the teams section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as Okta. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
+Any non-admin user that is added to a tenant must be added to at least one team when being created by the admin. This team can be changed later on if needed. See the ["teams"](/introduction/concept-overviews#team) section for more details on teams and creating them. In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as Okta. The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
 
-A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team which is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
+A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.

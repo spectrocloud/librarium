@@ -13,9 +13,9 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # August 21, 2020 - Release 1.1.0
 
-Release 1.1.0 is all about enhancing the user experience, providing tighter controls on clusters and important bug fixes.
+Release 1.1.0 is all about enhancing the user experience, providing tighter controls on clusters, and important bug fixes.
 
-* On the UI side, the login has been made faster. Additionally, users can now setup alerts to monitor cluster health. A `Revert to default values` button for cluster profiles is added.
+* On the UI side, the login has been made faster. Additionally, users can now set up alerts to monitor cluster health. A `Revert to default values` button for cluster profiles is added.
 * Clusters are easier to launch with the `Copy from Master` button; bad deployments are now prevented for certain instances; scaling is easier with the `Scale Strategy`.
 * Private gateways can now be provisioned on static IPs with greater control on IP allocation using [IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
 * Updates to the CLI tool include more [flags](/registries-and-packs/spectro-cli-reference?cliCommands=cli_push#flags) to the `PUSH` command for forcibly overwriting registry packs.
@@ -36,17 +36,17 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 
 The following features are included as part of Spectro Cloud 1.0:
 
-* Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure and VMWare.
-* Security hardened, compliant and conformant Kubernetes clusters out of the box.
+* Multi cluster deployment and lifecycle management of Kubernetes clusters across multiple cloud environments - AWS, Azure, and VMWare.
+* Security-hardened, compliant, and conformant Kubernetes clusters out of the box.
 * Cluster construction templates called Cluster Profiles.
 * Platform extensibility through custom integration packs.
 * Grouping of clusters logically into Projects for governance and control.
-* Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs etc.
+* Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs, etc.
 
 ## Known Issues
 
-* **BET-768:** On Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
+* **BET-768:** On the Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
 
 <InfoBox>
-Spectro Cloud adopts relevant security best practices for operating systems, Kubernetes components, and cloud environments. All Spectro Cloud container images are scanned for CVEs before a release. While Spectro Cloud takes ownership of securing the cluster infrastructure, there maybe additional 3rd party integrations installed on the Kubernetes clusters provisioned. Security of such 3rd party integrations, including their container images and associated configurations, is the responsibility of the provider.
+Spectro Cloud adopts relevant security best practices for operating systems, Kubernetes components, and cloud environments. All Spectro Cloud container images are scanned for CVEs before a release. While Spectro Cloud takes ownership of securing the cluster infrastructure, there may be additional 3rd party integrations installed on the Kubernetes clusters provisioned. Security of such 3rd party integrations, including their container images and associated configurations, is the responsibility of the provider.
 </InfoBox>

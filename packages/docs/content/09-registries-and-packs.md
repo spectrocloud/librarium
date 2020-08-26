@@ -13,11 +13,11 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 ## Overview
 
-A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as operating system, kubernetes, network, storage, and add-ons.  Ansible roles if provided, are used to customize cluster VM images whereas kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
+A pack is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc. It is the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons.  Ansible roles if provided, are used to customize cluster VM images whereas Kubernetes manifests and helm charts are applied to the Kubernetes clusters after deployment.
 
 ## Structure
 
-Spectro Cloud provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom built packs. The following is a typical structure of a pack:
+Spectro Cloud provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. The following is a typical structure of a pack:
 
     | - PACKNAME           ==> pack directory name
         | - pack.json        ==> mandatory : pack config
@@ -31,7 +31,7 @@ Spectro Cloud provides a rich collection of out-of-the-box packs for various int
 
 ## Overview
 
-The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Spectro Cloud supports configuration of multiple registries.
+The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Spectro Cloud supports the configuration of multiple registries.
 
 ## Default Registry
 

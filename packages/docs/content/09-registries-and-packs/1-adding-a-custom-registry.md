@@ -51,7 +51,7 @@ openssl req \
 ```
 
 * 
-    * Provide the appropriate values while ensuring that the Common Name matches with the registry hostname.
+    * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
 
     ```
     Country Name (2 letter code) [XX]:
@@ -78,7 +78,7 @@ openssl req \
 ```
 
 *
-    * Provide the appropriate values while ensuring that the Common Name matches with the registry hostname.
+    * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
 
     ```
     Country Name (2 letter code) [XX]:
@@ -164,7 +164,7 @@ openssl req \
 Once the deployment of the pack registry server is complete, configure it with the management console as follows:-
 
 1. As a tenant administrator, navigate to Admin -> Settings -> Pack Registries.
-1. Click on "Add New Pack Registry" and provide the pack registry name, endpoint and user credentials.
+1. Click on "Add New Pack Registry" and provide the pack registry name, endpoint, and user credentials.
 1. Click on "Confirm" once the details are filled.
 
 Upon successful registration, users can build and deploy custom packs on to the custom pack registry and use these packs in their cluster profiles.

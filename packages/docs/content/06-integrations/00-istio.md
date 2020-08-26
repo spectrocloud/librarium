@@ -12,7 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Istio Operator
 
-This Integration aims to automate and simplify rollout of the various Istio components which helps with service mesh use cases.
+This Integration aims to automate and simplify the rollout of the various Istio components which helps with service mesh use cases.
 
 ## Contents
 

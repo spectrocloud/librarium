@@ -25,7 +25,7 @@ The user and teams can be associated via *Admin > User & Teams* page. Select the
 
 [Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team).
 
-The user permission is always the union of the Tenant and Project roles along with the roles inherited from the team association. Hence, if a user is a *Tenant Admin*, then the user has the *Project Admin* role to all the projects, even if an explicit project role is not assigned. If a user has *Project Viewer* role at tenant scope, then the user gets "view" permissions on all the projects and the user can be provided a *Project Admin* role for a specific project using the *Project Roles*.
+The user permission is always the union of the Tenant and Project roles along with the roles inherited from the team association. Hence, if a user is a *Tenant Admin*, then the user has the *Project Admin* role to all the projects, even if an explicit project role is not assigned. If a user has the *Project Viewer* role at tenant scope, then the user gets "view" permissions on all the projects and the user can be provided a *Project Admin* role for a specific project using the *Project Roles*.
 
 # Project Dashboard
 
@@ -33,11 +33,11 @@ The *Admin > Projects* page displays the projects related dashboard cards captur
 
 # Monthly Kilocore-hours Usage
 
-The monthly usage card shows the daily cluster usage in kilocore hours for a month across all the projects.  The kilocore hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilocore hours for the node is done in increments of seconds. The monthly usage card also shows the project-wise kilocore hours. Based on the plan type, the kilocore hours subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
+The monthly usage card shows the daily cluster usage in kilocore hours for a month across all the projects.  The kilocore hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilocore hours for the node is done in increments of seconds. The monthly usage card also shows the project-wise kilocore hours. Based on the plan type, the kilocore hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
 
 # Cores per Project Usage
 
-The usage of the active worker nodes' CPU cores are grouped together across all projects and shown at an hourly interval by default. The interval can be changed to days or months.
+The usage of the active worker nodes' CPU cores is grouped across all projects and shown at an hourly interval by default. The interval can be changed to days or months.
 
 # Project Card
 

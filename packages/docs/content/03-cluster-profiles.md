@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Cluster Profiles
 
-Cluster profiles are like templates that are created with pre-configured layers/components needed for cluster deployments. A user can create as many profiles as needed. Choose one, add a cluster and deploy. A cluster profile contains the details of the configurations needed for a particular type of deployment. The mandatory layers are the OS, the Kubernetes itself, the networking and the storage layers. Beyond this, other available layers are:
+Cluster profiles are like templates that are created with pre-configured layers/components needed for cluster deployments. A user can create as many profiles as needed. Choose one, add a cluster, and deploy. A cluster profile contains the details of the configurations needed for a particular type of deployment. The mandatory layers are the OS, the Kubernetes itself, the networking, and the storage layers. Beyond this, other available layers are:
 
 - System apps.
 - Authentication.

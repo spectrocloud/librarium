@@ -13,7 +13,7 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Getting Started
 
-This section is a tour of the two main dashboards of the tenant console. It also helps with the creation of cluster profiles and clusters to enable users to get going. More details on creating clusters is available in the dedicated [clusters](/clusters) page.
+This section is a tour of the two main dashboards of the tenant console. It also helps with the creation of cluster profiles and clusters to enable users to get going. More details on creating clusters are available in the dedicated [clusters](/clusters) page.
 
 # Understanding the tenant console
 
@@ -31,13 +31,13 @@ The "Settings" section (7) of the default dashboard relates to the cloud account
 
 The menu within the Admin dashboard also contains the Projects button. This is different from the Projects menu in the default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside of the project.
 
-The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects; or they can left unused.
+The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects, or they can be left unused.
 
 [Roles](/user-management/rbac#roles) and [Permissions](/introduction/concept-overviews#permission); as well as [Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team) allow the admin to set or restrict these attributes for one or more team members.
 
 Settings under the Admin dashboard provide access to the [pack registries](/registries-and-packs); [private cloud gateways](/introduction/concept-overviews#privatecloudgateway) and [SAML SSO](/user-management/saml-sso) configurations.
 
-Finally, [audit logs](/audit-logs) allows the admin to track the user interaction with the application resources along with the timeline.
+Finally, [audit logs](/audit-logs) allow the admin to track the user interaction with the application resources along with the timeline.
 
 ![admin_dashboard](admin_dashboard.png)
 
@@ -92,7 +92,7 @@ The following steps will be taken to provision your first AWS cluster:
 <WarningBox>
 
 **Prerequisites:**
-You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=aws_cluster#prerequisites). Please import an SSH keypair into your account in the region **us-east-1**.
+You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=aws_cluster#prerequisites). Please import an SSH keypair into your account in the region of **us-east-1**.
 
 Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.
 
@@ -261,7 +261,7 @@ The guided documentation guide below is prescriptive with the names and selectio
 
 The following steps will be taken to provision your first VMware cluster:
 
-* Create Private Cloud Gateway.
+* Create a Private Cloud Gateway.
 * Deploy Private Cloud Gateway Installer VM.
 * Configure Private Cloud Gateway.
 * Create Cluster Profile.
@@ -312,7 +312,7 @@ The following steps will be taken to provision your first VMware cluster:
 9. Select '1' for the Number of Nodes.
 10. SSH Keys - Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the gateway VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
 10. Leave the NTP servers option blank, only if NTP is already configured on each of the ESXi hosts.
-11. Select DHCP as IP allocation strategy. 
+11. Select DHCP as the IP allocation strategy. 
 12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
 13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
 

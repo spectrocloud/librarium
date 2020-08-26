@@ -13,27 +13,27 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 # Overview
 
-Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consists of a reference to a cluster profile, cloud configuration, and cluster size and placement confuguration. The following high level tasks are performed as part of the cluster creation:
+Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. The following high-level tasks are performed as part of the cluster creation:
 
-* Orchestration of compute, network and storage resources on the cloud environments along with the required placement infrastructure.
+* Orchestration of computing, network, and storage resources on the cloud environments along with the required placement infrastructure.
 * Installation and configuration of various Kubernetes components like Kubelet, API servers, etcd, scheduler, etc.
-* Installation and configuration of cloud specific network (CNI) and storage (CSI) plugins.
-* Securing of the cluster infrastructure and configuration in accordance with relevant OS, Kubernetes and cloud security best practices.
+* Installation and configuration of the cloud-specific network (CNI) and storage (CSI) plugins.
+* Securing of the cluster infrastructure and configuration in accordance with the relevant OS, Kubernetes, and cloud security best practices.
 * Deployment of additional add-ons such as Prometheus, Permissions Manager, Vault, etc., as specified in the cluster profile.
 
 # Images
 
-Spectro Cloud provides VM images for cluster compute infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
+Spectro Cloud provides VM images for cluster computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security-hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
 ## Customization
 
-Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be setup with customized OS packs.
+Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
 ### Customize out of the box images
 
-Spectro Cloud's out of the box images are security hardened and have Kubernetes components pre-installed. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Spectro Cloud’s orchestration engine creates a new image by instantiating a VM instance from the out of box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
+Spectro Cloud's out of the box images are security-hardened and have Kubernetes components pre-installed. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Spectro Cloud’s orchestration engine creates a new image by instantiating a VM instance from the out of box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
 ### Bring your own Image
 
@@ -49,19 +49,19 @@ Spectro Cloud’s orchestration engine examines the OS pack configuration and de
 
 # Security
 
-Spectro Cloud secures the Kubernetes clusters provisioned by following security best practices at the OS, Kubernetes and Cloud Infrastructure level.
+Spectro Cloud secures the Kubernetes clusters provisioned by following security best practices at the OS, Kubernetes, and Cloud Infrastructure level.
 
 ## Operating System
 
-Spectro Cloud’s out of the box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly and fixes are applied to these images when available from the provider. The upgraded images are released in the form to updated OS packs in Spectro Cloud’s pack registry and are available to the users to apply to their existing clusters at the time convenient to them.
+Spectro Cloud’s out of the box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in Spectro Cloud’s pack registry and are available to the users to apply to their existing clusters at the time convenient to them.
 
 ## Kubernetes
 
-Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured in a secure fashion.
+Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured securely.
 
 ## Cloud
 
-Spectro Cloud follows security best practices recommended by the various cloud providers when provisioning and configuring the compute, network and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
+Spectro Cloud follows security best practices recommended by the various cloud providers when provisioning and configuring the computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
 
 <InfoBox>
   The security measures mentioned above are implemented for Spectro Cloud’s out of the box OS and
@@ -71,7 +71,7 @@ Spectro Cloud follows security best practices recommended by the various cloud p
 
 # Day-2 Management
 
-Spectro Cloud provides several options to manage Kubernetes clusters on an ongoing basis. These include options to scale up/down the cluster by adding/reducing number of nodes in a node pool, add additional worker pools, resize nodes in a node pool by modifying the instance type, and add additional fault domains such as availability zones to a node pool.
+Spectro Cloud provides several options to manage Kubernetes clusters on an ongoing basis. These include options to scale up/down the cluster by adding/reducing the number of nodes in a node pool, add additional worker pools, resize nodes in a node pool by modifying the instance type, and add additional fault domains such as availability zones to a node pool.
 
 <InfoBox>
   Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. The  cluster control plane subsequently reconciles the changes to bring associated clusters to their desired state.
@@ -83,9 +83,9 @@ Spectro Cloud supports various kids of updates to running clusters. Based on the
 
 ## Cluster update notifications
 
-Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, need to be applied to the cluster profile. These changes result in update notifications on the clusters and can be propagated to the clusters at an appropriate time. The update notification consists of detailed information about all the changes applied to the profile since initial installation or since previous update.
+Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, need to be applied to the cluster profile. These changes result in update notifications on the clusters and can be propagated to the clusters at an appropriate time. The update notification consists of detailed information about all the changes applied to the profile since the initial installation or since the previous update.
 
-Updates to pack configuration may result in a conflict, if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes are applied to the cluster.
+Updates to pack configuration may result in a conflict if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes are applied to the cluster.
 
 ## Configuration overrides
 
@@ -93,20 +93,20 @@ Configuration for packs can be updated in a cluster at any time. The changes are
 
 # Cluster Health
 
-Spectro Clodud monitors cluster infrastructure on a regular basis and reports health on the management console.
+Spectro Cloud monitors cluster infrastructure on a regular basis and reports health on the management console.
 Overall health is computed based on the following factors:
 
-* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heatbeat to the management console. Missing heartbeats are typically indicative of a problem such as cluster infrastrcuture going down, lack of netowrk connectivty etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster.
-* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
-* Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
+* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heartbeat to the management console. Missing heartbeats are typically indicative of a problem such as a cluster infrastructure going down, lack of network connectivity, etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster.
+* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable, etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
+* Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory, etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
 # Usage Monitoring
 
-Spectro Cloud continuously monitors cluster resources and reports usage for the cluster as well as individual nodes. The following metrics are reported on cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
+Spectro Cloud continuously monitors cluster resources and reports the usage for the cluster as well as individual nodes. The following metrics are reported on the cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
 
 * Cores Used - A cluster-wise break down of the number of cores used.
-* CPU Usage - Current CPUs used across all cluster nodes. Additionally usage over a period of time is presented as a chart
-* Memory Usage - Current memory used across all cluster nodes. Additionally usage over a period of time is presented as a chart
+* CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart
+* Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart
 * CPU Requests - Total CPUs requested across all pods.
 * Memory Requests - Total memory requested across all pods.
 
@@ -114,24 +114,24 @@ Additionally, usage metrics for individual nodes as well as node conditions are 
 
 # Application Services
 
-Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing link to those on the management console. These include not only the applications and services deployed through Spectro Cloud, but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
+Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include not only the applications and services deployed through Spectro Cloud but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
 # Troubleshooting
 
-Typically when a cluster lifecycle action such as provisioning, upgrade or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
+Typically when a cluster lifecycle action such as provisioning, upgrade, or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
 
 ## Cluster conditions
 
-Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image etc. The active condition gives an indication for what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
+Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
-For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
+For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
 ## Event Stream
 
-Spectro Cloud maintains an event stream with low level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
+Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
 
 <InfoBox>
-  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However the errors clear up once the node comes up.<p></p>
+  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
 </InfoBox>
 
@@ -151,7 +151,7 @@ The Kubernetes nodes are distributed across multiple AZs to achieve high availab
 
 All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
 
-A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet be able to go out to the internet or call other AWS services.
+A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
 
 An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the ec2 instances. This is because the ec2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
 
@@ -161,11 +161,11 @@ The APIServer endpoint is accessible through an ELB, which load balancing across
 
 ## Prerequisites
 
-Spectro Cloud creates compute, network and storage resources on AWS during provisioning of Kubernetes clusters. The following pre-requisites should be met for a successful creation of clusters.
+Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. The following pre-requisites should be met for the successful creation of clusters.
 
 ### Resource Capacity
 
-A sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
 
 * vCpu
 * VPC
@@ -322,7 +322,7 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
 ```
 
 <WarningBox>
-The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespaced character limit by AWS.
+The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
 </WarningBox>
 
 <WarningBox>
@@ -334,34 +334,34 @@ This policy defines some actions, resources, or conditions that do not provide p
 
 The following steps need to be performed to provision a new AWS cluster:
 
-* Provide basic cluster information like name, description and tags. Tags on a cluster are propagated to the VMs deployed on the cloud / data center environments.
+* Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
 * Select a cluster profile created for AWS cloud. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-* Provide AWS Cloud account and placement information.
+* Provide the AWS Cloud account and placement information.
     * Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
-    * Region - Choose the desired AWS region where you would like cluster be be provisioned.
+    * Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     * SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    * Static Placement - By default Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
-* Configure master and worker node pools. A master and a worker node pool is configured by default.
+    * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - a descriptive name for the node pool.
-    * Size - Number of VMs to be provisioned for the node pool. For master pool, this number can be 1, 3 or 5.
+    * Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     * Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
     * Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures etc. by provisioning nodes across availability zones if multiple zones are selected.
+    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general purpose workloads and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
 ## Scaling an AWS Cluster
 
 Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an AWS cluster.
 
-* Access the ‘nodes’ view for the cluster.
+* Access the ‘Nodes’ view of the cluster.
 * For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
-* Provisioning status is updated with ongoing progress of the scale operation.
+* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
+* Provisioning status is updated with the ongoing progress of the scale operation.
 
 <InfoBox>
 Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
@@ -375,28 +375,28 @@ The following steps need to be performed to add a new worker node pool to a clus
 
 * Provide node pool settings as follows:
     * A descriptive name for the node pool.
-    * Number of nodes in the node pool.
+    * The number of nodes in the node pool.
     * One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
     * The instance type to be used for all the nodes launched in the node pool.
-    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
+    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Remove an AWS worker pool
 
 The following steps need to be performed to remove a worker pool from the cluster:-
 
-* Access the 'Nodes' view for the cluster.
-* Delete the desired worker pool and confirm deletion.
+* Access the 'Nodes' view of the cluster.
+* Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
 ## Reconfigure AWS nodes
 
 The following steps need to be performed to reconfigure worker pool nodes:-
 
-* Access the nodes view for the the cluster.
+* Access the 'Nodes' view of the cluster.
 * Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
-* The provisioning status is updated with ongoing progress of nodes being deleted and added.
+* The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs.TabPane>
 
@@ -404,7 +404,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 
 ## Overview
 
-Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
+Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
 
 None of the control plane nodes and worker nodes have public IPs attached. The APIServer endpoint is accessed through a public LB.
 
@@ -422,44 +422,44 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 * To create an AAD Application from the Azure portal, follow the [Create a new AAD Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) link. With this, the ClientID and TenantID are created and can be noted down.
 * On creating the application, a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link.
-* To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plain text later.
+* To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plaintext later.
 
 ## Creating an Azure Cluster
 
 The following steps need to be performed to provision a new VMware cluster:-
 
-* Provide the basic cluster information like name, description and tags.
+* Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the Azure environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-* Provide Azure Cloud account and placement information.
+* Provide the Azure Cloud account and placement information.
     * Cloud Account - Select the desired cloud account. Azure cloud accounts with credentials need to be pre-configured in project settings.
     * Subscription - Select the subscription which is to be used to access Azure Services.
     * Region - Select a region in Azure in which the cluster should be deployed.
     * Resource Group - Select the resource group in which the cluster should be deployed.
     * SSH Key - Public key to configure remote SSH access to the nodes.
-* Configure master and worker node pools. A master and a worker node pool is configured by default.
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool.
-    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3 or 5.
+    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     * Allow worker capability (master pool) - To allow workloads to be provisioned on master nodes.
     * Instance Type - Select the Azure instance type to be used for all the nodes in the pool.
     * Managed Disk - Select the managed disk type to be used.
     * Disk Size - Storage disk size in GB to be attached to the node.
-    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
+    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
 
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>
 
 ## Scaling an Azure cluster
 
 Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an Azure cluster.
 
-* Access the ‘nodes’ view for the cluster.
+* Access the ‘Nodes’ view of the cluster.
 * For the desired node pool, change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
-* Provisioning status is updated with ongoing progress of the scale operation.
+* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
+* Provisioning status is updated with the ongoing progress of the scale operation.
 
 <InfoBox>
 The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
@@ -472,30 +472,30 @@ The following steps need to be performed to add a new worker node pool to a clus
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 * Provide node pool settings as follows:
     * A descriptive name for the node pool.
-    * Number of nodes in the node pool.
+    * The number of nodes in the node pool.
     * One or more availability zones. Nodes are distributed across availability zones when multiple zones are selected.
-    * Instance type to be used for all the nodes lunched in the node pool.
+    * Instance type to be used for all the nodes launched in the node pool.
     * Managed Disk and Size of the storage to be used.
-    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
+    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Removing an Azure worker pool
 
 The following steps need to be performed to remove a worker pool from the cluster:-
 
-* Access the ‘Nodes’ view for the cluster.
-* Delete the desired worker pool and confirm deletion.
+* Access the ‘Nodes’ view of the cluster.
+* Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion beings in a few minutes.
 
 ## Reconfiguring Azure nodes
 
 The following steps need to be performed to reconfigure worker pool nodes:-
 
-* Access the nodes view for the the cluster.
+* Access the 'Nodes' view of the cluster.
 * Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
 * Update the Managed Disk  type and Size of the storage to be used.
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with new instance type configured.
-* Provisioning status is updated with ongoing progress of nodes being deleted and added.
+* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs.TabPane>
 
@@ -507,7 +507,7 @@ On the GCP cluster, control plane nodes and worker nodes are placed within a sin
 
 A new VPC Network is created together with all the network infrastructure components like Cloud NAT and a Cloud Router. Firewall rules are created to protect all the API endpoints.
 
-API server endpoint is exposed through a Global Load Balancer. Applications running with the cluster use a Regional Load Balancer to expose the loadbalancer services.
+API server endpoint is exposed through a Global Load Balancer. Applications running with the cluster use a Regional Load Balancer to expose the load-balancer services.
 
 ![gcp_cluster_architecture.png](gcp_cluster_architecture.png)
 
@@ -515,10 +515,10 @@ API server endpoint is exposed through a Global Load Balancer. Applications runn
 
 To create a GCP cloud account, you need the JSON credentials (service account key) file of the service account.
 
-In order to create service account, user should have one of the following IAM roles:
+To create a service account, the user should have one of the following IAM roles:
 `roles/iam.serviceAccountAdmin` or `roles/iam.serviceAccountAdmin`.
 
-To create a service account, refer to: https://cloud.google.com/iam/docs/creating-managing-service-accounts.
+To create a service account, refer to https://cloud.google.com/iam/docs/creating-managing-service-accounts.
 
 The service account should have the following minimum roles:
 
@@ -535,11 +535,11 @@ The process of creating the JSON credential files is available here: https://clo
 
 ## Overview
 
-The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be setup within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and the vCenter, to create and delete target Kubernetes clusters.
+The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be set up within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and the vCenter, to create and delete target Kubernetes clusters.
 
-The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
+The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
 
-A HAProxy Load balancer VM will be created for each of the Kubernetes clusters, as the LB for the apiserver endpoints.
+An HAProxy Load balancer VM will be created for each of the Kubernetes clusters, as the LB for the apiserver endpoints.
 
 ![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
 
@@ -555,11 +555,11 @@ Spectro Cloud supports vSphere 6.5 [Update 3](https://docs.vmware.com/en/VMware-
 
 ## Configuration Requirements
 
-A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to a shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
+A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 ## Permissions
 
-The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the`Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
+The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
 
 | vSphere Object | Privileges |
 | --- | --- |
@@ -674,27 +674,27 @@ In addition to the default cloud account already associated with the private clo
 
 ## Creating a VMware cloud gateway
 
-Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere and launching the cloud gateway from the tenant portal.
+Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
 
 By default, 4GB of memory is allocated for private gateways. Please ensure that this memory allocation is increased based on the number of clusters that need to be created.
 
 ## Tenant Portal - Initiate Install
 
-* As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings and invoke the dialogue to create new private cloud gateway.
+* As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings and invoke the dialogue to create a new private cloud gateway.
 * Note down the link to the Spectro Cloud Gateway Installer OVA and PIN displayed on the dialogue.
 
 ## vSphere - Deploy Gateway Installer
 
 * Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
-* Proceed through the OVF deployment wizard by choosing the desired name, placement, compute, storage and network options.
+* Proceed through the OVF deployment wizard by choosing the desired name, placement, compute, storage, and network options.
 * At the 'Customize Template' step, specify Spectro Cloud properties as follows:
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be setup, however multiple gateways might be required for managing clusters in multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
-| Console End Point | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
-|Pairing Code | PIN displayed on Spectro Cloud management platform portal's 'Create new gateway' dialogue. | |
-| SSH Public Key | Optional key, userful for troubleshooting purposes (Recommnded) | Enables SSH access to the VM as 'ubuntu' user |
+|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be set up, however, multiple gateways might be required for managing clusters in multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
+| Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
+|Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
+| SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
 
 Additional properties that are required to be set only for a Proxy Environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
 
@@ -711,11 +711,11 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 * Close the 'Create New Gateway' dialogue if still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
 * Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the Spectro Cloud management platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
-* Click on "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
-* Choose desired value for Datacenter, Compute Cluster, Datastore, Network, Resource pool and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
-* Choose IP Allocaton Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the "*Restrict to a single cluster*" button. Detailed description of all the fields involved in creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
-* Click on Confirm, to initiate provisioning of the gateway cluster. The status on the UI should change to 'Provisioning' and eventually 'Running' when gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors, or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
-* Once the Gateway transitions to Running state, it is fully provisioned and ready to bootstrap tenant cluster requests.
+* Click on the "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
+* Choose the desired values for Datacenter, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
+* Choose the IP Allocation Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to the gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the "*Restrict to a single cluster*" button. A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
+* Click on Confirm, to initiate provisioning of the gateway cluster. The status of the cluster on the UI should change to 'Provisioning' and eventually 'Running' when the gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe a detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
+* Once the Gateway transitions to the 'Running' state, it is fully provisioned and ready to bootstrap tenant cluster requests.
 
 ## vSphere - Clean up installer
 
@@ -723,14 +723,14 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 <InfoBox>
 Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects.<p></p>
-A Pack registry instance is setup on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries <a href="/registries-and-packs">here</a>.
+A Pack registry instance is set up on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries <a href="/registries-and-packs">here</a>.
 </InfoBox>
 
 ## Troubleshooting
 
-### Gateway installer - Unable to register with tenant portal
+### Gateway installer - Unable to register with the tenant portal
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the the installer to  register with tenant portal within this duration, might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console end point or the pairing code is typed incorrectly. Ensure that the tenant portal console end point does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the installer to  register with the tenant portal within this duration might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
 
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
 
@@ -765,26 +765,26 @@ fi
 
 ### Gateway Cluster - Provisioning stalled/failure
 
-Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower level operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
+Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower -evel operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
 
 ## Upgrading a VMware cloud gateway
 
-Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
+Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
-Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any down time for the tenant clusters. During the upgrade process, provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
+Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
 
 ## Deleting a VMware cloud gateway
 
-The following steps need to performed to delete a cloud gateway.
+The following steps need to be performed to delete a cloud gateway.
 
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
-* The system performs a validation to ensure there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry deletion of the cloud gateway.
+* The system performs a validation to ensure there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
 * Delete the gateway Virtual Machines from vSphere.
 
 ## Resizing a VMware cloud gateway
 
-A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially setup with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
+A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially set up with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
 
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings.
 
@@ -800,43 +800,42 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A loa
 
 ## IP Address Management
 
-Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. Following is a description of various IP Pool properties:
+Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. Following is a description of various IP Pool properties:
 
 | Property | Description |
 |---|---|
-| Name | Descriptive name for the IP Pool. This name will be displayed for IP Pool selection when static IP is chosen as IP allocation strategy |
+| Name | Descriptive name for the IP Pool. This name will be displayed for IP Pool selection when static IP is chosen as the IP allocation strategy |
 | Network Type | Select 'Range' to provide a start and an end IP address. IPs within this range will become part of this pool. Alternately select 'Subnet' to provide the IP range in CIDR format.|
-| Start | First IP address for a range based IP Pool E.g. 10.10.183.1| 
+| Start | First IP address for a range based IP Pool E.g. 10.10.183.1|
 | End | Last IP address for a range based IP Pool.  E.g. 10.10.183.100 |
-| Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 | 
-| Subnet Prefix | Network subnet prefix. E.g. /18| 
-| Gateway | Network Gateway E.g. 10.128.1.1 | 
-| Nameserver addresses | Comma separated list of name servers. Eg. 8.8.8.8 | 
-| Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared cross clusters.|
-
+| Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 |
+| Subnet Prefix | Network subnet prefix. E.g. /18|
+| Gateway | Network Gateway E.g. 10.128.1.1 |
+| Nameserver addresses | A comma-separated list of name servers. Eg. 8.8.8.8 |
+| Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
 ## Creating a VMware Cluster
 
-The following steps need to be performed to provision a new VMware cluster :-
+The following steps need to be performed to provision a new VMware cluster:-
 
-* Provide basic cluster information like name, description and tags. Tags are currently not propagated to the VMs deployed on the cloud / data center environments.
-* Select a cluster profile created for VMware environment. The profile definition will be used as the cluster construction template.
+* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
+* Select a cluster profile created for the VMware environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-* Provide vSphere Cloud account and placement information.
-    * Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters, if permitted by the administrator.
+* Provide a vSphere Cloud account and placement information.
+    * Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
     * Datacenter -The vSphere datacenter where the cluster nodes will be launched.
     * Folder - The vSphere VM Folder where the cluster nodes will be launched.
     * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
     * NTP Server (Optional) - Setup time synchronization for all the running nodes.
     * IP Allocation strategy - DHCP or Static IP
-* Configure master and worker node pools. A master and a worker node pool is configured by default.
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool.
-    * Size - Number of nodes to be provisioned for the node pool. For master pool, this number can be 1, 3 or 5.
+    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
     * CPU - Number of CPUs to be allocated to the nodes.
     * Memory - Amount of memory in GB to be allocated to the nodes.
     * Disk - Storage disk size in GB to be attached to the node.
-    * One or more placement domains. VMs are distributed across multiple placement domains on a round robin basis. Curerntly only one placement domain is supported for master pool. 
+    * One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.
 	    * Compute Cluster - A Compute cluster under the selected Datacenter.
 	    * Datastore - The vSphere storage in the selected Datacenter.
 	    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.
@@ -846,14 +845,14 @@ The following steps need to be performed to provision a new VMware cluster :-
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8GB of memory for general purpose workloads and another worker pool with 8CPU, 16 GB of memory for advanced workloads that demand larger resources.
+New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8GB of memory for general-purpose workloads, and another worker pool with 8CPU, 16 GB of memory for advanced workloads that demand larger resources.
 </InfoBox>
 
 ## Deleting a VMware Cluster
 
-Deletion of a VMware cluster results in removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
+The deletion of a VMware cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
 
-* Select the cluster to be deleted from the cluster view and navigate to the the cluster overview page
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
 * Invoke a delete action available on the page
 * Confirm delete action
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
@@ -866,10 +865,10 @@ Delete action is only available for clusters that are fully provisioned. For clu
 
 Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down a VMware cluster:
 
-* Access the ‘nodes’ view for the cluster
+* Access the ‘Nodes’ view of the cluster
 * For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale up/down operation is initiated in a few minutes.
-* Provisioning status is updated with ongoing progress of the scale operation.
+* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
+* Provisioning status is updated with the ongoing progress of the scale operation.
 
 <InfoBox>
 The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
@@ -879,9 +878,9 @@ The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down opera
 
 The following steps need to be performed to reconfigure worker pool nodes: -
 
-* Access the nodes view for the the cluster.
+* Access the 'Nodes' view for the cluster.
 * Edit the settings of the desired node pool.
-* Change the CPU, Memory and Disk size to the desired settings.
+* Change the CPU, Memory, and Disk size to the desired settings.
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted.one by one and replaced by new nodes launched with new instance type configured.
 * Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
@@ -892,16 +891,16 @@ The following steps need to be performed to add a new worker node pool to a clus
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 * Provide node pool settings as follows:-
     * A descriptive name for the node pool.
-    * Number of nodes in the node pool.
-    * CPU, Memory and Disk settings for all the nodes in the node pool.
-    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with ongoing progress of tasks related to addition of new nodes.
+    * The number of nodes in the node pool.
+    * CPU, Memory, and Disk settings for all the nodes in the node pool.
+    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Removing a VMware worker pool
 
 The following steps need to be performed to remove a worker pool from the cluster:-
 
-* Access the ‘Nodes’ view for the cluster.
-* Delete the desired worker pool and confirm deletion.
+* Access the ‘Nodes’ view of the cluster.
+* Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
 </Tabs.TabPane>

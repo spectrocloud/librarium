@@ -19,27 +19,27 @@ Tenant represents a customer or an organization in Spectro Cloud. Spectro Cloud 
 
 # Project
 
-Projects provide a way for grouping clusters together for logical separation. Role based access controls within Spectro Cloud are applied at the project level. Users and teams can be assigned one or more roles within a project for granular control over permissions within the project scope.
+Projects provide a way for grouping clusters together for logical separation. Role-based access controls within Spectro Cloud are applied at the project level. Users and teams can be assigned one or more roles within a project for granular control over permissions within the project scope.
 
 # Users
 
-Users are members of a tenant who are assigned roles that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all projects in the tenant where as users assigned project roles, only get specific permission within the associated projects.
+Users are members of a tenant who are assigned roles that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all projects in the tenant whereas users assigned project roles, only get specific permission within the associated projects.
 
 # Team
 
-Team is a group of users. Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. Roles assigned to a team grant associated tenant or project permissions to all users that are part of the team.
+A Team is a group of users. Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. Roles assigned to a team grant associated tenant or project permissions to all users that are part of the team.
 
 # Roles
 
-A Role is a collection of permissions. There are two kinds of roles in Spectro Cloud: tenant roles and project roles. Tenant roles are a collection of tenant level permissions such as Create a new user, add a new project etc. Project roles consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster etc.
+A Role is a collection of permissions. There are two kinds of roles in Spectro Cloud: tenant roles and project roles. Tenant roles are a collection of tenant-level permissions such as Create a new user, add a new project, etc. Project roles consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster,  etc.
 
 # Permission
 
-Permissions are associated with specific actions within the platform such as Create New user in a tenant, Add a Cluster Profile in a project, View Clusters within a cluster etc. Permissions are granted to the users and teams through roles.
+Permissions are associated with specific actions within the platform such as Create New user in a tenant, Add a Cluster Profile in a project, View Clusters within a cluster, etc. Permissions are granted to the users and teams through roles.
 
 # Cluster Profile
 
-A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled.
+A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled.
 
 The diagram below shows an example of a cluster profile:
 
@@ -49,9 +49,9 @@ Read more about Cluster Profiles [here](/cluster-profiles).
 
 # Workload Cluster
 
-A Kubernetes cluster is collections of master and worker nodes that cooperate to execute container application workloads.
+A Kubernetes cluster is a collection of master and worker nodes that cooperate to execute container application workloads.
 
-Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within projects and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a *cluster profile* with additional configuration overrides and cloud specific settings.
+Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within projects and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a *cluster profile* with additional configuration overrides and cloud-specific settings.
 
 # Cloud Account
 
@@ -59,7 +59,7 @@ Cloud Accounts are where access credentials are stored for public and private cl
 
 # Pack
 
-Spectro Cloud provides multiple integrations/technologies in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco etc.
+Spectro Cloud provides multiple integrations/technologies in a cluster profile for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco, etc.
 
 # Public Pack Registry
 
@@ -67,8 +67,8 @@ Spectro Cloud maintains a public pack registry containing various packs that can
 
 # Private Pack Registry
 
-Spectro Cloud provides extensibility by providing a way for users to define packs for integrations beyond the ones provided by default in Specto Cloud's public pack registry. These user defined packs need to be hosted in a private registry which users can bring up in their own environment using Spectro Cloud's pack registry software.
+Spectro Cloud provides extensibility by providing a way for users to define packs for integrations beyond the ones provided by default in Specto Cloud's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their own environment using Spectro Cloud's pack registry software.
 
 # Private Cloud Gateway
 
-A Private Cloud Gateway is a Spectro Cloud component that enables communication between Spectro Cloud's management console and a VMware based private data center. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer appliance.
+A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a VMware based private data center. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer appliance.

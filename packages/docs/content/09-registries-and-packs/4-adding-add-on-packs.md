@@ -58,7 +58,7 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 
 3. Download the desired version of the prometheus-grafana helm charts archive.
 4. Create a sub-directory called `charts` and copy the downloaded helm chart archive to this directory. Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
-5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the promethus-grafana pack, the `values.yaml` could look like this:-
+5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the prometheus-grafana pack, the `values.yaml` could look like this:-
 
 ```yaml
 pack:
@@ -239,7 +239,7 @@ $ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
 
 ## Add-on packs using manifests
 
-Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, secrets etc.
+Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, secrets, etc.
 
 The example below shows how to build the Permission Manager auth pack and push to the pack registry server using the Spectro Cloud CLI.
 

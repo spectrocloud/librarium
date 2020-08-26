@@ -32,8 +32,8 @@ Follow below steps to configure Ingress on Permission Manager
 
 1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #10)
 2. Ingress (line #13)
-   * Enable Ingress ; Change enabled from false to "true"
-   * Set Ingress rules like annotations, path, hosts etc.
+   * Enable Ingress; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts, etc.
 
 With these config changes, you can access Permission manager service on the Ingress Controller LoadBalancer hostname / IP
 

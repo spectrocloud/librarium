@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Dex
 
-Dex is an identity service to drive authentication for Kubernetes API Server through the [OpenID Connect](https://openid.net/connect/) plugin. Clients such as kubectl can act on behalf users who can login to the cluster through any identity provider dex supports.
+Dex is an identity service to drive authentication for Kubernetes API Server through the [OpenID Connect](https://openid.net/connect/) plugin. Clients such as kubectl can act on behalf of users who can log in to the cluster through any identity provider that dex supports.
 
 ## Components
 
@@ -30,15 +30,15 @@ Follow below steps to configure Ingress on Dex
 
 1. Change Dex serviceType from "LoadBalancer" to "ClusterIP" (line #112)
 2. Ingress (line #118)
-   * Enable Ingress ; Change enabled from false to "true"
-   * Set Ingress rules like annotations, path, hosts etc.
+   * Enable Ingress; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts, etc.
 
 Follow below steps to configure Ingress on Dex Client
 
 1. Change dex-k8s-authenticator serviceType from "LoadBalancer" to "ClusterIP" (line #312)
 2. Ingress (line #320)
-   * Enable Ingress ; Change enabled from false to "true"
-   * Set Ingress rules like annotations, path, hosts etc.
+   * Enable Ingress; Change enabled from false to "true"
+   * Set Ingress rules like annotations, path, hosts, etc.
 
 With these config changes, you can access Dex, Dex Client service(s) on the Ingress Controller LoadBalancer hostname / IP
 
