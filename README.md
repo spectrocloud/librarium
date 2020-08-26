@@ -196,9 +196,9 @@ After that you can use it like this
   ]}
 ```
 
-*x* and *y* properties refer to the distance between the top-left corner of the page and the point.
+**x** and **y** properties refer to the coordinates of the point starting from the **top-left corner**.
 
-**Note**: *x*, *y*, *description* properties are mandatory. *label* and *tooltipPlacement* properties are optional.
+**Note**: ***x***, ***y***, ***description*** properties are **mandatory**. ***label*** and ***tooltipPlacement*** properties are optional.
 
 If no label is specified, the default one is "+".
 
