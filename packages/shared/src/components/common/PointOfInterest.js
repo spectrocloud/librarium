@@ -20,6 +20,10 @@ const pulse = keyframes`
 
 const Wrapper = styled.div`
   position: relative;
+
+  .ant-tooltip {
+    z-index: 1;
+  }
 `;
 
 const Circle = styled.div`
@@ -61,12 +65,15 @@ const Circle = styled.div`
   `}
 `;
 
+const wrapRef = React.createRef();
+
 function Point({description, tooltipPlacement = "right", x , y, label}) {
   const [isVisited, setIsVisited] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
 
   return (
     <Tooltip
+      getPopupContainer={() => wrapRef.current}
       trigger={["click"]}
       title={description}
       placement={tooltipPlacement}
@@ -90,7 +97,7 @@ function PointsOfInterest({
   children
 }) {
   return (
-      <Wrapper>
+      <Wrapper ref={wrapRef}>
         {points.map((point, index) => <Point {...point} index={index} />)}
         {children}
       </Wrapper>
