@@ -26,49 +26,31 @@ Upon login, the dashboard shows the views available for a non-admin user. At thi
 
 The "Settings" section (4) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard.
 
-![default_dashboard_new_1](default_dashboard_new_1.png)
-
-![default_dashboard_new_2](default_dashboard_new_2.png)
-
 <PointsOfInterest
   points={[
     {
-      x: 250,
-      y: -725,
+      x: 220,
+      y: 75,
       label: 1,
       description: "Cluster Profiles are listed here.",
       tooltipPlacement: "rightTop",
     },
     {
-      x: 140,
-      y: -678,
+      x: 80,
+      y: 50,
       label: 2,
       description: "This is where Projects are selected.",
     },
     {
       x: 110,
-      y: -645,
+      y: 142,
       label: 3,
       description: "Lists all the clusters accesible to the user under the current project.",
       tooltipPlacement: "rightTop",
     },
     {
-      x: 123,
-      y: -148,
-      label: 6,
-      description: "Change the first and last names; and update the login password.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 100,
-      y: -200,
-      label: 5,
-      description: "Admin section; available for tenant-admin users only.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 108,
-      y: -610,
+      x: 110,
+      y: 175,
       label: 4,
       description: "Add or delete Cloud Accounts.",
       tooltipPlacement: "rightTop",
@@ -76,9 +58,33 @@ The "Settings" section (4) of the default dashboard relates to the cloud account
   ]}
 >
 
-  *Typical views of a non-admin user's dashboard*
+  ![default_dashboard_new_1](default_dashboard_new_1.png)
 
 </PointsOfInterest>
+
+<PointsOfInterest
+  points={[
+    {
+      x: 90,
+      y: 190,
+      label: 5,
+      description: "Admin section; available for tenant-admin users only.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 123,
+      y: 246,
+      label: 6,
+      description: "Change the first and last names; and update the login password.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+  ![default_dashboard_new_2](default_dashboard_new_2.png)
+
+</PointsOfInterest>
+
 
 # Admin Dashboard
 
