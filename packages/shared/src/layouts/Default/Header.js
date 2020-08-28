@@ -17,7 +17,7 @@ const Wrap = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
