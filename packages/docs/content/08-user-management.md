@@ -33,3 +33,5 @@ Spectro Cloud allows the users that have been added to be allowed or restricted 
 ## Roles and permissions
 
 The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The [Roles](/user-management/rbac#roles) and [Permissions](/user-management/rbac#permissions) sections in the RBAC page provide more details on this.
+
+To add a user to a project, sign in as an admin and go to the `Users and Teams` section of the [Admin Dashboard](/getting-started#defaultdashboard). Click on the user that you want to enable access to. In the role-editor that opens to the side, click `Add Role` in the "PROJECT ROLES" section. Select the required project from the dropdown menu and enable the roles as needed.

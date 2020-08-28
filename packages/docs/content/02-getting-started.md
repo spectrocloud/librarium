@@ -10,6 +10,7 @@ fullWidth: false
 import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 # Getting Started
 
@@ -17,27 +18,79 @@ This section is a tour of the two main dashboards of the tenant console. It also
 
 # Understanding the tenant console
 
-The Spectro Cloud tenant console contains two main dashboards. The first one is mainly for the Kubernetes-related options while the other is for the settings related to operations.
+The Spectro Cloud tenant console contains two main dashboards. The first one is mainly for the Kubernetes-related options while the other is for the settings related to operations. There are also differences in the dashboard views for an admin user and a non-admin user.
 
 # Default Dashboard
 
-Upon login, the dashboard shows the [cluster profiles](/cluster-profiles) (marked as 1) of the default project. [Projects](/projects) (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard contains further options for [Clusters](/clusters) (3) and [audit logs](/audit-logs) (4). The bottom left contains buttons for the user's profile (5) and the Admin dashboard (6).
+Upon login, the dashboard shows the views available for a non-admin user. At this time, only the [cluster profiles](/cluster-profiles) (marked as 1) of the default project are shown. [Projects](/projects) (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard also contains options for [Clusters](/clusters) (3). The bottom left contains buttons for the user's profile (6) and the Admin dashboard (5). The "Admin" options are visible only for users having the admin role.
 
-The "Settings" section (7) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard.
+The "Settings" section (4) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard.
 
-![default_dashboard](default_dashboard.png)
+![default_dashboard_new_1](default_dashboard_new_1.png)
+
+![default_dashboard_new_2](default_dashboard_new_2.png)
+
+<PointsOfInterest
+  points={[
+    {
+      x: 250,
+      y: -725,
+      label: 1,
+      description: "Cluster Profiles are listed here.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 140,
+      y: -678,
+      label: 2,
+      description: "This is where Projects are selected.",
+    },
+    {
+      x: 110,
+      y: -645,
+      label: 3,
+      description: "Lists all the clusters accesible to the user under the current project.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 123,
+      y: -148,
+      label: 6,
+      description: "Change the first and last names; and update the login password.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 100,
+      y: -200,
+      label: 5,
+      description: "Admin section; available for tenant-admin users only.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 108,
+      y: -610,
+      label: 4,
+      description: "Add or delete Cloud Accounts.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+  *Typical views of a non-admin user's dashboard*
+
+</PointsOfInterest>
 
 # Admin Dashboard
 
 The menu within the Admin dashboard also contains the Projects button. This is different from the Projects menu in the default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside of the project.
 
-The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects, or they can be left unused.
+The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects, or they can be left unused. An ideal use-case of this feature is for the admin to create cluster profiles that are standard across the tenant (i.e., these cluster profiles are needed in all projects).
 
-[Roles](/user-management/rbac#roles) and [Permissions](/introduction/concept-overviews#permission); as well as [Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team) allow the admin to set or restrict these attributes for one or more team members.
+[Roles](/user-management/rbac#roles) (and [Permissions](/introduction/concept-overviews#permission)); as well as [Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team) allow the admin to set or restrict these attributes for one or more team members. See the [RBAC](/user-management#rbac) section for more details.
 
 Settings under the Admin dashboard provide access to the [pack registries](/registries-and-packs); [private cloud gateways](/introduction/concept-overviews#privatecloudgateway) and [SAML SSO](/user-management/saml-sso) configurations.
 
-Finally, [audit logs](/audit-logs) allow the admin to track the user interaction with the application resources along with the timeline.
+Finally, [audit logs](/audit-logs) in the admin dashboard allow the admin to track the user interaction with the application resources along with the timeline for all projects and users. For admin users, the "audit log" button is visible for each project as well. Here, the admin can view the logs of the resources specific to the project.
 
 ![admin_dashboard](admin_dashboard.png)
 
