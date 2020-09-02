@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs as AntTabs } from "antd";
 import styled from "styled-components";
 import {useURLQuery} from "../../utils/location"
+import { useLocation } from "@reach/router";
 //
 
 const StyledTabs = styled(AntTabs)`
@@ -24,11 +25,22 @@ const StyledTabs = styled(AntTabs)`
 
 export default function Tabs({identifier, ...rest}) {
   const query = useURLQuery();
-  let defaultTab;
-
-  if (query[identifier]) {
-    defaultTab = query[identifier];
-  }
+  const [activeKey, setActiveKey] = React.useState();
+  const location = useLocation();
+  React.useEffect(() => {
+    let defaultTab;
+  
+    if (query[identifier]) {
+      defaultTab = query[identifier];
+    }
+    setActiveKey(defaultTab)
+    
+    if (location.hash) {
+      const anchor = document.createElement("a")
+      anchor.href= location.hash;
+      anchor.click();
+    }
+  }, [])
 
   function renderIdentifier() {
     if (identifier) {
@@ -40,8 +52,8 @@ export default function Tabs({identifier, ...rest}) {
 
   return <>
     {renderIdentifier()}
-    <StyledTabs {...rest} defaultActiveKey={defaultTab} />
+    <StyledTabs {...rest} activeKey={activeKey} onChange={setActiveKey} destroyInactiveTabPane={true}/>
   </>
 };
 
-Tabs.TabPane = AntTabs.TabPane;
+Tabs.TabPane = AntTabs.TabPane
