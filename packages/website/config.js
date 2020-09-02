@@ -3,7 +3,7 @@ const config = {
     pathPrefix: '/',
     siteUrl: 'https://docs.spectrocloud.com',
     gaTrackingId: null,
-    trailingSlash: false,
+    trailingSlash: true,
   },
   header: {
     search: {

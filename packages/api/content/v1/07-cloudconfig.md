@@ -1,7 +1,7 @@
 ---
 title: 'Cloud Config'
 metaTitle: 'Cloud Config'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to get or update the cloud configuration of a cluster'
 api: true
 paths: ['/v1alpha1/cloudconfigs']
 ---
