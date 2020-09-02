@@ -548,6 +548,26 @@ An HAProxy Load balancer VM will be created for each of the Kubernetes clusters,
 
 Spectro Cloud supports vSphere 6.5 [Update 3](https://docs.vmware.com/en/VMware-vSphere/6.5/rn/vsphere-esxi-65u3-release-notes.html) and vSphere 6.7 [Update 3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html).
 
+* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
+* Minimum capacity required for Private Cloud Gateway: ~ vCPU, XGB memory, 600GB storage.
+* Per tenant cluster IP requirements:
+    * 1 per node.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* Private cloud gateway:
+    * 3 nodes, 3 lps.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* IPs for application workload services (e.g.:LoadBalancer services).
+* Subnet with egress access to the internet (direct or via proxy):
+    * For proxy: HTTP_PROXY, HTTPS_PROXY, SOCKS_PROXY (all required).
+* DNS to resolve public internt names (e.g.: api.spectrocloud.com).
+* vSphere 6.7U3 or later (recommended).
+* NTP configured on all Hosts.
+* Shared Storage between vSphere hosts.
+* VMware vCenter permission:
+<https://docs.spectrocloud.com/clusters?clusterType=vmware_cluster#permissions>
+
 ### Hardware Requirements
 
 [ESXi 6.5 Hardware Requirements](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html)
