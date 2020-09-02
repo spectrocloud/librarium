@@ -1,7 +1,7 @@
 ---
 title: 'Audit Logs'
 metaTitle: 'Audit Logs'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to generate audit logs'
 api: true
 paths: ['/v1alpha1/audits']
 ---

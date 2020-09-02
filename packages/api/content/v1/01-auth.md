@@ -1,7 +1,7 @@
 ---
 title: 'Authentication'
 metaTitle: 'Authentication'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that describes the authentication layer'
 api: true
 paths: ['/v1alpha1/auth']
 ---

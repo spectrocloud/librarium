@@ -1,7 +1,7 @@
 ---
 title: 'Dashboard'
 metaTitle: 'Dashboard'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to get statistics for projects, clusters or cluster profiles'
 api: true
 paths: ['/v1alpha1/dashboard']
 ---

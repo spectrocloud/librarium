@@ -65,7 +65,15 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 32px;
     line-height: 42px;
-    margin: 30px 0;
+    margin: 30px 0 10px;
+
+    ::before {
+      display: block;
+      content: '';
+      width: 1px;
+      margin-top: -110px;
+      height: 110px;
+    }
   }
 
   h3 {
@@ -86,7 +94,15 @@ export const StyledMainWrapper = styled.div`
     li {
       line-height: 1.8;
       font-weight: 400;
+
+      > ul,
+      > ol {
+        margin: 0px;
+      }
     }
+
+
+
   }
 
   a {

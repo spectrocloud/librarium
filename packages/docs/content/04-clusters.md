@@ -548,15 +548,14 @@ An HAProxy Load balancer VM will be created for each of the Kubernetes clusters,
 
 * Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
 * Minimum capacity required for a Private Cloud Gateway:
-	* 1 node - 2 vCPU, 4GB memory, 20GB+10GB storage.
-	* or
-	* 3 nodes - 6 vCPU, 12GB memory, 60GB+10GB storage.
+	* 1 node - 2 vCPU, 4GB memory, 30GB storage.
+	* 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
 * Per tenant cluster IP requirements:
     * 1 per node.
     * 1 Kubernetes control-plane VIP.
     * 1 Kubernetes control-plane extra.
 * Private cloud gateway IP requirements:
-    * 3 nodes, 3 IPs.
+    * 1 node - 1 IP or 3 nodes - 3 IPs.
     * 1 Kubernetes control-plane VIP.
     * 1 Kubernetes control-plane extra.
 * IPs for application workload services (e.g.:LoadBalancer services).
