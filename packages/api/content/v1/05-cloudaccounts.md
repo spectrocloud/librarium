@@ -1,7 +1,7 @@
 ---
 title: 'Cloud Accounts'
 metaTitle: 'Cloud Accounts'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to list, create or edit cloud accounts'
 api: true
 paths: ['/v1alpha1/cloudaccounts']
 ---

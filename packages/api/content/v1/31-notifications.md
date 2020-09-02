@@ -1,7 +1,7 @@
 ---
 title: 'Notifications'
 metaTitle: 'Notifications'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that is used to list or acknowledge notifications for different components'
 api: true
 paths: ['/v1alpha1/notifications']
 ---

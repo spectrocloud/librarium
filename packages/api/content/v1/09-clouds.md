@@ -1,7 +1,7 @@
 ---
 title: 'Clouds'
 metaTitle: 'Clouds'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that can be used to get cloud properties to be used in cloud configurations'
 api: true
 paths: ['/v1alpha1/clouds']
 ---

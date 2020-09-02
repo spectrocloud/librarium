@@ -1,7 +1,7 @@
 ---
 title: 'Projects'
 metaTitle: 'Projects'
-metaDescription: 'This is the meta description'
+metaDescription: 'List of API endpoints that is used to list, create or update projects'
 api: true
 paths: ['/v1alpha1/projects']
 ---
