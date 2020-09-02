@@ -561,7 +561,7 @@ An HAProxy Load balancer VM will be created for each of the Kubernetes clusters,
 * IPs for application workload services (e.g.:LoadBalancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY, SOCKS_PROXY (all required).
-* DNS to resolve public internt names (e.g.: api.spectrocloud.com).
+* DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
