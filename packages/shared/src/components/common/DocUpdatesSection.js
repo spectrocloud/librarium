@@ -42,7 +42,6 @@ const Timestamp = styled.div`
 
 export default function DocUpdatesSection({ title }) {
   const pageContext = useGraphQL();
-  console.log(pageContext)
   const lastChanges = [...(pageContext?.latestUpdates?.edges || [])]
     .map(({ node }) => ({ ...node }))
     .sort((node1, node2) => {

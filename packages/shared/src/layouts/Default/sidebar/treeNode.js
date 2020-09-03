@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SidebarIcon from "../../../components/styles/SidebarIcon";
-
+import { useLocation } from "@reach/router"
 import Link from "../../../components/Link";
 
 const MenuNode = styled.div`
@@ -15,9 +14,13 @@ const MenuNode = styled.div`
     font-weight: 500;
   }
 
-  ${props => props.active && css`
-    > a, a:hover {
+  ${props => props.isActive && css`
+    > .menu-link {
       color: #4432F5;
+
+      &:hover {
+        color: #4432F5;
+      }
     }
   `}
 `;
@@ -49,7 +52,7 @@ const IconWrapper = styled.div`
     stroke: #78909C;
   }
 
-  ${props => props.active && css`
+  ${props => props.isActive && css`
     svg {
         fill: #4432F5;
         stroke: #4432F5;
@@ -63,34 +66,32 @@ const MenuItem = styled.div`
 `;
 
 const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gatsby: {} } }) => {
+  const location = useLocation();
+
+  let isActive;
+  const expanded = React.useMemo(() => {
+    return !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
+  }, [url])
+
+  if (expanded) {
+    isActive = true;
+  }
+
+  if (url === '/' && location && location.pathname === "/") {
+    isActive = false;
+  }
+
   if (hiddenFromNav) {
     return null;
   }
   const hasChildren = items.length !== 0;
 
-  let location;
-
-  if (typeof document != 'undefined') {
-    location = document.location;
-  }
-  const expanded =
-    !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
-
-  let isActive = false
-  if (expanded) {
-    isActive = true;
-  }
-
-  if (url === '/' && location && location.pathname !== "/") {
-    isActive = false;
-  }
-
   return (
-    <MenuNode active={isActive}>
+    <MenuNode isActive={isActive}>
       {title && (
-        <Link to={url}>
+        <Link to={url} className="menu-link">
           <MenuItem>
-            {icon && <IconWrapper active={isActive}><SidebarIcon type={icon} /></IconWrapper>}
+            {icon && <IconWrapper isActive={isActive}><SidebarIcon type={icon} /></IconWrapper>}
             {title}
           </MenuItem>
         </Link>

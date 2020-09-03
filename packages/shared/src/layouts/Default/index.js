@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const Content = styled.main`
+export const Content = styled.main`
   margin: 0px 43px;
   background: ${({ theme }) => theme.colors.background};
 
