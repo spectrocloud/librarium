@@ -66,30 +66,26 @@ const MenuItem = styled.div`
 `;
 
 const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gatsby: {} } }) => {
-  const [isActive, setIsActive] = React.useState();
   const location = useLocation();
 
+  let isActive;
   const expanded = React.useMemo(() => {
     return !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
   }, [url])
 
-  React.useEffect(() => {
-    if (expanded) {
-      setIsActive(true)
-    }
-    
-    if (url === '/' && location && location.pathname === "/") {
-      setIsActive(false)
-      
-    }
-  }, [])
-  
-  
+  if (expanded) {
+    isActive = true;
+  }
+
+  if (url === '/' && location && location.pathname === "/") {
+    isActive = false
+  }
+
   if (hiddenFromNav) {
     return null;
   }
   const hasChildren = items.length !== 0;
-  
+
   return (
     <MenuNode isActive={isActive}>
       {title && (
