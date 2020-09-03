@@ -5,6 +5,7 @@ import Link from '@librarium/shared/src/components/Link';
 
 import Search from './Search';
 import CategorySelector from './CategorySelector';
+import { useGraphQL } from "@librarium/shared/src/graphql";
 
 const Wrapper = styled.div`
   padding: 15px 0;
@@ -57,7 +58,9 @@ const searchOptions = {
   keys: ['node.fields.title'],
 };
 
-export default function Integrations({edges = []}) {
+export default function Integrations() {
+  const data = useGraphQL();
+  const edges = data.integrations.edges;
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchValue, setSearchValue] = useState('');
 
