@@ -78,7 +78,7 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gats
   }
 
   if (url === '/' && location && location.pathname === "/") {
-    isActive = false
+    isActive = false;
   }
 
   if (hiddenFromNav) {
