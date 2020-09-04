@@ -159,7 +159,7 @@ After that, you can use it like this
 
 - provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>`
 - when creating the link to this page, include (in the query) the identifier provided and the value you want (eg: /clusters?clusterType=aws#section1)
-- the values can be one of the tab panel keys 
+- the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
 
 ### Points of interest component
@@ -209,3 +209,24 @@ After that you can use it like this
 If no label is specified, the default one is "+".
 
 Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (default), _rightBottom_, _bottomRight_, _bottom_, _bottomLeft_, _leftBottom_, _left_, _leftTop_.
+
+### Tooltip
+
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+```js
+<Tooltip>tooltip content</Tooltip>
+```
+**Notes**
+ * The tooltip icon can be customized by sending a [font awesome](https://fontawesome.com/icons?d=gallery) icon
+```js
+<Tooltip icon="atom">tooltip content</Tooltip>
+```
+ * If needed, the icon can be replace with text or other html tags using the trigger property:
+```js
+<Tooltip trigger={<button>This is a button</button>}><h1>This is a h1 inside the tooltip</h1></Tooltip>
+```
+
+ * If used inside a paragraph or other md elements the entire "block" needs to be on the same line
+```js
+Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
+```
