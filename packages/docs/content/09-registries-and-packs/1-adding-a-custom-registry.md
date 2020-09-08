@@ -69,33 +69,7 @@ openssl req \
 * Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry docker container
 
 * Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
-* Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
-```bash
-openssl req \
-  -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
-  -x509 -days 365 -out tls.crt
-```
-
-*
-    * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
-
-    ```
-    Country Name (2 letter code) [XX]:
-    State or Province Name (full name) []:
-    Locality Name (eg, city) [Default City]:
-    Organization Name (eg, company) [Default Company Ltd]:
-    Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-    Email Address []:
-
-    Example:
-    REGISTRY_HOST_DNS - registry.com
-    ```
-
-* Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry docker container
-
-* Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 * Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
 ```bash
