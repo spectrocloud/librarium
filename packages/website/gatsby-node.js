@@ -29,7 +29,30 @@ const GRAPHQL = {
       }
     `;
   },
-};
+  '/integrations/': () => {
+    return `{
+      integrations: allMdx(filter: {fields: {isIntegration: {eq: true}}}) {
+        edges {
+          node {
+            fields {
+              id
+              slug
+              title
+              icon
+              index
+              hiddenFromNav
+              category
+              isIntegration
+              isDocsPage
+              logoUrl
+            }
+          }
+        }
+      }
+    }`
+  }
+}
+
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
@@ -72,9 +95,8 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        // Create blog docs pages.
         const promises = result.data.allMdx.edges.map(({ node }) => {
-          if (node.fields.slug === '/integrations' || node.fields.slug === '/glossary') {
+          if (node.fields.slug === '/glossary') {
             return;
           }
           let component = path.resolve('../docs/src/templates/docs.js');

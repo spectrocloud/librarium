@@ -45,19 +45,19 @@ For Alertmanager to work fine, alerting config should be set while deploying the
 * Create the secret manually in the same namespace as that of Alertmanager object
 
    **Prepare alertmanager.yaml contents**
-   ```
+   ```yaml
    global:
      resolve_timeout: 5m
    receivers:
-   - email_configs:
-     - auth_identity: noreply@spectrocloud.com
-       auth_password: abcd
-       auth_username: noreply@spectrocloud.com
-       from: noreply@spectrocloud.com
-       send_resolved: true
-       smarthost: smtp.gmail.com:587
-       to: mark@spectrocloud.com
-     name: prom-alert
+    - email_configs:
+      - auth_identity: noreply@spectrocloud.com
+        auth_password: abcd
+        auth_username: noreply@spectrocloud.com
+        from: noreply@spectrocloud.com
+        send_resolved: true
+        smarthost: smtp.gmail.com:587
+        to: mark@spectrocloud.com
+      name: prom-alert
    route:
      group_by:
      - job
