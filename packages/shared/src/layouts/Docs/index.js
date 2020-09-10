@@ -101,6 +101,9 @@ export const calculateMenuTree = (edges, config) => {
 
 const ContentWrap = styled.div`
   display: flex;
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const RightSidebar = styled.div`
@@ -164,7 +167,7 @@ export default function MDXLayout({
             <NextPrevious mdx={mdx} nav={activeMenu} />
           </div>
         </StyledMainWrapper>
-        {(!hideToCSidebar && !mdx.frontmatter?.hideToCSidebar) && (
+        {!hideToCSidebar && !mdx.frontmatter?.hideToCSidebar && (
           <RightSidebar>
             <StickyWrap>
               <Edit>
@@ -174,7 +177,7 @@ export default function MDXLayout({
                   </Link>
                 )}
               </Edit>
-              {(!hideToC && !mdx.frontmatter?.hideToC) && (
+              {!hideToC && !mdx.frontmatter?.hideToC && (
                 <TableOfContents location={location} edges={edges} />
               )}
             </StickyWrap>

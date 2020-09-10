@@ -33,6 +33,10 @@ export const Edit = styled.div`
       background-color: rgb(245, 247, 249);
     }
   }
+
+  @media (max-width: 800px) {
+    float: right;
+  }
 `;
 
 export const StyledMainWrapper = styled.div`
@@ -100,9 +104,6 @@ export const StyledMainWrapper = styled.div`
         margin: 0px;
       }
     }
-
-
-
   }
 
   a {

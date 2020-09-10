@@ -38,6 +38,10 @@ export const Sidebar = styled.aside`
 
     color: ${props => props.theme.colors.text};
   }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const ListItem = styled(({ className, active, level, ...props }) => {
