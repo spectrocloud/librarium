@@ -540,7 +540,7 @@ The Spectro Cloud management platform does not need direct access to the VMware 
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
 
-An HAProxy Load balancer VM will be created for each of the Kubernetes clusters, as the LB for the apiserver endpoints.
+If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the apiserver endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ippool and allocated to the cluster instead of the loadbalancer.
 
 ![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
 
