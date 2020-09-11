@@ -88,7 +88,7 @@ openssl req \
         --mount type=bind,source=/root/certs,target=/certs,readonly \
         -e REGISTRY_LOG_LEVEL=info \
         -e REGISTRY_AUTH=htpasswd \
-        -e REGSITRY_AUTH_HTPASSWD_REALM="Registry Realm" \
+        -e REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
