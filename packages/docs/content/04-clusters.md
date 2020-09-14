@@ -716,7 +716,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 |---|---|---|
 |HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
 | HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
-| vCenter Sever | The endpoint for the vCenter server host | This setting will be treated for NO_PROXY. Eg., vcenter.company.com |
+| vCenter Server | The endpoint for the vCenter server host | This setting will be treated for NO_PROXY. Eg., vcenter.company.com |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on the Virtual Machine.
