@@ -538,7 +538,7 @@ The process of creating the JSON credential files is available here: https://clo
 
 The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be set up within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and the vCenter, to create and delete target Kubernetes clusters.
 
-The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support both HTTP(S) proxy and SOCKS proxy.
+The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support both HTTP(S) proxy and the vcenter server proxy.
 
 If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the apiserver endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ippool and allocated to the cluster instead of the loadbalancer.
 
@@ -560,7 +560,7 @@ If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created f
     * 1 Kubernetes control-plane extra.
 * IPs for application workload services (e.g.:LoadBalancer services).
 * Subnet with egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY, SOCKS_PROXY (all required).
+    * For proxy: HTTP_PROXY, HTTPS_PROXY, vCenter Server (all required).
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
@@ -716,7 +716,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 |---|---|---|
 |HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
 | HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
-| SOCKS PROXY | The endpoint for the SOCKS Proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., PROXYIP:PROXYPORT |
+| vCenter Sever | The endpoint for the vCenter server host | This setting will be treated for NO_PROXY. Eg., vcenter.company.com |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on the Virtual Machine.
