@@ -355,7 +355,7 @@ The following steps will be taken to provision your first VMware cluster:
         * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
-        * vCenter Server: &lt;endpoint for the vCenter server host&gt;, e.g: _vcenter.company.com_.  This setting will be treated for NO_PROXY on all the nodes.
+        * NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
 5. Power on the spectro-cloud-gateway VM.
 
