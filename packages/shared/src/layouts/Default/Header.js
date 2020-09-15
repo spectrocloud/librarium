@@ -41,7 +41,7 @@ const NavWrap = styled.div`
       box-shadow: inset 0px -1px 0px #4432f5;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 830px) {
       display: none;
     }
   }
@@ -59,7 +59,7 @@ const MobileNav = styled.div`
     color: #206cd1;
     font-size: 20px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     display: flex;
   }
 `;

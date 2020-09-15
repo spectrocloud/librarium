@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   max-width: 1024px;
   margin: 0 auto;
+  overflow: hidden;
 
   ::after {
     content: " ";
@@ -25,6 +26,11 @@ const CardsWrapper = styled.div`
   flex-wrap: wrap;
   margin-top: -30px;
   width: 100%;
+
+  @media (max-width: 830px) {
+    flex-flow: row nowrap;
+    overflow-y: scroll;
+  }
 `
 
 const Card = styled.div`
@@ -38,6 +44,11 @@ const Card = styled.div`
   border-radius: 8px;
   padding: 10px;
   margin-top: 30px;
+
+  @media (max-width: 830px) {
+    margin: 20px;
+    margin-top: 65px;
+  }
 `;
 
 const Icon = styled.div`

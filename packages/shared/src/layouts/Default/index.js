@@ -28,7 +28,7 @@ const LeftSideBarWidth = styled.div`
   max-width: 323px;
   width: 100%;
 
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     position: absolute;
     width: 0%;
     z-index: 20;
@@ -49,7 +49,7 @@ const Overlay = styled.div`
   display: none;
   opacity: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     ${props =>
       props.expanded &&
       css`

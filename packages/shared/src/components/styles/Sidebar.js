@@ -39,7 +39,7 @@ export const Sidebar = styled.aside`
     color: ${props => props.theme.colors.text};
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     display: none;
   }
 `;

@@ -101,7 +101,7 @@ export const calculateMenuTree = (edges, config) => {
 
 const ContentWrap = styled.div`
   display: flex;
-  @media (max-width: 800px) {
+  @media (max-width: 830px) {
     flex-direction: column-reverse;
   }
 `;
