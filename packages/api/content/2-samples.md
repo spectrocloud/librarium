@@ -118,24 +118,6 @@ BODY:
           "uid": "string",
           "values": "string"
         }
-        {
-          "name": "string",
-          "tag": "string",
-          "uid": "string",
-          "values": "string"
-        }
-        {
-          "name": "string",
-          "tag": "string",
-          "uid": "string",
-          "values": "string"
-        }
-        {
-          "name": "string",
-          "tag": "string",
-          "uid": "string",
-          "values": "string"
-        }
       ],
       "type": "string"
     }
