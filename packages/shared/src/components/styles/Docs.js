@@ -34,7 +34,7 @@ export const Edit = styled.div`
     }
   }
 
-  @media (max-width: 830px) {
+  @media (max-width: 1100px) {
     float: right;
   }
 `;
@@ -43,6 +43,34 @@ export const StyledMainWrapper = styled.div`
   max-width: 750px;
   color: ${props => props.theme.colors.text};
   flex-grow: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .previous,
+  .next {
+    margin: 40px 0;
+    width: calc(50% - 8px);
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  @media (max-width: 1100px) {
+    .previous {
+      order: 0;
+      width: 100%;
+    }
+    .content {
+      order: 1;
+    }
+    .next {
+      order: 2;
+      width: 100%;
+    }
+  }
+
   ${props =>
     props.fullWidth &&
     css`

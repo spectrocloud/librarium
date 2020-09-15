@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledNextPrevious = styled.div`
-  margin: 40px 0;
-  padding: 0px;
-  width: auto;
-  display: grid;
-  grid-template-rows: auto;
-  column-gap: 24px;
-  grid-template-columns: calc(50% - 8px) calc(50% - 8px);
-
+export const StyledPrevious = styled.div`
   .previousBtn {
     cursor: pointer;
     -moz-box-align: center;
@@ -31,6 +23,64 @@ export const StyledNextPrevious = styled.div`
     color: ${props => props.theme.colors.text};
   }
 
+  .previousBtn:hover {
+    text-decoration: none;
+    border: 1px solid #1ed3c6;
+  }
+
+  .previousBtn:hover .leftArrow {
+    color: #1ed3c6;
+  }
+
+  .leftArrow {
+    display: block;
+    color: rgb(157, 170, 182);
+    flex: 0 0 auto;
+    margin-right: 16px;
+    font-size: 24px;
+    transition: color 200ms ease 0s;
+  }
+
+  .nextPreviousTitle {
+    margin: 0px;
+    padding: 0px;
+    transition: color 200ms ease 0s;
+  }
+
+  .nextPreviousTitle span {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .nextRightWrapper {
+    height: 100%;
+  }
+`;
+
+export const StyledNext = styled.div`
+  .nextBtn {
+    cursor: pointer;
+    -moz-box-align: center;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
+    margin: 0px;
+    position: relative;
+    display: flex;
+    padding: 8px 16px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    place-self: stretch;
+    border-radius: 3px;
+    border: 1px solid rgb(230, 236, 241);
+    transition: border 200ms ease 0s;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+    text-decoration: none;
+
+    background-color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
+  }
   .nextBtn {
     cursor: pointer;
     -moz-box-align: center;
@@ -54,24 +104,13 @@ export const StyledNextPrevious = styled.div`
     color: ${props => props.theme.colors.text};
   }
 
-  .nextBtn:hover,
-  .previousBtn:hover {
+  .nextBtn:hover {
     text-decoration: none;
     border: 1px solid #1ed3c6;
   }
 
-  .nextBtn:hover .rightArrow,
-  .previousBtn:hover .leftArrow {
+  .nextBtn:hover .rightArrow {
     color: #1ed3c6;
-  }
-
-  .leftArrow {
-    display: block;
-    color: rgb(157, 170, 182);
-    flex: 0 0 auto;
-    margin-right: 16px;
-    font-size: 24px;
-    transition: color 200ms ease 0s;
   }
 
   .rightArrow {
@@ -97,14 +136,5 @@ export const StyledNextPrevious = styled.div`
 
   .nextRightWrapper {
     height: 100%;
-  }
-
-  @media (max-width: 767px) {
-    display: block;
-    padding: 0 15px;
-
-    .previousBtn {
-      margin-bottom: 20px;
-    }
   }
 `;
