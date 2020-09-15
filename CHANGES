@@ -1,3 +1,6 @@
+9/14/20 - Zulfi
+- Release build for 1.2.0
+
 9/2/20 - Codrin
 - Sidebar now hightlights the current path even on refresh
 - Removed centos and ubuntu (empty pages)

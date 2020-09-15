@@ -186,7 +186,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Authenticates the user for the specified crendentials",
+        "summary": "Authenticates the user for the specified credentials",
         "operationId": "v1alpha1Authenticate",
         "parameters": [
           {
@@ -299,7 +299,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Identity provider callback url for the SMAL authentication",
+        "summary": "Identity provider callback url for the SAML authentication",
         "operationId": "V1Alpha1SamlCallback",
         "parameters": [
           {
@@ -560,7 +560,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -703,7 +703,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -864,7 +864,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -1025,7 +1025,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -1231,7 +1231,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -1634,7 +1634,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -1980,7 +1980,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -2305,7 +2305,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -3183,7 +3183,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -3899,7 +3899,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -4006,7 +4006,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -4707,7 +4707,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -4790,7 +4790,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -5291,7 +5291,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -5463,7 +5463,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -5823,7 +5823,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -5986,7 +5986,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -6082,7 +6082,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -6230,7 +6230,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -6324,7 +6324,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -6468,7 +6468,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -6788,7 +6788,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -7702,7 +7702,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -7783,7 +7783,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -7962,7 +7962,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },
@@ -8442,7 +8442,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Set of fields to be presented in the response with values. The feilds are comma separated. Eg: metadata.uid,metadata.name",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
             "name": "fields",
             "in": "query"
           },

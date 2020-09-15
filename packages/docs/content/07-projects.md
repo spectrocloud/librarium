@@ -8,6 +8,7 @@ fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Projects
 
@@ -21,9 +22,7 @@ Enter the name, description, and tags to create a project.
 
 # Associating Users and Teams to a Project
 
-The user and teams can be associated via *Admin > User & Teams* page. Select the user or team and select *Add Roles* under Project Roles for the project association.
-
-[Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team).
+The <Tooltip trigger={<u>Users</u>}><a href="/introduction/concept-overviews#users">Users</a> are members of a tenant who are assigned roles that control their access within the platform.</Tooltip> and <Tooltip trigger={<u>Teams</u>}>A <a href="/introduction/concept-overviews#team">Team</a> is a group of users.</Tooltip> can be associated via *Admin > User & Teams* page. Select the user or team and select *Add Roles* under Project Roles for the project association.
 
 The user permission is always the union of the Tenant and Project roles along with the roles inherited from the team association. Hence, if a user is a *Tenant Admin*, then the user has the *Project Admin* role to all the projects, even if an explicit project role is not assigned. If a user has the *Project Viewer* role at tenant scope, then the user gets "view" permissions on all the projects and the user can be provided a *Project Admin* role for a specific project using the *Project Roles*.
 

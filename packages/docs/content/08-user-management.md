@@ -8,6 +8,7 @@ fullWidth: false
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # User management
 
@@ -28,10 +29,10 @@ For a tenant admin, the password shall be set upon the initial login. Non-admin 
 
 # RBAC
 
-Spectro Cloud allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the [RBAC](/user-management/rbac) page.
+Spectro Cloud allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the <Tooltip trigger={<u>RBAC</u>}>Spectro Cloud's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations.</Tooltip> page.
 
 ## Roles and permissions
 
-The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The [Roles](/user-management/rbac#roles) and [Permissions](/user-management/rbac#permissions) sections in the RBAC page provide more details on this.
+The tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> and <Tooltip trigger={<u>Permissions</u>}><a href="/introduction/concept-overviews#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip> sections in the RBAC page provide more details on this.
 
-To add a user to a project, sign in as an admin and go to the `Users and Teams` section of the [Admin Dashboard](/getting-started#defaultdashboard). Click on the user that you want to enable access to. In the role-editor that opens to the side, click `Add Role` in the "PROJECT ROLES" section. Select the required project from the dropdown menu and enable the roles as needed.
+To add a user to a project, sign in as an admin and go to the `Users and Teams` section of the [Admin Dashboard](/getting-started#admindashboard). Click on the user that you want to enable access to. In the role-editor that opens to the side, click `Add Role` in the "PROJECT ROLES" section. Select the required project from the dropdown menu and enable the roles as needed.

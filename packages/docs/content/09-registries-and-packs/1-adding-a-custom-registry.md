@@ -73,7 +73,7 @@ openssl req \
 * Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
 ```bash
-    docker pull gcr.io/spectro-images-public/release/spectro-registry:1.1.0
+    docker pull gcr.io/spectro-images-public/release/spectro-registry:1.2.0
 ```
 
 * Create the docker container using the docker `run` command:
@@ -92,7 +92,7 @@ openssl req \
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-        gcr.io/spectro-images-public/release/spectro-registry:1.1.0
+        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
     ```
     <InfoBox>
     Spectro Cloud CLI registry login command fails with the error message “x509: certificate signed by unknown authority” in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
@@ -111,7 +111,7 @@ openssl req \
         -e  REGISTRY_AUTH=htpasswd \
         -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
         -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-        gcr.io/spectro-images-public/release/spectro-registry:1.1.0
+        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
     ```
 
     <InfoBox>
