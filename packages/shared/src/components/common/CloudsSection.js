@@ -49,10 +49,9 @@ const CardWrapper = styled.div`
   max-width: 880px;
   margin-top: 30px;
   @media (max-width: 830px) {
-    flex-flow: row nowrap;
-    display: flex;
-    align-items: baseline;
     overflow-y: scroll;
+  }
+  @media (max-width: 650px) {
     justify-content: flex-start;
   }
 `;
@@ -83,6 +82,7 @@ const CloudName = styled.div`
   color: #777;
   @media (max-width: 830px) {
     text-align: center;
+    white-space: nowrap;
   }
 `;
 

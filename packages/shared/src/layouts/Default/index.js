@@ -28,7 +28,14 @@ const LeftSideBarWidth = styled.div`
   max-width: 323px;
   width: 100%;
 
+  ${props =>
+    props.hideMenuSidebar &&
+    css`
+      display: none;
+    `}
+
   @media (max-width: 830px) {
+    display: block;
     position: absolute;
     width: 0%;
     z-index: 20;
@@ -83,14 +90,12 @@ export default function Layout({
 
   return (
     <Wrapper>
-      {!hideMenuSidebar && (
-        <>
-          <Overlay expanded={expanded} onClick={() => showNavbar(false)} />
-          <LeftSideBarWidth expanded={expanded}>
-            <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
-          </LeftSideBarWidth>
-        </>
-      )}
+      <>
+        <Overlay expanded={expanded} onClick={() => showNavbar(false)} />
+        <LeftSideBarWidth expanded={expanded} hideMenuSidebar={hideMenuSidebar}>
+          <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
+        </LeftSideBarWidth>
+      </>
       <MainWrap>
         <Header location={location} toggleMenu={() => showNavbar(!expanded)} />
         <Content fullWidth={fullWidth}>{children}</Content>
