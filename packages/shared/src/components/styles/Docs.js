@@ -60,13 +60,18 @@ export const StyledMainWrapper = styled.div`
   @media (max-width: 1100px) {
     .previous {
       order: 0;
-      width: 100%;
     }
     .content {
       order: 1;
     }
     .next {
       order: 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .previous,
+    .next {
       width: 100%;
     }
   }

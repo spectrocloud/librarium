@@ -1,15 +1,16 @@
-import React from "react";
-import Tree from "./tree";
-import styled from "styled-components";
-import menuBackground from "../../../assets/menu-background.png";
-import Logo from "../../../components/Logo";
-import Link from "../../../components/Link";
+import React from 'react';
+import Tree from './tree';
+import styled from 'styled-components';
+import menuBackground from '../../../assets/menu-background.png';
+import Logo from '../../../components/Logo';
+import Link from '../../../components/Link';
+import { DEFAULT_MENU } from '../../Default/Header';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Sidebar = styled.aside`
   min-width: 323px;
   height: 100%;
-  background: url(${menuBackground}),
-    linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
+  background: url(${menuBackground}), linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
 `;
 
 const MenuWrap = styled.div`
@@ -39,11 +40,7 @@ const LogoWrap = styled.div`
 const Divider = styled.div`
   height: 44px;
   width: 100%;
-  background: radial-gradient(
-    41.9% 100% at 50% 0%,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: radial-gradient(41.9% 100% at 50% 0%, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
   position: sticky;
   top: 0;
 `;
@@ -51,6 +48,45 @@ const Divider = styled.div`
 const Content = styled.div`
   height: calc(100% - 81px);
   overflow-y: auto;
+  @media (max-width: 830px) {
+    padding-bottom: 72px;
+  }
+`;
+
+const Navbar = styled.div`
+  display: none;
+  @media (max-width: 830px) {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: #fafafa;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 30px;
+      color: #bbbbbb;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 12px;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+      svg {
+        margin-bottom: 12px;
+        font-size: 20px;
+      }
+
+      &.isActive {
+        color: #4432f5;
+      }
+    }
+  }
 `;
 
 const SidebarLayout = ({
@@ -63,13 +99,21 @@ const SidebarLayout = ({
       fill="url(#paint1_linear)"
     />
   ),
-}) => (
+}) => {
+  function renderMenuItem({ link, title, icon, isActive = () => false }) {
+    return (
+      <Link className={isActive(location) ? 'navbar isActive' : 'navbar'} to={link}>
+        <FontAwesomeIcon icon={icon} />
+        {title}
+      </Link>
+    );
+  }
+
+  return (
     <Sidebar>
       <LogoWrap>
         <Link to={logoLocation}>
-          <Logo>
-            {subLogo}
-          </Logo>
+          <Logo>{subLogo}</Logo>
         </Link>
       </LogoWrap>
       <Content>
@@ -79,7 +123,9 @@ const SidebarLayout = ({
         </MenuWrap>
         {extraMenu}
       </Content>
+      <Navbar>{DEFAULT_MENU.map(renderMenuItem)}</Navbar>
     </Sidebar>
   );
+};
 
 export default SidebarLayout;

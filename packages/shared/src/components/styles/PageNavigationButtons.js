@@ -39,6 +39,8 @@ export const StyledPrevious = styled.div`
     margin-right: 16px;
     font-size: 24px;
     transition: color 200ms ease 0s;
+    display: flex;
+    align-items: center;
   }
 
   .nextPreviousTitle {
@@ -120,6 +122,8 @@ export const StyledNext = styled.div`
     display: block;
     margin-left: 16px;
     color: rgb(157, 170, 182);
+    display: flex;
+    align-items: center;
   }
 
   .nextPreviousTitle {

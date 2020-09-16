@@ -22,6 +22,34 @@ const Wrap = styled.div`
   background-color: #fff;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  .hamburger {
+    display: none;
+  }
+
+  @media (max-width: 830px) {
+    flex-direction: row-reverse;
+    .hamburger {
+      display: block;
+      margin: 0 20px;
+      cursor: pointer;
+      color: #206cd1;
+      font-size: 20px;
+    }
+    .formElement {
+      display: flex;
+      flex-direction: row-reverse;
+      input {
+        max-width: 110px;
+      }
+    }
+    .showResults {
+      left: auto;
+      right: 5px;
+    }
+  }
 `;
 
 const NavWrap = styled.div`
@@ -47,31 +75,15 @@ const NavWrap = styled.div`
   }
 `;
 
-const MobileNav = styled.div`
-  display: none;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 0px 43px;
-  svg {
-    cursor: pointer;
-    color: #206cd1;
-    font-size: 20px;
-  }
-  @media (max-width: 830px) {
-    display: flex;
-  }
-`;
-
 function isMenuActive(location, link) {
   return location.pathname.startsWith(link);
 }
 
-const DEFAULT_MENU = [
+export const DEFAULT_MENU = [
   {
     title: 'Docs',
     link: '/',
+    icon: 'folder',
     isActive(location) {
       const othersAreActive = DEFAULT_MENU.filter(item => item.title !== 'Docs').some(item => {
         return item.isActive(location);
@@ -83,6 +95,7 @@ const DEFAULT_MENU = [
   {
     title: 'API',
     link: '/api/',
+    icon: 'cog',
     isActive(location) {
       return isMenuActive(location, '/api');
     },
@@ -104,10 +117,7 @@ export default function Header({ menu = DEFAULT_MENU, location, toggleMenu }) {
     <Wrap>
       <SearchComponent config={config} />
       <NavWrap>{menu.map(renderMenuItem)}</NavWrap>
-      <MobileNav>
-        <FontAwesomeIcon icon="bars" onClick={toggleMenu} />
-        <FontAwesomeIcon icon="search" /> {/*maybe?*/}
-      </MobileNav>
+      <FontAwesomeIcon icon="bars" onClick={toggleMenu} className="hamburger" />
     </Wrap>
   );
 }
