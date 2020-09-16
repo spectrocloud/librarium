@@ -5,7 +5,7 @@ metaDescription: 'Portworx storage integration for on-prem installations'
 hiddenFromNav: true
 isIntegration: true
 category: ['storage']
-logoUrl: 'https://registry.spectrocloud.com/'
+logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';

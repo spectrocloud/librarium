@@ -28,10 +28,6 @@ This page outlines a sample workflow for a use case where a user (either a tenan
     * Kubernetes: select version 1.17.X.
     * Network: Calico 3.10.X.
     * Storage: vSphere Storage Class.
-    * Additional layers:
-        * Monitoring: Prometheus - Grafana 9.7.X.
-        * Monitoring: Kubernetes Dashboard 2.0.X.
-        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X.
 * Create a cluster in VMware.
 * Update the cluster profile to bring the Kubernetes version to 1.18.X.
 * Update the cluster to reflect the changes of the Kubernetes version.
