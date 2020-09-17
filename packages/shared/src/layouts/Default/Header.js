@@ -89,6 +89,12 @@ const NavWrap = styled.div`
   }
 `;
 
+const BackButton = styled.div`
+  margin: 0 20px 0 10px;
+  cursor: pointer;
+  display: none;
+`;
+
 const SearchWrap = styled.div`
   @media (max-width: 830px) {
     display: none;
@@ -99,16 +105,11 @@ const SearchWrap = styled.div`
         display: flex;
         align-items: center;
         width: 100%;
+
+        ${BackButton} {
+          display: block;
+        }
       `}
-  }
-`;
-
-const BackButton = styled(FontAwesomeIcon)`
-  margin: 0 20px 0 10px;
-  cursor: pointer;
-
-  @media (max-width: 830px) {
-    display: none;
   }
 `;
 
@@ -155,7 +156,9 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   return (
     <Wrap>
       <SearchWrap expanded={expanded}>
-        <BackButton icon="chevron-left" onClick={() => expandSearchConsole(false)} />
+        <BackButton>
+          <FontAwesomeIcon icon="chevron-left" onClick={() => expandSearchConsole(false)} />
+        </BackButton>
         <SearchComponent config={config} focusInput={expanded} />
       </SearchWrap>
       {!expanded && (
