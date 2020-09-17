@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import styled from 'styled-components';
@@ -31,22 +31,28 @@ const Form = styled.form`
   align-items: center;
   flex-grow: 1;
   padding-left: 21px;
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-    margin-left: 21px;
-  }
 `;
 
-export default connectSearchBox(({ refine, ...rest }) => {
+export default connectSearchBox(({ refine, focus, ...rest }) => {
+  const ref = useRef(null);
   const preventSubmit = e => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    if (focus) {
+      ref.current.focus();
+    }
+  }, [focus]);
+
+  console.log(rest);
   return (
     <Form className={'formElement'} onSubmit={preventSubmit}>
       <SearchIcon />
       <Input
-        className={'searchInput '}
+        ref={ref}
+        className={'searchInput'}
+        id="searchInputId"
         type="text"
         placeholder="Search"
         aria-label="Search"

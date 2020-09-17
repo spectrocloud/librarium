@@ -9,6 +9,7 @@ import { Edit, StyledMainWrapper } from '../../components/styles/Docs';
 import TableOfContents from '../../components/TableOfContents';
 import { useConfig } from '../../config';
 import { Github } from 'styled-icons/fa-brands';
+import { useLocation } from "@reach/router";
 
 export const calculateMenuTree = (edges, config) => {
   const originalData = edges
@@ -117,7 +118,6 @@ const StickyWrap = styled.div`
 `;
 
 export default function MDXLayout({
-  location,
   mdx,
   edges,
   menu,
@@ -128,6 +128,7 @@ export default function MDXLayout({
   hideToCSidebar,
 }) {
   const config = useConfig();
+  const location = useLocation();
 
   const activeMenu = useMemo(() => {
     if (!location) {
@@ -179,7 +180,7 @@ export default function MDXLayout({
                 )}
               </Edit>
               {!hideToC && !mdx.frontmatter?.hideToC && (
-                <TableOfContents location={location} edges={edges} />
+                <TableOfContents edges={edges} />
               )}
             </StickyWrap>
           </RightSidebar>

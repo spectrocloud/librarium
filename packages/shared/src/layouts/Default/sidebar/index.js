@@ -6,6 +6,7 @@ import Logo from '../../../components/Logo';
 import Link from '../../../components/Link';
 import { DEFAULT_MENU } from '../../Default/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocation } from '@reach/router';
 
 const Sidebar = styled.aside`
   min-width: 323px;
@@ -100,6 +101,7 @@ const SidebarLayout = ({
     />
   ),
 }) => {
+  const location = useLocation();
   function renderMenuItem({ link, title, icon, isActive = () => false }) {
     return (
       <Link className={isActive(location) ? 'navbar isActive' : 'navbar'} to={link}>

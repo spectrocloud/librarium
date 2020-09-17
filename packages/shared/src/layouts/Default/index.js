@@ -79,7 +79,6 @@ const MainWrap = styled.div`
 
 export default function Layout({
   children,
-  location,
   menu,
   fullWidth,
   subLogo,
@@ -93,11 +92,11 @@ export default function Layout({
       <>
         <Overlay expanded={expanded} onClick={() => showNavbar(false)} />
         <LeftSideBarWidth expanded={expanded} hideMenuSidebar={hideMenuSidebar}>
-          <Sidebar location={location} menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
+          <Sidebar menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
         </LeftSideBarWidth>
       </>
       <MainWrap>
-        <Header location={location} toggleMenu={() => showNavbar(!expanded)} />
+        <Header toggleMenu={() => showNavbar(!expanded)} />
         <Content fullWidth={fullWidth}>{children}</Content>
       </MainWrap>
     </Wrapper>
