@@ -42,7 +42,11 @@ htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
 mkdir -p /root/certs
 ```
 
-* For self-signed certificates, use the following command to generate certificates.
+<InfoBox>
+
+**Self-Signed Certificates**
+
+For self-signed certificates, use the following command to generate certificates.
 
 ```bash
 openssl req \
@@ -53,17 +57,19 @@ openssl req \
 * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
 
 ```text
-    Country Name (2 letter code) [XX]:
-    State or Province Name (full name) []:
-    Locality Name (eg, city) [Default City]:
-    Organization Name (eg, company) [Default Company Ltd]:
-    Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-    Email Address []:
+Country Name (2 letter code) [XX]:
+State or Province Name (full name) []:
+Locality Name (eg, city) [Default City]:
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
+Email Address []:
 
-    Example:
-    REGISTRY_HOST_DNS - registry.com
-  ```
+Example:
+REGISTRY_HOST_DNS - registry.com
+```
+
+</InfoBox>
 
 * Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry docker container
 
@@ -121,13 +127,15 @@ openssl req \
 * Expose the container host's port publicly to allow the management console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
-    * HTTPS mode -
+  * HTTPS mode -
+
     ```bash
     $curl --cacert tls.crt -v [REGISTRY_SERVER]/health
     $curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
-    * HTTP mode -
+  * HTTP mode -
+
     ```bash
     $curl -v [REGISTRY_SERVER]/health
     $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
