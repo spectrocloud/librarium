@@ -28,13 +28,11 @@ const HitsWrapper = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
   background: white;
-  @media only screen and (max-width: 991px) {
-    width: 400px;
-    max-width: 400px;
-  }
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 830px) {
     width: 100%;
-    max-width: 500px;
+    max-width: 100%;
+    left: 0;
+    top: 79px;
   }
 
   li {
@@ -130,7 +128,13 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-export default function SearchComponent({ indices = [], collapse, hitsAsGrid, config }) {
+export default function SearchComponent({
+  indices = [],
+  collapse,
+  hitsAsGrid,
+  config,
+  focusInput = false,
+}) {
   const ref = createRef();
 
   if (!config?.header?.search?.algoliaAppId) {
@@ -156,6 +160,12 @@ export default function SearchComponent({ indices = [], collapse, hitsAsGrid, co
     ];
   }
 
+  useEffect(() => {
+    if (focusInput) {
+      setFocus(true)
+    }
+  }, [focusInput]);
+
   useClickOutside(ref, () => setFocus(false));
   const displayResult = query?.length > 0 && focus ? 'showResults' : 'hideResults';
 
@@ -177,7 +187,13 @@ export default function SearchComponent({ indices = [], collapse, hitsAsGrid, co
           return (
             <Index key={name} indexName={name}>
               <Results />
-              <Hits hitComponent={Component ? (props) => <Component {...props} onClick={() => setFocus(false)} /> : () => null} />
+              <Hits
+                hitComponent={
+                  Component
+                    ? props => <Component {...props} onClick={() => setFocus(false)} />
+                    : () => null
+                }
+              />
             </Index>
           );
         })}

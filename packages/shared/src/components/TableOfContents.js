@@ -1,9 +1,11 @@
 import React from "react";
 import { Sidebar, ListItem } from "./styles/Sidebar";
 import { useConfig } from "../config";
+import { useLocation } from "@reach/router";
 
-const TableOfContents = ({ edges, location }) => {
+const TableOfContents = ({ edges }) => {
   const config = useConfig();
+  const location = useLocation();
 
   let finalNavItems = [];
   if (edges !== undefined && edges.length > 0) {

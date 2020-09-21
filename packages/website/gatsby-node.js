@@ -100,9 +100,9 @@ exports.createPages = ({ graphql, actions }) => {
             return;
           }
           let component = path.resolve('../docs/src/templates/docs.js');
-          if (node.fields.slug.startsWith('/glossary')) {
-            component = path.resolve('../glossary/src/templates/docs.js');
-          }
+          // if (node.fields.slug.startsWith('/glossary')) {
+          //   component = path.resolve('../glossary/src/templates/docs.js');
+          // }
 
           if (node.fields.slug.startsWith('/api')) {
             component = path.resolve('../api/src/templates/docs.js');
@@ -112,6 +112,11 @@ exports.createPages = ({ graphql, actions }) => {
           const promise = GRAPHQL[slug] ? graphql(GRAPHQL[slug]()) : Promise.resolve({})
 
           return promise.then((result) => {
+            // Disable glossary pages
+            if (node.fields.slug.startsWith('/glossary')) {
+              return;
+            }
+
             createPage({
               path: slug,
               component,
