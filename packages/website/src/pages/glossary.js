@@ -40,7 +40,7 @@ const query = graphql`
 
 const ITEMS_PER_PAGE = 20;
 
-export default function GlossaryList({location}) {
+export default function GlossaryList() {
   const {allMdx} = useStaticQuery(query);
   const glossary = {
     edges: allMdx.edges.filter(edge => !edge.node.fields.isDocsPage && !edge.node.fields.isApiPage)
@@ -79,7 +79,7 @@ export default function GlossaryList({location}) {
   const pageCount = glossary.edges.length / ITEMS_PER_PAGE;
 
   return (
-    <DocsLayout menuEdges={menu.edges || []} location={location}>
+    <DocsLayout menuEdges={menu.edges || []}>
       {letters.map(renderLetter)}
       {items.map(renderItem)}
       {pageCount > 1 && <Pagination current={page} total={glossary.edges.length} pageSize={ITEMS_PER_PAGE} onChange={(page) => updatePage(page)} />}

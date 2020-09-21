@@ -24,7 +24,7 @@ Setting up a custom pack registry involves the installation of a registry server
 * Required minimum machine compute specifications - 1 vCPU and 2GB Memory.
 
 * Firewall ports 443/80 are required to be opened on the machine to allow traffic from the management console and Spectro CLI tool.
-  
+
 # Deploying a pack registry server
 
 Spectro Cloud provides a docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:-
@@ -48,7 +48,7 @@ mkdir -p /root/certs
 
 For self-signed certificates, use the following command to generate certificates.
 
-```
+```bash
 openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
   -x509 -days 365 -out tls.crt
@@ -56,14 +56,14 @@ openssl req \
 
 * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
 
-```
+```text
 Country Name (2 letter code) [XX]:
 State or Province Name (full name) []:
 Locality Name (eg, city) [Default City]:
 Organization Name (eg, company) [Default Company Ltd]:
 Organizational Unit Name (eg, section) []:
 Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-Email Address []:  
+Email Address []:
 
 Example:
 REGISTRY_HOST_DNS - registry.com
@@ -82,7 +82,8 @@ REGISTRY_HOST_DNS - registry.com
 ```
 
 * Create the docker container using the docker `run` command:
-    * HTTPS mode -
+  * HTTPS mode -
+
     ```bash
     docker run -d \
         -p 443:5000 \
@@ -97,12 +98,12 @@ REGISTRY_HOST_DNS - registry.com
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
-    ```
+        gcr.io/spectro-images-public/release/spectro-registry:1.2.0```
+
     <InfoBox>
     Spectro Cloud CLI registry login command fails with the error message “x509: certificate signed by unknown authority” in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
     </InfoBox>
-    
+
     * HTTP mode - **not recommended**
 
     ```bash
@@ -126,13 +127,15 @@ REGISTRY_HOST_DNS - registry.com
 * Expose the container host's port publicly to allow the management console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
-    * HTTPS mode -
+  * HTTPS mode -
+
     ```bash
     $curl --cacert tls.crt -v [REGISTRY_SERVER]/health
     $curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
-    * HTTP mode -
+  * HTTP mode -
+
     ```bash
     $curl -v [REGISTRY_SERVER]/health
     $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog

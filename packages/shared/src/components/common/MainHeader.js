@@ -10,12 +10,14 @@ const Wrapper = styled.div`
   background: url(${background});
   background-size: cover;
   padding: 105px 45px 45px 45px;
+  margin: 0 -15px;
   color: #fff;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   h1,
   h3,
@@ -30,6 +32,15 @@ const Wrapper = styled.div`
   span {
     max-width: 680px;
     text-align: center;
+  }
+
+  @media (max-width: 830px) {
+    padding: 45px;
+  }
+
+  @media (max-width: 400px) {
+    height: 600px;
+    padding: 45px;
   }
 `;
 
