@@ -42,7 +42,11 @@ htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
 mkdir -p /root/certs
 ```
 
-* For self-signed certificates, use the following command to generate certificates.
+<InfoBox>
+
+**Self-Signed Certificates**
+
+For self-signed certificates, use the following command to generate certificates.
 
 ```
 openssl req \
@@ -50,21 +54,22 @@ openssl req \
   -x509 -days 365 -out tls.crt
 ```
 
-* 
-    * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
+* Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
 
-    ```
-    Country Name (2 letter code) [XX]:
-    State or Province Name (full name) []:
-    Locality Name (eg, city) [Default City]:
-    Organization Name (eg, company) [Default Company Ltd]:
-    Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-    Email Address []:  
+```
+Country Name (2 letter code) [XX]:
+State or Province Name (full name) []:
+Locality Name (eg, city) [Default City]:
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
+Email Address []:  
 
-    Example:
-    REGISTRY_HOST_DNS - registry.com
-    ```
+Example:
+REGISTRY_HOST_DNS - registry.com
+```
+
+</InfoBox>
 
 * Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry docker container
 
