@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
-  margin: 0px 43px;
+  padding: 0px 43px;
   background: ${({ theme }) => theme.colors.background};
 
   ${props =>
@@ -22,6 +22,10 @@ export const Content = styled.main`
     css`
       margin: 0;
     `}
+
+  @media (max-width: 830px) {
+    padding: 0;
+  }
 `;
 
 const LeftSideBarWidth = styled.div`

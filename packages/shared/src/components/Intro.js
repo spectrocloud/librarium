@@ -12,6 +12,11 @@ const IntroWrapper = styled.div`
   background-size: cover;
   padding: 43px;
   margin: 0 -43px 20px -43px;
+
+  @media (max-width: 830px) {
+    padding: 15px;
+    margin: 0 -15px 15px -15px;
+  }
 `
 
 export default function IntroSection({ children }) {

@@ -29,7 +29,7 @@ const CardsWrapper = styled.div`
 
   @media (max-width: 830px) {
     flex-flow: row nowrap;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 `;
 
