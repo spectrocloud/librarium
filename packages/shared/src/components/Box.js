@@ -24,6 +24,10 @@ const Wrapper = styled.div`
   `}
 `;
 
+const ContentWrapper = styled.div`
+  min-width: 0;
+`
+
 const IconWrapper = styled.div`
   margin-right: 10px;
 `;
@@ -32,7 +36,7 @@ function Box({ children, type }) {
   return (
     <Wrapper type={type}>
       <IconWrapper><FontAwesomeIcon icon={config[type].icon} /></IconWrapper>
-      <div>{children}</div>
+      <ContentWrapper>{children}</ContentWrapper>
     </Wrapper>
   );
 }
