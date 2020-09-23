@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import styled from 'styled-components';
 
-import CodeHighlight from "./CodeHighlight";
+import CodeHighlight from './CodeHighlight';
 
 const colors = {
   get: '#4aa908',
@@ -60,11 +60,22 @@ const Summary = styled.div`
 
 const ResponsesWrapper = styled.div`
   margin-left: 60px;
+
+  @media (max-width: 1730px) {
+    margin: 20px 0;
+  }
 `;
 const OperationWrap = styled.div`
   display: flex;
   > * {
     width: 50%;
+  }
+
+  @media (max-width: 1730px) {
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
   }
 `;
 
@@ -105,6 +116,11 @@ const Response = styled.div`
   }
 `;
 
+const Table = styled.div`
+  overflow-x: scroll;
+  width: 100%;
+`;
+
 const normalizePath = path => {
   if (!path.endsWith('.{format}')) return path;
 
@@ -116,7 +132,7 @@ function Property({ label, value }) {
     <Summary>
       <Label>{label}:</Label> {value || `No ${label}`}
     </Summary>
-  )
+  );
 }
 
 function Parameters({ parameters, method, path }) {
@@ -124,29 +140,25 @@ function Parameters({ parameters, method, path }) {
     return (
       <Summary>
         <Label>Parameters:</Label> No parameters
-      </Summary>)
+      </Summary>
+    );
   }
 
   function renderParameter(parameter) {
     return (
-      <tr
-        key={path + method + parameter.name + parameter.paramType}
-      >
+      <tr key={path + method + parameter.name + parameter.paramType}>
         <td>{parameter.name}</td>
         <td>{parameter.type}</td>
         <td>{parameter.description}</td>
         <td>
-          {typeof parameter.required == 'undefined' ||
-            parameter.required == false
-            ? 'no'
-            : 'yes'}
+          {typeof parameter.required == 'undefined' || parameter.required == false ? 'no' : 'yes'}
         </td>
       </tr>
     );
   }
 
   return (
-    <>
+    <Table>
       <Label>Parameters:</Label>
       <table className="table table-striped table-hover">
         <thead>
@@ -157,12 +169,10 @@ function Parameters({ parameters, method, path }) {
             <th>Required</th>
           </tr>
         </thead>
-        <tbody>
-          {parameters.map(renderParameter)}
-        </tbody>
+        <tbody>{parameters.map(renderParameter)}</tbody>
       </table>
-    </>
-  )
+    </Table>
+  );
 }
 
 function RequestBody({ body }) {
@@ -175,7 +185,7 @@ function RequestBody({ body }) {
       <label>Body</label>
       <CodeHighlight code={body} />
     </Response>
-  )
+  );
 }
 
 function ResponseMessages({ responseMessages }) {
@@ -187,7 +197,7 @@ function ResponseMessages({ responseMessages }) {
     <Response type="response">
       <label>HTTP code:</label> {response.code} <br />
       <label>Description:</label> {response.description} <br />
-      {response.schema && response.schema !== "null" && (
+      {response.schema && response.schema !== 'null' && (
         <>
           <label>Response body:</label>
           <CodeHighlight code={response.schema} />

@@ -1,7 +1,0 @@
----
-title: "cluster"
----
-
-# Cluster
-
-lorem

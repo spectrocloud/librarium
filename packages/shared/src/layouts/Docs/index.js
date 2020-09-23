@@ -4,11 +4,12 @@ import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from 'styled-components';
 import favicon from '../../../src/assets/favicon.png';
 
-import { Link, NextPrevious } from '../../components';
+import { Link, Next, Previous } from '../../components';
 import { Edit, StyledMainWrapper } from '../../components/styles/Docs';
 import TableOfContents from '../../components/TableOfContents';
 import { useConfig } from '../../config';
 import { Github } from 'styled-icons/fa-brands';
+import { useLocation } from "@reach/router";
 
 export const calculateMenuTree = (edges, config) => {
   const originalData = edges
@@ -101,6 +102,9 @@ export const calculateMenuTree = (edges, config) => {
 
 const ContentWrap = styled.div`
   display: flex;
+  @media (max-width: 1100px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const RightSidebar = styled.div`
@@ -114,7 +118,6 @@ const StickyWrap = styled.div`
 `;
 
 export default function MDXLayout({
-  location,
   mdx,
   edges,
   menu,
@@ -125,6 +128,7 @@ export default function MDXLayout({
   hideToCSidebar,
 }) {
   const config = useConfig();
+  const location = useLocation();
 
   const activeMenu = useMemo(() => {
     if (!location) {
@@ -158,13 +162,14 @@ export default function MDXLayout({
 
       <ContentWrap>
         <StyledMainWrapper fullWidth={mdx.frontmatter?.fullWidth || fullWidth}>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-          {extraContent}
-          <div>
-            <NextPrevious mdx={mdx} nav={activeMenu} />
+          <div className="content">
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+            {extraContent}
           </div>
+          <Previous mdx={mdx} nav={activeMenu} />
+          <Next mdx={mdx} nav={activeMenu} />
         </StyledMainWrapper>
-        {(!hideToCSidebar && !mdx.frontmatter?.hideToCSidebar) && (
+        {!hideToCSidebar && !mdx.frontmatter?.hideToCSidebar && (
           <RightSidebar>
             <StickyWrap>
               <Edit>
@@ -174,8 +179,8 @@ export default function MDXLayout({
                   </Link>
                 )}
               </Edit>
-              {(!hideToC && !mdx.frontmatter?.hideToC) && (
-                <TableOfContents location={location} edges={edges} />
+              {!hideToC && !mdx.frontmatter?.hideToC && (
+                <TableOfContents edges={edges} />
               )}
             </StickyWrap>
           </RightSidebar>

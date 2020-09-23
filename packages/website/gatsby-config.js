@@ -5,6 +5,12 @@ const path = require("path");
 const config = require('./config');
 
 const plugins = [
+  {
+    resolve: 'gatsby-plugin-sitemap',
+    options: {
+      exclude: [`/glossary/`, `/glossary/*`]
+    }
+  },
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
   'gatsby-plugin-styled-components',

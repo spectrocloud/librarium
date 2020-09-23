@@ -13,7 +13,7 @@ const APIS = {
   v1,
 };
 
-export default function MDXLayout({ data = {}, location }) {
+export default function MDXLayout({ data = {} }) {
   const {
     allMdx,
     mdx,
@@ -144,7 +144,6 @@ export default function MDXLayout({ data = {}, location }) {
   return (
     <App>
       <Layout
-        location={location}
         menu={menu}
         fullWidth={mdx.frontmatter?.fullWidth}
         logoLocation="/api"
@@ -164,7 +163,6 @@ export default function MDXLayout({ data = {}, location }) {
           hideToCSidebar={mdx.frontmatter?.hideToCSidebar}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
-          location={location}
         />
       </Layout>
     </App>
