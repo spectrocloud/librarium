@@ -136,6 +136,24 @@ Spectro Cloud maintains an event stream with low-level details of the various or
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
 </InfoBox>
 
+# Proxy Whitelists
+
+This table lists the proxy requirements for enabling the Spectro Cloud management console.
+
+| Top-level Domain | Port | Description |
+| --- | --- | --- |
+| spectrocloud.com | 443 | For the Spectro Cloud SaaS. |
+| s3.amazonaws.com | 443 | To access the Spectro Cloud VMware OVA files. |
+| gcr.io | 443 | To access the Spectro Cloud image files. |
+| docker.io | 443 | To access the Spectro Cloud Pack Registries. |
+| googleapis.com | 443 | For pulling Spectro Cloud images. |
+| docker.com | 443 | To access the Spectro Cloud docker images. |
+| raw.githubusercontent.com | 443 | |
+| projectcalico.org | 443 | For egress management. |
+| quay.io | 443 | Container image registry access. |
+| grafana.com | 443 | To provide access to the dashboard metrics. |
+| github.com | 443 | |
+
 # Creating Clusters
 
 The detailed steps for creating clusters (as well as scaling/removing/reconfiguring etc.) on different cloud service providers are detailed here.
