@@ -49,7 +49,7 @@ const CardWrapper = styled.div`
   max-width: 880px;
   margin-top: 30px;
   @media (max-width: 830px) {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   @media (max-width: 650px) {
     justify-content: flex-start;
