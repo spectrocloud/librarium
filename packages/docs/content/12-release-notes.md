@@ -11,6 +11,14 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# September 10, 2020 - Release 1.2.0
+
+With release 1.2.0, users get more control and added support:
+
+* Users can now access Kubernetes cluster certificates and renew them.
+* For VMware, multi-domain support for private gateways is now available.
+* Also for VMware, layout changes have been made to improve usability.
+
 # August 21, 2020 - Release 1.1.0
 
 Release 1.1.0 is all about enhancing the user experience, providing tighter controls on clusters, and important bug fixes.
