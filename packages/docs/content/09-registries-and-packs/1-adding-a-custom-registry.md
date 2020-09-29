@@ -86,6 +86,7 @@ REGISTRY_HOST_DNS - registry.com
 ```
 
 * Create the docker container using the docker `run` command:
+  
   * HTTPS mode -
 
     ```bash
@@ -102,13 +103,15 @@ REGISTRY_HOST_DNS - registry.com
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-        gcr.io/spectro-images-public/release/spectro-registry:1.2.0```
+        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
+      ```
 
-    <InfoBox>
-    Spectro Cloud CLI registry login command fails with the error message “x509: certificate signed by unknown authority” in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
-    </InfoBox>
+  <InfoBox>
 
-    * HTTP mode - **not recommended**
+  Spectro Cloud CLI registry login command fails with the error message *“x509: certificate signed by unknown authority”* in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
+  </InfoBox>
+
+  * HTTP mode - **not recommended**
 
     ```bash
     docker run -d \
@@ -125,7 +128,9 @@ REGISTRY_HOST_DNS - registry.com
     ```
 
     <InfoBox>
+
     Spectro Cloud CLI is required to use the insecure option `-i ( --insecure )` in the registry login command if the pack registry is installed in the HTTP mode.
+    
     </InfoBox>
 
 * Expose the container host's port publicly to allow the management console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
