@@ -36,7 +36,7 @@ This integration also includes dashboards and alerts.
 
 ## Use custom secrets for alertmanager
 
-For Alertmanager to work fine, alerting config should be set while deploying the intergation. This config also includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below
+For Alertmanager to work fine, alerting config should be set while deploying the integration. This config also includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below
 
 * Add Prometheus-Operator integration in the Cluster profile with changes to the following values
    * `alertmanager.alertmanagerSpec.useExistingSecret` - Set to true. This will skip creating the default Alertmanager secret
