@@ -81,8 +81,8 @@ For Alertmanager to work fine, alerting config should be set while deploying the
 
 Follow below steps to configure Ingress on Grafana
 
-1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #408)
-2. Ingress (line #416)
+1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #427)
+2. Ingress (line #438)
    * Enable Ingress; change enabled from false to "true"
    * Set Ingress rules like annotations, path, hosts, etc.
 
