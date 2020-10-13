@@ -31,7 +31,7 @@ Below steps will come in handy to set the default certificate.
     kubectl -n kube-system create secret tls ingress-tls --cert server.crt --key server.key
     ```
 2. Edit Nginx ingress pack values to include extraArgs.default-ssl-certificate section which will reference the secret created above
-    ```bash
+    <pre>
     charts:
       nginx-ingress:
         fullnameOverride: "nginx-ingress"
@@ -40,7 +40,7 @@ Below steps will come in handy to set the default certificate.
           ...
           extraArgs:
             default-ssl-certificate: "kube-system/ingress-tls"
-    ```  
+    </pre>  
 
 
 ## Troubleshooting
