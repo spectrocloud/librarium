@@ -560,7 +560,7 @@ The Private Gateway supports going through an optional Proxy server to talk to S
 
 If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the apiserver endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ippool and allocated to the cluster instead of the loadbalancer.
 
-![vmware_cluster_architecture.png](vmware_cluster_architecture.png)
+![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
 ## Prerequisites
 
@@ -734,7 +734,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 |---|---|---|
 |HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
 | HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
-| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com,10.10.0.0/16 |
+| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com, .company.org, 10.10.0.0/16 |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on the Virtual Machine.
