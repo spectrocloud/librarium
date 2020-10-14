@@ -21,6 +21,27 @@ Integration creates the following components:
 * Ingress Controller.
 * Default Backend.
 
+## Default SSL certificate
+
+NGINX Ingress controller provides an option to set a default SSL certificate to be used for requests that do not match any of the configured server names. The default certificate will also be used for ingress tls: sections that do not have a secretName option.
+Below steps will come in handy to set the default certificate.
+ 
+1. Create a secret with key and certificate 
+    ```bash
+    kubectl -n kube-system create secret tls ingress-tls --cert server.crt --key server.key
+    ```
+2. Edit Nginx ingress pack values to include extraArgs.default-ssl-certificate section which will reference the secret created above
+    ```bash
+    charts:
+      nginx-ingress:
+        fullnameOverride: "nginx-ingress"
+        controller:
+          ...
+          ...
+          extraArgs:
+            default-ssl-certificate: "kube-system/ingress-tls"
+    ```  
+
 ## Troubleshooting
 
 For basic troubleshooting, refer the below troubleshooting guide:
