@@ -38,7 +38,6 @@ Below steps will come in handy to set the default certificate.
         controller:
           ...
           ...
-
           extraArgs:
             default-ssl-certificate: "kube-system/ingress-tls"
     ```  
