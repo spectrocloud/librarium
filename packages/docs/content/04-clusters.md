@@ -694,6 +694,10 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
 </InfoBox>
 
+<InfoBox>
+Enterprise version users should choose the <i>"Use System Gateway"</i> option.
+</InfoBox>
+
 In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can be created for the different vSphere users.
 
 | Property | Description |
@@ -706,16 +710,28 @@ In addition to the default cloud account already associated with the private clo
 
 ## Creating a VMware cloud gateway
 
+<InfoBox>
+For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters. <strong>PLEASE VERIFY</strong>
+</InfoBox>
+
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
 
 By default, 4GB of memory is allocated for private gateways. Please ensure that this memory allocation is increased based on the number of clusters that need to be created.
 
 ## Tenant Portal - Initiate Install
 
+<InfoBox>
+This step does not apply to Enterprise version users.
+</InfoBox>
+
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings and invoke the dialogue to create a new private cloud gateway.
 * Note down the link to the Spectro Cloud Gateway Installer OVA and PIN displayed on the dialogue.
 
 ## vSphere - Deploy Gateway Installer
+
+<InfoBox>
+This step does not apply to Enterprise version users.
+</InfoBox>
 
 * Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
 * Proceed through the OVF deployment wizard by choosing the desired name, placement, compute, storage, and network options.
