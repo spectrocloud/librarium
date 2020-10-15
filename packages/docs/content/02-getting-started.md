@@ -319,6 +319,9 @@ Once the cluster is provisioned - feel free to try the following:
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
 </InfoBox>
 
+<Tabs>
+<Tabs.TabPane tab="In the Cloud" key="vmware_saas">
+
 The following steps will be taken to provision your first VMware cluster:
 
 * Create a Private Cloud Gateway.
@@ -375,6 +378,25 @@ The following steps will be taken to provision your first VMware cluster:
 11. Select DHCP as the IP allocation strategy. 
 12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
 13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="On Premise" key="vmware_on_prem">
+
+The following steps will be taken to provision your first VMware cluster:
+
+* Create a Private Cloud Account.
+* Create Cluster Profile.
+* Provision Cluster.
+
+## Installation
+
+***RANDOM, INACCURATE, PLACEHOLDER TEXT.***
+
+Follow the [instructions](/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant) to install the Quick Start variant. Verify the installation by accessing the System Console and creating a tenant admin. Using the activation link, approve the tenant admin and open the tenant management console to create a cluster profile.
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Cluster Profile
 
