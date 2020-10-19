@@ -107,7 +107,7 @@ REGISTRY_HOST_DNS - registry.com
         -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
         -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
         -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
+        spectro-registry:latest
       ```
 
   <InfoBox>
@@ -128,7 +128,7 @@ REGISTRY_HOST_DNS - registry.com
         -e  REGISTRY_AUTH=htpasswd \
         -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
         -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-        gcr.io/spectro-images-public/release/spectro-registry:1.2.0
+        spectro-registry:latest
     ```
 
     <InfoBox>
