@@ -186,7 +186,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Authenticates the user for the specified crendentials",
+        "summary": "Authenticates the user for the specified credentials",
         "operationId": "v1alpha1Authenticate",
         "parameters": [
           {
@@ -299,7 +299,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Identity provider callback url for the SMAL authentication",
+        "summary": "Identity provider callback url for the SAML authentication",
         "operationId": "V1Alpha1SamlCallback",
         "parameters": [
           {
