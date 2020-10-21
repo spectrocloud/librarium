@@ -1,7 +1,7 @@
 ---
-title: "Quick Start"
-metaTitle: "Quick Start"
-metaDescription: "A quick start to Spectro Cloud's Enterprise (on-premise) variant."
+title: "Quick Start Mode"
+metaTitle: "Quick Start Mode"
+metaDescription: "A quick start to Spectro Cloud Plaform for PoC purposes."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -12,39 +12,60 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# Deploying the Quick Start variant
+# Quick Start Installation
 
-[Quick Start](/enterprise-version/#quickstart) allows users to test all functions of the product without going for a full install.
+As a prequisite, download the platform installer ova using the link provided, and upload it into vCenter.
 
-## Quick Start variant - installation instructions
 
-1. In the VMware console, add a new OVF template from this [URL](https://vmwaregoldenimage.s3.amazonaws.com/u-1804-k-1188-428c.ova).
-2. Click “Yes” on the Source Verification security dialog.
-3. Provide a name for the VM and choose the folder to deploy in.
-4. Select `vSAN Cluster` as the Compute Resource.
-5. Review the details and select storage in the next steps.
-6. Select the appropriate network for the deployment.
-7. In the “Customize Template” window, the SSH key is the only mandatory requirement.
-    1. The Static IP addresses can be mentioned here if required.
-    2. Proxy settings can be mentioned, if available.
-    3. For air-gapped environments, the user needs to provide the URL and login credentials in this space.
+## Deploy Platform Installer
 
-    <WarningBox>
-    Importing a new OVA from the installer will result in a fresh install discarding the existing Quick Start data.
-    </WarningBox>
+1. Login to vSphere console and navigate to VMs and Templates.
+2. Navigate to the Datacenter and folder you would like to use for the installation.
+3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
+4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
+    * URL: <Location of the plaform installer>
+    * Virtual Machine Name: <vm name>
+    * Folder: <Select desired folder>
+    * Select the desired Datacenter, Storage, and Network for the platform installer VM as you proceed through the next few steps. Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
+    * Customize the template as follows:
+        * SSH Public Keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
+        * Monitoring Console Password: A monitoring console is deployed in the platform installer VM to provide detailed information about the installation progress as well as to provide access to various logs. This console can be accessed after the VM is powered on at https://<VM IP Adddress>:5080. Default monitoring console credentials are, User Name: admin and Password: admin. Provide a different password for the monitoring console if desired. Leave the field blank to accept default password. 
+        * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
+        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
+        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
+        * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
+        * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
+        * NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
+        * Spectro Cloud Repository settings: The platform installer downloads various platform artifacts from a repository. Currently this repository is hosted by Spectro Cloud and the installer VM needs to have outgoing internet connection to the repository. Upcoming releases will enable the option to privately host a dedicated repository to avoid having to connect outside. This option is currently unavaialble. Leave all the fields under Spectro Cloud Repository settings blank
+    * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
+5. Power on the VM.
+    
+## Monitor Installation
 
-8. The Private Cluster Gateway is a built-in, lightweight app that provides the installation status, download logs, and run verification scripts.
-9. To run this app, click on the VM with the name provided in step 3 and click the Power On button.
-10. Once the IP address is generated, open port 3000 on this IP in a new browser tab to deploy the Private Cluster Gateway app.
-11. The app shows the real-time installation status under the “Status” tab.
-12. The “Logs” tab will contain error logs if any. This will eliminate the need to connect via SSH and run scripts in case of errors.
-13. Under “Tasks” scripts can be run specifically for verification of installation parameters.
-14. The “Status” tab will reflect a successful installation of the Spectro Cloud Enterprise System Console when completed and display the URL to access the console.
-    1. The Spectro Cloud Enterprise System Console is similar to the super admin console on the SaaS - it is not available to tenant admins.
-    2. In this console, super admins can update the Spectro Cloud version that they are using and manage their tenants. The console also provides access to manage the <Tooltip trigger={<u>Spectro Cloud Quick Start Cluster</u>}>A cluster created in the Quick Start mode.</Tooltip> and the <Tooltip trigger={<u>Spectro Cloud Enterprise Cluster</u>}>A cluster created in the Enterprise mode. These clusters handle the enterprise functions and are different from <a href="/introduction/concept-overviews/#workloadcluster">workload clusters</a>.</Tooltip>.
-    3. Finally, super admins can configure backups from the Spectro Cloud Enterprise System Console.
-15. Super Admins can use the `Administration` tab in the system console to manage the SMTP and Proxy settings.
-16. Since a tenant will not be able to activate their SMTP before the first login, the super admin must send an activation link. This is found in the `Actions` menu of the tenant organization that was just created.
-17. Using the activation link, a tenant admin logs in to the [default dashboard](/getting-started/#defaultdashboard).
-18. The Admin Settings now have a “Cloud Accounts” tab for all CSPs. This allows a tenant to add cross-project cloud accounts as opposed to adding an account for each project. The admin can still add project-specific cloud accounts if they wish to.
-19. For the on-prem version, using a private cloud gateway can be avoided by enabling the `Use System Private Gateway` button.
+The platform installer contains a web application called the Supervisor, to provide detailed progress of the installation. After the VM is powered on, perform the following steps to ensure installation is completed successfully. 
+
+1. Open the Supervisor application in a browser window by navigating to https://<VM IP Address>:5080
+2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress. 
+3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console. 
+4. Navigate to the On-Prem System Console to perform initial configuration. Additional administration tasks like SMTP setup, certificate manamgent etc. can also be performed from the On-Prem System Console. 
+    
+Note: Typically installation takes around 10 mins after powereing on the virtual machine. If the installtion fails or takes an unusually long time, please look for failrue messages in the install status page, or access system logs from the 'Logs' tab to get detailed information about the failure.
+ 
+ 
+## Initial Configuration
+
+The On-Prem System Console provides various options for performing various administrative setup tasks. Most of these are optional and can be performed at any later time. To quickly start using the platform functionality, all you need to do is create your first tenant and activate it. 
+
+1. Open the On-Prem System Console applicaton in a browser window by navigating to https://<VM IP Address>/system.
+2. Login using username:admin and password:admin
+3. Reset the default password
+4. Choose Quick Start mode when prompted for a choice for startup mode. 
+5. Navitate to Tenant Management section and create your first tenant.
+6. Copy the tenant activation link and invoke it in a browser winow to activate the newly created tenant .  
+7. Enter the desired password and proceed and login as a tenant into the Management Console. 
+    
+As next steps, continue to perform various tasks as desired from the management console like [create cloud accounts], [create tenant IP pool], [create cluster profiles] and [launch kubernetes clusters]
+    
+    
+    
