@@ -12,53 +12,44 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# Understanding the System Console
+# Overview
 
-When Spectro Cloud's Platform Installer is deployed either in the Quick Start variant or the Enterprise variant, the super admins have access to the System console. This is different from the tenant [admin console](/getting-started/#admindashboard). Super admins can use this console to:
+The on-prem system console is enables initail setup and ongoing and administration as well as upgrade management of Spectro Cloud Platform. The on-prem system console is available in quick start and enterpsise mode. 
+
+Platform administrators can use this console to perform the following operations:
 
 | Setting | Function |
 | --- | --- |
-| Tenant Management | Manage tenants in the private network |
-| Update Management | Schedule updates to the Spectro Cloud product |
-| Network Management | Monitor the private network |
-| Administration | Configure the SMTP, Proxy, and Certificate settings |
-| Cluster Management | Operate on the enterprise clusters |
-| Backup/Restore | Backup and restore data from the Quick Start variant |
+| Tenant Management | Create and activate tenants |
+| Update Management | Upgrade Spectro Cloud platform to newer versions |
+| Administration | Configure platform settings like SMTP, Certificate etc. |
+| Enterprise Cluster Migration | Available in quick start mode install an enterprise cluster |
+
 
 ***Random text; verification needed.***
 
 # Tenant Management
 
-Super admins can create and delete tenant spaces here. Once a tenant space is created, one or more tenant admins can be created here. For each tenant admin, an activation link is needed for the first login. This link is also generated in this section.
+Create new tenants and their initial tenant admin accounts. Optionally activate new tenants to enable administrators to login and access the tenant management console. 
 
 # Update Management
 
-An update to the product will be automatically pushed to the Spectro Cloud repository. The update manager will notify the super admins when an update is available. Super admins can use the Update Management setting to view and enable the updates to one or more tenants, as applicable, and also schedule when the updates are installed.
+Upgrades to Spectro Cloud platform are deployed to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades direcly from the on-prem system console. 
 
-# Network Management
-
-This setting allows super admins to create multiple VPNs and/or gateways for isolating tenant spaces.
 
 # Administration
 
-For all things related to connection protocols such as SMTP, Proxies, and Certificates.
 
 ## SMTP
 
-Create and configure SMTP clients and servers, security extensions, and [implementation logics](https://docs.nginx.com/nginx/admin-guide/mail-proxy/mail-proxy/).
-
-## Proxy
-
-Details of HTTP proxies, HTTPS proxies, SOCKS proxies, NO_PROXY; adding and configuring firewalls, etc.
+Configure SMTP settings to enable Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are onboarded to the platform so they can activate their accounts
 
 ## Certificates
 
-Key management for SSH keys on a per-tenant basis.
+Provide the desired certificate and key to be used for external 
+
 
 # Cluster Management
 
 Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster also can be configured and their versions updated.
 
-# Backup and Restore
-
-This section allows super admins to handle the databases of the Quick Start variant - backup and restore locations and frequencies, database formats and languages, etc.
