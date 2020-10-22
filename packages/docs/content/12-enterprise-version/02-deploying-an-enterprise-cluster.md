@@ -12,13 +12,15 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# Deploy platform installer
+# Enterprise Mode
 
-The Spectro Cloud On-Prem Enterprise Cluster is a multi-node, highly-available installation of the Spectro Cloud platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](/enterprise-version/deploying-the-platform-installer/) steps to deploy the installer VM and observe the [monitoring console](/enterprise-version/deploying-the-platform-installer/#monitorinstallation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
+The Spectro Cloud Enterprise Mode is a multi-node, highly-available installation of the Spectro Cloud platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](/enterprise-version/deploying-the-platform-installer/) steps to deploy the installer VM and observe the [monitoring console](/enterprise-version/deploying-the-platform-installer/#monitorinstallation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
 
-Note: Deployment of an enterprise cluster is a migration process from the quick start mode. You may choose to deploy the enterprise cluster on day 1 right after instantiating the platform installer VM, or use the system in the quick start mode initially and at a later point invoke the enterprise cluster migration wizard to deploy the enterprise cluster. All the data from the quick start mode is migrated to the enterprise cluster as part of this migration process.
+<InfoBox>
+Deployment of an enterprise cluster is a migration process from the quick start mode. You may choose to deploy the enterprise cluster on day 1 right after instantiating the platform installer VM, or use the system in the quick start mode initially and at a later point invoke the enterprise cluster migration wizard to deploy the enterprise cluster. All the data from the quick start mode is migrated to the enterprise cluster as part of this migration process.
+</InfoBox>
 
-# Enterprise Cluster Migration
+# Migrate quick start mode cluster to enterprise
 
 1. Open the On-Prem system console from a browser window by navigating to https://&lt;VM IP Address&gt;/system and log in.
 2. Navigate to the Enterprise Cluster Migration wizard from the menu on the left-hand side.
