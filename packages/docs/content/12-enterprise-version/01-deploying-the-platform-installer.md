@@ -58,7 +58,7 @@ Note: Typically installation takes around 10 mins after powereing on the virtual
 
 The On-Prem System Console provides various options for performing various administrative setup tasks. Most of these are optional and can be performed at any later time. To quickly start using the platform functionality, all you need to do is create your first tenant and activate it. 
 
-1. Open the On-Prem System Console applicaton in a browser window by navigating to https://<VM IP Address>/system.
+1. Open the On-Prem System Console applicaton in a browser window by navigating to https://< VM IP Address >/system.
 2. Login using username:admin and password:admin
 3. Reset the default password
 4. Choose Quick Start mode when prompted for a choice for startup mode. 
