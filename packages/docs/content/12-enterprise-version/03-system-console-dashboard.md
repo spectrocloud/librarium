@@ -31,7 +31,7 @@ Create new tenants and their initial tenant admin accounts. Optionally, activate
 
 # Update Management
 
-Upgrades to the Spectro Cloud platform are deployed to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades directly from the on-prem system console.
+Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades directly from the on-prem system console.
 
 # Administration
 
