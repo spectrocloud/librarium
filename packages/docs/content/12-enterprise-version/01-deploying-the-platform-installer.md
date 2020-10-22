@@ -23,13 +23,14 @@ As a prequisite, download the platform installer ova using the link provided, an
 2. Navigate to the Datacenter and folder you would like to use for the installation.
 3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
 4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
-    * URL: <Location of the plaform installer>
-    * Virtual Machine Name: <vm name>
-    * Folder: <Select desired folder>
+    * URL: < Location of the plaform installer >
+    * URL: < Location of the gateway installer from step #2 >   
+    * Virtual Machine Name: < vm name >
+    * Folder: < Select desired folder >
     * Select the desired Datacenter, Storage, and Network for the platform installer VM as you proceed through the next few steps. Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
     * Customize the template as follows:
         * SSH Public Keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
-        * Monitoring Console Password: A monitoring console is deployed in the platform installer VM to provide detailed information about the installation progress as well as to provide access to various logs. This console can be accessed after the VM is powered on at https://<VM IP Adddress>:5080. Default monitoring console credentials are, User Name: admin and Password: admin. Provide a different password for the monitoring console if desired. Leave the field blank to accept default password. 
+        * Monitoring Console Password: A monitoring console is deployed in the platform installer VM to provide detailed information about the installation progress as well as to provide access to various logs. This console can be accessed after the VM is powered on at https://< VM IP Adddress >:5080. Default monitoring console credentials are, User Name: admin and Password: admin. Provide a different password for the monitoring console if desired. Leave the field blank to accept default password. 
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
         * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
         * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
@@ -45,7 +46,7 @@ As a prequisite, download the platform installer ova using the link provided, an
 
 The platform installer contains a web application called the Supervisor, to provide detailed progress of the installation. After the VM is powered on, perform the following steps to ensure installation is completed successfully. 
 
-1. Open the Supervisor application in a browser window by navigating to https://<VM IP Address>:5080
+1. Open the Supervisor application in a browser window by navigating to https://< VM IP Address >:5080
 2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress. 
 3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console. 
 4. Navigate to the On-Prem System Console to perform initial configuration. Additional administration tasks like SMTP setup, certificate manamgent etc. can also be performed from the On-Prem System Console. 
