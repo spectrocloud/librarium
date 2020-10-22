@@ -23,7 +23,7 @@ Platform administrators can use this console to perform the following operations
 | Tenant Management | Create and activate tenants |
 | Update Management | Upgrade Spectro Cloud platform to newer versions |
 | Administration | Configure platform settings like SMTP, Certificates, etc. |
-| Enterprise Cluster Migration | Available in quick start mode to install an enterprise cluster |
+| Migrate quick start mode cluster to enterprise | Available in quick start mode to install an enterprise cluster |
 
 # Tenant Management
 
@@ -31,7 +31,7 @@ Create new tenants and their initial tenant admin accounts. Optionally, activate
 
 # Update Management
 
-Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades directly from the on-prem system console.
+Apply Spectro Cloud platform upgrades. Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades directly from the on-prem system console.
 
 # Administration
 
@@ -45,4 +45,4 @@ Provide the desired certificate and key to be used for external access.
 
 # Cluster Management
 
-Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster also can be configured and their versions updated.
+Manage clusters. Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster also can be configured and their versions updated.
