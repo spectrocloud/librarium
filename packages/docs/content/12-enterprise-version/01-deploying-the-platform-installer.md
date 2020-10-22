@@ -31,7 +31,7 @@ As a prequisite, download the platform installer ova using the link provided, an
     * Customize the template as follows:
         * SSH Public Keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
         * Monitoring Console Password: A monitoring console is deployed in the platform installer VM to provide detailed information about the installation progress as well as to provide access to various logs. This console can be accessed after the VM is powered on at https://< VM IP Adddress >:5080. Default monitoring console credentials are, User Name: admin and Password: admin. Provide a different password for the monitoring console if desired. Leave the field blank to accept default password. 
-        * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
+        * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. If it is left blank, DHCP will be used.
         * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
         * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
         * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
@@ -42,7 +42,7 @@ As a prequisite, download the platform installer ova using the link provided, an
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
 5. Power on the VM.
     
-## Monitor Installation
+## Supervisor Monitor
 
 The platform installer contains a web application called the Supervisor, to provide detailed progress of the installation. After the VM is powered on, perform the following steps to ensure installation is completed successfully. 
 
