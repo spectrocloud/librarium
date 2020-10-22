@@ -3,12 +3,9 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import prismTheme from 'prism-react-renderer/themes/nightOwlLight';
 import styled from "styled-components";
 
-const DeprecatedTag = styled.span`
-  background: #cfcfcf;
-  padding: 3px 5px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 12px;
+import DeprecatedTag from "@librarium/shared/src/components/common/DeprecatedTag"
+
+const StyledDeprecatedTag = styled(DeprecatedTag)`
   margin-left: 5px;
 `;
 
@@ -29,7 +26,7 @@ function CodeHighlight({ code, language = "json", theme=prismTheme }) {
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
                   token.content === "deprecated" ?
-                  <DeprecatedTag>deprecated</DeprecatedTag> :
+                  <StyledDeprecatedTag />:
                   <span {...getTokenProps({ token, key })} />
               ))}
             </div>

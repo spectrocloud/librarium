@@ -20,7 +20,6 @@
         "tags": [
           "v1alpha1"
         ],
-        "description": "Deprecated",
         "summary": "Retrieves a list of audit logs",
         "operationId": "v1Alpha1AuditsList",
         "parameters": [
