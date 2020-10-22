@@ -12,8 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # On-Premise Installation
 
-Spectro Cloud platform is also available as an on-prem offering. On-Prem version can be installed in your datacenter to manage your kubernetes clusters. 
-Spectro Cloud on-prem version is available in two modes:-
+The Spectro Cloud SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer datacenters to manage kubernetes clusters. Spectro Cloud on-prem is available in two modes:
 
 ## Quick Start
 
