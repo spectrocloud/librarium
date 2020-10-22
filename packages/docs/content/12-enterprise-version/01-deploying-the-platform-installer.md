@@ -26,7 +26,6 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
 3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
 4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
     * URL: &lt;Location of the platform installer&gt;
-    * URL: &lt;Location of the gateway installer from step #2&gt;
     * Virtual Machine Name: &lt;vm name&gt;
     * Folder: &lt;Select desired folder&gt;
     * Select the desired Datacenter, Storage, and Network for the platform installer VM as you proceed through the next steps. The Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
