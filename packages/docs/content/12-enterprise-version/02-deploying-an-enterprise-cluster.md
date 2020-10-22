@@ -21,7 +21,7 @@ Note: Deployment of an enterprise cluster is a migration process from the quick 
 
 # Enterprise Cluster Migration
 
-1. Open the On-Prem system console from a browser window by navigating to https://<VM Ipaddress>:/system and login. 
+1. Open the On-Prem system console from a browser window by navigating to https://< VM Ip Address >:/system and login. 
 2. Navigate to the Enterprise Cluster Migration wizard from the mennu on the left hand side. 
 3. Enter vCenter credentials to be used to launch the enterprise cluster. Provide the vCenter server, username, and password. Check the `Use self-signed certificates` if applicable. Validate your credentials and click on `Next` buttorn to proceed to IP Pool Configuration.
 4. Enter IPs to be used for Enterprise Cluster VMs as a `Range` or `Subnet`. At least 5 IP address should be required in the range for installation and ongoing management. Provide the details of the `Gateway` and the `Nameserver addresses`. Any search suffixes being used can be entered in the `Nameserver search suffix` box. Click on `Next` to proceed to Cloud Settings.
