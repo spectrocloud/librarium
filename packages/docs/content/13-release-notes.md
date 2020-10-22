@@ -11,6 +11,16 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# October 23, 2020 - Release 1.5.0
+
+The 1.5.0 release of the Spectro Cloud platform consists of the following features and enhancements
+
+* On-Premise version of the Spectro Cloud platform for deployment into private VMWare environments.
+* Cloud accounts can now be created at the tenant scope, to allow accounts to be shared across all projects in the tenant.
+* Cross compute cluster deployment of Private Cloud Gateway cluster for high availability purposes.
+* SSH Public Key management to easily select the desired keys and share them across kubernetes clusters within a project. 
+* Improvements to cloud settings interface to simplify creation of multiple failure domains during cluster provisioning. 
+
 # September 10, 2020 - Release 1.2.0
 
 With release 1.2.0, users get more control and added support:
