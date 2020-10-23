@@ -2,7 +2,7 @@
 title: "On-Premise Installation"
 metaTitle: "On-Premise Installation"
 metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premise) variant."
-icon: ""
+icon: "warehouse"
 hideToC: false
 fullWidth: false
 ---
@@ -25,5 +25,3 @@ Highly available multi-node installation typically for production purposes.
 
 
 Spectro Cloud provides a platform installer which enables installation of both quick start and enterprise versions. Please [contact us](https://www.spectrocloud.com/contact/) to receive download instructions.
-
-
