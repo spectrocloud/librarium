@@ -14,6 +14,8 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Quick Start Installation
 
+The Spectro Cloud On-Prem Quick Start Mode is a single node installation of the Spectro Cloud platform, used for PoC environments to quickly understand the capabilities of the Spectro Cloud platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
+
 As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
 
 # Deploy Platform Installer
@@ -23,7 +25,6 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
 3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
 4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
     * URL: &lt;Location of the platform installer&gt;
-    * URL: &lt;Location of the gateway installer from step #2&gt;
     * Virtual Machine Name: &lt;vm name&gt;
     * Folder: &lt;Select desired folder&gt;
     * Select the desired Datacenter, Storage, and Network for the platform installer VM as you proceed through the next steps. The Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
@@ -59,16 +60,16 @@ The platform installer contains a web application called the Supervisor, to prov
 Typically, the installation takes around 10 mins after powering on the virtual machine. If the installation fails or takes an unusually long time, please look for failure messages in the install status page, or access system logs from the "Logs" tab to get detailed information about the failure.
 </InfoBox>
 
-# Initial Configuration
+# Configure System for First Time
 
 The On-Prem System Console provides options for performing various administrative setup tasks. Most of these are optional and can be performed at any later time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.
 
 1. Open the On-Prem System Console application in a browser window by navigating to https://&lt;VM IP Address&gt;/system.
-2. Log in using username: admin and password: admin
+2. Log in using username: 'admin' and password: 'admin'.
 3. Reset the default password.
 4. Choose "Quick Start" when prompted for a choice for the startup mode.
 5. Navigate to the Tenant Management section and create your first tenant.
 6. Copy the tenant activation link and invoke it in a browser window to activate the newly created tenant.
 7. Enter the desired password and proceed and login as a tenant into the Management Console.
 
-As next steps, continue to perform various tasks as desired from the management console like [creating cloud accounts](/clusters?clusterType=vmware_cluster#creatingavmwarecloudaccount), [creating tenant IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement), [creating cluster profiles](/cluster-profiles/task-define-profile/) and [launching Kubernetes clusters](/clusters/#creatingclusters).
+Next, continue to perform various tasks as desired from the management console like [creating cloud accounts](/clusters?clusterType=vmware_cluster#creatingavmwarecloudaccount), [creating tenant IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement), [creating cluster profiles](/cluster-profiles/task-define-profile/) and [launching Kubernetes clusters](/clusters/#creatingclusters).
