@@ -41,7 +41,7 @@ Configure SMTP settings to enable the Spectro Cloud platform to send out email n
 
 ## Certificates
 
-Provide the desired certificate and key to be used for external access.
+Provide the desired SSL/TLS server certificates to support the valid HTTPs external access.
 
 # Cluster Management
 
