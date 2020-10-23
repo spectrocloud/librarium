@@ -2,7 +2,7 @@
 title: "On-Premise Installation"
 metaTitle: "On-Premise Installation"
 metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premise) variant."
-icon: ""
+icon: "warehouse"
 hideToC: false
 fullWidth: false
 ---
@@ -12,7 +12,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # On-Premise Installation
 
-Spectro Cloud platform is also available as an on-prem offering. On-Prem version can be installed in your datacenter to manage your kubernetes clusters. 
+Spectro Cloud platform is also available as an on-prem offering. On-Prem version can be installed in your datacenter to manage your kubernetes clusters.
 Spectro Cloud on-prem version is available in two modes:-
 
 ## Quick Start
@@ -26,5 +26,3 @@ Highly available multi-node installation typically for production purposes.
 
 
 Spectro Cloud provides a platform installer which enables installation of both quick start and enterprise versions. Please [contact us](https://www.spectrocloud.com/contact/) to receive download instructions.
-
-
