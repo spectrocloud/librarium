@@ -16,7 +16,6 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 The Spectro Cloud On-Prem Quick Start Mode is a single node installation of the Spectro Cloud platform, used for PoC environments to quickly understand the capabilities of the Spectro Cloud platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
 
-
 As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
 
 # Deploy Platform Installer
