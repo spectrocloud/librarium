@@ -6443,7 +6443,8 @@
     "/v1alpha1/payments/stripe/checkout": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Create checkout session",
         "operationId": "v1alpha1PaymentStripeCheckoutPost",
@@ -6475,7 +6476,8 @@
     "/v1alpha1/payments/stripe/config": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Get stripe publishable key",
         "operationId": "v1alpha1PaymentStripePublishKeyGet",
@@ -6492,7 +6494,8 @@
     "/v1alpha1/payments/stripe/customer": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Create Customer",
         "operationId": "v1alpha1CustomerCreate",
@@ -6515,7 +6518,8 @@
     "/v1alpha1/payments/stripe/payment/status": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Webhook endpoint to receive payment status",
         "operationId": "v1alpha1PaymentStripePaymentStatusPost",
@@ -6542,7 +6546,8 @@
     "/v1alpha1/payments/stripe/paymentMethods/{paymentMethodUid}": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Retrieves a payment method by id",
         "operationId": "v1alpha1PaymentMethodGet",
@@ -6567,7 +6572,8 @@
     "/v1alpha1/payments/stripe/plans": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Retrieves payment plans",
         "operationId": "v1alpha1PaymentPlansGet",
@@ -6584,7 +6590,8 @@
     "/v1alpha1/payments/stripe/subscriptions": {
       "post": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Create Payment Subscription",
         "operationId": "v1alpha1PaymentSubscriptionCreate",
@@ -6637,7 +6644,8 @@
       },
       "delete": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Cancel the payment subscription",
         "operationId": "v1alpha1PaymentSubscriptionDelete",
@@ -8740,7 +8748,8 @@
     "/v1alpha1/spectroclusters/tenant/migration": {
       "patch": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "intiate migration for tenants",
         "operationId": "V1Alpha1SpectroClusterTenantMigration",
@@ -9622,8 +9631,7 @@
       "patch": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "email reset for system admin",
         "operationId": "V1Alpha1SystemAdminEmail",
@@ -9651,8 +9659,7 @@
       "patch": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "password reset for system admin",
         "operationId": "V1Alpha1SystemAdminPasswordReset",
@@ -9864,8 +9871,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system certificates",
         "operationId": "V1Alpha1SystemConfigCertificateGet",
@@ -9884,8 +9890,7 @@
         ],
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system certificate",
         "operationId": "V1Alpha1SystemConfigCertificateUpdate",
@@ -9915,8 +9920,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system domain config",
         "operationId": "V1Alpha1SystemConfigDomainGet",
@@ -9932,8 +9936,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system domain config",
         "operationId": "V1Alpha1SystemConfigDomainUpdate",
@@ -10052,8 +10055,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system logger",
         "operationId": "V1Alpha1SystemConfigLoggerGet",
@@ -10069,8 +10071,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system logger",
         "operationId": "V1Alpha1SystemConfigLoggerUpdate",
@@ -10142,8 +10143,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system proxy",
         "operationId": "V1Alpha1SystemConfigProxyGet",
@@ -10188,10 +10188,9 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
-        "summary": "get the system scar",
+        "summary": "get the system Spectro repository",
         "operationId": "V1Alpha1SystemConfigScarGet",
         "responses": {
           "200": {
@@ -10205,10 +10204,9 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
-        "summary": "updates the system scar",
+        "summary": "updates the system Spectro repository",
         "operationId": "V1Alpha1SystemConfigScarUpdate",
         "parameters": [
           {
@@ -10234,8 +10232,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system smtp",
         "operationId": "V1Alpha1SystemConfigSmtpGet",
@@ -10251,8 +10248,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system smtp",
         "operationId": "V1Alpha1SystemConfigSmtpUpdate",
@@ -10280,8 +10276,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "validates the system smtp",
         "operationId": "V1Alpha1SystemConfigSmtpValidate",
@@ -10312,8 +10307,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system sso",
         "operationId": "V1Alpha1SystemConfigSsoGet",
@@ -10329,8 +10323,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system sso",
         "operationId": "V1Alpha1SystemConfigSsoUpdate",
@@ -10358,8 +10351,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system timeseries",
         "operationId": "V1Alpha1SystemConfigTimeseriesGet",
@@ -10375,8 +10367,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system timeseries",
         "operationId": "V1Alpha1SystemConfigTimeseriesUpdate",
@@ -10404,8 +10395,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system vsphere image",
         "operationId": "V1Alpha1SystemConfigVsphereImageGet",
@@ -10421,8 +10411,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the system default vsphere devops image",
         "operationId": "V1Alpha1SystemConfigVsphereImageUpdate",
@@ -10450,8 +10439,7 @@
       "post": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "encrypt the system data",
         "operationId": "V1Alpha1SystemEncrypt",
@@ -10479,8 +10467,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the spectro management information",
         "operationId": "V1Alpha1SystemSpectroMgmtGet",
@@ -10496,8 +10483,7 @@
       "put": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "updates the spectro management information",
         "operationId": "V1Alpha1SystemSpectroMgmtUpdate",
@@ -10523,8 +10509,7 @@
       "post": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "create the spectro mgmt information",
         "operationId": "V1Alpha1SystemSpectroMgmtCreate",
@@ -10558,8 +10543,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system password policy",
         "operationId": "V1Alpha1SystemPasswordPolicyGet",
@@ -10604,8 +10588,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system installed version",
         "operationId": "V1Alpha1SystemVersionInstalled",
@@ -10623,8 +10606,7 @@
       "get": {
         "tags": [
           "v1alpha1",
-          "system",
-          "private"
+          "system"
         ],
         "summary": "get the system latest available version",
         "operationId": "V1Alpha1SystemVersionLatest",
