@@ -1,8 +1,10 @@
-import React, { useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useRef, useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import ClipboardJS from "clipboard";
 import { CopyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
@@ -32,6 +34,24 @@ const ButtonWrapper = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
+`;
+
+const HeaderWrap = styled.div`
+  display: flex;
+  align-items: center;
+    padding-left: 26px;
+    margin-left: -26px;
+
+  > a {
+    margin-left: -26px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+
+    :hover {
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
 `;
 
 function Pre(props) {
@@ -80,11 +100,29 @@ function generateHeadingId(children) {
 
 export default {
   h1: props => {
-    return <h1 id={generateHeadingId(props.children)} {...props} />
+    const [showPermalink, setShowPermalink] = useState(false);
+    return (
+      <HeaderWrap
+        onMouseEnter={() => setShowPermalink(true)}
+        onMouseLeave={() => setShowPermalink(false)}
+      >
+        {showPermalink && <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>}
+        <h1 id={generateHeadingId(props.children)} {...props} />
+      </HeaderWrap>
+    );
   },
-  h2: props => (
-    <h2 id={generateHeadingId(props.children)} {...props} />
-  ),
+  h2: props => {
+    const [showPermalink, setShowPermalink] = useState(false);
+    return (
+      <HeaderWrap
+        onMouseEnter={() => setShowPermalink(true)}
+        onMouseLeave={() => setShowPermalink(false)}
+      >
+        {showPermalink && <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>}
+        <h2 id={generateHeadingId(props.children)} {...props} />
+      </HeaderWrap>
+    )
+  },
   h3: props => (
     <h3 id={generateHeadingId(props.children)} {...props} />
   ),
