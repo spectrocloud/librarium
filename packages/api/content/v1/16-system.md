@@ -1,7 +1,7 @@
 ---
 title: 'System'
 metaTitle: 'System'
-metaDescription: 'List of API endpoints that can be used to create tenants and manage the on premise installation'
+metaDescription: 'List of API endpoints that can be used to manage the on-premise installation'
 api: true
 paths: ['/v1alpha1/system']
 ---
