@@ -48,23 +48,6 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
   ]}
  />
  <QuickSetup
-  title="Enterprise Version"
-  options={[
-    {
-      title: "Deploying Quick Start",
-      description: "Installation of the proof-of-concept variant. ICON PENDING!",
-      icon: "",
-      href: "/enterprise-version/"
-    },
-    {
-      title: "User Management",
-      description: "Installation of the Quick Start variant. ICON PENDING!",
-      icon: "",
-      href: "/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant"
-    }
-  ]}
- />
- <QuickSetup
   title="Important Concepts"
   options={[
     {
@@ -93,13 +76,13 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
     {
       title: "Default View",
       description: "Details of the options available on logging in.",
-      icon: "cog",
+      icon: "columns",
       href: "/getting-started/#defaultdashboard",
     },
     {
       title: "Administrator View",
       description: "Details of the options under the Administrator section.",
-      icon: "cog",
+      icon: "user-cog",
       href: "/getting-started/#admindashboard",
     },
     {
@@ -136,4 +119,27 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
     }
   ]}
 />
+<QuickSetup
+  title="On-Prem Installation"
+  options={[
+    {
+      title: "Quick Start",
+      description: "Quickly deploy a single-node version for PoC purposes.",
+      icon: "rocket",
+      href: "/enterprise-version/deploying-the-platform-installer/"
+    },
+    {
+      title: "Enterprise Cluster",
+      description: "Highly available multi-node setup for production purposes.",
+      icon: "warehouse",
+      href: "/enterprise-version/deploying-an-enterprise-cluster/"
+    },
+    {
+      title: "On-Prem System Console",
+      description: "Platform administration and upgrade management.",
+      icon: "tachometer-alt",
+      href: "/enterprise-version/system-console-dashboard/"
+    }
+  ]}
+ />
 <DocUpdatesSection title={"What’s new in Docs"}/>

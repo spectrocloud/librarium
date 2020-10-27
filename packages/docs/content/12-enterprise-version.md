@@ -1,8 +1,8 @@
 ---
-title: "Enterprise Version"
-metaTitle: "Enterprise Version"
+title: "On-Premise Installation"
+metaTitle: "On-Premise Installation"
 metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premise) variant."
-icon: ""
+icon: "warehouse"
 hideToC: false
 fullWidth: false
 ---
@@ -10,19 +10,18 @@ fullWidth: false
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# Spectro Cloud on-premise
+# On-Premise Installation
 
-Spectro Cloud is also available in an Enterprise version for "on-premise" installations. This version is enabled by downloading a specific OVA from the Spectro Cloud Repository called the *Spectro Cloud Platform Installer*.
+The Spectro Cloud SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer datacenters to manage kubernetes clusters. Spectro Cloud on-prem is available in two modes:
 
-The Spectro Cloud Platform Installer allows for:
+## Quick Start
 
-* the deployment of a Quick Start variant of the Spectro Cloud Management Console.
-* the deployment of the Spectro Cloud Enterprise variant.
+Single node installation of the platform, ideal for PoC environments.
 
-# Quick Start
+## Enterprise version
 
-Users are welcome to deploy the Quick Start variant until they are ready to deploy the enterprise variant. In this mode, users can use the entire functionality of the product (including the administration settings) without any additional set up. All data from the Quick Start will be preserved and migrated from a backup when the enterprise variant is [deployed](/deploying-the-platform-installer/).
+Highly available multi-node installation typically for production purposes.
 
-# Enterprise version
 
-The enterprise version provides super admins with two consoles - one for managing the tenants and one for the cluster management. In this mode, full-enterprise level, HA ready clusters can be [deployed](/deploying-an-enterprise-cluster/) and managed.
+
+Spectro Cloud provides a platform installer which enables installation of both quick start and enterprise versions. Please [contact us](https://www.spectrocloud.com/contact/) to receive download instructions.

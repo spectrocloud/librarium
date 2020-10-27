@@ -65,6 +65,8 @@ const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #409bf6;
+  font-size: 20px;
 
   > svg {
     stroke-width: 0;
