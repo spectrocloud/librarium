@@ -13,11 +13,13 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # October 23, 2020 - Release 1.5.0
 
-The 1.5.0 release of the Spectro Cloud platform consists of the following features and enhancements
+The 1.5.0 release of the Spectro Cloud platform consists of the following features and enhancements:
 
 * On-Premise version of the Spectro Cloud platform for deployment into private VMWare environments.
-* SSH Public Key management to easily select the desired keys and share them across kubernetes clusters within a project. 
-* Improvements to cloud settings interface to simplify creation of multiple failure domains during cluster provisioning. 
+* Cloud accounts can now be created at the tenant scope, to allow accounts to be shared across all projects in the tenant.
+* Cross-compute cluster deployment of Private Cloud Gateway clusters for high-availability purposes.
+* SSH Public Key management to easily select the desired keys and share them across Kubernetes clusters within a project.
+* Improvements to cloud settings interface to simplify the creation of multiple failure domains during cluster provisioning.
 
 # September 10, 2020 - Release 1.2.0
 
@@ -59,8 +61,15 @@ The following features are included as part of Spectro Cloud 1.0:
 * Grouping of clusters logically into Projects for governance and control.
 * Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs, etc.
 
-## Known Issues
+# Known Issues
 
+* **BET-1491:** Portworx currently does not [support](https://docs.portworx.com/portworx-install-with-kubernetes/) Kubernetes version 1.19. This results in a failure to bring up the Stork scheduler pod.
+* **BET-1472:** In the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster/#enterprisemode), deleting a node in an Enterprise cluster renders the cluster unusable due to an [in-tree limitation](https://github.com/vmware/vsphere-storage-for-kubernetes/issues/55).
+    * *Recommendations:*
+        * To prevent VMDK deletion with the in-tree provider, drain the node, let all pods re-schedule on another node, let all volumes detach from the node, and then finally delete the node VM.
+        * This issue is resolved with [vSphere 67u3](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-51D308C7-ECFE-4C04-AD56-64B6E00A6548.html) and a [new CSI driver](https://github.com/kubernetes-sigs/vsphere-csi-driver).
+        * A [related issue](https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/359) might occur where a persistent volume might not attach to a new node.
+* **BET-1461:** For AWS clusters, when the Static VPC option is used, clusters might not complete provisioning. This bug will be patched in subsequent releases.
 * **BET-768:** On the Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
 
 <InfoBox>

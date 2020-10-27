@@ -3,6 +3,7 @@ import _ from 'underscore';
 import styled from 'styled-components';
 
 import CodeHighlight from './CodeHighlight';
+import DeprecatedTag from "@librarium/shared/src/components/common/DeprecatedTag"
 
 const colors = {
   get: '#4aa908',
@@ -121,6 +122,11 @@ const Table = styled.div`
   width: 100%;
 `;
 
+
+const StyledDeprecatedTag = styled(DeprecatedTag)`
+  margin-right: 16px;
+`;
+
 const normalizePath = path => {
   if (!path.endsWith('.{format}')) return path;
 
@@ -214,6 +220,7 @@ export default function Swagger(props) {
         api.operations.map(operation => (
           <Operation key={operation.method + api.path}>
             <Signature>
+              {operation?.description?.includes("Deprecated") && <StyledDeprecatedTag />}
               <Button color={colors[operation.method]}>{operation.method}</Button>&#8594;
               <h4>{props.prefix + normalizePath(api.path)}</h4>
             </Signature>
