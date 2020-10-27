@@ -15,6 +15,32 @@
     "version": "v1alpha1"
   },
   "paths": {
+    "/v1alpha1/async/ops/{opsId}/status": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Retrieves the status of the async operation",
+        "operationId": "V1Alpha1AsyncOpsStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.AsyncStatus"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "opsId",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/audits": {
       "get": {
         "tags": [
@@ -189,6 +215,12 @@
         "summary": "Authenticates the user for the specified crendentials",
         "operationId": "v1alpha1Authenticate",
         "parameters": [
+          {
+            "type": "boolean",
+            "default": true,
+            "name": "setCookie",
+            "in": "query"
+          },
           {
             "name": "body",
             "in": "body",
@@ -432,6 +464,12 @@
       },
       "parameters": [
         {
+          "type": "boolean",
+          "default": true,
+          "name": "setCookie",
+          "in": "query"
+        },
+        {
           "type": "string",
           "name": "token",
           "in": "path",
@@ -493,6 +531,12 @@
         "operationId": "V1Alpha1SysLogin",
         "parameters": [
           {
+            "type": "boolean",
+            "default": true,
+            "name": "setCookie",
+            "in": "query"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -505,7 +549,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.UserToken"
+              "$ref": "#/definitions/v1alpha1.SysUserToken"
             }
           }
         }
@@ -1382,8 +1426,46 @@
         }
       ]
     },
+    "/v1alpha1/cloudaccounts/vsphere/{uid}/properties/computecluster/resources": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Get the vSphere computecluster resources for the given overlord account",
+        "operationId": "v1alpha1VsphereAccountsUidClusterRes",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1VsphereComputeClusterResources"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "datacenter",
+          "in": "query",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "computecluster",
+          "in": "query",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/cloudaccounts/vsphere/{uid}/properties/datacenter/resources": {
       "get": {
+        "description": "Deprecated. Use /cloudaccounts/vsphere/{uid}/properties/computecluster/resources",
         "tags": [
           "v1alpha1"
         ],
@@ -3434,6 +3516,43 @@
         }
       }
     },
+    "/v1alpha1/clouds/vsphere/datacenters/{uid}/computeclusters/{computecluster}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the resources for vsphere compute cluster",
+        "operationId": "V1alpha1VsphereComputeClusterResources",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "computecluster",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereComputeClusterResources"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/clouds/vsphere/datacenters/{uid}/resources": {
       "get": {
         "tags": [
@@ -4670,6 +4789,23 @@
         }
       }
     },
+    "/v1alpha1/installers/spectro/status": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Get the spectro installer status",
+        "operationId": "v1Alpha1SpectroInstallerStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroInstallerStatus"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/installers/spectro/vsphere": {
       "post": {
         "tags": [
@@ -5619,6 +5755,13 @@
         ],
         "summary": "Retrieves a list of overlords owned by the tenant",
         "operationId": "v1alpha1OverlordsList",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "(empty)",
@@ -6031,12 +6174,50 @@
         }
       ]
     },
-    "/v1alpha1/overlords/vsphere/{uid}/properties/datacenter/resources": {
+    "/v1alpha1/overlords/vsphere/{uid}/properties/computecluster/resources": {
       "get": {
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Retrieves the vSphere datacenters \u0026 computecluster for the specified overlord account",
+        "summary": "Retrieves the vSphere computecluster resources for the specified overlord account",
+        "operationId": "v1alpha1OverlordsUidVsphereComputeclusterRes",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1VsphereComputeClusterResources"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "datacenter",
+          "in": "query",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "computecluster",
+          "in": "query",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/overlords/vsphere/{uid}/properties/datacenter/resources": {
+      "get": {
+        "description": "Deprecated. Use /overlords/vsphere/{uid}/properties/computecluster/resources",
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves the vSphere computecluster resources for the specified overlord account",
         "operationId": "v1alpha1OverlordsUidVsphereDatacenterRes",
         "responses": {
           "200": {
@@ -6063,8 +6244,7 @@
         {
           "type": "string",
           "name": "computecluster",
-          "in": "query",
-          "required": true
+          "in": "query"
         }
       ]
     },
@@ -6255,6 +6435,222 @@
         {
           "type": "string",
           "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/payments/stripe/checkout": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Create checkout session",
+        "operationId": "v1alpha1PaymentStripeCheckoutPost",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.CheckoutSession"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/config": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Get stripe publishable key",
+        "operationId": "v1alpha1PaymentStripePublishKeyGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.StripeKey"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/customer": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Create Customer",
+        "operationId": "v1alpha1CustomerCreate",
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/payment/status": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Webhook endpoint to receive payment status",
+        "operationId": "v1alpha1PaymentStripePaymentStatusPost",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "description": "payment status payload",
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/paymentMethods/{paymentMethodUid}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves a payment method by id",
+        "operationId": "v1alpha1PaymentMethodGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentMethod"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "paymentMethodUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/payments/stripe/plans": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves payment plans",
+        "operationId": "v1alpha1PaymentPlansGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentPlans"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/subscriptions": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Create Payment Subscription",
+        "operationId": "v1alpha1PaymentSubscriptionCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentSubscription"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/subscriptions/{subscriptionUid}": {
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Update Payment Subscription",
+        "operationId": "v1alpha1PaymentSubscriptionUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentSubscription"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Cancel the payment subscription",
+        "operationId": "v1alpha1PaymentSubscriptionDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "subscriptionUid",
           "in": "path",
           "required": true
         }
@@ -7578,7 +7974,7 @@
         "operationId": "v1alpha1RolesUidDelete",
         "responses": {
           "204": {
-            "description": "The resource was updated successfully"
+            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -7627,7 +8023,9 @@
               "ally",
               "jet",
               "palette",
-              "ambit"
+              "ambit",
+              "ally-lite",
+              "palette-lite"
             ],
             "type": "string",
             "description": "service name",
@@ -7659,7 +8057,9 @@
               "ally",
               "jet",
               "palette",
-              "ambit"
+              "ambit",
+              "ally-lite",
+              "palette-lite"
             ],
             "type": "string",
             "description": "service name",
@@ -8243,6 +8643,32 @@
         }
       }
     },
+    "/v1alpha1/spectroclusters/internal/tenants/{tenantUid}/activeClusters": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Check any active clusters associated with the tenant",
+        "operationId": "v1alpha1SpectroClustersTenantCheckActiveCluster",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ActiveTenantResources"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/spectroclusters/internal/tenants/{tenantUid}/activeResources": {
       "get": {
         "tags": [
@@ -8291,6 +8717,48 @@
           "required": true
         }
       ]
+    },
+    "/v1alpha1/spectroclusters/mgmt": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get the spectro application management information",
+        "operationId": "V1Alpha1SpectroAppMgmtGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroAppMgmt"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/spectroclusters/tenant/migration": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "intiate migration for tenants",
+        "operationId": "V1Alpha1SpectroClusterTenantMigration",
+        "responses": {
+          "200": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
     },
     "/v1alpha1/spectroclusters/validate/packs": {
       "post": {
@@ -9093,6 +9561,63 @@
         }
       }
     },
+    "/v1alpha1/svc/hutil/internal/hubble/info": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "get hubble info",
+        "operationId": "V1Alpha1SvcHutilInternalHubbleInfo",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.HubbleInfo"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/svc/hutil/internal/pause": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "pause all the services",
+        "operationId": "V1Alpha1SvcHutilInternalPause",
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/svc/hutil/internal/reinit/nats": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "reinit nats",
+        "operationId": "V1Alpha1SvcHutilInternalReinitNats",
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/system/admin/email": {
       "patch": {
         "tags": [
@@ -9335,6 +9860,57 @@
         }
       }
     },
+    "/v1alpha1/system/config/certificate": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get the system certificates",
+        "operationId": "V1Alpha1SystemConfigCertificateGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SystemCertificateSpec"
+            }
+          }
+        }
+      },
+      "put": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "updates the system certificate",
+        "operationId": "V1Alpha1SystemConfigCertificateUpdate",
+        "parameters": [
+          {
+            "type": "file",
+            "name": "crtFile",
+            "in": "formData"
+          },
+          {
+            "type": "file",
+            "name": "keyFile",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1FileUploadResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/system/config/domain": {
       "get": {
         "tags": [
@@ -9518,6 +10094,50 @@
         }
       }
     },
+    "/v1alpha1/system/config/preferences/cluster": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "get the cluster preference",
+        "operationId": "V1Alpha1ClusterPreferenceGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.ClusterPreference"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "updates the cluster preference",
+        "operationId": "V1Alpha1ClusterPreferenceUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.ClusterPreference"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/system/config/proxy": {
       "get": {
         "tags": [
@@ -9551,52 +10171,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1alpha1.SystemProxySpec"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Updated"
-            }
-          }
-        }
-      }
-    },
-    "/v1alpha1/system/config/registry": {
-      "get": {
-        "tags": [
-          "v1alpha1",
-          "system",
-          "private"
-        ],
-        "summary": "get the system registry",
-        "operationId": "V1Alpha1SystemConfigRegistryGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.SystemRegistrySpec"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "v1alpha1",
-          "system",
-          "private"
-        ],
-        "summary": "updates the system registry",
-        "operationId": "V1Alpha1SystemConfigRegistryUpdate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.SystemRegistrySpec"
             }
           }
         ],
@@ -9896,6 +10470,85 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1alpha1.SystemCryptoData"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/internal/spectromgmt": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get the spectro management information",
+        "operationId": "V1Alpha1SystemSpectroMgmtGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroMgmt"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "updates the spectro management information",
+        "operationId": "V1Alpha1SystemSpectroMgmtUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroMgmt"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "create the spectro mgmt information",
+        "operationId": "V1Alpha1SystemSpectroMgmtCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroMgmt"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
             }
           }
         }
@@ -10384,6 +11037,36 @@
         }
       ]
     },
+    "/v1alpha1/tenants/validate": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "Validate tenant",
+        "operationId": "v1alpha1TenantsValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.TenantBasicEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/tenants/{tenantUid}": {
       "get": {
         "tags": [
@@ -10398,28 +11081,6 @@
             "schema": {
               "$ref": "#/definitions/v1alpha1.Tenant"
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "v1alpha1",
-          "system"
-        ],
-        "summary": "Updates the specified tenant",
-        "operationId": "v1alpha1TenantsUpdate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
           }
         }
       },
@@ -10486,6 +11147,62 @@
         {
           "type": "string",
           "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/invoices": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves a list of invoices",
+        "operationId": "v1alpha1InvoicesList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.Invoices"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/invoices/{invoiceUid}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified invoice",
+        "operationId": "v1alpha1InvoicesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.Invoice"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "invoiceUid",
           "in": "path",
           "required": true
         }
@@ -10934,6 +11651,292 @@
           }
         }
       }
+    },
+    "/v1alpha1/users/assets/certificates": {
+      "get": {
+        "description": "Returns a list of users assets certificates",
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users assets certificates",
+        "operationId": "v1alpha1UsersAssetsCertificateGet",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token for the dataset",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "componentType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "componentUid",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetsCertificate"
+            }
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Stores the specified Users assets certificate",
+        "operationId": "v1alpha1UserAssetsCertificateCreate",
+        "parameters": [
+          {
+            "type": "file",
+            "name": "crtFile",
+            "in": "formData"
+          },
+          {
+            "type": "file",
+            "name": "keyFile",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "name": "componentType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "componentUid",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/users/assets/certificates/{uid}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users certificate key",
+        "operationId": "v1alpha1UsersAssetCertificateGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetCertificate"
+            }
+          }
+        }
+      },
+      "put": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the specified Users certificate",
+        "operationId": "v1alpha1UsersAssetCertificateUpdate",
+        "parameters": [
+          {
+            "type": "file",
+            "name": "crtFile",
+            "in": "formData"
+          },
+          {
+            "type": "file",
+            "name": "keyFile",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "name": "componentType",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "componentUid",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users certificate",
+        "operationId": "v1alpha1UsersAssetCertificateDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/users/assets/sshkeys": {
+      "get": {
+        "description": "Returns a list of users assets ssh keys",
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users assets ssh keys",
+        "operationId": "v1alpha1UsersAssetsSshGet",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token for the dataset",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetsSsh"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Stores the specified Users assets ssh",
+        "operationId": "v1alpha1UserAssetsSshCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetSshEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/users/assets/sshkeys/{uid}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users ssh key",
+        "operationId": "v1alpha1UsersAssetSshGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetSsh"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the specified Users ssh key",
+        "operationId": "v1alpha1UsersAssetSshUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.UserAssetSsh"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified Users ssh key",
+        "operationId": "v1alpha1UsersAssetSshDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1alpha1/users/me": {
       "get": {
@@ -11807,6 +12810,38 @@
       "properties": {
         "operationId": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.AsyncResult": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object"
+        },
+        "error": {
+          "type": "string"
+        },
+        "isSuccess": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1alpha1.AsyncStatus": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "result": {
+          "type": "object",
+          "$ref": "#/definitions/v1alpha1.AsyncResult"
+        },
+        "stage": {
+          "type": "string"
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1.Time"
         }
       }
     },
@@ -13204,6 +14239,34 @@
         }
       }
     },
+    "v1alpha1.Card": {
+      "description": "Card details",
+      "properties": {
+        "brand": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "expMonth": {
+          "type": "number",
+          "format": "uint64"
+        },
+        "expYear": {
+          "type": "number",
+          "format": "uint64"
+        },
+        "fingerPrint": {
+          "type": "string"
+        },
+        "funding": {
+          "type": "string"
+        },
+        "last4": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.Certificate": {
       "description": "Certificate details",
       "type": "object",
@@ -13254,6 +14317,20 @@
             "email",
             "app"
           ]
+        }
+      }
+    },
+    "v1alpha1.CheckoutSession": {
+      "description": "Checkout session id",
+      "properties": {
+        "cancelUrl": {
+          "type": "string"
+        },
+        "invoiceUid": {
+          "type": "string"
+        },
+        "successUrl": {
+          "type": "string"
         }
       }
     },
@@ -13413,6 +14490,23 @@
         },
         "type": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.ClusterPreference": {
+      "description": "cluster preference",
+      "properties": {
+        "archivalInterval": {
+          "description": "Time unit is hour",
+          "type": "integer"
+        },
+        "deletePeriod": {
+          "description": "Time unit is hour",
+          "type": "integer"
+        },
+        "monitorInterval": {
+          "description": "Time unit is minutes",
+          "type": "integer"
         }
       }
     },
@@ -14692,6 +15786,26 @@
         }
       }
     },
+    "v1alpha1.HubbleInfo": {
+      "type": "object",
+      "properties": {
+        "apiEndpoint": {
+          "type": "string"
+        },
+        "apiPort": {
+          "type": "string"
+        },
+        "natsEndpoint": {
+          "type": "string"
+        },
+        "uiEndpoint": {
+          "type": "string"
+        },
+        "uiPort": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.IPPool": {
       "description": "IPPool defines static IPs available. Gateway, Prefix, Nameserver, if defined, will be default values for all Pools",
       "type": "object",
@@ -14740,6 +15854,22 @@
         "$ref": "#/definitions/v1alpha1.IdentityProvider"
       }
     },
+    "v1alpha1.InstallerStatus": {
+      "description": "Spectro cluster installer status",
+      "type": "object",
+      "properties": {
+        "clusterMigration": {
+          "$ref": "#/definitions/v1alpha1.SpectroClusterMigration"
+        },
+        "clusterState": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1alpha1.InstanceType": {
       "description": "Cloud Instance type details",
       "type": "object",
@@ -14777,6 +15907,146 @@
         "type": {
           "type": "string",
           "x-go-name": "Type"
+        }
+      }
+    },
+    "v1alpha1.Invoice": {
+      "description": "Invoice",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.InvoiceSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1.InvoiceStatus"
+        }
+      }
+    },
+    "v1alpha1.InvoiceCredits": {
+      "description": "Invoice Credits",
+      "properties": {
+        "creditsToBeCharged": {
+          "type": "number",
+          "format": "float64"
+        },
+        "overageCharges": {
+          "type": "number",
+          "format": "float64"
+        },
+        "paymentAmount": {
+          "type": "number",
+          "format": "float64"
+        },
+        "paymentUnit": {
+          "type": "string",
+          "enum": [
+            "usd"
+          ]
+        },
+        "usedCredits": {
+          "type": "number",
+          "format": "float64"
+        }
+      }
+    },
+    "v1alpha1.InvoicePlan": {
+      "description": "Invoice plan",
+      "properties": {
+        "freeCredits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.PlanCredit"
+          }
+        },
+        "plantype": {
+          "type": "string",
+          "enum": [
+            "Trial",
+            "MonthlyOnDemand",
+            "AnnualSubscription"
+          ]
+        },
+        "slaCredits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.PlanCredit"
+          }
+        }
+      }
+    },
+    "v1alpha1.InvoiceProject": {
+      "description": "Invoice Project",
+      "properties": {
+        "projectUid": {
+          "type": "string"
+        },
+        "usage": {
+          "type": "number",
+          "format": "float64"
+        }
+      }
+    },
+    "v1alpha1.InvoiceSpec": {
+      "description": "Invoice spec",
+      "properties": {
+        "credits": {
+          "$ref": "#/definitions/v1alpha1.InvoiceCredits"
+        },
+        "month": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "paymentTransactionId": {
+          "type": "string"
+        },
+        "plan": {
+          "$ref": "#/definitions/v1alpha1.InvoicePlan"
+        },
+        "project": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.InvoiceProject"
+          }
+        }
+      }
+    },
+    "v1alpha1.InvoiceStatus": {
+      "description": "Invoice Status",
+      "properties": {
+        "paymentDate": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "paymentMsg": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Paid",
+            "PaymentPending",
+            "PaymentInProgress",
+            "PaymentFailed"
+          ]
+        }
+      }
+    },
+    "v1alpha1.Invoices": {
+      "description": "Array of Invoices",
+      "type": "object",
+      "required": [
+        "invoices"
+      ],
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.Invoice"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1.ListMetaData"
         }
       }
     },
@@ -14934,6 +16204,9 @@
       "description": "Login response specifying auth type and org name",
       "type": "object",
       "properties": {
+        "appEnv": {
+          "type": "string"
+        },
         "authType": {
           "type": "string",
           "enum": [
@@ -14947,6 +16220,10 @@
         "redirectUrl": {
           "type": "string",
           "x-omitempty": false
+        },
+        "totalTenants": {
+          "type": "number",
+          "format": "int64"
         }
       }
     },
@@ -15241,6 +16518,41 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1alpha1.Metrics"
+          }
+        }
+      }
+    },
+    "v1alpha1.MgmtMigrationStatuses": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "finishTime": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "folderName": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "state": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "status": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
           }
         }
       }
@@ -15713,6 +17025,9 @@
         "clusterUid": {
           "type": "string"
         },
+        "isSystem": {
+          "type": "boolean"
+        },
         "serviceName": {
           "type": "string",
           "enum": [
@@ -16124,6 +17439,10 @@
         "name"
       ],
       "properties": {
+        "layer": {
+          "description": "Pack layer",
+          "type": "string"
+        },
         "name": {
           "description": "Pack name",
           "type": "string"
@@ -16742,6 +18061,80 @@
         "usedSpace": {
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "v1alpha1.PaymentMethod": {
+      "description": "Payment Method",
+      "properties": {
+        "card": {
+          "$ref": "#/definitions/v1alpha1.Card"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.PaymentPlan": {
+      "description": "Stripe price detail",
+      "properties": {
+        "billingScheme": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "unitAmount": {
+          "type": "number",
+          "format": "int64"
+        }
+      }
+    },
+    "v1alpha1.PaymentPlans": {
+      "description": "Array of Stripe plan details",
+      "type": "object",
+      "required": [
+        "stripePlanDetails"
+      ],
+      "properties": {
+        "stripePlanDetails": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.PaymentPlan"
+          }
+        }
+      }
+    },
+    "v1alpha1.PaymentSubscription": {
+      "description": "Subscription",
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "type": "string"
+        },
+        "priceId": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
         }
       }
     },
@@ -17643,6 +19036,52 @@
         }
       }
     },
+    "v1alpha1.SpectroAppMgmt": {
+      "description": "Spectro application management data",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.SpectroAppMgmtSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1.SpectroAppMgmtStatus"
+        }
+      }
+    },
+    "v1alpha1.SpectroAppMgmtSpec": {
+      "description": "spectro application management specifications",
+      "properties": {
+        "appEnv": {
+          "type": "string"
+        },
+        "installedVersion": {
+          "type": "string"
+        },
+        "latestVersion": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroAppMgmtStatus": {
+      "description": "spectro application management status",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "updateLink": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.SpectroAwsClusterEntity": {
       "description": "Spectro AWS cluster entity for create and update",
       "type": "object",
@@ -17803,6 +19242,9 @@
     "v1alpha1.SpectroClusterHealthStatus": {
       "description": "Spectro cluster health status",
       "properties": {
+        "agentVersion": {
+          "type": "string"
+        },
         "conditions": {
           "type": "array",
           "uniqueItems": true,
@@ -17823,6 +19265,22 @@
         },
         "memory": {
           "$ref": "#/definitions/v1alpha1.ComputeMetrics"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterMigration": {
+      "description": "Spectro cluster migration status",
+      "type": "object",
+      "properties": {
+        "database": {
+          "$ref": "#/definitions/v1alpha1.MgmtMigrationStatuses"
+        },
+        "state": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "tenant": {
+          "$ref": "#/definitions/v1alpha1.SpectroTenantMigration"
         }
       }
     },
@@ -18171,12 +19629,7 @@
           }
         },
         "status": {
-          "type": "object",
-          "properties": {
-            "clusterState": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/v1alpha1.InstallerStatus"
         }
       }
     },
@@ -18186,6 +19639,15 @@
       "properties": {
         "metadata": {
           "$ref": "#/definitions/v1.ObjectMetaInputEntity"
+        }
+      }
+    },
+    "v1alpha1.SpectroInstallerStatus": {
+      "description": "spectro installer status",
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v1alpha1.InstallerStatus"
         }
       }
     },
@@ -18202,6 +19664,105 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1.ListMetaData"
+        }
+      }
+    },
+    "v1alpha1.SpectroMgmt": {
+      "description": "Spectro management data",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.SpectroMgmtSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1.SpectroMgmtStatus"
+        }
+      }
+    },
+    "v1alpha1.SpectroMgmtSpec": {
+      "description": "spectro management specifications",
+      "properties": {
+        "installerMode": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        },
+        "targetVersion": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroMgmtStatus": {
+      "description": "spectro management status information",
+      "properties": {
+        "lastUpdatedTime": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "message": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "upgradeLogs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroMgmtUpgrade"
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroMgmtUpgrade": {
+      "description": "spectro management upgrade logs",
+      "properties": {
+        "upgradeTime": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroTenantClusterMigration": {
+      "description": "Spectro tenant cluster migration status",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroTenantMigration": {
+      "description": "Spectro tenant migration status",
+      "type": "object",
+      "properties": {
+        "clusters": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroTenantClusterMigration"
+          }
+        },
+        "state": {
+          "type": "string",
+          "x-omitempty": false
         }
       }
     },
@@ -18258,6 +19819,14 @@
         }
       }
     },
+    "v1alpha1.StripeKey": {
+      "description": "Key",
+      "properties": {
+        "publishKey": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.Subscription": {
       "description": "Azure Subscription Type",
       "type": "object",
@@ -18289,6 +19858,19 @@
         },
         "username": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SysUserToken": {
+      "description": "Auth token response",
+      "type": "object",
+      "properties": {
+        "Authorization": {
+          "type": "string"
+        },
+        "IsPasswordReset": {
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -18412,6 +19994,24 @@
         }
       }
     },
+    "v1alpha1.SystemCertificateSpec": {
+      "description": "system smtp config spec",
+      "type": "object",
+      "properties": {
+        "crt": {
+          "type": "string"
+        },
+        "crtFileName": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "keyFileName": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.SystemConfigDomainSpec": {
       "description": "system domain config spec",
       "type": "object",
@@ -18419,7 +20019,16 @@
         "apiServer": {
           "type": "string"
         },
+        "derivedApiServer": {
+          "type": "string"
+        },
+        "derivedRootDomain": {
+          "type": "string"
+        },
         "rootDomain": {
+          "type": "string"
+        },
+        "urlProtocol": {
           "type": "string"
         }
       }
@@ -18582,24 +20191,6 @@
         }
       }
     },
-    "v1alpha1.SystemRegistrySpec": {
-      "description": "system registry config spec",
-      "type": "object",
-      "properties": {
-        "endpoint": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "username": {
-          "type": "string"
-        }
-      }
-    },
     "v1alpha1.SystemScarSpec": {
       "description": "system scar config spec",
       "type": "object",
@@ -18619,12 +20210,16 @@
       "description": "System service login input",
       "type": "object",
       "properties": {
+        "isSystem": {
+          "type": "boolean"
+        },
         "serviceName": {
           "type": "string",
           "enum": [
             "ally",
             "jet",
-            "git"
+            "git",
+            "ambit"
           ]
         },
         "spectroClusterUid": {
@@ -18639,9 +20234,6 @@
       "description": "system smtp config spec",
       "type": "object",
       "properties": {
-        "emailId": {
-          "type": "string"
-        },
         "fromEmailId": {
           "type": "string"
         },
@@ -18655,6 +20247,9 @@
           "type": "integer"
         },
         "smtpServer": {
+          "type": "string"
+        },
+        "userName": {
           "type": "string"
         }
       }
@@ -18879,6 +20474,18 @@
         }
       }
     },
+    "v1alpha1.TenantBasicEntity": {
+      "description": "Tenant Basic param",
+      "type": "object",
+      "properties": {
+        "emailId": {
+          "type": "string"
+        },
+        "orgName": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.TenantCleanUpStatus": {
       "description": "Tenant CleanUp Status",
       "type": "object",
@@ -19069,6 +20676,10 @@
       "properties": {
         "cleanUpStatus": {
           "$ref": "#/definitions/v1alpha1.TenantCleanUpStatus"
+        },
+        "isActive": {
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -19184,6 +20795,111 @@
       "properties": {
         "activationLink": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.UserAssetCertificate": {
+      "description": "User asset certificate",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.UserAssetCertificateSpec"
+        }
+      }
+    },
+    "v1alpha1.UserAssetCertificateSpec": {
+      "description": "User asset certificate spec",
+      "type": "object",
+      "properties": {
+        "componentType": {
+          "type": "string"
+        },
+        "componentUid": {
+          "type": "string"
+        },
+        "crt": {
+          "type": "string"
+        },
+        "crtFileName": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "keyFileName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.UserAssetSsh": {
+      "description": "User asset ssh",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.UserAssetSshSpec"
+        }
+      }
+    },
+    "v1alpha1.UserAssetSshEntity": {
+      "description": "User asset input entity for create",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.UserAssetSshSpec"
+        }
+      }
+    },
+    "v1alpha1.UserAssetSshSpec": {
+      "description": "User asset ssh spec",
+      "type": "object",
+      "properties": {
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.UserAssetsCertificate": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.UserAssetCertificate"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1.ListMetaData"
+        }
+      }
+    },
+    "v1alpha1.UserAssetsSsh": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.UserAssetSsh"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1.ListMetaData"
         }
       }
     },
@@ -19782,6 +21498,7 @@
       "type": "object",
       "properties": {
         "computecluster": {
+          "description": "Deprecated. Use name",
           "type": "string"
         },
         "datastores": {
@@ -19790,6 +21507,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "name": {
+          "type": "string"
         },
         "networks": {
           "type": "array",
@@ -19804,6 +21524,18 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "v1alpha1.VsphereComputeClusterResources": {
+      "description": "Datacenter and its resources like datastore, resoucepool, folders",
+      "type": "object",
+      "properties": {
+        "computecluster": {
+          "$ref": "#/definitions/v1alpha1.VsphereComputeCluster"
+        },
+        "datacenter": {
+          "type": "string"
         }
       }
     },
@@ -19839,27 +21571,6 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1alpha1.VsphereComputeCluster"
-          }
-        },
-        "datastores": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        },
-        "folders": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        },
-        "networks": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
           }
         }
       }
@@ -20174,7 +21885,7 @@
           }
         },
         "placement": {
-          "description": "Deprecated. Use Placements array object. Placement configuration Placement config in ClusterConfig serve as default values for each MachinePool",
+          "description": "Deprecated. Use Placements array object. Placement configuration in ClusterConfig serve as default values for each MachinePool",
           "$ref": "#/definitions/v1alpha1.VspherePlacementConfigEntity"
         },
         "placements": {
@@ -20618,6 +22329,18 @@
           "description": "version start from 0, matching the index of ClusterProfileSpec.Versions[] will be used by clusterSpec to identify which version is applied to the cluster",
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "v1alpha1FileUploadResponse": {
+      "description": "File upload response",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       }
     },
@@ -21600,6 +23323,7 @@
       "type": "object",
       "properties": {
         "computecluster": {
+          "description": "Deprecated. Use name",
           "type": "string"
         },
         "datastores": {
@@ -21608,6 +23332,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "name": {
+          "type": "string"
         },
         "networks": {
           "type": "array",
@@ -21622,6 +23349,18 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "v1alpha1VsphereComputeClusterResources": {
+      "description": "Datacenter and its resources like datastore, resoucepool, folders",
+      "type": "object",
+      "properties": {
+        "computecluster": {
+          "$ref": "#/definitions/v1alpha1VsphereComputeCluster"
+        },
+        "datacenter": {
+          "type": "string"
         }
       }
     },
@@ -21657,27 +23396,6 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1alpha1VsphereComputeCluster"
-          }
-        },
-        "datastores": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        },
-        "folders": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
-        },
-        "networks": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
           }
         }
       }
