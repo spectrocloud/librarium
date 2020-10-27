@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   background: url(${background});
   background-size: cover;
   padding: 105px 45px 45px 45px;
-  margin: 0 -15px;
+  margin: 0 -43px;
   color: #fff;
 
   display: flex;
