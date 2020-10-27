@@ -1,11 +1,16 @@
 import React from "react";
 import { Tabs as AntTabs } from "antd";
 import styled from "styled-components";
-import {useURLQuery} from "../../utils/location"
+import { useURLQuery } from "../../utils/location"
 import { useLocation } from "@reach/router";
 //
 
 const StyledTabs = styled(AntTabs)`
+  &.ant-tabs {
+    padding-left: 26px;
+    margin-left: -26px;
+  }
+
   .ant-tabs-tab.ant-tabs-tab-active {
     color: #4432F5;
 
@@ -23,21 +28,21 @@ const StyledTabs = styled(AntTabs)`
   }
 `;
 
-export default function Tabs({identifier, ...rest}) {
+export default function Tabs({ identifier, ...rest }) {
   const query = useURLQuery();
   const [activeKey, setActiveKey] = React.useState();
   const location = useLocation();
   React.useEffect(() => {
     let defaultTab;
-  
+
     if (query[identifier]) {
       defaultTab = query[identifier];
     }
     setActiveKey(defaultTab)
-    
+
     if (location.hash) {
       const anchor = document.createElement("a")
-      anchor.href= location.hash;
+      anchor.href = location.hash;
       anchor.click();
     }
   }, [])
@@ -52,7 +57,7 @@ export default function Tabs({identifier, ...rest}) {
 
   return <>
     {renderIdentifier()}
-    <StyledTabs {...rest} activeKey={activeKey} onChange={setActiveKey} destroyInactiveTabPane={true}/>
+    <StyledTabs {...rest} activeKey={activeKey} onChange={setActiveKey} destroyInactiveTabPane={true} />
   </>
 };
 
