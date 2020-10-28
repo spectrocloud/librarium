@@ -32,7 +32,7 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
   } else {
     const coloredIntervals = {};
 
-    if(props.coloredLines) {
+    if (props.coloredLines) {
       const iterations = props.coloredLines.split(",");
       iterations.forEach(iteration => {
         const parts = iteration.split("|");
@@ -45,7 +45,10 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className + ' pre'} style={style} p={3}>
             {cleanTokens(tokens).map((line, i) => {
-              let lineClass = {};
+              let lineClass = {
+                padding: "5px",
+                margin: "0 -5px"
+              };
 
               const intervalKey = Object.keys(coloredIntervals).find(interval => {
                 const [lower, upper] = interval.split("-");
@@ -53,7 +56,7 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
                 return index >= parseInt(lower) && index <= parseInt(upper);
               });
 
-              if(intervalKey) {
+              if (intervalKey) {
                 lineClass.backgroundColor = coloredIntervals[intervalKey]
               }
 
