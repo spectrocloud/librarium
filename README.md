@@ -230,4 +230,3 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 ```js
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
-
