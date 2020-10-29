@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import ClipboardJS from "clipboard";
 import { CopyOutlined } from "@ant-design/icons";
@@ -43,6 +43,7 @@ const HeaderWrap = styled.div`
     margin-left: -26px;
 
   > a {
+    visibility: hidden;
     margin-left: -26px;
     margin-right: 10px;
     text-decoration: none;
@@ -50,6 +51,12 @@ const HeaderWrap = styled.div`
 
     :hover {
       color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  :hover {
+    > a {
+      visibility: visible;
     }
   }
 `;
@@ -100,25 +107,17 @@ function generateHeadingId(children) {
 
 export default {
   h1: props => {
-    const [showPermalink, setShowPermalink] = useState(false);
     return (
-      <HeaderWrap
-        onMouseEnter={() => setShowPermalink(true)}
-        onMouseLeave={() => setShowPermalink(false)}
-      >
-        {showPermalink && <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>}
+      <HeaderWrap>
+        <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>
         <h1 id={generateHeadingId(props.children)} {...props} />
       </HeaderWrap>
     );
   },
   h2: props => {
-    const [showPermalink, setShowPermalink] = useState(false);
     return (
-      <HeaderWrap
-        onMouseEnter={() => setShowPermalink(true)}
-        onMouseLeave={() => setShowPermalink(false)}
-      >
-        {showPermalink && <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>}
+      <HeaderWrap>
+        <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>
         <h2 id={generateHeadingId(props.children)} {...props} />
       </HeaderWrap>
     )
