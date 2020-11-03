@@ -35,8 +35,8 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
     if (props.coloredLines) {
       const iterations = props.coloredLines.split(",");
       iterations.forEach(iteration => {
-        const parts = iteration.split("|");
-        coloredIntervals[parts[0]] = parts[1];
+        const [range, color] = iteration.split("|");
+        coloredIntervals[range] = color;
       });
     }
 
