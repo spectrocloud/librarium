@@ -125,6 +125,7 @@ export default function MDXLayout({ data = {} }) {
                 ...apiMethod,
                 body: JSON.stringify(body, null, 2),
                 parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                pathParameters: api.paths[path]?.parameters || [],
                 responseMessages: Object.keys(responses || {}).map(
                   response => {
                     return ({
