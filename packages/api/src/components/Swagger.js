@@ -42,7 +42,6 @@ const Label = styled.div`
   font-weight: bold;
   color: #555;
   margin-right: 10px;
-  margin-bottom: 10px;
   text-transform: capitalize;
 `;
 
@@ -56,7 +55,7 @@ const Hr = styled.hr`
 const Summary = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 const ResponsesWrapper = styled.div`
@@ -118,7 +117,7 @@ const Response = styled.div`
 `;
 
 const Table = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
   width: 100%;
 `;
 
@@ -134,20 +133,20 @@ const normalizePath = path => {
 };
 
 function Property({ label, value }) {
+  if (!value) {
+    return null;
+  }
+
   return (
     <Summary>
-      <Label>{label}:</Label> {value || `No ${label}`}
+      <Label>{label}:</Label> {value}
     </Summary>
   );
 }
 
-function Parameters({ parameters, method, path }) {
+function Parameters({ parameters, method, path, title }) {
   if (!parameters?.length) {
-    return (
-      <Summary>
-        <Label>Parameters:</Label> No parameters
-      </Summary>
-    );
+    return null;
   }
 
   function renderParameter(parameter) {
@@ -165,7 +164,7 @@ function Parameters({ parameters, method, path }) {
 
   return (
     <Table>
-      <Label>Parameters:</Label>
+      <Label>{title}:</Label>
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -229,9 +228,14 @@ export default function Swagger(props) {
                 <Property label="summary" value={operation.summary} />
                 <Property label="description" value={operation.description} />
                 <Parameters
+                  title="Parameters"
                   parameters={operation?.parameters}
                   method={operation.method}
                   path={api?.path}
+                />
+                <Parameters
+                  title="Path parameters"
+                  parameters={operation?.pathParameters}
                 />
                 <RequestBody body={operation.body} />
               </div>
