@@ -42,7 +42,7 @@ export default function Tabs({ identifier, ...rest }) {
       setActiveKey(query[identifier])
       clickedOnHash.current = false;
     }
-  }, [location.hash]);
+  }, []);
 
   React.useEffect(() => {
     if (location.hash && clickedOnHash.current === false) {
@@ -51,7 +51,7 @@ export default function Tabs({ identifier, ...rest }) {
       anchor.click();
       clickedOnHash.current = true;
     }
-  }, [location.hash]);
+  }, [activeKey]);
 
   function renderIdentifier() {
     if (identifier) {
