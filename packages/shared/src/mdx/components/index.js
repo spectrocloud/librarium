@@ -128,7 +128,7 @@ export default {
           <FontAwesomeIcon icon="link" />
         </a>
         <h1 id={generateHeadingId(props.children)} {...props} />
-      </HeaderWrap >
+      </HeaderWrap>
     );
   },
   h2: props => {
