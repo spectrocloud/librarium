@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
 
+import { useTabsContext } from "../../components/ui/Tabs";
+
 const PreContainer = styled.div`
   position: relative;
 
@@ -87,8 +89,19 @@ function Pre(props) {
   );
 }
 
+function generatePermalinkAnchor(children, tabsIdentifierData) {
+  const headingId = generateHeadingId(children);
+
+  if(tabsIdentifierData?.id) {
+    return `?${tabsIdentifierData.id}=${tabsIdentifierData.activeKey}#${headingId}`;
+  }
+
+  return `#${headingId}`;
+}
+
 function generateHeadingId(children) {
   let title = children;
+
   if (Array.isArray(children)) {
     title = children.reduce((accumulator, child) => {
       if (typeof child === "string") {
@@ -102,22 +115,30 @@ function generateHeadingId(children) {
     }, '')
   }
 
-  return title.replace(/\s+/g, '').toLowerCase()
+  return title.replace(/\s+/g, '').toLowerCase();
 }
 
 export default {
   h1: props => {
+    const tabsIdentifierData = useTabsContext();
+
     return (
       <HeaderWrap>
-        <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>
+        <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+          <FontAwesomeIcon icon="link" />
+        </a>
         <h1 id={generateHeadingId(props.children)} {...props} />
-      </HeaderWrap>
+      </HeaderWrap >
     );
   },
   h2: props => {
+    const tabsIdentifierData = useTabsContext();
+
     return (
       <HeaderWrap>
-        <a href={`#${generateHeadingId(props.children)}`}><FontAwesomeIcon icon="link" /></a>
+        <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+          <FontAwesomeIcon icon="link" />
+        </a>
         <h2 id={generateHeadingId(props.children)} {...props} />
       </HeaderWrap>
     )

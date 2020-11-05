@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, createContext, useRef } from "react";
 import { Tabs as AntTabs } from "antd";
 import styled from "styled-components";
 import { useURLQuery } from "../../utils/location"
@@ -28,24 +28,30 @@ const StyledTabs = styled(AntTabs)`
   }
 `;
 
+const TabsContext = createContext();
+
+export const useTabsContext = () => useContext(TabsContext);
+
 export default function Tabs({ identifier, ...rest }) {
   const query = useURLQuery();
-  const [activeKey, setActiveKey] = React.useState();
-  const location = useLocation();
+  const clickedOnHash = useRef(null);
+  const [activeKey, setActiveKey] = React.useState(rest?.children?.[0]?.key || "");
+
   React.useEffect(() => {
-    let defaultTab;
-
     if (query[identifier]) {
-      defaultTab = query[identifier];
+      setActiveKey(query[identifier])
+      clickedOnHash.current = false;
     }
-    setActiveKey(defaultTab)
+  }, [location.hash]);
 
-    if (location.hash) {
-      const anchor = document.createElement("a")
+  React.useEffect(() => {
+    if (location.hash && clickedOnHash.current === false) {
+      const anchor = document.createElement("a");
       anchor.href = location.hash;
       anchor.click();
+      clickedOnHash.current = true;
     }
-  }, [])
+  }, [location.hash]);
 
   function renderIdentifier() {
     if (identifier) {
@@ -55,10 +61,12 @@ export default function Tabs({ identifier, ...rest }) {
     return null;
   }
 
-  return <>
-    {renderIdentifier()}
-    <StyledTabs {...rest} activeKey={activeKey} onChange={setActiveKey} destroyInactiveTabPane={true} />
-  </>
+  return (
+    <TabsContext.Provider value={{id: identifier, activeKey}}>
+      {renderIdentifier()}
+      <StyledTabs {...rest} activeKey={activeKey} onChange={setActiveKey} destroyInactiveTabPane={true} />
+    </TabsContext.Provider>
+  )
 };
 
 Tabs.TabPane = AntTabs.TabPane
