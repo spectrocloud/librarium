@@ -102,7 +102,7 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 32px;
     line-height: 42px;
-    margin: 30px 0 10px;
+    margin: 20px 0;
 
     ::before {
       display: block;
