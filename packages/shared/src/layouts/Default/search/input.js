@@ -45,7 +45,6 @@ export default connectSearchBox(({ refine, focus, ...rest }) => {
     }
   }, [focus]);
 
-  console.log(rest);
   return (
     <Form className={'formElement'} onSubmit={preventSubmit}>
       <SearchIcon />
