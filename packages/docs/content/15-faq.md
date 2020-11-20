@@ -20,11 +20,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # How does Spectro Cloud work with failure domains for both the control plane and workers?
 
-**During the POC**, we fully tested both control-plane and worker-node resiliency across fault-domains.
-
-<WarningBox>
-Please confirm if the above phrase in bold will remain in the final version.
-</WarningBox>
+We fully tested both control-plane and worker-node resiliency across fault-domains.
 
 # What access workflows does Spectro Cloud support (ie. how can VMs be accessed, if needed)?
 
