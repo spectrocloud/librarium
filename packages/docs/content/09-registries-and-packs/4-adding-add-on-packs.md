@@ -27,8 +27,6 @@ Custom add-on packs can be built to extend the list of integrations. Two differe
 
 <Tabs.TabPane tab="Using Helm Charts" key="add_on_packs_helm_charts">
 
-## Using Helm Charts
-
 The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
 
 1. Create the pack directory named "prometheus-grafana".
@@ -236,8 +234,6 @@ $ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Using Manifests" key="add_on_packs_manifests">
-
-## Add-on packs using manifests
 
 Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, secrets, etc.
 

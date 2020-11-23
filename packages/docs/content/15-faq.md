@@ -11,44 +11,48 @@ import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# How does Spectro Cloud handle IP management?
+# Frequently Asked Questions
 
-* Static IP Pools are configured and managed by Spectro Cloud.  
-* Pools can be [dedicated to an](/clusters?clusterType=vmware_cluster#ipaddressmanagement) individual cluster.  
-* Pool IPs will be re-used by all cluster nodes.  
+Brief answers to the most commonly asked questions about Spectro Cloud.
 
-# How does Spectro Cloud work with failure domains for both the control plane and workers?
+## How does Spectro Cloud handle IP management?
 
-**During the POC**, we fully tested both control-plane and worker-node resiliency across fault-domains.
+Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster.
 
-<WarningBox>
-Please confirm if the above phrase in bold will remain in the final version.
-</WarningBox>
+Furthermore, pools can be [dedicated to an](/clusters?clusterType=vmware_cluster#ipaddressmanagement) individual cluster. Pool IPs will be re-used by all cluster nodes.  
 
-# What access workflows does Spectro Cloud support (ie. how can VMs be accessed, if needed)?
+## How does Spectro Cloud work with failure domains?
 
-* Kubernetes nodes are accessed via SSH (using the key specified during cluster provisioning). Keys are stored in the internal Metsi vault.  
-* VMware VM Console access is also available.  
+Both control-plane and worker-node resiliency across fault-domains have been checked.
 
-# What OS’s are supported with Spectro Cloud?
+## What access workflows does Spectro Cloud support?
 
-* Out-of-the-box support for Spectro Cloud provides security-hardened CentOS and Ubuntu images.  
-* Spectro Cloud supports the options to Bring-Your-Own-Image for Operating Systems supporting `cloud-init`.  
+VMs can be accessed, if needed, via SSH (using the key specified during cluster provisioning). The location where the keys are stored must be available to users requiring access The standard VMware VM Console access is also available.
 
-# How are Cluster Etcd components bootstrapped? Backup/Restore?
+## What OS’s are supported with Spectro Cloud?
 
-* ETCD is provisioned inline with Cluster API.  
-* Backup tools (like Velero, Portworx PX-Backup) are all supported.  
+Spectro Cloud provides VM images for cluster computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security-hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
-# How do upgrades work with Spectro Cloud (how long does it take, how does PWX react, etc.)?
+Spectro Cloud also supports the options to [Bring-Your-Own-Image](/clusters/#customization) for Operating Systems supporting `cloud-init`.  
 
-Upgrades are rolling, and there is no impact to the application workloads. Depending on the number of workloads running, a cluster node is upgraded within 5-8 minutes.  
+## How are Cluster Etcd components bootstrapped?
 
-# How does Spectro Cloud handle API Server configuration changes?
+ETCD is provisioned inline with Cluster API. On the enterprise version, the status of the provisioning can be seen on the <Tooltip trigger={<u>Supervisor</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation.</Tooltip> app.
 
-All Kubernetes control plane components (api-server, controller-manager, cloud-manager, …) are fully configurable, including component flags and feature-gates.  
+## What options are available for Backup/Restore?
 
-# Can the ClusterAPI artifacts under the covers be exported from Spectro Cloud and imported to a raw ClusterAPI management cluster?
+Backup tools (like Velero, Portworx PX-Backup) are all supported.  
+
+## How do upgrades work with Spectro Cloud?
+
+<Tooltip trigger={<u>Upgrades</u>}>Typically, cluster profiles are <a href="/cluster-profiles/task-update-profile">updated</a> to change the configuration of various layers in a Kubernetes stack, including version updates.</Tooltip> are rolling, and there is no impact to the application workloads. Depending on the number of workloads running, a cluster node is upgraded within 5-8 minutes.  
+
+## How does Spectro Cloud handle API Server configuration changes?
+
+All Kubernetes control plane components (api-server, controller-manager, cloud-manager, etc.) are fully configurable, including component flags and feature-gates.  
+
+## Can the ClusterAPI artifacts under the covers be exported from Spectro Cloud and imported to a raw ClusterAPI management cluster?
 
 We are a Top-5 contributor to ClusterAPI. All the functionality that we have created has been contributed back to ClusterAPI. In the event of a customer needing to move away from Spectro Cloud, the Spectro Cloud orchestrated Kubernetes clusters can be imported and managed by ClusterAPI.  

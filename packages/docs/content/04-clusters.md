@@ -743,7 +743,7 @@ In addition to the default cloud account already associated with the private clo
 ## Creating a VMware cloud gateway
 
 <InfoBox>
-For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters. <strong>PLEASE VERIFY</strong>
+For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters.
 </InfoBox>
 
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
