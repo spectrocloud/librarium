@@ -11,6 +11,19 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
+# November 05, 2020 - Hotfixes 1.5.1 through 1.5.6
+
+A host of hotfixes were applied for a smoother on-premise operation:
+
+| Version | Feature |
+| --- | --- |
+| 1.5.6 | Added improvements for faster [kCh](https://www.spectrocloud.com/pricing/) usage calculation. |
+| 1.5.5 | Patched the `govc vm.info` command to allow spaces in datacenter names. |
+| 1.5.4 | Changes to use client updates instead of patches for *vendorcrd* installations. |
+| 1.5.3 | Improved resource utilization by deleting a machine when a node is not available. |
+| 1.5.2 | Updates to keep sessions alive for SOAP and REST clients using the `keepalive` command. |
+| 1.5.1 | Fixed a bug that caused a trailing line to be added in the `vsphere.conf` file. |
+
 # October 23, 2020 - Release 1.5.0
 
 The 1.5.0 release of the Spectro Cloud platform consists of the following features and enhancements:
