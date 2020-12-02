@@ -206,6 +206,9 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
         {
             "Effect": "Allow",
             "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeTags",
                 "cloudformation:CreateStack",
                 "cloudformation:DescribeStacks",
                 "cloudformation:UpdateStack",
@@ -238,7 +241,6 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:DescribeImages",
                 "ec2:DescribeInstances",
                 "ec2:DescribeInternetGateways",
-                "ec2:DescribeKeyPairs",
                 "ec2:DescribeNatGateways",
                 "ec2:DescribeNetworkInterfaceAttribute",
                 "ec2:DescribeNetworkInterfaces",
@@ -262,6 +264,13 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RunInstances",
                 "ec2:TerminateInstances",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:BatchGetImage"
                 "elasticloadbalancing:AddTags",
                 "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
@@ -322,6 +331,29 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
             ],
             "Resource": [
                 "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
             ]
         },
         {
