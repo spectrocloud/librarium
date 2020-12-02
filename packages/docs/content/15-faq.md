@@ -37,6 +37,10 @@ We fully tested both control-plane and worker-node resiliency across fault-domai
 * ETCD is provisioned inline with Cluster API.  
 * Backup tools (like Velero, Portworx PX-Backup) are all supported.  
 
+<WarningBox>
+Please note that FTP servers are not supported for environments with proxies.
+</WarningBox>
+
 # How do upgrades work with Spectro Cloud (how long does it take, how does PWX react, etc.)?
 
 Upgrades are rolling, and there is no impact to the application workloads. Depending on the number of workloads running, a cluster node is upgraded within 5-8 minutes.  
