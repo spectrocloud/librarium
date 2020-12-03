@@ -52,10 +52,6 @@ mkdir -p /root/certs
 
 For self-signed certificates, use the following command to generate certificates.
 
-**Self-Signed Certificates**
-
-For self-signed certificates, use the following command to generate certificates.
-
 ```bash
 openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout tls.key \

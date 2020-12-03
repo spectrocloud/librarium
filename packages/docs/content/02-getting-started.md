@@ -391,8 +391,6 @@ The following steps will be taken to provision your first VMware cluster:
 
 ## Installation
 
-***RANDOM, INACCURATE, PLACEHOLDER TEXT.***
-
 Follow the [instructions](/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant) to install the Quick Start variant. Verify the installation by accessing the System Console and creating a tenant admin. Using the activation link, approve the tenant admin and open the tenant management console to create a cluster profile.
 
 </Tabs.TabPane>

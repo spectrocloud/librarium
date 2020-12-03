@@ -30,6 +30,8 @@ Info: Only Kubernetes versions 1.16 and above is supported
 * 1.17.4
 * 1.18.0
 * 1.18.1
+* 1.18.5
+* 1.18.8
 
 # Notable parameters
 
