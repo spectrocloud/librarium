@@ -37,6 +37,8 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
             * Password: admin
 
             Provide a different password for the monitoring console if desired. Leave the field blank to accept the default password.
+        * Pod CIDR: Optional - provide an IP range exclusive to pods. This range should be different to prevent an overlap with your network CIDR. (e.g: 192.168.0.0/16)
+        * Service cluster IP range: Optional - assign an IP range in the CIDR format exclusive to the service clusters. This range also must not overlap with either the pod CIDR range or your network CIDR. (e.g: 10.96.0.0/12)
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address (e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
         * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1) required only for static IP allocation.
         * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
