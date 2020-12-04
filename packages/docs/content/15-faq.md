@@ -35,8 +35,6 @@ VMs can be accessed, if needed, via SSH (using the key specified during cluster 
 
 Spectro Cloud provides VM images for cluster computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security-hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
-## How do upgrades work with Spectro Cloud (how long does it take, how does PWX react, etc.)?
-
 Spectro Cloud also supports the options to [Bring-Your-Own-Image](/clusters/#customization) for Operating Systems supporting `cloud-init`.  
 
 ## How are Cluster Etcd components bootstrapped?

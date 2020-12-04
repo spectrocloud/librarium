@@ -775,6 +775,8 @@ This step does not apply to Enterprise version users.
 | Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
 |Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
 | SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
+| Pod CIDR | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
+| Service cluster IP range | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
 
 Additional properties that are required to be set only for a Proxy Environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
 
