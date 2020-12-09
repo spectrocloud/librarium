@@ -117,7 +117,7 @@ REGISTRY_HOST_DNS - registry.com
     docker run -d \
         -p 80:5000 \
         --restart=always \
-        --name spectre-registry \
+        --name spectro-registry \
         --mount type=bind,source=/root/auth,target=/auth,readonly \
         --mount type=bind,source=/root/data,target=/data \
         -e  REGISTRY_LOG_LEVEL=info \
