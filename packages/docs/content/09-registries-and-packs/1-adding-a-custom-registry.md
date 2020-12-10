@@ -33,11 +33,11 @@ Please ensure that the ports 443/80 are exclusively allocated to the registry se
 
 Spectro Cloud provides a docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:-
 
-* Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
+* Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.  The command-line below has an placeholder to specify your unique, secure password.
 
 ```bash
 mkdir -p /root/auth
-htpasswd -Bbn admin admin > /root/auth/htpasswd-basic
+htpasswd -Bbn admin {enter your secure password choice} > /root/auth/htpasswd-basic
 ```
 
 * If HTTPS mode is being used, create a directory called `certs`.
@@ -55,7 +55,7 @@ For self-signed certificates, use the following command to generate certificates
 ```bash
 openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
-  -x509 -days 365 -out tls.crt
+  -x509 -days 1825 -out tls.crt
 ```
 
 * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
