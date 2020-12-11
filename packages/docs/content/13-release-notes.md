@@ -7,9 +7,21 @@ hideToC: false
 fullWidth: false
 ---
 
-import InfoBox from '@librarium/shared/src/components/InfoBox';
-
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
+# December 03, 2020 - Hotfix 1.5.7
+
+In this hotfix, we added:
+
+* Compatibility for [Calico 3.16](https://www.projectcalico.org/whats-new-in-calico-3-16/).
+* The on-prem version now allows specifying [CIDR for pods](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller) to allocate them an exclusive IP range.
+* It also allows allocating an IP range in the CIDR format exclusive to the service clusters.
+
+The IP ranges for the pods, service clusters, and your IP network must not overlap with one another. This hotfix provides options to prevent node creation errors due to IP conflicts.
 
 # November 05, 2020 - Hotfixes 1.5.1 through 1.5.6
 
