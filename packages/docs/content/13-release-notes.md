@@ -1,7 +1,7 @@
 ---
 title: "Release Notes"
 metaTitle: "Release Notes"
-metaDescription: "Spectro Cloud recommendations for the best manner of operations"
+metaDescription: "Dates and descriptions of Spectro Cloud releases"
 icon: "audits"
 hideToC: false
 fullWidth: false
