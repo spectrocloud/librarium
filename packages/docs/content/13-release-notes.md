@@ -13,6 +13,27 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+# December 13, 2020 - Release 1.6.0
+
+Our on-prem version gets attention to finer details with this release:
+
+* The Spectro Cloud database can now be backed up and restored.
+* Whereas previous on-prem versions allowed upgrading only to major versions, this release allows <Tooltip trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
+* Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when [migrating](/enterprise-version/deploying-an-enterprise-cluster/#migratequickstartmodeclustertoenterprise) from the quick start version to the enterprise version.
+* AWS and GCP clusters can now be provisioned from an on-prem Specto Cloud system.
+
+On the VMware front, we have:
+
+* removed the dependency on the HA Proxy Load balancer for creating clusters via DHCP.
+* introduced dynamic folder creation in vCenter. This applies to every cluster, in all of the cluster virtual machines.
+* enabled support for DNS mapping in search domains on vSphere.
+
+Other new features:
+
+* New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up automatic payments using credit/debit cards.
+* Pack [constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/) have been added to restrict the resource usage of a pod.
+* Compatibility for Portworx version 2.6.x, Calico version 3.16.x, and for newer versions for [Kubernetes](/integrations/kubernetes/).
+
 # December 03, 2020 - Hotfix 1.5.7
 
 In this hotfix, we added:
