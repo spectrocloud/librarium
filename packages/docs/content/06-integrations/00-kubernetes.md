@@ -8,7 +8,11 @@ category: ['kubernetes']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Kubernetes
 
@@ -20,18 +24,60 @@ Info: Only Kubernetes versions 1.16 and above is supported
 
 # Supported Kubernetes versions
 
+<InfoBox>
+
+Versions supported in the latest [release](/release-notes/) are highlighted.
+
+</InfoBox>
+
+<Tabs>
+
+<Tabs.TabPane tab="1.16.x" key="k8s_v1.16">
+
 * 1.16.3
 * 1.16.4
 * 1.16.7
 * 1.16.8
+* **1.16.13**
+* **1.16.14**
+* **1.16.15**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.17.x" key="k8s_v1.17">
+
 * 1.17.0
 * 1.17.1
 * 1.17.3
 * 1.17.4
+* **1.17.11**
+* **1.17.12**
+* **1.17.13**
+* **1.17.14**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.18.x" key="k8s_v1.18">
+
 * 1.18.0
 * 1.18.1
 * 1.18.5
-* 1.18.8
+* **1.18.8**
+* **1.18.10**
+* **1.18.12**
+* **1.18.13**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
+
+* **1.19.3**
+* **1.19.4**
+* **1.19.5**
+
+</Tabs.TabPane>
+
+</Tabs>
 
 # Notable parameters
 
