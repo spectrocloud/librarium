@@ -249,6 +249,12 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
 }
 ```
 
+<WarningBox>
+
+If the minimum and maximum versions are not mentioned, the validation is skipped.
+
+</WarningBox>
+
 ## Pack Dependency Attributes
 
 <Tabs identifier="Pack Dependency Attributes">
@@ -302,12 +308,6 @@ The dependent pack is mandatory and must contain a version within the minimum or
 Pack versions within the range of the mentioned minimum and maximum (including the minimum and maximum) are not supported.
 
 **Example**: `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions.
-
-<InfoBox>
-
-If the minimum and maximum versions are not mentioned, the validation is skipped and all versions are allowed.
-
-</InfoBox>
 
 </Tabs.TabPane>
 
