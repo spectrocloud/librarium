@@ -309,6 +309,12 @@ Pack versions within the range of the mentioned minimum and maximum (including t
 
 **Example**: `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions.
 
+<InfoBox>
+
+If the minimum and maximum versions are not mentioned, the validation is skipped and all versions are allowed.
+
+</InfoBox>
+
 </Tabs.TabPane>
 
 </Tabs>
