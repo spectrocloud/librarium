@@ -249,6 +249,12 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
 }
 ```
 
+<WarningBox>
+
+If the minimum and maximum versions are not mentioned, the validation is skipped.
+
+</WarningBox>
+
 ## Pack Dependency Attributes
 
 <Tabs identifier="Pack Dependency Attributes">

@@ -32,7 +32,7 @@ Other new features:
 
 * New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up automatic payments using credit/debit cards.
 * <Tooltip trigger={<u>Pack constraints</u>}>Default pack values can be overridden. If the cluster is configured incorrectly (values, instance types, etc.), cluster deployment may fail. These failures can occur at any point during the cluster deployment process.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
-* Compatibility for Portworx version 2.6.x, Calico version 3.16.x, and for newer versions for [Kubernetes](/integrations/kubernetes/).
+* Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for [Kubernetes](/integrations/kubernetes/).
 
 # December 03, 2020 - Hotfix 1.5.7
 
