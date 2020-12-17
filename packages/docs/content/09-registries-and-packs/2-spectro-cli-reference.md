@@ -10,6 +10,8 @@ fullWidth: false
 import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Overview
 
@@ -31,17 +33,15 @@ The Spectro CLI tool is currently available for OSX and Linux.
 <Tabs.TabPane tab="OSX" key="osx_cli">
 
 ```bash
-$wget https://spectro-cli.s3.amazonaws.com/v1.5.0/osx/spectro > spectro
+$wget https://spectro-cli.s3.amazonaws.com/v1.6.0/osx/spectro > spectro
 ```
-
-
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Linux" key="linux_cli">
 
 ```bash
-$wget https://spectro-cli.s3.amazonaws.com/v1.5.0/linux/spectro > spectro
+$wget https://spectro-cli.s3.amazonaws.com/v1.6.0/linux/spectro > spectro
 ```
 
 </Tabs.TabPane>
@@ -331,6 +331,19 @@ PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 ### Flags
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="VERSION" key="cli_version">
+
+## VERSION
+
+Check the version of the Spectro CLI Tool that is currently installed.
+
+```bash
+# spectro  version
+Spectro Cli Version 1.6.0 linux/amd64
+```
 
 </Tabs.TabPane>
 

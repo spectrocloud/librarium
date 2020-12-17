@@ -137,4 +137,4 @@ Integration deploys the following components:
 ### Troubleshooting
 
 * Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set on the Ingress resource
-* Check `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change logLevel to debug to see additional info on the logs
+* Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to debug to see additional info on the logs

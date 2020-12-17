@@ -1,15 +1,61 @@
 ---
 title: "Release Notes"
 metaTitle: "Release Notes"
-metaDescription: "Spectro Cloud recommendations for the best manner of operations"
+metaDescription: "Dates and descriptions of Spectro Cloud releases"
 icon: "audits"
 hideToC: false
 fullWidth: false
 ---
 
-import InfoBox from '@librarium/shared/src/components/InfoBox';
-
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
+# December 13, 2020 - Release 1.6.0
+
+Our on-prem version gets attention to finer details with this release:
+
+* The Spectro Cloud database can now be backed up and restored.
+* Whereas previous on-prem versions allowed upgrading only to major versions, this release allows <Tooltip trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
+* Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when [migrating](/enterprise-version/deploying-an-enterprise-cluster/#migratequickstartmodeclustertoenterprise) from the quick start version to the enterprise version.
+* AWS and GCP clusters can now be provisioned from an on-prem Specto Cloud system.
+
+On the VMware front, we have:
+
+* removed the dependency on the HA Proxy Load balancer for creating clusters via DHCP.
+* introduced dynamic folder creation in vCenter. This applies to every cluster, in all of the cluster virtual machines.
+* enabled support for DNS mapping in search domains on vSphere.
+
+Other new features:
+
+* New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up automatic payments using credit/debit cards.
+* <Tooltip trigger={<u>Pack constraints</u>}> <a href="/integrations/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
+* Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for [Kubernetes](/integrations/kubernetes/).
+
+# December 03, 2020 - Hotfix 1.5.7
+
+In this hotfix, we added:
+
+* Compatibility for [Calico 3.16](https://www.projectcalico.org/whats-new-in-calico-3-16/).
+* The on-prem version now allows specifying [CIDR for pods](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller) to allocate them an exclusive IP range.
+* It also allows allocating an IP range in the CIDR format exclusive to the service clusters.
+
+The IP ranges for the pods, service clusters, and your IP network must not overlap with one another. This hotfix provides options to prevent node creation errors due to IP conflicts.
+
+# November 05, 2020 - Hotfixes 1.5.1 through 1.5.6
+
+A host of hotfixes were applied for a smoother on-premise operation:
+
+| Version | Feature |
+| --- | --- |
+| 1.5.6 | Added improvements for faster [kCh](https://www.spectrocloud.com/pricing/) usage calculation. |
+| 1.5.5 | Patched the `govc vm.info` command to allow spaces in datacenter names. |
+| 1.5.4 | Changes to use client updates instead of patches for *vendorcrd* installations. |
+| 1.5.3 | Improved resource utilization by deleting a machine when a node is not available. |
+| 1.5.2 | Updates to keep sessions alive for SOAP and REST clients using the `keepalive` command. |
+| 1.5.1 | Fixed a bug that caused a trailing line to be added in the `vsphere.conf` file. |
 
 # October 23, 2020 - Release 1.5.0
 
@@ -61,8 +107,15 @@ The following features are included as part of Spectro Cloud 1.0:
 * Grouping of clusters logically into Projects for governance and control.
 * Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs, etc.
 
-## Known Issues
+# Known Issues
 
+* **BET-1491:** Portworx currently does not [support](https://docs.portworx.com/portworx-install-with-kubernetes/) Kubernetes version 1.19. This results in a failure to bring up the Stork scheduler pod.
+* **BET-1472:** In the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster/#enterprisemode), deleting a node in an Enterprise cluster renders the cluster unusable due to an [in-tree limitation](https://github.com/vmware/vsphere-storage-for-kubernetes/issues/55).
+    * *Recommendations:*
+        * To prevent VMDK deletion with the in-tree provider, drain the node, let all pods re-schedule on another node, let all volumes detach from the node, and then finally delete the node VM.
+        * This issue is resolved with [vSphere 67u3](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-51D308C7-ECFE-4C04-AD56-64B6E00A6548.html) and a [new CSI driver](https://github.com/kubernetes-sigs/vsphere-csi-driver).
+        * A [related issue](https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/359) might occur where a persistent volume might not attach to a new node.
+* **BET-1461:** For AWS clusters, when the Static VPC option is used, clusters might not complete provisioning. This bug will be patched in subsequent releases.
 * **BET-768:** On the Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
 
 <InfoBox>

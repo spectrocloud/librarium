@@ -31,7 +31,7 @@ Create new tenants and their initial tenant admin accounts. Optionally, activate
 
 # Update Management
 
-Apply Spectro Cloud platform upgrades. Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are avialble. Platform administrators can apply platform upgrades directly from the on-prem system console.
+Apply Spectro Cloud platform upgrades. Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. Platform administrators can apply platform upgrades directly from the on-prem system console.
 
 # Administration
 
@@ -41,7 +41,7 @@ Configure SMTP settings to enable the Spectro Cloud platform to send out email n
 
 ## Certificates
 
-Provide the desired SSL/TLS server certificates to support the valid HTTPs external access.
+Provide the desired SSL/TLS server certificates to support external access to valid HTTPs.
 
 # Cluster Management
 

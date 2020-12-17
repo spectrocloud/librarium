@@ -352,6 +352,13 @@ The following steps will be taken to provision your first VMware cluster:
         * Console Endpoint: https://console.spectrocloud.com.
         * Pairing Code: <5 digit pairing code from step #2>
         * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
+        * Pod CIDR: Optional IP range exclusive to pods. (e.g: 192.168.0.0/16)
+        * Service cluster IP range: Optional IP range in the CIDR format exclusive to the service clusters. (e.g: 10.96.0.0/12)
+
+        <WarningBox>
+        If used, please ensure that neither the pod CIDR nor the service cluster CIDR overlap with your network CIDR.
+        </WarningBox>
+
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
         * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
         * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
@@ -390,8 +397,6 @@ The following steps will be taken to provision your first VMware cluster:
 * Provision Cluster.
 
 ## Installation
-
-***RANDOM, INACCURATE, PLACEHOLDER TEXT.***
 
 Follow the [instructions](/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant) to install the Quick Start variant. Verify the installation by accessing the System Console and creating a tenant admin. Using the activation link, approve the tenant admin and open the tenant management console to create a cluster profile.
 

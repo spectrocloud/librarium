@@ -132,8 +132,10 @@ For example, failure to create a virtual machine in AWS due to the vCPU limit be
 Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
 
 <InfoBox>
+
   Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
+
 </InfoBox>
 
 # Proxy Whitelists
@@ -206,6 +208,9 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
         {
             "Effect": "Allow",
             "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeTags",
                 "cloudformation:CreateStack",
                 "cloudformation:DescribeStacks",
                 "cloudformation:UpdateStack",
@@ -219,6 +224,7 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:CreateRoute",
                 "ec2:CreateRouteTable",
                 "ec2:CreateSecurityGroup",
+		"ec2:CreateSnapshot",
                 "ec2:CreateSubnet",
                 "ec2:CreateTags",
                 "ec2:CreateVolume",
@@ -228,6 +234,7 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:DeleteRoute",
                 "ec2:DeleteRouteTable",
                 "ec2:DeleteSecurityGroup",
+		"ec2:DeleteSnapshot",
                 "ec2:DeleteSubnet",
                 "ec2:DeleteTags",
                 "ec2:DeleteVolume",
@@ -238,15 +245,17 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:DescribeImages",
                 "ec2:DescribeInstances",
                 "ec2:DescribeInternetGateways",
-                "ec2:DescribeKeyPairs",
                 "ec2:DescribeNatGateways",
                 "ec2:DescribeNetworkInterfaceAttribute",
                 "ec2:DescribeNetworkInterfaces",
                 "ec2:DescribeRegions",
                 "ec2:DescribeRouteTables",
                 "ec2:DescribeSecurityGroups",
+		"ec2:DescribeSnapshots",
                 "ec2:DescribeSubnets",
+		"ec2:DescribeTags",
                 "ec2:DescribeVolumes",
+		"ec2:DescribeVolumesModifications",
                 "ec2:DescribeVpcAttribute",
                 "ec2:DescribeVpcs",
                 "ec2:DetachInternetGateway",
@@ -262,6 +271,13 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RunInstances",
                 "ec2:TerminateInstances",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:BatchGetImage"
                 "elasticloadbalancing:AddTags",
                 "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
@@ -322,6 +338,29 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
             ],
             "Resource": [
                 "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
             ]
         },
         {
@@ -711,7 +750,7 @@ In addition to the default cloud account already associated with the private clo
 ## Creating a VMware cloud gateway
 
 <InfoBox>
-For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters. <strong>PLEASE VERIFY</strong>
+For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters.
 </InfoBox>
 
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
@@ -730,7 +769,9 @@ This step does not apply to Enterprise version users.
 ## vSphere - Deploy Gateway Installer
 
 <InfoBox>
+
 This step does not apply to Enterprise version users.
+
 </InfoBox>
 
 * Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
@@ -743,6 +784,8 @@ This step does not apply to Enterprise version users.
 | Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
 |Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
 | SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
+| Pod CIDR | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
+| Service cluster IP range | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
 
 Additional properties that are required to be set only for a Proxy Environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
 
@@ -813,7 +856,7 @@ fi
 
 ### Gateway Cluster - Provisioning stalled/failure
 
-Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower -evel operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
+Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower-level operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
 
 ## Upgrading a VMware cloud gateway
 

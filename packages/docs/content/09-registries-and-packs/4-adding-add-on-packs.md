@@ -27,8 +27,6 @@ Custom add-on packs can be built to extend the list of integrations. Two differe
 
 <Tabs.TabPane tab="Using Helm Charts" key="add_on_packs_helm_charts">
 
-## Using Helm Charts
-
 The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
 
 1. Create the pack directory named "prometheus-grafana".
@@ -57,7 +55,7 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 ```
 
 3. Download the desired version of the prometheus-grafana helm charts archive.
-4. Create a sub-directory called `charts` and copy the downloaded helm chart archive to this directory. Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
+4. Create a sub-directory called "charts" and copy the downloaded helm chart archive to this directory. Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
 5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the prometheus-grafana pack, the `values.yaml` could look like this:-
 
 ```yaml
@@ -237,13 +235,11 @@ $ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
 
 <Tabs.TabPane tab="Using Manifests" key="add_on_packs_manifests">
 
-## Add-on packs using manifests
-
 Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, secrets, etc.
 
 The example below shows how to build the Permission Manager auth pack and push to the pack registry server using the Spectro Cloud CLI.
 
-1. Create the pack directory named `permission-manager`.
+1. Create the pack directory named "permission-manager".
 2. Create the metadata file named `pack.json`.
 
 ```json
@@ -260,8 +256,8 @@ The example below shows how to build the Permission Manager auth pack and push t
 }
 ```
 
-3. Create a sub-directory called `manifests`.
-4. Copy the desired manifest files to the `manifests` directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, _{{.Values.namespace}}_. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
+3. Create a sub-directory called "manifests".
+4. Copy the desired manifest files to the "manifests" directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters, for example, _{{.Values.namespace}}_. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
 
 permission-manager.yaml (partial)
 
