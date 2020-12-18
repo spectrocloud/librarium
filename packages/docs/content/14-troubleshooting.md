@@ -2,7 +2,7 @@
 title: "Troubleshooting"
 metaTitle: "Common issues and their solutions"
 metaDescription: "Common issues and their solutions in the deployment of Spectro Cloud Clusters"
-icon: "fa-tools"
+icon: "tools"
 hideToC: false
 fullWidth: false
 ---
@@ -46,19 +46,19 @@ Note that Ubuntu is `systemd` based.
 
 ## Short-codes for quick reference
 
-**SSH**: No hardcoded username/password, but using `cloud-init` injects the user-defined SSH key(s) into the clusters. Login using `ssh -i <key> spectro@<host>`  
-**Kubelet logs**: `journalctl -u kubelet`  
-**Container logs**: `kubectl logs` OR `/var/log/containers` and `/var/log/pods`  
+**SSH**: No hardcoded username/password, but using `cloud-init` injects the user-defined SSH key(s) into the clusters. Login using `ssh -i <key> spectro@<host>`.  
+**Kubelet logs**: `journalctl -u kubelet`.  
+**Container logs**: `kubectl logs` OR `/var/log/containers` and `/var/log/pods`.  
 
 # Recreating a bug using PDB as an example
 
-As a troubleshooting example, we’ll imitate a PodDistruptionBudget (PDB) preventing a cluster upgrade from proceeding. We will create a 2-node cluster of Kubernetes v1.18.5 along with an nginx pod. Attempting to upgrade these pods to 1.18.8 will result in the pod refusing to delete preventing the upgrade. 
+As a troubleshooting example, we’ll imitate a PodDistruptionBudget (PDB) preventing a cluster upgrade from proceeding. We will create a 2-node cluster of Kubernetes v1.18.5 along with an nginx pod. Attempting to upgrade these pods to 1.18.8 will result in the pod refusing to delete preventing the upgrade.
 
 ## Scenario Prerequisites
 
 * [Provision](/clusters/#creatingclusters) a 2-node cluster (1 control-plane nodes/1 worker nodes) on version 1.18.5.
 * Run a simple [nginx](/integrations/nginx/) pod.
-* Add the following nginx PDB:  
+* Add the following nginx PDB:
 `kubectl create pdb nginx --selector app=nginx --min-available 1`
 
 ## Procedure
@@ -77,20 +77,20 @@ There are other ways of troubleshooting and identifying why the nodes are not de
 
 With the `kubeconfig` exported, try the following commands:
 
-* See current list of nodes: `kubectl get nodes -o wide`  
-![pdb_node_cordoned](pdb_node_cordoned.png)  
+* See current list of nodes: `kubectl get nodes -o wide`
+![pdb_node_cordoned](pdb_node_cordoned.png)
 *Notice one of the nodes is cordoned*
 
-* Describe the machines: `kubectl describe machines -A`  
-![pdb_kubectl_describe_nodes](pdb_kubectl_describe_nodes.png)  
+* Describe the machines: `kubectl describe machines -A`
+![pdb_kubectl_describe_nodes](pdb_kubectl_describe_nodes.png)
 Each node in Cluster-API is represented by a “machine” type. Notice how the cluster-api machine-controller is attempting to drain the Machine’s node, but is unable to.
 
-* View the cluster-api logs: `kubectl logs -n cluster-5fab5e3bb7504f8d78b5f53c capi-controller-manager-65b95f9867-28ck2 manager`  
-![pdb_kubectl_error](pdb_kubectl_error.png)  
+* View the cluster-api logs: `kubectl logs -n cluster-5fab5e3bb7504f8d78b5f53c capi-controller-manager-65b95f9867-28ck2 manager`
+![pdb_kubectl_error](pdb_kubectl_error.png)
 The same error message which is captured and shown in the UI is displayed here as well.
 
-* Delete the PDB: `kubectl delete pdb nginx`  
-* During the next cluster-api reconciliation (which will take about two minutes), the node will be successfully drained and the cluster will continue upgrading.  
+* Delete the PDB: `kubectl delete pdb nginx`
+* During the next cluster-api reconciliation (which will take about two minutes), the node will be successfully drained and the cluster will continue upgrading.
 
 ## SSH into the node
 

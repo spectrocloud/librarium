@@ -363,6 +363,31 @@
         }
       ]
     },
+    "/v1alpha1/auth/org/{org}/state": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Checks the org state",
+        "operationId": "v1alpha1OrgState",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.OrgState"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "org",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/auth/password/{passwordToken}/activate": {
       "patch": {
         "tags": [
@@ -1438,44 +1463,6 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1alpha1VsphereComputeClusterResources"
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        },
-        {
-          "type": "string",
-          "name": "datacenter",
-          "in": "query",
-          "required": true
-        },
-        {
-          "type": "string",
-          "name": "computecluster",
-          "in": "query",
-          "required": true
-        }
-      ]
-    },
-    "/v1alpha1/cloudaccounts/vsphere/{uid}/properties/datacenter/resources": {
-      "get": {
-        "description": "Deprecated. Use /cloudaccounts/vsphere/{uid}/properties/computecluster/resources",
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Get the vSphere datacenters \u0026 computecluster for the given overlord account",
-        "operationId": "v1alpha1VsphereAccountsUidDatacenterRes",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1VsphereDatacenterResources"
             }
           }
         }
@@ -3553,41 +3540,6 @@
         }
       }
     },
-    "/v1alpha1/clouds/vsphere/datacenters/{uid}/resources": {
-      "get": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Returns the resources for vsphere datacenter",
-        "operationId": "V1alpha1VsphereDatacentersResources",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "cloudAccountUid",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "computecluster",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "uid",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.VsphereDatacenterResources"
-            }
-          }
-        }
-      }
-    },
     "/v1alpha1/clusterprofiles": {
       "get": {
         "tags": [
@@ -4230,6 +4182,44 @@
             "description": "Metric period in minutes defines latest metrics by period",
             "name": "metricPeriod",
             "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroClustersSummary"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves a list of cluster summary with provided filter spec",
+        "operationId": "v1alpha1SpectroClustersFilterSummary",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token for the dataset",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroClusterSummarySpec"
+            }
           }
         ],
         "responses": {
@@ -5487,6 +5477,308 @@
         }
       }
     },
+    "/v1alpha1/mgmt/app": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get the spectro application management information",
+        "operationId": "V1Alpha1MgmtAppGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtApp"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/app/healthz": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "mgmt app health",
+        "operationId": "V1Alpha1MgmtAppHealthz",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1MgmtAppHealth"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/app/migrate": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "migrate the database and nats from current to target",
+        "operationId": "V1Alpha1MgmtMigrate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtMigrateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/app/migrate/status": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get migration status",
+        "operationId": "V1Alpha1MgmtMigrateStatus",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1MgmtMigrationStatuses"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/database/backup/ftp": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "backup the database",
+        "operationId": "V1Alpha1MgmtDbBackupFtp",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtFileTransferEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/database/backups/ftp": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "get the database status",
+        "operationId": "V1Alpha1MgmtBackups",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DatabaseTransferStatus"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "delete the database status",
+        "operationId": "V1Alpha1MgmtBackupsDeleteFtp",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtDeleteBackupEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/database/backups/{backupUid}/ftp": {
+      "delete": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "delete the database backup",
+        "operationId": "V1Alpha1MgmtDbBackupsBackupUidFtpDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "backupUid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtFileTransferEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/database/restore/ftp": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "restore the database via ftp",
+        "operationId": "V1Alpha1MgmtDbRestoreFtp",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.MgmtFileTransferEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/mgmt/msgbroker/reinit": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "reinit the msg broker for the nats",
+        "operationId": "V1Alpha1MgmtMsgBrokerReinit",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1MgmtMsgBrokerReinitStatus"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/nats/config": {
       "get": {
         "description": "Returns Nats Configuration",
@@ -6211,43 +6503,6 @@
         }
       ]
     },
-    "/v1alpha1/overlords/vsphere/{uid}/properties/datacenter/resources": {
-      "get": {
-        "description": "Deprecated. Use /overlords/vsphere/{uid}/properties/computecluster/resources",
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Retrieves the vSphere computecluster resources for the specified overlord account",
-        "operationId": "v1alpha1OverlordsUidVsphereDatacenterRes",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1VsphereDatacenterResources"
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        },
-        {
-          "type": "string",
-          "name": "datacenter",
-          "in": "query",
-          "required": true
-        },
-        {
-          "type": "string",
-          "name": "computecluster",
-          "in": "query"
-        }
-      ]
-    },
     "/v1alpha1/overlords/vsphere/{uid}/properties/datacenters": {
       "get": {
         "tags": [
@@ -6440,39 +6695,6 @@
         }
       ]
     },
-    "/v1alpha1/payments/stripe/checkout": {
-      "post": {
-        "tags": [
-          "v1alpha1",
-          "private"
-        ],
-        "summary": "Create checkout session",
-        "operationId": "v1alpha1PaymentStripeCheckoutPost",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.CheckoutSession"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1alpha1/payments/stripe/config": {
       "get": {
         "tags": [
@@ -6492,43 +6714,37 @@
       }
     },
     "/v1alpha1/payments/stripe/customer": {
-      "post": {
+      "get": {
         "tags": [
           "v1alpha1",
           "private"
         ],
-        "summary": "Create Customer",
-        "operationId": "v1alpha1CustomerCreate",
+        "summary": "Get Customer",
+        "operationId": "v1alpha1CustomerGet",
         "responses": {
-          "201": {
-            "description": "Created successfully",
+          "200": {
+            "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
+              "type": "string"
             }
           }
         }
       }
     },
-    "/v1alpha1/payments/stripe/payment/status": {
+    "/v1alpha1/payments/stripe/invoice/status": {
       "post": {
         "tags": [
           "v1alpha1",
           "private"
         ],
-        "summary": "Webhook endpoint to receive payment status",
-        "operationId": "v1alpha1PaymentStripePaymentStatusPost",
+        "summary": "Webhook endpoint to receive invoice status",
+        "operationId": "v1alpha1PaymentStripeInvoiceStatusPost",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "description": "payment status payload",
+              "description": "invoice status payload",
               "type": "object",
               "additionalProperties": {
                 "type": "object"
@@ -6542,6 +6758,46 @@
           }
         }
       }
+    },
+    "/v1alpha1/payments/stripe/paymentMethods": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves a payment method list",
+        "operationId": "v1alpha1PaymentMethodsList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentMethods"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/payments/stripe/paymentMethods/default/{paymentMethodUid}": {
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Set default payment method",
+        "operationId": "v1alpha1DefaultPaymentMethodPut",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "paymentMethodUid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1alpha1/payments/stripe/paymentMethods/{paymentMethodUid}": {
       "get": {
@@ -6557,6 +6813,32 @@
             "schema": {
               "$ref": "#/definitions/v1alpha1.PaymentMethod"
             }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Save new payment method",
+        "operationId": "v1alpha1PaymentMethodPost",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Remove the payment method",
+        "operationId": "v1alpha1PaymentMethodDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
           }
         }
       },
@@ -6587,7 +6869,51 @@
         }
       }
     },
+    "/v1alpha1/payments/stripe/subscription/status": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Webhook endpoint to receive subscription status",
+        "operationId": "v1alpha1PaymentStripeSubscriptionStatusPost",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "description": "subscription status payload",
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
+    },
     "/v1alpha1/payments/stripe/subscriptions": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Returns the subscription for the tenant",
+        "operationId": "v1alpha1PaymentSubscriptionGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentSubscription"
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "v1alpha1",
@@ -6606,15 +6932,9 @@
         ],
         "responses": {
           "201": {
-            "description": "Created successfully",
+            "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
+              "$ref": "#/definitions/v1alpha1.PaymentSubscription"
             }
           }
         }
@@ -6663,6 +6983,29 @@
           "required": true
         }
       ]
+    },
+    "/v1alpha1/payments/stripe/subscriptions/{subscriptionUid}/activate": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Reactivate Payment Subscription",
+        "operationId": "v1alpha1PaymentSubscriptionActivate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "subscriptionUid",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
     },
     "/v1alpha1/permissions": {
       "get": {
@@ -8726,39 +9069,27 @@
         }
       ]
     },
-    "/v1alpha1/spectroclusters/mgmt": {
-      "get": {
+    "/v1alpha1/spectroclusters/mgmt/upgrade": {
+      "patch": {
         "tags": [
           "v1alpha1",
           "system",
           "private"
         ],
-        "summary": "get the spectro application management information",
-        "operationId": "V1Alpha1SpectroAppMgmtGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
+        "summary": "upgrade the spectro application management",
+        "operationId": "V1Alpha1SpectroAppMgmtUpgrade",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.SpectroAppMgmt"
+              "$ref": "#/definitions/v1alpha1.SpectroAppMgmtUpgrade"
             }
           }
-        }
-      }
-    },
-    "/v1alpha1/spectroclusters/tenant/migration": {
-      "patch": {
-        "tags": [
-          "v1alpha1",
-          "private"
         ],
-        "summary": "intiate migration for tenants",
-        "operationId": "V1Alpha1SpectroClusterTenantMigration",
         "responses": {
-          "200": {
-            "description": "Created successfully",
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
+          "204": {
+            "description": "Ok reponse without content",
             "headers": {
               "AuditUid": {
                 "type": "string",
@@ -9916,6 +10247,50 @@
         }
       }
     },
+    "/v1alpha1/system/config/database/backup": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "get the system backup config",
+        "operationId": "V1Alpha1SystemConfigDatabaseBackupGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SystemBackupConfigSpec"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "updates the system backup config",
+        "operationId": "V1Alpha1SystemConfigDatabaseBackupUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SystemBackupConfigSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/system/config/domain": {
       "get": {
         "tags": [
@@ -9955,6 +10330,47 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/config/ftp/validate": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "validates the ftp config",
+        "operationId": "V1Alpha1SystemConfigFtpValidate",
+        "parameters": [
+          {
+            "enum": [
+              "read",
+              "write",
+              "readwrite"
+            ],
+            "type": "string",
+            "name": "permission",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SystemFtpSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
             }
           }
         }
@@ -10082,6 +10498,34 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1alpha1.SystemLoggerSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/config/paymentsecrets": {
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "updates the payment secrets",
+        "operationId": "V1Alpha1PaymentSecretsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.PaymentSecrets"
             }
           }
         ],
@@ -10423,6 +10867,92 @@
             "schema": {
               "$ref": "#/definitions/v1alpha1.SystemVsphereImage"
             }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/database/backup": {
+      "patch": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "backup the database",
+        "operationId": "V1Alpha1SystemDbBackup",
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/database/backups": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "get the database status",
+        "operationId": "V1Alpha1SystemDbBackups",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DatabaseTransferStatus"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/database/backups/{backupUid}": {
+      "delete": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "delete the database backup",
+        "operationId": "V1Alpha1SystemDbBackupsBackupUid",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "backupUid",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/database/restore/{backupUid}": {
+      "patch": {
+        "tags": [
+          "v1alpha1",
+          "system",
+          "private"
+        ],
+        "summary": "restore the database",
+        "operationId": "V1Alpha1SystemDbRestore",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "backupUid",
+            "in": "path",
+            "required": true
           }
         ],
         "responses": {
@@ -11019,6 +11549,59 @@
         }
       ]
     },
+    "/v1alpha1/tenants/signup": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "Self signing up",
+        "operationId": "v1alpha1TenantsSelfSignUp",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.TenantSelfSignUpSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/tenants/signup/{signupToken}/activate": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "Activates the self signed tenant using the password token",
+        "operationId": "v1alpha1TenantsSelfSignUpActivate",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "signupToken",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/tenants/validate": {
       "post": {
         "tags": [
@@ -11131,13 +11714,222 @@
           "name": "tenantUid",
           "in": "path",
           "required": true
+        },
+        {
+          "type": "boolean",
+          "name": "useTenantCtx",
+          "in": "query"
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/contract": {
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "Updates the tenant contract settings",
+        "operationId": "v1alpha1TenantsUidContractUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.TenantContractSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/contract/accept": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Tenant to accept the contract agreement",
+        "operationId": "v1alpha1TenantsUidContractAccept",
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/domains": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "retrieves the domains for tenant",
+        "operationId": "V1Alpha1TenantUidDomainsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.TenantDomains"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "creates or updates domains for tenant",
+        "operationId": "V1Alpha1TenantUidDomainsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.TenantDomains"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/emailId": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Update tenant emailId",
+        "operationId": "v1alpha1PatchTenantEmailId",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1TenantEmailPatch"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/invoice": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Retrieves a invoice for the given month",
+        "operationId": "v1alpha1InvoiceByMonthPost",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.Invoice"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "name": "invoiceDate",
+          "in": "query",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/tenants/{tenantUid}/invoice/retry": {
+      "post": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Retry invoice",
+        "operationId": "V1Alpha1InvoiceRetry",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.InvoiceRetryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
         }
       ]
     },
     "/v1alpha1/tenants/{tenantUid}/invoices": {
       "get": {
         "tags": [
-          "v1alpha1"
+          "v1alpha1",
+          "private"
         ],
         "summary": "Retrieves a list of invoices",
         "operationId": "v1alpha1InvoicesList",
@@ -11634,170 +12426,6 @@
         }
       }
     },
-    "/v1alpha1/users/assets/certificates": {
-      "get": {
-        "description": "Returns a list of users assets certificates",
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Returns the specified Users assets certificates",
-        "operationId": "v1alpha1UsersAssetsCertificateGet",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int64",
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "continue token for the dataset",
-            "name": "continue",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "componentType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "componentUid",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.UserAssetsCertificate"
-            }
-          }
-        }
-      },
-      "post": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Stores the specified Users assets certificate",
-        "operationId": "v1alpha1UserAssetsCertificateCreate",
-        "parameters": [
-          {
-            "type": "file",
-            "name": "crtFile",
-            "in": "formData"
-          },
-          {
-            "type": "file",
-            "name": "keyFile",
-            "in": "formData"
-          },
-          {
-            "type": "string",
-            "name": "componentType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "componentUid",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1alpha1/users/assets/certificates/{uid}": {
-      "get": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Returns the specified Users certificate key",
-        "operationId": "v1alpha1UsersAssetCertificateGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.UserAssetCertificate"
-            }
-          }
-        }
-      },
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Updates the specified Users certificate",
-        "operationId": "v1alpha1UsersAssetCertificateUpdate",
-        "parameters": [
-          {
-            "type": "file",
-            "name": "crtFile",
-            "in": "formData"
-          },
-          {
-            "type": "file",
-            "name": "keyFile",
-            "in": "formData"
-          },
-          {
-            "type": "string",
-            "name": "componentType",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "name": "componentUid",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Returns the specified Users certificate",
-        "operationId": "v1alpha1UsersAssetCertificateDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        }
-      ]
-    },
     "/v1alpha1/users/assets/sshkeys": {
       "get": {
         "description": "Returns a list of users assets ssh keys",
@@ -11905,6 +12533,134 @@
         ],
         "summary": "Returns the specified Users ssh key",
         "operationId": "v1alpha1UsersAssetSshDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/users/assets/vsphere/dnsMappings": {
+      "get": {
+        "description": "Returns a list of vsphere dns mappings",
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified vsphere dns mappings",
+        "operationId": "v1alpha1VsphereDnsMappingsGet",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token for the dataset",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "name": "filters",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereDnsMappings"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Stores the vsphere dns mapping",
+        "operationId": "v1alpha1VsphereDnsMappingCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereDnsMapping"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/users/assets/vsphere/dnsMappings/{uid}": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified vsphere dns mapping",
+        "operationId": "v1alpha1VsphereDnsMappingGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereDnsMapping"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the specified vsphere dns mapping",
+        "operationId": "v1alpha1VsphereDnsMappingUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereDnsMapping"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Deletes the vsphere dns mapping",
+        "operationId": "v1alpha1VsphereDnsMappingDelete",
         "responses": {
           "204": {
             "description": "The resource was deleted successfully"
@@ -12168,34 +12924,6 @@
         }
       ]
     },
-    "/v1alpha1/users/{uid}/contract/accept": {
-      "patch": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "User to accept the contract agreement",
-        "operationId": "v1alpha1UsersUidContractAccept",
-        "responses": {
-          "204": {
-            "description": "Ok reponse without content",
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        }
-      ]
-    },
     "/v1alpha1/users/{uid}/internal/token": {
       "get": {
         "description": "Internal API for automation to get the user password token to reset the password (required sysadmin jwt token)",
@@ -12401,6 +13129,87 @@
     }
   },
   "definitions": {
+    "v1.FilterIntRange": {
+      "type": "object",
+      "properties": {
+        "eq": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        },
+        "gt": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        },
+        "gte": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        },
+        "lt": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        },
+        "lte": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        },
+        "ne": {
+          "type": "integer",
+          "format": "int32",
+          "x-nullable": true
+        }
+      }
+    },
+    "v1.FilterNumberRange": {
+      "type": "object",
+      "properties": {
+        "eq": {
+          "type": "number",
+          "x-nullable": true
+        },
+        "gt": {
+          "type": "number",
+          "x-nullable": true
+        },
+        "gte": {
+          "type": "number",
+          "x-nullable": true
+        },
+        "lt": {
+          "type": "number",
+          "x-nullable": true
+        },
+        "lte": {
+          "type": "number",
+          "x-nullable": true
+        },
+        "ne": {
+          "type": "number",
+          "x-nullable": true
+        }
+      }
+    },
+    "v1.FilterString": {
+      "type": "object",
+      "properties": {
+        "beginsWith": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "eq": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "ne": {
+          "type": "string",
+          "x-nullable": true
+        }
+      }
+    },
     "v1.HttpPatch": {
       "type": "object",
       "required": [
@@ -12591,6 +13400,14 @@
           "type": "string"
         }
       }
+    },
+    "v1.SortOrder": {
+      "type": "string",
+      "default": "asc",
+      "enum": [
+        "asc",
+        "desc"
+      ]
     },
     "v1.Time": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -12783,6 +13600,21 @@
         },
         "component": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.AppVersion": {
+      "description": "spectro application management app version information",
+      "properties": {
+        "intermediateVersions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ReleaseVersion"
+          }
+        },
+        "latestVerson": {
+          "$ref": "#/definitions/v1alpha1.ReleaseVersion"
         }
       }
     },
@@ -14302,20 +15134,6 @@
         }
       }
     },
-    "v1alpha1.CheckoutSession": {
-      "description": "Checkout session id",
-      "properties": {
-        "cancelUrl": {
-          "type": "string"
-        },
-        "invoiceUid": {
-          "type": "string"
-        },
-        "successUrl": {
-          "type": "string"
-        }
-      }
-    },
     "v1alpha1.CleanUpResource": {
       "description": "Resources of tenant",
       "type": "object",
@@ -14883,6 +15701,28 @@
         },
         "name": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.ControlPlaneEndPoint": {
+      "type": "object",
+      "properties": {
+        "ddnsSearchDomain": {
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint.",
+          "type": "string"
+        },
+        "host": {
+          "description": "IP or FQDN",
+          "type": "string"
+        },
+        "type": {
+          "description": "VIP or External",
+          "type": "string",
+          "enum": [
+            "VIP",
+            "External",
+            "DDNS"
+          ]
         }
       }
     },
@@ -15970,6 +16810,20 @@
         }
       }
     },
+    "v1alpha1.InvoiceRetryRequest": {
+      "description": "Retry invoice request",
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "invoiceUid": {
+          "type": "string"
+        },
+        "paymentMethodId": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.InvoiceSpec": {
       "description": "Invoice spec",
       "properties": {
@@ -15979,9 +16833,6 @@
         "month": {
           "$ref": "#/definitions/v1.Time"
         },
-        "paymentTransactionId": {
-          "type": "string"
-        },
         "plan": {
           "$ref": "#/definitions/v1alpha1.InvoicePlan"
         },
@@ -15990,15 +16841,18 @@
           "items": {
             "$ref": "#/definitions/v1alpha1.InvoiceProject"
           }
+        },
+        "stripeInvoiceId": {
+          "type": "string"
+        },
+        "stripeInvoiceUrl": {
+          "type": "string"
         }
       }
     },
-    "v1alpha1.InvoiceStatus": {
-      "description": "Invoice Status",
+    "v1alpha1.InvoiceState": {
+      "description": "Invoice state",
       "properties": {
-        "paymentDate": {
-          "$ref": "#/definitions/v1.Time"
-        },
         "paymentMsg": {
           "type": "string"
         },
@@ -16010,6 +16864,21 @@
             "PaymentInProgress",
             "PaymentFailed"
           ]
+        },
+        "timestamp": {
+          "$ref": "#/definitions/v1.Time"
+        }
+      }
+    },
+    "v1alpha1.InvoiceStatus": {
+      "description": "Invoice Status",
+      "properties": {
+        "states": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.InvoiceState"
+          }
         }
       }
     },
@@ -16501,6 +17370,152 @@
           "items": {
             "$ref": "#/definitions/v1alpha1.Metrics"
           }
+        }
+      }
+    },
+    "v1alpha1.MgmtApp": {
+      "description": "Spectro application management data",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.MgmtAppSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1.MgmtAppStatus"
+        }
+      }
+    },
+    "v1alpha1.MgmtAppSpec": {
+      "description": "spectro application management specifications",
+      "properties": {
+        "appEnv": {
+          "type": "string"
+        },
+        "installedVersion": {
+          "type": "string"
+        },
+        "latestVersion": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.MgmtAppStatus": {
+      "description": "spectro application management status",
+      "properties": {
+        "appVersions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.AppVersion"
+          }
+        },
+        "isFailed": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageLogs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "upgradeHistory": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroMgmtUpgrade"
+          }
+        }
+      }
+    },
+    "v1alpha1.MgmtDeleteBackupEntity": {
+      "description": "delete backups based on retention period",
+      "type": "object",
+      "properties": {
+        "fileTransferConfig": {
+          "$ref": "#/definitions/v1alpha1.MgmtFileTransferEntity"
+        },
+        "retentionPeriod": {
+          "type": "integer"
+        }
+      }
+    },
+    "v1alpha1.MgmtFileTransferEntity": {
+      "description": "file transfer details",
+      "type": "object",
+      "properties": {
+        "backupUid": {
+          "type": "string"
+        },
+        "ftp": {
+          "$ref": "#/definitions/v1alpha1.MgmtFtpConfig"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "FileSystem",
+            "Ftp"
+          ]
+        },
+        "proxy": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.MgmtFtpConfig": {
+      "description": "ftp config",
+      "type": "object",
+      "properties": {
+        "directory": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "server": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.MgmtMigrateEntity": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "db": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "isServiceRecord": {
+          "type": "boolean"
+        },
+        "password": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
         }
       }
     },
@@ -17244,6 +18259,15 @@
           "type": "string"
         },
         "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.OrgState": {
+      "description": "Org state",
+      "type": "object",
+      "properties": {
+        "state": {
           "type": "string"
         }
       }
@@ -18046,6 +19070,20 @@
         }
       }
     },
+    "v1alpha1.PaymentIntent": {
+      "description": "Payment Setup",
+      "properties": {
+        "clientSecret": {
+          "type": "string"
+        },
+        "paymentIntentId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.PaymentMethod": {
       "description": "Payment Method",
       "properties": {
@@ -18055,8 +19093,29 @@
         "customerId": {
           "type": "string"
         },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
         "paymentMethodId": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.PaymentMethods": {
+      "description": "Payment Method list",
+      "properties": {
+        "defaultPaymentMethod": {
+          "type": "string"
+        },
+        "paymentMethods": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.PaymentMethod"
+          }
         }
       }
     },
@@ -18103,19 +19162,43 @@
         }
       }
     },
+    "v1alpha1.PaymentSecrets": {
+      "description": "payment secrets",
+      "properties": {
+        "publishableKey": {
+          "type": "string"
+        },
+        "secretKey": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.PaymentSubscription": {
       "description": "Subscription",
       "properties": {
         "customerId": {
           "type": "string"
         },
-        "paymentMethodId": {
+        "paymentIntent": {
+          "$ref": "#/definitions/v1alpha1.PaymentIntent"
+        },
+        "paymentMethodIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "planType": {
           "type": "string"
         },
         "priceId": {
           "type": "string"
         },
         "subscriptionId": {
+          "type": "string"
+        },
+        "subscriptionState": {
           "type": "string"
         }
       }
@@ -18186,6 +19269,9 @@
         "expiry": {
           "description": "plan expiry time",
           "$ref": "#/definitions/v1.Time"
+        },
+        "isPaymentGateway": {
+          "type": "boolean"
         },
         "planLimit": {
           "$ref": "#/definitions/v1alpha1.PlanLimit"
@@ -18775,6 +19861,20 @@
         }
       }
     },
+    "v1alpha1.ReleaseVersion": {
+      "description": "spectro application management release version information",
+      "properties": {
+        "date": {
+          "$ref": "#/definitions/v1.Time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.ResourceGroup": {
       "description": "Azure resource Group",
       "type": "object",
@@ -19018,48 +20118,14 @@
         }
       }
     },
-    "v1alpha1.SpectroAppMgmt": {
-      "description": "Spectro application management data",
+    "v1alpha1.SpectroAppMgmtUpgrade": {
+      "description": "Spectro application management upgrade information",
       "type": "object",
+      "required": [
+        "version"
+      ],
       "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1.ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1alpha1.SpectroAppMgmtSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1alpha1.SpectroAppMgmtStatus"
-        }
-      }
-    },
-    "v1alpha1.SpectroAppMgmtSpec": {
-      "description": "spectro application management specifications",
-      "properties": {
-        "appEnv": {
-          "type": "string"
-        },
-        "installedVersion": {
-          "type": "string"
-        },
-        "latestVersion": {
-          "type": "string"
-        },
-        "spectroClusterUid": {
-          "type": "string"
-        }
-      }
-    },
-    "v1alpha1.SpectroAppMgmtStatus": {
-      "description": "spectro application management status",
-      "properties": {
-        "message": {
-          "type": "string"
-        },
-        "state": {
-          "type": "string"
-        },
-        "updateLink": {
+        "version": {
           "type": "string"
         }
       }
@@ -19206,6 +20272,42 @@
         }
       }
     },
+    "v1alpha1.SpectroClusterFilterSpec": {
+      "description": "Spectro cluster filter spec",
+      "properties": {
+        "clusterName": {
+          "$ref": "#/definitions/v1.FilterString"
+        },
+        "cpuUsage": {
+          "$ref": "#/definitions/v1.FilterIntRange"
+        },
+        "environment": {
+          "$ref": "#/definitions/v1alpha1.CloudType"
+        },
+        "healthState": {
+          "type": "string",
+          "default": "all",
+          "enum": [
+            "all",
+            "Healthy",
+            "UnHealthy"
+          ]
+        },
+        "isDeleted": {
+          "type": "boolean",
+          "default": false
+        },
+        "memoryUsage": {
+          "$ref": "#/definitions/v1.FilterNumberRange"
+        },
+        "metricPeriod": {
+          "description": "Metric period in minutes defines latest metrics by period",
+          "type": "integer",
+          "format": "int32",
+          "default": 60
+        }
+      }
+    },
     "v1alpha1.SpectroClusterHealthCondition": {
       "description": "Spectro cluster health condition",
       "properties": {
@@ -19316,6 +20418,28 @@
         }
       }
     },
+    "v1alpha1.SpectroClusterSortFields": {
+      "type": "string",
+      "enum": [
+        "environment",
+        "clusterName",
+        "cpuUsage",
+        "memoryUsage",
+        "healthState",
+        "creationTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1alpha1.SpectroClusterSortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1alpha1.SpectroClusterSortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1.SortOrder"
+        }
+      }
+    },
     "v1alpha1.SpectroClusterSpec": {
       "description": "SpectroClusterSpec defines the desired state of SpectroCluster",
       "type": "object",
@@ -19412,6 +20536,21 @@
             "state": {
               "type": "string"
             }
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterSummarySpec": {
+      "description": "Spectro cluster filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1alpha1.SpectroClusterFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroClusterSortSpec"
           }
         }
       }
@@ -19684,16 +20823,33 @@
     "v1alpha1.SpectroMgmtStatus": {
       "description": "spectro management status information",
       "properties": {
+        "appVersions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.AppVersion"
+          }
+        },
+        "isFailed": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "lastUpdatedTime": {
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
           "type": "string"
         },
+        "messageLogs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "state": {
           "type": "string"
         },
-        "upgradeLogs": {
+        "upgradeHistory": {
           "type": "array",
           "uniqueItems": true,
           "items": {
@@ -19976,6 +21132,27 @@
         }
       }
     },
+    "v1alpha1.SystemBackupConfigSpec": {
+      "description": "system backup config spec",
+      "type": "object",
+      "properties": {
+        "ftp": {
+          "$ref": "#/definitions/v1alpha1.SystemFtpSpec"
+        },
+        "hourOfTheDay": {
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "interval": {
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "retentionPeriod": {
+          "type": "integer",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1alpha1.SystemCertificateSpec": {
       "description": "system smtp config spec",
       "type": "object",
@@ -20033,6 +21210,28 @@
       "properties": {
         "input": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SystemFtpSpec": {
+      "description": "system ftp config spec",
+      "type": "object",
+      "properties": {
+        "dir": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "password": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "server": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "username": {
+          "type": "string",
+          "x-omitempty": false
         }
       }
     },
@@ -20488,10 +21687,47 @@
           }
         },
         "isCompleted": {
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
         },
         "isInProgress": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1alpha1.TenantContractSpec": {
+      "description": "Tenant contract settings",
+      "type": "object",
+      "required": [
+        "isRequired",
+        "isAccepted"
+      ],
+      "properties": {
+        "acceptedTime": {
+          "description": "If the contract is accepted offline, set the accepted time",
+          "$ref": "#/definitions/v1.Time"
+        },
+        "isAccepted": {
+          "description": "If the contract is accepted offline, then set this field to true",
           "type": "boolean"
+        },
+        "isRequired": {
+          "description": "Is the contract required, for on-prem installation it will be false",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1alpha1.TenantDomains": {
+      "description": "Tenant domains",
+      "type": "object",
+      "properties": {
+        "domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -20609,11 +21845,41 @@
         }
       }
     },
+    "v1alpha1.TenantSelfSignUpSpec": {
+      "description": "Tenant sign up data",
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "emailId",
+        "orgName"
+      ],
+      "properties": {
+        "emailId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "notifyTenantAdmin": {
+          "type": "boolean"
+        },
+        "orgName": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.TenantSpec": {
       "description": "Tenant Spec",
       "type": "object",
       "properties": {
         "authType": {
+          "type": "string"
+        },
+        "orgEmailId": {
           "type": "string"
         },
         "orgName": {
@@ -20640,6 +21906,9 @@
         "lastName": {
           "type": "string"
         },
+        "orgEmailId": {
+          "type": "string"
+        },
         "orgName": {
           "type": "string"
         },
@@ -20660,6 +21929,10 @@
           "$ref": "#/definitions/v1alpha1.TenantCleanUpStatus"
         },
         "isActive": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "toBeDeleted": {
           "type": "boolean",
           "x-omitempty": false
         }
@@ -20780,42 +22053,6 @@
         }
       }
     },
-    "v1alpha1.UserAssetCertificate": {
-      "description": "User asset certificate",
-      "type": "object",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1.ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1alpha1.UserAssetCertificateSpec"
-        }
-      }
-    },
-    "v1alpha1.UserAssetCertificateSpec": {
-      "description": "User asset certificate spec",
-      "type": "object",
-      "properties": {
-        "componentType": {
-          "type": "string"
-        },
-        "componentUid": {
-          "type": "string"
-        },
-        "crt": {
-          "type": "string"
-        },
-        "crtFileName": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "keyFileName": {
-          "type": "string"
-        }
-      }
-    },
     "v1alpha1.UserAssetSsh": {
       "description": "User asset ssh",
       "type": "object",
@@ -20846,24 +22083,6 @@
       "properties": {
         "publicKey": {
           "type": "string"
-        }
-      }
-    },
-    "v1alpha1.UserAssetsCertificate": {
-      "type": "object",
-      "required": [
-        "items"
-      ],
-      "properties": {
-        "items": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/v1alpha1.UserAssetCertificate"
-          }
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1.ListMetaData"
         }
       }
     },
@@ -20925,7 +22144,8 @@
         },
         "isContractAccepted": {
           "description": "Specifies if user account has accepted the contract",
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
         },
         "projectPermissions": {
           "type": "object",
@@ -21115,9 +22335,19 @@
     "v1alpha1.UserStatus": {
       "description": "User status",
       "properties": {
+        "activationLink": {
+          "description": "provides the link to activate or reset the user password",
+          "type": "string",
+          "x-omitempty": false
+        },
         "isActive": {
           "description": "Specifies if user account is active/disabled",
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "lastPasswordUpdate": {
+          "description": "user's last password update time",
+          "$ref": "#/definitions/v1.Time"
         },
         "lastSignIn": {
           "description": "user's last sign in time",
@@ -21413,9 +22643,9 @@
         "placement"
       ],
       "properties": {
-        "network": {
-          "description": "Deprecated. Please use VspherePlacementConfig.Network will delete in a future release",
-          "$ref": "#/definitions/v1alpha1.VsphereNetworkConfig"
+        "controlPlaneEndpoint": {
+          "description": "The optional control plane endpoint, which can be an IP or FQDN",
+          "$ref": "#/definitions/v1alpha1.ControlPlaneEndPoint"
         },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list.",
@@ -21447,9 +22677,9 @@
         "placement"
       ],
       "properties": {
-        "network": {
-          "description": "Deprecated. Please use VspherePlacementConfig.Network will delete in a future release",
-          "$ref": "#/definitions/v1alpha1.VsphereNetworkConfigEntity"
+        "controlPlaneEndpoint": {
+          "description": "The optional control plane endpoint, which can be an IP or FQDN",
+          "$ref": "#/definitions/v1alpha1.ControlPlaneEndPoint"
         },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list.",
@@ -21479,10 +22709,6 @@
       "description": "Compute cluster resources",
       "type": "object",
       "properties": {
-        "computecluster": {
-          "description": "Deprecated. Use name",
-          "type": "string"
-        },
         "datastores": {
           "type": "array",
           "uniqueItems": true,
@@ -21544,19 +22770,6 @@
         }
       }
     },
-    "v1alpha1.VsphereDatacenterResources": {
-      "description": "Datacenter and its resources like datastore, resoucepool, folders",
-      "type": "object",
-      "properties": {
-        "computeclusters": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/v1alpha1.VsphereComputeCluster"
-          }
-        }
-      }
-    },
     "v1alpha1.VsphereDatacenters": {
       "description": "Array of Datacenters with computeclusters",
       "type": "object",
@@ -21570,6 +22783,64 @@
           "items": {
             "$ref": "#/definitions/v1alpha1.VsphereDatacenter"
           }
+        }
+      }
+    },
+    "v1alpha1.VsphereDnsMapping": {
+      "description": "VSphere Dns Mapping",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.VsphereDnsMappingSpec"
+        }
+      }
+    },
+    "v1alpha1.VsphereDnsMappingSpec": {
+      "description": "Vsphere Dns Mapping Spec",
+      "type": "object",
+      "required": [
+        "privateGatewayUid",
+        "datacenter",
+        "network",
+        "dnsName"
+      ],
+      "properties": {
+        "datacenter": {
+          "type": "string"
+        },
+        "dnsName": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "networkUrl": {
+          "type": "string",
+          "readOnly": true
+        },
+        "privateGatewayUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.VsphereDnsMappings": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.VsphereDnsMapping"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1.ListMetaData"
         }
       }
     },
@@ -21855,9 +23126,9 @@
     "v1alpha1.VsphereOverlordClusterConfigEntity": {
       "type": "object",
       "properties": {
-        "network": {
-          "description": "Deprecated. Please use VspherePlacementConfig.Network will delete in a future release",
-          "$ref": "#/definitions/v1alpha1.VsphereNetworkConfigEntity"
+        "controlPlaneEndpoint": {
+          "description": "The optional control plane endpoint, which can be an IP or FQDN",
+          "$ref": "#/definitions/v1alpha1.ControlPlaneEndPoint"
         },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list.",
@@ -21865,10 +23136,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "placement": {
-          "description": "Deprecated. Use Placements array object. Placement configuration in ClusterConfig serve as default values for each MachinePool",
-          "$ref": "#/definitions/v1alpha1.VspherePlacementConfigEntity"
         },
         "placements": {
           "description": "Placements configuration Placements If defined, will replace default values defined in VsphereClusterConfig Array means one MachinePool can span across multiple vsphere compute cluster",
@@ -22314,6 +23581,62 @@
         }
       }
     },
+    "v1alpha1ControlPlaneEndPoint": {
+      "type": "object",
+      "properties": {
+        "ddnsSearchDomain": {
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint.",
+          "type": "string"
+        },
+        "host": {
+          "description": "IP or FQDN",
+          "type": "string"
+        },
+        "type": {
+          "description": "VIP or External",
+          "type": "string",
+          "enum": [
+            "VIP",
+            "External",
+            "DDNS"
+          ]
+        }
+      }
+    },
+    "v1alpha1DatabaseTransferJob": {
+      "description": "database transfer job details",
+      "type": "object",
+      "properties": {
+        "backupStatus": {
+          "$ref": "#/definitions/v1alpha1TransferJob"
+        },
+        "backupUid": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "FileSystem",
+            "Ftp"
+          ]
+        }
+      }
+    },
+    "v1alpha1DatabaseTransferStatus": {
+      "description": "database transfer status",
+      "type": "object",
+      "properties": {
+        "backups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1DatabaseTransferJob"
+          }
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
     "v1alpha1FileUploadResponse": {
       "description": "File upload response",
       "type": "object",
@@ -22408,6 +23731,98 @@
       "description": "Azure Machine Spec Managed Disk",
       "properties": {
         "storageAccountType": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1MgmtAppHealth": {
+      "type": "object",
+      "properties": {
+        "isHealthy": {
+          "type": "boolean"
+        },
+        "podHealth": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1MgmtPodHealth"
+          }
+        }
+      }
+    },
+    "v1alpha1MgmtMigrationStatuses": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "finishTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "folderName": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "state": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "status": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1alpha1MgmtMsgBrokerReinitStatus": {
+      "type": "object",
+      "properties": {
+        "failures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1MgmtMsgBrokerReinitStatusEntity"
+          }
+        },
+        "success": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1MgmtMsgBrokerReinitStatusEntity"
+          }
+        }
+      }
+    },
+    "v1alpha1MgmtMsgBrokerReinitStatusEntity": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "isSuccess": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1MgmtPodHealth": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "isHealthy": {
+          "type": "boolean"
+        },
+        "name": {
           "type": "string"
         }
       }
@@ -23053,6 +24468,15 @@
         }
       }
     },
+    "v1alpha1TenantEmailPatch": {
+      "description": "Tenant EmailId",
+      "type": "object",
+      "properties": {
+        "emailId": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1TotalResourceUsage": {
       "description": "Total Resource Usage",
       "properties": {
@@ -23066,6 +24490,39 @@
         "totalCpuCoreHours": {
           "type": "number",
           "x-omitempty": false
+        }
+      }
+    },
+    "v1alpha1TransferJob": {
+      "description": "transfer job details",
+      "type": "object",
+      "properties": {
+        "finishTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "folder": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "state": {
+          "type": "string"
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -23213,9 +24670,18 @@
     "v1alpha1UserStatus": {
       "description": "User status",
       "properties": {
+        "activationLink": {
+          "description": "provides the link to activate or reset the user password",
+          "type": "string",
+          "x-omitempty": false
+        },
         "isActive": {
           "description": "Specifies if user account is active/disabled",
-          "type": "boolean"
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "lastPasswordUpdate": {
+          "$ref": "#/definitions/v1Time"
         },
         "lastSignIn": {
           "$ref": "#/definitions/v1Time"
@@ -23274,8 +24740,8 @@
         "placement"
       ],
       "properties": {
-        "network": {
-          "$ref": "#/definitions/v1alpha1VsphereNetworkConfigEntity"
+        "controlPlaneEndpoint": {
+          "$ref": "#/definitions/v1alpha1ControlPlaneEndPoint"
         },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list.",
@@ -23304,10 +24770,6 @@
       "description": "Compute cluster resources",
       "type": "object",
       "properties": {
-        "computecluster": {
-          "description": "Deprecated. Use name",
-          "type": "string"
-        },
         "datastores": {
           "type": "array",
           "uniqueItems": true,
@@ -23365,19 +24827,6 @@
           "uniqueItems": true,
           "items": {
             "type": "string"
-          }
-        }
-      }
-    },
-    "v1alpha1VsphereDatacenterResources": {
-      "description": "Datacenter and its resources like datastore, resoucepool, folders",
-      "type": "object",
-      "properties": {
-        "computeclusters": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/v1alpha1VsphereComputeCluster"
           }
         }
       }
