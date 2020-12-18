@@ -46,9 +46,9 @@ Note that Ubuntu is `systemd` based.
 
 ## Short-codes for quick reference
 
-**SSH**: No hardcoded username/password, but using `cloud-init` injects the user-defined SSH key(s) into the clusters. Login using `ssh -i <key> spectro@<host>`
-**Kubelet logs**: `journalctl -u kubelet`
-**Container logs**: `kubectl logs` OR `/var/log/containers` and `/var/log/pods`
+**SSH**: No hardcoded username/password, but using `cloud-init` injects the user-defined SSH key(s) into the clusters. Login using `ssh -i <key> spectro@<host>`.  
+**Kubelet logs**: `journalctl -u kubelet`.  
+**Container logs**: `kubectl logs` OR `/var/log/containers` and `/var/log/pods`.  
 
 # Recreating a bug using PDB as an example
 
@@ -129,9 +129,9 @@ Inside the node, review the standard system services and log files:
 
 On the control-plane nodes, review the Kubernetes configuration:
 
-`/etc/kubernetes/admin.conf` : the cluster-admin root kubeconfig.
-`/etc/kubernetes/pki` : Stores all the public-key-infrastructure for master components and etcd.
-`/etc/kubernetes/manifests` : On the control-plane nodes, all the master components run as static pods.
+`/etc/kubernetes/admin.conf` : the cluster-admin root kubeconfig.  
+`/etc/kubernetes/pki` : Stores all the public-key-infrastructure for master components and etcd.  
+`/etc/kubernetes/manifests` : On the control-plane nodes, all the master components run as static pods.  
 
 # Troubleshooting VMware Cluster Deployment Failures
 
