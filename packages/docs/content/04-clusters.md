@@ -618,6 +618,7 @@ If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created f
 * IPs for application workload services (e.g.:LoadBalancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
