@@ -18,8 +18,8 @@ Cluster profiles are created by configuring various layers of the Kubernetes Inf
   * Kubernetes.
   * Network.
   * Storage.
-  * Additional layers such as Monitoring, Security, Load Balancers, etc. may be added and configured as desired.
 
+* Additional layers such as Monitoring, Security, Load Balancers, etc. may be added and configured as desired.
 * Configure each layer as follows:
   * Select from one of the configuration options (packs) provided for the layer. Spectro Cloud provides several packs out of the box. These are synchronized from Spectro Cloud's **Public Repo**. The platform allows extending or customizing the choice of packs. Users may *define their own Pack Repository and link it to Spectro Cloud*. When configuring layers in the cluster profile, users can select packs from Spectro Cloud's Public Repo or from their own private pack repository.
   * Choose the desired version for the selected pack. Choices include pinning to a specific version of the pack (e.g. 1.1.1) or picking a major or minor train such as 1.x or 1.1.x. Picking a major/minor train results in a dynamic version association. The latest release from that train is linked to the pack at any given point. Future release updates on the train will result in the pack being relinked to the newest version. This allows clusters to always be at the latest released version, without having to make subsequent updates to the profile.
