@@ -67,7 +67,7 @@ As a troubleshooting example, we’ll imitate a PodDistruptionBudget (PDB) preve
 * Trigger the upgrade for the cluster. This will result in a rolling upgrade of the Kubernetes cluster. It will begin with the control-plane nodes, where a new control-plane VM with Kubernetes version 1.18.8 will get provisioned, and once it joins the cluster, one of the older control-plane nodes will get decommissioned. A similar process will occur for the other control-plane and worker nodes.
 * The rolling upgrade will continue until the node with the nginx pod is asked to drain. This error message should be shown in the UIs:
 
-![pdb_ui_error](pdb_ui_error.png)
+![pdb_ui_error](pdb_ui_error_hd.png)
 
 * At this point, the error messages in the UI are clear - the issue with the upgrade is related to PDB. The orchestration engine will indefinitely wait for the PDB to be removed or updated before powering off the node. It will then try continuing with the upgrade of the remaining nodes.
 
@@ -78,15 +78,15 @@ There are other ways of troubleshooting and identifying why the nodes are not de
 With the `kubeconfig` exported, try the following commands:
 
 * See current list of nodes: `kubectl get nodes -o wide`
-![pdb_node_cordoned](pdb_node_cordoned.png)
+![pdb_node_cordoned](pdb_node_cordoned_hd.png)
 *Notice one of the nodes is cordoned*
 
 * Describe the machines: `kubectl describe machines -A`
-![pdb_kubectl_describe_nodes](pdb_kubectl_describe_nodes.png)
+![pdb_kubectl_describe_nodes](pdb_kubectl_describe_nodes_hd.png)
 Each node in Cluster-API is represented by a “machine” type. Notice how the cluster-api machine-controller is attempting to drain the Machine’s node, but is unable to.
 
 * View the cluster-api logs: `kubectl logs -n cluster-5fab5e3bb7504f8d78b5f53c capi-controller-manager-65b95f9867-28ck2 manager`
-![pdb_kubectl_error](pdb_kubectl_error.png)
+![pdb_kubectl_error](pdb_kubectl_error_hd.png)
 The same error message which is captured and shown in the UI is displayed here as well.
 
 * Delete the PDB: `kubectl delete pdb nginx`
