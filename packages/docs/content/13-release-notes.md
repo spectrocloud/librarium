@@ -13,6 +13,10 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+# December 23, 2020 - Hotfix 1.6.4
+
+This release adds a fix for the permissions of vSphere GET folders.
+
 # December 13, 2020 - Release 1.6.0
 
 Our on-prem version gets attention to finer details with this release:
