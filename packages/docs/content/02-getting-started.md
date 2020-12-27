@@ -313,7 +313,7 @@ Once the cluster is provisioned - feel free to try the following:
 
 <Tabs.TabPane tab="VMware" key="vmware">
 
-## Your First VMWare Cluster
+## Your First VMware Cluster
 
 <InfoBox>
 
@@ -419,7 +419,7 @@ The following steps will be taken to provision your first VMware cluster:
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="On Premise" key="vmware_on_prem">
+<Tabs.TabPane tab="On-Premises" key="vmware_on_prem">
 
 The following steps will be taken to provision your first VMware cluster:
 
