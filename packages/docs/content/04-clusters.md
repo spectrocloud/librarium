@@ -277,7 +277,7 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
                 "ecr:GetRepositoryPolicy",
                 "ecr:DescribeRepositories",
                 "ecr:ListImages",
-                "ecr:BatchGetImage"
+                "ecr:BatchGetImage",
                 "elasticloadbalancing:AddTags",
                 "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
