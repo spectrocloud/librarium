@@ -82,19 +82,19 @@ ansibleRoles:
 5. Login to the pack registry using the following command:
 
 ```bash
-$ spectro registry login [REGISTRY_SERVER]
+ spectro registry login [REGISTRY_SERVER]
 ```
 
 6. Push the newly defined pack to the pack registry using the following command:
 
 ```bash
-$ spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
+ spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
 ```
 
 7. To overwrite contents of a previously deployed pack, use the force option as follows:
 
 ```bash
-$ spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
+ spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
 ```
 
 # Adding an OS Pack

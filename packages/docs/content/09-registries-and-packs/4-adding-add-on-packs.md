@@ -222,13 +222,13 @@ charts:
 6. Login to the pack registry using the following command:
 
 ```bash
-$ spectro registry login [REGISTRY_SERVER]
+ spectro registry login [REGISTRY_SERVER]
 ```
 
 7. Using Spectro CLI, push the newly built pack to the pack registry:
 
 ```bash
-$ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
+ spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
 ```
 
 </Tabs.TabPane>
@@ -389,13 +389,13 @@ manifests:
 6. Login to the pack registry using the following command:
 
 ```bash
-$ spectro registry login [REGISTRY_SERVER]
+ spectro registry login [REGISTRY_SERVER]
 ```
 
 7. Using Spectro Cloud CLI push the newly built pack to the pack registry:
 
 ```bash
-$ spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
+ spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
 ```
 
 </Tabs.TabPane>
