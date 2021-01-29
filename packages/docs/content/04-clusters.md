@@ -92,6 +92,10 @@ Updates to pack configuration may result in a conflict if the configuration was 
 
 Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
 
+## OS Patching
+
+Spectro Cloud platform can periodically update the operating system on the nodes launched for the clusters. This ensures the nodes are up-to-date with the latest security patches and bug fixes. The OS can be patched at the time on initial deployment and kept up to date thereafter based on schedule. The frequency of these updates is customizable at the time of cluster deployment. Users can choose a schedule for the updates to be monthly, weekly or daily. OS can also be patches for nodes of a running cluster at any time.
+
 # Cluster Health
 
 Spectro Cloud monitors cluster infrastructure on a regular basis and reports health on the management console.
