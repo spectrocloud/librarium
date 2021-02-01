@@ -1,9 +1,8 @@
-
 ---
 title: "New Clusters"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
-icon: "clusters"
+icon: "server"
 hideToC: false
 fullWidth: false
 ---
@@ -13,15 +12,13 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
-
 # Creating Clusters
 
-
-The following steps describe the process of creating new clusters as well as performing Day-2 management operations such as scaling, resizing, reconfiguring etc. on various clouds. 
+The following steps describe the process of creating new clusters as well as performing Day-2 management operations such as scaling, resizing, reconfiguring etc. on various clouds.
 
 <Tabs identifier="clusterType">
 
-<Tabs.TabPane tab="AWS Cluster" key="aws_cluster">
+<Tabs. TabPane tab="AWS Cluster" key="aws_cluster">
 
 ## Overview
 
@@ -60,7 +57,7 @@ To create an AWS cloud account, an access key as well as a secret access key wil
 
 Ensure that the IAM user or the ROOT user has the following minimum permissions:
 
-```json
+``` json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -256,18 +253,20 @@ The following steps need to be performed to provision a new AWS cluster:
 * Select a cluster profile created for AWS cloud. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide the AWS Cloud account and placement information.
-    * Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
-    * Region - Choose the desired AWS region where you would like the clusters to be provisioned.
-    * SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+    - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
+    - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
+    - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
+    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    * Name - a descriptive name for the node pool.
-    * Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    * Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
-    * Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability 
+    - Name - a descriptive name for the node pool.
+    - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
+    - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
+    - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability
+
     zones if multiple zones are selected.
-    * By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
+
+    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -294,11 +293,11 @@ The following steps need to be performed to add a new worker node pool to a clus
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 
 * Provide node pool settings as follows:
-    * A descriptive name for the node pool.
-    * The number of nodes in the node pool.
-    * One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
-    * The instance type to be used for all the nodes launched in the node pool.
-    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
+    - A descriptive name for the node pool.
+    - The number of nodes in the node pool.
+    - One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
+    - The instance type to be used for all the nodes launched in the node pool.
+    - Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Remove an AWS worker pool
 
@@ -318,9 +317,9 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
 * The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
-</Tabs.TabPane>
+</Tabs. TabPane>
 
-<Tabs.TabPane tab="Azure Cluster" key="azure_cluster">
+<Tabs. TabPane tab="Azure Cluster" key="azure_cluster">
 
 ## Overview
 
@@ -352,19 +351,19 @@ The following steps need to be performed to provision a new VMware cluster:-
 * Select a cluster profile created for the Azure environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide the Azure Cloud account and placement information.
-    * Cloud Account - Select the desired cloud account. Azure cloud accounts with credentials need to be pre-configured in project settings.
-    * Subscription - Select the subscription which is to be used to access Azure Services.
-    * Region - Select a region in Azure in which the cluster should be deployed.
-    * Resource Group - Select the resource group in which the cluster should be deployed.
-    * SSH Key - Public key to configure remote SSH access to the nodes.
+    - Cloud Account - Select the desired cloud account. Azure cloud accounts with credentials need to be pre-configured in project settings.
+    - Subscription - Select the subscription which is to be used to access Azure Services.
+    - Region - Select a region in Azure in which the cluster should be deployed.
+    - Resource Group - Select the resource group in which the cluster should be deployed.
+    - SSH Key - Public key to configure remote SSH access to the nodes.
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    * Name - A descriptive name for the node pool.
-    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    * Allow worker capability (master pool) - To allow workloads to be provisioned on master nodes.
-    * Instance Type - Select the Azure instance type to be used for all the nodes in the pool.
-    * Managed Disk - Select the managed disk type to be used.
-    * Disk Size - Storage disk size in GB to be attached to the node.
-    * Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
+    - Name - A descriptive name for the node pool.
+    - Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
+    - Allow worker capability (master pool) - To allow workloads to be provisioned on master nodes.
+    - Instance Type - Select the Azure instance type to be used for all the nodes in the pool.
+    - Managed Disk - Select the managed disk type to be used.
+    - Disk Size - Storage disk size in GB to be attached to the node.
+    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
 
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
@@ -391,12 +390,13 @@ The following steps need to be performed to add a new worker node pool to a clus
 
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 * Provide node pool settings as follows:
-    * A descriptive name for the node pool.
-    * The number of nodes in the node pool.
-    * One or more availability zones. Nodes are distributed across availability zones when multiple zones are selected.
-    * Instance type to be used for all the nodes launched in the node pool.
-    * Managed Disk and Size of the storage to be used.
-    * Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
+
+    - A descriptive name for the node pool.
+    - The number of nodes in the node pool.
+    - One or more availability zones. Nodes are distributed across availability zones when multiple zones are selected.
+    - Instance type to be used for all the nodes launched in the node pool.
+    - Managed Disk and Size of the storage to be used.
+    - Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Removing an Azure worker pool
 
@@ -417,9 +417,9 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with new instance type configured.
 * Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
-</Tabs.TabPane>
+</Tabs. TabPane>
 
-<Tabs.TabPane tab="GCP Cluster" key="google_cloud_cluster">
+<Tabs. TabPane tab="GCP Cluster" key="google_cloud_cluster">
 
 ## Overview
 
@@ -436,7 +436,7 @@ API server endpoint is exposed through a Global Load Balancer. Applications runn
 To create a GCP cloud account, you need the JSON credentials (service account key) file of the service account.
 
 To create a service account, the user should have one of the following IAM roles:
-`roles/iam.serviceAccountAdmin` or `roles/iam.serviceAccountAdmin`.
+`roles/iam.serviceAccountAdmin` or `roles/iam.serviceAccountAdmin` .
 
 To create a service account, refer to https://cloud.google.com/iam/docs/creating-managing-service-accounts.
 
@@ -528,12 +528,11 @@ storage.objects.get
 storage.objects.list
 ```
 
-
 The process of creating the JSON credential files is available here: https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
 
-</Tabs.TabPane>
+</Tabs. TabPane>
 
-<Tabs.TabPane tab="VMware Cluster" key="vmware_cluster">
+<Tabs. TabPane tab="VMware Cluster" key="vmware_cluster">
 
 ## Overview
 
@@ -549,20 +548,20 @@ If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created f
 
 * Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
 * Minimum capacity required for a Private Cloud Gateway:
-	* 1 node - 2 vCPU, 4GB memory, 30GB storage.
-	* 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
+  + 1 node - 2 vCPU, 4GB memory, 30GB storage.
+  + 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
 * Per tenant cluster IP requirements:
-    * 1 per node.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
+    - 1 per node.
+    - 1 Kubernetes control-plane VIP.
+    - 1 Kubernetes control-plane extra.
 * Private cloud gateway IP requirements:
-    * 1 node - 1 IP or 3 nodes - 3 IPs.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
-* IPs for application workload services (e.g.:LoadBalancer services).
+    - 1 node - 1 IP or 3 nodes - 3 IPs.
+    - 1 Kubernetes control-plane VIP.
+    - 1 Kubernetes control-plane extra.
+* IPs for application workload services (e.g.: LoadBalancer services).
 * Subnet with egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    - Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
@@ -736,8 +735,8 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
-| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT |
+|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
+| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
 | NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com, .company.org, 10.10.0.0/16 |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
@@ -772,7 +771,7 @@ Another potential issue is a lack of outgoing connectivity from the VM. The inst
 
 If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
 
-```bash
+``` bash
 #!/bin/bash
 
 DESTDIR="/tmp/"
@@ -785,7 +784,6 @@ KUBELET_LOG="/tmp/kubelet.log"
 SYSLOGS="/var/log/syslog*"
 
 FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
-
 
 journalctl -u kubelet > $KUBELET_LOG
 
@@ -858,26 +856,26 @@ The following steps need to be performed to provision a new VMware cluster:-
 * Select a cluster profile created for the VMware environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide a vSphere Cloud account and placement information.
-    * Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-    * Datacenter -The vSphere datacenter where the cluster nodes will be launched.
-    * Folder - The vSphere VM Folder where the cluster nodes will be launched.
-    * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
-    * NTP Server (Optional) - Setup time synchronization for all the running nodes.
-    * IP Allocation strategy - DHCP or Static IP
+    - Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+    - Datacenter -The vSphere datacenter where the cluster nodes will be launched.
+    - Folder - The vSphere VM Folder where the cluster nodes will be launched.
+    - SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
+    - NTP Server (Optional) - Setup time synchronization for all the running nodes.
+    - IP Allocation strategy - DHCP or Static IP
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    * Name - A descriptive name for the node pool.
-    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
-    * CPU - Number of CPUs to be allocated to the nodes.
-    * Memory - Amount of memory in GB to be allocated to the nodes.
-    * Disk - Storage disk size in GB to be attached to the node.
-    * One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.
+    - Name - A descriptive name for the node pool.
+    - Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
+    - Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
+    - CPU - Number of CPUs to be allocated to the nodes.
+    - Memory - Amount of memory in GB to be allocated to the nodes.
+    - Disk - Storage disk size in GB to be attached to the node.
+    - One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.
 	    * Compute Cluster - A Compute cluster under the selected Datacenter.
 	    * Datastore - The vSphere storage in the selected Datacenter.
 	    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.
 	    * Resource Pool- The vSphere resource pool where the cluster nodes will be launched.
-	    * IP Pool - An IP pool to be used for allocation IP addresses to cluster VMs. Required only for Static IP allocation. IP pools need to be predefined for private cloud gateways.  
-    
+	    * IP Pool - An IP pool to be used for allocation IP addresses to cluster VMs. Required only for Static IP allocation. IP pools need to be predefined for private cloud gateways.
+
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -926,10 +924,11 @@ The following steps need to be performed to add a new worker node pool to a clus
 
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
 * Provide node pool settings as follows:-
-    * A descriptive name for the node pool.
-    * The number of nodes in the node pool.
-    * CPU, Memory, and Disk settings for all the nodes in the node pool.
-    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
+
+    - A descriptive name for the node pool.
+    - The number of nodes in the node pool.
+    - CPU, Memory, and Disk settings for all the nodes in the node pool.
+    - Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 ## Removing a VMware worker pool
 
@@ -939,5 +938,5 @@ The following steps need to be performed to remove a worker pool from the cluste
 * Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
-</Tabs.TabPane>
+</Tabs. TabPane>
 </Tabs>
