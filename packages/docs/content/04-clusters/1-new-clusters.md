@@ -17,7 +17,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 # Creating Clusters
 
 
-The following steps describe the process of creating new clusters as well as performing day-2 management operations such as scaling, resizing, reconfiguring etc. on various clouds. 
+The following steps describe the process of creating new clusters as well as performing Day-2 management operations such as scaling, resizing, reconfiguring etc. on various clouds. 
 
 <Tabs identifier="clusterType">
 
