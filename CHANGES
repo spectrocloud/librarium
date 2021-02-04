@@ -1,3 +1,32 @@
+12/26/2020 - Zulfi
+- Release 1.6.0
+
+11/25/2020 - Codrin
+ - Header permalink
+ - Add path parameters
+ - Line highlighter
+
+10/27/2020 - Codrin
+- Added tenant api page
+
+10/27/2020 - Codrin
+- Added system api endpoints page
+
+10/26/2020 - Zulfi
+- Release 1.5.0
+
+10/13/20 - Saad
+- Add ingress default ssl
+
+10/6/20 - Saad
+- Docs on packs
+
+9/23/20 - Catalina & Codrin
+- Mobile / Table responsiveness
+
+9/14/20 - Zulfi
+- Release build for 1.2.0
+
 9/2/20 - Codrin
 - Sidebar now hightlights the current path even on refresh
 - Removed centos and ubuntu (empty pages)

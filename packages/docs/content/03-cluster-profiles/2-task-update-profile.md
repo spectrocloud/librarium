@@ -7,6 +7,12 @@ hideToC: true
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 ## Updating Cluster Profiles
 
 Cluster profiles are typically updated to change the configuration of various layers in a Kubernetes stack. Basic information like name, description, and tags can also be updated. However, the environment associated with the profile cannot be updated.
@@ -19,7 +25,7 @@ Following are the steps to update a cluster profile:-
 
 * To make updates to the profile configuration, navigate to the ‘Layers and Parameter’ section. Make one or more of the following changes as relevant.
   * Add and configure a new layer
-  * Remove an existing layer. Please note that OS, Kubernetes, Networking, and Storage are considered as core layers and these cannot be removed.
+  * Remove an existing layer. <WarningBox>Please note that OS, Kubernetes, Networking, and Storage are considered as core layers and these cannot be removed.</WarningBox>
   * Reconfigure an existing layer to change to a different pack version or  pick a different pack or update pack parameters.
   * Save your changes. Optionally provide a comment to describe the reason for the change. This is useful for audit purposes.
 

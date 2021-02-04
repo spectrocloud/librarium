@@ -19,6 +19,7 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
 * [Calico](/integrations/calico)
     * v3.9.
     * v3.10.
+    * v3.16.
 
 # Calico
 

@@ -230,3 +230,16 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 ```js
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
+
+### Code lines highlighter
+
+You can highlight specific lines in a block of code by adding **coloredLines** prop.
+
+_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234`.
+This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
+
+_Components_:
+- `2-4` - lines interval to be colored
+- `|` - separator between lines interval and color
+- `#fff` - hex color (colors can also be added as **rgb** format)
+- `,` - separator for different colored lines intervals

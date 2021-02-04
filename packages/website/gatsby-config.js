@@ -1,10 +1,16 @@
 require('dotenv').config();
 const queries = require('./src/utils/algolia');
-const path = require("path");
+const path = require('path');
 
 const config = require('./config');
 
 const plugins = [
+  {
+    resolve: 'gatsby-plugin-sitemap',
+    options: {
+      exclude: [`/glossary/`, `/glossary/*`],
+    },
+  },
   'gatsby-plugin-sitemap',
   'gatsby-plugin-sharp',
   'gatsby-plugin-styled-components',
@@ -14,32 +20,34 @@ const plugins = [
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'glossary',
-      path:  path.resolve(__dirname, "../glossary/content/"),
+      path: path.resolve(__dirname, '../glossary/content/'),
     },
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'docs',
-      path: path.resolve(__dirname, "../docs/content/"),
+      path: path.resolve(__dirname, '../docs/content/'),
     },
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'api',
-      path: path.resolve(__dirname, "../api/content/"),
+      path: path.resolve(__dirname, '../api/content/'),
     },
   },
   {
-    resolve: `gatsby-plugin-prefetch-google-fonts`,
+    resolve: `gatsby-plugin-webfonts`,
     options: {
-      fonts: [
-        {
-          family: `Poppins`,
-          variants: [`400`, `500`, `700`, 'latin']
-        },
-      ],
+      fonts: {
+        google: [
+          {
+            family: `Poppins`,
+            variants: [`400`, `500`, `700`, 'latin'],
+          },
+        ],
+      },
     },
   },
   {
@@ -50,14 +58,14 @@ const plugins = [
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 1035,
-            linkImagesToOriginal: false
+            linkImagesToOriginal: false,
           },
         },
         {
           resolve: 'gatsby-remark-copy-linked-files',
         },
       ],
-      extensions: ['.mdx', '.md']
+      extensions: ['.mdx', '.md'],
     },
   },
   {
@@ -72,12 +80,12 @@ const plugins = [
     },
   },
   {
-    resolve: "gatsby-plugin-react-svg",
+    resolve: 'gatsby-plugin-react-svg',
     options: {
       rule: {
         include: /icons/,
-      }
-    }
+      },
+    },
   },
 ];
 
@@ -96,7 +104,7 @@ if (
       queries,
       chunkSize: 10000, // default: 1000
       enablePartialUpdates: true,
-      matchFields: ['slug', 'modifiedTime']
+      matchFields: ['slug', 'modifiedTime'],
     },
   });
 }

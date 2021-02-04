@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
 // TODO clean up these styles
@@ -37,6 +37,10 @@ export const Sidebar = styled.aside`
     padding: 7px 24px 7px 16px;
 
     color: ${props => props.theme.colors.text};
+  }
+
+  @media (max-width: 1100px) {
+    display: none;
   }
 `;
 

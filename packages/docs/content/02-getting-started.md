@@ -11,10 +11,11 @@ import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Getting Started
 
-This section is a tour of the two main dashboards of the tenant console. It also helps with the creation of cluster profiles and clusters to enable users to get going. More details on creating clusters are available in the dedicated [clusters](/clusters) page.
+This section is a tour of the two main dashboards of the tenant console. It also helps with the creation of cluster profiles and clusters to enable users to get going. More details on creating clusters are available in the dedicated <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> page.
 
 # Understanding the tenant console
 
@@ -22,9 +23,9 @@ The Spectro Cloud tenant console contains two main dashboards. The first one is 
 
 # Default Dashboard
 
-Upon login, the dashboard shows the views available for a non-admin user. At this time, only the [cluster profiles](/cluster-profiles) (marked as 1) of the default project are shown. [Projects](/projects) (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard also contains options for [Clusters](/clusters) (3). The bottom left contains buttons for the user's profile (6) and the Admin dashboard (5). The "Admin" options are visible only for users having the admin role.
+Upon login, the dashboard shows the views available for a non-admin user. At this time, only the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> (marked as 1) of the default project are shown. <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">project</a> helps to organize the cluster resources in a logical grouping.</Tooltip> (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> (3). The bottom left contains buttons for the user's profile (6) and the Admin dashboard (5). The "Admin" options are visible only for users having the admin role.
 
-The "Settings" section (4) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard.
+The "Settings" section (4) of the default dashboard relates to the cloud account settings. This is an important distinction from the settings under the Admin dashboard. It also allows the user to upload SSH keys for safekeeping. These key/s can be recalled when deploying a cluster.
 
 <PointsOfInterest
   points={[
@@ -92,17 +93,17 @@ The menu within the Admin dashboard also contains the Projects button. This is d
 
 The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects, or they can be left unused. An ideal use-case of this feature is for the admin to create cluster profiles that are standard across the tenant (i.e., these cluster profiles are needed in all projects).
 
-[Roles](/user-management/rbac#roles) (and [Permissions](/introduction/concept-overviews#permission)); as well as [Users](/introduction/concept-overviews#users) and [Teams](/introduction/concept-overviews#team) allow the admin to set or restrict these attributes for one or more team members. See the [RBAC](/user-management#rbac) section for more details.
+The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> (and <Tooltip trigger={<u>Permissions</u>}><a href="/introduction/concept-overviews#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip>); as well as <Tooltip trigger={<u>Users</u>}><a href="/introduction/concept-overviews#users">Users</a> are members of a tenant who are assigned roles that control their access within the platform.</Tooltip> and <Tooltip trigger={<u>Teams</u>}>A <a href="/introduction/concept-overviews#team">Team</a> is a group of users.</Tooltip> allow the admin to set or restrict these attributes for one or more team members. See the <Tooltip trigger={<u>RBAC</u>}>Spectro Cloud's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations.</Tooltip> section for more details.
 
-Settings under the Admin dashboard provide access to the [pack registries](/registries-and-packs); [private cloud gateways](/introduction/concept-overviews#privatecloudgateway) and [SAML SSO](/user-management/saml-sso) configurations.
+Settings under the Admin dashboard provide access to the <Tooltip trigger={<u>pack registries</u>}>A <a href="/registries-and-packs">pack</a> is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc.</Tooltip>; <Tooltip trigger={<u>private cloud gateways</u>}>A <a href="/introduction/concept-overviews#privatecloudgateway">Private Cloud Gateway</a> is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a VMware based private data center.</Tooltip> and [SAML SSO](/user-management/saml-sso) configurations.
 
-Finally, [audit logs](/audit-logs) in the admin dashboard allow the admin to track the user interaction with the application resources along with the timeline for all projects and users. For admin users, the "audit log" button is visible for each project as well. Here, the admin can view the logs of the resources specific to the project.
+Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platform application captures <a href="/audit-logs">audit logs</a> to track the user interaction with the application resources along with the timeline.</Tooltip> in the admin dashboard allow the admin to track the user interaction with the application resources along with the timeline for all projects and users. For admin users, the "audit log" button is visible for each project as well. Here, the admin can view the logs of the resources specific to the project.
 
 ![admin_dashboard](admin_dashboard.png)
 
 # Deploying your first cluster
 
-Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the [Cluster Profile](/cluster-profiles/task-define-profile) contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
+Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
 
 <Tabs identifier="getting_started">
 
@@ -312,11 +313,45 @@ Once the cluster is provisioned - feel free to try the following:
 
 <Tabs.TabPane tab="VMware" key="vmware">
 
-## Your First VMWare Cluster
+## Your First VMware Cluster
 
 <InfoBox>
+
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
+
 </InfoBox>
+
+<Tabs>
+
+<Tabs.TabPane tab="In the Cloud" key="vmware_saas">
+
+## Prerequisites
+
+* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
+* Minimum capacity required for a Private Cloud Gateway:
+	* 1 node - 2 vCPU, 4GB memory, 30GB storage.
+	* 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
+* Per tenant cluster IP requirements:
+    * 1 per node.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* Private cloud gateway IP requirements:
+    * 1 node - 1 IP or 3 nodes - 3 IPs.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* IPs for application workload services (e.g.:LoadBalancer services).
+* Subnet with egress access to the internet (direct or via proxy):
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+* DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+* vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
+* NTP configured on all Hosts.
+* Shared Storage between vSphere hosts.
+* VMware vCenter [permissions](https://docs.spectrocloud.com/clusters?clusterType=vmware_cluster#permissions).
+
+## Configuration Requirements
+
+A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 The following steps will be taken to provision your first VMware cluster:
 
@@ -345,16 +380,23 @@ The following steps will be taken to provision your first VMware cluster:
     * Select the desired Datacenter, Storage, and Network for the gateway installer VM as you proceed through the next few steps. Private Cloud Gateway VMs require an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
     * Customize the template as follows:
     * Gateway Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
-        * Console Endpoint: https://console.spectrocloud.com
+        * Console Endpoint: https://console.spectrocloud.com.
         * Pairing Code: <5 digit pairing code from step #2>
         * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
+        * Pod CIDR: Optional IP range exclusive to pods. (e.g: 192.168.0.0/16)
+        * Service cluster IP range: Optional IP range in the CIDR format exclusive to the service clusters. (e.g: 10.96.0.0/12)
+
+        <WarningBox>
+        If used, please ensure that neither the pod CIDR nor the service cluster CIDR overlap with your network CIDR.
+        </WarningBox>
+
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
-        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation
-        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation
-        * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation
-        * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections
-        * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections
-        * SOCKS Proxy: &lt;endpoint for the SOCKS proxy server&gt;, e.g: _PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
+        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
+        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
+        * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
+        * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
+        * NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
 5. Power on the spectro-cloud-gateway VM.
 
@@ -374,6 +416,23 @@ The following steps will be taken to provision your first VMware cluster:
 11. Select DHCP as the IP allocation strategy. 
 12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
 13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="On-Premises" key="vmware_on_prem">
+
+The following steps will be taken to provision your first VMware cluster:
+
+* Create a Private Cloud Account.
+* Create Cluster Profile.
+* Provision Cluster.
+
+## Installation
+
+Follow the [instructions](/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant) to install the Quick Start variant. Verify the installation by accessing the System Console and creating a tenant admin. Using the activation link, approve the tenant admin and open the tenant management console to create a cluster profile.
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Cluster Profile
 

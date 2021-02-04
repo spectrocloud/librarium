@@ -2,7 +2,8 @@ import React from 'react';
 import _ from 'underscore';
 import styled from 'styled-components';
 
-import CodeHighlight from "./CodeHighlight";
+import CodeHighlight from './CodeHighlight';
+import DeprecatedTag from "@librarium/shared/src/components/common/DeprecatedTag"
 
 const colors = {
   get: '#4aa908',
@@ -41,7 +42,6 @@ const Label = styled.div`
   font-weight: bold;
   color: #555;
   margin-right: 10px;
-  margin-bottom: 10px;
   text-transform: capitalize;
 `;
 
@@ -55,16 +55,27 @@ const Hr = styled.hr`
 const Summary = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 const ResponsesWrapper = styled.div`
   margin-left: 60px;
+
+  @media (max-width: 1730px) {
+    margin: 20px 0;
+  }
 `;
 const OperationWrap = styled.div`
   display: flex;
   > * {
     width: 50%;
+  }
+
+  @media (max-width: 1730px) {
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
   }
 `;
 
@@ -105,6 +116,16 @@ const Response = styled.div`
   }
 `;
 
+const Table = styled.div`
+  overflow-x: auto;
+  width: 100%;
+`;
+
+
+const StyledDeprecatedTag = styled(DeprecatedTag)`
+  margin-right: 16px;
+`;
+
 const normalizePath = path => {
   if (!path.endsWith('.{format}')) return path;
 
@@ -112,42 +133,38 @@ const normalizePath = path => {
 };
 
 function Property({ label, value }) {
+  if (!value) {
+    return null;
+  }
+
   return (
     <Summary>
-      <Label>{label}:</Label> {value || `No ${label}`}
+      <Label>{label}:</Label> {value}
     </Summary>
-  )
+  );
 }
 
-function Parameters({ parameters, method, path }) {
+function Parameters({ parameters, method, path, title }) {
   if (!parameters?.length) {
-    return (
-      <Summary>
-        <Label>Parameters:</Label> No parameters
-      </Summary>)
+    return null;
   }
 
   function renderParameter(parameter) {
     return (
-      <tr
-        key={path + method + parameter.name + parameter.paramType}
-      >
+      <tr key={path + method + parameter.name + parameter.paramType}>
         <td>{parameter.name}</td>
         <td>{parameter.type}</td>
         <td>{parameter.description}</td>
         <td>
-          {typeof parameter.required == 'undefined' ||
-            parameter.required == false
-            ? 'no'
-            : 'yes'}
+          {typeof parameter.required == 'undefined' || parameter.required == false ? 'no' : 'yes'}
         </td>
       </tr>
     );
   }
 
   return (
-    <>
-      <Label>Parameters:</Label>
+    <Table>
+      <Label>{title}:</Label>
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -157,12 +174,10 @@ function Parameters({ parameters, method, path }) {
             <th>Required</th>
           </tr>
         </thead>
-        <tbody>
-          {parameters.map(renderParameter)}
-        </tbody>
+        <tbody>{parameters.map(renderParameter)}</tbody>
       </table>
-    </>
-  )
+    </Table>
+  );
 }
 
 function RequestBody({ body }) {
@@ -175,7 +190,7 @@ function RequestBody({ body }) {
       <label>Body</label>
       <CodeHighlight code={body} />
     </Response>
-  )
+  );
 }
 
 function ResponseMessages({ responseMessages }) {
@@ -187,7 +202,7 @@ function ResponseMessages({ responseMessages }) {
     <Response type="response">
       <label>HTTP code:</label> {response.code} <br />
       <label>Description:</label> {response.description} <br />
-      {response.schema && response.schema !== "null" && (
+      {response.schema && response.schema !== 'null' && (
         <>
           <label>Response body:</label>
           <CodeHighlight code={response.schema} />
@@ -204,6 +219,7 @@ export default function Swagger(props) {
         api.operations.map(operation => (
           <Operation key={operation.method + api.path}>
             <Signature>
+              {operation?.description?.includes("Deprecated") && <StyledDeprecatedTag />}
               <Button color={colors[operation.method]}>{operation.method}</Button>&#8594;
               <h4>{props.prefix + normalizePath(api.path)}</h4>
             </Signature>
@@ -212,9 +228,14 @@ export default function Swagger(props) {
                 <Property label="summary" value={operation.summary} />
                 <Property label="description" value={operation.description} />
                 <Parameters
+                  title="Parameters"
                   parameters={operation?.parameters}
                   method={operation.method}
                   path={api?.path}
+                />
+                <Parameters
+                  title="Path parameters"
+                  parameters={operation?.pathParameters}
                 />
                 <RequestBody body={operation.body} />
               </div>

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Layout, DocsLayout, useConfig } from '@librarium/shared';
 import App from '../App';
 
-function MDXLayout({ data = {}, location, children, ...rest }) {
+function MDXLayout({ data = {}, children, ...rest }) {
   const {
     allMdx,
     mdx,
@@ -21,7 +21,6 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
   return (
     <Layout
       menu={menu}
-      location={location}
       fullWidth={mdx.frontmatter?.fullWidth}
       hideMenuSidebar={mdx.frontmatter?.hideMenuSidebar}
     >
@@ -30,7 +29,6 @@ function MDXLayout({ data = {}, location, children, ...rest }) {
         mdx={mdx}
         edges={allMdx.edges}
         docsLocation={docsLocation}
-        location={location}
         {...rest}
       />
     </Layout>

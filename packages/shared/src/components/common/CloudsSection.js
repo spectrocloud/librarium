@@ -1,21 +1,21 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Link from "../Link";
+import Link from '../Link';
 
-import aws from "../../assets/clouds/aws.png";
-import azure from "../../assets/clouds/azure.png";
-import google_cloud from "../../assets/clouds/google_cloud.png";
-import vmware from "../../assets/clouds/vmware.png";
-import bare_metal from "../../assets/clouds/bare_metal.png";
+import aws from '../../assets/clouds/aws.png';
+import azure from '../../assets/clouds/azure.png';
+import google_cloud from '../../assets/clouds/google_cloud.png';
+import vmware from '../../assets/clouds/vmware.png';
+import bare_metal from '../../assets/clouds/bare_metal.png';
 
 const clouds = {
   aws,
   azure,
   google_cloud,
   vmware,
-  bare_metal
-}
+  bare_metal,
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,11 +24,12 @@ const Wrapper = styled.div`
   margin-top: 30px;
   max-width: 1024px;
   margin: 30px auto 0;
+  overflow: hidden;
 
   ::after {
-    content: " ";
+    content: ' ';
     width: 680px;
-    border: 1px solid #DDDDDD;
+    border: 1px solid #dddddd;
     margin-top: 60px;
   }
 `;
@@ -47,12 +48,23 @@ const CardWrapper = styled.div`
   width: 100%;
   max-width: 880px;
   margin-top: 30px;
+  @media (max-width: 830px) {
+    overflow-y: auto;
+  }
+  @media (max-width: 650px) {
+    justify-content: flex-start;
+  }
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 830px) {
+    margin: 20px;
+    margin-top: 65px;
+    justify-content: center;
+  }
 `;
 
 const Icon = styled.div`
@@ -68,6 +80,10 @@ const Icon = styled.div`
 
 const CloudName = styled.div`
   color: #777;
+  @media (max-width: 830px) {
+    text-align: center;
+    white-space: nowrap;
+  }
 `;
 
 function CloudsSection({ title, description, options = [] }) {
@@ -88,7 +104,7 @@ function CloudsSection({ title, description, options = [] }) {
         ))}
       </CardWrapper>
     </Wrapper>
-  )
+  );
 }
 
 export default CloudsSection;

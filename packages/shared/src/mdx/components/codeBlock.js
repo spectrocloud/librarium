@@ -30,12 +30,35 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
   if (props['react-live']) {
     return <LoadableComponent code={exampleCode} />;
   } else {
+    const coloredIntervals = {};
+
+    if (props.coloredLines) {
+      const iterations = props.coloredLines.split(",");
+      iterations.forEach(iteration => {
+        const [range, color] = iteration.split("|");
+        coloredIntervals[range] = color;
+      });
+    }
+
     return (
       <Highlight {...defaultProps} code={exampleCode} language={language} theme={prismTheme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className + ' pre'} style={style} p={3}>
             {cleanTokens(tokens).map((line, i) => {
-              let lineClass = {};
+              let lineClass = {
+                padding: "5px",
+                margin: "0 -5px"
+              };
+
+              const intervalKey = Object.keys(coloredIntervals).find(interval => {
+                const [lower, upper] = interval.split("-");
+                const index = i + 1;
+                return index >= parseInt(lower) && index <= parseInt(upper);
+              });
+
+              if (intervalKey) {
+                lineClass.backgroundColor = coloredIntervals[intervalKey]
+              }
 
               let isDiff = false;
 

@@ -13,7 +13,7 @@ const APIS = {
   v1,
 };
 
-export default function MDXLayout({ data = {}, location }) {
+export default function MDXLayout({ data = {} }) {
   const {
     allMdx,
     mdx,
@@ -47,11 +47,12 @@ export default function MDXLayout({ data = {}, location }) {
           const definitionProperty = defObject.properties[property];
           const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
 
+          const propertyName = definitionProperty?.description?.includes("Deprecated") ? `${property} deprecated` : property;
           // if the property contains a ref, call again extractDefinition
           if (definitionPropertyRef) {
             return ({
               ...propertiesAcc,
-              [property]: definitionProperty.type === "array" ?
+              [propertyName]: definitionProperty.type === "array" ?
                 [extractDefinition(definitionPropertyRef)] :
                 extractDefinition(definitionPropertyRef)
             });
@@ -60,7 +61,7 @@ export default function MDXLayout({ data = {}, location }) {
             if(definitionProperty.type === "array") {
               return ({
                 ...propertiesAcc,
-                [property]: [definitionProperty?.items.type || definitionProperty.type]
+                [propertyName]: [definitionProperty?.items.type || definitionProperty.type]
               });
             } else {
               // if the property value is an object that contains the properties key
@@ -68,7 +69,7 @@ export default function MDXLayout({ data = {}, location }) {
               // otherwise render the property type
               return ({
                 ...propertiesAcc,
-                [property]: definitionProperty?.properties ?
+                [propertyName]: definitionProperty?.properties ?
                   renderProperties(definitionProperty) :
                   definitionProperty.type
               });
@@ -124,6 +125,7 @@ export default function MDXLayout({ data = {}, location }) {
                 ...apiMethod,
                 body: JSON.stringify(body, null, 2),
                 parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                pathParameters: api.paths[path]?.parameters || [],
                 responseMessages: Object.keys(responses || {}).map(
                   response => {
                     return ({
@@ -144,7 +146,6 @@ export default function MDXLayout({ data = {}, location }) {
   return (
     <App>
       <Layout
-        location={location}
         menu={menu}
         fullWidth={mdx.frontmatter?.fullWidth}
         logoLocation="/api"
@@ -164,7 +165,6 @@ export default function MDXLayout({ data = {}, location }) {
           hideToCSidebar={mdx.frontmatter?.hideToCSidebar}
           edges={allMdx.edges}
           extraContent={renderAPIDoc()}
-          location={location}
         />
       </Layout>
     </App>

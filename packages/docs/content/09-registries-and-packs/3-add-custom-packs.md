@@ -56,7 +56,7 @@ An explanation for the parameters of the JSON is given in the table below:
 | | | | In Spectro Cloud, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
 
-3. Create a file named “values.yaml”. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in this file. Helm charts natively support values override. Any values defined are merged with those defined within a chart. Manifests and Ansible roles need to be explicitly templatized if parameter configuration is desired.
+3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in this file. Helm charts natively support values override. Any values defined are merged with those defined within a chart. Manifests and Ansible roles need to be explicitly templatized if parameter configuration is desired.
 
 ```yaml
 pack:
@@ -82,19 +82,19 @@ ansibleRoles:
 5. Login to the pack registry using the following command:
 
 ```bash
-$ spectro registry login [REGISTRY_SERVER]
+ spectro registry login [REGISTRY_SERVER]
 ```
 
 6. Push the newly defined pack to the pack registry using the following command:
 
 ```bash
-$ spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
+ spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
 ```
 
 7. To overwrite contents of a previously deployed pack, use the force option as follows:
 
 ```bash
-$ spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
+ spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
 ```
 
 # Adding an OS Pack
@@ -251,9 +251,13 @@ In all the examples above, additional customization in the form of an Ansible ro
 Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is constructed, push it to the pack registry using the Spectro CLI tool.
 
 <InfoBox>
-A <i>values.yaml</i> file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
+
+A `values.yaml` file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
+
 </InfoBox>
 
 <InfoBox>
+
 During the image customization phase of a cluster deployment, failures related to missing packages or package version mismatch might occur when using a custom OS pack. These errors are presented on the console. The image needs to be updated to resolve any such issues.
+
 </InfoBox>
