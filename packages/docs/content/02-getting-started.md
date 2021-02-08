@@ -313,14 +313,45 @@ Once the cluster is provisioned - feel free to try the following:
 
 <Tabs.TabPane tab="VMware" key="vmware">
 
-## Your First VMWare Cluster
+## Your First VMware Cluster
 
 <InfoBox>
+
 The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
+
 </InfoBox>
 
 <Tabs>
+
 <Tabs.TabPane tab="In the Cloud" key="vmware_saas">
+
+## Prerequisites
+
+* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
+* Minimum capacity required for a Private Cloud Gateway:
+	* 1 node - 2 vCPU, 4GB memory, 30GB storage.
+	* 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
+* Per tenant cluster IP requirements:
+    * 1 per node.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* Private cloud gateway IP requirements:
+    * 1 node - 1 IP or 3 nodes - 3 IPs.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* IPs for application workload services (e.g.:LoadBalancer services).
+* Subnet with egress access to the internet (direct or via proxy):
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+* DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+* vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
+* NTP configured on all Hosts.
+* Shared Storage between vSphere hosts.
+* VMware vCenter [permissions](https://docs.spectrocloud.com/clusters?clusterType=vmware_cluster#permissions).
+
+## Configuration Requirements
+
+A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 The following steps will be taken to provision your first VMware cluster:
 
@@ -388,7 +419,7 @@ The following steps will be taken to provision your first VMware cluster:
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="On Premise" key="vmware_on_prem">
+<Tabs.TabPane tab="On-Premises" key="vmware_on_prem">
 
 The following steps will be taken to provision your first VMware cluster:
 

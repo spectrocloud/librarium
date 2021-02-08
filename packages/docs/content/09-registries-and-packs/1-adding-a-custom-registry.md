@@ -139,15 +139,15 @@ REGISTRY_HOST_DNS - registry.com
   * HTTPS mode -
 
     ```bash
-    $curl --cacert tls.crt -v [REGISTRY_SERVER]/health
-    $curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+    curl --cacert tls.crt -v [REGISTRY_SERVER]/health
+    curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
   * HTTP mode -
 
     ```bash
-    $curl -v [REGISTRY_SERVER]/health
-    $curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+    curl -v [REGISTRY_SERVER]/health
+    curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
 # Configure a custom pack registry on the management Console
