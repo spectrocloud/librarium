@@ -15,6 +15,40 @@
     "version": "v1alpha1"
   },
   "paths": {
+    "/cluster/{uid}/manifest": {
+      "get": {
+        "produces": [
+          "application/octet-stream"
+        ],
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified cluster's installer manifest file",
+        "operationId": "v1alpha1SpectroClustersUidInstallerManifest",
+        "responses": {
+          "200": {
+            "description": "download file",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/async/ops/{opsId}/status": {
       "get": {
         "tags": [
@@ -1559,6 +1593,37 @@
         }
       ]
     },
+    "/v1alpha1/cloudconfigs/aws/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1alpha1CloudConfigsAwsUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.AwsCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/cloudconfigs/aws/{configUid}/machinePools": {
       "post": {
         "tags": [
@@ -1841,6 +1906,37 @@
             "in": "body",
             "schema": {
               "$ref": "#/definitions/v1alpha1AzureMachinePoolConfigEntities"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/cloudconfigs/azure/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1alpha1CloudConfigsAzureUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.AzureCloudClusterConfigEntity"
             }
           }
         ],
@@ -2143,6 +2239,37 @@
             "in": "body",
             "schema": {
               "$ref": "#/definitions/v1alpha1.GcpMachinePoolConfigEntities"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/cloudconfigs/gcp/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1alpha1CloudConfigsGcpUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.GcpCloudClusterConfigEntity"
             }
           }
         ],
@@ -3540,6 +3667,33 @@
         }
       }
     },
+    "/v1alpha1/clouds/vsphere/env": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves vsphere env",
+        "operationId": "V1alpha1VsphereEnv",
+        "parameters": [
+          {
+            "name": "vsphereCloudAccount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1VsphereCloudAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereEnv"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/clusterprofiles": {
       "get": {
         "tags": [
@@ -3708,6 +3862,37 @@
           "description": "includes pack meta such as schema, presets",
           "name": "includePackMeta",
           "in": "query"
+        }
+      ]
+    },
+    "/v1alpha1/clusterprofiles/{uid}/metadata": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the specified cluster profile metadata",
+        "operationId": "v1alpha1ClusterProfilesUidMetadataUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ObjectMetaInputEntitySchema"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
         }
       ]
     },
@@ -4080,6 +4265,12 @@
         "operationId": "v1alpha1ClusterProfilesSummary",
         "parameters": [
           {
+            "type": "string",
+            "default": "all",
+            "name": "cloudType",
+            "in": "query"
+          },
+          {
             "type": "integer",
             "format": "int64",
             "default": 50,
@@ -4103,14 +4294,44 @@
           }
         }
       },
-      "parameters": [
-        {
-          "type": "string",
-          "default": "all",
-          "name": "cloudType",
-          "in": "query"
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Retrieves a list of cluster profiles filter summary",
+        "operationId": "v1alpha1ClusterProfilesFilterSummary",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token for the dataset",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.ClusterProfilesFilterSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster profiles summary items",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.ClusterProfilesSummary"
+            }
+          }
         }
-      ]
+      }
     },
     "/v1alpha1/dashboard/projects": {
       "get": {
@@ -4659,6 +4880,37 @@
         }
       ]
     },
+    "/v1alpha1/health/internal/cluster/{clusterUid}": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Returns the spectrocluster health",
+        "operationId": "V1alpha1SpectroClusterHealthCheck",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroClusterHealthCheck"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "token",
+          "in": "query"
+        },
+        {
+          "type": "string",
+          "name": "clusterUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/health/internal/db": {
       "get": {
         "description": "Ping Service",
@@ -4738,6 +4990,42 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1alpha1.MsgBrokerHealth"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "token",
+          "in": "query"
+        },
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "query"
+        },
+        {
+          "type": "string",
+          "name": "clusterUid",
+          "in": "query"
+        }
+      ]
+    },
+    "/v1alpha1/health/muse": {
+      "get": {
+        "description": "Muse Ping Service",
+        "tags": [
+          "v1alpha1",
+          "private"
+        ],
+        "summary": "Muse Ping Service",
+        "operationId": "V1alpha1HealthMuse",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.HealthPing"
             }
           }
         }
@@ -4980,6 +5268,31 @@
         "responses": {
           "204": {
             "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/installers/spectro/vsphere/{uid}/clusterprofile": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Get a vSphere spectro installer cluster profile",
+        "operationId": "v1alpha1SpectroInstallerClusterProfileGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.ClusterProfile"
+            }
           }
         }
       },
@@ -6028,7 +6341,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Returns the pairing code for the overload",
+        "summary": "Returns the pairing code for the private gateway",
         "operationId": "v1alpha1OverlordsPairingCode",
         "responses": {
           "200": {
@@ -6069,7 +6382,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Returns the manifests required for the overlord installation",
+        "summary": "Returns the manifests required for the private gateway installation",
         "operationId": "v1alpha1OverlordsVsphereManifest",
         "responses": {
           "200": {
@@ -6143,7 +6456,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Returns the specified overlord for the given uid",
+        "summary": "Returns the specified private gateway's for the given uid",
         "operationId": "v1alpha1OverlordsUidGet",
         "responses": {
           "200": {
@@ -6154,32 +6467,11 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Updates the specified overlord",
-        "operationId": "v1alpha1OverlordsUidUpdate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1.OverlordEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        }
-      },
       "delete": {
         "tags": [
           "v1alpha1"
         ],
-        "summary": "delete the overlord",
+        "summary": "delete the private gateway",
         "operationId": "v1alpha1OverlordsUidDelete",
         "responses": {
           "200": {
@@ -6204,7 +6496,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "update the vSphere cloudaccount for the overlord",
+        "summary": "update the vSphere cloudaccount for the private gateway",
         "operationId": "v1alpha1OverlordsUidVsphereAccountUpdate",
         "parameters": [
           {
@@ -6225,7 +6517,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "create the vSphere cloudaccount for the overlord",
+        "summary": "create the vSphere cloudaccount for the private gateway",
         "operationId": "v1alpha1OverlordsUidVsphereAccountCreate",
         "parameters": [
           {
@@ -6265,7 +6557,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "validate the vSphere cloudaccount for the overlord",
+        "summary": "validate the vSphere cloudaccount for the private gateway",
         "operationId": "v1alpha1OverlordsUidVsphereAccountValidate",
         "parameters": [
           {
@@ -6306,7 +6598,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "update the vSphere cloud config for the overlord",
+        "summary": "update the vSphere cloud config for the private gateway",
         "operationId": "v1alpha1OverlordsUidVsphereCloudConfigUpdate",
         "parameters": [
           {
@@ -6327,7 +6619,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "create the vSphere cloud config for the overlord",
+        "summary": "create the vSphere cloud config for the private gateway",
         "operationId": "v1alpha1OverlordsUidVsphereCloudConfigCreate",
         "parameters": [
           {
@@ -6350,6 +6642,37 @@
                 "description": "Audit uid for the request"
               }
             }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/overlords/vsphere/{uid}/metadata": {
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "update the vSphere private gateway's metadata",
+        "operationId": "v1alpha1OverlordsUidVsphereMetadataUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ObjectMetaInputEntitySchema"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
           }
         }
       },
@@ -6471,7 +6794,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Retrieves the vSphere computecluster resources for the specified overlord account",
+        "summary": "Retrieves the vSphere computecluster resources for the specified private gateway's account",
         "operationId": "v1alpha1OverlordsUidVsphereComputeclusterRes",
         "responses": {
           "200": {
@@ -6508,7 +6831,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "Retrieves the vSphere datacenters \u0026 datacluster for the specified overlord account",
+        "summary": "Retrieves the vSphere datacenters \u0026 datacluster for the specified private gateway's account",
         "operationId": "v1alpha1OverlordsUidVsphereDatacenters",
         "responses": {
           "200": {
@@ -6533,7 +6856,7 @@
         "tags": [
           "v1alpha1"
         ],
-        "summary": "reset the overlord by disaaociating the overlord resources",
+        "summary": "reset the private gateway by disaaociating the private gateway's resources",
         "operationId": "v1alpha1OverlordsUidReset",
         "responses": {
           "200": {
@@ -8376,7 +8699,8 @@
               "palette",
               "ambit",
               "ally-lite",
-              "palette-lite"
+              "palette-lite",
+              "crony"
             ],
             "type": "string",
             "description": "service name",
@@ -8410,7 +8734,8 @@
               "palette",
               "ambit",
               "ally-lite",
-              "palette-lite"
+              "palette-lite",
+              "crony"
             ],
             "type": "string",
             "description": "service name",
@@ -8627,6 +8952,38 @@
         }
       }
     },
+    "/v1alpha1/spectroclusters/aws/import": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Import a AWS cluster",
+        "operationId": "v1alpha1SpectroClustersAwsImport",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroAwsClusterImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/spectroclusters/aws/validate": {
       "post": {
         "tags": [
@@ -8672,18 +9029,6 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Deletes the specified cluster",
-        "operationId": "v1alpha1SpectroClustersAwsDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -8760,6 +9105,38 @@
         }
       }
     },
+    "/v1alpha1/spectroclusters/azure/import": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Import a Azure cluster",
+        "operationId": "v1alpha1SpectroClustersAzureImport",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroAzureClusterImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/spectroclusters/azure/validate": {
       "post": {
         "tags": [
@@ -8805,18 +9182,6 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Deletes the specified cluster",
-        "operationId": "v1alpha1SpectroClustersAzureDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -8893,6 +9258,38 @@
         }
       }
     },
+    "/v1alpha1/spectroclusters/gcp/import": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Import a GCP cluster",
+        "operationId": "v1alpha1SpectroClustersGcpImport",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroGcpClusterImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/spectroclusters/gcp/validate": {
       "post": {
         "tags": [
@@ -8938,18 +9335,6 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Deletes the specified cluster",
-        "operationId": "v1alpha1SpectroClustersGcpDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -9158,6 +9543,38 @@
         }
       }
     },
+    "/v1alpha1/spectroclusters/vsphere/import": {
+      "post": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Import a Vsphere cluster",
+        "operationId": "v1alpha1SpectroClustersVsphereImport",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroVsphereClusterImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/spectroclusters/vsphere/validate": {
       "post": {
         "tags": [
@@ -9203,18 +9620,6 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1alpha1"
-        ],
-        "summary": "Deletes the specified vSphere cluster",
-        "operationId": "v1alpha1SpectroClustersVsphereDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -9276,6 +9681,12 @@
             "type": "boolean",
             "default": false,
             "name": "resolvePackValues",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "default": false,
+            "name": "mergePacks",
             "in": "query"
           }
         ],
@@ -9474,6 +9885,37 @@
         }
       ]
     },
+    "/v1alpha1/spectroclusters/{uid}/clusterConfig/osPatch": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Updates the specified spectro cluster OS patch configuration",
+        "operationId": "v1alpha1SpectroClustersUidOsPatchUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.OsPatchEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1alpha1/spectroclusters/{uid}/k8certificates": {
       "get": {
         "tags": [
@@ -9506,6 +9948,37 @@
         ],
         "summary": "Sets the cluster master nodes Kubernetes certificates for renewal",
         "operationId": "v1alpha1SpectroClustersCertificatesRenew",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/spectroclusters/{uid}/metadata": {
+      "patch": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Update the specified spectro cluster metadata",
+        "operationId": "v1alpha1SpectroClustersUidMetadataUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ObjectMetaInputEntitySchema"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
@@ -9559,7 +10032,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1PackResolvedValues"
+              "$ref": "#/definitions/v1alpha1.SpectroClusterProfilesResolvedValues"
             }
           }
         }
@@ -9575,7 +10048,7 @@
           "name": "body",
           "in": "body",
           "schema": {
-            "$ref": "#/definitions/v1alpha1PackParamsEntity"
+            "$ref": "#/definitions/v1alpha1.SpectroClusterProfilesParamReferenceEntity"
           }
         }
       ]
@@ -9720,6 +10193,60 @@
         ],
         "summary": "Replaces the specified cluster profile for the cluster",
         "operationId": "v1alpha1SpectroClustersPatchProfile",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1alpha1/spectroclusters/{uid}/profiles": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the associated profiles of a specified cluster",
+        "operationId": "v1alpha1SpectroClustersGetProfiles",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "includes pack meta such as schema, presets",
+            "name": "includePackMeta",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroClusterProfileList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Associate cluster profiles to the specified cluster",
+        "operationId": "v1alpha1SpectroClustersUpdateProfiles",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.SpectroClusterProfiles"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
@@ -10333,6 +10860,32 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "update domain host url",
+        "operationId": "V1Alpha1SystemConfigDomainHostPatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.DomainHost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
       }
     },
     "/v1alpha1/system/config/ftp/validate": {
@@ -10526,6 +11079,50 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1alpha1.PaymentSecrets"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1alpha1/system/config/preferences/billing": {
+      "get": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "get the billing preference",
+        "operationId": "V1Alpha1BillingPreferenceGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.Billing"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1alpha1",
+          "system"
+        ],
+        "summary": "updates the billing preference",
+        "operationId": "V1Alpha1BillingPreferenceUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.Billing"
             }
           }
         ],
@@ -12548,6 +13145,43 @@
         }
       ]
     },
+    "/v1alpha1/users/assets/vsphere/dnsMapping": {
+      "get": {
+        "tags": [
+          "v1alpha1"
+        ],
+        "summary": "Returns the specified vsphere dns mapping",
+        "operationId": "v1alpha1VsphereMappingGet",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "gatewayUid",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "datacenter",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "network",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1.VsphereDnsMapping"
+            }
+          }
+        }
+      }
+    },
     "/v1alpha1/users/assets/vsphere/dnsMappings": {
       "get": {
         "description": "Returns a list of vsphere dns mappings",
@@ -13487,6 +14121,42 @@
         }
       }
     },
+    "v1ObjectMetaInputEntity": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+          "type": "string"
+        }
+      }
+    },
+    "v1ObjectMetaInputEntitySchema": {
+      "description": "Resource metadata",
+      "type": "object",
+      "required": [
+        "metadata"
+      ],
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        }
+      }
+    },
     "v1ObjectReference": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
       "type": "object",
@@ -13876,6 +14546,15 @@
         }
       }
     },
+    "v1alpha1.AwsCloudClusterConfigEntity": {
+      "description": "AWS cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1alpha1.AwsClusterConfig"
+        }
+      }
+    },
     "v1alpha1.AwsCloudConfig": {
       "description": "AwsCloudConfig is the Schema for the awscloudconfigs API",
       "type": "object",
@@ -14078,6 +14757,10 @@
           "maximum": 2000,
           "minimum": 1
         },
+        "spotMarketOptions": {
+          "description": "SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.",
+          "$ref": "#/definitions/v1alpha1.SpotMarketOptions"
+        },
         "subnets": {
           "type": "array",
           "items": {
@@ -14131,6 +14814,10 @@
           "description": "size of the pool, number of machines",
           "type": "integer",
           "format": "int32"
+        },
+        "spotMarketOptions": {
+          "description": "SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.",
+          "$ref": "#/definitions/v1alpha1.SpotMarketOptions"
         },
         "subnetIds": {
           "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"us-west-2d\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first private subnet from the AZ will be picked up for deployment",
@@ -14409,6 +15096,15 @@
       "properties": {
         "name": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.AzureCloudClusterConfigEntity": {
+      "description": "Azure cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1alpha1.AzureClusterConfig"
         }
       }
     },
@@ -15036,6 +15732,18 @@
         }
       }
     },
+    "v1alpha1.Billing": {
+      "description": "billing preference",
+      "properties": {
+        "billingDay": {
+          "type": "integer"
+        },
+        "costPerCoreHour": {
+          "type": "number",
+          "format": "float64"
+        }
+      }
+    },
     "v1alpha1.BulkEvents": {
       "type": "array",
       "uniqueItems": true,
@@ -15293,6 +16001,40 @@
         }
       }
     },
+    "v1alpha1.ClusterConfig": {
+      "type": "object",
+      "properties": {
+        "controlPlaneHealthCheckTimeout": {
+          "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes. If the node is not ready within the time out set, the node will be deleted and a new node will be launched.",
+          "type": "string"
+        },
+        "machineHealthConfig": {
+          "description": "MachineHealthCheckConfig defines the healthcheck timeouts for the node. The timeouts are configured by the user to overide the default healthchecks.",
+          "$ref": "#/definitions/v1alpha1.MachineHealthCheckConfig"
+        },
+        "machineManagementConfig": {
+          "description": "MachineManagementConfig defines the management configurations for the node. Patching OS security updates etc can be configured by user.",
+          "$ref": "#/definitions/v1alpha1.MachineManagementConfig"
+        }
+      }
+    },
+    "v1alpha1.ClusterImport": {
+      "type": "object",
+      "properties": {
+        "importLink": {
+          "description": "import link to download and install ally-lite, palette-lite",
+          "type": "string"
+        },
+        "isBrownfield": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "state": {
+          "description": "cluster import status",
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.ClusterPreference": {
       "description": "cluster preference",
       "properties": {
@@ -15350,6 +16092,28 @@
         }
       }
     },
+    "v1alpha1.ClusterProfileFilterSpec": {
+      "description": "Cluster profile filter spec",
+      "properties": {
+        "environment": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.CloudType"
+          }
+        },
+        "profileName": {
+          "$ref": "#/definitions/v1.FilterString"
+        },
+        "profileType": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ClusterProfileType"
+          }
+        }
+      }
+    },
     "v1alpha1.ClusterProfilePackValues": {
       "$ref": "#/definitions/v1alpha1.PackValues"
     },
@@ -15399,6 +16163,26 @@
         },
         "status": {
           "$ref": "#/definitions/v1alpha1.PackSummaryStatus"
+        }
+      }
+    },
+    "v1alpha1.ClusterProfileSortFields": {
+      "type": "string",
+      "enum": [
+        "profileName",
+        "environment",
+        "profileType",
+        "creationTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1alpha1.ClusterProfileSortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1alpha1.ClusterProfileSortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1.SortOrder"
         }
       }
     },
@@ -15474,6 +16258,9 @@
             "all"
           ]
         },
+        "name": {
+          "type": "string"
+        },
         "packServerRefs": {
           "description": "PackServerRefs is only used on Hubble side it is reference to pack registry servers which PackRef belongs to in hubble, pack server is a top level object, so use a reference to point to it packs within a clusterprofile can come from different pack servers, so this is an array",
           "type": "array",
@@ -15493,6 +16280,9 @@
           }
         },
         "type": {
+          "type": "string"
+        },
+        "uid": {
           "type": "string"
         },
         "version": {
@@ -15520,7 +16310,8 @@
           "type": "string",
           "enum": [
             "cluster",
-            "infra"
+            "infra",
+            "add-on"
           ]
         }
       }
@@ -15572,6 +16363,15 @@
         }
       }
     },
+    "v1alpha1.ClusterProfileType": {
+      "type": "string",
+      "enum": [
+        "cluster",
+        "add-on",
+        "infra"
+      ],
+      "x-nullable": true
+    },
     "v1alpha1.ClusterProfileValidatorResponse": {
       "description": "Cluster profile validator response",
       "type": "object",
@@ -15596,6 +16396,21 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1.ListMetaData"
+        }
+      }
+    },
+    "v1alpha1.ClusterProfilesFilterSpec": {
+      "description": "Spectro cluster filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1alpha1.ClusterProfileFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ClusterProfileSortSpec"
+          }
         }
       }
     },
@@ -15708,11 +16523,11 @@
       "type": "object",
       "properties": {
         "ddnsSearchDomain": {
-          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint.",
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint. If Host is already a DDNS FQDN, DDNSSearchDomain is not required",
           "type": "string"
         },
         "host": {
-          "description": "IP or FQDN",
+          "description": "IP or FQDN(External/DDNS)",
           "type": "string"
         },
         "type": {
@@ -15759,6 +16574,15 @@
           "format": "int32"
         },
         "vendor": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.DomainHost": {
+      "description": "update domain host for application. RootDomain gets dervied from domain host url",
+      "type": "object",
+      "properties": {
+        "host": {
           "type": "string"
         }
       }
@@ -15988,6 +16812,15 @@
       "properties": {
         "spec": {
           "$ref": "#/definitions/v1alpha1.GcpAccountValidateSpec"
+        }
+      }
+    },
+    "v1alpha1.GcpCloudClusterConfigEntity": {
+      "description": "Gcp cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1alpha1.GcpClusterConfig"
         }
       }
     },
@@ -16588,6 +17421,21 @@
         }
       }
     },
+    "v1alpha1.HealthCheck": {
+      "type": "object",
+      "properties": {
+        "isHealthy": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.HealthLocks": {
       "type": "object",
       "properties": {
@@ -17120,6 +17968,23 @@
         }
       }
     },
+    "v1alpha1.MachineHealthCheckConfig": {
+      "type": "object",
+      "properties": {
+        "healthCheckMaxUnhealthy": {
+          "description": "HealthCheckMaxUnhealthy is the value above which, if current nodes are unhealthy remediation will not be triggered Can be an absolute int64 number or a percentage string Default value is 100%, i.e by default it is disabled",
+          "type": "string"
+        },
+        "networkReadyHealthCheckDuration": {
+          "description": "NetworkReadyHealthCheckDuration is the timeout to check for the network availability. If the network is not available in the given available time, beyond the timeout check a node will be killed and a new node will be created. Default time is 10m",
+          "type": "string"
+        },
+        "nodeReadyHealthCheckDuration": {
+          "description": "NodeReadyHealthCheckDuration is the timeout to check for the node ready state. If the node is not ready within the time out set, the node will be deleted and a new node will be launched. Default time is 10m",
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.MachineHealthCondition": {
       "description": "Machine health condition",
       "type": "object",
@@ -17135,6 +18000,15 @@
         },
         "type": {
           "type": "string"
+        }
+      }
+    },
+    "v1alpha1.MachineManagementConfig": {
+      "type": "object",
+      "properties": {
+        "osPatchConfig": {
+          "description": "Os patch config contains properties to patch node os with latest security packages. If OsPatchConfig is not provided then node os will not be patched with latest security updates.",
+          "$ref": "#/definitions/v1alpha1.OsPatchConfig"
         }
       }
     },
@@ -18272,6 +19146,33 @@
         }
       }
     },
+    "v1alpha1.OsPatchConfig": {
+      "type": "object",
+      "properties": {
+        "onDemandPatchAfter": {
+          "description": "OnDemandPatchAfter is the desired time forone time on-demand patch",
+          "type": "string",
+          "format": "date-time"
+        },
+        "patchOnBoot": {
+          "description": "PatchOnBoot indicates need to do patch when node first boot up, only once",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "schedule": {
+          "description": "The schedule at which security patches will be applied to OS. Schedule should be in Cron format, see https://en.wikipedia.org/wiki/Cron for more help.",
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.OsPatchEntity": {
+      "type": "object",
+      "properties": {
+        "osPatchConfig": {
+          "$ref": "#/definitions/v1alpha1.OsPatchConfig"
+        }
+      }
+    },
     "v1alpha1.OverloadSpec": {
       "description": "Overload spec",
       "type": "object",
@@ -18301,21 +19202,6 @@
           "x-omitempty": false
         },
         "tenantUid": {
-          "type": "string"
-        }
-      }
-    },
-    "v1alpha1.OverloadSpecEntity": {
-      "description": "Overload spec",
-      "type": "object",
-      "properties": {
-        "agentVersion": {
-          "type": "string"
-        },
-        "hostname": {
-          "type": "string"
-        },
-        "ipAddress": {
           "type": "string"
         }
       }
@@ -18362,18 +19248,6 @@
         }
       }
     },
-    "v1alpha1.OverlordEntity": {
-      "description": "Overlord spec",
-      "type": "object",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1.ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1alpha1.OverloadSpecEntity"
-        }
-      }
-    },
     "v1alpha1.OverlordManifest": {
       "description": "overlord manifest",
       "type": "object",
@@ -18389,6 +19263,7 @@
           "$ref": "#/definitions/v1alpha1.VsphereCloudAccount"
         },
         "name": {
+          "description": "Name for the private gateway \u0026 cloud account",
           "type": "string"
         },
         "shareWithProjects": {
@@ -18412,6 +19287,10 @@
       "properties": {
         "clusterConfig": {
           "$ref": "#/definitions/v1alpha1.VsphereOverlordClusterConfigEntity"
+        },
+        "clusterSettings": {
+          "description": "clusterSettings is the generic configuration related to a cluster like health, OS patch.",
+          "$ref": "#/definitions/v1alpha1.ClusterConfig"
         },
         "size": {
           "description": "size of the pool, number of machines",
@@ -18592,6 +19471,15 @@
     "v1alpha1.PackRefSummary": {
       "description": "Pack ref summary",
       "properties": {
+        "addonType": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "layer": {
+          "$ref": "#/definitions/v1alpha1.PackLayer"
+        },
         "name": {
           "type": "string"
         },
@@ -19539,6 +20427,35 @@
         }
       }
     },
+    "v1alpha1.ProfileParamsEntity": {
+      "description": "Profile input params",
+      "properties": {
+        "references": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.ProfileResolvedValues": {
+      "description": "Resolved profile pack values",
+      "properties": {
+        "resolved": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.Project": {
       "description": "Project information",
       "type": "object",
@@ -20142,8 +21059,7 @@
           "required": [
             "cloudType",
             "cloudAccountUid",
-            "cloudConfig",
-            "profileUid"
+            "cloudConfig"
           ],
           "properties": {
             "cloudAccountUid": {
@@ -20151,6 +21067,10 @@
             },
             "cloudConfig": {
               "$ref": "#/definitions/v1alpha1.AwsClusterConfig"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings",
+              "$ref": "#/definitions/v1alpha1.ClusterConfig"
             },
             "machinepoolconfig": {
               "type": "array",
@@ -20167,8 +21087,23 @@
             },
             "profileUid": {
               "type": "string"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+              }
             }
           }
+        }
+      }
+    },
+    "v1alpha1.SpectroAwsClusterImportEntity": {
+      "description": "Spectro AWS cluster import entity",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMetaInputEntity"
         }
       }
     },
@@ -20184,8 +21119,7 @@
           "required": [
             "cloudType",
             "cloudAccountUid",
-            "cloudConfig",
-            "profileUid"
+            "cloudConfig"
           ],
           "properties": {
             "cloudAccountUid": {
@@ -20193,6 +21127,10 @@
             },
             "cloudConfig": {
               "$ref": "#/definitions/v1alpha1.AzureClusterConfig"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings",
+              "$ref": "#/definitions/v1alpha1.ClusterConfig"
             },
             "machinepoolconfig": {
               "type": "array",
@@ -20209,8 +21147,23 @@
             },
             "profileUid": {
               "type": "string"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+              }
             }
           }
+        }
+      }
+    },
+    "v1alpha1.SpectroAzureClusterImportEntity": {
+      "description": "Spectro Azure cluster import entity",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMetaInputEntity"
         }
       }
     },
@@ -20282,7 +21235,11 @@
           "$ref": "#/definitions/v1.FilterIntRange"
         },
         "environment": {
-          "$ref": "#/definitions/v1alpha1.CloudType"
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.CloudType"
+          }
         },
         "healthState": {
           "type": "string",
@@ -20305,6 +21262,62 @@
           "type": "integer",
           "format": "int32",
           "default": 60
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterHealthCheck": {
+      "type": "object",
+      "properties": {
+        "spec": {
+          "type": "object",
+          "$ref": "#/definitions/v1alpha1.SpectroClusterHealthCheckSpec"
+        },
+        "status": {
+          "type": "object",
+          "$ref": "#/definitions/v1alpha1.SpectroClusterHealthCheckStatus"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterHealthCheckSpec": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "orgName": {
+          "type": "string"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "ownerUid": {
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterHealthCheckStatus": {
+      "type": "object",
+      "properties": {
+        "machineHealthChecks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.HealthCheck"
+          }
+        },
+        "msgBrokerHealthChecks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.HealthCheck"
+          }
+        },
+        "spectroClusterHealthChecks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.HealthCheck"
+          }
         }
       }
     },
@@ -20401,10 +21414,6 @@
     "v1alpha1.SpectroClusterPacksEntity": {
       "description": "Spectro cluster entity for pack refs validate",
       "type": "object",
-      "required": [
-        "packs",
-        "profileUid"
-      ],
       "properties": {
         "packs": {
           "type": "array",
@@ -20415,6 +21424,142 @@
         },
         "profileUid": {
           "type": "string"
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfile": {
+      "description": "Spectro cluster profile response",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1.SpectroClusterProfileSpec"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfileEntity": {
+      "description": "Spectro cluster profile entity",
+      "type": "object",
+      "properties": {
+        "packValues": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.PackValuesEntity"
+          }
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfileList": {
+      "type": "object",
+      "required": [
+        "profiles"
+      ],
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroClusterProfile"
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfileSpec": {
+      "description": "Spectro cluster profile spec response",
+      "type": "object",
+      "properties": {
+        "cloudType": {
+          "type": "string"
+        },
+        "packs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ClusterProfilePacksEntity"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfileValidatorResponse": {
+      "description": "Spectro cluster profile validator response",
+      "type": "object",
+      "properties": {
+        "packs": {
+          "$ref": "#/definitions/v1alpha1.ConstraintValidatorResponse"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfiles": {
+      "type": "object",
+      "required": [
+        "profiles"
+      ],
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfilesParamReferenceEntity": {
+      "description": "Spectro cluster profiles param reference entity",
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ProfileParamsEntity"
+          }
+        },
+        "references": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1alpha1.SpectroClusterProfilesResolvedValues": {
+      "description": "Spectro cluster profiles resolved values response",
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ProfileResolvedValues"
+          }
+        },
+        "resolved": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -20460,13 +21605,23 @@
             "all"
           ]
         },
+        "clusterConfig": {
+          "description": "ClusterConfig is the generic configuration related to a cluster like health, OS patch.",
+          "$ref": "#/definitions/v1alpha1.ClusterConfig"
+        },
         "clusterProfileRef": {
           "description": "ClusterProfileRef point to the ClusterProfile which contains ClusterProfileTemplate",
           "$ref": "#/definitions/v1.ObjectReference"
         },
         "clusterProfileTemplate": {
-          "description": "when a cluster created from a clusterprofile at t1, ClusterProfileTemplate is a copy of the draft version or latest published version of the clusterprofileSpec.clusterprofileTemplate then clusterprofile may evolve to v2 at t2, but before user decide to upgrade the cluster, it will stay as it is when user decide to upgrade, clusterProfileTemplate will be updated from the clusterprofile pointed by ClusterProfileRef",
+          "description": "Deprecated. Use clusterProfileTemplates. When a cluster created from a clusterprofile at t1, ClusterProfileTemplate is a copy of the draft version or latest published version of the clusterprofileSpec.clusterprofileTemplate then clusterprofile may evolve to v2 at t2, but before user decide to upgrade the cluster, it will stay as it is when user decide to upgrade, clusterProfileTemplate will be updated from the clusterprofile pointed by ClusterProfileRef",
           "$ref": "#/definitions/v1alpha1.ClusterProfileTemplate"
+        },
+        "clusterProfileTemplates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1.ClusterProfileTemplate"
+          }
         }
       }
     },
@@ -20479,6 +21634,9 @@
           "items": {
             "$ref": "#/definitions/v1alpha1.APIEndpoint"
           }
+        },
+        "clusterImport": {
+          "$ref": "#/definitions/v1alpha1.ClusterImport"
         },
         "conditions": {
           "type": "array",
@@ -20518,12 +21676,21 @@
             },
             "clusterProfileTemplate": {
               "$ref": "#/definitions/v1alpha1.ClusterProfileTemplateMeta"
+            },
+            "clusterProfileTemplates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.ClusterProfileTemplateMeta"
+              }
             }
           }
         },
         "status": {
           "description": "Spectro cluster status summary",
           "properties": {
+            "clusterImport": {
+              "$ref": "#/definitions/v1alpha1.ClusterImport"
+            },
             "health": {
               "$ref": "#/definitions/v1alpha1.SpectroClusterHealthStatus"
             },
@@ -20563,6 +21730,9 @@
           "items": {
             "$ref": "#/definitions/v1alpha1.APIEndpoint"
           }
+        },
+        "clusterImport": {
+          "$ref": "#/definitions/v1alpha1.ClusterImport"
         },
         "conditions": {
           "type": "array",
@@ -20604,6 +21774,12 @@
             },
             "clusterProfileTemplate": {
               "$ref": "#/definitions/v1alpha1.ClusterProfileTemplateMeta"
+            },
+            "clusterProfileTemplates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.ClusterProfileTemplateMeta"
+              }
             }
           }
         },
@@ -20621,6 +21797,13 @@
         },
         "packs": {
           "$ref": "#/definitions/v1alpha1.ConstraintValidatorResponse"
+        },
+        "profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1.SpectroClusterProfileValidatorResponse"
+          }
         }
       }
     },
@@ -20698,8 +21881,7 @@
           "required": [
             "cloudType",
             "cloudAccountUid",
-            "cloudConfig",
-            "profileUid"
+            "cloudConfig"
           ],
           "properties": {
             "cloudAccountUid": {
@@ -20708,6 +21890,10 @@
             "cloudConfig": {
               "$ref": "#/definitions/v1alpha1.GcpClusterConfig"
             },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings",
+              "$ref": "#/definitions/v1alpha1.ClusterConfig"
+            },
             "machinepoolconfig": {
               "type": "array",
               "items": {
@@ -20715,6 +21901,7 @@
               }
             },
             "packValues": {
+              "description": "Deprecated. Use profiles",
               "type": "array",
               "uniqueItems": true,
               "items": {
@@ -20722,9 +21909,25 @@
               }
             },
             "profileUid": {
+              "description": "Deprecated. Use profiles",
               "type": "string"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+              }
             }
           }
+        }
+      }
+    },
+    "v1alpha1.SpectroGcpClusterImportEntity": {
+      "description": "Spectro GCP cluster import entity",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMetaInputEntity"
         }
       }
     },
@@ -20915,8 +22118,7 @@
           "type": "object",
           "required": [
             "cloudAccountUid",
-            "cloudConfig",
-            "profileUid"
+            "cloudConfig"
           ],
           "properties": {
             "cloudAccountUid": {
@@ -20924,6 +22126,10 @@
             },
             "cloudConfig": {
               "$ref": "#/definitions/v1alpha1.VsphereClusterConfigEntity"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings",
+              "$ref": "#/definitions/v1alpha1.ClusterConfig"
             },
             "machinepoolconfig": {
               "type": "array",
@@ -20940,8 +22146,33 @@
             },
             "profileUid": {
               "type": "string"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1.SpectroClusterProfileEntity"
+              }
             }
           }
+        }
+      }
+    },
+    "v1alpha1.SpectroVsphereClusterImportEntity": {
+      "description": "Spectro Vsphere cluster import entity",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1.ObjectMetaInputEntity"
+        }
+      }
+    },
+    "v1alpha1.SpotMarketOptions": {
+      "description": "SpotMarketOptions defines the options available to a user when configuring Machines to run on Spot instances. Most users should provide an empty struct.",
+      "type": "object",
+      "properties": {
+        "maxPrice": {
+          "description": "MaxPrice defines the maximum price the user is willing to pay for Spot VM instances",
+          "type": "string"
         }
       }
     },
@@ -22844,6 +24075,15 @@
         }
       }
     },
+    "v1alpha1.VsphereEnv": {
+      "description": "Vsphere environment",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1.VsphereImage": {
       "description": "A generated Image should always be a template which resides inside vsphere Will not generate a OVA file out of the image OVA can be used as a base input of the os pack, that's internal to the pack",
       "type": "object",
@@ -23325,6 +24565,9 @@
           "maximum": 2000,
           "minimum": 1
         },
+        "spotMarketOptions": {
+          "$ref": "#/definitions/v1alpha1SpotMarketOptions"
+        },
         "subnets": {
           "type": "array",
           "items": {
@@ -23537,6 +24780,38 @@
         }
       }
     },
+    "v1alpha1ClusterConfig": {
+      "type": "object",
+      "properties": {
+        "controlPlaneHealthCheckTimeout": {
+          "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes. If the node is not ready within the time out set, the node will be deleted and a new node will be launched.",
+          "type": "string"
+        },
+        "machineHealthConfig": {
+          "$ref": "#/definitions/v1alpha1MachineHealthCheckConfig"
+        },
+        "machineManagementConfig": {
+          "$ref": "#/definitions/v1alpha1MachineManagementConfig"
+        }
+      }
+    },
+    "v1alpha1ClusterImport": {
+      "type": "object",
+      "properties": {
+        "importLink": {
+          "description": "import link to download and install ally-lite, palette-lite",
+          "type": "string"
+        },
+        "isBrownfield": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "state": {
+          "description": "cluster import status",
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1ClusterProfileTemplate": {
       "description": "ClusterProfileTemplate contains details of a clusterprofile definition",
       "type": "object",
@@ -23552,6 +24827,9 @@
             "baremetal",
             "all"
           ]
+        },
+        "name": {
+          "type": "string"
         },
         "packServerRefs": {
           "description": "PackServerRefs is only used on Hubble side it is reference to pack registry servers which PackRef belongs to in hubble, pack server is a top level object, so use a reference to point to it packs within a clusterprofile can come from different pack servers, so this is an array",
@@ -23574,6 +24852,9 @@
         "type": {
           "type": "string"
         },
+        "uid": {
+          "type": "string"
+        },
         "version": {
           "description": "version start from 0, matching the index of ClusterProfileSpec.Versions[] will be used by clusterSpec to identify which version is applied to the cluster",
           "type": "integer",
@@ -23585,11 +24866,11 @@
       "type": "object",
       "properties": {
         "ddnsSearchDomain": {
-          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint.",
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint. If Host is already a DDNS FQDN, DDNSSearchDomain is not required",
           "type": "string"
         },
         "host": {
-          "description": "IP or FQDN",
+          "description": "IP or FQDN(External/DDNS)",
           "type": "string"
         },
         "type": {
@@ -23666,6 +24947,31 @@
           "items": {
             "$ref": "#/definitions/v1alpha1ServicePort"
           }
+        }
+      }
+    },
+    "v1alpha1MachineHealthCheckConfig": {
+      "type": "object",
+      "properties": {
+        "healthCheckMaxUnhealthy": {
+          "description": "HealthCheckMaxUnhealthy is the value above which, if current nodes are unhealthy remediation will not be triggered Can be an absolute int64 number or a percentage string Default value is 100%, i.e by default it is disabled",
+          "type": "string"
+        },
+        "networkReadyHealthCheckDuration": {
+          "description": "NetworkReadyHealthCheckDuration is the timeout to check for the network availability. If the network is not available in the given available time, beyond the timeout check a node will be killed and a new node will be created. Default time is 10m",
+          "type": "string"
+        },
+        "nodeReadyHealthCheckDuration": {
+          "description": "NodeReadyHealthCheckDuration is the timeout to check for the node ready state. If the node is not ready within the time out set, the node will be deleted and a new node will be launched. Default time is 10m",
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1MachineManagementConfig": {
+      "type": "object",
+      "properties": {
+        "osPatchConfig": {
+          "$ref": "#/definitions/v1alpha1OsPatchConfig"
         }
       }
     },
@@ -23841,6 +25147,25 @@
           "type": "string"
         },
         "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha1OsPatchConfig": {
+      "type": "object",
+      "properties": {
+        "onDemandPatchAfter": {
+          "description": "OnDemandPatchAfter is the desired time forone time on-demand patch",
+          "type": "string",
+          "format": "date-time"
+        },
+        "patchOnBoot": {
+          "description": "PatchOnBoot indicates need to do patch when node first boot up, only once",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "schedule": {
+          "description": "The schedule at which security patches will be applied to OS. Schedule should be in Cron format, see https://en.wikipedia.org/wiki/Cron for more help.",
           "type": "string"
         }
       }
@@ -24368,6 +25693,22 @@
         }
       }
     },
+    "v1alpha1SpectroClusterProfileEntity": {
+      "description": "Spectro cluster profile entity",
+      "type": "object",
+      "properties": {
+        "packValues": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1alpha1PackValuesEntity"
+          }
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
     "v1alpha1SpectroClusterSpec": {
       "description": "SpectroClusterSpec defines the desired state of SpectroCluster",
       "type": "object",
@@ -24387,11 +25728,20 @@
             "all"
           ]
         },
+        "clusterConfig": {
+          "$ref": "#/definitions/v1alpha1ClusterConfig"
+        },
         "clusterProfileRef": {
           "$ref": "#/definitions/v1ObjectReference"
         },
         "clusterProfileTemplate": {
           "$ref": "#/definitions/v1alpha1ClusterProfileTemplate"
+        },
+        "clusterProfileTemplates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1alpha1ClusterProfileTemplate"
+          }
         }
       }
     },
@@ -24404,6 +25754,9 @@
           "items": {
             "$ref": "#/definitions/v1alpha1ApiEndpoint"
           }
+        },
+        "clusterImport": {
+          "$ref": "#/definitions/v1alpha1ClusterImport"
         },
         "conditions": {
           "type": "array",
@@ -24438,8 +25791,7 @@
           "type": "object",
           "required": [
             "cloudAccountUid",
-            "cloudConfig",
-            "profileUid"
+            "cloudConfig"
           ],
           "properties": {
             "cloudAccountUid": {
@@ -24447,6 +25799,9 @@
             },
             "cloudConfig": {
               "$ref": "#/definitions/v1alpha1VsphereClusterConfigEntity"
+            },
+            "clusterConfig": {
+              "$ref": "#/definitions/v1alpha1ClusterConfig"
             },
             "machinepoolconfig": {
               "type": "array",
@@ -24463,8 +25818,24 @@
             },
             "profileUid": {
               "type": "string"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1alpha1SpectroClusterProfileEntity"
+              }
             }
           }
+        }
+      }
+    },
+    "v1alpha1SpotMarketOptions": {
+      "description": "SpotMarketOptions defines the options available to a user when configuring Machines to run on Spot instances. Most users should provide an empty struct.",
+      "type": "object",
+      "properties": {
+        "maxPrice": {
+          "description": "MaxPrice defines the maximum price the user is willing to pay for Spot VM instances",
+          "type": "string"
         }
       }
     },
