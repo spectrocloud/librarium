@@ -12,30 +12,12 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
-# **SPECTRO CLOUD 1.7.0**
-### **07 Jan 2021**
-------------------------------
 
+# January 07, 2021 - Release 1.7.0
 
-**We are pleased to announce the release of _Spectro Cloud Version 1.7.0._**
-## **Featuring:**
-- **_Brown Field Support_**
+We are pleased to announce the release of Spectro Cloud Version 1.7.0 focusing on a dedicated User Interface which smoothens the migration from a quick start version to enterprise version.
 
-- **_OS Patch Orchestrator_**
-
-- **_Pack Constraints_**
-
-- **_Multi Profiles_**
-
-- **_CAPI Updates_**
-
-- **_New K8S Packages_**
-
-- **_AWS  Spot Instances_**
-
-
-Release 1.7.0 is focusing on a dedicated User Interface which smoothens the migration from a quick start version to enterprise version.
-## **Upgradations, Enhancements and Modifications:**
+Upgradations, Enhancements and Modifications:
 
 - The cluster API CAPI updated to 0.3.12.
 - CAPZ, the cluster API provider for Azure platform is updated to 0.4.11.
@@ -48,10 +30,13 @@ Release 1.7.0 is focusing on a dedicated User Interface which smoothens the migr
 - vsphere updated with vcsim for enhanced integration tests and coverage.
 - Added ability towards selective upgradation.
 - Upgradation in palette vendorcrd
-## **Bug Fixes:**
+
+Bug Fixes:
+
 - Adding dynamic labels in namespace by getting from Spectro cluster.
 - JET-1949 will now validate manifest before applying it in pivot and cleaning up the namespaces.
 - Upgraded the mold base image BET-1698 to BET 1755, to solve the KCP upgrade issues related to the incorrect changing of cluster info configmap.
+
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
