@@ -12,7 +12,46 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+# **SPECTRO CLOUD 1.7.0**
+### **07 Jan 2021**
+------------------------------
 
+
+**We are pleased to announce the release of _Spectro Cloud Version 1.7.0._**
+## **Featuring:**
+- **_Brown Field Support_**
+
+- **_OS Patch Orchestrator_**
+
+- **_Pack Constraints_**
+
+- **_Multi Profiles_**
+
+- **_CAPI Updates_**
+
+- **_New K8S Packages_**
+
+- **_AWS  Spot Instances_**
+
+
+Release 1.7.0 is focusing on a dedicated User Interface which smoothens the migration from a quick start version to enterprise version.
+## **Upgradations, Enhancements and Modifications:**
+
+- The cluster API CAPI updated to 0.3.12.
+- CAPZ, the cluster API provider for Azure platform is updated to 0.4.11.
+- Upgraded with multiple profile support to clusters. The    profiles are categorized as infra and Add-on. The cluster profiles can be created accordingly and enables multiple profiles to be associated to individual clusters.
+- New node agent service supports an ansible playbook to perform node related tasks.
+- Ansible OS-patch playbook inclusion for security patch in nodes.
+- Spectro Cloud is enabling legacy brown field support bringing any cloud to spectro
+- OS Patch orchestrator implemented for on-boot, on-demand and scheduled OS patching.
+- Support of AWS spot instances. Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted.
+- vsphere updated with vcsim for enhanced integration tests and coverage.
+- Added ability towards selective upgradation.
+- Upgradation in palette vendorcrd
+## **Bug Fixes:**
+- Adding dynamic labels in namespace by getting from Spectro cluster.
+- JET-1949 will now validate manifest before applying it in pivot and cleaning up the namespaces.
+- Upgraded the mold base image BET-1698 to BET 1755, to solve the KCP upgrade issues related to the incorrect changing of cluster info configmap.
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
