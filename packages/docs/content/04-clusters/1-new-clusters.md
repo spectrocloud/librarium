@@ -599,7 +599,11 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 | Tasks | Create task |
 | | Update Task |
 | Virtual Machines | Change Configuration |
-| | * Add existing disk |
+| | * Change Settings |
+| | * Change Swapfile Placement
+| | * Configure host USB device
+| | * Configure raw device
+| | * Add existing disk 
 | | * Add new disk
 | | * Add or remove device
 | | * Advanced configuration
