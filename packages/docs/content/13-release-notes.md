@@ -13,10 +13,10 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# January 07, 2021 - Release 1.7.0
+# February 07, 2021 - Release 1.7.0
 
 We are pleased to announce the release of Spectro Cloud Version 1.7.0 focusing on a dedicated User Interface which eases the migration from a quick start version to enterprise version.
-The release has also come up with added Brownfield support.
+The release also includes Brownfield support.
 
 Upgradations, Enhancements and Modifications:
 
@@ -25,7 +25,7 @@ Upgradations, Enhancements and Modifications:
 - Upgraded with multiple profile support to clusters.
 - New node agent service supports an ansible playbook to perform node related tasks.
 - Ansible OS-patch playbook inclusion for security patch in nodes.
-- Spectro Cloud is enabling legacy brown field support bringing any cloud to spectro
+- Spectro Cloud is enabling legacy brownfield support bringing any cloud to spectro
 - OS Patch orchestrator implemented for on-boot, on-demand and scheduled OS patching.
 - Support of AWS spot instances.
 - Added ability towards selective upgradation.
