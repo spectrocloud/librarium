@@ -28,15 +28,9 @@ Upgradations, Enhancements and Modifications:
 - Spectro Cloud is enabling legacy brown field support bringing any cloud to spectro
 - OS Patch orchestrator implemented for on-boot, on-demand and scheduled OS patching.
 - Support of AWS spot instances.
-- vsphere updated with vcsim.
 - Added ability towards selective upgradation.
 - Upgradation in palette vendorcrd
 
-Bug Fixes:
-
-- Dynamic labels added to namespace.
-- JET-1949 validation manifest.
-- Upgraded mold base image BET-1698 to BET 1755.
 
 # December 23, 2020 - Hotfix 1.6.4
 
