@@ -13,6 +13,25 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+# February 07, 2021 - Release 1.7.0
+
+We are pleased to announce the release of Spectro Cloud Version 1.7.0 focusing on a dedicated User Interface which eases the migration from a quick start version to enterprise version.
+The release also includes Brownfield support.
+
+Upgradations, Enhancements and Modifications:
+
+- The cluster API CAPI updated to 0.3.12.
+- CAPZ, the cluster API provider for Azure platform is updated to 0.4.11.
+- Upgraded with multiple profile support to clusters.
+- New node agent service supports an ansible playbook to perform node related tasks.
+- Ansible OS-patch playbook inclusion for security patch in nodes.
+- Spectro Cloud is enabling legacy brownfield support bringing any cloud to spectro
+- OS Patch orchestrator implemented for on-boot, on-demand and scheduled OS patching.
+- Support of AWS spot instances.
+- Added ability towards selective upgradation.
+- Upgradation in palette vendorcrd
+
+
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
