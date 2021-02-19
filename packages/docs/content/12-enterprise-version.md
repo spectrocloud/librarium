@@ -1,7 +1,7 @@
 ---
-title: "On-Premise Installation"
-metaTitle: "On-Premise Installation"
-metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premise) variant."
+title: "On-Premises Installation"
+metaTitle: "On-Premises Installation"
+metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premises) variant."
 icon: "warehouse"
 hideToC: false
 fullWidth: false
@@ -10,7 +10,7 @@ fullWidth: false
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
-# On-Premise Installation
+# On-Premises Installation
 
 The Spectro Cloud SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer datacenters to manage kubernetes clusters. Spectro Cloud on-prem is available in two modes:
 
