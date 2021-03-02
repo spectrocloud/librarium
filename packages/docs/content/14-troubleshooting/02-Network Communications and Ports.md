@@ -16,7 +16,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 # Network Communications and Ports
 
 
-![workload_cluster_provisioning.png](workload_cluster_provisioning.png)
+![network_communication_ports.png](network_communication_ports.png)
 
 
 
