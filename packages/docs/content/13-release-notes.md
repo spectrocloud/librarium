@@ -15,6 +15,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # February 07, 2021 - Release 1.7.0
 
+
 The following features and enhancements were released as part of 1.7.0
  
 * Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
@@ -22,6 +23,7 @@ The following features and enhancements were released as part of 1.7.0
 * Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster. 
 * Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
 * Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
+
 
 # December 23, 2020 - Hotfix 1.6.4
 
