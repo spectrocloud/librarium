@@ -23,6 +23,7 @@ The following features and enhancements were released as part of 1.7.0
 * Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
 * Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
 
+
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
