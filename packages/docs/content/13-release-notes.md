@@ -15,21 +15,14 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # February 07, 2021 - Release 1.7.0
 
-We are pleased to announce the release of Spectro Cloud Version 1.7.0 focusing on a dedicated User Interface which eases the migration from a quick start version to enterprise version.
-The release also includes Brownfield support.
 
-Upgradations, Enhancements and Modifications:
-
-- The cluster API CAPI updated to 0.3.12.
-- CAPZ, the cluster API provider for Azure platform is updated to 0.4.11.
-- Upgraded with multiple profile support to clusters.
-- New node agent service supports an ansible playbook to perform node related tasks.
-- Ansible OS-patch playbook inclusion for security patch in nodes.
-- Spectro Cloud is enabling legacy brownfield support bringing any cloud to spectro
-- OS Patch orchestrator implemented for on-boot, on-demand and scheduled OS patching.
-- Support of AWS spot instances.
-- Added ability towards selective upgradation.
-- Upgradation in palette vendorcrd
+The following features and enhancements were released as part of 1.7.0
+ 
+* Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
+* Automated as well as on-demand OS updates to keep cluster nodes up-to-date with latest security fixes and enhancements. 
+* Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster. 
+* Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
+* Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
 
 
 # December 23, 2020 - Hotfix 1.6.4
