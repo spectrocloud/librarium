@@ -15,7 +15,6 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # February 07, 2021 - Release 1.7.0
 
-
 The following features and enhancements were released as part of 1.7.0
  
 * Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
