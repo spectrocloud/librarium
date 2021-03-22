@@ -142,6 +142,26 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 </InfoBox>
 
+## Download Cluster Logs
+
+At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages . Problems that occur during the orchestration lifecycle may require access to various container, node and kube system logs. Spectro Cloud automates this log collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
+
+To Collect the logs:
+
+<InfoBox>
+ 
+ Go to the running cluster -> Click on settings top right corner -> click Download Logs -> Choose the desired logs to be collected
+
+</InfoBox>
+
+The log types supported are:
+ * Kube-System Logs
+ * Spectro Cloud Logs
+ * Node Logs
+ 
+Once the download button is clicked the system starts aggregating logs, and the option to download the log archive is displayed in a few seconds.
+
+
 # Proxy Whitelists
 
 This table lists the proxy requirements for enabling the Spectro Cloud management console.

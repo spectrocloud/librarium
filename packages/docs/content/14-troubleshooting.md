@@ -34,6 +34,7 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 </InfoBox>
 
+
 # Spectro Guides
 
 Spectro Cloud provisions standard, upstream Kubernetes clusters using `kubeadm` and `cluster-api`. All of the upstream documentation relating to support and troubleshooting can be used as guides. The <Tooltip trigger={<u>guide</u>}>This <a href="https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster">official guide</a> is about cluster troubleshooting; we assume you have already ruled out your application as the root cause of the problem you are experiencing.</Tooltip> on the official Kubernetes website provides a high-level overview of the components and log file locations.
@@ -183,3 +184,4 @@ Installation of the gateway cluster may run into errors or might get stuck in th
 * [Calico](/integrations/calico/#troubleshooting)
 * [Kubernetes Dashboard](/integrations/kubernetes-dashboard/#troubleshooting)
 * [CSI](/integrations/csi/#troubleshooting)
+
