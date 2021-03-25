@@ -17,6 +17,4 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 # COMPLIANCE
 
 
-Spectro Cloud is certified against compliance standards of SOC2. 
-
-Certification of Spectro Cloud against compliance standards of PCI DSS is in progress.
+Spectro Cloud is certified against compliance standards such as SOC2 and PCI DSS.
