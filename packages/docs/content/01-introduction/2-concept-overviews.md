@@ -71,7 +71,7 @@ Spectro Cloud provides extensibility by providing a way for users to define pack
 
 # Helm Charts
 
-Heml Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud provides support orchestration of helm charts hosted in any public or provate helm chart registry on to Kubernetes clusters. 
+Helm Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud provides support orchestration of helm charts hosted in any public or provate helm chart registry on to Kubernetes clusters. 
 
 
 # Chart Repositories
@@ -81,7 +81,7 @@ Public or private web servers that host Helm Charts. A few populate chart regist
 
 # Attach Manifests
 
-For integrations and add-ones orchestrated via Spectro Cloud Packs or Charts, at times it is required to provison additional kubernetes resources to complete th installation. Resoruces like additional secrets, or CRDs maybe required to be customized and installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
+For integrations and add-ons orchestrated via Spectro Cloud Packs or Charts, at times it is required to provison additional kubernetes resources to complete the installation. Resoruces like additional secrets, or CRDs maybe required to be customized and installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
 
 
 # Pack Manifests
