@@ -13,6 +13,33 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+# March 25, 2021 - Release 1.8.0
+
+Spectro Cloud 1.8.0 released with advanced support for deploying & discovering Helm Charts and several usability enhancements!
+
+Featuring
+
+* Set up public and private helm chart registries to leverage the vast database of integrations and add-ons.
+* Deploy reliable and secure kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
+* Accumulate container logs across all cluster nodes to create a support bundle to enable faster troubleshooting.
+* Attach multiple supporting manifests to your cluster profile layers in order to deploy integrations end to end without having to use command line client
+* Add additional BYOM (Bring Your Own Manifest)  layers to your cluster profiles to perform ad-hoc customized deployments on the cluster
+* You can now import and manage existing clusters running in your private VMware environment behind a proxy
+* Discover charts deployed on your existing clusters and convert them into a cluster profile to use it as a template for future cluster deployments
+* Enhanced cluster profile builder experience with several usability enhancements.
+
+
+# February 07, 2021 - Release 1.7.0
+
+The following features and enhancements were released as part of 1.7.0
+ 
+* Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
+* Automated as well as on-demand OS updates to keep cluster nodes up-to-date with latest security fixes and enhancements. 
+* Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster. 
+* Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
+* Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
+
+
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.

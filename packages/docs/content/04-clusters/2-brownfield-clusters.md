@@ -26,6 +26,7 @@ The following steps need to be performed in order to import a brownfield cluster
 
  * From the Clusters page, invoke the option to “Import” a cluster.
  * Provide a name for the cluster. Select the cloud type where the cluster is currently deployed.
+ * Provide proxy and non proxy information if applicable.
  * Install Spectro Cloud’s cluster management agent into your brownfield cluster using the kubectl command provided.
  * Wait for the import process to complete. The cluster status will transition from ‘Pending’ to ‘Running’ and the cluster health will transition to ‘Healthy’, signalling successful import of the brownfield cluster.
 
