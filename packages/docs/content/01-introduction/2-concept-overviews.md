@@ -71,22 +71,22 @@ Spectro Cloud provides extensibility by providing a way for users to define pack
 
 # Helm Charts
 
-Heml Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud provides support orchestration of helm charts hosted in any public or provate helm chart registry on to Kubernetes clusters. 
+Heml Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports crchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
 
 
 # Chart Repositories
 
-Public or private web servers that host Helm Charts. A few populate chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add other public of private chart repositories as an administration setting to leverage charts from those repositories. 
+Public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add additional public of private chart repositories as an administration setting to leverage charts from those repositories. 
 
 
 # Attach Manifests
 
-For integrations and add-ones orchestrated via Spectro Cloud Packs or Charts, at times it is required to provison additional kubernetes resources to complete th installation. Resoruces like additional secrets, or CRDs maybe required to be customized and installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
+For integrations and add-ones orchestrated via Spectro Cloud Packs or Charts, at times it is required to provison additional kubernetes resources to complete the installation. Resoruces like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
 
 
 # Pack Manifests
 
-Layers in a cluster profile are typically built using a Spectro Pack or a Chart. There maybe be certain scenarious where a additional kubernetes resources need to be provisioned, that are not part of any Spectro pack or a chart. Pack manifests provide a pass through mecahnism to allow provisioning through raw manifests. Pack Manifest layers can added to a cluster profile stack built using Spectro Packs and Charts. 
+Layers in a cluster profile are typically built using a Spectro Pack or a Chart. There maybe be certain scenarious where additional kubernetes resources need to be provisioned, that are not part of any Spectro pack or a chart. Pack manifests provide a pass through mecahnism to allow provisioning through raw manifests. Pack Manifest layers can added to a cluster profile stack built using Spectro Packs and Charts. 
 
 # Presets
 
