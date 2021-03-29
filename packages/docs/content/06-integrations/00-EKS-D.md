@@ -16,8 +16,9 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Amazon EKS Distro
 
-This pack defines the properties that will be used by Spectro Cloud to bring up reliable and secure EKS-D  cluster.EKS Distro includes binaries and containers of open source Kubernetes, etcd, ,networking, storage plugins, all tested for compatibility. Most of the Kubernetes hardening standards recommended by the Center for Internet Security is enabled by default.You can deploy EKS Distro wherever your applications need to run.
-EKS Distro makes it easier for you to create Kubernetes clusters and manage the Kubernetes lifecycle by alleviating the need to track updates, determine compatibility, standardize on a common Kubernetes version across distributed teams, and have extended support for versions 
+This pack defines the properties that will be used by Spectro Cloud to bring up reliable and secure EKS-D clusters. EKS Distro includes binaries and containers of open source Kubernetes, etcd, ,networking, storage plugins, all tested for compatibility. Most of the Kubernetes hardening standards recommended by the Center for Internet Security is enabled by default.You can deploy EKS Distro wherever your applications need to run.
+EKS Distro makes it easier for you to create Kubernetes clusters and manage the Kubernetes lifecycle by alleviating the need to track updates, determine compatibility, standardize on a common Kubernetes version across distributed teams, and have extended support for versions. 
+EKS Distro is supported by all the public cloud infrastructures.
 
 ## Supported EKS Distro Versions
 
