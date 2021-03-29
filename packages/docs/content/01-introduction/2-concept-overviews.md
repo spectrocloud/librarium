@@ -71,7 +71,7 @@ Spectro Cloud provides extensibility by providing a way for users to define pack
 
 # Helm Charts
 
-Heml Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports crchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
+Helm Charts are Kubernetes YAML maniests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports crchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
 
 
 # Chart Repositories
