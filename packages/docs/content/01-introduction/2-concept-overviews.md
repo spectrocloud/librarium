@@ -71,12 +71,12 @@ Spectro Cloud provides extensibility by providing a way for users to define pack
 
 # Helm Charts
 
-Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports orchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
+Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports and orchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
 
 
 # Chart Repositories
 
-Public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories. 
+Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories. 
 
 
 # Attach Manifests
@@ -86,7 +86,7 @@ For integrations and add-ons orchestrated via Spectro Cloud Packs or Charts, at 
 
 # Pack Manifests
 
-Layers in a cluster profile are typically built using a Spectro Pack or a Chart. There maybe be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can added to a cluster profile stack built using Spectro Packs and Charts. 
+Layers in a cluster profile are typically built using a Spectro Pack or a Chart. There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts. 
 
 # Presets
 
