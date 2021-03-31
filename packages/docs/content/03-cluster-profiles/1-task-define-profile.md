@@ -20,10 +20,11 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
   * Network
   * Storage
 
+
 * Additional layers such as Monitoring, Security, Load Balancers, etc. may be added and configured as desired. These layers may be configured for the profiles of the type "Full" or "Add-On". These add-on layers can be added in one of the following ways:
 
   * Add New - Add a Spectro Cloud Pack from a pack registry or a Helm Chart from a chart registry. The public Spectro Cloud Pack registry and a few popular helm chart repositories are already availale out of the box. Additional pack registries or public/private chart registries can be added to Spectro Cloud. 
-  * Import - Charts can be discovered from an existing Kubernetes Cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories avaialble with Spectro Cloud. Users can provide the registry information on  hosting these charts during the import process to complete addition of such charts. 
+  * Import - Charts can be discovered from an existing Kubernetes Cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Spectro Cloud. Users can provide the registry information on  hosting these charts during the import process to complete addition of such charts.
   * Pack Manifests - Layers can be constructed using raw manifests to provision kubernetes resources that are not available via Spectro Clouds or Charts. Pack Manifests provide a pass through mechanism wherein additional kubernetes resources can be orchestrated on to a cluster along with rest of the stack. 
 
 
