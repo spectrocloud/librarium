@@ -5,7 +5,7 @@ metaDescription: 'EKS-D packs in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['eks-d']
-logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
+logoUrl: 'https://registry.spectrocloud.com/v1/kubernetes-eksd/blobs/sha256:5790ca7040999e2f9371163a319cda652ed1e32139bcb9c6fb32a0152d9f48fb?type=image/png'
 ---
 
 import Tabs from '@librarium/shared/src/components/ui/Tabs';
