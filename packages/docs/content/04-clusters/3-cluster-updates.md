@@ -16,62 +16,46 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
  
 # Cluster Updates
-Spectro Cloud ensures the complete life cycle utilization  of its cluster for the users  by promoting strong day 2 operations. In this context cluster updates and integrations are of at most importance and could be done very easily. Cluster updates are all about updating the cluster profile features like packs, manifests, pack values, versions etc after the cluster is created. Each of these updates creates notifications for the users to check, confirm and incorporate the updates to the running cluster. A detailed overview of these updates and notifications pertaining to individual updates is enumerated in this session.
- 
-## Steps to follow:
-* Go to the Cluster profiles.
-* Select the cluster profile to be updated.
-* Make the pack updates (includes update of the pack version, pack values, additon/deletion of  packs, addition/deletion/updation of manifests) and save.
-* Now, go to the Clusters page, where the ‘Updates Available’ tag can be seen on the corresponding cluster names for which the cluster profile update was done.
-* Click on the particular cluster.
-* A green button tagged ‘Updates Available’ can be seen on the right top of the screen, click open it.
-* A new window tagged ‘Available updates’ opens up.
-* This screen has information regarding all the profile updates done to that cluster.This window carries two types of information :
- *  Profile Updates and notifications.
- *  Current cluster values and incoming profile changes.
-* Users can verify the changes and press ‘confirm updates’ to complete the process of cluster updation.
- 
-# Cluster Updates and Notifications
+Spectro Cloud ensures the complete life cycle utilization of its cluster for the users by promoting strong day 2 operations. In this context, cluster updates and integrations are extremely important. In Spectro Cloud, majority of the updates are rolled out through Cluster Profiles. Updates such as addition of a new layer, changes to the pack version, removal of an existing layer, changes to the layer settings or attached manifests, etc. result in update notifications on all the clusters that were instantiated from that cluster profile.  Users can check, confirm and incorporate the updates to their running clusters at an appropriate time.
 
-Any updates to the Cluster Profile packs generates update notification on the Clusters. Users are required to verify the updates, verify the pack values and confirm only if the updates are valid. Only on confirmation the updates are applied to the running Spectro Cloud clusters.
-Supported notification updates are as listed below.
+Additionally, users may changes like overriding pack settings or manifest settings directly on the clusters. 
  
-|Cluster Updates     |Description|Notification Example                   |
+## Instructions:
+* Navigate to the cluster profiles page and choose the profile to be updated. 
+* Make the desired changes. These include add/delete layers, change pack version, change pack values etc. Save your changes. 
+* On the Clusters page, observe the  ‘Updates Available’ tag on every cluster that was previously launched using the updated cluster profile.
+* Click on one of the clusters to be updated to invoke the cluster details page. 
+* An update notification in form of a button called ‘Updates Available’ can be seen on the right top of the screen. Click the button to open the update  notifications dialog.
+* A notification is created for each change made to the profile. Review all notifications. Depending on the nature of the change, additional action might be required for certain notifications. These are typically scenarios, where the settings or attached manifests for a pack were directly update on the cluster which results in a conflict with the new incoming changes from the profile. For such cases, the updated profile settings and modified cluster settings are shown side by side, with the differences highlighted. Resolve all of the conflicts. When there has been no update to the pack settings or manifests, the incoming changes from the profile are automatically merged. A side by side comparison between the original cluster settings and the merged cluster settings is still displayed in such cases for review purposes. However, users may choose to further customize settings from this dialog. 
+* Once all the notifications are reviewed and conflicts, if any, are resolved, confirm updates to apply changes to the cluster. 
+* The system starts the update process in a few seconds. Depending upon the nature of the change, a rolling update of the clusters nodes may take place. The UI updates with detailed status of the upgrade. 
+* Repeat this process for other clusters to be upgraded.
+
+
+# Examples - Update Notifications
+
+|Update Type     |Description|Notification Example                   |
 |:---------------|:---------|:-----------------------|
-Pack Upgrade |The existing pack version is upgraded to a different version in the cluster profile     |Kubernetes version is updated 1.18.16 > 1.20.0|
+Pack Version Upgrade |The existing pack version is upgraded to a different version in the cluster profile     |Kubernetes version is updated 1.18.16 > 1.20.0|
 |Pack Values Update |The existing pack values are updated in the cluster profile       |Kubernetes  1.20.0 values are updated|
 |Add Pack|Add a new pack to the cluster profile    |New Kibana 7.2.4 layer is added|
 |Delete Pack|Delete the existing pack from the cluster profile      |Kibana 7.2.4 layer is deleted|
 |Attach Pack Manifest|Delete the existing pack from the cluster profile      |Manifest security is attached to the pack Kubernetes|
 |Update Pack Manifest|The attached pack manifest content is updated in the cluster profile|manifest security is updated in the pack Kubernetes|
 |Delete Pack Manifest |The attached pack manifest is deleted from the cluster profile|manifest security is deleted in the pack Kubernetes|
- 
- 
-## ‘Available Updates’- pop up screen
-The ‘**Available Updates**’ pop-up carries details on **‘current cluster values and incoming profile changes’**. As the tag suggests, the left side carries the current values in the cluster in view only mode and the right side carries the updated values which are in editable format. Once the ‘confirm updates’ is selected the right side updates get overridden to the left side and the cluster profile gets updated . While adding and deleting a cluster feature ‘current cluster values and incoming profile changes’ will not be there, only current cluster values window in editable format will only be present.
- 
-Related to ‘current cluster values and incoming profile changes’ the contents of this window takes two forms:
-* current cluster values / incoming profile changes:
-If a pack contains no overridden values, an edit to the pack values displays current cluster values / incoming profile changes format .
-* incoming profile changes / current cluster values:
-If a pack contains already overridden values and a further edit to the pack values displays incoming profile changes / current cluster values.
- 
-**Note:**
-Once a change is made at the cluster profile and notification update is not applied to the cluster (pending notification), then if the user decides to revert the changes at cluster profile then the pending notification on the cluster gets cleared automatically.
 
-Eg: new pack added - update notification generated  - keep the notification pending - remove the added pack - No updates visible on the cluster.
- 
-# Cluster Profile Notification
- 
-The registry updates such as new pack or helm chart release, existing pack values update generates the notification on the cluster profiles. If the user selects the Kubernetes pack with smart tag (eg: version 1.20.x) while adding the pack, any new Kubernetes release available at the registry auto updates the cluster profiles to update to the latest Kubernetes. Instead if the user selects a specific version (eg: version 1.20.2) of the pack then users need to update to the new version by updating the cluster profile manually. Any update to the cluster profile triggers the notification on the clusters and users should confirm the updates in order to apply the changes to the running Kubernetes Cluster.
- 
-|Update Notification     |Description|Example                   |
-|:---------------|:---------|:-----------------------|
-New Spectro Pack or Helm Chart Release |TA new pack or helm chart version is available at registry|"EventMessageRegistryPackNewVersion": "{{.Kubernetes}} {{.1.20.x}} is associated to version {{.1.20.5}}",|
-|Spectro Pack Values Update |Pack values modifications are  detected and notified to the cluster profiles.|"EventMessageRegistryPackUpdate": "{{.Kubernetes}} {{.1.20.5}} is updated : {{.packRevMessage}}",|
-|Pack Tag Delete|Removal of a pack from the registry.|"EventMessageRegistryPackTagDelete": {{.Kubernetes}} {{1.16.0 }} tag is delete|
- 
 **Note:**
+Prior to applying the notifications that result from a profile update, if the corresponding changes are reverted, the notification is automatically cleared. 
+ 
+# Examples - Notification settings
 
-*  Info Notification : If user doesn't customize the pack values at profile then system auto updates the cluster profile and shows review notification to describe about the updates
-*  Update Notification: If user customizes the pack values at profile then user must resolve the pack values and confirm the updates manually
+As described above, when notifications originate from changes to pack settings or manifest, they are accompanied with a settings dialog with a split pane showing differences in values. Following are a few examples of such scenarios:
+
+|Values Updated    |Values overridden in Clusters   |Settings displayed (LHS)   |Settings displayed (RHS)   |Auto Merged  | Action  |
+|:---------------|:---------|:--------------------|:--------|:-------|:--------|
+|Pack Values|No|Original pack settings| Updated pack settings| Yes| Review and/or modify if desired|
+|Attached Manifests|No|Original Manifests| Updated Manifests| Yes| Review and/or modify if desired|
+|Pack Values|Yes|Updated settings from Cluster Profile| Current settings from cluster| No| Resolve all conflicts|
+|Attached Manifests|Yes|Updated settings from Cluster Profile| Current settings from cluster| No| Resolve all conflicts|
+|Pack Version Changed|No|Original pack settings| Updated pack settings| Yes| Review and/or modify if desired|
+|Pack Version Changed|Yes|Updated settings from Cluster Profile| Current settings from cluster| No| Resolve all conflicts|
