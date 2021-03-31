@@ -16,12 +16,12 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
  
 # Cluster Updates
-Spectro Cloud ensures the complete life cycle utilization  of its cluster for the users  by promoting strong day 2 operations. In this context cluster updates and integrations are of at most importance and could be done very easily. Cluster updates are all about updating the cluster profile features like packs, manifests, pack values, versions etc after the cluster is created. Each of these updates creates notifications to the user to check, confirm and incorporate the updates to the running cluster. A detailed overview of these updates and notifications pertaining to individual updates is enumerated in this session.
+Spectro Cloud ensures the complete life cycle utilization  of its cluster for the users  by promoting strong day 2 operations. In this context cluster updates and integrations are of at most importance and could be done very easily. Cluster updates are all about updating the cluster profile features like packs, manifests, pack values, versions etc after the cluster is created. Each of these updates creates notifications for the users to check, confirm and incorporate the updates to the running cluster. A detailed overview of these updates and notifications pertaining to individual updates is enumerated in this session.
  
 ## Steps to follow:
 * Go to the Cluster profiles.
 * Select the cluster profile to be updated.
-* Make the pack updates pack updates and save.
+* Make the pack updates (includes update of the pack version, pack values, additon/deletion of  packs, addition/deletion/updation of manifests) and save.
 * Now, go to the Clusters page, where the ‘Updates Available’ tag can be seen on the corresponding cluster names for which the cluster profile update was done.
 * Click on the particular cluster.
 * A green button tagged ‘Updates Available’ can be seen on the right top of the screen, click open it.
@@ -33,7 +33,7 @@ Spectro Cloud ensures the complete life cycle utilization  of its cluster for th
  
 # Cluster Updates and Notifications
 
-Any updates to the Cluster Profile packs generates update notification on the Clusters. Users are required to verify the updates, resolve the pack values if any conflicts and confirm only if the updates are valid. Only on confirmation the updates are applied to the running Spectro Cloud clusters.
+Any updates to the Cluster Profile packs generates update notification on the Clusters. Users are required to verify the updates, verify the pack values and confirm only if the updates are valid. Only on confirmation the updates are applied to the running Spectro Cloud clusters.
 Supported notification updates are as listed below.
  
 |Cluster Updates     |Description|Notification Example                   |
@@ -63,7 +63,7 @@ Eg: new pack added - update notification generated  - keep the notification pend
  
 # Cluster Profile Notification
  
-The registry updates such as new pack or helm chart release, existing pack values update generates the notification on the cluster profiles. If the user selects the Kubernetes pack with smart tag (eg: version 1.20.x) while adding the pack, any new Kubernetes release available at the registry auto updates the cluster profiles to update to the latest Kubernetes. Instead if the user selects a specific version (eg: version 1.20.2) of the pack then users need to update to the new version by updating the cluster profile manually. Any update to the cluster profile triggers the notification on the clusters and users should confirm the updates in order to apply the changes to the running kubernetes cluster.
+The registry updates such as new pack or helm chart release, existing pack values update generates the notification on the cluster profiles. If the user selects the Kubernetes pack with smart tag (eg: version 1.20.x) while adding the pack, any new Kubernetes release available at the registry auto updates the cluster profiles to update to the latest Kubernetes. Instead if the user selects a specific version (eg: version 1.20.2) of the pack then users need to update to the new version by updating the cluster profile manually. Any update to the cluster profile triggers the notification on the clusters and users should confirm the updates in order to apply the changes to the running Kubernetes Cluster.
  
 |Update Notification     |Description|Example                   |
 |:---------------|:---------|:-----------------------|
@@ -73,5 +73,5 @@ New Spectro Pack or Helm Chart Release |TA new pack or helm chart version is ava
  
 **Note:**
 
-*  Info Notification : If user doesn't customize the pack values at profile then system auto updates the cluster profile and show review notification to describe about the updates
-*  Update Notification: If user customize the pack values at profile then user must resolve the pack values and confirm the updates manually
+*  Info Notification : If user doesn't customize the pack values at profile then system auto updates the cluster profile and shows review notification to describe about the updates
+*  Update Notification: If user customizes the pack values at profile then user must resolve the pack values and confirm the updates manually
