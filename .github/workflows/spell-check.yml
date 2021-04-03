@@ -33,4 +33,4 @@ jobs:
           # A list of source files or patterns to scan.
           source_files: '**/*.md'
           # Name of the PySpelling task to run
-          task_name: Markdown  
+          task_name: markdown
