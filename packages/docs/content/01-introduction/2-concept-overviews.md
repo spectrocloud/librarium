@@ -31,7 +31,7 @@ A Team is a group of users. Users can be part of one or more teams. Teams provid
 
 # Roles
 
-A Role is a collection of permissions. There are two kinds of roles in Spectro Cloud: tenant roles and project roles. Tenant roles are a collection of tenant-level permissions such as Create a new user, add a new project, etc. Project roles consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster,  etc.
+A Role is a collection of permissions. There are two kinds of roles in Spectro Cloud: tenant roles and project roles. Tenant roles are a collection of tenant-level permissions such as create a new user, add a new project, etc. Project roles consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster,  etc.
 
 # Permission
 
@@ -90,7 +90,7 @@ Layers in a cluster profile are typically built using a Spectro Pack or a Chart.
 
 # Presets
 
-Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro packs and charts provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Clouds groups a bunch of related properties that control a feature and provides them as named presets. During construction of a cluster profile, users maybe simply enable or dispable a preset to quickly make the desired changes. 
+Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro packs and charts provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a cluster profile, users maybe simply enable or dispable a preset to quickly make the desired changes. 
 
 
 # Private Cloud Gateway
