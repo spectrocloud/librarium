@@ -317,7 +317,7 @@ Once the cluster is provisioned - feel free to try the following:
 
 <InfoBox>
 
-The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
+The guided documentation below is prescriptive with the names and selections. We highly recommend you to follow the guide verbatim for your first cluster.
 
 </InfoBox>
 
