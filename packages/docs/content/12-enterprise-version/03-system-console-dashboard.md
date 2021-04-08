@@ -45,4 +45,4 @@ Provide the desired SSL/TLS server certificates to support external access to va
 
 # Cluster Management
 
-Manage clusters. Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster also can be configured and their versions updated.
+Manages the clusters. Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster can also be configured and updated.
