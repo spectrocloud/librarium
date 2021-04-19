@@ -43,9 +43,7 @@ To preview your changes use the following.
 make start
 ```
 
-This will open your browser to this address: http://localhost:8010
-For the glossary documentations use http://localhost:8020
-For the API documentations use http://localhost:8030
+This will open your browser to this address: http://localhost:9000
 
 Open `~/Work/librarium/packages/docs/content` in your editor and make changes. They should be synced up in the browser window.
 
