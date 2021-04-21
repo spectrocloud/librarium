@@ -14,15 +14,14 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # Ubuntu Operating System
 
-## Overview
-
 Ubuntu is a Linux distribution based on Debian and composed mostly of free and open-source softwares. It is one of the most popular operating systems across multiple public cloud platforms. Spectro Cloud supports Ubuntu versions to run clusters at scale. 
 
-## Versions supported:
+## Version Supported
 
 **Ubuntu 18.4**
 
 
-References:
+## References
+
 https://releases.ubuntu.com/18.04/
 
