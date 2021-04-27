@@ -53,6 +53,10 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
+      plugins: [
+        `gatsby-remark-images`,
+        `gatsby-remark-images-medium-zoom`,
+      ],
       gatsbyRemarkPlugins: [
         {
           resolve: 'gatsby-remark-images',
@@ -63,6 +67,9 @@ const plugins = [
         },
         {
           resolve: 'gatsby-remark-copy-linked-files',
+        },
+        {
+          resolve: 'gatsby-remark-images-medium-zoom',
         },
       ],
       extensions: ['.mdx', '.md'],
