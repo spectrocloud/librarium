@@ -8,5 +8,5 @@ export default function Tooltip({
   children,
   ...rest
 }) {
-  return <AntdTooltip title={children} {...rest}>{trigger}</AntdTooltip>
+  return <AntdTooltip color="#091e3b" title={children} {...rest}>{trigger}</AntdTooltip>
 }
