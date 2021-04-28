@@ -76,6 +76,7 @@ function Point({description, tooltipPlacement = "right", x , y, label}) {
       getPopupContainer={() => wrapRef.current}
       trigger={["click"]}
       title={description}
+      color="#091e3b"
       placement={tooltipPlacement}
       onVisibleChange={(visible) => setIsOpened(visible)}>
         <Circle
