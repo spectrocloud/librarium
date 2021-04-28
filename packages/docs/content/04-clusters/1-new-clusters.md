@@ -61,9 +61,9 @@ To create an AWS cloud account there are two methods:
 
 Users can make their choice of method to follow.
 
-### Security Service Token
+### Security Token Service
 
-[SST](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. External ID  is a piece of data created using UUID, that can be passed to the AssumeRole API of the Security Token Service. Hence allow Spectro Cloud to perform your AWS tasks on your behalf. 
+[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. External ID  is a piece of data created using UUID, that can be passed to the AssumeRole API of the Security Token Service. Hence allow Spectro Cloud to perform your AWS tasks on your behalf. 
 
 * Create a role which has the minimum set of permissions
 
