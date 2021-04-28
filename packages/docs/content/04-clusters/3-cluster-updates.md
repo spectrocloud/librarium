@@ -1,5 +1,5 @@
 ---
-title: "Cluster Updates"
+title: "Updates"
 metaTitle: "Managing Cluster Update Events on Spectro Cloud"
 metaDescription: "Events and Notifications on Cluster Updates"
 icon: "envelope-open-text"
