@@ -55,15 +55,15 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 To create an AWS cloud account there are two methods: 
 
-* **Security Token Service(STS)**
+##### Security Token Service(STS)
 
-* **Access Key Method**
+##### Access Key Method
 
 Users can make their choice of method to follow.
 
 ### Security Token Service
 
-[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. External ID  is a piece of data created using UUID, that can be passed to the AssumeRole API of the Security Token Service. Hence allow Spectro Cloud to perform your AWS tasks on your behalf. 
+[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple,just follow the UI instructions once you create the role in AWS. Hence allow Spectro Cloud to perform all your workload related AWS tasks on your behalf. 
 
 * Create a role which has the minimum set of permissions
 
@@ -256,32 +256,9 @@ The following warning on this policy is expected:<p></p>
 This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 
-* Generate your external id using [UUID]( https://www.uuidgenerator.net/).
+* Generate your role as per the UI instructions and obtain the arn.
 
-* Create a trusted entity in the role, using the external id and Spectro AWS Id 415789037893 as below:
-
-``` json
-
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::< 415789037893>:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "<uuid>"
-        }
-      }
-    }
-  ]
-}
-
-``` 
-
+* Use the generated arn to create your aws cloud account.
 
 
 ### Access Keys Method
@@ -1176,4 +1153,10 @@ The following steps need to be performed to remove a worker pool from the cluste
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
 </Tabs. TabPane>
+
+<Tabs. TabPane tab="EKS Cluster" key="eks_cluster">
+
+</Tabs. TabPane>
+
+
 </Tabs>
