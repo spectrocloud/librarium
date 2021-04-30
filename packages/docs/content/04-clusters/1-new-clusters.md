@@ -53,7 +53,9 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-To create an AWS cloud account, an access key as well as a secret access key will be needed.
+The first step towards generating AWS Cloud Account Permission is role creation. 
+
+* Create a role which has the minimum set of permissions
 
 Ensure that the IAM user or the ROOT user has the following minimum permissions:
 
@@ -235,7 +237,6 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
     ]
 }
 ```
-
 <WarningBox>
 The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
 </WarningBox>
@@ -244,6 +245,27 @@ The policy below cannot be used as an inline policy, as it exceeds the 2048 non-
 The following warning on this policy is expected:<p></p>
 This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
+
+Once the role is created an AWS cloud account can be created using any one method:
+
+* Security Token Service(STS)
+
+* Access Credentials
+
+Users can make their choice of method through UI.
+
+### Security Token Service
+
+[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS. Hence allow Spectro Cloud to perform all your workload related AWS tasks on your behalf.
+
+* Generate your role as per the UI instructions and obtain the ARN.
+* Use the generated ARN to create your AWS cloud account.
+
+
+### Access Credentials
+
+* Give the Access key and Secret Access Key for the role generated.
+* Validate these credentials to get your AWS cloud account created.
 
 ## Create an AWS Cluster
 
@@ -943,4 +965,10 @@ The following steps need to be performed to remove a worker pool from the cluste
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
 </Tabs. TabPane>
+
+<Tabs. TabPane tab="EKS Cluster" key="eks_cluster">
+
+</Tabs. TabPane>
+
+
 </Tabs>
