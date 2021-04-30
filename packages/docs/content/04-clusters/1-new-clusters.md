@@ -53,17 +53,7 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-To create an AWS cloud account there are two methods: 
-
-##### Security Token Service(STS)
-
-##### Access Key Method
-
-Users can make their choice of method to follow.
-
-### Security Token Service
-
-[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple,just follow the UI instructions once you create the role in AWS. Hence allow Spectro Cloud to perform all your workload related AWS tasks on your behalf. 
+The first step towards generating AWS Cloud Account Permission is role creation. 
 
 * Create a role which has the minimum set of permissions
 
@@ -256,204 +246,26 @@ The following warning on this policy is expected:<p></p>
 This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 
-* Generate your role as per the UI instructions and obtain the arn.
+Once the role is created an AWS cloud account can be created using any one method:
 
-* Use the generated arn to create your aws cloud account.
+* Security Token Service(STS)
+
+* Access Credentials
+
+Users can make their choice of method through UI.
+
+### Security Token Service
+
+[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS. Hence allow Spectro Cloud to perform all your workload related AWS tasks on your behalf.
+
+* Generate your role as per the UI instructions and obtain the ARN.
+* Use the generated ARN to create your AWS cloud account.
 
 
-### Access Keys Method
+### Access Credentials
 
-To create an AWS cloud account, an access key as well as a secret access key will be needed.
-
-Ensure that the IAM user or the ROOT user has the following minimum permissions:
-
-``` json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:DescribeTags",
-                "cloudformation:CreateStack",
-                "cloudformation:DescribeStacks",
-                "cloudformation:UpdateStack",
-                "ec2:AllocateAddress",
-                "ec2:AssociateRouteTable",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachVolume",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateNatGateway",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSnapshot",
-                "ec2:CreateSubnet",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:CreateVpc",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNatGateway",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSnapshot",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteTags",
-                "ec2:DeleteVolume",
-                "ec2:DeleteVpc",
-                "ec2:DescribeAccountAttributes",
-                "ec2:DescribeAddresses",
-                "ec2:DescribeAvailabilityZones",
-                "ec2:DescribeImages",
-                "ec2:DescribeInstances",
-                "ec2:DescribeInternetGateways",
-                "ec2:DescribeKeyPairs",
-                "ec2:DescribeNatGateways",
-                "ec2:DescribeNetworkInterfaceAttribute",
-                "ec2:DescribeNetworkInterfaces",
-                "ec2:DescribeRegions",
-                "ec2:DescribeRouteTables",
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSnapshots",
-                "ec2:DescribeSubnets",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumes",
-                "ec2:DescribeVolumesModifications",
-                "ec2:DescribeVpcAttribute",
-                "ec2:DescribeVpcs",
-                "ec2:DetachInternetGateway",
-                "ec2:DetachVolume",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifyNetworkInterfaceAttribute",
-                "ec2:ModifySubnetAttribute",
-                "ec2:ModifyVolume",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ReleaseAddress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:TerminateInstances",
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:DescribeRepositories",
-                "ecr:ListImages",
-                "ecr:BatchGetImage",
-                "elasticloadbalancing:AddTags",
-                "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:ConfigureHealthCheck",
-                "elasticloadbalancing:CreateListener",
-                "elasticloadbalancing:CreateLoadBalancer",
-                "elasticloadbalancing:CreateLoadBalancerListeners",
-                "elasticloadbalancing:CreateLoadBalancerPolicy",
-                "elasticloadbalancing:CreateTargetGroup",
-                "elasticloadbalancing:DeleteListener",
-                "elasticloadbalancing:DeleteLoadBalancer",
-                "elasticloadbalancing:DeleteLoadBalancerListeners",
-                "elasticloadbalancing:DeleteTargetGroup",
-                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                "elasticloadbalancing:DescribeListeners",
-                "elasticloadbalancing:DescribeLoadBalancerAttributes",
-                "elasticloadbalancing:DescribeLoadBalancerPolicies",
-                "elasticloadbalancing:DescribeLoadBalancers",
-                "elasticloadbalancing:DescribeTags",
-                "elasticloadbalancing:DescribeTargetGroups",
-                "elasticloadbalancing:DescribeTargetHealth",
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:ModifyListener",
-                "elasticloadbalancing:ModifyLoadBalancerAttributes",
-                "elasticloadbalancing:ModifyTargetGroup",
-                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-                "elasticloadbalancing:RegisterTargets",
-                "elasticloadbalancing:RemoveTags",
-                "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
-                "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AddUserToGroup",
-                "iam:AttachGroupPolicy",
-                "iam:AttachRolePolicy",
-                "iam:CreateGroup",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:CreateServiceLinkedRole",
-                "iam:CreateUser",
-                "iam:DeleteGroup",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DetachGroupPolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetGroup",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetUser",
-                "iam:PassRole",
-                "iam:RemoveRoleFromInstanceProfile",
-                "iam:RemoveUserFromGroup",
-                "kms:DescribeKey",
-                "pricing:GetProducts",
-                "tag:GetResources"
-            ],
-            "Resource": [
-                "*"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateServiceLinkedRole"
-            ],
-            "Resource": [
-                "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
-            ],
-            "Condition": {
-                "StringLike": {
-                    "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:PassRole"
-            ],
-            "Resource": [
-                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:TagResource"
-            ],
-            "Resource": [
-                "arn:aws:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-            ]
-        }
-    ]
-}
-```
-
-<WarningBox>
-The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
-</WarningBox>
-
-<WarningBox>
-The following warning on this policy is expected:<p></p>
-This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
-</WarningBox>
+* Give the Access key and Secret Access Key for the role generated.
+* Validate these credentials to get your AWS cloud account created.
 
 ## Create an AWS Cluster
 
