@@ -1,3 +1,4 @@
+
 ---
 title: "New Clusters"
 metaTitle: "Creating new clusters on Spectro Cloud"
@@ -61,180 +62,370 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
 
 ``` json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:DescribeTags",
-                "cloudformation:CreateStack",
-                "cloudformation:DescribeStacks",
-                "cloudformation:UpdateStack",
-                "ec2:AllocateAddress",
-                "ec2:AssociateRouteTable",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachVolume",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateNatGateway",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSnapshot",
-                "ec2:CreateSubnet",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:CreateVpc",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNatGateway",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSnapshot",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteTags",
-                "ec2:DeleteVolume",
-                "ec2:DeleteVpc",
-                "ec2:DescribeAccountAttributes",
-                "ec2:DescribeAddresses",
-                "ec2:DescribeAvailabilityZones",
-                "ec2:DescribeImages",
-                "ec2:DescribeInstances",
-                "ec2:DescribeInternetGateways",
-                "ec2:DescribeKeyPairs",
-                "ec2:DescribeNatGateways",
-                "ec2:DescribeNetworkInterfaceAttribute",
-                "ec2:DescribeNetworkInterfaces",
-                "ec2:DescribeRegions",
-                "ec2:DescribeRouteTables",
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSnapshots",
-                "ec2:DescribeSubnets",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumes",
-                "ec2:DescribeVolumesModifications",
-                "ec2:DescribeVpcAttribute",
-                "ec2:DescribeVpcs",
-                "ec2:DetachInternetGateway",
-                "ec2:DetachVolume",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifyNetworkInterfaceAttribute",
-                "ec2:ModifySubnetAttribute",
-                "ec2:ModifyVolume",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ReleaseAddress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:TerminateInstances",
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:DescribeRepositories",
-                "ecr:ListImages",
-                "ecr:BatchGetImage",
-                "elasticloadbalancing:AddTags",
-                "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:ConfigureHealthCheck",
-                "elasticloadbalancing:CreateListener",
-                "elasticloadbalancing:CreateLoadBalancer",
-                "elasticloadbalancing:CreateLoadBalancerListeners",
-                "elasticloadbalancing:CreateLoadBalancerPolicy",
-                "elasticloadbalancing:CreateTargetGroup",
-                "elasticloadbalancing:DeleteListener",
-                "elasticloadbalancing:DeleteLoadBalancer",
-                "elasticloadbalancing:DeleteLoadBalancerListeners",
-                "elasticloadbalancing:DeleteTargetGroup",
-                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                "elasticloadbalancing:DescribeListeners",
-                "elasticloadbalancing:DescribeLoadBalancerAttributes",
-                "elasticloadbalancing:DescribeLoadBalancerPolicies",
-                "elasticloadbalancing:DescribeLoadBalancers",
-                "elasticloadbalancing:DescribeTags",
-                "elasticloadbalancing:DescribeTargetGroups",
-                "elasticloadbalancing:DescribeTargetHealth",
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:ModifyListener",
-                "elasticloadbalancing:ModifyLoadBalancerAttributes",
-                "elasticloadbalancing:ModifyTargetGroup",
-                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-                "elasticloadbalancing:RegisterTargets",
-                "elasticloadbalancing:RemoveTags",
-                "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
-                "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AddUserToGroup",
-                "iam:AttachGroupPolicy",
-                "iam:AttachRolePolicy",
-                "iam:CreateGroup",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:CreateServiceLinkedRole",
-                "iam:CreateUser",
-                "iam:DeleteGroup",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DetachGroupPolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetGroup",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetUser",
-                "iam:PassRole",
-                "iam:RemoveRoleFromInstanceProfile",
-                "iam:RemoveUserFromGroup",
-                "kms:DescribeKey",
-                "pricing:GetProducts",
-                "tag:GetResources"
-            ],
-            "Resource": [
-                "*"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateServiceLinkedRole"
-            ],
-            "Resource": [
-                "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
-            ],
-            "Condition": {
-                "StringLike": {
-                    "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:PassRole"
-            ],
-            "Resource": [
-                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:TagResource"
-            ],
-            "Resource": [
-                "arn:aws:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-            ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeInstanceRefreshes",
+        "autoscaling:DescribeLaunchConfigurations",
+        "autoscaling:DescribeTags",
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "ec2:AllocateAddress",
+        "ec2:AssociateRouteTable",
+        "ec2:AttachInternetGateway",
+        "ec2:AttachVolume",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateInternetGateway",
+        "ec2:CreateLaunchTemplate",
+        "ec2:CreateLaunchTemplateVersion",
+        "ec2:CreateNatGateway",
+        "ec2:CreateRoute",
+        "ec2:CreateRouteTable",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateSnapshot",
+        "ec2:CreateSubnet",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:DeleteInternetGateway",
+        "ec2:DeleteLaunchTemplate",
+        "ec2:DeleteLaunchTemplateVersions",
+        "ec2:DeleteNatGateway",
+        "ec2:DeleteRoute",
+        "ec2:DeleteRouteTable",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteSubnet",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DeleteVpc",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeLaunchTemplates",
+        "ec2:DescribeLaunchTemplateVersions",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeRegions",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVpcs",
+        "ec2:DetachInternetGateway",
+        "ec2:DetachVolume",
+        "ec2:DisassociateAddress",
+        "ec2:DisassociateRouteTable",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:ModifySubnetAttribute",
+        "ec2:ModifyVolume",
+        "ec2:ModifyVpcAttribute",
+        "ec2:ReleaseAddress",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:RunInstances",
+        "ec2:TerminateInstances",
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "ecr:BatchGetImage",
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+        "elasticloadbalancing:AttachLoadBalancerToSubnets",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:CreateListener",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:CreateLoadBalancerListeners",
+        "elasticloadbalancing:CreateLoadBalancerPolicy",
+        "elasticloadbalancing:CreateTargetGroup",
+        "elasticloadbalancing:DeleteListener",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeleteLoadBalancerListeners",
+        "elasticloadbalancing:DeleteTargetGroup",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:DescribeListeners",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeLoadBalancerPolicies",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeTags",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+        "elasticloadbalancing:ModifyListener",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:ModifyTargetGroup",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "elasticloadbalancing:RegisterTargets",
+        "elasticloadbalancing:RemoveTags",
+        "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+        "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:AttachGroupPolicy",
+        "iam:AttachRolePolicy",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreatePolicy",
+        "iam:CreateRole",
+        "iam:CreateServiceLinkedRole",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:DeletePolicy",
+        "iam:DeleteRole",
+        "iam:DetachGroupPolicy",
+        "iam:DetachRolePolicy",
+        "iam:GetGroup",
+        "iam:GetInstanceProfile",
+        "iam:GetPolicy",
+        "iam:GetRole",
+        "iam:GetUser",
+        "iam:PassRole",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup",
+        "kms:DescribeKey",
+        "pricing:GetProducts",
+        "tag:GetResources"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:CreateAutoScalingGroup",
+        "autoscaling:UpdateAutoScalingGroup",
+        "autoscaling:CreateOrUpdateTags",
+        "autoscaling:StartInstanceRefresh",
+        "autoscaling:DeleteAutoScalingGroup",
+        "autoscaling:DeleteTags"
+      ],
+      "Resource": [
+        "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "autoscaling.amazonaws.com"
         }
-    ]
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "spot.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:TagResource"
+      ],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameter"
+      ],
+      "Resource": [
+        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-fargate.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:ListOpenIDConnectProviders",
+        "iam:CreateOpenIDConnectProvider",
+        "iam:AddClientIDToOpenIDConnectProvider",
+        "iam:UpdateOpenIDConnectProviderThumbprint",
+        "iam:DeleteOpenIDConnectProvider"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:DetachRolePolicy",
+        "iam:DeleteRole",
+        "iam:CreateRole",
+        "iam:TagRole",
+        "iam:AttachRolePolicy"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetPolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "eks:CreateCluster",
+        "eks:TagResource",
+        "eks:UpdateClusterVersion",
+        "eks:DeleteCluster",
+        "eks:UpdateClusterConfig",
+        "eks:UntagResource",
+        "eks:UpdateNodegroupVersion",
+        "eks:DescribeNodegroup",
+        "eks:DeleteNodegroup",
+        "eks:UpdateNodegroupConfig",
+        "eks:CreateNodegroup"
+      ],
+      "Resource": [
+        "arn:*:eks:*:*:cluster/*",
+        "arn:*:eks:*:*:nodegroup/*/*/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:ListAddons",
+        "eks:CreateAddon",
+        "eks:DescribeAddonVersions",
+        "eks:DescribeAddon",
+        "eks:DeleteAddon",
+        "eks:UpdateAddon",
+        "eks:TagResource",
+        "eks:DescribeFargateProfile",
+        "eks:CreateFargateProfile",
+        "eks:DeleteFargateProfile"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "eks.amazonaws.com"
+        }
+      }
+    }
+  ]
 }
 ```
 <WarningBox>
