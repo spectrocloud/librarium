@@ -59,7 +59,7 @@ The first step towards generating AWS Cloud Account Permission is role creation.
 
 Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
 
-### Policy 1
+### IAM policy for the Kubernetes Cluster API Provider AWS Controller
 
 ``` json
 {
@@ -362,7 +362,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
 
 ```
 
-### Policy 2
+### IAM policy for the Kubernetes AWS Cloud Provider for the control plane
 
 ``` json
 
@@ -439,7 +439,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
 
 ```
 
-### Policy 3
+### IAM policy for the Kubernetes AWS Cloud Provider for all nodes
 
 ``` json
 
@@ -473,10 +473,9 @@ Note:
 All the above policies are required as part of cluster api requirement derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
 </InfoBox>
 
-### Policy 4
+### Iam policy for cluster deployment using Spectro Cloud
 
 ``` json
-
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -504,6 +503,7 @@ All the above policies are required as part of cluster api requirement derived u
                 "iam:DeleteInstanceProfile",
                 "iam:DeletePolicy",
                 "iam:DetachGroupPolicy",
+                "iam:DeletePolicyVersion",
                 "iam:GetGroup",
                 "iam:GetInstanceProfile",
                 "iam:GetUser",
@@ -520,7 +520,6 @@ All the above policies are required as part of cluster api requirement derived u
         }
     ]
 }
-
 
 ```
 
