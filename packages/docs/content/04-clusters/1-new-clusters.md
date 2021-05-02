@@ -1,4 +1,3 @@
-
 ---
 title: "New Clusters"
 metaTitle: "Creating new clusters on Spectro Cloud"
@@ -12,6 +11,8 @@ import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+
+
 
 # Creating Clusters
 
