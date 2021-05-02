@@ -57,9 +57,9 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 The first step towards generating AWS Cloud Account Permission is role creation. 
 
-* Create a role which has the minimum set of permissions
+Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
 
-Ensure that the IAM user or the ROOT user has the following minimum permissions:
+### Policy 1
 
 ``` json
 {
@@ -68,141 +68,72 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
     {
       "Effect": "Allow",
       "Action": [
-        "autoscaling:DescribeAutoScalingGroups",
-        "autoscaling:DescribeInstanceRefreshes",
-        "autoscaling:DescribeLaunchConfigurations",
-        "autoscaling:DescribeTags",
-        "cloudformation:CreateStack",
-        "cloudformation:DescribeStacks",
-        "cloudformation:UpdateStack",
         "ec2:AllocateAddress",
         "ec2:AssociateRouteTable",
         "ec2:AttachInternetGateway",
-        "ec2:AttachVolume",
         "ec2:AuthorizeSecurityGroupIngress",
         "ec2:CreateInternetGateway",
-        "ec2:CreateLaunchTemplate",
-        "ec2:CreateLaunchTemplateVersion",
         "ec2:CreateNatGateway",
         "ec2:CreateRoute",
         "ec2:CreateRouteTable",
         "ec2:CreateSecurityGroup",
-        "ec2:CreateSnapshot",
         "ec2:CreateSubnet",
         "ec2:CreateTags",
-        "ec2:CreateVolume",
         "ec2:CreateVpc",
+        "ec2:ModifyVpcAttribute",
         "ec2:DeleteInternetGateway",
-        "ec2:DeleteLaunchTemplate",
-        "ec2:DeleteLaunchTemplateVersions",
         "ec2:DeleteNatGateway",
-        "ec2:DeleteRoute",
         "ec2:DeleteRouteTable",
         "ec2:DeleteSecurityGroup",
-        "ec2:DeleteSnapshot",
         "ec2:DeleteSubnet",
         "ec2:DeleteTags",
-        "ec2:DeleteVolume",
         "ec2:DeleteVpc",
         "ec2:DescribeAccountAttributes",
         "ec2:DescribeAddresses",
         "ec2:DescribeAvailabilityZones",
-        "ec2:DescribeImages",
         "ec2:DescribeInstances",
         "ec2:DescribeInternetGateways",
-        "ec2:DescribeKeyPairs",
-        "ec2:DescribeLaunchTemplates",
-        "ec2:DescribeLaunchTemplateVersions",
+        "ec2:DescribeImages",
         "ec2:DescribeNatGateways",
-        "ec2:DescribeNetworkInterfaceAttribute",
         "ec2:DescribeNetworkInterfaces",
-        "ec2:DescribeRegions",
+        "ec2:DescribeNetworkInterfaceAttribute",
         "ec2:DescribeRouteTables",
         "ec2:DescribeSecurityGroups",
-        "ec2:DescribeSnapshots",
         "ec2:DescribeSubnets",
-        "ec2:DescribeTags",
-        "ec2:DescribeVolumes",
-        "ec2:DescribeVolumesModifications",
-        "ec2:DescribeVpcAttribute",
         "ec2:DescribeVpcs",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVolumes",
         "ec2:DetachInternetGateway",
-        "ec2:DetachVolume",
-        "ec2:DisassociateAddress",
         "ec2:DisassociateRouteTable",
+        "ec2:DisassociateAddress",
         "ec2:ModifyInstanceAttribute",
         "ec2:ModifyNetworkInterfaceAttribute",
         "ec2:ModifySubnetAttribute",
-        "ec2:ModifyVolume",
-        "ec2:ModifyVpcAttribute",
         "ec2:ReleaseAddress",
         "ec2:RevokeSecurityGroupIngress",
         "ec2:RunInstances",
         "ec2:TerminateInstances",
-        "ecr:GetAuthorizationToken",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:DescribeRepositories",
-        "ecr:ListImages",
-        "ecr:BatchGetImage",
+        "tag:GetResources",
         "elasticloadbalancing:AddTags",
-        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-        "elasticloadbalancing:AttachLoadBalancerToSubnets",
-        "elasticloadbalancing:ConfigureHealthCheck",
-        "elasticloadbalancing:CreateListener",
         "elasticloadbalancing:CreateLoadBalancer",
-        "elasticloadbalancing:CreateLoadBalancerListeners",
-        "elasticloadbalancing:CreateLoadBalancerPolicy",
-        "elasticloadbalancing:CreateTargetGroup",
-        "elasticloadbalancing:DeleteListener",
+        "elasticloadbalancing:ConfigureHealthCheck",
         "elasticloadbalancing:DeleteLoadBalancer",
-        "elasticloadbalancing:DeleteLoadBalancerListeners",
-        "elasticloadbalancing:DeleteTargetGroup",
-        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-        "elasticloadbalancing:DescribeListeners",
-        "elasticloadbalancing:DescribeLoadBalancerAttributes",
-        "elasticloadbalancing:DescribeLoadBalancerPolicies",
         "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
         "elasticloadbalancing:DescribeTags",
-        "elasticloadbalancing:DescribeTargetGroups",
-        "elasticloadbalancing:DescribeTargetHealth",
-        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-        "elasticloadbalancing:ModifyListener",
         "elasticloadbalancing:ModifyLoadBalancerAttributes",
-        "elasticloadbalancing:ModifyTargetGroup",
         "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-        "elasticloadbalancing:RegisterTargets",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
         "elasticloadbalancing:RemoveTags",
-        "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
-        "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
-        "iam:AddRoleToInstanceProfile",
-        "iam:AddUserToGroup",
-        "iam:AttachGroupPolicy",
-        "iam:AttachRolePolicy",
-        "iam:CreateGroup",
-        "iam:CreateInstanceProfile",
-        "iam:CreatePolicy",
-        "iam:CreateRole",
-        "iam:CreateServiceLinkedRole",
-        "iam:CreateUser",
-        "iam:DeleteGroup",
-        "iam:DeleteInstanceProfile",
-        "iam:DeletePolicy",
-        "iam:DeleteRole",
-        "iam:DetachGroupPolicy",
-        "iam:DetachRolePolicy",
-        "iam:GetGroup",
-        "iam:GetInstanceProfile",
-        "iam:GetPolicy",
-        "iam:GetRole",
-        "iam:GetUser",
-        "iam:PassRole",
-        "iam:RemoveRoleFromInstanceProfile",
-        "iam:RemoveUserFromGroup",
-        "kms:DescribeKey",
-        "pricing:GetProducts",
-        "tag:GetResources"
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeInstanceRefreshes",
+        "ec2:CreateLaunchTemplate",
+        "ec2:CreateLaunchTemplateVersion",
+        "ec2:DescribeLaunchTemplates",
+        "ec2:DescribeLaunchTemplateVersions",
+        "ec2:DeleteLaunchTemplate",
+        "ec2:DeleteLaunchTemplateVersions"
       ],
       "Resource": [
         "*"
@@ -428,14 +359,182 @@ Ensure that the IAM user or the ROOT user has the following minimum permissions:
     }
   ]
 }
+
 ```
+
+### Policy 2
+
+``` json
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeLaunchConfigurations",
+        "autoscaling:DescribeTags",
+        "ec2:DescribeInstances",
+        "ec2:DescribeImages",
+        "ec2:DescribeRegions",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVolumes",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyVolume",
+        "ec2:AttachVolume",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateRoute",
+        "ec2:DeleteRoute",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteVolume",
+        "ec2:DetachVolume",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:DescribeVpcs",
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:AttachLoadBalancerToSubnets",
+        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:CreateLoadBalancerPolicy",
+        "elasticloadbalancing:CreateLoadBalancerListeners",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeleteLoadBalancerListeners",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:CreateListener",
+        "elasticloadbalancing:CreateTargetGroup",
+        "elasticloadbalancing:DeleteListener",
+        "elasticloadbalancing:DeleteTargetGroup",
+        "elasticloadbalancing:DescribeListeners",
+        "elasticloadbalancing:DescribeLoadBalancerPolicies",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:ModifyListener",
+        "elasticloadbalancing:ModifyTargetGroup",
+        "elasticloadbalancing:RegisterTargets",
+        "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+        "iam:CreateServiceLinkedRole",
+        "kms:DescribeKey"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+  ]
+}
+
+
+
+```
+
+### Policy 3
+
+``` json
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeRegions",
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "ecr:BatchGetImage"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+  ]
+}
+
+
+```
+<InfoBox>
+Note:
+All the above policies are required as part of cluster api requirement derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
+</InfoBox>
+
+### Policy 4
+
+``` json
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:UpdateStack",
+                "ec2:CreateSnapshot",
+                "ec2:DeleteSnapshot",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeSnapshots",
+                "ec2:DescribeTags",
+                "ec2:DescribeVolumesModifications",
+                "iam:AddRoleToInstanceProfile",
+                "iam:AddUserToGroup",
+                "iam:AttachGroupPolicy",
+                "iam:CreateGroup",
+                "iam:CreateInstanceProfile",
+                "iam:CreatePolicy",
+                "iam:CreatePolicyVersion",
+                "iam:CreateUser",
+                "iam:DeleteGroup",
+                "iam:DeleteInstanceProfile",
+                "iam:DeletePolicy",
+                "iam:DetachGroupPolicy",
+                "iam:GetGroup",
+                "iam:GetInstanceProfile",
+                "iam:GetUser",
+                "iam:GetPolicy",
+                "iam:ListPolicyVersions",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:RemoveUserFromGroup",
+                "pricing:GetProducts",
+                "sts:AssumeRole"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+
+
+```
+
 <WarningBox>
-The policy below cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+Ensure that the role created encompasses all the policies defined above 
 </WarningBox>
 
 <WarningBox>
-The following warning on this policy is expected:<p></p>
-This policy defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+The policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+</WarningBox>
+
+<WarningBox>
+The following warning can be expected:<p></p>
+This policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 
 Once the role is created an AWS cloud account can be created using any one method:
@@ -448,11 +547,10 @@ Users can make their choice of method through UI.
 
 ### Security Token Service
 
-[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS. Hence allow Spectro Cloud to perform all your workload related AWS tasks on your behalf.
+[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS.
 
 * Generate your role as per the UI instructions and obtain the ARN.
-* Use the generated ARN to create your AWS cloud account.
-
+* Use the generated ARN and validate it to get your AWS cloud account created.
 
 ### Access Credentials
 
