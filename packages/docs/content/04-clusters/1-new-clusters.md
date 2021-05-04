@@ -57,7 +57,9 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 The first step towards generating AWS Cloud Account Permission is role creation. 
 
-Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
+
+Ensure that the IAM user or the ROOT user role created should have the following **four** IAM policies included:
+
 
 ### Controller Policy
 
@@ -468,10 +470,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
 
 
 ```
-<InfoBox>
-Note:
-All the above policies are required as part of cluster api requirement derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
-</InfoBox>
+
 
 ### Deployment Policy
 
