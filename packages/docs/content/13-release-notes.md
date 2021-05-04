@@ -18,7 +18,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
 
-* Spectro Cloud ensures users to start,run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
+* Spectro Cloud ensures users to start, run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
 * Now create and gain permission to your AWS cloud account by just using role ARN, without sharing long-term credentials.
 
 
