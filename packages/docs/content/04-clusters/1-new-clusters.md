@@ -1256,6 +1256,8 @@ The following steps need to be performed to remove a worker pool from the cluste
 
 <Tabs. TabPane tab="EKS Cluster" key="eks_cluster">
 
+## Overview
+
 Spectro Cloud supports EKS to manage services that can run Kubernetes on AWS without needing to install, operate, and maintain Kubernetes control plane or nodes. This ensures high availability, scalability, security and automated patching to tenant clusters. It runs up-to-date versions of Kubernetes, in addition to the existing plugins and tooling available. Applications that are running on Amazon EKS are fully compatible with any standard environment. Hence migrating your application workload to EKS can happen without any code change. For individual tenant clusters EKS runs a single Kubernetes control plane. The control plane infrastructure is not shared across clusters or AWS accounts. The control plane consists of at least two API server instances and three etcd instances that run across three Availability Zones within a Region.
 
 
