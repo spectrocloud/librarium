@@ -14,7 +14,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Cluster Policies
 
-
+Cluster policies are features of clusters which brings in lot of performance merits to the tenant clusters. Spectro Cloud brings in lots of policies to the workload clusters to maximize the availability, reliability, security, patching and updates. 
 
 <Tabs identifier="Feature Name">
 
@@ -59,21 +59,5 @@ Clusters -> Settings -> Machine Management -> "OS Patching Schedule" or "Patch N
 
 
 </Tabs. TabPane>
-
-<Tabs. TabPane tab="Compliance Scan" key="compliance-scan">
-
-## Overview
-
-
-
-</Tabs. TabPane>
-
-<Tabs. TabPane tab="BackUp and Restore" key="cluster-backup-restore">
-
-## Overview
-
-
-</Tabs. TabPane>
-
 
 </Tabs>
