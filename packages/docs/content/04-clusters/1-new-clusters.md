@@ -1804,15 +1804,11 @@ The following steps need to be performed to provision a new EKS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
-While using ELB for the application services, tag the Public Subnet with the below Key Value Attributes:
-
+The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service. 
 
 kubernetes.io/role/elb = 1
-
 sigs.k8s.io/cluster-api-provider-aws/role = public
-
 kubernetes.io/cluster/[ClusterName] = shared
-
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
