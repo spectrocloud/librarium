@@ -1796,7 +1796,6 @@ The following steps need to be performed to provision a new EKS cluster:
     - Name - a descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -1840,7 +1839,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 * Access the 'Nodes' view of the cluster.
 * Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
+* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. A new node pool with desired settings is created and the older node pool is removed. 
 * The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs. TabPane>
