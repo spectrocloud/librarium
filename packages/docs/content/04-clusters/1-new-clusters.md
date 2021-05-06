@@ -567,6 +567,19 @@ The following steps need to be performed to provision a new AWS cluster:
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+
+<InfoBox>
+While using ELB for the application services, tag the Public Subnet with the below Key Value Attributes:
+
+kubernetes.io/role/elb = 1
+
+sigs.k8s.io/cluster-api-provider-aws/role = public
+
+kubernetes.io/cluster/[ClusterName] = shared
+
+sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
+</InfoBox>
+
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     - Name - a descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
@@ -1260,7 +1273,7 @@ The following steps need to be performed to remove a worker pool from the cluste
 
 Spectro Cloud supports EKS to manage services that can run Kubernetes on AWS without needing to install, operate, and maintain Kubernetes control plane or nodes. This ensures high availability, scalability, security and automated patching to tenant clusters. It runs up-to-date versions of Kubernetes, in addition to the existing plugins and tooling available. Applications that are running on Amazon EKS are fully compatible with any standard environment. Hence migrating your application workload to EKS can happen without any code change. For individual tenant clusters EKS runs a single Kubernetes control plane. The control plane infrastructure is not shared across clusters or AWS accounts. The control plane consists of at least two API server instances and three etcd instances that run across three Availability Zones within a Region.
 
-
+ ![eks_cluster_architecture.png](eks_cluster_architecture.png)
 
 ## Prerequisites
 
@@ -1792,11 +1805,24 @@ The following steps need to be performed to provision a new EKS cluster:
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+
+<InfoBox>
+While using ELB for the application services, tag the Public Subnet with the below Key Value Attributes:
+
+
+kubernetes.io/role/elb = 1
+
+sigs.k8s.io/cluster-api-provider-aws/role = public
+
+kubernetes.io/cluster/[ClusterName] = shared
+
+sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
+</InfoBox>
+
 * Configure worker node pool. A worker node will be  configured by default.
     - Name - a descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -1840,7 +1866,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 * Access the 'Nodes' view of the cluster.
 * Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
+* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. A new node pool with desired settings is created and the older node pool is removed. 
 * The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs. TabPane>
