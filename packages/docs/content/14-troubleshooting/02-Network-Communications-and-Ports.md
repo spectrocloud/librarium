@@ -1,8 +1,8 @@
 ---
-title: "Network Communication and Ports"
-metaTitle: "Network Communication and Ports Management Platform"
+title: "On-Premises Network Communication and Ports"
+metaTitle: "Network Communication and Ports Management Platform on Prem"
 metaDescription: "Port-Direction-Purpose Management Platform and Workload Clusters"
-icon: ""
+icon: "network-wired"
 hideToC: false
 fullWidth: false
 ---
@@ -13,7 +13,7 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-# Network Communications and Ports
+# On-Premises Network Communications and Ports
 
 
 ![network_communication_ports.png](network_communication_ports.png)

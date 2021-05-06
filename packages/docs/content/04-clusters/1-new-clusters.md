@@ -567,6 +567,19 @@ The following steps need to be performed to provision a new AWS cluster:
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+
+<InfoBox>
+While using ELB for the application services, tag the Public Subnet with the below Key Value Attributes:
+
+kubernetes.io/role/elb = 1
+
+sigs.k8s.io/cluster-api-provider-aws/role = public
+
+kubernetes.io/cluster/[ClusterName] = shared
+
+sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
+</InfoBox>
+
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     - Name - a descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
@@ -1792,6 +1805,20 @@ The following steps need to be performed to provision a new EKS cluster:
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+
+<InfoBox>
+While using ELB for the application services, tag the Public Subnet with the below Key Value Attributes:
+
+
+kubernetes.io/role/elb = 1
+
+sigs.k8s.io/cluster-api-provider-aws/role = public
+
+kubernetes.io/cluster/[ClusterName] = shared
+
+sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
+</InfoBox>
+
 * Configure worker node pool. A worker node will be  configured by default.
     - Name - a descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool.
