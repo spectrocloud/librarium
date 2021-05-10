@@ -29,6 +29,22 @@ The minimum requirement for Enterprise Mode is described in this section
 | 3 | 4 * 3 | 8 GB * 3  |  ( 60 + 20 GB ) * 3 |
 
 
+# Cluster Network Requirements
+
+### Node IP
+
+The Enterprise Cluster would require 5 IP addresses in range for installation
+
+### Node Ports
+
+|Port            |Direction|Purpose                   |    
+|:---------------|:---------|:-----------------------|
+|HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
+|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
+|NATS (tcp/4222) |IN        |Message Bus for workload clusters|
+|HTTPS (tcp/443) |OUT       |VSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/6443)|OUT       |Workload K8s cluster API Server|
+
 
 # Migrate quick start mode cluster to enterprise
 

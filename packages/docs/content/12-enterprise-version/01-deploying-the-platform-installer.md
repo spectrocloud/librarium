@@ -34,6 +34,23 @@ The minimum requirement for On-Prem Quick Start Mode is described in this sectio
 * Cluster downtime while applying updates
 * 2-3 Clusters can be deployed in parallel
 
+# Cluster Network Requirements
+
+### Node IP
+
+The Quick start node would require 1 Static IP or 1 IP allocated via DHCP depending on the network mode selected during installation
+
+### Node Ports
+
+|Port            |Direction|Purpose                   |    
+|:---------------|:---------|:-----------------------|
+|HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
+|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
+|Supervisor  (tcp/5080)    |IN        |Monitor Installation Status (optional) |
+|NATS (tcp/4222) |IN        |Message Bus for workload clusters|
+|HTTPS (tcp/443) |OUT       |VSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/6443)|OUT       |Workload K8s cluster API Server|
+
 
 # Deploy Platform Installer
 
