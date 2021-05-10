@@ -18,6 +18,23 @@ The Spectro Cloud On-Prem Quick Start Mode is a single node installation of the 
 
 As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
 
+# Cluster Hardware Requirements
+
+The minimum requirement for On-Prem Quick Start Mode is described in this section
+
+| Nodes | VCPU | Ram | Storage |
+| --- | --- | --- | --- |
+| 1 | 2 | 8 GB | 60 GB |
+
+
+### Limitations of On-Prem Quick Start Mode
+
+
+* No failover available
+* Cluster downtime while applying updates
+* 2-3 Clusters can be deployed in parallel
+
+
 # Deploy Platform Installer
 
 1. Log in to the vSphere console and navigate to VMs and Templates.

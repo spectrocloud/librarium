@@ -20,6 +20,16 @@ The Spectro Cloud Enterprise Mode is a multi-node, highly-available installation
 Deployment of an enterprise cluster is a migration process from the quick start mode. You may choose to deploy the enterprise cluster on day 1 right after instantiating the platform installer VM, or use the system in the quick start mode initially and at a later point invoke the enterprise cluster migration wizard to deploy the enterprise cluster. All the data from the quick start mode is migrated to the enterprise cluster as part of this migration process.
 </InfoBox>
 
+# Cluster Hardware Requirements
+
+The minimum requirement for Enterprise Mode is described in this section
+
+| Nodes | VCPU | Ram | Storage |
+| --- | --- | --- | --- |
+| 3 | 4 * 3 | 8 GB * 3  |  ( 60 + 20 GB ) * 3 |
+
+
+
 # Migrate quick start mode cluster to enterprise
 
 1. Open the On-Prem system console from a browser window by navigating to https://&lt;VM IP Address&gt;/system and log in.
