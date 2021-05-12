@@ -225,7 +225,7 @@ A Private Cloud Gateway is a Spectro Cloud component that enables the communicat
      - IPs for application workload services (e.g.: LoadBalancer services).
      - Subnet with egress access to the internet (direct or via proxy):
      - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-     - NTP configured on all Hosts.
+     - NTP configured on all ESXi Hosts.
      - Shared Storage between vSphere hosts.
 * VMware vCenter [Permission](#permissionsrequired) are the minimum privilages to be held to perform the installation. 
 * Node requirements (1 Node)
@@ -244,7 +244,7 @@ The infrastructure will require a proxy/non proxy environment for outgoing traff
   - IPs for application workload services (e.g.: LoadBalancer services).
   - Subnet with egress access to the internet (direct or via proxy):
       - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-  - NTP configured on all ESXI Hosts.
+  - NTP configured on all ESXi Hosts.
   - Shared Storage between vSphere hosts.
   
 * VMware vCenter [Permission](#permissionsrequired)
