@@ -23,18 +23,11 @@ The Spectro Cloud SaaS platform is also available as an entirely customer manage
 * Quick Start Mode
 * Enterprise Mode
 
-The page will discuss the minimum resource requirements for both these modes of deployment. Find the common prerequisites of both the versions  as below. 
+The page will discuss the minimum resource requirements for both these modes of deployment.The deployments uses Ubuntu Operating System and support vSphere version 6.7 and above. Find the common prerequisites of both the versions  as below. 
 
-### Platform Requirements
+###  Network Requirements
 
-* Ubuntu Operating System
-* Both of the on-prem modes support vSphere version 6.7 and above.
-
-
-### Common Network Requirements
-
-* The instances of on-prem deployment requires connectivity through a proxy or non-proxy environment. 
-* This instance can be configured with static IP addresses or dynamically allocated IP addresses.
+* The instances should be reachable to Internet either through Proxy or Without Proxy Network Connections.
 * Proxy Whitelists
 This table lists the proxy requirements for enabling the Spectro Cloud management console.
 
@@ -59,8 +52,7 @@ This table lists the proxy requirements for enabling the Spectro Cloud managemen
    - IPs for application workload services (e.g.: LoadBalancer services).
    - Subnet with egress access to the internet (direct or via proxy):
    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-   - NTP configured on all Hosts.
-   - Shared Storage between vSphere hosts.
+   - NTP configured on all ESXi Hosts.
    - VMware vCenter permissions.
 
 * Zone Tagging helps in storage allocation while dynamic storage volume provisioning is in place. Use vSphere tags to label zones in your vSphere environment. The task assumes that your vCenter Server environment includes three clusters, cluster1, cluster2, and cluster3, with the node VMs on all three clusters. In the task, you create two tag categories, k8s-zone and k8s-region. You tag the clusters as three zones, zone-a, zone-b, and zone-c, and mark the data center as a region, region-1.
@@ -172,10 +164,10 @@ This table lists the proxy requirements for enabling the Spectro Cloud managemen
 The requirement configurations given below are optional.
 
 * DNS Mapping
-   - Static IP DNS: [Name servers] Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
+   - An URL mapped to internal/external DNS server which can be used to access Spectro Cloud Console.
 * SMTP Settings
-   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are on boarded to the platform so they can activate their accounts.
-* Certificate (optional)
+   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are on boarded to the platform so they can activate their accounts.Emails regarding Password resets and Alert notifications can also be received with SMTP settings.
+* Certificate
    - Provide the desired SSL or TLS server certificates to support external access to valid HTTPs.
 * FTP Location (backups)
    - An accessible FTP location to backup data.
@@ -192,12 +184,11 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 * Secondary storage of 80 GB distributed across multiple HDDs.
 
 ### Network Requirements
-
-* Quick Start will operate on a single instance which requires connectivity through a proxy or non-proxy environment. 
+* The instances should be reachable to the whitelisted domains either through Proxy or Without Proxy Network Connections.
 * This instance can be configured with static IP addresses or dynamically allocated IP addresses.
 
 <InfoBox>
- Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing Quick Start Version
+ Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start Applications
 </InfoBox>
 
 # Enterprise Mode
@@ -213,7 +204,7 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 ### Network Requirements
 
 * A Range or a Subnet of at least 5 static IP addresses is required for the installation and ongoing management. 
-* The infrastructure will require a proxy/non proxy environment for accessibility. 
+* The instances should be reachable to the whitelisted domains either through Proxy or Without Proxy Network Connections.
 * For high availability purposes, you may choose to distribute the three VMs across multiple compute clusters.
 
 <InfoBox>
@@ -223,7 +214,7 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 
 ## Private Cloud Gateway Installer
 
-A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a VMware based private data center. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer appliance. 
+A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a data center which is not accessible directly via the Datacenter hosting Spectro Cloud On-Prem Application. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer OVA.
 
 ### Hardware Requirement 
 
@@ -253,7 +244,7 @@ The infrastructure will require a proxy/non proxy environment for outgoing traff
   - IPs for application workload services (e.g.: LoadBalancer services).
   - Subnet with egress access to the internet (direct or via proxy):
       - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-  - NTP configured on all Hosts.
+  - NTP configured on all ESXI Hosts.
   - Shared Storage between vSphere hosts.
   
 * VMware vCenter [Permission](#permissionsrequired)
