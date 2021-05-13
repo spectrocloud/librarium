@@ -45,7 +45,7 @@ An explanation for the parameters of the JSON is given in the table below:
 | name | String | True | Name of the pack |
 | displayName | String | True | Name of the pack as it is to be displayed on the Spectro Cloud management console |
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
-| addon-type | String | False | Addon-type must be set for packs that have the layer set to ‘add-on’. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct add-on type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
+| addonType | String | False | Addon-type must be set for packs that have the layer set to ‘addon’. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
 | cloudTypes | Array | True | Supported cloud types are aws, azure, vmware. One or more types can be provided for a pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
