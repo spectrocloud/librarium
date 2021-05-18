@@ -34,7 +34,7 @@ The sections below describe the common requirements for both the deployment mode
 
 * Zone Tagging
 Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
-As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:-
+As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows :-
 
     | vSphere Object       | Tag Category     | Tag Value     |
     | :------------- | :---------- | :----------- |
@@ -43,12 +43,13 @@ As an example, assume your vCenter environment includes three compute clusters, 
     | cluster-1   | k8s-zone | az1 |
     | cluster-3   | k8s-zone | az3 |
 
+    
     <InfoBox>
      The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
     </InfoBox>
 
 * Permissions 
-The following permissions are required for the account used to install the platform: -
+The following permissions are required for the account used to install the platform :-
 
     | vSphere Object | Privileges |
     | --- | --- |
