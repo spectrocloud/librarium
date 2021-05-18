@@ -49,7 +49,9 @@ The sections below describe the common requirements for both the deployment mode
 
 
 * Permissions 
-The following permissions are required for the account used to install the platform :-
+
+
+  The following permissions are required for the account used to install the platform :-
 
     | vSphere Object | Privileges |
     | --- | --- |
