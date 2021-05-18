@@ -14,51 +14,36 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# Platform Components
+
+The following sections describe the system requirements for various components of Spectro Cloud platform required for operating in VMware based private datacenter environment. 
 
 
-# On Premise System Requirements
+## On-Premise Management Plane
 
-The Spectro Cloud SaaS platform is also available as an entirely customer managed on-prem deployment. The On-Prem version supports the management of kubernetes clusters at customer data centers. Spectro Cloud on-prem is available in two modes:
+The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platorm hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
-* Quick Start Mode
-* Enterprise Mode
+* Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes. 
+* Enterprise Mode - A multi node highly available version for production purposes. 
 
-The page will discuss the minimum resource requirements for both these modes of deployment.The deployments uses Ubuntu Operating System and support vSphere version 6.7 and above. Find the common prerequisites of both the versions  as below. 
-
-###  Network Requirements
-
-* The instances should be reachable to Internet either through Proxy or Without Proxy Network Connections.
-* Proxy Whitelists
-This table lists the proxy requirements for enabling the Spectro Cloud management console.
-
-| Top-level Domain | Port | Description |
-| --- | --- | --- |
-| spectrocloud.com | 443 | For the Spectro Cloud SaaS. |
-| s3.amazonaws.com | 443 | To access the Spectro Cloud VMware OVA files. |
-| gcr.io | 443 | To access the Spectro Cloud image files. |
-| docker.io | 443 | To access the Spectro Cloud Pack Registries. |
-| googleapis.com | 443 | For pulling Spectro Cloud images. |
-| docker.com | 443 | To access the Spectro Cloud docker images. |
-| raw.githubusercontent.com | 443 | |
-| projectcalico.org | 443 | For egress management. |
-| quay.io | 443 | Container image registry access. |
-| grafana.com | 443 | To provide access to the dashboard metrics. |
-| github.com | 443 | |
+The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes. 
 
 
 ### vSphere Environment  Prerequisites
 
-* Datacenter
-   - IPs for application workload services (e.g.: LoadBalancer services).
-   - Subnet with egress access to the internet (direct or via proxy):
-   - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+* General requirements
+   - vCetener version :  6.7 and above
    - NTP configured on all ESXi Hosts.
-   - VMware vCenter permissions.
+   
 
-* Zone Tagging helps in storage allocation while dynamic storage volume provisioning is in place. Use vSphere tags to label zones in your vSphere environment. The task assumes that your vCenter Server environment includes three clusters, cluster1, cluster2, and cluster3, with the node VMs on all three clusters. In the task, you create two tag categories, k8s-zone and k8s-region. You tag the clusters as three zones, zone-a, zone-b, and zone-c, and mark the data center as a region, region-1.
+* Zone Tagging 
 
-* VMware vCenter Permissions Required
-   The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The Administrator role provides super-user access to all vSphere objects. For users without the Administrator role, one or more custom roles can be created based on the tasks being performed by the user.
+Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. Ceate two tag categories, k8s-region and k8s-zone. You can then assign k8s-region tag to the dc-1, "k8s-region : region1". Tag the three compute clusters as zones. On cluster-1 set the tag "k8s-zone : az1", on cluster-2 set the tag "k8s-zone : az2" and on cluster-2 set the tag "k8s-zone : az3". The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique. 
+
+
+* VMware vCenter Permissions 
+   
+The following permissions are required for the account used to install the platform: -
 
 | vSphere Object | Privileges |
 | --- | --- |
@@ -160,17 +145,41 @@ This table lists the proxy requirements for enabling the Spectro Cloud managemen
 | | Edit vSphere Tag
 
 
+###  Network Requirements
+
+* Outgoing access to the internet either directly or via a proxy
+* If a proxy us used for outgoing connections, it should support both HTTP and HTTPS traffic. 
+* If outgoing access is restricted to specific domains, ensure connections to the following domains and ports is enabled. 
+
+This table lists the proxy requirements for enabling the Spectro Cloud management console.
+
+| Top-level Domain | Port | Description |
+| --- | --- | --- |
+| spectrocloud.com | 443 | For the Spectro Cloud SaaS. |
+| s3.amazonaws.com | 443 | To access the Spectro Cloud VMware OVA files. |
+| gcr.io | 443 | To access the Spectro Cloud image files. |
+| docker.io | 443 | To access the Spectro Cloud Pack Registries. |
+| googleapis.com | 443 | For pulling Spectro Cloud images. |
+| docker.com | 443 | To access the Spectro Cloud docker images. |
+| raw.githubusercontent.com | 443 | |
+| projectcalico.org | 443 | For egress management. |
+| quay.io | 443 | Container image registry access. |
+| grafana.com | 443 | To provide access to the dashboard metrics. |
+| github.com | 443 | |
+
+
 ### Optional Settings 
-The requirement configurations given below are optional.
+
+The following requirements are optional but recommended to production environments.
 
 * DNS Mapping
-   - An URL mapped to internal/external DNS server which can be used to access Spectro Cloud Console.
+   - A DNS used to be used to access Spectro Cloud Console. While IP address configured on the platform can be used to access the platform, it is recommened that you recerve a DNS for this purpose and map it to the platform IP address after installation. 
 * SMTP Settings
-   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are on boarded to the platform so they can activate their accounts.Emails regarding Password resets and Alert notifications can also be received with SMTP settings.
-* Certificate
-   - Provide the desired SSL or TLS server certificates to support external access to valid HTTPs.
-* FTP Location (backups)
-   - An accessible FTP location to backup data.
+   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
+* Trusted Certificate
+   - Configure your platform with a trusted CA certificates.
+* FTP Location for backups
+   - Configure a FTP location for plaform backups and schedule daily backups. 
    	
 # Quick Start Mode
 
@@ -183,17 +192,17 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 * 4 virtual CPUs 
 * Secondary storage of 80 GB distributed across multiple HDDs.
 
-### Network Requirements
-* The instances should be reachable to the whitelisted domains either through Proxy or Without Proxy Network Connections.
-* This instance can be configured with static IP addresses or dynamically allocated IP addresses.
+### IP Address
+
+* The quick start VM instance can be configured with static IP addresses or dynamically allocated IP addresses.
 
 <InfoBox>
- Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start Applications
+ Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start.
 </InfoBox>
 
 # Enterprise Mode
 
-The Spectro Cloud On-Premise Enterprise version is a highly available multinode infrastructure for production purposes. The minimum number of nodes/VMs required by this environment is 3. Depending on the number of nodes the requirements changes. The minimum requirements are outlined below:
+The Spectro Cloud On-Premise Enterprise version is a highly available multinode infrastructure for production purposes. The minimum number of nodes/VMs required by this environment is 3. The minimum requirements are outlined below:
 
 ### Hardware Requirements 
 Hardware requirements will describe the CPU, memory, and disk requirements for the nodes.
@@ -201,11 +210,13 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 * 4 vCPUs per node * 3 nodes requiring 12 vCPUs
 * Secondary storage of 240GB distributed across multiple HDDs.
 
-### Network Requirements
+### IP Addresses
 
-* A Range or a Subnet of at least 5 static IP addresses is required for the installation and ongoing management. 
-* The instances should be reachable to the whitelisted domains either through Proxy or Without Proxy Network Connections.
-* For high availability purposes, you may choose to distribute the three VMs across multiple compute clusters.
+* A block of 5 IP addresses for installation and ongoing management. 
+
+### Compute Clusters
+
+* For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
 
 <InfoBox>
  Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing Enterprise version
@@ -258,18 +269,4 @@ The infrastructure will require a proxy/non proxy environment for outgoing traff
     - 70GB storage
 
 
-## Tenant Cluster
-The recommendations enumerated below are applicable for a minimal cluster. Based on the size of workloads installed, the number of nodes and size should be tuned. 
-
-### Network Requirements
-* The per tenant cluster IP requirements can be consolidated as:
-    - 1 per node.
-    - 1 Kubernetes control-plane VIP.
-    - 1 Kubernetes control-plane extra.
-
-* White list(#proxywhitelists)
-* The minimum hardware requirements per nodes is:
-    - 4GB Memory
-    - 2 virtual CPUs 
-    - 20 GB Disk Storage
 	
