@@ -14,6 +14,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+
 # System Requirements
 
 The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platorm hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
@@ -29,6 +30,7 @@ The sections below describe the common requirements for both the deployment mode
    - vCetener version :  6.7 and above
    - NTP configured on all ESXi Hosts.
    
+
 
 * Zone Tagging
 Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
@@ -215,6 +217,7 @@ The following section provides the hardware requirements for Spectro Cloud Platf
     | Large | 25 |500 | 3 | 32Gb | 8 Virtual CPUs | 80 GB |
     
 
+
 <InfoBox>
  Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start.
 </InfoBox>
@@ -222,3 +225,4 @@ The following section provides the hardware requirements for Spectro Cloud Platf
 <InfoBox>
  For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
 </InfoBox>
+
