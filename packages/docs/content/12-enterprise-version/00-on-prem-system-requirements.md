@@ -33,8 +33,10 @@ The sections below describe the common requirements for both the deployment mode
 
 
 * Zone Tagging
-Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
-As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows :-
+
+  Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for  installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
+
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows :-
 
     | vSphere Object       | Tag Category     | Tag Value     |
     | :------------- | :---------- | :----------- |
@@ -43,10 +45,8 @@ As an example, assume your vCenter environment includes three compute clusters, 
     | cluster-1   | k8s-zone | az1 |
     | cluster-3   | k8s-zone | az3 |
 
-    
-    <InfoBox>
-     The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
-    </InfoBox>
+    Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+
 
 * Permissions 
 The following permissions are required for the account used to install the platform :-
@@ -160,6 +160,12 @@ The following permissions are required for the account used to install the platf
 * Interconnectivity across all the 3 VMs on all ports.
 * Connectivity from the Virtual Machines to the vCenter.
 
+
+<InfoBox>
+ Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed during installation.
+</InfoBox>
+
+
 ##  Proxy Requirements
 *   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic. 
 *   Connectivity to the followign domains and ports should be allowed :-
@@ -178,20 +184,6 @@ The following permissions are required for the account used to install the platf
     | grafana.com | 443 | Grafana container images and manifests |
     | github.com | 443 | Common 3rd party content.|
 
-
-## Best Practices
-
-The following steps are optional but recommended for production environments.
-
-* DNS Mapping
-   A DNS used to be used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the platform, it is recommened that you reserve a DNS for this purpose and map it to the VIP after installation. 
-* SMTP Settings
-   Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
-* Trusted Certificate
-   Configure your platform with a trusted CA certificates.
-* FTP Location for backups
-  Configure a FTP location for plaform backups and schedule daily backups. 
-    
 
 ## Hardware Requirements 
 
@@ -212,18 +204,27 @@ The following section provides the hardware requirements for Spectro Cloud Platf
 ### Enterprise
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
-    | --- | :---: | :-----: | :---: | :---: | :---: | --- |
-    | Standard | 3 | 100 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
-    | Medium | 10 |250 | 3 | 16Gb | 8 Virtual CPUs | 80 GB |
-    | Large | 25 |500 | 3 | 32Gb | 8 Virtual CPUs | 80 GB |
-    
-
-
-<InfoBox>
- Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start.
-</InfoBox>
+| --- | :---: | :-----: | :---: | :---: | :---: | --- |
+| Standard | 3 | 100 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
+| Medium | 10 |250 | 3 | 16Gb | 8 Virtual CPUs | 80 GB |
+| Large | 25 |500 | 3 | 32Gb | 8 Virtual CPUs | 80 GB |
+  
 
 <InfoBox>
  For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
 </InfoBox>
+
+
+## Best Practices
+
+The following steps are optional but recommended for production environments.
+
+* DNS Mapping
+   A DNS used to be used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the platform, it is recommened that you reserve a DNS for this purpose and map it to the VIP after installation. 
+* SMTP Settings
+   Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
+* Trusted Certificate
+   Configure your platform with a trusted CA certificates.
+* FTP Location for backups
+  Configure a FTP location for plaform backups and schedule daily backups. 
 
