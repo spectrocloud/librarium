@@ -21,13 +21,12 @@ The following sections describe the system requirements for various components o
 
 ## On-Premise Management Plane
 
-The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platorm hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
+The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
-* Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes. 
+* Quick Start Mode - A single VM deployment platform ideal for PoC purposes. 
 * Enterprise Mode - A multi node highly available version for production purposes. 
 
-The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes. 
-
+The sections below describe the common requirements for both the deployment modes and highlights specific requirements, if any for these modes. 
 
 ### vSphere Environment  Prerequisites
 
@@ -38,12 +37,13 @@ The sections below describe the common requirements for both the deployment mode
 
 * Zone Tagging 
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. Ceate two tag categories, k8s-region and k8s-zone. You can then assign k8s-region tag to the dc-1, "k8s-region : region1". Tag the three compute clusters as zones. On cluster-1 set the tag "k8s-zone : az1", on cluster-2 set the tag "k8s-zone : az2" and on cluster-2 set the tag "k8s-zone : az3". The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique. 
+Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones for your environment. As an example, assume that your vCenter environment includes three compute clusters- cluster-1, cluster-2, and cluster-3 that are part of datacenter dc-1. Create two tag categories, k8s-region and k8s-zone. You can then assign k8s-region tag to the dc-1, "k8s-region : region1". Tag the three compute clusters as zones. On cluster-1 set the tag "k8s-zone : az1", on cluster-2 set the tag "k8s-zone : az2" and on cluster-3 set the tag "k8s-zone : az3". The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique. 
 
 
 * VMware vCenter Permissions 
    
 The following permissions are required for the account used to install the platform: -
+### Permission List
 
 | vSphere Object | Privileges |
 | --- | --- |
@@ -147,11 +147,13 @@ The following permissions are required for the account used to install the platf
 
 ###  Network Requirements
 
-* Outgoing access to the internet either directly or via a proxy
-* If a proxy us used for outgoing connections, it should support both HTTP and HTTPS traffic. 
+* Outgoing access to the internet either directly or via a proxy.
+* If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic. 
 * If outgoing access is restricted to specific domains, ensure connections to the following domains and ports is enabled. 
 
 This table lists the proxy requirements for enabling the Spectro Cloud management console.
+
+### Proxy Requirements
 
 | Top-level Domain | Port | Description |
 | --- | --- | --- |
@@ -170,14 +172,14 @@ This table lists the proxy requirements for enabling the Spectro Cloud managemen
 
 ### Optional Settings 
 
-The following requirements are optional but recommended to production environments.
+The following requirements are optional but recommended for production environments.
 
 * DNS Mapping
-   - A DNS used to be used to access Spectro Cloud Console. While IP address configured on the platform can be used to access the platform, it is recommened that you recerve a DNS for this purpose and map it to the platform IP address after installation. 
+   - A DNS used to access Spectro Cloud Console. While IP address configured on the platform can be used to access the platform, it is recommened that you reserve a DNS for this purpose and map it to the platform IP address after installation. 
 * SMTP Settings
-   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
+   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users during the initial on-boarding to the platform to activate their account and also for every password resets. 
 * Trusted Certificate
-   - Configure your platform with a trusted CA certificates.
+   - Configure your platform with trusted CA certificates.
 * FTP Location for backups
    - Configure a FTP location for plaform backups and schedule daily backups. 
    	
@@ -225,20 +227,20 @@ Hardware requirements will describe the CPU, memory, and disk requirements for t
 
 ## Private Cloud Gateway Installer
 
-A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a data center which is not accessible directly via the Datacenter hosting Spectro Cloud On-Prem Application. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer OVA.
+A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a data center which is not accessible directly via the datacenter hosting Spectro Cloud On-Prem Application. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer OVA.
 
 ### Hardware Requirement 
 
 * The infrastructure will require a proxy/non proxy environment for outgoing traffic. 
-* [Whitelist](#proxywhitelists) lists the proxy requirements for enabling the Spectro Cloud management console.
+* The [proxy requirements](/enterprise-version/on-prem-system-requirements/#proxyrequirements) for enabling the Spectro Cloud management console.
 * The instance can be configured with static IP addresses or dynamically allocated IP addresses (DHCP or Static).
 * vSphere Environment  Pre-requisites
      - IPs for application workload services (e.g.: LoadBalancer services).
-     - Subnet with egress access to the internet (direct or via proxy):
+     - Subnet with egress access to the internet (direct or via proxy).
      - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
      - NTP configured on all ESXi Hosts.
      - Shared Storage between vSphere hosts.
-* VMware vCenter [Permission](#permissionsrequired) are the minimum privilages to be held to perform the installation. 
+* VMware vCenter [Permissions](/enterprise-version/on-prem-system-requirements/#permissionlist) are the minimum privilages to be held to perform the installation. 
 * Node requirements (1 Node)
    - 2 vCPU
    - 4GB memory
@@ -249,7 +251,7 @@ A Private Cloud Gateway is a Spectro Cloud component that enables the communicat
 ## Private Cloud Gateway Controller 
 	
 The infrastructure will require a proxy/non proxy environment for outgoing traffic. 
-* [Whitelist](#proxywhitelists) lists the proxy requirements for enabling the Spectro Cloud management console.
+* [proxy requirements](/enterprise-version/on-prem-system-requirements/#proxyrequirements) lists the proxy requirements for enabling the Spectro Cloud management console.
 * The instance can be configured with static IP addresses or dynamically allocated IP addresses (DHCP or Static ).
 * vSphere Environment Pre-Requisites.
   - IPs for application workload services (e.g.: LoadBalancer services).
@@ -258,7 +260,7 @@ The infrastructure will require a proxy/non proxy environment for outgoing traff
   - NTP configured on all ESXi Hosts.
   - Shared Storage between vSphere hosts.
   
-* VMware vCenter [Permission](#permissionsrequired)
+* VMware vCenter [Permissions](/enterprise-version/on-prem-system-requirements/#permissionlist)
 * Node requirements (1 Node)
     - 2 vCPU
     - 4GB memory
