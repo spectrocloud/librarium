@@ -14,12 +14,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
-# Platform Components
-
-The following sections describe the system requirements for various components of Spectro Cloud platform required for operating in VMware based private datacenter environment. 
-
-
-## On-Premise Management Plane
+# System Requirements
 
 The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platorm hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
@@ -28,245 +23,202 @@ The Spectro Cloud SaaS platform is also available as self hosted on-premise depl
 
 The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes. 
 
-
-### vSphere Environment  Prerequisites
+## vSphere Environment Prerequisites
 
 * General requirements
    - vCetener version :  6.7 and above
    - NTP configured on all ESXi Hosts.
    
 
-* Zone Tagging 
+* Zone Tagging
+Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
+As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:-
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisiong workloads that require persistent storage. This is required for installation of Spectro CLoud Platform itself and also useful for worklods deployed in the tenat clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. Ceate two tag categories, k8s-region and k8s-zone. You can then assign k8s-region tag to the dc-1, "k8s-region : region1". Tag the three compute clusters as zones. On cluster-1 set the tag "k8s-zone : az1", on cluster-2 set the tag "k8s-zone : az2" and on cluster-2 set the tag "k8s-zone : az3". The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique. 
+    | vSphere Object       | Tag Category     | Tag Value     |
+    | :------------- | :---------- | :----------- |
+    |  dc-1 | k8s-region   | region1   |
+    | cluster-1   | k8s-zone | az1 |
+    | cluster-1   | k8s-zone | az1 |
+    | cluster-3   | k8s-zone | az3 |
 
+    <InfoBox>
+     The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+    </InfoBox>
 
-* VMware vCenter Permissions 
-   
+* Permissions 
 The following permissions are required for the account used to install the platform: -
 
-| vSphere Object | Privileges |
-| --- | --- |
-| Datastore | Allocate Space |
-| | Browse Datastore |
-| | Low level file operations |
-| | Remove file |
-| | Update virtual machine files |
-| | Update virtual machine metadata |
-| Folder | Create folder |
-| | Delete folder |
-| | Move folder |
-| | Rename folder|
-| Network | Assign Network |
-| Resource | Apply recommendation
-| | Assign virtual machine to resource pool |
-| | Migrate powered off virtual machine |
-| | Migrate powered on virtual machine |
-| | Query vMotion |
-| Sessions| Validate session |
-| Storage views | View|
-| Tasks | Create task |
-| | Update Task |
-| Virtual Machines | Change Configuration |
-| | * Change Settings |
-| | * Change Swapfile Placement
-| | * Configure host USB device
-| | * Configure raw device
-| | * Add existing disk 
-| | * Add new disk
-| | * Add or remove device
-| | * Advanced configuration
-| | * Change CPU count
-| | * Change resource
-| | * Configure managedBy
-| | * Display connection settings
-| | * Extend virtual disk
-| | * Modify device settings
-| | * Query Fault Tolerance compatibility
-| | * Query unowned files
-| | * Reload from path
-| | * Remove disk
-| | * Rename
-| | * Reset guest information
-| | * Set annotation
-| | * Toggle fork parent
-| | * Upgrade virtual machine compatibility
-| | Guest operations
-| | * Guest operation alias modification
-| | * Guest operation alias query
-| | * Guest operation modifications
-| | * Guest operation program execution
-| | * Guest operation queries
-| | Interaction
-| | * Power off
-| | * Power on
-| | Inventory
-| | * Create from existing
-| | * Create new
-| | * Move
-| | * Remove
-| | Provisioning
-| | * Allow disk access
-| | * Allow file access
-| | * Allow read-only disk access
-| | * Allow virtual machine download
-| | * Allow virtual machine files upload
-| | * Clone template
-| | * Clone virtual machine
-| | * Create template from virtual machine
-| | * Customize guest
-| | * Deploy template
-| | * Mark as template
-| | * Mark as virtual machine
-| | * Modify customization specification
-| | * Promote disks
-| | * Read customization specifications
-| | Service Configuration
-| | * Allow notifications
-| | * Allow polling of global event notifications
-| | * Manage service configurations
-| | * Modify service configuration
-| | * Query service configurations
-| | * Read service configuration
-| | Snapshot management
-| | * Create snapshot
-| | * Remove snapshot
-| | * Rename snapshot
-| | * Revert to snapshot
-| | vSphere Replication
-| | * Configure replication
-| | * Manage replication
-| | * Monitor replication
-| vApp | Import
-| | View OVF environment
-| | vApp application configuration
-| | vApp instance configuration
-| vSphere Tagging| Create vSphere Tag
-| | Edit vSphere Tag
+    | vSphere Object | Privileges |
+    | --- | --- |
+    | Datastore | Allocate Space |
+    | | Browse Datastore |
+    | | Low level file operations |
+    | | Remove file |
+    | | Update virtual machine files |
+    | | Update virtual machine metadata |
+    | Folder | Create folder |
+    | | Delete folder |
+    | | Move folder |
+    | | Rename folder|
+    | Network | Assign Network |
+    | Resource | Apply recommendation
+    | | Assign virtual machine to resource pool |
+    | | Migrate powered off virtual machine |
+    | | Migrate powered on virtual machine |
+    | | Query vMotion |
+    | Sessions| Validate session |
+    | Storage views | View|
+    | Tasks | Create task |
+    | | Update Task |
+    | Virtual Machines | Change Configuration |
+    | | * Change Settings |
+    | | * Change Swapfile Placement
+    | | * Configure host USB device
+    | | * Configure raw device
+    | | * Add existing disk 
+    | | * Add new disk
+    | | * Add or remove device
+    | | * Advanced configuration
+    | | * Change CPU count
+    | | * Change resource
+    | | * Configure managedBy
+    | | * Display connection settings
+    | | * Extend virtual disk
+    | | * Modify device settings
+    | | * Query Fault Tolerance compatibility
+    | | * Query unowned files
+    | | * Reload from path
+    | | * Remove disk
+    | | * Rename
+    | | * Reset guest information
+    | | * Set annotation
+    | | * Toggle fork parent
+    | | * Upgrade virtual machine compatibility
+    | | Guest operations
+    | | * Guest operation alias modification
+    | | * Guest operation alias query
+    | | * Guest operation modifications
+    | | * Guest operation program execution
+    | | * Guest operation queries
+    | | Interaction
+    | | * Power off
+    | | * Power on
+    | | Inventory
+    | | * Create from existing
+    | | * Create new
+    | | * Move
+    | | * Remove
+    | | Provisioning
+    | | * Allow disk access
+    | | * Allow file access
+    | | * Allow read-only disk access
+    | | * Allow virtual machine download
+    | | * Allow virtual machine files upload
+    | | * Clone template
+    | | * Clone virtual machine
+    | | * Create template from virtual machine
+    | | * Customize guest
+    | | * Deploy template
+    | | * Mark as template
+    | | * Mark as virtual machine
+    | | * Modify customization specification
+    | | * Promote disks
+    | | * Read customization specifications
+    | | Service Configuration
+    | | * Allow notifications
+    | | * Allow polling of global event notifications
+    | | * Manage service configurations
+    | | * Modify service configuration
+    | | * Query service configurations
+    | | * Read service configuration
+    | | Snapshot management
+    | | * Create snapshot
+    | | * Remove snapshot
+    | | * Rename snapshot
+    | | * Revert to snapshot
+    | | vSphere Replication
+    | | * Configure replication
+    | | * Manage replication
+    | | * Monitor replication
+    | vApp | Import
+    | | View OVF environment
+    | | vApp application configuration
+    | | vApp instance configuration
+    | vSphere Tagging| Create vSphere Tag
+    | | Edit vSphere Tag
 
 
-###  Network Requirements
 
-* Outgoing access to the internet either directly or via a proxy
-* If a proxy us used for outgoing connections, it should support both HTTP and HTTPS traffic. 
-* If outgoing access is restricted to specific domains, ensure connections to the following domains and ports is enabled. 
+##  Network Requirements
 
-This table lists the proxy requirements for enabling the Spectro Cloud management console.
+* Outgoing access from the platform VMs to the internet either directly or via a proxy
+* An IP Address (static or DHCP) for the quick start Virtual machine (also used as an installer for enterprise version) 
+* A block of 5 IP addresses reserved for enterprise cluster. One IP address for each of the three enterprise cluster VMs. An IP to be used as VIP and an additional IP reserved for rolling upgrades.
+* Interconnectivity across all the 3 VMs on all ports.
+* Connectivity from the Virtual Machines to the vCenter.
 
-| Top-level Domain | Port | Description |
-| --- | --- | --- |
-| spectrocloud.com | 443 | For the Spectro Cloud SaaS. |
-| s3.amazonaws.com | 443 | To access the Spectro Cloud VMware OVA files. |
-| gcr.io | 443 | To access the Spectro Cloud image files. |
-| docker.io | 443 | To access the Spectro Cloud Pack Registries. |
-| googleapis.com | 443 | For pulling Spectro Cloud images. |
-| docker.com | 443 | To access the Spectro Cloud docker images. |
-| raw.githubusercontent.com | 443 | |
-| projectcalico.org | 443 | For egress management. |
-| quay.io | 443 | Container image registry access. |
-| grafana.com | 443 | To provide access to the dashboard metrics. |
-| github.com | 443 | |
+##  Proxy Requirements
+*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic. 
+*   Connectivity to the followign domains and ports should be allowed :-
+
+    | Top-level Domain | Port | Description |
+    | --- | --- | --- |
+    | spectrocloud.com | 443 | Spectro Cloud content repository and pack registry |
+    | s3.amazonaws.com | 443 | Spectro Cloud VMware OVA files. |
+    | gcr.io | 443 | Spectro Cloud and common 3rd party container images. |
+    | docker.io | 443 | Common 3rd party container images. |
+    | googleapis.com | 443 | For pulling Spectro Cloud images. |
+    | docker.com | 443 | Common 3rd party container images. |
+    | raw.githubusercontent.com | 443 | Common 3rd party content. |
+    | projectcalico.org | 443 | Calico container image |
+    | quay.io | 443 | Common 3rd party container images. |
+    | grafana.com | 443 | Grafana container images and manifests |
+    | github.com | 443 | Common 3rd party content.|
 
 
-### Optional Settings 
+## Best Practices
 
-The following requirements are optional but recommended to production environments.
+The following steps are optional but recommended for production environments.
 
 * DNS Mapping
-   - A DNS used to be used to access Spectro Cloud Console. While IP address configured on the platform can be used to access the platform, it is recommened that you recerve a DNS for this purpose and map it to the platform IP address after installation. 
+   A DNS used to be used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the platform, it is recommened that you reserve a DNS for this purpose and map it to the VIP after installation. 
 * SMTP Settings
-   - Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
+   Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
 * Trusted Certificate
-   - Configure your platform with a trusted CA certificates.
+   Configure your platform with a trusted CA certificates.
 * FTP Location for backups
-   - Configure a FTP location for plaform backups and schedule daily backups. 
-   	
-# Quick Start Mode
+  Configure a FTP location for plaform backups and schedule daily backups. 
+    
 
-The Spectro Cloud On-Prem Quick Start Mode is a single node installation of the Spectro Cloud platform. This deployment is used to quickly understand the capabilities of the Spectro Cloud platform. For production purposes the enterprise version is recommended. The minimum requirements for Quick Start version is outlined below:
+## Hardware Requirements 
 
-### Hardware Requirements 
+The following section provides the hardware requirements for Spectro Cloud Platform VMs for various capacity levels.
+* Concurrent Tenant Clusters - The number of concurrent tenant cluster provisioning or deletion requests
+* Total Managed Clusters - The number of parallely running tenant clusters.
 
-Hardware requirements will describe the CPU, memory, and disk requirements for the nodes.
-* 8GB memory
-* 4 virtual CPUs 
-* Secondary storage of 80 GB distributed across multiple HDDs.
+    <InfoBox>
+     The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below. 
+    </InfoBox>
+    
+### Quick Start
 
-### IP Address
+| Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
+| --- | :---: | :-----: | :---: | :---: | :---: | --- |
+| Standard | 3 | 20 | 1 | 8Gb | 4 Virtual CPUs | 80 GB |
+    
+### Enterprise
 
-* The quick start VM instance can be configured with static IP addresses or dynamically allocated IP addresses.
+| Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
+    | --- | :---: | :-----: | :---: | :---: | :---: | --- |
+    | Standard | 3 | 100 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
+    | Medium | 10 |250 | 3 | 16Gb | 8 Virtual CPUs | 80 GB |
+    | Large | 25 |500 | 3 | 32Gb | 8 Virtual CPUs | 80 GB |
+    
 
 <InfoBox>
  Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing On-Prem Quick Start.
 </InfoBox>
 
-# Enterprise Mode
-
-The Spectro Cloud On-Premise Enterprise version is a highly available multinode infrastructure for production purposes. The minimum number of nodes/VMs required by this environment is 3. The minimum requirements are outlined below:
-
-### Hardware Requirements 
-Hardware requirements will describe the CPU, memory, and disk requirements for the nodes.
-* Each VM requires 8GB memory resulting in 24GB RAM in total .
-* 4 vCPUs per node * 3 nodes requiring 12 vCPUs
-* Secondary storage of 240GB distributed across multiple HDDs.
-
-### IP Addresses
-
-* A block of 5 IP addresses for installation and ongoing management. 
-
-### Compute Clusters
-
-* For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
-
 <InfoBox>
- Make sure that your Datacenter CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed while installing Enterprise version
+ For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
 </InfoBox>
-
-
-## Private Cloud Gateway Installer
-
-A Private Cloud Gateway is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a data center which is not accessible directly via the Datacenter hosting Spectro Cloud On-Prem Application. The gateway needs to be installed by the users in their VMware environments using a private cloud gateway installer OVA.
-
-### Hardware Requirement 
-
-* The infrastructure will require a proxy/non proxy environment for outgoing traffic. 
-* [Whitelist](#proxywhitelists) lists the proxy requirements for enabling the Spectro Cloud management console.
-* The instance can be configured with static IP addresses or dynamically allocated IP addresses (DHCP or Static).
-* vSphere Environment  Pre-requisites
-     - IPs for application workload services (e.g.: LoadBalancer services).
-     - Subnet with egress access to the internet (direct or via proxy):
-     - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-     - NTP configured on all ESXi Hosts.
-     - Shared Storage between vSphere hosts.
-* VMware vCenter [Permission](#permissionsrequired) are the minimum privilages to be held to perform the installation. 
-* Node requirements (1 Node)
-   - 2 vCPU
-   - 4GB memory
-   - 30GB storage.
-
-
-
-## Private Cloud Gateway Controller 
-	
-The infrastructure will require a proxy/non proxy environment for outgoing traffic. 
-* [Whitelist](#proxywhitelists) lists the proxy requirements for enabling the Spectro Cloud management console.
-* The instance can be configured with static IP addresses or dynamically allocated IP addresses (DHCP or Static ).
-* vSphere Environment Pre-Requisites.
-  - IPs for application workload services (e.g.: LoadBalancer services).
-  - Subnet with egress access to the internet (direct or via proxy):
-      - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-  - NTP configured on all ESXi Hosts.
-  - Shared Storage between vSphere hosts.
-  
-* VMware vCenter [Permission](#permissionsrequired)
-* Node requirements (1 Node)
-    - 2 vCPU
-    - 4GB memory
-    - 30GB storage. 
-* Node requirements (3 Node)
-    - 6 vCPU
-    - 12GB memory
-    - 70GB storage
-
-
-	
