@@ -168,7 +168,7 @@ The following permissions are required for the account used to install the platf
 
 ##  Proxy Requirements
 *   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic. 
-*   Connectivity to the followign domains and ports should be allowed :-
+*   Connectivity to the following domains and ports should be allowed :-
 
     | Top-level Domain | Port | Description |
     | --- | --- | --- |
