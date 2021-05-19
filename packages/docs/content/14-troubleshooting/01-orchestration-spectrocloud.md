@@ -2,7 +2,7 @@
 title: "Orchestration - Spectro Cloud"
 metaTitle: "Workload Cluster Provisioning"
 metaDescription: "The methods of workload cluster provisioning for K8S clusters"
-icon: "tasks"
+icon: ""
 hideToC: false
 fullWidth: false
 ---
