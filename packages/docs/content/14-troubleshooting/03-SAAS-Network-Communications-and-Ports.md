@@ -1,7 +1,7 @@
 ---
-title: "On-Premises Network Communication and Ports"
-metaTitle: "Network Communication and Ports Management Platform on Prem"
-metaDescription: "Port-Direction-Purpose Management Platform and Workload Clusters"
+title: "SAAS Network Communication and Ports"
+metaTitle: "Network Communication and Ports Management Platform - SAAS"
+metaDescription: "Port-Direction-Purpose Management Platform and Workload Clusters in Spectro SAAS"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,12 +13,9 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-# On-Premises Network Communications and Ports
+# SAAS Network Communications and Ports
 
-
-![network_communication_ports.png](network_communication_ports.png)
-
-
+![saas_networks_ports.png](saas_networks_ports.png)
 
 ## Management Platform
 
@@ -26,17 +23,12 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
 |SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |IN        |Message Bus for workload clusters|
-|HTTPS (tcp/443) |OUT       |VSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
-|HTTPS (tcp/6443)|OUT       |Workload K8s cluster API Server|
-
+|NATS (tcp/4222) |IN        |Agent running inside connecting to Management Platform|
 
 ## Workload Cluster
 
-
-|Port |Direction | Purpose|
+|Port            |Direction | Purpose|
 |:---------------|:---------|:--------------|
 |HTTPS (tcp/6443)|IN        |Kubernetes API Server|
 |SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |OUT       |Agent communication via Message Bus |
-|HTTPS (tcp/443) |OUT       |VSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+|NATS (tcp/4222) |OUT       |Registry (packs, integrations), Pack containers, Application Updates|
