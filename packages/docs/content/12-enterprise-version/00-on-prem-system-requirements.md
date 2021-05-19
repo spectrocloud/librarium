@@ -53,106 +53,104 @@ The sections below describe the common requirements for both the deployment mode
 
   The following permissions are required for the account used to install the platform :-
 
-    | vSphere Object | Privileges |
-    | --- | --- |
-    | Datastore | Allocate Space |
-    | | Browse Datastore |
-    | | Low level file operations |
-    | | Remove file |
-    | | Update virtual machine files |
-    | | Update virtual machine metadata |
-    | Folder | Create folder |
-    | | Delete folder |
-    | | Move folder |
-    | | Rename folder|
-    | Network | Assign Network |
-    | Resource | Apply recommendation
-    | | Assign virtual machine to resource pool |
-    | | Migrate powered off virtual machine |
-    | | Migrate powered on virtual machine |
-    | | Query vMotion |
-    | Sessions| Validate session |
-    | Storage views | View|
-    | Tasks | Create task |
-    | | Update Task |
-    | Virtual Machines | Change Configuration |
-    | | * Change Settings |
-    | | * Change Swapfile Placement
-    | | * Configure host USB device
-    | | * Configure raw device
-    | | * Add existing disk 
-    | | * Add new disk
-    | | * Add or remove device
-    | | * Advanced configuration
-    | | * Change CPU count
-    | | * Change resource
-    | | * Configure managedBy
-    | | * Display connection settings
-    | | * Extend virtual disk
-    | | * Modify device settings
-    | | * Query Fault Tolerance compatibility
-    | | * Query unowned files
-    | | * Reload from path
-    | | * Remove disk
-    | | * Rename
-    | | * Reset guest information
-    | | * Set annotation
-    | | * Toggle fork parent
-    | | * Upgrade virtual machine compatibility
-    | | Guest operations
-    | | * Guest operation alias modification
-    | | * Guest operation alias query
-    | | * Guest operation modifications
-    | | * Guest operation program execution
-    | | * Guest operation queries
-    | | Interaction
-    | | * Power off
-    | | * Power on
-    | | Inventory
-    | | * Create from existing
-    | | * Create new
-    | | * Move
-    | | * Remove
-    | | Provisioning
-    | | * Allow disk access
-    | | * Allow file access
-    | | * Allow read-only disk access
-    | | * Allow virtual machine download
-    | | * Allow virtual machine files upload
-    | | * Clone template
-    | | * Clone virtual machine
-    | | * Create template from virtual machine
-    | | * Customize guest
-    | | * Deploy template
-    | | * Mark as template
-    | | * Mark as virtual machine
-    | | * Modify customization specification
-    | | * Promote disks
-    | | * Read customization specifications
-    | | Service Configuration
-    | | * Allow notifications
-    | | * Allow polling of global event notifications
-    | | * Manage service configurations
-    | | * Modify service configuration
-    | | * Query service configurations
-    | | * Read service configuration
-    | | Snapshot management
-    | | * Create snapshot
-    | | * Remove snapshot
-    | | * Rename snapshot
-    | | * Revert to snapshot
-    | | vSphere Replication
-    | | * Configure replication
-    | | * Manage replication
-    | | * Monitor replication
-    | vApp | Import
-    | | View OVF environment
-    | | vApp application configuration
-    | | vApp instance configuration
-    | vSphere Tagging| Create vSphere Tag
-    | | Edit vSphere Tag
-
-
+ | vSphere Object | Privileges |
+| --- | --- |
+| Datastore | Allocate Space |
+| | Browse Datastore |
+| | Low level file operations |
+| | Remove file |
+| | Update virtual machine files |
+| | Update virtual machine metadata |
+| Folder | Create folder |
+| | Delete folder |
+| | Move folder |
+| | Rename folder|
+| Network | Assign Network |
+| Resource | Apply recommendation
+| | Assign virtual machine to resource pool |
+| | Migrate powered off virtual machine |
+| | Migrate powered on virtual machine |
+| | Query vMotion |
+| Sessions| Validate session |
+| Storage views | View|
+| Tasks | Create task |
+| | Update Task |
+| Virtual Machines | Change Configuration |
+| | * Change Settings |
+| | * Change Swapfile Placement
+| | * Configure host USB device
+| | * Configure raw device
+| | * Add existing disk 
+| | * Add new disk
+| | * Add or remove device
+| | * Advanced configuration
+| | * Change CPU count
+| | * Change resource
+| | * Configure managedBy
+| | * Display connection settings
+| | * Extend virtual disk
+| | * Modify device settings
+| | * Query Fault Tolerance compatibility
+| | * Query unowned files
+| | * Reload from path
+| | * Remove disk
+| | * Rename
+| | * Reset guest information
+| | * Set annotation
+| | * Toggle fork parent
+| | * Upgrade virtual machine compatibility
+| | Guest operations
+| | * Guest operation alias modification
+| | * Guest operation alias query
+| | * Guest operation modifications
+| | * Guest operation program execution
+| | * Guest operation queries
+| | Interaction
+| | * Power off
+| | * Power on
+| | Inventory
+| | * Create from existing
+| | * Create new
+| | * Move
+| | * Remove
+| | Provisioning
+| | * Allow disk access
+| | * Allow file access
+| | * Allow read-only disk access
+| | * Allow virtual machine download
+| | * Allow virtual machine files upload
+| | * Clone template
+| | * Clone virtual machine
+| | * Create template from virtual machine
+| | * Customize guest
+| | * Deploy template
+| | * Mark as template
+| | * Mark as virtual machine
+| | * Modify customization specification
+| | * Promote disks
+| | * Read customization specifications
+| | Service Configuration
+| | * Allow notifications
+| | * Allow polling of global event notifications
+| | * Manage service configurations
+| | * Modify service configuration
+| | * Query service configurations
+| | * Read service configuration
+| | Snapshot management
+| | * Create snapshot
+| | * Remove snapshot
+| | * Rename snapshot
+| | * Revert to snapshot
+| | vSphere Replication
+| | * Configure replication
+| | * Manage replication
+| | * Monitor replication
+| vApp | Import
+| | View OVF environment
+| | vApp application configuration
+| | vApp instance configuration
+| vSphere Tagging| Create vSphere Tag
+| | Edit vSphere Tag
 
 ##  Network Requirements
 
