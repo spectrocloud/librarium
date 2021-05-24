@@ -205,9 +205,7 @@ The following section provides the hardware requirements for Spectro Cloud Platf
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
 | --- | :---: | :-----: | :---: | :---: | :---: | --- |
-| Standard | 3 | 100 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
-| Medium | 10 |250 | 3 | 16Gb | 8 Virtual CPUs | 80 GB |
-| Large | 25 |500 | 3 | 32Gb | 8 Virtual CPUs | 80 GB |
+| Standard | 3 | 200 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
   
 
 <InfoBox>
