@@ -322,7 +322,9 @@ Ensure that the IAM user or the ROOT user role created should have the following
         "eks:UpdateNodegroupConfig",
         "eks:CreateNodegroup",
         "eks:AssociateIdentityProviderConfig",
-        "eks:DisassociateIdentityProviderConfig"
+        "eks:DisassociateIdentityProviderConfig",
+	"eks:DescribeIdentityProviderConfig",
+	"eks:ListIdentityProviderConfigs"
       ],
       "Resource": [
         "arn:*:eks:*:*:cluster/*",
