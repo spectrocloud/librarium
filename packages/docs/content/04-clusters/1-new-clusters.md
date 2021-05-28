@@ -321,12 +321,30 @@ Ensure that the IAM user or the ROOT user role created should have the following
         "eks:DeleteNodegroup",
         "eks:UpdateNodegroupConfig",
         "eks:CreateNodegroup",
-        "eks:AssociateIdentityProviderConfig",
-        "eks:DisassociateIdentityProviderConfig"
       ],
       "Resource": [
         "arn:*:eks:*:*:cluster/*",
         "arn:*:eks:*:*:nodegroup/*/*/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:AssociateIdentityProviderConfig",
+        "eks:ListIdentityProviderConfigs"
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:cluster/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DisassociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig",
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:identityproviderconfig/*/*/*/*"
       ]
     },
     {
