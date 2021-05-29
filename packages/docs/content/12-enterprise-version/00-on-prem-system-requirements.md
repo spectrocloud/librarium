@@ -27,7 +27,7 @@ The sections below describe the common requirements for both the deployment mode
 ## vSphere Environment Prerequisites
 
 * General requirements
-   - vCetener version :  6.7 and above
+   - vCenter version :  6.7 and above
    - NTP configured on all ESXi Hosts.
    
 
