@@ -16,7 +16,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Cluster Policies
 
-Cluster policies are features of clusters which brings in lot of performance merits to the tenant clusters. Spectro Cloud brings in lots of policies to the workload clusters to maximize the availability, reliability, security, patching and updates. 
+Cluster policies provide various cluster management and governance operations that can be performed to keep clusters up-to-date, conformant and secure. These operations can be performed on a sheduled basis or on demand as required.  
 
 <Tabs identifier="Feature Name">
 
@@ -24,16 +24,18 @@ Cluster policies are features of clusters which brings in lot of performance mer
 
 ## OS Patching
 
-Spectro cloud  provides OS patching essentially as a preventative maintenance necessary to keep machines up-to-date, stable and safe by taking care of system security.
+Spectro Cloud deploys Kubernetes clusters using pre-built VM images. The operating system on these images is the latest patch version at the time of building the image for the supported major-minor streams. As an example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be 18.04.3 LTE, assuming that was the latest at the time the VM image was built. However, newer versions continue to be published in the uptstream repositories as improvements, bug fixes and security patches are released. OS Patching, allows operating system on the running clusters nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. In our example, lets assume 18.04.4 LTE and 18.04.5 LTE are released overtime to fix important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade to it on the cluster nodes. 
+ 
+This operation is not available for managed Kubernetes Services like EKS, AKS and GKE. 
 
 ###  OS Patching Options
-There are multiple options available for OS Patching. Users can make their choice to OS patch while creating a cluster and also for a running cluster. The options available are:
+Following choices are vailable for patching the operating system to the latest version: -
 
 #### Patch OS on Boot
-During the cluster creation, while configuring the cluster (Cluster Configuration) , the user can select “Patch OS on boot”. In this case patching will be applied  to the tenant cluster with the initial $
+During the cluster creation, while configuring the cluster (Cluster Configuration) , the user can select “Patch OS on boot”. In this case the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
 
 #### OS Patching Schedule
-With this option the user can schedule OS patching while creating the cluster as well as when the cluster is in running state. OS Patching Schedule comes with several options like,
+Besides patching on boot, the users also have the opetion to set a sechedule for OS patching. Patching schecule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided: -
 
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
@@ -43,10 +45,9 @@ With this option the user can schedule OS patching while creating the cluster as
 * Custom os patch for exact month,day and hour and minute of user’s choice.
 
 #### Patch Now
-This option is valid only for running tenant clusters. In this case the OS patching will  apply to the running cluster immediately.
+This options provides a way to perform an immediate update to the latest version. 
 
-### How to Schedule
-
+### Steps
 
 * During Cluster Creation
 <InfoBox>
