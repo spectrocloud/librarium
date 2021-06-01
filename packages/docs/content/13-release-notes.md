@@ -14,7 +14,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
-# June 1, 2021 - Release 1.10
+# June 1, 2021 - Release 1.10.0
 
 Spectro Cloud 1.10 released with up to the minute features of security scans, backups and restoration policies.
 
