@@ -1834,8 +1834,16 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
 * Configure worker node pool. A worker node will be  configured by default.
     - Name - a descriptive name for the node pool.
-    - Size - Number of VMs to be provisioned for the node pool.
+    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varing workload conditions.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+
+* Optionlly create your Fargate Profile to aid the provisioning of on-demand, optimized compute capacity for the workload clusters .
+
+    - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter.
+    - Each selector associates to a namespace. Optionally, may specify labels for a namespace. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
+    - The selector matches the pods that are created within the associated namespace, but users can create multiple selectors to target multiple namespaces.
+    - Users may optionally specify Kubernetes labels to match for the selector.
+
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
