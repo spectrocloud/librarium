@@ -14,6 +14,17 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
+# June 1, 2021 - Release 1.10.0
+
+Spectro Cloud 1.10 released with up to the minute features of security scans, backups and restoration policies.
+
+* Scan your Kubernetes deployment to recognize the adherence to compliance policies.
+* Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
+* Check for configuration issues that can leave the tenant clusters exposed to attackers. 
+* Validate your kubernetes configuration by scanning the state of a Kubernetes tenant cluster.
+* Now users can have a snapshot for the persistent volumes of the workload cluster to AWS S3 object storage and get it restored in case of an outrage.
+
+
 # May 4, 2021 - Release 1.9.0
 
 Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
