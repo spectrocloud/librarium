@@ -16,13 +16,13 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # June 1, 2021 - Release 1.10.0
 
-Spectro Cloud 1.10 released with up to the minute features of security scans, backups and restoration policies.
+Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), and new cluster management policies to meansure cluster compliance and perform backups and restores.
 
-* Scan your Kubernetes deployment to recognize the adherence to compliance policies.
+* Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configuratins like Fargate profiles, OIDC Authentication etc. 
+* Scan your Kubernetes clusters to ensure they are comformant and complaint. 
 * Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
-* Check for configuration issues that can leave the tenant clusters exposed to attackers. 
-* Validate your kubernetes configuration by scanning the state of a Kubernetes tenant cluster.
-* Now users can have a snapshot for the persistent volumes of the workload cluster to AWS S3 object storage and get it restored in case of an outrage.
+* Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
+* Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
 
 
 # May 4, 2021 - Release 1.9.0
