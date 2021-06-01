@@ -80,8 +80,8 @@ The scan output can be viewed as Node Summary document with following details:
   *  [PASS] indicates that the test was run successfully, and passed.
   *  [FAIL] indicates that the test was run successfully, and failed. The remediation output describes how to correct the configuration, or includes an error message describing why the test could not be run.
   *  [WARN] means this test needs further attention, for example it is a test that needs to be run manually. Check the remediation output for further information.
-  *  [INFO] is informational output that needs no further action.
-
+  *  [STATE],[TEST_ID] and [DESCRIPTION] on individual test run.
+  *  Provision to filter and view test status based on master configuration and worker pool. 
 ### Kubernetes Penetration Testing
 
 Kubernetes penetration testing scans Kubernetes related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns.
@@ -90,6 +90,7 @@ The scan output can be viewed as a report with following details:
   * [Severity] in terms of  LOW, MEDIUM or HIGH
   * [Test ID] indicates the type of test conducted.
   * [Description] of the Test ID
+  * Provision to filter and view test status based on In-Cluster and Remote Cluster configuration.
 
 ### Kubernetes Conformance Testing
 
@@ -105,6 +106,8 @@ The scan output can be viewed as Node Summary document with following details:
    * [PASS] indicates that the test was run successfully, and passed.
    * [FAIL] indicates that the test was run successfully, and failed. The remediation output describes how to correct the configuration, or includes
    * [Skipped] indicates that the test was skipped.
+   * Describes the state, path and description of individual test run.
+   * Provision to filter and view test status based on end to end integration and Systemd.
 
 ### Configure the Scan
 
@@ -134,7 +137,7 @@ Desired scan for the tenant cluster is scheduled along with cluster creation.
 
 <InfoBox>
 
-Add New Cluster - Cluster Policies - Scan Policies - Enable and schedule desired scans
+Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desired scans
 
 </InfoBox>
 
@@ -239,8 +242,8 @@ To create your backup fill the following details to the open wizard:
 For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
 For On Demand backup a name of user choice can be used.
 * Select the backup location: Attach the backup location created.
-* Backup Schedule: Create a backup schedule of your choice from the drop down.
-* Expiry Date : Give an end date to finish the backup.
+* Backup Schedule: Create a backup schedule of your choice from the drop down, applicable only to scheduled backup.
+* Expiry Date : Select an end date to finish the backup in months or customize in hours.
 * Include all disks : select or deselect on your choice.
 * Include Cluster Resources : select or deselect on your choice.
 * Namespaces : An optional namespace.
