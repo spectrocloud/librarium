@@ -16,13 +16,44 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # June 1, 2021 - Release 1.10.0
 
-Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), and new cluster management policies to meansure cluster compliance and perform backups and restores.
+Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
 
 * Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configuratins like Fargate profiles, OIDC Authentication etc. 
 * Scan your Kubernetes clusters to ensure they are comformant and complaint. 
 * Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
 * Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
 * Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
+
+Note: - 
+
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure you have these new permissions included. Add these permissions to the IAM polciy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+{
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:UpdateInstanceInformation",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "s3:GetEncryptionConfiguration"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+```
 
 
 # May 4, 2021 - Release 1.9.0
