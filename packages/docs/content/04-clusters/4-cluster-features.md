@@ -140,7 +140,7 @@ Spectro Cloud provides a convenient backup option to backup Kubernetes cluster s
 
 AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as  backup location while backing up any cluster in the project. 
 
-Thhe following details are required in order to configure a backup location: -
+The following details are required in order to configure a backup location: -
 
 * Location Name : Name of your choice
 * Location Provider : AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store)
@@ -226,12 +226,12 @@ For On Demand backup a name of user choice can be used.
 * Backup Schedule: Create a backup schedule of your choice from the drop down, applicable only to scheduled backups.
 * Expiry Date : Select an expiry date for the backups. The backup will be automatically removed on the expiry date. 
 * Include all disks : Optionally backup persistent disks as part of the backup.
-* Include Cluster Resources : select or deselect on your choice.
-* Namespaces : Proivde namespaces that need to be backed up.
+* Include Cluster Resources : Select or deselect on your choice.
+* Namespaces : Proivde namespaces that need to be backed up. If left empty then all the Namespaces will be Backedup.
 
 
 ### Backup Scheduling Options:
-* Custom your backup for the exact month,day and hour and minute of the user's choice.
+* Customize your backup for the exact month,day and hour and minute of the user's choice.
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
 * Every month on the 1st at midnight.
@@ -240,11 +240,11 @@ For On Demand backup a name of user choice can be used.
 
 ### Restore backup
 
-Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from on the target cluster's backup/restore page. 
+Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from on the target cluster's backup/restore page. The Restore can be done to the cluster which are running on the same project.
 
 
 <WarningBox>
-When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. 
+When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. This is applicable to the clusters which are created on EKS to other clouds or Vice versa.
 </WarningBox>
 
 <WarningBox>
