@@ -549,6 +549,9 @@ user:
 * clusterprofile.uid
 * cluster.name
 * cluster.uid
+* cloudaccount.name
+* cloudaccount.uid
+* kubernetes.version
 
 </Tabs.TabPane>
 
