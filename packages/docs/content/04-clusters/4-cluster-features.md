@@ -65,7 +65,7 @@ This option provides a way to perform an immediate update to the latest version.
 
  ## Scans
 
-Spectro Cloud provisions compliance, security and conformance scans on tenant clusters. These scans ensures cluster adherence to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
+Spectro Cloud provides a way to run compliance, security and conformance scans on tenant clusters. These scans ensures cluster adherence to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
 
 
 The following types of scans are supported:
