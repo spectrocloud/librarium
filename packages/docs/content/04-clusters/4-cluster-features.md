@@ -69,7 +69,7 @@ This options provides a way to perform an immediate update to the latest version
 Spectro Cloud provisions compliance, security and conformance scans on tenant clusters. These scans ensure clusters adherence to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
 
 
-The following types of scans are supported: -
+The following types of scans are supported:
 
 ### Configuration Security
 
@@ -83,15 +83,15 @@ Kubernetes penetration testing scans Kubernetes related open-ports for any confi
 
 ### Conformance Testing
 
-Kubernetes conformance testing is about validating your kubernetes configuration to ensure they are conformant to the CNCF specifications. Spectro Cloud leverages an open source tool called Sonobuoy to perform this test.  Based on the type of cloud (public, private) and the type of deployment infrastrcture (IaaS, managed cloud service), a subset of relevant tests are automatically selected for execution. Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to lack of resources. For accurate assement of conformance for a distribution of Kubernetes it is recommned that you set up a cluster with at least 2 worked nodes. These tests are not destructuve tests, however they do launch several workloads in test namespaces as part of the tests. The consumption of cluster resources during the duration of the test run increases and may impact other workloads running on the cluster. 
+Kubernetes conformance testing is about validating your Kubernetes configuration to ensure they are conformant to the CNCF specifications. Spectro Cloud leverages an open source tool called Sonobuoy to perform this scan.  Based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service), a subset of relevant tests are automatically selected for execution. each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to lack of resources. For accurate assessment of conformance for a distribution of Kubernetes it is recommented that you set up a cluster with at least 2 worker nodes. These tests are not destructive tests, however they do launch several workloads in test namespaces as part of the tests. The consumption of cluster resources during the duration of the test run increases and may impact other workloads running on the cluster. 
 
 
-The scan summay of total passed and failed tests is displayed while the test is in progress. A full summary of the tests that were run is displayed after the completion of the report. 
+The scan summary of total passed and failed tests is displayed while the test is in progress. A full summary of the tests that were run is displayed after the completion of the report. 
 
 
 ## Scan Options
 
-Following options are avaialable for performing running cluster scans: -
+Following options are available for running cluster scans:
    
 ### On Demand 
 
@@ -99,7 +99,7 @@ Cluster scan of any type can be started by navigating to the scans tab of a clus
 
 ### Scheduled
 
-A schedule can be set for each type of scan at the time of depoying the cluster initially. The schedule can also be (re)set at a later point
+A schedule can be set for each type of scan at the time of depoying the cluster initially. The schedule can also be (re)set at a later point.
 
 ### Schedule Options Available
 
@@ -116,12 +116,11 @@ A schedule can be set for each type of scan at the time of depoying the cluster 
 |----------------------|
 |Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice|
 
+
 |__Immediate Scan__|
 |------------------|
 |Select the cluster to scan -> Scan(top panel) -> Run Scan|
 
-
-Scans can be scheduled at the time of deployment  from the 'Cluster Policies' step of the cluster creation wizard. 
 
 |__During Cluster Deployment__|
 |-----------------------------|
@@ -142,14 +141,14 @@ AWS S3 and other S3 compliant object stores such as MinIO are currently supporte
 
 The following details are required in order to configure a backup location: -
 
-* Location Name : Name of your choice
-* Location Provider : AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store)
-* Certificate : Required for MinIO
-* S3 Bucket : s3 bucket name that must be pre-created on the object store
-* Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3
+* Location Name : Name of your choice.
+* Location Provider : AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store).
+* Certificate : Required for MinIO.
+* S3 Bucket : s3 bucket name that must be pre-created on the object store.
+* Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3.
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
 
-    * Credentials - Provide access key and secret key 
+    * Credentials - Provide access key and secret key. 
     * STS - Provide the ARN and Exteral ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume role. 
     #### AWS S3 Permissions:
 
@@ -217,17 +216,18 @@ The following details are required in order to configure a backup location: -
 
 ### Create  backup
 
-Backups can be scheduled or initiated on demand as required. The following information is required for configuring a backup: -
+Backups can be scheduled or initiated on demand as required. The following information is required for configuring a backup:
 
 * Backup Prefix /Backup Name: 
-For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-For On Demand backup a name of user choice can be used.
+	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
+	* For On Demand backup, a name of user choice can be used.
 * Select the backup location
 * Backup Schedule: Create a backup schedule of your choice from the drop down, applicable only to scheduled backups.
+
 * Expiry Date : Select an expiry date for the backups. The backup will be automatically removed on the expiry date. 
 * Include all disks : Optionally backup persistent disks as part of the backup.
 * Include Cluster Resources : Select or deselect on your choice.
-* Namespaces : Proivde namespaces that need to be backed up. If left empty then all the Namespaces will be Backedup.
+* Namespaces : Proivde namespaces that need to be backed up. If left empty then all the Namespaces will be backed up.
 
 
 ### Backup Scheduling Options:
@@ -237,18 +237,16 @@ For On Demand backup a name of user choice can be used.
 * Every month on the 1st at midnight.
 * Every two months on the 1st at midnight.
 
-
 ### Restore backup
 
 Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from on the target cluster's backup/restore page. The Restore can be done to the cluster which are running on the same project.
-
 
 <WarningBox>
 When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. This is applicable to the clusters which are created on EKS to other clouds or Vice versa.
 </WarningBox>
 
 <WarningBox>
-When restoring your backup to a cluster launched using a cloud account different from the one used for source account, permissions might need to be granted. before restore is initiated.  
+When restoring your backup to a cluster launched using a cloud account different from the one used for source account, permissions needs to be granted  before restore is initiated to the new cluster.  
 </WarningBox>
 
 
