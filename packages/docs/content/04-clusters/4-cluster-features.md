@@ -29,13 +29,13 @@ Spectro Cloud deploys Kubernetes clusters using pre-built VM images. The operati
 This operation is not available for managed Kubernetes Services like EKS, AKS and GKE. 
 
 ###  OS Patching Options
-Following choices are vailable for patching the operating system to the latest version: -
+Following choices are available for patching the operating system to the latest version: 
 
 #### Patch OS on Boot
-During the cluster creation, while configuring the cluster (Cluster Configuration) , the user can select “Patch OS on boot”. In this case the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
+During the cluster creation, while configuring the cluster (Cluster Configuration), the user can select “Patch OS on boot”. In this case the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
 
 #### OS Patching Schedule
-Besides patching on boot, the users also have the opetion to set a sechedule for OS patching. Patching schecule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided: -
+Besides patching on boot, the users also have the option to set a sechedule for OS patching. Patching schecule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided:
 
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
@@ -47,17 +47,18 @@ Besides patching on boot, the users also have the opetion to set a sechedule for
 #### Patch Now
 This options provides a way to perform an immediate update to the latest version. 
 
-### Steps
+### Steps:
 
-* During Cluster Creation
-<InfoBox>
-Cluster Configuration -> “OS Patching Schedule” or "Patch on Boot".
-</InfoBox>
+|  **During Cluster Creation**       |
+| -----------------------------------|
+|Cluster Configuration -> “OS Patching Schedule” or "Patch on Boot" |
 
-* For a Running Cluster
-<InfoBox>
-Clusters -> Settings -> Machine Management -> "OS Patching Schedule" or "Patch Now".
-</InfoBox>
+
+
+| **For a Running Cluster**|
+|--------------------------|
+|On demand Patching: Clusters -> Settings -> Machine Management -> On-Demand Update|
+|Scheduled Patching: Clusters -> Settings -> Cluster Settings -> Machine Management -> “OS Patching Schedule”|
 
 </Tabs. TabPane>
 
@@ -65,7 +66,7 @@ Clusters -> Settings -> Machine Management -> "OS Patching Schedule" or "Patch N
 
  ## Scans
 
-Spectro Cloud provides a way to run compliance, security and conformance scans on tenant clusters. These scans ensure clusters adhere to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
+Spectro Cloud provisions compliance, security and conformance scans on tenant clusters. These scans ensure clusters adherence to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
 
 
 The following types of scans are supported: -
@@ -108,28 +109,24 @@ A schedule can be set for each type of scan at the time of depoying the cluster 
 * Every month on the 1st at midnight
 * Every two months on the 1st at midnight
 
-## Steps
-
-<InfoBox>
-
-__Schedule your Scan__
-
-Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice.
-
-__Immediate Scan__
-
-Select the cluster to scan -> Scan(top panel) -> Run Scan
-
-</InfoBox>
+### Steps:
 
 
-Scans can be scheduled at the time of deployment  from the 'Cluster Polocies' step of the cluster creation wizard. 
+|__Schedule your Scan__|
+|----------------------|
+|Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice|
 
-<InfoBox>
+|__Immediate Scan__|
+|------------------|
+|Select the cluster to scan -> Scan(top panel) -> Run Scan|
 
-Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desired scans
 
-</InfoBox>
+Scans can be scheduled at the time of deployment  from the 'Cluster Policies' step of the cluster creation wizard. 
+
+|__During Cluster Deployment__|
+|-----------------------------|
+|Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desired scans|
+
 
 </Tabs. TabPane>
 
@@ -151,12 +148,12 @@ Thhe following details are required in order to configure a backup location: -
 * S3 Bucket : s3 bucket name that must be pre-created on the object store
 * Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
-    *** Credentials - Provide access key and secret key 
-    *** STS - Provide the ARN and Exteral ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume role. 
 
+    * Credentials - Provide access key and secret key 
+    * STS - Provide the ARN and Exteral ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume role. 
+    #### AWS S3 Permissions:
 
-    AWS S3 Permissions: - 
-    ``` json
+    ```json
     {
         "Version": "2012-10-17",
         "Statement": [
@@ -199,9 +196,9 @@ Thhe following details are required in order to configure a backup location: -
      
     ```
 
+    #### Trust Setup Example:
 
-    Trust Setup Example: -
-    ``` json
+    ```json
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -255,23 +252,20 @@ When restoring your backup to a cluster launched using a cloud account different
 </WarningBox>
 
 
-### Steps
+### Steps:
 
-#### On Demand Backup
-<InfoBox>
-Select the cluster to Backup -> Settings -> Cluster Settings ->Schedule Backups 
-</InfoBox>
+|Add a Backup Location|
+|---------------------|
+|Go to Project Settings -> Backup locations  -> Add a New Backup location|
 
-#### Scheduled Backup 
-<InfoBox> 
-Cluster creation -> Policies -> Backup Policies
-</InfoBox>
+|On Demand Backup   |
+|-------------------|
+|Select the cluster to Backup -> Settings -> Cluster Settings ->Schedule Backups| 
 
 
-#### Add a Backup Location
-<InfoBox>
-Go to Project Settings -> Backup locations  -> Add a New Backup location.
-</InfoBox>
+|Scheduled Backup |
+|-----------------|
+|Cluster creation -> Policies -> Backup Policies|
 
 </Tabs. TabPane>
 </Tabs>
