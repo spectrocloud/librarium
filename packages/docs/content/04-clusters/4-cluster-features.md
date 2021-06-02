@@ -138,72 +138,127 @@ Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desi
 
 ## Backup and Restore
 
-Spectro Cloud provides a convenient backup option for the tenant clusters that compresses and backs up Kubernetes objects to object storage. A snapshot is created for the persistent volumes  of the workload cluster to AWS S3 object storage. In the case of an outrage the cluster’s objects and Persistent Volumes  could be restored to a previous state. Spectro Cloud allows you to use AWS Simple Storage Service to snapshot your Persistent Volumes, and Spaces to back up your Kubernetes objects and restore them when a disaster strikes.
+ ## Backup and Restore
 
-### Configure your Backup
+Spectro Cloud provides a convenient backup option to backup Kubernetes cluster state into an object storage and restore it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc, persistent volumes can also be optionally snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open source tool called Velero to provide these capabilities. Multiple backups of a cluster can be maintained simultaneously. 
 
-The backup location needs to be configured using AWS S3 buckets. The following Backup Restore policies need to be included for the S3 location trust certification.
+### Backup Locations
 
-``` json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeVolumes",
-                "ec2:DescribeSnapshots",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:CreateSnapshot",
-                "ec2:DeleteSnapshot"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:DeleteObject",
-                "s3:PutObject",
-                "s3:AbortMultipartUpload",
-                "s3:ListMultipartUploadParts"
-            ],
-            "Resource": [
-                "arn:aws:s3:::${BUCKET}/*"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListBucket"
-            ],
-            "Resource": [
-                "arn:aws:s3:::${BUCKET}"
-            ]
-        }
-    ]
-}
- 
-```
+AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as  backup location while backing up any cluster in the project. 
 
-### Create the Backup Location.
-
-<InfoBox>
-Go to Project Settings -> Backup locations  -> Add a New Backup location.
-</InfoBox>
-Complete all the steps of the add backup location wizard. Provide values for various fields as follows:
+Thhe following details are required in order to configure a backup location: -
 
 * Location Name : Name of your choice
-* Location Provider : AWS only
-* Certificate : Optional
-* S3 Bucket : s3 bucket name created in AWS
-* Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url=
-* Make your choice of validation using credentials or STS.
+* Location Provider : AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store)
+* Certificate : Required for MinIO
+* S3 Bucket : s3 bucket name that must be pre-created on the object store
+* Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3
+* Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
+    *** Credentials - Provide access key and secret key 
+    *** STS - Provide the ARN and Exteral ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume role. 
 
-### Create Backup
 
-The backup can be created on demand for a running cluster, or could be scheduled during cluster creation.
+    AWS S3 Permissions: - 
+    ``` json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:DescribeVolumes",
+                    "ec2:DescribeSnapshots",
+                    "ec2:CreateTags",
+                    "ec2:CreateVolume",
+                    "ec2:CreateSnapshot",
+                    "ec2:DeleteSnapshot"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetObject",
+                    "s3:DeleteObject",
+                    "s3:PutObject",
+                    "s3:AbortMultipartUpload",
+                    "s3:ListMultipartUploadParts"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::${BUCKET}/*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::${BUCKET}"
+                ]
+            }
+        ]
+    }
+     
+    ```
+
+
+    Trust Setup Example: -
+    ``` json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "arn:aws:iam::141912899XX99:root"
+          },
+          "Action": "sts:AssumeRole",
+          "Condition": {}
+        }
+      ]
+    }
+    ```
+
+
+### Create  backup
+
+Backups can be scheduled or initiated on demand as required. The following information is required for configuring a backup: -
+
+* Backup Prefix /Backup Name: 
+For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
+For On Demand backup a name of user choice can be used.
+* Select the backup location
+* Backup Schedule: Create a backup schedule of your choice from the drop down, applicable only to scheduled backups.
+* Expiry Date : Select an expiry date for the backups. The backup will be automatically removed on the expiry date. 
+* Include all disks : Optionally backup persistent disks as part of the backup.
+* Include Cluster Resources : select or deselect on your choice.
+* Namespaces : Proivde namespaces that need to be backed up.
+
+
+### Backup Scheduling Options:
+* Custom your backup for the exact month,day and hour and minute of the user's choice.
+* Every week on Sunday at midnight.
+* Every two weeks at midnight.
+* Every month on the 1st at midnight.
+* Every two months on the 1st at midnight.
+
+
+### Restore backup
+
+Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from on the target cluster's backup/restore page. 
+
+
+<WarningBox>
+When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. 
+</WarningBox>
+
+<WarningBox>
+When restoring your backup to a cluster launched using a cloud account different from the one used for source account, permissions might need to be granted. before restore is initiated.  
+</WarningBox>
+
+
+### Steps
 
 #### On Demand Backup
 <InfoBox>
@@ -215,47 +270,11 @@ Select the cluster to Backup -> Settings -> Cluster Settings ->Schedule Backups
 Cluster creation -> Policies -> Backup Policies
 </InfoBox>
 
-To create your backup fill the following details to the open wizard:
 
-* Backup Prefix /Backup Name: 
-For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-For On Demand backup a name of user choice can be used.
-* Select the backup location: Attach the backup location created.
-* Backup Schedule: Create a backup schedule of your choice from the drop down, applicable only to scheduled backup.
-* Expiry Date : Select an end date to finish the backup in months or customize in hours.
-* Include all disks : select or deselect on your choice.
-* Include Cluster Resources : select or deselect on your choice.
-* Namespaces : An optional namespace.
-* Validate and review these details to create your back up. 
-
-### Backup Scheduling Options:
-* Custom your backup for the exact month,day and hour and minute of the user's choice.
-* Every week on Sunday at midnight.
-* Every two weeks at midnight.
-* Every month on the 1st at midnight.
-* Every two months on the 1st at midnight.
-* Never.
-
-### Restore the Cluster
-
-The completed backup report can be viewed from Cluster Page -> Backup -> Backup -> Click Completed
-
-A report of the scan can  be viewed as a detailed summary:
-* Backup Name: The name given while creating the backup.
-* Backup Status : Completed/ In Progress.
-* Created On : Date and time  of Creation.
-* Expiry Time: Date and time of backup expiry.
-* Namespace: Optional namespace, if created.
-* Delete Backup : Option to delete the backup.
-* Restore Backup: Option to restore the cluster in case of system failure.
-
-<WarningBox>
-Backups created to or from EKS clusters will require storage class GP2 to be created mandatorily.
-</WarningBox>
-
-<WarningBox>
-While restoring your backup to a new cluster,the S3 policy needs to have the Worker Pool of the new cluster added as a trusted entity. 
-</WarningBox>
+#### Add a Backup Location
+<InfoBox>
+Go to Project Settings -> Backup locations  -> Add a New Backup location.
+</InfoBox>
 
 </Tabs. TabPane>
 </Tabs>
