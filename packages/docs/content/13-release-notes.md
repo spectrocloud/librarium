@@ -24,11 +24,11 @@ Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (
 * Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
 * Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
 
-Note: - 
+Note:
 
-The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure you have these new permissions included. 
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure that you have these new permissions included. 
 
-Add the following permissions to the IAM polciy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
 
 ```json
    {
