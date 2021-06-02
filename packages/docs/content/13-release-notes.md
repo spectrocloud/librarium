@@ -26,10 +26,12 @@ Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (
 
 Note: - 
 
-The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure you have these new permissions included. Add these permissions to the IAM polciy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure you have these new permissions included. 
+
+Add the following permissions to the IAM polciy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
 
 ```json
-{
+   {
       "Effect": "Allow",
       "Action": [
         "secretsmanager:DeleteSecret",
@@ -53,7 +55,36 @@ The following permissions are additionally required to be granted to the cloud a
         "*"
       ]
     }
+    
 ```
+
+Add the following permissions to the IAM polciy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:AssociateIdentityProviderConfig",
+        "eks:ListIdentityProviderConfigs"
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:cluster/*"
+      ]
+   },
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DisassociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig"
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:identityproviderconfig/*/*/*/*"
+      ]
+   }
+```
+
+
+
 
 
 # May 4, 2021 - Release 1.9.0
