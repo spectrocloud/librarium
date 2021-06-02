@@ -61,7 +61,7 @@ Clusters -> Settings -> Machine Management -> "OS Patching Schedule" or "Patch N
 
 </Tabs. TabPane>
 
-<Tabs. TabPane tab="Scans" key="scan">
+<Tabs. TabPane tab="Scans" key="Scans">
 
  ## Scans
 
@@ -134,9 +134,6 @@ Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desi
 </Tabs. TabPane>
 
 <Tabs. TabPane tab="Backup and Restore" key="bku">
-
-
-## Backup and Restore
 
  ## Backup and Restore
 
