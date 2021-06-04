@@ -78,7 +78,7 @@ Add the following permissions to the IAM polciy called ControllerPolicy if it wa
         "eks:DescribeIdentityProviderConfig"
       ],
       "Resource": [
-        "arn:aws:eks:*:*:identityproviderconfig/*/*/*/*"
+        "*"
       ]
    }
 ```
