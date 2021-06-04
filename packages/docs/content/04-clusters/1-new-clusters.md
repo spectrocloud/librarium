@@ -344,7 +344,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
         "eks:DescribeIdentityProviderConfig"
       ],
       "Resource": [
-        "arn:aws:eks:*:*:identityproviderconfig/*/*/*/*"
+        "*"
       ]
     },
     {
