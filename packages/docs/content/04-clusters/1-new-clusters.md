@@ -334,7 +334,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
         "eks:ListIdentityProviderConfigs"
       ],
       "Resource": [
-        "arn:aws:eks:*:*:cluster/*"
+        "*"
       ]
     },
     {
