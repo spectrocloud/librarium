@@ -19,7 +19,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
 
 * Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configurations like Fargate profiles, OIDC Authentication etc. 
-* Scan your Kubernetes clusters to ensure they are comformant and complaint. 
+* Scan your Kubernetes clusters to ensure they are conformant and compliant.
 * Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
 * Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
 * Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
