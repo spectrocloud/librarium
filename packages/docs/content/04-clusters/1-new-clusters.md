@@ -1888,10 +1888,10 @@ The following steps need to be performed to provision a new EKS cluster:
     - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
-The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service. 
+The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service. 
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -1904,15 +1904,15 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varying workload conditions.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
 
-* Optionlly create one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
+* Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
     - Name - Provide a name for the Fargate profile. 	
     - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected. 
-    - Selectors - Define pod selector by providing a target namsespace and optionally labels. Pods with matching namespace and app lables are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
+    - Selectors - Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
 
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
 ## Scaling an EKS Cluster

@@ -48,4 +48,4 @@ Spectro Cloud pivots these clusters for several reasons, related to scalability 
 
 * Scalability: The management platform scales to meet the demand of all your workload clusters as the number of tenant clusters and nodes increases in size. 
 * Resiliency: Even if the management platform were to experience an outage, the workload clusters would retain their resiliency capabilities, auto-recovery, launching of new nodes on failures, auto-scaling, and other policies still work!
-* Intermittent network resiliency: The design supports use cases where the workload clusters can still operate in intermittent and disconnected network availability situation.
+* Intermittent network resiliency: The design supports use cases where the workload clusters can still operate in intermittent and disconnected network availability situations.
