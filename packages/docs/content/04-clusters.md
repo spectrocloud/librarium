@@ -144,22 +144,38 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 ## Download Cluster Logs
 
-At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages . Problems that occur during the orchestration lifecycle may require access to various container, node and kube system logs. Spectro Cloud automates this log collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
+At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration lifecycle may require access to the various containers, nodes, and Kube system logs. Spectro Cloud automates this log collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
 
-To Collect the logs:
+### To Collect the logs:
+
+* Select the running cluster
+* Go to settings and, select download logs.
+* Choose the desired log from the below options:
+    * Kube-System Logs 
+        -  Logs of all the Kubernetes components.
+    * Spectro Cloud Logs
+        -  Spectro namespace logs for the last one hour.
+    * Node Logs
+        -  Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
+* Click Download Logs.
+* The message “The request was sent successfully. The download will be available soon.”  gets displayed on the UI.
+* Have an average wait time of 5 minutes.
+* At the end of this short log fetching interval, the message “The logs archive for {Cluster-name} was created successfully will be displayed on the UI.
+* Click [Download "cluster-name" logs] to download the logs folder to your local machine.
+* UnZip and rename the logs folder as per customer choice.
 
 <InfoBox>
- 
- Go to the running cluster -> Click on settings top right corner -> click Download Logs -> Choose the desired logs to be collected
+
+* In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
+
+* Spectro Cloud recommends its users attach these logs along with the Support Request for accelerated troubleshooting.
+
+* Expect an average log fetching time of 5 minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
+
+* The downloaded Zip file will be by default named as spectro_logs.zip, the users can unzip and choose a name of convenience.
 
 </InfoBox>
 
-The log types supported are:
- * Kube-System Logs
- * Spectro Cloud Logs
- * Node Logs
- 
-Once the download button is clicked the system starts aggregating logs, and the option to download the log archive is displayed in a few seconds.
 
 
 # Proxy Whitelists
