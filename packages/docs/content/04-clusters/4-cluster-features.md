@@ -16,7 +16,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Cluster Policies
 
-Cluster policies provide various cluster management and governance operations that can be performed to keep clusters up-to-date, conformant and secure. These operations can be performed on a sheduled basis or on demand as required.  
+Cluster policies provide various cluster management and governance operations that can be performed to keep clusters up-to-date, conformant and secure. These operations can be performed on a scheduled basis or on-demand as required.  
 
 <Tabs identifier="Feature Name">
 
@@ -24,7 +24,7 @@ Cluster policies provide various cluster management and governance operations th
 
 ## OS Patching
 
-Spectro Cloud deploys Kubernetes clusters using pre-built VM images. The operating system on these images is the latest patch version at the time of building the image for the supported major-minor streams. As an example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be 18.04.3 LTE, assuming that was the latest at the time the VM image was built. However, newer versions continue to be published in the uptstream repositories as improvements, bug fixes and security patches are released. OS Patching, allows operating system on the running clusters nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. In our example, lets assume 18.04.4 LTE and 18.04.5 LTE are released overtime to fix important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade to it on the cluster nodes. 
+Spectro Cloud deploys Kubernetes clusters using pre-built VM images. The operating system on these images is the latest patch version at the time of building the image for the supported major-minor streams. As an example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be 18.04.3 LTE, assuming that was the latest at the time the VM image was built. However, newer versions continue to be published in the upstream repositories as improvements, bug fixes and security patches are released. OS Patching allows operating system on the running clusters nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. In our example, lets assume 18.04.4 LTE and 18.04.5 LTE are released overtime to fix important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade to it on the cluster nodes. 
  
 This operation is not available for managed Kubernetes Services like EKS, AKS and GKE. 
 
@@ -35,13 +35,13 @@ Following choices are available for patching the operating system to the latest 
 During the cluster creation, while configuring the cluster (Cluster Configuration), the user can select “Patch OS on boot”. In this case the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
 
 #### OS Patching Schedule
-Besides patching on boot, the users also have the option to set a sechedule for OS patching. Patching schecule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided:
+Besides patching on boot, the users also have the option to set a schedule for OS patching. Patching schedule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided:
 
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
 * Every month on the 1st at midnight.
 * Every two months on the 1st at midnight.
-* Custom os patch for exact month,day,hour and minute of user’s choice.
+* Custom os patch for an exact month,day,hour and minute of user’s choice.
 
 #### Patch Now
 This option provides a way to perform an immediate update to the latest version. 
@@ -65,7 +65,7 @@ This option provides a way to perform an immediate update to the latest version.
 
  ## Scans
 
-Spectro Cloud provides a way to run compliance, security and conformance scans on tenant clusters. These scans ensures cluster adherence to specific compliance and security standards. It also detects potential vulnerabilities by perforing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run overtime. Spectro Cloud keeps a history of previous scans for comparison purposes. 
+Spectro Cloud provides a way to run compliance, security and conformance scan on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. It also detects potential vulnerabilities by performing penetration tests. Spectro Cloud supports 3 types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run over time. Spectro Cloud keeps a history of previous scans for comparison purposes. 
 
 
 The following types of scans are supported:
@@ -74,15 +74,15 @@ The following types of scans are supported:
 
 This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of Kubernetes are covered by different releases of the CIS benchmark. By default, Kubernetes configuration security will determine the test set to run based on the Kubernetes version running on the cluster under scan. Internally, Spectro Cloud leverages an open source tool called Kube Bench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the Kubernetes cluster and a combined report is displayed on the UI. Users can filter the report to view only the master or worker results if required. 
 
-All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored are those that cannot be automatically run and its suggested that these are tested manually. 
+All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored are those that cannot be automatically run and it is suggested that these are tested manually. 
 
 ### Penetration Testing
 
-Kubernetes penetration testing scans Kubernetes related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Spectro Cloud leverages an open source tool called Kube Hunter from Aqua Security to perfom this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server where as in external mode, the external public facing end point is used for testing. A combined report of vulnerabilities found in both modes are shown on the Spectro Cloud UI. Users can filter the report to view just the internal or external report if required. 
+Kubernetes penetration testing scans Kubernetes related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Spectro Cloud leverages an open source tool called Kube Hunter from Aqua Security to perform this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server where as in external mode, the external public facing endpoint is used for testing. A combined report of vulnerabilities found in both modes is shown on the Spectro Cloud UI. Users can filter the report to view just the internal or external report if required. 
 
 ### Conformance Testing
 
-Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that, they are conformant to the CNCF specifications. Spectro Cloud leverages an open source tool called Sonobuoy to perform this scan.  Based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service), a subset of relevant tests are automatically selected for execution. Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to lack of resources. For accurate assessment of conformance for a distribution of Kubernetes, it is recommented that you set up a cluster with at least 2 worker nodes. These tests are not destructive tests, however they do launch several workloads in test namespaces as part of the tests. The consumption of cluster resources during the duration of the test run increases and may impact other workloads running on the cluster. 
+Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that, they are conformant to the CNCF specifications. Spectro Cloud leverages an open source tool called Sonobuoy to perform this scan.  Based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service), a subset of relevant tests are automatically selected for execution. Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to lack of resources. For accurate assessment of conformance for a distribution of Kubernetes, it is recommended that you set up a cluster with at least 2 worker nodes. These tests are not destructive however, they do launch several workloads in test namespaces as part of the tests. The consumption of cluster resources during the duration of the test run increases and may impact other workloads running on the cluster. 
 
 
 The scan summary of total passed and failed tests is displayed while the test is in progress. A full summary of the tests that were run is displayed after the completion of the report. 
@@ -98,11 +98,11 @@ Cluster scan of any type can be started by navigating to the scans tab of a clus
 
 ### Scheduled
 
-A schedule can be set for each type of scan at the time of depoying the cluster initially. The schedule can also be (re)set at a later point.
+A schedule can be set for each type of scan at the time of deploying the cluster initially. The schedule can also be (re)set at a later point.
 
 ### Schedule Options Available
 
-* Custom your compliance scan for exact month,day,hour and minute of user choice
+* Custom your compliance scan for an exact month,day,hour and minute of user choice
 * Every week on Sunday at midnight
 * Every two weeks at midnight
 * Every month on the 1st at midnight
@@ -148,7 +148,7 @@ The following details are required in order to configure a backup location:
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
 
     * Credentials - Provide access key and secret key. 
-    * STS - Provide the ARN and Exteral ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume role. 
+    * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have trust setup with the account used to launch the cluster itself and should have the permission to assume the role. 
     #### AWS S3 Permissions:
 
     ```json
@@ -215,7 +215,7 @@ The following details are required in order to configure a backup location:
 
 ### Create  backup
 
-Backups can be scheduled or initiated on demand as required. The following informations are required for configuring a backup:
+Backups can be scheduled or initiated on demand as required. The following information are required for configuring a backup:
 
 * Backup Prefix /Backup Name: 
 	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
@@ -238,7 +238,7 @@ Backups can be scheduled or initiated on demand as required. The following infor
 
 ### Restore Backup
 
-Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from the target cluster's backup/restore page. The Restore can be done to the cluster which are running on the same project.
+Backups created manually or as part of schedule are listed under Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from the target cluster's backup/restore page. The Restore can be done to the cluster which is running on the same project.
 
 <WarningBox>
 When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. This is applicable to the clusters which are created on EKS to other clouds or Vice versa.
