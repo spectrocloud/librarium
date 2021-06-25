@@ -1988,7 +1988,7 @@ If the IP allocation type is DHCP, a Load balancer VM will be created for each o
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* Openstack victoria (recommended).
+* OpenStack victoria (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between OpenStack hosts.
 * OpenStack permission set if any.
@@ -2015,7 +2015,7 @@ Enterprise version users should choose the "Use System Gateway" option.
 A new user cloud accounts can be created for the different OpenStack users in addition to the default cloud account already associated with the private cloud gateway.
 To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
 
-|Property|Discription |    
+|Property|Description |    
 |:---------------|:-----------------------|
 |  Account Name |  Custom name for the cloud account   |
 |   Private cloud gateway|    Reference to a running cloud gateway |
@@ -2038,7 +2038,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 
 ## Tenant Portal - Initiate Install
 
-* Please ensure the following prerequisites are met in your Openstack environment:
+* Please ensure the following prerequisites are met in your OpenStack environment:
     * An instance with an Ubuntu 20.x or higher
     * Internet connectivity for the machine, or proxied
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings and invoke the dialogue to create a new private cloud gateway.
@@ -2052,7 +2052,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 |Spectro Cloud Gateway Name|Gateway Name|
 |pairingcode|Pairing code from Spectro Cloud Console|
 |console | Spectro Cloud Tenant console URL|
-|cloud_type | Cloudtype to install on [openstack]|
+|cloud_type | Cloudtype to install on [OpenStack]|
 |http_proxy (optional)| The endpoint for the HTTP proxy server|
 |https_proxy (optional)| The endpoint for the HTTPS proxy server|
 |no_proxy (optional)| A comma-separated list of local server, local network CIDR, hostnames, domain names that should be excluded from proxying|
@@ -2088,7 +2088,7 @@ Initiate deployment using the command below with pairing value obtained from ten
  
 ``` json
 
- Format: ./pcg_installer.bin -- --name={custom-name} --console={consoleurl} --pairingcode={00000} --cloud_type=openstack --http_proxy=http://10.10.167.250:3128 --https_proxy=http://10.10.167.250:3128 --pod_cidr=172.16.0.0/20 --svc_ip_range=10.158.0.0/24 --proxy_ca_cert=‘Certificate-Content’ --no_proxy=,localhost,10.158.0.0/24,10.10.128.10,.spectrocloud.local,10.0.0.0/8,openstack.spectrocloud.com,172.16.0.0/20,10.158.0.0/24
+ Format: ./pcg_installer.bin -- --name={custom-name} --console={console-url} --pairingcode={00000} --cloud_type=openstack --http_proxy=http://10.10.167.250:3128 --https_proxy=http://10.10.167.250:3128 --pod_cidr=172.16.0.0/20 --svc_ip_range=10.158.0.0/24 --proxy_ca_cert=‘Certificate-Content’ --no_proxy=,localhost,10.158.0.0/24,10.10.128.10,.spectrocloud.local,10.0.0.0/8,openstack.spectrocloud.com,172.16.0.0/20,10.158.0.0/24
 
 ``` 
 ## Tenant Portal - Launch Cloud Gateway
@@ -2200,7 +2200,7 @@ The following steps need to be performed to provision a new OpenStack cluster:-
 
 ## Deleting an OpenStack Cluster
 The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
-* Select the cluster tobe deleted from the cluster view and navigate to the cluster overview page
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
 * Invoke a delete action from the cluster settings
 * Confirm delete action
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
