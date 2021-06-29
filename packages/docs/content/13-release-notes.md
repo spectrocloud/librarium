@@ -14,6 +14,18 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
+
+# June 28, 2021 - Release 1.11.0
+
+Spectro Cloud 1.11 is released with the support of OpenStack to uplift tenant business agility, availability, and efficiency by providing the key to build their cloud infrastructure with polished authentication techniques.
+
+* Spectro Cloud leverages OpenStack, a modular cloud infrastructure that runs off standard hardware capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms to provide orchestration, fault management, and service management to ensure high availability. 
+
+* Spectro Cloud allows its tenants to verify, obtain the basic profile information and authenticate the End-User using an Authorization Server in an interoperable and REST-like manner with OpenID Connect.
+
+
+
+
 # June 1, 2021 - Release 1.10.0
 
 Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
