@@ -38,6 +38,7 @@ registry.hostname:
  schema: '{{ required }}'
 ```
 
+
 **Format**
 
 Defines the pack value format: the value is valid only when the value format matches the format defined in the pack.
@@ -158,6 +159,17 @@ registry.type:
 </Tabs.TabPane>
 
 </Tabs>
+
+**Readonly**
+
+The pack value can be editable  if marked as readonly.
+
+```bash
+
+registry.hostname:
+ schema: '{{ readonly }}'
+
+```
 
 **Examples**
 
