@@ -46,7 +46,7 @@ Spectro Cloud creates compute, network, and storage resources on AWS during the 
 
 Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
 
-* vCpu
+* vCPU
 * VPC
 * Elastic IP
 * Internet Gateway
@@ -1957,5 +1957,292 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 
 </Tabs. TabPane>
 
+
+
+<Tabs. TabPane tab="OpenStack Cluster" key="openstack-cluster">
+
+## Overview
+
+Spectro Cloud supports OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms. In addition to the standard infrastructure-as-a-service functionality, OpenStack components provide orchestration, fault management, and service management services to ensure high availability. These services could be provisioned as an enterprise-ready private cloud Infrastructure-as-a-Service.
+ 
+The Spectro Cloud management platform does not need direct access to the OpenStack environment. A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the OpenStack components to create and delete target Kubernetes clusters.
+The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
+If the IP allocation type is DHCP, a Load balancer VM will be created for each of the Kubernetes clusters as the LB for the API server endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master IP-pool and allocated to the cluster instead of the load balancer.
+
+![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
+
+## Prerequisites
+* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
+* Minimum capacity required for a Private Cloud Gateway:
+    * 1 node - 2 vCPU, 4GB memory, 30GB storage.
+    * 3 nodes - 6 vCPU, 12GB memory, 90GB storage.
+* Per tenant cluster IP requirements:
+    * 1 per node.
+    * 1 Kubernetes control-plane VIP.
+* Private cloud gateway IP requirements:
+    * 1 node - 1 IP or 3 nodes - 3 IPs.
+    * 1 Kubernetes control-plane VIP.
+    * 1 Kubernetes control-plane extra.
+* IPs for application workload services (e.g.: LoadBalancer services).
+* Subnet with egress access to the internet (direct or via proxy):
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+* DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+* OpenStack victoria (recommended).
+* NTP configured on all Hosts.
+* Shared Storage between OpenStack hosts.
+* OpenStack permission set if any.
+
+## Configuration Requirements
+A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Network Time Protocol (NTP) must be configured across all compute nodes.
+
+## Permissions
+   .....
+   
+   .....
+
+
+## Creating an OpenStack Cloud Account
+
+<InfoBox>
+Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
+</InfoBox>
+
+<InfoBox>
+Enterprise version users should choose the "Use System Gateway" option.
+</InfoBox>
+
+A new user cloud accounts can be created for the different OpenStack users in addition to the default cloud account already associated with the private cloud gateway.
+To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
+
+|Property|Description |    
+|:---------------|:-----------------------|
+|  Account Name |  Custom name for the cloud account   |
+|   Private cloud gateway|    Reference to a running cloud gateway |
+| Username  |    OpenStack Username |
+|   Password|   OpenStack Password  |
+|  Identity Endpoint |  Identity Endpoint of the gateway   |
+|  CA Certificate |   Digital certificate of authority  |
+|  Parent Region | Values obtained from OpenStack Account DashBoard    |
+| Default Domain  | Values obtained from OpenStack Account DashBoard    |
+|  Default Project |  Values obtained from OpenStack Account DashBoard   |
+
+## Creating an OpenStack gateway
+
+<InfoBox>
+For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate data centers.
+</InfoBox>
+
+Setting up a cloud gateway involves initiating the install from the tenant portal, deploying the gateway installer VM in OpenStack, and launching the cloud gateway from the tenant portal.
+By default, 4GB of memory is allocated for private gateways. Please ensure that this memory allocation is increased based on the number of clusters that need to be created.
+
+## Tenant Portal - Initiate Install
+
+* Please ensure the following prerequisites are met in your OpenStack environment:
+    * An instance with an Ubuntu 20.x or higher
+    * Internet connectivity for the machine, or proxied
+* As a tenant administrator, navigate to the Private Cloud Gateway page under settings and invoke the dialogue to create a new private cloud gateway.
+* Download utility directly into your OpenStack environment using the link in the wizard or upload it to an accessible location and import it as a local file.
+* Execute the code given as step 2 in the wizard.
+* Specify the relevant properties as below :
+
+
+|Field Name  | Value                  |
+:------------|:-----------------------|
+|Spectro Cloud Gateway Name|Gateway Name|
+|pairingcode|Pairing code from Spectro Cloud Console|
+|console | Spectro Cloud Tenant console URL|
+|cloud_type | Cloudtype to install on [OpenStack]|
+|http_proxy (optional)| The endpoint for the HTTP proxy server|
+|https_proxy (optional)| The endpoint for the HTTPS proxy server|
+|no_proxy (optional)| A comma-separated list of local server, local network CIDR, hostnames, domain names that should be excluded from proxying|
+|proxy_ca_cert (optional)| Proxy certificate file content as base64 encoded string|
+|pod_cidr (optional)| CIDR Range for Pods in cluster (This must not overlap with any of the host or service network)|
+|svc_ip_range (optional)| CIDR notation IP range from which to assign service cluster IPs (This must not overlap with any IP ranges assigned to nodes or pods)|
+
+
+## OpenStack - Deploy Gateway Installer
+<InfoBox>
+This step does not apply to Enterprise version users.
+</InfoBox>	
+
+To deploy the Gateway installer:
+
+* Download the utility file to /tmp folder
+
+``` json
+
+  Sample: wget https://spectro-cli.s3.amazonaws.com/pcg/pcg_installer.bin
+
+``` 
+* Non-Proxy:
+  Initiate deployment using the command below with pairing value obtained from tenant console, console url and gateway name of customer choice.
+
+``` json
+ 
+ Format: ./pcg_installer.bin -- --pairingcode={00000} --name={custom-name} --cloud_type=openstack --console={console-url}
+
+``` 
+* Proxy:
+Initiate deployment using the command below with pairing value obtained from tenant console, console url, gateway name of customer choice and CA Certificate.
+ 
+``` json
+
+ Format: ./pcg_installer.bin -- --name={custom-name} --console={console-url} --pairingcode={00000} --cloud_type=openstack --http_proxy=http://10.10.167.250:3128 --https_proxy=http://10.10.167.250:3128 --pod_cidr=172.16.0.0/20 --svc_ip_range=10.158.0.0/24 --proxy_ca_cert=‘Certificate-Content’ --no_proxy=,localhost,10.158.0.0/24,10.10.128.10,.spectrocloud.local,10.0.0.0/8,openstack.spectrocloud.com,172.16.0.0/20,10.158.0.0/24
+
+``` 
+## Tenant Portal - Launch Cloud Gateway
+* Close the 'Create New Gateway' dialogue, if still open, or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
+* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available.This may take few minutes.
+* Click on the "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide the OpenStack credentials and proceed to the next configuration step.
+
+|Parameter      | Value      | Remark           | 
+|:-------------|:----------|:--------------------
+|Cloud Account Name| Custom name for the cloud account | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be set up, however, multiple gateways might be required for managing clusters. Choose a name that can easily identify the environment that this gateway instance is being configured for.
+|User Name| OpenStack User Name| |
+| Password| OpenStack Password| |
+|Identity Endpoint| OpenStack identity URL |URL to the management platform portal|
+|Use self-signed certificate| | |
+| Parent Region | The value obtained while creating an OpenStack account.| Obtained while creating OpenStack account|
+|Default Domain| An Identity API v3 entity | An Identity API v3 entity|
+|Default Project(Optional)|Represent the base unit of “ownership” in OpenStack|An isolated group of zero or more users who share common access with specific privileges.|
+|Share account across platform projects|Check/Uncheck |
+
+
+
+* Verify these credentials and proceed to the next level of deploying the gateway installer. Fill in the following parameters to the deployment wizard.
+
+|Parameter      | Value      | Remark           | 
+|:-------------|:----------|:--------------------
+|SSH Key Name| The optional key, useful for troubleshooting purposes (Recommended)|Enables SSH access to the VM as 'ubuntu' user|
+|Placement|Dynamic/Static |  |
+|Node CIDR|Optional - IP range exclusive to Nodes|This range should be different to prevent an overlap with your network CIDR|
+|DNS Name Server (optional)|8.8.8.8 default|A system by which Internet domain name-to-address and address-to-name resolutions are determined|
+|Availability Zones|Make the choices from the list. |Logical abstraction for partitioning an OpenStack cloud for users|
+|Flavor| Select from the drop-down list|Defines the compute, memory, and storage capacity of nova computing instances|
+|Number of nodes|1 or 3 | |
+
+## OpenStack - Clean up the installer
+
+<InfoBox>
+Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects.
+A Pack registry instance is set up on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries here.
+</InfoBox>
+
+## Troubleshooting
+
+..............
+
+...........
+
+## Gateway Cluster - Provisioning stalled/failure
+
+..............
+
+...........
+
+## Upgrading an OpenStack cloud gateway
+Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
+Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
+
+## Deleting an OpenStack cloud gateway
+The following steps need to be performed to delete a cloud gateway.
+* As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
+* Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
+* The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
+* Delete the gateway.
+
+## Resizing an OpenStack gateway
+A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially set up with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
+* As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
+* Invoke the resize action for the relevant cloud gateway instance.
+* Update the size from 1 to 3.
+* The gateway upgrade begins shortly after the update. Two new nodes are created and the gateway is upgraded to a 3-node cluster.
+
+<InfoBox>
+Scaling a 3-node cluster down to a 1-node cluster is not permitted.
+A load balancer instance is launched even for a 1-node gateway to support future expansion.
+</InfoBox>
+
+## Creating an OpenStack Cluster
+The following steps need to be performed to provision a new OpenStack cluster:-
+* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
+* Select a cluster profile created for the  OpenStack environment. The profile definition will be used as the cluster construction template.
+* Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+* Provide an OpenStack Cloud account and placement information.
+   * Cloud Account - Select the desired cloud account. OpenStack cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+   * Domain 
+   * Region  
+   * Project
+   * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
+   * Static Placement
+        * if the user choice of placement is Static then: 
+            * Network
+            * Subnet
+        * if the user choice of placement is NOT Static then:
+            * Subnet CIDR
+            * DNS Name Server
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
+    * Name - A descriptive name for the node pool.
+    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
+    * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
+    * Availability zones 
+    * Flavor- Make the selection from drop-down
+    * Disk - Storage disk size in GB to be attached to the node.
+    * Rolling Update
+        * Expand first
+        * Contract First
+* Configure the cluster policies/features.
+    * Manage Machines
+    * Scan Policies
+    * Backup Policies
+* Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+
+## Deleting an OpenStack Cluster
+The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
+* Invoke a delete action from the cluster settings
+* Confirm delete action
+* Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
+
+<InfoBox>
+Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, the ‘Abort’ action is available to stop provisioning and delete all resources.
+</InfoBox>
+
+## Scaling an OpenStack Cluster
+Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an OpenStack cluster:
+* Access the ‘Nodes’ view of the cluster
+* For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
+* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
+* Provisioning status is updated with the ongoing progress of the scale operation.
+
+The master node pool may be scaled from 1 to 3 or 3 to 5 nodes, etc. Scale-down operation is not supported for master nodes.
+
+## Reconfiguring OpenStack Nodes  
+The following steps need to be performed to reconfigure worker pool nodes: 
+* Access the 'Nodes' view for the cluster.
+* Edit the settings of the desired node pool.
+* Change the number of nodes, rolling update setting, availability zones, flavor, and Disk size to the desired settings.
+* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with a new instance type configured.
+* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
+
+## Adding an OpenStack worker pool
+The following steps need to be performed to add a new worker node pool to a cluster:-
+* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
+* Provide node pool settings as follows:-
+    * A descriptive name for the node pool.
+    * The number of nodes in the node pool.
+    * Rolling update setting, availability zones, flavor, and Disk size settings.
+    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
+
+## Removing an OpenStack worker pool
+The following steps need to be performed to remove a worker pool from the cluster:
+* Access the ‘Nodes’ view of the cluster.    
+* Delete the desired worker pool and confirm the deletion.
+* Upon confirmation, the worker node deletion begins in a few minutes.
+
+
+
+</Tabs. TabPane>
 
 </Tabs>
