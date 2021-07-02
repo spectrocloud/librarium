@@ -38,6 +38,15 @@ registry.hostname:
  schema: '{{ required }}'
 ```
 
+**Readonly**
+
+The pack value can be editable  if marked as readonly.
+
+```bash
+registry.hostname:
+ schema: '{{ readonly }}'
+```
+
 
 **Format**
 
@@ -160,16 +169,7 @@ registry.type:
 
 </Tabs>
 
-**Readonly**
 
-The pack value can be editable  if marked as readonly.
-
-```bash
-
-registry.hostname:
- schema: '{{ readonly }}'
-
-```
 
 **Examples**
 
