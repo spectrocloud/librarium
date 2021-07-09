@@ -732,7 +732,7 @@ The following steps need to be performed to provision a new VMware cluster:-
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialised workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>
 
 ## Scaling an Azure cluster
@@ -1039,25 +1039,6 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 | vSphere Tagging| Create vSphere Tag
 | | Edit vSphere Tag
 
-## Creating a VMware cloud account
-
-<InfoBox>
-Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
-</InfoBox>
-
-<InfoBox>
-Enterprise version users should choose the <i>"Use System Gateway"</i> option.
-</InfoBox>
-
-In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can be created for the different vSphere users.
-
-| Property | Description |
-|---|---|
-|Account Name | Custom name for the cloud account |
-| Private cloud gateway | Reference to a running cloud gateway|
-| vCenter Server | IP or FQDN of the vCenter server|
-| Username | vCenter username|
-| Password | vCenter password|
 
 ## Creating a VMware cloud gateway
 
@@ -1215,6 +1196,26 @@ Spectro cloud supports DHCP as well as Static IP based allocation strategies for
 | Gateway | Network Gateway E.g. 10.128.1.1 |
 | Nameserver addresses | A comma-separated list of name servers. Eg. 8.8.8.8 |
 | Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
+
+## Creating a VMware cloud account
+
+<InfoBox>
+Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
+</InfoBox>
+
+<InfoBox>
+Enterprise version users should choose the <i>"Use System Gateway"</i> option.
+</InfoBox>
+
+In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can be created for the different vSphere users.
+
+| Property | Description |
+|---|---|
+|Account Name | Custom name for the cloud account |
+| Private cloud gateway | Reference to a running cloud gateway|
+| vCenter Server | IP or FQDN of the vCenter server|
+| Username | vCenter username|
+| Password | vCenter password|
 
 ## Creating a VMware Cluster
 
@@ -1993,39 +1994,11 @@ If the IP allocation type is DHCP, a Load balancer VM will be created for each o
 * Shared Storage between OpenStack hosts.
 * OpenStack permission set if any.
 
-## Configuration Requirements
-A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Network Time Protocol (NTP) must be configured across all compute nodes.
-
 ## Permissions
    .....
    
    .....
 
-
-## Creating an OpenStack Cloud Account
-
-<InfoBox>
-Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
-</InfoBox>
-
-<InfoBox>
-Enterprise version users should choose the "Use System Gateway" option.
-</InfoBox>
-
-A new user cloud accounts can be created for the different OpenStack users in addition to the default cloud account already associated with the private cloud gateway.
-To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
-
-|Property|Description |    
-|:---------------|:-----------------------|
-|  Account Name |  Custom name for the cloud account   |
-|   Private cloud gateway|    Reference to a running cloud gateway |
-| Username  |    OpenStack Username |
-|   Password|   OpenStack Password  |
-|  Identity Endpoint |  Identity Endpoint of the gateway   |
-|  CA Certificate |   Digital certificate of authority  |
-|  Parent Region | Values obtained from OpenStack Account DashBoard    |
-| Default Domain  | Values obtained from OpenStack Account DashBoard    |
-|  Default Project |  Values obtained from OpenStack Account DashBoard   |
 
 ## Creating an OpenStack gateway
 
@@ -2042,7 +2015,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
     * An instance with an Ubuntu 20.x or higher
     * Internet connectivity for the machine, or proxied
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings and invoke the dialogue to create a new private cloud gateway.
-* Download utility directly into your OpenStack environment using the link in the wizard or upload it to an accessible location and import it as a local file.
+* Download utility directly into the instance using the link in the wizard or upload it to an accessible location and import it as a local file.
 * Execute the code given as step 2 in the wizard.
 * Specify the relevant properties as below :
 
@@ -2114,7 +2087,7 @@ Initiate deployment using the command below with pairing value obtained from ten
 
 |Parameter      | Value      | Remark           | 
 |:-------------|:----------|:--------------------
-|SSH Key Name| The optional key, useful for troubleshooting purposes (Recommended)|Enables SSH access to the VM as 'ubuntu' user|
+|SSH Key Name| The key, useful for troubleshooting purposes (Recommended)|Enables SSH access to the VM as 'ubuntu' user|
 |Placement|Dynamic/Static |  |
 |Node CIDR|Optional - IP range exclusive to Nodes|This range should be different to prevent an overlap with your network CIDR|
 |DNS Name Server (optional)|8.8.8.8 default|A system by which Internet domain name-to-address and address-to-name resolutions are determined|
@@ -2164,6 +2137,32 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.
 A load balancer instance is launched even for a 1-node gateway to support future expansion.
 </InfoBox>
 
+## Creating an OpenStack Cloud Account
+
+<InfoBox>
+Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
+</InfoBox>
+
+<InfoBox>
+Enterprise version users should choose the "Use System Gateway" option.
+</InfoBox>
+
+A new user cloud accounts can be created for the different OpenStack users in addition to the default cloud account already associated with the private cloud gateway.
+To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
+
+|Property|Description |    
+|:---------------|:-----------------------|
+|  Account Name |  Custom name for the cloud account   |
+|   Private cloud gateway|    Reference to a running cloud gateway |
+| Username  |    OpenStack Username |
+|   Password|   OpenStack Password  |
+|  Identity Endpoint |  Identity Endpoint of the gateway   |
+|  CA Certificate |   Digital certificate of authority  |
+|  Parent Region | Values obtained from OpenStack Account DashBoard    |
+| Default Domain  | Values obtained from OpenStack Account DashBoard    |
+|  Default Project |  Values obtained from OpenStack Account DashBoard   |
+
+
 ## Creating an OpenStack Cluster
 The following steps need to be performed to provision a new OpenStack cluster:-
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
@@ -2174,8 +2173,8 @@ The following steps need to be performed to provision a new OpenStack cluster:-
    * Domain 
    * Region  
    * Project
-   * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
-   * Static Placement
+   * SSH Keys - Public key to configure remote SSH access to the nodes (User: spectro).
+   * Placement
         * if the user choice of placement is Static then: 
             * Network
             * Subnet
