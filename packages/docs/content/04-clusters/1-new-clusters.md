@@ -709,7 +709,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 ## Creating an Azure Cluster
 
-The following steps need to be performed to provision a new VMware cluster:-
+The following steps need to be performed to provision a new Azure cluster:-
 
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the Azure environment. The profile definition will be used as the cluster construction template.
