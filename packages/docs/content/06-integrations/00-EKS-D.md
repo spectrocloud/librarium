@@ -4,7 +4,7 @@ metaTitle: 'Kubernetes with Spectro Cloud'
 metaDescription: 'EKS-D packs in Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
-category: ['eks-d']
+category: ['kubernetes']
 logoUrl: 'https://registry.spectrocloud.com/v1/kubernetes-eksd/blobs/sha256:5790ca7040999e2f9371163a319cda652ed1e32139bcb9c6fb32a0152d9f48fb?type=image/png'
 ---
 
