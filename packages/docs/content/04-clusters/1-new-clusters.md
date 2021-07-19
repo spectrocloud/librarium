@@ -2104,17 +2104,46 @@ A Pack registry instance is set up on the gateway cluster by default and it is r
 
 ## Troubleshooting
 
-..............
+### Gateway installer - Unable to register with the tenant portal
 
-...........
+The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the installer to  register with the $
+
+Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the conn$
+
+If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to all$
+
+``` bash
+#!/bin/bash
+
+DESTDIR="/tmp/"
+
+CONTAINER_LOGS_DIR="/var/log/containers/"
+CLOUD_INIT_OUTPUT_LOG="/var/log/cloud-init-output.log"
+CLOUD_INIT_LOG="/var/log/cloud-init.log"
+KERN_LOG="/var/log/kern.log"
+KUBELET_LOG="/tmp/kubelet.log"
+SYSLOGS="/var/log/syslog*"
+
+FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
+
+journalctl -u kubelet > $KUBELET_LOG
+
+tar --create --gzip -h --file=$DESTDIR$FILENAME $CONTAINER_LOGS_DIR $CLOUD_INIT_LOG $CLOUD_INIT_OUTPUT_LOG $KERN_LOG $KUBELET_LOG $SYSLOGS
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Error creating spectro logs package"
+else
+        echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
+fi
+```
 
 ## Gateway Cluster - Provisioning stalled/failure
 
-..............
-
-...........
+Installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some of the other issues might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The events tab on this page also provides a useful resource to look at lower-level operations being performed for the various orchestration steps. If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the 'Reset' button on the gateway widget. This will reset the gateway state to 'Pending' allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Spectro support via the Service Desk.
 
 ## Upgrading an OpenStack cloud gateway
+
 Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
 
