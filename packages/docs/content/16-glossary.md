@@ -2,12 +2,16 @@
 title: "Glossary"
 metaTitle: "Spectro Cloud Glossary"
 metaDescription: "Spectro Cloud Glossary"
-icon: ""
+icon: "about"
 hideToC: false
 fullWidth: false
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Glossary
 
