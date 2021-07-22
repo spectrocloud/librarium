@@ -55,7 +55,7 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-The first step towards generating AWS Cloud Account Permission is role creation.
+The first step towards generating AWS Cloud Account Permission is role creation. 
 
 
 Ensure that the IAM user or the ROOT user role created should have the following **four** IAM policies included:
@@ -567,7 +567,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ```
 
 <WarningBox>
-Ensure that the role created encompasses all the policies defined above
+Ensure that the role created encompasses all the policies defined above 
 </WarningBox>
 
 <WarningBox>
@@ -613,7 +613,7 @@ The following steps need to be performed to provision a new AWS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
- The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service.
+ The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service. 
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -691,7 +691,7 @@ Azure cluster resources are placed within an existing Resource Group, and nodes 
 
 None of the control plane nodes and worker nodes have public IPs attached. The APIServer endpoint is accessed through a public LB.
 
-![azure_cluster_architecture.png](azure_cluster_architecture.png '#width=120px')
+![azure_cluster_architecture.png](azure_cluster_architecture.png)
 
 ## Creating an Azure cloud account
 
@@ -967,7 +967,7 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 | | * Change Swapfile Placement
 | | * Configure host USB device
 | | * Configure raw device
-| | * Add existing disk
+| | * Add existing disk 
 | | * Add new disk
 | | * Add or remove device
 | | * Advanced configuration
@@ -1334,7 +1334,7 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-The first step towards generating AWS Cloud Account Permission is role creation.
+The first step towards generating AWS Cloud Account Permission is role creation. 
 
 Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
 
@@ -1846,7 +1846,7 @@ All the above policies are required as part of cluster api requirement derived u
 ```
 
 <WarningBox>
-Ensure that the role created encompasses all the policies defined above
+Ensure that the role created encompasses all the policies defined above 
 </WarningBox>
 
 <WarningBox>
@@ -1892,7 +1892,7 @@ The following steps need to be performed to provision a new EKS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
-The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
+The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service. 
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -1906,8 +1906,8 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
 
 * Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-    - Name - Provide a name for the Fargate profile.
-    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.
+    - Name - Provide a name for the Fargate profile. 	
+    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected. 
     - Selectors - Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
 
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
@@ -1953,7 +1953,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 * Access the 'Nodes' view of the cluster.
 * Edit the settings of the desired node pool.
 * Change the instance type to the desired instance type.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. A new node pool with desired settings is created and the older node pool is removed.
+* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. A new node pool with desired settings is created and the older node pool is removed. 
 * The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs. TabPane>
@@ -1965,7 +1965,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 ## Overview
 
 Spectro Cloud supports OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms. In addition to the standard infrastructure-as-a-service functionality, OpenStack components provide orchestration, fault management, and service management services to ensure high availability. These services could be provisioned as an enterprise-ready private cloud Infrastructure-as-a-Service.
-
+ 
 The Spectro Cloud management platform does not need direct access to the OpenStack environment. A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the OpenStack components to create and delete target Kubernetes clusters.
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
 If the IP allocation type is DHCP, a Load balancer VM will be created for each of the Kubernetes clusters as the LB for the API server endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master IP-pool and allocated to the cluster instead of the load balancer.
@@ -1996,7 +1996,7 @@ If the IP allocation type is DHCP, a Load balancer VM will be created for each o
 
 ## Permissions
    .....
-
+   
    .....
 
 
@@ -2037,7 +2037,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 ## OpenStack - Deploy Gateway Installer
 <InfoBox>
 This step does not apply to Enterprise version users.
-</InfoBox>
+</InfoBox>	
 
 To deploy the Gateway installer:
 
@@ -2047,29 +2047,29 @@ To deploy the Gateway installer:
 
   Sample: wget https://spectro-cli.s3.amazonaws.com/pcg/pcg_installer.bin
 
-```
+``` 
 * Non-Proxy:
   Initiate deployment using the command below with pairing value obtained from tenant console, console url and gateway name of customer choice.
 
 ``` json
-
+ 
  Format: ./pcg_installer.bin -- --pairingcode={00000} --name={custom-name} --cloud_type=openstack --console={console-url}
 
-```
+``` 
 * Proxy:
 Initiate deployment using the command below with pairing value obtained from tenant console, console url, gateway name of customer choice and CA Certificate.
-
+ 
 ``` json
 
  Format: ./pcg_installer.bin -- --name={custom-name} --console={console-url} --pairingcode={00000} --cloud_type=openstack --http_proxy=http://10.10.167.250:3128 --https_proxy=http://10.10.167.250:3128 --pod_cidr=172.16.0.0/20 --svc_ip_range=10.158.0.0/24 --proxy_ca_cert=‘Certificate-Content’ --no_proxy=,localhost,10.158.0.0/24,10.10.128.10,.spectrocloud.local,10.0.0.0/8,openstack.spectrocloud.com,172.16.0.0/20,10.158.0.0/24
 
-```
+``` 
 ## Tenant Portal - Launch Cloud Gateway
 * Close the 'Create New Gateway' dialogue, if still open, or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
 * Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available.This may take few minutes.
 * Click on the "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide the OpenStack credentials and proceed to the next configuration step.
 
-|Parameter      | Value      | Remark           |
+|Parameter      | Value      | Remark           | 
 |:-------------|:----------|:--------------------
 |Cloud Account Name| Custom name for the cloud account | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be set up, however, multiple gateways might be required for managing clusters. Choose a name that can easily identify the environment that this gateway instance is being configured for.
 |User Name| OpenStack User Name| |
@@ -2085,7 +2085,7 @@ Initiate deployment using the command below with pairing value obtained from ten
 
 * Verify these credentials and proceed to the next level of deploying the gateway installer. Fill in the following parameters to the deployment wizard.
 
-|Parameter      | Value      | Remark           |
+|Parameter      | Value      | Remark           | 
 |:-------------|:----------|:--------------------
 |SSH Key Name| The key, useful for troubleshooting purposes (Recommended)|Enables SSH access to the VM as 'ubuntu' user|
 |Placement|Dynamic/Static |  |
@@ -2150,7 +2150,7 @@ Enterprise version users should choose the "Use System Gateway" option.
 A new user cloud accounts can be created for the different OpenStack users in addition to the default cloud account already associated with the private cloud gateway.
 To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
 
-|Property|Description |
+|Property|Description |    
 |:---------------|:-----------------------|
 |  Account Name |  Custom name for the cloud account   |
 |   Private cloud gateway|    Reference to a running cloud gateway |
@@ -2170,12 +2170,12 @@ The following steps need to be performed to provision a new OpenStack cluster:-
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide an OpenStack Cloud account and placement information.
    * Cloud Account - Select the desired cloud account. OpenStack cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-   * Domain
-   * Region
+   * Domain 
+   * Region  
    * Project
    * SSH Keys - Public key to configure remote SSH access to the nodes (User: spectro).
    * Placement
-        * if the user choice of placement is Static then:
+        * if the user choice of placement is Static then: 
             * Network
             * Subnet
         * if the user choice of placement is NOT Static then:
@@ -2185,7 +2185,7 @@ The following steps need to be performed to provision a new OpenStack cluster:-
     * Name - A descriptive name for the node pool.
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
-    * Availability zones
+    * Availability zones 
     * Flavor- Make the selection from drop-down
     * Disk - Storage disk size in GB to be attached to the node.
     * Rolling Update
@@ -2217,8 +2217,8 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 
 The master node pool may be scaled from 1 to 3 or 3 to 5 nodes, etc. Scale-down operation is not supported for master nodes.
 
-## Reconfiguring OpenStack Nodes
-The following steps need to be performed to reconfigure worker pool nodes:
+## Reconfiguring OpenStack Nodes  
+The following steps need to be performed to reconfigure worker pool nodes: 
 * Access the 'Nodes' view for the cluster.
 * Edit the settings of the desired node pool.
 * Change the number of nodes, rolling update setting, availability zones, flavor, and Disk size to the desired settings.
@@ -2236,7 +2236,7 @@ The following steps need to be performed to add a new worker node pool to a clus
 
 ## Removing an OpenStack worker pool
 The following steps need to be performed to remove a worker pool from the cluster:
-* Access the ‘Nodes’ view of the cluster.
+* Access the ‘Nodes’ view of the cluster.    
 * Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
 
