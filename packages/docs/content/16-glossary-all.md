@@ -51,7 +51,7 @@ Read more about Cluster Profiles [here](/cluster-profiles).
 
 A Kubernetes cluster is a collection of master and worker nodes that cooperate to execute container application workloads.
 
-Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within [projects](#project) and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a [Cluster Profile](#clusterprofile) with additional configuration overrides and cloud-specific settings.
+Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are created within [projects](#project) and they are provisioned and managed in the user's cloud environment. Each cluster is provisioned from a [Cluster Profile](#cluster-profile) with additional configuration overrides and cloud-specific settings.
 
 ## Cloud Account
 
@@ -59,11 +59,11 @@ Cloud Accounts are where access credentials are stored for public and private cl
 
 ## Pack
 
-Spectro Cloud provides multiple integrations/technologies in a [cluster profile](#clusterprofile) for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco, etc.
+Spectro Cloud provides multiple integrations/technologies in a [cluster profile](#cluster-profile) for various system layers, such as OS, Kubernetes, storage, networking, monitoring, security, load balancers, etc. These integrations are provided in the form of Packs. A pack is a Spectro Cloud content package that describes an integration in the Kubernetes infrastructure stack ecosystem and contains relevant artifacts required to deploy and manage that integration. Spectro Cloud provides packs for core layers of the Kubernetes stack; Operating Systems, Kubernetes distributions, Networking and Storage as well as packs for add-on layers such as ELK Stack, Prometheus, Sysdig Falco, etc.
 
 ## Public Pack Registry
 
-Spectro Cloud maintains a public pack registry containing various [packs](#pack) that can be used in any [cluster profile](#clusterprofile). The pack content in this registry is constantly updated with new integrations.
+Spectro Cloud maintains a public pack registry containing various [packs](#pack) that can be used in any [cluster profile](#cluster-profile). The pack content in this registry is constantly updated with new integrations.
 
 ## Private Pack Registry
 
@@ -81,16 +81,16 @@ Chart Repositories are public or private web servers that host Helm Charts. A fe
 
 ## Attach Manifests
 
-For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helmcharts), at times it is required to provison additional kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
+For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helm-charts), at times it is required to provison additional kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
 
 
 ## Pack Manifests
 
-Layers in a [cluster profile](#clusterprofile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helmcharts). There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts. 
+Layers in a [cluster profile](#cluster-profile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts. 
 
 ## Presets
 
-Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helmcharts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#clusterprofile), users maybe simply enable or dispable a preset to quickly make the desired changes. 
+Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users maybe simply enable or dispable a preset to quickly make the desired changes. 
 
 
 ## Private Cloud Gateway
