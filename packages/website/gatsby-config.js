@@ -56,6 +56,7 @@ const plugins = [
       plugins: [
         `gatsby-remark-images`,
         `gatsby-remark-images-medium-zoom`,
+        'gatsby-remark-image-attributes',
       ],
       gatsbyRemarkPlugins: [
         {
@@ -71,6 +72,9 @@ const plugins = [
         },
         {
           resolve: 'gatsby-remark-images-medium-zoom',
+        },
+        {
+          resolve: 'gatsby-remark-image-attributes',
         },
       ],
       extensions: ['.mdx', '.md'],
