@@ -127,6 +127,12 @@ The same rules apply though. You can reference it from a different section using
 ```md
 ![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
+** Image size **
+Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
+
+```md
+![alt text](/introduction/clusterprofiles.png "width=120px")
+```
 
 #### Tabs component
 
