@@ -125,13 +125,13 @@ You can add documents in the same directory where they are used. Adding an image
 The same rules apply though. You can reference it from a different section using urls relative to the root directory
 
 ```md
-![alt text](/introduction/clusterprofiles.png "cluster profiles example")
+![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
 ```
-** Image size **
+**Image size**
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png "width=120px")
+![alt text](/introduction/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component
