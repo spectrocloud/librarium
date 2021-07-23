@@ -6,7 +6,7 @@ set -x
 
 # Initialize & Build  docs
 build_docs() {
-	apk add --no-cache autoconf
+	apk add --no-cache automake
 	make initialize
 	GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID} GATSBY_ALGOLIA_SEARCH_KEY=${GATSBY_ALGOLIA_SEARCH_KEY} ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY} make build
 }
