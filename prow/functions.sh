@@ -6,7 +6,6 @@ set -x
 
 # Initialize & Build  docs
 build_docs() {
-	#apk add --no-cache automake autoconf libtool
 	apk --update add autoconf automake build-base libtool nasm pkgconf
 	make initialize
 	GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID} GATSBY_ALGOLIA_SEARCH_KEY=${GATSBY_ALGOLIA_SEARCH_KEY} ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY} make build
