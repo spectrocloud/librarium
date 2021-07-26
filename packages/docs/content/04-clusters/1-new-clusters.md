@@ -1973,7 +1973,6 @@ If the IP allocation type is DHCP, a Load balancer VM will be created for each o
 ![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
 
 ## Prerequisites
-* Docker installed and running.
 * Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
 * Minimum capacity required for a Private Cloud Gateway:
     * 1 node - 2 vCPU, 4GB memory, 30GB storage.
@@ -2276,7 +2275,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 #### Step 1: Run the docker command to install the gateway as below:
 
 ``` json
-docker run --rm  \--net=host  \-it  \-v /var/run/docker.sock:/var/run/docker.sock \-v /tmp:/opt/spectrocloud \gcr.io/spectro-images-public/release/spectro-installer:v1.0.0 \pcg  \openstack-pcg \OpenStack \-w=/opt/spectrocloud/ \-o=true
+docker run --rm  \--net=host  \-it  \-v /var/run/docker.sock:/var/run/docker.sock \-v /tmp:/opt/spectrocloud \gcr.io/spectro-images-public/release/spectro-installer:v1.0.1 \pcg  \openstack-pcg \OpenStack \-w=/opt/spectrocloud/ \-o=true
 
 ```
 #### Step 2: Enter Spectro Cloud  Management Information:
@@ -2333,8 +2332,8 @@ This step does not apply to Enterprise version users.
 </InfoBox>	
 
 ### To deploy the Gateway installer:
-
-* Go to /temp/utility-folder and view the configuration yaml file.
+* Move the PCG.yaml file to /tmp folder for easy Execution.
+* View the configuration yaml file as /tmp/pcg.yaml .
  
 ``` json
 cd /tmp 
@@ -2346,7 +2345,7 @@ vi pcg.yaml
 
 ``` json
 
-/tmp % docker run --rm  \--net=host  \-it  \-v /var/run/docker.sock:/var/run/docker.sock \-v /tmp:/opt/spectrocloud \gcr.io/spectro-images-public/release/spectro-installer:v1.0.0 \pcg  \INSTALLER_NAME \OpenStack \-w=/opt/spectrocloud/ \-s=true  \-c=/opt/spectrocloud/pcg.yaml
+/tmp % docker run --rm  \--net=host  \-it  \-v /var/run/docker.sock:/var/run/docker.sock \-v /tmp:/opt/spectrocloud \gcr.io/spectro-images-public/release/spectro-installer:v1.0.1 \pcg  \INSTALLER_NAME \OpenStack \-w=/opt/spectrocloud/ \-s=true  \-c=/opt/spectrocloud/pcg.yaml
 
 ```
 <InfoBox>
@@ -2357,7 +2356,6 @@ Make sure to update the INSTALLER_NAME as per the configuration yaml file.
 ## Tenant Portal - Launch Cloud Gateway
 * Navigate back to the Private Cloud Gateway page in tenant console under settings.
 * The deployment progress can be viewed in the tenant console. This will take few minutes
-* Once the deployment is  completed, set the number of nodes as either 1 or 3.
 
 
 ## OpenStack - Clean up the installer
