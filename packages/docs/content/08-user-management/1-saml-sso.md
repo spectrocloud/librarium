@@ -1,6 +1,6 @@
 ---
-title: "SAML SSO Setup"
-metaTitle: "SAML SSO Setup"
+title: "SSO Setup"
+metaTitle: "SSO Setup"
 metaDescription: "Detailed instructions on creating SSO to log in to Spectro Cloud using SAML 2.0"
 icon: ""
 hideToC: false
@@ -10,6 +10,21 @@ fullWidth: false
 import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
+
+# Overview
+
+Single sign-on (SSO) is an authentication method that enables secured user authentication with multiple applications and websites by using a single set of credentials.
+SSO works upon  a trust relationship set up between the service provider, and an identity provider such as Okta. This trust relationship is often based upon a certificate that is exchanged between the identity provider and the service provider. This certificate can be used to sign identity information that is being sent from the identity provider to the service provider so that the service provider knows it is coming from a trusted source. In SSO, this identity data takes the form of tokens which contain identifying bits of information about the users.
+Spectro Cloud supports two type of SSO authentication as below. 
+
+* SAML Based SSO
+* OIDC Based SSO
+
+
+<Tabs>
+
+<Tabs.TabPane tab="SAML BASED SSO" key="saml">
+
 
 # SAML 2.0 Based SSO
 
@@ -28,7 +43,53 @@ Using these parameters, Spectro Cloud should be added as the Service Provider (S
 
 The next step is to copy the `Identity Provider Metadata` from the IdP into the Spectro Cloud SAML panel. Click on *"Confirm"* to complete the setup.
 
-# Detailed instructions
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="OIDC BASED SSO" key="oidc">
+
+
+## OIDC BASED SSO
+
+Spectro Cloud layouts OpenID Connect, a de facto standard of contemporary authentication. This can provide congruous and secured identity management in a highly interoperable format. Now Spectro Users can leverage OIDC to enhance the user experience and security. 
+
+To setup OIDC based SSO :
+* Log in to the Spectro Cloud console as the tenant admin. 
+* Access the tenant admin settings area by clicking the "Admin Settings" button on the left panel. 
+* Choose SSO from the admin settings menu. 
+* From manage SSO wizard, select the SSO Auth type as OIDC panel. 
+* The following parameters will be available to enable Spectro Cloud as a "Service Provider".
+
+	* Issuer URL - The URL of the OpenID identity provider.
+
+	Note: For AWS users issuer URL to be generated in the below format:
+	https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-NAME]
+	* Client ID - The ID for the client application that makes authentication requests.
+	* Client Secret - Secret is known only to the application and the authorization. server
+	* Callback URL - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
+	* Logout URL - URL is taken from IdP
+	* Sync Teams - Teams created in IdP if needed to be linked to Spectro Cloud.
+	* Default Teams - Default team to which members unassigned to specific team belongs.
+	* Scopes - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes,called claims. 
+
+
+* REQUIRED CLAIMS: The values claimed by the user at the identity provider platform.
+
+	* Email
+	* First Name
+	* Last Name
+	* Spectro Team     
+
+Update all the above values as per the IdP parameters and enable OIDC to find the setup completed message. Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.           
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+# Identity Provider Specific Instructions
 
 <Tabs>
 
