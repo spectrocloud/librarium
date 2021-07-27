@@ -2270,7 +2270,7 @@ By default, 4GB of memory is allocated for private gateways. Please ensure that 
 * As a tenant administrator, navigate to the Private Cloud Gateway page under admin settings and invoke the dialogue to create a new private cloud gateway in Open Stack cloud.
 * Make a note of the unique pairing code which is the unique authentication code generated for the installer instance.
 
-### Detailed Instructions:
+### Detailed Instructions
 
 #### Step 1: Run the docker command to install the gateway as below:
 
@@ -2285,38 +2285,39 @@ docker run --rm  \--net=host  \-it  \-v /var/run/docker.sock:/var/run/docker.soc
 * Private Cloud Gateway pairing code: The unique authentication code generated for the installer instance, obtained from tenant portal.
 
 #### Step 3: Enter Environment Configuration:
-* HTTPS Proxy (--https_proxy): 
+
+* __HTTPS Proxy (--https_proxy)__: 
 The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* HTTP Proxy(--http_proxy):
+* __HTTP Proxy(--http_proxy)__:
 The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
-* No Proxy(--no_proxy):
+* __No Proxy(--no_proxy)__:
 A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com,10.10.0.0/16 
-* Pod CIDR (--pod_cidr): The CIDR pool used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and not overlap with any Virtual Machine IPs in the environment.
-* Service IP Range (--svc_ip_range): 
-IP address that will be assigned to services created on Kubernetes	This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
+* __Pod CIDR (--pod_cidr)__: The CIDR pool used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and not overlap with any Virtual Machine IPs in the environment.
+* __Service IP Range (--svc_ip_range)__:
+IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
-#### STEP 4 : Enter OpenStack Account Information:
+#### Step 4 : Enter OpenStack Account Information:
 
-* OpenStack Identity Endpoint: 
-* OpenStack Account Username: 
-* OpenStack Account Password: 
-* Default Domain: 
-* Default Region: 
-* Default Project:
+* OpenStack Identity Endpoint 
+* OpenStack Account Username 
+* OpenStack Account Password
+* Default Domain 
+* Default Region 
+* Default Project
 
 #### Step 5: Enter OpenStack cluster configuration for the Private Cloud Gateway:
 
 * Verify the following parameters:
-	* Default Domain:
-	* Default Region:
-	* Default Project:
+	* Default Domain
+	* Default Region
+	* Default Project
 * Enter the values for:
 	* The authentication key: SSH Key Name useful for troubleshooting purposes (Recommended). Enabled for SSH access to the VM as an 'ubuntu' user. 
-	* Placement option as Static or Dynamic
+	* Placement option as Static or Dynamic.
 	* Network
 	* Sub Network
 
-#### Step 6: Enter OpenStack Machine configuration for the Private Cloud Gateway
+#### Step 6: Enter OpenStack Machine configuration for the Private Cloud Gateway:
 
 * Select the availability zone.
 * Make the choice of flavor.
