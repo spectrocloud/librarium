@@ -2366,18 +2366,6 @@ Gateway cluster installation automatically creates a cloud account behind the sc
 A Pack registry instance is set up on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries here.
 </InfoBox>
 
-## Troubleshooting
-
-..............
-
-...........
-
-## Gateway Cluster - Provisioning stalled/failure
-
-..............
-
-...........
-
 ## Upgrading an OpenStack cloud gateway
 Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
