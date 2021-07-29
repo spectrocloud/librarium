@@ -24,7 +24,7 @@ Following are the steps to update a cluster profile:-
 * To update the basic information, invoke the edit dialog from the settings menu located at the top right corner of the page, and make changes to name, description, and tags as required. Updates to the tags are not propagated to the cloud environment for previously created clusters. However, any new clusters created from the profile will have their virtual machines tagged in the cloud environment.
 
 
-* To add additional layers, pick onf of the following options :
+* To add additional layers, pick one of the following options :
   * Add New Pack
   * Import from cluster
   * Add Manifest
