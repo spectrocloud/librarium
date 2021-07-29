@@ -19,7 +19,7 @@ Existing Kubernetes clusters that were not deployed by Spectro Cloud can be impo
 
 Spectro Cloud also supports Generic cluster import, where the users import their existing clusters to Spectro Cloud irrespective of the cloud service provider. If the cloud type of the existing cluster is not supported by Spectro Cloud, then those clusters could be imported as Generic Clusters.  The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups Etc which are not specific to the cloud infrastructure. For Generic imported cluster, the user will not be able to add cloud-specific Addon profiles rather he can add profiles of cloud type which is supported for all.
 
- * In addition to Spectro Cloud Generic cluster import, we suppots public cloud managed services  such as:
+ * In addition to Spectro Cloud Generic cluster import, we support public cloud managed services  such as:
 	* Amazon EKS
 	* Google GKE
 	* Azure AKS
