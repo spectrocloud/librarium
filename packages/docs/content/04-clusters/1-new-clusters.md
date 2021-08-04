@@ -2511,7 +2511,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 * To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plaintext later.
 
 ## Creating an AKS Cluster
-The following steps need to be performed to provision a new VMware cluster:-
+The following steps need to be performed to provision a new AKS cluster:-
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the AKS Cluster. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
