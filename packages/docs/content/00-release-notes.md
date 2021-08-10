@@ -122,7 +122,7 @@ Spectro Cloud 1.8.0 released with advanced support for deploying & discovering H
 Featuring
 
 * Set up public and private helm chart registries to leverage the vast database of integrations and add-ons.
-* Deploy reliable and secure kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
+* Deploy reliable and secure Kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
 * Accumulate container logs across all cluster nodes to create a support bundle to enable faster troubleshooting.
 * Attach multiple supporting manifests to your cluster profile layers in order to deploy integrations end to end without having to use command line client.
 * Add additional BYOM (Bring Your Own Manifest)  layers to your cluster profiles to perform ad-hoc customized deployments on the cluster.
