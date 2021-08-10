@@ -17,7 +17,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # System Requirements
 
-The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platorm hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
+The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
 * Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes. 
 * Enterprise Mode - A multi node highly available version for production purposes. 
