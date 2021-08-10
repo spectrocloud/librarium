@@ -1964,7 +1964,7 @@ The following steps need to be performed to reconfigure worker pool nodes:-
 
 ## Overview
 
-Spectro Cloud supports provisioning kubernetes clusters in OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms. 
+Spectro Cloud supports provisioning Kubernetes clusters in OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms. 
  
 A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the OpenStack environment. The gateway establishes a secure communication channel with the management console thereby eliminating the need for an incoming connection into the OpenStack environment.
 
@@ -1983,15 +1983,15 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
     * 1 node - 1 IP or 3 nodes - 3 IPs.
     * 1 Kubernetes control-plane VIP.
     * 1 Kubernetes control-plane extra.
-* IPs for application workload services (e.g.: LoadBalancer services).
+* IPs for application workload services (e.g.: Load Balancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* OpenStack victoria (recommended).
+* OpenStack Victoria (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between OpenStack hosts.
-* OpenStack permission set if any.
+* OpenStack permission set.
 
 ## Permissions
 
@@ -2259,11 +2259,11 @@ Spectro Cloud provides an installer in the form of a docker container. This inst
 
 #### Generate pairing code
 
-Navigate to Private Cloud Gateway page under Administration and Create a new OpenStack gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
+Navigate to the Private Cloud Gateway page under Administration and Create a new OpenStack gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
 #### Generate gateway config
 
-Invoke gateway installer in interactive mode to generate gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, OpenStack cloud account, Environment and Placement information as requested. 
+Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, OpenStack cloud account, Environment and Placement information as requested. 
 
 ```bash
 docker run --rm  \
@@ -2292,8 +2292,8 @@ The endpoint for the HTTPS proxy server. This setting will be propagated to all 
 * __HTTP Proxy(--http_proxy)__:
 The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
 * __No Proxy(--no_proxy)__:
-A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server . Eg., openstack.company.com,10.10.0.0/16 
-* __Pod CIDR (--pod_cidr)__: The CIDR pool used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and not overlap with any Virtual Machine IPs in the environment.
+A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16 
+* __Pod CIDR (--pod_cidr)__: The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
 * __Service IP Range (--svc_ip_range)__:
 IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
@@ -2314,22 +2314,22 @@ IP address that will be assigned to services created on Kubernetes. This setting
 	* Default Project
 * Enter the values for:
 	* SSH Key - Select a key
-	* Placement option as Static or Dynamic - For static placement, VMs are placed into existing networks whereas for dynamic placment, new network is created.
+	* Placement option as Static or Dynamic - For static placement, VMs are placed into existing networks whereas, for dynamic placement, new network is created.
 	* Network - Select an existing network
 	* Sub Network - Select a sub network
 
 #### Enter OpenStack Machine configuration for the Private Cloud Gateway:
 
 * Select the availability zone
-* Make the choice of flavor
-* Number of nodes : choose between 1 and 3
+* Choose flavor
+* Number of nodes: choose between 1 and 3
 
-At the completion of this step, a new gateway configuration file is generated and its location is displayed on the console.
+After this step, a new gateway configuration file is generated and its location is displayed on the console.
 
 E.g.: Config created:/opt/spectrocloud//install-pcg-ar-dev-os-gw-02-aug-01-20210802062349/pcg.yaml
 
 
-#### Copy conifuration file to known location:
+#### Copy configuration file to known location:
 
 * Copy the pcg.yaml file to a known location for easy access and updates.
  
@@ -2341,7 +2341,7 @@ cp /tmp/install-pcg-xxx/pcg.yaml /tmp
 
 #### Deploy Private Cloud Gateway
 
-* Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. New VM(s} will be launched in your OpenStack environment and gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
+* Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
 
 ```bash
 docker run --rm  \
@@ -2385,7 +2385,7 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 
 ## Creating an OpenStack Cloud Account
 
-A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Other cloud accounts can be created for the different in addition to the default cloud account if desired.
+A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
 
 To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
 
