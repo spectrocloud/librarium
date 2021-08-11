@@ -50,7 +50,7 @@ The next step is to copy the `Identity Provider Metadata` from the IdP into the 
 <Tabs.TabPane tab="OIDC BASED SSO" key="oidc">
 
 
-## OIDC BASED SSO
+# OIDC BASED SSO
 
 Spectro Cloud layouts OpenID Connect, a de facto standard of contemporary authentication. This can provide congruous and secured identity management in a highly interoperable format. Now Spectro Users can leverage OIDC to enhance the user experience and security. 
 
@@ -68,7 +68,7 @@ To setup OIDC based SSO :
 	* Client ID - The ID for the client application that makes authentication requests.
 	* Client Secret - Secret is known only to the application and the authorization. server
 	* Callback URL - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
-	* Logout URL - URL is taken from IdP
+	* Logout URL - URL is taken from IdP - URL to be provided into IDP for Logout
 	* Sync Teams - Teams created in IdP if needed to be linked to Spectro Cloud.
 	* Default Teams - Default team to which members unassigned to specific team belongs.
 	* Scopes - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes,called claims. 

@@ -2486,12 +2486,12 @@ The following steps need to be performed to remove a worker pool from the cluste
 <Tabs. TabPane tab="AKS Cluster" key="aks_cluster">
 
 ## Overview
-Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has KEDA supported event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
+Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
 
 ![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
 ## Prerequisites
-Azure Active Directory integration for the AKS cluster provision the following requirements are needed:
+Azure Active Directory integration for the AKS cluster provisioning may optionally require the following:
 * User has to provide the Tenant Name as part of the cloud account.
 * For the Azure client mentioned in the cloud account the following API permission has to be provided
    *  Microsoft Graph: Group.Read.All (Application Type)
