@@ -17,7 +17,7 @@ const SearchComponent = Loadable({
 
 const Wrap = styled.div`
   height: 80px;
-  box-shadow: inset 0px -1px 0px #f2f2f2;
+  border-bottom: 1px solid #dedfe5;
   position: sticky;
   top: 0;
   width: 100%;
@@ -67,20 +67,20 @@ const SearchIcon = styled(Search)`
 `;
 
 const NavWrap = styled.div`
-  margin-right: 20px;
-
+  margin-right: 54px;
   a {
-    padding: 0 10px;
-    margin: 0 20px;
-    color: #78909c;
+    font-style: normal;
+    font-weight: 600;
     font-size: 14px;
-    text-transform: uppercase;
-    line-height: 80px;
-    display: inline-block;
+    line-height: 16px;
+    color: #252b53;
+    padding: 5px 0;
+    margin-left: 36px;
 
-    &.isActive {
-      color: #4432f5;
-      box-shadow: inset 0px -1px 0px #4432f5;
+    &.isActive,
+    &:hover {
+      color: #206cd1;
+      border-bottom: 2px solid #206cd1;
     }
 
     @media (max-width: 830px) {
@@ -124,7 +124,7 @@ export const DEFAULT_MENU = [
     icon: 'folder',
     isActive(location) {
       const othersAreActive = DEFAULT_MENU.filter(item => item.title !== 'Docs').some(item => {
-        return item.isActive(location);
+        return item.isActive && item.isActive(location);
       });
 
       return !othersAreActive;
@@ -137,6 +137,10 @@ export const DEFAULT_MENU = [
     isActive(location) {
       return isMenuActive(location, '/api');
     },
+  },
+  {
+    title: 'Back to Spectro Cloud',
+    link: 'https://console.spectrocloud.com',
   },
 ];
 
