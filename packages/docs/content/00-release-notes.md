@@ -17,21 +17,19 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # July 23, 2021 - Release 1.12.0
 
-Spectro Cloud 1.12 is released with generic cluster import, evolutionary authentication protocol for user identification, and an extra fully-managed Kubernetes service with AKS. 
-* Now import existing non-Spectro clusters from any cloud platform using our Generic cluster import feature. We support broad operations like scans, backups, etc. on these imported clusters using the generic cluster profile.
-* Spectro Cloud leverages an extra fully-managed Kubernetes service AKS to deploy and manage containerised applications. It offers serverless Kubernetes delivering continuous integration and continuous delivery (CI/CD) experience with enterprise-grade security and governance.
-* Spectro Cloud grips an open authentication protocol that profiles and extends OAuth 2.0 to add an identity layer. OIDC confirms an end user’s identity, creates a unique schema, and assures secure applications within a single, coordinated architecture.
-* Revamped enterprise clusters with newfangled Kubernetes version 1.12.0.
+Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud. 
+* Now import existing non-Spectro clusters from any cloud platform using our Generic cluster import feature. We support broad operations like scans, backups, etc. on these imported clusters as well as provisioning and lifecycle management of add-ons.
+* Spectro Cloud now supports AKS, a fully-managed Kubernetes service from Azure. Deploy and manage end-to-end lifecyle of AKS clusters.
+* Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication int he modern world. Through this integration, Spectro Cloud enables users to integrate single sign on using various identify providers such as Amazon Cognito, Keycloak etc. 
+* Kubernetes upgraded to version 1.19 for enterprise clusters.
 
 
 # June 28, 2021 - Release 1.11.0
 
-Spectro Cloud 1.11 is released with the support of OpenStack to uplift tenant business agility, availability, and efficiency by providing the key to build their cloud infrastructure with polished authentication techniques.
+Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
 
-* Spectro Cloud leverages OpenStack, a modular cloud infrastructure that runs off standard hardware capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms to provide orchestration, fault management, and service management to ensure high availability. 
-* Spectro Cloud allows its tenants to verify, obtain the basic profile information and authenticate the End-User using an Authorization Server in an interoperable and REST-like manner with OpenID Connect.
-
-
+* Spectro now supports supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
 
 
 # June 1, 2021 - Release 1.10.0
