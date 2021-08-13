@@ -15,7 +15,7 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 
 Single sign-on (SSO) is an authentication method that enables secured user authentication with multiple applications and websites by using a single set of credentials.
 SSO works upon  a trust relationship set up between the service provider, and an identity provider such as Okta. This trust relationship is often based upon a certificate that is exchanged between the identity provider and the service provider. This certificate can be used to sign identity information that is being sent from the identity provider to the service provider so that the service provider knows it is coming from a trusted source. In SSO, this identity data takes the form of tokens which contain identifying bits of information about the users.
-Spectro Cloud supports two type of SSO authentication as below. 
+Spectro Cloud supports the following two types of SSO authentication mechanisms: - 
 
 * SAML Based SSO
 * OIDC Based SSO
@@ -52,21 +52,22 @@ The next step is to copy the `Identity Provider Metadata` from the IdP into the 
 
 # OIDC BASED SSO
 
-Spectro Cloud layouts OpenID Connect, a de facto standard of contemporary authentication. This can provide congruous and secured identity management in a highly interoperable format. Now Spectro Users can leverage OIDC to enhance the user experience and security. 
+Spectro Cloud supports OpenID Connect, a de facto standard of contemporary authentication that provides secured identity management in a highly interoperable format. 
 
 To setup OIDC based SSO :
 * Log in to the Spectro Cloud console as the tenant admin. 
 * Access the tenant admin settings area by clicking the "Admin Settings" button on the left panel. 
 * Choose SSO from the admin settings menu. 
-* From manage SSO wizard, select the SSO Auth type as OIDC panel. 
+* From manage SSO wizard, select the SSO Auth type. 
 * The following parameters will be available to enable Spectro Cloud as a "Service Provider".
 
 	* Issuer URL - The URL of the OpenID identity provider.
 
 	Note: For AWS users issuer URL to be generated in the below format:
 	https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-NAME]
+
 	* Client ID - The ID for the client application that makes authentication requests.
-	* Client Secret - Secret is known only to the application and the authorization. server
+	* Client Secret - Secret is known only to the application and the authorization server
 	* Callback URL - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
 	* Logout URL - URL is taken from IdP - URL to be provided into IDP for Logout
 	* Sync Teams - Teams created in IdP if needed to be linked to Spectro Cloud.
@@ -81,7 +82,7 @@ To setup OIDC based SSO :
 	* Last Name
 	* Spectro Team     
 
-Update all the above values as per the IdP parameters and enable OIDC to find the setup completed message. Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.           
+Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.           
 
 
 </Tabs.TabPane>
