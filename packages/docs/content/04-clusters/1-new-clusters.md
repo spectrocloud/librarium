@@ -1972,17 +1972,17 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
 
 ## Prerequisites
-* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
 * Minimum capacity required for a Private Cloud Gateway:
     * 1 node - 2 vCPU, 4GB memory, 30GB storage.
     * 3 nodes - 6 vCPU, 12GB memory, 90GB storage.
-* Per tenant cluster IP requirements:
-    * 1 per node.
-    * 1 Kubernetes control-plane VIP.
 * Private cloud gateway IP requirements:
     * 1 node - 1 IP or 3 nodes - 3 IPs.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
+    * 1 Kubernetes control-plane
+    * 1 additional IP for rollowing upgrades.
+* Per tenant cluster floating IP requirements:
+    * 1 per node.
+    * 1 Kubernetes API Server.
+    * 1 additional per node pool for rolloing upgrade 	
 * IPs for application workload services (e.g.: Load Balancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
@@ -1991,7 +1991,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 * OpenStack Victoria (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between OpenStack hosts.
-* OpenStack permission set.
+
 
 ## Permissions
 
@@ -2254,7 +2254,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 
 ## Creating an OpenStack gateway
 
-Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack identity endpoint. 
+Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack identity endpoint. The installer must be run initially in config-only interactive mode initially to run through a series of prompts and generate a gateway config file. Subsequently the installer must be run in silent mode providing the generated config file as input to complete the installation. 
 
 
 #### Generate pairing code
@@ -2287,15 +2287,11 @@ docker run --rm  \
 
 #### Enter Environment Configuration:
 
-* __HTTPS Proxy (--https_proxy)__: 
-The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* __HTTP Proxy(--http_proxy)__:
-The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
-* __No Proxy(--no_proxy)__:
-A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16 
-* __Pod CIDR (--pod_cidr)__: The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
-* __Service IP Range (--svc_ip_range)__:
-IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
+* HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
+* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16 
+* Pod CIDR (--pod_cidr) -  The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
+* Service IP Range (--svc_ip_range) - IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
 #### Enter OpenStack Account Information:
 
@@ -2397,9 +2393,9 @@ To create an OpenStack cloud account, proceed to project settings and select 'cr
 |   Password|   OpenStack Password  |
 |  Identity Endpoint |  Identity Endpoint of the gateway   |
 |  CA Certificate |   Digital certificate of authority  |
-|  Parent Region | Values obtained from OpenStack Account DashBoard    |
-| Default Domain  | Values obtained from OpenStack Account DashBoard    |
-|  Default Project |  Values obtained from OpenStack Account DashBoard   |
+|  Parent Region | OpenStack Region to be used |
+| Default Domain  | Default OpenStack domain    |
+|  Default Project |  Default OpenStack project  |
 
 
 ## Creating an OpenStack Cluster
