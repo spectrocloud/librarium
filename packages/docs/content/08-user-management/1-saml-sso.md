@@ -43,7 +43,7 @@ Using these parameters, Spectro Cloud should be added as the Service Provider (S
 
 The next step is to copy the `Identity Provider Metadata` from the IdP into the Spectro Cloud SAML panel. Click on *"Confirm"* to complete the setup.
 
-## Recommended Identity Provider
+## Recommended Identity Providers
 
 <Tabs>
 
@@ -136,7 +136,7 @@ To setup OIDC based SSO :
 Update all the above values as per the IdP parameters and enable OIDC to find the setup completed message. Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.           
 
 
-## Recommended Identity Provider
+## Recommended Identity Providers
 
 <Tabs>
 
