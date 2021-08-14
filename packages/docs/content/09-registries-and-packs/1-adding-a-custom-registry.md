@@ -47,7 +47,7 @@ htpasswd -Bbn admin {enter your secure password choice} > /root/auth/htpasswd-ba
 * For Other Users: The command-line following has the placeholder to specify your unique, secure password for read-only users.
 
 ```bash
-htpasswd -Bbn spectro {enter your secure password choice} > /root/auth/htpasswd-basic
+htpasswd -Bbn spectro {enter your secure password choice} >> /root/auth/htpasswd-basic
 ```
 
 * If HTTPS mode is being used, create a directory called `certs`.
