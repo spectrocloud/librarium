@@ -66,7 +66,6 @@ For self-signed certificates, use the following command to generate certificates
 openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
   -x509 -days 1825 -out tls.crt
-  -addext "subjectAltName = DNS:foobar.mydomain.svc"
 ```
 
 * Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
