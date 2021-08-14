@@ -136,6 +136,20 @@ To setup OIDC based SSO :
 
 Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.           
 
+<InfoBox>
+ 
+SpectroTeam Parameter
+
+* Any non-admin user that is added to a tenant must be added to at least one team when being created by the admin. This team can be changed later on if needed. See the ["teams"](/introduction/concept-overviews#team) section for more details on teams and creating them. 
+
+* In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as from the IdP. 
+
+* The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
+
+* A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
+
+</InfoBox>
+	
 
 ## Recommended Identity Providers
 
@@ -205,16 +219,4 @@ https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/development/ad-fs
 
 
 
-<InfoBox>
- 
-SpectroTeam Parameter
 
-* Any non-admin user that is added to a tenant must be added to at least one team when being created by the admin. This team can be changed later on if needed. See the ["teams"](/introduction/concept-overviews#team) section for more details on teams and creating them. 
-
-* In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well with IDP. 
-
-* The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
-
-* A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
-
-</InfoBox>
