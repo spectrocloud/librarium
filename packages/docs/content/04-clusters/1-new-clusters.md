@@ -2563,6 +2563,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ![maas_cluster_architecture.png](maas_cluster_architecture.png)
 
 ## Prerequisites
+
 * Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
 * Minimum capacity required for a Private Cloud Gateway:
     * 1 node - 2 vCPU, 4GB memory, 30GB storage.
@@ -2604,7 +2605,7 @@ docker run --rm  \
   -it  \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:v1.0.2 \
+    gcr.io/spectro-images-public/release/spectro-installer:v1.0.3 \
     pcg  \
     User-define-MaaS-Gateway-Name \
     MaaS \
@@ -2682,7 +2683,7 @@ docker run --rm  \
   -it  \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:v1.0.2 \
+    gcr.io/spectro-images-public/release/spectro-installer:v1.0.3 \
     pcg  \
     User-define-MaaS-Gateway-Name \
     MaaS \
@@ -2691,7 +2692,7 @@ docker run --rm  \
   -c=/opt/spectrocloud/pcg.yaml
 ```
 
-New VM(s) will be launched in your MaaS environment and a gateway will be installed on those VM(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
+New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
 
 ## Upgrading a MaaS cloud gateway
 
@@ -2704,12 +2705,6 @@ The following steps need to be performed to delete a cloud gateway.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
 * The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
 * Delete the gateway.
-
-<InfoBox>
-
-The delete gateway operation deletes the gateway instance registered in the management console, however, the gateway infrastructure such as Load Balancers, VMs, Networks (if the dynamic provision was chosen), etc. need to be deleted on the MaaS console
-
-</InfoBox>
 
 
 ## Resizing a MaaS gateway
@@ -2740,7 +2735,7 @@ Validate the above MaaS credentials to create your MaaS cloud account.
 
 The following steps need to be performed to provision a new MaaS cluster:-
 
-* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
+* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the machines deployed on the cloud/data center environments.
 
 * Select a cluster profile created for the  MaaS environment. The profile definition will be used as the cluster construction template.
 
@@ -2760,8 +2755,8 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Resource Pool	
     * Availability zones 
     * Minimum CPU
-    * Disk - Storage disk size in GB to be attached to the node.
-    *Rolling Update
+    * Minimum Disk - Storage disk size in GB to be attached to the node.
+    * Rolling Update
 * Expand first
 * Contract First
    
@@ -2817,7 +2812,6 @@ The following steps need to be performed to remove a worker pool from the cluste
 
 
 </Tabs. TabPane>
-
 
 
 </Tabs>
