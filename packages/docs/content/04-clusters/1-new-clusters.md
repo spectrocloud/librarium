@@ -2645,10 +2645,6 @@ e.g. http://10.11.130.10:5240/MAAS
 MaaS API Key - MAAS generates an API key when creating your MAAS account, which is used for authentication.
 
 
-#### Enter MaaS cluster configuration for the Private Cloud Gateway:
-
-maas.sc
-
 #### Enter MaaS Machine configuration for the Private Cloud Gateway:
 
 * Select the availability zone
