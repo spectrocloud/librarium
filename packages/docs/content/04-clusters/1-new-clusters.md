@@ -2583,8 +2583,6 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 * NTP configured on all Hosts.
 * MaaS permission set.
 
-## Permissions
----------
 
 ## Creating a MaaS gateway
 
