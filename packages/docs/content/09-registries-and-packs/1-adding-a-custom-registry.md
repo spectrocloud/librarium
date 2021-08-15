@@ -92,7 +92,7 @@ REGISTRY_HOST_DNS - registry.com
 * Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
 ```bash
-    docker pull gcr.io/spectro-images-public/release/spectro-registry:1.12.0
+    docker pull gcr.io/spectro-images-public/release/spectro-registry:1.13.0
 ```
 
 * Create the docker container using the docker `run` command:
