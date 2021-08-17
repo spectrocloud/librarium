@@ -15,6 +15,13 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+
+
+# August 14, 2021 - Release 1.13.0
+
+Spectro Cloud users can now convert their bare-metal servers into flexible, cohesive, and distributed instances of virtual machines with the slightest efforts utilizing “Metal As A Service”.
+
+
 # July 23, 2021 - Release 1.12.0
 
 Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud. 
