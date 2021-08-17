@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const StyledHeading = styled.h1`
   font-style: normal;
-  font-weight: 600;
+  margin: 32px 0;
   font-size: 40px;
-  line-height: 52px;
+  line-height: 60px;
   letter-spacing: -0.02em;
   color: #0d1440;
+  font-weight: normal;
   color: ${props => props.theme.colors.heading};
 `;
 
@@ -49,7 +50,7 @@ export const StyledMainWrapper = styled.div`
 
   .previous,
   .next {
-    margin: 40px 0;
+    margin-bottom: 40px;
     width: calc(50% - 8px);
   }
 
@@ -83,11 +84,12 @@ export const StyledMainWrapper = styled.div`
     `};
 
   h1 {
-    font-weight: 600;
+    margin: 32px 0;
     font-size: 40px;
-    line-height: 52px;
-    margin: 30px 0;
+    line-height: 60px;
     letter-spacing: -0.02em;
+    color: #0d1440;
+    font-weight: normal;
 
     ::before {
       display: block;

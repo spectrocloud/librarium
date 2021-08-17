@@ -16,7 +16,6 @@ const Sidebar = styled.aside`
 
 const MenuWrap = styled.div`
   padding: 50px 0;
-  border-right: 1px solid #dedfe5;
 `;
 
 const LogoWrap = styled.div`

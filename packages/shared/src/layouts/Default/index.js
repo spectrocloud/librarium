@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
-  padding: 0px 43px;
+  padding: 54px 80px;
   background: ${({ theme }) => theme.colors.background};
 
   ${props =>
@@ -79,6 +79,7 @@ const Overlay = styled.div`
 const MainWrap = styled.div`
   flex-grow: 1;
   overflow-y: auto;
+  background: linear-gradient(119.9deg, #ffffff 43.09%, #e8f1ff 107.76%, #ebf2ff 107.77%);
 `;
 
 export default function Layout({

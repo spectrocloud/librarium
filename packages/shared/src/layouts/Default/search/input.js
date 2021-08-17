@@ -30,7 +30,16 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  padding-left: 21px;
+  border: 1px solid #9698a9;
+  border-radius: 7px;
+  padding: 11.5px 18px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #9698a9;
+  min-width: 295px;
+  margin-left: 57px;
 `;
 
 export default connectSearchBox(({ refine, focus, ...rest }) => {
