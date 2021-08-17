@@ -22,25 +22,36 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  max-width: 1024px;
+  max-width: 1110px;
   margin: 30px auto 0;
   overflow: hidden;
 
   ::after {
     content: ' ';
     max-width: 1109.51px;
-    width:100%;
-    border: 1px solid #D4D4D4;
+    width: 100%;
+    border: 1px solid #d4d4d4;
     margin-top: 102px;
     margin-bottom: 70px;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.25px;
+    color: #2d2e55;
   }
 `;
 
 const Description = styled.div`
-  font-size: 14px;
-  color: #111;
-  max-width: 680px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666a80;
+  max-width: 936px;
   text-align: center;
+  margin-bottom: 50px;
 `;
 
 const CardWrapper = styled.div`
@@ -81,11 +92,10 @@ const Icon = styled.div`
 `;
 
 const CloudName = styled.div`
-  color: #777;
-  @media (max-width: 830px) {
-    text-align: center;
-    white-space: nowrap;
-  }
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 22px;
+  color: #666a80;
 `;
 
 function CloudsSection({ title, description, options = [] }) {

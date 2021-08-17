@@ -14,7 +14,7 @@ export default function IntroSection({ children }) {
 
 const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   button {
     margin-right: 16px;
     background: #206cd1;
@@ -27,10 +27,13 @@ const ButtonsWrapper = styled.div`
     line-height: 24px;
     color: #ffffff;
     padding: 16px;
+    white-space: nowrap;
+    margin-top: 15px
   }
 
   .request-demo {
     padding: 14px;
+    margin-top: 15px;
     text-decoration: none;
     border: 3px solid #6398df;
     box-sizing: border-box;
@@ -39,6 +42,7 @@ const ButtonsWrapper = styled.div`
     font-size: 18px;
     line-height: 24px;
     color: #6398df !important;
+    white-space: nowrap;
   }
 `;
 
