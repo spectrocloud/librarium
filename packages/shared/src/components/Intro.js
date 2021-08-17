@@ -13,36 +13,42 @@ export default function IntroSection({ children }) {
 }
 
 const ButtonsWrapper = styled.div`
-  margin: 16px -16px;
+  display: flex;
+  flex-direction: row;
   button {
-    margin: 0 16px;
+    margin-right: 16px;
+    background: #206cd1;
+    border: 1px solid #206cd1;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+    padding: 16px;
   }
 
-  a {
+  .request-demo {
+    padding: 14px;
     text-decoration: none;
+    border: 3px solid #6398df;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #6398df !important;
   }
-
-  ${props =>
-    props.display === 'vertical' &&
-    css`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-
-      button {
-        margin: 10px 0;
-      }
-    `}
 `;
 
-export function IntroButtons({ children, display = 'horizontal', introductionHref, demoHref }) {
+export function IntroButtons({ introductionHref, demoHref }) {
   return (
-    <ButtonsWrapper display={display}>
+    <ButtonsWrapper>
       <Link to={introductionHref}>
         <Button>What is Spectro Cloud?</Button>
       </Link>
-      <Link target="_blank" to={demoHref}>
+      <Link className="request-demo" target="_blank" to={demoHref}>
         Request Demo
       </Link>
     </ButtonsWrapper>

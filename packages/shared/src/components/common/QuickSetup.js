@@ -14,9 +14,11 @@ const Wrapper = styled.div`
 
   ::after {
     content: ' ';
-    width: 680px;
-    border: 1px solid #dddddd;
-    margin-top: 60px;
+    max-width: 1109.51px;
+    width:100%;
+    border: 1px solid #D4D4D4;
+    margin-top: 102px;
+    margin-bottom: 70px;
   }
 `;
 
@@ -27,7 +29,7 @@ const CardsWrapper = styled.div`
   margin-top: -30px;
   width: 100%;
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     flex-flow: row nowrap;
     overflow-y: auto;
   }
@@ -45,7 +47,7 @@ const Card = styled.div`
   padding: 10px;
   margin: 30px 2px 0px;
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     margin: 20px;
     margin-top: 65px;
   }

@@ -28,7 +28,7 @@ const HitsWrapper = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
   background: white;
-  @media only screen and (max-width: 830px) {
+  @media only screen and (max-width: 952px) {
     width: 100%;
     max-width: 100%;
     left: 0;

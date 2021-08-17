@@ -28,9 +28,11 @@ const Wrapper = styled.div`
 
   ::after {
     content: ' ';
-    width: 680px;
-    border: 1px solid #dddddd;
-    margin-top: 60px;
+    max-width: 1109.51px;
+    width:100%;
+    border: 1px solid #D4D4D4;
+    margin-top: 102px;
+    margin-bottom: 70px;
   }
 `;
 

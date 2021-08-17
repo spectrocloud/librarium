@@ -1,7 +1,6 @@
 import React from 'react';
 import Tree from './tree';
 import styled from 'styled-components';
-import menuBackground from '../../../assets/menu-background.png';
 import Logo from '../../../components/Logo';
 import Link from '../../../components/Link';
 import { DEFAULT_MENU } from '../../Default/Header';
@@ -39,16 +38,17 @@ const LogoWrap = styled.div`
 `;
 
 const Content = styled.div`
+  border-right: 1px solid #dedfe5;
   height: calc(100% - 81px);
   overflow-y: auto;
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     padding-bottom: 72px;
   }
 `;
 
 const Navbar = styled.div`
   display: none;
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     display: block;
     position: absolute;
     bottom: 0;

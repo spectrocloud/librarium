@@ -6,6 +6,7 @@ import Header from './Header';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import './layout.css';
+import { useLocation } from '@reach/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ export const Content = styled.main`
       margin: 0;
     `}
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     padding: 0;
   }
 `;
@@ -38,7 +39,7 @@ const LeftSideBarWidth = styled.div`
       display: none;
     `}
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     display: block;
     position: absolute;
     width: 0%;
@@ -60,7 +61,7 @@ const Overlay = styled.div`
   display: none;
   opacity: 0;
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     ${props =>
       props.expanded &&
       css`
@@ -80,6 +81,11 @@ const MainWrap = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   background: linear-gradient(119.9deg, #ffffff 43.09%, #e8f1ff 107.76%, #ebf2ff 107.77%);
+  ${props =>
+    props.isHomepage &&
+    css`
+      background: #fff;
+    `}
 `;
 
 export default function Layout({
@@ -91,6 +97,8 @@ export default function Layout({
   hideMenuSidebar = false,
 }) {
   const [expanded, showNavbar] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
     <Wrapper>
@@ -100,7 +108,7 @@ export default function Layout({
           <Sidebar menu={menu} subLogo={subLogo} extraMenu={extraMenu} />
         </LeftSideBarWidth>
       </>
-      <MainWrap>
+      <MainWrap isHomepage={isHomePage}>
         <Header toggleMenu={() => showNavbar(!expanded)} />
         <Content fullWidth={fullWidth}>{children}</Content>
       </MainWrap>

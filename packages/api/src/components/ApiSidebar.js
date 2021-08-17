@@ -81,7 +81,6 @@ export default function ApiSidebar({ allMdx }) {
   return (
     <Wrap>
       <SelectWrap>
-        {' '}
         <StyledSelect value={selectedVersion} onChange={updateSelectedVersion}>
           {versions.map(version => (
             <Select.Option value={version}>{version}</Select.Option>
