@@ -25,11 +25,11 @@ export const StyledPrevious = styled.div`
 
   .previousBtn:hover {
     text-decoration: none;
-    border: 1px solid #1ed3c6;
+    border: 1px solid #206cd1;
   }
 
   .previousBtn:hover .leftArrow {
-    color: #1ed3c6;
+    color: #206cd1;
   }
 
   .leftArrow {
@@ -46,13 +46,21 @@ export const StyledPrevious = styled.div`
   .nextPreviousTitle {
     margin: 0px;
     padding: 0px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #252b53;
+
     transition: color 200ms ease 0s;
   }
-
   .nextPreviousTitle span {
-    font-size: 16px;
-    line-height: 1.5;
     font-weight: 500;
+  }
+
+  .smallContent {
+    font-size: 14px;
+    line-height: 24px;
+    color: #666a80;
   }
 
   .nextRightWrapper {
@@ -91,7 +99,7 @@ export const StyledNext = styled.div`
     margin: 0px;
     position: relative;
     display: flex;
-    padding: 8px 16px;
+    padding: 6.5px 20px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -108,11 +116,11 @@ export const StyledNext = styled.div`
 
   .nextBtn:hover {
     text-decoration: none;
-    border: 1px solid #1ed3c6;
+    border: 1px solid #206cd1;
   }
 
   .nextBtn:hover .rightArrow {
-    color: #1ed3c6;
+    color: #206cd1;
   }
 
   .rightArrow {
@@ -129,15 +137,16 @@ export const StyledNext = styled.div`
   .nextPreviousTitle {
     margin: 0px;
     padding: 0px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #252b53;
+
     transition: color 200ms ease 0s;
   }
-
   .nextPreviousTitle span {
-    font-size: 16px;
-    line-height: 1.5;
     font-weight: 500;
   }
-
   .nextRightWrapper {
     height: 100%;
   }

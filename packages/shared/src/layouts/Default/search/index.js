@@ -28,7 +28,7 @@ const HitsWrapper = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
   background: white;
-  @media only screen and (max-width: 830px) {
+  @media only screen and (max-width: 952px) {
     width: 100%;
     max-width: 100%;
     left: 0;
@@ -42,7 +42,7 @@ const HitsWrapper = styled.div`
       background-color: rgba(68, 50, 245, 0.05);
 
       mark {
-        color: #4432f5;
+        color: #206cd1;
         background-color: #fff;
       }
     }

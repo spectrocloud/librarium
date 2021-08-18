@@ -1,7 +1,7 @@
-import React from "react";
-import { Sidebar, ListItem } from "./styles/Sidebar";
-import { useConfig } from "../config";
-import { useLocation } from "@reach/router";
+import React from 'react';
+import { Sidebar, ListItem } from './styles/Sidebar';
+import { useConfig } from '../config';
+import { useLocation } from '@reach/router';
 
 const TableOfContents = ({ edges }) => {
   const config = useConfig();
@@ -14,24 +14,23 @@ const TableOfContents = ({ edges }) => {
 
       if (item !== undefined) {
         const pathname = location && location.pathname;
+        const hash = location && location?.hash;
         if (
           item.node.fields.slug === pathname ||
           item.node.fields.slug === config.gatsby.pathPrefix + pathname
         ) {
           if (item.node.tableOfContents.items) {
-            innerItems = item.node.tableOfContents.items.map(
-              (innerItem, index) => {
-                const itemId = innerItem.title
-                  ? innerItem.title.replace(/\s+/g, "").toLowerCase()
-                  : "#";
+            innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
+              const itemId = innerItem.title
+                ? innerItem.title.replace(/\s+/g, '').toLowerCase()
+                : '#';
 
-                return (
-                  <ListItem key={index} to={`#${itemId}`} level={1}>
-                    {innerItem.title}
-                  </ListItem>
-                );
-              }
-            );
+              return (
+                <ListItem key={index} to={`#${itemId}`} level={1} active={hash === `#${itemId}`}>
+                  {innerItem.title}
+                </ListItem>
+              );
+            });
           }
         }
       }
@@ -44,8 +43,8 @@ const TableOfContents = ({ edges }) => {
   if (finalNavItems && finalNavItems.length) {
     return (
       <Sidebar>
-        <ul className={"rightSideBarUL"}>
-          <li className={"rightSideTitle"}>CONTENTS</li>
+        <ul className={'rightSideBarUL'}>
+          <li className={'rightSideTitle'}>CONTENTS</li>
           {finalNavItems}
         </ul>
       </Sidebar>

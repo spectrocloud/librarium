@@ -62,7 +62,7 @@ const Previous = ({ mdx, nav }) => {
           <div className={'smallContent'}>
             <span>Previous</span>
           </div>
-          <div className={'nextPreviousTitle'}>
+          <div className="nextPreviousTitle">
             <span>{nav[currentIndex - 1].title}</span>
           </div>
         </div>
