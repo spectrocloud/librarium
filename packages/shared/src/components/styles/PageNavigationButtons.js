@@ -25,11 +25,11 @@ export const StyledPrevious = styled.div`
 
   .previousBtn:hover {
     text-decoration: none;
-    border: 1px solid #1ed3c6;
+    border: 1px solid #206cd1;
   }
 
   .previousBtn:hover .leftArrow {
-    color: #1ed3c6;
+    color: #206cd1;
   }
 
   .leftArrow {
@@ -116,11 +116,11 @@ export const StyledNext = styled.div`
 
   .nextBtn:hover {
     text-decoration: none;
-    border: 1px solid #1ed3c6;
+    border: 1px solid #206cd1;
   }
 
   .nextBtn:hover .rightArrow {
-    color: #1ed3c6;
+    color: #206cd1;
   }
 
   .rightArrow {

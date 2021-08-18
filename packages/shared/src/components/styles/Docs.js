@@ -41,7 +41,7 @@ export const Edit = styled.div`
 `;
 
 export const StyledMainWrapper = styled.div`
-  max-width: 750px;
+  max-width: 840px;
   color: ${props => props.theme.colors.text};
   flex-grow: 1;
   display: flex;
@@ -127,13 +127,18 @@ export const StyledMainWrapper = styled.div`
     -webkit-padding-start: 40px;
     -moz-padding-start: 40px;
     -o-padding-start: 40px;
-    margin: 16px 0px;
     padding: 0px 0px 0px 2em;
+    margin: 24px 0;
 
     li {
-      line-height: 1.8;
-      font-weight: 400;
 
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 28px;
+      color: #666a80;
+      > p {
+        margin: 0px;
+      }
       > ul,
       > ol {
         margin: 0px;
@@ -152,7 +157,7 @@ export const StyledMainWrapper = styled.div`
     padding: 2px 6px;
     font-size: 0.9375em;
 
-    background: ${props => props.theme.colors.background};
+    background: #fff;
   }
 
   table {

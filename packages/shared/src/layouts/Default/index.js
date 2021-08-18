@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 export const Content = styled.main`
-  padding: 54px 80px;
+  padding: 54px 60px;
   background: ${({ theme }) => theme.colors.background};
 
   ${props =>

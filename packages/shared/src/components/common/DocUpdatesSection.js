@@ -9,9 +9,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
   max-width: 780px;
-  margin: 30px auto 0;
+  margin: 0px auto;
+  h3 {
+    margin-bottom: 50px !important;
+    margin-top: 102px !important;
+  }
 `;
 
 const CardsWrapper = styled.div`

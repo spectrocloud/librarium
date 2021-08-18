@@ -33,7 +33,7 @@ const LogoWrap = styled.div`
     font-size: 17px;
     line-height: 18px;
     margin-left: 6px;
-    color: linear-gradient(340.87deg, #4432f5 11.36%, #2681fa 88.9%);
+    color: linear-gradient(340.87deg, #206cd1 11.36%, #2681fa 88.9%);
   }
 `;
 

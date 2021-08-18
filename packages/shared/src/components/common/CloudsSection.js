@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   align-items: center;
   margin-top: 30px;
   max-width: 1110px;
-  margin: 30px auto 0;
+  margin: 0px auto;
   overflow: hidden;
 
   ::after {
@@ -32,7 +32,6 @@ const Wrapper = styled.div`
     width: 100%;
     border: 1px solid #d4d4d4;
     margin-top: 102px;
-    margin-bottom: 70px;
   }
 
   h3 {
@@ -41,6 +40,8 @@ const Wrapper = styled.div`
     line-height: 36px;
     letter-spacing: 0.25px;
     color: #2d2e55;
+    margin-bottom: 50px !important;
+    margin-top: 102px !important;
   }
 `;
 
@@ -59,7 +60,7 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  max-width: 880px;
+  max-width: 937px;
   margin-top: 30px;
   @media (max-width: 830px) {
     overflow-y: auto;
@@ -81,14 +82,18 @@ const Card = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
+  background: #ffffff;
+  box-shadow: 0px 5.42752px 14.9257px -2.71376px rgba(21, 24, 51, 0.22);
+  margin-bottom: 32px;
+  img {
+  height: 81px;
+  }
 `;
 
 const CloudName = styled.div`

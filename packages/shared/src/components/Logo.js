@@ -81,7 +81,7 @@ export default function Logo({ children }) {
         >
           <stop stop-color="#00BCEB" />
           <stop offset="0.3831" stop-color="#198AEF" />
-          <stop offset="1" stop-color="#4432F5" />
+          <stop offset="1" stop-color="#206cd1" />
         </linearGradient>
         <linearGradient
           id="paint1_linear"
@@ -91,7 +91,7 @@ export default function Logo({ children }) {
           y2="24.6556"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4432F5" />
+          <stop stop-color="#206cd1" />
           <stop offset="1" stop-color="#2681FA" />
         </linearGradient>
       </defs>

@@ -22,8 +22,8 @@ const SelectorCard = styled.div`
   color: #555;
   cursor: pointer;
   ${props => props.selected && css`
-      background: #4432F5;
-      border: 1px solid #4432F5;
+      background: #206cd1;
+      border: 1px solid #206cd1;
       color: #fff;
   `}
 `;

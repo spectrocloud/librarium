@@ -42,7 +42,7 @@ const HitsWrapper = styled.div`
       background-color: rgba(68, 50, 245, 0.05);
 
       mark {
-        color: #4432f5;
+        color: #206cd1;
         background-color: #fff;
       }
     }

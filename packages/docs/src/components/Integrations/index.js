@@ -36,6 +36,7 @@ const Card = styled.div`
   height: 120px;
   margin-right: 32px;
   margin-bottom: 32px;
+  background: #fff;
   padding: 10px;
   display: flex;
   align-items: center;
