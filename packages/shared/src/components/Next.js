@@ -43,7 +43,7 @@ const Next = ({ mdx, nav }) => {
             <div className={'smallContent'}>
               <span>Next</span>
             </div>
-            <div className={'nextPreviousTitle'}>
+            <div className="nextPreviousTitle">
               <span>{nav[currentIndex + 1] && nav[currentIndex + 1].title}</span>
             </div>
           </div>

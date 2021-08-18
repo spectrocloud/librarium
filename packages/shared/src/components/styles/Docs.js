@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const StyledHeading = styled.h1`
   font-style: normal;
-  font-weight: 600;
+  margin: 32px 0;
   font-size: 40px;
-  line-height: 52px;
+  line-height: 60px;
   letter-spacing: -0.02em;
   color: #0d1440;
+  font-weight: normal;
   color: ${props => props.theme.colors.heading};
 `;
 
@@ -40,7 +41,7 @@ export const Edit = styled.div`
 `;
 
 export const StyledMainWrapper = styled.div`
-  max-width: 750px;
+  max-width: 840px;
   color: ${props => props.theme.colors.text};
   flex-grow: 1;
   display: flex;
@@ -49,7 +50,7 @@ export const StyledMainWrapper = styled.div`
 
   .previous,
   .next {
-    margin: 40px 0;
+    margin-bottom: 40px;
     width: calc(50% - 8px);
   }
 
@@ -83,11 +84,12 @@ export const StyledMainWrapper = styled.div`
     `};
 
   h1 {
-    font-weight: 600;
+    margin: 32px 0;
     font-size: 40px;
-    line-height: 52px;
-    margin: 30px 0;
+    line-height: 60px;
     letter-spacing: -0.02em;
+    color: #0d1440;
+    font-weight: normal;
 
     ::before {
       display: block;
@@ -125,13 +127,18 @@ export const StyledMainWrapper = styled.div`
     -webkit-padding-start: 40px;
     -moz-padding-start: 40px;
     -o-padding-start: 40px;
-    margin: 16px 0px;
     padding: 0px 0px 0px 2em;
+    margin: 24px 0;
 
     li {
-      line-height: 1.8;
-      font-weight: 400;
 
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 28px;
+      color: #666a80;
+      > p {
+        margin: 0px;
+      }
       > ul,
       > ol {
         margin: 0px;
@@ -150,7 +157,7 @@ export const StyledMainWrapper = styled.div`
     padding: 2px 6px;
     font-size: 0.9375em;
 
-    background: ${props => props.theme.colors.background};
+    background: #fff;
   }
 
   table {

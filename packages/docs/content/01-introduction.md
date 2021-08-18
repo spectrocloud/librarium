@@ -13,7 +13,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 <Intro>
 
-# Welcome to Spectro Cloud!
+# Welcome to **Spectro Cloud!**
 
 </Intro>
 
