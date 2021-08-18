@@ -17,7 +17,7 @@ const SearchComponent = Loadable({
 
 const MaxWidth = styled.div`
   margin: 0 auto;
-  max-width: 1109px;
+  max-width: 1227px;
   display: flex;
   justify-content: space-between;
   width: 100%;

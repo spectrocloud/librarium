@@ -11,8 +11,8 @@ const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   background: linear-gradient(180deg, #ffffff 34.93%, #e8f1ff 145.37%, #ebf2ff 145.39%);
-  margin: -54px -80px 0 -80px;
-  padding: 54px 80px;
+  margin: -54px -60px 0 -60px;
+  padding: 54px 60px;
   overflow: hidden;
   h1 {
     font-style: normal;
