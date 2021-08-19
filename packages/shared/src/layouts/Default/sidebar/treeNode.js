@@ -124,7 +124,7 @@ const TreeNode = ({
     return null;
   }
   const hasChildren = items.length !== 0;
-  console.log(title, isActive, expanded);
+
   return (
     <MenuNode isActive={isActive} expanded={expanded} level={level}>
       {title && (
