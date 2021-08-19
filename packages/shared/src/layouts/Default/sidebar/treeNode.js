@@ -14,16 +14,6 @@ const MenuNode = styled.div`
       color: #206cd1;
     }
 
-    ${({ expanded, isActive }) => {
-      return (
-        expanded &&
-        !isActive &&
-        css`
-          color: #206cd1;
-        `
-      );
-    }}
-
     ${props =>
       props.level === 1 &&
       !props.isActive &&
@@ -32,6 +22,21 @@ const MenuNode = styled.div`
         color: #9698a9;
         font-weight: 500;
       `}
+  }
+
+  > a {
+    ${({ expanded }) => {
+      return (
+        expanded &&
+        css`
+          color: #206cd1;
+          svg {
+            fill: #206cd1;
+            stroke: #206cd1;
+          }
+        `
+      );
+    }}
   }
 `;
 
@@ -58,7 +63,7 @@ const IconWrapper = styled.div`
   ${props =>
     props.isActive &&
     css`
-     color: #206cd1;
+      color: #206cd1;
       svg {
         fill: #206cd1;
         stroke: #206cd1;

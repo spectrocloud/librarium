@@ -3,7 +3,7 @@ body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
-  font-family: Montserrat;
+  font-family: Poppins;
   font-size: 16px;
 }
 
@@ -20,7 +20,7 @@ a {
 }
 
 button {
-  font-family: Montserrat;
+  font-family: Poppins;
 }
 
 .paragraph img {
