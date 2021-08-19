@@ -163,7 +163,7 @@ The creation of a private cloud gateway is highly environment dependant. All the
 <Tabs.TabPane tab="Cluster Management" key="day2">
 
 Cluster management operations involves the scaling, monitoring, maintenance, and troubleshooting of tenant clusters that keeps them up and running.
-Please refer to [cluster management](/clusters/cluster-updates/#manageclusters) for detailed instructions and procedures.
+Please refer to [cluster management](/clusters/cluster-management/#manageclusters) for detailed instructions and procedures.
 </Tabs.TabPane>
 
 </Tabs>
