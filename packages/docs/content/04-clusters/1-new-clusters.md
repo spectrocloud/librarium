@@ -32,7 +32,7 @@ All the control plane nodes and worker nodes are created within the private subn
 
 A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
 
-An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the ec2 instances. This is because the ec2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
+An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
 
 The APIServer endpoint is accessible through an ELB, which load balancing across all the control plane nodes.
 
@@ -637,49 +637,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
-## Scaling an AWS Cluster
 
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an AWS cluster.
-
-* Access the ‘Nodes’ view of the cluster.
-* For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-<InfoBox>
-Master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
-</InfoBox>
-
-## Add an AWS worker pool
-
-The following steps need to be performed to add a new worker node pool to a cluster:-
-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-
-* Provide node pool settings as follows:
-    - A descriptive name for the node pool.
-    - The number of nodes in the node pool.
-    - One or more availability zones.  Nodes are distributed across availability zones when multiple zones are selected.
-    - The instance type to be used for all the nodes launched in the node pool.
-    - Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Remove an AWS worker pool
-
-The following steps need to be performed to remove a worker pool from the cluster:-
-
-* Access the 'Nodes' view of the cluster.
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion begins in a few minutes.
-
-## Reconfigure AWS nodes
-
-The following steps need to be performed to reconfigure worker pool nodes:-
-
-* Access the 'Nodes' view of the cluster.
-* Edit the settings of the desired node pool.
-* Change the instance type to the desired instance type.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with the new instance type configured.
-* The provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs. TabPane>
 
@@ -735,51 +693,6 @@ The following steps need to be performed to provision a new Azure cluster:-
 New worker pools may be added if its desired to customize certain worker nodes to run specialised workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>
 
-## Scaling an Azure cluster
-
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an Azure cluster.
-
-* Access the ‘Nodes’ view of the cluster.
-* For the desired node pool, change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-<InfoBox>
-The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
-</InfoBox>
-
-## Adding an Azure worker pool
-
-The following steps need to be performed to add a new worker node pool to a cluster:-
-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-* Provide node pool settings as follows:
-
-    - A descriptive name for the node pool.
-    - The number of nodes in the node pool.
-    - One or more availability zones. Nodes are distributed across availability zones when multiple zones are selected.
-    - Instance type to be used for all the nodes launched in the node pool.
-    - Managed Disk and Size of the storage to be used.
-    - Save the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Removing an Azure worker pool
-
-The following steps need to be performed to remove a worker pool from the cluster:-
-
-* Access the ‘Nodes’ view of the cluster.
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion beings in a few minutes.
-
-## Reconfiguring Azure nodes
-
-The following steps need to be performed to reconfigure worker pool nodes:-
-
-* Access the 'Nodes' view of the cluster.
-* Edit the settings of the desired node pool.
-* Change the instance type to the desired instance type.
-* Update the Managed Disk  type and Size of the storage to be used.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with new instance type configured.
-* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 </Tabs. TabPane>
 
@@ -1264,48 +1177,6 @@ The deletion of a VMware cluster results in the removal of all Virtual machines 
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, ‘Abort’ action is available to stop provisioning and delete all resources.
 </InfoBox>
 
-## Scaling a VMware Cluster
-
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down a VMware cluster:
-
-* Access the ‘Nodes’ view of the cluster
-* For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-<InfoBox>
-The master node pool may be scaled from 1 to 3 or 3 to 5 nodes. Scale down operation is not supported for master nodes.
-</InfoBox>
-
-## Reconfiguring VMware Nodes
-
-The following steps need to be performed to reconfigure worker pool nodes: -
-
-* Access the 'Nodes' view for the cluster.
-* Edit the settings of the desired node pool.
-* Change the CPU, Memory, and Disk size to the desired settings.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted.one by one and replaced by new nodes launched with new instance type configured.
-* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
-
-## Adding a VMware worker pool
-
-The following steps need to be performed to add a new worker node pool to a cluster:-
-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-* Provide node pool settings as follows:-
-
-    - A descriptive name for the node pool.
-    - The number of nodes in the node pool.
-    - CPU, Memory, and Disk settings for all the nodes in the node pool.
-    - Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Removing a VMware worker pool
-
-The following steps need to be performed to remove a worker pool from the cluster:-
-
-* Access the ‘Nodes’ view of the cluster.
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion begins in a few minutes.
 
 </Tabs. TabPane>
 
@@ -1916,46 +1787,6 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
-## Scaling an EKS Cluster
-
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an EKS cluster.
-
-* Access the ‘Nodes’ view of the cluster.
-* For the node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-
-## Add an EKS worker pool
-
-The following steps need to be performed to add a new worker node pool to a cluster:-
-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-
-* Provide node pool settings as follows:
-    - A descriptive name for the node pool.
-    - The number of nodes in the node pool.
-    - The instance type to be used for all the nodes launched in the node pool.
-    - Confirm the node pool settings. New worker pool settings are updated and cluster updates begin within a few minutes. The provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Remove an EKS worker pool
-
-The following steps need to be performed to remove a worker pool from the cluster:-
-
-* Access the 'Nodes' view of the cluster.
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion begins in a few minutes.
-
-## Reconfigure EKS nodes
-
-The following steps need to be performed to reconfigure worker pool nodes:-
-
-* Access the 'Nodes' view of the cluster.
-* Edit the settings of the desired node pool.
-* Change the instance type to the desired instance type.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. A new node pool with desired settings is created and the older node pool is removed. 
-* The provisioning status is updated with the ongoing progress of nodes being deleted and added.
-
 </Tabs. TabPane>
 
 
@@ -2444,45 +2275,12 @@ The deletion of an OpenStack cluster results in the removal of all Virtual machi
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, the ‘Abort’ action is available to stop provisioning and delete all resources.
 </InfoBox>
 
-## Scaling an OpenStack Cluster
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down an OpenStack cluster:
-* Access the ‘Nodes’ view of the cluster
-* For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-The master node pool may be scaled from 1 to 3 or 3 to 5 nodes, etc. Scale-down operation is not supported for master nodes.
-
-## Reconfiguring OpenStack Nodes  
-The following steps need to be performed to reconfigure worker pool nodes: 
-* Access the 'Nodes' view for the cluster.
-* Edit the settings of the desired node pool.
-* Change the number of nodes, rolling update setting, availability zones, flavor, and Disk size to the desired settings.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with a new instance type configured.
-* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
-
-## Adding an OpenStack worker pool
-The following steps need to be performed to add a new worker node pool to a cluster:-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-* Provide node pool settings as follows:-
-    * A descriptive name for the node pool.
-    * The number of nodes in the node pool.
-    * Rolling update setting, availability zones, flavor, and Disk size settings.
-    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Removing an OpenStack worker pool
-The following steps need to be performed to remove a worker pool from the cluster:
-* Access the ‘Nodes’ view of the cluster.    
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion begins in a few minutes.
-
-
 </Tabs. TabPane>
 
 <Tabs. TabPane tab="AKS Cluster" key="aks_cluster">
 
 ## Overview
-Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
+Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
 
 ![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
@@ -2771,39 +2569,6 @@ The deletion of a MaaS cluster results in the removal of all Virtual machines an
 <InfoBox>
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, the ‘Abort’ action is available to stop provisioning and delete all resources.
 </InfoBox>
-
-## Scaling a MaaS  Cluster
-Scaling a cluster up or down involves changing the size of node pools. The following steps need to be performed to scale up/down a MaaS cluster:
-* Access the ‘Nodes’ view of the cluster
-* For the desired node pool change the size directly from the nodes panel or by editing node pool settings.
-* After the node pool configuration is updated, the scale-up/down operation is initiated in a few minutes.
-* Provisioning status is updated with the ongoing progress of the scale operation.
-
-The master node pool may be scaled from 1 to 3 or 3 to 5 nodes, etc. Scale-down operation is not supported for master nodes.
-
-## Reconfiguring MaaS Nodes  
-The following steps need to be performed to reconfigure worker pool nodes: 
-* Access the 'Nodes' view for the cluster.
-* Edit the settings of the desired node pool.
-* Change the number of nodes, rolling update setting, availability zones, flavor, and Disk size to the desired settings.
-* Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with a new instance type configured.
-* Provisioning status is updated with the ongoing progress of nodes being deleted and added.
-
-## Adding a MaaS worker pool
-The following steps need to be performed to add a new worker node pool to a cluster:-
-* Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-* Provide node pool settings as follows:-
-    * A descriptive name for the node pool.
-    * The number of nodes in the node pool.
-    * Rolling update setting, availability zones, Resource Pool, minimum CPU and, Disk size settings.
-    * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
-
-## Removing a MaaS worker pool
-The following steps need to be performed to remove a worker pool from the cluster:
-* Access the ‘Nodes’ view of the cluster.    
-* Delete the desired worker pool and confirm the deletion.
-* Upon confirmation, the worker node deletion begins in a few minutes.
-
 
 </Tabs. TabPane>
 
