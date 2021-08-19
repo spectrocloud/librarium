@@ -85,11 +85,12 @@ export const StyledMainWrapper = styled.div`
 
   h1 {
     margin: 32px 0;
-    font-size: 40px;
-    line-height: 60px;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+
     color: #0d1440;
-    font-weight: normal;
 
     ::before {
       display: block;
@@ -102,8 +103,12 @@ export const StyledMainWrapper = styled.div`
 
   h2 {
     font-weight: 500;
-    font-size: 32px;
-    line-height: 42px;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.25px;
+
+    color: #2d2e55;
+
     margin: 20px 0;
 
     ::before {
@@ -131,7 +136,6 @@ export const StyledMainWrapper = styled.div`
     margin: 24px 0;
 
     li {
-
       font-weight: normal;
       font-size: 16px;
       line-height: 28px;
