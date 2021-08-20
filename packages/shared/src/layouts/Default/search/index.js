@@ -13,6 +13,7 @@ import { Search } from 'styled-icons/fa-solid/Search';
 import { PoweredBy } from './styles';
 import Input from './input';
 import * as hitComps from './hitComps';
+import { useLocation } from '@reach/router';
 
 const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
@@ -21,13 +22,18 @@ const HitsWrapper = styled.div`
   z-index: 2;
   -webkit-overflow-scrolling: touch;
   position: absolute;
-  left: 5px;
   top: 85px;
   width: 500px;
   box-shadow: 0 2px 64px 0 rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: 1px solid #ddd;
   background: white;
+
+  ${props =>
+    props.center &&
+    css`
+      left: 5px;
+    `}
   @media only screen and (max-width: 952px) {
     width: 100%;
     max-width: 100%;
@@ -136,6 +142,7 @@ export default function SearchComponent({
   focusInput = false,
 }) {
   const ref = createRef();
+  const location = useLocation();
 
   if (!config?.header?.search?.algoliaAppId) {
     return <div></div>;
@@ -162,7 +169,7 @@ export default function SearchComponent({
 
   useEffect(() => {
     if (focusInput) {
-      setFocus(true)
+      setFocus(true);
     }
   }, [focusInput]);
 
@@ -176,11 +183,16 @@ export default function SearchComponent({
       onSearchStateChange={({ query }) => setQuery(query)}
       root={{ Root, props: { ref } }}
     >
-      <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
+      <Input
+        onFocus={() => setFocus(true)}
+        {...{ collapse, focus }}
+        center={location.pathname !== '/'}
+      />
       <HitsWrapper
         className={'hitWrapper ' + displayResult}
         show={query?.length > 0 && focus}
         asGrid={hitsAsGrid}
+        center={location.pathname !== '/'}
       >
         {indices.map(({ name, title, hitComp, type }) => {
           const Component = hitComps[hitComp];
