@@ -8,11 +8,26 @@ category: ['load balancers']
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Citrix IPAM and Ingress controller
 
 The integration helps with IP address management and provides load balancing capabilities for external services deployed on Kubernetes, especially for on-premise deployments.
+
+## Versions Supported
+
+<Tabs>
+<Tabs.TabPane tab="1.7.x" key="1.7.x">
+
+* **1.7.6** 
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Components
 
