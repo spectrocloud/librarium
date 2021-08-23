@@ -341,7 +341,7 @@ Overall health is computed based on the following factors:
 
 Spectro Cloud continuously monitors cluster resources and reports the usage for the cluster as well as individual nodes. The following metrics are reported on the cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
 
-* Cores Used - A cluster-wide break down of the number of cores use.
+* Cores Used - A cluster-wide break down of the number of cores used.
 * CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
 * Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
 * CPU Requests - Total CPUs requested across all pods.
