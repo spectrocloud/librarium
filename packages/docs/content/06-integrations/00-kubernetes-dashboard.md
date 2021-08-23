@@ -9,11 +9,33 @@ category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Kubernetes Dashboard
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.
+
+## Versions Supported
+
+<Tabs>
+
+<Tabs.TabPane tab="2.1.x" key="2.1.x">
+
+* **2.1.0** 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="2.0.x" key="02.0.x">
+
+* **2.0.1** 
+
+</Tabs.TabPane>
+
+</Tabs>
 
 ## Notable parameters
 

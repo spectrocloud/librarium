@@ -9,11 +9,31 @@ category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Kubevious
 
 Kubevious integration provides a graphical interface that renders easy to understand, application-centric Kubernetes configurations.
+
+## Versions Supported
+
+<Tabs>
+<Tabs.TabPane tab="0.8.x" key="0.8.x">
+
+* **0.8.15** 
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="0.5.x" key="0.5.x">
+
+  * **0.5.9**
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Components
 

@@ -8,11 +8,26 @@ category: ['service mesh']
 logoUrl: 'https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d4859261ab892e987f835bd11161bd139dd8e4147b652c6b93924cb2?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Istio Operator
 
 This Integration aims to automate and simplify the rollout of the various Istio components which helps with service mesh use cases.
+
+## Versions Supported
+
+<Tabs>
+<Tabs.TabPane tab="1.6.x" key="1.6.x">
+
+* **1.6.2** 
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Contents
 
