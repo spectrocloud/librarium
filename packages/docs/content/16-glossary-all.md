@@ -71,26 +71,26 @@ Spectro Cloud provides extensibility by providing a way for users to define [pac
 
 ## Helm Charts
 
-Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports and orchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters. 
+Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Spectro Cloud's native Packs, Spectro Cloud supports and orchestrates helm charts hosted in any public or private helm chart registry on to Kubernetes clusters.
 
 
 ## Chart Repositories
 
-Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories. 
+Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Spectro Cloud by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories.
 
 
 ## Attach Manifests
 
-For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helm-charts), at times it is required to provison additional kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile. 
+For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helm-charts), at times it is required to provison additional kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile.
 
 
 ## Pack Manifests
 
-Layers in a [cluster profile](#cluster-profile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts. 
+Layers in a [cluster profile](#cluster-profile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
 
 ## Presets
 
-Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users maybe simply enable or dispable a preset to quickly make the desired changes. 
+Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users maybe simply enable or disable a preset to quickly make the desired changes.
 
 
 ## Private Cloud Gateway

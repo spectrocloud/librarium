@@ -6,7 +6,7 @@ icon: ""
 hideToC: false
 fullWidth: false
 ---
- 
+
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
@@ -19,24 +19,24 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
-* Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes. 
-* Enterprise Mode - A multi node highly available version for production purposes. 
+* Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes.
+* Enterprise Mode - A multi node highly available version for production purposes.
 
-The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes. 
+The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes.
 
 ## vSphere Environment Prerequisites
 
 * General requirements
    - vCenter version :  6.7 and above
    - NTP configured on all ESXi Hosts.
-   
+
 
 
 * Zone Tagging
 
-  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. 
+  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows :-
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows :
 
     | vSphere Object       | Tag Category     | Tag Value     |
     | :-------------       | :----------      | :-----------  |
@@ -48,10 +48,10 @@ The sections below describe the common requirements for both the deployment mode
     Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
 
 
-* Permissions 
+* Permissions
 
 
-  The following permissions are required for the account used to install the platform :-
+  The following permissions are required for the account used to install the platform :
 
  | vSphere Object | Privileges |
 | --- | --- |
@@ -80,7 +80,7 @@ The sections below describe the common requirements for both the deployment mode
 | | * Change Swapfile Placement
 | | * Configure host USB device
 | | * Configure raw device
-| | * Add existing disk 
+| | * Add existing disk
 | | * Add new disk
 | | * Add or remove device
 | | * Advanced configuration
@@ -167,8 +167,8 @@ The sections below describe the common requirements for both the deployment mode
 
 
 ##  Proxy Requirements
-*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic. 
-*   Connectivity to the following domains and ports should be allowed :-
+*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic.
+*   Connectivity to the following domains and ports should be allowed :
 
     | Top-level Domain | Port | Description |
     | --- | --- | --- |
@@ -185,31 +185,31 @@ The sections below describe the common requirements for both the deployment mode
     | github.com | 443 | Common 3rd party content|
 
 
-## Hardware Requirements 
+## Hardware Requirements
 
 The following section provides the hardware requirements for Spectro Cloud Platform VMs for various capacity levels.
 * Concurrent Tenant Clusters - The number of concurrent tenant cluster provisioning or deletion requests.
 * Total Managed Clusters - The number of parallely running tenant clusters.
 
     <InfoBox>
-     The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below. 
+     The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below.
     </InfoBox>
-    
+
 ### Quick Start
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
 | --- | :---: | :-----: | :---: | :---: | :---: | --- |
 | Standard | 3 | 20 | 1 | 8Gb | 4 Virtual CPUs | 80 GB |
-    
+
 ### Enterprise
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
 | --- | :---: | :-----: | :---: | :---: | :---: | --- |
 | Standard | 3 | 200 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
-  
+
 
 <InfoBox>
- For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters. 
+ For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters.
 </InfoBox>
 
 
@@ -219,17 +219,16 @@ The following steps are optional but recommended for production environments.
 
 * DNS Mapping
 
-  A DNS is  used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation. 
+  A DNS is  used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.
 
 * SMTP Settings
-  
-  Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time. 
+
+  Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time.
 
 * Trusted Certificate
 
   Configure your platform with a trusted CA certificates.
 
 * FTP Location for backups
- 
-   Configure a FTP location for platform backups and schedule daily backups. 
 
+   Configure a FTP location for platform backups and schedule daily backups.
