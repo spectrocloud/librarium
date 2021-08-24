@@ -112,7 +112,7 @@ https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fe
 
 Spectro Cloud supports OpenID Connect, a de facto standard of contemporary authentication that provides secured identity management in a highly interoperable format.
 
-To setup OIDC based SSO :
+To setup OIDC based SSO:
 * Log in to the Spectro Cloud console as the tenant admin.
 * Access the tenant admin settings area by clicking the "Admin Settings" button on the left panel.
 * Choose SSO from the admin settings menu.

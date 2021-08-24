@@ -99,19 +99,19 @@ Spectro Cloud deploys Kubernetes clusters using pre-built VM images. The operati
 This operation is not available for managed Kubernetes Services like EKS, AKS and GKE.
 
 ###  OS Patching Options
-Following choices are available for patching the operating system to the latest version:
+The following choices are available for patching the operating system to the latest version:
 
 #### Patch OS on Boot
 During the cluster creation, while configuring the cluster (Cluster Configuration), the user can select “Patch OS on boot”. In this case the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
 
 #### OS Patching Schedule
-Besides patching on boot, the users also have the option to set a schedule for OS patching. Patching schedule can be set initially when creating a cluster as well as at any given point later. The following scheduling options are provided:
+Besides patching on boot, the users also have the option to set a schedule for OS patching. A patching schedule can be set initially when creating a cluster as well as at any given point later. The following scheduling options are provided:
 
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
 * Every month on the 1st at midnight.
 * Every two months on the 1st at midnight.
-* Custom os patch for an exact month, day, hour and minute of user’s choice.
+* Custom OS patch for an exact month, day, hour and minute of user’s choice.
 
 #### Patch Now
 This option provides a way to perform an immediate update to the latest version.
