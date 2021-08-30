@@ -8,16 +8,36 @@ category: ['security']
 logoUrl: 'https://registry.spectrocloud.com/v1/falco/blobs/sha256:4e37461d0a31959ca8af65128329750ca3417e883e7e4ba17ee085b01a383a27?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Falco
 
 Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco to monitor the run-time security of your Kubernetes applications and internal components.
 
-## Versions
+## Versions Supported
 
-* 1.0.11.
-* 1.0.10.
+<Tabs>
+<Tabs.TabPane tab="1.0.x" key="1.0.x">
+
+* **1.0.11**
+* **1.0.10**
+ 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.13.x" key="1.13.x">
+
+* **1.13.1**
+ 
+</Tabs.TabPane>
+
+</Tabs>
+
+
 
 ## References
 

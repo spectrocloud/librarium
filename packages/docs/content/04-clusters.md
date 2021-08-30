@@ -369,7 +369,9 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 <InfoBox>
 
-  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
+* Cluster events are retained for the last 1000 events.
+
+* Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
 
 </InfoBox>
@@ -396,7 +398,10 @@ At times it might be required to work with the Spectro Cloud support team to tro
 * Click [Download "cluster-name" logs] to download the logs folder to your local machine.
 * UnZip and rename the logs folder as per customer choice.
 
+
 <InfoBox>
+
+* Audit logs are retained for the last 1 year.
 
 * In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
 

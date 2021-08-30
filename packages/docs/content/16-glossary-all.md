@@ -15,19 +15,19 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Glossary
 
-This page gives a quick reference to various object types and concepts within Spectro Cloud platform.
+This page gives a quick reference to various object types and concepts within the Spectro Cloud platform.
 
 ## Tenant
 
-Tenant represents a customer or an organization in Spectro Cloud. Spectro Cloud is a multi-tenant platform. All tenant resources are isolated from other tenants. Each tenant has a unique encryption key to encrypt any sensitive data such as cloud credentials and tenant user information. [Users](#user) from a tenant do not  have access to resources in another tenant.
+Tenant represents a customer or an organization in Spectro Cloud. Spectro Cloud is a multi-tenant platform. All tenant resources are isolated from other tenants. Each tenant has a unique encryption key to encrypt any sensitive data such as cloud credentials and tenant user information. [Users](#user) from a tenant do not have access to resources in another tenant.
 
 ## User
 
-Users are members of a [tenant](#tenant) who are assigned [roles](#role) that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all [projects](#project) in the tenant whereas users assigned project roles, only get specific permission within the associated projects. User's personal information (email, name) are treated as sensitive data and fully encrypted using tenant's unique encryption key.
+Users are members of a [tenant](#tenant) who are assigned [roles](#role) that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all [projects](#project) in the tenant whereas users assigned project roles, only get specific permission within the associated projects. The user's personal information (email, name) is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
 
 ## Team
 
-A Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project) [permissions](#permission) to all users that are part of the team.
+A-Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project) [permissions](#permission) to all users that are part of the team.
 
 ## Project
 
@@ -43,7 +43,11 @@ Permissions are associated with specific actions within the platform such as Cre
 
 ## Cluster Profile
 
-A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a template or blueprint of end-to-end Kubernetes stacks and settings that you create based on your needs.
+A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled.
+
+The diagram below shows an example of a cluster profile:
+
+![cluster_profile_new](/cluster_profile_new.png)
 
 Read more about Cluster Profiles [here](/cluster-profiles).
 
@@ -55,7 +59,7 @@ Kubernetes clusters provisioned by users are referred to as Workload Clusters. T
 
 ## Cloud Account
 
-Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provision new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using tenant's unique encryption key.
+Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
 
 ## Pack
 
@@ -67,7 +71,7 @@ Spectro Cloud maintains a public pack registry containing various [packs](#pack)
 
 ## Private Pack Registry
 
-Spectro Cloud provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Specto Cloud's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their own environment using Spectro Cloud's pack registry software.
+Spectro Cloud provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Specto Cloud's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their environment using Spectro Cloud's pack registry software.
 
 ## Helm Charts
 
@@ -81,16 +85,16 @@ Chart Repositories are public or private web servers that host Helm Charts. A fe
 
 ## Attach Manifests
 
-For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helm-charts), at times it is required to provison additional kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multple attach manifests can be added to a layer in a cluster profile.
+For integrations and add-ons orchestrated via Spectro Cloud [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Spectro Cloud Pack or a Chart. Multiple attach manifests can be added to a layer in a cluster profile.
 
 
 ## Pack Manifests
 
-Layers in a [cluster profile](#cluster-profile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
+Layers in a [cluster profile](#cluster-profile) are typically built using a Spectro Cloud [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional Kubernetes resources need to be provisioned, that are not part of any Spectro Cloud pack or a chart. Pack manifests provide a pass-through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
 
 ## Presets
 
-Presets are a subset of properties configured for a layer which are preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for a specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users maybe simply enable or disable a preset to quickly make the desired changes.
+Presets are a subset of properties configured for a layer that is preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users may be simply enabled or disable a preset to quickly make the desired changes.
 
 
 ## Private Cloud Gateway
