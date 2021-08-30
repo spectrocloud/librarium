@@ -473,7 +473,7 @@ presets:
 - name: "privatePackRegistry"
   displayName: "Private Registry"
   group: "registry"
-  remove: []
+  remove: ["registry.ingress.host"]
   add: |
     registry:
       private: true
@@ -484,7 +484,7 @@ presets:
 - name: "publicPackRegistry"
   displayName: "Public Registry"
   group: "registry"
-  remove: []
+  remove: ["registry.ingress.host"]
   add: |
     registry:
       private: false
