@@ -40,8 +40,8 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
         * Pod CIDR: Optional - provide an IP range exclusive to pods. This range should be different to prevent an overlap with your network CIDR. (e.g: 192.168.0.0/16)
         * Service cluster IP range: Optional - assign an IP range in the CIDR format exclusive to the service clusters. This range also must not overlap with either the pod CIDR range or your network CIDR. (e.g: 10.96.0.0/12)
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address (e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
-        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1) required only for static IP allocation.
-        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP subnet prefix: &lt;Network Prefix&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP gateway: &lt;Gateway IP Address&gt; (e.g: 192.168.0.1) required only for static IP allocation.
         * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
