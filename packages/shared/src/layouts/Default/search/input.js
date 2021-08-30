@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Search } from 'styled-icons/fa-solid/Search';
 
 const SearchIcon = styled(Search)`
@@ -39,10 +39,14 @@ const Form = styled.form`
   line-height: 24px;
   color: #9698a9;
   min-width: 295px;
-  margin-left: 57px;
+  ${props =>
+    props.center &&
+    css`
+      margin-left: 57px;
+    `}
 `;
 
-export default connectSearchBox(({ refine, focus, ...rest }) => {
+export default connectSearchBox(({ refine, focus, center, ...rest }) => {
   const ref = useRef(null);
   const preventSubmit = e => {
     e.preventDefault();
@@ -55,7 +59,7 @@ export default connectSearchBox(({ refine, focus, ...rest }) => {
   }, [focus]);
 
   return (
-    <Form className={'formElement'} onSubmit={preventSubmit}>
+    <Form className={'formElement'} onSubmit={preventSubmit} center={center}>
       <SearchIcon />
       <Input
         ref={ref}
