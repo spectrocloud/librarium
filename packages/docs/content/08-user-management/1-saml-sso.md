@@ -122,7 +122,7 @@ To setup OIDC based SSO :
 	* Issuer URL - The URL of the OpenID identity provider.
 
 	Note: For AWS users issuer URL to be generated in the below format:
-	https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-NAME]
+	https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-ID]
 
 	* Client ID - The ID for the client application that makes authentication requests.
 	* Client Secret - Secret is known only to the application and the authorization server
