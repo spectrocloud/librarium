@@ -103,7 +103,7 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 
 # Deploying your first cluster
 
-Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
+Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
 
 <Tabs identifier="getting_started">
 
@@ -127,7 +127,7 @@ The following steps will be taken to provision your first AWS cluster:
 * Switch to the *Cluster Profiles* page from the left navigation bar.
 * Click on the *Add Cluster Profile* button.
 * Specify the name **ExperimentalAWS** and click *Next*.
-* Select **Amazon (AWS)**for the cloud selection.
+* Select **Amazon (AWS)** for the cloud selection.
 * Click on Edit Layers.
 * Please designate the following selections for each layer, leaving the default configuration:
 
@@ -413,7 +413,7 @@ The following steps will be taken to provision your first VMware cluster:
 9. Select '1' for the Number of Nodes.
 10. SSH Keys - Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the gateway VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
 10. Leave the NTP servers option blank, only if NTP is already configured on each of the ESXi hosts.
-11. Select DHCP as the IP allocation strategy. 
+11. Select DHCP as the IP allocation strategy.
 12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
 13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
 
