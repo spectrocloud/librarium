@@ -107,7 +107,7 @@ Integration deploys the following components:
 * Add Prometheus-Operator addon to the same profile where ExternalDNS is added
   * Change serviceType to ClusterIP (line #408)
   * Enable Ingress for the add-on packs. In this example, let us use Prometheus-Operator integration.
-    Ingress config for Grafana will look like the following :
+    Ingress config for Grafana will look like the following:
     ```yaml
     #Ingress config
     ingress:

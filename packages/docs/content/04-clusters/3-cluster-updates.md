@@ -14,21 +14,21 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 
 
- 
-# Cluster Updates
-Spectro Cloud ensures the complete life cycle utilization of its cluster for the users by promoting strong day 2 operations. In this context, cluster updates and integrations are extremely important. In Spectro Cloud, majority of the updates are rolled out through Cluster Profiles. Updates such as addition of a new layer, changes to the pack version, removal of an existing layer, changes to the layer settings or attached manifests, etc. result in update notifications on all the clusters that were instantiated from that cluster profile.  Users can check, confirm and incorporate the updates to their running clusters at an appropriate time.
 
-Additionally, users may changes like overriding pack settings or manifest settings directly on the clusters. 
- 
+# Cluster Updates
+Spectro Cloud ensures the complete life cycle utilization of its cluster for the users by promoting strong day 2 operations. In this context, cluster updates and integrations are extremely important. In Spectro Cloud, a majority of the updates are rolled out through Cluster Profiles. Updates such as addition of a new layer, changes to the pack version, removal of an existing layer, changes to the layer settings or attached manifests, etc. result in update notifications on all the clusters that were instantiated from that cluster profile.  Users can check, confirm and incorporate the updates to their running clusters at an appropriate time.
+
+Additionally, users make changes like overriding pack settings or manifest settings directly on the clusters.
+
 ## Instructions:
-* Navigate to the cluster profiles page and choose the profile to be updated. 
-* Make the desired changes. These include add/delete layers, change pack version, change pack values etc. Save your changes. 
+* Navigate to the cluster profiles page and choose the profile to be updated.
+* Make the desired changes. These include add/delete layers, change pack version, change pack values etc. Save your changes.
 * On the Clusters page, observe the  ‘Updates Available’ tag on every cluster that was previously launched using the updated cluster profile.
-* Click on one of the clusters to be updated to invoke the cluster details page. 
+* Click on one of the clusters to be updated to invoke the cluster details page.
 * An update notification in the form of a button called ‘Updates Available’ can be seen on the right top of the screen. Click the button to open the update  notifications dialog.
-* A notification is created for each change made to the profile. Review all notifications. Depending on the nature of the change, additional action might be required for certain notifications. There are typical scenarios, where the settings or attached manifests for a pack are directly updated on the cluster which results in a conflict with the new incoming changes from the profile. For such cases, the updated profile settings and modified cluster settings are shown side by side, with the differences highlighted. Resolve all of the conflicts. When there has been no update to the pack settings or manifests, the incoming changes from the profile are automatically merged. A side by side comparison between the original cluster settings and the merged cluster settings is still displayed in such cases for review purposes. However, users may choose to further customize settings from this dialog. 
-* Once all the notifications are reviewed and conflicts, if any, are resolved, confirm updates to apply changes to the cluster. 
-* The system starts the update process in a few seconds. Depending upon the nature of the change, a rolling update of the clusters nodes may take place. The UI updates with detailed status of the upgrade. 
+* A notification is created for each change made to the profile. Review all notifications. Depending on the nature of the change, additional action might be required for certain notifications. There are typical scenarios, where the settings or attached manifests for a pack are directly updated on the cluster which results in a conflict with the new incoming changes from the profile. For such cases, the updated profile settings and modified cluster settings are shown side by side, with the differences highlighted. Resolve all of the conflicts. When there has been no update to the pack settings or manifests, the incoming changes from the profile are automatically merged. A side by side comparison between the original cluster settings and the merged cluster settings is still displayed in such cases for review purposes. However, users may choose to further customize settings from this dialog.
+* Once all the notifications are reviewed and conflicts, if any, are resolved, confirm updates to apply changes to the cluster.
+* The system starts the update process in a few seconds. Depending upon the nature of the change, a rolling update of the clusters nodes may take place. The UI updates with detailed status of the upgrade.
 * Repeat this process for other clusters to be upgraded.
 
 
@@ -45,11 +45,11 @@ Pack Version Upgrade |The existing pack version is upgraded to a different versi
 |Delete Pack Manifest |The attached pack manifest is deleted from the cluster profile|manifest security is deleted in the pack Kubernetes|
 
 **Note:**
-Prior to applying the notifications that result from a profile update, if the corresponding changes are reverted, the notification is automatically cleared. 
- 
+Prior to applying the notifications that result from a profile update, if the corresponding changes are reverted, the notification is automatically cleared.
+
 # Examples - Notification settings
 
-As described above, when notifications originate from changes to pack settings or manifest, they are accompanied with a settings dialog with a split pane showing differences in values. Following are a few examples of such scenarios:
+As described above, when notifications originate from changes to pack settings or manifest, they are accompanied with a settings dialog with a split pane showing differences in values. The following are a few examples of such scenarios:
 
 |Values Updated    |Values overridden in Clusters   |Settings displayed (LHS)   |Settings displayed (RHS)   |Auto Merged  | Action  |
 |:---------------|:---------|:--------------------|:--------|:-------|:--------|
