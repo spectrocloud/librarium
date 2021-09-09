@@ -96,7 +96,7 @@ Additionally, users may changes like overriding pack settings or manifest settin
 * Repeat this process for other clusters to be upgraded.
 
 
-# Examples - Update Notifications
+## Examples - Update Notifications
 
 |Update Type     |Description|Notification Example                   |
 |:---------------|:---------|:-----------------------|
@@ -111,7 +111,7 @@ Pack Version Upgrade |The existing pack version is upgraded to a different versi
 **Note:**
 Prior to applying the notifications that result from a profile update, if the corresponding changes are reverted, the notification is automatically cleared. 
  
-# Examples - Notification settings
+## Examples - Notification settings
 
 As described above, when notifications originate from changes to pack settings or manifest, they are accompanied with a settings dialog with a split pane showing differences in values. Following are a few examples of such scenarios:
 
