@@ -9,11 +9,47 @@ category: ['security']
 logoUrl: 'https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Vault
 
 [Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
+
+## Versions Supported
+
+<Tabs>
+
+<Tabs.TabPane tab="0.11.x" key="0.11.x">
+
+* **0.11.0**
+ 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="0.9.x" key="0.9.x">
+
+  * **0.9.0**
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="0.6.x" key="0.6.x">
+
+* **0.6.0**
+ 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="0.3.x" key="0.3.x">
+
+* **0.3.1** 
+
+</Tabs.TabPane>
+</Tabs>
+
 
 ## Components
 
@@ -23,10 +59,7 @@ Vault integration has the following components:
 * UI (Optional).
 * [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional).
 
-## Versions
 
-* 0.6.0.
-* 0.3.1.
 
 ## Supported Use cases
 

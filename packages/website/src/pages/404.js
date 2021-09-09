@@ -40,7 +40,7 @@ const Man = styled.img`
 `
 
 const Title = styled.h1`
-  color: #4432f5;
+  color: #206cd1;
 `
 
 export default function Error() {

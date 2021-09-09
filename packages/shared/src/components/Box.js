@@ -15,7 +15,7 @@ const config = {
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 37px;
   border-radius: 4px;
   margin-bottom: 1em;
   ${props => props.type && css`
