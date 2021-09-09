@@ -9,11 +9,40 @@ category: ['authentication']
 logoUrl: 'https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Dex
 
 Dex is an identity service to drive authentication for Kubernetes API Server through the [OpenID Connect](https://openid.net/connect/) plugin. Clients such as kubectl can act on behalf of users who can log in to the cluster through any identity provider that dex supports.
+
+
+## Versions Supported
+
+<Tabs>
+
+<Tabs.TabPane tab="2.28.x" key="2.28.x">
+
+* **2.28.0** 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="2.25.x" key="2.25.x">
+
+  * **2.25.0**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="2.21.x" key="2.21.x">
+
+  * **2.21.0**
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Components
 

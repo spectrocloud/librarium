@@ -26,7 +26,7 @@ The following steps describe the process of creating new clusters as well as per
 
 The following is the deployment architecture for an AWS cluster.
 
-The Kubernetes nodes are distributed across multiple AZs to achieve high availability. For each of the AZ that you choose, a public subnet and a private subnet is created.
+The Kubernetes nodes are distributed across multiple AZs to achieve high availability. For each of the AZ's that you choose, a public subnet and a private subnet is created.
 
 All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
 
@@ -55,7 +55,7 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-The first step towards generating AWS Cloud Account Permission is role creation. 
+The first step towards generating AWS Cloud Account Permission is role creation.
 
 
 Ensure that the IAM user or the ROOT user role created should have the following **four** IAM policies included:
@@ -567,7 +567,7 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ```
 
 <WarningBox>
-Ensure that the role created encompasses all the policies defined above 
+Ensure that the role created encompasses all the policies defined above
 </WarningBox>
 
 <WarningBox>
@@ -613,7 +613,7 @@ The following steps need to be performed to provision a new AWS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
- The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service. 
+ The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service.
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -667,7 +667,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 ## Creating an Azure Cluster
 
-The following steps need to be performed to provision a new Azure cluster:-
+The following steps need to be performed to provision a new Azure cluster:
 
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the Azure environment. The profile definition will be used as the cluster construction template.
@@ -813,7 +813,7 @@ The process of creating the JSON credential files is available here: https://clo
 
 ## Overview
 
-The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be set up within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and the vCenter, to create and delete target Kubernetes clusters.
+The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be set up within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and vCenter, to create and delete target Kubernetes clusters.
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
 
@@ -880,7 +880,7 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 | | * Change Swapfile Placement
 | | * Configure host USB device
 | | * Configure raw device
-| | * Add existing disk 
+| | * Add existing disk
 | | * Add new disk
 | | * Add or remove device
 | | * Advanced configuration
@@ -1071,7 +1071,7 @@ Administrators should review the changes and apply them at a suitable time. Upgr
 
 ## Deleting a VMware cloud gateway
 
-The following steps need to be performed to delete a cloud gateway.
+The following steps need to be performed to delete a cloud gateway:
 
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
@@ -1096,7 +1096,7 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A loa
 
 ## IP Address Management
 
-Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. Following is a description of various IP Pool properties:
+Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. The following is a description of various IP Pool properties:
 
 | Property | Description |
 |---|---|
@@ -1132,7 +1132,7 @@ In addition to the default cloud account already associated with the private clo
 
 ## Creating a VMware Cluster
 
-The following steps need to be performed to provision a new VMware cluster:-
+The following steps need to be performed to provision a new VMware cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
 * Select a cluster profile created for the VMware environment. The profile definition will be used as the cluster construction template.
@@ -1205,7 +1205,7 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 ## AWS Cloud Account Permissions
 
-The first step towards generating AWS Cloud Account Permission is role creation. 
+The first step towards generating AWS Cloud Account Permission is role creation.
 
 Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
 
@@ -1717,7 +1717,7 @@ All the above policies are required as part of cluster api requirement derived u
 ```
 
 <WarningBox>
-Ensure that the role created encompasses all the policies defined above 
+Ensure that the role created encompasses all the policies defined above
 </WarningBox>
 
 <WarningBox>
@@ -1763,7 +1763,7 @@ The following steps need to be performed to provision a new EKS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
-The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service. 
+The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -1777,8 +1777,8 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
 
 * Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-    - Name - Provide a name for the Fargate profile. 	
-    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected. 
+    - Name - Provide a name for the Fargate profile.
+    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.
     - Selectors - Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
 
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
@@ -1795,8 +1795,8 @@ New worker pools may be added if it is desired to customize certain worker nodes
 
 ## Overview
 
-Spectro Cloud supports provisioning Kubernetes clusters in OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms. 
- 
+Spectro Cloud supports provisioning Kubernetes clusters in OpenStack, a modular cloud infrastructure that runs off standard hardware and is capable of running large pools of compute, storage, and networking resources managed and provisioned with refined authentication mechanisms.
+
 A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the OpenStack environment. The gateway establishes a secure communication channel with the management console thereby eliminating the need for an incoming connection into the OpenStack environment.
 
 
@@ -1813,7 +1813,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 * Per tenant cluster floating IP requirements:
     * 1 per node.
     * 1 Kubernetes API Server.
-    * 1 additional per node pool for rolloing upgrade 	
+    * 1 additional per node pool for rolloing upgrade
 * IPs for application workload services (e.g.: Load Balancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
@@ -1899,7 +1899,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 "volume_extension:volume_encryption_metadata": "rule:admin_or_owner"
 "volume:multiattach": "rule:admin_or_owner"
 
-``` 
+```
 ### Neutron Service
 
 ``` json
@@ -1971,7 +1971,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
     "delete_security_group_rule": "rule:admin_or_owner",
 
 
-``` 
+```
 
 ### Glance Service
 
@@ -1987,7 +1987,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
     "get_image_location": "role:admin or role:member",
     "set_image_location": "role:admin or role:member",
 
-``` 
+```
 ### Nova Compute Service
 
 ``` json
@@ -2078,14 +2078,14 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
     "os_compute_api:os-volumes-attachments:index": "rule:admin_or_owner",
     "os_compute_api:os-volumes-attachments:create": "rule:admin_or_owner",
     "os_compute_api:os-volumes-attachments:show": "rule:admin_or_owner",
-    "os_compute_api:os-volumes-attachments:delete": "rule:admin_or_owner"   
+    "os_compute_api:os-volumes-attachments:delete": "rule:admin_or_owner"
 
-``` 
+```
 
 
 ## Creating an OpenStack gateway
 
-Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack identity endpoint. The installer must be run initially in config-only interactive mode initially to run through a series of prompts and generate a gateway config file. Subsequently the installer must be run in silent mode providing the generated config file as input to complete the installation. 
+Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack identity endpoint. The installer must be run initially in config-only interactive mode initially to run through a series of prompts and generate a gateway config file. Subsequently the installer must be run in silent mode providing the generated config file as input to complete the installation.
 
 
 #### Generate pairing code
@@ -2094,7 +2094,7 @@ Navigate to the Private Cloud Gateway page under Administration and Create a new
 
 #### Generate gateway config
 
-Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, OpenStack cloud account, Environment and Placement information as requested. 
+Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, OpenStack cloud account, Environment and Placement information as requested.
 
 ```bash
 docker run --rm  \
@@ -2111,7 +2111,7 @@ docker run --rm  \
 ```
 
 #### Enter Spectro Cloud  Management Information:
-* Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com 
+* Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com
 * Spectro Cloud Username - Login email address e.g. user1@company.com
 * Spectro Cloud Password - Login password
 * Private Cloud Gateway pairing code: The unique authentication code generated in the previous step.
@@ -2119,8 +2119,8 @@ docker run --rm  \
 #### Enter Environment Configuration:
 
 * HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
-* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16 
+* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16
 * Pod CIDR (--pod_cidr) -  The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
 * Service IP Range (--svc_ip_range) - IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
@@ -2159,7 +2159,7 @@ E.g.: Config created:/opt/spectrocloud//install-pcg-ar-dev-os-gw-02-aug-01-20210
 #### Copy configuration file to known location:
 
 * Copy the pcg.yaml file to a known location for easy access and updates.
- 
+
 
 ```bash
 cp /tmp/install-pcg-xxx/pcg.yaml /tmp
@@ -2168,7 +2168,7 @@ cp /tmp/install-pcg-xxx/pcg.yaml /tmp
 
 #### Deploy Private Cloud Gateway
 
-* Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
+* Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ```bash
 docker run --rm  \
@@ -2190,7 +2190,7 @@ Spectro Cloud maintains the OS image and all configurations for the cloud gatewa
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
 
 ## Deleting an OpenStack cloud gateway
-The following steps need to be performed to delete a cloud gateway.
+The following steps need to be performed to delete a cloud gateway:
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
 * The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
@@ -2216,7 +2216,7 @@ A default cloud account is automatically created when the private cloud gateway 
 
 To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. Fill the following values to the cloud account creation wizard.
 
-|Property|Description |    
+|Property|Description |
 |:---------------|:-----------------------|
 |  Account Name |  Custom name for the cloud account   |
 |   Private cloud gateway|    Reference to a running cloud gateway |
@@ -2230,18 +2230,18 @@ To create an OpenStack cloud account, proceed to project settings and select 'cr
 
 
 ## Creating an OpenStack Cluster
-The following steps need to be performed to provision a new OpenStack cluster:-
+The following steps need to be performed to provision a new OpenStack cluster:
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
 * Select a cluster profile created for the  OpenStack environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide an OpenStack Cloud account and placement information.
    * Cloud Account - Select the desired cloud account. OpenStack cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-   * Domain 
-   * Region  
+   * Domain
+   * Region
    * Project
-   * SSH Key  
+   * SSH Key
    * Placement
-        * if the user choice of placement is Static then: 
+        * if the user choice of placement is Static then:
             * Network
             * Subnet
         * if the user choice of placement is NOT Static then:
@@ -2251,7 +2251,7 @@ The following steps need to be performed to provision a new OpenStack cluster:-
     * Name - A descriptive name for the node pool.
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
-    * Availability zones 
+    * Availability zones
     * Flavor - VM instance type
     * Disk - Storage disk size in GB to be attached to the node.
     * Rolling Update
@@ -2265,7 +2265,7 @@ The following steps need to be performed to provision a new OpenStack cluster:-
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 ## Deleting an OpenStack Cluster
-The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
+The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a OpenStack cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
 * Invoke a delete action from the cluster settings
 * Confirm delete action
@@ -2305,7 +2305,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 * To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plaintext later.
 
 ## Creating an AKS Cluster
-The following steps need to be performed to provision a new AKS cluster:-
+The following steps need to be performed to provision a new AKS cluster:
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the AKS Cluster. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
@@ -2316,16 +2316,16 @@ The following steps need to be performed to provision a new AKS cluster:-
     * Resource Group - Select the resource group in which the cluster should be deployed.
     * SSH Key - Public key to configure remote SSH access to the nodes.
     * Placement - If the choice of placement is Static then select
-        * Virtual Network 
+        * Virtual Network
         * Control Plane Subnet
         * Worker Subnet
 * Configure the worker node pools. A worker node pool is configured by default.
    * Name - A descriptive name for the node pool.
-   * Size - Number of nodes to be provisioned for the node pool. 
+   * Size - Number of nodes to be provisioned for the node pool.
    * Instance Type - Select the Azure instance type to be used for all the nodes in the pool.
    * Managed Disk - Select the managed disk type to be used.
    * Disk Size - Storage disk size in GB to be attached to the node.
-   * Optionally select the system node pool. 
+   * Optionally select the system node pool.
    * Availability Zones (if any) - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
 
 <InfoBox>
@@ -2335,13 +2335,13 @@ If you run a single system node pool for your AKS cluster in a production enviro
 </InfoBox>
 
 <InfoBox>
-A minimum allocation of '2' CPU cores is required across all worker nodes. 
+A minimum allocation of '2' CPU cores is required across all worker nodes.
 
-A minimum allocation of '4Gi' of memory is required across all worker nodes. 
+A minimum allocation of '4Gi' of memory is required across all worker nodes.
 </InfoBox>
 
 
-* Set schedules of OS Patching, Scans, or backup and recovery as per user choice. 
+* Set schedules of OS Patching, Scans, or backup and recovery as per user choice.
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 New worker pools may be added if it desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
@@ -2352,9 +2352,9 @@ New worker pools may be added if it desired to customize certain worker nodes to
 
 ## Overview
 
-Spectro Cloud supports the users to create a data centre from their bare-metal servers with MaaS support. We succor the provisioning of Kubernetes clusters in the MaaS environment to manage a large number of physical machines by merging them into user-defined resource pools. MAAS expanded as “Metal As A Service” aids in converting your bare-metal servers into cloud instances of virtual machines. It helps in the quick provisioning and de-provisioning of instances, similar to instances hosted in public clouds like Amazon AWS, Google GCE, or Microsoft Azure. 
+Spectro Cloud supports the users to create a data centre from their bare-metal servers with MaaS support. We succor the provisioning of Kubernetes clusters in the MaaS environment to manage a large number of physical machines by merging them into user-defined resource pools. MAAS expanded as “Metal As A Service” aids in converting your bare-metal servers into cloud instances of virtual machines. It helps in the quick provisioning and de-provisioning of instances, similar to instances hosted in public clouds like Amazon AWS, Google GCE, or Microsoft Azure.
 
- 
+
 A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the MaaS environment. The gateway establishes a secure communication channel with the management console thereby eliminating an incoming connection into the Maas environment.
 
 
@@ -2384,7 +2384,7 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 
 ## Creating a MaaS gateway
 
-Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
+Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint.
 
 
 #### Generate pairing code
@@ -2393,7 +2393,7 @@ Navigate to the Private Cloud Gateway page under Administration and Create a new
 
 #### Generate gateway config
 
-Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, Environment and, Placement information as requested. 
+Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, Environment and, Placement information as requested.
 
 ```bash
 docker run --rm  \
@@ -2412,24 +2412,24 @@ docker run --rm  \
 
 #### Enter Spectro Cloud  Management Information:
 
-* Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com 
+* Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com
 * Spectro Cloud Username - Login email address e.g. user1@company.com
 * Spectro Cloud Password - The login password
 * Private Cloud Gateway pairing code: The unique authentication code generated in the previous step.
 
 #### Enter Environment Configuration:
 
-* HTTPS Proxy (--https_proxy): 
+* HTTPS Proxy (--https_proxy):
 
 The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
 * HTTP Proxy(--http_proxy):
-The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT 
+The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
 * No Proxy(--no_proxy):
-A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., maas.company.com,10.10.0.0/16 
+A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., maas.company.com,10.10.0.0/16
 
-* Pod CIDR (--pod_cidr): 
+* Pod CIDR (--pod_cidr):
 The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
 
 * Service IP Range (--svc_ip_range):
@@ -2437,7 +2437,7 @@ The IP address that will be assigned to services created on Kubernetes. This set
 
 #### Enter MaaS Account Information:
 
-MaaS API Endpoint - MaaS API endpoint. Domain or IP address. 
+MaaS API Endpoint - MaaS API endpoint. Domain or IP address.
 e.g. http://10.11.130.10:5240/MAAS
 
 MaaS API Key - MAAS generates an API key when creating your MAAS account, which is used for authentication.
@@ -2451,14 +2451,14 @@ MaaS API Key - MAAS generates an API key when creating your MAAS account, which 
 
 After this step, a new gateway configuration file is generated and its location is displayed on the console.
 
-E.g.: 
+E.g.:
 Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml
 
 
 #### Copy configuration file to known location:
 
 Copy the pcg.yaml file to a known location for easy access and updates.
- 
+
 
 ```bash
 cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
@@ -2467,7 +2467,7 @@ cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
 
 #### Deploy Private Cloud Gateway
 
-Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. 
+Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway.
 
 ```bash
 docker run --rm  \
@@ -2484,7 +2484,7 @@ docker run --rm  \
   -c=/opt/spectrocloud/pcg.yaml
 ```
 
-New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command. 
+New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ## Upgrading a MaaS cloud gateway
 
@@ -2492,7 +2492,7 @@ Spectro Cloud maintains the OS image and all configurations for the cloud gatewa
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is upgraded and are processed as soon as the gateway upgrade is complete.
 
 ## Deleting a MaaS cloud gateway
-The following steps need to be performed to delete a cloud gateway.
+The following steps need to be performed to delete a cloud gateway:
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
 * The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
@@ -2514,18 +2514,18 @@ A default cloud account is automatically created when the private cloud gateway 
 
 To create a MaaS cloud account, proceed to project settings and select 'create cloud account' under MaaS. Fill the following values to the cloud account creation wizard.
 
-|Property|Description |    
+|Property|Description |
 |:---------------|:-----------------------|
 |  Account Name |  Custom name for the cloud account   |
 |   Private cloud gateway|    Reference to a running cloud gateway |
 |  API Endpoint |  API Endpoint of the gateway   |
-| API Key| 
+| API Key|
 
 Validate the above MaaS credentials to create your MaaS cloud account.
 
 ## Creating a MaaS Cluster
 
-The following steps need to be performed to provision a new MaaS cluster:-
+The following steps need to be performed to provision a new MaaS cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the machines deployed on the cloud/data center environments.
 
@@ -2535,23 +2535,23 @@ The following steps need to be performed to provision a new MaaS cluster:-
 
 * Provide a MaaS Cloud account and placement information.
 
-   * Cloud Account - Select the desired cloud account. 
+   * Cloud Account - Select the desired cloud account.
 MaaS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
 
-   * Domain 
-  
+   * Domain
+
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool.
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
-    * Resource Pool	
-    * Availability zones 
+    * Resource Pool
+    * Availability zones
     * Minimum CPU
     * Minimum Disk - Storage disk size in GB to be attached to the node.
     * Rolling Update
 * Expand first
 * Contract First
-   
+
 * Configure the cluster policies/features.
     * Manage Machines
     * Scan Policies

@@ -44,7 +44,7 @@ const plugins = [
         google: [
           {
             family: `Poppins`,
-            variants: [`400`, `500`, `700`, 'latin'],
+            variants: [`300`, `400`, `500`, `600`, `700`, 'latin'],
           },
         ],
       },

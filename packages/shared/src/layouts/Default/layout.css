@@ -1,4 +1,7 @@
-html, body, #___gatsby, #gatsby-focus-wrapper {
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
   height: 100%;
   font-family: Poppins;
   font-size: 16px;
@@ -8,10 +11,12 @@ body {
   margin: 0;
 }
 
-
 a {
   color: inherit;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 button {
@@ -22,6 +27,13 @@ button {
   max-width: 100%;
 }
 
+.paragraph {
+  font-weight: normal;
+  line-height: 28px;
+  color: #666a80;
+  margin-bottom: 32px;
+}
+
 a:hover {
-  color: #206CD1;
+  color: #206cd1;
 }

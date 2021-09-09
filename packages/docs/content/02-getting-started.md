@@ -128,7 +128,6 @@ A quick overview of cluster profile creation is as guided below. Please refer [C
 * Select **Cloud Environment** to run your cluster.
 * Click on Edit Layers and make choices of registries and packs for each layer. Attach Manifest if required.
 * Please designate the following selections for each layer,
-
     * OS
     * Kubernetes
     * Network

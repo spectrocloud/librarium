@@ -38,11 +38,11 @@ Spectro Cloud's out of the box images are security-hardened and have Kubernetes 
 
 ### Bring your own Image
 
-Users can bring used their own OS image by building custom OS packs and providing a reference to the desired image in pack annotations. These images can be:
+Users can bring their own OS image by building custom OS packs and providing a reference to the desired image in pack annotations. These images can be:
 
 * Pre-configured with all desired OS packages and Kubernetes components for the desired version installed. No Ansible roles are specified in the OS pack. The “skip k8s installation” option in the OS pack is set to true. (`"skipK8sInstall": "true"`)
 
-* Base images with none of the desired packages or Kubernetes components installed. Ansible roles are specified in the OS pack to install additional packages. The “skip K8s installation” option in the OS pack is set to false (`"skipK8sInstall": "false"`)
+* Base images with none of the desired packages or Kubernetes components installed. Ansible roles are specified in the OS pack to install additional packages. The “skip K8s installation” option in the OS pack is set to false. (`"skipK8sInstall": "false"`)
 
 * A combination of the two options above.
 
@@ -50,7 +50,7 @@ Spectro Cloud’s orchestration engine examines the OS pack configuration and de
 
 # Security
 
-Spectro Cloud secures the Kubernetes clusters provisioned by following security best practices at the OS, Kubernetes, and Cloud Infrastructure level.
+Spectro Cloud secures the Kubernetes clusters provisioned by following security best practices at the Operating System, Kubernetes, and Cloud Infrastructure level.
 
 ## Operating System
 
@@ -60,7 +60,7 @@ Spectro Cloud’s out of the box VM images are hardened in accordance with the r
 
 Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured securely.
 
-## Cloud
+## Cloud Infrastructure
 
 Spectro Cloud follows security best practices recommended by the various cloud providers when provisioning and configuring the computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains, limiting access through use constructs like security groups. etc.
 
@@ -80,7 +80,7 @@ Spectro Cloud provides several options to manage Kubernetes clusters on an ongoi
 
 # Updates
 
-Spectro Cloud supports various kids of updates to running clusters. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
+Spectro Cloud supports various kinds of updates to running clusters. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
 
 ## Cluster update notifications
 
@@ -105,9 +105,9 @@ Overall health is computed based on the following factors:
 
 Spectro Cloud continuously monitors cluster resources and reports the usage for the cluster as well as individual nodes. The following metrics are reported on the cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
 
-* Cores Used - A cluster-wise break down of the number of cores used.
-* CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart
-* Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart
+* Cores Used - A cluster-wide break down of the number of cores used.
+* CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
+* Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
 * CPU Requests - Total CPUs requested across all pods.
 * Memory Requests - Total memory requested across all pods.
 
@@ -133,7 +133,9 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 <InfoBox>
 
-  Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
+* Cluster events are retained for the last 1000 events.
+
+* Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
 
 </InfoBox>
@@ -147,7 +149,7 @@ At times it might be required to work with the Spectro Cloud support team to tro
 * Select the running cluster
 * Go to settings and, select download logs.
 * Choose the desired log from the below options:
-    * Kube-System Logs 
+    * Kube-System Logs
         -  Logs of all the Kubernetes components.
     * Spectro Cloud Logs
         -  Spectro namespace logs for the last one hour.
@@ -160,7 +162,10 @@ At times it might be required to work with the Spectro Cloud support team to tro
 * Click [Download "cluster-name" logs] to download the logs folder to your local machine.
 * UnZip and rename the logs folder as per customer choice.
 
+
 <InfoBox>
+
+* Audit logs are retained for the last 1 year.
 
 * In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
 
@@ -191,4 +196,3 @@ This table lists the proxy requirements for enabling the Spectro Cloud managemen
 | quay.io | 443 | Container image registry access. |
 | grafana.com | 443 | To provide access to the dashboard metrics. |
 | github.com | 443 | |
-

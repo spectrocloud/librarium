@@ -9,11 +9,30 @@ category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Prometheus Operator
 
 The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to simplify the deployment and configuration of Prometheus, Alertmanager, and related monitoring components. The default installation is intended to suit monitoring a Kubernetes cluster the chart is deployed onto.
+
+## Versions Supported
+<Tabs>
+<Tabs.TabPane tab="12.3.x" key="12.3.x">
+
+* **12.3.0** 
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="9.7.x" key="9.7.x">
+
+  * **9.7.2**
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Contents
 

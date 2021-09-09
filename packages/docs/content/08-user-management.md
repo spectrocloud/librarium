@@ -16,7 +16,7 @@ This section touches upon the initial login aspects for tenant admins and non-ad
 
 # User Login
 
-For a tenant admin, the password shall be set upon the initial login. Non-admin users can be added by the tenant admin. For all users, login can be made available using the following options:-
+For a tenant admin, the password shall be set upon the initial login. Non-admin users can be added by the tenant admin. For all users, login can be made available using the following options:
 
 * Using Spectro Cloud credentials on the login page.
 * SSO using Identity Providers that use SAML 2.0:
