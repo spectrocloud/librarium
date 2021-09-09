@@ -46,7 +46,7 @@ The "Settings" section (4) of the default dashboard relates to the cloud account
       x: 110,
       y: 142,
       label: 3,
-      description: "Lists all the clusters accesible to the user under the current project.",
+      description: "Lists all the clusters accessible to the user under the current project.",
       tooltipPlacement: "rightTop",
     },
     {
@@ -103,392 +103,70 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 
 # Deploying your first cluster
 
-Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - at a minimum - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which will be detailed in the cluster profile section.
+Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which are detailed in the cluster profile section.
+
+The major steps towards the deployment and management of your workload clusters are:
+
+* Creation of the cluster Profile
+* Creation of Cloud Account and Cluster Deployment
+* Cluster Management Operations (Day 2 Management)
 
 <Tabs identifier="getting_started">
 
-<Tabs.TabPane tab="AWS" key="aws">
+<Tabs.TabPane tab="Create Cluster Profile" key="cluster-profile">
 
-## Your First AWS Cluster
 
-<InfoBox>
-The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first AWS cluster.
-</InfoBox>
-
-The following steps will be taken to provision your first AWS cluster:
-
-* Create Cluster Profile.
-* Add AWS Cloud Account.
-* Provision Cluster.
 
 ## Cluster Profile
+
+A quick overview of cluster profile creation is as guided below. Please refer [Cluster Profile Creation](/cluster-profiles/task-define-profile/#creatingclusterprofiles) for detailed outlook in to the same.
 
 * Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
 * Switch to the *Cluster Profiles* page from the left navigation bar.
 * Click on the *Add Cluster Profile* button.
-* Specify the name **ExperimentalAWS** and click *Next*.
-* Select **Amazon (AWS)** for the cloud selection.
-* Click on Edit Layers.
-* Please designate the following selections for each layer, leaving the default configuration:
+* Specify a custom name, description (optional), tag (optional) and **type** (Full, Infrastructure or Add-on) of cluster profile to be created and click *Next*.
+* Select **Cloud Environment** to run your cluster.
+* Click on Edit Layers and make choices of registries and packs for each layer. Attach Manifest if required.
+* Please designate the following selections for each layer,
+    * OS
+    * Kubernetes
+    * Network
+    * Storage
+    * Additional layers as required (only for add-on and full cluster profiles)
+       
 
-    * OS: Ubuntu, 18.04.X (LTS)
-    * Kubernetes: select version 1.17.X
-    * Network: Calico 3.10.X
-    * Storage: Amazon EBS 1.0.X
-    * Additional layers:
-        * Monitoring: Prometheus - Grafana 9.7.X
-        * Monitoring: Kubernetes Dashboard 2.0.X
-        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X
+* Click *Finish* to close the Layer dialogue.
+* Click *Next* and review the Cluster Profile.
+* Click *Finish* to create the Cluster Profile.
 
-* Click on *Finish* to close the Layer dialogue.
-
-* Click on *Next* and review the Cluster Profile.
-* Click on *Finish* to create the Cluster Profile.
-
-## Cloud Account
-
-*Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
-
-<WarningBox>
-
-**Prerequisites:**
-You need your own cloud account with appropriate permissions to create EC2 VMs and AMIs. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=aws_cluster#prerequisites). Please import an SSH keypair into your account in the region of **us-east-1**.
-
-Also, this exercise creates a new VPC/Nat gateway/Elastic IP, so please confirm that your account has sufficient quota for the creation.
-
-</WarningBox>
-
-**Steps:**
-
-* Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-* From the left-hand main menu, select Settings.
-* Click on *Add AWS Cloud Account*.
-    * name: ca-aws-1
-    * Access Key: your &lt;AWS access key&gt;
-    * Secret Key: your &lt;AWS secret key&gt;
-
-* Click on *Validate*.
-* Click on *Confirm* to finish creating your cloud account.
-
-## Cluster
-
-For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:
-
-**Steps:**
-
-* Navigate to the Default Project (select back to Default p.roject if you’re in the Admin view)
-* Navigate to the *Clusters* page from the left-hand menu.
-* Click on *Create cluster* (and follow the wizard):
-    * Name: cluster-aws-1
-    * Select the cluster profile: ProductionAWS, click *Next*.
-    * Leave the pack parameter overrides as-is, click *Next*.
-    * Cloud Properties:
-* Cloud Account: ca-aws-1
-* Region: us-east-1
-* SSH keyname: &lt;select imported key&gt;
-* Do not select (deselect): Static Placement
-* Click on *Next*.
-
-* In the node pool configuration:
-    * For the *Master* node pool, pick the following properties:
-* Instance type: t3.large (General Compute)
-* Availability Zone: us-east-1a
-
-* For the *Worker* node pool, pick the following properties:
-    * Instance type: t3.large (General Compute)
-* Availability Zone: us-east-1a
-
-* In the final Review step, click on *Deploy*.
-
-* Wait for the cluster to become Active (check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
-
-Once the cluster is provisioned - feel free to try the following:
-
-* View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters?clusterType=aws_cluster#scalinganawscluster).
-* Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Azure" key="azure">
+<Tabs.TabPane tab="Cluster Deployment" key="cluster-creation">
 
-## Your First Azure Cluster
+Cluster deployment is all about deploying a workload cluster. The stages of cluster provisioning includes:
+ 
+* Cloud Gateway Creation (Not applicable to all clouds) 
+* Cloud Account Creation
+* Cluster Creation
+
+For detailed instructions on the deployment of clusters in different cloud environments please visit [Create Cluster](/clusters/new-clusters/#creatingclusters).
 
 <InfoBox>
-The guided documentation guide below is prescriptive with the names and selections. We highly recommend you follow the guide verbatim for your first cluster.
+The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those clouds which mandates it, like MaaS, VMWare and OpenStack.
 </InfoBox>
 
-The following steps will be taken to provision your first Azure cluster:
-
-* Create Cluster Profile.
-* Add Azure Cloud Account.
-* Provision Cluster.
-
-## Cluster Profile
-
-1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-1. Switch to the *Cluster Profiles* page from the left navigation bar.
-1. Click on the *Create Cluster Profile* button.
-1. Specify the name **ExperimentalAzure** and click *Next*.
-1. Select **Azure (Azure)** for the cloud selection.
-1. Click on Edit Layers.
-1. Please designate the following selections for each layer, leaving the default configuration:
-    * OS: Ubuntu, 18.4.X (LTS)
-    * Kubernetes: select version 1.17.X
-    * Network: Calico 3.10.X
-    * Storage: Azure EBS 1.0.X
-    * Additional layers:
-        * Monitoring: Prometheus - Grafana 9.7.X
-        * Monitoring: Kubernetes Dashboard 2.0.X
-        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.0
-    * Click on *Finish* to close the Layer dialogue.
-1. Click on *Next* and review the *Cluster Profile*.
-1. Click on *Finish* to create the Cluster Profile.
-
-## Cloud Account
-
-*Cloud Accounts* are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources.
-
-<WarningBox>
-
-**Prerequisites:**
-You need your own cloud account with appropriate permissions to create resources like virtual machines, vmnet, subnet, network security groups, route tables, etc. Please ensure that your cloud account has at least the following configurations: [Cloud Account Permissions](/clusters?clusterType=azure_cluster#creatinganazurecloudaccount).
-Also, this exercise creates various resources for the cluster infrastructure, so please confirm that your account has sufficient quota for the creation.
-
-</WarningBox>
-
-**Steps:**
-
-1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-1. From the left-hand main menu, select Settings.
-1. Click on *Add Azure Cloud Account*.
-    * name: ca-azure-1
-    * Tenant Id: your &lt;Azure Tenant Id&gt;
-    * Client Id: your &lt;Azure Client Id&gt;
-    * Client Secret: your &lt;Azure Client Secret&gt;
-1. Click on *Validate*.
-1. Click on *Confirm* to finish creating your cloud account.
-
-## Cluster
-
-For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:
-
-**Steps:**
-
-1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-1. Navigate to the *Clusters* page from the left-hand menu.
-1. Click on *Create cluster* (and follow the wizard):
-    * Name: cluster-azure-1
-    * Select Azure cloud from the top environment selection bar.
-    * Select the cluster profile: ExperimentalAzure, click *Next*.
-    * Leave the pack parameter overrides as-is, click *Next*.
-    * Cloud Properties:
-        * Cloud Account: ca-azure-1
-        * Subscription: your &lt;Azure Subscription&gt;
-        * Region: East US
-        * Resource Group: an &lt;Azure Resource available in East US&gt;
-        * SSH keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field.
-        * Do not select (deselect): Static Placement
-        * Click on *Next*.
-    * In the node pool configuration:
-        * For the *Master* node pool, pick the following properties:
-            * Instance type: Standard_D2s_v3, (General Purpose)
-            * Managed Disk: Premium LRS
-            * Managed Disk: 60
-        * For the *Worker* node pool, pick the following properties:
-            * Instance type: Standard_D2s_v3, (General Purpose)
-            * Managed Disk: Premium LRS
-            * Managed Disk: 60
-            * Availability Zones: select  *1*
-    * In the final Review step, click on *Deploy*.
-1. Wait for the cluster to become Active (check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
-
-Once the cluster is provisioned - feel free to try the following:
-
-* View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters?clusterType=azure_cluster#scalinganazurecluster).
-* Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="VMware" key="vmware">
+<Tabs.TabPane tab="Cluster Management" key="day2">
 
-## Your First VMware Cluster
-
-<InfoBox>
-
-The guided documentation below is prescriptive with the names and selections. We highly recommend you to follow the guide verbatim for your first cluster.
-
-</InfoBox>
-
-<Tabs>
-
-<Tabs.TabPane tab="In the Cloud" key="vmware_saas">
-
-## Prerequisites
-
-* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
-* Minimum capacity required for a Private Cloud Gateway:
-	* 1 node - 2 vCPU, 4GB memory, 30GB storage.
-	* 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
-* Per tenant cluster IP requirements:
-    * 1 per node.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
-* Private cloud gateway IP requirements:
-    * 1 node - 1 IP or 3 nodes - 3 IPs.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
-* IPs for application workload services (e.g.:LoadBalancer services).
-* Subnet with egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
-* DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
-* NTP configured on all Hosts.
-* Shared Storage between vSphere hosts.
-* VMware vCenter [permissions](https://docs.spectrocloud.com/clusters?clusterType=vmware_cluster#permissions).
-
-## Configuration Requirements
-
-A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
-
-The following steps will be taken to provision your first VMware cluster:
-
-* Create a Private Cloud Gateway.
-* Deploy Private Cloud Gateway Installer VM.
-* Configure Private Cloud Gateway.
-* Create Cluster Profile.
-* Provision Cluster.
-
-## Create Private Cloud Gateway
-
-1. Switch to the Admin view if you are in a project view by selecting Admin from the left navigation bar.
-2. Navigate to settings in the admin view from the left navigation bar and select Private Cloud Gateways.
-3. Click on Create Private Cloud Gateway.
-4. Copy the location of the gateway installer OVF template. Also, note down the 5 digit pairing code displayed on the UI.
-
-## Deploy Private Cloud Gateway Installer VM
-
-1. Login to vSphere console and navigate to VMs and Templates.
-2. Pick a Datacenter you would like to use and under that, create a folder called 'Spectro'.
-3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
-4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
-    * URL: <Location of the gateway installer from step #2>
-    * Virtual Machine Name: spectro-cloud-gateway
-    * Folder: Spectro
-    * Select the desired Datacenter, Storage, and Network for the gateway installer VM as you proceed through the next few steps. Private Cloud Gateway VMs require an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
-    * Customize the template as follows:
-    * Gateway Name: spectro-cloud-gateway. This is the name that will be used by the gateway to register itself on the management console.
-        * Console Endpoint: https://console.spectrocloud.com.
-        * Pairing Code: <5 digit pairing code from step #2>
-        * ssh public keys: Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the installer VM to provide ssh access, as the user 'ubuntu'. This is useful for troubleshooting purposes.
-        * Pod CIDR: Optional IP range exclusive to pods. (e.g: 192.168.0.0/16)
-        * Service cluster IP range: Optional IP range in the CIDR format exclusive to the service clusters. (e.g: 10.96.0.0/12)
-
-        <WarningBox>
-        If used, please ensure that neither the pod CIDR nor the service cluster CIDR overlap with your network CIDR.
-        </WarningBox>
-
-        * Static IP Address: &lt;VM IP Address&gt; Optional IP address(e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
-        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1), required only for static IP allocation.
-        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
-        * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
-        * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
-        * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
-        * NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
-    * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
-5. Power on the spectro-cloud-gateway VM.
-
-## Configure Private Cloud Gateway
-
-1. Switch back to the Spectro Cloud management console's admin view. Close the Cloud Gateway Installation Instructions dialog, if you still have it open. If you have been logged out or navigated away, you can access the page by clicking on Settings > Private Cloud Gateways in the left navigation bar.
-2. Within a few minutes of having powered on the VM on the vSphere console, it should register back as a Private Cloud Gateway on this page with the name spectro-cloud-gateway.
-3. From the actions menu for the gateway, click on Configure. It may take an additional minute or two for the configure action to be available as the gateway goes through a configuration process after initially registering with the console.
-4. Enter server address, username, and password for your vCenter. Leave the 'Use self-signed certificate' option selected, if  vSphere is configured with a self-signed certificate.
-5. Leave the 'Share the account with projects' option selected.
-6. Click on 'Validate' to validate Credentials.
-7. Click on 'Proceed to Configure'
-8. Enter the desired settings for Datacenter, Compute Cluster, Network, and Resource Pool. Select 'Spectro' as the folder.
-9. Select '1' for the Number of Nodes.
-10. SSH Keys - Create a new ssh key pair (or pick one of your existing ones). Enter the public key in this field. The public key will be installed in the gateway VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
-10. Leave the NTP servers option blank, only if NTP is already configured on each of the ESXi hosts.
-11. Select DHCP as the IP allocation strategy.
-12. Click 'Confirm'. Private Cloud Gateway would transition to 'Provisioning' state. It takes around 10 to 15 minutes for the gateway to be installed. Two new VMs are created as part of gateway provisioning.
-13. Proceed to creation of cluster profile once the gateway transitions to 'Running' state.
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="On-Premises" key="vmware_on_prem">
-
-The following steps will be taken to provision your first VMware cluster:
-
-* Create a Private Cloud Account.
-* Create Cluster Profile.
-* Provision Cluster.
-
-## Installation
-
-Follow the [instructions](/enterprise-version/deploying-the-platform-installer/#deployingthequickstartvariant) to install the Quick Start variant. Verify the installation by accessing the System Console and creating a tenant admin. Using the activation link, approve the tenant admin and open the tenant management console to create a cluster profile.
-
-</Tabs.TabPane>
-</Tabs>
-
-## Cluster Profile
-
-1. Navigate to the Default project (select back to the Default project if you’re in the Admin view).
-1. Switch to the *Cluster Profiles* page from the left navigation bar.
-1. Click on the *Add Cluster Profile* button.
-1. Specify the name **ExperimentalVMware** and click *Next*.
-1. Select **VMware (VMware)** for the cloud selection.
-1. Click on Start Configuring.
-1. Please designate the following selections for each layer, leaving the default configuration:
-    * OS: Ubuntu, 18.4.X (LTS)
-    * Kubernetes: select version 1.17.X
-    * Network: Calico 3.10.X
-    * Storage: vSphere Storage Class
-    * Additional layers:
-        * Monitoring: Prometheus - Grafana 9.7.X
-        * Monitoring: Kubernetes Dashboard 2.0.X
-        * Logging: Elastic-Fluentd-Kibana (EFK) 6.7.X
-    * Click on *Finish* to close the Layer dialogue.
-1. Click on *Next* and review the *Cluster Profile*.
-1. Click on *Finish* to create the Cluster Profile.
-
-## Cluster
-
-For the quick-start guide, we’ll provision a new cluster consisting of a single master and a single worker node:
-
-**Steps:**
-
-1. Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-1. Navigate to the *Clusters* page from the left-hand menu.
-1. Click on *Create cluster* (and follow the wizard):
-    * Name: cluster-vmware-1
-    * Select VMware from the top environment selection bar.
-    * Select the cluster profile: ExperimentalVMware, click *Next*.
-    * Leave the pack parameter overrides as-is, click *Next*.
-    * Cloud Properties:
-        * Cloud Account: spectro-cloud-gateway
-        * Choose the Datacenter in which the 'Spectro' folder was created while creating the [Private Cloud Gateway](/getting-started?clusterType=vmware_cluster#privatecloudgateway).
-        * Folder: Spectro
-        * Select DHCP as the IP management protocol. (Details of the static IP settings are available in the [VMware Clusters](/clusters?clusterType=vmware_cluster#creatingavmwarecluster) section.)
-        * SSH Keys - Create a new ssh key pair (or pick one of your existing ones).  Enter the public key in this field. The public key will be installed in the cluster VM nodes to provide ssh access as the user 'spectro'. This is useful for troubleshooting purposes.
-        * Leave the NTP Server field blank, only if NTP is already configured on each of the ESXi hosts.
-        * Click on *Next*.
-    * In the node pool configuration:
-        * For the *Master* node pool, keep the default options. For the Compute Cluster, Resource Pool, and Network values as used while creating the Private Cloud Gateway. Select a datastore as required.
-        * For the *Worker* node pool, change the number of nodes in the pool to 2. Keep the default selection for the rest of the fields. Select 'Scale Out' under the rolling updates. Click the `Copy from Master Pool` button for the 'Cloud Configuration'.
-        * Click on *Next*.
-    * In the final Review step, click on *Deploy*.
-1. Wait for the cluster to transition to  Running state(check the *Overview* tab). Feel free to click on the Events tab to see the orchestration steps.
-
-Once the cluster is provisioned - feel free to try the following:
-
-* View deployed applications [as described here](/clusters).
-* Scale up-down worker nodes [as described here](/clusters?clusterType=vmware_cluster#scalingavmwarecluster).
-* Upgrade Kubernetes to a new version [as described here](/cluster-profiles/task-update-profile).
-
+Cluster management operations involves the scaling, monitoring, maintenance, and troubleshooting of tenant clusters that keeps them up and running.
+Please refer to [cluster management](/clusters/cluster-management/#manageclusters) for detailed instructions and procedures.
 </Tabs.TabPane>
 
 </Tabs>
+
+
+
+
