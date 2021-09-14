@@ -107,7 +107,7 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 	The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those private clouds which mandates it, like MaaS, VMWare and OpenStack.
 	</InfoBox>
 
-The major steps towards the deployment and management of your workload clusters are:
+The major steps towards the deployment of your workload clusters are:
 
 * [Cluster Profile Creation](/cluster-profiles/task-define-profile/#creatingclusterprofiles)
 
