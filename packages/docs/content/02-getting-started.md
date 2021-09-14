@@ -101,7 +101,7 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 
 ![admin_dashboard](admin_dashboard.png)
 
-# Starting with the first cluster
+# Getting started with the first cluster
 
 <InfoBox>
 	The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those private clouds which mandates it, like MaaS, VMWare and OpenStack.
