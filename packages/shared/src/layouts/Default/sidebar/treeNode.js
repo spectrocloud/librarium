@@ -38,12 +38,13 @@ const MenuNode = styled.div`
       );
     }}
   }
+
+  > ${ChildrenItems} .menu-link > div {
+    padding-left: ${props => props.level * 34 + 20}px;
+  }
 `;
 
 const ChildrenItems = styled.div`
-  .menu-link > div {
-    padding-left: 68px;
-  }
 `;
 
 const IconWrapper = styled.div`
