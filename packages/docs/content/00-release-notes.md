@@ -35,7 +35,7 @@ Spectro Cloud 1.12 is released with generic cluster import, OIDC support to hand
 
 Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
 
-* Spectro now supports supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
 * Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
 
 
