@@ -4,6 +4,8 @@ import SidebarIcon from '../../../components/styles/SidebarIcon';
 import { useLocation } from '@reach/router';
 import Link from '../../../components/Link';
 
+const ChildrenItems = styled.div``;
+
 const MenuNode = styled.div`
   a {
     font-style: normal;
@@ -42,9 +44,6 @@ const MenuNode = styled.div`
   > ${ChildrenItems} .menu-link > div {
     padding-left: ${props => props.level * 34 + 20}px;
   }
-`;
-
-const ChildrenItems = styled.div`
 `;
 
 const IconWrapper = styled.div`
