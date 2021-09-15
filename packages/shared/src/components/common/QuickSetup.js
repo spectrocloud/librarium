@@ -49,7 +49,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   text-decoration: none;
   cursor: pointer;
   background: #ffffff;
@@ -57,7 +57,7 @@ const Card = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 24px 38px -20px rgba(21, 24, 50, 0.19);
   border-radius: 12px 12px 0px 0px;
-  padding: 54px 32px;
+  padding: 54px 32px 30px 32px;
   margin-top: 15px;
 
   h4 {
