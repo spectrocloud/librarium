@@ -33,7 +33,7 @@ Besides patching on boot, the users also have the option to set a schedule for O
 * Every two weeks at midnight.
 * Every month on the 1st at midnight.
 * Every two months on the 1st at midnight.
-* Custom os patch for an exact month, day, hour and minute of user’s choice.
+* Custom OS patch for an exact month, day, hour and minute of user’s choice.
 
 #### Patch Now
 This option provides a way to perform an immediate update to the latest version. 
