@@ -19,7 +19,7 @@ The Spectro Cloud management platform does not need direct access to the VMware 
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
 
-If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the apiserver endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ip-pool and allocated to the cluster instead of the load balancer.
+If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the Kubernetes API Server endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ip-pool and allocated to the cluster instead of the load balancer.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
@@ -45,7 +45,7 @@ If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created f
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* VMware vCenter [permissions](https://docs.spectrocloud.com/clusters?clusterType=vmware_cluster#permissions).
+* VMware vCenter permissions.
 
 ## Configuration Requirements
 
@@ -188,7 +188,7 @@ This step does not apply to Enterprise version users.
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be set up, however, multiple gateways might be required for managing clusters in multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
+|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed, however, multiple gateways might be required for managing clusters across multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
 | Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
 |Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
 | SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
@@ -199,9 +199,9 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
-| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
-| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com, .company.org, 10.10.0.0/16 |
+|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
+| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
+| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . e.g., vcenter.company.com, .company.org, 10.10.0.0/16 |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on the Virtual Machine.
@@ -307,9 +307,9 @@ Spectro cloud supports DHCP as well as Static IP based allocation strategies for
 | Start | First IP address for a range based IP Pool E.g. 10.10.183.1|
 | End | Last IP address for a range based IP Pool.  E.g. 10.10.183.100 |
 | Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 |
-| Subnet Prefix | Network subnet prefix. E.g. /18|
+| Subnet Prefix | Network subnet prefix. e.g. /18|
 | Gateway | Network Gateway E.g. 10.128.1.1 |
-| Nameserver addresses | A comma-separated list of name servers. Eg. 8.8.8.8 |
+| Nameserver addresses | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
 ## Creating a VMware cloud account

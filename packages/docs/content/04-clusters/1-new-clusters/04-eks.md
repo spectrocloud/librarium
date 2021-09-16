@@ -26,7 +26,7 @@ Spectro Cloud creates compute, network, and storage resources for EKS during the
 
 Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
 
-* vCpu
+* vCPU
 * VPC
 * Elastic IP
 * Internet Gateway
@@ -365,7 +365,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Control Plane Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -442,7 +441,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Nodes Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -576,7 +574,7 @@ Users can make their choice of method through UI.
 
 ### Access Credentials
 
-* Give the Access key and Secret Access Key for the role generated.
+* Give the Access Key ID and Secret Access Key for the role generated.
 * Validate these credentials to get your AWS cloud account created.
 
 ## Create an EKS Cluster

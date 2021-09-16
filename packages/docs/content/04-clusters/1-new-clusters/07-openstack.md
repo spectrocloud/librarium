@@ -29,11 +29,11 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 * Private cloud gateway IP requirements:
     * 1 node - 1 IP or 3 nodes - 3 IPs.
     * 1 Kubernetes control-plane
-    * 1 additional IP for rollowing upgrades.
+    * 1 additional IP for rolling upgrades.
 * Per tenant cluster floating IP requirements:
     * 1 per node.
     * 1 Kubernetes API Server.
-    * 1 additional per node pool for rolloing upgrade
+    * 1 additional per node pool for rolling upgrade
 * IPs for application workload services (e.g.: Load Balancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
@@ -50,7 +50,6 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ### Cinder Service
 
 ``` json
-
 "volume:attachment_update": "rule:admin_or_owner"
 "volume:attachment_delete": "rule:admin_or_owner"
 "volume:attachment_complete": "rule:admin_or_owner"
@@ -196,7 +195,6 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ### Glance Service
 
 ``` json
-
     "add_image": "role:admin or role:member",
     "delete_image": "role:admin or role:member",
     "get_image": "role:admin or role:member",
@@ -206,7 +204,6 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
     "upload_image": "role:admin or role:member",
     "get_image_location": "role:admin or role:member",
     "set_image_location": "role:admin or role:member",
-
 ```
 ### Nova Compute Service
 
@@ -338,9 +335,9 @@ docker run --rm  \
 
 #### Enter Environment Configuration:
 
-* HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16
+* HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. e.g., openstack.company.com,10.10.0.0/16
 * Pod CIDR (--pod_cidr) -  The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
 * Service IP Range (--svc_ip_range) - IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 

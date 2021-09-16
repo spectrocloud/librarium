@@ -25,7 +25,7 @@ A NAT gateway is created in the public subnet of each AZ, to allow nodes in the 
 
 An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
 
-The APIServer endpoint is accessible through an ELB, which load balancing across all the control plane nodes.
+The Kubernetes APIServer endpoint is accessible through an ELB, which load balances across all the control plane nodes.
 
 ![aws_cluster_architecture.png](aws_cluster_architecture.png)
 
@@ -378,7 +378,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Control Plane Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -455,7 +454,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Nodes Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -587,7 +585,7 @@ Users can make their choice of method through UI.
 
 ### Access Credentials
 
-* Give the Access key and Secret Access Key for the role generated.
+* Give the Access key ID and Secret Access Key for the role generated.
 * Validate these credentials to get your AWS cloud account created.
 
 ## Create an AWS Cluster
@@ -604,7 +602,7 @@ The following steps need to be performed to provision a new AWS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
- The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service.
+ The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -621,7 +619,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
     zones if multiple zones are selected.
 
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
+    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
