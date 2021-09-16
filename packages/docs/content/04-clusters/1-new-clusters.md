@@ -34,7 +34,7 @@ A NAT gateway is created in the public subnet of each AZ, to allow nodes in the 
 
 An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
 
-The APIServer endpoint is accessible through an ELB, which load balancing across all the control plane nodes.
+The Kubernetes API Server endpoint is accessible through an ELB, which load balances across all the control plane nodes.
 
 ![aws_cluster_architecture.png](aws_cluster_architecture.png)
 
@@ -387,7 +387,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Control Plane Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -464,7 +463,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Nodes Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -596,7 +594,7 @@ Users can make their choice of method through UI.
 
 ### Access Credentials
 
-* Give the Access key and Secret Access Key for the role generated.
+* Give the Access Key ID and Secret Access Key for the role generated.
 * Validate these credentials to get your AWS cloud account created.
 
 ## Create an AWS Cluster
@@ -613,11 +611,11 @@ The following steps need to be performed to provision a new AWS cluster:
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
- The following tags should be added to the public subnet to enable auto subnet discovery for integration with aws load balancer service.
+ The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
-kubernetes.io/role/elb = 1
-sigs.k8s.io/cluster-api-provider-aws/role = public
-kubernetes.io/cluster/[ClusterName] = shared
+kubernetes.io/role/elb = 1<br>
+sigs.k8s.io/cluster-api-provider-aws/role = public<br>
+kubernetes.io/cluster/[ClusterName] = shared<br>
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
@@ -630,7 +628,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
     zones if multiple zones are selected.
 
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot pricefalls in the specified range.
+    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls within the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -647,7 +645,7 @@ New worker pools may be added if its desired to customize certain worker nodes t
 
 Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
 
-None of the control plane nodes and worker nodes have public IPs attached. The APIServer endpoint is accessed through a public LB.
+None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed through a public LB.
 
 ![azure_cluster_architecture.png](azure_cluster_architecture.png)
 
@@ -690,7 +688,7 @@ The following steps need to be performed to provision a new Azure cluster:
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialised workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>
 
 
@@ -817,7 +815,7 @@ The Spectro Cloud management platform does not need direct access to the VMware 
 
 The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
 
-If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the apiserver endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ippool and allocated to the cluster instead of the loadbalancer.
+If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the Kubernetes API Server endpoints. If the IP allocation type is Static IP, a VIP (virtual IP address) will be selected from the master ippool and allocated to the cluster instead of the loadbalancer.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
@@ -986,7 +984,7 @@ This step does not apply to Enterprise version users.
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be set up, however, multiple gateways might be required for managing clusters in multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
+|Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed, however, multiple gateways might be required for managing clusters across multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
 | Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
 |Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
 | SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
@@ -997,9 +995,9 @@ Additional properties that are required to be set only for a Proxy Environment. 
 
 | Parameter | Value | Remarks |
 |---|---|---|
-|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
-| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
-| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . Eg., vcenter.company.com, .company.org, 10.10.0.0/16 |
+|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
+| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
+| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . e.g., vcenter.company.com, .company.org, 10.10.0.0/16 |
 
 * Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
 * Power on the Virtual Machine.
@@ -1104,10 +1102,10 @@ Spectro cloud supports DHCP as well as Static IP based allocation strategies for
 | Network Type | Select 'Range' to provide a start and an end IP address. IPs within this range will become part of this pool. Alternately select 'Subnet' to provide the IP range in CIDR format.|
 | Start | First IP address for a range based IP Pool E.g. 10.10.183.1|
 | End | Last IP address for a range based IP Pool.  E.g. 10.10.183.100 |
-| Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 |
+| Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  e.g. 10.10.183.64/26 |
 | Subnet Prefix | Network subnet prefix. E.g. /18|
 | Gateway | Network Gateway E.g. 10.128.1.1 |
-| Nameserver addresses | A comma-separated list of name servers. Eg. 8.8.8.8 |
+| Nameserver addresses | A comma-separated list of name servers. e.g. 8.8.8.8 |
 | Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
 ## Creating a VMware cloud account
@@ -1196,7 +1194,7 @@ Spectro Cloud creates compute, network, and storage resources for EKS during the
 
 Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
 
-* vCpu
+* vCPU
 * VPC
 * Elastic IP
 * Internet Gateway
@@ -1535,7 +1533,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Control Plane Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1612,7 +1609,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Nodes Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1746,7 +1742,7 @@ Users can make their choice of method through UI.
 
 ### Access Credentials
 
-* Give the Access key and Secret Access Key for the role generated.
+* Give the Access Key ID and Secret Access Key for the role generated.
 * Validate these credentials to get your AWS cloud account created.
 
 ## Create an EKS Cluster
@@ -1765,9 +1761,9 @@ The following steps need to be performed to provision a new EKS cluster:
 <InfoBox>
 The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
-kubernetes.io/role/elb = 1
-sigs.k8s.io/cluster-api-provider-aws/role = public
-kubernetes.io/cluster/[ClusterName] = shared
+kubernetes.io/role/elb = 1<br>
+sigs.k8s.io/cluster-api-provider-aws/role = public<br>
+kubernetes.io/cluster/[ClusterName] = shared<br>
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
@@ -1809,11 +1805,11 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 * Private cloud gateway IP requirements:
     * 1 node - 1 IP or 3 nodes - 3 IPs.
     * 1 Kubernetes control-plane
-    * 1 additional IP for rollowing upgrades.
+    * 1 additional IP for rolling upgrades.
 * Per tenant cluster floating IP requirements:
     * 1 per node.
     * 1 Kubernetes API Server.
-    * 1 additional per node pool for rolloing upgrade
+    * 1 additional per node pool for rolling upgrade
 * IPs for application workload services (e.g.: Load Balancer services).
 * Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
@@ -1830,7 +1826,6 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ### Cinder Service
 
 ``` json
-
 "volume:attachment_update": "rule:admin_or_owner"
 "volume:attachment_delete": "rule:admin_or_owner"
 "volume:attachment_complete": "rule:admin_or_owner"
@@ -1903,183 +1898,178 @@ A Private Cloud Gateway needs to be set up within the environment, to facilitate
 ### Neutron Service
 
 ``` json
-    "create_subnet": "rule:admin_or_network_owner",
-    "get_subnet": "rule:admin_or_owner or rule:shared",
-    "update_subnet": "rule:admin_or_network_owner",
-    "delete_subnet": "rule:admin_or_network_owner",
-    "get_subnetpool": "rule:admin_or_owner or rule:shared_subnetpools",
-    "update_subnetpool": "rule:admin_or_owner",
-    "delete_subnetpool": "rule:admin_or_owner",
-    "get_address_scope": "rule:admin_or_owner or rule:shared_address_scopes",
-    "update_address_scope": "rule:admin_or_owner",
-    "delete_address_scope": "rule:admin_or_owner",
-    "get_network": "rule:admin_or_owner or rule:shared or rule:external or rule:context_is_advsvc",
-    "update_network": "rule:admin_or_owner",
-    "delete_network": "rule:admin_or_owner",
-    "network_device": "field:port:device_owner=~^network:",
-    "create_port:device_owner": "not rule:network_device or rule:context_is_advsvc or rule:admin_or_network_owner",
-    "create_port:mac_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "create_port:fixed_ips": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
-    "create_port:fixed_ips:ip_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "create_port:fixed_ips:subnet_id": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
-    "create_port:port_security_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "create_port:mac_learning_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "create_port:allowed_address_pairs": "rule:admin_or_network_owner",
-    "create_port:allowed_address_pairs:mac_address": "rule:admin_or_network_owner",
-    "create_port:allowed_address_pairs:ip_address": "rule:admin_or_network_owner",
-    "get_port": "rule:context_is_advsvc or rule:admin_owner_or_network_owner",
-    "update_port": "rule:admin_or_owner or rule:context_is_advsvc",
-    "update_port:device_owner": "not rule:network_device or rule:context_is_advsvc or rule:admin_or_network_owner",
-    "update_port:fixed_ips": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
-    "update_port:fixed_ips:ip_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "update_port:fixed_ips:subnet_id": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
-    "update_port:port_security_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "update_port:mac_learning_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
-    "update_port:allowed_address_pairs": "rule:admin_or_network_owner",
-    "update_port:allowed_address_pairs:mac_address": "rule:admin_or_network_owner",
-    "update_port:allowed_address_pairs:ip_address": "rule:admin_or_network_owner",
-    "delete_port": "rule:context_is_advsvc or rule:admin_owner_or_network_owner",
-    "create_router:external_gateway_info": "rule:admin_or_owner",
-    "create_router:external_gateway_info:network_id": "rule:admin_or_owner",
-    "get_router": "rule:admin_or_owner",
-    "update_router": "rule:admin_or_owner",
-    "update_router:external_gateway_info": "rule:admin_or_owner",
-    "update_router:external_gateway_info:network_id": "rule:admin_or_owner",
-    "delete_router": "rule:admin_or_owner",
-    "add_router_interface": "rule:admin_or_owner",
-    "remove_router_interface": "rule:admin_or_owner",
-    "update_floatingip": "rule:admin_or_owner",
-    "delete_floatingip": "rule:admin_or_owner",
-    "get_floatingip": "rule:admin_or_owner",
-    "update_rbac_policy": "rule:admin_or_owner",
-    "update_rbac_policy:target_tenant": "rule:restrict_wildcard and rule:admin_or_owner",
-    "get_rbac_policy": "rule:admin_or_owner",
-    "delete_rbac_policy": "rule:admin_or_owner",
-    "get_auto_allocated_topology": "rule:admin_or_owner",
-    "get_trunk": "rule:admin_or_owner",
-    "delete_trunk": "rule:admin_or_owner",
-    "add_subports": "rule:admin_or_owner",
-    "remove_subports": "rule:admin_or_owner",
-    "get_security_groups": "rule:admin_or_owner",
-    "get_security_group": "rule:admin_or_owner",
-    "create_security_group": "rule:admin_or_owner",
-    "update_security_group": "rule:admin_or_owner",
-    "delete_security_group": "rule:admin_or_owner",
-    "get_security_group_rules": "rule:admin_or_owner",
-    "get_security_group_rule": "rule:admin_owner_or_sg_owner",
-    "create_security_group_rule": "rule:admin_or_owner",
-    "delete_security_group_rule": "rule:admin_or_owner",
-
-
+"create_subnet": "rule:admin_or_network_owner",
+"get_subnet": "rule:admin_or_owner or rule:shared",
+"update_subnet": "rule:admin_or_network_owner",
+"delete_subnet": "rule:admin_or_network_owner",
+"get_subnetpool": "rule:admin_or_owner or rule:shared_subnetpools",
+"update_subnetpool": "rule:admin_or_owner",
+"delete_subnetpool": "rule:admin_or_owner",
+"get_address_scope": "rule:admin_or_owner or rule:shared_address_scopes",
+"update_address_scope": "rule:admin_or_owner",
+"delete_address_scope": "rule:admin_or_owner",
+"get_network": "rule:admin_or_owner or rule:shared or rule:external or rule:context_is_advsvc",
+"update_network": "rule:admin_or_owner",
+"delete_network": "rule:admin_or_owner",
+"network_device": "field:port:device_owner=~^network:",
+"create_port:device_owner": "not rule:network_device or rule:context_is_advsvc or rule:admin_or_network_owner",
+"create_port:mac_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"create_port:fixed_ips": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
+"create_port:fixed_ips:ip_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"create_port:fixed_ips:subnet_id": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
+"create_port:port_security_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"create_port:mac_learning_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"create_port:allowed_address_pairs": "rule:admin_or_network_owner",
+"create_port:allowed_address_pairs:mac_address": "rule:admin_or_network_owner",
+"create_port:allowed_address_pairs:ip_address": "rule:admin_or_network_owner",
+"get_port": "rule:context_is_advsvc or rule:admin_owner_or_network_owner",
+"update_port": "rule:admin_or_owner or rule:context_is_advsvc",
+"update_port:device_owner": "not rule:network_device or rule:context_is_advsvc or rule:admin_or_network_owner",
+"update_port:fixed_ips": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
+"update_port:fixed_ips:ip_address": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"update_port:fixed_ips:subnet_id": "rule:context_is_advsvc or rule:admin_or_network_owner or rule:shared",
+"update_port:port_security_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"update_port:mac_learning_enabled": "rule:context_is_advsvc or rule:admin_or_network_owner",
+"update_port:allowed_address_pairs": "rule:admin_or_network_owner",
+"update_port:allowed_address_pairs:mac_address": "rule:admin_or_network_owner",
+"update_port:allowed_address_pairs:ip_address": "rule:admin_or_network_owner",
+"delete_port": "rule:context_is_advsvc or rule:admin_owner_or_network_owner",
+"create_router:external_gateway_info": "rule:admin_or_owner",
+"create_router:external_gateway_info:network_id": "rule:admin_or_owner",
+"get_router": "rule:admin_or_owner",
+"update_router": "rule:admin_or_owner",
+"update_router:external_gateway_info": "rule:admin_or_owner",
+"update_router:external_gateway_info:network_id": "rule:admin_or_owner",
+"delete_router": "rule:admin_or_owner",
+"add_router_interface": "rule:admin_or_owner",
+"remove_router_interface": "rule:admin_or_owner",
+"update_floatingip": "rule:admin_or_owner",
+"delete_floatingip": "rule:admin_or_owner",
+"get_floatingip": "rule:admin_or_owner",
+"update_rbac_policy": "rule:admin_or_owner",
+"update_rbac_policy:target_tenant": "rule:restrict_wildcard and rule:admin_or_owner",
+"get_rbac_policy": "rule:admin_or_owner",
+"delete_rbac_policy": "rule:admin_or_owner",
+"get_auto_allocated_topology": "rule:admin_or_owner",
+"get_trunk": "rule:admin_or_owner",
+"delete_trunk": "rule:admin_or_owner",
+"add_subports": "rule:admin_or_owner",
+"remove_subports": "rule:admin_or_owner",
+"get_security_groups": "rule:admin_or_owner",
+"get_security_group": "rule:admin_or_owner",
+"create_security_group": "rule:admin_or_owner",
+"update_security_group": "rule:admin_or_owner",
+"delete_security_group": "rule:admin_or_owner",
+"get_security_group_rules": "rule:admin_or_owner",
+"get_security_group_rule": "rule:admin_owner_or_sg_owner",
+"create_security_group_rule": "rule:admin_or_owner",
+"delete_security_group_rule": "rule:admin_or_owner",
 ```
 
 ### Glance Service
 
 ``` json
-
-    "add_image": "role:admin or role:member",
-    "delete_image": "role:admin or role:member",
-    "get_image": "role:admin or role:member",
-    "get_images": "role:admin or role:member",
-    "publicize_image": "role:admin or role:member",
-    "download_image": "role:admin or role:member",
-    "upload_image": "role:admin or role:member",
-    "get_image_location": "role:admin or role:member",
-    "set_image_location": "role:admin or role:member",
-
+"add_image": "role:admin or role:member",
+"delete_image": "role:admin or role:member",
+"get_image": "role:admin or role:member",
+"get_images": "role:admin or role:member",
+"publicize_image": "role:admin or role:member",
+"download_image": "role:admin or role:member",
+"upload_image": "role:admin or role:member",
+"get_image_location": "role:admin or role:member",
+"set_image_location": "role:admin or role:member",
 ```
 ### Nova Compute Service
 
 ``` json
- "os_compute_api:os-admin-password": "rule:admin_or_owner",
-    "os_compute_api:os-attach-interfaces": "rule:admin_or_owner",
-    "os_compute_api:os-attach-interfaces:create": "rule:admin_or_owner",
-    "os_compute_api:os-attach-interfaces:delete": "rule:admin_or_owner",
-    "os_compute_api:os-availability-zone:list": "rule:admin_or_owner",
-    "os_compute_api:os-config-drive": "rule:admin_or_owner",
-    "os_compute_api:os-console-output": "rule:admin_or_owner",
-    "os_compute_api:os-consoles:create": "rule:admin_or_owner",
-    "os_compute_api:os-consoles:show": "rule:admin_or_owner",
-    "os_compute_api:os-consoles:delete": "rule:admin_or_owner",
-    "os_compute_api:os-consoles:index": "rule:admin_or_owner",
-    "os_compute_api:os-create-backup": "rule:admin_or_owner",
-    "os_compute_api:os-deferred-delete": "rule:admin_or_owner",
-    "os_compute_api:os-extended-availability-zone": "rule:admin_or_owner",
-    "os_compute_api:os-extended-status": "rule:admin_or_owner",
-    "os_compute_api:os-extended-volumes": "rule:admin_or_owner",
-    "os_compute_api:extensions": "rule:admin_or_owner",
-    "os_compute_api:os-flavor-access": "rule:admin_or_owner",
-    "os_compute_api:os-flavor-extra-specs:show": "rule:admin_or_owner",
-    "os_compute_api:os-flavor-extra-specs:index": "rule:admin_or_owner",
-    "os_compute_api:os-flavor-rxtx": "rule:admin_or_owner",
-    "os_compute_api:flavors": "rule:admin_or_owner",
-    "os_compute_api:os-floating-ip-dns": "rule:admin_or_owner",
-    "os_compute_api:os-floating-ip-pools": "rule:admin_or_owner",
-    "os_compute_api:os-floating-ips": "rule:admin_or_owner",
-    "os_compute_api:os-fping": "rule:admin_or_owner",
-    "os_compute_api:image-size": "rule:admin_or_owner",
-    "os_compute_api:os-instance-actions": "rule:admin_or_owner",
-    "os_compute_api:ips:show": "rule:admin_or_owner",
-    "os_compute_api:ips:index": "rule:admin_or_owner",
-    "os_compute_api:os-keypairs": "rule:admin_or_owner",
-    "os_compute_api:limits": "rule:admin_or_owner",
-    "os_compute_api:os-lock-server:lock": "rule:admin_or_owner",
-    "os_compute_api:os-lock-server:unlock": "rule:admin_or_owner",
-    "os_compute_api:os-multinic": "rule:admin_or_owner",
-    "os_compute_api:os-networks:view": "rule:admin_or_owner",
-    "os_compute_api:os-pause-server:pause": "rule:admin_or_owner",
-    "os_compute_api:os-pause-server:unpause": "rule:admin_or_owner",
-    "os_compute_api:os-quota-sets:show": "rule:admin_or_owner",
-    "os_compute_api:os-quota-sets:detail": "rule:admin_or_owner",
-    "os_compute_api:os-remote-consoles": "rule:admin_or_owner",
-    "os_compute_api:os-rescue": "rule:admin_or_owner",
-    "os_compute_api:os-security-groups": "rule:admin_or_owner",
-    "os_compute_api:os-server-groups": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:index": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:show": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:create": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:update_all": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:update": "rule:admin_or_owner",
-    "os_compute_api:server-metadata:delete": "rule:admin_or_owner",
-    "os_compute_api:os-server-password": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:delete_all": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:index": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:update_all": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:delete": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:update": "rule:admin_or_owner",
-    "os_compute_api:os-server-tags:show": "rule:admin_or_owner",
-    "os_compute_api:os-server-usage": "rule:admin_or_owner",
-    "os_compute_api:servers:index": "rule:admin_or_owner",
-    "os_compute_api:servers:detail": "rule:admin_or_owner",
-    "os_compute_api:servers:show": "rule:admin_or_owner",
-    "os_compute_api:servers:create": "rule:admin_or_owner",
-    "os_compute_api:servers:create:attach_volume": "rule:admin_or_owner",
-    "os_compute_api:servers:create:attach_network": "rule:admin_or_owner",
-    "os_compute_api:servers:delete": "rule:admin_or_owner",
-    "os_compute_api:servers:update": "rule:admin_or_owner",
-    "os_compute_api:servers:confirm_resize": "rule:admin_or_owner",
-    "os_compute_api:servers:revert_resize": "rule:admin_or_owner",
-    "os_compute_api:servers:reboot": "rule:admin_or_owner",
-    "os_compute_api:servers:resize": "rule:admin_or_owner",
-    "os_compute_api:servers:rebuild": "rule:admin_or_owner",
-    "os_compute_api:servers:create_image": "rule:admin_or_owner",
-    "os_compute_api:servers:create_image:allow_volume_backed": "rule:admin_or_owner",
-    "os_compute_api:servers:start": "rule:admin_or_owner",
-    "os_compute_api:servers:stop": "rule:admin_or_owner",
-    "os_compute_api:servers:trigger_crash_dump": "rule:admin_or_owner",
-    "os_compute_api:os-shelve:shelve": "rule:admin_or_owner",
-    "os_compute_api:os-shelve:unshelve": "rule:admin_or_owner",
-    "os_compute_api:os-simple-tenant-usage:show": "rule:admin_or_owner",
-    "os_compute_api:os-suspend-server:resume": "rule:admin_or_owner",
-    "os_compute_api:os-suspend-server:suspend": "rule:admin_or_owner",
-    "os_compute_api:os-tenant-networks": "rule:admin_or_owner",
-    "os_compute_api:os-virtual-interfaces": "rule:admin_or_owner",
-    "os_compute_api:os-volumes": "rule:admin_or_owner",
-    "os_compute_api:os-volumes-attachments:index": "rule:admin_or_owner",
-    "os_compute_api:os-volumes-attachments:create": "rule:admin_or_owner",
-    "os_compute_api:os-volumes-attachments:show": "rule:admin_or_owner",
-    "os_compute_api:os-volumes-attachments:delete": "rule:admin_or_owner"
-
+"os_compute_api:os-admin-password": "rule:admin_or_owner",
+"os_compute_api:os-attach-interfaces": "rule:admin_or_owner",
+"os_compute_api:os-attach-interfaces:create": "rule:admin_or_owner",
+"os_compute_api:os-attach-interfaces:delete": "rule:admin_or_owner",
+"os_compute_api:os-availability-zone:list": "rule:admin_or_owner",
+"os_compute_api:os-config-drive": "rule:admin_or_owner",
+"os_compute_api:os-console-output": "rule:admin_or_owner",
+"os_compute_api:os-consoles:create": "rule:admin_or_owner",
+"os_compute_api:os-consoles:show": "rule:admin_or_owner",
+"os_compute_api:os-consoles:delete": "rule:admin_or_owner",
+"os_compute_api:os-consoles:index": "rule:admin_or_owner",
+"os_compute_api:os-create-backup": "rule:admin_or_owner",
+"os_compute_api:os-deferred-delete": "rule:admin_or_owner",
+"os_compute_api:os-extended-availability-zone": "rule:admin_or_owner",
+"os_compute_api:os-extended-status": "rule:admin_or_owner",
+"os_compute_api:os-extended-volumes": "rule:admin_or_owner",
+"os_compute_api:extensions": "rule:admin_or_owner",
+"os_compute_api:os-flavor-access": "rule:admin_or_owner",
+"os_compute_api:os-flavor-extra-specs:show": "rule:admin_or_owner",
+"os_compute_api:os-flavor-extra-specs:index": "rule:admin_or_owner",
+"os_compute_api:os-flavor-rxtx": "rule:admin_or_owner",
+"os_compute_api:flavors": "rule:admin_or_owner",
+"os_compute_api:os-floating-ip-dns": "rule:admin_or_owner",
+"os_compute_api:os-floating-ip-pools": "rule:admin_or_owner",
+"os_compute_api:os-floating-ips": "rule:admin_or_owner",
+"os_compute_api:os-fping": "rule:admin_or_owner",
+"os_compute_api:image-size": "rule:admin_or_owner",
+"os_compute_api:os-instance-actions": "rule:admin_or_owner",
+"os_compute_api:ips:show": "rule:admin_or_owner",
+"os_compute_api:ips:index": "rule:admin_or_owner",
+"os_compute_api:os-keypairs": "rule:admin_or_owner",
+"os_compute_api:limits": "rule:admin_or_owner",
+"os_compute_api:os-lock-server:lock": "rule:admin_or_owner",
+"os_compute_api:os-lock-server:unlock": "rule:admin_or_owner",
+"os_compute_api:os-multinic": "rule:admin_or_owner",
+"os_compute_api:os-networks:view": "rule:admin_or_owner",
+"os_compute_api:os-pause-server:pause": "rule:admin_or_owner",
+"os_compute_api:os-pause-server:unpause": "rule:admin_or_owner",
+"os_compute_api:os-quota-sets:show": "rule:admin_or_owner",
+"os_compute_api:os-quota-sets:detail": "rule:admin_or_owner",
+"os_compute_api:os-remote-consoles": "rule:admin_or_owner",
+"os_compute_api:os-rescue": "rule:admin_or_owner",
+"os_compute_api:os-security-groups": "rule:admin_or_owner",
+"os_compute_api:os-server-groups": "rule:admin_or_owner",
+"os_compute_api:server-metadata:index": "rule:admin_or_owner",
+"os_compute_api:server-metadata:show": "rule:admin_or_owner",
+"os_compute_api:server-metadata:create": "rule:admin_or_owner",
+"os_compute_api:server-metadata:update_all": "rule:admin_or_owner",
+"os_compute_api:server-metadata:update": "rule:admin_or_owner",
+"os_compute_api:server-metadata:delete": "rule:admin_or_owner",
+"os_compute_api:os-server-password": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:delete_all": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:index": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:update_all": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:delete": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:update": "rule:admin_or_owner",
+"os_compute_api:os-server-tags:show": "rule:admin_or_owner",
+"os_compute_api:os-server-usage": "rule:admin_or_owner",
+"os_compute_api:servers:index": "rule:admin_or_owner",
+"os_compute_api:servers:detail": "rule:admin_or_owner",
+"os_compute_api:servers:show": "rule:admin_or_owner",
+"os_compute_api:servers:create": "rule:admin_or_owner",
+"os_compute_api:servers:create:attach_volume": "rule:admin_or_owner",
+"os_compute_api:servers:create:attach_network": "rule:admin_or_owner",
+"os_compute_api:servers:delete": "rule:admin_or_owner",
+"os_compute_api:servers:update": "rule:admin_or_owner",
+"os_compute_api:servers:confirm_resize": "rule:admin_or_owner",
+"os_compute_api:servers:revert_resize": "rule:admin_or_owner",
+"os_compute_api:servers:reboot": "rule:admin_or_owner",
+"os_compute_api:servers:resize": "rule:admin_or_owner",
+"os_compute_api:servers:rebuild": "rule:admin_or_owner",
+"os_compute_api:servers:create_image": "rule:admin_or_owner",
+"os_compute_api:servers:create_image:allow_volume_backed": "rule:admin_or_owner",
+"os_compute_api:servers:start": "rule:admin_or_owner",
+"os_compute_api:servers:stop": "rule:admin_or_owner",
+"os_compute_api:servers:trigger_crash_dump": "rule:admin_or_owner",
+"os_compute_api:os-shelve:shelve": "rule:admin_or_owner",
+"os_compute_api:os-shelve:unshelve": "rule:admin_or_owner",
+"os_compute_api:os-simple-tenant-usage:show": "rule:admin_or_owner",
+"os_compute_api:os-suspend-server:resume": "rule:admin_or_owner",
+"os_compute_api:os-suspend-server:suspend": "rule:admin_or_owner",
+"os_compute_api:os-tenant-networks": "rule:admin_or_owner",
+"os_compute_api:os-virtual-interfaces": "rule:admin_or_owner",
+"os_compute_api:os-volumes": "rule:admin_or_owner",
+"os_compute_api:os-volumes-attachments:index": "rule:admin_or_owner",
+"os_compute_api:os-volumes-attachments:create": "rule:admin_or_owner",
+"os_compute_api:os-volumes-attachments:show": "rule:admin_or_owner",
+"os_compute_api:os-volumes-attachments:delete": "rule:admin_or_owner"
 ```
 
 
@@ -2118,9 +2108,9 @@ docker run --rm  \
 
 #### Enter Environment Configuration:
 
-* HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., openstack.company.com,10.10.0.0/16
+* HTTPS Proxy (--https_proxy) - The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* HTTP Proxy(--http_proxy) - The endpoint for the HTTP proxy server	This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* No Proxy(--no_proxy) - A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. e.g., openstack.company.com,10.10.0.0/16
 * Pod CIDR (--pod_cidr) -  The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
 * Service IP Range (--svc_ip_range) - IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
@@ -2280,7 +2270,7 @@ Delete action is only available for clusters that are fully provisioned. For clu
 <Tabs. TabPane tab="AKS Cluster" key="aks_cluster">
 
 ## Overview
-Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
+Spectro Cloud enables the effortless deployment and management of containerized applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
 
 ![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
@@ -2421,13 +2411,13 @@ docker run --rm  \
 
 * HTTPS Proxy (--https_proxy):
 
-The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
 * HTTP Proxy(--http_proxy):
-The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. Eg., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
 * No Proxy(--no_proxy):
-A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. Eg., maas.company.com,10.10.0.0/16
+A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. e.g., maas.company.com,10.10.0.0/16
 
 * Pod CIDR (--pod_cidr):
 The CIDR pool is used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any Virtual Machine IPs in the environment.
