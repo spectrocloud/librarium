@@ -1,5 +1,5 @@
 ---
-title: "AKS"
+title: "Azure-AKS"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
