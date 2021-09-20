@@ -1,5 +1,5 @@
 ---
-title: "EKS"
+title: "AWS"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -12,21 +12,32 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-# Amazon EKS Cluster
 
-Spectro Cloud supports EKS to manage services that can run Kubernetes on AWS without needing to install, operate, and maintain Kubernetes control plane or nodes. This ensures high availability, scalability, security and automated patching to tenant clusters. It runs up-to-date versions of Kubernetes, in addition to the existing plugins and tooling available. Applications that are running on Amazon EKS are fully compatible with any standard environment. Hence migrating your application workload to EKS can happen without any code change. For individual tenant clusters EKS runs a single Kubernetes control plane. The control plane infrastructure is not shared across clusters or AWS accounts. The control plane consists of at least two API server instances and three etcd instances that run across three Availability Zones within a Region.
+# AWS Cluster
 
- ![eks_cluster_architecture.png](eks_cluster_architecture.png)
+The following is the deployment architecture for an AWS cluster.
+
+The Kubernetes nodes are distributed across multiple AZs to achieve high availability. For each of the AZ's that you choose, a public subnet and a private subnet is created.
+
+All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
+
+A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
+
+An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
+
+The Kubernetes APIServer endpoint is accessible through an ELB, which load balances across all the control plane nodes.
+
+![aws_cluster_architecture.png](aws_cluster_architecture.png)
 
 ## Prerequisites
 
-Spectro Cloud creates compute, network, and storage resources for EKS during the provisioning of Kubernetes clusters. The following pre-requisites should be met for the successful creation of clusters.
+Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. The following pre-requisites should be met for the successful creation of clusters.
 
 ### Resource Capacity
 
 Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
 
-* vCpu
+* vCPU
 * VPC
 * Elastic IP
 * Internet Gateway
@@ -37,7 +48,9 @@ Sufficient capacity in the desired AWS region should exist for the creation of t
 
 The first step towards generating AWS Cloud Account Permission is role creation.
 
-Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
+
+Ensure that the IAM user or the ROOT user role created should have the following **four** IAM policies included:
+
 
 ### Controller Policy
 
@@ -365,7 +378,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Control Plane Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -442,7 +454,6 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ### Nodes Policy
 
 ``` json
-
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -490,11 +501,9 @@ Ensure that the IAM user or the ROOT user role created should have the following
   ]
 }
 
+
 ```
-<InfoBox>
-Note:
-All the above policies are required as part of cluster api requirement derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
-</InfoBox>
+
 
 ### Deployment Policy
 
@@ -576,24 +585,24 @@ Users can make their choice of method through UI.
 
 ### Access Credentials
 
-* Give the Access key and Secret Access Key for the role generated.
+* Give the Access key ID and Secret Access Key for the role generated.
 * Validate these credentials to get your AWS cloud account created.
 
-## Create an EKS Cluster
+## Create an AWS Cluster
 
-The following steps need to be performed to provision a new EKS cluster:
+The following steps need to be performed to provision a new AWS cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
-* Select a cluster profile created for EKS cloud. The profile definition will be used as the cluster construction template.
+* Select a cluster profile created for AWS cloud. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide the AWS Cloud account and placement information.
     - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
+    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
-The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
+ The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
 kubernetes.io/role/elb = 1
 sigs.k8s.io/cluster-api-provider-aws/role = public
@@ -601,22 +610,20 @@ kubernetes.io/cluster/[ClusterName] = shared
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
-* Configure one or more worker node pools. A worker node will be  configured by default.
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
     - Name - a descriptive name for the node pool.
-    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varying workload conditions.
+    - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
+    - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability
 
-* Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-    - Name - Provide a name for the Fargate profile.
-    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.
-    - Selectors - Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
+    zones if multiple zones are selected.
 
+    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
-
-
 
 

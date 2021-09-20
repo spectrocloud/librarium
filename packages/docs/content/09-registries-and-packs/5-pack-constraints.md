@@ -564,6 +564,9 @@ user:
 * cloudaccount.name
 * cloudaccount.uid
 * kubernetes.version
+* reverseproxy.server
+* reverseproxy.port
+* reverseproxy.protocol
 
 </Tabs.TabPane>
 

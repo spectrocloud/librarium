@@ -17,7 +17,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
 
-None of the control plane nodes and worker nodes have public IPs attached. The APIServer endpoint is accessed through a public LB.
+None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed through a public LB.
 
 ![azure_cluster_architecture.png](azure_cluster_architecture.png)
 
@@ -60,5 +60,5 @@ The following steps need to be performed to provision a new Azure cluster:
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialised workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>
