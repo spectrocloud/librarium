@@ -73,3 +73,4 @@ Use Amazon’s unique resource identifier- ARN, to validate the AWS account for 
 	
 * Stream Optional
 * Confirm the informations to complete the audit trail creation wizard.
+* The audit trail could be edited and deleted using the kebab menu.
