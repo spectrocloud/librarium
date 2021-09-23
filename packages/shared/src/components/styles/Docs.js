@@ -85,12 +85,11 @@ export const StyledMainWrapper = styled.div`
 
   h1 {
     margin: 32px 0;
+    font-style: normal;
     font-weight: 500;
     font-size: 32px;
-    line-height: 48px;
-    letter-spacing: -0.5px;
-
-    color: #0d1440;
+    line-height: 64px;
+    color: #0D1440;
 
     ::before {
       display: block;
@@ -102,12 +101,13 @@ export const StyledMainWrapper = styled.div`
   }
 
   h2 {
+    font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    line-height: 36px;
-    letter-spacing: 0.25px;
+    line-height: 48px;
+    letter-spacing: 0.0025em;
+    color: #0D1440;
 
-    color: #2d2e55;
 
     margin: 20px 0;
 
@@ -121,10 +121,41 @@ export const StyledMainWrapper = styled.div`
   }
 
   h3 {
+    font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 18px;
+    line-height: 40px;
+    color: #0D1440;
+
+    margin: 20px 0;
+  }
+
+  h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 32px;
-    margin: 30px 0;
+    letter-spacing: 0.0015em;
+    color: #0D1440;
+    margin: 15px 0;
+  }
+
+  h5 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: #0D1440;
+    margin: 10px 0;
+  }
+
+  h6 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.0015em;
+    text-transform: uppercase;
+    color: #0D1440;
   }
 
   ul,
