@@ -89,7 +89,7 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 32px;
     line-height: 64px;
-    color: #0D1440;
+    color: #0d1440;
 
     ::before {
       display: block;
@@ -106,10 +106,8 @@ export const StyledMainWrapper = styled.div`
     font-size: 24px;
     line-height: 48px;
     letter-spacing: 0.0025em;
-    color: #0D1440;
-
-
-    margin: 20px 0;
+    color: #0d1440;
+    margin: 32px 0;
 
     ::before {
       display: block;
@@ -125,9 +123,9 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 18px;
     line-height: 40px;
-    color: #0D1440;
+    color: #0d1440;
 
-    margin: 20px 0;
+    margin: 32px 0;
   }
 
   h4 {
@@ -136,8 +134,8 @@ export const StyledMainWrapper = styled.div`
     font-size: 16px;
     line-height: 32px;
     letter-spacing: 0.0015em;
-    color: #0D1440;
-    margin: 15px 0;
+    color: #0d1440;
+    margin: 32px 0;
   }
 
   h5 {
@@ -145,8 +143,8 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 32px;
-    color: #0D1440;
-    margin: 10px 0;
+    color: #0d1440;
+    margin: 32px 0;
   }
 
   h6 {
@@ -155,7 +153,8 @@ export const StyledMainWrapper = styled.div`
     line-height: 24px;
     letter-spacing: 0.0015em;
     text-transform: uppercase;
-    color: #0D1440;
+    color: #0d1440;
+    margin: 32px 0;
   }
 
   ul,
