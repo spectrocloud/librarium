@@ -58,17 +58,12 @@ Navigate to the Private Cloud Gateway page under Administration and Create a new
 Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, Environment and, Placement information as requested.
 
 ```bash
-docker run --rm  \
-  --net=host \
-  -it  \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:v1.0.3 \
-    pcg  \
-    User-define-MaaS-Gateway-Name \
-    MaaS \
-  -w=/opt/spectrocloud/ \
-  -o=true
+docker run -it --rm \
+--net=host \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /tmp:/opt/spectrocloud \
+ gcr.io/spectro-images-public/release/spectro-installer:1.0.9 \
+-o true
 ```
 
 
@@ -132,18 +127,13 @@ cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
 Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway.
 
 ```bash
-docker run --rm  \
-  --net=host \
-  -it  \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:v1.0.3 \
-    pcg  \
-    User-define-MaaS-Gateway-Name \
-    MaaS \
-  -w=/opt/spectrocloud/ \
-  -s=true \
-  -c=/opt/spectrocloud/pcg.yaml
+docker run -it --rm \
+--net=host \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /tmp:/opt/spectrocloud \
+ gcr.io/spectro-images-public/release/spectro-installer:1.0.9 \
+-s true \
+-c //opt/spectrocloud/pcg.yaml
 ```
 
 New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
