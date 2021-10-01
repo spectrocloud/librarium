@@ -55,10 +55,10 @@ A Resource Pool needs to be configured across the hosts, onto which the workload
 
 The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
 
-#### Privileges under view only role
+#### Privileges under top-level role
 
 <WarningBox>
-The view only role privileges are applied to root object and datacenter objects only.
+The top-level role privileges are applied to root object and datacenter objects only.
 </WarningBox>
 
 |vSphere Object	|Privileges|
