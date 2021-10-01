@@ -57,6 +57,7 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 
 | vSphere Object | Privileges |
 | --- | --- |
+|Cns|Searchable|
 | Datastore | Allocate Space |
 | | Browse Datastore |
 | | Low level file operations |
@@ -67,7 +68,10 @@ The vSphere user account used in the various Spectro Cloud tasks must have the m
 | | Delete folder |
 | | Move folder |
 | | Rename folder|
+| Host| Configuration|
+||Storage partition configuration|
 | Network | Assign Network |
+|Profile-driven storage|Profile-driven storage view|
 | Resource | Apply recommendation
 | | Assign virtual machine to resource pool |
 | | Migrate powered off virtual machine |
