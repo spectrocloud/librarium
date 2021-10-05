@@ -47,15 +47,29 @@ The permissions listed needs to be enabled for CloudWatch.
 
 ## Permission List
 
-|On CloudWatch|
-|-------------|
-|DescribeLogGroups|
-|DescribeLogStreams|
-|PutLogEvents|
-|CreateLogStream|
-|CreateLogGroup|
-|DeleteLogStream|
+Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for cloudwatch:
 
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Effect": "Allow",
+"Action": [
+"logs:DescribeLogGroups",
+"logs:CreateLogGroup",
+"logs:CreateLogStream",
+"logs:PutLogEvents",
+"logs:DeleteLogStream",
+"logs:DescribeLogStreams"
+],
+"Resource": [
+"<CLOUDWATCH-LOG-GROUP-ARN>;"
+]
+}
+]
+}
+```
 ## Instructions to Push Cluster Audit Logs to AWS Trails 
 
 * Go to Admin Settings and select Audit Trails.

@@ -65,25 +65,48 @@ The following permissions needs to be enabled.
 </WarningBox>
 
 #### Permission Sets
+Ensure that the IAM user or the ROOT user role created should have the following two IAM policies included:
 
-|On EC2|
-|------|
-|DescribeVolumes|
-|DescribeSnapshots|
-|CreateTags|
-|CreateVolume|
-|CreateSnapshot|
-|DeleteSnapshot|
+**EC2-Policy**
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+	{
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:DeleteObject",
+                "s3:PutObject",
+                "s3:AbortMultipartUpload",
+                "s3:ListMultipartUploadParts"
+            ],
+            "Resource": ["<EC2-LOG-GROUP-ARN>;"
+            ]
+        }
+```
 
 
-|On S3|
-|---------|
-|GetObject|
-|DeleteObject|
-|PutObject|
-|AbortMultipartUpload|
-|ListMultipartUploadParts|
-|ListBucket|
+**S3-Policy**
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeVolumes",
+                "ec2:DescribeSnapshots",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:CreateSnapshot",
+                "ec2:DeleteSnapshot"
+            ],
+            "Resource": "<S3-LOG-GROUP-ARN>"
+        }
+```
 
 The following information are needed
 * AWS Account Access key
