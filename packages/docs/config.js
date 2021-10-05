@@ -27,8 +27,8 @@ const config = {
       name: 'Spectro cloud documentation',
       short_name: 'Spectro cloud docs',
       start_url: '/',
-      background_color: '#4432F5',
-      theme_color: '#4432F5',
+      background_color: '#206cd1',
+      theme_color: '#206cd1',
       display: 'standalone',
       crossOrigin: 'use-credentials',
       icons: [

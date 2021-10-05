@@ -1,40 +1,63 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import SidebarIcon from "../../../components/styles/SidebarIcon";
-import { useLocation } from "@reach/router"
-import Link from "../../../components/Link";
+import SidebarIcon from '../../../components/styles/SidebarIcon';
+import { useLocation } from '@reach/router';
+import Link from '../../../components/Link';
+
+const ChildrenItems = styled.div``;
 
 const MenuNode = styled.div`
-  color: #78909c;
-  margin: 20px 0;
+  a {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4a4b6a;
+    :hover {
+      color: #206cd1;
+    }
 
-  > a, a:hover {
-    text-decoration: none;
-    color: #78909C;
-    font-weight: 500;
+    ${props =>
+      props.level === 1 &&
+      !props.isActive &&
+      !props.expanded &&
+      css`
+        color: #9698a9;
+        font-weight: 500;
+      `}
   }
 
-  ${props => props.isActive && css`
-    > .menu-link {
-      color: #4432F5;
+  > a {
+    ${({ expanded }) => {
+      return (
+        expanded &&
+        css`
+          color: #206cd1;
+          svg {
+            fill: #206cd1;
+            stroke: #206cd1;
+          }
+        `
+      );
+    }}
+  }
 
-      &:hover {
-        color: #4432F5;
+  ${props => css`
+    &[data-level="${props.level}"] > .menu-link > div {
+      padding-left: ${props => props.level * 34 + 20}px;
+    }
+
+    &[data-level="2"] {
+      position: relative;
+      &:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        top: 0;
+        left: 64px;
+        border-left: 1px solid #ddd;
       }
     }
   `}
-`;
-
-const ChildrenItems = styled.div`
-  margin: 10px 0 10px 26px;
-
-  ${MenuNode} {
-    margin: 10px 0;
-
-    > a {
-      font-weight: normal;
-    }
-  }
 `;
 
 const IconWrapper = styled.div`
@@ -43,43 +66,73 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
-  margin-bottom: 2px;
-
+  margin-right: 16px;
+  color: #aeb1be;
   svg {
     stroke-width: 0;
-    fill: #78909C;
-    stroke: #78909C;
+    fill: #aeb1be;
+    stroke: #aeb1be;
   }
 
-  ${props => props.isActive && css`
-    svg {
-        fill: #4432F5;
-        stroke: #4432F5;
+  ${props =>
+    props.isActive &&
+    css`
+      color: #206cd1;
+      svg {
+        fill: #206cd1;
+        stroke: #206cd1;
       }
-  `}
+    `}
 `;
 
 const MenuItem = styled.div`
   display: flex;
+  padding: 12px 0px 12px 32px;
   align-items: center;
+  :hover {
+    color: #206cd1;
+  }
+
+  ${({ isActive }) => {
+    return (
+      isActive &&
+      css`
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.93)),
+          #206cd1;
+        font-weight: 600;
+        color: #206cd1;
+        border-right: 5px solid #206cd1;
+      `
+    );
+  }}
 `;
 
-const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gatsby: {} } }) => {
+const TreeNode = ({
+  url,
+  title,
+  items = [],
+  icon,
+  hiddenFromNav,
+  config = { gatsby: {} },
+  level = 0,
+}) => {
   const location = useLocation();
-
-  let isActive;
+  let isActive = false;
   const expanded = React.useMemo(() => {
-    return !url || location && (location.pathname.startsWith(url) || location.pathname.startsWith(config.gatsby.pathPrefix + url));
-  }, [url])
+    return (
+      !url ||
+      (location &&
+        (location.pathname.startsWith(url) ||
+          location.pathname.startsWith(config.gatsby.pathPrefix + url)) &&
+        !!items.length)
+    );
+  }, [url]);
 
-  if (expanded) {
-    isActive = true;
-  }
-
-  if (url === '/' && location && location.pathname === "/") {
+  if (url === '/' && location && location.pathname === '/') {
     isActive = false;
   }
+
+  if (url === location?.pathname) isActive = true;
 
   if (hiddenFromNav) {
     return null;
@@ -87,25 +140,26 @@ const TreeNode = ({ url, title, items = [], icon, hiddenFromNav, config = { gats
   const hasChildren = items.length !== 0;
 
   return (
-    <MenuNode isActive={isActive}>
+    <MenuNode isActive={isActive} expanded={expanded} level={level} data-level={level}>
       {title && (
         <Link to={url} className="menu-link">
-          <MenuItem>
-            {icon && <IconWrapper isActive={isActive}><SidebarIcon type={icon} /></IconWrapper>}
+          <MenuItem isActive={isActive}>
+            {icon && (
+              <IconWrapper isActive={isActive}>
+                <SidebarIcon type={icon} />
+              </IconWrapper>
+            )}
             {title}
           </MenuItem>
         </Link>
       )}
-      {expanded && hasChildren ? (
+      {expanded && hasChildren && (
         <ChildrenItems>
           {items.map((item, index) => (
-            <TreeNode
-              key={item.url + index.toString()}
-              {...item}
-            />
+            <TreeNode key={item.url + index.toString()} {...item} level={level + 1} />
           ))}
         </ChildrenItems>
-      ) : null}
+      )}
     </MenuNode>
   );
 };

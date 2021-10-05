@@ -12,13 +12,22 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+
 # Overview
 
-Existing Kubernetes clusters that were not deployed by Spectro Cloud can be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management. Spectro Cloud allows import and management of Kubernetes clusters on various public, private, and bare-metal environments, such as:
+Existing Kubernetes clusters that were not deployed by Spectro Cloud can be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management. Spectro Cloud allows import and management of Kubernetes clusters on various public, private, and bare-metal environments.
 
- * Public cloud managed services (Amazon EKS, Google GKE, Azure EKS)
+Spectro Cloud also supports Generic cluster imports, where the users import their existing clusters to Spectro Cloud irrespective of the cloud service provider. If the cloud type of the existing cluster is not supported by Spectro Cloud, then those clusters could be imported as Generic Clusters.  The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For Generic imported clusters, the user will not be able to add cloud-specific add-on profiles rather he can add profiles of cloud type which is supported for all.
+
+ * In addition to Spectro Cloud Generic cluster import, we support public cloud managed services  such as:
+	* Amazon EKS
+	* Google GKE
+	* Azure AKS
+	* VMware
+	* Open Shift
  * Clusters provisioned through other management platforms (Rancher, CCP, etc.)
  * Clusters provisioned using orchestration tools (Kubeadm, kops, etc.)
+
 
 # Import
 

@@ -99,6 +99,7 @@ exports.createPages = ({ graphql, actions }) => {
           if (node.fields.slug === '/glossary') {
             return;
           }
+
           let component = path.resolve('../docs/src/templates/docs.js');
           // if (node.fields.slug.startsWith('/glossary')) {
           //   component = path.resolve('../glossary/src/templates/docs.js');
@@ -113,7 +114,7 @@ exports.createPages = ({ graphql, actions }) => {
 
           return promise.then((result) => {
             // Disable glossary pages
-            if (node.fields.slug.startsWith('/glossary')) {
+            if (node.fields.slug.startsWith('/glossary/')) {
               return;
             }
 

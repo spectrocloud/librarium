@@ -22,23 +22,37 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  max-width: 1024px;
-  margin: 30px auto 0;
+  max-width: 1110px;
+  margin: 0px auto;
   overflow: hidden;
 
   ::after {
     content: ' ';
-    width: 680px;
-    border: 1px solid #dddddd;
-    margin-top: 60px;
+    max-width: 1109.51px;
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    margin-top: 102px;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.25px;
+    color: #2d2e55;
+    margin-bottom: 50px !important;
+    margin-top: 102px !important;
   }
 `;
 
 const Description = styled.div`
-  font-size: 14px;
-  color: #111;
-  max-width: 680px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666a80;
+  max-width: 936px;
   text-align: center;
+  margin-bottom: 50px;
 `;
 
 const CardWrapper = styled.div`
@@ -46,7 +60,7 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  max-width: 880px;
+  max-width: 937px;
   margin-top: 30px;
   @media (max-width: 830px) {
     overflow-y: auto;
@@ -68,22 +82,25 @@ const Card = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
+  background: #ffffff;
+  box-shadow: 0px 5.42752px 14.9257px -2.71376px rgba(21, 24, 51, 0.22);
+  margin-bottom: 32px;
+  img {
+  height: 81px;
+  }
 `;
 
 const CloudName = styled.div`
-  color: #777;
-  @media (max-width: 830px) {
-    text-align: center;
-    white-space: nowrap;
-  }
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 22px;
+  color: #666a80;
 `;
 
 function CloudsSection({ title, description, options = [] }) {

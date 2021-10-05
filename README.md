@@ -43,9 +43,7 @@ To preview your changes use the following.
 make start
 ```
 
-This will open your browser to this address: http://localhost:8010
-For the glossary documentations use http://localhost:8020
-For the API documentations use http://localhost:8030
+This will open your browser to this address: http://localhost:9000
 
 Open `~/Work/librarium/packages/docs/content` in your editor and make changes. They should be synced up in the browser window.
 
@@ -127,7 +125,13 @@ You can add documents in the same directory where they are used. Adding an image
 The same rules apply though. You can reference it from a different section using urls relative to the root directory
 
 ```md
-![alt text](/introduction/clusterprofiles.png "cluster profiles example")
+![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
+```
+**Image size**
+Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
+
+```md
+![alt text](/introduction/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component

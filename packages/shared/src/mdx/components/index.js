@@ -46,7 +46,7 @@ const HeaderWrap = styled.div`
 
   > a {
     visibility: hidden;
-    margin-left: -26px;
+    margin-left: -30px;
     margin-right: 10px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.85);

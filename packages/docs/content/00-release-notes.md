@@ -13,19 +13,126 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# March 25, 2021 - Release 1.8.0
+
+
+
+
+# August 14, 2021 - Release 1.13.0
+
+Spectro Cloud users can now convert their bare-metal servers into flexible, cohesive, and distributed instances of virtual machines with the slightest efforts utilizing “Metal As A Service”.
+
+
+# July 23, 2021 - Release 1.12.0
+
+Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud. 
+* Now import existing non-Spectro clusters from any cloud platform using our Generic cluster import feature. We support broad operations like scans, backups, etc. on these imported clusters as well as provisioning and lifecycle management of add-ons.
+* Spectro Cloud now supports AKS, a fully-managed Kubernetes service from Azure. Deploy and manage end-to-end lifecyle of AKS clusters.
+* Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication int he modern world. Through this integration, Spectro Cloud enables users to integrate single sign on using various identify providers such as Amazon Cognito, Keycloak etc. 
+* Kubernetes upgraded to version 1.19 for enterprise clusters.
+
+
+# June 28, 2021 - Release 1.11.0
+
+Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
+
+* Spectro now supports supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
+
+
+# June 1, 2021 - Release 1.10.0
+
+Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
+
+* Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configurations like Fargate profiles, OIDC Authentication etc. 
+* Scan your Kubernetes clusters to ensure they are conformant and compliant.
+* Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
+* Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
+* Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
+
+Note:
+
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure that you have these new permissions included. 
+
+Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+   {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:UpdateInstanceInformation",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "s3:GetEncryptionConfiguration"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+    
+```
+
+Add the following permissions to the IAM polciy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:AssociateIdentityProviderConfig",
+        "eks:ListIdentityProviderConfigs"
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:cluster/*"
+      ]
+   },
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DisassociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig"
+      ],
+      "Resource": [
+        "*"
+      ]
+   }
+```
+
+
+
+
+
+# May 4, 2021 - Release 1.9.0
+
+Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
+
+* Spectro Cloud ensures users to start, run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
+* Now create and gain permission to your AWS cloud account by just using role ARN, without sharing long-term credentials.
+
+
+# March 29, 2021 - Release 1.8.0
 
 Spectro Cloud 1.8.0 released with advanced support for deploying & discovering Helm Charts and several usability enhancements!
 
 Featuring
 
 * Set up public and private helm chart registries to leverage the vast database of integrations and add-ons.
-* Deploy reliable and secure kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
+* Deploy reliable and secure Kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
 * Accumulate container logs across all cluster nodes to create a support bundle to enable faster troubleshooting.
-* Attach multiple supporting manifests to your cluster profile layers in order to deploy integrations end to end without having to use command line client
-* Add additional BYOM (Bring Your Own Manifest)  layers to your cluster profiles to perform ad-hoc customized deployments on the cluster
-* You can now import and manage existing clusters running in your private VMware environment behind a proxy
-* Discover charts deployed on your existing clusters and convert them into a cluster profile to use it as a template for future cluster deployments
+* Attach multiple supporting manifests to your cluster profile layers in order to deploy integrations end to end without having to use command line client.
+* Add additional BYOM (Bring Your Own Manifest)  layers to your cluster profiles to perform ad-hoc customized deployments on the cluster.
+* You can now import and manage existing clusters running in your private VMware environment behind a proxy.
+* Discover charts deployed on your existing clusters and convert them into a cluster profile to use it as a template for future cluster deployments.
 * Enhanced cluster profile builder experience with several usability enhancements.
 
 

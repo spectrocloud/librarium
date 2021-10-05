@@ -9,9 +9,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
-  max-width: 1024px;
-  margin: 30px auto 0;
+  max-width: 780px;
+  margin: 0px auto;
+  h3 {
+    margin-bottom: 50px !important;
+    margin-top: 102px !important;
+  }
 `;
 
 const CardsWrapper = styled.div`
@@ -26,18 +29,31 @@ const CardsWrapper = styled.div`
 const Card = styled(Link)`
   width: 100%;
   padding: 20px 0;
-  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 50px;
+  h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #2d2e55;
+  }
 `;
 
 const Description = styled.div`
-  font-size: 12px;
-  color #555;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666a80;
+  margin-top: 16px;
 `;
 
 const Timestamp = styled.div`
-  font-size: 12px;
-  color: #bbb;
-  margin-top: 5px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  color: #9698a9;
+  margin-top: 16px;
 `;
 
 export default function DocUpdatesSection({ title }) {
@@ -56,7 +72,7 @@ export default function DocUpdatesSection({ title }) {
     <Wrapper>
       <h3>{title}</h3>
       <CardsWrapper>
-        {lastChanges.map((doc) => (
+        {lastChanges.map(doc => (
           <Card to={doc.fields.slug}>
             <h4>{doc.fields.title}</h4>
             <Description>{doc.excerpt}</Description>

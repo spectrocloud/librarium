@@ -8,12 +8,12 @@ const StyledButton = styled.button`
   line-height: 20px;
   padding: 8px 16px;
   border: none;
-  color: #4432F5;
+  color: #206cd1;
   font-size: 16px;
   cursor: pointer;
 
   ${props => props.primary && css`
-    background-color: #4432F5;
+    background-color: #206cd1;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px -2px 0px rgba(0, 0, 0, 0.2);
     color: #fff;
   `}

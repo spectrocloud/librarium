@@ -10,21 +10,43 @@ fullWidth: false
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # What is Spectro Cloud?
+Spectro Cloud is an enterprise Kubernetes management platform that acts as a single control point for any new or existing Kubernetes clusters in any environment. 
 
-The Spectro Cloud management platform brings the managed Kubernetes experience to users' own unique enterprise Kubernetes infrastructure stacks running in any public cloud, or private cloud environments, allowing users to not have to trade-off between flexibility and manageability. Spectro Cloud provides an as-a-service experience to users by automating the lifecycle of multiple Kubernetes clusters based on user-defined Kubernetes infrastructure stacks.
+![1-what-is-sc](/1-what-is-sc.png)
 
-Spectro Cloud consists of three main components: the management console, a pack registry, and the management agent running inside workload clusters.
+## What makes Spectro Cloud different?
 
-## Management Console
-The Spectro Cloud management console provides centralized visibility and management of Spectro Cloud provisioned workload clusters. It provides a single pane of glass for users to define composable Kubernetes cluster profile templates, deploy and manage Kubernetes clusters with full visibility in multi-cloud environments, as well as manage the governance policies to control who can do what, when and where.
+### Full-Stack Management
+Unlike rigid and prepackaged Kubernetes solutions, Spectro Cloud allows users to construct flexible stacks from OS, Kubernetes, CNI, CSI to additional add-ons. As a result, the entire stack of Kubernetes is deployed, updated and managed as one unit, without split responsibility from virtual machines, base OS, Kubernetes infra, and add-ons. 
 
-## Pack Registry
-Spectro Cloud cluster profiles are templates that describe various integrations/technologies for each layer of the Kubernetes infrastructure stack. These integrations are modeled as packs that are hosted on a pack registry. Spectro Cloud provides several integrations out of the box which are hosted on a default pack registry. Security patches and updates are maintained for all out of the box packs. Optionally users can also host packs on their self-hosted pack registry.
+### Declarative Lifecycle Management 
+Unique declarative profile-based management enables users to institutionalize the knowledge and integrations, drive consistency, repeatability and operational efficiency across multiple clusters in multiple environments, with comprehensive day 0 - day 2 management.
 
-## Management Agent
-The Spectro Cloud Management Agent which runs inside workload clusters is responsible for:
+### Any Environment
+Spectro Cloud has the richest coverage in supported environments, including public cloud: AWS, Azure, GCP (both IaaS based and cloud’s managed K8s services EKS/AKS/GKE); private cloud/data center: VMware vSphere, OpenStack; Bare metal: Canonical MaaS; Edge.
 
-* Communicating with the management console for the heartbeat, cluster status, and system metrics.
-* Synchronizing the desired cluster state with the running workload cluster.
 
-![spectro_cloud](/spectro_cloud.png)
+## What is behind the Spectro Cloud platform?
+
+Spectro Cloud extends CNCF’s open-source Cluster API project and provides comprehensive full-stack modeling and orchestration, governance, security and day0, day1, day2 management capabilities.
+
+
+![2-what-is-sc](/2-what-is-sc.png)
+
+## Who can benefit from the Spectro Cloud platform?
+
+### Everyone!!
+
+### Developers
+You will get the flexibility you are looking for and increase the speed of innovation, whether it is the cluster template with the application services or choose a Kubernetes version with integrations like logging, monitoring, service mesh for your application development.
+
+### Ops / SRE
+Declarative management makes your life easier with consistency, repeatability and everything under your governance. All these are done through a few simple models and Terraform integrations without having to write complex scripts.
+
+### IT Executives
+With an open platform, you get your peace of mind without being locked into any proprietary orchestration technologies or cloud environments. This helps you lower the TCO and reduce the operational risk.
+
+
+
+
+

@@ -9,6 +9,14 @@ category: ['load balancers']
 logoUrl: 'https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
+
+
 # ExternalDNS
 
 The integration helps configure public DNS servers with information about Kubernetes services to make them discoverable.
@@ -16,6 +24,16 @@ The integration helps configure public DNS servers with information about Kubern
 # Prerequisites
 
 Providers have to be set up for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be set up, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
+
+## Versions Supported
+<Tabs>
+<Tabs.TabPane tab="0.7.x" key="0.7.x">
+
+* **0.7.2** 
+
+</Tabs.TabPane>
+
+</Tabs>
 
 ## Components
 
@@ -89,7 +107,7 @@ Integration deploys the following components:
 * Add Prometheus-Operator addon to the same profile where ExternalDNS is added
   * Change serviceType to ClusterIP (line #408)
   * Enable Ingress for the add-on packs. In this example, let us use Prometheus-Operator integration.
-    Ingress config for Grafana will look like the following :
+    Ingress config for Grafana will look like the following:
     ```yaml
     #Ingress config
     ingress:

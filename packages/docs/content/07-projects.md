@@ -32,7 +32,7 @@ The *Admin > Projects* page displays the projects related dashboard cards captur
 
 # Monthly Kilocore-hours Usage
 
-The monthly usage card shows the daily cluster usage in kilocore hours for a month across all the projects.  The kilocore hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilocore hours for the node is done in increments of seconds. The monthly usage card also shows the project-wise kilocore hours. Based on the plan type, the kilocore hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
+The monthly usage card shows the daily cluster usage in kilocore hours for a month across all the projects.  The kilocore hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilocore hours for the node is done in increments of seconds. The monthly usage card also shows project-wide kilocore hours. Based on the plan type, the kilocore hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
 
 # Cores per Project Usage
 

@@ -15,7 +15,6 @@ const Wrapper = styled.div`
   }
 
   .ant-input:placeholder-shown {
-    font-style: "Poppins";
     font-size: 13px;
     color: #333;
     opacity: 0.5;

@@ -8,18 +8,48 @@ category: ['networking']
 logoUrl: 'https://registry.spectrocloud.com/v1/cni-calico/blobs/sha256:9a08103ccd797857a81b6ce55fa4f84a48bcb2bddfc7a4ff27878819c87e1e30?type=image/png'
 ---
 
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 
 # Overview
 
 Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
-## Supported Networking Packs
+## Versions Supported 
 
-* [Calico](/integrations/calico)
-    * v3.9.
-    * v3.10.
-    * v3.16.
+[Calico](/integrations/calico)
+
+<Tabs>
+<Tabs.TabPane tab="3.19.x" key="3.19.x">
+
+* **3.19.0** 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.16.x" key="3.16.x">
+
+* **3.16.0** 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.10.x" key="3.10.x">
+
+* **3.10.2** 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.9.x" key="3.9.x">
+
+* **3.9.4** 
+
+</Tabs.TabPane>
+
+</Tabs>
+
 
 # Calico
 
