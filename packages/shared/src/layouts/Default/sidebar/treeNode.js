@@ -4,6 +4,8 @@ import SidebarIcon from '../../../components/styles/SidebarIcon';
 import { useLocation } from '@reach/router';
 import Link from '../../../components/Link';
 
+const ChildrenItems = styled.div``;
+
 const MenuNode = styled.div`
   a {
     font-style: normal;
@@ -38,12 +40,24 @@ const MenuNode = styled.div`
       );
     }}
   }
-`;
 
-const ChildrenItems = styled.div`
-  .menu-link > div {
-    padding-left: 68px;
-  }
+  ${props => css`
+    &[data-level="${props.level}"] > .menu-link > div {
+      padding-left: ${props => props.level * 34 + 20}px;
+    }
+
+    &[data-level="2"] {
+      position: relative;
+      &:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        top: 0;
+        left: 64px;
+        border-left: 1px solid #ddd;
+      }
+    }
+  `}
 `;
 
 const IconWrapper = styled.div`
@@ -126,7 +140,7 @@ const TreeNode = ({
   const hasChildren = items.length !== 0;
 
   return (
-    <MenuNode isActive={isActive} expanded={expanded} level={level}>
+    <MenuNode isActive={isActive} expanded={expanded} level={level} data-level={level}>
       {title && (
         <Link to={url} className="menu-link">
           <MenuItem isActive={isActive}>
