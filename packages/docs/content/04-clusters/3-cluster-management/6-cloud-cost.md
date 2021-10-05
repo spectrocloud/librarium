@@ -69,7 +69,3 @@ For the cluster configuration of master-pool & worker-pool considers in example 
 |Pod Cost = $0.012896 + $0.006944 + $0.0014 = $0.02124/hour|
 
 
-
-
-
-
