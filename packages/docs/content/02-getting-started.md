@@ -101,71 +101,24 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 
 ![admin_dashboard](admin_dashboard.png)
 
-# Deploying your first cluster
-
-Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which are detailed in the cluster profile section.
-
-The major steps towards the deployment and management of your workload clusters are:
-
-* Creation of the cluster Profile
-* Creation of Cloud Account and Cluster Deployment
-* Cluster Management Operations (Day 2 Management)
-
-<Tabs identifier="getting_started">
-
-<Tabs.TabPane tab="Create Cluster Profile" key="cluster-profile">
-
-
-
-## Cluster Profile
-
-A quick overview of cluster profile creation is as guided below. Please refer [Cluster Profile Creation](/cluster-profiles/task-define-profile/#creatingclusterprofiles) for detailed outlook in to the same.
-
-* Navigate to the Default Project (select back to the Default project if you’re in the Admin view).
-* Switch to the *Cluster Profiles* page from the left navigation bar.
-* Click on the *Add Cluster Profile* button.
-* Specify a custom name, description (optional), tag (optional) and **type** (Full, Infrastructure or Add-on) of cluster profile to be created and click *Next*.
-* Select **Cloud Environment** to run your cluster.
-* Click on Edit Layers and make choices of registries and packs for each layer. Attach Manifest if required.
-* Please designate the following selections for each layer,
-    * OS
-    * Kubernetes
-    * Network
-    * Storage
-    * Additional layers as required (only for add-on and full cluster profiles)
-       
-
-* Click *Finish* to close the Layer dialogue.
-* Click *Next* and review the Cluster Profile.
-* Click *Finish* to create the Cluster Profile.
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Cluster Deployment" key="cluster-creation">
-
-Cluster deployment is all about deploying a workload cluster. The stages of cluster provisioning includes:
- 
-* Cloud Gateway Creation (Not applicable to all clouds) 
-* Cloud Account Creation
-* Cluster Creation
-
-For detailed instructions on the deployment of clusters in different cloud environments please visit [Create Cluster](/clusters/new-clusters/#creatingclusters).
+# Getting started with the first cluster
 
 <InfoBox>
-The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those clouds which mandates it, like MaaS, VMWare and OpenStack.
-</InfoBox>
+	The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those private clouds which mandates it, like MaaS, VMWare and OpenStack.
+	</InfoBox>
+
+The major steps towards the deployment of your workload clusters are:
+
+* [Cluster Profile Creation](/cluster-profiles/task-define-profile/#creatingclusterprofiles)
+
+* [Create Cluster](/clusters/new-clusters/#creatingclusters)
+
+* [Cluster Import](/clusters/brownfield-clusters/#overview) of brown field clusters
 
 
-</Tabs.TabPane>
 
-<Tabs.TabPane tab="Cluster Management" key="day2">
 
-Cluster management operations involves the scaling, monitoring, maintenance, and troubleshooting of tenant clusters that keeps them up and running.
-Please refer to [cluster management](/clusters/cluster-management/#manageclusters) for detailed instructions and procedures.
-</Tabs.TabPane>
 
-</Tabs>
 
 
 

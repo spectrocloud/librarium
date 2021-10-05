@@ -165,8 +165,6 @@ At times it might be required to work with the Spectro Cloud support team to tro
 
 <InfoBox>
 
-* Audit logs are retained for the last 1 year.
-
 * In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
 
 * Spectro Cloud recommends its users attach these logs along with the Support Request for accelerated troubleshooting.
