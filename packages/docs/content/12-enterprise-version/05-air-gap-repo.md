@@ -56,14 +56,8 @@ Storage sizing depends on your intended update frequency and data retention mode
   * Monitoring Console Password: A monitoring console is deployed in the air gap repo VM to provide detailed information about the installation progress and access various logs. The default monitoring console credentials are:		
     * User Name: admin
     * Password: admin
-
-<InfoBox>
-Provide a different password for the monitoring console if desired. Leave the field blank to accept the default password.
-</InfoBox>
-
 * A Unique Instance ID for this instance - Specifies the instance id. This is required and used to determine if the machine should take “first boot” actions.
 * Host Name: Specifies the unique hostname for the appliance.
-* URL to seed instance data from: This field is optional but indicates that the instance should 'seed' user-data and meta-data from the URL used. Leave this empty if you do not want to seed from a URL.
 * Finish the OVF deployment wizard and wait for the template creation. This will take a few minutes.
 * Power on the VM.
 
@@ -91,7 +85,7 @@ Power on the VM to obtain the VM/Repository IP address (repo-ip).
 
 |Registry Certificate|
 |--|
-|Optional certificate for air gap environment encoded in base 64|
+|Certificate for air gap environment encoded in base 64|
 
 
 <InfoBox>
@@ -99,14 +93,8 @@ Spectro Cloud Repository Details, Pack Registry Details, and Registry Certificat
 </InfoBox>
 
 
-* Download and execute the version-specific binary from S3
+* Download and execute the version-specific binary from S3 (Contact support team for the updated version specific binary)
 
-``` json 
-export VERSION=1.14.3
-curl --user spectro:sTMZiXqJumMU2J  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
-chmod 755 ./airgap-v${VERSION}.bin
-./airgap-v${VERSION}.bin
-```
 
 ## Deploy Platform Installer
 
