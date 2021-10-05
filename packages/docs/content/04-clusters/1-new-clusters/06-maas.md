@@ -135,6 +135,7 @@ docker run -it --rm \
 -c //opt/spectrocloud/pcg.yaml
 ```
 
+
 New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ## Upgrading a MaaS cloud gateway
