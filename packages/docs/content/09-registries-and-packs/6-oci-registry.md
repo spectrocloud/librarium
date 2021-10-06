@@ -18,7 +18,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 Spectro Cloud leverages OCI registries to run a “filesystem bundle” that is unpacked on disk. Open container initiative is an open governance structure to create open industry standards around container formats and runtimes. We support all OCI Registries which are compliant with OCI.
 
-## Instructions to Setup OCI Registry:
+# Instructions to Setup OCI Registry:
 * Login as Tenant Admin
 * Click On Registries to open Manage Registries
 * Select the OCI Registries tab and click Add New OCI Registry button 
@@ -35,15 +35,15 @@ To configure the Basic OCI Authentication for your OCI registry,
 **ECR Authentication**
 
 * To provision, your OCI registry in un-protected mode provide the endpoint and confirm creation.
-* Toggle the “protected” button for protected registry creation and authenticate the AWS user using credentials or STS.
-	* For the credentials method of authentication, use the Access Key and Secret Access Key of the AWS account.
-	* For STS, use the unique ARN  of the AWS Account.
+* Toggle the “protected” button for protected registry creation and authenticate the AWS account using credentials or STS.
+	* For the credentials method of authentication, use the Access Key and Secret Access Key of the role created and validate.
+	* For STS, use the unique ARN  of the AWS role and validate.
 * Click on confirm to complete the registry creation process.
 <WarningBox>
-To provision ECR based OCI Authentication make sure that the User's STS Role has the following policy created.
+To provision ECR based OCI Authentication make sure that the User's STS Role has the following ECR policy configured.
 </WarningBox>
 
-## ECR Policy:
+# ECR Policy:
 
 ```json
 {
@@ -84,3 +84,14 @@ To provision ECR based OCI Authentication make sure that the User's STS Role has
     ]
 }
 ```
+# Use Your OCI Registry
+
+The created registries could be used while creating the cluster profiles.
+* While creating full or add-on cluster profiles add Pack Type as Helm charts
+* From the Repository menu, select the OCI registry created
+* Key in the required chart name with dependant values and versions
+* Click done to get your OCI-helm layer added to the cluster profile
+
+<InfoBox>
+Spectro Cloud leveraged public registry images to the custom OCI registries.
+</InfoBox>
