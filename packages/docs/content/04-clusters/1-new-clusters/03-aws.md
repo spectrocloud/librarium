@@ -11,46 +11,36 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+# Overview
 
+Following are some of the architectural highlights of AWS clusters provisioned by Spectro Cloud:
 
-# AWS Cluster
-
-The following is the deployment architecture for an AWS cluster.
-
-The Kubernetes nodes are distributed across multiple AZs to achieve high availability. For each of the AZ's that you choose, a public subnet and a private subnet is created.
-
-All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
-
-A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
-
-An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
-
-The Kubernetes APIServer endpoint is accessible through an ELB, which load balances across all the control plane nodes.
+* Kubernetes nodes can be distributed across multiple AZs to achieve high availability. For each of the AZ's that you select, a public subnet and a private subnet is created.
+* All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
+* A NAT gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
+* An Internet gateway is created for each VPC, to allow SSH access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the Bastion node. A bastion node helps to provide access to the EC2 instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or RDP.
+* The Kubernetes APIServer endpoint is accessible through an ELB, which load balances across all the control plane nodes.
 
 ![aws_cluster_architecture.png](aws_cluster_architecture.png)
 
-## Prerequisites
+# Prerequisites
 
-Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. The following pre-requisites should be met for the successful creation of clusters.
+The following prerequisites must be met before deploying an EKS workload cluster:
 
-### Resource Capacity
+* You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
+* You must register your AWS cloud account in Spectro Cloud as descrbed in the "Creating an AWS Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Spectro Cloud for AWS.
+* Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+  - vCPU
+  - VPC
+  - Elastic IP
+  - Internet Gateway
+  - Elastic Load Balancers
+  - NAT Gateway
 
-Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+# AWS Cloud Account Permissions
 
-* vCPU
-* VPC
-* Elastic IP
-* Internet Gateway
-* Elastic Load Balancers
-* NAT Gateway
-
-## AWS Cloud Account Permissions
-
-The first step towards generating AWS Cloud Account Permission is role creation.
-
-
-Ensure that the IAM user or the ROOT user role created should have the following **four** IAM policies included:
-
+The following **four** policies include all the required permissions for provisioning clusters through Spectro Cloud:
 
 ### Controller Policy
 
@@ -564,31 +554,30 @@ These policies cannot be used as an inline policy, as it exceeds the 2048 non-wh
 </WarningBox>
 
 <WarningBox>
-The following warning can be expected:<p></p>
+The following warning is expected and can be ignored:<p></p>
 These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 
-Once the role is created an AWS cloud account can be created using any one method:
+# Creating an AWS cloud account
 
-* Security Token Service(STS)
+To create an AWS cloud account provide a name and a descripton for the account and follow the steps below based on the account type desired:
 
+* In the AWS console, create the four policies listed above.
 * Access Credentials
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
+    - In Spectro Cloud, provide the access key and secret key for the user.
+* Security Token Service(STS)
+    - In theAWS console, create a new IAM role called using the following options:
+      - Trusted Entity Type: Another AWS account
+      - Account ID: [Copy the Account ID displayed on the UI]
+      - Require External ID: Enable
+      - External ID: [Copy the External ID displayed on the UI]
+      - Permissions Policy: Search and select the 4 policies added in step #2
+      - Role Name: SpectroCloudRole
+    - In the AWS console, browse to the role details page and copy the Role ARN
+    - In Spectro Cloud, enter the role ARN in the field provided
 
-Users can make their choice of method through UI.
-
-### Security Token Service
-
-[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS.
-
-* Generate your role as per the UI instructions and obtain the ARN.
-* Use the generated ARN and validate it to get your AWS cloud account created.
-
-### Access Credentials
-
-* Give the Access key ID and Secret Access Key for the role generated.
-* Validate these credentials to get your AWS cloud account created.
-
-## Create an AWS Cluster
+# Deploying an AWS Cluster
 
 The following steps need to be performed to provision a new AWS cluster:
 

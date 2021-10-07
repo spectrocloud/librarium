@@ -77,26 +77,6 @@ Spectro Cloud provides several options to manage Kubernetes clusters on an ongoi
   Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrage is then performed to bring associated clusters to their desired state.
 </InfoBox>
 
-# Updates
-
-Spectro Cloud supports various kinds of updates to running clusters such as upgrade of K8s version, upgrade of add-on versions, addition of new add-ons or removal of exsting onest etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
-
-## Cluster update notifications
-
-Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated through the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or since the previous update.
-
-![Cluster Notification - Update Available](04-clusters/cluster_list_update_available.png)
-
-Updates to pack configuration may result in a conflict if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes can be applied to the cluster.
-
-
-![Cluster Update Details](04-clusters/cluster_update_available_detail.png)
-
-## Configuration overrides
-
-Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
-
-![Cluster Update Details](04-clusters/cluster_config_override.png)
 
 # Cluster Health
 
