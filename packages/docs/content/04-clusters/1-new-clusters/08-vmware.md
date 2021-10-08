@@ -13,26 +13,30 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 
 
-# VMware Cluster
+# Overview
 
-The Spectro Cloud management platform does not need direct access to the VMware environment. A Private Cloud Gateway needs to be set up within the VMware environment, to facilitate  communication between the Spectro Cloud management platform and vCenter, to create and delete target Kubernetes clusters.
+Following are some of the architectural highlights of kubernetes clusters provisioned by Spectro Cloud on VMware:
 
-The Private Gateway supports going through an optional Proxy server to talk to Spectro Cloud. If the Gateway is configured to use a proxy, the Proxy server needs to support HTTP(S) proxy.
-
-If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created for each of the Kubernetes clusters as the LB for the Kubernetes API Server endpoints. If the IP allocation type is Static IP, a VIP(virtual IP address) will be selected from the master ip-pool and allocated to the cluster instead of the load balancer.
+* Kubernetes nodes can be distributed across multiple compute clusters which serve as distinct fault domains. 
+* Support for static IP as well as DHCP
+* IP pool management for assigning blocks of IPs dedicated to clusters or projects.
+* In order to facilitate communication between the Spectro Cloud management platform and vCenter installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
-## Prerequisites
+# Prerequisites
 
-* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
-* Minimum capacity required for a Private Cloud Gateway:
-  + 1 node - 2 vCPU, 4GB memory, 30GB storage.
-  + 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
-* Per tenant cluster IP requirements:
-    - 1 per node.
-    - 1 Kubernetes control-plane VIP.
-    - 1 Kubernetes control-plane extra.
+The following prerequisites must be met before deploying a kubernetes clusters in VMware:
+
+* vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
+* NTP configured on all Hosts.
+* You must have an active vCenter account with all the permissions listed below in the "VMware Cloud Account Permissions" section.
+* You should have an Infrastructure cluster profile created in Spectro Cloud for VMWare.
+* You should install a Private Cloud Gateway for VMware as decribed in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatially register a cloud account for VMware in Spectro Cloud. You can register your additional VMware cloud accounts in Spectro Cloud as described in the "Creating a VMware Cloud account" section below.
+* Egress access to the internet (direct or via proxy):
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * Private cloud gateway IP requirements:
     - 1 node - 1 IP or 3 nodes - 3 IPs.
     - 1 Kubernetes control-plane VIP.
@@ -42,16 +46,11 @@ If the IP allocation type is DHCP, an HAProxy Load balancer VM will be created f
     - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     - Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* VMware vCenter permissions.
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
-## Configuration Requirements
-
-A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
-
-## Permissions
+# VMware Cloud Account Permissions
 
 The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
 
@@ -195,32 +194,26 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 ||* Monitor replication|
 |vSAN|Cluster|
 ||ShallowRekey|
-## Creating a VMware cloud gateway
+
+# Creating a VMware cloud gateway
 
 <InfoBox>
-For Enterprise version users, a system gateway is provided out of the box. However, additional gateways can be created as needed to isolate datacenters.
+For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote datacenters that do not have direct incoming connection from the management console.
 </InfoBox>
+
+* Minimum capacity required for a Private Cloud Gateway:
+  + 1 node - 2 vCPU, 4GB memory, 30GB storage.
+  + 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
+
 
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
 
-By default, 4GB of memory is allocated for private gateways. Please ensure that this memory allocation is increased based on the number of clusters that need to be created.
-
 ## Tenant Portal - Initiate Install
-
-<InfoBox>
-This step does not apply to Enterprise version users.
-</InfoBox>
 
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings and invoke the dialogue to create a new private cloud gateway.
 * Note down the link to the Spectro Cloud Gateway Installer OVA and PIN displayed on the dialogue.
 
 ## vSphere - Deploy Gateway Installer
-
-<InfoBox>
-
-This step does not apply to Enterprise version users.
-
-</InfoBox>
 
 * Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
 * Proceed through the OVF deployment wizard by choosing the desired name, placement, compute, storage, and network options.
@@ -256,14 +249,13 @@ Additional properties that are required to be set only for a Proxy Environment. 
 * Click on Confirm, to initiate provisioning of the gateway cluster. The status of the cluster on the UI should change to 'Provisioning' and eventually 'Running' when the gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe a detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
 * Once the Gateway transitions to the 'Running' state, it is fully provisioned and ready to bootstrap tenant cluster requests.
 
+<InfoBox>
+Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects
+</InfoBox>
+
 ## vSphere - Clean up installer
 
 * Power off installer OVA which was initially imported at the start of this installation process.
-
-<InfoBox>
-Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects.<p></p>
-A Pack registry instance is set up on the gateway cluster by default and it is registered as a private pack registry under Settings/Pack Registries. You can read more about Pack Registries <a href="/registries-and-packs">here</a>.
-</InfoBox>
 
 ## Troubleshooting
 
@@ -336,7 +328,7 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster.  For production e
 Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node gateway to support future expansion.
 </InfoBox>
 
-## IP Address Management
+# IP Address Management
 
 Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. The following is a description of various IP Pool properties:
 
@@ -352,7 +344,7 @@ Spectro cloud supports DHCP as well as Static IP based allocation strategies for
 | Nameserver addresses | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
-## Creating a VMware cloud account
+# Creating a VMware cloud account
 
 <InfoBox>
 Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
@@ -372,7 +364,7 @@ In addition to the default cloud account already associated with the private clo
 | Username | vCenter username|
 | Password | vCenter password|
 
-## Creating a VMware Cluster
+# Deploying a VMware Cluster
 
 The following steps need to be performed to provision a new VMware cluster:
 
@@ -406,7 +398,7 @@ The following steps need to be performed to provision a new VMware cluster:
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8GB of memory for general-purpose workloads, and another worker pool with 8CPU, 16 GB of memory for advanced workloads that demand larger resources.
 </InfoBox>
 
-## Deleting a VMware Cluster
+# Deleting a VMware Cluster
 
 The deletion of a VMware cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
 
