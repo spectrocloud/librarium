@@ -15,13 +15,15 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Getting Started
 
-This section is a tour of the two main dashboards of the tenant console. It also helps with the creation of cluster profiles and clusters to enable users to get going. More details on creating clusters are available in the dedicated <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> page.
+This section is a tour of the two main dashboards of the tenant console, the Project Dashboard and the Admin
+Dashboard. The Project Dashboard is used to perform operations related to setting up your Kubernetes clusters such as setting
+up cluster profiles, creating cloud accounts, deploying clusters etc. The Admin dashboard is used for performing
+administrative tasks such as setting up single sign on (SSO), creating user, teams and setting up RBAC, setting up additional
+package registries etc. The admin dashboard is only available to the users who have the tenant admin role. Admin
+users can toggle between the project dashboard and admin dashboard. Users hose that do not have the admin role can
+only see the project dashboard.
 
-# Understanding the tenant console
-
-The Spectro Cloud tenant console contains two main dashboards. The first one is mainly for the Kubernetes-related options while the other is for the settings related to operations. There are also differences in the dashboard views for an admin user and a non-admin user.
-
-# Default Dashboard
+# Project Dashboard
 
 Upon login, the dashboard shows the views available for a non-admin user. At this time, only the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> (marked as 1) of the default project are shown. <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">project</a> helps to organize the cluster resources in a logical grouping.</Tooltip> (2) help to organize the cluster resources in a logical grouping. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> (3). The bottom left contains buttons for the user's profile (6) and the Admin dashboard (5). The "Admin" options are visible only for users having the admin role.
 
@@ -62,7 +64,6 @@ The "Settings" section (4) of the default dashboard relates to the cloud account
   ![default_dashboard_new_1](default_dashboard_new_1.png)
 
 </PointsOfInterest>
-
 <PointsOfInterest
   points={[
     {
@@ -89,9 +90,12 @@ The "Settings" section (4) of the default dashboard relates to the cloud account
 
 # Admin Dashboard
 
-The menu within the Admin dashboard also contains the Projects button. This is different from the Projects menu in the default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside of the project.
 
-The Cluster Profiles button in the Admin dashboard provides access to all the cluster profiles. These cluster profiles can be used in one or more projects, or they can be left unused. An ideal use-case of this feature is for the admin to create cluster profiles that are standard across the tenant (i.e., these cluster profiles are needed in all projects).
+The menu within the Admin dashboard contains the Projects button. This is different from the Projects menu in the 
+default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside the project.
+
+The Cluster Profiles button in the Admin dashboard provides the ability to create and manage global cluster profiles 
+that can be used for cluster creation across all projects within a tenant.
 
 The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> (and <Tooltip trigger={<u>Permissions</u>}><a href="/introduction/concept-overviews#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip>); as well as <Tooltip trigger={<u>Users</u>}><a href="/introduction/concept-overviews#users">Users</a> are members of a tenant who are assigned roles that control their access within the platform.</Tooltip> and <Tooltip trigger={<u>Teams</u>}>A <a href="/introduction/concept-overviews#team">Team</a> is a group of users.</Tooltip> allow the admin to set or restrict these attributes for one or more team members. See the <Tooltip trigger={<u>RBAC</u>}>Spectro Cloud's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations.</Tooltip> section for more details.
 
@@ -103,23 +107,18 @@ Finally, <Tooltip trigger={<u>audit logs</u>}>The Spectro Cloud management platf
 
 # Getting started with the first cluster
 
-<InfoBox>
-	The creation of a private cloud gateway is highly environment dependant. All the cloud infrastructures does not requires a gateway. Users can create a gateway for only those private clouds which mandates it, like MaaS, VMWare and OpenStack.
-	</InfoBox>
+Spectro Cloud mandates the creation of a cluster profile before a workload cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated
+templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contain
+the configurations required for your cluster. The cluster profile helps you prepare a ready-made configuration of - the
+OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without
+which a cluster profile cannot be created. There are a host of other layers and components available to add in the
+cluster profile (load balancers, authentication, monitoring, and logging, etc.) which are detailed in the cluster
+profile section. Spectro Cloud provides several cluster profiles out-of-the-box.
 
-The major steps towards the deployment of your workload clusters are:
+Next Steps:
 
 * [Cluster Profile Creation](/cluster-profiles/task-define-profile/#creatingclusterprofiles)
-
 * [Create Cluster](/clusters/new-clusters/#creatingclusters)
-
 * [Cluster Import](/clusters/brownfield-clusters/#overview) of brown field clusters
-
-
-
-
-
-
-
-
+* [Cluster Management](/clusters/cluster-management/#manageclusters)
 

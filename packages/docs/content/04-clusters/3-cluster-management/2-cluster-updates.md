@@ -12,6 +12,28 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
+# Updates
+
+Spectro Cloud supports various kinds of updates to running clusters such as upgrade of K8s version, upgrade of add-on versions, addition of new add-ons or removal of exsting onest etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
+
+## Cluster update notifications
+
+Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated through the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or since the previous update.
+
+![Cluster Notification - Update Available](/cluster_list_update_available.png)
+
+Updates to pack configuration may result in a conflict if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes can be applied to the cluster.
+
+
+![Cluster Update Details](/cluster_update_available_detail.png)
+
+## Configuration overrides
+
+Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
+
+![Cluster Update Details](/cluster_config_override.png)
+
+
 
 # Cluster Updates
 Spectro Cloud ensures the complete life cycle utilization of its cluster for the users by promoting strong day 2 operations. In this context, cluster updates and integrations are extremely important. In Spectro Cloud, majority of the updates are rolled out through Cluster Profiles. Updates such as addition of a new layer, changes to the pack version, removal of an existing layer, changes to the layer settings or attached manifests, etc. result in update notifications on all the clusters that were instantiated from that cluster profile.  Users can check, confirm and incorporate the updates to their running clusters at an appropriate time.

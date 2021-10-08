@@ -11,33 +11,35 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+# Overview
 
-# Amazon EKS Cluster
+Following are some of the architectural highlights of EKS clusters provisioned by Spectro Cloud:
 
-Spectro Cloud supports EKS to manage services that can run Kubernetes on AWS without needing to install, operate, and maintain Kubernetes control plane or nodes. This ensures high availability, scalability, security and automated patching to tenant clusters. It runs up-to-date versions of Kubernetes, in addition to the existing plugins and tooling available. Applications that are running on Amazon EKS are fully compatible with any standard environment. Hence migrating your application workload to EKS can happen without any code change. For individual tenant clusters EKS runs a single Kubernetes control plane. The control plane infrastructure is not shared across clusters or AWS accounts. The control plane consists of at least two API server instances and three etcd instances that run across three Availability Zones within a Region.
+* Cluster resources such as VMs can be provisioned into exsting infrastrucutre (Gateways, VPCs, Subnets etc.) as part of static provisioning  as well as new dedicated infrastructure as part of dynamic provisioning
+* Full support for fargate profiles
+* Ability to replace AWS CNI plugins with other CNI plugins like Calico
+* Spot instance support
 
  ![eks_cluster_architecture.png](eks_cluster_architecture.png)
 
-## Prerequisites
+# Prerequisites
 
-Spectro Cloud creates compute, network, and storage resources for EKS during the provisioning of Kubernetes clusters. The following pre-requisites should be met for the successful creation of clusters.
+The following prerequisites must be met before deploying an EKS workload cluster:
 
-### Resource Capacity
+* You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
+* You must register your AWS cloud account in Spectro Cloud as descrbed in the "Creating an AWS Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Spectro Cloud for EKS.
+* Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+  - vCPU
+  - VPC
+  - Elastic IP
+  - Internet Gateway
+  - Elastic Load Balancers
+  - NAT Gateway
 
-Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+# AWS Cloud Account Permissions
 
-* vCPU
-* VPC
-* Elastic IP
-* Internet Gateway
-* Elastic Load Balancers
-* NAT Gateway
-
-## AWS Cloud Account Permissions
-
-The first step towards generating AWS Cloud Account Permission is role creation.
-
-Ensure that the IAM user or the ROOT user role created should have the following **four** policies included:
+The following **four** policies include all the required permissions for provisioning clusters through Spectro Cloud:
 
 ### Controller Policy
 
@@ -553,31 +555,30 @@ These policies cannot be used as an inline policy, as it exceeds the 2048 non-wh
 </WarningBox>
 
 <WarningBox>
-The following warning can be expected:<p></p>
+The following warning is expected and can be ignored:<p></p>
 These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
 </WarningBox>
 
-Once the role is created an AWS cloud account can be created using any one method:
+# Creating an AWS cloud account
 
-* Security Token Service(STS)
+To create an AWS cloud account provide a name and a descripton for the account and follow the steps below based on the account type desired:
 
 * Access Credentials
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
+    - In Spectro Cloud, provide the access key and secret key for the user.
+* Security Token Service(STS)
+    - In theAWS console, create a new IAM role called using the following options:
+      - Trusted Entity Type: Another AWS account
+      - Account ID: [Copy the Account ID displayed on the UI]
+      - Require External ID: Enable
+      - External ID: [Copy the External ID displayed on the UI]
+      - Permissions Policy: Search and select the 4 policies added in step #2
+      - Role Name: SpectroCloudRole
+    - In the AWS console, browse to the role details page and copy the Role ARN
+    - In Spectro Cloud, enter the role ARN in the field provided
 
-Users can make their choice of method through UI.
 
-### Security Token Service
-
-[STS](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/) method is about granting access to your AWS resources using an IAM role with external ID. Spectro Cloud makes the process extremely simple, just follow the UI instructions once you create the role in AWS.
-
-* Generate your role as per the UI instructions and obtain the ARN.
-* Use the generated ARN and validate it to get your AWS cloud account created.
-
-### Access Credentials
-
-* Give the Access Key ID and Secret Access Key for the role generated.
-* Validate these credentials to get your AWS cloud account created.
-
-## Create an EKS Cluster
+# Deploying an EKS Cluster
 
 The following steps need to be performed to provision a new EKS cluster:
 

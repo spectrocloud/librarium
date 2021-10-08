@@ -11,51 +11,52 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+# Overview
 
-# MAAS Cluster
+Following are some of the architectural highlights of bare-metal kubernetes clusters deployed by Spectro Cloud using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
-Spectro Cloud supports the users to create a data centre from their bare-metal servers with MaaS support. We succor the provisioning of Kubernetes clusters in the MaaS environment to manage a large number of physical machines by merging them into user-defined resource pools. MAAS expanded as “Metal As A Service” aids in converting your bare-metal servers into cloud instances of virtual machines. It helps in the quick provisioning and de-provisioning of instances, similar to instances hosted in public clouds like Amazon AWS, Google GCE, or Microsoft Azure.
-
-
-A Private Cloud Gateway needs to be set up within the environment, to facilitate communication between the Spectro Cloud management platform and the MaaS environment. The gateway establishes a secure communication channel with the management console thereby eliminating an incoming connection into the Maas environment.
+* Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MaaS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
+* The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
+* Spectro Cloud provides cloud like experience to deploying clusters on bare metal servers.
+* In order to facilitate communication between the Spectro Cloud management platform and the bare-metal macchines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment .The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 
 ![maas_cluster_architecture.png](maas_cluster_architecture.png)
 
-## Prerequisites
+# Prerequisites
 
-* Minimum capacity required for tenant clusters: ~26 vCPU, 50GB memory, 600GB storage.
-* Minimum capacity required for a Private Cloud Gateway:
-    * 1 node - 2 vCPU, 4GB memory, 30GB storage.
-    * 3 nodes - 6 vCPU, 12GB memory, 90GB storage.
-* Per tenant cluster IP requirements:
-    * 1 per node.
-    * 1 Kubernetes control-plane VIP.
-* Private cloud gateway IP requirements:
-    * 1 node - 1 IP or 3 nodes - 3 IPs.
-    * 1 Kubernetes control-plane VIP.
-    * 1 Kubernetes control-plane extra.
-* IPs for application workload services (e.g.: Load Balancer services).
-* Subnet with egress access to the internet (direct or via proxy):
+The following prerequisites must be met before deploying a bare-metal kubernetes cluster using MaaS:
+
+* You must enable API communication and retrieve the API key. The [key], [secret, [consumer_key] tokens are the three elements that compose the API key (API key = ‘[consumer_key]:[key]:[secret]’).
+* You should have an Infrastructure cluster profile created in Spectro Cloud for MaaS.
+* You should install a Private Cloud Gateway for MaaS as decribed in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatially register a cloud account for MaaS in Spectro Cloud. You can register your additional MaaS cloud accounts in Spectro Cloud as described in the "Creating a MaaS Cloud account" section below.
+* Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* NTP configured on all Hosts.
-* MaaS permission set.
+* Sufficient IPs for application workload services (e.g.: Load Balancer services).
+* Per workload cluster IP requirements:
+    * 1 per cluster node.
+    * 1 Kubernetes control-plane VIP.
 
+# Installing Private Cloud Gateway - MaaS
 
-## Creating a MaaS gateway
+The following sytem requirements should be met in order to install a private cloud gateway for MaaS:
+
+* Private cloud gateway IP requirements:
+    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.
+    * 1 IP for Kubernetes control-plane.
 
 Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint.
 
-
-#### Generate pairing code
+## Generate pairing code
 
 Navigate to the Private Cloud Gateway page under Administration and Create a new MaaS gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
-#### Generate gateway config
+## Generate gateway config
 
-Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, Environment and, Placement information as requested.
+Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, environment and, placement information as requested.
 
 ```bash
 docker run -it --rm \
@@ -111,7 +112,7 @@ E.g.:
 Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml
 
 
-#### Copy configuration file to known location:
+## Copy configuration file to known location:
 
 Copy the pcg.yaml file to a known location for easy access and updates.
 
@@ -121,7 +122,7 @@ cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
 ```
 
 
-#### Deploy Private Cloud Gateway
+## Deploy Private Cloud Gateway
 
 Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway.
 
@@ -135,8 +136,7 @@ docker run -it --rm \
 -c //opt/spectrocloud/pcg.yaml
 ```
 
-
-New machine(s) will be launched in your MaaS environment and a gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+Available bare-metal machines in your MaaS environment will be selected and a private cloud gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ## Upgrading a MaaS cloud gateway
 
@@ -159,27 +159,26 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 * Update the size from 1 to 3.
 * The gateway upgrade begins shortly after the update. Two new nodes are created and the gateway is upgraded to a 3-node cluster.
 
+# Creating a MaaS Cloud Account
 
-## Creating a MaaS Cloud Account
+A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired.
 
-A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
-
-To create a MaaS cloud account, proceed to project settings and select 'create cloud account' under MaaS. Fill the following values to the cloud account creation wizard.
+To create a MaaS cloud account, proceed to project settings and select 'create cloud account' under MaaS. Fill the following values in the cloud account creation wizard.
 
 |Property|Description |
 |:---------------|:-----------------------|
 |  Account Name |  Custom name for the cloud account   |
 |   Private cloud gateway|    Reference to a running cloud gateway |
 |  API Endpoint |  API Endpoint of the gateway   |
-| API Key|
+| API Key| API token |
 
 Validate the above MaaS credentials to create your MaaS cloud account.
 
-## Creating a MaaS Cluster
+# Deploying a bare-metal cluster using MaaS
 
 The following steps need to be performed to provision a new MaaS cluster:
 
-* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the machines deployed on the cloud/data center environments.
+* Provide basic cluster information like name, description, and tags.
 
 * Select a cluster profile created for the  MaaS environment. The profile definition will be used as the cluster construction template.
 
@@ -211,7 +210,7 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
 
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-## Deleting a MaaS Cluster
+# Deleting a MaaS Cluster
 The deletion of a MaaS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a MaaS cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
 * Invoke a delete action from the cluster settings
