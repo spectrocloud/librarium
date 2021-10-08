@@ -11,31 +11,40 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+# Overview
 
+Following are some of the architectural highlights of Azure clusters deployed by Spectro Cloud:
 
-# Azure Cluster
-
-Azure cluster resources are placed within an existing Resource Group, and nodes will be provisioned within a Virtual Network that is either auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  Worker nodes will be distributed across multiple AZs.
-
-None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed through a public LB.
+* Azure cluster resources are placed within an existing Resource Group.
+* Nodes are provisioned within a Virtual Network that is auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  
+* Worker nodes are distributed across multiple AZs.
+* None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed  through a public load balancer.
 
 ![azure_cluster_architecture.png](azure_cluster_architecture.png)
 
-## Creating an Azure cloud account
+# Prerequisites
 
-To create an Azure cloud account, we need:
+The following prerequisites must be met before deploying a workload cluster in Azure:
+
+* You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
+* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Spectro Cloud for Azure cloud.
+
+# Creating an Azure cloud account
+
+To create an Azure cloud account, we would need:
 
 * Client ID
 * Tenant ID
 * Client secret
 
-For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps to get the required details:
+For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles and create the client secret:
 
-* To create an AAD Application from the Azure portal, follow the [Create a new AAD Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) link. With this, the ClientID and TenantID are created and can be noted down.
+* Follow the steps described [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) to create a new Azure Active Directory application. Note down your ClientID and TenantID .
 * On creating the application, a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link.
-* To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plaintext later.
+* Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-## Creating an Azure Cluster
+# Deploying an Azure Cluster
 
 The following steps need to be performed to provision a new Azure cluster:
 

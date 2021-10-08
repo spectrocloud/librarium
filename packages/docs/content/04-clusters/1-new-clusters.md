@@ -7,31 +7,28 @@ hideToC: false
 fullWidth: false
 ---
 
-import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
-import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from '@librarium/shared/src/components/ui/Tooltip';
 
 
-# Deploying your first cluster 
+# New Clusters 
 
-Deploying your first [cluster](https://kubernetes.io/docs/setup/best-practices/cluster-large/#setup) should be a walk in the park. As an overview, Spectro Cloud mandates the creation of a cluster profile before a cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> A Cluster Profile contains the configurations needed for your cluster. The cluster profile helps you prepare a readymade configuration of - the OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without which a cluster profile cannot be created. There are a host of other layers and components available to add in the cluster profile (load balancers, authentication, monitoring, and logging, etc.) which are detailed in the [cluster profile](/cluster-profiles/) section.
+Spectro Cloud supports provisioning and end-to-end lifecycle managent of kubernetes clusters (workload clusters) on various public clouds, private clouds as well as on bare metal servers. On public clouds, Spectro Cloud supports provisioning new clusters using the cloud provider's infrastructure by provisioning new VMs for control plane and woker pools as well as through their managed kubernetes services such as EKS, AKS etc. Provisioning of clusters on private environments like VMware, OpenStack etc reuires a Private Cloud Gateway (PCG) to be installed for Spectro Cloud to be able to install kubernetes clusters.
 
+<InfoBox>
+Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip>. You can use one of the cluster profiles provided out-of-the-box or create a new one. 
+</InfoBox>
 
-<WarningBox>
+# Cloud Providers
 
-The creation of cluster profiles is a mandatory prerequisite for deploying Spectro Cloud clusters.
+The following pages provide details instructions for setting up new workload clusters in various cloud environments:
 
-</WarningBox>
-
-
-## We support the following clusters:
-
-* [AKS Cluster](/clusters/new-clusters/aks)
-* [AWS Cluster](/clusters/new-clusters/aws)
-* [Azure Cluster](/clusters/new-clusters/azure)
-* [EKS Cluster](/clusters/new-clusters/eks)
-* [GCP Cluster](/clusters/new-clusters/gcp)
-* [MaaS Cluster](/clusters/new-clusters/maas)
-* [OpenStack Cluster](/clusters/new-clusters/openstack)
-* [VMWare Cluster](/clusters/new-clusters/vmware)
+* [Amazon EC2](/clusters/new-clusters/aws)
+* [Amazon Elastic Kubernetes Service (EKS)](/clusters/new-clusters/eks)
+* [Azure](/clusters/new-clusters/azure)
+* [Azure Kubernetes Service (AKS)](/clusters/new-clusters/aks)
+* [GCP](/clusters/new-clusters/gcp)
+* [Bare Metal using Canonical's Metal-as-a-Service (MaaS)](/clusters/new-clusters/maas)
+* [OpenStack](/clusters/new-clusters/openstack)
+* [VMWare](/clusters/new-clusters/vmware)
