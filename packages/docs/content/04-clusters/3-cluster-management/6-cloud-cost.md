@@ -1,5 +1,5 @@
 ---
-title: "Cloud Cost Calculation"
+title: "Cluster Costs"
 metaTitle: "Calculate Cloud Cost in Spectro Cloud"
 metaDescription: "Calculate Cloud Cost in Spectro Cloud"
 hideToC: false
@@ -11,11 +11,11 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+# Overview
 
+Spectro Cloud calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools as well as usage cost breakdown by namespaces based on actual resource utlization within the namespace.
 
-# Cloud Cost Calculation
-
-## Cloud Cost
+# Cloud Cost
 
 Cluster cloud cost is the sum of the estimated cost of all the nodes launched in the cluster. The cost calculation is done based on the instance type and storage type selected for each machine pool.
 
@@ -39,21 +39,25 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 |worker-pool cost = ( 3 X $0.0992 ) + ( 60 X $0.00014 ) = $0.306/hour|
 |Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour|
 
-## Kube Cost
-Kube cost is calculated based on the pods' actual CPU & Memory usage and includes the PVC storage size claimed. The pod cost calculation is done by dividing the instance price into CPU and memory proportion of the instance category.
+<InfoBox>
+    For private clouds like VMware, OpenStack, MaaS etc, the unit rate for CPU and Memory can be confgured as an administrative setting. These rates are used in place of instance type rates for cost caluclation.
+</InfoBox>
 
 
-|Instance Type Category| CPU : Memory|
+# Usage Cost
+Usage cost is calculated based on the pods' actual CPU & Memory usage and includes the PVC storage size claimed. The pod cost calculation is done by dividing the instance type rate into CPU rate and memory rate proportional to the instance type category. 
+
+|Instance Type Category| CPU : Memory |
 |--|--|
-|General Purpose|65:35|
-|Compute Optimized|65:35|
-|Memory-Optimized|25:75|
+|General Purpose|65% : 35%|
+|Compute Optimized|65% : 35%|
+|Memory-Optimized|25% : 75%|
 
 |**FORMULAS FOR CALCULATION** ||
 |--|--------------|
-|Pod CPU Cost = (CPU Proportion x Instance Price ) x Pod CPU Usage|
-|Pod Memory Cost = (Memory Proportion x Instance Price) x Pod Memory Usage|
-|Pod Storage Cost =  PVC Storage Size x Storage Price|
+|Pod CPU Cost = (CPU Rate x Instance Rate ) x Pod CPU Usage|
+|Pod Memory Cost = (Memory Proportion x Instance Rate) x Pod Memory Usage|
+|Pod Storage Cost =  PVC Storage Size x Storage Rate|
 |Pod Cost = Pod CPU Cost + Pod Memory Cost + Pod Storage Cost|
 
 **Example 2**
@@ -69,3 +73,6 @@ For the cluster configuration of master-pool & worker-pool considers in example 
 |Pod Cost = $0.012896 + $0.006944 + $0.0014 = $0.02124/hour|
 
 
+<InfoBox>
+    Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and private)
+</InfoBox>
