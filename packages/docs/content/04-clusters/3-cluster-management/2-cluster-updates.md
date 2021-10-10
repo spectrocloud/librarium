@@ -27,6 +27,7 @@ Updates to pack configuration may result in a conflict if the configuration was 
 ![Cluster Update Details](/cluster_update_available_detail.png)
 
 
+
 ## Instructions:
 * Navigate to the cluster profiles page and choose the profile to be updated. 
 * Make the desired changes. These include add/delete layers, change pack version, change pack values etc. Save your changes. 
