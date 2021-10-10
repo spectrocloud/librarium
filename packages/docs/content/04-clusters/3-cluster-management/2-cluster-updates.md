@@ -12,34 +12,22 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-# Updates
+# Overview
 
-Spectro Cloud supports various kinds of updates to running clusters such as upgrade of K8s version, upgrade of add-on versions, addition of new add-ons or removal of exsting onest etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
+Spectro Cloud supports various kinds of updates to running clusters such as upgrade of K8s version, upgrade of add-on versions, addition of new add-ons or removal of exsting ones etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
 
-## Cluster update notifications
-
-Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated through the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or since the previous update.
+# Cluster profile based updates
+Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated from the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or since the previous update. Users can update the clusters individually at an appropriate time. 
 
 ![Cluster Notification - Update Available](/cluster_list_update_available.png)
 
-Updates to pack configuration may result in a conflict if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes can be applied to the cluster.
+Updates to pack configuration may result in a conflict if the configuration was previously overridden within the cluster. These conflicts are presented to the user and need to be resolved before changes can be applied to the cluster.
 
 
 ![Cluster Update Details](/cluster_update_available_detail.png)
 
-## Configuration overrides
-
-Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
-
-![Cluster Update Details](/cluster_config_override.png)
 
 
-
-# Cluster Updates
-Spectro Cloud ensures the complete life cycle utilization of its cluster for the users by promoting strong day 2 operations. In this context, cluster updates and integrations are extremely important. In Spectro Cloud, majority of the updates are rolled out through Cluster Profiles. Updates such as addition of a new layer, changes to the pack version, removal of an existing layer, changes to the layer settings or attached manifests, etc. result in update notifications on all the clusters that were instantiated from that cluster profile.  Users can check, confirm and incorporate the updates to their running clusters at an appropriate time.
-
-Additionally, users may changes like overriding pack settings or manifest settings directly on the clusters. 
- 
 ## Instructions:
 * Navigate to the cluster profiles page and choose the profile to be updated. 
 * Make the desired changes. These include add/delete layers, change pack version, change pack values etc. Save your changes. 
@@ -52,7 +40,7 @@ Additionally, users may changes like overriding pack settings or manifest settin
 * Repeat this process for other clusters to be upgraded.
 
 
-# Examples - Update Notifications
+## Examples - Update Notifications
 
 |Update Type     |Description|Notification Example                   |
 |:---------------|:---------|:-----------------------|
@@ -67,7 +55,7 @@ Pack Version Upgrade |The existing pack version is upgraded to a different versi
 **Note:**
 Prior to applying the notifications that result from a profile update, if the corresponding changes are reverted, the notification is automatically cleared. 
  
-# Examples - Notification settings
+## Examples - Notification settings
 
 As described above, when notifications originate from changes to pack settings or manifest, they are accompanied with a settings dialog with a split pane showing differences in values. Following are a few examples of such scenarios:
 
@@ -80,4 +68,13 @@ As described above, when notifications originate from changes to pack settings o
 |Pack Version Changed|No|Original pack settings| Updated pack settings| Yes| Review and/or modify if desired|
 |Pack Version Changed|Yes|Updated settings from Cluster Profile| Current settings from cluster| No| Resolve all conflicts|
 
+# Configuration overrides
 
+Every pack installed via cluster profile provides a set of out-of-the-box default settings. These can be overridden at the time of launching a new cluster, or  any time afterwards for a running cluster. Besides basic defaults, Spectro Cloud also provides useful presets. Presets are preconfigured configuration blocks logically grouped together. These can be leveraged to quickly turn a feature on/off. As an example, enabling ingress for a Promethues/Grafana pack requires a bunch of settings to be added. The ingres preset for the prometheus pack makes it really easy to make this change. 
+
+![Cluster Update Details](/cluster_config_override.png)
+
+
+<InfoBox>
+    Supported for all cluster types (new, imported) and cloud types (public, private, managed)
+</InfoBox>

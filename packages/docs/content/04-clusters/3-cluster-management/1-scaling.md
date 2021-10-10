@@ -25,7 +25,7 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 The master node pool may be scaled from 1 to 3 or 3 to 5 nodes, etc. Scale-down operation is not supported for master nodes.
 </InfoBox>
 
-## Reconfiguring the Cluster Nodes
+# Reconfiguring the Cluster Nodes
   
 The following steps need to be performed to reconfigure worker pool nodes: 
 * Access the 'Nodes' view for the cluster.
@@ -34,7 +34,7 @@ The following steps need to be performed to reconfigure worker pool nodes:
 * Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted one by one and replaced by new nodes launched with a new instance type configured.
 * Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
-## Adding a New Worker Pool
+# Adding a New Worker Pool
 
 The following steps need to be performed to add a new worker node pool to a cluster:-
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
@@ -45,8 +45,13 @@ The following steps need to be performed to add a new worker node pool to a clus
     * Save the node pool settings. The new worker pool settings are updated and cluster updates begin within a few minutes. Provisioning status is updated with the ongoing progress of tasks related to the addition of new nodes.
 
 
-## Removing a Worker Pool
+# Removing a Worker Pool
 The following steps need to be performed to remove a worker pool from the cluster:
 * Access the ‘Nodes’ view of the cluster.    
 * Delete the desired worker pool and confirm the deletion.
 * Upon confirmation, the worker node deletion begins in a few minutes.
+
+
+<InfoBox>
+    Reconfiguration is not supported for existing clusters inported into Spectro Cloud for any cloud type. 
+</InfoBox>
