@@ -16,11 +16,14 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Forward Reverse Proxy
-FRP is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. FRP allows the Spectro Cloud customers to expose any HTTP/HTTPS or any TCP/UDP service behind a NAT or firewall to the internet by a server with a public IP address. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This will enable the Kubernetes endpoint to be accessible via a Proxy Server and the endpoint can be found in the kubeconfig downloaded from our Cluster Overview page and in the Kubernetes API section of Cluster Overview page.
+FRP is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This will enable the Kubernetes endpoint to be accessible via a Proxy Server and the endpoint can be found in the kubeconfig downloaded from our Cluster Overview page and in the Kubernetes API section of Cluster Overview page.
 
 
 <InfoBox>
-Port 443 needs to be Open for Outbound Communication.
+ 
+Port 443 needs to be Open for Outbound Communication. <br />
+Do not change any values which are available by default, as it is required by our backend system to set the correct configurations.
+
 </InfoBox>
 
 ## Versions Supported
@@ -33,10 +36,3 @@ Port 443 needs to be Open for Outbound Communication.
 </Tabs.TabPane>
 </Tabs>
 
-## References
-
-https://github.com/fatedier/frp
-
-https://gabrieltanner.org/blog/port-forwarding-frp
-
-https://securityonline.info/frp-reverse-proxy/

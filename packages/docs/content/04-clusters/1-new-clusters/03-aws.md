@@ -593,7 +593,7 @@ The following steps need to be performed to provision a new AWS cluster:
 <InfoBox>
  The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
 
-kubernetes.io/role/elb = 1
+kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public
 kubernetes.io/cluster/[ClusterName] = shared
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned

@@ -21,7 +21,7 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 
 ## Development Cluster Profile
 
-![Development Profile](./dev_profile_new_2.png)
+![Development Profile](./development.png)
 
 * All layers are built with smart tags to enable automatic upgrades of clusters to the newest releases.
 * Kubernetes dashboard is the only integration enabled.
@@ -32,7 +32,7 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 
 ## Production Cluster Profile
 
-![Production Profile](./prod_profile_new_2.png)
+![Production Profile](./production.png)
 
 * All layers are pinned to specific versions. Automatic upgrades are disabled.
 * Centralized logging enabled - Elastic Search, Fluentd, Kibana.
