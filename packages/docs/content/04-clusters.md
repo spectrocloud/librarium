@@ -31,7 +31,7 @@ The out of the box images are hosted either in the public cloud (AWS - AMI, Azur
 ## Customization
 Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
-### Customize out of the box images
+### Customize Out of the Box Images
 
 Spectro Cloud's out of the box images are security-hardened and have Kubernetes components pre-installed. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Spectro Cloud’s orchestration engine creates a new image by instantiating a VM instance from the out of box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
@@ -114,7 +114,7 @@ Spectro Cloud enables quick access to the application services installed on the 
 
 Typically when a cluster lifecycle action such as provisioning, upgrade, or deletion runs into a failure, it does not result in an outright error on the cluster. The Spectro Cloud orchestration engine follows the reconciliation pattern wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into a variety of issues related to cloud infrastructure availability, lack of resources, networking issues, etc.
 
-## Cluster conditions
+## Cluster Conditions
 
 Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
@@ -139,7 +139,7 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration lifecycle may require access to the various containers, nodes, and Kube system logs. Spectro Cloud automates this log collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
 
-### To Collect the logs:
+### To Collect the Logs:
 
 * Select the running cluster
 * Go to settings and, select download logs.

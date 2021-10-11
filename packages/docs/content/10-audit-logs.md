@@ -36,3 +36,59 @@ The audit logs can be filtered based on user and resource attributes. The follow
 # Adding Update Note
 
 For certain resources like the Cluster Profile, users can associate a custom update note in addition to the generic audit event log. On a successful save of the Cluster Profile, the user will be prompted to provide an update note about the changes made on the profile. This message will be shown when the user selects an audit log from the list.
+
+# Pushing the Audit Log to the AWS Cloud Trail
+
+Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the AWS cloudtrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
+
+<WarningBox>
+An AWS account with cloud trail created is the prerequisite.
+
+The permissions listed needs to be enabled for CloudWatch.
+</WarningBox>
+
+## Permission List
+
+Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for cloudwatch:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Effect": "Allow",
+"Action": [
+"logs:DescribeLogGroups",
+"logs:CreateLogGroup",
+"logs:CreateLogStream",
+"logs:PutLogEvents",
+"logs:DeleteLogStream",
+"logs:DescribeLogStreams"
+],
+"Resource": [
+"<CLOUDWATCH-LOG-GROUP-ARN>;"
+]
+}
+]
+}
+```
+## Instructions to Push Cluster Audit Logs to AWS Trails 
+
+* Go to Admin Settings and select Audit Trails.
+* Select the wizard ‘Add new Audit Trail’ and fill in the following details
+
+  * Audit Name: Custom name to identify the logs
+  * Type: Choice of monitoring service (currently set to AWS Cloud Watch)
+  * Group: The log group name obtained from cloud watch logs of AWS cloud trail creation
+  * Region: The region of the AWS account
+  * Method of verification
+   	* Credentials:
+Use the AWS Access Key and Secret Access Key to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
+   	* STS:
+Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
+	
+* Stream Optional
+* Confirm the informations to complete the audit trail creation wizard.
+* The audit trail could be edited and deleted using the kebab menu.
+
+
