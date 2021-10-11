@@ -28901,12 +28901,18 @@
         "items"
       ],
       "properties": {
+        "cpuUnit": {
+          "type": "string"
+        },
         "items": {
           "type": "array",
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1DashboardWorkspace"
           }
+        },
+        "memoryUnit": {
+          "type": "string"
         }
       }
     },
@@ -41111,6 +41117,10 @@
         },
         "batchInterval": {
           "type": "integer"
+        },
+        "enabled": {
+          "type": "boolean",
+          "x-omitempty": false
         },
         "retentionPeriod": {
           "type": "integer"
