@@ -110,6 +110,3 @@ While deploying the platform installer for "Spectro Cloud Repository settings" u
 
 4. Power on the VM once deployment is completed.
 
-<WarningBox>
-We mandates the use of latest 3 versions of K8S with our air gap repo.
-</WarningBox>
