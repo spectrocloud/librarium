@@ -23,7 +23,7 @@ Spectro Cloud platform capabilities are exposed via REST APIs that comply with o
 
 # Paths
 
-Every API's URI has the prefix of the version and the Spectro Cloud resource, such as: `v1alpha1/spectroclusters/...`
+Every API's URI has the prefix of the version and the Spectro Cloud resource, such as: `v1/spectroclusters/...`
 
 # Authentication
 

@@ -37,7 +37,7 @@ For example, let us consider a non-admin user with the email janedoe@thefirm.com
 ## Authentication
 
 ```bash
-POST → https://api.spectrocloud.com/v1alpha1/auth/authenticate
+POST → https://api.spectrocloud.com/v1/auth/authenticate
 ```
 
 **REQUEST**
@@ -68,7 +68,7 @@ With this the user is authenticated successfully.
 ## Creating a cluster profile
 
 ```bash
-POST → https://api.spectrocloud.com/v1alpha1/clusterprofiles
+POST → https://api.spectrocloud.com/v1/clusterprofiles
 ```
 
 BODY:
@@ -135,7 +135,7 @@ RESPONSE BODY:
 ## Creating a VMware cluster
 
 ```bash
-POST → https://api.spectrocloud.com/v1alpha1/spectroclusters/vsphere
+POST → https://api.spectrocloud.com/v1/spectroclusters/vsphere
 ```
 
 **REQUEST**
@@ -233,7 +233,7 @@ RESPONSE BODY:
 ## Updating the Cluster Profile
 
 ```bash
-PUT → https://api.spectrocloud.com/v1alpha1/clusterprofiles/{uid}/packs/{packName}/versions/{packVersion}/values
+PUT → https://api.spectrocloud.com/v1/clusterprofiles/{uid}/packs/{packName}/versions/{packVersion}/values
 ```
 
 **RESPONSE**
@@ -244,7 +244,7 @@ DESCRIPTION: The resource was updated successfully
 ## Updating the cluster
 
 ```bash
-PUT → https://api.spectrocloud.com/v1alpha1/spectroclusters/vsphere/{uid}
+PUT → https://api.spectrocloud.com/v1/spectroclusters/vsphere/{uid}
 ```
 
 **REQUEST**
