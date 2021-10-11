@@ -21,7 +21,6 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 Spectro Cloud tenant clusters can be deployed and run without a direct internet or external network connectivity.
 
 ## Pre-Requisites
-
 * Host machine for the mirror servers.
 
 	* 2 (v)CPU
@@ -33,11 +32,13 @@ Spectro Cloud tenant clusters can be deployed and run without a direct internet 
 	* 443 
 	* 5000 
 	* 8000
-
+* K8S image ova should be uploaded to the vCenter with r_&lt;imagename&gt; to spectro-templates folder (The latest ova image can be collected from our support team).
 	
 <InfoBox>
+
 For a large number of nodes, increase the sizing of CPU/RAM.
 Storage sizing depends on your intended update frequency and data retention model.
+
 </InfoBox>
 
 ## Setup an Airgap Repo
@@ -109,3 +110,6 @@ While deploying the platform installer for "Spectro Cloud Repository settings" u
 
 4. Power on the VM once deployment is completed.
 
+<WarningBox>
+We mandates the use of latest 3 versions of K8S with our air gap repo.
+</WarningBox>

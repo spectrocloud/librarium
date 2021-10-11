@@ -77,4 +77,4 @@ The On-Prem System Console provides options for performing various administrativ
 6. Copy the tenant activation link and invoke it in a browser window to activate the newly created tenant.
 7. Enter the desired password and proceed and login as a tenant into the Management Console.
 
-Next, continue to perform various tasks as desired from the management console like [creating cloud accounts](/clusters?clusterType=vmware_cluster#creatingavmwarecloudaccount), [creating tenant IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement), [creating cluster profiles](/cluster-profiles/task-define-profile/) and [launching Kubernetes clusters](/clusters/#creatingclusters).
+Next, continue to perform various tasks as desired from the management console like creating gateways, cloud accounts, cluster profiles, and launching of clusters.

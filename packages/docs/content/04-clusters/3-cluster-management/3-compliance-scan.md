@@ -21,9 +21,13 @@ This scan examines the compliance of deployed Kubernetes security features again
 
 All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run, and it is suggested to be tested manually. 
 
+![kcs.png](kcs.png)
+
 # Penetration Testing
 
 Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Spectro Cloud leverages an open-source tool called Kube Hunter from Aqua Security to perform this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of vulnerabilities found in both modes is shown on the Spectro Cloud UI. Users can filter the report to view just the internal or external report if required. 
+
+![kpt.png](kpt.png)
 
 # Conformance Testing
 
@@ -31,6 +35,7 @@ Kubernetes conformance testing is about validating your Kubernetes configuration
 
 The scan summary of total passed and failed tests are displayed while the test is in progress. In addition, a complete overview of the tests that were run is displayed after the completion of the report. 
 
+![conformance.png](conformance.png)
 
 # Scan Options
 
