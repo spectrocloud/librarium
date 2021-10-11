@@ -130,3 +130,32 @@ Retrieve the JSON credential file for your service account. For detailed instruc
 To create a GCP cloud account provide a name for the account and enter the JSON credentails for your service account either by pasting into the space provided or uploading from your JSON credentail file. Validate and save your account. 
 
 # Deploying a GCP Cluster
+The following steps need to be performed to provision a new GCP cluster:
+
+* Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
+* Select a cluster profile created for GCP cloud. The profile definition will be used as the cluster construction template.
+* Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+* Provide the GCP Cloud account and placement information.
+  * Cloud Account - Select the desired cloud account. GCP cloud accounts with GCP credentials need to be pre-configured in project settings.
+  * Project - The project to which the cluster belongs.
+  * Region - Choose the desired GCP region where you would like the clusters to be provisioned.
+  * SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
+  * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+* Configure the master and worker node pools. A master and a worker node pool are configured by default.
+    - Name - a descriptive name for the node pool.
+    - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
+    - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
+    - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
+    - Disk size - set the desired disk size.
+* Configure the worker pool as per requirements or copy the master pool configuration.
+* Users can configure the cluster policies as per need, these could be schedules after cluster creation also.
+* Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+
+# Deleting a GCP Cluster
+  The deletion of a GCP cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a GCP cluster:
+
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
+* Invoke a delete action available on the page
+* Confirm delete action
+Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
