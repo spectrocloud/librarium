@@ -21,7 +21,7 @@ The following sections describe these capabilities in detail:
 * [Reconfigure](/clusters/cluster-management/scaling) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type for public clouds). Add additional fault domains such as availability zones to a node pool.
 
 
-* [Updates](/clusters/cluster-management/cluster-updates) - Add/remove add-ons; Upgrade versions of the core packs (Kubernetes, CSI, CNI); Upgrade versions of add-on layers (Monitroing, Security, etc.); Update configuration for packs installed at any layer.
+* [Updates](/clusters/cluster-management/cluster-updates) - Add/remove add-ons; Upgrade versions of the core packs (Kubernetes, CSI, CNI); Upgrade versions of add-on layers (Monitoring, Security, etc.); Update configuration for packs installed at any layer.
 
 
 * [Compliance Scans](/clusters/cluster-management/compliance-scan) - Perform continuous compliance checks to ensure your clusters are secure, conformant and compliant.
@@ -35,8 +35,6 @@ The following sections describe these capabilities in detail:
 
 * [Cost Visibility](/clusters/cluster-management/cluster-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration; Get additional insights into per namespace cost (Usage Cost) calculated based on the amount of resources consumed within the namespace.
 
-
-* [Workload Visibility](/clusters/cluster-management/workloads) - Get visibility into the workloads running in your clusters; Get a near real-time update on the status of various Kubernetes resources such as pods, deployments, replica sets, etc.; View detailed resource consumption over a period for pods.
 
 
 <InfoBox>
