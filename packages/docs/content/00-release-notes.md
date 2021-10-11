@@ -16,6 +16,16 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# September 14, 2021 - Release 1.14.0
+
+Spectro Cloud 1.14 is released with additional health alert conveyances, secured log storage, transparent cost features, and scalable enterprise cluster backup.
+* Spectro Cloud users can now push their audit logs to the AWS cloudtrail to enhance continuous monitoring and troubleshooting of the workload clusters.
+* Spectro cloud layouts instantaneous and effortless monitoring of the cluster cloud cost.
+* Now Spectro Cloud users can receive real-time alerts on cluster health at hooked external applications.
+* Spectro Cloud enterprise mode production clusters can be backed up to object storage of S3 buckets for convenient restoration.
+* Specro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local datacenters.
+* Spectro Cloud has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
+
 
 # August 14, 2021 - Release 1.13.0
 
@@ -35,7 +45,7 @@ Spectro Cloud 1.12 is released with generic cluster import, OIDC support to hand
 
 Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
 
-* Spectro now supports supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
 * Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
 
 

@@ -12,34 +12,41 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-
-# AKS Cluster
-
-Spectro Cloud enables the effortless deployment and management of containerized applications with fully-managed Azure Kubernetes Service (AKS). It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Thus uniting the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
+# Overview
 
 ![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
-## Prerequisites
-Azure Active Directory integration for the AKS cluster provisioning may optionally require the following:
-* User has to provide the Tenant Name as part of the cloud account.
-* For the Azure client mentioned in the cloud account the following API permission has to be provided
-   *  Microsoft Graph: Group.Read.All (Application Type)
-   *  Microsoft Graph: Directory.Read.All (Application Type)
+# Prerequisites
+
+The following prerequisites must be met before deploying an AKS workload cluster:
+
+* You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
+* You must have permissions to deploy clusters using AKS service on Azure.
+* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Spectro Cloud for AKS.
+* Following are additional prerequisites if Azure Active Directory integration for the AKS cluster is desried:
+   * A Tenant Name must be provided as part of the Azure cloud account creation in Spectro Cloud.
+   * For the Azure client used in the Aure cloud account the following API permission has to be provided:
+      *  Microsoft Graph: Group.Read.All (Application Type)
+      *  Microsoft Graph: Directory.Read.All (Application Type)
+
 These permissions can be configured from the Azure cloud console under App registrations > API permissions for the specified App
 
-## Creating an Azure cloud account
-To create an Azure cloud account, we need:
+# Creating an Azure cloud account
+
+To create an Azure cloud account, we would need:
+
 * Client ID
 * Tenant ID
 * Client secret
 
-For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps to get the required details:
+For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles and create the client secret:
 
-* To create an AAD Application from the Azure portal, follow the [Create a new AAD Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) link. With this, the ClientID and TenantID are created and can be noted down.
+* Follow the steps described [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) to create a new Azure Active Directory application. Note down your ClientID and TenantID .
 * On creating the application, a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link.
-* To create the client secret, [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret). Store the Client Secret safely as it will not be available in plaintext later.
+* Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-## Creating an AKS Cluster
+# Deploying an AKS Cluster
 The following steps need to be performed to provision a new AKS cluster:
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the AKS Cluster. The profile definition will be used as the cluster construction template.

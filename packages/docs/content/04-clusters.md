@@ -24,12 +24,11 @@ Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A c
 
 # Images
 
-Spectro Cloud provides VM images for cluster computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, RHEL. These images are security-hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
+Spectro Cloud provides VM images for cluster computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu, CentOS, etc. These images are security-hardened based on the respective CIS Benchmarks. Kubernetes components such as kubelet, kubeadm, etc. are pre-installed in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
 ## Customization
-
 Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
 ### Customize Out of the Box Images
@@ -75,22 +74,9 @@ Spectro Cloud follows security best practices recommended by the various cloud p
 Spectro Cloud provides several options to manage Kubernetes clusters on an ongoing basis. These include options to scale up/down the cluster by adding/reducing the number of nodes in a node pool, add additional worker pools, resize nodes in a node pool by modifying the instance type, and add additional fault domains such as availability zones to a node pool.
 
 <InfoBox>
-  Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. The  cluster control plane subsequently reconciles the changes to bring associated clusters to their desired state.
+  Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrage is then performed to bring associated clusters to their desired state.
 </InfoBox>
 
-# Updates
-
-Spectro Cloud supports various kinds of updates to running clusters. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
-
-## Cluster update notifications
-
-Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, need to be applied to the cluster profile. These changes result in update notifications on the clusters and can be propagated to the clusters at an appropriate time. The update notification consists of detailed information about all the changes applied to the profile since the initial installation or since the previous update.
-
-Updates to pack configuration may result in a conflict if the configuration was previously overridden in the cluster. The conflicts are presented to the user and need to be resolved before changes are applied to the cluster.
-
-## Configuration overrides
-
-Configuration for packs can be updated in a cluster at any time. The changes are applied immediately to the cluster.
 
 # Cluster Health
 
@@ -101,31 +87,7 @@ Overall health is computed based on the following factors:
 * Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable, etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
 * Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory, etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
-We send regular alert messages on cluster health to out customers with our Alert Management Services.
-
-## Spectro Cloud Cluster Health Alert Management
-Spectro Cloud defines custom health alerts for the workload clusters. The users can now set up alerts as emails or Webhook alert messages that pop-ups to users’ chat rooms, any preferred web pages or email. When an alert triggers from the cluster, the Webhook makes an HTTP POST request on the URL. Webhook passes JSON formatted information about the alert in the body of the POST request. To set up an alert, get the hook URL of the target source. E.g., If you want to hook the alerts to your Slack room, Slack's Webhook URL is used. The alert can also be received at any email id preferred by the customer.
-
-### Create Your Alert
-* To manage your alerts, go to project settings
-* Click Alerts to access the Manage Alerts page.
-* Users can create two types of alerts,
-	* Email Alerts
-	* Webhooks Alerts
-* For Email Alerts:
-	* Enable ClusterHealth
-	* Select Email all project members if the alert needs to be received by every project member or specify the email ids of members who are supposed to receive the alerts.
-       	* Save the settings to start receiving the health alerts from your workload cluster.
-* For Webhooks Alert
-	* Click on add new webhook
-	* Fill the webhook creation wizard with the following details,
-		* Alert type: ClusterHealth
-		* Method: POST to Post the alert message to the hooked target
-		* URL: URL of the target to be hooked to receive alerts.
-		* Body: JSON formatted alert message
-		* Headers: Optional header as key-value pair depending on the target
-		* Active: Select and deselect keep the alert active or inactive.
-	* Confirm the details provided to receive the health alerts of your workload cluster to the hooked target.
+![Cluster Health](04-clusters/cluster_health.png)
 
 
 # Usage Monitoring
@@ -138,11 +100,15 @@ Spectro Cloud continuously monitors cluster resources and reports the usage for 
 * CPU Requests - Total CPUs requested across all pods.
 * Memory Requests - Total memory requested across all pods.
 
+![Cluster Update Details](04-clusters/cluster_usage_metrics.png)
+
 Additionally, usage metrics for individual nodes as well as node conditions are accessible from the node details page.
 
 # Application Services
 
 Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include not only the applications and services deployed through Spectro Cloud but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
+
+![Cluster Update Details](04-clusters/cluster_services.png)
 
 # Troubleshooting
 
@@ -151,6 +117,8 @@ Typically when a cluster lifecycle action such as provisioning, upgrade, or dele
 ## Cluster Conditions
 
 Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
+
+![Cluster Update Details](04-clusters/cluster_conditions.png)
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
@@ -191,8 +159,6 @@ At times it might be required to work with the Spectro Cloud support team to tro
 
 
 <InfoBox>
-
-* Audit logs are retained for the last 1 year.
 
 * In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
 
