@@ -14,7 +14,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 
 
-# Reconfiguring the Cluster Nodes
+# Scaling
 Scaling a cluster up or down involves changing the size of node pools. The following are the steps to scale up/down a cluster:
 * Access the ‘Nodes’ view of the cluster
 * For the desired node pool, change the size directly from the nodes panel or edit node pool settings.
