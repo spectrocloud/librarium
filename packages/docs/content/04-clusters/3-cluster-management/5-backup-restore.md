@@ -13,8 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud provides a convenient backup option to backup the Kubernetes cluster state into object storage and restore it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc, persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open source tool called Velero to provide these capabilities. Multiple backups of a cluster can be maintained simultaneously.
-
+Spectro Cloud provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 # Backup Locations
 
 AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
@@ -131,11 +130,10 @@ Backups can be scheduled or initiated on an on-demand basis as required. The fol
 * Every two months on the 1st at midnight.
 
 # Restore
-
-Backups created manually or as part of schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. You would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore can be tracked from the target cluster's backup/restore page. The Restore can be done to the cluster which is running on the same project.
+Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the Restore can be tracked from the target cluster's backup/restore page. Finally, the Restore can be done to the cluster which is running on the same project.
 
 <WarningBox>
-When restoring backups to a cluster running on a cloud that is different from the source cluster, there might be some manual steps required. As an example, you might need to pre-create a storage class on the cluster before initiating restore. This applies to the clusters which are created on EKS to other clouds or Vice versa.
+When restoring backups to a cluster running on a cloud different from the source cluster, some manual steps might be required. As an example, you might need to pre-create a storage class on the cluster before initiating Restore. This applies to the clusters which are created on EKS to other clouds or Vice versa.
 </WarningBox>
 
 <WarningBox>
@@ -143,5 +141,5 @@ When restoring your backup to a cluster launched using a cloud account different
 </WarningBox>
 
 <InfoBox>
-    This operaton can be performed on all cluster types across all clouds
+    This operation can be performed on all cluster types across all clouds
 </InfoBox>

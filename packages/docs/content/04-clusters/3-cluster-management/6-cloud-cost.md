@@ -1,5 +1,5 @@
 ---
-title: "Cluster Costs"
+title: "Cost Visibility"
 metaTitle: "Calculate Cloud Cost in Spectro Cloud"
 metaDescription: "Calculate Cloud Cost in Spectro Cloud"
 hideToC: false
@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools as well as usage cost breakdown by namespaces based on actual resource utlization within the namespace.
+Spectro Cloud calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
 
 # Cloud Cost
 
@@ -40,14 +40,14 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 |Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour|
 
 <InfoBox>
-    For private clouds like VMware, OpenStack, MaaS etc, the unit rate for CPU and Memory can be confgured as an administrative setting. These rates are used in place of instance type rates for cost caluclation.
+    For private clouds like VMware, OpenStack, MaaS, etc., the unit rate for CPU and Memory can be configured as an administrative setting. These rates are used in place of instance-type rates for cost calculation.
 </InfoBox>
 
 
 # Usage Cost
-Usage cost is calculated based on the pods' actual CPU & Memory usage and includes the PVC storage size claimed. The pod cost calculation is done by dividing the instance type rate into CPU rate and memory rate proportional to the instance type category. 
+Usage cost is calculated based on the pods' actual CPU & Memory usage, including the claimed PVC storage size. The pod cost calculation is done by dividing the instance type rate into CPU and memory rates proportional to the instance type category. 
 
-|Instance Type Category| CPU : Memory |
+|Instance Type Category| CPU: Memory |
 |--|--|
 |General Purpose|65% : 35%|
 |Compute Optimized|65% : 35%|
@@ -76,3 +76,4 @@ For the cluster configuration of master-pool & worker-pool considers in example 
 <InfoBox>
     Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and private)
 </InfoBox>
+

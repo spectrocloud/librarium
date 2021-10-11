@@ -1,5 +1,5 @@
 ---
-title: "Workloads"
+title: "Workload Visibility"
 metaTitle: "View cluster workloads"
 metaDescription: "Browse all cluster resources such as pods, deployment sets, etc."
 hideToC: false
@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. Following is the list of resoruces shown in the workload browser:
+Spectro Cloud provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. Following is the list of resources shown in the workload browser:
 
 * Namespaces
 * Pods
@@ -24,5 +24,5 @@ Spectro Cloud provides visibility into the resources running inside workload clu
 * CronJobs
 
 <InfoBox>
-   Workloads are displayed for all cloud types (new, existing) across all cloud types (public, private).
+    Workloads are displayed for all cloud types (new, existing) (public, private) across all cloud types.
 </InfoBox>
