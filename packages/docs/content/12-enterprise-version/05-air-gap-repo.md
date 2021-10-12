@@ -94,13 +94,9 @@ Please make a note of the Spectro Cloud Repository Details, Pack Registry Detail
 
 * Download the desried worker images (OVAs) from Spectro Cloud Public Image reporsitory and upload to your vCenter. These images should be copied in a folder called 'spectro-templates'. The images should be coped with a prefix 'r_'. For eg., in order to support provisioning of Kubernetes version 1.21.3, with Ubuntu 18.0.4 operating system, the image should be renamed to "r_u-1804-0-k-1213-0.ova". The platform itself uses the version 1.20.9 therefore the worker image for that is mandatory. It should be dowloaded to the 'spectro-templates' folder and renamed to  "r_u-1804-0-k-1209-0.ova".
 
-* For each worker image downloaded in the previous step, create its reference in the appliance by running the following command:
-`touch /var/www/html/iso/<file name>` for example `touch /var/www/html/iso/u-1804-0-k-1209-0.ova`
-
 # Deploy Platform Installer
-Once the airgapped appliance is setup, deploy the platform using the steps described [here](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller). While deploying the platform installer for "Spectro Cloud Repository settings" use the Spectro Cloud Repository Details and Registry Certificate displayed during initialization.
-
-# Setup Certificates
+Once the airgapped appliance is setup, deploy the platform using the steps described [here](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller). While deploying the platform installer for "Spectro Cloud Repository settings" use the Spectro Cloud Repository Details and for the "Artifact repo certificate" field use the
+ Registry Certificate displayed during initialization.
 
 
 # Upgrade
