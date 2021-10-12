@@ -1,7 +1,7 @@
 ---
-title: "Air-Gap"
+title: "Air Gapped "
 metaTitle: "Air Gap Repo"
-metaDescription: "AirGap Repo"
+metaDescription: "Air Gap Repo"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -12,65 +12,57 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+# Overview
 
+Spectro Cloud fully supports installation of its management platform on VMware environments that have no direct or indirect connectivity to the outside world. The following 4 kinds of artifacts are typically downloaded over the internet during a typical installation and subsequent tenant cluster deployments.
 
-# AIR GAP
+* Spectro Cloud platform manifests from publicly hosted artifact repository.
+* Container images for core Spectro Cloud platform components as well as 3rd party dependencies from various container image repositories such as gcr.io, docker.io, quay.io etc
+* Spectro Cloud packs from publicly hosted pack registry.
+* VMWare Worker images (OVAs) for various K8s versions publicly hosted in Amazon S3.
 
-## Overview
+In order to enable installation into an air-gapped environment, Spectro Cloud provides an air-gapped appliance which contains the first 3 of the 4 artifacts mentioned above. Due to the size of woker images (OVAs), these are not directly available in the air-gapped appliance. The desired worker images need to be downloaded from Amazon S3 and uploaded to vCenter prior to installation as a pre-requisite.
 
-Spectro Cloud tenant clusters can be deployed and run without a direct internet or external network connectivity.
+# Pre-Requisites
 
-## Pre-Requisites
-* Host machine for the mirror servers.
-
+* Minimum specifications for the air-gapped appliance.
 	* 2 (v)CPU
 	* 4 GB RAM
 	* 100 GB Storage
-* Ports
 
+* Incoming access into the air-gapped appliance at following ports:
 	* 80 
 	* 443 
 	* 5000 
 	* 8000
-* K8S image ova should be uploaded to the vCenter with r_&lt;imagename&gt; to spectro-templates folder (The latest ova image can be collected from our support team).
+
 	
 <InfoBox>
-
-For a large number of nodes, increase the sizing of CPU/RAM.
+For a large number of worker nodes, increase the size of Air-Gapped appliance.
 Storage sizing depends on your intended update frequency and data retention model.
-
 </InfoBox>
 
-## Setup an Airgap Repo
+# Deploy Air-Gapped Appliance
 
-* Log in to the vSphere console and navigate to VMs and Templates.
-* Navigate to the Datacenter and folder you would like to use for the installation.
-* Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
+* Download Spectro Cloud's air-gapped appliance (OVA) to your local machine or jump host. Please contact Spectro Cloud support for download location.
+* Navigate to the Datacenter and folder you would like to use for the installation. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template. Choose the location of the downloaded appliance when asked to select the OVF template.
 * Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows.
-  * URL: Location of the air-gap installer
-  * Name: The name to identify the air-gap repo
-  * Virtual Machine Name: vm name
+  * Name: The name to identify the air-gapped appliance
   * Select a location for the VM: Select desired folder
   * Select the desired Datacenter, Storage, and Network for the air gap repo as you proceed through the next steps. 
   * Customize the template as follows:
-  * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. Then, install the public key in the installer VM to provide SSH access, as the user ubuntu for troubleshooting.
-  * Monitoring Console Password: A monitoring console is deployed in the air gap repo VM to provide detailed information about the installation progress and access various logs. The default monitoring console credentials are:		
-    * User Name: admin
-    * Password: admin
-* A Unique Instance ID for this instance - Specifies the instance id. This is required and used to determine if the machine should take “first boot” actions.
-* Host Name: Specifies the unique hostname for the appliance.
+    * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. This public key will be installed in the appliance and can be used to gain SSH access, as the user ubuntu for troubleshooting.
 * Finish the OVF deployment wizard and wait for the template creation. This will take a few minutes.
 * Power on the VM.
 
-## Obtain the Air-Gap Repo Information
+# Initialize Air-Gapped Appliance
 
-Power on the VM to obtain the VM/Repository IP address (repo-ip). 
-* Open terminal
-* SSH to the repository using the SSH public key (installed in the air gap repo) as an ubuntu user.
-* Once logged into the repository for the first time, follow the wizard to update the login password and login again.
-* As root user execute: airgap-setup.sh &lt;repo-ip&gt;
+Power on the air-gappped VM to obtain the IP address (repo-ip).
 
-* Execution of the above script gives the following details:
+* SSH to the air-gapped VM using the SSH public key (installed in the air gap repo) as an ubuntu user.
+* Once logged into the VM for the first time, follow the wizard to update the login password and login again.
+* As root user execute: `airgap-setup.sh <repo-ip>`
+* Execution of the above script provides the following details:
 
 |Spectro Cloud Repository Details|
 |---|
@@ -88,25 +80,41 @@ Power on the VM to obtain the VM/Repository IP address (repo-ip).
 |--|
 |Certificate for air gap environment encoded in base 64|
 
-
 <InfoBox>
-Spectro Cloud Repository Details, Pack Registry Details, and Registry Certificate must be saved and used while deploying your platform installer.
+Please make a note of the Spectro Cloud Repository Details, Pack Registry Details, and Registry Certificate. These will be used while deploying you the platform.
 </InfoBox>
 
+* Download and execute a binary specific to the version of Spectro Cloud you need to install. Contact support team for version specific binary. Eg.:
 
-* Download and execute the version-specific binary from S3 (Contact support team for the updated version specific binary)
+`curl --user spectro:XXXX https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
+
+`chmod 755 ./airgap-v1.14.24.bin`
+
+`./airgap-v1.14.24.bin`
+
+* Download the desried worker images (OVAs) from Spectro Cloud Public Image reporsitory and upload to your vCenter. These images should be copied in a folder called 'spectro-templates'. The images should be coped with a prefix 'r_'. For eg., in order to support provisioning of Kubernetes version 1.21.3, with Ubuntu 18.0.4 operating system, the image should be renamed to "r_u-1804-0-k-1213-0.ova". The platform itself uses the version 1.20.9 therefore the worker image for that is mandatory. It should be dowloaded to the 'spectro-templates' folder and renamed to  "r_u-1804-0-k-1209-0.ova".
+
+* For each worker image downloaded in the previous step, create its reference in the appliance by running the following command:
+`touch /var/www/html/iso/<file name>` for example `touch /var/www/html/iso/u-1804-0-k-1209-0.ova`
+
+# Deploy Platform Installer
+Once the airgapped appliance is setup, deploy the platform using the steps described [here](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller). While deploying the platform installer for "Spectro Cloud Repository settings" use the Spectro Cloud Repository Details and Registry Certificate displayed during initialization.
+
+# Setup Certificates
 
 
-## Deploy Platform Installer
+# Upgrade
+To upgrade Spectro Cloud version, the binaries for that version need to be installed in the air-gapped appliance. Contact Spectro Cloud support to get a link to the Spectro Cloud binary for the desired version. Download the binary to the appliance and execute it. For eg.:
 
-1. Deploy your platform installer using the Spectro Cloud Repository Details obtained from the air gap repo.
-2. Refer to [Deploy Platform Installer](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller) for detailed steps of platform installer deployment. 
+`curl --user spectro:XXXX https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
 
-<WarningBox>
-While deploying the platform installer for "Spectro Cloud Repository settings" use the Spectro Cloud Repository Details and Registry Certificate obtained from the Air-Gap Repo.
-</WarningBox>
+`chmod 755 ./airgap-v1.14.24.bin`
 
-3. Finish the OVF deployment wizard and wait for the template creation. This may take few minutes.
+`./airgap-v1.14.24.bin`
 
-4. Power on the VM once deployment is completed.
+After this, the new version will be available in the system console for upgrade.
 
+
+<InfoBox>
+The Air-Gapped installation only supports the core layers such as OS, Kubernetes, Sotrage and Network. Add-on layers are currently not supported for air-gapped envronments.
+</InfoBox>
