@@ -84,13 +84,13 @@ Please make a note of the Spectro Cloud Repository Details, Pack Registry Detail
 
 * Download and execute a binary specific to the version of Spectro Cloud you need to install. Contact support team for version specific binary. Eg.:
 
-`curl --user spectro:XXXX https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
+`curl --user <user>:<password> https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
 
 `chmod 755 ./airgap-v1.14.24.bin`
 
 `./airgap-v1.14.24.bin`
 
-* Download the desried worker images (OVAs) from Spectro Cloud Public Image reporsitory and upload to your vCenter. These images should be copied in a folder called 'spectro-templates'. The images should be coped with a prefix 'r_'. For eg., in order to support provisioning of Kubernetes version 1.21.3, with Ubuntu 18.0.4 operating system, the image should be renamed to "r_u-1804-0-k-1213-0.ova". The platform itself uses the version 1.20.9 therefore the worker image for that is mandatory. It should be dowloaded to the 'spectro-templates' folder and renamed to  "r_u-1804-0-k-1209-0.ova".
+* Download the desired worker images (OVAs) from Spectro Cloud Public Image reporsitory and upload to your vCenter. These images should be copied in a folder called 'spectro-templates'. The images should be coped with a prefix 'r_'. For eg., in order to support provisioning of Kubernetes version 1.21.3, with Ubuntu 18.0.4 operating system, the image should be renamed to "r_u-1804-0-k-1213-0.ova". The platform itself uses the version 1.20.9 therefore the worker image for that is mandatory. It should be dowloaded to the 'spectro-templates' folder and renamed to  "r_u-1804-0-k-1209-0.ova".
 
 # Deploy Platform Installer
 Once the airgapped appliance is setup, deploy the platform using the steps described [here](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller). While deploying the platform installer for "Spectro Cloud Repository settings" use the Spectro Cloud Repository Details and for the "Artifact repo certificate" field use the
@@ -100,7 +100,7 @@ Once the airgapped appliance is setup, deploy the platform using the steps descr
 # Upgrade
 To upgrade Spectro Cloud version, the binaries for that version need to be installed in the air-gapped appliance. Contact Spectro Cloud support to get a link to the Spectro Cloud binary for the desired version. Download the binary to the appliance and execute it. For eg.:
 
-`curl --user spectro:XXXX https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
+`curl --user <user>:<password> https://repo.console.spectrocloud.com/airgap/packs/airgap-v1.14.24.bin -o airgap-v1.14.24.bin`
 
 `chmod 755 ./airgap-v1.14.24.bin`
 
