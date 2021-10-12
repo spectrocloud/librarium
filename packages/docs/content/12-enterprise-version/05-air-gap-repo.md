@@ -38,7 +38,6 @@ In order to enable installation into an air-gapped environment, Spectro Cloud pr
 
 	
 <InfoBox>
-For a large number of worker nodes, increase the size of Air-Gapped appliance.
 Storage sizing depends on your intended update frequency and data retention model.
 </InfoBox>
 
@@ -60,7 +59,6 @@ Storage sizing depends on your intended update frequency and data retention mode
 Power on the air-gappped VM to obtain the IP address (repo-ip).
 
 * SSH to the air-gapped VM using the SSH public key (installed in the air gap repo) as an ubuntu user.
-* Once logged into the VM for the first time, follow the wizard to update the login password and login again.
 * As root user execute: `airgap-setup.sh <repo-ip>`
 * Execution of the above script provides the following details:
 
