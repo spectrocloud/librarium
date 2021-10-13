@@ -50,7 +50,7 @@ export function IntroButtons({ introductionHref, demoHref }) {
   return (
     <ButtonsWrapper>
       <Link to={introductionHref}>
-        <Button>What is Spectro Cloud?</Button>
+        <Button>Go to chapters</Button>
       </Link>
       <Link className="request-demo" target="_blank" to={demoHref}>
         Request Demo

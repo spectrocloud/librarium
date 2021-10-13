@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import Link from '../Link';
 
@@ -7,32 +7,37 @@ import aws from '../../assets/clouds/aws.png';
 import azure from '../../assets/clouds/azure.png';
 import google_cloud from '../../assets/clouds/google_cloud.png';
 import vmware from '../../assets/clouds/vmware.png';
-import bare_metal from '../../assets/clouds/bare_metal.png';
+import openshift from '../../assets/clouds/openshift.png';
+import openstack from '../../assets/clouds/openstack.png';
+import maas from '../../assets/clouds/maas.png';
 
 const clouds = {
   aws,
   azure,
   google_cloud,
   vmware,
-  bare_metal,
+  openshift,
+  openstack,
+  maas,
 };
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
   max-width: 1110px;
   margin: 0px auto;
   overflow: hidden;
 
-  ::after {
-    content: ' ';
-    max-width: 1109.51px;
-    width: 100%;
-    border: 1px solid #d4d4d4;
-    margin-top: 102px;
-  }
+  ${props => !props.noBorder && css`
+    ::after {
+      content: ' ';
+      max-width: 1109.51px;
+      width: 100%;
+      border: 1px solid #d4d4d4;
+      margin-top: 102px;
+    }
+  `}
 
   h3 {
     font-weight: 500;
@@ -92,22 +97,22 @@ const Icon = styled.div`
   box-shadow: 0px 5.42752px 14.9257px -2.71376px rgba(21, 24, 51, 0.22);
   margin-bottom: 32px;
   img {
-  height: 81px;
+    height: 81px;
   }
 `;
 
 const CloudName = styled.div`
   font-weight: normal;
   font-size: 24px;
-  line-height: 22px;
+  line-height: 32px;
   color: #666a80;
 `;
 
-function CloudsSection({ title, description, options = [] }) {
+function CloudsSection({ noBorder = false, noMargin, title, description, options = [] }) {
   return (
-    <Wrapper>
-      <h3>{title}</h3>
-      <Description>{description}</Description>
+    <Wrapper noBorder={noBorder} noMargin={noMargin}>
+      {title ? <h3>{title}</h3> : null}
+      {description ? <Description>{description}</Description>: null}
       <CardWrapper>
         {options.map(option => (
           <Link to={option.href}>
