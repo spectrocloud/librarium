@@ -13,10 +13,10 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of EKS clusters provisioned by Spectro Cloud:
+Following are some of the architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or EKS) provisioned by Spectro Cloud:
 
 * Cluster resources such as VMs can be provisioned into exsting infrastrucutre (Gateways, VPCs, Subnets etc.) as part of static provisioning  as well as new dedicated infrastructure as part of dynamic provisioning
-* Full support for fargate profiles
+* Full support for EKS Fargate profiles
 * Ability to replace AWS CNI plugins with other CNI plugins like Calico
 * Spot instance support
 
@@ -27,7 +27,7 @@ Following are some of the architectural highlights of EKS clusters provisioned b
 The following prerequisites must be met before deploying an EKS workload cluster:
 
 * You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
-* You must register your AWS cloud account in Spectro Cloud as descrbed in the "Creating an AWS Cloud account" section below.
+* You must register your AWS cloud account in Spectro Cloud as described in the "Creating an AWS Cloud account" section below.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for EKS.
 * Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
   - vCPU
@@ -493,7 +493,7 @@ The following **four** policies include all the required permissions for provisi
 ```
 <InfoBox>
 Note:
-All the above policies are required as part of cluster api requirement derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
+All the above policies are required as part of Cluster API requirement, derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
 </InfoBox>
 
 ### Deployment Policy
@@ -561,13 +561,13 @@ These policies defines some actions, resources, or conditions that do not provid
 
 # Creating an AWS cloud account
 
-To create an AWS cloud account provide a name and a descripton for the account and follow the steps below based on the account type desired:
+To create an AWS cloud account, provide a name and a description for the account and follow the steps below based on the account type desired:
 
 * Access Credentials
     - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
     - In Spectro Cloud, provide the access key and secret key for the user.
 * Security Token Service(STS)
-    - In theAWS console, create a new IAM role called using the following options:
+    - In the AWS console, create a new IAM role called using the following options:
       - Trusted Entity Type: Another AWS account
       - Account ID: [Copy the Account ID displayed on the UI]
       - Require External ID: Enable
