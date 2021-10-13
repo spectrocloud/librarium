@@ -22,6 +22,7 @@ const Wrapper = styled.div`
     letter-spacing: -0.02em;
     margin: 24px 0 !important;
     color: #0d1440;
+    text-align: left;
   }
   h3 {
     font-style: normal;

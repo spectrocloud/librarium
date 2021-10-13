@@ -19,11 +19,9 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
 
 <MainHeader
   introductionHref="/introduction/what-is"
-  demoHref="https://www.spectrocloud.com/contact"
- >
-  <h1>Documentation</h1>
-  <h3>How-to's, help, guides and explanations.</h3>
-  <span>A deep-dive into the Spectro Cloud Tenant Console: <p>Concepts, details, step-by-step DIYs, and everything in between.</p></span>
+  demoHref="https://www.spectrocloud.com/product/#learnmoresection">
+  <h1>Step-by-step guides, definitions and help</h1>
+  <h3>A deeper dive into the Palette platform with all the technical details you need</h3>
 </MainHeader>
 <QuickSetup
   title="Quick Setup"
@@ -46,9 +44,8 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       icon: "bundles",
       href: "/integrations/"
     }
-  ]}
- />
- <QuickSetup
+  ]} />
+<QuickSetup
   title="Important Concepts"
   options={[
     {
@@ -70,8 +67,8 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       href: "/user-management/"
     }
   ]}
- />
- <QuickSetup
+/>
+<QuickSetup
   title="Getting familiar with the dashboard"
   options={[
     {
@@ -92,10 +89,11 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       icon: "cog",
       href: "/api/introduction"
     }
-  ]}
-  />
+  ]} />
 <CloudsSection
   title="Detailed Setup"
+  noBorder
+  noMargin
   description="An insight into the procedures for creating clusters on public clouds as well as private clouds. Google Cloud Platform and Bare-metal coming soon!"
   options={[
     {
@@ -103,7 +101,6 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       cloud: "aws",
       href: "/clusters/new-clusters/aws/",
     },
-    
     {
       title: "Azure",
       cloud: "azure",
@@ -115,11 +112,6 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       href: "/clusters/new-clusters/gcp/",
     },
     {
-      title: "VMware",
-      cloud: "vmware",
-      href: "/clusters/new-clusters/vmware/",
-    },
-    {
       title: "AWS EKS",
       cloud: "aws",
       href: "/clusters/new-clusters/eks/",
@@ -129,8 +121,25 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       cloud: "azure",
       href: "/clusters/new-clusters/aks/",
     }
-  ]}
-/>
+  ]} />
+<CloudsSection
+  options={[
+    {
+      title: "VMware",
+      cloud: "vmware",
+      href: "/clusters/new-clusters/vmware/",
+    },
+    {
+      title: "MaaS",
+      cloud: "maas",
+      href: "/clusters/new-clusters/maas/",
+    },
+    {
+      title: "Openstack",
+      cloud: "openstack",
+      href: "/clusters/new-clusters/openstack/",
+    }
+  ]} />
 <QuickSetup
   title="On-Prem Installation"
   options={[
@@ -152,6 +161,5 @@ import DocUpdatesSection from "@librarium/shared/src/components/common/DocUpdate
       icon: "tachometer-alt",
       href: "/enterprise-version/system-console-dashboard/"
     }
-  ]}
- />
-<DocUpdatesSection title={"What’s new in Docs"}/>
+  ]} />
+<DocUpdatesSection title={"What’s new in Docs"} />
