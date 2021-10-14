@@ -247,4 +247,3 @@ _Components_:
 - `|` - separator between lines interval and color
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
-
