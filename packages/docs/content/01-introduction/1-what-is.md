@@ -36,7 +36,7 @@ Palette uniquely extends and integrates CNCF’s open-source Cluster API project
 With Palette’s Cluster Profiles, teams can define full-stack clusters that include both the K8s infrastructure, as well as any add-on application services. Cluster Profiles enable a repeatable way to deploy and reuse clusters across any environment. Palette also enables importing of existing Kubernetes environments and creating equivalent Cluster Profiles.
 
 
-![2-what-is-sc](/2-what-is-sc.png)
+![2-what-is-sc](/22-intro.png)
 
 ## Who can benefit from the Spectro Cloud platform?
 
