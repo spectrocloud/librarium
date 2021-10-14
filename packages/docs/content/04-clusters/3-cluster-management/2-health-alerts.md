@@ -12,30 +12,32 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-## Cluster Health Alert
+# Overview
 
-Spectro Cloud defines custom health alerts for our workload clusters. The users can now set up alerts as emails or Webhook alert messages that pop-ups to users’ chat rooms, any preferred web pages or email. When an alert triggers from the cluster, the Webhook makes an HTTP POST request on the URL. Webhook passes JSON formatted information about the alert in the body of the POST request. To set up an alert, get the hook URL of the target source. E.g., If you want to hook the alerts to your Slack room, Slack's Webhook URL is used. The alert can also be received at any email id preferred by the customer.
+Spectro Cloud monitors the health of all the workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Spectro Cloud provides the ability to have these alerts pushed out to a variety of channels. Users can setup simple email alerts to recieve an email when health status of their cluster changes. Additionally, they can setup webhooks to integrate alerts with a variety of ITSM tools such as Service Now, Slack, Microsoft Teams, etc. These alerts are setup at the project level and apply to all clusters within the project.
 
-### Create Your Alert
-* To manage your alerts, go to project settings
+# Email Alerts
+
+* As project administrator, navigate to project settings.
 * Click Alerts to access the Manage Alerts page.
-* Users can create two types of alerts,
-	* Email Alerts
-	* Webhooks Alerts
-* For Email Alerts:
-	* Enable ClusterHealth
-	* Select Email all project members if the alert needs to be received by every project member or specify the email ids of members who are supposed to receive the alerts.
-       	* Save the settings to start receiving the health alerts from your workload cluster.
-* For Webhooks Alert
-	* Click on add new webhook
-	* Fill the webhook creation wizard with the following details,
-		* Alert type: ClusterHealth
-		* Method: POST to Post the alert message to the hooked target
-		* URL: URL of the target to be hooked to receive alerts.
-		* Body: JSON formatted alert message
-		* Headers: Optional header as key-value pair depending on the target
-		* Active: Select and deselect keep the alert active or inactive.
-	* Confirm the details provided to receive the health alerts of your workload cluster to the hooked target.
+* Enable ClusterHealth
+* Select "Email all project members" option if the alert needs to be received by every project member or specify the email ids of members who are supposed to receive the alerts.
+* Save the settings to start receiving the health alerts from your workload cluster.
+
+# Webhook Alerts
+
+* As project administrator, navigate to project settings.
+* Click Alerts to access the Manage Alerts page.
+* Enable ClusterHealth
+* Click on add new webhook
+* Fill the webhook creation wizard with the following details:
+	* Alert type: ClusterHealth
+	* Method: POST to Post the alert message to the hooked target
+	* URL: URL of the target to be hooked to receive alerts.
+	* Body: JSON formatted alert message
+	* Headers: Optional header as key-value pair depending on the target
+	* Active: Enable to Disable the webhook.
+* Confirm the details provided to receive the health alerts for your workload clusters in your ITSM tools.
 
 
 

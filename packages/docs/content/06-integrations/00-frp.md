@@ -16,8 +16,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Forward Reverse Proxy
-FRP is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This will enable the Kubernetes endpoint to be accessible via a Proxy Server and the endpoint can be found in the kubeconfig downloaded from our Cluster Overview page and in the Kubernetes API section of Cluster Overview page.
-
+Fast Reverse Proxy (FRP) is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
 
 <InfoBox>
  
