@@ -14,6 +14,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 # Overview
 
 Spectro Cloud provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+
+### Prerequisites
+
+The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Spectro Cloud.
+
 # Backup Locations
 
 AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
@@ -26,9 +31,9 @@ The following details are required to configure a backup location:
 * S3 Bucket: S3 bucket name that must be pre-created on the object store.
 * Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3.
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
-
     * Credentials - Provide access key and secret key. 
     * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust setup with the account used to launch the cluster itself and should have the permission to assume the role. 
+* Spectro Cloud mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
     #### AWS S3 Permissions:
 
     ```json
@@ -92,9 +97,9 @@ The following details are required to configure a backup location:
     }
     ```
 
-|Add a Backup Location|
-|---------------------|
-|Go to Project Settings -> Backup locations  -> Add a New Backup location|
+## Add a Backup Location
+
+Go to Project Settings -> Backup locations  -> Add a New Backup location
 
 
 # Backup
