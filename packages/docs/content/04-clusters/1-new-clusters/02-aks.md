@@ -95,3 +95,21 @@ A minimum allocation of '4Gi' of memory is required across all worker nodes.
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 New worker pools may be added if it desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+
+# Configure Azure Active Directory 
+
+
+The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Spectro Cloud Platform using a simple check box. Once the Cloud account is created the user can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin Kubeconfig file created and can be downloaded from our Spectrocloud UI as ‘Kubernetes config file’. The user needs to create manually the User’s kubeconfig file to enable AAD completely. The following are the steps to create the custom user kubeconfig file:
+
+* Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to cluster resources.
+* After the creation of groups, create users in the Azure AD.
+* Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings using the Admin Kubeconfig file.
+* Once the roles and role bindings are created these roles can be linked to the Groups created in Azure AD.
+* The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific kubeconfig file please run the following command :
+
+		  az aks get-credentials --resource-group <resource-group> --name <cluster-name>
+
+### References:
+
+[Use Kubernetes RBAC with Azure AD integration](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Faks%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+
