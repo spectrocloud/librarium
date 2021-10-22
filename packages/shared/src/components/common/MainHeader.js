@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { IntroButtons } from '../../components';
-import hero from '../../assets/hero.png';
+import { useGraphQL } from "../../graphql";
+import Img from "gatsby-image"
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 `;
 const LeftSide = styled.div`
   max-width: 450px;
-  margin-right: 100px;
+  margin-right: -50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -82,6 +82,8 @@ const RightSide = styled.div``;
 const Hero = styled.img``;
 
 function MainHeader({ children, introductionHref, demoHref }) {
+  const pageContext = useGraphQL();
+  console.log(pageContext)
   return (
     <Wrapper>
       <LeftSide>
@@ -89,7 +91,7 @@ function MainHeader({ children, introductionHref, demoHref }) {
         <IntroButtons introductionHref={introductionHref} demoHref={demoHref} />
       </LeftSide>
       <RightSide>
-        <Hero src={hero} />
+        {/* <Img {...} /> */}
       </RightSide>
     </Wrapper>
   );
