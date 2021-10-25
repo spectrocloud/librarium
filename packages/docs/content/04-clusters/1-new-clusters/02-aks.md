@@ -104,6 +104,7 @@ The Azure Active Directory (AAD) could be enabled while creating and linking the
 * Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to cluster resources.
 * After the creation of groups, create users in the Azure AD.
 * Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings using the Admin Kubeconfig file.
+	* This can also be done using Spectro RBAC pack available in Authentication section of Add-on packs
 * Once the roles and role bindings are created these roles can be linked to the Groups created in Azure AD.
 * The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific kubeconfig file please run the following command :
 
