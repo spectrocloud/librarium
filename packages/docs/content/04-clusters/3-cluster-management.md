@@ -18,7 +18,7 @@ Spectro Cloud supports several day-2 operations to manage the end-to-end lifecyc
 
 The following sections describe these capabilities in detail:
 
-* [Reconfigure](/clusters/cluster-management/scaling) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type for public clouds). Add additional fault domains such as availability zones to a node pool.
+* [Reconfigure](/clusters/cluster-management/reconfigure) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type for public clouds). Add additional fault domains such as availability zones to a node pool.
 
 
 * [Updates](/clusters/cluster-management/cluster-updates) - Add/remove add-ons; Upgrade versions of the core packs (Kubernetes, CSI, CNI); Upgrade versions of add-on layers (Monitoring, Security, etc.); Update configuration for packs installed at any layer.
@@ -33,7 +33,7 @@ The following sections describe these capabilities in detail:
 * [Backup and Restore](/clusters/cluster-management/backup-restore) - Backup your cluster configurations as well as any persistent volumes used by your applications regularly; Choose critical namespaces you would like to backup; Restore as required to new or existing clusters;
 
 
-* [Cost Visibility](/clusters/cluster-management/cluster-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration; Get additional insights into per namespace cost (Usage Cost) calculated based on the amount of resources consumed within the namespace.
+* [Cost Visibility](/clusters/cluster-management/cloud-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration; Get additional insights into per namespace cost (Usage Cost) calculated based on the amount of resources consumed within the namespace.
 
 
 
