@@ -33,7 +33,7 @@ The following prerequisites must be met before deploying a workload cluster on G
 # GCP Cloud Account Permissions
 
 You need to create a service account in GCP with the required permissions and register it with Spectro Cloud as part of creating GCP cloud account in Spectro Cloud.  To create a service account, you should have one of the following IAM roles:
-`roles/iam.serviceAccountAdmin` or `roles/iam.serviceAccountAdmin`. For detailed instructions on creating a service account refer to  https://cloud.google.com/iam/docs/creating-managing-service-accounts.
+`roles/iam.serviceAccountAdmin` or `roles/editor`. For detailed instructions on creating a service account refer to  https://cloud.google.com/iam/docs/creating-managing-service-accounts.
 
 You can create a service account either using existing standard roles, or create a new role with custom permissions.
 
