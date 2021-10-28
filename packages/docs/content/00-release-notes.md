@@ -16,7 +16,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
-# RELEASE 2.0  COMING SOON !!! 
+# October 28,2021 - Release 2.0.0 
 
 We are excited to announce that Spectro Cloud’s platform now has a name: **“PALETTE”**. Version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance and control with “Workspaces” . The list of features include:
 * Granular perceptibility into the estimated cloud cost across all your clusters. Enhanced project and admin dashboards to get cost and metrics visibility by projects, clusters and namespaces; View usage and cost trends over a period of time leveraging updated layout for easier tracking.
