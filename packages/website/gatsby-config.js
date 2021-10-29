@@ -12,8 +12,6 @@ const plugins = [
     },
   },
   'gatsby-plugin-sitemap',
-  `gatsby-transformer-sharp`,
-  'gatsby-plugin-sharp',
   'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-antd',
@@ -45,6 +43,8 @@ const plugins = [
       path: path.resolve(__dirname, '../api/content/'),
     },
   },
+  `gatsby-transformer-sharp`,
+  'gatsby-plugin-sharp',
   {
     resolve: `gatsby-plugin-webfonts`,
     options: {

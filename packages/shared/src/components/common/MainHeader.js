@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     margin-bottom: 19px !important;
     margin-top: 0px !important;
     color: #2d2e55;
-    text-align: start;
+    text-align: left;
   }
 
   a {
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     font-weight: normal;
     font-size: 16px;
     line-height: 28px;
-    text-align: start;
+    text-align: left;
     color: #666a80;
     margin-bottom: 32px;
   }
@@ -72,6 +72,8 @@ const LeftSide = styled.div`
     max-width: 100%;
     margin-right: 0;
     padding: 40px;
+
+    h1,
     span,
     h3 {
       text-align: center;
@@ -91,7 +93,7 @@ function MainHeader({ children, introductionHref, demoHref }) {
         <IntroButtons introductionHref={introductionHref} demoHref={demoHref} />
       </LeftSide>
       <RightSide>
-        {/* <Img {...} /> */}
+        <Img fixed={pageContext.hero.childImageSharp.fixed} />
       </RightSide>
     </Wrapper>
   );

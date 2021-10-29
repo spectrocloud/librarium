@@ -12,8 +12,12 @@ const GRAPHQL = {
         relativePath: { eq: "hero.png" }
       ) {
         childImageSharp {
-          fixed(quality: 100, height: 110, width: 113) {
-            ...GatsbyImageSharpFixed_noBase64
+          fixed(quality: 100, height: 484) {
+            base64
+            width
+            height
+            src
+            srcSet
           }
         }
       }
@@ -122,7 +126,6 @@ exports.createPages = ({ graphql, actions }) => {
           const promise = GRAPHQL[slug] ? graphql(GRAPHQL[slug]()) : Promise.resolve({})
           promise.catch(err => console.error(err))
           return promise.then((result) => {
-            console.log(result)
             // Disable glossary pages
             if (node.fields.slug.startsWith('/glossary/')) {
               return;
