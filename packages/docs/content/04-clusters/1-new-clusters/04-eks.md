@@ -76,6 +76,7 @@ The following **four** policies include all the required permissions for provisi
         "ec2:DescribeInstances",
         "ec2:DescribeInternetGateways",
         "ec2:DescribeImages",
+        "ec2:DescribeKeyPairs",
         "ec2:DescribeNatGateways",
         "ec2:DescribeNetworkInterfaces",
         "ec2:DescribeNetworkInterfaceAttribute",
