@@ -85,7 +85,7 @@ const Hero = styled.img``;
 
 function MainHeader({ children, introductionHref, demoHref }) {
   const pageContext = useGraphQL();
-  console.log(pageContext)
+
   return (
     <Wrapper>
       <LeftSide>
