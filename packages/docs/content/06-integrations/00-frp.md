@@ -37,7 +37,7 @@ Do not change any values which are available by default, as it is required by ou
 
 **Important Note:**
 
-If the user goes for clusters other than EKS add the following extra cert SAN to the  k8s pack values while creating the cluster. 
+If the user goes for clusters other than EKS, add the following extra cert SAN values to the Kubernetes pack under apiServer while creating the cluster. 
 
 ```json
  certSANs:
