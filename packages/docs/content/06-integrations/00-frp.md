@@ -35,7 +35,7 @@ Do not change any values which are available by default, as it is required by ou
 </Tabs.TabPane>
 </Tabs>
 
-<WarningBox>
+**Important Note:**
 
 If the user goes for clusters other than EKS add the following extra cert SAN to the  k8s pack values while creating the cluster. 
 
@@ -43,5 +43,7 @@ If the user goes for clusters other than EKS add the following extra cert SAN to
  certSANs:
     - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
+Example:
 
-</WarningBox>
+![frp-cert-san-example](frp-certsan.png)
+
