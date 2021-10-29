@@ -1,7 +1,7 @@
 ---
-title: 'Forward Reverse Proxy'
-metaTitle: 'Spectro Cloud Forward Reverse Proxy'
-metaDescription: 'Forward Reverse Proxy Authentication pack in Spectro Cloud'
+title: 'Spectro Proxy'
+metaTitle: 'Spectro Cloud Fast Reverse Proxy'
+metaDescription: 'Fast Reverse Proxy Authentication pack in Spectro Cloud-Spectro Proxy'
 hiddenFromNav: true
 isIntegration: true
 hideToC: false
@@ -15,8 +15,8 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-# Forward Reverse Proxy
-Fast Reverse Proxy (FRP) is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
+# Spectro Proxy
+Spectro Proxy is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
 
 <InfoBox>
  
@@ -34,4 +34,16 @@ Do not change any values which are available by default, as it is required by ou
 
 </Tabs.TabPane>
 </Tabs>
+
+**Important Note:**
+
+If the user goes for clusters other than EKS, add the following extra cert SAN values to the Kubernetes pack under apiServer while creating the cluster. 
+
+```json
+ certSANs:
+    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+Example:
+
+![frp-cert-san-example](frp-certsan.png)
 
