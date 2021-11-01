@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^4.0.0"
   },
   "scripts": {
     "start": "lerna run --parallel clean && lerna run --parallel start",
@@ -12,6 +12,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "fuse.js": "^6.0.2",
+    "gatsby-image": "^2.2.39",
     "gatsby-plugin-mdx": "^2.10.0",
     "gatsby-remark-image-attributes": "^1.0.0"
   }

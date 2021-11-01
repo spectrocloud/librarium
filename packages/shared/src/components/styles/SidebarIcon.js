@@ -17,6 +17,7 @@ import OverviewIcon from "../../assets/icons/overview.svg";
 import ProjectIcon from "../../assets/icons/project.svg";
 import RolesIcon from "../../assets/icons/roles.svg";
 import TeamsIcon from "../../assets/icons/teams.svg";
+import WorkspacesIcon from "../../assets/icons/workspaces.svg";
 
 // TODO: Sure Codrin knows a better way than adding them manually
 
@@ -37,6 +38,7 @@ const icons = {
   project: <ProjectIcon />,
   roles: <RolesIcon />,
   teams: <TeamsIcon />,
+  workspaces: <WorkspacesIcon />,
 }
 
 function SidebarIcon({type, ...rest}) {
