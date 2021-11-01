@@ -2,7 +2,7 @@
 title: "Workspaces"
 metaTitle: "Creating Workspaces for Spectro Cloud Clusters"
 metaDescription: "The methods of creating Workspaces"
-icon: "solar-system"
+icon: "workspaces"
 hideToC: false
 fullWidth: false
 ---
