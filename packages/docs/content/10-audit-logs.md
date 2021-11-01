@@ -53,23 +53,23 @@ Ensure that the IAM user or the ROOT user role created should have the following
 
 ```json
 {
-"Version": "2012-10-17",
-"Statement": [
-{
-"Effect": "Allow",
-"Action": [
-"logs:DescribeLogGroups",
-"logs:CreateLogGroup",
-"logs:CreateLogStream",
-"logs:PutLogEvents",
-"logs:DeleteLogStream",
-"logs:DescribeLogStreams"
-],
-"Resource": [
-"<CLOUDWATCH-LOG-GROUP-ARN>;"
-]
-}
-]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogGroups",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DeleteLogStream",
+        "logs:DescribeLogStreams"
+      ],
+      "Resource": [
+        "<CLOUDWATCH-LOG-GROUP-ARN>;"
+      ]
+    }
+  ]
 }
 ```
 ## Instructions to Push Cluster Audit Logs to AWS Trails 
