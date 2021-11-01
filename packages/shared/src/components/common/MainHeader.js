@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { IntroButtons } from '../../components';
-import hero from '../../assets/hero.png';
+import { useGraphQL } from "../../graphql";
+import Img from "gatsby-image"
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     margin-bottom: 19px !important;
     margin-top: 0px !important;
     color: #2d2e55;
-    text-align: start;
+    text-align: left;
   }
 
   a {
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     font-weight: normal;
     font-size: 16px;
     line-height: 28px;
-    text-align: start;
+    text-align: left;
     color: #666a80;
     margin-bottom: 32px;
   }
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 `;
 const LeftSide = styled.div`
   max-width: 450px;
-  margin-right: 100px;
+  margin-right: -50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,6 +72,8 @@ const LeftSide = styled.div`
     max-width: 100%;
     margin-right: 0;
     padding: 40px;
+
+    h1,
     span,
     h3 {
       text-align: center;
@@ -82,6 +84,8 @@ const RightSide = styled.div``;
 const Hero = styled.img``;
 
 function MainHeader({ children, introductionHref, demoHref }) {
+  const pageContext = useGraphQL();
+
   return (
     <Wrapper>
       <LeftSide>
@@ -89,7 +93,7 @@ function MainHeader({ children, introductionHref, demoHref }) {
         <IntroButtons introductionHref={introductionHref} demoHref={demoHref} />
       </LeftSide>
       <RightSide>
-        <Hero src={hero} />
+        <Img fixed={pageContext.hero.childImageSharp.fixed} />
       </RightSide>
     </Wrapper>
   );

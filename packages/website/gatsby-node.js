@@ -7,7 +7,20 @@ const config = require('./config');
 const GRAPHQL = {
   '/': () => {
     return `
-    {
+    query {
+      hero: file(
+        relativePath: { eq: "hero.png" }
+      ) {
+        childImageSharp {
+          fixed(quality: 100, height: 484) {
+            base64
+            width
+            height
+            src
+            srcSet
+          }
+        }
+      }
       latestUpdates: allMdx(filter: {fields: {isDocsPage: {eq: true}}}) {
           edges {
             node {
@@ -111,7 +124,7 @@ exports.createPages = ({ graphql, actions }) => {
 
           const slug = node.fields.slug ? node.fields.slug : '/';
           const promise = GRAPHQL[slug] ? graphql(GRAPHQL[slug]()) : Promise.resolve({})
-
+          promise.catch(err => console.error(err))
           return promise.then((result) => {
             // Disable glossary pages
             if (node.fields.slug.startsWith('/glossary/')) {

@@ -44,6 +44,14 @@ const ButtonsWrapper = styled.div`
     color: #6398df !important;
     white-space: nowrap;
   }
+
+  @media (max-width: 500px) {
+    justify-content: center;
+
+    button {
+      margin-right: 0;
+    }
+  }
 `;
 
 export function IntroButtons({ introductionHref, demoHref }) {
