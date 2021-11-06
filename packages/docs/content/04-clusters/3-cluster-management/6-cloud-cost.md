@@ -55,7 +55,7 @@ Usage cost is calculated based on the pods' actual CPU & Memory usage, including
 
 |**FORMULAS FOR CALCULATION** ||
 |--|--------------|
-|Pod CPU Cost = (CPU Rate x Instance Rate ) x Pod CPU Usage|
+|Pod CPU Cost = (CPU Proportion x Instance Rate ) x Pod CPU Usage|
 |Pod Memory Cost = (Memory Proportion x Instance Rate) x Pod Memory Usage|
 |Pod Storage Cost =  PVC Storage Size x Storage Rate|
 |Pod Cost = Pod CPU Cost + Pod Memory Cost + Pod Storage Cost|
