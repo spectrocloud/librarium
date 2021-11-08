@@ -48,7 +48,21 @@ The following prerequisites must be met before deploying a kubernetes clusters i
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.* Zone Tagging
+
+* **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
+
+    | vSphere Object       | Tag Category     | Tag Value     |
+    | :-------------       | :----------      | :-----------  |
+    |  dc-1                | k8s-region       | region1       |
+    | cluster-1            | k8s-zone         | az1           |
+    | cluster-2            | k8s-zone         | az2           |
+    | cluster-3            | k8s-zone         | az3           |
+
+    Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+
 
 # VMware Cloud Account Permissions
 
