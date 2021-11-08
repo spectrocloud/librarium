@@ -19,13 +19,9 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 # November 1, 2021 - Release 2.0.0 
 
 We are excited to announce that Spectro Cloud’s platform now has a name: **“PALETTE”**. Version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance and control with “Workspaces” . The list of features include:
-* Granular perceptibility into the estimated cloud cost across all your clusters. Enhanced project and admin dashboards to get cost and metrics visibility by projects, clusters and namespaces; View usage and cost trends over a period of time leveraging updated layout for easier tracking.
-* “Workspaces”, a new feature that enables the association of relevant namespaces across clusters to manage access, get cost visibility and get workload visibility by applications or teams.
+* “Workspaces” enable association of relevant namespaces across clusters to manage access, obtain cost visibility and get workload visibility by applications or teams.
 * Integration for alerts on cluster health with ITSM and collaboration tools such as Slack, ServiceNow, Microsoft Teams, etc.
-* Seamless and secure access to private Kubernetes clusters in cloud and private data center environments by leveraging our in-built reverse proxy.
-
-
-
+* Seamless and secure access to private Kubernetes clusters in cloud and private data center environments by leveraging our built-in reverse proxy.
 
 
 # September 14, 2021 - Release 1.14.0
