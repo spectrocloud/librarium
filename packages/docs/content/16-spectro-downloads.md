@@ -1,6 +1,6 @@
 ---
 title: "Downloads"
-metaTitle: "Spectro Downloads Artefacts"
+metaTitle: "Spectro Downloads Artifacts"
 metaDescription: "Spectro Cloud Artefacts Downloads "
 icon: "cloud-download-alt"
 hideToC: false
@@ -15,7 +15,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
-# SPECTRO CLOUD DYNAMIC ARTIFACTS
+# PALETTE DYNAMIC ARTIFACTS
 
 
 # ON-PREM ARTIFACTS
@@ -24,11 +24,11 @@ Spectro Cloud Palette allows its deployment to be done in-house within the custo
 
 # Hubble Installer 
 
-The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA as given below:
+The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA given below:
 
 |Version|URL|Info|
-|--|--|--|
-|2.0.2|Hubble-installer-202-10152021.ova |Oct 15 2021|
+|--|---|--|
+|2.0.2|Hubble-installer-202-10152021.ova|Oct 15 2021|
 ------
 
 
@@ -54,27 +54,27 @@ chmod 755 ./airgap-v${VERSION}.bin
 ```
 
 # SAAS - Private Cloud Gateway(PCG)
- PCG is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal. Currently, PCG installation is required for the following platforms:
+ PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
 
 
 ## vSphere PCG Image
 
 |Version|URL|Info|
-|------|-----|-----|
-|2.0.2|Hubble-installer-202-10152021.ova|Oct 15 2021|
+|---|---|--|
+|2.0.2|hubble-installer-202-10152021.ova|Oct 15 2021|
 ------
 
 ## MaaS PCG Image
 
 |Version|URL|Info|
-|------|-----|-----|
+|---|---|--|
 |1.0.9|gcr.io/spectro-images-public/release/spectro-installer:1.0.9|Oct 15 2021|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL|Info|
-|------|-----|-----|
+|---|---|--|
 |1.0.9|gcr.io/spectro-images-public/release/spectro-installer:1.0.9|Oct 15 2021|
 -------
 
