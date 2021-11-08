@@ -9,6 +9,8 @@ fullWidth: false
 
 ## Creating Cluster Profiles
 
+ ![alt text](/aws-full-profile.mp4)
+
 Cluster profiles are created by configuring various layers of the Kubernetes infrastructure stack. The following steps need to be performed to create a new cluster profile:
 
 * Provide basic profile information such as Name, Description, Profile Type and Tags. Profile Type (Full, Infra, Add-on) will dictate the layers that can be configured in the cluster profile. Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile.
