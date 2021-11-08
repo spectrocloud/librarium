@@ -15,7 +15,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of kubernetes clusters provisioned by Spectro Cloud on VMware:
+Following are some of the architectural highlights of Kubernetes clusters provisioned by Spectro Cloud on VMware:
 
 * Kubernetes nodes can be distributed across multiple compute clusters which serve as distinct fault domains. 
 * Support for static IP as well as DHCP
@@ -27,13 +27,13 @@ Following are some of the architectural highlights of kubernetes clusters provis
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a kubernetes clusters in VMware:
+The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
 * You must have an active vCenter account with all the permissions listed below in the "VMware Cloud Account Permissions" section.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for VMWare.
-* You should install a Private Cloud Gateway for VMware as decribed in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatially register a cloud account for VMware in Spectro Cloud. You can register your additional VMware cloud accounts in Spectro Cloud as described in the "Creating a VMware Cloud account" section below.
+* You should install a Private Cloud Gateway for VMware as described in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Spectro Cloud. You can register your additional VMware cloud accounts in Spectro Cloud as described in the "Creating a VMware Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
@@ -48,7 +48,21 @@ The following prerequisites must be met before deploying a kubernetes clusters i
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.* Zone Tagging
+
+* **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centres (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
+
+    | vSphere Object       | Tag Category     | Tag Value     |
+    | :-------------       | :----------      | :-----------  |
+    |  dc-1                | k8s-region       | region1       |
+    | cluster-1            | k8s-zone         | az1           |
+    | cluster-2            | k8s-zone         | az2           |
+    | cluster-3            | k8s-zone         | az3           |
+
+    Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+
 
 # VMware Cloud Account Permissions
 
@@ -198,7 +212,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 # Creating a VMware cloud gateway
 
 <InfoBox>
-For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote datacenters that do not have direct incoming connection from the management console.
+For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote datacenter that do not have direct incoming connection from the management console.
 </InfoBox>
 
 * Minimum capacity required for a Private Cloud Gateway:
@@ -341,7 +355,7 @@ Spectro cloud supports DHCP as well as Static IP based allocation strategies for
 | Subnet | CIDR to allocate a set of IP addresses for a subnet based IP Pool.  E.g. 10.10.183.64/26 |
 | Subnet Prefix | Network subnet prefix. e.g. /18|
 | Gateway | Network Gateway E.g. 10.128.1.1 |
-| Nameserver addresses | A comma-separated list of name servers. e.g., 8.8.8.8 |
+| Name server addresses | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | Restrict to a Single Cluster | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
 # Creating a VMware cloud account
