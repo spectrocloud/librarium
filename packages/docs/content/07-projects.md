@@ -40,4 +40,4 @@ The usage of the active worker nodes' CPU cores is grouped across all projects a
 
 # Project Card
 
-Every project card shows the cluster's state information grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. Each node health is determined based on the serval conditions like node state, memory & disk pressure, and network availability.
+Every project card shows the cluster's state information grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on sereval conditions such as node state, memory & disk pressure, and network availability.

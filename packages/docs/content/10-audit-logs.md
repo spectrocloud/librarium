@@ -39,7 +39,7 @@ For certain resources like the Cluster Profile, users can associate a custom upd
 
 # Pushing the Audit Log to the AWS Cloud Trail
 
-Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the AWS cloudtrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
+Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the AWS CloudTrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
 
 <WarningBox>
 An AWS account with cloud trail created is the prerequisite.
@@ -49,7 +49,7 @@ The permissions listed needs to be enabled for CloudWatch.
 
 ## Permission List
 
-Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for cloudwatch:
+Ensure that the IAM user or the ROOT user role created should have the following IAM policy included for Amazon CloudWatch:
 
 ```json
 {
@@ -88,7 +88,7 @@ Use the AWS Access Key and Secret Access Key to validate the AWS account for pus
 Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
 	
 * Stream Optional
-* Confirm the informations to complete the audit trail creation wizard.
+* Confirm the information to complete the audit trail creation wizard.
 * The audit trail could be edited and deleted using the kebab menu.
 
 

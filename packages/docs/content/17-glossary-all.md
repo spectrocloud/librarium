@@ -43,7 +43,7 @@ Permissions are associated with specific actions within the platform such as Cre
 
 ## Cluster Profile
 
-A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) preinstalled.
+A cluster profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Spectro Cloud provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) pre-installed.
 
 The diagram below shows an example of a cluster profile:
 
@@ -71,7 +71,7 @@ Spectro Cloud maintains a public pack registry containing various [packs](#pack)
 
 ## Private Pack Registry
 
-Spectro Cloud provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Specto Cloud's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their environment using Spectro Cloud's pack registry software.
+Spectro Cloud provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Spectro Cloud's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their environment using Spectro Cloud's pack registry software.
 
 ## Helm Charts
 
@@ -94,7 +94,7 @@ Layers in a [cluster profile](#cluster-profile) are typically built using a Spec
 
 ## Presets
 
-Presets are a subset of properties configured for a layer that is preconfigured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users may be simply enabled or disable a preset to quickly make the desired changes.
+Presets are a subset of properties configured for a layer that is pre-configured with defaults to easily enable or turn on a feature. Spectro Cloud [packs](#pack) and [charts](#helm-charts) provide several settings that can be customized by the user. Although customizable typically in a YAML format, it can be cumbersome to look through a flat list of properties and identify the ones to change for specific functionality. Through presets, Spectro Cloud groups a bunch of related properties that control a feature and provides them as named presets. During construction of a [cluster profile](#cluster-profile), users may be simply enabled or disable a preset to quickly make the desired changes.
 
 
 ## Private Cloud Gateway
