@@ -53,5 +53,5 @@ The following steps need to be performed to remove a worker pool from the cluste
 
 
 <InfoBox>
-    Support of reconfiguration is not available for existing clusters imported into Spectro Cloud for any cloud type. 
+    Support of reconfiguration is not available for existing clusters imported into Palette for any cloud type. 
 </InfoBox>

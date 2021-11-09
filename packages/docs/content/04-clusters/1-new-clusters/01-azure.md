@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of Azure clusters deployed by Spectro Cloud:
+Following are some of the architectural highlights of Azure clusters deployed by Palette:
 
 * Azure cluster resources are placed within an existing Resource Group.
 * Nodes are provisioned within a Virtual Network that is auto-created or preexisting, with one subnet for control plane nodes and one for worker nodes. These two subnets are secured with separate Network Security Groups. Both subnets can span across multiple AZs.  
@@ -27,8 +27,8 @@ Following are some of the architectural highlights of Azure clusters deployed by
 The following prerequisites must be met before deploying a workload cluster in Azure:
 
 * You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
-* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for Azure cloud.
+* You must register your Azure cloud account in Palette as described in the "Creating an Azure Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for Azure cloud.
 
 # Creating an Azure cloud account
 
@@ -64,10 +64,10 @@ The following steps need to be performed to provision a new Azure cluster:
     - Instance Type - Select the Azure instance type to be used for all the nodes in the pool.
     - Managed Disk - Select the managed disk type to be used.
     - Disk Size - Storage disk size in GB to be attached to the node.
-    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
+    - Availability Zones - Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
 
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
 </InfoBox>

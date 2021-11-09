@@ -14,11 +14,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-The following is the detailing of the Azure AKS cluster provisioning from Spectro Cloud:
-* Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). 
-* It provides the users with serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. 
+The following is the detailing of the Azure AKS cluster provisioning from Palette:
+* Palette enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). 
+* It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. 
 * This unites the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. 
-* The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. 
+* The infrastructure has event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. 
 * Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
 
 
@@ -30,11 +30,11 @@ The following prerequisites must be met before deploying an AKS workload cluster
 
 * You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
 * You must have permissions to deploy clusters using AKS service on Azure.
-* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for AKS.
-* Following are additional prerequisites if Azure Active Directory integration for the AKS cluster is desried:
-   * A Tenant Name must be provided as part of the Azure cloud account creation in Spectro Cloud.
-   * For the Azure client used in the Aure cloud account the following API permission has to be provided:
+* You must register your Azure cloud account in Palette as described in the "Creating an Azure Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for AKS.
+* Following are additional prerequisites if Azure Active Directory integration for the AKS cluster is desired:
+   * A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
+   * For the Azure client used in the Azure cloud account the following API permission has to be provided:
       *  Microsoft Graph: Group.Read.All (Application Type)
       *  Microsoft Graph: Directory.Read.All (Application Type)
 
@@ -76,7 +76,7 @@ The following steps need to be performed to provision a new AKS cluster:
    * Managed Disk - Select the managed disk type to be used.
    * Disk Size - Storage disk size in GB to be attached to the node.
    * Optionally select the system node pool.
-   * Availability Zones (if any) - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
+   * Availability Zones (if any) - Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.
 
 <InfoBox>
 Every AKS cluster must contain at least one system node pool with at least one node.

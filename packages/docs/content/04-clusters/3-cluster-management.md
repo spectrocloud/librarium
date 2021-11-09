@@ -14,7 +14,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Manage Clusters
 
-Spectro Cloud supports several day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Spectro Cloud. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
+Palette supports several day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Spectro Cloud. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
 
 The following sections describe these capabilities in detail:
 
@@ -38,5 +38,5 @@ The following sections describe these capabilities in detail:
 
 
 <InfoBox>
-Spectro Cloud supports new and existing clusters across public and private clouds. Furthermore, in public clouds, Spectro Cloud supports managed Kubernetes cluster services such as EKS, AKS, etc. The capabilities described above may not be available for all cluster types or may work slightly different in some cluster types. Relevant sections will highlight these exceptions.
+Palette supports new and existing clusters across public and private clouds. Furthermore, in public clouds, we supports managed Kubernetes cluster services such as EKS, AKS, etc. The capabilities described above may not be available for all cluster types or may work slightly different in some cluster types. Relevant sections will highlight these exceptions.
 </InfoBox>

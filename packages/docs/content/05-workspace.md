@@ -16,12 +16,12 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 # Workspace
 ## Overview
 
-Spectro Cloud intensifies the governance and control of our tenant clusters with “Workspaces.” Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. The workspaces are created over clusters or within the defined Namespaces. In addition, Spectro is leveraging Role-based access control (RBAC) to regulate access to our cluster resources based on the roles of custom specified individual users across clusters or namespaces using role bindings.
+Palette intensifies the governance and control of our tenant clusters with “Workspaces.” Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. The workspaces are created over clusters or within the defined Namespaces. In addition, Palette is leveraging Role-based access control (RBAC) to regulate access to our cluster resources based on the roles of custom specified individual users across clusters or namespaces using role bindings.
 ## Prerequisite
-Running Spectro Cloud tenant cluster(s).
+Running Palette tenant cluster(s).
 
 # Create your Workspace
-* Log in as a tenant to the Spectro Cloud management console.
+* Log in as a tenant to the Palette management console.
 * From workspaces, select the ‘Create Workspace’ wizard
   * Give the essential information for the Workspace such as:
     * Unique Name

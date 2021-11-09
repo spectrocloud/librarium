@@ -14,7 +14,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud supports various kinds of updates to running clusters, such as upgrade of K8s version, upgrade of add-on versions, the addition of new add-ons, removing existing ones, etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
+Palette supports various kinds of updates to running clusters, such as upgrade of K8s version, upgrade of add-on versions, the addition of new add-ons, removing existing ones, etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
 
 # Cluster profile based updates
 Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated from the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or the previous update. In addition, users can update the clusters individually at an appropriate time. 
@@ -70,7 +70,7 @@ As described above, notifications originate from changes to pack settings or man
 
 # Configuration overrides
 
-Every pack installed via cluster profile provides a set of out-of-the-box default settings. These can be overridden at the time of launching a new cluster or any time afterward for a running cluster. Besides basic defaults, Spectro Cloud also provides useful presets. Presets are preconfigured configuration blocks logically grouped. Can leverage these to turn a feature on/off quickly. For example, enabling ingress for a Prometheus/Grafana pack requires many settings to be added. However, the Ingres preset for the Prometheus pack makes it easy to make this change. 
+Every pack installed via cluster profile provides a set of out-of-the-box default settings. These can be overridden at the time of launching a new cluster or any time afterward for a running cluster. Besides basic defaults, Palette also provides useful presets. Presets are preconfigured configuration blocks logically grouped. Can leverage these to turn a feature on/off quickly. For example, enabling ingress for a Prometheus/Grafana pack requires many settings to be added. However, the Ingres preset for the Prometheus pack makes it easy to make this change. 
 
 ![Cluster Update Details](/cluster_config_override.png)
 

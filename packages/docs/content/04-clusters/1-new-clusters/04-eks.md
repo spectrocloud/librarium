@@ -13,9 +13,9 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or EKS) provisioned by Spectro Cloud:
+Following are some of the architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or EKS) provisioned by Palette:
 
-* Cluster resources such as VMs can be provisioned into exsting infrastrucutre (Gateways, VPCs, Subnets etc.) as part of static provisioning  as well as new dedicated infrastructure as part of dynamic provisioning
+* Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning  as well as new dedicated infrastructure as part of dynamic provisioning
 * Full support for EKS Fargate profiles
 * Ability to replace AWS CNI plugins with other CNI plugins like Calico
 * Spot instance support
@@ -27,8 +27,8 @@ Following are some of the architectural highlights of Amazon Web Services' (AWS)
 The following prerequisites must be met before deploying an EKS workload cluster:
 
 * You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
-* You must register your AWS cloud account in Spectro Cloud as described in the "Creating an AWS Cloud account" section below.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for EKS.
+* You must register your AWS cloud account in Palette as described in the "Creating an AWS Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for EKS.
 * Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
   - vCPU
   - VPC
@@ -39,7 +39,7 @@ The following prerequisites must be met before deploying an EKS workload cluster
 
 # AWS Cloud Account Permissions
 
-The following **four** policies include all the required permissions for provisioning clusters through Spectro Cloud:
+The following **four** policies include all the required permissions for provisioning clusters through Palette:
 
 ### Controller Policy
 
@@ -565,8 +565,8 @@ These policies defines some actions, resources, or conditions that do not provid
 To create an AWS cloud account, provide a name and a description for the account and follow the steps below based on the account type desired:
 
 * Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
-    - In Spectro Cloud, provide the access key and secret key for the user.
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
+    - In Palette, provide the access key and secret key for the user.
 * Security Token Service(STS)
     - In the AWS console, create a new IAM role called using the following options:
       - Trusted Entity Type: Another AWS account
@@ -576,7 +576,7 @@ To create an AWS cloud account, provide a name and a description for the account
       - Permissions Policy: Search and select the 4 policies added in step #2
       - Role Name: SpectroCloudRole
     - In the AWS console, browse to the role details page and copy the Role ARN
-    - In Spectro Cloud, enter the role ARN in the field provided
+    - In Palette, enter the role ARN in the field provided
 
 
 # Deploying an EKS Cluster
@@ -590,7 +590,7 @@ The following steps need to be performed to provision a new EKS cluster:
     - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
+    - Static Placement - By default, Palette uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
 

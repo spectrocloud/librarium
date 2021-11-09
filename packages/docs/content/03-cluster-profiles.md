@@ -24,9 +24,9 @@ Cluster creation requires an Infra or Full cluster profile to be selected, and o
 # Layers
 Cluster Profile Layers are built using content packages which contain integration specific templates, charts and manifest. These content packages can either be of two types:
 
- * Spectro Packs  - Content packages built using Spectro Cloud’s proprietary content format. Spectro Cloud maintains a public registry of Spectro Packs that are available to all tenants.
+ * Spectro Packs  - Content packages built using Palette’s proprietary content format. Palette maintains a public registry of Spectro Packs that are available to all tenants.
 
- * Helm Charts - Collection of Kubernetes resource files capable of deploying services ranging in varying complexities. Spectro Cloud provides a few stable public helm registries out of the box. Tenants can also additionally add any public or private helm registries to leverage charts from those registries.
+ * Helm Charts - Collection of Kubernetes resource files capable of deploying services ranging in varying complexities. Palette provides a few stable public helm registries out of the box. Tenants can also additionally add any public or private helm registries to leverage charts from those registries.
 
 # Core Infra Cluster Profile
 A Core Infra cluster profile is constructed using the four core infrastructure layers: the OS, Kubernetes, the networking, and the storage layers. These profiles are environment specific and are constructed using cloud specific layers.

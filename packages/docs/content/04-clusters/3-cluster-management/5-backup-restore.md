@@ -13,11 +13,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+Palette provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
 ### Prerequisites
 
-The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Spectro Cloud.
+The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 # Backup Locations
 
@@ -33,7 +33,7 @@ The following details are required to configure a backup location:
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
     * Credentials - Provide access key and secret key. 
     * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust setup with the account used to launch the cluster itself and should have the permission to assume the role. 
-* Spectro Cloud mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
+* Palette mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
     #### AWS S3 Permissions:
 
     ```json

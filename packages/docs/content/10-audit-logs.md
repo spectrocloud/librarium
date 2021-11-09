@@ -11,7 +11,7 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # About Audit Logs
 
-The Spectro Cloud management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
+The Palette management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
 
 The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update*, and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
 
@@ -21,7 +21,7 @@ Audit logs are retained for the last 1 year.
 
 Audits can be accessed for the tenant scope and the project scope. The tenant scope audits show all the activity logs across all projects and tenant actions. The project scope audits show the activity logs for the specific project.
 
-* The tenant scope audit logs can be accessed in the Spectro Cloud console under the **Admin > Audit Logs**. The user should have the *Tenant Admin* role or at least the `audit.get` and `audit.list` permissions at the tenant scope to access the audit logs.
+* The tenant scope audit logs can be accessed in the Palette console under the **Admin > Audit Logs**. The user should have the *Tenant Admin* role or at least the `audit.get` and `audit.list` permissions at the tenant scope to access the audit logs.
 * The project scope audit logs can be accessed under the **Project** *selection* > **Audit Logs**. The user should have at least the *Project Viewer* role with `audit.get` and `audit.list` permissions for the selected project to access the audit logs.
 * Tenant admins (or users with appropriate permissions) can download the audit logs as a *.csv file.
 
@@ -39,7 +39,7 @@ For certain resources like the Cluster Profile, users can associate a custom upd
 
 # Pushing the Audit Log to the AWS Cloud Trail
 
-Spectro Cloud users can now push the compliance, management, operational, and risk audit logs to the AWS cloudtrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
+Palette users can now push the compliance, management, operational, and risk audit logs to the AWS cloudtrail. This enables continuous monitoring, security analysis, resource tracking, and troubleshooting of the workload cluster using the event history.
 
 <WarningBox>
 An AWS account with cloud trail created is the prerequisite.
@@ -83,9 +83,9 @@ Ensure that the IAM user or the ROOT user role created should have the following
   * Region: The region of the AWS account
   * Method of verification
    	* Credentials:
-Use the AWS Access Key and Secret Access Key to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
+Use the AWS Access Key and Secret Access Key to validate the AWS account for pushing the Audit log trails from Palette console.
    	* STS:
-Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
+Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Palette console.
 	
 * Stream Optional
 * Confirm the informations to complete the audit trail creation wizard.

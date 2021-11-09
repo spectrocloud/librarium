@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. Following is the list of resources shown in the workload browser:
+Palette provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. Following is the list of resources shown in the workload browser:
 
 * Namespaces
 * Pods

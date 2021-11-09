@@ -15,11 +15,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Existing Kubernetes clusters that were not deployed by Spectro Cloud can be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management. Spectro Cloud allows import and management of Kubernetes clusters on various public, private, and bare-metal environments.
+Existing Kubernetes clusters that were not deployed by Palette can be imported into our Palette platform for visibility, management and additional capabilities such as application lifecycle management. Palette allows import and management of Kubernetes clusters on various public, private, and bare-metal environments.
 
-Spectro Cloud also supports Generic cluster imports, where the users import their existing clusters to Spectro Cloud irrespective of the cloud service provider. If the cloud type of the existing cluster is not supported by Spectro Cloud, then those clusters could be imported as Generic Clusters.  The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For Generic imported clusters, the user will not be able to add cloud-specific add-on profiles rather he can add profiles of cloud type which is supported for all.
+We also supports Generic cluster imports, where the users import their existing clusters to Palette irrespective of the cloud service provider. If the cloud type of the existing cluster is not supported by Palette, then those clusters could be imported as Generic Clusters.  The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For Generic imported clusters, the user will not be able to add cloud-specific add-on profiles rather he can add profiles of cloud type which is supported for all.
 
- * In addition to Spectro Cloud Generic cluster import, we support public cloud managed services  such as:
+ * In addition to Palette, Generic cluster import, we support public cloud managed services  such as:
 	* Amazon EKS
 	* Google GKE
 	* Azure AKS
@@ -31,12 +31,12 @@ Spectro Cloud also supports Generic cluster imports, where the users import thei
 
 # Import
 
-The following steps need to be performed in order to import a brownfield cluster into the Spectro Cloud platform:
+The following steps need to be performed in order to import a brownfield cluster into the Palette platform:
 
  * From the Clusters page, invoke the option to “Import” a cluster.
  * Provide a name for the cluster. Select the cloud type where the cluster is currently deployed.
  * Provide proxy and non proxy information if applicable.
- * Install Spectro Cloud’s cluster management agent into your brownfield cluster using the kubectl command provided.
+ * Install Palette’s cluster management agent into your brownfield cluster using the kubectl command provided.
  * Wait for the import process to complete. The cluster status will transition from ‘Pending’ to ‘Running’ and the cluster health will transition to ‘Healthy’, signalling successful import of the brownfield cluster.
 
 # Attach Add-On profiles

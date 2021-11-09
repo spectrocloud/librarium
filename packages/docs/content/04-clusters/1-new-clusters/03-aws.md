@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of AWS clusters provisioned by Spectro Cloud:
+Following are some of the architectural highlights of AWS clusters provisioned by Palette:
 
 * Kubernetes nodes can be distributed across multiple AZs to achieve high availability. For each of the AZ's that you select, a public subnet and a private subnet is created.
 * All the control plane nodes and worker nodes are created within the private subnets so there is no direct public access available.
@@ -28,9 +28,9 @@ Following are some of the architectural highlights of AWS clusters provisioned b
 The following prerequisites must be met before deploying an EKS workload cluster:
 
 * You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
-* You must register your AWS cloud account in Spectro Cloud as descrbed in the "Creating an AWS Cloud account" section below.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for AWS.
-* Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+* You must register your AWS cloud account in Palette as described in the "Creating an AWS Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for AWS.
+* Palette creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
   - vCPU
   - VPC
   - Elastic IP
@@ -40,7 +40,7 @@ The following prerequisites must be met before deploying an EKS workload cluster
 
 # AWS Cloud Account Permissions
 
-The following **four** policies include all the required permissions for provisioning clusters through Spectro Cloud:
+The following **four** policies include all the required permissions for provisioning clusters through Palette:
 
 ### Controller Policy
 
@@ -560,12 +560,12 @@ These policies defines some actions, resources, or conditions that do not provid
 
 # Creating an AWS cloud account
 
-To create an AWS cloud account provide a name and a descripton for the account and follow the steps below based on the account type desired:
+To create an AWS cloud account provide a name and a description for the account and follow the steps below based on the account type desired:
 
 * In the AWS console, create the four policies listed above.
 * Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
-    - In Spectro Cloud, provide the access key and secret key for the user.
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
+    - In Palette, provide the access key and secret key for the user.
 * Security Token Service(STS)
     - In theAWS console, create a new IAM role called using the following options:
       - Trusted Entity Type: Another AWS account
@@ -575,7 +575,7 @@ To create an AWS cloud account provide a name and a descripton for the account a
       - Permissions Policy: Search and select the 4 policies added in step #2
       - Role Name: SpectroCloudRole
     - In the AWS console, browse to the role details page and copy the Role ARN
-    - In Spectro Cloud, enter the role ARN in the field provided
+    - In Palette, enter the role ARN in the field provided
 
 # Deploying an AWS Cluster
 
@@ -588,7 +588,7 @@ The following steps need to be performed to provision a new AWS cluster:
     - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+    - Static Placement - By default, Palette uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
 
 <InfoBox>
  The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
@@ -604,11 +604,11 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
     - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability
+    - Availability Zones - Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability
 
     zones if multiple zones are selected.
 
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
+    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
