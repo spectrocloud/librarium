@@ -15,25 +15,25 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 Following are some of the highlights of GCP clusters provisioned by Spectro Cloud:
 
-* On the GCP cluster, control plane nodes and worker nodes are placed within a single private subnet which spans across different availability zones within a region.
-* A new VPC Network is created together with all the network infrastructure components like Cloud NAT and a Cloud Router. Firewall rules are created to protect all the API endpoints.
+* On the GCP cluster, control plane nodes and worker nodes are placed within a single private subnet spanning across different availability zones within a region.
+* A new VPC Network is created with all the network infrastructure components like Cloud NAT and a Cloud Router. In addition, firewall rules are created to protect all the API endpoints.
 * API server endpoint is exposed through a Global Load Balancer. Applications running with the cluster use a Regional Load Balancer to expose the load-balancer services.
 
 ![gcp_cluster_architecture.png](gcp_cluster_architecture.png)
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a workload cluster on GCP:
+The following are the prerequisites for deploying a workload cluster on GCP:
 
 * You must have an active GCP service account with all the permissions listed below in the "GCP Cloud Account Permissions" section.
-* You must register your GCP cloud account in Spectro Cloud as descrbed in the "Creating a GCP Cloud account" section below.
+* You must register your GCP cloud account in Spectro Cloud as described in the "Creating a GCP Cloud account" section below.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for GCP.
-* Spectro Cloud creates compute, network, and storage resources on GCP during the provisioning of Kubernetes clusters. Sufficient capacity in the desired GCP region should exist for the creation of the cluster.
+* Spectro Cloud creates compute, network, and storage resources on GCP during the provisioning of Kubernetes clusters. Therefore, Sufficient capacity in the desired GCP region should exist for the creation of the cluster.
   
 # GCP Cloud Account Permissions
 
-You need to create a service account in GCP with the required permissions and register it with Spectro Cloud as part of creating GCP cloud account in Spectro Cloud.  To create a service account, you should have one of the following IAM roles:
-`roles/iam.serviceAccountAdmin` or `roles/editor`. For detailed instructions on creating a service account refer to  https://cloud.google.com/iam/docs/creating-managing-service-accounts.
+You need to create a service account in GCP with the required permissions and register it with Spectro Cloud to create a GCP cloud account in Spectro Cloud.  To create a service account, you should have one of the following IAM roles:
+`roles/iam.serviceAccountAdmin` or `roles/editor`. For detailed instructions on creating a service account refers to  https://cloud.google.com/iam/docs/creating-managing-service-accounts.
 
 You can create a service account either using existing standard roles, or create a new role with custom permissions.
 
@@ -47,7 +47,7 @@ The service account should have the following roles:
 
 ## Create Service Account with a new role with custom permissions
 
-The custom new role should include these minimum permissions
+The custom new role should include these minimum permissions:
 
 ```
 compute.backendServices.create
@@ -127,7 +127,7 @@ Retrieve the JSON credential file for your service account. For detailed instruc
 
 # Creating a GCP Cloud Account
 
-To create a GCP cloud account provide a name for the account and enter the JSON credentails for your service account either by pasting into the space provided or uploading from your JSON credentail file. Validate and save your account. 
+To create a GCP cloud account, provide a name for the account and enter the JSON credentials for your service account either by pasting into the space provided or uploading from your JSON credential file. Then, Validate and save your account. 
 
 # Deploying a GCP Cluster
 The following steps need to be performed to provision a new GCP cluster:
@@ -139,17 +139,17 @@ The following steps need to be performed to provision a new GCP cluster:
   * Cloud Account - Select the desired cloud account. GCP cloud accounts with GCP credentials need to be pre-configured in project settings.
   * Project - The project to which the cluster belongs.
   * Region - Choose the desired GCP region where you would like the clusters to be provisioned.
-  * SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-  * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets.
+  * SSH Key Pair Name - Choose the desired SSH Key-pair. It is the Public key to configure remote SSH access to the nodes.
+  * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    - Name - a descriptive name for the node pool.
+    - Name - A descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
-    - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+    - Instance type - Select the instance type to be used for all nodes in the node pool.
     - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
     - Disk size - set the desired disk size.
 * Configure the worker pool as per requirements or copy the master pool configuration.
-* Users can configure the cluster policies as per need, these could be schedules after cluster creation also.
+* Users can configure the cluster policies as per need. These could be scheduled after cluster creation also.
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 # Deleting a GCP Cluster
@@ -157,5 +157,5 @@ The following steps need to be performed to provision a new GCP cluster:
 
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
 * Invoke a delete action available on the page
-* Confirm delete action
-Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
+* Confirm delete
+Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.
