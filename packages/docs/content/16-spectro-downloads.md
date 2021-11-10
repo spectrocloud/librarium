@@ -1,7 +1,7 @@
 ---
 title: "Downloads"
 metaTitle: "Spectro Downloads Artifacts"
-metaDescription: "Spectro Cloud Artefacts Downloads "
+metaDescription: "Spectro Cloud Artifacts Downloads "
 icon: "cloud-download-alt"
 hideToC: false
 fullWidth: false
@@ -54,7 +54,7 @@ chmod 755 ./airgap-v${VERSION}.bin
 ```
 
 # SAAS - Private Cloud Gateway(PCG)
- PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
+ PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
 
 
 ## vSphere PCG Image

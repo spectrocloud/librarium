@@ -18,14 +18,14 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 This section is a tour of the two main dashboards of the tenant console, the Project Dashboard and the Admin
 Dashboard. The Project Dashboard is used to perform operations related to setting up your Kubernetes clusters such as setting
 up cluster profiles, creating cloud accounts, deploying clusters etc. The Admin dashboard is used for performing
-administrative tasks such as setting up single sign on (SSO), creating user, teams and setting up RBAC, setting up additional
+administrative tasks such as setting up Single Sign On (SSO), creating user, teams and setting up Role-Based Access Control (RBAC), setting up additional
 package registries etc. The admin dashboard is only available to the users who have the tenant admin role. Admin
 users can toggle between the project dashboard and admin dashboard. Users without admin role can
 only see the project dashboard.
 
 # Project Dashboard
 
-Upon login, the dashboard shows the views available for a non-admin user. On top we have <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">project</a> helps to organize the cluster resources in a logical grouping.</Tooltip> (1) help to organize the cluster resources in a logical grouping. From the drop down we can shift between the projects. The left panel contains <Tooltip trigger={<u>project overview</u>}><a href="/project-overview">ProjectOverview</a> gives an overview of the resource and cost consumption of the selected project.</Tooltip> (2) , gives an overview of the resource and cost consumption of the selected project. <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> (3) of the default project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> (4). <Tooltip trigger={<u>Workspaces</u>}><a href="/Workspace">Workspace</a> Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.</Tooltip> (5) enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. <Tooltip trigger={<u>Audit logs</u>}><a href="/Audit Logs">Audit Logs </a> gives the log of activities with timeline.</Tooltip> (6) gives the log of activities with timeline.
+Upon login, the dashboard shows the views available for a non-admin user. On top we have <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">project</a> helps to organize the cluster resources in a logical grouping.</Tooltip> (1) help to organize the cluster resources in a logical grouping. From the drop down we can shift between the projects. The left panel contains <Tooltip trigger={<u>project overview</u>}><a href="/project-overview">Project Overview</a> gives an overview of the resource and cost consumption of the selected project.</Tooltip> (2) , gives an overview of the resource and cost consumption of the selected project. <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> (3) of the default project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Spectro Cloud that are instantiated from cluster profiles.</Tooltip> (4). <Tooltip trigger={<u>Workspaces</u>}><a href="/Workspace">Workspace</a> Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.</Tooltip> (5) enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. <Tooltip trigger={<u>Audit logs</u>}><a href="/Audit Logs">Audit Logs </a> gives the log of activities with timeline.</Tooltip> (6) gives the log of activities with timeline.
 
 
 The "Settings" section (7) of the default dashboard relates to the cloud account settings, Backup location settings, Alerts etc,. This is an important distinction from the settings under the Admin dashboard. It also allows the user to upload SSH keys for safekeeping. These key/s can be recalled when deploying a cluster.
@@ -49,7 +49,7 @@ The "Settings" section (7) of the default dashboard relates to the cloud account
       x: 5,
       y: 54,
       label: 2,
-      description: "This is where the cumulative cost and resource utilisation of the Project is overviewed.",
+      description: "This is where the cumulative cost and resource utilization of the Project is presented.",
     },
     {
       x: 5,
