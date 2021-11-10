@@ -34,7 +34,7 @@ make initialize
 Create a branch if needed. This will keep your work separated from the rest of your changes.
 
 ```sh
-git branch -b <branch_name>
+git checkout -b <branch_name>
 ```
 
 To preview your changes use the following.
