@@ -156,18 +156,6 @@ export default {
   code: CodeBlock,
   a: AnchorTag,
   img: props => {
-    const splitPath = props.src.split('.');
-    const extension = splitPath[splitPath.length - 1];
-
-    if (extension === 'mp4') {
-      return (
-        <VideoWrap>
-          <video controls width="100%">
-            <source {...props} type="video/mp4" />
-          </video>
-        </VideoWrap>
-      );
-    }
     return <img {...props} />;
   },
   // TODO add `blockquote`
