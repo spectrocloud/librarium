@@ -31,7 +31,7 @@ Spectro Cloud intensifies the governance and control of our tenant clusters with
   * Cluster Role Binding:
 Cluster Role Binding is specific to a ClusterRole which is a non-namespaced resource. 
   * Role Binding:
-A Role Binding requires the creation of a  namespace and then provides access control to that created namespace. 
+A Role Binding requires the creation of a namespace and then provides access control to that created namespace. 
 
 <InfoBox>
 If the user wants to define a role within a namespace, go for role binding, or if the user wants to define a role cluster-wide, go for cluster Role Binding.

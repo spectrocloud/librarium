@@ -15,7 +15,7 @@ workload cluster deployments. Cluster profiles provide a way for driving consist
 deployments. You can create as many profiles as required. Cluster profile can contain environment specific 
 configuration and can be created to meet specific types of workload cluster deployment needs. As an example, you may 
 create a Dev cluster profile with very basic configuration or a Prod cluster profile with additional security, monitoring 
-and loggin layers. You may also build special purpose profiles to deploy workload clusters for use cases such as AI/ML, HPC etc.  Cluster profiles can be created to be of the type Core Infra, Add-on or Full.
+and logging layers. You may also build special purpose profiles to deploy workload clusters for use cases such as AI/ML, HPC etc.  Cluster profiles can be created to be of the type Core Infra, Add-on or Full.
 
 ![Cluster Profile Types](cluster_profiles.png)
 
