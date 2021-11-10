@@ -13,28 +13,29 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of bare-metal kubernetes clusters deployed by Spectro Cloud using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
+Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Spectro Cloud using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
 * Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MaaS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
 * Spectro Cloud provides cloud like experience to deploying clusters on bare metal servers.
-* In order to facilitate communication between the Spectro Cloud management platform and the bare-metal macchines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment .The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* In order to facilitate communication between the Spectro Cloud management platform and the bare-metal machines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. The Spectro Cloud PCG, once installed registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 
 ![maas_cluster_architecture.png](maas_cluster_architecture.png)
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a bare-metal kubernetes cluster using MaaS:
+The following prerequisites must be met before deploying a bare-metal Kubernetes cluster using MaaS:
 
-* You must enable API communication and retrieve the API key. The [key], [secret, [consumer_key] tokens are the three elements that compose the API key (API key = ‘[consumer_key]:[key]:[secret]’).
-* You should have an Infrastructure cluster profile created in Spectro Cloud for MaaS.
-* You should install a Private Cloud Gateway for MaaS as decribed in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatially register a cloud account for MaaS in Spectro Cloud. You can register your additional MaaS cloud accounts in Spectro Cloud as described in the "Creating a MaaS Cloud account" section below.
+* You must enable API communication and retrieve the API key. The [key], [secret], [consumer_key] tokens are the three elements that compose the API key (API key = ‘[consumer_key]:[key]:[secret]’).
+* You should have an Infrastructure cluster profile created in the Spectro Cloud Palette UI for MAAS.
+* You should install a Private Cloud Gateway for MaaS as described in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MaaS in Spectro Cloud. You can register your additional MaaS cloud accounts in Spectro Cloud as described in the "Creating a MaaS Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+* A computer with a docker daemon installed and connectivity to both the Spectro Cloud Management console and the MaaS identity endpoint. 
 * Sufficient IPs for application workload services (e.g.: Load Balancer services).
 * Per workload cluster IP requirements:
     * 1 per cluster node.
@@ -42,21 +43,25 @@ The following prerequisites must be met before deploying a bare-metal kubernetes
 
 # Installing Private Cloud Gateway - MaaS
 
-The following sytem requirements should be met in order to install a private cloud gateway for MaaS:
+The following system requirements should be met in order to install a private cloud gateway for MaaS:
 
 * Private cloud gateway IP requirements:
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.
     * 1 IP for Kubernetes control-plane.
 
-Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint.
+Spectro Cloud provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jumpbox. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
 
 ## Generate pairing code
 
-Navigate to the Private Cloud Gateway page under Administration and Create a new MaaS gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
+Navigate to the Private Cloud Gateway page in the Palette UI under “My Organization” -> “Admin Settings” -> “Private Cloud Gateways” -> “Add New Private Cloud Gateway -> “Maas”  -> “Add Maas Account”. 
+
+Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
 ## Generate gateway config
 
-Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, MaaS cloud account, environment and, placement information as requested.
+Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Spectro Cloud Management console and the MaaS identity endpoint. 
+
+To generate the gateway configuration file. Follow the instructions below to provide the Spectro Cloud Management, MaaS cloud account, environment and  placement information when prompted by the installer.
 
 ```bash
 docker run -it --rm \
@@ -69,21 +74,24 @@ docker run -it --rm \
 
 #### Enter Spectro Cloud  Management Information:
 
-* Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com
-* Spectro Cloud Username - Login email address e.g. user1@company.com
-* Spectro Cloud Password - The login password
-* Private Cloud Gateway pairing code: The unique authentication code generated in the previous step.
+* Copy and past the instructions above to your terminal with docker. Upon execcution provide the following:
+* Install Type: Choose either Private Cloud Gateway or Self Hosted Enterprise Cluster.  You may change your selection with the up or down keys.
+* Cloud Type: MaaS.
+* Input the name you wish to use for your Private Cloud Gateway.
+* Enter the Spectro Cloud Console endpoint e.g. https://customername.console.spectrocloud.com
+* Enter your Spectro Cloud Username - Login email address e.g. user1@company.com.
+* Enter your Spectro Cloud Password - The login password.
+* Enter the Private Cloud Gateway pairing code generated from the Spectro Cloud Palette UI. For more info, please see the “Generate gateway config” section of this document. 
 
 #### Enter Environment Configuration:
 
-* HTTPS Proxy (--https_proxy):
+* HTTPS Proxy (--https_proxy): leave blank unless an HTTPS Proxy is used.
+This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
-The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+* HTTP Proxy(--http_proxy): leave blank unless an HTTP Proxy is used.
+This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
-* HTTP Proxy(--http_proxy):
-The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
-
-* No Proxy(--no_proxy):
+* No Proxy(--no_proxy): default is blank.
 A comma-separated list of local network CIDRs, hostnames, domain names that should be excluded from proxying. This setting will be propagated to all the nodes to bypass the proxy server. e.g., maas.company.com,10.10.0.0/16
 
 * Pod CIDR (--pod_cidr):
@@ -94,17 +102,18 @@ The IP address that will be assigned to services created on Kubernetes. This set
 
 #### Enter MaaS Account Information:
 
-MaaS API Endpoint - MaaS API endpoint. Domain or IP address.
-e.g. http://10.11.130.10:5240/MAAS
+* API Endpoint - MaaS API endpoint. Domain or IP address.
+e.g. http://10.11.12.13:5240/MAAS
 
-MaaS API Key - MAAS generates an API key when creating your MAAS account, which is used for authentication.
+* API Key - Generate an API key from the MAAS UI and paste when prompted. This key is used for authentication.
 
 
 #### Enter MaaS Machine configuration for the Private Cloud Gateway:
 
-* Select the availability zone
-* Choose flavor
-* Number of nodes: choose between 1 and 3
+* Select the availability zone.
+* Choose the domain.
+* Choose the Resource Pool.
+* Number of nodes: choose between 1 and 3.
 
 After this step, a new gateway configuration file is generated and its location is displayed on the console.
 
