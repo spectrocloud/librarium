@@ -16,10 +16,10 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Spectro Helm Registry
 
-Helm Charts is a collection of Kubernetes resource files capable of deploying services ranging in varying complexities. Spectro Cloud provides a few stable public helm registries out of the box. Tenants can also additionally add any public or private helm registries to leverage charts from those registries. Spectro Cloud makes deploying typical Kubernetes applications easier with native support for [Helm charts](https://www.helm.sh). We also allow the addition of any public or private helm chart registry to the system. Spectro Cloud ships a few stable public helm chart registries out of the box. Charts from these system registries or any additional ones added by tenant administrators are modeled into cluster profiles for cluster deployment. 
+Helm Charts is a collection of Kubernetes resource files capable of deploying services ranging in varying complexities. Spectro Cloud provides a few stable public helm registries out of the box. Tenants can also additionally add any public or private helm registries to leverage charts from those registries. Spectro Cloud makes deploying typical Kubernetes applications easier with native support for [Helm charts](https://www.helm.sh). We also allow the addition of any public or private helm chart registry to the system. Spectro Cloud ships a few stable public helm chart registries out of the box. Charts from these system registries or any additional ones added by tenant administrators are modelled into cluster profiles for cluster deployment. 
 
 <WarningBox>
-SpectroCloud mandates the use of Helm OCI version 3.7.0 and above for the best security experiences.
+Spectro Cloud mandates the use of Helm OCI version 3.7.0 and above for the best security experiences.
 </WarningBox>
 
 ## Deploying Helm Charts

@@ -16,7 +16,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 The following is the detailing of the Azure AKS cluster provisioning from Spectro Cloud:
 * Spectro Cloud enables the effortless deployment and management of containerised applications with fully-managed Azure Kubernetes Service (AKS). 
-* It provides the users with serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. 
+* It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. 
 * This unites the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credences. 
 * The infrastructure has an event-driven autoscaling and triggers, that enable Elastic provisioning for this self-managed infrastructure. 
 * Extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement across multiple clusters with Azure Policy.
@@ -30,11 +30,11 @@ The following prerequisites must be met before deploying an AKS workload cluster
 
 * You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
 * You must have permissions to deploy clusters using AKS service on Azure.
-* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
+* You must register your Azure cloud account in Spectro Cloud as described in the "Creating an Azure Cloud account" section below.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for AKS.
-* Following are additional prerequisites if Azure Active Directory integration for the AKS cluster is desried:
+* Following are additional prerequisites if Azure Active Directory integration for the AKS cluster is desired:
    * A Tenant Name must be provided as part of the Azure cloud account creation in Spectro Cloud.
-   * For the Azure client used in the Aure cloud account the following API permission has to be provided:
+   * For the Azure client used in the Azure cloud account the following API permission has to be provided:
       *  Microsoft Graph: Group.Read.All (Application Type)
       *  Microsoft Graph: Directory.Read.All (Application Type)
 
@@ -99,7 +99,7 @@ New worker pools may be added if it desired to customize certain worker nodes to
 # Configure Azure Active Directory 
 
 
-The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Spectro Cloud Platform using a simple check box. Once the Cloud account is created the user can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin Kubeconfig file created and can be downloaded from our Spectrocloud UI as ‘Kubernetes config file’. The user needs to create manually the User’s kubeconfig file to enable AAD completely. The following are the steps to create the custom user kubeconfig file:
+The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Spectro Cloud Platform using a simple check box. Once the Cloud account is created the user can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin Kubeconfig file created and can be downloaded from our Spectro Cloud UI as ‘Kubernetes config file’. The user needs to create manually the User’s Kubeconfig file to enable AAD completely. The following are the steps to create the custom user Kubeconfig file:
 
 * Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to cluster resources.
 * After the creation of groups, create users in the Azure AD.
@@ -110,7 +110,7 @@ The above step can also be completed using Spectro RBAC pack available under Aut
 </InfoBox>
 
 * Once the roles and role bindings are created these roles can be linked to the Groups created in Azure AD.
-* The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific kubeconfig file please run the following command:
+* The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific Kubeconfig file please run the following command:
 
 		  az aks get-credentials --resource-group <resource-group> --name <cluster-name>
 

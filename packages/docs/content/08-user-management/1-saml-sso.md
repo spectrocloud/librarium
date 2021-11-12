@@ -129,7 +129,7 @@ To setup OIDC based SSO:
 	* Callback URL - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
 	* Logout URL - URL is taken from IdP - URL to be provided into IDP for Logout
 	* Default Teams - Default team to which members unassigned to specific team belongs.
-	* Scopes - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes,called claims.
+	* Scopes - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes, called claims.
 
 
 * REQUIRED CLAIMS: The parameter values claimed by the user to be  mapped with the identity provider platform.The choice of parameters can be done by the users which can be an Email, First Name, Last Name, Spectro Team Etc.

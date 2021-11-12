@@ -38,7 +38,7 @@ The following are the steps to reconfigure worker pool nodes:
 
 The following are the steps to add a new worker node pool to a cluster:
 * Invoke the option to ‘Add Node Pool’ from the cluster’s node information page.
-* Provide node pool settings as follows:-
+* Provide node pool settings as follows:
     * A descriptive name for the node pool.
     * The number of nodes in the node pool.
     * Rolling update setting, availability zones, flavor, and Disk size settings.

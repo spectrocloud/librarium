@@ -14,7 +14,7 @@ import Tooltip from '@librarium/shared/src/components/ui/Tooltip';
 
 # New Clusters 
 
-Spectro Cloud supports provisioning and end-to-end lifecycle managent of kubernetes clusters (workload clusters) on various public clouds, private clouds as well as on bare metal servers. On public clouds, Spectro Cloud supports provisioning new clusters using the cloud provider's infrastructure by provisioning new VMs for control plane and woker pools as well as through their managed kubernetes services such as EKS, AKS etc. Provisioning of clusters on private environments like VMware, OpenStack etc reuires a Private Cloud Gateway (PCG) to be installed for Spectro Cloud to be able to install kubernetes clusters.
+Spectro Cloud supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public clouds, private clouds as well as on bare metal servers. On public clouds, Spectro Cloud supports provisioning new clusters using the cloud provider's infrastructure by provisioning new VMs for control plane and worker pools as well as through their managed Kubernetes services such as EKS, AKS etc. Provisioning of clusters on private environments like VMware, OpenStack etc requires a Private Cloud Gateway (PCG) to be installed for Spectro Cloud to be able to install Kubernetes clusters.
 
 <InfoBox>
 Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip>. You can use one of the cluster profiles provided out-of-the-box or create a new one. 
@@ -24,7 +24,7 @@ Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>clus
 
 The following pages provide details instructions for setting up new workload clusters in various cloud environments:
 
-* [Amazon EC2](/clusters/new-clusters/aws)
+* [Amazon Web Services](/clusters/new-clusters/aws)
 * [Amazon Elastic Kubernetes Service (EKS)](/clusters/new-clusters/eks)
 * [Azure](/clusters/new-clusters/azure)
 * [Azure Kubernetes Service (AKS)](/clusters/new-clusters/aks)

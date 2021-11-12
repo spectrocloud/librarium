@@ -27,7 +27,7 @@ Following are some of the architectural highlights of Azure clusters deployed by
 The following prerequisites must be met before deploying a workload cluster in Azure:
 
 * You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network and security resources in the desired regions.
-* You must register your Azure cloud account in Spectro Cloud as descrbed in the "Creating an Azure Cloud account" section below.
+* You must register your Azure cloud account in Spectro Cloud as described in the "Creating an Azure Cloud account" section below.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for Azure cloud.
 
 # Creating an Azure cloud account

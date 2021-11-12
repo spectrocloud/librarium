@@ -37,7 +37,7 @@ Apply Spectro Cloud platform upgrades. Upgrades to the Spectro Cloud platform ar
 
 ## SMTP
 
-Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are onboarded to the platform so they can activate their accounts.
+Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are onboarded to the platform to activate their accounts.
 
 ## Certificates
 
@@ -45,4 +45,4 @@ Provide the desired SSL/TLS server certificates to support external access to va
 
 # Cluster Management
 
-Manages the clusters. Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster can also be configured and updated.
+Enterprise clusters are created and deployed from this section. The layers and/or pack integrations constituting a cluster can also be configured and updated.
