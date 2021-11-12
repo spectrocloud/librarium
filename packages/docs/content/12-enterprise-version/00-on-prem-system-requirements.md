@@ -17,12 +17,12 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # System Requirements
 
-The Spectro Cloud SaaS platform is also available as self hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in customer's VMware environment. Spectro Cloud on-prem is available in two modes:
+The Spectro Cloud SaaS platform is also available as a self-hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Spectro Cloud on-prem is available in two modes:
 
 * Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes.
-* Enterprise Mode - A multi node highly available version for production purposes.
+* Enterprise Mode - A multi-node highly available version for production purposes.
 
-The sections below describe the common requirements for both the deployment modes and highlight specific requirements, if any for these modes.
+The sections below describe the standard requirements and highlight specific requirements for both the deployment modes.
 
 ## vSphere Environment Prerequisites
 
@@ -34,7 +34,7 @@ The sections below describe the common requirements for both the deployment mode
 
 * Zone Tagging
 
-  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
   As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
 
@@ -189,7 +189,7 @@ The sections below describe the common requirements for both the deployment mode
 
 The following section provides the hardware requirements for Spectro Cloud Platform VMs for various capacity levels.
 * Concurrent Tenant Clusters - The number of concurrent tenant cluster provisioning or deletion requests.
-* Total Managed Clusters - The number of parallely running tenant clusters.
+* Total Managed Clusters - The number of parallel running tenant clusters.
 
     <InfoBox>
      The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below.
