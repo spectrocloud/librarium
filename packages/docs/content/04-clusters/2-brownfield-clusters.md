@@ -1,7 +1,7 @@
 ---
 title: "Brownfield Clusters"
 metaTitle: "Managing brownfield clusters on Spectro Cloud"
-metaDescription: "Importing and managing brownfild clusters provisioned on any CSP using other orchestration tools "
+metaDescription: "Importing and managing brownfield clusters provisioned on any CSP using other orchestration tools "
 icon: "cloud-download-alt"
 hideToC: false
 fullWidth: false
