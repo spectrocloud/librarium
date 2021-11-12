@@ -16,21 +16,21 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 Following are some of the highlights of GCP clusters provisioned by Spectro Cloud:
 * Spectro Cloud provides public cloud like experience to deploying clusters on OpenStack.
 * In order to facilitate communication between the Spectro Cloud management platform and the OpenStack controllers installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 
 ![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a kubernetes clusters in OpenStack:
+The following prerequisites must be met before deploying a Kubernetes clusters in OpenStack:
 
 * OpenStack Victoria (recommended).
 * NTP configured on all Hosts.
 * Shared Storage between OpenStack hosts.
-* You must have an active OpenStack account with access to all the projects that you would like to provisiong clusters into. The account should have all the permissions listed below in the "OpenStack Cloud Account Permissions" section.
+* You must have an active OpenStack account with access to all the projects that you would like to provision clusters into. The account should have all the permissions listed below in the "OpenStack Cloud Account Permissions" section.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for OpenStack.
-* You should install a Private Cloud Gateway for OpenStack as decribed in the "Installing Private Cloud Gateway - OpenStack" section below. Installing the Private Cloud Gateway will automatially register a cloud account for OpenStack in Spectro Cloud. You can register your additional OpenStack cloud accounts in Spectro Cloud as described in the "Creating a OpenStack Cloud account" section below.
+* You should install a Private Cloud Gateway for OpenStack as described in the "Installing Private Cloud Gateway - OpenStack" section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Spectro Cloud. You can register your additional OpenStack cloud accounts in Spectro Cloud as described in the "Creating a OpenStack Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
@@ -297,7 +297,7 @@ The following prerequisites must be met before deploying a kubernetes clusters i
 ```
 
 # Installing Private Cloud Gateway - OpenStack
-The following sytem requirements should be met in order to install a private cloud gateway for OpenStack:
+The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
 * Private cloud gateway IP requirements:
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.

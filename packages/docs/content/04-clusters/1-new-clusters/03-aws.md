@@ -28,7 +28,7 @@ Following are some of the architectural highlights of AWS clusters provisioned b
 The following prerequisites must be met before deploying an EKS workload cluster:
 
 * You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
-* You must register your AWS cloud account in Spectro Cloud as descrbed in the "Creating an AWS Cloud account" section below.
+* You must register your AWS cloud account in Spectro Cloud as described in the "Creating an AWS Cloud account" section below.
 * You should have an Infrastructure cluster profile created in Spectro Cloud for AWS.
 * Spectro Cloud creates compute, network, and storage resources on AWS during the provisioning of Kubernetes clusters. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
   - vCPU
@@ -560,7 +560,7 @@ These policies defines some actions, resources, or conditions that do not provid
 
 # Creating an AWS cloud account
 
-To create an AWS cloud account provide a name and a descripton for the account and follow the steps below based on the account type desired:
+To create an AWS cloud account provide a name and a description for the account and follow the steps below based on the account type desired:
 
 * In the AWS console, create the four policies listed above.
 * Access Credentials

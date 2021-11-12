@@ -128,7 +128,7 @@ Backups can be scheduled or initiated on an on-demand basis as required. The fol
 
 
 ### Backup Scheduling Options:
-* Customize your backup for the exact month,day,hour and minute of the user's choice.
+* Customize your backup for the exact month, day, hour and minute of the user's choice.
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
 * Every month on the 1st at midnight.

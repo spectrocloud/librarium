@@ -44,7 +44,7 @@ Spectro Cloud users can now push the compliance, management, operational, and ri
 <WarningBox>
 An AWS account with cloud trail created is the prerequisite.
 
-The permissions listed needs to be enabled for CloudWatch.
+The permissions listed need to be enabled for CloudWatch.
 </WarningBox>
 
 ## Permission List

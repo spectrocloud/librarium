@@ -47,11 +47,11 @@ An explanation for the parameters of the JSON is given in the table below:
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
 | addonType | String | False | Addon-type must be set for packs that have the layer set to ‘addon’. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
-| cloudTypes | Array | True | Supported cloud types are aws, azure, vmware. One or more types can be provided for a pack. |
+| cloudTypes | Array | True | Supported cloud types are AWS, Azure, VMware. One or more types can be provided for a pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
 | annotations | Array | False | Optional key-value pairs required during pack installation. Typically custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
 | eol | String | False | End of life date for integration. |
-| kubeManifests | Array | False | Relative path to kubernetes manifest yaml files |
+| KubeManifests | Array | False | Relative path to Kubernetes manifest yaml files |
 | ansibleRoles | Array | False | Relative part to the Ansible role folders. These folders should contain all the artifacts required by Ansible. Please refer to Ansible documentation for more details on how Ansible roles are constructed. |
 | | | | In Spectro Cloud, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
@@ -104,7 +104,7 @@ The OS is one of the core layers in a cluster profile. An OS pack can be built t
 1. Pre-Installed Kubernetes - The OS image has the desired version of Kubernetes components like kubelet, kubectl, etc installed.
 2. Vanilla OS Image - Kubernetes components are not installed.
 
-Additionally, for both the scenarios additional components or packages may need to be installed at runtime to prepare the final OS image. This can be done by specifying one or more ansible roles in the pack. The following are a few examples of building custom OS pack to cover the some of these scenarios.
+Additionally, for both the scenarios additional components or packages may need to be installed at runtime to prepare the final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples of building custom OS pack to cover the some of these scenarios.
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Spectro Cloud installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, the flag `skipK8sInstall` should be set to true.
 

@@ -31,7 +31,7 @@ Spectro Cloud 1.14 is released with additional health alert conveyances, secured
 * Spectro cloud layouts instantaneous and effortless monitoring of the cluster cloud cost.
 * Now Spectro Cloud users can receive real-time alerts on cluster health at hooked external applications.
 * Spectro Cloud enterprise mode production clusters can be backed up to object storage of S3 buckets for convenient restoration.
-* Specro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local datacenters.
+* Spectro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local data centers.
 * Spectro Cloud has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
 
 
@@ -101,7 +101,7 @@ Add the following permissions to the IAM policy called NodePolicy if it was crea
     
 ```
 
-Add the following permissions to the IAM polciy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
+Add the following permissions to the IAM policy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
 
 ```json
    {
@@ -176,7 +176,7 @@ Our on-prem version gets attention to finer details with this release:
 * The Spectro Cloud database can now be backed up and restored.
 * Whereas previous on-prem versions allowed upgrading only to major versions, this release allows <Tooltip trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
 * Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when [migrating](/enterprise-version/deploying-an-enterprise-cluster/#migratequickstartmodeclustertoenterprise) from the quick start version to the enterprise version.
-* AWS and GCP clusters can now be provisioned from an on-prem Specto Cloud system.
+* AWS and GCP clusters can now be provisioned from an on-prem Spectro Cloud system.
 
 On the VMware front, we have:
 

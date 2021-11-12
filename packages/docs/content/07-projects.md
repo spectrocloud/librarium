@@ -30,9 +30,9 @@ The user permission is always the union of the Tenant and Project roles along wi
 
 The *Admin > Projects* page displays the projects related dashboard cards capturing the usage and metrics about the projects.
 
-# Monthly Kilocore-hours Usage
+# Monthly Kilo-core Hours Usage
 
-The monthly usage card shows the daily cluster usage in kilocore hours for a month across all the projects.  The kilocore hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilocore hours for the node is done in increments of seconds. The monthly usage card also shows project-wide kilocore hours. Based on the plan type, the kilocore hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
+The monthly usage card shows the daily cluster usage in kilo-core hours for a month across all the projects.  The kilo-core hours (kCh) is an aggregate measure of how many core hours the worker nodes consume while under management across all your deployments. The metering of the kilo-core hours for the node is done in increments of seconds. The monthly usage card also shows project-wide kilo-core hours. Based on the plan type, the kilo-core hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
 
 # Cores per Project Usage
 
@@ -40,4 +40,4 @@ The usage of the active worker nodes' CPU cores is grouped across all projects a
 
 # Project Card
 
-Every project card shows the cluster's state information grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on sereval conditions such as node state, memory & disk pressure, and network availability.
+Every project card shows the cluster's state information grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on several conditions such as node state, memory & disk pressure, and network availability.
