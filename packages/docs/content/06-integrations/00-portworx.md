@@ -7,6 +7,7 @@ isIntegration: true
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
+
 import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
@@ -71,7 +72,7 @@ Until the secret is created in the cluster, Portworx deployments might fail to r
 </WarningBox>
 
 Secret can be created using the spec below
-```javascript
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
