@@ -1,15 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import ClipboardJS from "clipboard";
-import { CopyOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
+import ClipboardJS from 'clipboard';
+import { CopyOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CodeBlock from './codeBlock';
 import AnchorTag from './anchor';
 
-import { useTabsContext } from "../../components/ui/Tabs";
+import { useTabsContext } from '../../components/ui/Tabs';
 
 const PreContainer = styled.div`
   position: relative;
@@ -17,6 +17,10 @@ const PreContainer = styled.div`
   pre {
     max-height: 450px;
   }
+`;
+
+const VideoWrap = styled.div`
+  max-width: 840px;
 `;
 
 const Copy = styled.button`
@@ -41,12 +45,12 @@ const ButtonWrapper = styled.div`
 const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
-    padding-left: 26px;
-    margin-left: -26px;
+  padding-left: 26px;
+  margin-left: -26px;
 
   > a {
     visibility: hidden;
-    margin-left: -26px;
+    margin-left: -30px;
     margin-right: 10px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.85);
@@ -69,9 +73,9 @@ function Pre(props) {
 
   useEffect(() => {
     new ClipboardJS(buttonRef.current, {
-      text: (trigger) => {
+      text: trigger => {
         return preRef.current.innerText;
-      }
+      },
     });
   }, []);
 
@@ -92,7 +96,7 @@ function Pre(props) {
 function generatePermalinkAnchor(children, tabsIdentifierData) {
   const headingId = generateHeadingId(children);
 
-  if(tabsIdentifierData?.id) {
+  if (tabsIdentifierData?.id) {
     return `?${tabsIdentifierData.id}=${tabsIdentifierData.activeKey}#${headingId}`;
   }
 
@@ -104,15 +108,15 @@ function generateHeadingId(children) {
 
   if (Array.isArray(children)) {
     title = children.reduce((accumulator, child) => {
-      if (typeof child === "string") {
-        return `${accumulator} ${child}`
+      if (typeof child === 'string') {
+        return `${accumulator} ${child}`;
       }
       if (child?.props?.children) {
-        return `${accumulator} ${generateHeadingId(child.props.children)}`
+        return `${accumulator} ${generateHeadingId(child.props.children)}`;
       }
 
       return accumulator;
-    }, '')
+    }, '');
   }
 
   return title.replace(/\s+/g, '').toLowerCase();
@@ -141,25 +145,19 @@ export default {
         </a>
         <h2 id={generateHeadingId(props.children)} {...props} />
       </HeaderWrap>
-    )
+    );
   },
-  h3: props => (
-    <h3 id={generateHeadingId(props.children)} {...props} />
-  ),
-  h4: props => (
-    <h4 id={generateHeadingId(props.children)} {...props} />
-  ),
-  h5: props => (
-    <h5 id={generateHeadingId(props.children)} {...props} />
-  ),
-  h6: props => (
-    <h6 id={generateHeadingId(props.children)} {...props} />
-  ),
+  h3: props => <h3 id={generateHeadingId(props.children)} {...props} />,
+  h4: props => <h4 id={generateHeadingId(props.children)} {...props} />,
+  h5: props => <h5 id={generateHeadingId(props.children)} {...props} />,
+  h6: props => <h6 id={generateHeadingId(props.children)} {...props} />,
   p: props => <p className="paragraph" {...props} />,
   pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
-  // TODO add `img`
+  img: props => {
+    return <img {...props} />;
+  },
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`

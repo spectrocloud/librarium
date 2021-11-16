@@ -12,10 +12,16 @@ const plugins = [
     },
   },
   'gatsby-plugin-sitemap',
-  'gatsby-plugin-sharp',
   'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-antd',
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `images`,
+      path: path.resolve(__dirname, '../shared/src/assets/'),
+    },
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -37,6 +43,8 @@ const plugins = [
       path: path.resolve(__dirname, '../api/content/'),
     },
   },
+  `gatsby-transformer-sharp`,
+  'gatsby-plugin-sharp',
   {
     resolve: `gatsby-plugin-webfonts`,
     options: {
@@ -44,7 +52,7 @@ const plugins = [
         google: [
           {
             family: `Poppins`,
-            variants: [`400`, `500`, `700`, 'latin'],
+            variants: [`300`, `400`, `500`, `600`, `700`, 'latin'],
           },
         ],
       },
@@ -53,16 +61,32 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
+      plugins: [
+        `gatsby-remark-local-videos`,
+        `gatsby-remark-images`,
+        `gatsby-remark-images-medium-zoom`,
+        'gatsby-remark-image-attributes',
+      ],
       gatsbyRemarkPlugins: [
+        {
+          resolve: `gatsby-remark-local-videos`,
+        },
         {
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 1035,
+            quality: 100,
             linkImagesToOriginal: false,
           },
         },
         {
           resolve: 'gatsby-remark-copy-linked-files',
+        },
+        {
+          resolve: 'gatsby-remark-images-medium-zoom',
+        },
+        {
+          resolve: 'gatsby-remark-image-attributes',
         },
       ],
       extensions: ['.mdx', '.md'],

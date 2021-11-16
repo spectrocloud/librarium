@@ -11,10 +11,9 @@ fullWidth: false
 
 RBAC stands for Role-Based Access Control. This is a method that allows the same user to have a different type of access control based on the resource being accessed. In other words, whereas a user logged in to a computer as an admin can access all parts and data of the system, a guest user cannot. RBAC is an expansion as well as a modification of this scenario. RBAC allows the admin to grant full and unrestricted access to some parts of the system and withhold it in some others. A few files can be made read-only for the guest. The alternative would be to make the guest either an admin or to make all types of access partially restricted. Both cases are undesirable and that is where RBAC is helpful.
 
-Spectro Cloud's RBAC design allows granting granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users and multiple roles can be assigned to a user which defines the permitted actions on the resource.
+Spectro Cloud's RBAC design allows granting granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource.
 
-These settings can be accessed by the tenant admin in the Spectro Cloud console: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
-
+The tenant admin can access these settings in the Spectro Cloud console: **Admin** -> **Roles**. This page lists all the roles available along with the scope and status.
 ## Scope
 
 A scope defines the resources on which the role has coverage. The scope will be either tenant or project. For example, a role with the scope "project" can operate on only the projects. A combination of the user and the roles given to a user indicates the totality of the accesses made available to this user.
@@ -29,7 +28,7 @@ Permissions can be defined in the format `component.operation` like `cluster.cre
 
 * A **Role** is a collection of permissions.
 
-The role will have a *type* and a *scope*. The type signifies the creator's scope and the scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under tenant and the project scopes cannot be modified by the tenant or the project admin.
+The role will have a *type* and a *scope*. The type signifies the creator's scope and the scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under tenant and the tenant or the project admin cannot modify the project scopes.
 
 # Creating roles
 

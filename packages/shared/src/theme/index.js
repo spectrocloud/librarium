@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 const baseTheme = {
@@ -10,11 +10,11 @@ const baseTheme = {
 const lightTheme = {
   ...baseTheme,
   colors: {
-    background: '#fff',
+    background: 'transparent',
     heading: '#000',
-    text: '#3B454E',
+    text: '#666A80',
     preFormattedText: 'rgb(245, 247, 249)',
-    link: '#1000EE',
+    link: '#206CD1',
   },
 };
 
@@ -30,18 +30,18 @@ const darkTheme = {
 };
 
 export function useThemeManager() {
-  const [theme, updateTheme] = useState((typeof window !== 'undefined' && window.localStorage.getItem('theme')) || "light");
+  const [theme, updateTheme] = useState(
+    (typeof window !== 'undefined' && window.localStorage.getItem('theme')) || 'light'
+  );
   useEffect(() => {
     window.localStorage.setItem('theme', theme);
-  }, [theme])
+  }, [theme]);
 
-  return {theme, updateTheme}
+  return { theme, updateTheme };
 }
 
-export default function ThemeManager({children}) {
-  const {theme} = useThemeManager();
-  const currentActiveTheme = theme === "dark" ? darkTheme : lightTheme;
-  return (
-    <ThemeProvider theme={currentActiveTheme}>{children}</ThemeProvider>
-  )
-};
+export default function ThemeManager({ children }) {
+  const { theme } = useThemeManager();
+  const currentActiveTheme = theme === 'dark' ? darkTheme : lightTheme;
+  return <ThemeProvider theme={currentActiveTheme}>{children}</ThemeProvider>;
+}

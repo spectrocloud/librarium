@@ -13,6 +13,158 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
+
+
+
+# November 1, 2021 - Release 2.0.0 
+
+We are excited to announce that Spectro Cloud’s platform now has a name: **“PALETTE”**. Version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance and control with “Workspaces” . The list of features include:
+* “Workspaces” enable association of relevant namespaces across clusters to manage access, obtain cost visibility and get workload visibility by applications or teams.
+* Integration for alerts on cluster health with ITSM and collaboration tools such as Slack, ServiceNow, Microsoft Teams, etc.
+* Seamless and secure access to private Kubernetes clusters in cloud and private data center environments by leveraging our built-in reverse proxy.
+
+
+# September 14, 2021 - Release 1.14.0
+
+Spectro Cloud 1.14 is released with additional health alert conveyances, secured log storage, transparent cost features, and scalable enterprise cluster backup.
+* Spectro Cloud users can now push their audit logs to the AWS cloudtrail to enhance continuous monitoring and troubleshooting of the workload clusters.
+* Spectro cloud layouts instantaneous and effortless monitoring of the cluster cloud cost.
+* Now Spectro Cloud users can receive real-time alerts on cluster health at hooked external applications.
+* Spectro Cloud enterprise mode production clusters can be backed up to object storage of S3 buckets for convenient restoration.
+* Spectro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local data centers.
+* Spectro Cloud has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
+
+
+# August 14, 2021 - Release 1.13.0
+
+Spectro Cloud users can now convert their bare-metal servers into flexible, cohesive, and distributed instances of virtual machines with the slightest efforts utilizing “Metal As A Service”.
+
+
+# July 23, 2021 - Release 1.12.0
+
+Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud. 
+* Now import existing non-Spectro clusters from any cloud platform using our Generic cluster import feature. We support broad operations like scans, backups, etc. on these imported clusters as well as provisioning and lifecycle management of add-ons.
+* Spectro Cloud now supports AKS, a fully-managed Kubernetes service from Azure. Deploy and manage end-to-end lifecyle of AKS clusters.
+* Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication int he modern world. Through this integration, Spectro Cloud enables users to integrate single sign on using various identify providers such as Amazon Cognito, Keycloak etc. 
+* Kubernetes upgraded to version 1.19 for enterprise clusters.
+
+
+# June 28, 2021 - Release 1.11.0
+
+Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
+
+* Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
+
+
+# June 1, 2021 - Release 1.10.0
+
+Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
+
+* Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configurations like Fargate profiles, OIDC Authentication etc. 
+* Scan your Kubernetes clusters to ensure they are conformant and compliant.
+* Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
+* Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
+* Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
+
+Note:
+
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure that you have these new permissions included. 
+
+Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+   {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:UpdateInstanceInformation",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "s3:GetEncryptionConfiguration"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+    
+```
+
+Add the following permissions to the IAM policy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
+
+```json
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:AssociateIdentityProviderConfig",
+        "eks:ListIdentityProviderConfigs"
+      ],
+      "Resource": [
+        "arn:aws:eks:*:*:cluster/*"
+      ]
+   },
+   {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DisassociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig"
+      ],
+      "Resource": [
+        "*"
+      ]
+   }
+```
+
+
+
+
+
+# May 4, 2021 - Release 1.9.0
+
+Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
+
+* Spectro Cloud ensures users to start, run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
+* Now create and gain permission to your AWS cloud account by just using role ARN, without sharing long-term credentials.
+
+
+# March 29, 2021 - Release 1.8.0
+
+Spectro Cloud 1.8.0 released with advanced support for deploying & discovering Helm Charts and several usability enhancements!
+
+Featuring
+
+* Set up public and private helm chart registries to leverage the vast database of integrations and add-ons.
+* Deploy reliable and secure Kubernetes clusters, without worrying about Kubernetes updates, dependencies and security patches using the EKS Distro (EKS-D).
+* Accumulate container logs across all cluster nodes to create a support bundle to enable faster troubleshooting.
+* Attach multiple supporting manifests to your cluster profile layers in order to deploy integrations end to end without having to use command line client.
+* Add additional BYOM (Bring Your Own Manifest)  layers to your cluster profiles to perform ad-hoc customized deployments on the cluster.
+* You can now import and manage existing clusters running in your private VMware environment behind a proxy.
+* Discover charts deployed on your existing clusters and convert them into a cluster profile to use it as a template for future cluster deployments.
+* Enhanced cluster profile builder experience with several usability enhancements.
+
+
+# February 07, 2021 - Release 1.7.0
+
+The following features and enhancements were released as part of 1.7.0
+ 
+* Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
+* Automated as well as on-demand OS updates to keep cluster nodes up-to-date with latest security fixes and enhancements. 
+* Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster. 
+* Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
+* Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
+
+
 # December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
@@ -24,7 +176,7 @@ Our on-prem version gets attention to finer details with this release:
 * The Spectro Cloud database can now be backed up and restored.
 * Whereas previous on-prem versions allowed upgrading only to major versions, this release allows <Tooltip trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
 * Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when [migrating](/enterprise-version/deploying-an-enterprise-cluster/#migratequickstartmodeclustertoenterprise) from the quick start version to the enterprise version.
-* AWS and GCP clusters can now be provisioned from an on-prem Specto Cloud system.
+* AWS and GCP clusters can now be provisioned from an on-prem Spectro Cloud system.
 
 On the VMware front, we have:
 

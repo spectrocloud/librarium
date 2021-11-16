@@ -7,35 +7,48 @@ import Loader from '../../components/Loader';
 import Link from '../../components/Link';
 import { useConfig } from '../../config';
 import { useLocation } from '@reach/router';
-
 import { Search } from 'styled-icons/fa-solid/Search';
+import logo from '../../assets/logo_landscape_for_white.png';
 
 const SearchComponent = Loadable({
   loader: () => import('./search/index'),
   loading: Loader,
 });
 
+const MaxWidth = styled.div`
+  margin: 0 auto;
+  max-width: 1227px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  ${props =>
+    !props.isHomePage &&
+    css`
+      max-width: 100%;
+    `}
+`;
+
 const Wrap = styled.div`
   height: 80px;
-  box-shadow: inset 0px -1px 0px #f2f2f2;
+  border-bottom: 1px solid #dedfe5;
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 10;
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
 
   .hamburger {
     display: none;
   }
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     flex-direction: row-reverse;
+    padding: 0 20px;
     .formElement {
-      padding-left: 5px;
+      margin-left: 5px;
+      border: 0;
     }
     .hamburger {
       display: block;
@@ -57,7 +70,7 @@ const SearchIcon = styled(Search)`
   left: 15px;
   color: #999;
 
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     display: block;
     cursor: pointer;
     &:hover {
@@ -67,36 +80,51 @@ const SearchIcon = styled(Search)`
 `;
 
 const NavWrap = styled.div`
-  margin-right: 20px;
-
+  margin-right: 54px;
   a {
-    padding: 0 10px;
-    margin: 0 20px;
-    color: #78909c;
+    font-style: normal;
+    font-weight: 600;
     font-size: 14px;
-    text-transform: uppercase;
-    line-height: 80px;
-    display: inline-block;
+    line-height: 16px;
+    color: #252b53;
+    padding: 5px 0;
+    margin-left: 36px;
 
-    &.isActive {
-      color: #4432f5;
-      box-shadow: inset 0px -1px 0px #4432f5;
+    &.isActive,
+    &:hover {
+      color: #206cd1;
+      border-bottom: 2px solid #206cd1;
     }
 
-    @media (max-width: 830px) {
+    @media (max-width: 952px) {
       display: none;
     }
   }
 `;
 
 const BackButton = styled.div`
-  margin: 0 20px 0 10px;
+  margin-right: 20px;
   cursor: pointer;
   display: none;
 `;
 
+const LogoWrap = styled.div`
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 54px;
+
+  @media (max-width: 952px) {
+    display: none;
+  }
+`;
+
+const Logo = styled.img`
+  height: 36px;
+`;
+
 const SearchWrap = styled.div`
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     display: none;
 
     ${props =>
@@ -105,7 +133,6 @@ const SearchWrap = styled.div`
         display: flex;
         align-items: center;
         width: 100%;
-
         ${BackButton} {
           display: block;
         }
@@ -124,7 +151,7 @@ export const DEFAULT_MENU = [
     icon: 'folder',
     isActive(location) {
       const othersAreActive = DEFAULT_MENU.filter(item => item.title !== 'Docs').some(item => {
-        return item.isActive(location);
+        return item.isActive && item.isActive(location);
       });
 
       return !othersAreActive;
@@ -138,11 +165,16 @@ export const DEFAULT_MENU = [
       return isMenuActive(location, '/api');
     },
   },
+  {
+    title: 'Back to Spectro Cloud',
+    link: 'https://console.spectrocloud.com',
+  },
 ];
 
 export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   const [expanded, expandSearchConsole] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
   function renderMenuItem({ link, title, isActive = () => false }) {
     return (
       <Link className={isActive(location) ? 'isActive' : ''} to={link}>
@@ -155,19 +187,26 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
 
   return (
     <Wrap>
-      <SearchWrap expanded={expanded}>
-        <BackButton>
-          <FontAwesomeIcon icon="chevron-left" onClick={() => expandSearchConsole(false)} />
-        </BackButton>
-        <SearchComponent config={config} focusInput={expanded} />
-      </SearchWrap>
-      {!expanded && (
-        <>
-          <SearchIcon onClick={() => expandSearchConsole(!expanded)} />
-          <NavWrap>{menu.map(renderMenuItem)}</NavWrap>
-          <FontAwesomeIcon icon="bars" onClick={toggleMenu} className="hamburger" />
-        </>
-      )}
+      <MaxWidth isHomePage={isHomePage}>
+        {isHomePage && (
+          <LogoWrap>
+            <Logo src={logo} />
+          </LogoWrap>
+        )}
+        <SearchWrap expanded={expanded}>
+          <BackButton>
+            <FontAwesomeIcon icon="chevron-left" onClick={() => expandSearchConsole(false)} />
+          </BackButton>
+          <SearchComponent config={config} focusInput={expanded} />
+        </SearchWrap>
+        {!expanded && (
+          <>
+            <SearchIcon onClick={() => expandSearchConsole(!expanded)} />
+            <NavWrap>{menu.map(renderMenuItem)}</NavWrap>
+            <FontAwesomeIcon icon="bars" onClick={toggleMenu} className="hamburger" />
+          </>
+        )}
+      </MaxWidth>
     </Wrap>
   );
 }

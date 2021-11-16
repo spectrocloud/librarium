@@ -38,6 +38,16 @@ registry.hostname:
  schema: '{{ required }}'
 ```
 
+**Readonly**
+
+The pack value can be editable  if marked as readonly.
+
+```bash
+registry.hostname:
+ schema: '{{ readonly }}'
+```
+
+
 **Format**
 
 Defines the pack value format: the value is valid only when the value format matches the format defined in the pack.
@@ -158,6 +168,8 @@ registry.type:
 </Tabs.TabPane>
 
 </Tabs>
+
+
 
 **Examples**
 
@@ -461,7 +473,7 @@ presets:
 - name: "privatePackRegistry"
   displayName: "Private Registry"
   group: "registry"
-  remove: []
+  remove: ["registry.ingress.host"]
   add: |
     registry:
       private: true
@@ -472,7 +484,7 @@ presets:
 - name: "publicPackRegistry"
   displayName: "Public Registry"
   group: "registry"
-  remove: []
+  remove: ["registry.ingress.host"]
   add: |
     registry:
       private: false
@@ -549,6 +561,12 @@ user:
 * clusterprofile.uid
 * cluster.name
 * cluster.uid
+* cloudaccount.name
+* cloudaccount.uid
+* kubernetes.version
+* reverseproxy.server
+* reverseproxy.port
+* reverseproxy.protocol
 
 </Tabs.TabPane>
 

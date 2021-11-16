@@ -1,61 +1,68 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-import background from "../assets/hero-background.png"
-import Button from "./ui/Button";
-import Link from "./Link";
+import Button from './ui/Button';
+import Link from './Link';
 
 //
 
-const IntroWrapper = styled.div`
-  background-image: url(${background});
-  background-size: cover;
-  padding: 43px;
-  margin: 0 -43px 20px -43px;
-
-  @media (max-width: 830px) {
-    padding: 15px;
-    margin: 0 -15px 15px -15px;
-  }
-`
+const IntroWrapper = styled.div``;
 
 export default function IntroSection({ children }) {
-  return <IntroWrapper>{children}</IntroWrapper>
+  return <IntroWrapper>{children}</IntroWrapper>;
 }
 
-
 const ButtonsWrapper = styled.div`
-  margin: 16px -16px;
+  display: flex;
+  flex-flow: row wrap;
   button {
-    margin: 0 16px;
+    margin-right: 16px;
+    background: #206cd1;
+    border: 1px solid #206cd1;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+    padding: 16px;
+    white-space: nowrap;
+    margin-top: 15px
   }
 
-  a {
+  .request-demo {
+    padding: 14px;
+    margin-top: 15px;
     text-decoration: none;
+    border: 3px solid #6398df;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #6398df !important;
+    white-space: nowrap;
   }
 
-  ${props => props.display === "vertical" && css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  @media (max-width: 500px) {
+    justify-content: center;
 
     button {
-      margin: 10px 0;
+      margin-right: 0;
     }
-  `}
-`
+  }
+`;
 
-export function IntroButtons({
-  children,
-  display = "horizontal",
-  introductionHref,
-  demoHref
- }) {
-  return <ButtonsWrapper display={display}>
-    <Link to={introductionHref}>
-      <Button>What is Spectro Cloud?</Button>
-    </Link>
-    <Link target="_blank" to={demoHref}>Request Demo</Link>
-  </ButtonsWrapper>
+export function IntroButtons({ introductionHref, demoHref }) {
+  return (
+    <ButtonsWrapper>
+      <Link to={introductionHref}>
+        <Button>Go to chapters</Button>
+      </Link>
+      <Link className="request-demo" target="_blank" to={demoHref}>
+        Request Demo
+      </Link>
+    </ButtonsWrapper>
+  );
 }

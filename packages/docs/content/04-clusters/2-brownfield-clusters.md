@@ -1,7 +1,7 @@
 ---
 title: "Brownfield Clusters"
 metaTitle: "Managing brownfield clusters on Spectro Cloud"
-metaDescription: "Importing and managing brownfild clusters provisioned on any CSP using other orchestration tools "
+metaDescription: "Importing and managing brownfield clusters provisioned on any CSP using other orchestration tools "
 icon: "cloud-download-alt"
 hideToC: false
 fullWidth: false
@@ -12,13 +12,22 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
+
 # Overview
 
-Existing Kubernetes clusters that were not deployed by Spectro Cloud can be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management. Spectro Cloud allows import and management of Kubernetes clusters on various public, private, and bare-metal environments, such as:
+Existing Kubernetes clusters that were not deployed by Spectro Cloud can be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management. Spectro Cloud allows import and management of Kubernetes clusters on various public, private, and bare-metal environments.
 
- * Public cloud managed services (Amazon EKS, Google GKE, Azure EKS)
+Spectro Cloud also supports Generic cluster imports, where the users import their existing clusters to Spectro Cloud irrespective of the cloud service provider. If the cloud type of the existing cluster is not supported by Spectro Cloud, then those clusters could be imported as Generic Clusters.  The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For Generic imported clusters, the user will not be able to add cloud-specific add-on profiles rather he can add profiles of cloud type which is supported for all.
+
+ * In addition to Spectro Cloud Generic cluster import, we support public cloud managed services  such as:
+	* Amazon EKS
+	* Google GKE
+	* Azure AKS
+	* VMware
+	* Open Shift
  * Clusters provisioned through other management platforms (Rancher, CCP, etc.)
  * Clusters provisioned using orchestration tools (Kubeadm, kops, etc.)
+
 
 # Import
 
@@ -26,6 +35,7 @@ The following steps need to be performed in order to import a brownfield cluster
 
  * From the Clusters page, invoke the option to “Import” a cluster.
  * Provide a name for the cluster. Select the cloud type where the cluster is currently deployed.
+ * Provide proxy and non proxy information if applicable.
  * Install Spectro Cloud’s cluster management agent into your brownfield cluster using the kubectl command provided.
  * Wait for the import process to complete. The cluster status will transition from ‘Pending’ to ‘Running’ and the cluster health will transition to ‘Healthy’, signalling successful import of the brownfield cluster.
 

@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 const Wrap = styled.div`
   a {
     font-size:18px;
-    color: #4432F5;
+    color: #206cd1;
   }
 `;
 

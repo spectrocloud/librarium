@@ -1,7 +1,7 @@
 ---
 title: "Quick Start Mode"
 metaTitle: "Quick Start Mode"
-metaDescription: "A quick start to Spectro Cloud Plaform for PoC purposes."
+metaDescription: "A quick start to Spectro Cloud Platform for PoC purposes."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -25,11 +25,11 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
 3. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template.
 4. Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows:
     * URL: &lt;Location of the platform installer&gt;
-    * Name: &lt;The name to identify the platform installer&gt;
     * Virtual Machine Name: &lt;vm name&gt;
     * Folder: &lt;Select desired folder&gt;
     * Select the desired Datacenter, Storage, and Network for the platform installer VM as you proceed through the next steps. The Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly, or via a proxy.
     * Customize the template as follows:
+        * Name: &lt;The name to identify the platform installer&gt;
         * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. The public key will be installed in the installer VM to provide SSH access, as the user `ubuntu`. This is useful for troubleshooting purposes.
         * Monitoring Console Password: A monitoring console is deployed in the platform installer VM to provide detailed information about the installation progress as well as to provide access to various logs. This console can be accessed after the VM is powered on at https://&lt;VM IP Address&gt;:5080. The default monitoring console credentials are:
 
@@ -40,8 +40,8 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
         * Pod CIDR: Optional - provide an IP range exclusive to pods. This range should be different to prevent an overlap with your network CIDR. (e.g: 192.168.0.0/16)
         * Service cluster IP range: Optional - assign an IP range in the CIDR format exclusive to the service clusters. This range also must not overlap with either the pod CIDR range or your network CIDR. (e.g: 10.96.0.0/12)
         * Static IP Address: &lt;VM IP Address&gt; Optional IP address (e.g: 192.168.10.15) to be specified only if static IP allocation is desired. DHCP is used by default.
-        * Static IP subnet prefix: &lt;Network Prefix&gt; Network gateway IP (e.g: 192.168.0.1) required only for static IP allocation.
-        * Static IP gateway: &lt;Gateway IP Address&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP subnet prefix: &lt;Network Prefix&gt; Static IP subnet prefix (e.g: 18), required only for static IP allocation.
+        * Static IP gateway: &lt;Gateway IP Address&gt; (e.g: 192.168.0.1) required only for static IP allocation.
         * Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for static IP allocation.
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
@@ -57,6 +57,8 @@ The platform installer contains a web application called the Supervisor, to prov
 1. Open the Supervisor application in a browser window by navigating to https://&lt;VM IP Address&gt;:5080.
 2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress.
 3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console.
+	* On-Prem System Console: Initial login:admin/admin
+	* Management Console: Tenant credentials to be created and used [Configure System for First Time](./#configuresystemforfirsttime).		
 4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like SMTP setup, certificate management, etc. can also be performed from the On-Prem System Console.
 
 <InfoBox>
@@ -75,4 +77,4 @@ The On-Prem System Console provides options for performing various administrativ
 6. Copy the tenant activation link and invoke it in a browser window to activate the newly created tenant.
 7. Enter the desired password and proceed and login as a tenant into the Management Console.
 
-Next, continue to perform various tasks as desired from the management console like [creating cloud accounts](/clusters?clusterType=vmware_cluster#creatingavmwarecloudaccount), [creating tenant IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement), [creating cluster profiles](/cluster-profiles/task-define-profile/) and [launching Kubernetes clusters](/clusters/#creatingclusters).
+Next, continue to perform various tasks as desired from the management console like creating gateways, cloud accounts, cluster profiles, and launching of clusters.

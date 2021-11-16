@@ -7,13 +7,27 @@ isIntegration: true
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Portworx
 
 [Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes.
 
-# Prerequisites
+## Versions Supported
+
+<Tabs>
+<Tabs.TabPane tab="2.6.x" key="2.6.x">
+
+* **2.6.1** 
+
+</Tabs.TabPane>
+</Tabs>
+
+## Prerequisites
 
 For deploying Portworx storage on vSphere environments, make sure to configure the following properties in the pack
 * vsphereConfig

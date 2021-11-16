@@ -1,7 +1,6 @@
 import React from 'react';
 import Tree from './tree';
 import styled from 'styled-components';
-import menuBackground from '../../../assets/menu-background.png';
 import Logo from '../../../components/Logo';
 import Link from '../../../components/Link';
 import { DEFAULT_MENU } from '../../Default/Header';
@@ -9,24 +8,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocation } from '@reach/router';
 
 const Sidebar = styled.aside`
-  min-width: 323px;
+  min-width: 314px;
   height: 100%;
-  background: url(${menuBackground}), linear-gradient(127.94deg, #f9f9f9 51.53%, #f5f5f5 72.26%);
+  background: #ffffff;
 `;
 
 const MenuWrap = styled.div`
-  padding: 0 10px 0 32px;
+  padding: 50px 0;
 `;
 
 const LogoWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 14px 0;
   position: sticky;
-  background: url(${menuBackground}), #f9f9f9;
+  background: #ffffff;
   top: 0;
-
+  border-bottom: 1px solid #dedfe5;
   strong {
     font-family: Rubik;
     font-style: normal;
@@ -34,58 +33,52 @@ const LogoWrap = styled.div`
     font-size: 17px;
     line-height: 18px;
     margin-left: 6px;
-    color: linear-gradient(340.87deg, #4432f5 11.36%, #2681fa 88.9%);
+    color: linear-gradient(340.87deg, #206cd1 11.36%, #2681fa 88.9%);
   }
 `;
 
-const Divider = styled.div`
-  height: 44px;
-  width: 100%;
-  background: radial-gradient(41.9% 100% at 50% 0%, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
-  position: sticky;
-  top: 0;
-`;
-
 const Content = styled.div`
+  border-right: 1px solid #dedfe5;
   height: calc(100% - 81px);
   overflow-y: auto;
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     padding-bottom: 72px;
   }
 `;
 
 const Navbar = styled.div`
   display: none;
-  @media (max-width: 830px) {
+  @media (max-width: 952px) {
     display: block;
     position: absolute;
     bottom: 0;
-    background: #fafafa;
+    background: #fff;
+    border-top: 1px solid #DEDFE5;
     height: 72px;
     display: flex;
-    align-items: center;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: center;
     width: 100%;
-
+    padding: 15.5px 0;
     .navbar {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      margin: 0 30px;
-      color: #bbbbbb;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 12px;
-      letter-spacing: 0.02em;
-      text-transform: capitalize;
-      svg {
-        margin-bottom: 12px;
-        font-size: 20px;
-      }
+    }
 
-      &.isActive {
-        color: #4432f5;
-      }
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      color: #9698a9;
+    }
+
+    a.isActive,
+    a:hover {
+      color: #206cd1;
     }
   }
 `;
@@ -105,7 +98,7 @@ const SidebarLayout = ({
   function renderMenuItem({ link, title, icon, isActive = () => false }) {
     return (
       <Link className={isActive(location) ? 'navbar isActive' : 'navbar'} to={link}>
-        <FontAwesomeIcon icon={icon} />
+        {icon && <FontAwesomeIcon icon={icon} />}
         {title}
       </Link>
     );
@@ -119,7 +112,6 @@ const SidebarLayout = ({
         </Link>
       </LogoWrap>
       <Content>
-        <Divider />
         <MenuWrap>
           <Tree menu={menu} />
         </MenuWrap>
