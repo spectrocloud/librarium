@@ -567,6 +567,7 @@ user:
 * reverseproxy.server
 * reverseproxy.port
 * reverseproxy.protocol
+* reverseproxy.vhostport
 
 </Tabs.TabPane>
 
