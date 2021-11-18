@@ -21,7 +21,7 @@ Following are some of the architectural highlights of Kubernetes clusters provis
 * Support for static IP as well as DHCP
 * IP pool management for assigning blocks of IPs dedicated to clusters or projects.
 * In order to facilitate communication between the Spectro Cloud management platform and vCenter installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
@@ -88,7 +88,7 @@ The root-level role privileges are applied to root object and datacenter objects
 |Storage views|View|
 
 
-#### Privileges under spectro role 
+#### Privileges under Spectro role 
 
 <WarningBox>
 The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.

@@ -22,7 +22,7 @@ Spectro Cloud provides convenient backup options to backup the Enterprise Kubern
 
 FTP mode backup is sending the backup data of your enterprise cluster to a dedicated FTP server using the File Transfer Protocol (FTP).
 
-S3 buckets for backup make it trivial for everyone to use Amazon’s infrastructure for remote backups and secure cluster objects online. In addition, this feature provides the advantages of scheduling, strong encryption, compression, easy access to your back-up files. 
+S3 buckets for backup make it trivial for everyone to use Amazon’s infrastructure for remote backups and secure cluster objects online. In addition, this feature provides the advantages of scheduling, strong encryption, compression, easy access to your backup files. 
 
 ## Instructions
 
@@ -34,10 +34,10 @@ S3 buckets for backup make it trivial for everyone to use Amazon’s infrastruct
 * Select administration from left panel
 * On the administration page, select Backup /Restore from the top ribbon
 * Complete the Backup configuration wizard to complete the mode of backup creation
-* Select the mode of backup from the two available option - FTP and S3
+* Select the mode of backup from the two available options - FTP and S3
 ### FTP
 
-The following information are filled to create a backup location in FTP mode
+The following information is filled to create a backup location in FTP mode:
 * ftp:// server details
 * The directory name for the backup storage
 * Username and Password to login to the server
@@ -60,7 +60,7 @@ Any changes can be made to the existing configuration and saved for reuse.
 
 An AWS S3 bucket created is a prerequisite.
 
-The following permissions needs to be enabled.
+The following permissions need to be enabled.
 
 </WarningBox>
 
@@ -108,12 +108,12 @@ Ensure that the IAM user or the ROOT user role created should have the following
         }
 ```
 
-The following information are needed
+The following information is needed:
 * AWS Account Access key
 * AWS Account Secret Key
 * AWS Region
 * AWS Bucket name
-* Folder name to which the back up is stored in the S3 bucket
+* Folder name to which the backup is stored in the S3 bucket
 * Scheduling details of the backup,
 	* Interval specifies the number of days between two consecutive backups
 	* Retention period of backup in days

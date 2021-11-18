@@ -1,7 +1,7 @@
 ---
 title: "Quick Start Mode"
 metaTitle: "Quick Start Mode"
-metaDescription: "A quick start to Spectro Cloud Plaform for PoC purposes."
+metaDescription: "A quick start to Spectro Cloud Platform for PoC purposes."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -57,8 +57,8 @@ The platform installer contains a web application called the Supervisor, to prov
 1. Open the Supervisor application in a browser window by navigating to https://&lt;VM IP Address&gt;:5080.
 2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress.
 3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console.
-	* On-Prem System Console : Initial login:admin/admin
-	* Management Console : Tenant credentials to be created and used [Configure System for First Time](./#configuresystemforfirsttime).		
+	* On-Prem System Console: Initial login:admin/admin
+	* Management Console: Tenant credentials to be created and used [Configure System for First Time](./#configuresystemforfirsttime).		
 4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like SMTP setup, certificate management, etc. can also be performed from the On-Prem System Console.
 
 <InfoBox>

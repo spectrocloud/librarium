@@ -46,21 +46,52 @@ The default installation of Portworx will deploy the following components in the
 
 ## Integrating to an external etcd
 
-By default, Portworx is set to use internal KVDB. You can integrate Portworx to an external etcd server by following the steps below.
+Starting Portworx v2.6.1, you can make use of presets feature to toggle between the available ETCD options.
 
+By default, Portworx is set to use internal KVDB. You can integrate Portworx to an external etcd server by following the steps below.
 1. Enable `useExternalKvdb` flag by setting it to true
 2. Configure the external etcd endpoints in `externalKvdb.endpoints`
 
-If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the following
-
+If the external etcd server is configured to authenticate via certificates, additionally you may want to setup the following
 * Enable `externalKvdb.useCertsForSSL` flag by setting it to true
 * Setup certificate related configuration in `externalKvdb.cacert`, `externalKvdb.cert` & `externalKvdb.key`
 
 <WarningBox>
+Make sure to follow the correct indentation style, otherwise certs will not be imported correctly and will result in Portworx deployment failure
+</WarningBox>
+
+## Using secrets for vSphere user credentials
+
+Portworx pack values allows you to configure vSphere user credentials in two ways
+1. Username & password (`portworx.vsphereConfig.userName` and `portworx.vsphereConfig.password`)
+2. Secret (`portworx.vsphereConfig.userCredsSecret` is available with v2.6.1 and above)
+
+If you chose the latter, make sure to create the secret in the target cluster manually or by making use of BYO manifest addon pack.
+<WarningBox>
+Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured, reconciliation should recover Portworx.
+</WarningBox>
+
+Secret can be created using the spec below
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: px-vsphere-secret
+  namespace: kube-system
+type: Opaque
+data:
+  VSPHERE_USER: "b64 encoded admin username"
+  VSPHERE_PASSWORD: "b64 encoded admin password"
+```  
+and this secret can be referenced in the Portworx pack values as
+```
+manifests:
+  portworx:
+    vsphereConfig:
+      userCredsSecret: "px-vsphere-secret"
+``` 
 
 Make sure to follow the correct indentation style, otherwise certificates will not be imported correctly and will result in a Portworx deployment failure.
-
-</WarningBox>
 
 ## References
 

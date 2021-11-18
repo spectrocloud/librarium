@@ -19,7 +19,7 @@ Following are some of the architectural highlights of bare-metal Kubernetes clus
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
 * Spectro Cloud provides cloud like experience to deploying clusters on bare metal servers.
 * In order to facilitate communication between the Spectro Cloud management platform and the bare-metal machines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. The Spectro Cloud PCG, once installed registers itself with Specto Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. The Spectro Cloud PCG, once installed registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
 
 
 ![maas_cluster_architecture.png](maas_cluster_architecture.png)
@@ -49,7 +49,7 @@ The following system requirements should be met in order to install a private cl
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.
     * 1 IP for Kubernetes control-plane.
 
-Spectro Cloud provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jumpbox. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
+Spectro Cloud provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
 
 ## Generate pairing code
 
@@ -74,7 +74,7 @@ docker run -it --rm \
 
 #### Enter Spectro Cloud  Management Information:
 
-* Copy and past the instructions above to your terminal with docker. Upon execcution provide the following:
+* Copy and past the instructions above to your terminal with docker. Upon execution provide the following:
 * Install Type: Choose either Private Cloud Gateway or Self Hosted Enterprise Cluster.  You may change your selection with the up or down keys.
 * Cloud Type: MaaS.
 * Input the name you wish to use for your Private Cloud Gateway.
