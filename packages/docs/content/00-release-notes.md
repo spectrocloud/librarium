@@ -16,7 +16,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
-# November XX, 2021 - Release 2.1.0
+# November 20, 2021 - Release 2.1.0
 
 Palette 2.1.0 is released with multi-region support for OCI registries and multi-organization support on user-tenant management.
 Our latest release includes the following features:
