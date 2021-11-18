@@ -108,7 +108,7 @@ Additionally, usage metrics for individual nodes as well as node conditions are 
 
 Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include not only the applications and services deployed through Spectro Cloud but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
-![Cluster Update Details](04-clusters/cluster_services.png)
+![Cluster Update Details](04-clusters/cluster_services.png "#width=500px")
 
 # Troubleshooting
 
@@ -118,7 +118,8 @@ Typically when a cluster lifecycle action such as provisioning, upgrade, or dele
 
 Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
-![Cluster Update Details](04-clusters/cluster_conditions.png)
+![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
+
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 

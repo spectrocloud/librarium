@@ -34,13 +34,14 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 
 ![Production Profile](./production.png)
 
-* All layers are pinned to specific versions. Automatic upgrades are disabled.
-* Centralized logging enabled - Elastic Search, Fluentd, Kibana.
-* Centralized monitoring enabled - Prometheus, Grafana.
-* Runtime-security enabled - Sysdig Falco.
-* Service observability enabled -  Istio.
-* Role-based access control enabled - Permissions Manager.
-* Load balancer to expose services externally - MetalLB.
+* All layers are pinned to specific versions
+* Automatic upgrades are disabled
+* Centralized logging enabled - Elastic Search, Fluentd, Kibana
+* Centralized monitoring enabled - Prometheus, Grafana
+* Runtime-security enabled - Sysdig Falco
+* Service observability enabled -  Istio
+* Role-based access control enabled - Permissions Manager
+* Load balancer to expose services externally - MetalLB
 
 </Tabs.TabPane>
 

@@ -19,14 +19,14 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 Spectro Cloud intensifies the governance and control of our tenant clusters with “Workspaces.” Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. The workspaces are created over clusters or within the defined Namespaces. In addition, Spectro is leveraging Role-based access control (RBAC) to regulate access to our cluster resources based on the roles of custom specified individual users across clusters or namespaces using role bindings.
 ## Prerequisite
 * One or more clusters deployed on Palette.
-# Create your Workspace
+# Create your Workspace.
 * Log in as a tenant to the Spectro Cloud management console.
-* From workspaces, select the ‘Create Workspace’ wizard
+* From workspaces, select the ‘Create Workspace’ wizard.
   * Give the basic information for the Workspace such as:
     * Unique Name
     * Optional Description
     * Optional Tag 
-* Select the cluster(s) to be added to the new workspace
+* Select the cluster(s) to be added to the new workspace.
 * The users can optionally go for two types (anyone or both) of role bindings to provide access control to the Workspace:
   * Cluster Role Binding:
 Cluster Role Binding is specific to a ClusterRole which is a non-namespaced resource. 
@@ -41,7 +41,7 @@ If the user wants to define a role within a namespace, go for role binding, or i
   * In step 2 of new workspace creation, select ‘Add Cluster Role Binding.’
   * The following information is required for the role creation:
     * Role Name: A Kubernetes specific role name
-    * Subjects: Cluster Role Binding binds a role to subjects. Subjects can be groups, users, or Service Accounts.
+    * Subjects: Cluster Role Binding binds a role to subjects. Subjects can be groups, users, or Service Accounts
 
 |Subject type |Subject name |Subject namespace|
 |-------------|-------------|-----------------|
@@ -51,12 +51,12 @@ If the user wants to define a role within a namespace, go for role binding, or i
 ------------
   * Confirm the values provided to complete the wizard.
 * Add the namespace for the cluster workspace and add the CPU and Memory specification for the namespace.
-* Configure the Role Binding (Optional)
+* Configure the Role Binding (Optional):
   * Optionally add role binding for the namespace created.
   * Click on create role binding.
   * The following information is required to complete the wizard:
-      * Select the created namespace from the drop-down
-      * Assign a Kubernetes specific name for the role
+      * Select the created namespace from the drop-down.
+      * Assign a Kubernetes specific name for the role.
       * Make the selection of Subjects from the drop-down (User, Group, or ServiceAccount). For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns. 
       * Confirm the information provided to complete the configuration of role binding.
   * Review all the values to complete the process of workspace creation.

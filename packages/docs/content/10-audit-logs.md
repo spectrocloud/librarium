@@ -75,19 +75,19 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ## Instructions to Push Cluster Audit Logs to AWS Trails 
 
 * Go to Admin Settings and select Audit Trails.
-* Select the wizard ‘Add new Audit Trail’ and fill in the following details
+* Select the wizard ‘Add new Audit Trail’ and fill in the following details:
 
   * Audit Name: Custom name to identify the logs
   * Type: Choice of monitoring service (currently set to AWS Cloud Watch)
   * Group: The log group name obtained from cloud watch logs of AWS cloud trail creation
   * Region: The region of the AWS account
-  * Method of verification
+  * Method of verification:
    	* Credentials:
 Use the AWS Access Key and Secret Access Key to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
    	* STS:
 Use Amazon’s unique resource identifier- ARN, to validate the AWS account for pushing the Audit log trails from Spectro Cloud console.
 	
-* Stream Optional
+* Stream Optional.
 * Confirm the information to complete the audit trail creation wizard.
 * The audit trail could be edited and deleted using the kebab menu.
 

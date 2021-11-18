@@ -20,7 +20,7 @@ Spectro Cloud monitors the health of all the workload clusters and raises an ale
 
 * As project administrator, navigate to project settings.
 * Click Alerts to access the Manage Alerts page.
-* Enable ClusterHealth
+* Enable ClusterHealth.
 * Select "Email all project members" option if the alert needs to be received by every project member or specify the email ids of members who are supposed to receive the alerts.
 * Save the settings to start receiving the health alerts from your workload cluster.
 
@@ -28,15 +28,15 @@ Spectro Cloud monitors the health of all the workload clusters and raises an ale
 
 * As project administrator, navigate to project settings.
 * Click Alerts to access the Manage Alerts page.
-* Enable ClusterHealth
-* Click on add new Webhook
+* Enable ClusterHealth.
+* Click on add new Webhook.
 * Fill the Webhook creation wizard with the following details:
 	* Alert type: ClusterHealth
 	* Method: POST to Post the alert message to the hooked target
-	* URL: URL of the target to be hooked to receive alerts.
+	* URL: URL of the target to be hooked to receive alerts
 	* Body: JSON formatted alert message
 	* Headers: Optional header as key-value pair depending on the target
-	* Active: Enable to Disable the Webhook.
+	* Active: Enable to Disable the Webhook
 * Confirm the details provided to receive the health alerts for your workload clusters in your ITSM tools.
 
 
