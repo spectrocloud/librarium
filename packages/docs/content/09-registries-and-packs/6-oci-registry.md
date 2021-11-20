@@ -35,6 +35,27 @@ To configure the Basic OCI Authentication for your OCI registry,
 **ECR Authentication**
 
 * To provision, your OCI registry in un-protected mode provide the endpoint and confirm creation.
+
+Palette parameterizes the AWS ECR registry endpoints to support multiple regions. The variable “{{.spectro.system.aws.region}” is used and replaced based region selected during the deployment. The AWS ECR registry should be deployed in the required regions and can be further synchronized across deployed regions to deploy multi-region support.
+
+Enable multi-region support by attaching the following template string as part of the endpoint:
+
+```json
+{{.spectro.system.aws.region}}
+```
+Hence the required format of the endpoint for multi-region availability is:
+
+```json
+<registry-id>.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
+```
+A sample Endpoint: 
+
+```json
+214575254960.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
+```
+* Mandatorily includes a default region for enabling multi-region support.
+(Eg:, Default region: us-west-1)
+
 * Toggle the “protected” button for protected registry creation and authenticate the AWS account using credentials or STS.
 	* For the credentials method of authentication, use the Access Key and Secret Access Key of the role created and validate.
 	* For STS, use the unique ARN  of the AWS role and validate.

@@ -16,6 +16,14 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# November 20, 2021 - Release 2.1.0
+
+Palette 2.1.0 is released with multi-region support for OCI registries and multi-organization support on user-tenant management.
+Our latest release includes the following features:
+* Flexible and extensive storage support for the OCI registry with Amazon ECR region selection.
+* Support of unique user email Id across multiple organizations/tenants.
+* Bug fixes to improve platform performance.
+
 # November 1, 2021 - Release 2.0.0 
 
 We are excited to announce that Spectro Cloud’s platform now has a name: **“PALETTE”**. Version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance and control with “Workspaces” . The list of features include:
