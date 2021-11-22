@@ -11,9 +11,15 @@ const plugins = [
       exclude: [`/glossary/`, `/glossary/*`],
     },
   },
-  'gatsby-plugin-sitemap',
   'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
+  {
+    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+    options: {
+      siteUrl: config.gatsby.siteUrl,
+      noQueryString: true,
+    },
+  },
   'gatsby-plugin-antd',
   {
     resolve: `gatsby-source-filesystem`,
@@ -93,14 +99,10 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-gtag`,
+    resolve: "gatsby-plugin-google-tagmanager",
     options: {
-      // your google analytics tracking id
-      trackingId: config.gatsby.gaTrackingId,
-      // Puts tracking script in the head instead of the body
-      head: true,
-      // enable ip anonymization
-      anonymize: false,
+      id: "GTM-T2F9ZMS",
+      includeInDevelopment: false,
     },
   },
   {
