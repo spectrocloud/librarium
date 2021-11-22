@@ -18,11 +18,11 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # November 20, 2021 - Release 2.1.0
 
-Palette 2.1.0 is released with multi-region support for OCI registries and multi-organization support on user-tenant management.
-Our latest release includes the following features:
-* Flexible and extensive storage support for the OCI registry with Amazon ECR region selection.
-* Support of unique user email Id across multiple organizations/tenants.
-* Bug fixes to improve platform performance.
+Palette 2.1.0 is released with the following key improvements:
+
+* Support for replicated cross region Amazon ERC registries whereby a single OCI registry within Spectro Cloud can serve multiple deployment regions. 
+* Spectro Cloud users can now belong to more than one tenant. Users beloining to multiple organizations must choose the desired tenant to login to. This feature is also supported for SSO enabled tenants
+* UI improvements to the Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuation overrides, machine management, scan and back up polcies, cluster deletion are now arranged under the 'Settings' menu on the top right hand side. 
 
 # November 1, 2021 - Release 2.0.0 
 
