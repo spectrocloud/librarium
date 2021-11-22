@@ -202,7 +202,7 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
 
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool
-    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc
+    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes
     * Resource Pool
     * Availability zones
@@ -210,7 +210,7 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Minimum Disk - Storage disk size in GB to be attached to the node
     * Rolling Update
 * Expand first
-* Contract First
+* Contract first
 
 * Configure the cluster policies/features.
     * Manage Machines
