@@ -15,7 +15,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 Following are some of the architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or EKS) provisioned by Spectro Cloud:
 
-* Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning  as well as new dedicated infrastructure as part of dynamic provisioning.
+* Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 * Full support for EKS Fargate profiles
 * Ability to replace AWS CNI plugins with other CNI plugins like Calico
 * Spot instance support
