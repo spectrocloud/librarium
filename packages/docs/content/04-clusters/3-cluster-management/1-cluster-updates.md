@@ -17,7 +17,20 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 Spectro Cloud supports various kinds of updates to running clusters, such as upgrade of Kubernetes version, upgrade of add-on versions, the addition of new add-ons, removing existing ones, etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
 
 # Cluster profile based updates
+
+<InfoBox>
+
+**Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
+</InfoBox>
+<InfoBox>
+
+**Kubernetes Version Downgrades:** We do not recommend downgrading the Kubernetes versions.
+E.g., Kubernetes version 1.19.x is not recommended to be downgraded to 1.18.x
+</InfoBox>
+
+
 Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated from the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or the previous update. In addition, users can update the clusters individually at an appropriate time. 
+
 
 ![Cluster Notification - Update Available](/cluster_list_update_available.png)
 
