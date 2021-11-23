@@ -30,11 +30,11 @@ During the cluster creation, while configuring the cluster (Cluster Configuratio
 # Scheduled
 Besides patching on boot, the users also have the option to set a schedule for OS patching. Patching schedule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided:
 
-* Every week on Sunday at midnight.
-* Every two weeks at midnight.
-* Every month on the 1st at midnight.
-* Every two months on the 1st at midnight.
-* Custom OS patch for an exact month, day, hour and minute of user’s choice.
+* Every week on Sunday at midnight
+* Every two weeks at midnight
+* Every month on the 1st at midnight
+* Every two months on the 1st at midnight
+* Custom OS patch for an exact month, day, hour and minute of user’s choice
 
 |  **During Cluster Creation**       |
 | -----------------------------------|

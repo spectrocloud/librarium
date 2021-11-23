@@ -32,22 +32,22 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 * You should have an Infrastructure cluster profile created in the Spectro Cloud Palette UI for MAAS.
 * You should install a Private Cloud Gateway for MaaS as described in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MaaS in Spectro Cloud. You can register your additional MaaS cloud accounts in Spectro Cloud as described in the "Creating a MaaS Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
+    * Outgoing internet connection on port 443 to api.spectrocloud.com
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * A computer with a docker daemon installed and connectivity to both the Spectro Cloud Management console and the MaaS identity endpoint. 
 * Sufficient IPs for application workload services (e.g.: Load Balancer services).
 * Per workload cluster IP requirements:
-    * 1 per cluster node.
-    * 1 Kubernetes control-plane VIP.
+    * 1 per cluster node
+    * 1 Kubernetes control-plane VIP
 
 # Installing Private Cloud Gateway - MaaS
 
 The following system requirements should be met in order to install a private cloud gateway for MaaS:
 
 * Private cloud gateway IP requirements:
-    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.
-    * 1 IP for Kubernetes control-plane.
+    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
+    * 1 IP for Kubernetes control-plane
 
 Spectro Cloud provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
 
@@ -110,10 +110,10 @@ e.g. http://10.11.12.13:5240/MAAS
 
 #### Enter MaaS Machine configuration for the Private Cloud Gateway:
 
-* Select the availability zone.
-* Choose the domain.
-* Choose the Resource Pool.
-* Number of nodes: choose between 1 and 3.
+* Select the availability zone
+* Choose the domain
+* Choose the Resource Pool
+* Number of nodes: choose between 1 and 3
 
 After this step, a new gateway configuration file is generated and its location is displayed on the console.
 
@@ -194,9 +194,9 @@ The following steps need to be performed to provision a new MaaS cluster:
 MaaS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
    * Domain
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    * Name - A descriptive name for the node pool.
+    * Name - A descriptive name for the node pool
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
-    * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
+    * Allow worker capability (master pool) - To workloads to be provisioned on master nodes
     * Resource Pool
     * Availability zones
     * Minimum CPU
@@ -208,7 +208,6 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Manage Machines
     * Scan Policies
     * Backup Policies
-
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 # Deleting a MaaS Cluster

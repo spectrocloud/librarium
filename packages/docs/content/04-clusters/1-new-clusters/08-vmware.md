@@ -18,7 +18,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 Following are some of the architectural highlights of Kubernetes clusters provisioned by Spectro Cloud on VMware:
 
 * Kubernetes nodes can be distributed across multiple compute clusters which serve as distinct fault domains. 
-* Support for static IP as well as DHCP
+* Support for static IP as well as DHCP.
 * IP pool management for assigning blocks of IPs dedicated to clusters or projects.
 * In order to facilitate communication between the Spectro Cloud management platform and vCenter installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
 * Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
@@ -35,24 +35,23 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * You should have an Infrastructure cluster profile created in Spectro Cloud for VMWare.
 * You should install a Private Cloud Gateway for VMware as described in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Spectro Cloud. You can register your additional VMware cloud accounts in Spectro Cloud as described in the "Creating a VMware Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
+    * Outgoing internet connection on port 443 to api.spectrocloud.com
 * Private cloud gateway IP requirements:
-    - 1 node - 1 IP or 3 nodes - 3 IPs.
-    - 1 Kubernetes control-plane VIP.
-    - 1 Kubernetes control-plane extra.
+    - 1 node - 1 IP or 3 nodes - 3 IPs
+    - 1 Kubernetes control-plane VIP
+    - 1 Kubernetes control-plane extra
 * IPs for application workload services (e.g.: LoadBalancer services).
 * Subnet with egress access to the internet (direct or via proxy):
-    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    - Outgoing internet connection on port 443 to api.spectrocloud.com.
+    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
+    - Outgoing internet connection on port 443 to api.spectrocloud.com
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.* Zone Tagging
-
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 * **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centres (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
+As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
 
     | vSphere Object       | Tag Category     | Tag Value     |
     | :-------------       | :----------      | :-----------  |
@@ -61,7 +60,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
     | cluster-2            | k8s-zone         | az2           |
     | cluster-3            | k8s-zone         | az3           |
 
-    Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+**Note:** The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
 
 
 # VMware Cloud Account Permissions
@@ -216,8 +215,8 @@ For self hosted version, a system gateway is provided out of the box and typical
 </InfoBox>
 
 * Minimum capacity required for a Private Cloud Gateway:
-  + 1 node - 2 vCPU, 4GB memory, 30GB storage.
-  + 3 nodes - 6 vCPU, 12GB memory, 70GB storage.
+  + 1 node - 2 vCPU, 4GB memory, 30GB storage
+  + 3 nodes - 6 vCPU, 12GB memory, 70GB storage
 
 
 Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
@@ -264,7 +263,7 @@ Additional properties that are required to be set only for a Proxy Environment. 
 * Once the Gateway transitions to the 'Running' state, it is fully provisioned and ready to bootstrap tenant cluster requests.
 
 <InfoBox>
-Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects
+Gateway cluster installation automatically creates a cloud account behind the scenes using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all tenant Projects.
 </InfoBox>
 
 ## vSphere - Clean up installer
@@ -386,25 +385,26 @@ The following steps need to be performed to provision a new VMware cluster:
 * Select a cluster profile created for the VMware environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 * Provide a vSphere Cloud account and placement information.
-    - Cloud Account - Select the desired cloud account. VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-    - Datacenter -The vSphere datacenter where the cluster nodes will be launched.
-    - Folder - The vSphere VM Folder where the cluster nodes will be launched.
-    - SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
-    - NTP Server (Optional) - Setup time synchronization for all the running nodes.
-    - IP Allocation strategy - DHCP or Static IP
-* Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    - Name - A descriptive name for the node pool.
-    - Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    - Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
-    - CPU - Number of CPUs to be allocated to the nodes.
-    - Memory - Amount of memory in GB to be allocated to the nodes.
-    - Disk - Storage disk size in GB to be attached to the node.
-    - One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.
-	    * Compute Cluster - A Compute cluster under the selected Datacenter.
-	    * Datastore - The vSphere storage in the selected Datacenter.
-	    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.
-	    * Resource Pool- The vSphere resource pool where the cluster nodes will be launched.
-	    * IP Pool - An IP pool to be used for allocation IP addresses to cluster VMs. Required only for Static IP allocation. IP pools need to be predefined for private cloud gateways.
+VMware cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+   - Cloud Account - Select the desired cloud account
+   - Datacenter -The vSphere datacenter where the cluster nodes will be launched
+   - Folder - The vSphere VM Folder where the cluster nodes will be launched
+   - SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro)
+   - NTP Server (Optional) - Setup time synchronization for all the running nodes
+   - IP Allocation strategy - DHCP or Static IP
+* Configure the master and worker node pools. A master and a worker node pool are configured by default:
+    - Name - A descriptive name for the node pool
+    - Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5
+    - Allow worker capability (master pool) - To workloads to be provisioned on master nodes
+    - CPU - Number of CPUs to be allocated to the nodes
+    - Memory - Amount of memory in GB to be allocated to the nodes
+    - Disk - Storage disk size in GB to be attached to the node
+    - One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool:
+	    * Compute Cluster - A Compute cluster under the selected Datacenter
+	    * Datastore - The vSphere storage in the selected Datacenter
+	    * Network - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes
+	    * Resource Pool- The vSphere resource pool where the cluster nodes will be launched
+	    * IP Pool - An IP pool to be used for allocation IP addresses to cluster VMs. Required only for Static IP allocation. IP pools need to be predefined for private cloud gateways
 
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 

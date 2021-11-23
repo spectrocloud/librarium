@@ -32,13 +32,13 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * You should have an Infrastructure cluster profile created in Spectro Cloud for OpenStack.
 * You should install a Private Cloud Gateway for OpenStack as described in the "Installing Private Cloud Gateway - OpenStack" section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Spectro Cloud. You can register your additional OpenStack cloud accounts in Spectro Cloud as described in the "Creating a OpenStack Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
+    * Outgoing internet connection on port 443 to api.spectrocloud.com
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * Sufficient IPs for application workload services (e.g.: Load Balancer services).
 * Per workload cluster IP requirements:
-    * 1 per cluster node.
-    * 1 Kubernetes control-plane VIP.
+    * 1 per cluster node
+    * 1 Kubernetes control-plane VIP
 
 
 # OpenStack Cloud Account Permissions
@@ -300,8 +300,8 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
 * Private cloud gateway IP requirements:
-    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG.
-    * 1 IP for Kubernetes control-plane.
+    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
+    * 1 IP for Kubernetes control-plane
 
 Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack controller.
 
@@ -327,13 +327,12 @@ docker run -it --rm \
 * Spectro Cloud Console - Management Console endpoint e.g. https://console.spectrocloud.com
 * Spectro Cloud Username - Login email address e.g. user1@company.com
 * Spectro Cloud Password - Login password
-* Private Cloud Gateway pairing code: The unique authentication code generated in the previous step.
+* Private Cloud Gateway pairing code: The unique authentication code generated in the previous step
 
 #### Enter Environment Configuration:
 
 * HTTPS Proxy (--https_proxy):
-
-The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
+The endpoint for the HTTPS proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g.,http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
 
 * HTTP Proxy(--http_proxy):
 The endpoint for the HTTP proxy server. This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT
@@ -468,7 +467,7 @@ The following steps need to be performed to provision a new OpenStack cluster:
             * Subnet CIDR
             * DNS Name Server
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    * Name - A descriptive name for the node pool.
+    * Name - A descriptive name for the node pool
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
     * Allow worker capability (master pool) - To workloads to be provisioned on master nodes.
     * Availability zones
@@ -481,10 +480,10 @@ The following steps need to be performed to provision a new OpenStack cluster:
     * Manage Machines
     * Scan Policies
     * Backup Policies
-
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 ## Deleting an OpenStack Cluster
+
 The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an OpenStack cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
 * Invoke a delete action from the cluster settings: cluster -> settings -> cluster settings -> delete.
