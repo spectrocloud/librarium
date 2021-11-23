@@ -31,7 +31,7 @@ The following details are required to configure a backup location:
 * S3 Bucket: S3 bucket name that must be pre-created on the object store.
 * Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3.
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
-    * Credentials - Provide access key and secret key. 
+    * Credentials - Provide access key and secret key.
     * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust setup with the account used to launch the cluster itself and should have the permission to assume the role. 
 * Spectro Cloud mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
     #### AWS S3 Permissions:
@@ -107,8 +107,8 @@ Go to Project Settings -> Backup locations  -> Add a New Backup location
 Backups can be scheduled or initiated on an on-demand basis as required. The following information is required for configuring a backup:
 
 * Backup Prefix / Backup Name:
-	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-	* For an On-Demand backup, a name of user choice can be used.
+	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name
+	* For an On-Demand backup, a name of user choice can be used
 * Select the backup location.
 * Backup Schedule: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
 * Expiry Date: Select an expiry date for the backups. The backup will be automatically removed on the expiry date. 
@@ -128,11 +128,11 @@ Backups can be scheduled or initiated on an on-demand basis as required. The fol
 
 
 ### Backup Scheduling Options:
-* Customize your backup for the exact month, day, hour and minute of the user's choice.
-* Every week on Sunday at midnight.
-* Every two weeks at midnight.
-* Every month on the 1st at midnight.
-* Every two months on the 1st at midnight.
+* Customize your backup for the exact month, day, hour and minute of the user's choice
+* Every week on Sunday at midnight
+* Every two weeks at midnight
+* Every month on the 1st at midnight
+* Every two months on the 1st at midnight
 
 # Restore
 Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the Restore can be tracked from the target cluster's backup/restore page. Finally, the Restore can be done to the cluster which is running on the same project.
@@ -146,5 +146,5 @@ When restoring your backup to a cluster launched using a cloud account different
 </WarningBox>
 
 <InfoBox>
-    This operation can be performed on all cluster types across all clouds
+    This operation can be performed on all cluster types across all clouds.
 </InfoBox>

@@ -38,12 +38,12 @@ An Add-on cluster profile consists of various integrations and can be constructe
 
 - System apps
 - Authentication
-- Security.
-- Monitoring.
-- Logging.
-- Ingress.
-- Load balancer.
-- Helm Charts.
+- Security
+- Monitoring
+- Logging
+- Ingress
+- Load balancer
+- Helm Charts
 
 ![Add-On Profile](03-cluster-profiles/addon_profile.png)
 

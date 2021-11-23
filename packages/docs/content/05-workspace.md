@@ -43,8 +43,3 @@ Workspaces provide a workload browser to view all the workloads such as pods, de
 
 
 
- 
- 
- 
- 
-  
