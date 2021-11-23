@@ -26,9 +26,9 @@ The sections below describe the standard requirements and highlight specific req
 
 ## vSphere Environment Prerequisites
 
-* General requirements
+* General requirements:
    - vCenter version :  6.7 and above
-   - NTP configured on all ESXi Hosts.
+   - NTP configured on all ESXi Hosts
 
 
 
@@ -217,18 +217,18 @@ The following section provides the hardware requirements for Spectro Cloud Platf
 
 The following steps are optional but recommended for production environments.
 
-* DNS Mapping
+* DNS Mapping:
 
   A DNS is  used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.
 
-* SMTP Settings
+* SMTP Settings:
 
   Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time.
 
-* Trusted Certificate
+* Trusted Certificate:
 
   Configure your platform with a trusted CA certificates.
 
-* FTP Location for backups
+* FTP Location for backups:
 
    Configure a FTP location for platform backups and schedule daily backups.
