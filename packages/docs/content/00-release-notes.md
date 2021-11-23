@@ -22,7 +22,7 @@ Palette 2.1.0 is released with the following key improvements:
 
 * Added support for replicated, cross-region Amazon Elastic Container Registries (ECR) whereby a single OCI registry within Spectro Cloud Palette can serve multiple deployment regions. 
 * Spectro Cloud users can now join more than one tenant. Users belonging to multiple organizations must choose the desired tenant to login to. This feature is also supported for SSO enabled tenants.
-* Improved the UI of Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuation overrides, machine management, scan and back up polcies, cluster deletion are now arranged under the 'Settings' menu on the top right hand side. 
+* Improved the UI of the Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuration overrides, machine management, scan and back-up policies, cluster deletion are now arranged under the 'Settings' menu on the top right hand side. 
 
 # November 1, 2021 - Release 2.0.0 
 
