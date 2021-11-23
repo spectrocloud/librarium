@@ -14,54 +14,35 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
-# OCI Registry
+# Overview
 
-Spectro Cloud leverages OCI registries to run a “filesystem bundle” that is unpacked on disk. Open container initiative is an open governance structure to create open industry standards around container formats and runtimes. We support all OCI Registries which are compliant with OCI.
+Spectro Cloud supports OCI registries that serve a “filesystem bundle” that is unpacked on disk as helm registies. Helm charts hosted in OCI regitries can be added to cluster profiles and deployed to kubernetes clusters. We support all OCI compliant registries.
 
-# Instructions to Setup OCI Registry:
+# Setup OCI Registry:
 * Login as Tenant Admin.
 * Click On Registries to open Manage Registries.
 * Select the OCI Registries tab and click Add New OCI Registry button.
 * Provide the following information to the Add OCI registry wizard:
   * Name: An unique registry name
-  * OCI Authentication type: Basic and ECR based OCI Authentication
+  * Provide registry endpoint
+  * OCI Registry type: Basic or ECR
+  * Provide authentication details based on registry type
+  * Click on confirm to complete the registry creation process.
 
 **BASIC Authentication**
 
-To configure the Basic OCI Authentication for your OCI registry:
-* Provide the unique Name, Endpoint, User Name, and Password. 
-* Click on confirm to complete the registry creation process.
+Specify username and password
 
 **ECR Authentication**
 
-* To provision, your OCI registry in un-protected mode provide the endpoint and confirm creation.
-
-Palette parameterizes the AWS ECR registry endpoints to support multiple regions. The variable “{{.spectro.system.aws.region}” is used and replaced based region selected during the deployment. The AWS ECR registry should be deployed in the required regions and can be further synchronized across deployed regions to deploy multi-region support.
-
-Enable multi-region support by attaching the following template string as part of the endpoint:
-
-```json
-{{.spectro.system.aws.region}}
-```
-Hence the required format of the endpoint for multi-region availability is:
-
-```json
-<registry-id>.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
-```
-A sample Endpoint: 
-
-```json
-214575254960.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
-```
-* Mandatorily includes a default region for enabling multi-region support.
-(Eg:, Default region: us-west-1)
-
+Choose one of the following authentcation modes:
+* Un-protected mode - No credentials required
 * Toggle the “protected” button for protected registry creation and authenticate the AWS account using credentials or STS.
 	* For the credentials method of authentication, use the Access Key and Secret Access Key of the role created and validate.
 	* For STS, use the unique ARN  of the AWS role and validate.
-* Click on confirm to complete the registry creation process.
+
 <WarningBox>
-To provision ECR based OCI Authentication make sure that the User's STS Role has the following ECR policy configured.
+To provision ECR based OCI Authentication make sure that the User's STS Role has the ECR policy configured.
 </WarningBox>
 
 # ECR Policy:
@@ -105,14 +86,35 @@ To provision ECR based OCI Authentication make sure that the User's STS Role has
     ]
 }
 ```
+# Multi-Region Support for AWS ECR registries:
+
+Palette supports paremeterization of AWS ECR registry endpoint to support cross-region replicated registries. For performance considerations, Helm chart content may be replicated across multiple AWS reqions and served to the clusters from within region of cluster deployment. To support this, the variable “{{.spectro.system.aws.region}” can be used in the registry endpoint. This variable is substituted at the time of cluster deployment with the region selected for deployment. 
+
+
+Region Parameter:
+
+```json
+{{.spectro.system.aws.region}}
+```
+Endpoint format:
+
+```json
+<registry-id>.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
+```
+A sample Endpoint: 
+
+```json
+214575254960.dkr.ecr.{{.spectro.system.aws.region}}.amazonaws.com
+```
+
+A default region must be specified to fallback to when the deployment region does not contain the requested helm chart.
+(Eg:, Default region: us-west-1)
+
+
 # Use Your OCI Registry
 
-The created registries could be used while creating the cluster profiles:
-* While creating full or add-on cluster profiles add Pack Type as Helm charts.
-* From the Repository menu, select the OCI registry created.
-* Key in the required chart name with dependant values and versions.
+Charts from the OCI reistries can be used in your cluster profiles as follows:
+* From the Repository menu, select the desired OCI registry.
+* Key in the required chart name and version. The name and version should exactly match the chart name and version hosted in the OCI registry.
 * Click done to get your OCI-helm layer added to the cluster profile.
 
-<InfoBox>
-Spectro Cloud leveraged public registry images to the custom OCI registries.
-</InfoBox>
