@@ -186,20 +186,13 @@ Validate the above MaaS credentials to create your MaaS cloud account.
 # Deploying a bare-metal cluster using MaaS
 
 The following steps need to be performed to provision a new MaaS cluster:
-
 * Provide basic cluster information like name, description, and tags.
-
 * Select a cluster profile created for the  MaaS environment. The profile definition will be used as the cluster construction template.
-
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-
 * Provide a MaaS Cloud account and placement information.
-
    * Cloud Account - Select the desired cloud account.
 MaaS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-
    * Domain
-
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool.
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
@@ -208,11 +201,10 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Availability zones
     * Minimum CPU
     * Minimum Disk - Storage disk size in GB to be attached to the node.
-    * Rolling Update
-* Expand first
-* Contract First
-
-* Configure the cluster policies/features.
+    * Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
+		- Expand First: Launches the new node and then shut down the old node
+		- Contract First: Shut down the old node first and then launches the new node
+* Configure the cluster policies/features id needed, these features can also be scheduled later for the running clusters.
     * Manage Machines
     * Scan Policies
     * Backup Policies
@@ -221,9 +213,9 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
 
 # Deleting a MaaS Cluster
 The deletion of a MaaS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a MaaS cluster:
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
-* Invoke a delete action from the cluster settings
-* Confirm delete action
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action from the cluster settings: : cluster -> settings -> cluster settings -> delete.
+* Confirm delete action.
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
 
 <InfoBox>

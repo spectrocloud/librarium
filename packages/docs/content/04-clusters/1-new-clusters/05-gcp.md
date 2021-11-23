@@ -140,12 +140,19 @@ The following steps need to be performed to provision a new GCP cluster:
   * Project - The project to which the cluster belongs.
   * Region - Choose the desired GCP region where you would like the clusters to be provisioned.
   * SSH Key Pair Name - Choose the desired SSH Key-pair. It is the Public key to configure remote SSH access to the nodes.
-  * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
+  * Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of static Placement of resources, the following placement information need to be provided:
+   	 - Virtual Network
+   	 - Control plane Subnet
+   	 - Worker Network
+  * Make the choice of updating the worker pool in parallel.
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     - Name - A descriptive name for the node pool.
     - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
     - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
     - Instance type - Select the instance type to be used for all nodes in the node pool.
+    - Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
+		- Expand First: Launches the new node and then shut down the old node
+		- Contract First: Shut down the old node first and then launches the new node
     - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
     - Disk size - set the desired disk size.
 * Configure the worker pool as per requirements or copy the master pool configuration.
@@ -155,7 +162,7 @@ The following steps need to be performed to provision a new GCP cluster:
 # Deleting a GCP Cluster
   The deletion of a GCP cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a GCP cluster:
 
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
-* Invoke a delete action available on the page
-* Confirm delete
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action available on the page: cluster -> settings -> cluster settings -> delete.
+* Confirm delete.
 Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.

@@ -95,6 +95,13 @@ A minimum allocation of '4Gi' of memory is required across all worker nodes.
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 New worker pools may be added if it desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘Standard_D2_v2’ instance types for general-purpose workloads and another worker pool with instance type ‘Standard_NC12s_v3’ can be configured to run GPU workloads.
+# Deleting an AKS Cluster
+  The deletion of a AKS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an AKS cluster:
+
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action available on the page: cluster -> settings -> cluster settings -> delete.
+* Confirm delete.
+Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.
 
 # Configure Azure Active Directory 
 

@@ -416,9 +416,9 @@ New worker pools may be added if it is desired to customize certain worker nodes
 
 The deletion of a VMware cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
 
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
-* Invoke a delete action available on the page
-* Confirm delete action
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action available on the page : cluster -> settings -> cluster settings -> delete.
+* Confirm delete action.
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
 
 <InfoBox>

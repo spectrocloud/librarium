@@ -364,7 +364,7 @@ The IP address that will be assigned to services created on Kubernetes. This set
 	* Default Project
 * Enter the values for:
 	* SSH Key - Select a key
-	* Placement option as Static or Dynamic - For static placement, VMs are placed into existing networks whereas, for dynamic placement, new network is created.
+	* Placement option as Static or Dynamic - For static placement, VMs are placed into existing networks whereas, for dynamic placement, new network is created
 	* Network - Select an existing network
 	* Sub Network - Select a sub network
 
@@ -474,9 +474,9 @@ The following steps need to be performed to provision a new OpenStack cluster:
     * Availability zones
     * Flavor - VM instance type
     * Disk - Storage disk size in GB to be attached to the node.
-    * Rolling Update
-        * Expand first
-        * Contract First
+    * Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
+		- Expand First: Launches the new node and then shut down the old node
+		- Contract First: Shut down the old node first and then launches the new node
 * Configure the cluster policies/features.
     * Manage Machines
     * Scan Policies
@@ -485,10 +485,10 @@ The following steps need to be performed to provision a new OpenStack cluster:
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 ## Deleting an OpenStack Cluster
-The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a OpenStack cluster:
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
-* Invoke a delete action from the cluster settings
-* Confirm delete action
+The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an OpenStack cluster:
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action from the cluster settings: cluster -> settings -> cluster settings -> delete.
+* Confirm delete action.
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
 
 <InfoBox>
