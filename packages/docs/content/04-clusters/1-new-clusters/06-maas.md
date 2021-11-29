@@ -185,6 +185,8 @@ Validate the above MaaS credentials to create your MaaS cloud account.
 
 # Deploying a bare-metal cluster using MaaS
 
+ ![maas-cluster-creation](./cluster-creation-videos/maas.mp4)
+
 The following steps need to be performed to provision a new MaaS cluster:
 
 * Provide basic cluster information like name, description, and tags.
