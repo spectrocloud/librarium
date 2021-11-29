@@ -40,7 +40,7 @@ To add a user to a project, sign in as an admin and go to the `Users and Teams` 
 
 # Multi-Organization Support for Users
 
-Palette is incorporating multi-organization support for its users. With this feature, we provide our users w$
+Palette is incorporating multi-organization support for its users. With this feature, we provide our users with the flexibility of having a unique email Id across multiple organizations. Hence, the users can maintain single login credentials across multiple organizations/tenants.
 
 The key benefits of this feature are:
 
