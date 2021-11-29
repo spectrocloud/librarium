@@ -98,6 +98,7 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 
 <Tabs.TabPane tab="1.20.x" key="k8s_v1.20">
 
+* **1.20.12**
 * **1.20.11**
 * **1.20.10**
 * **1.20.9**
