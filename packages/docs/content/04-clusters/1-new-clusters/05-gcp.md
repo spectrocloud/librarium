@@ -131,7 +131,7 @@ To create a GCP cloud account, provide a name for the account and enter the JSON
 
 # Deploying a GCP Cluster
 
- ![azure-cluster-creation](./cluster-creation-videos/google-cloud.mp4)
+ ![gcp-cluster-creation](./cluster-creation-videos/google-cloud.mp4)
 
 The following steps need to be performed to provision a new GCP cluster:
 
