@@ -379,6 +379,8 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploying a VMware Cluster
 
+ ![vmware-cluster-creation](./cluster-creation-videos/vmware.mp4)
+
 The following steps need to be performed to provision a new VMware cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.

@@ -55,6 +55,9 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 * Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
 # Deploying an AKS Cluster
+
+ ![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
+
 The following steps need to be performed to provision a new AKS cluster:
 * Provide the basic cluster information like name, description, and tags.
 * Select a cluster profile created for the AKS Cluster. The profile definition will be used as the cluster construction template.
