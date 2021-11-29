@@ -79,6 +79,7 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 
 <Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
 
+* **1.19.16**
 * **1.19.15**
 * **1.19.14**
 * **1.19.13**
@@ -114,6 +115,7 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 
 <Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
 
+* **1.21.6**
 * **1.21.5**
 * **1.21.4**
 * **1.21.3**
