@@ -448,6 +448,9 @@ To create an OpenStack cloud account, proceed to project settings and select 'cr
 
 
 # Deploying an OpenStack Cluster
+
+ ![openstack-cluster-creation](./cluster-creation-videos/openstack.mp4)
+
 The following steps need to be performed to provision a new OpenStack cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.

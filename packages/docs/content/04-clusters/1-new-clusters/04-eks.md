@@ -581,6 +581,8 @@ To create an AWS cloud account, provide a name and a description for the account
 
 # Deploying an EKS Cluster
 
+ ![eks-cluster-creation](./cluster-creation-videos/eks.mp4)
+
 The following steps need to be performed to provision a new EKS cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
