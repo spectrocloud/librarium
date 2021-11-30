@@ -21,8 +21,6 @@ Spectro Cloud supports various kinds of updates to running clusters, such as upg
 <InfoBox>
 
 **Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes minor versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
-</InfoBox>
-<InfoBox>
 
 **Kubernetes Version Downgrades:** We do not recommend downgrading the Kubernetes versions.
 
