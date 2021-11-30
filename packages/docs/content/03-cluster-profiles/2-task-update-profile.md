@@ -38,9 +38,9 @@ All clusters previously created from this profile will be notified of the change
 
 <InfoBox>
 
-**Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes major versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
+**Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes minor versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
 
 **Kubernetes Version Downgrades:** We do not recommend downgrading the Kubernetes versions.
-E.g., Kubernetes version 1.19.x is not recommended to be downgraded to 1.18.x
+
 </InfoBox>
 
