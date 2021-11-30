@@ -579,6 +579,8 @@ To create an AWS cloud account provide a name and a description for the account 
 
 # Deploying an AWS Cluster
 
+ ![aws-cluster-creation](./cluster-creation-videos/aws.mp4)
+
 The following steps need to be performed to provision a new AWS cluster:
 
 * Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
@@ -612,7 +614,6 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 		- Expand First: Launches the new node and then shut down the old node
 		- Contract First: Shut down the old node first and then launches the new node
     - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
-
     - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 

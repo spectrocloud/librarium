@@ -63,7 +63,6 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
     Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
 
-
 # VMware Cloud Account Permissions
 
 The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.

@@ -46,6 +46,8 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 # Deploying an Azure Cluster
 
+ ![azure-cluster-creation](./cluster-creation-videos/azure.mp4)
+
 The following steps need to be performed to provision a new Azure cluster:
 
 * Provide the basic cluster information like name, description, and tags.
