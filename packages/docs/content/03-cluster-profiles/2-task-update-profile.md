@@ -17,6 +17,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 Cluster profiles are typically updated to change the configuration of various layers in a Kubernetes stack. Basic information like name, description, and tags can also be updated. However, the environment associated with the profile cannot be updated.
 
+
 The following are the steps to update a cluster profile:
 
 * Navigate  to the desired cluster profile’s details page.
@@ -34,3 +35,12 @@ The following are the steps to update a cluster profile:
  * Save your changes. Optionally provide a comment to describe the reason for the change. This is useful for audit purposes.
 
 All clusters previously created from this profile will be notified of the changes made to the profile. The clusters can be updated to the latest definition of the profile whenever deemed appropriate.
+
+<InfoBox>
+
+**Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes minor versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
+
+**Kubernetes Version Downgrades:** We do not recommend downgrading the Kubernetes versions.
+
+</InfoBox>
+
