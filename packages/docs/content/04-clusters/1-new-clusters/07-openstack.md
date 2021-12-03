@@ -483,13 +483,16 @@ The following steps need to be performed to provision a new OpenStack cluster:
     * Manage Machines
     * Scan Policies
     * Backup Policies
+
+Click to get details on [cluster management feature](/clusters/cluster-management/#cluster-updates)
+
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 ## Deleting an OpenStack Cluster
 
 The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an OpenStack cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
-* Invoke a delete action from the cluster settings: cluster -> settings -> cluster settings -> delete.
+* Invoke a delete action from the cluster settings: cluster -> settings -> cluster settings -> Delete Cluster.
 * Confirm delete action.
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
 

@@ -591,10 +591,10 @@ The following steps need to be performed to provision a new AWS cluster:
     - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
     - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
     - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if its desired to place resources into preexisting VPCs and subnets. If the user is making the selection of static Placement of resources, the following placement information need to be provided:
-   	 - Virtual Network
-   	 - Control plane Subnet
-   	 - Worker Network
-    - Make the choice of updating the worker pool in parallel.
+   	 - Virtual Network: Select the virtual network from drop down menu
+	 - Control plane Subnet: Select the control plane network from the drop down
+	 - Worker Network: Select the worker network from the drop down.
+- Make the choice of updating the worker pool in parallel if required.
 
 <InfoBox>
  The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
@@ -606,15 +606,19 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-    - Name - a descriptive name for the node pool.
-    - Size - Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    - Allow worker capability (master pool) - Select this option for allowing workloads to be provisioned on master nodes.
-    - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
-    - Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
-		- Expand First: Launches the new node and then shut down the old node
-		- Contract First: Shut down the old node first and then launches the new node
-    - Availability Zones - Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.
-    - By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
+
+|Parameter| Description|
+|---------|---------------|   
+|Name |a descriptive name for the node pool|
+|Size |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5|
+|Allow worker capability (master pool)|Select this option for allowing workloads to be provisioned on master nodes|
+|Instance type |Select the AWS instance type to be used for all nodes in the node pool|
+| **Rolling Update**| There are two choices of Rolling Update|
+|a. Expand First|Launches the new node and then shut down the old node|
+|b. Contract First|Shut down the old node first and then launches the new node|
+|Availability Zones| Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected|
+
+By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
@@ -625,7 +629,7 @@ New worker pools may be added if its desired to customize certain worker nodes t
   The deletion of an AWS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an AWS cluster:
 
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
-* Invoke a delete action available on the page: cluster -> settings -> cluster settings -> delete.
+* Invoke a delete action available on the page: cluster -> settings -> cluster settings -> Delete Cluster.
 * Confirm delete.
 Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.
 
