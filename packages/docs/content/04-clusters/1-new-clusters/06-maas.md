@@ -53,15 +53,14 @@ Spectro Cloud provides an installer in the form of a docker container temporaril
 
 ## Generate pairing code
 
-Navigate to the Private Cloud Gateway page in the Palette UI under “My Organization” -> “Admin Settings” -> “Private Cloud Gateways” -> “Add New Private Cloud Gateway -> “Maas”  -> “Add Maas Account”. 
-
-Copy the pairing code displayed on the page. This will be used in subsequent steps.
+- Navigate to the Private Cloud Gateway page in the Palette UI under “My Organization” -> “Admin Settings” -> “Private Cloud Gateways” -> “Add New Private Cloud Gateway -> “Maas”  -> “Add Maas Account”. 
+- Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
 ## Generate gateway config
 
-Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Spectro Cloud Management console and the MaaS identity endpoint. 
+* Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Spectro Cloud Management console and the MaaS identity endpoint. 
 
-To generate the gateway configuration file. Follow the instructions below to provide the Spectro Cloud Management, MaaS cloud account, environment and  placement information when prompted by the installer.
+* To generate the gateway configuration file follow the instructions below to provide the Spectro Cloud Management, MaaS cloud account, environment and  placement information when prompted by the installer.
 
 ```bash
 docker run -it --rm \
@@ -116,10 +115,7 @@ e.g. http://10.11.12.13:5240/MAAS
 * Number of nodes: choose between 1 and 3
 
 After this step, a new gateway configuration file is generated and its location is displayed on the console.
-
-E.g.:
-Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml
-
+E.g.: Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml
 
 ## Copy configuration file to known location:
 
@@ -185,23 +181,16 @@ Validate the above MaaS credentials to create your MaaS cloud account.
 
 # Deploying a bare-metal cluster using MaaS
 
- ![maas-cluster-creation](./cluster-creation-videos/maas.mp4)
+![maas-cluster-creation](./cluster-creation-videos/maas.mp4)
 
 The following steps need to be performed to provision a new MaaS cluster:
-
 * Provide basic cluster information like name, description, and tags.
-
 * Select a cluster profile created for the  MaaS environment. The profile definition will be used as the cluster construction template.
-
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-
 * Provide a MaaS Cloud account and placement information.
-
    * Cloud Account - Select the desired cloud account.
 MaaS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
-
    * Domain
-
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool
     * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
@@ -209,23 +198,24 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Resource Pool
     * Availability zones
     * Minimum CPU
-    * Minimum Disk - Storage disk size in GB to be attached to the node
-    * Rolling Update
-* Expand first
-* Contract first
+    * Minimum Disk - Storage disk size in GB to be attached to the node.
+    * Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
+	 	* Expand First: Launches the new node and then shut down the old node
+	 	* Contract First: Shut down the old node first and then launches the new node
+* Configure the cluster management features if needed, these features can also be scheduled later for the running clusters.
 
-* Configure the cluster policies/features.
     * Manage Machines
     * Scan Policies
     * Backup Policies
 
+Click to get details on [cluster management feature](/clusters/cluster-management/#cluster-updates)
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 # Deleting a MaaS Cluster
 The deletion of a MaaS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a MaaS cluster:
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page
-* Invoke a delete action from the cluster settings
-* Confirm delete action
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action from the cluster settings: : cluster -> settings -> cluster settings -> Delete Cluster.
+* Confirm delete action.
 * Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the cluster list.
 
 <InfoBox>
