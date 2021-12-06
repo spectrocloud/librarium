@@ -200,8 +200,8 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
     * Minimum CPU
     * Minimum Disk - Storage disk size in GB to be attached to the node.
     * Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
-		- Expand First: Launches the new node and then shut down the old node
-		- Contract First: Shut down the old node first and then launches the new node
+	 	* Expand First: Launches the new node and then shut down the old node
+	 	* Contract First: Shut down the old node first and then launches the new node
 * Configure the cluster management features if needed, these features can also be scheduled later for the running clusters.
 
     * Manage Machines

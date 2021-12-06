@@ -614,8 +614,8 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 |Allow worker capability (master pool)|Select this option for allowing workloads to be provisioned on master nodes|
 |Instance type |Select the AWS instance type to be used for all nodes in the node pool|
 | **Rolling Update**| There are two choices of Rolling Update|
-|a. Expand First|Launches the new node and then shut down the old node|
-|b. Contract First|Shut down the old node first and then launches the new node|
+|Expand First|Launches the new node and then shut down the old node|
+|Contract First|Shut down the old node first and then launches the new node|
 |Availability Zones| Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected|
 
 By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the ‘On-Spot’ option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Spectro Cloud tracks the current price for spot instances and launches nodes when the spot price falls in the specified range.

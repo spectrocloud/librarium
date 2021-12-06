@@ -75,8 +75,8 @@ The following steps need to be performed to provision a new Azure cluster:
 |Managed Disk| Select the managed disk type to be used|
 |Disk Size|Storage disk size in GB to be attached to the node|
 |**Rolling Updates**| There are two choices of Rolling Update|
-|a. Expand First| Launches the new node and then shut down the old node|
-|b. Contract First| Shut down the old node first and then launches the new node|
+|Expand First| Launches the new node and then shut down the old node|
+|Contract First| Shut down the old node first and then launches the new node|
 |Availability Zones| Choose one or more availability zones. Spectro Cloud provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools|
 
 * Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
