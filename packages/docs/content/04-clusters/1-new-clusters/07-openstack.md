@@ -13,10 +13,10 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the highlights of GCP clusters provisioned by Spectro Cloud:
-* Spectro Cloud provides public cloud like experience to deploying clusters on OpenStack.
-* In order to facilitate communication between the Spectro Cloud management platform and the OpenStack controllers installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+Following are some of the highlights of GCP clusters provisioned by Palette:
+* Palette provides public cloud like experience to deploying clusters on OpenStack.
+* In order to facilitate communication between the Palette management platform and the OpenStack controllers installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Palette Gateway, once installed on-prem registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
 ![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
@@ -29,8 +29,8 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * NTP configured on all Hosts.
 * Shared Storage between OpenStack hosts.
 * You must have an active OpenStack account with access to all the projects that you would like to provision clusters into. The account should have all the permissions listed below in the "OpenStack Cloud Account Permissions" section.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for OpenStack.
-* You should install a Private Cloud Gateway for OpenStack as described in the "Installing Private Cloud Gateway - OpenStack" section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Spectro Cloud. You can register your additional OpenStack cloud accounts in Spectro Cloud as described in the "Creating a OpenStack Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for OpenStack.
+* You should install a Private Cloud Gateway for OpenStack as described in the "Installing Private Cloud Gateway - OpenStack" section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Palette. You can register your additional OpenStack cloud accounts in Palette as described in the "Creating a OpenStack Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
     * Outgoing internet connection on port 443 to api.spectrocloud.com
@@ -297,13 +297,16 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 ```
 
 # Installing Private Cloud Gateway - OpenStack
+
+ ![openstack-pcg-creation](/pcg-creation-video/openstack.mp4)
+
 The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
 * Private cloud gateway IP requirements:
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
     * 1 IP for Kubernetes control-plane
 
-Spectro Cloud provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as OpenStack controller.
+Palette provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
 ## Generate pairing code
 
@@ -311,7 +314,7 @@ Navigate to the Private Cloud Gateway page under Administration and Create a new
 
 ## Generate gateway config
 
-Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Spectro Cloud Management, OpenStack cloud account, Environment and Placement information as requested.
+Invoke gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Palette Management, OpenStack cloud account, Environment and Placement information as requested.
 
 ```bash
 docker run -it --rm \
@@ -403,7 +406,7 @@ docker run -it --rm \
 ```
 
 ## Upgrading an OpenStack cloud gateway
-Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
+Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
 
 ## Deleting an OpenStack cloud gateway
