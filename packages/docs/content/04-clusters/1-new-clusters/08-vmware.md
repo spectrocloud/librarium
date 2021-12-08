@@ -15,13 +15,13 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of Kubernetes clusters provisioned by Spectro Cloud on VMware:
+Following are some of the architectural highlights of Kubernetes clusters provisioned by Palette on VMware:
 
 * Kubernetes nodes can be distributed across multiple compute clusters which serve as distinct fault domains. 
 * Support for static IP as well as DHCP
 * IP pool management for assigning blocks of IPs dedicated to clusters or projects.
-* In order to facilitate communication between the Spectro Cloud management platform and vCenter installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* In order to facilitate communication between the Palette management platform and vCenter installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Palette Gateway, once installed on-prem registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
@@ -32,8 +32,8 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 * NTP configured on all Hosts.
 * You must have an active vCenter account with all the permissions listed below in the "VMware Cloud Account Permissions" section.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for VMWare.
-* You should install a Private Cloud Gateway for VMware as described in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Spectro Cloud. You can register your additional VMware cloud accounts in Spectro Cloud as described in the "Creating a VMware Cloud account" section below.
+* You should have an Infrastructure cluster profile created in Palette for VMWare.
+* You should install a Private Cloud Gateway for VMware as described in the "Installing Private Cloud Gateway - VMware" section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the "Creating a VMware Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
@@ -50,7 +50,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * Shared Storage between vSphere hosts.
 * Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.* Zone Tagging
 
-* **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centres (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+* **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centres (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
   As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
 
@@ -65,7 +65,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # VMware Cloud Account Permissions
 
-The vSphere user account used in the various Spectro Cloud tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
+The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The `Administrator` role provides super-user access to all vSphere objects. For users without the `Administrator` role, one or more custom roles can be created based on the tasks being performed by the user.
 
 #### Privileges under root-level role
 
@@ -210,6 +210,8 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 # Creating a VMware cloud gateway
 
+ ![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
+
 <InfoBox>
 For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote datacenter that do not have direct incoming connection from the management console.
 </InfoBox>
@@ -224,19 +226,19 @@ Setting up a cloud gateway involves initiating the install from the tenant porta
 ## Tenant Portal - Initiate Install
 
 * As a tenant administrator, navigate to the *Private Cloud Gateway* page under settings and invoke the dialogue to create a new private cloud gateway.
-* Note down the link to the Spectro Cloud Gateway Installer OVA and PIN displayed on the dialogue.
+* Note down the link to the Spectro Cloud Palette Gateway Installer OVA and PIN displayed on the dialogue.
 
 ## vSphere - Deploy Gateway Installer
 
 * Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
 * Proceed through the OVF deployment wizard by choosing the desired name, placement, compute, storage, and network options.
-* At the 'Customize Template' step, specify Spectro Cloud properties as follows:
+* At the 'Customize Template' step, specify Palette properties as follows:
 
 | Parameter | Value | Remarks |
 |---|---|---|
 |Installer Name | Desired Spectro Cloud Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed, however, multiple gateways might be required for managing clusters across multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
-| Console endpoint | URL to Spectro Cloud management platform portal | https://console.spectrocloud.com by default |
-|Pairing Code | PIN displayed on the Spectro Cloud management platform portal's 'Create a new gateway' dialogue. | |
+| Console endpoint | URL to Palette management platform portal | https://console.spectrocloud.com by default |
+|Pairing Code | PIN displayed on the Palette management platform portal's 'Create a new gateway' dialogue. | |
 | SSH Public Key | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
 | Pod CIDR | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
 | Service cluster IP range | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
@@ -255,8 +257,8 @@ Additional properties that are required to be set only for a Proxy Environment. 
 ## Tenant Portal - Launch Cloud Gateway
 
 * Close the 'Create New Gateway' dialogue if still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
-* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the Spectro Cloud management platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
-* Click on the "Configure" button to invoke the Spectro Cloud Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
+* Wait for a gateway widget to be displayed on the page and for the "Configure" option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the virtual machine is powered on. Failure of the installer to register with the Palette management platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
+* Click on the "Configure" button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 * Choose the desired values for Datacenter, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally provide one or more SSH Keys and/or NTP server addresses.
 * Choose the IP Allocation Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to the gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the "*Restrict to a single cluster*" button. A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
 * Click on Confirm, to initiate provisioning of the gateway cluster. The status of the cluster on the UI should change to 'Provisioning' and eventually 'Running' when the gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins). You can observe a detailed provisioning sequence on the cluster details page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors or gets stuck, relevant details can be found on the summary tab or the events tab of the cluster details page. In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
@@ -274,11 +276,11 @@ Gateway cluster installation automatically creates a cloud account behind the sc
 
 ### Gateway installer - Unable to register with the tenant portal
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the installer to  register with the tenant portal within this duration might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 mins. Failure of the installer to  register with the tenant portal within this duration might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Palette management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
 
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
 
-If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
+If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Palette Support team to troubleshoot and provide further guidance:
 
 ``` bash
 #!/bin/bash
@@ -312,7 +314,7 @@ Installation of the gateway cluster may run into errors or might get stuck in th
 
 ## Upgrading a VMware cloud gateway
 
-Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
+Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the gateway upgrade is complete.
 
@@ -343,7 +345,7 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A loa
 
 # IP Address Management
 
-Spectro cloud supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. The following is a description of various IP Pool properties:
+Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are be shared across multiple clusters, but can optionally be restricted to a cluster. The following is a description of various IP Pool properties:
 
 | Property | Description |
 |---|---|
