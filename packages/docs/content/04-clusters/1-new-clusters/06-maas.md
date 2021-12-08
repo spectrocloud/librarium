@@ -13,13 +13,13 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Spectro Cloud using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
+Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Palette using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
 * Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MaaS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
-* Spectro Cloud provides cloud like experience to deploying clusters on bare metal servers.
-* In order to facilitate communication between the Spectro Cloud management platform and the bare-metal machines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
-* Private Cloud Gateway(PCG) is Spectro Cloud's on-prem component to enable support for isolated private cloud or datacenter environments. The Spectro Cloud PCG, once installed registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Spectro Cloud's SaaS portal.
+* Palette provides cloud like experience to deploying clusters on bare metal servers.
+* In order to facilitate communication between the Palette management platform and the bare-metal machines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. The Palette PCG, once installed registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
 ![maas_cluster_architecture.png](maas_cluster_architecture.png)
@@ -30,12 +30,12 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 
 * You must enable API communication and retrieve the API key. The [key], [secret], [consumer_key] tokens are the three elements that compose the API key (API key = ‘[consumer_key]:[key]:[secret]’).
 * You should have an Infrastructure cluster profile created in the Spectro Cloud Palette UI for MAAS.
-* You should install a Private Cloud Gateway for MaaS as described in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MaaS in Spectro Cloud. You can register your additional MaaS cloud accounts in Spectro Cloud as described in the "Creating a MaaS Cloud account" section below.
+* You should install a Private Cloud Gateway for MaaS as described in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MaaS in Palette. You can register your additional MaaS cloud accounts in Palette as described in the "Creating a MaaS Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
     * Outgoing internet connection on port 443 to api.spectrocloud.com
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* A computer with a docker daemon installed and connectivity to both the Spectro Cloud Management console and the MaaS identity endpoint. 
+* A computer with a docker daemon installed and connectivity to both the Palette Management console and the MaaS identity endpoint. 
 * Sufficient IPs for application workload services (e.g.: Load Balancer services).
 * Per workload cluster IP requirements:
     * 1 per cluster node
@@ -43,13 +43,15 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 
 # Installing Private Cloud Gateway - MaaS
 
+![maas-pcg-creation](/pcg-creation-video/maas.mp4)
+
 The following system requirements should be met in order to install a private cloud gateway for MaaS:
 
 * Private cloud gateway IP requirements:
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
     * 1 IP for Kubernetes control-plane
 
-Spectro Cloud provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Spectro Cloud Management console as well as MaaS identity endpoint. 
+Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MaaS identity endpoint. 
 
 ## Generate pairing code
 
@@ -58,9 +60,9 @@ Spectro Cloud provides an installer in the form of a docker container temporaril
 
 ## Generate gateway config
 
-* Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Spectro Cloud Management console and the MaaS identity endpoint. 
+* Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Palette Management console and the MaaS identity endpoint. 
 
-* To generate the gateway configuration file follow the instructions below to provide the Spectro Cloud Management, MaaS cloud account, environment and  placement information when prompted by the installer.
+* To generate the gateway configuration file follow the instructions below to provide the Palette Management, MaaS cloud account, environment and  placement information when prompted by the installer.
 
 ```bash
 docker run -it --rm \
@@ -77,7 +79,7 @@ docker run -it --rm \
 * Install Type: Choose either Private Cloud Gateway or Self Hosted Enterprise Cluster.  You may change your selection with the up or down keys.
 * Cloud Type: MaaS.
 * Input the name you wish to use for your Private Cloud Gateway.
-* Enter the Spectro Cloud Console endpoint e.g. https://customername.console.spectrocloud.com
+* Enter the Spectro Cloud Palette Console endpoint e.g. https://customername.console.spectrocloud.com
 * Enter your Spectro Cloud Username - Login email address e.g. user1@company.com.
 * Enter your Spectro Cloud Password - The login password.
 * Enter the Private Cloud Gateway pairing code generated from the Spectro Cloud Palette UI. For more info, please see the “Generate gateway config” section of this document. 
@@ -145,7 +147,7 @@ Available bare-metal machines in your MaaS environment will be selected and a pr
 
 ## Upgrading a MaaS cloud gateway
 
-Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Spectro Cloud releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
+Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is upgraded and are processed as soon as the gateway upgrade is complete.
 
 ## Deleting a MaaS cloud gateway
