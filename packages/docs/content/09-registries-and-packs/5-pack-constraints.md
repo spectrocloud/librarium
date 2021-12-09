@@ -40,7 +40,7 @@ registry.hostname:
 
 **Readonly**
 
-The pack value can be editable  if marked as readonly.
+The pack value is not editable if marked as readonly.
 
 ```bash
 registry.hostname:

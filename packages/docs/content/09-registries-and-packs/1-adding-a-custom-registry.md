@@ -164,7 +164,7 @@ REGISTRY_HOST_DNS - registry.com
 
 Once the deployment of the pack registry server is complete, configure it with the management console as follows:
 
-1. As a tenant administrator, navigate to Admin -> Settings -> Pack Registries.
+1. As a tenant administrator, navigate to Admin Settings -> Registries -> Pack Registries.
 1. Click on "Add New Pack Registry" and provide the pack registry name, endpoint, and user credentials.
 1. Click on "Confirm" once the details are filled.
 
