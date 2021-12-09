@@ -194,7 +194,7 @@ Installation of the gateway cluster may run into errors or might get stuck in th
 
 |PALETTE NAMESPACES | PODS  |
 |------|-------|                                                        
-|capi-webhook-system    |capi-controller-manager-UUID|                       
+|capi-webhook-system    |capi-controller-manager-< UUID>|                       
 ||capi-kubeadm-bootstrap-controller-manager-< UUID >|      
 ||capi-kubeadm-control-plane-controller-manager-< UUID >| 
 |capi-webhook-system|capv-controller-manager-< UUID >|                        
