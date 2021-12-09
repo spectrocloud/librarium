@@ -32,6 +32,8 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 # Creating an Azure cloud account
 
+ ![Azure-cloud-account](/cloud-accounts/azure.mp4)
+
 To create an Azure cloud account, we would need:
 
 * Client ID
