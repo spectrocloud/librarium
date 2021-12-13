@@ -562,6 +562,14 @@ These policies defines some actions, resources, or conditions that do not provid
 
 # Creating an AWS cloud account
 
+## AWS Account Creation using Access Credentials Method
+ 
+![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
+
+## AWS Account Creation using STS Method
+
+![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
+
 To create an AWS cloud account, provide a name and a description for the account and follow the steps below based on the account type desired:
 
 * Access Credentials

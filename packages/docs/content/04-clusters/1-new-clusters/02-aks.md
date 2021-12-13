@@ -42,6 +42,8 @@ These permissions can be configured from the Azure cloud console under App regis
 
 # Creating an Azure cloud account
 
+![Azure-cloud-account](/cloud-accounts/azure.mp4)
+
 To create an Azure cloud account, we would need:
 
 * Client ID
