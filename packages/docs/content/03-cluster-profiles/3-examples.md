@@ -1,5 +1,5 @@
 ---
-title: "Examples"
+title: "Cluster Profile Examples"
 metaTitle: "Cluster Profile Examples"
 metaDescription: "The method for creating a Cluster Profile for AWS on Spectro Cloud"
 icon: ""
