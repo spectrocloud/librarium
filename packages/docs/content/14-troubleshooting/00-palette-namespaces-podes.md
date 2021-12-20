@@ -62,8 +62,7 @@ The namespace to pod mapping for Palette vSphere Gateway (PCG).
 |capi-webhook-system|capi-controller-manager-< UUID >  |                        
 | |capi-kubeadm-bootstrap-controller-manager-< UUID >  |  
 | |capi-kubeadm-control-plane-controller-manager-< UUID >    | 
-| |capv-controller-manager-< UUID >  |                       
-| | ipam-controller-manager-< UUID >  |                      
+| |capv-controller-manager-< UUID >  |                                             
 |cert-manager | cert-manager-< UUID > |                                    
 | | cert-manager-cainjector-< UUID > |                 
 | | cert-manager-webhook-< UUID >  |    |                       
@@ -74,13 +73,7 @@ The namespace to pod mapping for Palette vSphere Gateway (PCG).
 | | capv-static-ip-controller-manager-< UUID >   |             
 | |cluster-management-agent-< UUID >  |                       
 | |  ipam-controller-manager-< UUID > | metrics-server-< UUID > |
-| | palette-controller-manager-< UUID >  |                                           
-|cluster-< UUID2 >   | capi-kubeadm-bootstrap-controller-manager-< UUID >       
-|  |capi-kubeadm-control-plane-controller-manager-< UUID >  | 
-|  |capv-controller-manager-< UUID >      |                 
-| | cluster-management-agent-< UUID >  |                     
-|  |palette-controller-manager-< UUID > |                   
-| |  upgrade  |                                                       
+| | palette-controller-manager-< UUID >  |                                                                                                 
 |jet-system | jet-< UUID > |                                           
 ||  spectro-cloud-driver-< UUID >  |                          
 |kube-system |calico-kube-controllers-< UUID >   |                       
