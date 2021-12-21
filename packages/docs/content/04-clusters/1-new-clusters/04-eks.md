@@ -629,7 +629,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
-# AWS Instance Type with POD Capacity
+# AWS Instance Type and POD Capacity
 The choice of instance type and the number of instances to be launched should be made according to the number of Pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster created will go into a stuck state as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the POD Capacity for individual AWS instance types. This will help in making exact choices of "**desired size**" of worker pool during ** cluster creation **.
 ## Formula for Calculation:
 
