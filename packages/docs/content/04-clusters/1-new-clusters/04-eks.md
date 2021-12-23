@@ -645,6 +645,11 @@ Where:
 * N * (M-1) + 2 = 3*(6-1)+2 =17 pods/instance
 
 Hence, while setting the desired size of the worker pool make the choice as per pod requirement.
+
+<InfoBox>
+Select the type and number of instances such that there is a minimum of 30 pods.
+</InfoBox>
+
 # Deleting an EKS Cluster
   The deletion of an EKS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an EKS cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
