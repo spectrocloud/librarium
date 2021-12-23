@@ -630,9 +630,9 @@ New worker pools may be added if it is desired to customize certain worker nodes
 </InfoBox>
 
 # AWS Instance Type and POD Capacity
-The choice of instance type and the number of instances to be launched should be made according to the number of Pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster created will go into a stuck state as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the POD Capacity for individual AWS instance types. This will help in making exact choices of "**desired size**" of worker pool during ** cluster creation **.
-## Formula for Calculation:
+The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster created will go into a stuck state as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the POD Capacity for individual AWS instance types. This will help in making exact choices of "**desired size**" of worker pool during ** cluster creation **.
 
+## Formula for Calculation
 Number of pods = N * (M-1) + 2 
 
 Where:
@@ -644,11 +644,12 @@ Where:
 * for values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
 * N * (M-1) + 2 = 3*(6-1)+2 =17 pods/instance
 
-Hence, while setting the desired size of the worker pool make the choice as per pod requirement.
 
 <InfoBox>
 Select the type and number of instances such that there is a minimum of 30 pods.
 </InfoBox>
+
+Hence, while setting the desired size of the worker pool make the choice as per pod requirement. In the example given above we need to launch minimum of 2 instances of t3.medium to satisfy the resource requirement of an EKS cluster.
 
 # Deleting an EKS Cluster
   The deletion of an EKS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an EKS cluster:
