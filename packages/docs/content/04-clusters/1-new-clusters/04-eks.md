@@ -629,16 +629,17 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
-# AWS Instance Type and POD Capacity
-The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster created will go into a stuck state as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the POD Capacity for individual AWS instance types. This will help in making exact choices of "**desired size**" of worker pool during ** cluster creation **.
+# AWS Instance Type and Pod Capacity
+The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**.
 
-## Formula for Calculation
+## Formula for Pod Calculation
 Number of pods = N * (M-1) + 2 
 
 Where:
 * N is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
 * M is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
-* Values for N and M for each instance type can be referred from [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) .
+* Values for N and M for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
+
 ## Example Calculation:
 * For instance type = t3.medium 
 * for values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
