@@ -630,7 +630,7 @@ New worker pools may be added if it is desired to customize certain worker nodes
 </InfoBox>
 
 # AWS Instance Type and Pod Capacity
-The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**.
+The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
 
 ## Formula for Pod Calculation
 Number of pods = N * (M-1) + 2 
@@ -644,10 +644,10 @@ Where:
 * For instance type = t3.medium 
 * for values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
 * N * (M-1) + 2 = 3*(6-1)+2 =17 pods/instance
-
+* In this example, we will need at least 2 t3.medium instances to reach the minimum of 30 pods threshold
 
 <InfoBox>
-Select the type and number of instances such that there is a minimum of 30 pods.
+Select the type and number of instances to support a minimum of 30 pods.
 </InfoBox>
 
 Hence, while setting the desired size of the worker pool make the choice as per pod requirement. In the example given above we need to launch minimum of 2 instances of t3.medium to satisfy the resource requirement of an EKS cluster.
