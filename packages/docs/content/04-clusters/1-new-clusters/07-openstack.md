@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the highlights of GCP clusters provisioned by Palette:
+Following are some of the highlights of OpenStack clusters provisioned by Palette:
 * Palette provides public cloud like experience to deploying clusters on OpenStack.
 * In order to facilitate communication between the Palette management platform and the OpenStack controllers installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
 * Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Palette Gateway, once installed on-prem registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
