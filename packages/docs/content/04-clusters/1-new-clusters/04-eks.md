@@ -616,7 +616,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 * Configure one or more worker node pools. A worker node will be  configured by default.
     - Name - a descriptive name for the node pool.
     - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varying workload conditions.
-    - Instance type - Select the AWS instance type to be used for all nodes in the node pool.
+    - Instance type - Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool. 
 
 * Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
     - Name - Provide a name for the Fargate profile.
@@ -629,9 +629,31 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
 </InfoBox>
 
+# AWS Instance Type and Pod Capacity
+The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
+
+## Formula for Pod Calculation
+Number of pods = N * (M-1) + 2 
+
+Where:
+* N is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
+* M is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
+* Values for N and M for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
+
+## Example Calculation:
+* For instance type = t3.medium 
+* for values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
+* N * (M-1) + 2 = 3*(6-1)+2 =17 pods/instance
+* In this example, we will need at least 2 t3.medium instances to reach the minimum of 30 pods threshold
+
+<InfoBox>
+Select the type and number of instances to support a minimum of 30 pods.
+</InfoBox>
+
+Hence, while setting the desired size of the worker pool make the choice as per pod requirement. In the example given above we need to launch minimum of 2 instances of t3.medium to satisfy the resource requirement of an EKS cluster.
+
 # Deleting an EKS Cluster
   The deletion of an EKS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an EKS cluster:
-
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
 * Invoke a delete action available on the page: cluster -> settings -> cluster settings -> Delete Cluster.
 * Confirm delete.
