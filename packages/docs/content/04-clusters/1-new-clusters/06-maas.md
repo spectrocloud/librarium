@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Palette using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
+Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Palette using Canonical's MaaS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
 * Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MaaS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
@@ -106,7 +106,7 @@ The IP address that will be assigned to services created on Kubernetes. This set
 * API Endpoint - MaaS API endpoint. Domain or IP address.
 e.g. http://10.11.12.13:5240/MAAS
 
-* API Key - Generate an API key from the MAAS UI and paste when prompted. This key is used for authentication.
+* API Key - Generate an API key from the MaaS UI and paste when prompted. This key is used for authentication.
 
 
 #### Enter MaaS Machine configuration for the Private Cloud Gateway:
