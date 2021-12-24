@@ -16,6 +16,15 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# December 24, 2021 - Release 2.2.0
+
+Palette 2.2.0 is released with our **Edge Clusters** beta version alongside upgraded, stable, and enhanced API support.  
+ 
+The 2.2.0 Palette enhancements are:
+* Palette users can now provision and manage their Kubernetes clusters using exclusory edge devices installed within isolated locations compared to usual data centers or clouds.
+* Palette 2.2.0 has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
+* We solicit our users to deploy their tenant clusters with Kubernetes version 1.19.0 and above. 
+
 # November 20, 2021 - Release 2.1.0
 
 Palette 2.1.0 is released with the following key improvements:
