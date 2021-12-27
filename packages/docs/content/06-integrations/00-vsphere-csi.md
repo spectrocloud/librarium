@@ -32,10 +32,15 @@ The vSphere CSI driver includes the following components:
 
 ## Versions Supported
 
-<Tabs>
-<Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-* **1.0.0**
+<WarningBox>
+We highly recommend our users deploy the 2.3.x version of vSphere CSI.
+</WarningBox>
+
+<Tabs>
+<Tabs.TabPane tab="2.3.x" key="2.3.x">
+
+* **2.3.0**
  
 </Tabs.TabPane>
 </Tabs>
