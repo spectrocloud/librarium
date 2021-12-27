@@ -138,7 +138,9 @@ Backups can be scheduled or initiated on an on-demand basis as required. The fol
 Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the Restore can be tracked from the target cluster's backup/restore page. Finally, the Restore can be done to the cluster which is running on the same project.
 
 <WarningBox>
-When restoring backups to a cluster running on a cloud different from the source cluster, some manual steps might be required. As an example, you might need to pre-create a storage class on the cluster before initiating Restore. This applies to the clusters which are created on EKS to other clouds or Vice versa.
+When restoring backups to a cluster running on a cloud different from the source cluster, some manual steps might be required. As an example, you might need to pre-create a storage class on the cluster before initiating Restore. 
+For EKS cluster restore AWS specific "gp2 storage class" is recommended.
+For other clouds please go for "spectro-storage-class".
 </WarningBox>
 
 <WarningBox>
