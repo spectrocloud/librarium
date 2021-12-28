@@ -24,7 +24,7 @@ The information is organised as follows:
 
 # Palette Tenant Cluster NameSpaces with Pods
 
-The namespace to pod mapping for Palette Tenant Cluster.
+The following table gives the namespace to pod mapping for Palette Tenant Cluster.
 
 |PALETTE NAMESPACES | PODS  |
 |------|-------|                                                        
@@ -55,7 +55,8 @@ The namespace to pod mapping for Palette Tenant Cluster.
 
 
 # Palette PCG NameSpaces with Pods
-The namespace to pod mapping for Palette vSphere Gateway (PCG).
+
+The following table gives the  namespace to pod mapping for Palette vSphere Gateway.
 
 |PALETTE NAMESPACES|PODS    |
 |--|--|                                                         
@@ -91,7 +92,7 @@ The namespace to pod mapping for Palette vSphere Gateway (PCG).
 
 # Enterprise NameSpaces with Pods
 
-The namespace to pod mapping for Palette On-Prem Enterprise Clusters.
+The following table gives the namespace to pod mapping for Palette On-Prem Enterprise Clusters.
 
 |PALETTE NAMESPACES|PODES|
 |--|--|
