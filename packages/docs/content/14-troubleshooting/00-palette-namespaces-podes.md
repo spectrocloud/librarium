@@ -90,7 +90,8 @@ The namespace to pod mapping for Palette vSphere Gateway (PCG).
 |reach-system    |          reach-controller-manager-< UUID >  |                    
 
 # Enterprise NameSpaces with Pods
-The namespace to pod mapping for Palette vSphere Gateway (PCG).
+
+The namespace to pod mapping for Palette On-Prem Enterprise Clusters.
 
 |PALETTE NAMESPACES|PODES|
 |--|--|
