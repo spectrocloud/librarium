@@ -22,7 +22,7 @@ Palette 2.2.0 is released with our **Edge Clusters** beta version alongside upgr
  
 The 2.2.0 Palette enhancements are:
 * Palette users can now provision and manage their Kubernetes clusters using exclusory edge devices installed within client locations compared to usual data centers or cloud environments.
-* Palette 2.2.0 has stepped up to an upgraded and stable API version for better automation, integration and efficiency.
+* Palette 2.2.0 has stepped up to an upgraded API version for better automation, integration and efficiency.
 * Pack Updates: 
      * We encourage our users to deploy Kubernetes version 1.19.x and above
      * vSphere-CSI storage driver support bounded to version 2.3.x
