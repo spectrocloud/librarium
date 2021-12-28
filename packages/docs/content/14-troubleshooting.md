@@ -190,3 +190,4 @@ Installation of the gateway cluster may run into errors or might get stuck in th
 * [Kubernetes Dashboard](/integrations/kubernetes-dashboard/#troubleshooting)
 * [CSI](/integrations/csi/#troubleshooting)
 
+
