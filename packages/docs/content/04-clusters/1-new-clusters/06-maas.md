@@ -1,5 +1,5 @@
 ---
-title: "MaaS"
+title: "MAAS"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -13,12 +13,12 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Palette using Canonical's MaaS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
+Following are some of the architectural highlights of bare-metal Kubernetes clusters deployed by Palette using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
-* Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MaaS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
+* Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MAAS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
 * Palette provides cloud like experience to deploying clusters on bare metal servers.
-* In order to facilitate communication between the Palette management platform and the bare-metal machines as well as MaaS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* In order to facilitate communication between the Palette management platform and the bare-metal machines as well as MAAS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
 * Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. The Palette PCG, once installed registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
@@ -26,43 +26,43 @@ Following are some of the architectural highlights of bare-metal Kubernetes clus
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a bare-metal Kubernetes cluster using MaaS:
+The following prerequisites must be met before deploying a bare-metal Kubernetes cluster using MAAS:
 
 * You must enable API communication and retrieve the API key. The [key], [secret], [consumer_key] tokens are the three elements that compose the API key (API key = ‘[consumer_key]:[key]:[secret]’).
 * You should have an Infrastructure cluster profile created in the Spectro Cloud Palette UI for MAAS.
-* You should install a Private Cloud Gateway for MaaS as described in the "Installing Private Cloud Gateway - MaaS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MaaS in Palette. You can register your additional MaaS cloud accounts in Palette as described in the "Creating a MaaS Cloud account" section below.
+* You should install a Private Cloud Gateway for MAAS as described in the "Installing Private Cloud Gateway - MAAS" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MAAS in Palette. You can register your additional MAAS cloud accounts in Palette as described in the "Creating a MAAS Cloud account" section below.
 * Egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
     * Outgoing internet connection on port 443 to api.spectrocloud.com
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-* A computer with a docker daemon installed and connectivity to both the Palette Management console and the MaaS identity endpoint. 
+* A computer with a docker daemon installed and connectivity to both the Palette Management console and the MAAS identity endpoint. 
 * Sufficient IPs for application workload services (e.g.: Load Balancer services).
 * Per workload cluster IP requirements:
     * 1 per cluster node
     * 1 Kubernetes control-plane VIP
 
-# Installing Private Cloud Gateway - MaaS
+# Installing Private Cloud Gateway - MAAS
 
 ![maas-pcg-creation](/pcg-creation-video/maas.mp4)
 
-The following system requirements should be met in order to install a private cloud gateway for MaaS:
+The following system requirements should be met in order to install a private cloud gateway for MAAS:
 
 * Private cloud gateway IP requirements:
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
     * 1 IP for Kubernetes control-plane
 
-Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MaaS identity endpoint. 
+Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MAAS identity endpoint. 
 
 ## Generate pairing code
 
-- Navigate to the Private Cloud Gateway page in the Palette UI under “My Organization” -> “Admin Settings” -> “Private Cloud Gateways” -> “Add New Private Cloud Gateway -> “Maas”  -> “Add Maas Account”. 
+- Navigate to the Private Cloud Gateway page in the Palette UI under “My Organization” -> “Admin Settings” -> “Private Cloud Gateways” -> “Add New Private Cloud Gateway -> “MAAS”  -> “Add MAAS Account”. 
 - Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
 ## Generate gateway config
 
-* Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Palette Management console and the MaaS identity endpoint. 
+* Invoke the gateway installer in interactive mode from any system that has a docker daemon installed with connectivity to the Palette Management console and the MAAS identity endpoint. 
 
-* To generate the gateway configuration file follow the instructions below to provide the Palette Management, MaaS cloud account, environment and  placement information when prompted by the installer.
+* To generate the gateway configuration file follow the instructions below to provide the Palette Management, MAAS cloud account, environment and  placement information when prompted by the installer.
 
 ```bash
 docker run -it --rm \
@@ -77,7 +77,7 @@ docker run -it --rm \
 
 * Copy and past the instructions above to your terminal with docker. Upon execution provide the following:
 * Install Type: Choose either Private Cloud Gateway or Self Hosted Enterprise Cluster.  You may change your selection with the up or down keys.
-* Cloud Type: MaaS.
+* Cloud Type: MAAS.
 * Input the name you wish to use for your Private Cloud Gateway.
 * Enter the Spectro Cloud Palette Console endpoint e.g. https://customername.console.spectrocloud.com
 * Enter your Spectro Cloud Username - Login email address e.g. user1@company.com.
@@ -101,15 +101,15 @@ The CIDR pool is used to assign IP addresses to pods in the cluster. This settin
 * Service IP Range (--svc_ip_range):
 The IP address that will be assigned to services created on Kubernetes. This setting will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.
 
-#### Enter MaaS Account Information:
+#### Enter MAAS Account Information:
 
-* API Endpoint - MaaS API endpoint. Domain or IP address.
+* API Endpoint - MAAS API endpoint. Domain or IP address.
 e.g. http://10.11.12.13:5240/MAAS
 
-* API Key - Generate an API key from the MaaS UI and paste when prompted. This key is used for authentication.
+* API Key - Generate an API key from the MAAS UI and paste when prompted. This key is used for authentication.
 
 
-#### Enter MaaS Machine configuration for the Private Cloud Gateway:
+#### Enter MAAS Machine configuration for the Private Cloud Gateway:
 
 * Select the availability zone
 * Choose the domain
@@ -143,14 +143,14 @@ docker run -it --rm \
  -c //opt/spectrocloud/pcg.yaml
 ```
 
-Available bare-metal machines in your MaaS environment will be selected and a private cloud gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+Available bare-metal machines in your MAAS environment will be selected and a private cloud gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
-## Upgrading a MaaS cloud gateway
+## Upgrading a MAAS Cloud Gateway
 
 Spectro Cloud maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is upgraded and are processed as soon as the gateway upgrade is complete.
 
-## Deleting a MaaS cloud gateway
+## Deleting a MAAS cloud gateway
 The following steps need to be performed to delete a cloud gateway:
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 * Invoke the ‘Delete’ action on the cloud gateway instance that needs to be deleted.
@@ -158,7 +158,7 @@ The following steps need to be performed to delete a cloud gateway:
 * Delete the gateway.
 
 
-## Resizing a MaaS gateway
+## Resizing a MAAS gateway
 
 A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially set up with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
 * As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
@@ -166,11 +166,11 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 * Update the size from 1 to 3.
 * The gateway upgrade begins shortly after the update. Two new nodes are created and the gateway is upgraded to a 3-node cluster.
 
-# Creating a MaaS Cloud Account
+# Creating a MAAS Cloud Account
 
 A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired.
 
-To create a MaaS cloud account, proceed to project settings and select 'create cloud account' under MaaS. Fill the following values in the cloud account creation wizard.
+To create a MAAS cloud account, proceed to project settings and select 'create cloud account' under MAAS. Fill the following values in the cloud account creation wizard.
 
 |Property|Description |
 |:---------------|:-----------------------|
@@ -179,19 +179,19 @@ To create a MaaS cloud account, proceed to project settings and select 'create c
 |  API Endpoint |  API Endpoint of the gateway   |
 | API Key| API token |
 
-Validate the above MaaS credentials to create your MaaS cloud account.
+Validate the above MAAS credentials to create your MAAS cloud account.
 
-# Deploying a bare-metal cluster using MaaS
+# Deploying a bare-metal cluster using MAAS
 
 ![maas-cluster-creation](./cluster-creation-videos/maas.mp4)
 
-The following steps need to be performed to provision a new MaaS cluster:
+The following steps need to be performed to provision a new MAAS cluster:
 * Provide basic cluster information like name, description, and tags.
-* Select a cluster profile created for the  MaaS environment. The profile definition will be used as the cluster construction template.
+* Select a cluster profile created for the  MAAS environment. The profile definition will be used as the cluster construction template.
 * Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-* Provide a MaaS Cloud account and placement information.
+* Provide a MAAS Cloud account and placement information.
    * Cloud Account - Select the desired cloud account.
-MaaS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+MAAS cloud accounts with credentials need to be pre-configured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
    * Domain
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
     * Name - A descriptive name for the node pool
@@ -213,8 +213,8 @@ MaaS cloud accounts with credentials need to be pre-configured in project settin
 Click to get details on [cluster management feature](/clusters/cluster-management/#cluster-updates)
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-# Deleting a MaaS Cluster
-The deletion of a MaaS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a MaaS cluster:
+# Deleting a MAAS Cluster
+The deletion of a MAAS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a MAAS cluster:
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
 * Invoke a delete action from the cluster settings: : cluster -> settings -> cluster settings -> Delete Cluster.
 * Confirm delete action.
