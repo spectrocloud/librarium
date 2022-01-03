@@ -19,7 +19,7 @@ Edge clusters are Kubernetes clusters that are set up on appliances installed in
 
 # Cluster Types
 
-Spectro Cloud supports the following two configurations for edge clusters. :-
+Spectro Cloud supports the following two configurations for edge clusters:
 
 ## Virtualized
 
@@ -31,22 +31,22 @@ In the containerized mode, Kubernetes nodes for the master and worker pools are 
 
 # Edge Appliances
 
-Spectro Cloud supports several kinds of appliances at the edge. These appliances can be registered with Spectro Management console and used for provisioning a Virtualized or Containerized cluster. Following is a list of all the supported edge appliance types:-
+Spectro Cloud supports several kinds of appliances at the edge. These appliances can be registered with Spectro Management console and used for provisioning a Virtualized or Containerized cluster. Following is a list of all the supported edge appliance types:
 
-    | Appliance Type                            | Cluster Type     | 
-    | :-------------                            | :----------      | 
-    | Virtual Machine                           | Containerized    | 
-    | Bare Metal Machine with LibVirt           | Virtualized      | 
-    | Bare Metal Machine without Libvirt        | Containerized    | 
+| Appliance Type                            | Cluster Type     | 
+| :-------------                            | :----------      | 
+| Virtual Machine                           | Containerized    | 
+| Bare Metal Machine with Libvirt           | Virtualized      | 
+| Bare Metal Machine without Libvirt        | Containerized    | 
 
 
 # High level orchestration flow
 
 * A special edge appliance communication and orchestration component called Private Cloud Gateway - Edge (PCG-Edge)
-is installed on the edge appliance. Several environment specific propertiies such as proxy settings, Pod CIDRs, etc are specified in PCG-E.
+is installed on the edge appliance. Several environment specific propertiies such as proxy settings, Pod CIDRs, etc. are specified in PCG-E.
 * PCG-Edge performs basic device discovery and initiates appliance registeration with the Spectro Cloud Management Console.
 * User can register the appliance on the Spectro Cloud Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. By default, the appliance's machine ID is used as unique the appliance ID.
-* Upon initial registraion of the appliance, it shows up as 'Pending'. Once PCG-Edge sends back the appliance information, the appliance is paired up with and the status changes to 'Ready'.
+* Upon initial registraion of the appliance, it shows up as 'Pending'. Once PCG-Edge sends back the appliance information, appliance pairing will complete and the status will change to 'Ready'.
 * The rest of the provisioning workflow is similar to that of any other cloud in Spectro Cloud. An environment specific cluster profile needs to be created and used for provisining cluster on the appliance. 
 
 
