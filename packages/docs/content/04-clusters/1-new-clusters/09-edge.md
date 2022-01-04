@@ -46,11 +46,7 @@ Spectro Cloud supports several kinds of appliances at the edge. These appliances
 is installed on the edge appliance. Several environment specific propertiies such as proxy settings, Pod CIDRs, etc. are specified in PCG-E.
 * PCG-Edge performs basic device discovery and initiates appliance registeration with the Spectro Cloud Management Console.
 * User can register the appliance on the Spectro Cloud Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. By default, the appliance's machine ID is used as unique the appliance ID.
-<<<<<<< HEAD
 * Upon initial registraion of the appliance, it shows up as 'Unpaired'. Once PCG-Edge sends back the appliance information, the appliance is paired up with and the status changes to 'Ready'.
-=======
-* Upon initial registraion of the appliance, it shows up as 'Pending'. Once PCG-Edge sends back the appliance information, appliance pairing will complete and the status will change to 'Ready'.
->>>>>>> 57c1094f7c7e00ea18cfabf65ff01dcda7223679
 * The rest of the provisioning workflow is similar to that of any other cloud in Spectro Cloud. An environment specific cluster profile needs to be created and used for provisining cluster on the appliance. 
 
 
