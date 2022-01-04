@@ -15,11 +15,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Edge clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare-metal machines or virtual machines and are managed by operators at these remote sites. Spectro Cloud provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Spectro Cloud also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
+Edge clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare-metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
 
 # Cluster Types
 
-Spectro Cloud supports the following two configurations for edge clusters:
+Palette supports the following two configurations for edge clusters:
 
 ## Virtualized
 
@@ -29,7 +29,7 @@ Kubernetes nodes for master and worker pools are launched as KVM-based virtual m
 Kubernetes nodes for the master and worker pools are launched as docker containers in the containerized mode. Each container represents a Kubernetes node.
 
 # Edge Appliances
-Spectro Cloud supports several kinds of appliances at the edge. These appliances can be registered with the Palette Management console and used for provisioning a Virtualized or Containerized cluster. Following is a list of all the supported edge appliance types:
+Palette supports several kinds of appliances at the edge. These appliances can be registered with the Palette Management console and used for provisioning a Virtualized or Containerized cluster. Following is a list of all the supported edge appliance types:
 
 | Appliance Type                            | Cluster Type     | 
 | :-------------                            | :----------      | 
@@ -38,52 +38,54 @@ Spectro Cloud supports several kinds of appliances at the edge. These appliances
 | Bare Metal Machine without Libvirt        | Containerized    | 
 
 # High-level orchestration flow
-* An exceptional edge appliance communication and orchestration component called Private Cloud Gateway - Edge (PCG-Edge)
+* An exceptional edge appliance communication and orchestration component called Private Cloud Gateway - Edge (PCG-Edge).
 is installed on the edge appliance. Several environment-specific properties, such as proxy settings, Pod CIDRs, etc., are specified in PCG-E.
-* PCG-Edge performs fundamental device discovery and registration with the Spectro Cloud Management Console.
-* User can register the appliance on the Spectro Cloud Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. The appliance's machine ID is used as a unique appliance ID by default.
+* PCG-Edge performs fundamental device discovery and registration with the Palette Management Console.
+* User can register the appliance on the Palette Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. The appliance's machine ID is used as a unique appliance ID by default.
 * Upon initial registration of the appliance, it shows up as 'Unpaired.' Once PCG-Edge sends back the appliance information, the appliance is paired up, and the status changes to 'Ready.'
-* The rest of the provisioning workflow is similar to any other cloud in Spectro Cloud. An environment-specific cluster profile needs to be created and used to provision the appliance cluster. 
+* The rest of the provisioning workflow is similar to any other cloud in Palette. An environment-specific cluster profile needs to be created and used to provision the appliance cluster. 
 
 
 # Prerequisites
 
-Create an Admin account/Tenant Admin account in Palette Console.
-Edge Latest Installer Binary is downloaded and is available in the Device/Appliance. The latest Binary can be downloaded from:
+* Create an Admin account/Tenant Admin account in Palette Console.
+* Edge Latest Installer Binary is downloaded and is available in the Device/Appliance. The latest Binary can be downloaded from:
 		<BINARY_LOCATION>
-For Containerised Edge Cluster Installation:
-Linux based operating systems like Ubuntu/CentOS
-Docker installed on the system. 
+* For Containerised Edge Cluster Installation:
+   * Linux based operating systems like Ubuntu/CentOS
+   * Docker installed on the system
 Note: The snap-installed Docker on Ubuntu does not work. Uninstall the same and install using Official Docker steps. https://docs.docker.com/engine/install/)
-	c. Make sure to have root access to the machine.
-For Virtual Based Installation:
-Baremetal Machine with Linux based Operating system
-Libvirt is installed on the machines. 
+	* Make sure to have root access to the machine
+* For Virtual Based Installation:
+	* Baremetal Machine with Linux based Operating system
+	* Libvirt is installed on the machines. 
 
 # Detailed Instructions
 
 The following sections cover the prerequisites and detailed instructions for deploying clusters on these edge appliances.
 
 ## Appliance Registration
-Login to Palette Console as a tenant 
-Go to the **Clusters** page and click open the **Appliances** tab.
-Click on “Add Appliances” to open the wizard.
-Navigate to the appliance section under the 'Clusters' menu and register the appliance by providing its unique ID. 
-This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-Edge uses the machine ID, but it can be overridden to something different (e.g. - 'hospital-1').
-Optionally specify one or more tags for the appliance. For example, Spectro Cloud supports a unique 'name' tag. If specified, Spectro Cloud would use the value of this tag in other UIs to make identification of the device easier.
-Open the kebab (three-dot) menu and click delete to delete the appliance.
+* Login to Palette Console as a tenant.
+* Go to the **Clusters** page and click open the **Appliances** tab.
+* Click on “Add Appliances” to open the wizard.
+* Navigate to the appliance section under the 'Clusters' menu and register the appliance by providing its unique ID.
+* This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-Edge uses the machine ID, but it can be overridden to something different (e.g. - 'hospital-1').
+* Optionally specify one or more tags for the appliance. For example, Palette supports a unique 'name' tag. If specified, Palette would use the value of this tag in other UIs to make identification of the device easier.
+* Open the kebab (three-dot) menu and click delete to delete the appliance.
+
 <InfoBox>
 The appliance will register with the PCG-E once PCG-E is installed successfully.
 </InfoBox>
 
 ## PCG-Edge Install
  
-Deploying edge clusters requires a Private Cloud Gateway - Edge (PCG-Edge) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A  PCG-Edge is Palette's on-prem component to support remote Edge devices. Palette PCG-E, once installed on-prem, registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the Edge Clusters. 
-A Bootstrapper mechanism for installing the Palette component “PCG-E(dge)” is baked into the Palette PCG-E binary.
-Copy the PCG-E binary onto the appliance and execute the following command. 
-Log in as the root user to run the PCG-E installation command.
+* Deploying edge clusters requires a Private Cloud Gateway - Edge (PCG-Edge) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A  PCG-Edge is Palette's on-prem component to support remote Edge devices. Palette PCG-E, once installed on-prem, registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the Edge Clusters. 
+* A Bootstrapper mechanism for installing the Palette component “PCG-E(dge)” is baked into the Palette PCG-E binary.
+* Copy the PCG-E binary onto the appliance and execute the following command. 
+* Log in as the root user to run the PCG-E installation command.
+
 <WarningBox>
-Please ensure that specific properties such as Libvirt Socket are required when setting up a virtualized cluster (isvirtual true)
+Please ensure to have specific properties such as Libvirt Socket when setting up a virtualized cluster (isvirtual true)
 </WarningBox>
 
 ### For Virtualized Clusters
@@ -163,6 +165,27 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
 <InfoBox>
 For the OS pack, if a custom CA certificate is required for the outgoing traffic, make sure to specify it.
 
+**Example:**
+
+     Kubeadmconfig:
+     preKubeadmCommands:
+     - echo "Executing pre kube admin config commands"
+     - update-ca-certificates
+     - 'systemctl restart containerd; sleep 3'
+     - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep     1; done'
+    postKubeadmCommands:
+     - echo "Executing post kube admin config commands"
+    files:
+     - targetPath: /usr/local/share/ca-certificates/mycom.crt
+    targetOwner: "root:root"
+    targetPermissions: "0644"
+    content: |
+      -----BEGIN CERTIFICATE-----
+
+           Certificate Content
+
+      -----END CERTIFICATE-----
+
 For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not overlap with any IP ranges assigned in your network.
 </InfoBox>
 
@@ -184,7 +207,7 @@ For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not ov
 
 The following steps need to be performed to provision a new Edge cluster:
 
-* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the edge device
+* Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the edge device.
 
 * Select a cluster profile created for the ‘Containerized’ or ‘Virtualized’ Edge environment depending on the type of cluster to be deployed. The profile definition will be used as the cluster construction template.
 
@@ -193,16 +216,16 @@ The following steps need to be performed to provision a new Edge cluster:
 * Provide the cluster configuration details:
     * For Virtualized Clusters:
         * Virtual-IP:
-        * SSH-Key (optional):
-        * NTP servers  (optional):
+        * SSH-Key (optional)
+        * NTP servers  (optional)
     * For Containerized Clusters:
         * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
 
 * Configure the master and worker node pools. A master and a worker node pool are configured by default:
 
-    * Node Pool Name - A descriptive name for the node pool.
-    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.
-    * Allow worker capability (master pool) - Workloads to be provisioned on master nodes.
+    * Node Pool Name - A descriptive name for the node pool
+    * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5
+    * Allow worker capability (master pool) - Workloads to be provisioned on master nodes
     * Pool Configuration: This field applies to the Virtualized clusters only. Provide the resource requirements in terms of the following parameters:
 
         * CPU: number of virtual CPUs required
