@@ -42,11 +42,10 @@ Palette supports several kinds of appliances at the edge. These appliances can b
 | Bare Metal Machine without Libvirt        | Containerized    | 
 
 # High-level orchestration flow
-* An exceptional edge appliance communication and orchestration component called Private Cloud Gateway - Edge (PCG-Edge).
-is installed on the edge appliance. Several environment-specific properties, such as proxy settings, Pod CIDRs, etc., are specified in PCG-E.
-* PCG-Edge performs fundamental device discovery and registration with the Palette Management Console.
+* A communication and orchestration component called Private Cloud Gateway - Edge (PCG-E) is installed on the edge appliance. Several environment-specific properties, such as proxy settings, Pod CIDRs, etc., are specified in PCG-E.
+* PCG-E performs fundamental device discovery and registration with the Palette Management Console.
 * User can register the appliance on the Palette Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. The appliance's machine ID is used as a unique appliance ID by default.
-* Upon initial registration of the appliance, it shows up as 'Unpaired.' Once PCG-Edge sends back the appliance information, the appliance is paired up, and the status changes to 'Ready.'
+* Upon initial registration of the appliance, its status will become 'Unpaired.' Once PCG-Edge sends back the appliance information, the appliance is paired up, and the status changes to 'Ready.'
 * The rest of the provisioning workflow is similar to any other cloud in Palette. An environment-specific cluster profile needs to be created and used to provision the appliance cluster. 
 
 
@@ -55,13 +54,13 @@ is installed on the edge appliance. Several environment-specific properties, suc
 * Create an Admin account/Tenant Admin account in Palette Console.
 * Edge Latest Installer Binary is downloaded and is available in the Device/Appliance. The latest Binary can be downloaded from:
 		<BINARY_LOCATION>
-* For Containerised Edge Cluster Installation:
+* For Containerized Edge Cluster Installation:
    * Linux based operating systems like Ubuntu/CentOS
    * Docker installed on the system
 Note: The snap-installed Docker on Ubuntu does not work. Uninstall the same and install using Official Docker steps. https://docs.docker.com/engine/install/)
 	* Make sure to have root access to the machine
-* For Virtual Based Installation:
-	* Baremetal Machine with Linux based Operating system
+* For Virtualized Installation:
+	* Bare Metal Machine with Linux based Operating system
 	* Libvirt is installed on the machines. 
 
 # Detailed Instructions
@@ -73,7 +72,7 @@ The following sections cover the prerequisites and detailed instructions for dep
 * Go to the **Clusters** page and click open the **Appliances** tab.
 * Click on “Add Appliances” to open the wizard.
 * Navigate to the appliance section under the 'Clusters' menu and register the appliance by providing its unique ID.
-* This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-Edge uses the machine ID, but it can be overridden to something different (e.g. - 'hospital-1').
+* This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'hospital-1').
 * Optionally specify one or more tags for the appliance. For example, Palette supports a unique 'name' tag. If specified, Palette would use the value of this tag in other UIs to make identification of the device easier.
 * Open the kebab (three-dot) menu and click delete to delete the appliance.
 
@@ -83,8 +82,8 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
 
 ## PCG-Edge Install
  
-* Deploying edge clusters requires a Private Cloud Gateway - Edge (PCG-Edge) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A  PCG-Edge is Palette's on-prem component to support remote Edge devices. Palette PCG-E, once installed on-prem, registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the Edge Clusters. 
-* A Bootstrapper mechanism for installing the Palette component “PCG-E(dge)” is baked into the Palette PCG-E binary.
+* Deploying edge clusters requires a Private Cloud Gateway - Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A  PCG-E is Palette's on-prem component to support remote Edge devices. Palette PCG-E, once installed on-prem, registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the Edge Clusters. 
+* A Bootstrapper mechanism for installing the Palette component “PCG-E” is baked into the Palette PCG-E binary.
 * Copy the PCG-E binary onto the appliance and execute the following command. 
 * Log in as the root user to run the PCG-E installation command.
 
@@ -137,7 +136,7 @@ Where we have:
 |--user-no-proxy| comma separated list for User No Proxy [Optional]
 
 
-### For containerized Clusters
+### For Containerized Clusters
 
 ```bash
 ./edge-v1471401862107238400.bin -- -i  <IP address of the local machine/vm> 
@@ -202,7 +201,7 @@ For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not ov
 
     * Choosing the desired version includes pinning to a specific version (e.g., 1.1.1) or picking a major or minor train such as 1.x or 1.1.x. Picking a major/minor train results in a dynamic version association. The latest release from that train is linked to the pack at any given point. Future release updates on the train will result in the pack being relinked to the newest version. This allows clusters to always be at the latest released version without making subsequent updates to the profile.
     * The configuration option and version selected might provide configuration parameters to provide granular control or fine-tune certain aspects of the functionality. The configuration parameters are set to values based on standard best practices for the packs provided out of the box. Users may override these parameters as desired. Additionally, for specific layers, Palette provides a bunch of presets to enable or configure a feature within the add-on quickly. These presets are a group of properties preset with defaults to provide a quick and easy way to modify a set of relevant properties. If available, users can also enable one or more presets as appropriate.
-    * Attach additional manifests to the layer if desired. Attach manifests provide a way for provisioning additional Kubernetes resources that support integration or an add-on. For example, specific integrations offered through packs or charts may require creating resources like secrets, crds, etc., to complete the installation end to end. This can be achieved by adding one or more 'Attach Manifests' to the layer.
+    * Attach additional manifests to the layer if desired. Attach manifests provide a way for provisioning additional Kubernetes resources that support integration or an add-on. For example, specific integration offered through packs or charts may require creating resources like secrets, crds, etc., to complete the installation end to end. This can be achieved by adding one or more 'Attach Manifests' to the layer.
 * Review your changes and save the cluster profile.
 
 
@@ -220,10 +219,10 @@ The following steps need to be performed to provision a new Edge cluster:
 * Provide the cluster configuration details:
     * For Virtualized Clusters:
         * Virtual-IP:
-        * SSH-Key (optional)
+        * SSH-Keys (optional)
         * NTP servers  (optional)
     * For Containerized Clusters:
-        * SSH Keys (Optional) - Public key to configure remote SSH access to the nodes (User: spectro).
+        * SSH Keys (optional) - Public key to configure remote SSH access to the nodes (User: spectro).
 
 * Configure the master and worker node pools. A master and a worker node pool are configured by default:
 
