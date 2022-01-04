@@ -25,8 +25,12 @@ Palette supports the following two configurations for edge clusters:
 
 Kubernetes nodes for master and worker pools are launched as KVM-based virtual machines in the virtualized mode. Each VM represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pool. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
+![virtualized-edge.png](virtualized-edge.png)
+
 ## Containerized
 Kubernetes nodes for the master and worker pools are launched as docker containers in the containerized mode. Each container represents a Kubernetes node.
+
+![containerized-edge.png](containerized-edge.png)
 
 # Edge Appliances
 Palette supports several kinds of appliances at the edge. These appliances can be registered with the Palette Management console and used for provisioning a Virtualized or Containerized cluster. Following is a list of all the supported edge appliance types:
