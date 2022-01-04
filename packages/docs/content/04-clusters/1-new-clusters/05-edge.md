@@ -259,3 +259,15 @@ The following steps need to be performed to provision a new Edge cluster:
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 For more details on Day 2 Cluster management please refer [Cluster Management](/clusters/#cluster-management).
+
+## Deleting an Edge Cluster
+The deletion of an Edge cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Edge cluster:
+
+* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
+* Invoke a delete action available on the page : cluster -> settings -> cluster settings -> Delete Cluster.
+* Confirm delete action.
+* Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and it is removed from the list of clusters.
+
+<InfoBox>
+Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, ‘Abort’ action is available to stop provisioning and delete all resources.
+</InfoBox>
