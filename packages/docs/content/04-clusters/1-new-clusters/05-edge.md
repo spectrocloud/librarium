@@ -1,5 +1,5 @@
 ---
-title: "Edge"
+title: "Edge (Beta)"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -118,12 +118,12 @@ Usage: <edge-installer.bin> -- -i | --ip   -a | --apiurl
 
 Where we have:
 
-| Appliance Type                            | Cluster Type     | 
+| Option                            | Description     | 
 | :-------------                            | :----------      | 
 | -i  |IP address of the local machine/vm [Mandatory]|
 | -d | Custom Device id [Optional]|
 |-a  |Endpoint for Hubble API [Optional][default:api.spectrocloud.com]
-|-v  |false for Virtual Machine based install , true for Bare metal install. [Optional][default: false]
+|-v  |Boolean flag to indicate VM or BM install - false for Virtual Machine based install , true for Bare metal install. [Optional][default: false]
 |-s  |SSH key for connecting to libvirt [Mandatory if -v true]
 |-u  |SSH user for connecting to libvirt  [Mandatory if -v true]
 |-x  |Libvirt socket name [Optional if -v true][default: /var/run/libvirt/libvirt-sock]
@@ -134,6 +134,7 @@ Where we have:
 |--https-proxy| Proxy for Https connections [Optional]
 |--no-proxy |comma separated list for No Proxy [Optional]
 |--user-no-proxy| comma separated list for User No Proxy [Optional]
+|--custom-cacert| Custom CA certificate to pass to installer [Optional]
 
 
 ### For Containerized Clusters
