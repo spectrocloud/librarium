@@ -25,7 +25,7 @@ The 2.2.0 Palette enhancements are:
 * Palette 2.2.0 has stepped up to an upgraded Cluster API version for better automation, integration and efficiency.
 * Pack Updates: 
      * We recommend our users to deploy Kubernetes version 1.19.x and above for improved stability and compatiblity 
-     * We added support for vSphere-CSI storage driver version 2.3.x
+     * We recommend our users to deploy vSphere CSI storage driver version 2.3.x for enhanced performance
 
 
 # November 20, 2021 - Release 2.1.0
