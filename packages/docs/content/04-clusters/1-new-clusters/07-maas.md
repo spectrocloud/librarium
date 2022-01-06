@@ -18,7 +18,7 @@ Following are some of the architectural highlights of bare-metal Kubernetes clus
 * Spectro Cloud developed and released an open sourced CNCF Cluster API contribution supporting Canonical’s MAAS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
 * The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
 * Palette provides cloud like experience to deploying clusters on bare metal servers.
-* In order to facilitate communication between the Palette management platform and the bare-metal machines as well as MAAS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
+* In order to facilitate communication between the Palette management platform and the bare metal machines as well as MAAS controller installed in the private datacenter, a Private Cloud Gateway needs to be set up within the environment.
 * Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. The Palette PCG, once installed registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of  Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
