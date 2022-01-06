@@ -15,7 +15,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Edge clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare-metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
+Edge clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
 
 # Cluster Types
 
@@ -60,7 +60,7 @@ Palette supports several kinds of appliances at the edge. These appliances can b
 Note: The snap-installed Docker on Ubuntu does not work. Uninstall the same and install using Official Docker steps. https://docs.docker.com/engine/install/)
 	* Make sure to have root access to the machine
 * For Virtualized Installation:
-	* Bare Metal Machine with Linux based Operating system
+	* Bare metal machine with Linux based Operating system
 	* Libvirt is installed on the machines. 
 
 # Detailed Instructions
@@ -88,7 +88,7 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
 * Log in as the root user to run the PCG-E installation command.
 
 <WarningBox>
-Please ensure to have specific properties such as Libvirt Socket when setting up a virtualized cluster (isvirtual true)
+Please ensure to have specific properties such as Libvirt Socket when setting up a virtualized cluster (--isvirtual true)
 </WarningBox>
 
 ### For Virtualized Clusters
@@ -123,11 +123,11 @@ Where we have:
 | -i  |IP address of the local machine/vm [Mandatory]|
 | -d | Custom Device id [Optional]|
 |-a  |Endpoint for Hubble API [Optional][default:api.spectrocloud.com]
-|-v  |Boolean flag to indicate VM or BM install - false for Virtual Machine based install , true for Bare metal install. [Optional][default: false]
+|-v  |Boolean flag to indicate VM or BM install - false for Virtual Machine based install , true for Bare Metal install. [Optional][default: false]
 |-s  |SSH key for connecting to libvirt [Mandatory if -v true]
 |-u  |SSH user for connecting to libvirt  [Mandatory if -v true]
 |-x  |Libvirt socket name [Optional if -v true][default: /var/run/libvirt/libvirt-sock]
-|-m  |Installation mode [Optional][default: online]
+|-m  |There are two installation modes: offline or online [Optional][default: online]
 |--pod-cidr| Pod CIDR Range [Optional]
 |--service-cidr |Service CIDR Range  [Optional]
 |--http-proxy| Proxy for Http connections [Optional]
@@ -167,7 +167,7 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     * Storage
 
 <InfoBox>
-For the OS pack, if a custom CA certificate is required for the outgoing traffic, make sure to specify it.
+For the OS pack, if a custom CA certificate is required for outgoing traffic, make sure to specify it.
 
 **Example:**
 
@@ -219,8 +219,8 @@ The following steps need to be performed to provision a new Edge cluster:
 
 * Provide the cluster configuration details:
     * For Virtualized Clusters:
-        * Virtual-IP:
-        * SSH-Keys (optional)
+        * Virtual-IP
+        * SSH Keys (optional)
         * NTP servers  (optional)
     * For Containerized Clusters:
         * SSH Keys (optional) - Public key to configure remote SSH access to the nodes (User: spectro).
@@ -261,7 +261,7 @@ The following steps need to be performed to provision a new Edge cluster:
 For more details on Day 2 Cluster management please refer [Cluster Management](/clusters/#cluster-management).
 
 ## Deleting an Edge Cluster
-The deletion of an Edge cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Edge cluster:
+The deletion of an Edge cluster results in the removal of all virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Edge cluster:
 
 * Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
 * Invoke a delete action available on the page : cluster -> settings -> cluster settings -> Delete Cluster.
