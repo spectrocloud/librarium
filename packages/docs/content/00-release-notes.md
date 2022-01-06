@@ -25,7 +25,7 @@ The 2.2.0 Palette enhancements are:
 * Palette has been upgraded to use a newer version of the CNCF Cluster API for better automation, integration and efficiency. 
 * Pack updates:
   * We recommend deploying Kubernetes version 1.19.x and above for improved stability and compatibility.
-  * We recommend using vSphere CSI storage driver version 2.3.x for enhanced performance.
+  * vSphere CSI storage driver 1.0.x version is no longer supported for any new Cluster Provisioning. Upgrade your CSI Pack to 2.3.x for enhanced performance.
 
 
 
