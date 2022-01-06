@@ -27,6 +27,7 @@ The 2.2.0 Palette enhancements are:
   * We recommend deploying Kubernetes version 1.19.x and above for improved stability and compatibility.
   * vSphere CSI storage driver 1.0.x version is no longer supported for any new Cluster Provisioning. Upgrade your CSI Pack to 2.3.x for enhanced performance.
 
+Note: vSphere Cluster Control Plane node will be repaved as Part of 2.2.0 Upgrade. 
 
 
 # November 20, 2021 - Release 2.1.0
