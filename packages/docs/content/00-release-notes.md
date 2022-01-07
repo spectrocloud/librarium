@@ -23,9 +23,9 @@ Palette 2.2.0 is released with the beta version of Edge Clusters along with upgr
 The 2.2.0 Palette enhancements are:
 * Palette users can now provision and manage their [Kubernetes clusters using edge appliances](/clusters/new-clusters/edge/) in addition to usual data centers or cloud environments.
 * Palette has been upgraded to use a newer version of the CNCF Cluster API for better automation, integration and efficiency. 
-* Pack updates:
-  * We recommend deploying Kubernetes version 1.19.x and above for improved stability and compatibility.
-  * vSphere CSI storage driver 1.0.x version is no longer supported for any new Cluster Provisioning. Upgrade your CSI Pack to 2.3.x for enhanced performance.
+* Becuase we have upgraded Cluster API version, please note the following packs update:
+  * Kubernetes 1.18.x and below are no longer suppored. We recommend deploying Kubernetes version 1.19.x and above for improved stability and compatibility.
+  * vSphere CSI storage driver 1.0.x version is no longer supported for any new Cluster Provisioning. Please upgrade your CSI Pack to 2.3.x for enhanced performance.
 
 Note: vSphere Cluster Control Plane node will be repaved as Part of 2.2.0 Upgrade. 
 
