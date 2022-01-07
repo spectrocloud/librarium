@@ -37,7 +37,7 @@ Projects provide a way for grouping clusters together for logical separation. Ro
 
 A Role is a collection of [permissions](#permission). There are two kinds of roles in Spectro Cloud: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster,  etc.
 
-## Permission
+## Permissions
 
 Permissions are associated with specific actions within the platform such as Create New user in a tenant, Add a Cluster Profile in a project, View Clusters within a cluster, etc. Permissions are granted to the [users](#user) and [teams](#team) through [roles](#role).
 
