@@ -107,7 +107,7 @@ Usage: <edge-installer.bin> -- -i | --ip   -a | --apiurl
                          --http-proxy http://proxy.com 
                          --https-proxy http://proxy.com 
                          --no-proxy 172.0.0.1 
-                         --user-no-proxy 172.0.0.1 
+                         --custom-cacert /tmp/ca.crt
 ```
 
 **Example:**
