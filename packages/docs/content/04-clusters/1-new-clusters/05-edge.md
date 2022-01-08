@@ -133,7 +133,6 @@ Where we have:
 |--http-proxy| Proxy for Http connections [Optional]
 |--https-proxy| Proxy for Https connections [Optional]
 |--no-proxy |comma separated list for No Proxy [Optional]
-|--user-no-proxy| comma separated list for User No Proxy [Optional]
 |--custom-cacert| Custom CA certificate to pass to installer [Optional]
 
 
