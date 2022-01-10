@@ -19,19 +19,17 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for the on-prem cloud(s) and will help external service(s) get an IP address when the service type is set as LoadBalancer.
 
-## MetalLB Pack Working:
+## MetalLB Pack Working Details:
 
 * The address set in pack values goes into a configMap config in metallb-system namespace. This configMap is used by the MetalLB controller and speakers as volume mounts.
 
-* Any changes to the address will get updated in the configMap. Confirm this with:
+* Any changes to the address will get updated in the configMap. Our users may confirm this with this command:
 		
 		kubectl describe cm config -n metallb-system. 
 
-* However, the controller and speaker pods are already running with a previous copy of the configMap and these deployments are not aware of the new changes made to configMap. For it to work fine, controller and speaker pods need a restart, so that it will fetch the new configMap (which has the new addresses) and start assigning new addresses correctly.
+* However, the controller and speaker pods are already running with a previous copy of the configMap and these deployments are not aware of the new changes made to configMap. To ensure the address change are reflected, we need to restart the controller and speaker pods so that they will fetch the new configMap and start assigning new addresses correctly.
 
-## Workaround:
-
-Run the following commands, which will help restart the controller and speaker:
+* Run the following commands, which will help restart the controller and speaker:
 
 		  kubectl rollout restart deploy controller -n metallb-system
 		  kubectl rollout restart ds speaker -n metallb-system
