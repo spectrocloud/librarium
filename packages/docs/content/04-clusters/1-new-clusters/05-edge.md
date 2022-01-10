@@ -95,7 +95,9 @@ Please ensure to have specific properties such as Libvirt Socket when setting up
 
 
 ```bash
-Usage: <edge-installer.bin> -- -i | --ip   -a | --apiurl 
+Usage: <edge-installer.bin> -- 
+			 -i | --ip   
+			 -a | --apiurl 
                          -d | --deviceid device123 
                          -v | --isvirtual true 
                          -s | --sshkey /tmp/sshkey.pem 
