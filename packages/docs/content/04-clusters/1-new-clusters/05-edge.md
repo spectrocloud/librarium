@@ -95,7 +95,7 @@ Please ensure to have specific properties such as Libvirt Socket when setting up
 
 
 ```bash
-Usage: <edge-installer.bin> -- 
+Usage: <edge-installer.bin> --target /root/spectro-installer-x -- 
 			 -i | --ip   
 			 -a | --apiurl 
                          -d | --deviceid device123 
@@ -122,6 +122,7 @@ Where we have:
 
 | Option                            | Description     | 
 | :-------------                            | :----------      | 
+| --target | directory where installer binary will be unzipped [Optional][default: /tmp] |
 | -i  |IP address of the local machine/vm [Mandatory]|
 | -d | Custom Device id [Optional]|
 |-a  |Endpoint for Hubble API [Optional][default:api.spectrocloud.com]
