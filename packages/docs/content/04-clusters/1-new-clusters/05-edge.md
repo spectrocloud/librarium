@@ -96,8 +96,8 @@ Please ensure to have specific properties such as Libvirt Socket when setting up
 
 ```bash
 Usage: <edge-installer.bin> --target /root/spectro-installer-x -- 
-			 -i | --ip   
-			 -a | --apiurl 
+		                 -i | --ip   
+		                 -a | --apiurl 
                          -d | --deviceid device123 
                          -v | --isvirtual true 
                          -s | --sshkey /tmp/sshkey.pem 
