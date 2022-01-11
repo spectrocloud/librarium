@@ -19,7 +19,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes hardening standards recommended by the Center for Internet Security is enabled by default.
 
 <WarningBox>
-Info: Only Kubernetes versions 1.16 and above is supported
+Info: Only Kubernetes versions 1.19 and above is supported
 </WarningBox>
 
 ## Supported Kubernetes versions
