@@ -95,7 +95,9 @@ Please ensure to have specific properties such as Libvirt Socket when setting up
 
 
 ```bash
-Usage: <edge-installer.bin> -- -i | --ip   -a | --apiurl 
+Usage: <edge-installer.bin> --target /root/spectro-installer-x -- 
+			 -i | --ip   
+			 -a | --apiurl 
                          -d | --deviceid device123 
                          -v | --isvirtual true 
                          -s | --sshkey /tmp/sshkey.pem 
@@ -107,7 +109,7 @@ Usage: <edge-installer.bin> -- -i | --ip   -a | --apiurl
                          --http-proxy http://proxy.com 
                          --https-proxy http://proxy.com 
                          --no-proxy 172.0.0.1 
-                         --user-no-proxy 172.0.0.1 
+                         --custom-cacert /tmp/ca.crt
 ```
 
 **Example:**
@@ -120,6 +122,7 @@ Where we have:
 
 | Option                            | Description     | 
 | :-------------                            | :----------      | 
+| --target | directory where installer binary will be unzipped [Optional][default: /tmp] |
 | -i  |IP address of the local machine/vm [Mandatory]|
 | -d | Custom Device id [Optional]|
 |-a  |Endpoint for Hubble API [Optional][default:api.spectrocloud.com]
@@ -133,7 +136,6 @@ Where we have:
 |--http-proxy| Proxy for Http connections [Optional]
 |--https-proxy| Proxy for Https connections [Optional]
 |--no-proxy |comma separated list for No Proxy [Optional]
-|--user-no-proxy| comma separated list for User No Proxy [Optional]
 |--custom-cacert| Custom CA certificate to pass to installer [Optional]
 
 
