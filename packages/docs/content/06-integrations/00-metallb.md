@@ -21,7 +21,7 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 ## MetalLB Pack Working Details:
 
-* The address set in pack values goes into a configMap config in metallb-system namespace. This configMap is used by the MetalLB controller and speakers as volume mounts.
+* The address set in pack values goes into a configMap **`config`** in **`metallb-system`** namespace. This configMap is used by the MetalLB controller and speakers as volume mounts.
 
 * Any changes to the address will get updated in the configMap. Our users may confirm this with this command:
 		
