@@ -142,7 +142,7 @@ Where we have:
 ### For Containerized Clusters
 
 ```bash
-./edge-v1471401862107238400.bin -- -i  <IP address of the local machine/vm> 
+./edge-installer.bin -- -i  <IP address of the local machine/vm> 
                                    -d  <Custom Device id [Optional]> 
                                    -a  <Endpoint for Hubble API [Optional][default:api.spectrocloud.com]> 
                                    --http-proxy <Proxy for Http connections> 
@@ -153,7 +153,7 @@ Where we have:
 **Example:**
 
 ```bash
-./edge-v1471401862107238400.bin -- -i 10.200.3.126 -d hospital-docker-app-01 -a console.gehc-ehl.spectrocloud.com --http-proxy http://10.10.132.89:3128 --https-proxy http://10.10.132.89:3128 --no-proxy 10.10.128.10,.spectrocloud.local,10.0.0.0/8
+./edge-installer.bin -- -i 10.200.3.126 -d hospital-docker-app-01 -a console.gehc-ehl.spectrocloud.com --http-proxy http://10.10.132.89:3128 --https-proxy http://10.10.132.89:3128 --no-proxy 10.10.128.10,.spectrocloud.local,10.0.0.0/8
 ```
 
 ## Cluster Profile Creation
