@@ -41,7 +41,7 @@ If the user goes for clusters other than EKS, add the following extra cert SAN v
 
 ```json
  certSANs:
-    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+ - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 Example:
 
