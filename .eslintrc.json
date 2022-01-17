@@ -1,37 +1,42 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:import/errors",
+    "react-app",
+    "prettier",
+    "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:mdx/recommended"
   ],
-  "plugins": ["react", "import", "jsx-a11y"],
+  "plugins": ["react", "import", "jsx-a11y", "prettier"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "rules": {
+    "prettier/prettier": 1,
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": "off",
-    "lines-between-class-members": ["error", "always"],
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 10,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "prefer-destructuring": 0,
+    "no-underscore-dangle": 0,
+    "import/prefer-default-export": 0,
+    "no-async-promise-executor": 0,
+    "no-unused-vars": 1,
+    "no-console": [
+      1,
+      {
+        "allow": ["warn", "error", "trace"]
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ]
   },
   "env": {
-    "es6": true,
     "browser": true,
+    "es6": true,
     "node": true
-  },
-  "globals": {
-    "graphql": false
   }
 }
