@@ -12,16 +12,16 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 
 # On-Premises Installation
 
-The Spectro Cloud SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer data centers to manage Kubernetes clusters. Spectro Cloud on-prem is available in two modes:
+The Palette SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer data centers to manage Kubernetes clusters. Palette on-prem is available in two modes:
 
-## Quick Start
+## Quick Start Mode
 
 Single node installation of the platform, ideal for PoC environments.
 
-## Enterprise version
+## Enterprise Mode
 
 Highly available multi-node installation typically for production purposes.
 
 
-
-Spectro Cloud provides a platform installer which enables installation of both quick start and enterprise versions. Please [contact us](https://www.spectrocloud.com/contact/) to receive download instructions.
+Palette provides the platform installer to enable quick start and enterprise versions installation. 
+To obtain the platform installer, please contact our Sales team by completing [the form here](https://www.spectrocloud.com/contact/).
