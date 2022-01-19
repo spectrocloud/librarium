@@ -1,13 +1,18 @@
 {
   "extends": [
-    "react-app",
-    "prettier",
-    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:mdx/recommended"
+    "prettier",
+    "prettier/react"
   ],
-  "plugins": ["react", "import", "jsx-a11y", "prettier"],
+  "plugins": [
+    "react",
+    "import",
+    "jsx-a11y",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -24,7 +29,11 @@
     "no-console": [
       1,
       {
-        "allow": ["warn", "error", "trace"]
+        "allow": [
+          "warn",
+          "error",
+          "trace"
+        ]
       }
     ],
     "no-param-reassign": [
@@ -34,9 +43,20 @@
       }
     ]
   },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 10,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
-    "browser": true,
     "es6": true,
+    "browser": true,
     "node": true
+  },
+  "globals": {
+    "graphql": false
   }
 }

@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
 
-import { Layout, DocsLayout, useConfig } from '@librarium/shared';
+import { Layout, DocsLayout } from 'shared';
 import App from '../App';
+import config from '../../../config'
 
 function MDXLayout({ data = {}, children, ...rest }) {
   const {
@@ -12,7 +13,6 @@ function MDXLayout({ data = {}, children, ...rest }) {
       siteMetadata: { docsLocation },
     },
   } = data;
-  const config = useConfig();
 
   const menu = useMemo(() => {
     return DocsLayout.calculateMenuTree(allMdx.edges.filter(edge => !!edge.node.fields.isDocsPage), config);

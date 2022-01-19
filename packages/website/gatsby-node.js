@@ -306,7 +306,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
 
     if (node.frontmatter.api) {
-      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/content/');
+      const fileAbsolutePaths = node.fileAbsolutePath.split('/api/');
       const versionDirectory = fileAbsolutePaths[1].split('/').shift();
       const endpointsPath = [
         fileAbsolutePaths[0],

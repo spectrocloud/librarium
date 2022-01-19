@@ -19,7 +19,7 @@ const config = {
     description: 'Spectro cloud documentation, guides, API documentation, integrations and more',
     ogImage: null,
     docsLocation: 'https://github.com/spectrocloud/librarium/edit/master/packages/api/content',
-    favicon: '@librarium/shared/src/assets/icons/favicon.png',
+    favicon: 'shared/assets/icons/favicon.png',
   },
   pwa: {
     enabled: false, // disabling this will also remove the existing service worker.
