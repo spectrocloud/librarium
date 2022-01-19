@@ -1,7 +1,7 @@
 ---
 title: "System Console Dashboard"
 metaTitle: "System Console Dashboard"
-metaDescription: "Understanding the super-admin settings in Spectro Cloud's Enterprise (on-premise) variant."
+metaDescription: "Understanding the super-admin settings in Palette's Enterprise (on-premise) variant."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -14,7 +14,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Overview
 
-The on-prem system console enables an initial setup and onboarding, administration, as well as upgrade management of the Spectro Cloud Platform. The on-prem system console is available in a "quick start" mode and an "enterprise" mode.
+The on-prem system console enables an initial setup and onboarding, administration, as well as upgrade management of the Palette Platform. The on-prem system console is available in a "quick start" mode and an "enterprise" mode.
 
 Platform administrators can use this console to perform the following operations:
 
@@ -31,13 +31,13 @@ Create new tenants and their initial tenant admin accounts. Optionally, activate
 
 # Update Management
 
-Apply Spectro Cloud platform upgrades. Upgrades to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. Platform administrators can apply platform upgrades directly from the on-prem system console.
+Apply Palette platform upgrades. Upgrades to the Palette platform are published to the Palette repository and a notification is displayed on the console when new versions are available. Platform administrators can apply platform upgrades directly from the on-prem system console.
 
 # Administration
 
 ## SMTP
 
-Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are onboarded to the platform to activate their accounts.
+Configure SMTP settings to enable the Palette platform to send out email notifications. Email Notifications are sent out to new users when they are onboarded to the platform to activate their accounts.
 
 ## Certificates
 
