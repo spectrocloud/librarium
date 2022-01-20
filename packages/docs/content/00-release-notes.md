@@ -18,9 +18,9 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # January 20, 2022 - Hotfix 2.2.26
 
-* Palette Hotfix 2.2.26 introduces support for private helm chart registries deployed in private networks.
-* Helm registries are now set up in **Protected** mode, wherein charts are configured in cluster profiles without being synchronized into the management console.
-* Palette's orchestrator running in the tenant clusters deployed in private networks downloads and deploys charts from these protected chart registries.
+* Palette Hotfix 2.2.26 supports custom Helm chart registry deployment in Private Networks.
+* [Helm registries](/registries-and-packs/helm-charts) can now be set up in **Protected** mode also. In protected mode charts are configured in cluster profiles without being synchronized into the management console.
+* For the tenant clusters deployed in a private network, these charts from the protected Helm registries are downloaded and deployed by the Palette orchestrator.
 
 
 
