@@ -35,12 +35,13 @@ Spectro Cloud is providing the users with a stable repo of Helm Charts accessibl
 Spectro Cloud also provisions an exclusive Helm Registry for tenants to help users own private helm repo. For creating your repo from the management console,
 * Login as  a tenant administrator, navigate to Admin -> Settings -> Registries.
 * Click on “Add New Helm Registry” and provide the registry name, endpoint, and user credentials.
-* Click “No authentication” if the tenant is not interested in setting up credentials for the registry.
+* Toggle "**Protected**" if the user helm registry is deployed within a private network.
+* Toggle “**No authentication**” if the tenant choice is not to set up credentials for the registry.
 * Click “Confirm”
 
 **Note:**
-
-If the user wants to create the registry without authentication, only a custom registry name and endpoint are enough for the validation to complete. Otherwise, a specific user name and password are set up along with the custom registry name and endpoint. Upon successful registration, users can build and deploy custom charts onto the custom Helm registry and use these packs while cluster profiles creation.
+* In protected mode the users can manually input the Helm chart names and versions to the Helm Registries during cluster profile creation.
+* If the user wants to create the registry without authentication, only a custom registry name and endpoint are enough for the validation to complete. Otherwise, a specific user name and password are set up along with the custom registry name and endpoint. Upon successful registration, users can build and deploy custom charts onto the custom Helm registry and use these packs while cluster profiles creation.
 
 ## Helm Chart Discovery for Brownfield Clusters
 

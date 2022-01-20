@@ -16,6 +16,14 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# January 20, 2022 - Hotfix 2.2.26
+
+* Palette Hotfix 2.2.26 introduces support for private helm chart registries deployed in private networks.
+* Helm registries are now set up in **Protected** mode, wherein charts are configured in cluster profiles without being synchronized into the management console.
+* Palette's orchestrator running in the tenant clusters deployed in private networks downloads and deploys charts from these protected chart registries.
+
+
+
 # December 24, 2021 - Release 2.2.0
 
 Palette 2.2.0 is released with the beta version of Edge Clusters along with upgraded Cluster API support.  
