@@ -20,10 +20,10 @@ Helm Charts are a collection of Kubernetes resource files capable of deploying s
 Palette mandates the use of Helm OCI version 3.7.0 and above for the best security experiences.
 
 #  Deploying Helm Charts
-Palette allows the deployment of Helm charts in two levels, one from the default Public Repo and another from the user’s custom Helm registry.
+Palette allows the deployment of Helm charts in two modes, one using the default Public Repo and another leveraging user’s custom Helm registry.
 
 # Default System Helm Registry
-Palette provides the users with a stable repo of Helm Charts accessible to all the tenants. This repository syncs all the Helm charts to the Palette system resources. Hence, enabling the tenants to model cluster profiles using out-of-the-box charts from the stable repo. Hence, it provides ease of use of charts by the users.
+Palette provides users with a stable repo of Helm Charts accessible to all the tenants. This repository syncs all the Helm charts to the Palette system resources, enabling the tenants to model cluster profiles using out-of-the-box charts from the stable repo. It also improves ease of use of charts to the users.
 
 # Setting up Helm Registry with Tenant Scope
 
