@@ -15,24 +15,24 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
-# PALETTE DYNAMIC ARTIFACTS
+# Palette Dynamic Artifacts
 
 
-# ON-PREM ARTIFACTS
+# On-Prem Artifacts
 
 Spectro Cloud Palette allows its deployment to be done in-house within the customer’s enterprise IT infrastructure. As of now, we support customers’ on-prem VMware vSphere. Therefore, the palette artifacts for the On-Prem installation are included in this section.
 
-# Hubble Installer 
+## On-Prem Installer 
 
 The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA given below:
 
 |Version|URL|Info|
 |--|---|--|
-|2.0.2|Hubble-installer-202-10152021.ova|Oct 15 2021|
+|2.0.2|hubble-installer-202-10152021.ova|Oct 15 2021|
 ------
 
 
-# Air Gapped Installation
+## Air Gapped Installation
 
 We support the installation of our management platform on VMware environments that have no direct or indirect connectivity to the outside world. The following artifacts and binaries are typically downloaded for the installation and subsequent tenant cluster deployment.
 
@@ -40,7 +40,7 @@ We support the installation of our management platform on VMware environments th
 
 |Version|URL|Info|
 |---|---|--|
-|2.0.1|airgap-v1.14.27.bin|Sep 21, 2021|
+|2.0.1|airgap-v1.14.27.ova|Sep 21, 2021|
 ------
 
 ## Air Gapped Binaries
@@ -61,7 +61,7 @@ chmod 755 ./airgap-v${VERSION}.bin
 
 |Version|URL|Info|
 |---|---|--|
-|2.0.2|hubble-installer-202-10152021.ova|Oct 15 2021|
+|2.0.2|hubble-installer-119-06162021.ova|Oct 15 2021|
 ------
 
 ## MaaS PCG Image
