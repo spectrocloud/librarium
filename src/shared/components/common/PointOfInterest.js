@@ -99,7 +99,7 @@ function PointsOfInterest({ points = [], children }) {
   return (
     <Wrapper ref={wrapRef}>
       {points.map((point, index) => (
-        <Point {...point} index={index} />
+        <Point {...point} index={index} key={index} />
       ))}
       {children}
     </Wrapper>

@@ -93,8 +93,8 @@ export default function DocUpdatesSection({ title }) {
     <Wrapper>
       <h3>{title}</h3>
       <CardsWrapper>
-        {lastChanges.map((doc) => (
-          <Card to={doc.fields.slug}>
+        {lastChanges.map((doc, i) => (
+          <Card key={i} to={doc.fields.slug}>
             <h4>{doc.fields.title}</h4>
             <Description>{doc.excerpt}</Description>
             <Timestamp>{moment(doc.parent.modifiedTime).format("MMM DD YYYY")}</Timestamp>

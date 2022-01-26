@@ -148,9 +148,9 @@ function Parameters({ parameters, method, path, title }) {
     return null;
   }
 
-  function renderParameter(parameter) {
+  function renderParameter(parameter, index) {
     return (
-      <tr key={path + method + parameter.name + parameter.paramType}>
+      <tr key={index} key={path + method + parameter.name + parameter.paramType}>
         <td>{parameter.name}</td>
         <td>{parameter.type}</td>
         <td>{parameter.description}</td>
@@ -197,8 +197,8 @@ function ResponseMessages({ responseMessages }) {
     return null;
   }
 
-  return responseMessages.map((response) => (
-    <Response type="response">
+  return responseMessages.map((response, index) => (
+    <Response type="response" key={index}>
       <label>HTTP code:</label> {response.code} <br />
       <label>Description:</label> {response.description} <br />
       {response.schema && response.schema !== "null" && (

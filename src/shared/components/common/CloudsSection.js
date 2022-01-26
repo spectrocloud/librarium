@@ -116,8 +116,8 @@ function CloudsSection({ noBorder = false, noMargin, title, description, options
       {title ? <h3>{title}</h3> : null}
       {description ? <Description>{description}</Description> : null}
       <CardWrapper>
-        {options.map((option) => (
-          <Link to={option.href}>
+        {options.map((option, index) => (
+          <Link to={option.href} key={index}>
             <Card>
               <Icon>
                 <img src={clouds[option.cloud]} alt={`${option.cloud} icon`} />

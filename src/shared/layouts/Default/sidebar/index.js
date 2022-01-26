@@ -95,9 +95,9 @@ const SidebarLayout = ({
   ),
 }) => {
   const location = useLocation();
-  function renderMenuItem({ link, title, icon, isActive = () => false }) {
+  function renderMenuItem({ link, title, icon, isActive = () => false }, index) {
     return (
-      <Link className={isActive(location) ? "navbar isActive" : "navbar"} to={link}>
+      <Link key={index} className={isActive(location) ? "navbar isActive" : "navbar"} to={link}>
         {icon && <FontAwesomeIcon icon={["fas", icon]} />}
         {title}
       </Link>

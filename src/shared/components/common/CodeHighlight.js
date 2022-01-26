@@ -28,7 +28,7 @@ function CodeHighlight({ code, language = "json", theme = prismTheme }) {
                 });
               }
               return (
-                <div {...getLineProps({ line, key: i })}>
+                <div key={i} {...getLineProps({ line, key: i })}>
                   {line.map((token, key) =>
                     token.content === "deprecated" ? (
                       <StyledDeprecatedTag />
