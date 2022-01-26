@@ -21,7 +21,6 @@ exports.createPages = async ({ graphql, actions }) => {
     isPermanent: true,
   });
 
-
   const result = await graphql(`
     {
       allMdx {
@@ -49,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // }
 
     if (node.fields.slug.startsWith('/api')) {
-      component = path.resolve('./src/templates/docs.js');
+      component = path.resolve('./src/templates/api.js');
     }
 
     const slug = node.fields.slug ? node.fields.slug : '/';
@@ -64,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component,
       context: {
         id: node.fields.id,
-      }
+      },
     });
   });
 };
@@ -236,4 +235,4 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       });
     }
   }
-}
+};
