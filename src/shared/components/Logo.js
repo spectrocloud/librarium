@@ -58,14 +58,14 @@ export default function Logo({ children }) {
         fill="#111111"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M0 19.3816L3.93054 17.1679L22.9507 27.9656L37.6112 19.4042L18.8169 8.49358L22.9507 6.21206L46.0822 19.4946V8.56135L41.8806 11.001L22.9507 0L7.88367 8.62911L26.8135 19.5172L22.9959 21.6857L19.6075 19.7656L0 8.62911V19.3816Z"
         fill="url(#paint0_linear)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M0 19.4494L22.9507 32.6867L46.0822 19.6301V26.6102L22.9507 39.8475L0 26.6102V19.4494Z"
         fill="#00BCEB"
       />
@@ -79,9 +79,9 @@ export default function Logo({ children }) {
           y2="0.463689"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00BCEB" />
-          <stop offset="0.3831" stop-color="#198AEF" />
-          <stop offset="1" stop-color="#206cd1" />
+          <stop stopColor="#00BCEB" />
+          <stop offset="0.3831" stopColor="#198AEF" />
+          <stop offset="1" stopColor="#206cd1" />
         </linearGradient>
         <linearGradient
           id="paint1_linear"
@@ -91,8 +91,8 @@ export default function Logo({ children }) {
           y2="24.6556"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#206cd1" />
-          <stop offset="1" stop-color="#2681FA" />
+          <stop stopColor="#206cd1" />
+          <stop offset="1" stopColor="#2681FA" />
         </linearGradient>
       </defs>
     </svg>
