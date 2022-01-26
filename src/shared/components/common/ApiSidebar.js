@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import SidebarTree from 'shared/layouts/Default/sidebar/tree';
-import { Select } from 'antd';
-import styled from 'styled-components';
+import React, { useMemo, useState } from "react";
+import SidebarTree from "shared/layouts/Default/sidebar/tree";
+import { Select } from "antd";
+import styled from "styled-components";
 
 const Wrap = styled.div`
   &:focus {
@@ -26,14 +26,24 @@ const SelectWrap = styled.div`
   padding: 0 20px;
 `;
 
-const getVersions = edges => {
-  const versions = edges.reduce((accumulator, { node: { fields: { version, api } } }) => {
-    if (api) {
-      accumulator.add(version);
-    }
+const getVersions = (edges) => {
+  const versions = edges.reduce(
+    (
+      accumulator,
+      {
+        node: {
+          fields: { version, api },
+        },
+      }
+    ) => {
+      if (api) {
+        accumulator.add(version);
+      }
 
-    return accumulator;
-  }, new Set());
+      return accumulator;
+    },
+    new Set()
+  );
 
   return [...versions].sort().reverse();
   s;
@@ -55,17 +65,27 @@ const extractApiMenu = (edges, selectedVersion) => {
 
       return 0;
     })
-    .reduce((accumulator, { node: { fields: { slug, title, icon, version, api } } }) => {
-      if (selectedVersion === version && api) {
-        accumulator.push({
-          url: slug,
-          title,
-          icon,
-        });
-      }
+    .reduce(
+      (
+        accumulator,
+        {
+          node: {
+            fields: { slug, title, icon, version, api },
+          },
+        }
+      ) => {
+        if (selectedVersion === version && api) {
+          accumulator.push({
+            url: slug,
+            title,
+            icon,
+          });
+        }
 
-      return accumulator;
-    }, []);
+        return accumulator;
+      },
+      []
+    );
 };
 
 export default function ApiSidebar({ allMdx }) {
@@ -82,7 +102,7 @@ export default function ApiSidebar({ allMdx }) {
     <Wrap>
       <SelectWrap>
         <StyledSelect value={selectedVersion} onChange={updateSelectedVersion}>
-          {versions.map(version => (
+          {versions.map((version) => (
             <Select.Option value={version}>{version}</Select.Option>
           ))}
         </StyledSelect>

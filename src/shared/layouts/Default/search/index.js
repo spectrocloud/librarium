@@ -1,21 +1,21 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, createRef } from "react";
 import {
   InstantSearch,
   Index,
   Hits,
   Configure,
   connectStateResults,
-} from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch/lite';
+} from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch/lite";
 
-import styled, { css } from 'styled-components';
-import { PoweredBy } from './styles';
-import Input from './input';
-import * as hitComps from './hitComps';
-import { useLocation } from '@reach/router';
+import styled, { css } from "styled-components";
+import { PoweredBy } from "./styles";
+import Input from "./input";
+import * as hitComps from "./hitComps";
+import { useLocation } from "@reach/router";
 
 const HitsWrapper = styled.div`
-  display: ${props => (props.show ? `grid` : `none`)};
+  display: ${(props) => (props.show ? `grid` : `none`)};
   max-height: 80vh;
   overflow: auto;
   z-index: 2;
@@ -28,7 +28,7 @@ const HitsWrapper = styled.div`
   border: 1px solid #ddd;
   background: white;
 
-  ${props =>
+  ${(props) =>
     props.center &&
     css`
       left: 5px;
@@ -73,7 +73,7 @@ const HitsWrapper = styled.div`
     margin-bottom: 0.3em;
     h3 {
       color: black;
-      background: #DADEE3;
+      background: #dadee3;
       padding: 0.1em 0.4em;
       border-radius: 3px;
     }
@@ -122,7 +122,7 @@ const Results = connectStateResults(({ searching, searchState: state, searchResu
 
 const useClickOutside = (ref, handler, events) => {
   if (!events) events = [`click`, `touch`];
-  const detectClickOutside = event =>
+  const detectClickOutside = (event) =>
     ref && ref.current && !ref.current.contains(event.target) && handler();
 
   useEffect(() => {
@@ -173,7 +173,7 @@ export default function SearchComponent({
   }, [focusInput]);
 
   useClickOutside(ref, () => setFocus(false));
-  const displayResult = query?.length > 0 && focus ? 'showResults' : 'hideResults';
+  const displayResult = query?.length > 0 && focus ? "showResults" : "hideResults";
 
   return (
     <InstantSearch
@@ -185,13 +185,13 @@ export default function SearchComponent({
       <Input
         onFocus={() => setFocus(true)}
         {...{ collapse, focus }}
-        center={location.pathname !== '/'}
+        center={location.pathname !== "/"}
       />
       <HitsWrapper
-        className={'hitWrapper ' + displayResult}
+        className={"hitWrapper " + displayResult}
         show={query?.length > 0 && focus}
         asGrid={hitsAsGrid}
-        center={location.pathname !== '/'}
+        center={location.pathname !== "/"}
       >
         {indices.map(({ name, title, hitComp, type }) => {
           const Component = hitComps[hitComp];
@@ -201,7 +201,7 @@ export default function SearchComponent({
               <Hits
                 hitComponent={
                   Component
-                    ? props => <Component {...props} onClick={() => setFocus(false)} />
+                    ? (props) => <Component {...props} onClick={() => setFocus(false)} />
                     : () => null
                 }
               />

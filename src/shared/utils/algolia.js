@@ -1,4 +1,4 @@
-const config = require('../../../config.js');
+const config = require("../../../config.js");
 
 const pageQuery = `{
   pages: allMdx {
@@ -28,7 +28,7 @@ const pageQuery = `{
   }
 }`;
 
-const flatten = arr =>
+const flatten = (arr) =>
   arr.map(({ node: { frontmatter, fields, parent, ...rest } }) => ({
     ...frontmatter,
     ...fields,
@@ -38,13 +38,13 @@ const flatten = arr =>
 
 const settings = { attributesToSnippet: [`excerpt:20`] };
 
-const indexName = config.header.search ? config.header.search.indexName : '';
+const indexName = config.header.search ? config.header.search.indexName : "";
 
 const queries = [
   {
     query: pageQuery,
     transformer: ({ data }) => {
-      return flatten(data.pages.edges).filter(edge => edge.isApiPage || edge.isDocsPage);
+      return flatten(data.pages.edges).filter((edge) => edge.isApiPage || edge.isDocsPage);
     },
     indexName: `${indexName}`,
     settings,

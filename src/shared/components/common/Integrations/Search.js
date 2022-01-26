@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "antd";
 import styled from "styled-components";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Wrapper = styled.div`
   position: relative;
@@ -34,10 +34,7 @@ export default function IntegrationSearch({ onSearch }) {
   return (
     <Wrapper>
       <SearchIcon icon="search" />
-      <Input
-        placeholder="Search for integration..."
-        onChange={(e) => onSearch(e.target.value)}
-      />
+      <Input placeholder="Search for integration..." onChange={(e) => onSearch(e.target.value)} />
     </Wrapper>
-  )
+  );
 }

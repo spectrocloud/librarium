@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useLocation } from "@reach/router";
 import styled, { css } from "styled-components";
-
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import Sidebar from "./sidebar";
 import Header from "./Header";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./layout.css";
+
+library.add(fas, fab);
 
 const Wrapper = styled.div`
   display: flex;

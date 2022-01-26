@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
-import backgroundImage from "shared/assets/404.jpg"
-import spaceMan from "shared/assets/man_space_lost.png"
+import backgroundImage from "shared/assets/404.jpg";
+import spaceMan from "shared/assets/man_space_lost.png";
 
 const ContentWrapper = styled.div`
   background-image: url(${backgroundImage});
@@ -11,7 +11,7 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const Content = styled.div`
   background-color: white;
@@ -24,24 +24,24 @@ const Content = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const BoundingBox = styled.div`
   display: inline-block;
   padding: 20px;
   width: 320px;
-`
+`;
 const Man = styled.img`
   margin: 0 20px;
   width: 50%;
   @media (max-height: 500px) {
     display: none;
   }
-`
+`;
 
 const Title = styled.h1`
   color: #206cd1;
-`
+`;
 
 export default function Error() {
   return (
@@ -50,14 +50,11 @@ export default function Error() {
         <Content>
           <BoundingBox>
             <Title>404 Lost in Space</Title>
-            <p>
-              Oooops. Looks like the page you're are trying to reach is no
-              longer available.
-            </p>
+            <p>Oooops. Looks like the page you're are trying to reach is no longer available.</p>
           </BoundingBox>
           <Man src={spaceMan} />
         </Content>
       </ContentWrapper>
     </>
-  )
+  );
 }

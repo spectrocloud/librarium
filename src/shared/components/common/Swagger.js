@@ -1,23 +1,23 @@
-import React from 'react';
-import _ from 'underscore';
-import styled from 'styled-components';
+import React from "react";
+import _ from "underscore";
+import styled from "styled-components";
 
-import CodeHighlight from './CodeHighlight';
-import DeprecatedTag from "shared/components/common/DeprecatedTag"
+import CodeHighlight from "./CodeHighlight";
+import DeprecatedTag from "shared/components/common/DeprecatedTag";
 
 const colors = {
-  get: '#4aa908',
-  post: '#f5a632',
-  put: '#f5a632',
-  patch: '#f5a632',
-  delete: '#f54432',
+  get: "#4aa908",
+  post: "#f5a632",
+  put: "#f5a632",
+  patch: "#f5a632",
+  delete: "#f54432",
 };
 
 const Button = styled.button`
   text-transform: uppercase;
   background-color: transparent;
   border: 0;
-  color: ${props => props.color};
+  color: ${(props) => props.color};
   margin-right: 16px;
   padding: 0;
 `;
@@ -91,7 +91,7 @@ const Response = styled.div`
   overflow-y: auto;
 
   &:after {
-    content: "${props => props.type}";
+    content: "${(props) => props.type}";
     position: absolute;
     top: 0px;
     right: 1rem;
@@ -101,7 +101,7 @@ const Response = styled.div`
     color: #fff;
     padding: 2px 10px;
     border-radius: 0px 0px 5px 5px;
-    background: #78909C;
+    background: #78909c;
   }
 
   pre {
@@ -121,13 +121,12 @@ const Table = styled.div`
   width: 100%;
 `;
 
-
 const StyledDeprecatedTag = styled(DeprecatedTag)`
   margin-right: 16px;
 `;
 
-const normalizePath = path => {
-  if (!path.endsWith('.{format}')) return path;
+const normalizePath = (path) => {
+  if (!path.endsWith(".{format}")) return path;
 
   return path.substring(0, path.length - 9);
 };
@@ -156,7 +155,7 @@ function Parameters({ parameters, method, path, title }) {
         <td>{parameter.type}</td>
         <td>{parameter.description}</td>
         <td>
-          {typeof parameter.required == 'undefined' || parameter.required == false ? 'no' : 'yes'}
+          {typeof parameter.required == "undefined" || parameter.required == false ? "no" : "yes"}
         </td>
       </tr>
     );
@@ -198,11 +197,11 @@ function ResponseMessages({ responseMessages }) {
     return null;
   }
 
-  return responseMessages.map(response => (
+  return responseMessages.map((response) => (
     <Response type="response">
       <label>HTTP code:</label> {response.code} <br />
       <label>Description:</label> {response.description} <br />
-      {response.schema && response.schema !== 'null' && (
+      {response.schema && response.schema !== "null" && (
         <>
           <label>Response body:</label>
           <CodeHighlight code={response.schema} />
@@ -215,8 +214,8 @@ function ResponseMessages({ responseMessages }) {
 export default function Swagger(props) {
   return (
     <div>
-      {props.documentation.apis.map(api =>
-        api.operations.map(operation => (
+      {props.documentation.apis.map((api) =>
+        api.operations.map((operation) => (
           <Operation key={operation.method + api.path}>
             <Signature>
               {operation?.description?.includes("Deprecated") && <StyledDeprecatedTag />}
@@ -233,10 +232,7 @@ export default function Swagger(props) {
                   method={operation.method}
                   path={api?.path}
                 />
-                <Parameters
-                  title="Path parameters"
-                  parameters={operation?.pathParameters}
-                />
+                <Parameters title="Path parameters" parameters={operation?.pathParameters} />
                 <RequestBody body={operation.body} />
               </div>
               <ResponsesWrapper>

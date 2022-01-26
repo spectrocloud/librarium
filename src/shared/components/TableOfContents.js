@@ -1,7 +1,7 @@
-import React from 'react';
-import { Sidebar, ListItem } from './styles/Sidebar';
-import { useLocation } from '@reach/router';
-import config from '../../../config'
+import React from "react";
+import { Sidebar, ListItem } from "./styles/Sidebar";
+import { useLocation } from "@reach/router";
+import config from "../../../config";
 
 const TableOfContents = ({ edges }) => {
   const location = useLocation();
@@ -21,8 +21,8 @@ const TableOfContents = ({ edges }) => {
           if (item.node.tableOfContents.items) {
             innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
               const itemId = innerItem.title
-                ? innerItem.title.replace(/\s+/g, '').toLowerCase()
-                : '#';
+                ? innerItem.title.replace(/\s+/g, "").toLowerCase()
+                : "#";
 
               return (
                 <ListItem key={index} to={`#${itemId}`} level={1} active={hash === `#${itemId}`}>
@@ -42,8 +42,8 @@ const TableOfContents = ({ edges }) => {
   if (finalNavItems && finalNavItems.length) {
     return (
       <Sidebar>
-        <ul className={'rightSideBarUL'}>
-          <li className={'rightSideTitle'}>CONTENTS</li>
+        <ul className={"rightSideBarUL"}>
+          <li className={"rightSideTitle"}>CONTENTS</li>
           {finalNavItems}
         </ul>
       </Sidebar>

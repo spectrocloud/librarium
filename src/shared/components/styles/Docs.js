@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const StyledHeading = styled.h1`
   font-style: normal;
@@ -42,7 +42,7 @@ export const Edit = styled.div`
 
 export const StyledMainWrapper = styled.div`
   max-width: 840px;
-  color: #666A80;
+  color: #666a80;
   flex-grow: 1;
   display: flex;
   flex-flow: row wrap;
@@ -77,7 +77,7 @@ export const StyledMainWrapper = styled.div`
     }
   }
 
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       max-width: none;
@@ -94,7 +94,7 @@ export const StyledMainWrapper = styled.div`
 
     ::before {
       display: block;
-      content: '';
+      content: "";
       width: 1px;
       margin-top: -110px;
       height: 110px;
@@ -113,7 +113,7 @@ export const StyledMainWrapper = styled.div`
 
     ::before {
       display: block;
-      content: '';
+      content: "";
       width: 1px;
       margin-top: -110px;
       height: 110px;
@@ -152,7 +152,7 @@ export const StyledMainWrapper = styled.div`
 
   a {
     transition: color 0.15s;
-    color: #206CD1;
+    color: #206cd1;
   }
 
   code {

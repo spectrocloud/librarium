@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Highlight, Snippet } from 'react-instantsearch-dom';
-import { Link } from 'gatsby';
+import React from "react";
+import styled from "styled-components";
+import { Highlight, Snippet } from "react-instantsearch-dom";
+import { Link } from "gatsby";
 
 const Wrap = styled.div`
   a {
-    font-size:18px;
+    font-size: 18px;
     color: #206cd1;
   }
 `;

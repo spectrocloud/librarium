@@ -1,15 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import styled, { css } from 'styled-components';
-import ClipboardJS from 'clipboard';
-import { CopyOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
+import React, { useRef, useEffect } from "react";
+import styled, { css } from "styled-components";
+import ClipboardJS from "clipboard";
+import { CopyOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import CodeBlock from './codeBlock';
-import AnchorTag from './anchor';
+import CodeBlock from "./codeBlock";
+import AnchorTag from "./anchor";
 
-import { useTabsContext } from '../../components/ui/Tabs';
+import { useTabsContext } from "../../components/ui/Tabs";
 
 const PreContainer = styled.div`
   position: relative;
@@ -73,7 +73,7 @@ function Pre(props) {
 
   useEffect(() => {
     new ClipboardJS(buttonRef.current, {
-      text: trigger => {
+      text: (trigger) => {
         return preRef.current.innerText;
       },
     });
@@ -108,7 +108,7 @@ function generateHeadingId(children) {
 
   if (Array.isArray(children)) {
     title = children.reduce((accumulator, child) => {
-      if (typeof child === 'string') {
+      if (typeof child === "string") {
         return `${accumulator} ${child}`;
       }
       if (child?.props?.children) {
@@ -116,14 +116,14 @@ function generateHeadingId(children) {
       }
 
       return accumulator;
-    }, '');
+    }, "");
   }
 
-  return title.replace(/\s+/g, '').toLowerCase();
+  return title.replace(/\s+/g, "").toLowerCase();
 }
 
 export default {
-  h1: props => {
+  h1: (props) => {
     const tabsIdentifierData = useTabsContext();
 
     return (
@@ -135,7 +135,7 @@ export default {
       </HeaderWrap>
     );
   },
-  h2: props => {
+  h2: (props) => {
     const tabsIdentifierData = useTabsContext();
 
     return (
@@ -147,15 +147,15 @@ export default {
       </HeaderWrap>
     );
   },
-  h3: props => <h3 id={generateHeadingId(props.children)} {...props} />,
-  h4: props => <h4 id={generateHeadingId(props.children)} {...props} />,
-  h5: props => <h5 id={generateHeadingId(props.children)} {...props} />,
-  h6: props => <h6 id={generateHeadingId(props.children)} {...props} />,
-  p: props => <p className="paragraph" {...props} />,
+  h3: (props) => <h3 id={generateHeadingId(props.children)} {...props} />,
+  h4: (props) => <h4 id={generateHeadingId(props.children)} {...props} />,
+  h5: (props) => <h5 id={generateHeadingId(props.children)} {...props} />,
+  h6: (props) => <h6 id={generateHeadingId(props.children)} {...props} />,
+  p: (props) => <p className="paragraph" {...props} />,
   pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
-  img: props => {
+  img: (props) => {
     return <img {...props} />;
   },
   // TODO add `blockquote`

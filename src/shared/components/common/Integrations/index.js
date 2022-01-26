@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import styled from 'styled-components';
-import Fuse from 'fuse.js';
-import Link from 'shared/components/Link';
+import React, { useState, useMemo } from "react";
+import styled from "styled-components";
+import Fuse from "fuse.js";
+import Link from "shared/components/Link";
 
-import Search from './Search';
-import CategorySelector from './CategorySelector';
-import { graphql, useStaticQuery } from "gatsby"
+import Search from "./Search";
+import CategorySelector from "./CategorySelector";
+import { graphql, useStaticQuery } from "gatsby";
 
 const Wrapper = styled.div`
   padding: 15px 0;
@@ -56,13 +56,13 @@ const Title = styled.div`
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ['node.fields.title'],
+  keys: ["node.fields.title"],
 };
 
 export default function Integrations() {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      integrations: allMdx(filter: {fields: {isIntegration: {eq: true}}}) {
+      integrations: allMdx(filter: { fields: { isIntegration: { eq: true } } }) {
         edges {
           node {
             fields {
@@ -80,18 +80,18 @@ export default function Integrations() {
           }
         }
       }
-      }
-  `)
-  
+    }
+  `);
+
   const edges = data.integrations.edges;
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchValue, setSearchValue] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchValue, setSearchValue] = useState("");
 
   let categories = useMemo(() => {
     return edges.reduce((accumulator, integration) => {
       accumulator.add(...(integration.node.fields.category || []));
       return accumulator;
-    }, new Set(['all']));
+    }, new Set(["all"]));
   }, [edges]);
 
   let integrations = useMemo(() => {
@@ -115,7 +115,7 @@ export default function Integrations() {
       integrations = fuse.search(searchValue).map(({ item }) => item);
     }
 
-    if (selectedCategory !== 'all') {
+    if (selectedCategory !== "all") {
       integrations =
         integrations.filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
     }

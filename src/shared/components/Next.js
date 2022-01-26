@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
-import Link from './Link';
+import React, { useMemo } from "react";
+import Link from "./Link";
 
-import { StyledNext } from './styles/PageNavigationButtons';
+import { StyledNext } from "./styles/PageNavigationButtons";
 
 const Next = ({ mdx, nav }) => {
   const { nextInfo, currentIndex } = useMemo(() => {
-    const currentIndex = nav.findIndex(el => {
+    const currentIndex = nav.findIndex((el) => {
       return el && el.url === mdx.fields.slug;
     });
 
@@ -38,16 +38,16 @@ const Next = ({ mdx, nav }) => {
   return (
     <StyledNext className="next">
       {nextInfo.url && currentIndex >= 0 ? (
-        <Link to={nav[currentIndex + 1].url} className={'nextBtn'}>
-          <div className={'nextRightWrapper'}>
-            <div className={'smallContent'}>
+        <Link to={nav[currentIndex + 1].url} className={"nextBtn"}>
+          <div className={"nextRightWrapper"}>
+            <div className={"smallContent"}>
               <span>Next</span>
             </div>
             <div className="nextPreviousTitle">
               <span>{nav[currentIndex + 1] && nav[currentIndex + 1].title}</span>
             </div>
           </div>
-          <div className={'rightArrow'}>
+          <div className={"rightArrow"}>
             <svg
               preserveAspectRatio="xMidYMid meet"
               height="1em"

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
-import Button from './ui/Button';
-import Link from './Link';
+import Button from "./ui/Button";
+import Link from "./Link";
 
 //
 
@@ -28,7 +28,7 @@ const ButtonsWrapper = styled.div`
     color: #ffffff;
     padding: 16px;
     white-space: nowrap;
-    margin-top: 15px
+    margin-top: 15px;
   }
 
   .request-demo {

@@ -28,15 +28,15 @@ const Wrapper = styled.div`
 
 const Circle = styled.div`
   position: absolute;
-  top: ${props => `${props.y}px}`};
-  left: ${props => `${props.x}px}`};
+  top: ${(props) => `${props.y}px}`};
+  left: ${(props) => `${props.x}px}`};
   transform: translate(-12px, -12px);
   z-index: 1;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background: #2682fa;
-  box-shadow: 0 0 10px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   color: white;
   text-align: center;
   cursor: pointer;
@@ -46,28 +46,30 @@ const Circle = styled.div`
   }
 
   ::after {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     border-radius: 50%;
     animation: ${pulse} 1s infinite;
   }
 
-  ${props => props.isVisited && css`
-    background: #475f74;
+  ${(props) =>
+    props.isVisited &&
+    css`
+      background: #475f74;
 
-    ::after {
-      animation: none;
-    }
-  `}
+      ::after {
+        animation: none;
+      }
+    `}
 `;
 
 const wrapRef = React.createRef();
 
-function Point({description, tooltipPlacement = "right", x , y, label}) {
+function Point({ description, tooltipPlacement = "right", x, y, label }) {
   const [isVisited, setIsVisited] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
 
@@ -78,31 +80,30 @@ function Point({description, tooltipPlacement = "right", x , y, label}) {
       title={description}
       color="#091e3b"
       placement={tooltipPlacement}
-      onVisibleChange={(visible) => setIsOpened(visible)}>
-        <Circle
-          x={x}
-          y={y}
-          isOpened={isOpened}
-          isVisited={isVisited}
-          onClick={() => setIsVisited(true)}>
-            <div>
-              {label || "+"}
-            </div>
-        </Circle>
+      onVisibleChange={(visible) => setIsOpened(visible)}
+    >
+      <Circle
+        x={x}
+        y={y}
+        isOpened={isOpened}
+        isVisited={isVisited}
+        onClick={() => setIsVisited(true)}
+      >
+        <div>{label || "+"}</div>
+      </Circle>
     </Tooltip>
-  )
+  );
 }
 
-function PointsOfInterest({
-  points = [],
-  children
-}) {
+function PointsOfInterest({ points = [], children }) {
   return (
-      <Wrapper ref={wrapRef}>
-        {points.map((point, index) => <Point {...point} index={index} />)}
-        {children}
-      </Wrapper>
-    );
+    <Wrapper ref={wrapRef}>
+      {points.map((point, index) => (
+        <Point {...point} index={index} />
+      ))}
+      {children}
+    </Wrapper>
+  );
 }
 
 export default PointsOfInterest;

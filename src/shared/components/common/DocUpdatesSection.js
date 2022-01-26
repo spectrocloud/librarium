@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import moment from 'moment';
-import { graphql, useStaticQuery } from "gatsby"
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import moment from "moment";
+import { graphql, useStaticQuery } from "gatsby";
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,28 +56,28 @@ const Timestamp = styled.div`
 `;
 
 export default function DocUpdatesSection({ title }) {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      latestUpdates: allMdx(filter: {fields: {isDocsPage: {eq: true}}}) {
-          edges {
-            node {
-              fields {
-                title
-                slug
-              }
-              excerpt
-              parent {
-                ... on File {
-                  id
-                  name
-                  modifiedTime
-                }
+      latestUpdates: allMdx(filter: { fields: { isDocsPage: { eq: true } } }) {
+        edges {
+          node {
+            fields {
+              title
+              slug
+            }
+            excerpt
+            parent {
+              ... on File {
+                id
+                name
+                modifiedTime
               }
             }
           }
         }
       }
-  `)
+    }
+  `);
 
   const lastChanges = [...(data?.latestUpdates?.edges || [])]
     .map(({ node }) => ({ ...node }))
@@ -93,15 +93,14 @@ export default function DocUpdatesSection({ title }) {
     <Wrapper>
       <h3>{title}</h3>
       <CardsWrapper>
-        {lastChanges.map(doc => (
+        {lastChanges.map((doc) => (
           <Card to={doc.fields.slug}>
             <h4>{doc.fields.title}</h4>
             <Description>{doc.excerpt}</Description>
-            <Timestamp>{moment(doc.parent.modifiedTime).format('MMM DD YYYY')}</Timestamp>
+            <Timestamp>{moment(doc.parent.modifiedTime).format("MMM DD YYYY")}</Timestamp>
           </Card>
         ))}
       </CardsWrapper>
     </Wrapper>
   );
 }
-

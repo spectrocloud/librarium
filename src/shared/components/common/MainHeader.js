@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { IntroButtons } from 'shared/components';
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import styled from "styled-components";
+import { IntroButtons } from "shared/components";
+import { graphql, useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
 
 const Wrapper = styled.div`
   display: flex;
@@ -83,12 +83,10 @@ const LeftSide = styled.div`
 const RightSide = styled.div``;
 const Hero = styled.img``;
 
-function MainHeader({ children, introductionHref, demoHref}) {
+function MainHeader({ children, introductionHref, demoHref }) {
   const data = useStaticQuery(graphql`
     query {
-      hero: file(
-       name: {eq: "hero"}
-      ) {
+      hero: file(name: { eq: "hero" }) {
         childImageSharp {
           fixed(quality: 100, height: 484) {
             base64
@@ -99,26 +97,26 @@ function MainHeader({ children, introductionHref, demoHref}) {
           }
         }
       }
-      latestUpdates: allMdx(filter: {fields: {isDocsPage: {eq: true}}}) {
-          edges {
-            node {
-              fields {
-                title
-                slug
-              }
-              excerpt
-              parent {
-                ... on File {
-                  id
-                  name
-                  modifiedTime
-                }
+      latestUpdates: allMdx(filter: { fields: { isDocsPage: { eq: true } } }) {
+        edges {
+          node {
+            fields {
+              title
+              slug
+            }
+            excerpt
+            parent {
+              ... on File {
+                id
+                name
+                modifiedTime
               }
             }
           }
         }
       }
-  `)
+    }
+  `);
 
   return (
     <Wrapper>

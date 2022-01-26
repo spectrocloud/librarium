@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
 // TODO clean up these styles
 export const Sidebar = styled.aside`
@@ -14,7 +14,7 @@ export const Sidebar = styled.aside`
     letter-spacing: 1.2px;
     padding: 7px 24px 7px 16px;
 
-    color: #666A80;
+    color: #666a80;
   }
 
   .rightSideBarUL {
@@ -34,7 +34,7 @@ const ListItemWrap = styled.li`
   a {
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-    padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
+    padding: 0.45rem 0 0.45rem ${(props) => 2 + (props.level || 0) * 1}rem;
     display: block;
     font-style: normal;
     font-weight: 500;
@@ -43,7 +43,7 @@ const ListItemWrap = styled.li`
     color: #9698a9;
     padding: 7px 24px 7px 16px;
 
-    ${props =>
+    ${(props) =>
       props.isActive &&
       css`
         color: #206cd1;

@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import Link from '../Link';
-import SidebarIcon from '../styles/SidebarIcon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from "../Link";
+import SidebarIcon from "../styles/SidebarIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   ::after {
-    content: ' ';
+    content: " ";
     max-width: 1109.51px;
     width: 100%;
     border: 1px solid #d4d4d4;
@@ -118,7 +118,7 @@ function QuickSetup({ title, options = [] }) {
     <Wrapper>
       <h3>{title}</h3>
       <CardsWrapper>
-        {options.map(option => (
+        {options.map((option) => (
           <Link key={option.title} to={option.href}>
             <Card>
               <Icon>
@@ -131,7 +131,7 @@ function QuickSetup({ title, options = [] }) {
             </Card>
             <LearnMore>
               <div>Learn More</div>
-              <FontAwesomeIcon icon={'arrow-right'} />
+              <FontAwesomeIcon icon={"arrow-right"} />
             </LearnMore>
           </Link>
         ))}

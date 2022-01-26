@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import SidebarIcon from '../../../components/styles/SidebarIcon';
-import { useLocation } from '@reach/router';
-import Link from '../../../components/Link';
+import React from "react";
+import styled, { css } from "styled-components";
+import SidebarIcon from "../../../components/styles/SidebarIcon";
+import { useLocation } from "@reach/router";
+import Link from "../../../components/Link";
 
 const ChildrenItems = styled.div``;
 
@@ -16,7 +16,7 @@ const MenuNode = styled.div`
       color: #206cd1;
     }
 
-    ${props =>
+    ${(props) =>
       props.level === 1 &&
       !props.isActive &&
       !props.expanded &&
@@ -41,9 +41,9 @@ const MenuNode = styled.div`
     }}
   }
 
-  ${props => css`
+  ${(props) => css`
     &[data-level="${props.level}"] > .menu-link > div {
-      padding-left: ${props => props.level * 34 + 20}px;
+      padding-left: ${(props) => props.level * 34 + 20}px;
     }
 
     &[data-level="2"] {
@@ -74,7 +74,7 @@ const IconWrapper = styled.div`
     stroke: #aeb1be;
   }
 
-  ${props =>
+  ${(props) =>
     props.isActive &&
     css`
       color: #206cd1;
@@ -128,7 +128,7 @@ const TreeNode = ({
     );
   }, [url]);
 
-  if (url === '/' && location && location.pathname === '/') {
+  if (url === "/" && location && location.pathname === "/") {
     isActive = false;
   }
 

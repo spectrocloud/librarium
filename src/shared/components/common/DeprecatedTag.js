@@ -9,6 +9,6 @@ const Wrapper = styled.span`
   font-size: 12px;
 `;
 
-export default function DeprecatedTag({...props}) {
-  return <Wrapper {...props}>deprecated</Wrapper>
+export default function DeprecatedTag({ ...props }) {
+  return <Wrapper {...props}>deprecated</Wrapper>;
 }

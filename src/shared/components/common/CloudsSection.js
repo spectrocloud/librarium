@@ -1,15 +1,15 @@
-import React from 'react';
-import styled, {css} from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
-import Link from '../Link';
+import Link from "../Link";
 
-import aws from '../../assets/clouds/aws.png';
-import azure from '../../assets/clouds/azure.png';
-import google_cloud from '../../assets/clouds/google_cloud.png';
-import vmware from '../../assets/clouds/vmware.png';
-import openshift from '../../assets/clouds/openshift.png';
-import openstack from '../../assets/clouds/openstack.png';
-import maas from '../../assets/clouds/maas.png';
+import aws from "../../assets/clouds/aws.png";
+import azure from "../../assets/clouds/azure.png";
+import google_cloud from "../../assets/clouds/google_cloud.png";
+import vmware from "../../assets/clouds/vmware.png";
+import openshift from "../../assets/clouds/openshift.png";
+import openstack from "../../assets/clouds/openstack.png";
+import maas from "../../assets/clouds/maas.png";
 
 const clouds = {
   aws,
@@ -29,15 +29,17 @@ const Wrapper = styled.div`
   margin: 0px auto;
   overflow: hidden;
 
-  ${props => !props.noBorder && css`
-    ::after {
-      content: ' ';
-      max-width: 1109.51px;
-      width: 100%;
-      border: 1px solid #d4d4d4;
-      margin-top: 102px;
-    }
-  `}
+  ${(props) =>
+    !props.noBorder &&
+    css`
+      ::after {
+        content: " ";
+        max-width: 1109.51px;
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        margin-top: 102px;
+      }
+    `}
 
   h3 {
     font-weight: 500;
@@ -112,9 +114,9 @@ function CloudsSection({ noBorder = false, noMargin, title, description, options
   return (
     <Wrapper noBorder={noBorder} noMargin={noMargin}>
       {title ? <h3>{title}</h3> : null}
-      {description ? <Description>{description}</Description>: null}
+      {description ? <Description>{description}</Description> : null}
       <CardWrapper>
-        {options.map(option => (
+        {options.map((option) => (
           <Link to={option.href}>
             <Card>
               <Icon>

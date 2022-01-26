@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from 'prism-react-renderer/themes/oceanicNext';
-import Loadable from 'react-loadable';
-import LoadingProvider from './loading';
+import * as React from "react";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import prismTheme from "prism-react-renderer/themes/oceanicNext";
+import Loadable from "react-loadable";
+import LoadingProvider from "./loading";
 
 /** Removes the last token from a code example if it's empty. */
 function cleanTokens(tokens) {
@@ -20,21 +20,21 @@ function cleanTokens(tokens) {
 }
 
 const LoadableComponent = Loadable({
-  loader: () => import('./LiveProvider'),
+  loader: () => import("./LiveProvider"),
   loading: LoadingProvider,
 });
 
 /* eslint-disable react/jsx-key */
 const CodeBlock = ({ children: exampleCode, ...props }) => {
   const language = props?.className?.split("language-")?.[1] || "json";
-  if (props['react-live']) {
+  if (props["react-live"]) {
     return <LoadableComponent code={exampleCode} />;
   } else {
     const coloredIntervals = {};
 
     if (props.coloredLines) {
       const iterations = props.coloredLines.split(",");
-      iterations.forEach(iteration => {
+      iterations.forEach((iteration) => {
         const [range, color] = iteration.split("|");
         coloredIntervals[range] = color;
       });
@@ -43,45 +43,45 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
     return (
       <Highlight {...defaultProps} code={exampleCode} language={language} theme={prismTheme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className + ' pre'} style={style} p={3}>
+          <pre className={className + " pre"} style={style} p={3}>
             {cleanTokens(tokens).map((line, i) => {
               let lineClass = {
                 padding: "5px",
-                margin: "0 -5px"
+                margin: "0 -5px",
               };
 
-              const intervalKey = Object.keys(coloredIntervals).find(interval => {
+              const intervalKey = Object.keys(coloredIntervals).find((interval) => {
                 const [lower, upper] = interval.split("-");
                 const index = i + 1;
                 return index >= parseInt(lower) && index <= parseInt(upper);
               });
 
               if (intervalKey) {
-                lineClass.backgroundColor = coloredIntervals[intervalKey]
+                lineClass.backgroundColor = coloredIntervals[intervalKey];
               }
 
               let isDiff = false;
 
-              if (line[0] && line[0].content.length && line[0].content[0] === '+') {
-                lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
+              if (line[0] && line[0].content.length && line[0].content[0] === "+") {
+                lineClass = { backgroundColor: "rgba(76, 175, 80, 0.2)" };
                 isDiff = true;
-              } else if (line[0] && line[0].content.length && line[0].content[0] === '-') {
-                lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
+              } else if (line[0] && line[0].content.length && line[0].content[0] === "-") {
+                lineClass = { backgroundColor: "rgba(244, 67, 54, 0.2)" };
                 isDiff = true;
-              } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '+') {
-                lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
+              } else if (line[0] && line[0].content === "" && line[1] && line[1].content === "+") {
+                lineClass = { backgroundColor: "rgba(76, 175, 80, 0.2)" };
                 isDiff = true;
-              } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '-') {
-                lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
+              } else if (line[0] && line[0].content === "" && line[1] && line[1].content === "-") {
+                lineClass = { backgroundColor: "rgba(244, 67, 54, 0.2)" };
                 isDiff = true;
               }
               const lineProps = getLineProps({ line, key: i });
 
               lineProps.style = lineClass;
               const diffStyle = {
-                userSelect: 'none',
-                MozUserSelect: '-moz-none',
-                WebkitUserSelect: 'none',
+                userSelect: "none",
+                MozUserSelect: "-moz-none",
+                WebkitUserSelect: "none",
               };
 
               let splitToken;
@@ -92,15 +92,15 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
                     if (isDiff) {
                       if (
                         (key === 0 || key === 1) &
-                        (token.content.charAt(0) === '+' || token.content.charAt(0) === '-')
+                        (token.content.charAt(0) === "+" || token.content.charAt(0) === "-")
                       ) {
                         if (token.content.length > 1) {
                           splitToken = {
-                            types: ['template-string', 'string'],
+                            types: ["template-string", "string"],
                             content: token.content.slice(1),
                           };
                           const firstChar = {
-                            types: ['operator'],
+                            types: ["operator"],
                             content: token.content.charAt(0),
                           };
 

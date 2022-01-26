@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledPrevious = styled.div`
   .previousBtn {
@@ -20,7 +20,7 @@ export const StyledPrevious = styled.div`
     text-decoration: none;
 
     background-color: transparent;
-    color: #666A80;
+    color: #666a80;
   }
 
   .previousBtn:hover {
@@ -89,7 +89,7 @@ export const StyledNext = styled.div`
     text-decoration: none;
 
     background-color: transparent;
-    color: #666A80;
+    color: #666a80;
   }
   .nextBtn {
     cursor: pointer;
@@ -111,7 +111,7 @@ export const StyledNext = styled.div`
     text-decoration: none;
 
     background-color: transparent;
-    color: #666A80;
+    color: #666a80;
   }
 
   .nextBtn:hover {
