@@ -2,8 +2,6 @@ const componentWithMDXScope = require("gatsby-plugin-mdx/component-with-mdx-scop
 const path = require("path");
 const startCase = require("lodash.startcase");
 
-const config = require("./config");
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 

@@ -1,19 +1,19 @@
-require('dotenv').config();
-const queries = require('./src/shared/utils/algolia');
-const path = require('path');
+require("dotenv").config();
+const queries = require("./src/shared/utils/algolia");
+const path = require("path");
 
-const config = require('./config');
+const config = require("./config");
 
 const plugins = [
   {
-    resolve: 'gatsby-plugin-sitemap',
+    resolve: "gatsby-plugin-sitemap",
     options: {
       exclude: [`/glossary/`, `/glossary/*`],
     },
   },
-  'gatsby-plugin-styled-components',
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-force-trailing-slashes',
+  "gatsby-plugin-styled-components",
+  "gatsby-plugin-react-helmet",
+  "gatsby-plugin-force-trailing-slashes",
   {
     resolve: `gatsby-plugin-react-helmet-canonical-urls`,
     options: {
@@ -21,30 +21,43 @@ const plugins = [
       noQueryString: true,
     },
   },
-  'gatsby-plugin-antd',
+  "gatsby-plugin-antd",
   {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `shared`,
-      path: path.resolve(__dirname, './src/shared/'),
+      path: path.resolve(__dirname, "./src/shared/"),
     },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: `gatsby-source-filesystem`,
     options: {
-      name: 'docs',
-      path: path.resolve(__dirname, './content/docs'),
+      name: `assets`,
+      path: path.resolve(__dirname, "./assets/"),
     },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: "gatsby-source-filesystem",
     options: {
-      name: 'api',
-      path: path.resolve(__dirname, './content/api'),
+      name: "docs",
+      path: path.resolve(__dirname, "./content/docs"),
+    },
+  },
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      name: "api",
+      path: path.resolve(__dirname, "./content/api"),
+    },
+  },
+  {
+    resolve: `gatsby-plugin-root-import`,
+    options: {
+      assets: path.resolve(__dirname, "./assets/"),
     },
   },
   `gatsby-transformer-sharp`,
-  'gatsby-plugin-sharp',
+  "gatsby-plugin-sharp",
   {
     resolve: `gatsby-plugin-webfonts`,
     options: {
@@ -52,27 +65,27 @@ const plugins = [
         google: [
           {
             family: `Poppins`,
-            variants: [`300`, `400`, `500`, `600`, `700`, 'latin'],
+            variants: [`300`, `400`, `500`, `600`, `700`, "latin"],
           },
         ],
       },
     },
   },
   {
-    resolve: 'gatsby-plugin-mdx',
+    resolve: "gatsby-plugin-mdx",
     options: {
       plugins: [
         `gatsby-remark-local-videos`,
         `gatsby-remark-images`,
         `gatsby-remark-images-medium-zoom`,
-        'gatsby-remark-image-attributes',
+        "gatsby-remark-image-attributes",
       ],
       gatsbyRemarkPlugins: [
         {
           resolve: `gatsby-remark-local-videos`,
         },
         {
-          resolve: 'gatsby-remark-images',
+          resolve: "gatsby-remark-images",
           options: {
             maxWidth: 1035,
             quality: 100,
@@ -80,27 +93,27 @@ const plugins = [
           },
         },
         {
-          resolve: 'gatsby-remark-copy-linked-files',
+          resolve: "gatsby-remark-copy-linked-files",
         },
         {
-          resolve: 'gatsby-remark-images-medium-zoom',
+          resolve: "gatsby-remark-images-medium-zoom",
         },
         {
-          resolve: 'gatsby-remark-image-attributes',
+          resolve: "gatsby-remark-image-attributes",
         },
       ],
-      extensions: ['.mdx', '.md'],
+      extensions: [".mdx", ".md"],
     },
   },
   {
-    resolve: 'gatsby-plugin-google-tagmanager',
+    resolve: "gatsby-plugin-google-tagmanager",
     options: {
-      id: 'GTM-T2F9ZMS',
+      id: "GTM-T2F9ZMS",
       includeInDevelopment: false,
     },
   },
   {
-    resolve: 'gatsby-plugin-react-svg',
+    resolve: "gatsby-plugin-react-svg",
     options: {
       rule: {
         include: /icons/,
@@ -124,7 +137,7 @@ if (
       queries,
       chunkSize: 10000, // default: 1000
       enablePartialUpdates: true,
-      matchFields: ['slug', 'modifiedTime'],
+      matchFields: ["slug", "modifiedTime"],
     },
   });
 }
@@ -135,18 +148,18 @@ if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
     options: { ...config.pwa.manifest },
   });
   plugins.push({
-    resolve: 'gatsby-plugin-offline',
+    resolve: "gatsby-plugin-offline",
     options: {
       appendScript: require.resolve(`./src/custom-sw-code.js`),
     },
   });
 } else {
-  plugins.push('gatsby-plugin-remove-serviceworker');
+  plugins.push("gatsby-plugin-remove-serviceworker");
 }
 
 // check and remove trailing slash
 if (config.gatsby && !config.gatsby.trailingSlash) {
-  plugins.push('gatsby-plugin-remove-trailing-slashes');
+  plugins.push("gatsby-plugin-remove-trailing-slashes");
 }
 
 module.exports = {
@@ -158,7 +171,7 @@ module.exports = {
     ogImage: config.siteMetadata.ogImage,
     favicon: config.siteMetadata.favicon,
     logo: {
-      link: config.header.logoLink ? config.header.logoLink : '/',
+      link: config.header.logoLink ? config.header.logoLink : "/",
       image: config.header.logo,
     }, // backwards compatible
     headerTitle: config.header.title,

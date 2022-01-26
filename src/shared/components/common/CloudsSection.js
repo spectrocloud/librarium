@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 
 import Link from "../Link";
 
-import aws from "../../assets/clouds/aws.png";
-import azure from "../../assets/clouds/azure.png";
-import google_cloud from "../../assets/clouds/google_cloud.png";
-import vmware from "../../assets/clouds/vmware.png";
-import openshift from "../../assets/clouds/openshift.png";
-import openstack from "../../assets/clouds/openstack.png";
-import maas from "../../assets/clouds/maas.png";
+import aws from "assets/clouds/aws.png";
+import azure from "assets/clouds/azure.png";
+import google_cloud from "assets/clouds/google_cloud.png";
+import vmware from "assets/clouds/vmware.png";
+import openshift from "assets/clouds/openshift.png";
+import openstack from "assets/clouds/openstack.png";
+import maas from "assets/clouds/maas.png";
 
 const clouds = {
   aws,

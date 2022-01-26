@@ -13,6 +13,9 @@
       "content/*": [
         "content/*"
       ],
+      "assets/*": [
+        "assets/*"
+      ],
     }
   },
   "exclude": [

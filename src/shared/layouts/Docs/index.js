@@ -2,11 +2,11 @@ import React, { useMemo } from "react";
 import Helmet from "react-helmet";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import styled from "styled-components";
-import favicon from "shared/assets/favicon.png";
+import favicon from "assets/favicon.png";
 
-import { Link, Next, Previous } from "../../components";
-import { Edit, StyledMainWrapper } from "../../components/styles/Docs";
-import TableOfContents from "../../components/TableOfContents";
+import { Link, Next, Previous } from "shared/components";
+import { Edit, StyledMainWrapper } from "shared/components/styles/Docs";
+import TableOfContents from "shared/components/TableOfContents";
 import { useLocation } from "@reach/router";
 import MDXProvider from "shared/mdx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 import Link from "../../components/Link";
 import config from "../../../../config";
 import { useLocation } from "@reach/router";
-import logo from "../../assets/logo_landscape_for_white.png";
+import logo from "assets/logo_landscape_for_white.png";
 
 const SearchComponent = Loadable({
   loader: () => import("./search/index"),
