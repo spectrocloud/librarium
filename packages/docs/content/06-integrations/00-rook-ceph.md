@@ -21,6 +21,14 @@ Rook ceph is an open source cloud-native storage orchestration providing the pla
 
 Rook turns storage software into self-managing, self-scaling, and self-healing storage services. It does this by automating deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management. Rook uses the facilities provided by the underlying cloud-native container management, scheduling and orchestration platform to perform its duties.
 
+This pack provides configurtions for setting up a 3 node ceph cluster (recommended) as well as a single node ceph cluster. Please make sure your worker node pool size satisfies the minimum nodes requirement for your ceph cluster. Additional disks should be attached to your worker pool nodes in order to deploy a Ceph cluster. If you are using existing appliances for your kubernets cluster (typical for edge clusters), you will need to ensure additoinal disks (1 or 3 - based on your Ceph cluster settings) are attached to the appliance. For such cases, device filter needs to be configured in the pack settings. As an example, if the additoinal disks were sdd, sde, sdf  the following configration would bre required :-
+
+ **Example:**
+          useAllNodes: true
+          useAllDevices: false
+          deviceFilter: ^sd[d-f]
+          config:
+            osdsPerDevice: "1" # this value can be overridden at the node or device level
 
 ## Versions Supported
 
