@@ -93,9 +93,9 @@ const plugins = [
     },
   },
   {
-    resolve: "gatsby-plugin-google-tagmanager",
+    resolve: 'gatsby-plugin-google-tagmanager',
     options: {
-      id: "GTM-T2F9ZMS",
+      id: 'GTM-T2F9ZMS',
       includeInDevelopment: false,
     },
   },
