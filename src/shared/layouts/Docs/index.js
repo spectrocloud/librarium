@@ -1,22 +1,22 @@
-import React, { useMemo } from 'react';
-import Helmet from 'react-helmet';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import styled from 'styled-components';
-import favicon from 'shared/assets/favicon.png';
+import React, { useMemo } from "react";
+import Helmet from "react-helmet";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
+import styled from "styled-components";
+import favicon from "shared/assets/favicon.png";
 
-import { Link, Next, Previous } from '../../components';
-import { Edit, StyledMainWrapper } from '../../components/styles/Docs';
-import TableOfContents from '../../components/TableOfContents';
-// import { Github } from 'styled-icons/fa-brands';
+import { Link, Next, Previous } from "../../components";
+import { Edit, StyledMainWrapper } from "../../components/styles/Docs";
+import TableOfContents from "../../components/TableOfContents";
 import { useLocation } from "@reach/router";
-import MDXProvider from 'shared/mdx'
+import MDXProvider from "shared/mdx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const calculateMenuTree = (edges, config) => {
   const originalData = edges
-    .filter(edge => !edge.node.fields.hiddenFromNav)
+    .filter((edge) => !edge.node.fields.hiddenFromNav)
     .sort((edge1, edge2) => {
-      const edgeSlug1Length = edge1.node.fields.slug.split('/').length;
-      const edgeSlug2Length = edge2.node.fields.slug.split('/').length;
+      const edgeSlug1Length = edge1.node.fields.slug.split("/").length;
+      const edgeSlug2Length = edge2.node.fields.slug.split("/").length;
 
       const edgeIndex1 = edge1.node.fields.index;
       const edgeIndex2 = edge2.node.fields.index;
@@ -51,7 +51,7 @@ export const calculateMenuTree = (edges, config) => {
       if (config?.base) {
         slugWithoutBase = slug.split(config.base).pop();
       }
-      const parts = slugWithoutBase.split('/');
+      const parts = slugWithoutBase.split("/");
 
       let { items: prevItems } = accumulator;
 
@@ -133,8 +133,8 @@ export default function MDXLayout({
     if (!location) {
       return [];
     }
-    const mainUrl = location.pathname.split('/')[1];
-    const nav = menu.items.find(item => item.label === mainUrl);
+    const mainUrl = location.pathname.split("/")[1];
+    const nav = menu.items.find((item) => item.label === mainUrl);
     if (!nav) {
       return [];
     }
@@ -175,13 +175,11 @@ export default function MDXLayout({
                 <Edit>
                   {docsLocation && (
                     <Link target="_blank" to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                      {/* <Github icon="github" width="16px" /> Edit on GitHub */}
+                      <FontAwesomeIcon icon={["fab", "github"]} /> Edit on GitHub
                     </Link>
                   )}
                 </Edit>
-                {!hideToC && !mdx.frontmatter?.hideToC && (
-                  <TableOfContents edges={edges} />
-                )}
+                {!hideToC && !mdx.frontmatter?.hideToC && <TableOfContents edges={edges} />}
               </StickyWrap>
             </RightSidebar>
           )}

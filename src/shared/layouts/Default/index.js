@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useState } from "react";
+import { useLocation } from "@reach/router";
+import styled, { css } from "styled-components";
 
-import Sidebar from './sidebar';
-import Header from './Header';
+import Sidebar from "./sidebar";
+import Header from "./Header";
 
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import './layout.css';
-import { useLocation } from '@reach/router';
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "./layout.css";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const Content = styled.main`
   padding: 54px 60px;
   background: transparent;
 
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       margin: 0;
@@ -33,7 +33,7 @@ const LeftSideBarWidth = styled.div`
   max-width: 323px;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.hideMenuSidebar &&
     css`
       display: none;
@@ -48,7 +48,7 @@ const LeftSideBarWidth = styled.div`
     bottom: 0;
     top: 0;
 
-    ${props =>
+    ${(props) =>
       props.expanded &&
       css`
         width: 100%;
@@ -62,7 +62,7 @@ const Overlay = styled.div`
   opacity: 0;
 
   @media (max-width: 952px) {
-    ${props =>
+    ${(props) =>
       props.expanded &&
       css`
         position: absolute;
@@ -81,7 +81,7 @@ const MainWrap = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   background: linear-gradient(119.9deg, #ffffff 43.09%, #e8f1ff 107.76%, #ebf2ff 107.77%);
-  ${props =>
+  ${(props) =>
     props.isHomepage &&
     css`
       background: #fff;
@@ -98,7 +98,7 @@ export default function Layout({
 }) {
   const [expanded, showNavbar] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
 
   return (
     <Wrapper>

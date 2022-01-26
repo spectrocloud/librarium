@@ -5,6 +5,7 @@
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@mdx-js/mdx": "^1.6.22",

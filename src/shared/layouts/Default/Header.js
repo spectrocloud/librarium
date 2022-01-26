@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import Loadable from 'react-loadable';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import Loadable from "react-loadable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Loader from '../../components/Loader';
-import Link from '../../components/Link';
-import config from '../../../../config'
-import { useLocation } from '@reach/router';
-// import { Search } from 'styled-icons/fa-solid/Search';
-import logo from '../../assets/logo_landscape_for_white.png';
+import Loader from "../../components/Loader";
+import Link from "../../components/Link";
+import config from "../../../../config";
+import { useLocation } from "@reach/router";
+import logo from "../../assets/logo_landscape_for_white.png";
 
 const SearchComponent = Loadable({
-  loader: () => import('./search/index'),
+  loader: () => import("./search/index"),
   loading: Loader,
 });
 
@@ -23,7 +22,7 @@ const MaxWidth = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
-  ${props =>
+  ${(props) =>
     !props.isHomePage &&
     css`
       max-width: 100%;
@@ -63,21 +62,21 @@ const Wrap = styled.div`
   }
 `;
 
-// const SearchIcon = styled(Search)`
-//   display: none;
-//   width: 1em;
-//   margin-right: 10px;
-//   left: 15px;
-//   color: #999;
+const SearchIcon = styled(FontAwesomeIcon)`
+  display: none;
+  width: 1em;
+  margin-right: 10px;
+  left: 15px;
+  color: #999;
 
-//   @media (max-width: 952px) {
-//     display: block;
-//     cursor: pointer;
-//     &:hover {
-//       color: #206cd1;
-//     }
-//   }
-// `;
+  @media (max-width: 952px) {
+    display: block;
+    cursor: pointer;
+    &:hover {
+      color: #206cd1;
+    }
+  }
+`;
 
 const NavWrap = styled.div`
   margin-right: 54px;
@@ -127,7 +126,7 @@ const SearchWrap = styled.div`
   @media (max-width: 952px) {
     display: none;
 
-    ${props =>
+    ${(props) =>
       props.expanded &&
       css`
         display: flex;
@@ -146,11 +145,11 @@ function isMenuActive(location, link) {
 
 export const DEFAULT_MENU = [
   {
-    title: 'Docs',
-    link: '/',
-    icon: 'folder',
+    title: "Docs",
+    link: "/",
+    icon: "folder",
     isActive(location) {
-      const othersAreActive = DEFAULT_MENU.filter(item => item.title !== 'Docs').some(item => {
+      const othersAreActive = DEFAULT_MENU.filter((item) => item.title !== "Docs").some((item) => {
         return item.isActive && item.isActive(location);
       });
 
@@ -158,26 +157,26 @@ export const DEFAULT_MENU = [
     },
   },
   {
-    title: 'API',
-    link: '/api/',
-    icon: 'cog',
+    title: "API",
+    link: "/api/",
+    icon: "cog",
     isActive(location) {
-      return isMenuActive(location, '/api');
+      return isMenuActive(location, "/api");
     },
   },
   {
-    title: 'Back to Spectro Cloud',
-    link: 'https://console.spectrocloud.com',
+    title: "Back to Spectro Cloud",
+    link: "https://console.spectrocloud.com",
   },
 ];
 
 export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   const [expanded, expandSearchConsole] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
   function renderMenuItem({ link, title, isActive = () => false }) {
     return (
-      <Link className={isActive(location) ? 'isActive' : ''} to={link}>
+      <Link className={isActive(location) ? "isActive" : ""} to={link}>
         {title}
       </Link>
     );
@@ -199,9 +198,9 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
         </SearchWrap>
         {!expanded && (
           <>
-            {/* <SearchIcon onClick={() => expandSearchConsole(!expanded)} /> */}
+            <SearchIcon icon="search" onClick={() => expandSearchConsole(!expanded)} />
             <NavWrap>{menu.map(renderMenuItem)}</NavWrap>
-            {/* <FontAwesomeIcon icon="bars" onClick={toggleMenu} className="hamburger" /> */}
+            <FontAwesomeIcon icon="bars" onClick={toggleMenu} className="hamburger" />
           </>
         )}
       </MaxWidth>

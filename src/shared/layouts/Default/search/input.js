@@ -1,16 +1,16 @@
-import React, { useRef, useEffect } from 'react';
-import { connectSearchBox } from 'react-instantsearch-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useRef, useEffect } from "react";
+import { connectSearchBox } from "react-instantsearch-dom";
 
-import styled, { css } from 'styled-components';
-// import { Search } from 'styled-icons/fa-solid/Search';
+import styled, { css } from "styled-components";
 
-// const SearchIcon = styled(Search)`
-//   width: 1em;
-//   pointer-events: none;
-//   margin-right: 10px;
-//   left: 15px;
-//   color: #999;
-// `;
+const SearchIcon = styled(FontAwesomeIcon)`
+  width: 1em;
+  pointer-events: none;
+  margin-right: 10px;
+  left: 15px;
+  color: #999;
+`;
 
 const Input = styled.input`
   outline: none;
@@ -39,7 +39,7 @@ const Form = styled.form`
   line-height: 24px;
   color: #9698a9;
   min-width: 295px;
-  ${props =>
+  ${(props) =>
     props.center &&
     css`
       margin-left: 57px;
@@ -48,7 +48,7 @@ const Form = styled.form`
 
 export default connectSearchBox(({ refine, focus, center, ...rest }) => {
   const ref = useRef(null);
-  const preventSubmit = e => {
+  const preventSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -59,16 +59,16 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
   }, [focus]);
 
   return (
-    <Form className={'formElement'} onSubmit={preventSubmit} center={center}>
-      {/* <SearchIcon /> */}
+    <Form className="formElement" onSubmit={preventSubmit} center={center}>
+      <SearchIcon icon="search" />
       <Input
         ref={ref}
-        className={'searchInput'}
+        className="searchInput"
         id="searchInputId"
         type="text"
         placeholder="Search"
         aria-label="Search"
-        onChange={e => refine(e.target.value)}
+        onChange={(e) => refine(e.target.value)}
         {...rest}
       />
     </Form>
