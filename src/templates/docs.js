@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
-import { graphql } from 'gatsby';
+import React, { useMemo } from "react";
+import { graphql } from "gatsby";
 
-import Layout from 'shared/layouts/Default';
-import DocsLayout from 'shared/layouts/Docs';
+import Layout from "shared/layouts/Default";
+import DocsLayout from "shared/layouts/Docs";
 
 export default function MDXLayout({ data = {}, children, ...rest }) {
   const {
@@ -16,7 +16,7 @@ export default function MDXLayout({ data = {}, children, ...rest }) {
   const menu = useMemo(() => {
     return DocsLayout.calculateMenuTree(
       allMdx.edges.filter((edge) => !!edge.node.fields.isDocsPage),
-      { base: '/', trailingSlash: true }
+      { trailingSlash: true }
     );
   }, [allMdx.edges]);
 
