@@ -1,8 +1,8 @@
-const componentWithMDXScope = require('gatsby-plugin-mdx/component-with-mdx-scope');
-const path = require('path');
-const startCase = require('lodash.startcase');
+const componentWithMDXScope = require("gatsby-plugin-mdx/component-with-mdx-scope");
+const path = require("path");
+const startCase = require("lodash.startcase");
 
-const config = require('./config');
+const config = require("./config");
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
@@ -38,23 +38,23 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.allMdx.edges.forEach(({ node }) => {
-    if (node.fields.slug === '/glossary') {
+    if (node.fields.slug === "/glossary") {
       return;
     }
 
-    let component = path.resolve('./src/templates/docs.js');
+    let component = path.resolve("./src/templates/docs.js");
     // if (node.fields.slug.startsWith('/glossary')) {
     //   component = path.resolve('../glossary/src/templates/docs.js');
     // }
 
-    if (node.fields.slug.startsWith('/api')) {
-      component = path.resolve('./src/templates/api.js');
+    if (node.fields.slug.startsWith("/api")) {
+      component = path.resolve("./src/templates/api.js");
     }
 
-    const slug = node.fields.slug ? node.fields.slug : '/';
+    const slug = node.fields.slug ? node.fields.slug : "/";
 
     // Disable glossary pages
-    if (node.fields.slug.startsWith('/glossary/')) {
+    if (node.fields.slug.startsWith("/glossary/")) {
       return;
     }
 
@@ -71,10 +71,10 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
       alias: {
-        $components: path.resolve(__dirname, 'src/components'),
-        buble: '@philpl/buble', // to reduce bundle size
+        $components: path.resolve(__dirname, "src/components"),
+        buble: "@philpl/buble", // to reduce bundle size
       },
     },
   });
@@ -82,7 +82,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
 
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
-    name: '@babel/plugin-proposal-export-default-from',
+    name: "@babel/plugin-proposal-export-default-from",
   });
 };
 
@@ -90,14 +90,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
-    const isDocsPage = !!node.fileAbsolutePath.includes('/content/docs/');
-    const isApiPage = !!node.fileAbsolutePath.includes('/content/api/');
+    const isDocsPage = !!node.fileAbsolutePath.includes("/content/docs/");
+    const isApiPage = !!node.fileAbsolutePath.includes("/content/api/");
     const parent = getNode(node.parent);
 
-    let value = parent.relativePath.replace(parent.ext, '');
+    let value = parent.relativePath.replace(parent.ext, "");
 
-    const slugs = value.split('/').map((slugPart, index, slugs) => {
-      const [_, ...rest] = slugPart.split('-');
+    const slugs = value.split("/").map((slugPart, index, slugs) => {
+      const [_, ...rest] = slugPart.split("-");
       if (index === slugs.length - 1) {
         createNodeField({
           name: `index`,
@@ -110,21 +110,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         return _;
       }
 
-      return rest.join('-');
+      return rest.join("-");
     });
 
-    value = slugs.join('/');
-    if (value === 'index') {
-      value = '';
+    value = slugs.join("/");
+    if (value === "index") {
+      value = "";
     }
 
-    let prefix = '/glossary';
+    let prefix = "/glossary";
     if (isDocsPage) {
-      prefix = '';
+      prefix = "";
     }
 
     if (isApiPage) {
-      prefix = '/api';
+      prefix = "/api";
     }
 
     createNodeField({
@@ -134,102 +134,102 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
 
     createNodeField({
-      name: 'id',
+      name: "id",
       node,
       value: node.id,
     });
 
     createNodeField({
-      name: 'title',
+      name: "title",
       node,
       value: node.frontmatter.title || startCase(parent.name),
     });
 
     createNodeField({
-      name: 'icon',
+      name: "icon",
       node,
       value: node.frontmatter.icon,
     });
 
     createNodeField({
-      name: 'hiddenFromNav',
+      name: "hiddenFromNav",
       node,
       value: node.frontmatter.hiddenFromNav,
     });
 
     createNodeField({
-      name: 'hideToC',
+      name: "hideToC",
       node,
       value: node.frontmatter.hideToC,
     });
 
     createNodeField({
-      name: 'hideToCSidebar',
+      name: "hideToCSidebar",
       node,
       value: node.frontmatter.hideToCSidebar,
     });
 
     createNodeField({
-      name: 'fullWidth',
+      name: "fullWidth",
       node,
       value: node.frontmatter.fullWidth,
     });
 
     createNodeField({
-      name: 'isDocsPage',
+      name: "isDocsPage",
       node,
       value: isDocsPage,
     });
 
     createNodeField({
-      name: 'isApiPage',
+      name: "isApiPage",
       node,
       value: isApiPage,
     });
 
     createNodeField({
-      name: 'isIntegration',
+      name: "isIntegration",
       node,
       value: node.frontmatter.isIntegration,
     });
 
     createNodeField({
-      name: 'category',
+      name: "category",
       node,
       value: node.frontmatter.category,
     });
 
     createNodeField({
-      name: 'logoUrl',
+      name: "logoUrl",
       node,
       value: node.frontmatter.logoUrl,
     });
 
     createNodeField({
-      name: 'api',
+      name: "api",
       node,
       value: node.frontmatter.api,
     });
 
     createNodeField({
-      name: 'hideMenuSidebar',
+      name: "hideMenuSidebar",
       node,
       value: node.frontmatter.hideMenuSidebar,
     });
 
     if (node.frontmatter.api) {
-      const fileAbsolutePaths = node.fileAbsolutePath.split('/content/api/');
-      const versionDirectory = fileAbsolutePaths[1].split('/').shift();
+      const fileAbsolutePaths = node.fileAbsolutePath.split("/content/api/");
+      const versionDirectory = fileAbsolutePaths[1].split("/").shift();
       const endpointsPath = [
         fileAbsolutePaths[0],
-        'api',
-        'content',
+        "api",
+        "content",
         versionDirectory,
-        'api.json',
-      ].join('/');
+        "api.json",
+      ].join("/");
 
       createNodeField({
-        name: 'version',
+        name: "version",
         node,
         value: versionDirectory,
       });

@@ -174,9 +174,9 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   const [expanded, expandSearchConsole] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  function renderMenuItem({ link, title, isActive = () => false }) {
+  function renderMenuItem({ link, title, isActive = () => false }, index) {
     return (
-      <Link className={isActive(location) ? "isActive" : ""} to={link}>
+      <Link key={index} className={isActive(location) ? "isActive" : ""} to={link}>
         {title}
       </Link>
     );

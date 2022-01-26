@@ -1,12 +1,12 @@
-import React, { useMemo } from 'react';
-import { graphql } from 'gatsby';
-import Layout from 'shared/layouts/Default';
-import DocsLayout from 'shared/layouts/Docs';
-import ApiSidebar from 'shared/components/common/ApiSidebar';
-import Swagger from 'shared/components/common/Swagger';
+import React, { useMemo } from "react";
+import { graphql } from "gatsby";
+import Layout from "shared/layouts/Default";
+import DocsLayout from "shared/layouts/Docs";
+import ApiSidebar from "shared/components/common/ApiSidebar";
+import Swagger from "shared/components/common/Swagger";
 
 // TODO use graphql to get api.jsons
-import v1 from '../../content/api/v1/api.json';
+import v1 from "../../content/api/v1/api.json";
 
 const APIS = {
   v1,
@@ -22,7 +22,7 @@ export default function MDXLayout({ data = {} }) {
   } = data;
 
   const menu = useMemo(() => {
-    return DocsLayout.calculateMenuTree(allMdx.edges, { base: '/api', trailingSlash: true });
+    return DocsLayout.calculateMenuTree(allMdx.edges, { base: "/api", trailingSlash: true });
   }, [allMdx.edges]);
 
   function renderAPIDoc() {
@@ -44,7 +44,7 @@ export default function MDXLayout({ data = {} }) {
         const definitionProperty = defObject.properties[property];
         const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
 
-        const propertyName = definitionProperty?.description?.includes('Deprecated')
+        const propertyName = definitionProperty?.description?.includes("Deprecated")
           ? `${property} deprecated`
           : property;
         // if the property contains a ref, call again extractDefinition
@@ -52,13 +52,13 @@ export default function MDXLayout({ data = {} }) {
           return {
             ...propertiesAcc,
             [propertyName]:
-              definitionProperty.type === 'array'
+              definitionProperty.type === "array"
                 ? [extractDefinition(definitionPropertyRef)]
                 : extractDefinition(definitionPropertyRef),
           };
         } else {
           // if property value is an array, render what type the elements are
-          if (definitionProperty.type === 'array') {
+          if (definitionProperty.type === "array") {
             return {
               ...propertiesAcc,
               [propertyName]: [definitionProperty?.items.type || definitionProperty.type],
@@ -79,7 +79,7 @@ export default function MDXLayout({ data = {} }) {
     }
 
     function extractDefinition(ref) {
-      const definitionArray = ref?.split('/') || [];
+      const definitionArray = ref?.split("/") || [];
       const def = definitionArray[definitionArray.length - 1];
       const defObject = api.definitions[def];
 
@@ -89,7 +89,7 @@ export default function MDXLayout({ data = {} }) {
       }
 
       // the response schema is type array - encounter only 2 times and seems to always have the items prop
-      if (defObject?.type === 'array') {
+      if (defObject?.type === "array") {
         return {
           items: extractDefinition(defObject.items.$ref),
         };
@@ -100,18 +100,18 @@ export default function MDXLayout({ data = {} }) {
 
     const endpoints = Object.keys(api.paths)
       .filter((path) => paths.some((entry) => path.startsWith(entry)))
-      .filter((path) => !path.split('/').includes('internal'))
+      .filter((path) => !path.split("/").includes("internal"))
       .map((path) => {
         return {
           path,
           operations: Object.keys(api.paths[path])
-            .filter((method) => method !== 'parameters')
-            .filter((method) => !method?.tags?.some((tag) => ['private', 'system'].includes(tag)))
+            .filter((method) => method !== "parameters")
+            .filter((method) => !method?.tags?.some((tag) => ["private", "system"].includes(tag)))
             .map((method) => {
               const apiMethod = api.paths[path][method];
               const parameters = apiMethod?.parameters;
               const responses = apiMethod?.responses;
-              const bodyParameter = parameters?.find((parameter) => parameter.name === 'body');
+              const bodyParameter = parameters?.find((parameter) => parameter.name === "body");
               let body;
 
               if (bodyParameter) {
@@ -124,7 +124,7 @@ export default function MDXLayout({ data = {} }) {
                 method,
                 ...apiMethod,
                 body: JSON.stringify(body, null, 2),
-                parameters: parameters?.filter((parameter) => parameter.name !== 'body') || [],
+                parameters: parameters?.filter((parameter) => parameter.name !== "body") || [],
                 pathParameters: api.paths[path]?.parameters || [],
                 responseMessages: Object.keys(responses || {}).map((response) => {
                   return {

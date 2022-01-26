@@ -13,7 +13,7 @@ export const PoweredBy = () => (
   <span className="poweredBy">
     Powered by{` `}
     <Algolia href="https://algolia.com">
-      <FontAwesomeIcon icon={["fab", "algolia"]} size="1em" /> Algolia
+      <FontAwesomeIcon icon={["fab", "algolia"]} /> Algolia
     </Algolia>
   </span>
 );
