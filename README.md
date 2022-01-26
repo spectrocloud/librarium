@@ -45,7 +45,7 @@ make start
 
 This will open your browser to this address: http://localhost:9000
 
-Open `~/Work/librarium/packages/docs/content` in your editor and make changes. They should be synced up in the browser window.
+Open `~/Work/librarium/content/docs` in your editor and make changes. They should be synced up in the browser window.
 
 When you are done with some changes you can create a commit
 
@@ -119,20 +119,20 @@ In markdown you can reference this page relatively to the root of the domain usi
 You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
 
 ```md
-![alt text](clusterprofiles.png 'cluster profiles example')
+![alt text](clusterprofiles.png "cluster profiles example")
 ```
 
 The same rules apply though. You can reference it from a different section using urls relative to the root directory
 
 ```md
-![alt text](/introduction/clusterprofiles.png '#title=cluster profiles example')
+![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
 ```
 
 **Image size**
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png '#width=120px')
+![alt text](/introduction/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component
@@ -148,14 +148,10 @@ After that, you can use it like this
 ```js
 <Tabs>
   <Tabs.TabPane tab="AWS" key="aws">
-
-    # AWS cluster
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    # AWS cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
   <Tabs.TabPane tab="VMware" key="vmware">
-
-    # VMware cluster
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
 </Tabs>
 ```
@@ -172,7 +168,7 @@ After that, you can use it like this
 To use this components you will have to import if from the _shared_ folder
 
 ```js
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import PointsOfInterest from "shared/components/common/PointOfInterest";
 ```
 
 After that you can use it like this
@@ -201,9 +197,7 @@ After that you can use it like this
     },
   ]}
 >
-
   *Markdown content*
-
 </PointsOfInterest>
 ```
 
@@ -234,7 +228,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 - If needed, the icon can be replace with text or other html tags using the trigger property:
 
 ```js
-<Tooltip trigger={<button>This is a button</button>}><h1>This is a h1 inside the tooltip</h1></Tooltip>
+<Tooltip trigger={<button>This is a button</button>}>
+  <h1>This is a h1 inside the tooltip</h1>
+</Tooltip>
 ```
 
 - If used inside a paragraph or other md elements the entire "block" needs to be on the same line
@@ -247,7 +243,7 @@ Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: `  ```js coloredLines=2-4|#fff,5-7|#fe1234 `.
+_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234`.
 This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
 
 _Components_:
