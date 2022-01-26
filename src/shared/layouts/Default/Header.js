@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 import Loadable from "react-loadable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Loader from "../../components/Loader";
-import Link from "../../components/Link";
+import Loader from "shared/components/Loader";
+import Link from "shared/components/Link";
 import config from "../../../../config";
 import { useLocation } from "@reach/router";
 import logo from "assets/logo_landscape_for_white.png";

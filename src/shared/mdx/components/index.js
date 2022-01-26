@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CodeBlock from "./codeBlock";
 import AnchorTag from "./anchor";
 
-import { useTabsContext } from "../../components/ui/Tabs";
+import { useTabsContext } from "shared/components/ui/Tabs";
 
 const PreContainer = styled.div`
   position: relative;

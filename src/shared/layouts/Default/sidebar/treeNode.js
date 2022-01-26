@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import SidebarIcon from "../../../components/styles/SidebarIcon";
+import SidebarIcon from "shared/components/styles/SidebarIcon";
 import { useLocation } from "@reach/router";
-import Link from "../../../components/Link";
+import Link from "shared/components/Link";
 
 const ChildrenItems = styled.div``;
 
