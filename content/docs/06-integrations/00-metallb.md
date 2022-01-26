@@ -37,6 +37,11 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 ## Versions Supported
 
 <Tabs>
+<Tabs.TabPane tab="0.11.x" key="0.11.x">
+
+* **0.11.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="0.9.x" key="0.9.x">
 
 * **0.9.5** 
