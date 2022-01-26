@@ -1,5 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import AboutIcon from "../../assets/icons/about.svg";
 import AdminIcon from "../../assets/icons/admin.svg";
@@ -39,10 +39,10 @@ const icons = {
   roles: <RolesIcon />,
   teams: <TeamsIcon />,
   workspaces: <WorkspacesIcon />,
-}
+};
 
-function SidebarIcon({type, ...rest}) {
-  if(!Object.keys(icons).includes(type)) {
+function SidebarIcon({ type }) {
+  if (!Object.keys(icons).includes(type)) {
     return <FontAwesomeIcon icon={type} />;
   }
 
