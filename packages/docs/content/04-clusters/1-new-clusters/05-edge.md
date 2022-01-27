@@ -215,12 +215,13 @@ Following are the specific considerations that need to be taken into account for
     * Configure pack settings to use device filter and set up only one OSD per device. As an example, if the disks added were sdd, sde, sdf, the following device filters would need to be set:
 
 **Example:**
-
+       
+     storage:
           useAllNodes: true
           useAllDevices: false
           deviceFilter: ^sd[d-f]
           config:
-          osdsPerDevice: "1" # this value can be overridden at the node or device levels
+             osdsPerDevice: "1" # this value can be overridden at the node or device levels
 
 </InfoBox>
 
