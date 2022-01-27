@@ -198,27 +198,29 @@ For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not ov
 
 <InfoBox>
 
-If workoads deployed to the edge clusters require persistence, we recommend using the Rook-Ceph pack for the storage layer. Rook turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the tasks of a storage administrator: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.
+If workloads deployed to the edge clusters require persistence, we recommend using the Rook-Ceph pack for the storage layer. Rook turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the storage administrator tasks  such as: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.
 
-The Rook-Ceph pack in Palette, provides couple of preset configuations. You can choose one of these configuation as a starting point and further tune configuration as desired :-
+The Rook-Ceph pack in Palette provides a couple of preset configurations. You can choose one of these configurations as a starting point and further tune configurations as desired:
 
-* Multi Node Cluster With Replication (Default) - This is the recommened configuration that sets up a 3 node ceph cluster. This setting requires at least 3 nodes to be selected for the worker pool.
-* Single Node Cluster - This configuration creates a single node ceph cluster.
+* Multi-Node Cluster With Replication (Default) - This recommended configuration, sets up a three-node Ceph cluster. This setting requires at least three nodes selected for the worker pool.
+* Single Node Cluster - This configuration creates a single node Ceph cluster.
 
-Following are the specific considerations that need to taken into account for virtualized and containerized clusters when using Rook-Ceph for storage:-
+Following are the specific considerations that need to be taken into account for virtualized and containerized clusters when using Rook-Ceph for storage:
 
-* Virtuaized Clusters
+* Virtualized Clusters
     * In the cluster provisioning flow, we need to add additional disks for all nodes in the worker pool
-    * No changes to the pack settings required. Ceph cluster config is set to useAllDevices by default
+    * No changes to the pack settings are required. Ceph cluster config is set to useAllDevices by default
 * Containerized Clusters
-    * Add 3 disks to the bare-metal machine or the VM instance.
-    * Configure pack settings to use deviceFilter and setup only one OSD per device. As an example, if the disks added were sdd, sde, sdf, the following defvice filters would need to be set: -
-    **Example:**
+    * Add three disks to the bare-metal machine or the VM instance.
+    * Configure pack settings to use device filter and set up only one OSD per device. As an example, if the disks added were sdd, sde, sdf, the following device filters would need to be set:
+
+**Example:**
+
           useAllNodes: true
           useAllDevices: false
           deviceFilter: ^sd[d-f]
           config:
-            osdsPerDevice: "1" # this value can be overridden at the node or device level
+          osdsPerDevice: "1" # this value can be overridden at the node or device levels
 
 </InfoBox>
 
