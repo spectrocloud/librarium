@@ -30,7 +30,7 @@ This pack provides configurations for setting up a three-node Ceph cluster (reco
    useAllDevices: false
    deviceFilter: ^sd[d-f]
    config:
-      osdsPerDevice: "1" # this value can be overridden at the node or device level
+     osdsPerDevice: "1" # this value can be overridden at the node or device level
 
 ```
 ## Versions Supported
