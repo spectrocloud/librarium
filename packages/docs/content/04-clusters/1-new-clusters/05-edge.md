@@ -195,6 +195,39 @@ For the OS pack, if a custom CA certificate is required for outgoing traffic, ma
 For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not overlap with any IP ranges assigned in your network.
 </InfoBox>
 
+
+<InfoBox>
+
+If workloads deployed to the edge clusters require persistence, we recommend using the Rook-Ceph pack for the storage layer. Rook-Ceph turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the storage administrator tasks such as: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.
+
+The Rook-Ceph pack in Palette provides a couple of preset configurations. You can choose one of these configurations as a starting point and further tune configurations as desired:
+
+* Multi-Node Cluster With Replication (Default) - This recommended configuration sets up a three-node Ceph cluster. This setting requires at least three nodes selected for the worker pool.
+* Single Node Cluster - This configuration creates a single node Ceph cluster.
+
+Following are the specific considerations that need to be taken into account for virtualized and containerized clusters when using Rook-Ceph for storage:
+
+* Virtualized Clusters
+    * In the cluster provisioning flow, we need to add additional disks for all nodes in the worker pool
+    * No changes to the pack settings are required. Ceph cluster config is set to useAllDevices by default
+* Containerized Clusters
+    * Add three disks to the bare-metal machine or the VM instance.
+    * Configure pack settings to use device filter and set up only one OSD per device. As an example, if the disks added were sdd, sde, sdf, the following device filters would need to be set:
+
+**Example:**		
+```json
+ storage: 
+   useAllNodes: true
+   useAllDevices: false
+   deviceFilter: ^sd[d-f]
+   config:
+     osdsPerDevice: "1" # this value can be overridden at the node or device level
+
+```   
+	 
+
+</InfoBox>
+
 * Additional layers such as Monitoring, Security, Load Balancers, etc., may be added and configured as desired. These layers may be configured for "Full" or "Add-On" profiles. The add-on layers can be added in one of the following ways: 
     * Add New - Add a Palette Pack from a pack registry or a Helm Chart from a chart registry. The public Palette Pack registry and a few popular helm chart repositories are already available out of the box.
     * Additional pack registries or public/private chart registries can be added to Palette.
