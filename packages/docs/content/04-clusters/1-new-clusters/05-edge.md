@@ -198,11 +198,11 @@ For Kubernetes packs, please ensure that the Pod CIDR and service CIDR do not ov
 
 <InfoBox>
 
-If workloads deployed to the edge clusters require persistence, we recommend using the Rook-Ceph pack for the storage layer. Rook-Ceph turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the storage administrator tasks  such as: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.
+If workloads deployed to the edge clusters require persistence, we recommend using the Rook-Ceph pack for the storage layer. Rook-Ceph turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the storage administrator tasks such as: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.
 
 The Rook-Ceph pack in Palette provides a couple of preset configurations. You can choose one of these configurations as a starting point and further tune configurations as desired:
 
-* Multi-Node Cluster With Replication (Default) - This recommended configuration, sets up a three-node Ceph cluster. This setting requires at least three nodes selected for the worker pool.
+* Multi-Node Cluster With Replication (Default) - This recommended configuration sets up a three-node Ceph cluster. This setting requires at least three nodes selected for the worker pool.
 * Single Node Cluster - This configuration creates a single node Ceph cluster.
 
 Following are the specific considerations that need to be taken into account for virtualized and containerized clusters when using Rook-Ceph for storage:
