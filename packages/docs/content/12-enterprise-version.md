@@ -23,5 +23,5 @@ Single node installation of the platform, ideal for PoC environments.
 Highly available multi-node installation typically for production purposes.
 
 
-Palette provides the platform installer to enable quick start and enterprise versions installation. 
+Palette provides the platform installer to enable quick start mode and enterprise mode. 
 To obtain the platform installer, please contact our Sales team by completing [the form here](https://www.spectrocloud.com/contact/).
