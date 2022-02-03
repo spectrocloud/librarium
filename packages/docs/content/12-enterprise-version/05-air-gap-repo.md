@@ -43,7 +43,7 @@ Storage sizing depends on your intended update frequency and data retention mode
 
 # Deploy Air-Gapped Appliance
 
-* Download Palette's air-gapped appliance (OVA) to your local machine or jump host. Please contact Palette support for download location.
+* Download Palette's air-gapped appliance (OVA) to your local machine or jump host. Please contact our support (support@spectrocloud.com) for download location.
 * Navigate to the Datacenter and folder you would like to use for the installation. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template. Choose the location of the downloaded appliance when asked to select the OVF template.
 * Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows.
  * Name: The name to identify the air-gapped appliance
