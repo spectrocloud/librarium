@@ -1,6 +1,6 @@
 ---
-title: "Enterprise Cluster Management"
-metaTitle: "System Console Dashboard"
+title: "Enterprise  Management"
+metaTitle: "On-Prem Enterprise Management"
 metaDescription: " Features to enhance the enterprise clusters"
 icon: ""
 hideToC: false
@@ -16,7 +16,7 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 # Backup and Restore for Enterprise Clusters
 
-Spectro Cloud provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., snapshot of persistent volumes is taken and maintained as part of the backup. The two options of backup creation are:
+Palette provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., snapshot of persistent volumes is taken and maintained as part of the backup. The two options of backup creation are:
 * FTP
 * S3
 
