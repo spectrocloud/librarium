@@ -48,7 +48,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 * DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 * NTP configured on all Hosts.
 * Shared Storage between vSphere hosts.
-* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.* Zone Tagging
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as VSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 * **Zone tagging** is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for  installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centres (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
