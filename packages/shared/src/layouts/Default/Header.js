@@ -177,7 +177,7 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   const isHomePage = location.pathname === '/';
   function renderMenuItem({ link, title, isActive = () => false }) {
     return (
-      <Link className={isActive(location) ? 'isActive' : ''} to={link}>
+      <Link key={title} className={isActive(location) ? 'isActive' : ''} to={link}>
         {title}
       </Link>
     );

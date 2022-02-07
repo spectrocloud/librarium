@@ -1,6 +1,6 @@
-import React from "react";
-import { Input } from "antd";
-import styled from "styled-components";
+import React from 'react';
+import { Input } from 'antd';
+import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,14 +30,16 @@ const SearchIcon = styled(FontAwesomeIcon)`
   transform: translateY(-50%);
 `;
 
+const ClearIcon = styled(SearchIcon)`
+  left: 172px;
+`;
+
 export default function IntegrationSearch({ onSearch }) {
   return (
     <Wrapper>
       <SearchIcon icon="search" />
-      <Input
-        placeholder="Search for integration..."
-        onChange={(e) => onSearch(e.target.value)}
-      />
+      <Input placeholder="Search..." onChange={e => onSearch(e.target.value)} />
+      <ClearIcon icon="times" onClick={() => onSearch('')} />
     </Wrapper>
-  )
+  );
 }

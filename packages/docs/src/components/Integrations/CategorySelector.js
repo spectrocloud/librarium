@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,8 +10,8 @@ const Wrapper = styled.div`
 
 const SelectorCard = styled.div`
   padding: 4px 12px;
-  background: #FAFAFA;
-  border: 1px solid #DDDDDD;
+  background: #fafafa;
+  border: 1px solid #dddddd;
   border-radius: 13px;
   margin: 0 10px 10px 0;
   font-weight: 500;
@@ -21,23 +21,27 @@ const SelectorCard = styled.div`
   text-transform: uppercase;
   color: #555;
   cursor: pointer;
-  ${props => props.selected && css`
+  ${props =>
+    props.selected &&
+    css`
       background: #206cd1;
       border: 1px solid #206cd1;
       color: #fff;
-  `}
+    `}
 `;
 
-export default function CategorySelector({ categories, selected = "all", selectCategory }) {
+export default function CategorySelector({ categories, selected = 'all', selectCategory }) {
   return (
     <Wrapper>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <SelectorCard
+          key={index}
           onClick={() => selectCategory(category)}
-          selected={selected === category}>
-          {category.split("_").join(" ")}
+          selected={selected === category}
+        >
+          {category.split('_').join(' ')}
         </SelectorCard>
       ))}
     </Wrapper>
-  )
+  );
 }

@@ -122,7 +122,7 @@ export const StyledMainWrapper = styled.div`
 
   h3 {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
     margin: 30px 0;
   }

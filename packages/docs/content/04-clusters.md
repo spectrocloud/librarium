@@ -1,8 +1,8 @@
 ---
-title: "Clusters"
-metaTitle: "Creating clusters on Spectro Cloud"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
-icon: "clusters"
+title: 'Clusters'
+metaTitle: 'Creating clusters on Spectro Cloud'
+metaDescription: 'The methods of creating clusters for a speedy deployment on any CSP'
+icon: 'clusters'
 hideToC: false
 fullWidth: false
 ---
@@ -16,11 +16,11 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 Kubernetes clusters in Spectro Cloud are instantiated from cluster profiles. A cluster definition in Spectro Cloud consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. The following high-level tasks are performed as part of the cluster creation:
 
-* Orchestration of computing, network, and storage resources on the cloud environments along with the required placement infrastructure.
-* Installation and configuration of various Kubernetes components like Kubelet, API servers, etcd, scheduler, etc.
-* Installation and configuration of the cloud-specific network (CNI) and storage (CSI) plugins.
-* Securing of the cluster infrastructure and configuration in accordance with the relevant OS, Kubernetes, and cloud security best practices.
-* Deployment of additional add-ons such as Prometheus, Permissions Manager, Vault, etc., as specified in the cluster profile.
+- Orchestration of computing, network, and storage resources on the cloud environments along with the required placement infrastructure.
+- Installation and configuration of various Kubernetes components like Kubelet, API servers, etcd, scheduler, etc.
+- Installation and configuration of the cloud-specific network (CNI) and storage (CSI) plugins.
+- Securing of the cluster infrastructure and configuration in accordance with the relevant OS, Kubernetes, and cloud security best practices.
+- Deployment of additional add-ons such as Prometheus, Permissions Manager, Vault, etc., as specified in the cluster profile.
 
 # Images
 
@@ -29,6 +29,7 @@ Spectro Cloud provides VM images for cluster computing infrastructure out of the
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Spectro Cloud's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
 ## Customization
+
 Spectro Cloud provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
 ### Customize Out of the Box Images
@@ -39,11 +40,11 @@ Spectro Cloud's out of the box images are security-hardened and have Kubernetes 
 
 Users can bring their own OS image by building custom OS packs and providing a reference to the desired image in pack annotations. These images can be:
 
-* Pre-configured with all desired OS packages and Kubernetes components for the desired version installed. No Ansible roles are specified in the OS pack. The “skip k8s installation” option in the OS pack is set to true. (`"skipK8sInstall": "true"`)
+- Pre-configured with all desired OS packages and Kubernetes components for the desired version installed. No Ansible roles are specified in the OS pack. The “skip k8s installation” option in the OS pack is set to true. (`"skipK8sInstall": "true"`)
 
-* Base images with none of the desired packages or Kubernetes components installed. Ansible roles are specified in the OS pack to install additional packages. The “skip K8s installation” option in the OS pack is set to false. (`"skipK8sInstall": "false"`)
+- Base images with none of the desired packages or Kubernetes components installed. Ansible roles are specified in the OS pack to install additional packages. The “skip K8s installation” option in the OS pack is set to false. (`"skipK8sInstall": "false"`)
 
-* A combination of the two options above.
+- A combination of the two options above.
 
 Spectro Cloud’s orchestration engine examines the OS pack configuration and determines if customization is required. If customization is required, a VM instance is launched from the image reference provided in the pack. Installation of Kubernetes components and/or execution of additional Ansible roles is performed on this VM instance. A VM image is then created from this instance and used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
@@ -57,7 +58,7 @@ Spectro Cloud’s out of the box VM images are hardened in accordance with the r
 
 ## Kubernetes
 
-Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes  pack to ensure the master and worker nodes are configured securely.
+Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Spectro Cloud executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are configured securely.
 
 ## Cloud Infrastructure
 
@@ -77,28 +78,26 @@ Spectro Cloud provides several options to manage Kubernetes clusters on an ongoi
   Cluster management operations result in the update of cluster definitions in Spectro Cloud’s database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
 </InfoBox>
 
-
 # Cluster Health
 
 Spectro Cloud monitors cluster infrastructure on a regular basis and reports health on the management console.
 Overall health is computed based on the following factors:
 
-* Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heartbeat to the management console. Missing heartbeats are typically indicative of a problem such as a cluster infrastructure going down, lack of network connectivity, etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster.
-* Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable, etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
-* Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory, etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
+- Heartbeat - Spectro Cloud's management agent, which runs inside the cluster periodically sends a heartbeat to the management console. Missing heartbeats are typically indicative of a problem such as a cluster infrastructure going down, lack of network connectivity, etc. Failure to detect heartbeat over a period of time results in an unhealthy status for the cluster.
+- Node Conditions - Kubernetes maintains status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, NetworkUnavailable, etc. Spectro Cloud monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node results in an unhealthy status for the cluster.
+- Metrics - Spectro Cloud collects usage metrics such as CPU, Disk, Memory, etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
 ![Cluster Health](04-clusters/cluster_health.png)
-
 
 # Usage Monitoring
 
 Spectro Cloud continuously monitors cluster resources and reports the usage for the cluster as well as individual nodes. The following metrics are reported on the cluster overview page of the management console. By default the metrics are only displayed for the worker nodes in the cluster:
 
-* Cores Used - A cluster-wide break down of the number of cores used.
-* CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
-* Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
-* CPU Requests - Total CPUs requested across all pods.
-* Memory Requests - Total memory requested across all pods.
+- Cores Used - A cluster-wide break down of the number of cores used.
+- CPU Usage - Current CPUs used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
+- Memory Usage - Current memory used across all cluster nodes. Additionally, usage over a period of time is presented as a chart.
+- CPU Requests - Total CPUs requested across all pods.
+- Memory Requests - Total memory requested across all pods.
 
 ![Cluster Update Details](04-clusters/cluster_usage_metrics.png)
 
@@ -108,7 +107,7 @@ Additionally, usage metrics for individual nodes as well as node conditions are 
 
 Spectro Cloud enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include not only the applications and services deployed through Spectro Cloud but also the ones deployed through any other means. Services are monitored on an ongoing basis and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
-![Cluster Update Details](04-clusters/cluster_services.png "#width=500px")
+![Cluster Update Details](04-clusters/cluster_services.png '#width=500px')
 
 # Troubleshooting
 
@@ -118,8 +117,7 @@ Typically when a cluster lifecycle action such as provisioning, upgrade, or dele
 
 Spectro Cloud maintains specific milestones in a lifecycle and presents them as “conditions”. Examples include: Creating Infrastructure, Adding Control Plane Node, Customizing Image, etc. The active condition indicates what task Spectro Cloud’s orchestration system is trying to perform. If a task results in failures, the condition is marked as failed, with relevant error messages. Reconciliation however continues behind the scenes and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
-![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
-
+![Cluster Update Details](04-clusters/cluster_conditions.png '#width=400px')
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
@@ -129,9 +127,9 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 <InfoBox>
 
-* Cluster events are retained for the last 1000 events.
+- Cluster events are retained for the last 1000 events.
 
-* Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
+- Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
 
 </InfoBox>
@@ -142,51 +140,48 @@ At times it might be required to work with the Spectro Cloud support team to tro
 
 ### To Collect the Logs:
 
-* Select the running cluster
-* Go to settings and, select download logs.
-* Choose the desired log from the below options:
-    * Kube-System Logs
-        -  Logs of all the Kubernetes components.
-    * Spectro Cloud Logs
-        -  Spectro namespace logs for the last one hour.
-    * Node Logs
-        -  Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
-* Click Download Logs.
-* The message “The request was sent successfully. The download will be available soon.”  gets displayed on the UI.
-* Have an average wait time of 5 minutes.
-* At the end of this short log fetching interval, the message “The logs archive for {Cluster-name} was created successfully will be displayed on the UI.
-* Click [Download "cluster-name" logs] to download the logs folder to your local machine.
-* UnZip and rename the logs folder as per customer choice.
-
+- Select the running cluster
+- Go to settings and, select download logs.
+- Choose the desired log from the below options:
+  - Kube-System Logs
+    - Logs of all the Kubernetes components.
+  - Spectro Cloud Logs
+    - Spectro namespace logs for the last one hour.
+  - Node Logs
+    - Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
+- Click Download Logs.
+- The message “The request was sent successfully. The download will be available soon.” gets displayed on the UI.
+- Have an average wait time of 5 minutes.
+- At the end of this short log fetching interval, the message “The logs archive for {Cluster-name} was created successfully will be displayed on the UI.
+- Click [Download "cluster-name" logs] to download the logs folder to your local machine.
+- UnZip and rename the logs folder as per customer choice.
 
 <InfoBox>
 
-* In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
+- In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
 
-* Spectro Cloud recommends its users attach these logs along with the Support Request for accelerated troubleshooting.
+- Spectro Cloud recommends its users attach these logs along with the Support Request for accelerated troubleshooting.
 
-* Expect an average log fetching time of 5 minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
+- Expect an average log fetching time of 5 minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
 
-* The downloaded Zip file will be by default named as spectro_logs.zip, the users can unzip and choose a name of convenience.
+- The downloaded Zip file will be by default named as spectro_logs.zip, the users can unzip and choose a name of convenience.
 
 </InfoBox>
-
-
 
 # Proxy Whitelists
 
 This table lists the proxy requirements for enabling the Spectro Cloud management console.
 
-| Top-level Domain | Port | Description |
-| --- | --- | --- |
-| spectrocloud.com | 443 | For the Spectro Cloud SaaS. |
-| s3.amazonaws.com | 443 | To access the Spectro Cloud VMware OVA files. |
-| gcr.io | 443 | To access the Spectro Cloud image files. |
-| docker.io | 443 | To access the Spectro Cloud Pack Registries. |
-| googleapis.com | 443 | For pulling Spectro Cloud images. |
-| docker.com | 443 | To access the Spectro Cloud docker images. |
-| raw.githubusercontent.com | 443 | |
-| projectcalico.org | 443 | For egress management. |
-| quay.io | 443 | Container image registry access. |
-| grafana.com | 443 | To provide access to the dashboard metrics. |
-| github.com | 443 | |
+| Top-level Domain          | Port | Description                                   |
+| ------------------------- | ---- | --------------------------------------------- |
+| spectrocloud.com          | 443  | For the Spectro Cloud SaaS.                   |
+| s3.amazonaws.com          | 443  | To access the Spectro Cloud VMware OVA files. |
+| gcr.io                    | 443  | To access the Spectro Cloud image files.      |
+| docker.io                 | 443  | To access the Spectro Cloud Pack Registries.  |
+| googleapis.com            | 443  | For pulling Spectro Cloud images.             |
+| docker.com                | 443  | To access the Spectro Cloud docker images.    |
+| raw.githubusercontent.com | 443  |                                               |
+| projectcalico.org         | 443  | For egress management.                        |
+| quay.io                   | 443  | Container image registry access.              |
+| grafana.com               | 443  | To provide access to the dashboard metrics.   |
+| github.com                | 443  |                                               |

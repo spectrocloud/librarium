@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Link from '../Link';
 
@@ -29,15 +29,17 @@ const Wrapper = styled.div`
   margin: 0px auto;
   overflow: hidden;
 
-  ${props => !props.noBorder && css`
-    ::after {
-      content: ' ';
-      max-width: 1109.51px;
-      width: 100%;
-      border: 1px solid #d4d4d4;
-      margin-top: 102px;
-    }
-  `}
+  ${props =>
+    !props.noBorder &&
+    css`
+      ::after {
+        content: ' ';
+        max-width: 1109.51px;
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        margin-top: 102px;
+      }
+    `}
 
   h3 {
     font-weight: 500;
@@ -112,10 +114,10 @@ function CloudsSection({ noBorder = false, noMargin, title, description, options
   return (
     <Wrapper noBorder={noBorder} noMargin={noMargin}>
       {title ? <h3>{title}</h3> : null}
-      {description ? <Description>{description}</Description>: null}
+      {description ? <Description>{description}</Description> : null}
       <CardWrapper>
-        {options.map(option => (
-          <Link to={option.href}>
+        {options.map((option, index) => (
+          <Link key={index} to={option.href}>
             <Card>
               <Icon>
                 <img src={clouds[option.cloud]} alt={`${option.cloud} icon`} />

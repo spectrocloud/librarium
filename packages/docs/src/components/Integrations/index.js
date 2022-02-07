@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Fuse from 'fuse.js';
 import Link from '@librarium/shared/src/components/Link';
 
-import Search from './Search';
+import IntegrationSearch from './Search';
 import CategorySelector from './CategorySelector';
-import { useGraphQL } from "@librarium/shared/src/graphql";
+import { useGraphQL } from '@librarium/shared/src/graphql';
 
 const Wrapper = styled.div`
   padding: 15px 0;
@@ -108,7 +108,7 @@ export default function Integrations() {
         selectCategory={setSelectedCategory}
         selected={selectedCategory}
       />
-      <Search onSearch={setSearchValue} />
+      <IntegrationSearch onSearch={setSearchValue} />
       <IntegrationsWrapper>
         {integrations.map(({ node }) => {
           const { title, slug, logoUrl } = node.fields;

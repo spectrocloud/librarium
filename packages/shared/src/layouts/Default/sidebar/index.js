@@ -53,7 +53,7 @@ const Navbar = styled.div`
     position: absolute;
     bottom: 0;
     background: #fff;
-    border-top: 1px solid #DEDFE5;
+    border-top: 1px solid #dedfe5;
     height: 72px;
     display: flex;
     flex-direction: row-reverse;
@@ -97,7 +97,7 @@ const SidebarLayout = ({
   const location = useLocation();
   function renderMenuItem({ link, title, icon, isActive = () => false }) {
     return (
-      <Link className={isActive(location) ? 'navbar isActive' : 'navbar'} to={link}>
+      <Link key={title} className={isActive(location) ? 'navbar isActive' : 'navbar'} to={link}>
         {icon && <FontAwesomeIcon icon={icon} />}
         {title}
       </Link>
