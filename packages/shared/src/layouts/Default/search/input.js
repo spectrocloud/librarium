@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import styled, { css } from 'styled-components';
 import { Search } from 'styled-icons/fa-solid/Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SearchIcon = styled(Search)`
   width: 1em;
@@ -10,6 +11,9 @@ const SearchIcon = styled(Search)`
   margin-right: 10px;
   left: 15px;
   color: #999;
+`;
+const ClearIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
 `;
 
 const Input = styled.input`
@@ -52,6 +56,8 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
     e.preventDefault();
   };
 
+  const [inputValue, setInputValue] = useState('');
+
   useEffect(() => {
     if (focus) {
       ref.current.focus();
@@ -66,10 +72,21 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
         className={'searchInput'}
         id="searchInputId"
         type="text"
+        value={inputValue}
         placeholder="Search"
         aria-label="Search"
-        onChange={e => refine(e.target.value)}
+        onChange={e => {
+          setInputValue(e.target.value);
+          refine(e.target.value);
+        }}
         {...rest}
+      />
+      <ClearIcon
+        icon="times"
+        onClick={e => {
+          setInputValue('');
+          refine(e.target.value);
+        }}
       />
     </Form>
   );
