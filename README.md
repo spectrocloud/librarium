@@ -79,10 +79,10 @@ The number will be the position of the item in the menu. Each of the main pages 
 
 ```markdown
 ---
-title: "Home"
-metaTitle: "spectrocloud docs"
-metaDescription: "This is the meta description"
-icon: "home"
+title: 'Home'
+metaTitle: 'spectrocloud docs'
+metaDescription: 'This is the meta description'
+icon: 'home'
 hideToC: true
 fullWidth: true
 ---
@@ -119,19 +119,20 @@ In markdown you can reference this page relatively to the root of the domain usi
 You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
 
 ```md
-![alt text](clusterprofiles.png "cluster profiles example")
+![alt text](clusterprofiles.png 'cluster profiles example')
 ```
 
 The same rules apply though. You can reference it from a different section using urls relative to the root directory
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
+![alt text](/introduction/clusterprofiles.png '#title=cluster profiles example')
 ```
+
 **Image size**
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#width=120px")
+![alt text](/introduction/clusterprofiles.png '#width=120px')
 ```
 
 #### Tabs component
@@ -139,7 +140,7 @@ Image size can be customized. You can provider either the width or the height. U
 To use the tabs component you have to import it from the _shared_ folder
 
 ```js
-import Tabs from "@librarium/shared/src/components/ui/Tabs";
+import Tabs from '@librarium/shared/src/components/ui/Tabs';
 ```
 
 After that, you can use it like this
@@ -147,14 +148,10 @@ After that, you can use it like this
 ```js
 <Tabs>
   <Tabs.TabPane tab="AWS" key="aws">
-
-    # AWS cluster
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    # AWS cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
   <Tabs.TabPane tab="VMware" key="vmware">
-
-    # VMware cluster
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Tabs.TabPane>
 </Tabs>
 ```
@@ -183,32 +180,30 @@ After that you can use it like this
       x: 20,
       y: 20,
       label: 1,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      tooltipPlacement: "rightTop",
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      tooltipPlacement: 'rightTop',
     },
     {
       x: 80,
       y: 100,
       label: 2,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
       x: 220,
       y: 230,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      tooltipPlacement: "rightTop",
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      tooltipPlacement: 'rightTop',
     },
   ]}
 >
-
   *Markdown content*
-
 </PointsOfInterest>
 ```
 
 **x** and **y** properties refer to the coordinates of the point starting from the **top-left corner** of the markdown container.
 
-**Note**: ***x***, ***y***, ***description*** properties are **mandatory**. ***label*** and ***tooltipPlacement*** properties are optional.
+**Note**: **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_** properties are optional.
 
 If no label is specified, the default one is "+".
 
@@ -217,20 +212,29 @@ Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (defa
 ### Tooltip
 
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
+
 ```js
 <Tooltip>tooltip content</Tooltip>
 ```
+
 **Notes**
- * The tooltip icon can be customized by sending a [font awesome](https://fontawesome.com/icons?d=gallery) icon
+
+- The tooltip icon can be customized by sending a [font awesome](https://fontawesome.com/icons?d=gallery) icon
+
 ```js
 <Tooltip icon="atom">tooltip content</Tooltip>
 ```
- * If needed, the icon can be replace with text or other html tags using the trigger property:
+
+- If needed, the icon can be replace with text or other html tags using the trigger property:
+
 ```js
-<Tooltip trigger={<button>This is a button</button>}><h1>This is a h1 inside the tooltip</h1></Tooltip>
+<Tooltip trigger={<button>This is a button</button>}>
+  <h1>This is a h1 inside the tooltip</h1>
+</Tooltip>
 ```
 
- * If used inside a paragraph or other md elements the entire "block" needs to be on the same line
+- If used inside a paragraph or other md elements the entire "block" needs to be on the same line
+
 ```js
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
@@ -239,11 +243,71 @@ Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234`.
+_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234 `.
 This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
 
 _Components_:
+
 - `2-4` - lines interval to be colored
 - `|` - separator between lines interval and color
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
+
+### Using Warning Box compponent/Info Box component
+
+To use these components you will have to import them from the shared folder:
+
+```js
+import WarningBox from '@librarium/shared/src/components/WarningBox';
+import InfoBox from '@librarium/shared/src/components/InfoBox';
+```
+
+After that you can use them like this:
+
+```js
+<InfoBox>
+  *Markdown cotent*
+</InfoBox>
+
+<WarningBox>
+  *Markdown content*
+</WarningBox>
+```
+
+To avoid adding extra space in the box:
+
+- If you have bullet points, the content will have at the beginning and at the end, a new line ;
+
+Example:
+
+```js
+  <InfoBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </InfoBox>
+
+  <WarningBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </WarningBox>
+```
+
+- If you only have text, then there is no need for new lines;
+
+Example:
+
+```js
+  <InfoBox>
+    *TEXT content that you write without new lines*
+  </InfoBox>
+
+  <WarningBox>
+    *TEXT content that you write without new lines*
+  </WarningBox>
+```
