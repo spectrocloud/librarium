@@ -101,7 +101,7 @@ The following permissions are additionally required to be granted to the cloud a
 Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation.
 
 ```json
-({
+{
   "Effect": "Allow",
   "Action": ["secretsmanager:DeleteSecret", "secretsmanager:GetSecretValue"],
   "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"]
@@ -117,13 +117,13 @@ Add the following permissions to the IAM policy called NodePolicy if it was crea
     "s3:GetEncryptionConfiguration"
   ],
   "Resource": ["*"]
-})
+}
 ```
 
 Add the following permissions to the IAM policy called ControllerPolicy if it was created as documented in Spectro Cloud documentation.
 
 ```json
-({
+{
   "Effect": "Allow",
   "Action": ["eks:AssociateIdentityProviderConfig", "eks:ListIdentityProviderConfigs"],
   "Resource": ["arn:aws:eks:*:*:cluster/*"]
@@ -132,7 +132,7 @@ Add the following permissions to the IAM policy called ControllerPolicy if it wa
   "Effect": "Allow",
   "Action": ["eks:DisassociateIdentityProviderConfig", "eks:DescribeIdentityProviderConfig"],
   "Resource": ["*"]
-})
+}
 ```
 
 # May 4, 2021 - Release 1.9.0
