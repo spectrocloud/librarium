@@ -616,13 +616,18 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
 * Configure the master and worker node pools. A master and a worker node pool are configured by default.
-* Enable or disable node pool Taint as per the user choice. If Taint is enabled the following parameters neds to be passed:
-	* Key: Custom key for the Taint
-	* Value: Custom value for the Taint key
-	* Effect: Make the choice of effect from the drop-down menu
+* An optional Label can be applied to a node pool during the cluster creation. During the cluster creation while configuring the node pools tag an optional Label in a unique key: value format. For a running cluster, the created label can be edited as well as a new label can be added.
+* Enable or disable node pool Taint as per the user choice. If Taint is enabled the following parameters needs to be passed:
+  * Key: Custom key for the Taint
+  * Value: Custom value for the Taint key
+  * Effect: Make the choice of effect from the drop-down menu. There are three options to go with,
+    
 		* NoSchedule : A pod that cannot tolerate the node Taint, should not be scheduled to the node.
+
 		* PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed. 
+
 		* NoExecute: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint. 
+
 <InfoBox>
 Palette allows its users to apply/edit the Taints for a running cluster through the “Edit node pool” option under Nodes tab.
 </InfoBox>

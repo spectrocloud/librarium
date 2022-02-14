@@ -1,6 +1,6 @@
 ---
-title: "Node Taint"
-metaTitle: "Taint the nodes cluster workloads"
+title: "Node Labels and Taints"
+metaTitle: "Label and Taint the nodes"
 metaDescription: "Apply taints on node pools for appropriate node to pod scheduling."
 hideToC: false
 fullWidth: false
@@ -12,10 +12,10 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 
-# Overview
-Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a node. Once the Taint is applied, pods that can tolerate the tainted nodes will only be scheduled to that particular node. Thus, it makes sure that a pod is not scheduled to an inappropriate node.
+# Overview on Taints
+Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a Palette worker pool. Once the Taint is applied, pods that can tolerate the tainted nodes will only be scheduled to that particular node. Thus, it makes sure that a pod is not scheduled to an inappropriate node.
 ## How to apply Taint to your node pool
-A Taint can be applied to a node pool while creating the cluster. While configuring the nodes pools during cluster creation:
+A Taint can be applied to a worker pool while creating the cluster. While configuring the nodes pools during cluster creation:
 * Enable the “Taint” select button.
 * To apply the Taint, set the following parameters:
 	* Key: Custom key for the Taint
@@ -32,3 +32,10 @@ Eg: Key = key1;
 Palette allows its users to apply/edit the Taints for a running cluster through the “Edit node pool” option under Nodes tab.
 </InfoBox>
 	
+
+# Overview on Labels 
+Palette enables our users to Label the master and worker pool using key/value pairs for organizing and selecting attributes of a cluster. These labels do not directly imply anything to the semantics of the core system but are intended to be used by users to identify attributes of Clusters. Labels can be attached to clusters during creation and can be subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given cluster.
+
+## Apply Labels to Nodes
+An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, labels can be added and edited. 
+
