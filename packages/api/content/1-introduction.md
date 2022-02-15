@@ -32,13 +32,12 @@ Palette supports two types of user authentication methods:
   * All requests must be authenticated with an API token that are passed using the HTTP request header `Authorization`. 
   * Activated users can use the `/auth/authenticate` API to authenticate and obtain the Authorization token. 
   * Every authorization token is valid for 15 min. 
-  * To refresh the token use: `GET /v1/auth/refresh/:token` 
+  * To refresh the token use [this GET call](https://docs.spectrocloud.com/api/v1/auth/): `GET /v1/auth/refresh/{token}` 
   
 ### Using API Key
 Palette enables secure authentication and authorization for API with the help of API Keys. This is the method of accessing the API without referring to the actual user credentials. The API key will be part of individual API requests to identify and authorize the request. This is a relatively more straight forward method of authentication. The API Key is passed using HTTP request header in the following format:
   * Key: ApiKey
-  * Value: API key copied from the Palette Console. 
-  * E.g.: QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
+  * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
          
 # Requests
 
