@@ -512,6 +512,8 @@ All the above policies are required as part of Cluster API requirement, derived 
                 "ec2:CreateSnapshot",
                 "ec2:DeleteSnapshot",
                 "ec2:DescribeKeyPairs",
+                "ec2:DetachNetworkInterface",
+                "ec2:DeleteNetworkInterface",
                 "ec2:DescribeSnapshots",
                 "ec2:DescribeTags",
                 "ec2:DescribeVolumesModifications",
