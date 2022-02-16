@@ -12,7 +12,7 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 # Overview
-Palette enables RoleBindings and ClusterRoleBindings to be enabled within every cluster to provide cluster-centric access control using RBAC. The Palette RBAC contains resources that represent a set of additive permissions. The rules can be configured in two levels:
+Palette enables RoleBindings and ClusterRoleBindings to be enabled within every cluster to provide cluster-centric access control using RBAC. If the cluster is already associated with one or more Workspaces then users are not allowed to configure RBAC again at the cluster level. The Palette RBAC contains resources that represent a set of additive permissions. The rules can be configured in two levels:
 
 **Role** sets access permissions within a namespace. During Role creation, the namespace to which it belongs needs to be specified.
 
@@ -45,6 +45,7 @@ A single RoleBinding can have multiple subjects.
 “Confirm” the information to complete the creation of the ClusterRoleBinding. 
 
 ### Steps to set up Namespace Based RolesBinding (Namespaces)
+Users can now allocate CPU and Memory quota for each namespace at the cluster level. 
 * Select Cluster Settings -> RBAC -> Namespace
 * Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”
 * Allocate resources to the created namespace (CPU and Memory).
