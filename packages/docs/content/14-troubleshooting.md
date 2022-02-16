@@ -190,4 +190,13 @@ Installation of the gateway cluster may run into errors or might get stuck in th
 * [Kubernetes Dashboard](/integrations/kubernetes-dashboard/#troubleshooting)
 * [CSI](/integrations/csi/#troubleshooting)
 
+# Troubleshooting vSphere cluster with ARP Table
+We have observed that certain vSphere clusters run into issues in which non-VIP nodes could not contact VIP node because their ARP entries became stale.
 
+In order to minimize this situation from happening, vSphere clusters deployed from Palette now come with a daemonset that cleans ARP entry cache every 5 minutes. This will force the nodes to re-request ARP entry of VIP node periodically. This is done automatically and no user action is required.
+
+Users can verify by running the following command on non-VIP nodes and observe that ARP cache is never older than 300 seconds:
+
+```
+watch ip -statistics neighbour
+```
