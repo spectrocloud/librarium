@@ -123,6 +123,18 @@ Spectro Cloud maintains specific milestones in a lifecycle and presents them as 
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
+## Cluster Upgrade Details
+
+Palette provides persistent storage of node repaves details caused due to node resource upgrades. The following two scenarios are captured and displayed as "Event Details" of the “Cluster Overview”:
+* Nodes get repaved for any changes made to core layers (k8s, os, etc.) which causes Kubeadmconfig to change and triggers node repaves such as:
+  * Kubernetes version upgrade
+  * Kubernetes control plane upsize
+  * Machine pool updates for disk size
+  * Changes in availability zones
+  * Changes in instance types
+* Nodes getting repaved on specific az’s alone due to machine health check failures.
+
+
 ## Event Stream
 
 Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
