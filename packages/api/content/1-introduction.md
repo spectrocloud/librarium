@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 metaTitle: "Introduction"
-metaDescription: "Spectro Cloud API Introduction"
+metaDescription: "Palette API Introduction"
 icon: "graph"
 hideToC: false
 fullWidth: false
@@ -14,16 +14,16 @@ import InfoBox from "@librarium/shared/src/components/InfoBox"
 
 <Intro>
 
-# Spectro Cloud API
+# Palette API
 
 </Intro>
 
 
-Spectro Cloud platform capabilities are exposed via REST APIs that comply with open API standards. 
+Palette platform capabilities are exposed via REST APIs that comply with open API standards. 
 
 # Paths
 
-Every API's URI has the prefix of the version and the Spectro Cloud resource, such as: `v1/spectroclusters/...`
+Every API's URI has the prefix of the version and the Palette resource, such as: `v1/spectroclusters/...`
 
 # Authentication
 
@@ -69,7 +69,7 @@ The version information is part of the API URI like `v1alpha1`, `v1`. Future API
 
 # Scope
 
-Spectro Cloud applications operate in *tenant* and *project* scopes. The resources can be logically grouped as projects and API requests within a project should carry the project uid in the context. The project scope  can be specified in the API request as a HTTP header with the key as `projectUid` and value as the &lt;project uid&gt;
+Palette applications operate in *tenant* and *project* scopes. The resources can be logically grouped as projects and API requests within a project should carry the project uid in the context. The project scope  can be specified in the API request as a HTTP header with the key as `projectUid` and value as the &lt;project uid&gt;
 
 # Pagination
 
