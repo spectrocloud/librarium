@@ -125,15 +125,18 @@ For example, failure to create a virtual machine in AWS due to the vCPU limit be
 
 ## Cluster Upgrade Details
 
-Palette provides persistent storage of node repaves details caused due to node resource upgrades. The following two scenarios are captured and displayed as "Event Details" of the “Cluster Overview”:
-* Nodes get repaved for any changes made to core layers (k8s, os, etc.) which causes Kubeadmconfig to change and triggers node repaves such as:
-  * Kubernetes version upgrade
-  * Kubernetes control plane upsize
-  * Machine pool updates for disk size
-  * Changes in availability zones
-  * Changes in instance types
-* Nodes getting repaved on specific az’s alone due to machine health check failures.
+Palette will perform a rolling upgrade on the nodes for any changes in KubeadmConfig. Below are some of the actions that will cause KubeadmConfig change and will result in nodes getting upgraded:
+* OS layer changes
+* Kubernetes layer changes
+* Kubernetes version upgrade
+* Kubernetes control plane upsize
+* Machine pool updates for disk size
+* Changes in availability zones
+* Changes in instance types
+* Certificate renewal and many more..
 
+Palette also keeps track of node's machine health and will relaunch the node when the machine health check fails. The timeout after which Palette will relaunch is 30 mins. 
+Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview > Upgrade details**.
 
 ## Event Stream
 
