@@ -8251,7 +8251,7 @@
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster profiles filter summary",
+        "summary": "Retrieves a list of cluster profiles filter summary Supported filter fields - [\"profileName\", \"tags\", \"profileType\", \"environment\"] Supported sort fields - [\"profileName\", \"environment\", \"profileType\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
@@ -8332,7 +8332,7 @@
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster summary with provided filter spec",
+        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "operationId": "v1SpectroClustersFilterSummary",
         "parameters": [
           {
@@ -13493,6 +13493,22 @@
         ],
         "summary": "Retrieves system usage",
         "operationId": "V1SystemUsageGet",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "startDate",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "endDate",
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -13513,6 +13529,22 @@
         ],
         "summary": "Downloads the system usage report",
         "operationId": "V1SystemUsageReportPdf",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "startDate",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "endDate",
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -15229,6 +15261,32 @@
           "required": true
         }
       ]
+    },
+    "/v1/services/images": {
+      "get": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Returns the services images",
+        "operationId": "v1ServicesImagesGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "app version",
+            "name": "version",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ServicesImages"
+            }
+          }
+        }
+      }
     },
     "/v1/services/{serviceName}/version": {
       "get": {
@@ -28244,7 +28302,7 @@
       "type": "object",
       "properties": {
         "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+          "$ref": "#/definitions/v1ObjectMetaUpdateEntity"
         },
         "spec": {
           "$ref": "#/definitions/v1ClusterNamespaceSpec"
@@ -28896,7 +28954,7 @@
       "type": "object",
       "properties": {
         "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+          "$ref": "#/definitions/v1ObjectMetaUpdateEntity"
         },
         "spec": {
           "$ref": "#/definitions/v1ClusterRbacSpec"
@@ -36838,7 +36896,7 @@
       }
     },
     "v1ObjectMetaInputEntity": {
-      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "description": "ObjectMeta input entity for object creation",
       "type": "object",
       "properties": {
         "annotations": {
@@ -36870,6 +36928,30 @@
       "properties": {
         "metadata": {
           "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        }
+      }
+    },
+    "v1ObjectMetaUpdateEntity": {
+      "description": "ObjectMeta update entity with uid as input",
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       }
     },
@@ -41187,6 +41269,24 @@
         "project"
       ]
     },
+    "v1ServiceImage": {
+      "description": "Service image entity",
+      "type": "object",
+      "properties": {
+        "buildId": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "serviceName": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1ServiceManifest": {
       "description": "Service manifest information",
       "type": "object",
@@ -41265,6 +41365,18 @@
         },
         "name": {
           "type": "string"
+        }
+      }
+    },
+    "v1ServicesImages": {
+      "type": "object",
+      "properties": {
+        "serviceImages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ServiceImage"
+          }
         }
       }
     },
@@ -46818,6 +46930,31 @@
         }
       }
     },
+    "v1WorkspaceBackupStatusConfig": {
+      "description": "Workspace backup status config",
+      "properties": {
+        "backupName": {
+          "type": "string"
+        },
+        "durationInHours": {
+          "type": "number",
+          "format": "int64"
+        },
+        "includeAllDisks": {
+          "type": "boolean"
+        },
+        "includeClusterResources": {
+          "type": "boolean"
+        },
+        "namespaces": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v1WorkspaceBackupStatusMeta": {
       "description": "Workspace backup status meta",
       "properties": {
@@ -46835,6 +46972,9 @@
     "v1WorkspaceClusterBackupConfig": {
       "description": "Workspace cluster backup config",
       "properties": {
+        "backupName": {
+          "type": "string"
+        },
         "backupState": {
           "$ref": "#/definitions/v1WorkspaceBackupState"
         },
@@ -46846,6 +46986,9 @@
           "items": {
             "$ref": "#/definitions/v1WorkspaceClusterBackupResponse"
           }
+        },
+        "config": {
+          "$ref": "#/definitions/v1WorkspaceBackupStatusConfig"
         },
         "requestTime": {
           "$ref": "#/definitions/v1Time"
@@ -46865,9 +47008,6 @@
           "type": "string"
         },
         "clusterUid": {
-          "type": "string"
-        },
-        "msg": {
           "type": "string"
         }
       }
