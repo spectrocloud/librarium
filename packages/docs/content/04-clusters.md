@@ -143,7 +143,8 @@ Palette keeps track of the reason that triggered the rolling upgrade on the node
 Note:
 ![upgrade-details2.png](upgrade-details2.png)
 * For relaunching a node healthcheck timeout is 10 mins. Hence, if node’s kubelet stopped working and doesnot come up in 10 mins a new node will be launched.  
-* For network unavailability the time delay is 10 mins. Hence, if new node is launching and it doesn’t get ready in 30 mins the failed node will be killed and replaced with a new node.
+* For network unavailability the time delay is 10 mins. 
+* If a new node is launching and it doesn’t get ready in 30 mins the failed node will be killed and replaced with a new node.
 
 ## Event Stream
 
