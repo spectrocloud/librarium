@@ -200,3 +200,12 @@ Users can verify by running the following command on non-VIP nodes and observe t
 ```
 watch ip -statistics neighbour
 ```
+
+# Understanding why nodes are repaved
+
+Tow common reasons why nodes get repaved are:
+
+* Changes were made to core layers, such as k8s, os, disk, which cause kubeadm-config to change and trigger node repaving.
+* Machine health check failures (possibly due to network unavailibility) which cause the nodes to relaunch.
+
+For both cases logs are provided in Palette for traceability. However these logs may be lost when the pods get relaunched. To ensure that these reasons are persisted across repaving, a new field `upgrades` has been added to the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This new field is represented in the Palette UI so that users can understand why and when repaving happened.
