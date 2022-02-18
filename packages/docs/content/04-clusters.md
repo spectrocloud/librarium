@@ -135,8 +135,12 @@ Palette will perform a rolling upgrade on the nodes for any changes in KubeadmCo
 * Changes in instance types
 * Certificate renewal and many more..
 
-Palette also keeps track of node's machine health and will relaunch the node when the machine health check fails. The timeout after which Palette will relaunch is 30 mins. 
+Palette also keeps track of node's machine health and will relaunch the node when the machine health check fails. 
 Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview > Upgrade details**.
+
+Note:
+* For relaunching a node healthcheck timeout is 10 mins. Hence, if node’s kubelet stopped working and doesnot come up in 10 mins a new node will be launched.  
+* For network unavailability the time delay is 10 mins. Hence, if new node is launching and it doesn’t get ready in 30 mins the failed node will be killed and replaced with a new node.
 
 ## Event Stream
 
