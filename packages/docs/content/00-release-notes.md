@@ -16,6 +16,21 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 
 
+# February 23, 2022 - Release 2.3.0
+Palette 2.3.0 is released with exquisite features to boost the product performance. The 2.3 Palette enhancements are:
+* Palette enables secure and straightforward user authentications with **API Keys** to access the API without referring to user credentials. 
+* Palette users can now avail themselves of a broad range of read-only information about the clusters across all the projects under that particular tenant from tenant admin login. 
+* Palette supports **Taints** to be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node. 
+* Palette users can now **Label** the Kubernetes objects using key/value pairs for identifying, organizing, and identify selecting attributes of a cluster.
+* Palette establishes cluster-centric access control with **RBAC** to structure a set of additive permissions aiding RoleBindings and ClusterRoleBindings. 
+* The palette extends the **backup and restores to the workspace** scope. Thus create a backup of a set of workspace clusters and restore them at tenant convenience. 
+* To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator and Workspace Admin**, provide restricted access to the workspace resources.
+* Palette supports the deployment of a single pack in multiple layers to utilize the heterogeneous applications of that single pack.
+* Palette Edge Updates:
+  * Palette deploys system profiles using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM.
+  * Palette leverages **Harbor registry** aided policies and RBAC for delivering compliance, performance, and interoperability to help our users consistently and securely manage artifacts against vulnerabilities. 
+  * Palette brings in a VM operator that runs in both the System Kind cluster as well as the application cluster to automate the orchestration of the VM as specified in the system profile.
+
 # January 20, 2022 - Hotfix 2.2.26
 
 * Palette Hotfix 2.2.26 supports custom Helm chart registry in Private Networks.
