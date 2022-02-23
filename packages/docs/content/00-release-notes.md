@@ -21,7 +21,7 @@ Palette 2.3.0 is released with exquisite features to boost the product performan
 * Palette enables secure and straightforward user authentications with **API Keys** to access the API without referring to user credentials. 
 * Palette users can now avail themselves of a broad range of read-only information about the clusters across all the projects under that particular tenant from tenant admin login. 
 * Palette supports **Taints** to be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node. 
-* Palette users can now **Label** the Kubernetes objects using key/value pairs for identifying, organizing, and identify selecting attributes of a cluster.
+* Palette users can now **Label** the Kubernetes objects using key/value pairs for organizing, and to identify selecting attributes of a cluster.
 * Palette establishes cluster-centric access control with **RBAC** to structure a set of additive permissions aiding RoleBindings and ClusterRoleBindings. 
 * The palette extends the **backup and restores to the workspace** scope. Thus create a backup of a set of workspace clusters and restore them at tenant convenience. 
 * To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator and Workspace Admin**, provide restricted access to the workspace resources.
