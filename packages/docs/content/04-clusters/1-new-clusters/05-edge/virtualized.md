@@ -79,7 +79,7 @@ The following steps describe the interim process for installing services into th
 * SSH into the appliance
 * Switch to root user `sudo -i`
 * Provide the Proxy Settings
-* Download palette artifacts (contact Palette support team)
+* Download Palette artifacts (contact Palette support team)
 * Copy System Profile downloaded in the previous step to the bare metal machine at /root/spectro-installer and rename to systemprofile.tgz
 * Run the install script expects the private IP of the Bare Metal appliance as input. This is used for configuring the local Harbor service. 
 
