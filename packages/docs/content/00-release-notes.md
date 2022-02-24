@@ -27,9 +27,9 @@ Palette 2.3.0 is released with exquisite features to boost the product performan
 * To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator and Workspace Admin**, provide restricted access to the workspace resources.
 * Palette supports the deployment of a single pack in multiple layers to utilize the heterogeneous applications of that single pack.
 * Palette Edge Updates:
-  * Palette deploys system profiles using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM.
+  * Palette deploys **System Profiles** using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM.
   * Palette leverages **Harbor registry** aided policies and RBAC for delivering compliance, performance, and interoperability to help our users consistently and securely manage artifacts against vulnerabilities. 
-  * Palette brings in a VM operator that runs in both the System Kind cluster as well as the application cluster to automate the orchestration of the VM as specified in the system profile.
+  * Palette brings in a **VM Operator** that runs in both the System Kind cluster as well as the application cluster to automate the orchestration of the VM as specified in the system profile.
 
 # January 20, 2022 - Hotfix 2.2.26
 
