@@ -173,7 +173,7 @@ List all the packs from the Spectro Cloud pack registry:
 <Tabs.TabPane tab="Usage" key="cli_list_usage">
 
 ```bash
- spectro pack ls [flags
+ spectro pack ls [flags]
 ```
 
 </Tabs.TabPane>
