@@ -35,22 +35,24 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
   * Choose the desired version. Choices include pinning to a specific version (e.g. 1.1.1) or picking a major or minor train such as 1.x or 1.1.x. Picking a major/minor train results in a dynamic version association. The latest release from that train is linked to the pack at any given point. Future release updates on the train will result in the pack being relinked to the newest version. This allows clusters to always be at the latest released version, without having to make subsequent updates to the profile.
   * The configuration option and version selected might provide configuration parameters to provide granular control or fine-tune certain aspects of the functionality. For the packs provided out of the box, the configuration parameters are set to values based on common best practices. Users may override these parameters as desired. Additionally for certain layers, Spectro Cloud provides a bunch of presets to quickly enable or configure a feature within the add-on. These presets are a group of properties preset with defaults to provide a quick and easy way to modify a set of relevant properties. If available, users can also enable one or more presets as appropriate. 
   * Attach additional manifests to the layer if desired. Attach manifests provide a way for provisioning additional Kubernetes resources that support an integration or an add-on. Certain integrations offered through packs or charts, may require creation of resources like secrets, crds etc, in order to complete the installation end to end. This can be achieved by adding one or more 'Attach Manifests' to the layer. 
-* Palette allows users to deploy same packs to multiple layers to maximize pack utilization from multiple functional perspectives. 
-  * To enable multi layer support of packs add the following key to the yaml editor of Pack Values:
+* Palette allows users to deploy the same pack to multiple layers to maximize pack utilization from a multiple functional perspective. 
+  * To enable multi-layer support of packs, add the following key to the yaml editor of pack values:
       
     ```
       spectrocloud.com/display-name: <custom_name>
     ```	 
-   where,<custom_name> is a name unique across a cluster profile and the cluster.
+   where `<custom_name>` is a name unique across a cluster profile and the cluster.
  
-**Example:**
+    **Example:**
 
-```
-pack:
-  #The namespace (on the target cluster) to install this chart
-  #When not found, a new namespace will be created
-  namespace: "external-dns"
-  spectrocloud.com/display-name: "dns-1"
-  # custom pack name for multi-layer support
-```
+    ```
+    pack:
+      # The namespace (on the target cluster) to install this chart
+      # When not found, a new namespace will be created
+      namespace: "external-dns"
+      # Custom pack name for multi-layer support
+      spectrocloud.com/display-name: "dns-1"
+    ```
+
+    If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Repeat as needed.
 * Review your changes and save the cluster profile.
