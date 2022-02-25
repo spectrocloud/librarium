@@ -14,19 +14,20 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 # Overview
 
 Palette conceives Backup and Restore from two broad perspectives:
-* Cluster Backup and Restore
-* Workspace Backup and Restore
+* Cluster Backup and Restore (single cluster)
+* [Workspace](/workspace) Backup and Restore (multiple clusters)
 
 # Cluster Backup and Restore
 
-Palette provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+Palette provides a convenient backup option to backup Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
-# Workspace Backup and Restore.
+# Workspace Backup and Restore
 
-Palette workspace-based backup allows the users to create a backup of a set of clusters part of a workspace and then restore it at user convenience. The workspace backup is very much similar to a cluster-wide backup, with only variation in the workspace wide scope of the backup and restore. To aid workspace-based backup and restore Palette is extending two more roles in addition to the existing roles. These Workspace roles provides restricted access to the workspace resources. They are:
+Palette users can create backups of a workspace (usually consisting of multiple clusters) and restore them later at user's convenience. A workspace-based backup is similar to a cluster backup, with the additonal coverage of multiple clusters should the workspace include more than one. To aid workspace-based backup and restore Palette is extending two more roles in addition to the existing roles. These Workspace roles provides restricted access to the workspace resources. They are:
+
 ## Workspace Operator
 
-A role with only restore the backups within the tenant scope. This role does not contain any other privileges or permissions related to workspace as well as clusters.
+User assigned a `workspace operator` role can only restore backups within the [tenant](/glossary-all/#tenant) scope. This role does not contain any other privileges or permissions related to workspace as well as clusters.
 
 ## WorkSpace Admin
 
@@ -37,7 +38,7 @@ To create your workspace role follow the steps below:
 
 * Login to Palette management console as Tenant Admin.
 * Go to the “Users and Teams” option, 
-* From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](./projects/#projects)
+* From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](/projects/#projects)
 * Select the “Workspace Roles” tab and click  “+ New Workspace Role“ to create a new role.
 * Fill the following information into the “Add Roles to User-Name” wizard:
   * Project
@@ -164,7 +165,7 @@ Backups can be scheduled or initiated on an on-demand basis during cluster creat
 |-----------------|
 |Cluster Creation -> Policies -> Backup Policies|
 
-## Create your Workspace Backup
+## Create a Workspace Backup
 
 Backups can be scheduled or initiated on an on-demand basis during workspace creation. The following information is required for configuring a workspace backup on-demand:
 * Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an On-Demand backup, a name of user choice can be used.
@@ -174,16 +175,18 @@ Backups can be scheduled or initiated on an on-demand basis during workspace cre
 * Include all disks: Optionally backup persistent disks as part of the backup.
 * Include Cluster Resources: Select or deselect on your choice.
 
-|Scheduled Backup |
-|-----------------|
-|Workspace Creation -> Policies -> Backup Policies.|
 
 |On Demand Backup   |
 |-------------------|
 |Select the Workspace to Backup -> Settings ->Schedule Backups| 
 
+
+|Scheduled Backup |
+|-----------------|
+|Workspace Creation -> Policies -> Backup Policies.|
+
 ### Backup Scheduling Options:
-Both the cluster and workspace backup supports the following scheduling options:
+Both the cluster and workspace backup support the following scheduling options:
 
 * Customize your backup for the exact month, day, hour and minute of the user's choice
 * Every week on Sunday at midnight
