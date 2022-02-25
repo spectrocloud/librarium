@@ -123,6 +123,29 @@ Spectro Cloud maintains specific milestones in a lifecycle and presents them as 
 
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
+## Cluster Upgrade Details
+
+![upgrade-details1.png](upgrade-details1.png)
+
+Palette will perform a rolling upgrade on the nodes for any changes in KubeadmConfig. Below are some of the actions that will cause KubeadmConfig change and will result in nodes getting upgraded:
+* OS layer changes
+* Kubernetes layer changes
+* Kubernetes version upgrade
+* Kubernetes control plane upsize
+* Machine pool updates for disk size
+* Changes in availability zones
+* Changes in instance types
+* Certificate renewal and many more..
+
+Palette also keeps track of node's machine health and will relaunch the node when the machine health check fails. 
+Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview > Upgrade details**.
+
+Note:
+![upgrade-details2.png](upgrade-details2.png)
+* For relaunching a node healthcheck timeout is 10 mins. Hence, if node’s kubelet stopped working and doesnot come up in 10 mins a new node will be launched.  
+* For network unavailability the time delay is 10 mins. 
+* If a new node is launching and it doesn’t get ready in 30 mins the failed node will be killed and replaced with a new node.
+
 ## Event Stream
 
 Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This event stream is a good source for identifying issues in the event an operation does not complete for a long time.
