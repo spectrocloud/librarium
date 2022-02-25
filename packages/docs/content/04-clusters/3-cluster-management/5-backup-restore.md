@@ -13,15 +13,50 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Spectro Cloud provides a convenient backup option to backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., persistent volumes can also be snapshotted and maintained as part of the backup. Internally, Spectro Cloud leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+Palette conceives Backup and Restore from two broad perspectives:
+* Cluster Backup and Restore (single cluster)
+* [Workspace](/workspace) Backup and Restore (multiple clusters)
 
-### Prerequisites
+# Cluster Backup and Restore
+
+Palette provides a convenient backup option to backup Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+
+# Workspace Backup and Restore
+
+Palette users can create backups of a workspace (usually consisting of multiple clusters) and restore them later at user's convenience. A workspace-based backup is similar to a cluster backup, with the additonal coverage of multiple clusters should the workspace include more than one. To aid workspace-based backup and restore Palette is extending two more roles in addition to the existing roles. These Workspace roles provides restricted access to the workspace resources. They are:
+
+## Workspace Operator
+
+User assigned a `workspace operator` role can only restore backups within the [tenant](/glossary-all/#tenant) scope. This role does not contain any other privileges or permissions related to workspace as well as clusters.
+
+## WorkSpace Admin
+
+A role that has all admin permissions and privileges.
+
+## Create your Workspace Roles
+To create your workspace role follow the steps below:
+
+* Login to Palette management console as Tenant Admin.
+* Go to the “Users and Teams” option, 
+* From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](/projects/#projects)
+* Select the “Workspace Roles” tab and click  “+ New Workspace Role“ to create a new role.
+* Fill the following information into the “Add Roles to User-Name” wizard:
+  * Project
+  * Workspace
+  * Make the choice of role from the options: 
+    * Workspace Admin
+    * Workspace Operator
+* Confirm the information provided to complete the wizard.
+* The user set with the Workspace role can take Workspace-wide backup and Restores in compliance with their permissions and privileges.
+
+
+# Prerequisites
 
 The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Spectro Cloud.
 
 # Backup Locations
 
-AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
+Creating the backup location is same for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
 
 The following details are required to configure a backup location:
 
@@ -101,10 +136,14 @@ The following details are required to configure a backup location:
 
 Go to Project Settings -> Backup locations  -> Add a New Backup location
 
+# Create Backup
+The below section will describe:
+* Create a Cluster Backup
+* Create a Workspace Backup
 
-# Backup
+## Create a Cluster Backup
 
-Backups can be scheduled or initiated on an on-demand basis as required. The following information is required for configuring a backup:
+Backups can be scheduled or initiated on an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
 
 * Backup Prefix / Backup Name:
 	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name
@@ -126,8 +165,29 @@ Backups can be scheduled or initiated on an on-demand basis as required. The fol
 |-----------------|
 |Cluster Creation -> Policies -> Backup Policies|
 
+## Create a Workspace Backup
+
+Backups can be scheduled or initiated on an on-demand basis during workspace creation. The following information is required for configuring a workspace backup on-demand:
+* Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an On-Demand backup, a name of user choice can be used.
+* Select the backup location.
+* Backup Schedule: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
+* Expiry Date: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
+* Include all disks: Optionally backup persistent disks as part of the backup.
+* Include Cluster Resources: Select or deselect on your choice.
+
+
+|On Demand Backup   |
+|-------------------|
+|Select the Workspace to Backup -> Settings ->Schedule Backups| 
+
+
+|Scheduled Backup |
+|-----------------|
+|Workspace Creation -> Policies -> Backup Policies.|
 
 ### Backup Scheduling Options:
+Both the cluster and workspace backup support the following scheduling options:
+
 * Customize your backup for the exact month, day, hour and minute of the user's choice
 * Every week on Sunday at midnight
 * Every two weeks at midnight
