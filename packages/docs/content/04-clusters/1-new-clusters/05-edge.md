@@ -66,11 +66,11 @@ Note: The snap-installed Docker on Ubuntu does not work. Uninstall the same and 
 # Edge Terminology
 **System Profile** - The model or blueprint for a set of system applications that the edge system needs to be bootstrapped. Like cluster profiles, system profiles are constructed using layers with optional dependencies between them. Each layer is configured using a Spectro Cloud pack, a helm chart, or a raw Kubernetes manifest. 
 
-**VM Operator** - Spectro Cloud Palette supported the provisioning of containerized Kubernetes applications. Palette now supports the virtualized applications to be modeled in the system profile. VM operator that runs in both the System Kind cluster and the application cluster looks for these definitions and orchestrates the VM as specified. Virtualized applications need to be modeled in the profiles as a Manifest. Palette UI provides some out-of-the-box presets for standard VM configurations to assist in modeling these VM applications. 
+**VM Operator** - To support virtualized applications, they need to be defined declaratively in system profiles. VM operator that runs in both the System Kind cluster and the application cluster looks for these definitions and orchestrates the VM as specified. Virtualized applications need to be modeled in the profiles as a Manifest. Palette UI provides some out-of-the-box presets for standard VM configurations to assist in modeling these VM applications. 
 
-**Spectro Cloud Harbor** – Content registry hosted by Palette. Hosts Spectro Cloud Palette artifacts such as container images, VM images, Packs, etc. This is an interim solution until Spectro Cloud artifacts can also be hosted in Flexera Harbor.
+**Spectro Cloud Harbor** – Content registry hosts Spectro Cloud Palette artifacts such as container images, VM images, Packs, etc. This is an interim solution until Spectro Cloud artifacts can also be hosted in Flexera Harbor.
 
-**Local Harbor** – Harbor registry installed in the system Kind cluster. Synchronizes content from Flexera Harbor through a content-sync process and synchronizes content from Spectro Cloud Harbor through a content-replication process. 
+**Local Harbor** – Harbor registry installed in the System Kind cluster. It synchronizes content from Flexera Harbor through a content-sync process and synchronizes content from Spectro Cloud Harbor through a content-replication process. 
 
 **Content sync** – Process used by Palette to download desired content from an online Harbor registry to a local Harbor registry. The content to be downloaded is specified as ‘content’ tags in the cluster or system profiles. 
 
