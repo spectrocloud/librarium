@@ -12,14 +12,14 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 # Overview
-Palette enables RoleBindings and ClusterRoleBindings to be enabled within every cluster to provide cluster-centric access control using RBAC. If the cluster is already associated with one or more Workspaces then users are not allowed to configure RBAC again at the cluster level. The Palette RBAC contains resources that represent a set of additive permissions. The rules can be configured in two levels:
+RoleBindings and ClusterRoleBindings are important Role-Based Access Control (RBAC) concepts which can be enabled within a cluster to provide cluster-centric access control. If the cluster is already associated with one or more Workspaces then users are not allowed to configure RBAC again at the cluster level. The Palette RBAC contains resources that represent a set of additive permissions. The rules can be configured in two levels:
 
 **Role** sets access permissions within a namespace. During Role creation, the namespace to which it belongs needs to be specified.
 
-**Cluster Role** is a non-namespaced resource that sets permissions on the cluster-scoped resources.
+**Cluster Role** is a non-namespaced resource that sets permissions of the cluster-scoped resources.
 
 <InfoBox>
-The users who wants to define a role within a namespace, a Role is used, and to define a role cluster-wide, use a ClusterRole.
+To define a role within a namespace, use Role. To define a role cluster-wide, use ClusterRole.
 </InfoBox>
 
 **RoleBinding** is binding or associating a Role with a Subject. RoleBinding is used for granting permission to a Subject. RoleBinding holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted. Role and RoleBinding are used in namespaced scoped.
@@ -35,7 +35,7 @@ Palette users can make the choice of role creation based on their resource requi
 * Select Cluster Settings -> RBAC -> Cluster
 * Click on “Add new binding” to open the “Add Cluster Role Binding” wizard. Fill in the following details:
   * Role Name : Define a custom role name to identify the cluster role
-  * Subjects : Subjects are a group of users, services, or team using the Kubernetes API. It defines the operations a user, service, or a group can perform. There are three types of subjects:
+  * Subjects : Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or a team can perform. There are three types of subjects:
     * Subject Type:
       * Users: These are global, and meant for humans or processes living outside the cluster.
       * Groups: Set of users.
