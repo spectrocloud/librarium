@@ -77,7 +77,7 @@ Palette provides several options to manage Kubernetes clusters on an ongoing bas
   Cluster management operations result in the update of cluster definitions in Palette’s database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
 </InfoBox>
 
-# Tenants Admin Cluster Details
+# Tenants Admin Cluster Details View
 
 The tenant admin login to Palette management console can have a read only view of the Palette clusters across all the projects under that tenant. 
 * Login to Palette management console as Tenant Admin.
