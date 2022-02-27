@@ -19,17 +19,17 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 # February 26, 2022 - Release 2.3.0
 Palette 2.3.0 includes the following enhancements:
 
-* Added cluster-centric access control with **RBAC** to structure a set of additive permissions aiding RoleBindings and ClusterRoleBindings. 
-* Enabled secure and straightforward user authentications with **API Keys** to access the API without referring to user credentials. 
-* Palette users can now avail themselves of a broad range of read-only information about the clusters across all the projects under that particular tenant from tenant admin login. 
-* Added support of **Taints** that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node. 
-* Added support of **Label**: Kubernetes resources using key/value pairs for organizing, and to identify selecting attributes of a cluster.
-* Extended the **backup and restores to the workspace** scope. This feature enables backup of a set of workspace clusters and restoring later. 
-* To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator** and **Workspace Admin** to provide restricted access to the workspace resources.
-* Added support of the deployment of a single pack in multiple layers to utilize the heterogeneous applications of that single pack.
-* Palette Edge updates:
-  * Palette deploys **System Profiles** using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM.
-  * Palette leverages **Harbor registry** aided policies and RBAC for delivering compliance, performance, and interoperability to help our users consistently and securely manage artifacts against vulnerabilities. 
+* Added cluster-centric access control with **RBAC** to structure a set of additive permissions aiding RoleBindings and ClusterRoleBindings [Read More..](/clusters/cluster-management/cluster-rbac) 
+* Enabled secure and straightforward user authentications with **API Keys** to access the API without referring to user credentials [Read More..](/user-management/user-authentication/#usingapikey). 
+* Palette users can now avail themselves of a broad range of read-only information about the clusters across all the projects under that particular tenant from tenant admin login [Read More..](/clusters/#tenantsadminclusterdetailsview). 
+* Added support of **Taints** that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node [Read More..](/clusters/cluster-management/taints/#overviewontaints). 
+* Added support of **Label**: Kubernetes resources using key/value pairs for organizing, and to identify selecting attributes of a cluster [Read More..](/clusters/cluster-management/taints/#overviewonlabels).
+* Extended the **backup and restores to the workspace** scope. This feature enables backup of a set of workspace clusters and restoring later [Read More..](/clusters/cluster-management/backup-restore/#workspacebackupandrestore).
+* To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator** and **Workspace Admin** to provide restricted access to the workspace resources [Read More..](/clusters/cluster-management/backup-restore/#workspaceoperator).
+* Added support of the deployment of a single pack in multiple layers to utilize the heterogeneous applications of that single pack [Read More..](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles).
+* Palette Edge updates [Read More ..](/clusters/new-clusters/edge/virtualized/):
+  * Palette deploys **System Profiles** using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM [Read More..](/system-profile).
+  * Palette leverages **Harbor registry** aided policies and RBAC for delivering compliance, performance, and interoperability to help our users consistently and securely manage artifacts against vulnerabilities .
   * Palette brings in a **VM Operator** that runs in both the System Kind cluster as well as the application cluster to automate the orchestration of the VM as specified in the system profile.
 
 # January 20, 2022 - Hotfix 2.2.26
