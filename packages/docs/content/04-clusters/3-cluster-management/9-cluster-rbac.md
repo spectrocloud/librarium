@@ -12,26 +12,37 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
 # Overview
-RoleBindings and ClusterRoleBindings are important Role-Based Access Control (RBAC) concepts which can be enabled within a cluster to provide cluster-centric access control. If the cluster is already associated with one or more Workspaces then users are not allowed to configure RBAC again at the cluster level. The Palette RBAC contains resources that represent a set of additive permissions. The rules can be configured in two levels:
+
+RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts which allow granular control over cluster-wide resources as well as namepaced resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette also provides the ability to define new namespaces for the cluster and manage (remove, assign quota, assign role bindings, etc.) them.
+
+Users can configure namespaces and RBAC directly from within a cluster or from a workspace which contains a collection of homogenous clusters that need to be managed as a group.
+
+<InfoBox>
+Please note that namespace management and RBAC can only be performed from within a cluster, as long as the cluster is not part of any workspace. Once a cluster is made part of a workspace, these actions can only be pefromed from the workspace.
+</InfoBox>
 
 **Role** sets access permissions within a namespace. During Role creation, the namespace to which it belongs needs to be specified.
 
 **Cluster Role** is a non-namespaced resource that sets permissions of the cluster-scoped resources.
 
 <InfoBox>
-To define a role within a namespace, use Role. To define a role cluster-wide, use ClusterRole.
+Palette does not proide a way for roles to be conifgured natively through its platform. You may choose to create roles however, using a manifest layer in the cluster profile. RBAC management only allows you to specify bindings.
 </InfoBox>
 
 **RoleBinding** is binding or associating a Role with a Subject. RoleBinding is used for granting permission to a Subject. RoleBinding holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted. Role and RoleBinding are used in namespaced scoped.
 
 **ClusterRoleBinding** is binding or associating a ClusterRole with a Subject (users, groups, or service accounts). ClusterRole and ClusterRoleBinding function similar Role and RoleBinding with a wider scope. ClusterRoleBinding grants access cluster-wide as well as multiple namespaces.
-## Define a Cluster Level RBAC
-Cluster Level RBAC is set during the cluster creation process. During the cluster creation, while configuring the cluster (Cluster Settings), the user can select RBAC from the left menu. There are two available options for setting up RBAC:
+
+# New clusters
+
+During the cluster creation, while configuring the cluster (Cluster Settings), the user can select RBAC from the left menu. There are two available options for setting up RBAC:
+
 * **Cluster** to create a RoleBinding with cluster-wide scope (ClusterRoleBinding).
 * **Namespaces** to create a RoleBinding within namespaces scope (RoleBinding).
-Palette users can make the choice of role creation based on their resource requirements. 
+Palette users can make the choice of role creation based on their resource requirements.
 
-### Steps to set up Cluster Roles Binding (Cluster)
+## Configure cluster role bindings
+
 * Select Cluster Settings -> RBAC -> Cluster
 * Click on “Add new binding” to open the “Add Cluster Role Binding” wizard. Fill in the following details:
   * Role Name : Define a custom role name to identify the cluster role
@@ -40,12 +51,14 @@ Palette users can make the choice of role creation based on their resource requi
       * Users: These are global, and meant for humans or processes living outside the cluster.
       * Groups: Set of users.
       * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
-   * Subject Name: Custom name to identify a subject.
+  * Subject Name: Custom name to identify a subject.
 A single RoleBinding can have multiple subjects.
-“Confirm” the information to complete the creation of the ClusterRoleBinding. 
+“Confirm” the information to complete the creation of the ClusterRoleBinding.
 
-### Steps to set up Namespace Based RolesBinding (Namespaces)
-Users can now allocate CPU and Memory quota for each namespace at the cluster level. 
+## Conifgure role bindings
+
+Users can now allocate CPU and Memory quota for each namespace at the cluster level.
+
 * Select Cluster Settings -> RBAC -> Namespace
 * Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”
 * Allocate resources to the created namespace (CPU and Memory).
@@ -64,13 +77,17 @@ A RoleBinding may reference any Role in the same namespace. Alternatively, a Rol
     * Groups: Set of users.
     * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
   * Subject Name: Custom name to identify a subject.
-A single RoleBinding can have multiple subjects. “Confirm” the information to complete the creation of the RoleBinding . 
+A single RoleBinding can have multiple subjects. “Confirm” the information to complete the creation of the RoleBinding .
 
-### RBAC Manangement on Running Clusters
-To edit/add RoleBindings to a running cluster:
+# Running Clusters
+
+You can manage namespaces and RBAC for a running clusters by invoking the RBAC management page as follows
 Clusters -> select the cluster -> Settings -> Cluster Settings -> select RBAC from left menu.
-### Use Cases
+
+Configure settings as described above.
+
+# Use Cases
+
 * Use Role and a RoleBinding to scope security to a single namespace.
 * Use ClusterRole and RoleBinding to scope security to several or all namespaces.
 * Use ClusterRole and ClusterRoleBinding to scope security to all namespaces OR cluster-scoped resources.
-

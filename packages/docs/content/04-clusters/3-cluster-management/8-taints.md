@@ -11,31 +11,41 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
-
 # Overview on Taints
-Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a Palette worker pool. Once the Taint is applied, pods that can tolerate the tainted nodes will only be scheduled to that particular node. Thus, it makes sure that a pod is not scheduled to an inappropriate node.
-## How to apply Taint to your node pool
-A Taint can be applied to a worker pool while creating the cluster. While configuring the nodes pools during cluster creation:
+
+Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement. Taints are the opposite -- they allow a node to repel a set of pods.
+
+Tolerations are applied to pods, and allow (but do not require) the pods to schedule onto nodes with matching taints.
+
+Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
+
+Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a Palette node pool. Taints can be applied during initial provisioning of the cluster and modified at any later point.
+
+## Apply Taints to nodes
+
+Taints can be applied to worker pools while creation of a new cluster from the node pool configruation page as follows:
+
 * Enable the “Taint” select button.
 * To apply the Taint, set the following parameters:
-	* Key: Custom key for the Taint
-	* Value: Custom value for the Taint key
-	* Effect: The effects define what will happen to the pods that do not tolerate a Taint. There are 3 Taint effects:
-		* NoSchedule : A pod that cannot tolerate the node Taint, should not be scheduled to the node.
-		* PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed. 
-		* NoExecute: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint. 
+  * Key: Custom key for the Taint
+  * Value: Custom value for the Taint key
+  * Effect: The effects define what will happen to the pods that do not tolerate a Taint. There are 3 Taint effects:
+    * NoSchedule : A pod that cannot tolerate the node Taint, should not be scheduled to the node.
+    * PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
+    * NoExecute: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
 
 Eg: Key = key1;
- 	Value = value1;
-	Effect = NoSchedule
-<InfoBox>
-Palette allows its users to apply/edit the Taints for a running cluster through the “Edit node pool” option under Nodes tab.
-</InfoBox>
-	
+  Value = value1;
+ Effect = NoSchedule
 
-# Overview on Labels 
-Palette enables our users to Label the master and worker pool using key/value pairs for organizing and selecting attributes of a cluster. These labels do not directly imply anything to the semantics of the core system but are intended to be used by users to identify attributes of Clusters. Labels can be attached to clusters during creation and can be subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given cluster.
+Taints can also be updated on a running cluster by editing a worker node pool from the 'Nodes' tab of the cluster details page.
 
-## Apply Labels to Nodes
-An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, labels can be added and edited. 
+# Overview on Labels
 
+You can constrain a Pod so that it can only run on particular set of Node(s). There are several ways to do this and the recommended approaches such as, nodeSelector, node affinity, etc all use label selectors to facilitate the selection. Generally such constraints are unnecessary, as the scheduler will automatically do a reasonable placement (e.g. spread your pods across nodes so as not place the pod on a node with insufficient free resources, etc.) but there are some circumstances where you may want to control which node the pod deploys to - for example to ensure that a pod ends up on a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the same availability zone.
+
+Palette enables our users to Label the nodes of a master and worker pool by using key/value pairs. These labels do not directly imply anything to the semantics of the core system but are intended to be used by users to drive use cases where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation and can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The Key must be unique across all node pools for a given cluster.
+
+## Apply Labels to nodes
+
+Labels are speicified in an optional field called 'Additional Labels' in the node pool configuration form. The values are specified as 'key:value'. Multiple such lables may be specified. Lables may be specified from the node pool conifguratin form initially during cluster provisioning and updated at anytime by editing a node pool from the 'Nodes' tab of the cluster details page.

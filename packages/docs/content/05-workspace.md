@@ -28,7 +28,7 @@ Usage quota in terms of CPU and memory usage limits is specified within the name
 
 Role bindings and cluster role bindings are specified within workspaces. Furthermore, these role bindings and cluster role bindings are created in every cluster within the workspaces, thus enabling centralized RBAC.
 
-# Utilization 
+# Utilization
 
 Spectro Cloud Palette reports detailed resource utilization of workloads deployed in all the namespaces in the workspace across clusters. In addition, the CPU and memory usage trends within the workspace provide valuable insights into the consumption patterns of an application distributed across clusters.
 
@@ -38,8 +38,8 @@ Spectro Cloud Palette computes utilization cost for workloads deployed in all th
 
 # Workload Visibility
 
-Workspaces provide a workload browser to view all the workloads such as pods, deployment, jobs, stateful sets, etc., deployed in all the namespaces that are part of the workspace across all the clusters. The workload browser aggregates resources across clusters from relevant namespaces and presents them with centralized visibility. 
+Workspaces provide a workload browser to view all the workloads such as pods, deployment, jobs, stateful sets, etc., deployed in all the namespaces that are part of the workspace across all the clusters. The workload browser aggregates resources across clusters from relevant namespaces and presents them with centralized visibility.
 
+# Backup and Restore
 
-
-
+A workspace-based backup is similar to a cluster backup, with the additonal coverage of multiple clusters should the workspace include more than one. The pre-requisites and detailed instructions to backup and restore clusters is specified on the [Clusters page](/clusters/#manage_clusters)
