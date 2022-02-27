@@ -211,7 +211,8 @@ Palette will perform a rolling upgrade on the nodes for any changes in KubeadmCo
 * Machine pool updates for disk size
 * Changes in availability zones
 * Changes in instance types
-* Certificate renewal and many more..
-for detailed information [Click](./clusters/#clusterupgradedetails)
+* Certificate renewal and many more...
+
+for detailed information [Click](/clusters/#clusterupgradedetails)
 
 For both cases logs are provided in Palette for traceability. However these logs may be lost when the pods get relaunched. To ensure that these reasons are persisted across repaving, a new field `upgrades` has been added to the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This new field is represented in the Palette UI so that users can understand why and when repaving happened.
