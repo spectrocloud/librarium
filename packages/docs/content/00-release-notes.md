@@ -19,14 +19,14 @@ Palette 2.3.0 includes the following enhancements:
 
 * Added support for cluster-centric detailed [**Namespace Management** and granular **RBAC**](/clusters/cluster-management/cluster-rbac). Previously this capability was only available via workspaces.
 * Enabled secure and straightforward user authentication with [**API Keys**](/user-management/user-authentication/#apikey) to access the APIs without referring to user credentials.
-* Tenant administrators can now get and [**aggregated view**](/clusters/#scope) of clusters across all the projects under thier tenant.
+* Tenant administrators can now get and [**aggregated view**](/clusters/#scope) of clusters across all the projects under their tenant.
 * Added support for [**Taints**](/clusters/cluster-management/taints/#overviewontaints) that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node.
-* Added support for [**Labels**](/clusters/cluster-management/taints/#overviewonlabels) to constrain pods so that they can run on particular set of nodes.
+* Added support for [**Labels**](/clusters/cluster-management/taints/#overviewonlabels) to constrain pods so that they can run on a particular set of nodes.
 * Enable multi-cluster [**backup and restore from workspaces**](/clusters/cluster-management/backup-restore/#workspacebackupandrestore)
 * New [**workspace user roles**](/clusters/cluster-management/backup-restore#workspaceoperator) that provide granular control to specific actions within a workspace:
   * *Workspace Operator* - Allows only backup and restore capabilities within a workspace
-  * *Workspace Admin* - Administrative privilidges within a workspace
-* Enable deployment of single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
+  * *Workspace Admin* - Administrative privilages within a workspace
+* Enable deployment of the single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
 * Palette introduces a VM operator to allow Virtual Machine based applications to be modeled as Cluster Profile layers.
 
 # January 20, 2022 - Hotfix 2.2.26
