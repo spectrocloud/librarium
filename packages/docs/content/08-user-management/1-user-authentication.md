@@ -12,7 +12,7 @@ Palette supports two types of user authentication methods that can be used when 
 
 # API Key
 
-Palette API can also uses API Keys to authenticate requests. This is the method of accessing the API without referring to the actual user.
+Palette API can also use API Keys to authenticate requests. This is the method of accessing the API without referring to the actual user.
 
 ## Scope of Palette API Keys
 
