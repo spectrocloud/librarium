@@ -29,6 +29,7 @@ Palette provides VM images for cluster computing infrastructure out of the box f
 The out of the box images are hosted either in the public cloud (AWS - AMI, Azure - VHD) or Palette's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private datacenter.
 
 ## Customization
+
 Palette provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
 ### Customize Out of the Box Images
@@ -77,14 +78,6 @@ Palette provides several options to manage Kubernetes clusters on an ongoing bas
   Cluster management operations result in the update of cluster definitions in Palette’s database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
 </InfoBox>
 
-# Tenants Admin Cluster Details View
-
-The tenant admin login to Palette management console can have a read only view of the Palette clusters across all the projects under that tenant. 
-* Login to Palette management console as Tenant Admin.
-* Go to the clusters option from the left-most ribbon side bar to list all the clusters belonging to all the users under that tenant admin. 
-* This is a read-only dashboard to know a variety of cluster-related information. Available updates to Clusters can be viewed, verified, and applied through this dashboard.
-Users can do cluster operations like applying available updates if they have admin permissions on that project. 
-
 # Cluster Health
 
 Palette monitors cluster infrastructure on a regular basis and reports health on the management console.
@@ -95,7 +88,6 @@ Overall health is computed based on the following factors:
 * Metrics - Palette collects usage metrics such as CPU, Disk, Memory, etc. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over a period of time.
 
 ![Cluster Health](04-clusters/cluster_health.png)
-
 
 # Usage Monitoring
 
@@ -127,14 +119,12 @@ Palette maintains specific milestones in a lifecycle and presents them as “con
 
 ![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
 
-
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
-## Cluster Upgrade Details
+## Rolling upgrade
 
-![upgrade-details1.png](upgrade-details1.png)
+Palette will perform a rolling upgrade on the nodes for any fundamental changes to the cluster config. Below are some of the actions that will result in a rolling upgrade:
 
-Palette will perform a rolling upgrade on the nodes for any changes in KubeadmConfig. Below are some of the actions that will cause KubeadmConfig change and will result in nodes getting upgraded:
 * OS layer changes
 * Kubernetes layer changes
 * Kubernetes version upgrade
@@ -144,14 +134,19 @@ Palette will perform a rolling upgrade on the nodes for any changes in KubeadmCo
 * Changes in instance types
 * Certificate renewal and many more..
 
-Palette also keeps track of node's machine health and will relaunch the node when the machine health check fails. 
 Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview > Upgrade details**.
 
-Note:
+![upgrade-details1.png](upgrade-details1.png)
+
+Besides actions taken by the user, Palette also performs a rolling upgrade if the health of the cluster nodes degrade. Palette keeps track of node's machine health and will relaunch the node when the machine health check fails.
+
 ![upgrade-details2.png](upgrade-details2.png)
-* For relaunching a node healthcheck timeout is 10 mins. Hence, if node’s kubelet stopped working and doesnot come up in 10 mins a new node will be launched.  
-* For network unavailability the time delay is 10 mins. 
-* If a new node is launching and it doesn’t get ready in 30 mins the failed node will be killed and replaced with a new node.
+
+Following are some sample scenarios where node health is considered as degraded:
+
+* Kubelet not up for 10 mins
+* Network unavailability for 10 mins
+* New node node doesn’t get ready in 30 mins
 
 ## Event Stream
 
@@ -170,24 +165,23 @@ Palette maintains an event stream with low-level details of the various orchestr
 
 At times it might be required to work with the Palette support team to troubleshoot an issue. Palette provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration lifecycle may require access to the various containers, nodes, and Kube system logs. Palette automates this log collection process and provides an easy download option from the Palette UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
 
-### To Collect the Logs:
+### To Collect the Logs
 
 * Select the running cluster
 * Go to settings and, select download logs.
 * Choose the desired log from the below options:
-    * Kube-System Logs
-        -  Logs of all the Kubernetes components.
-    *  Logs
-        -  Spectro namespace logs for the last one hour.
-    * Node Logs
-        -  Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
+  * Kube-System Logs
+    * Logs of all the Kubernetes components.
+  * Logs
+    * Spectro namespace logs for the last one hour.
+  * Node Logs
+    * Contains the Spectro log, system log, and the cloud-init log information collected for the last ten thousand lines of code.
 * Click Download Logs.
 * The message “The request was sent successfully. The download will be available soon.”  gets displayed on the UI.
 * Have an average wait time of 5 minutes.
 * At the end of this short log fetching interval, the message “The logs archive for {Cluster-name} was created successfully will be displayed on the UI.
 * Click [Download "cluster-name" logs] to download the logs folder to your local machine.
 * UnZip and rename the logs folder as per customer choice.
-
 
 <InfoBox>
 
@@ -200,8 +194,6 @@ At times it might be required to work with the Palette support team to troublesh
 * The downloaded Zip file will be by default named as spectro_logs.zip, the users can unzip and choose a name of convenience.
 
 </InfoBox>
-
-
 
 # Proxy Whitelists
 
@@ -220,3 +212,10 @@ This table lists the proxy requirements for enabling the Palette management cons
 | quay.io | 443 | Container image registry access. |
 | grafana.com | 443 | To provide access to the dashboard metrics. |
 | github.com | 443 | |
+
+# Scope
+
+Clusters are launched from within projects in Palette and they belong to a single project. In the project view, all clusters that are launched form that project are listed for users with the project admin role or cluster admin role. A tenant administrator can get an aggregated view of clusters running across all projects from the 'Organization' view, as follows:
+
+* Login to Palette management console as Tenant Admin.
+* Go to the clusters option from the left-most ribbon side bar to list all the clusters belonging to all the users under that tenant admin.
