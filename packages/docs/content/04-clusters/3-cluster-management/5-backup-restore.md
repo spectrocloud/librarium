@@ -13,18 +13,18 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 # Overview
 
-Palette provides two ways to Backup and Restore k8s clusters:
+Palette provides two ways to Backup and Restore Kubernetes clusters:
 
-* Cluster Backup and Restore for a single cluster which is managed from withih the cluster
-* [Workspace](/workspace) Backup and Restore for multiple cluters managed from worspaces
+* Cluster Backup and Restore for a single cluster which is managed from within the cluster
+* [Workspace](/workspace) Backup and Restore for multiple clusters managed from workspaces
 
 # Cluster Backup and Restore
 
-Palette provides a convenient backup option to backup Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+Palette provides a convenient backup option to Backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
 # Workspace Backup and Restore
 
-Palette users can create cluster backups from within a workspace (usually consisting of multiple clusters) and restore them later time as desired. Palette allows granular controls within a workspace for users to perform specific tasks withint the workspace, withtout haivng the ability to update workspace details. In order to provide granular access within a workspace for specific actions, Palette provides the following two roles:
+Palette users can create cluster backups from within a workspace (usually consisting of multiple clusters) and restore them later time as desired. Palette allows granular controls within a workspace for users to perform specific tasks within the workspace, without having the ability to update workspace details. In order to provide granular access within a workspace for specific actions, Palette provides the following two roles:
 
 ## Workspace Operator
 
@@ -32,11 +32,11 @@ Users assigned the `workspace operator` role can only perform back and restore a
 
 ## WorkSpace Admin
 
-A role that has all admin permissions and privileges withing the workspace.
+A role that has all admin permissions and privileges within the workspace.
 
 ## Create your Workspace Roles
 
-To create your workspace role follow the steps below:
+To create your workspace role, follow the steps below:
 
 * Login to Palette management console as Tenant Admin.
 * Go to the “Users and Teams” option,
@@ -45,7 +45,7 @@ To create your workspace role follow the steps below:
 * Fill the following information into the “Add Roles to User-Name” wizard:
   * Project
   * Workspace
-  * Make the choice of role from the options:
+  * Choose the role from the options:
     * Workspace Admin
     * Workspace Operator
 * Confirm the information provided to complete the wizard.
@@ -57,18 +57,18 @@ The AWS S3 permissions listed in the next section need to be configured in the A
 
 # Backup Locations
 
-Creating the backup location is same for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
+Creating the backup location is identical for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
 
 The following details are required to configure a backup location:
 
 * Location Name: Name of your choice.
 * Location Provider: AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store).
 * Certificate: Required for MinIO.
-* S3 Bucket: S3 bucket name that must be pre-created on the object store.
+* S3 Bucket: S3 bucket name must be pre-created on the object-store.
 * Configuration: region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3.
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
   * Credentials - Provide access key and secret key.
-  * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust setup with the account used to launch the cluster itself and should have the permission to assume the role.
+  * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust set up with the account used to launch the cluster itself and should have the permission to assume the role.
 * Spectro Cloud mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
 
 #### AWS S3 Permissions
@@ -198,11 +198,11 @@ Both the cluster and workspace backup support the following scheduling options:
 
 # Restore
 
-Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. Finally, restore operation can be done to the cluster which is running on the same project.
+Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. Finally, restore operation can be done to the cluster running on the same project.
 
 <WarningBox>
-When restoring backups to a cluster running on a cloud different from the source cluster, some manual steps might be required. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
-  For EKS, please specific "gp2 storage class".
+Some manual steps might be required when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
+  For EKS, please specify "gp2 storage class".
   For other cloud environments, please specify "spectro-storage-class".
 </WarningBox>
 
