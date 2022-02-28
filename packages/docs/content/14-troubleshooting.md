@@ -201,7 +201,7 @@ Users can verify by running the following command on non-VIP nodes and observe t
 watch ip -statistics neighbour
 ```
 
-# Understanding why nodes are repaved
+# Understanding Why Nodes are Repaved
 
 Palette will perform a rolling upgrade on the nodes for any changes in KubeadmConfig. Below are some of the actions that will cause KubeadmConfig change and will result in nodes getting upgraded:
 * OS layer changes
