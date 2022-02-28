@@ -13,24 +13,21 @@ import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
-
-
-
 # February 26, 2022 - Release 2.3.0
+
 Palette 2.3.0 includes the following enhancements:
 
-* Added cluster-centric access control with **RBAC** to structure a set of additive permissions aiding RoleBindings and ClusterRoleBindings [Read More..](/clusters/cluster-management/cluster-rbac) 
-* Enabled secure and straightforward user authentications with **API Keys** to access the API without referring to user credentials [Read More..](/user-management/user-authentication/#usingapikey). 
-* Palette users can now avail themselves of a broad range of read-only information about the clusters across all the projects under that particular tenant from tenant admin login [Read More..](/clusters/#tenantsadminclusterdetailsview). 
-* Added support of **Taints** that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node [Read More..](/clusters/cluster-management/taints/#overviewontaints). 
-* Added support of **Label**: Kubernetes resources using key/value pairs for organizing, and to identify selecting attributes of a cluster [Read More..](/clusters/cluster-management/taints/#overviewonlabels).
-* Extended the **backup and restores to the workspace** scope. This feature enables backup of a set of workspace clusters and restoring later [Read More..](/clusters/cluster-management/backup-restore/#workspacebackupandrestore).
-* To aid secured workspace-based backup and restore, we are bringing two more user roles in addition to the existing roles. These Workspace roles - **Workspace Operator** and **Workspace Admin** to provide restricted access to the workspace resources [Read More..](/clusters/cluster-management/backup-restore/#workspaceoperator).
-* Added support of the deployment of a single pack in multiple layers to utilize the heterogeneous applications of that single pack [Read More..](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles).
-* Palette Edge updates [Read More ..](/clusters/new-clusters/edge/virtualized/):
-  * Palette deploys **System Profiles** using Palette packs, helm charts, or a raw K8s manifest for constructing layers for the edge VM [Read More..](/system-profile).
-  * Palette leverages **Harbor registry** aided policies and RBAC for delivering compliance, performance, and interoperability to help our users consistently and securely manage artifacts against vulnerabilities .
-  * Palette brings in a **VM Operator** that runs in both the System Kind cluster as well as the application cluster to automate the orchestration of the VM as specified in the system profile.
+* Added support for cluster-centric detailed [**Namespace Management** and granular **RBAC**](/clusters/cluster-management/cluster-rbac). Previously this capability was only available via workspaces.
+* Enabled secure and straightforward user authentication with [**API Keys**](/user-management/user-authentication/#apikey) to access the APIs without referring to user credentials.
+* Tenant administrators can now get and [**aggregated view**](/clusters/#scope) of clusters across all the projects under their tenant.
+* Added support for [**Taints**](/clusters/cluster-management/taints/#overviewontaints) that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node.
+* Added support for [**Labels**](/clusters/cluster-management/taints/#overviewonlabels) to constrain pods so that they can run on a particular set of nodes.
+* Enable multi-cluster [**backup and restore from workspaces**](/clusters/cluster-management/backup-restore/#workspacebackupandrestore)
+* New [**workspace user roles**](/clusters/cluster-management/backup-restore#workspaceoperator) that provide granular control to specific actions within a workspace:
+  * *Workspace Operator* - Allows only backup and restore capabilities within a workspace
+  * *Workspace Admin* - Administrative privilages within a workspace
+* Enable deployment of the single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
+* Palette introduces a VM operator to allow Virtual Machine based applications to be modeled as Cluster Profile layers.
 
 # January 20, 2022 - Hotfix 2.2.26
 
@@ -38,32 +35,30 @@ Palette 2.3.0 includes the following enhancements:
 * [Helm registries](/registries-and-packs/helm-charts) can now be set up in **Protected** mode also. In protected mode charts are configured in cluster profiles without being synchronized into the management console.
 * For the tenant clusters deployed in a private network, these charts from the protected Helm registries are downloaded and deployed by the Palette orchestrator.
 
-
-
 # December 24, 2021 - Release 2.2.0
 
 Palette 2.2.0 is released with the beta version of Edge Clusters along with upgraded Cluster API support.  
 
 The 2.2.0 Palette enhancements are:
+
 * Palette users can now provision and manage their [Kubernetes clusters using edge appliances](/clusters/new-clusters/edge/) in addition to usual data centers or cloud environments.
-* Palette has been upgraded to use a newer version of the CNCF Cluster API for better automation, integration and efficiency. 
+* Palette has been upgraded to use a newer version of the CNCF Cluster API for better automation, integration and efficiency.
 * The upgraded Cluster API version used by Palette mandates the following pack updates:
   * Kubernetes 1.18.x and below are no longer suppored. Please use Kubernetes version 1.19.x or above in the Cluster Profile.
   * vSphere CSI storage driver 1.0.x version is no longer supported for new Cluster Provisioning. Please upgrade your CSI Pack to 2.3.x for enhanced performance.
-* As part of Palette upgrade to 2.2.0, control plane node(s) of any existing vSphere cluster will be replaced. 
-
+* As part of Palette upgrade to 2.2.0, control plane node(s) of any existing vSphere cluster will be replaced.
 
 # November 20, 2021 - Release 2.1.0
 
 Palette 2.1.0 is released with the following key improvements:
 
-* Added support for replicated, cross-region Amazon Elastic Container Registries (ECR) whereby a single OCI registry within Spectro Cloud Palette can serve multiple deployment regions. 
+* Added support for replicated, cross-region Amazon Elastic Container Registries (ECR) whereby a single OCI registry within Spectro Cloud Palette can serve multiple deployment regions.
 * Spectro Cloud users can now join more than one tenant. Users belonging to multiple organizations must choose the desired tenant to login to. This feature is also supported for SSO enabled tenants.
-* Improved the UI of the Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuration overrides, machine management, scan and back-up policies, cluster deletion are now arranged under the 'Settings' menu on the top right hand side. 
+* Improved the UI of the Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuration overrides, machine management, scan and back-up policies, cluster deletion are now arranged under the 'Settings' menu on the top right hand side.
 
-# November 1, 2021 - Release 2.0.0 
+# November 1, 2021 - Release 2.0.0
 
-We are excited to announce the Spectro Cloud platform's new name - “PALETTE”. In addition, version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance, and control with “Workspaces”. 
+We are excited to announce the Spectro Cloud platform's new name - “PALETTE”. In addition, version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance, and control with “Workspaces”.
 
 Our latest list of features includes:
 
@@ -74,10 +69,10 @@ Our latest list of features includes:
 * Granular usage cost break down by namespaces, workspaces, and projects based on actual resource utilization by pods, jobs, stateful sets, PVCs, etc.
 * Detailed visibility of resource utilization by cluster, namespaces, projects, and workspaces.
 
-
 # September 14, 2021 - Release 1.14.0
 
 Spectro Cloud 1.14 is released with additional health alert conveyances, secured log storage, transparent cost features, and scalable enterprise cluster backup.
+
 * Spectro Cloud users can now push their audit logs to the AWS cloudtrail to enhance continuous monitoring and troubleshooting of the workload clusters.
 * Spectro cloud layouts instantaneous and effortless monitoring of the cluster cloud cost.
 * Now Spectro Cloud users can receive real-time alerts on cluster health at hooked external applications.
@@ -85,44 +80,41 @@ Spectro Cloud 1.14 is released with additional health alert conveyances, secured
 * Spectro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local data centers.
 * Spectro Cloud has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
 
-
 # August 14, 2021 - Release 1.13.0
 
 Spectro Cloud users can now convert their bare-metal servers into flexible, cohesive, and distributed instances of virtual machines with the slightest efforts utilizing “Metal As A Service”.
 
-
 # July 23, 2021 - Release 1.12.0
 
-Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud. 
+Spectro Cloud 1.12 is released with generic cluster import, OIDC support to handle identify management securely and seamlessly, and support for AKS - a managed Kubernetes Service offering from Azure cloud.
+
 * Now import existing non-Spectro clusters from any cloud platform using our Generic cluster import feature. We support broad operations like scans, backups, etc. on these imported clusters as well as provisioning and lifecycle management of add-ons.
 * Spectro Cloud now supports AKS, a fully-managed Kubernetes service from Azure. Deploy and manage end-to-end lifecyle of AKS clusters.
-* Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication int he modern world. Through this integration, Spectro Cloud enables users to integrate single sign on using various identify providers such as Amazon Cognito, Keycloak etc. 
+* Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication int he modern world. Through this integration, Spectro Cloud enables users to integrate single sign on using various identify providers such as Amazon Cognito, Keycloak etc.
 * Kubernetes upgraded to version 1.19 for enterprise clusters.
-
 
 # June 28, 2021 - Release 1.11.0
 
-Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters. 
+Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters.
 
-* Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers. 
+* Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers.
 * Support for OIDC based authentication into Kubernetes clusters and pre-configured Kubeconfig file to easily authenticate when using Kubectl.
-
 
 # June 1, 2021 - Release 1.10.0
 
 Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
 
-* Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configurations like Fargate profiles, OIDC Authentication etc. 
+* Provision and manage Kubernetes clusters using Amazon EKS service including support for advanced configurations like Fargate profiles, OIDC Authentication etc.
 * Scan your Kubernetes clusters to ensure they are conformant and compliant.
 * Consensus-driven security scan for the Kubernetes deployment with CIS Kubernetes Benchmarks.
-* Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers. 
-* Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster. 
+* Perform penetration tests to check for configuration issues that can leave the tenant clusters exposed to attackers.
+* Backup your Kubernetes clusters including any persistent volumes. Restore these backups as required on any cluster.
 
 Note:
 
-The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure that you have these new permissions included. 
+The following permissions are additionally required to be granted to the cloud accounts used to launch clusters on AWS. Please update your account to ensure that you have these new permissions included.
 
-Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation. 
+Add the following permissions to the IAM policy called NodePolicy if it was created as documented in Spectro Cloud documentation.
 
 ```json
    {
@@ -152,7 +144,7 @@ Add the following permissions to the IAM policy called NodePolicy if it was crea
     
 ```
 
-Add the following permissions to the IAM policy called ControllerPolicy if it was created as documented in Spectro Cloud documentation. 
+Add the following permissions to the IAM policy called ControllerPolicy if it was created as documented in Spectro Cloud documentation.
 
 ```json
    {
@@ -177,17 +169,12 @@ Add the following permissions to the IAM policy called ControllerPolicy if it wa
    }
 ```
 
-
-
-
-
 # May 4, 2021 - Release 1.9.0
 
 Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
 
 * Spectro Cloud ensures users to start, run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
 * Now create and gain permission to your AWS cloud account by just using role ARN, without sharing long-term credentials.
-
 
 # March 29, 2021 - Release 1.8.0
 
@@ -204,17 +191,15 @@ Featuring
 * Discover charts deployed on your existing clusters and convert them into a cluster profile to use it as a template for future cluster deployments.
 * Enhanced cluster profile builder experience with several usability enhancements.
 
-
 # February 07, 2021 - Release 1.7.0
 
 The following features and enhancements were released as part of 1.7.0
- 
-* Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
-* Automated as well as on-demand OS updates to keep cluster nodes up-to-date with latest security fixes and enhancements. 
-* Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster. 
-* Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools. 
-* Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.    
 
+* Support for existing Kubernetes clusters that were not deployed by Spectro Cloud to be imported into the Spectro Cloud platform for visibility, management and additional capabilities such as application lifecycle management
+* Automated as well as on-demand OS updates to keep cluster nodes up-to-date with latest security fixes and enhancements.
+* Modularize cluster profiles as Core Infra, Add-on, and Full profiles; Apply multiple add-on profiles to a cluster.
+* Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools.
+* Selectively upgrade on-premise Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.
 
 # December 23, 2020 - Hotfix 1.6.4
 
@@ -318,10 +303,10 @@ The following features are included as part of Spectro Cloud 1.0:
 
 * **BET-1491:** Portworx currently does not [support](https://docs.portworx.com/portworx-install-with-kubernetes/) Kubernetes version 1.19. This results in a failure to bring up the Stork scheduler pod.
 * **BET-1472:** In the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster/#enterprisemode), deleting a node in an Enterprise cluster renders the cluster unusable due to an [in-tree limitation](https://github.com/vmware/vsphere-storage-for-kubernetes/issues/55).
-    * *Recommendations:*
-        * To prevent VMDK deletion with the in-tree provider, drain the node, let all pods re-schedule on another node, let all volumes detach from the node, and then finally delete the node VM.
-        * This issue is resolved with [vSphere 67u3](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-51D308C7-ECFE-4C04-AD56-64B6E00A6548.html) and a [new CSI driver](https://github.com/kubernetes-sigs/vsphere-csi-driver).
-        * A [related issue](https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/359) might occur where a persistent volume might not attach to a new node.
+  * *Recommendations:*
+    * To prevent VMDK deletion with the in-tree provider, drain the node, let all pods re-schedule on another node, let all volumes detach from the node, and then finally delete the node VM.
+    * This issue is resolved with [vSphere 67u3](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-51D308C7-ECFE-4C04-AD56-64B6E00A6548.html) and a [new CSI driver](https://github.com/kubernetes-sigs/vsphere-csi-driver).
+    * A [related issue](https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/359) might occur where a persistent volume might not attach to a new node.
 * **BET-1461:** For AWS clusters, when the Static VPC option is used, clusters might not complete provisioning. This bug will be patched in subsequent releases.
 * **BET-768:** On the Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
 
