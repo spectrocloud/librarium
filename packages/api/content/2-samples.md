@@ -22,7 +22,7 @@ import InfoBox from "@librarium/shared/src/components/InfoBox"
 
 This page outlines a sample workflow for a use case where a user (either a tenant or an admin) that is already registered performs these steps, all with the use of APIs:
 
-* Login to the Spectro Cloud management console.
+* Login to the Palette management console.
 * Create a cluster profile named *cluster-profile-1* with the these (example) layers -
     * OS: Ubuntu, 18.4.X (LTS).
     * Kubernetes: select version 1.17.X.
