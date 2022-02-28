@@ -49,7 +49,7 @@ Palette supports several kinds of appliances at the edge. These appliances can b
 
 * A communication and orchestration component called Private Cloud Gateway - Edge (PCG-E) is installed on the edge appliance. Several environment-specific properties, such as proxy settings, Pod CIDRs, etc., are specified in PCG-E.
 * PCG-E performs fundamental device discovery and registration with the Palette Management Console.
-* User can register the appliance on the Palette Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. The appliance's machine ID is used as a unique appliance ID by default.
+* User can register the appliance on the Palette Management Console at any time by specifying a unique appliance ID. This ID can be customized while starting up PCG-E. By default, the appliance's machine ID is used as a unique appliance ID.
 * Upon initial registration of the appliance, its status will become 'Unpaired.' Once PCG-Edge sends back the appliance information, the appliance is paired up, and the status changes to 'Ready.'
 * The rest of the provisioning workflow is similar to any other cloud in Palette. An environment-specific cluster profile needs to be created and used to provision the appliance cluster.
 
@@ -58,7 +58,7 @@ Palette supports several kinds of appliances at the edge. These appliances can b
 * A tenant account in Palette Manage Console.
 * Linux based operating systems like Ubuntu/CentOS
 * Docker installed on the system
-Note: The snap-installed Docker on Ubuntu does not work. Uninstall the same and install using Official Docker steps. <https://docs.docker.com/engine/install/>)
+**Note**: The snap-installed Docker on Ubuntu does not work. Uninstall the same and install using Official Docker steps. <https://docs.docker.com/engine/install/>)
 * Make sure to have root access to the machine
 
 # Detailed Instructions
@@ -81,7 +81,7 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
 
 ## PCG-Edge Install
 
-* Download the edge installer binary from the following location on to the appliance:
+* Download the edge installer binary from the following location onto the appliance:
 <https://spectro-images.s3.amazonaws.com/edge-v2.3x.bin>
 * A Bootstrapper mechanism for installing the Palette component “PCG-E” is baked into the Palette PCG-E binary.
 * As the root user run the PCG-E installation command:
