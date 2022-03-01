@@ -1,6 +1,6 @@
 ---
 title: "Cluster Health Alerts"
-metaTitle: "Cluster Health Alerts on Spectro Cloud"
+metaTitle: "Cluster Health Alerts on Palette"
 metaDescription: "Cluster Health Alerts"
 hideToC: false
 fullWidth: false
@@ -13,7 +13,7 @@ import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInt
 
 
 # Overview
-Spectro Cloud monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Spectro Cloud provides the ability to have these alerts pushed out to a variety of channels. Users can setup simple email alerts to receive an email when health status of their cluster changes. Additionally, they can setup Webhooks to integrate alerts with a variety of ITSM tools such as Service Now, Slack, Microsoft Teams, etc. These alerts are setup at the project level and apply to all clusters within the project.
+Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can setup simple email alerts to receive an email when health status of their cluster changes. Additionally, they can setup Webhooks to integrate alerts with a variety of ITSM tools such as Service Now, Slack, Microsoft Teams, etc. These alerts are setup at the project level and apply to all clusters within the project.
 
 Palette management server relies on the following to trigger cluster-health alerts:
 * Node and resource metrics pushed by Spectro agent from clusters.
