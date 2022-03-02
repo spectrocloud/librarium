@@ -1,6 +1,6 @@
 ---
 title: "BackUp and Restore"
-metaTitle: "Managing Cluster Update Events on Spectro Cloud"
+metaTitle: "Managing Cluster Update Events on Palette"
 metaDescription: "Events and Notifications on Cluster Updates"
 hideToC: false
 fullWidth: false
@@ -53,7 +53,7 @@ To create your workspace role, follow the steps below:
 
 # Prerequisites
 
-The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Spectro Cloud.
+The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 # Backup Locations
 
@@ -69,7 +69,7 @@ The following details are required to configure a backup location:
 * Account Information - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
   * Credentials - Provide access key and secret key.
   * STS - Provide the ARN and External ID of the IAM role that has permission to perform all S3 operations. The STS role provided in the backup location should have a trust set up with the account used to launch the cluster itself and should have the permission to assume the role.
-* Spectro Cloud mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
+* Palette mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
 
 #### AWS S3 Permissions
 
