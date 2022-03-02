@@ -12,11 +12,6 @@ import WarningBox from '@librarium/shared/src/components/WarningBox';
 import InfoBox from '@librarium/shared/src/components/InfoBox';
 import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
 
-# Manage Clusters
-
-Palette supports several day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
-
-The following sections describe these capabilities in detail:
 
 # Manage Clusters
 
