@@ -54,7 +54,7 @@ Palette secures the Kubernetes clusters provisioned by following security best p
 
 ## Operating System
 
-’s out of the box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in Palette’s pack registry and are available to the users to apply to their existing clusters at the time convenient to them.
+Palette’s out of the box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in Palette’s pack registry and are available to the users to apply to their existing clusters at the time convenient to them.
 
 ## Kubernetes
 
