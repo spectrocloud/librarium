@@ -615,9 +615,9 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
 </InfoBox>
 
-* Configure one or more worker node pools. A worker node will be  configured by default.
+* Configure one or more worker node pools. A single worker node will be configured by default.
     - Name - a descriptive name for the node pool.
-    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varying workload conditions.
+    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.
     - Instance type - Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool. 
 
 * Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
