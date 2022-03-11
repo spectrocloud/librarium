@@ -17,7 +17,6 @@ Following are some of the architectural highlights of Amazon Web Services' (AWS)
 
 * Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 * Full support for EKS Fargate profiles
-* Ability to replace AWS CNI plugins with other CNI plugins like Calico
 * Spot instance support
 
  ![eks_cluster_architecture.png](eks_cluster_architecture.png)
