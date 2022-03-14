@@ -23,6 +23,12 @@ import Tooltip from "@librarium/shared/src/components/ui/Tooltip";
 
 <Tabs>
 
+<Tabs.TabPane tab="2.4.x" key="2.4.x">
+
+* **2.4.0**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="2.1.x" key="2.1.x">
 
 * **2.1.0** 
