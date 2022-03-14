@@ -35,7 +35,7 @@ Projects provide a way for grouping clusters together for logical separation. Ro
 
 ## Role
 
-A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster,  etc.
+A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster, etc.
 
 ## Permissions
 
@@ -88,7 +88,7 @@ Palette maintains a public pack registry containing various [packs](#pack) that 
 
 ## Private Pack Registry
 
-Palette provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Palette's public pack registry. These user-defined packs need to be hosted in a private registry which users can bring up in their environment using Palette's pack registry software.
+Palette provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Palette's public pack registry. These user-defined packs need to be hosted in a private registry, which users can bring up in their environment using Palette's pack registry software.
 
 ## Helm Charts
 
@@ -97,17 +97,17 @@ Helm Charts are Kubernetes YAML manifests that describe a related set of Kuberne
 
 ## Chart Repositories
 
-Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries such as Bitnami, are mapped into Palette by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories.
+Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries, such as Bitnami, are mapped into Palette by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories.
 
 
 ## Attach Manifests
 
-For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets, or CRDs may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple attach manifests can be added to a layer in a cluster profile.
+For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custome Resource Definisions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile.
 
 
 ## Pack Manifests
 
-Layers in a [cluster profile](#cluster-profile) are typically built using a Palette [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional Kubernetes resources need to be provisioned, that are not part of any Palette pack or a chart. Pack manifests provide a pass-through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
+Layers in a [cluster profile](#cluster-profile) are typically built using a Palette [Pack](#pack) or a [Charts](#helm-charts). There may be certain scenarios where additional Kubernetes resources need to be provisioned that are not part of any Palette pack or a chart. Pack manifests provide a pass-through mechanism to allow provisioning through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and Charts.
 
 ## Presets
 
