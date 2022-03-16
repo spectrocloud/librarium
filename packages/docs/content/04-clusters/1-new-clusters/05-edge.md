@@ -213,8 +213,8 @@ The following steps need to be performed to provision a new Edge cluster:
       * Allow worker capability (master pool) - Workloads to be provisioned on master nodes.
       * **Appliances** - Select the registered appliance from the drop-down. Can add multiple appliances for pool configuration.
       * **Rolling Update** - For pool scale up and scale down, there are two choices of Rolling Update.
-      * **Expand First** - Launches the new node and then shut down the old node.
-      * **Contract First** - Shuts down the old node first and then launches the new node.
+        * **Expand First** - Launches the new node and then shut down the old node.
+        * **Contract First** - Shuts down the old node first and then launches the new node.
 6. Set the Cluster Policies as per requirement. For example, these policies could be set or scheduled later when the clusters start running.
       * **Manage Machines**: Schedule the OS Patching to update the latest patches to the cluster.
       * **Scan Policies**: Users can schedule the security scans from the following options:
