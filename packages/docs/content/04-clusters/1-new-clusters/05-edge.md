@@ -112,12 +112,10 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
 Cluster Profiles are created by configuring various layers of the Kubernetes infrastructure stack. The following steps need to be performed to create a new Cluster Profile:
 
 1. Provide the basic profile information.
-    - Name - Give your cluster a name
+    - Name - Give your cluster a name.
     - Description - Add a familiar description of your profile.
-    - Profile Type - Profile Type (Full, Infra, or Add-on) will dictate the layers configured in the cluster profile. 
-    
+    - Profile Type - Profile Type (Full, Infra, or Add-on) will dictate the layers configured in the cluster profile.  
     - Tag - Tags on a cluster profile are propagated to the edge device when clusters are created from the cluster profile.
-
 
 2.  Select the _Edge_ as the **Environment** for _Infra_ or _Full_ cluster profile. (For containerized Edge cluster, toggle the **Virtualized** button).
 3.  Configure the layers of the infrastructure stack. The following layers are considered Core Infrastructure layers. Configuring these layers is mandatory for cluster profiles of Infra or Full. These layers are not configurable for _Add-On_ cluster profiles:
@@ -199,32 +197,31 @@ The following are the specific considerations that need to be taken into account
 
 The following steps need to be performed to provision a new Edge cluster:
 
-1. Provide basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the edge device.
+1. Provide the basic cluster information like name, description, and tags. Tags are currently not propagated to the VMs deployed on the edge device.
 
-2. Select a cluster profile created for the 'Containerized' or 'Virtualized' Edge environment depending on the type of cluster to be deployed. The profile definition will be used as the cluster construction template.
+2. Select a Cluster Profile created for the _Containerized_ or _Virtualized_ Edge environment, depending on the type of cluster to be deployed. The profile definition will be used as the cluster construction template.
 
-3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+3. Review and override Pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile.
 
-4.  Provide the cluster configuration details:
+4. Provide the Cluster Configuration details:
       * SSH Keys (optional) - Public key to configure remote SSH access to the nodes (User: spectro).
 
-5.  Configure the master and worker node pools. A master and a worker node pool are configured by default:
+5. Configure the master and worker node pools. A master and a worker node pool are configured by default:
 
-      * Node Pool Name - A descriptive name for the node pool
-      * Size - Number of nodes to be provisioned for the node pool. For the master pool, this number can be a _1_, _3_, or _5_.
-      * Allow worker capability (master pool) - Workloads to be provisioned on master nodes
-      * Appliances - Select the registered appliance from the drop-down. Can add multiple appliances for pool configuration.
-    * Rolling Update - For pool scale up and scale down, there are two choices of Rolling Update.
-      * Expand First - Launches the new node and then shut down the old node.
-      * Contract First - Shuts down the old node first and then launches the new node.
-6.  Set the Cluster Policies as per requirement. For example, these policies could be set or scheduled later when the clusters start running.
-      * Manage Machines: Schedule the OS Patching to update the latest patches to the cluster.
-      * Scan Policies: Users can schedule the security scans from the following options:
+      * **Node Pool Name** - A descriptive name for the node pool.
+      * **Size** - Number of nodes to be provisioned for the node pool. For the master pool, this number can be a _1_, _3_, or _5_.
+      * Allow worker capability (master pool) - Workloads to be provisioned on master nodes.
+      * **Appliances** - Select the registered appliance from the drop-down. Can add multiple appliances for pool configuration.
+      * **Rolling Update** - For pool scale up and scale down, there are two choices of Rolling Update.
+      * **Expand First** - Launches the new node and then shut down the old node.
+      * **Contract First** - Shuts down the old node first and then launches the new node.
+6. Set the Cluster Policies as per requirement. For example, these policies could be set or scheduled later when the clusters start running.
+      * **Manage Machines**: Schedule the OS Patching to update the latest patches to the cluster.
+      * **Scan Policies**: Users can schedule the security scans from the following options:
         * Kubernetes Configuration Security
         * Kubernetes Penetration Testing
         * Kubernetes Conformance Testing
-      * Backup Policies:  
-     Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster.
+      * **Backup Policies**: Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster.
 7.  Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 For more details on Day 2 Cluster management please refer [Cluster Management](/clusters/#cluster-management).
@@ -234,9 +231,9 @@ For more details on Day 2 Cluster management please refer [Cluster Management](/
 The deletion of an Edge cluster results in the removal of all virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Edge cluster:
 
 1. Select the cluster to be deleted from the cluster view and navigate to the Cluster Overview page.
-2.  Invoke a delete action available on the page : **Cluster** -> **Settings** -> **Cluster Settings** -> **Delete Cluster**.
-3.  **Confirm** the delete action.
-4.  Cluster status is updated to _Deleting_ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to _Deleted_ and it is removed from the list of clusters.
+2. Invoke a delete action available on the page : **Cluster** -> **Settings** -> **Cluster Settings** -> **Delete Cluster**.
+3. **Confirm** the delete action.
+4. Cluster status is updated to _Deleting_ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to _Deleted_ and it is removed from the list of clusters.
 
 <InfoBox>
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, Abort action is available to stop provisioning and delete all resources.
