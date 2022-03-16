@@ -17,7 +17,7 @@ Edge Clusters are Kubernetes clusters set up on appliances installed in isolated
 
 <InfoBox>
 
-Palette currently supports x86 processor supported Edge devices and subsequently we will be supporting ARM processor supported devices as well.
+Palette currently supports x86-based Edge devices. ARM-based support will be added subsequently.
 
 </InfoBox>
 
