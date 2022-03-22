@@ -91,3 +91,25 @@ Configure settings as described above.
 * Use Role and a RoleBinding to scope security to a single namespace.
 * Use ClusterRole and RoleBinding to scope security to several or all namespaces.
 * Use ClusterRole and ClusterRoleBinding to scope security to all namespaces OR cluster-scoped resources.
+
+# Use RBAC-OIDC in your Public Cloud 
+
+
+This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/new-clusters/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
+
+```json
+extraArgs:-
+      oidc-issuer-url: "provider URL"
+      oidc-client-id: "client-id"
+      oidc-groups-claim: "groups"
+      oidc-username-claim: "email"
+```
+## Client configuration to add OIDC based authentication flags in kubeconfig
+
+```json
+clientConfig:
+  oidc-issuer-url: "https://dev-13018903.okta.com"
+  oidc-client-id: "0oa1bqubeezLzCAPP5d7"
+  oidc-client-secret: "378VO445Xoq_wGbV0wD-mlWRrPWu8dlWdPK4fKJ7"
+  oidc-extra-scope: profile,email,openid
+```
