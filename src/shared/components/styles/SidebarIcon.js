@@ -18,6 +18,7 @@ import ProjectIcon from "assets/icons/project.svg";
 import RolesIcon from "assets/icons/roles.svg";
 import TeamsIcon from "assets/icons/teams.svg";
 import WorkspacesIcon from "assets/icons/workspaces.svg";
+import TerraformIcon from "assets/icons/terraform.svg";
 
 // TODO: Sure Codrin knows a better way than adding them manually
 
@@ -39,6 +40,7 @@ const icons = {
   roles: <RolesIcon />,
   teams: <TeamsIcon />,
   workspaces: <WorkspacesIcon />,
+  terraform: <TerraformIcon />
 };
 
 function SidebarIcon({ type }) {
