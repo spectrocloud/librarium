@@ -97,16 +97,16 @@ Configure settings as described above.
 
 This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/new-clusters/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
 
-```json
-extraArgs:-
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
+```yaml
+extraArgs:
+  oidc-issuer-url: "provider URL"
+  oidc-client-id: "client-id"
+  oidc-groups-claim: "groups"
+  oidc-username-claim: "email"
 ```
 ## Client configuration to add OIDC based authentication flags in kubeconfig
 
-```json
+```yaml
 clientConfig:
   oidc-issuer-url: "https://dev-13018903.okta.com"
   oidc-client-id: "0oa1bqubeezLzCAPP5d7"
@@ -115,7 +115,7 @@ clientConfig:
 ```
 ## An Example Scenario: GCP- RBAC Configuration
 
-```json
+```yaml
 pack:
   k8sHardening: True
   #CIDR Range for Pods in cluster
