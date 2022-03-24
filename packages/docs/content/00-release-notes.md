@@ -26,6 +26,7 @@ Palette 2.3.0 includes the following enhancements:
 * New [**workspace user roles**](/clusters/cluster-management/backup-restore#workspaceoperator) that provide granular control to specific actions within a workspace:
   * *Workspace Operator* - Allows only backup and restore capabilities within a workspace
   * *Workspace Admin* - Administrative privilages within a workspace
+* Palette will now perform a [**rolling upgrade**](/clusters/#rollingupgrade) on the nodes for any fundamental changes to the cluster config. Palette will keep track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under Cluster Overview > Upgrade details.
 * Enable deployment of the single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
 * Palette introduces a VM operator to allow Virtual Machine based applications to be modeled as Cluster Profile layers.
 
