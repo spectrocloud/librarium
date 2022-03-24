@@ -24,14 +24,11 @@ Dex is an identity service to drive authentication for Kubernetes API Server thr
 ## Versions Supported
 
 <Tabs>
-
 <Tabs.TabPane tab="2.30.x" key="2.30.x">
 
 * **2.30.0** 
 
 </Tabs.TabPane>
-
-<Tabs>
 
 <Tabs.TabPane tab="2.28.x" key="2.28.x">
 
@@ -83,5 +80,5 @@ With these config changes, you can access Dex, Dex Client service(s) on the Ingr
 ## References
 
 https://github.com/dexidp/dex
-https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md 
+https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md
 https://github.com/mintel/dex-k8s-authenticator
