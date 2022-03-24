@@ -8,11 +8,11 @@ category: ['storage']
 logoUrl: ' https://registry.dev.spectrocloud.com/v1/csi-rook-ceph/blobs/sha256:2817270f4eecbc2eea0740c55c7611d1a538a3e17da610a3487bb11b067076d1?type=image/png'
 ---
 
-import Tabs from 'shared/src/components/ui/Tabs';
-import WarningBox from 'shared/src/components/WarningBox';
-import InfoBox from 'shared/src/components/InfoBox';
-import PointsOfInterest from 'shared/src/components/common/PointOfInterest';
-import Tooltip from "shared/src/components/ui/Tooltip";
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
 
 
 # Rook Ceph

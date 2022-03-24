@@ -6,10 +6,10 @@ hideToC: false
 fullWidth: false
 ---
 
-import Tabs from '@librarium/shared/src/components/ui/Tabs';
-import WarningBox from '@librarium/shared/src/components/WarningBox';
-import InfoBox from '@librarium/shared/src/components/InfoBox';
-import PointsOfInterest from '@librarium/shared/src/components/common/PointOfInterest';
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview on Taints
 

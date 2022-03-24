@@ -9,11 +9,11 @@ category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
 
-import Tabs from 'shared/src/components/ui/Tabs';
-import WarningBox from 'shared/src/components/WarningBox';
-import InfoBox from 'shared/src/components/InfoBox';
-import PointsOfInterest from 'shared/src/components/common/PointOfInterest';
-import Tooltip from "shared/src/components/ui/Tooltip";
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes Dashboard
 

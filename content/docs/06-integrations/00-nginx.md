@@ -8,11 +8,11 @@ category: ['ingress']
 logoUrl: 'https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image/png'
 ---
 
-import WarningBox from 'shared/src/components/WarningBox';
-import Tabs from 'shared/src/components/ui/Tabs';
-import InfoBox from 'shared/src/components/InfoBox';
-import PointsOfInterest from 'shared/src/components/common/PointOfInterest';
-import Tooltip from "shared/src/components/ui/Tooltip";
+import WarningBox from 'shared/components/WarningBox';
+import Tabs from 'shared/components/ui/Tabs';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
 
 
 # Nginx
