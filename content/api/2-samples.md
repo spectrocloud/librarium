@@ -33,6 +33,43 @@ This page outlines a sample workflow for a use case where a user (either a tenan
 
 For example, let us consider a non-admin user with the email janedoe@thefirm.com and the password *password1234*.
 
+## API Key Authentication
+
+```bash
+POST → https://api.spectrocloud.com/v1/apiKeys
+```
+
+**REQUEST**
+
+BODY:
+
+```json
+{
+  {
+  "metadata":
+    "name": "string"
+  },
+  "spec": {
+    "expiry": "date-time",
+    "userUid": "string"
+  }
+}
+```
+
+**RESPONSE**
+
+HTTP CODE: 201
+
+DESCRIPTION: Created successfully
+
+RESPONSE BODY:
+```bash
+{
+  "uid": "string"
+}
+```
+API Key creation successful.
+
 ## Authentication
 
 ```bash
