@@ -9,7 +9,6 @@ hiddenFromNav: false
 hideToCSidebar: true
 ---
 import {Intro, IntroButtons} from "shared/components"
-import {Layout} from "shared"
 import InfoBox from "shared/components/InfoBox"
 
 <Intro>
@@ -25,11 +24,11 @@ This page outlines a sample workflow for a use case where a user (either a tenan
 * Login to the Palette management console.
 * Create a cluster profile named *cluster-profile-1* with the these (example) layers -
     * OS: Ubuntu, 18.4.X (LTS).
-    * Kubernetes: select version 1.17.X.
+    * Kubernetes: select version 1.19.X.
     * Network: Calico 3.10.X.
     * Storage: vSphere Storage Class.
 * Create a cluster in VMware.
-* Update the cluster profile to bring the Kubernetes version to 1.18.X.
+* Update the cluster profile to bring the Kubernetes version to 1.21.X.
 * Update the cluster to reflect the changes of the Kubernetes version.
 
 For example, let us consider a non-admin user with the email janedoe@thefirm.com and the password *password1234*.
