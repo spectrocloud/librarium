@@ -25,6 +25,14 @@ Dex is an identity service to drive authentication for Kubernetes API Server thr
 
 <Tabs>
 
+<Tabs.TabPane tab="2.30.x" key="2.30.x">
+
+* **2.30.0** 
+
+</Tabs.TabPane>
+
+<Tabs>
+
 <Tabs.TabPane tab="2.28.x" key="2.28.x">
 
 * **2.28.0** 

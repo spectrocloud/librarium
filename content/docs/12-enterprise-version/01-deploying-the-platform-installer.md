@@ -1,7 +1,7 @@
 ---
 title: "Quick Start Mode"
 metaTitle: "Quick Start Mode"
-metaDescription: "A quick start to Spectro Cloud Platform for PoC purposes."
+metaDescription: "A quick start to Spectro Cloud Palette Platform for PoC purposes."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -14,7 +14,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Quick Start Installation
 
-The Spectro Cloud On-Prem Quick Start Mode is a single node installation of the Spectro Cloud platform, used for PoC environments to quickly understand the capabilities of the Spectro Cloud platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
+The Palette On-Prem Quick Start Mode is a single node installation of the Palette platform, used for PoC environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
 
 As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
 
@@ -46,7 +46,7 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
         * HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.  An optional setting, required only if a proxy is used for outbound connections.
         * HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_.   An optional setting, required only if a proxy is used for outbound connections.
         * NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
-        * Spectro Cloud Repository settings: The platform installer downloads various platform artifacts from a repository. Currently, this repository is hosted by Spectro Cloud and the installer VM needs to have an outgoing internet connection to the repository. Upcoming releases will enable the option to privately host a dedicated repository to avoid having to connect outside. This option is currently unavailable. Leave all the fields under Spectro Cloud Repository settings blank
+        * Spectro Cloud Repository settings: The platform installer downloads various platform artifacts from a repository. Currently, this repository is hosted by Palette and the installer VM needs to have an outgoing internet connection to the repository. Upcoming releases will enable the option to privately host a dedicated repository to avoid having to connect outside. This option is currently unavailable. Leave all the fields under Palette Repository settings blank
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
 5. Power on the VM.
 

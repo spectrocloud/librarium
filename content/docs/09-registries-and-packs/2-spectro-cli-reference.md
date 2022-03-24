@@ -33,7 +33,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 <Tabs.TabPane tab="OSX" key="osx_cli">
 
 ```bash
-wget https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro
+wget https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro
 ```
 
 </Tabs.TabPane>
@@ -41,7 +41,7 @@ wget https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro
 <Tabs.TabPane tab="Linux" key="linux_cli">
 
 ```bash
-wget https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro
+wget https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro
 ```
 
 </Tabs.TabPane>
@@ -173,7 +173,7 @@ List all the packs from the Spectro Cloud pack registry:
 <Tabs.TabPane tab="Usage" key="cli_list_usage">
 
 ```bash
- spectro pack ls [flags
+ spectro pack ls [flags]
 ```
 
 </Tabs.TabPane>

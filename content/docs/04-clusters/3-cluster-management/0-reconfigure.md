@@ -1,7 +1,7 @@
 ---
 title: "Reconfigure"
-metaTitle: "Managing Cluster reconfiguration-scaling Events on Spectro Cloud"
-metaDescription: "Reconfiguration-scaling Events on Spectro Cloud"
+metaTitle: "Managing Cluster reconfiguration-scaling Events on Palette"
+metaDescription: "Reconfiguration-scaling Events on Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
 
-# Scaling
+# Overview
 Scaling a cluster up or down involves changing the size of node pools. The following are the steps to scale up/down a cluster:
 * Access the ‘Nodes’ view of the cluster.
 * For the desired node pool, change the size directly from the nodes panel or edit node pool settings.
@@ -55,5 +55,5 @@ The following steps need to be performed to remove a worker pool from the cluste
 
 
 <InfoBox>
-    Support of reconfiguration is not available for existing clusters imported into Spectro Cloud for any cloud type. 
+    Support of reconfiguration is not available for existing clusters imported into Palette for any cloud type. 
 </InfoBox>

@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# COMPLIANCE
+# Compliance
 
 ![soc2.png](soc2.png "#width=180px")
 

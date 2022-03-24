@@ -17,7 +17,6 @@ Following are some of the architectural highlights of Amazon Web Services' (AWS)
 
 * Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 * Full support for EKS Fargate profiles
-* Ability to replace AWS CNI plugins with other CNI plugins like Calico
 * Spot instance support
 
  ![eks_cluster_architecture.png](eks_cluster_architecture.png)
@@ -512,6 +511,8 @@ All the above policies are required as part of Cluster API requirement, derived 
                 "ec2:CreateSnapshot",
                 "ec2:DeleteSnapshot",
                 "ec2:DescribeKeyPairs",
+                "ec2:DetachNetworkInterface",
+                "ec2:DeleteNetworkInterface",
                 "ec2:DescribeSnapshots",
                 "ec2:DescribeTags",
                 "ec2:DescribeVolumesModifications",
@@ -613,9 +614,9 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
 </InfoBox>
 
-* Configure one or more worker node pools. A worker node will be  configured by default.
+* Configure one or more worker node pools. A single worker node will be configured by default.
     - Name - a descriptive name for the node pool.
-    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the instances will scale between the minimum and maximum size under varying workload conditions.
+    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.
     - Instance type - Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool. 
 
 * Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.

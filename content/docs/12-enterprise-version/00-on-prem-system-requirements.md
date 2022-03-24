@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Spectro Cloud SaaS platform is also available as a self-hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Spectro Cloud on-prem is available in two modes:
+The Palette SaaS platform is also available as a self-hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-prem is available in two modes:
 
 * Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes.
 * Enterprise Mode - A multi-node highly available version for production purposes.
@@ -34,7 +34,7 @@ The sections below describe the standard requirements and highlight specific req
 
 * Zone Tagging
 
-  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Spectro Cloud Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
   As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
 
@@ -187,7 +187,7 @@ The sections below describe the standard requirements and highlight specific req
 
 ## Hardware Requirements
 
-The following section provides the hardware requirements for Spectro Cloud Platform VMs for various capacity levels.
+The following section provides the hardware requirements for Palette Platform VMs for various capacity levels.
 * Concurrent Tenant Clusters - The number of concurrent tenant cluster provisioning or deletion requests.
 * Total Managed Clusters - The number of parallel running tenant clusters.
 
@@ -219,11 +219,11 @@ The following steps are optional but recommended for production environments.
 
 * DNS Mapping:
 
-  A DNS is  used to access Spectro Cloud Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.
+  A DNS is  used to access Palette Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.
 
 * SMTP Settings:
 
-  Configure SMTP settings to enable the Spectro Cloud platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time.
+  Configure SMTP settings to enable the Palette platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time.
 
 * Trusted Certificate:
 

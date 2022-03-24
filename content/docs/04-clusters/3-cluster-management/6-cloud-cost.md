@@ -1,7 +1,7 @@
 ---
 title: "Cost Visibility"
 metaTitle: "Calculate Cloud Cost in Spectro Cloud"
-metaDescription: "Calculate Cloud Cost in Spectro Cloud"
+metaDescription: "Calculate Cloud Cost in Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Spectro Cloud calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
+Palette calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
 
 # Cloud Cost
 
