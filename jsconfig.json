@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "utils/*": [
+        "src/shared/utils/*"
+      ],
+      "content/*": [
+        "content/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
