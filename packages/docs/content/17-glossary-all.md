@@ -61,6 +61,13 @@ Workload / Tenant / Application Clusters are a collection of master and worker n
 ## Management Clusters
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette.  As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
 
+## Spectro Agent
+Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects the information on metrics, workloads, heartbeats, etc., and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
+
+
+## Palette Orchestrator
+Palette orchestrator supports deploying the clusters as per the specifications desired and modeled in Palette UI. Furthermore, it supports the cluster version upgrades as per the user requirements. The Palette orchestrator also aids in recycling the certificates of the clusters, node health checks, and recycling unhealthy nodes.
+
 ## Cloud Account
 
 Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
