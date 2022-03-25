@@ -34,7 +34,7 @@ For an end end-to-end cluster provisioning example, please follow the appropriat
 
 Examples of other managed resources are also available in the [examples/resources/ directory](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/resources).
 
-Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider Documentation. Find the links those documents at [Resources](/terraform/resources/#spectrocloudproviderresources) and [Datasources](/terraform/datasources/#spectrocloudproviderdatasource).
+Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation. Find the links to those documents at [Resources](/terraform/resources/#spectrocloudproviderresources) and [Datasources](/terraform/datasources/#spectrocloudproviderdatasource).
 
 
 ## Latest Terraform Versions Supported
@@ -49,7 +49,7 @@ The below section consolidates the different versions of Terraform providers sup
 
 The major changes are:
 * Added datasource for appliances 
-* Edge cluster support
+* Edge Cluster support
 * Helm registry data support
 * RBAC support 
 * Edge appliance create, update and delete fix
@@ -72,11 +72,11 @@ Full Changelog: [v0.6.0...v0.6.1](https://github.com/spectrocloud/terraform-prov
 
 Major changes are:
 
-* Edge cluster support
+* Edge Cluster support
 * Helm registry data support
 * RBAC support 
 * Edge appliance create, update and delete fix
-* Taints and labels support
+* Taints and Labels support
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1-pre)
 
@@ -96,21 +96,22 @@ Full Changelog: [v0.6.0...v0.6.1-pre](https://github.com/spectrocloud/terraform-
 Major changes are:
 
 * Read cloud config and cache it in state
-* Add by default BastionDisabled flag as true
-* Maas support for terraform
+* Add by default Bastion Disabled flag as true
+* Maas support for Terraform
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.0)
 
 Refer to Full Changelog:[v0.5.18...v0.6.0](https://github.com/spectrocloud/terraform-provider-spectrocloud/compare/v0.5.18...v0.6.0)
 
 ## Assets
-[Asset Details](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases#:~:text=anand%20and%20nikchern-,Assets,-17) of terraform provider Spectro Cloud Palette.
+[Asset Details](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases#:~:text=anand%20and%20nikchern-,Assets,-17) of Terraform Provider Spectro Cloud Palette.
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.5.18" key="v0.5.18">
 
-## Whats changed
+## Major Changes
+ 
 * Set unlimited fetch size for profiles
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.5.18)
