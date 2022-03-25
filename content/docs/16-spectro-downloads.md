@@ -48,7 +48,7 @@ Download and execute the version-specific binary
 
 ```json
 export VERSION=1.14.3
-curl --user spectro:sTMZiXqJumMU2J  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
+curl --user spectro:PASSWORD  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
 chmod 755 ./airgap-v${VERSION}.bin
 ./airgap-v${VERSION}.bin
 ```
