@@ -97,6 +97,8 @@ Configure settings as described above.
 
 This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/new-clusters/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
 
+The following content needs to be added into the kubernetes pack values while creating the Cluster Profile.
+
 ```yaml
 extraArgs:
   oidc-issuer-url: "provider URL"
@@ -104,16 +106,16 @@ extraArgs:
   oidc-groups-claim: "groups"
   oidc-username-claim: "email"
 ```
-## Client configuration to add OIDC based authentication flags in kubeconfig
+## Following Content is required to get the client configuration related to OIDC details in kubeconfig downloaded from Pallet UI.
 
 ```yaml
 clientConfig:
-  oidc-issuer-url: "https://dev-13018903.okta.com"
-  oidc-client-id: "0oa1bqubeezLzCAPP5d7"
-  oidc-client-secret: "378VO445Xoq_wGbV0wD-mlWRrPWu8dlWdPK4fKJ7"
+  oidc-issuer-url: "<OIDC-ISSUER-URL>"
+  oidc-client-id: "<OIDC-CLIENT-ID>"
+  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
   oidc-extra-scope: profile,email,openid
 ```
-## An Example Scenario: GCP- RBAC Configuration
+## Example
 
 ```yaml
 pack:
@@ -128,11 +130,9 @@ pack:
 # KubeAdm customization for kubernetes hardening. Below config will be ignored if k8s Hardening property above is disabled
 kubeadmconfig:
   apiServer:
-    certSANs:
-    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
     extraArgs:
-      oidc-issuer-url: "https://dev-13018903.okta.com"
-      oidc-client-id: "0oa1bqubeezLzCAPP5d7"
+      oidc-issuer-url: "<OIDC-ISSUER-URL>"
+      oidc-client-id: "<OIDC-CLIENT-ID>"
       oidc-groups-claim: "groups"
       oidc-username-claim: "email"
       # Note : secure-port flag is used during kubeadm init. Do not change this flag on a running cluster
@@ -201,9 +201,9 @@ kubeadmconfig:
 
 # Client configuration to add OIDC based authentication flags in kubeconfig
 clientConfig:
-  oidc-issuer-url: "https://dev-13018903.okta.com"
-  oidc-client-id: "0oa1bqubeezLzCAPP5d7"
-  oidc-client-secret: "378VO445Xoq_wGbV0wD-mlWRrPWu8dlWdPK4fKJ7"
+  oidc-issuer-url: "<OIDC-ISSUER-URL>"
+  oidc-client-id: "<OIDC-CLIENT-ID>"
+  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
   oidc-extra-scope: profile,email,openid
 ```
 
