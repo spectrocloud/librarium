@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform codifies cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then applies these changes to hundreds of cloud providers. 
+Palette also supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform codifies cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then applies these changes to hundreds of cloud providers. 
 
 # Terraform Provider Spectro Cloud
 
@@ -34,7 +34,7 @@ For an end-to-end cluster provisioning example, please follow the appropriate gu
 
 Examples of other managed resources are also available in the [Spectro Cloud Resource](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/resources) directory.
 
-Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation. Find the links to those documents at [Resources](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location) and [Datasources](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/backup_storage_location).
+Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation. Find the links to those documents at [Resources](/terraform/resources/#spectrocloudproviderresources) and [Datasources](/terraform/datasources/#spectrocloudproviderdatasource).
 
 
 ## Latest Terraform Versions Supported
