@@ -85,6 +85,7 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
         icon="times"
         onClick={e => {
           setInputValue('');
+          ref.current.focus();
           refine(e.target.value);
         }}
       />

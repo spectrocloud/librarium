@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Input } from 'antd';
 import styled from 'styled-components';
 
@@ -56,10 +56,13 @@ const ClearIcon = styled(SearchIcon)`
 
 export default function IntegrationSearch({ onSearch }) {
   const [inputValue, setInputValue] = useState('');
+  const ref = useRef(null);
+
   return (
     <Wrapper>
       <SearchIcon icon="search" />
       <Input
+        ref={ref}
         placeholder="Search for integration..."
         value={inputValue}
         onChange={e => {
@@ -72,6 +75,7 @@ export default function IntegrationSearch({ onSearch }) {
         onClick={() => {
           setInputValue('');
           onSearch('');
+          ref.current.focus();
         }}
       />
     </Wrapper>
