@@ -34,7 +34,7 @@ For an end-to-end cluster provisioning example, please follow the appropriate gu
 
 Examples of other managed resources are also available in the [Spectro Cloud Resource](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/resources) directory.
 
-Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation. Find the links to those documents at [Resources](/terraform/resources/#spectrocloudproviderresources) and [Datasources](/terraform/datasources/#spectrocloudproviderdatasource).
+Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation.
 
 
 ## Latest Terraform Versions Supported
