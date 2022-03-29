@@ -1,8 +1,7 @@
 .PHONY: initialize start commit build
 
 initialize:
-	npx lerna clean --yes
-	npx lerna bootstrap --hoist
+	npm install
 
 start:
 	npm run start
@@ -16,4 +15,3 @@ commit:
 build:
 	rm -rf public
 	npm run build
-	mv packages/website/public/ public

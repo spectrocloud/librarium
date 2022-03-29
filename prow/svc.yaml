@@ -7,8 +7,8 @@ metadata:
   namespace: test-pods
 spec:
   ports:
-  - port: 8000
-    targetPort: 8000
+    - port: 9000
+      targetPort: 9000
   selector:
     prow.k8s.io/job: librarium_build
     app: spectro
