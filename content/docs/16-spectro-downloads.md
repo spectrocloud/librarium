@@ -48,7 +48,7 @@ Download and execute the version-specific binary
 
 ```json
 export VERSION=1.14.3
-curl --user spectro:sTMZiXqJumMU2J  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
+curl --user spectro:PASSWORD  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
 chmod 755 ./airgap-v${VERSION}.bin
 ./airgap-v${VERSION}.bin
 ```
@@ -61,10 +61,10 @@ chmod 755 ./airgap-v${VERSION}.bin
 
 |Version|URL|Info|
 |---|---|--|
-|2.0.2|hubble-installer-119-06162021.ova|Oct 15 2021|
+|2.0.2|https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/gateway-installer-119-06162021.ova|June 17 2021|
 ------
 
-## MaaS PCG Image
+## MAAS PCG Image
 
 |Version|URL|Info|
 |---|---|--|
