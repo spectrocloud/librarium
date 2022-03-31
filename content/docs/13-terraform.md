@@ -7,10 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
-import Tabs from 'shared/components/ui/Tabs'; 
-import WarningBox from 'shared/components/WarningBox'; 
-import InfoBox from 'shared/components/InfoBox'; 
-import PointsOfInterest from 'shared/components/common/PointOfInterest'; 
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
