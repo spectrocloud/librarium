@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then, applies these changes to hundreds of cloud providers. 
+Palette supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then, applies these changes to hundreds of cloud resources. 
 
 # Terraform Provider Spectro Cloud
 
@@ -37,7 +37,7 @@ Examples of other managed resources are also available in the [Spectro Cloud Res
 Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider documentation.
 
 
-## Latest Terraform Versions Supported
+## Latest Version of Spectro Cloud Terraform Provider: `0.6.x`
 The below section consolidates the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
 
@@ -66,28 +66,6 @@ Full Changelog: [v0.6.0...v0.6.1](https://github.com/spectrocloud/terraform-prov
 
 </Tabs.TabPane>
  
-<Tabs.TabPane tab="v0.6.1-pre" key="v0.6.1-pre">
-
-## Changes
-
-Major changes are:
-
-* Edge Cluster support
-* Helm registry data support
-* RBAC support 
-* Edge appliances create, update and delete fix
-* Taints and Labels support
-
-Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1-pre)
-
-Full the Changelog: [v0.6.0...v0.6.1-pre](https://github.com/spectrocloud/terraform-provider-spectrocloud/compare/v0.6.0...v0.6.1-pre)
-
-## Assets
-
-[Asset Details](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1-pre#:~:text=3pings%2C%20and%20nikchern-,Assets,-17) of Terraform provider Spectro Cloud Palette.
-
-</Tabs.TabPane>
-
 
 <Tabs.TabPane tab="v0.6.0" key="v0.6.0">
 
