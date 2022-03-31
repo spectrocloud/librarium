@@ -1,7 +1,7 @@
 ---
-title: "Spectro Cloud Resource Provider"
-metaTitle: "Spectro Cloud Resource Provider"
-metaDescription: "Links to Spectro Cloud Resource Provider"
+title: "Spectro Cloud Data Sources"
+metaTitle: "Spectro Cloud Data Sources"
+metaDescription: "Links to Spectro Cloud Data Sources"
 hideToC: false
 fullWidth: false
 ---
