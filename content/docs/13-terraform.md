@@ -16,17 +16,17 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette also supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform codifies cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then applies these changes to hundreds of cloud providers. 
+Palette supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files and checks whether the execution plan for a configuration matches your expectations (before deployment) and then, applies these changes to hundreds of cloud providers. 
 
 # Terraform Provider Spectro Cloud
 
 The SaaS and on-premise management API of Spectro Cloud are resourced within the HashiCorp Terraform registry under the [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page.
 
 ## Prerequisites
-To use this Spectro Cloud provider, you must meet the following requirements:
+To use this Spectro Cloud provider, have the following requirements ready:
 * Spectro Cloud account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
 * Terraform (minimum version 0.13+)
-* Kubernetes/Kubectl CLI (minimum version 1.16+)
+* Kubernetes/kubectl CLI (minimum version 1.16+)
 
 ## Usage
 
@@ -34,11 +34,11 @@ For an end-to-end cluster provisioning example, please follow the appropriate gu
 
 Examples of other managed resources are also available in the [Spectro Cloud Resource](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/resources) directory.
 
-Detailed documentation on supported data sources and resources are available on the Terraform Spectro Cloud Provider documentation.
+Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider documentation.
 
 
 ## Latest Terraform Versions Supported
-The below section consolidates the different versions of Terraform providers supported by Spectro Cloud Palette and changes pertaining to each version.
+The below section consolidates the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
 
 <Tabs>
@@ -48,11 +48,11 @@ The below section consolidates the different versions of Terraform providers sup
 ## Changes
 
 The major changes are:
-* Added datasource for appliances 
+* Added data source for appliances 
 * Edge Cluster support
 * Helm registry data support
 * RBAC support 
-* Edge appliance create, update, and delete fix
+* Edge appliances create, update, and delete fix
 * Taints and labels support
 * Support autoscaling settings for EKS
 
@@ -75,7 +75,7 @@ Major changes are:
 * Edge Cluster support
 * Helm registry data support
 * RBAC support 
-* Edge appliance create, update and delete fix
+* Edge appliances create, update and delete fix
 * Taints and Labels support
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1-pre)
@@ -95,8 +95,8 @@ Full the Changelog: [v0.6.0...v0.6.1-pre](https://github.com/spectrocloud/terraf
 
 Major changes are:
 
-* Read **Cloud Configuration** file and cache it in state
-* Add by default **Bastion Disabled** flag as true
+* Read the **cloud config** file and cache it in state
+* Add by default the **BastionDisabled** flag as *True*
 * MAAS support for Terraform
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.0)
@@ -112,7 +112,7 @@ Refer to the Full Changelog:[v0.5.18...v0.6.0](https://github.com/spectrocloud/t
 
 ## Major Changes
  
-* Set unlimited fetch size for profiles
+* Set **Fetch Size** for Profiles to *unlimited*
 
 Version Changes [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.5.18)
 
