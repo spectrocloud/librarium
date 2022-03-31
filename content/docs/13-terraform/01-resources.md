@@ -1,9 +1,9 @@
 ---
-title: "Spectro Cloud Provider-Resources"
-metaTitle: "Spectro Cloud Terraform"
-metaDescription: "Spectro Cloud Terraform"
-hiddenFromNav: false
-isIntegration: false
+title: "Spectro Cloud Resource Provider"
+metaTitle: "Spectro Cloud Resource Provider"
+metaDescription: "Links to Spectro Cloud Resource Provider"
+hideToC: false
+fullWidth: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs'; 
