@@ -15,25 +15,25 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# OpenPolicyAgent
+# Open Policy Agent
 
-Palette users can leverage OpenPolicyAgent Gatekeeper to strengthen the security administration of Kubernetes environment. The major motivation behind the deployment is admission customization via configurations with out code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints. Palette supports **Gatekeeper v3.0**. 
+Palette users can leverage the **Open Policy Agent (OPA) Gatekeeper** to strengthen the security administration of Kubernetes environment. The major motivation behind the deployment is admission customization via configurations without code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints. Palette supports **Gatekeeper v3.0**. 
 
-The major features of OpenPolicyAgent are:
+The major features of OPA are:
 
-* Validating Admission Control
-* Policies and Constraints
-  * Sample Policies:
+* **Validating Admission Control**
+* **Policies and Constraints**
+  * **Sample Policies**:
     * All namespaces must have a label that lists a point-of-contact.
     * All pods must have an upper bound for resource usage.
     * All images must be from an approved repository.
     * Services must all have globally unique selectors.
-  * Constraint Properties
+  * **Constraint Properties**
     * AND-ed together
     * Schema validation 
     * Selection semantics
-* Audit: The periodical evaluation of resources against constraints.
-* Data Replication: Constraints to be compared against other objects in the cluster.
+* **Audit**: The periodical evaluation of resources against constraints.
+* **Data Replication**: Constraints to be compared against other objects in the cluster.
 
 ## Versions Supported
 
