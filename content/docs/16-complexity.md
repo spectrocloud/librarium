@@ -15,28 +15,28 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The page embodies the version details of various Palette components with respect to Palette releases. 
+The page lists the version details of various Palette components with respect to Palette releases. 
 
 # Palette CLI Versions
 
 |Palette Release|Recommended CLI Version|
-|----------------|-----------------------|
-|Release 2.3.0 | **OSX**:https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro 
-|              | **Linux**: https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro |
-|Release 2.2.0|**OSX**: https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro
-|             |**Linux:** https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro |
+|---|-------|
+| Release 2.3.0|Download for [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) 
+|              |Download for [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
+| Release 2.2.0|Download for [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)
+|              |Download for [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
-#  Palette Docker Image Version
+ #  Palette Docker Image Version
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
-|-----------------------|----------------------------------------|
-|Release 2.3.0 |docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0|
-|Release 2.2.0 |docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0 | 
+|---------------------------|----------------------------------------|
+|Release 2.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0`</p> |
+|Release 2.2.0 |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0`</p> | 
 
-# On-Prem Installer Version
+# On-Premises Installer Version
 
-|Palette Release|On-Prem Installer Version|
-|--|--|
+|Palette Release|On-Premises Installer Version|
+|--|---|
 |2.3|2.0.2|
 
 # Latest Air Gapped OVA Version
@@ -249,7 +249,7 @@ The page embodies the version details of various Palette components with respect
 
 For more details on Palette Integrations [click here](/integrations#integrations).
 
-For more details on Palette downloadable artefacts [click here](/spectro-downloads#palettedynamicartifacts)
+For more details on Palette downloadable artifacts [click here](/spectro-downloads#palettedynamicartifacts).
 
 </InfoBox>
 
