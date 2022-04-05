@@ -14,9 +14,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 A project helps to organize the cluster resources in a logical grouping. The resources which are created within a project are scoped to that specific project and not available to other projects. Users and teams with specific roles can be associated with the project.
 
-# Creating a project
+# Creating a Project
 
-Navigate to *Admin > Projects* and click on the **Create Project** button to show the project creation form.
+Navigate to *Tenant Admin > Projects* and click on the **Create Project** button to show the project creation form.
 
 Enter the name, description, and tags to create a project.
 
@@ -28,7 +28,8 @@ The user permission is always the union of the Tenant and Project roles along wi
 
 # Project Dashboard
 
-The *Admin > Projects* page displays the projects related dashboard cards capturing the usage and metrics about the projects.
+The *Tenant Admin > Projects* page displays the projects related dashboard cards capturing the usage and metrics about the projects.
+
 
 # Monthly Kilo-core Hours Usage
 

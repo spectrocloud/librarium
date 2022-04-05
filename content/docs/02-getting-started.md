@@ -19,9 +19,7 @@ This section is a tour of the two main dashboards of the tenant console, the Pro
 Dashboard. The Project Dashboard is used to perform operations related to setting up your Kubernetes clusters such as setting
 up cluster profiles, creating cloud accounts, deploying clusters etc. The Admin dashboard is used for performing
 administrative tasks such as setting up Single Sign On (SSO), creating user, teams and setting up Role-Based Access Control (RBAC), setting up additional
-package registries etc. The admin dashboard is only available to the users who have the tenant admin role. Admin
-users can toggle between the project dashboard and admin dashboard. Users without admin role can
-only see the project dashboard.
+package registries etc. The admin dashboard is only available to the users who have the tenant admin role. Admin users can toggle between the project dashboard and tenant admin dashboard. Users without tenant admin role can only see the project dashboard.
 
 # Project Dashboard
 
@@ -114,13 +112,13 @@ The "Settings" section (7) of the default dashboard relates to the cloud account
 </PointsOfInterest>
 
 
-# Admin Dashboard
+# Tenant Admin Dashboard
 
 
-The menu within the Admin dashboard contains the Projects button. This is different from the Projects menu in the 
-default dashboard. Within the Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside the project.
+The menu within the Tenant Admin dashboard contains the Projects button. This is different from the Projects menu in the 
+default dashboard. Within the Tenant Admin dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the default dashboard provides access to the cluster profiles inside the project.
 
-The Cluster Profiles button in the Admin dashboard provides the ability to create and manage global cluster profiles 
+The Cluster Profiles button in the Tenant Admin dashboard provides the ability to create and manage global cluster profiles 
 that can be used for cluster creation across all projects within a tenant.
 
 The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> (and <Tooltip trigger={<u>Permissions</u>}><a href="/user-management/rbac/#permissions">Permissions</a> are associated with specific actions within the platform.</Tooltip>); (8) as well as <Tooltip trigger={<u>Users</u>}><a href="/user-management">Users</a> are members of a tenant who are assigned roles that control their access within the platform.</Tooltip> and <Tooltip trigger={<u>Teams</u>}>A <a href="/glossary-all/#team">Team</a> is a group of users.</Tooltip> allow the admin to set or restrict these attributes for one or more team members. See the <Tooltip trigger={<u>RBAC</u>}>Spectro Cloud's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations.</Tooltip> section for more details.
@@ -128,7 +126,7 @@ The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role
 The <Tooltip trigger={<u>audit logs(9)</u>}>The Spectro Cloud management platform application captures <a href="/audit-logs">audit logs</a> to track the user interaction with the application resources along with the timeline.</Tooltip> in the admin dashboard allow the admin to track the user interaction with the application resources along with the timeline for all projects and users. For admin users, the "audit log" button is visible for each project as well. Here, the admin can view the logs of the resources specific to the project.
 
 
-Finally the Admin settings (10) under the Admin dashboard provide access to the <Tooltip trigger={<u>pack registries</u>}>A <a href="/registries-and-packs">pack</a> is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc.</Tooltip>; <Tooltip trigger={<u>private cloud gateways</u>}>A <a href="/glossary-all/#privatecloudgateway">Private Cloud Gateway</a> is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a VMware based private data center.</Tooltip> and [SAML SSO](/user-management/saml-sso) configurations.
+Finally the Tenant Admin settings (10) under the Admin dashboard provide access to the <Tooltip trigger={<u>pack registries</u>}>A <a href="/registries-and-packs">pack</a> is a collection of files such as manifests, helm charts, ansible roles, configuration files, etc.</Tooltip>; <Tooltip trigger={<u>private cloud gateways</u>}>A <a href="/glossary-all/#privatecloudgateway">Private Cloud Gateway</a> is a Spectro Cloud component that enables the communication between Spectro Cloud's management console and a VMware based private data center.</Tooltip> and [SAML SSO](/user-management/saml-sso) configurations.
 
 
 

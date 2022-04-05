@@ -28,7 +28,7 @@ Spectro Cloud supports the following two types of SSO authentication mechanisms:
 
 # SAML 2.0 Based SSO
 
-To setup IdP based SSO, log in to the Spectro Cloud console as the tenant admin. Access the tenant admin settings area by clicking the "Admin" button on the left panel. Choose the IdP from the "Service" dropdown menu. Select the "Settings" from the "Admin menu" and then click "SAML" on the Spectro Cloud console to view the SAML panel. Toggle the `Enable SSO` button to bring up the configuration boxes. The following parameters will be available for enabling the addition of Spectro Cloud as a "Service Provider" into the IdPs:
+To setup IdP based SSO, log in to the Spectro Cloud console as the tenant admin. Access the tenant admin settings area by clicking the "Admin" button on the left panel. Choose the IdP from the "Service" dropdown menu. Select the "Settings" from the "Tenant Admin menu" and then click "SAML" on the Spectro Cloud console to view the SAML panel. Toggle the `Enable SSO` button to bring up the configuration boxes. The following parameters will be available for enabling the addition of Spectro Cloud as a "Service Provider" into the IdPs:
 
 1. EntityId
 1. NameId Format
