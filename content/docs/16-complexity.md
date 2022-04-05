@@ -21,10 +21,10 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-| Release 2.3.0|Download for [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) 
-|              |Download for [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
-| Release 2.2.0|Download for [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)
-|              |Download for [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
+| Release 2.3.0|Download for v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) 
+|              |Download for v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
+| Release 2.2.0|Download for v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)
+|              |Download for v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
  #  Palette Docker Image Version
 
@@ -124,6 +124,49 @@ The page lists the version details of various Palette components with respect to
 </Tabs.TabPane>
 </Tabs>
 
+# Operating System Layer Versions
+
+|Operating System |Versions|
+|--|--|
+|Ubuntu|Ubuntu 18.4|
+|centOS|CentOS 7.7|
+
+# Network Layer Versions
+
+<Tabs>
+
+<Tabs.TabPane tab="Calico" key="Calico Version">
+
+|Calico |Versions|
+|--|--|
+|3.22.x|3.22.0|
+|3.19.x|3.19.0|
+|3.16.x|3.16.0|
+|3.10.x|3.10.0|
+|3.9.x|3.9.4|
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Cilium" key="Cilium Version">
+
+|Cilium |Versions|
+|--|--|
+|1.10.x|1.10.5|
+|1.6.x|1.6.0|
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Cilium Enterprise" key="Cilium Enterprise Version">
+
+|Cilium Enterprise|Versions|
+|--|--|
+|1.10.x|1.10.5|
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
 # Storage Layer Version
 
 <Tabs>
@@ -194,52 +237,6 @@ The page lists the version details of various Palette components with respect to
 |Major and Minor Version|Corresponding Patch Versions|
 |--|--|
 |1.0.x|1.0.0|
-
-</Tabs.TabPane>
-
-</Tabs>
-
-
-# Operating System Layer Versions
-
-|Operating System |Versions|
-|--|--|
-|Ubuntu|Ubuntu 18.4|
-|centOS|CentOS 7.7|
-
-
-# Network Layer Versions
-
-<Tabs>
-
-<Tabs.TabPane tab="Calico" key="Calico Version">
-
-|Calico |Versions|
-|--|--|
-|3.22.x|3.22.0|
-|3.19.x|3.19.0|
-|3.16.x|3.16.0|
-|3.10.x|3.10.0|
-|3.9.x|3.9.4|
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Cilium" key="Cilium Version">
-
-|Cilium |Versions|
-|--|--|
-|1.10.x|1.10.5|
-|1.6.x|1.6.0|
-
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Cilium Enterprise" key="Cilium Enterprise Version">
-
-|Cilium Enterprise|Versions|
-|--|--|
-|1.10.x|1.10.5|
 
 </Tabs.TabPane>
 
