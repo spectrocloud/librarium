@@ -223,3 +223,19 @@ The deletion of a MAAS cluster results in the removal of all Virtual machines an
 <InfoBox>
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, the ‘Abort’ action is available to stop provisioning and delete all resources.
 </InfoBox>
+
+# Cluster Force Deletion
+
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
+
+## To force delete a cluster:
+
+* Login to the Palette Management Console
+* Navigate to the Cluster details page of the cluster stuck in deletion.
+  * If the deletion is stuck for more than 14 minutes, Click the `Force Delete Cluster` button from the `Settings` dropdown. 
+  * If the `Force Delete Cluster` button is not enabled, wait for 14 minutes, The `Settings` dropdown will give the estimated time for the auto-enabling of the force delete button.
+
+<WarningBox>
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
+</WarningBox>
+

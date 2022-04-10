@@ -660,6 +660,21 @@ Hence, while setting the desired size of the worker pool make the choice as per 
 * Confirm delete.
 Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.
 
+# Cluster Force Deletion
+
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
+
+## To force delete a cluster:
+
+* Login to the Palette Management Console
+* Navigate to the Cluster details page of the cluster stuck in deletion.
+  * If the deletion is stuck for more than 14 minutes, Click the `Force Delete Cluster` button from the `Settings` dropdown. 
+  * If the `Force Delete Cluster` button is not enabled, wait for 14 minutes, The `Settings` dropdown will give the estimated time for the auto-enabling of the force delete button.
+
+<WarningBox>
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
+</WarningBox>
+
 
 
 
