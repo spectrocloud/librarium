@@ -7,6 +7,7 @@ import Swagger from "shared/components/common/Swagger";
 
 // TODO use graphql to get api.jsons
 import v1 from "../../content/api/v1/api.json";
+import { GenericSeoSchema } from "shared/utils/markupSchemas";
 
 const APIS = {
   v1,
@@ -158,6 +159,7 @@ export default function MDXLayout({ data = {} }) {
       }
       extraMenu={<ApiSidebar allMdx={allMdx} />}
     >
+      <GenericSeoSchema />
       <DocsLayout
         menu={menu}
         mdx={mdx}
