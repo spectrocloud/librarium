@@ -22,6 +22,7 @@
     "gatsby-link": "^3.0.0",
     "gatsby-plugin-algolia": "^0.25.0",
     "gatsby-plugin-antd": "^2.2.0",
+    "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-google-tagmanager": "^3.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-mdx": "^2.10.0",
