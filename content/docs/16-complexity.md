@@ -1,7 +1,7 @@
 ---
-title: "Components Complexity Matrix"
-metaTitle: "Palette Components Complexity Matrix"
-metaDescription: "Version details of Palette Components Complexity Matrix"
+title: "Components Compatibility Matrix"
+metaTitle: "Palette Components Compatibility Matrix"
+metaDescription: "Version details of Palette Components Compatibility Matrix"
 icon: "audits"
 hideToC: false
 fullWidth: false
