@@ -1,7 +1,7 @@
 ---
 title: "AWS-EKS"
-metaTitle: "Creating new clusters on Spectro Cloud"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
+metaTitle: "Creating new clusters on Palette"
+metaDescription: "The methods of creating clusters for a speedy deployment on any Cloud Service Provider CSP"
 hideToC: false
 fullWidth: false
 ---
@@ -13,11 +13,15 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Following are some of the architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or EKS) provisioned by Spectro Cloud:
+Following are some architectural highlights of Amazon Web Services' (AWS) managed Kubernetes clusters (also known as Elastic Kubernetes Service or (EKS)), provisioned by Palette:
 
-* Cluster resources such as VMs can be provisioned into existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
-* Full support for EKS Fargate profiles
-* Spot instance support
+1. Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
+
+
+2. Full support for EKS Fargate profiles
+
+
+3. Spot instance support
 
  ![eks_cluster_architecture.png](eks_cluster_architecture.png)
 
@@ -25,20 +29,30 @@ Following are some of the architectural highlights of Amazon Web Services' (AWS)
 
 The following prerequisites must be met before deploying an EKS workload cluster:
 
-* You must have an active AWS cloud account with all the permissions listed below in the "AWS Cloud Account Permissions" section.
-* You must register your AWS cloud account in Spectro Cloud as described in the "Creating an AWS Cloud account" section below.
-* You should have an Infrastructure cluster profile created in Spectro Cloud for EKS.
-* Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
-  - vCPU
-  - VPC
-  - Elastic IP
-  - Internet Gateway
-  - Elastic Load Balancers
-  - NAT Gateway
+1. You must have an active AWS cloud account with all the permissions listed below in the **AWS Cloud Account Permissions** section.
+
+
+2. You must register your AWS cloud account in Palette as described in the **Creating an AWS Cloud account** section below.
+
+
+3. Have an Infrastructure cluster profile already created in Palette for EKS.
+
+
+4. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
+    - vCPU
+    - VPC
+    - Elastic IP
+    - Internet Gateway
+    - Elastic Load Balancers
+    - NAT Gateway
 
 # AWS Cloud Account Permissions
 
-The following **four** policies include all the required permissions for provisioning clusters through Spectro Cloud:
+The following **four** policies include all the required permissions for provisioning clusters through Palette:
+
+<Tabs>
+
+<Tabs.TabPane tab="Controller Policy" key="Controller Policy">
 
 ### Controller Policy
 
@@ -364,6 +378,14 @@ The following **four** policies include all the required permissions for provisi
 
 ```
 
+<InfoBox>
+<b>Note</b>:
+All the above policies are required as part of the Cluster API requirement, derived using <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
+</InfoBox>
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
+
 ### Control Plane Policy
 
 ``` json
@@ -436,9 +458,15 @@ The following **four** policies include all the required permissions for provisi
   ]
 }
 
-
-
 ```
+<InfoBox>
+<b>Note</b>:
+All the above policies are required as part of the Cluster API requirement, derived using <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
+</InfoBox>
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Nodes Policy" key="Nodes Policy">
 
 ### Nodes Policy
 
@@ -492,9 +520,13 @@ The following **four** policies include all the required permissions for provisi
 
 ```
 <InfoBox>
-Note:
-All the above policies are required as part of Cluster API requirement, derived using https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html
+<b>Note</b>:
+All the above policies are required as part of the Cluster API requirement, derived using the <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
 </InfoBox>
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Deployment Policy" key="Deployment Policy">
 
 ### Deployment Policy
 
@@ -548,8 +580,12 @@ All the above policies are required as part of Cluster API requirement, derived 
 
 ```
 
+</Tabs.TabPane>
+
+</Tabs>
+
 <WarningBox>
-Ensure that the role created encompasses all the policies defined above
+Ensure that the role created encompasses all the policies defined above.
 </WarningBox>
 
 <WarningBox>
@@ -558,35 +594,55 @@ These policies cannot be used as an inline policy, as it exceeds the 2048 non-wh
 
 <WarningBox>
 The following warning is expected and can be ignored:<p></p>
-These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+<i>These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
 </WarningBox>
 
-# Creating an AWS cloud account
+# Creating an AWS Cloud Account
 
-## AWS Account Creation using Access Credentials Method
- 
+<Tabs>
+
+<Tabs.TabPane tab="Using the Access Credentials Method" key="Using the Access Credentials Method">
+
+## AWS Account Creation Using the Access Credentials Method
+
 ![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
 
-## AWS Account Creation using STS Method
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="Using the Security Token Service (STS) Method"> 
+
+## AWS Account Creation Using the Security Token Service (STS) Method
 
 ![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
 
+## Security Token Service (STS) Method
+
 To create an AWS cloud account, provide a name and a description for the account and follow the steps below based on the account type desired:
 
-* Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Spectro Cloud.
-    - In Spectro Cloud, provide the access key and secret key for the user.
-* Security Token Service(STS)
-    - In the AWS console, create a new IAM role called using the following options:
-      - Trusted Entity Type: Another AWS account
-      - Account ID: [Copy the Account ID displayed on the UI]
-      - Require External ID: Enable
-      - External ID: [Copy the External ID displayed on the UI]
-      - Permissions Policy: Search and select the 4 policies added in step #2
-      - Role Name: SpectroCloudRole
-    - In the AWS console, browse to the role details page and copy the Role ARN
-    - In Spectro Cloud, enter the role ARN in the field provided
+1. In the AWS console, create the four policies listed above.
 
+
+2. Access Credentials
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
+    - In Palette, provide the access key and secret key for the user.
+
+
+3. Security Token Service (STS)
+
+    In the AWS console, create a new IAM role called using the following options:
+
+    |**Parameter**|**Description**|
+    |---------|---------------|
+    |**Trusted Entity Type**| Another AWS account|
+    |**Account ID**|Copy the Account ID displayed on the UI|
+    |**Require External ID**| Enable|
+    |**External ID**|Copy the External ID displayed on the UI|
+    |**Permissions Policy**|Search and select the 4 policies added in step #2|
+    |**Role Name**|SpectroCloudRole|
+
+
+</Tabs.TabPane>
+</Tabs>
 
 # Deploying an EKS Cluster
 
@@ -594,82 +650,108 @@ To create an AWS cloud account, provide a name and a description for the account
 
 The following steps need to be performed to provision a new EKS cluster:
 
-* Provide basic cluster information like name, description, and tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
-* Select a cluster profile created for EKS cloud. The profile definition will be used as the cluster construction template.
-* Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
-* Provide the AWS Cloud account and placement information.
-    - Cloud Account - Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.
-    - Region - Choose the desired AWS region where you would like the clusters to be provisioned.
-    - SSH Key Pair Name - Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.
-    - Static Placement - By default, Spectro Cloud uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Spectro Cloud and deleted when the corresponding cluster is deleted. Turn on the Static Placement option if it is desired to place resources into preexisting VPCs and subnets.
+1. Provide basic cluster information like Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
+
+
+2. Select the Cluster Profile created for the EKS cloud. The profile definition will be used as the cluster construction template.
+
+
+3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+
+
+4. Provide the AWS Cloud account and placement information.
+
+    |**Parameter**| **Description**|
+    |-------------|---------------|
+    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
+    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
+    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
+    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets. |
+
 
 <InfoBox>
-
-The following tags should be added to the public subnet to enable auto subnet discovery for integration with AWS load balancer service.
-
+The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
-sigs.k8s.io/cluster-api-provider-aws/role = public
-kubernetes.io/cluster/[ClusterName] = shared
+sigs.k8s.io/cluster-api-provider-aws/role = public <br />
+kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
 </InfoBox>
 
-* Configure one or more worker node pools. A single worker node will be configured by default.
-    - Name - a descriptive name for the node pool.
-    - Size - Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.
-    - Instance type - Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool. 
+5. Configure one or more worker node pools. A single worker node will be configured by default.
 
-* Optionally creates one or more Fargate Profiles to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-    - Name - Provide a name for the Fargate profile.
-    - Subnets - Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.
-    - Selectors - Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes. You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Name** | A descriptive name for the node pool.|
+    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.|
+    |**Instance Type** | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
 
-* Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+6. Optionally, create one or more Fargate Profile(s) to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
+
+    |**Parameter**| **Description**|
+    |-------------|---------------|
+    |**Name** |Provide a name for the Fargate profile.|
+    |**Subnets** |Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.|
+    |**Selectors** |Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.|
+
+7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the ‘m3.large’ instance types for general-purpose workloads, and another worker pool with instance type ‘g2.2xlarge’ can be configured to run GPU workloads.
+New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>m3.large</i> instance types for general-purpose workloads, and another worker pool with instance type <i>g2.2xlarge</i> can be configured to run GPU workloads.
 </InfoBox>
 
 # AWS Instance Type and Pod Capacity
-The choice of instance type and the number of instances to be launched should be made according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion as the pods cannot come up on the target cluster due to resource unavailability. The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
+Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability. 
+
+
+The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
 
 ## Formula for Pod Calculation
 Number of pods = N * (M-1) + 2 
 
 Where:
-* N is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
-* M is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
-* Values for N and M for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
+* **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
+* **M** is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
+* Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
 
 ## Example Calculation:
 * For instance type = t3.medium 
-* for values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
-* N * (M-1) + 2 = 3*(6-1)+2 =17 pods/instance
-* In this example, we will need at least 2 t3.medium instances to reach the minimum of 30 pods threshold
+* For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
+* N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
+* In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
 
 <InfoBox>
 Select the type and number of instances to support a minimum of 30 pods.
 </InfoBox>
 
-Hence, while setting the desired size of the worker pool make the choice as per pod requirement. In the example given above we need to launch minimum of 2 instances of t3.medium to satisfy the resource requirement of an EKS cluster.
+Hence, while setting the desired size of the worker pool, make the choice as per pod requirement. In the example given above, we need to launch a minimum of two (2) instances of t3.medium to satisfy the resource requirement of an EKS cluster.
 
 # Deleting an EKS Cluster
-  The deletion of an EKS cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an EKS cluster:
-* Select the cluster to be deleted from the cluster view and navigate to the cluster overview page.
-* Invoke a delete action available on the page: cluster -> settings -> cluster settings -> Delete Cluster.
-* Confirm delete.
-Cluster status is updated to ‘Deleting’ while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to ‘Deleted’ and is removed from the list of clusters.
+The deletion of an EKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an EKS cluster:
+
+1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
+
+
+2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
+
+
+3. Click **Confirm** to delete.
+
+Cluster status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
 
 # Cluster Force Deletion
 
 A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
 
 ## To force delete a cluster:
+1. Log in to the Palette Management Console.
 
-* Login to the Palette Management Console
-* Navigate to the Cluster details page of the cluster stuck in deletion.
-  * If the deletion is stuck for more than 14 minutes, Click the `Force Delete Cluster` button from the `Settings` dropdown. 
-  * If the `Force Delete Cluster` button is not enabled, wait for 14 minutes, The `Settings` dropdown will give the estimated time for the auto-enabling of the force delete button.
+
+2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
+
+      - If the deletion is stuck for more than 14 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
+    
+      - If the **Force Delete Cluster** button is not enabled, wait for 14 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
 
 <WarningBox>
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
