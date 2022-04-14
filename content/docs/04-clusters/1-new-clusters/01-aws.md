@@ -11,6 +11,8 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
+
+
 # Overview
 
 Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
@@ -387,7 +389,6 @@ The following **four** policies include all the required permissions for provisi
 </Tabs.TabPane>
 
 
-
 <Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
 
 
@@ -529,7 +530,6 @@ The following **four** policies include all the required permissions for provisi
 
 
 </Tabs.TabPane>
-
 
 
 <Tabs.TabPane tab="Deployment Policy" key="Deployment Policy">
