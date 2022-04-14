@@ -106,7 +106,7 @@ Example:
 4. Provide the Tencent Cloud account and placement information:
 
     |**Parameter** | **Description**|
-    |----------------|----------------|
+    |--------------|----------------|
     |  **Cloud Account**| Select the desired cloud account. 
     | **Tencent Cloud Accounts** | The Tencent credentials need to be preconfigured in the **Project**/**Tenant Admin** settings.
     ||**Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**. |
@@ -127,7 +127,7 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
 
 7. Configure one or more worker node pools. A single worker node will be configured by default.
 
-    |**Parameter**  | **Description**|
+    |**Parameter**| **Description**|
     |-------------|----------------|
     | **Name** |A descriptive name for the node pool.
     | **Size** | Make your choice of minimum, maximum, and desired <br /> sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
