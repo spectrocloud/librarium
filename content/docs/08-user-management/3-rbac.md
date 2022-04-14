@@ -9,7 +9,7 @@ fullWidth: false
 
 # RBAC
 
-RBAC stands for Role-Based Access Control. This is a method that allows the same user to have a different type of access control based on the resource being accessed. In other words, whereas a user logged in to a computer as an admin can access all parts and data of the system, a guest user cannot. RBAC is an expansion as well as a modification of this scenario. RBAC allows the admin to grant full and unrestricted access to some parts of the system and withhold it in some others. A few files can be made read-only for the guest. The alternative would be to make the guest either an admin or to make all types of access partially restricted. Both cases are undesirable and that is where RBAC is helpful.
+RBAC stands for Role-Based Access Control. This is a method that allows the same user to have a different type of access control based on the resource being accessed. In other words, whereas a user logged in as an admin can access all parts and data of the system, a guest user cannot. RBAC is an expansion as well as a modification of this scenario. RBAC allows the admin to grant full and unrestricted access to some parts of the system and withhold it in some others. A few files can be made read-only for the guest. The alternative would be to make the guest either an admin or to make all types of access partially restricted. Both cases are undesirable and that is where RBAC is helpful.
 
 Spectro Cloud's RBAC design allows granting granular access to resources and its operations. This is achieved using Roles and Permissions. Role-based access control primarily focuses on assigning permission to roles instead of individual users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource.
 
