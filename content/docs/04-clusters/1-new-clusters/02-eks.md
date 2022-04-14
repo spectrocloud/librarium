@@ -739,7 +739,7 @@ The deletion of an EKS cluster results in the removal of all Virtual Machines an
 
 Cluster status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
 
-# Cluster Force Deletion
+# Force Delete a Cluster
 
 A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
 
