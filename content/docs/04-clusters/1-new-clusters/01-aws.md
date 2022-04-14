@@ -693,7 +693,6 @@ kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public <br />
 kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
-
 </InfoBox>
 
 6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
@@ -714,7 +713,6 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     ||**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
     
     
-
 ## Running Clusters through Edit Node Pool
 <InfoBox>
 Palette allows its users to apply/edit the Taints, for a running cluster, through the <b>Edit node pool</b> option under the <b>Nodes</b> tab.
@@ -742,9 +740,6 @@ New worker pools may be added if it's desired to customize certain worker nodes 
 The deletion of an AWS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AWS cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
-
-
-
 
 
 2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
