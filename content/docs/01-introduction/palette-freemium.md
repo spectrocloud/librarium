@@ -11,7 +11,7 @@ fullWidth: false
 
 **Palette Free Tier** encourages new users to explore Palette, without having to make a purchase decision, before they are ready. With unlimited kilo-Core-hour usage the first month, there is full access to the Spectro Cloud Palette Platform to create, deploy, and manage Palette resources. 
 
-The second month and every month thereafter, the customer is granted a complimentary 25 kilo-Core-hour (kCh) to use freely to manage up to five Kubernetes clusters with Palette. 
+The second month and every month thereafter, the customer is granted a complimentary 25 kilo-Core-hour (kCh) to use freely to manage up to five Kubernetes clusters. 
 
 There is the choice to continue in the Free Tier, so long as you stay under the 25 kCh consumption. Go over the usage limit of 25 kCh, and the clusters remain visible but convert to Read-Only. Palette sends alert messages to users when 25 kCh is crossed, and if more than five active clusters are launched further deployments will be restricted. Enter a payment and all usage and capabilities are restored. 
 
