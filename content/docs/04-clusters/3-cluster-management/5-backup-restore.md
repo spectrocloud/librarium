@@ -13,14 +13,14 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette provides two ways to Backup and Restore Kubernetes clusters:
+Palette provides two ways to back up and restore Kubernetes clusters:
 
 * Cluster Backup and Restore for a single cluster which is managed from within the cluster.
 * [Workspace](/workspace) Backup and Restore for multiple clusters managed from workspaces.
 
 # Cluster Backup and Restore
 
-Palette provides a convenient backup option to Backup the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
 # Workspace Backup and Restore
 
@@ -41,16 +41,16 @@ To create your workspace role, follow the steps below:
 1. Login to Palette management console as Tenant Admin.
 
 
-2. Go to the “Users and Teams” option.
+2. Go to the **Users and Teams** option.
 
 
 3. From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](/projects/#projects).
 
 
-4. Select the “Workspace Roles” tab and click  “+ New Workspace Role“ to create a new role.
+4. Select the **Workspace Roles** tab and click **+ New Workspace Role** to create a new role.
 
 
-5. Fill the following information into the “Add Roles to User-Name” wizard:
+5. Fill the following information into the **Add Roles to User-Name** wizard:
    * Project
    * Workspace
    * Choose the role from the options:
@@ -73,14 +73,13 @@ To create your workspace role, follow the steps below:
 
 ## For GCP Backup Location
 
-* GCP service account with ‘storage admin` role.
+* GCP service account with a `storage admin` role.
 
 * Pre-created bucket at the GCP object storage.
 
-
 # Backup Locations
 
-Creating the backup location is identical for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
+Creating the backup location is identical for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed under the **Project** > **Settings** option and can be selected as a backup location, while backing up any cluster in the project.
 
 ## Configure your Backup in AWS S3 
 
@@ -191,9 +190,9 @@ The following details are required to configure a backup location in GCP:
 
 ## Add a Backup Location
 
-Go to Project Settings -> Backup locations  -> Add a New Backup location
+Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
-# Create Backup
+# Create a Backup
 
 The below section will describe:
 
@@ -202,85 +201,96 @@ The below section will describe:
 
 ## Create a Cluster Backup
 
-Backups can be scheduled or initiated on an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
+Backups can be scheduled or initiated in an on demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
 
-1. Backup Prefix / Backup Name:
-  * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name
-  * For an On-Demand backup, a name of user choice can be used
+1. **Backup Prefix / Backup Name**:
+  * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
+  * For an on demand backup, a name of user choice can be used.
 
 
 2. Select the backup location.
 
 
-3. Backup Schedule: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
+3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
 
 
-4. Expiry Date: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
+4. **Expiry Date**: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
 
 
-5. Include all disks: Optionally backup persistent disks as part of the backup.
+5. **Include all disks**: Optionally backup persistent disks as part of the backup.
 
 
-6. Include Cluster Resources: Select or deselect on your choice.
+6. **Include Cluster Resources**: Select or deselect on your choice.
 
 
-7. Namespaces: Provide namespaces that need to be backed up. If left empty then all the Namespaces will be backed up.
+7. **Namespaces**: Provide namespaces that need to be backed up. If left empty then all the Namespaces will be backed up.
 
 |On Demand Backup   |
 |-------------------|
-|Select the cluster to Backup -> Settings -> Cluster Settings ->Schedule Backups|
+|Select the cluster from **Backup** > **Settings** > **Cluster Settings** > **Schedule Backups**|
 
 |Scheduled Backup |
 |-----------------|
-|Cluster Creation -> Policies -> Backup Policies|
+|**Cluster Creation** > **Policies** > **Backup Policies**|
 
 ## Create a Workspace Backup
 
-Backups can be scheduled or initiated on an on-demand basis during workspace creation. The following information is required for configuring a workspace backup on-demand:
+Backups can be scheduled or initiated in an on demand basis, during the workspace creation. The following information is required for configuring a Workspace Backup, on demand:
 
-1. Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an On-Demand backup, a name of user choice can be used.
+1. Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an on demand backup, a name of user choice can be used.
 
 
 2. Select the backup location.
 
 
-3. Backup Schedule: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
+3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
 
 
-4. Expiry Date: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
+4. **Expiry Date**: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
 
 
-5. Include all disks: Optionally backup persistent disks as part of the backup.
+5. **Include all disks**: Optionally backup persistent disks as part of the backup.
 
 
-6. Include Cluster Resources: Select or deselect on your choice.
+6. **Include Cluster Resources**: Select or deselect on your choice.
+
 
 |On Demand Backup   |
 |-------------------|
-|Select the Workspace to Backup -> Settings ->Schedule Backups|
+|Select the **Workspace to Backup** > **Settings** > **Schedule Backups**|
+
 
 |Scheduled Backup |
 |-----------------|
-|Workspace Creation -> Policies -> Backup Policies|
+|**Workspace Creation** > **Policies** > **Backup Policies**|
+
 
 ### Backup Scheduling Options
 
 Both the cluster and workspace backup support the following scheduling options:
 
-* Customize your backup for the exact month, day, hour and minute of the user's choice
+* Customize your backup for the exact month, day, hour, and minute of the user's choice
 * Every week on Sunday at midnight
 * Every two weeks at midnight
 * Every month on the 1st at midnight
 * Every two months on the 1st at midnight
 
-# Restore
+# Restore a Backup
 
-Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. Restore operation can be initiated by selecting the restore option for a specific backup. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. Finally, restore operation can be done to the cluster running on the same project.
+Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. 
+
+1. Restore operation can be initiated by selecting the restore option for a specific backup. 
+
+
+1. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
+
+
+1. Finally, restore operation can be done to the cluster running on the same project.
 
 <WarningBox>
-Some manual steps might be required when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
-  For EKS, please specify "gp2 storage class".
-  For other cloud environments, please specify "spectro-storage-class".
+Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
+  For EKS, please specify <b>gp2 storage class</b>.
+  For other cloud environments, please specify <b>spectro-storage-class<b/>.
 </WarningBox>
 
 <WarningBox>
