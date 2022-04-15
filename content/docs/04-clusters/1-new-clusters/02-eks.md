@@ -78,6 +78,7 @@ The following **four** policies include all the required permissions for provisi
         "ec2:ModifyVpcAttribute",
         "ec2:DeleteInternetGateway",
         "ec2:DeleteNatGateway",
+        "ec2:DeleteNetworkInterface",
         "ec2:DeleteRouteTable",
         "ec2:DeleteSecurityGroup",
         "ec2:DeleteSubnet",
