@@ -18,13 +18,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Palette Onboarding Workflow
 
-Palette has a very well-organized product onboarding process to streamline the user product adoption. The two major steps of our onboarding workflow are:
+Palette has a well-organized product onboarding process to streamline user-product adoption. The two significant steps of our onboarding workflow are:
+
 * Product Tour
+
 * Palette Experience
 
 ## Product Tour
 
-Once the user logins to our Platform, we start the onboarding process with a product tour—an introduction to the platform, to familiarize the users with our Palette features. 
+Once the user logins to our platform, we start the onboarding process with a product tour—an introduction to the platform, to familiarize the users with our Palette features.
 
 ## Start your Palette Experience 
 
@@ -35,9 +37,12 @@ The product tour is followed by a Palette experience session.  Here we make sure
 * [Create New Cluster](/clusters/new-clusters#newclusters)
 
   * To create a new cluster from scratch using any cloud environment or bare metal.
+
   * System-level cluster profile included for the users to explore the Palette functionalities easier and faster. 
+
 * [Import Cluster](/clusters/brownfield-clusters#overview)
   * Bring your own cluster into Palette in 2 easy steps.
+
 * Out-of-the-box (OOTB) Configurations:
   * Try one of our out-of-the-box cluster profile configurations applicable on your own cluster or in our sandbox env.
 
@@ -46,6 +51,25 @@ Once the user experience session is finished, the user will be familiar with Pal
 </InfoBox>
 
 
-**Connect with us:**
+### Connect with us:
 * [Slack](https://spectrocloudcommunity.slack.com/join/shared_invite/zt-g8gfzrhf-cKavsGD_myOh30K24pImLA#/shared-invite/email)
+
 * support@spectrocloud.com
+
+
+# Palette Workflow:
+
+Palette mandates the creation of a cluster profile before a workload cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated
+templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contain
+the configurations required for your cluster. The cluster profile helps you prepare a ready-made configuration of - the
+OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without
+which a cluster profile cannot be created. There are a host of other layers and components available to add in the
+cluster profile (load balancers, authentication, monitoring, and logging.) which are detailed in the cluster
+profile section. Palette provides several cluster profiles out-of-the-box.
+
+| |
+|--|
+|[Cluster your Cluster Profile](/cluster-profiles/task-define-profile/#creatingclusterprofiles)|
+|[Create your Cluster](/clusters/new-clusters/#creatingclusters)|
+|[Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)|
+|[Cluster Management](/clusters/cluster-management/#managecl)|
