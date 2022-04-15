@@ -290,7 +290,7 @@ Backups created manually or as part of the schedule are listed under the Backup/
 <WarningBox>
 Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
   For EKS, please specify <b>gp2 storage class</b>.
-  For other cloud environments, please specify <b>spectro-storage-class<b/>.
+  For other cloud environments, please specify <b>spectro-storage-class</b>.
 </WarningBox>
 
 <WarningBox>
