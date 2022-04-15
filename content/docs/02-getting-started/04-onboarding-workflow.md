@@ -61,7 +61,7 @@ Once the user experience session is finished, the user will be familiar with Pal
 
 Palette mandates the creation of a cluster profile before a workload cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated
 templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> contain
-the configurations required for your cluster. The cluster profile helps you prepare a ready-made configuration of - the
+the configurations required for your cluster. The cluster profile helps you prepare a ready-made configuration of—the
 OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers without
 which a cluster profile cannot be created. There are a host of other layers and components available to add in the
 cluster profile (load balancers, authentication, monitoring, and logging.) which are detailed in the cluster

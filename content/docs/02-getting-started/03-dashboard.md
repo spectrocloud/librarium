@@ -40,7 +40,7 @@ Upon login, the dashboard shows the views available for a non-admin user.
 
 
 
-5. <Tooltip trigger={<u>Audit logs</u>}><a href="/audit-logs/">Audit Logs </a> shows the log of activities with timeline.</Tooltip>  shows the log of activities with timeline. 
+5. <Tooltip trigger={<u>Audit logs</u>}><a href="/audit-logs/">Audit Logs </a> shows the log of activities with timeline.</Tooltip> shows the log of activities with timeline. 
 
  
 
