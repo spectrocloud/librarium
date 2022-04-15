@@ -13,6 +13,25 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+
+
+# April 15, 2022 - Release 2.5.0
+
+* Palette now supports [Tencent Kubernetes Engine (TKE)](/clusters/new-clusters/tke#overview), a fully-managed Kubernetes service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters effortlessly.
+* Palette introduces placeholder variables as [Macros](/clusters/cluster-management/macros#overview) in our cluster profile layers for advanced regression and easier update of variables across multiple running clusters.
+* Palette users can now manually [Force Delete a Cluster](/clusters/new-clusters/aws#forcedeleteacluster) stuck in the **Deletion** state for more than  **14 minutes** through the User Interface. 
+* Palette production clusters can be backed up to object storage of [GCP  Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
+* Palette propounds a well-organized [Product Onboarding](/getting-started/onboarding-workflow#paletteonboardingworkflow) process to streamline user-product adoption with an assured unfailing user experience to jump-start our product journey 
+* Palette helps out new users in their purchase decision with,
+  * [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
+  * [Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette) offering access to a free cloud account with sufficient permissions and credentials to have a first impression on our product journey.
+* Palette solicits our users to add [`ec2:DeleteNetworkInterface`](/clusters/new-clusters/aws#awscloudaccountpermissions) permission to detach and delete the network interface for AWS and EKS clusters.
+* Packs and Integrations:
+  * Ubuntu 20.04
+  * Imageswap-webhook, a mutating webhook integration that intercepts pod requests and changes container image location.
+
+
+
 # February 26, 2022 - Release 2.3.0
 
 Palette 2.3.0 includes the following enhancements:
