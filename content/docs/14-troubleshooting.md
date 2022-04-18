@@ -107,9 +107,6 @@ $ ssh -i <key> spectro@<node-ip>
 $ sudo -i (to login as root)
 ```
 
-<InfoBox>
-
-The SSH user will always be `spectro`, independent of whether the distribution is Ubuntu, CentOS, etc.
 
 </InfoBox>
 
