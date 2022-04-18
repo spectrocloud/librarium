@@ -107,9 +107,6 @@ $ ssh -i <key> spectro@<node-ip>
 $ sudo -i (to login as root)
 ```
 
-
-</InfoBox>
-
 Inside the node, review the standard system services and log files:
 
 * Containerd:
