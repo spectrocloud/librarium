@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# April 15, 2022 - Release 2.5.0
+# April 19, 2022 - Release 2.5.0
 
 * Palette now supports [Tencent Kubernetes Engine (TKE)](/clusters/new-clusters/tke#overview)—a fully-managed Kubernetes service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
 * Palette introduces **Placeholder Variables** as [Macros](/clusters/cluster-management/macros#overview) in our Cluster Profile layers for advanced regression and easier update of variables, across multiple running clusters.
@@ -25,9 +25,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 * Palette helps out new users in their purchase decision by offering free tier services.
   * [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
   * [Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
-* Palette encourages our users to add the [`ec2:DeleteNetworkInterface`](/clusters/new-clusters/aws#awscloudaccountpermissions) permissions to detach and delete the network interface for AWS and EKS clusters.
+* Palette encourages our users to add the `ec2:DeleteNetworkInterface` permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
 * Packs and Integrations:
-  * Ubuntu 20.04
+  * [Ubuntu 20.04](/integrations/ubuntu)
   * Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image location.
 
 
