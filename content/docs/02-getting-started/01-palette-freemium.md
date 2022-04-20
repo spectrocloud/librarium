@@ -19,10 +19,11 @@ There is the choice to continue in the Free Tier, so long as you stay under the 
 
 Usage is calculated as a concept of kilo-Core-hour or kCh. This is a measurement of the number of CPU Cores multiplied by Time. For instance, for a 4-node cluster which has 16 CPU cores each, one day of management will equate to 4 x 16 CPU cores x 24 hours = 1.54 kCh.
 
-# Start you Free Trial Today
+# Get Started with Palette Free Tier Today
 
-Get started with Palette Free Tier today.
-1. Request a Free Trial by navigating to [Palette Freemium](https://www.spectrocloud.com/free-trial/).
+Three simple steps to get started with Palette Free Tier today:
+
+1. Request a Palette account by visiting [signup link](https://www.spectrocloud.com/free-trial/).
     
 
 2. Enter your email credentials, first and last name, and click **Submit** to start your free trial. You will receive an email message welcoming you to Palette and requesting that you set your password. 
