@@ -23,7 +23,7 @@ Usage is calculated as a concept of kilo-Core-hour or kCh. This is a measurement
 
 Three simple steps to get started with Palette Free Tier today:
 
-1. Request a Free Trial by navigating to [Palette Freemium](https://www.spectrocloud.com/free-trial/).
+1. Request a Palette account by visiting [signup link](https://www.spectrocloud.com/free-trial/).
     
 
 2. Enter your email credentials, first and last name, and click **Submit** to start your free trial. You will receive an email message welcoming you to Palette and requesting that you set your password. 
