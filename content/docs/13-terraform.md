@@ -43,7 +43,7 @@ The below section includes the different versions of Terraform providers, suppor
 
 ### Latest Version Supported : `0.6.x`
 
-Find the detailed patch changes and comparisons of **0.6.x** under these tabs.
+Find the detailed patch changes and comparisons of **0.6.x** within these tabs.
 
 <Tabs>
 
