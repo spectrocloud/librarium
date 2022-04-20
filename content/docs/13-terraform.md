@@ -30,9 +30,10 @@ To use this Spectro Cloud provider, have the following requirements ready:
 
 ## Usage
 
-For an end-to-end cluster provisioning example, please follow the appropriate guide under [Spectro Cloud E2E Examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e).
+For an end-to-end cluster provisioning example, please follow the appropriate guide under Spectro Cloud provider resources.
+One usage example on `spectrocloud_cloudaccount_openstack` linked for quick reference: [Spectro Cloud E2E Examples](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources).
 
-Examples of other managed resources are also available in the [Spectro Cloud Resource](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/resources) directory.
+Examples of other managed resources are also available in the [Spectro Cloud Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_openstack#:~:text=spectrocloud%20provider-,Resources,-spectrocloud_appliance) directory.
 
 Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider documentation. Find the links to those documents at [Resources](/terraform/resources/#spectrocloudproviderresources) and [Datasources](/terraform/datasources/#spectrocloudproviderdatasource).
 
@@ -45,6 +46,17 @@ The below section includes the different versions of Terraform providers, suppor
 Find the detailed patch changes and comparisons of **0.6.x** at below tabs.
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.6.13" key="v0.6.13">
+
+## Changes
+
+The major change is:
+* Additional_labels update fix for libvirt cluster
+
+Refer to Full Changelog: [v0.6.1 to v0.6.13](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.6.13)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.6.1" key="v0.6.1">
 
@@ -59,13 +71,9 @@ The major changes are:
 * Taints and labels support
 * Supports auto scaling settings for EKS
 
-Version Changes v0.6.1 [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1)
 
-Refer to Full Changelog: [v0.6.0 to v0.6.1](https://github.com/spectrocloud/terraform-provider-spectrocloud/compare/v0.6.0...v0.6.1)
+Refer to Full Changelog: [v0.6.0 to v0.6.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.6.1)
 
-## Assets
-
-[Asset Details](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.1#:~:text=akhilesh2410%20and%20nikchern-,Assets,-17) of Terraform provider Spectro Cloud Palette.
 
 </Tabs.TabPane>
  
@@ -80,12 +88,8 @@ Major changes are:
 * Add by default the **BastionDisabled** flag as *True*
 * MAAS support for Terraform
 
-Version Changes v0.6.0 [in detail](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.0)
+Refer to the Full Changelog: [v0.5.18 to v0.6.0](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.6.0)
 
-Refer to the Full Changelog: [v0.5.18 to v0.6.0](https://github.com/spectrocloud/terraform-provider-spectrocloud/compare/v0.5.18...v0.6.0)
-
-## Assets
-[Asset Details](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases#:~:text=anand%20and%20nikchern-,Assets,-17) of Terraform Provider Spectro Cloud Palette.
 
 </Tabs.TabPane>
 
