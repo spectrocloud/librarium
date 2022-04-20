@@ -24,13 +24,13 @@ Spectro Cloud Palette's SaaS and On-Premise management API is resourced within t
 
 ## Prerequisites
 To use this Spectro Cloud provider, have the following requirements ready:
-* Spectro Cloud account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
+* Spectro Cloud Palette account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
 * Terraform (minimum version 0.13+)
 * Kubernetes/kubectl CLI (minimum version 1.16+)
 
 ## Usage
 
-For an end-to-end cluster provisioning example, please follow the appropriate guide under Spectro Cloud provider resources.
+For an end-to-end cluster provisioning example, please follow the appropriate guide under the Spectro Cloud provider resources.
 One usage example on `spectrocloud_cloudaccount_openstack` linked for quick reference: [Spectro Cloud E2E Examples](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources).
 
 Examples of other managed resources are also available in the [Spectro Cloud Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_openstack#:~:text=spectrocloud%20provider-,Resources,-spectrocloud_appliance) directory.
@@ -43,7 +43,7 @@ The below section includes the different versions of Terraform providers, suppor
 
 ### Latest Version Supported : `0.6.x`
 
-Find the detailed patch changes and comparisons of **0.6.x** at below tabs.
+Find the detailed patch changes and comparisons of **0.6.x** under these tabs.
 
 <Tabs>
 
