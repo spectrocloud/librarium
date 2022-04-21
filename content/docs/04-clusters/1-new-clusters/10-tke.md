@@ -29,7 +29,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 # Prerequisites
 
-1. A Tencent Cloud account with appropriate permissions.
+1. A Tencent Cloud account with appropriate [permissions](/clusters/new-clusters/tke#permissionsfortkeclustercrudoperations).
 
 
 2. Create a Cloud API **Secret ID** and **Secret Key**.
@@ -42,6 +42,104 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
+
+# Permissions for TKE Cluster CRUD Operations
+
+```yaml
+{
+    "version": "2.0",
+    "statement": [
+        {
+            "effect": "allow",
+            "action": [
+                "as:CreateLaunchConfiguration",
+                "as:CreateAutoScalingGroup",
+                "as:DescribeLaunchConfigurations",
+                "as:DescribeAutoScalingInstances",
+                "as:DescribeAutoScalingActivities",
+                "as:DescribeAutoScalingGroups",
+                "as:ModifyDesiredCapacity",
+                "as:ModifyAutoScalingGroup",
+                "as:DescribeAutoScalingGroups",
+                "as:DescribeAutoScalingGroupLastActivities",
+                "cam:GetRole",
+                "cam:GetPolicy",
+                "cam:DeletePolicyVersion",
+                "cam:CreatePolicyVersion",
+                "cam:ListGroupsForConsole",
+                "cam:ListPolicies",
+                "cam:ListMaskedSubAccounts",
+                "cvm:DescribeSecurityGroupLimits",
+                "cvm:DescribeSecurityGroups",
+                "cvm:CreateSecurityGroup",
+                "cvm:DescribeInstances",
+                "cvm:DescribeInstancesStatus",
+                "cvm:DescribeSecurityGroupAssociateInstances",
+                "cvm:DescribeSecurityGroupLimits",
+                "cvm:DescribeSecurityGroupPolicys",
+                "cvm:DescribeImages",
+                "cvm:DescribeCbsStorages",
+                "cvm:RunInstances",
+                "cvm:DescribeKeyPairs",
+                "cvm:DescribeAddresses",
+                "cvm:ModifySingleSecurityGroupPolicy",
+                "cvm:CreateSecurityGroupPolicy",
+                "cvm:DeleteSecurityGroupPolicy",
+                "clb:DescribeLoadBalancers",
+                "cloudaudit:DescribeEvents",
+                "cloudaudit:DescribeEvents",
+                "ecdn:PurgePathCache",
+                "ecdn:PurgeUrlsCache",
+                "ecdn:PushUrlsCache",
+                "monitor:DescribeDashboardMetricData",
+                "tke:CreateCluster",
+                "tke:DescribeClusters",
+                "tke:DescribeClusterEndpointStatus",
+                "tke:DescribeClusterEndpointVipStatus",
+                "tke:DescribeClusterSecurity",
+                "tke:CreateClusterEndpointVip",
+                "tke:CreateClusterEndpoint",
+                "tke:DeleteClusterEndpointVip",
+                "tke:DeleteClusterEndpoint",
+                "tke:DeleteCluster",
+                "tke:DescribeClusterAsGroupOption",
+                "tke:DescribeClusterInstances",
+                "tag:DescribeResourceTagsByResourceIds",
+                "tag:DescribeTagValues",
+                "tag:TagResources",
+                "tag:DescribeTagKeys",
+                "vpc:DescribeSubnetEx",
+                "vpc:DescribeVpcEx",
+                "vpc:DescribeVpcLimits",
+                "vpc:DescribeRouteTable",
+                "vpc:DescribeNatGateways",
+                "vpc:DescribeCcns",
+                "vpc:DescribeCcnAttachedInstances",
+                "vpc:DescribeLocalGateway",
+                "vpc:DescribeHaVips",
+                "vpc:DescribeVpnGw",
+                "vpc:DescribeDirectConnectGateways",
+                "vpc:DescribeVpcPeeringConnections",
+                "vpc:DescribeCustomerGateways",
+                "vpc:DescribeRoutes",
+                "vpc:ModifyNatGatewayAttribute",
+                "vpc:ResetNatGatewayConnection",
+                "vpc:DescribeAddress",
+                "vpc:DescribeTemplateLimits",
+                "vpc:DescribeAddressGroups",
+                "vpc:DescribeService",
+                "vpc:DescribeServiceGroups",
+                "vpc:DescribeNetworkAcls",
+                "vpc:DescribeNetworkInterfaces"
+            ],
+            "resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+
 
 # Creating a Tencent Cloud Account
 
