@@ -17,18 +17,29 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # April 19, 2022 - Release 2.5.0
 
+Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), user favorable product adoption policies, and many enhancements and bug fixes.
+
+**Features:**
+
 * Palette now supports [Tencent Kubernetes Engine (TKE)](/clusters/new-clusters/tke#overview)—a fully-managed Kubernetes service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
 * Palette introduces **Placeholder Variables** as [Macros](/clusters/cluster-management/macros#overview) in our Cluster Profile layers for advanced regression and easier update of variables, across multiple running clusters.
-* Palette users can now manually [Force Delete a Cluster](/clusters/new-clusters/aws#forcedeleteacluster), stuck in the **Deletion** state for more than **14 minutes**, through the User Interface. 
-* Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
 * Palette displays a well-organized [Product Onboarding](/getting-started/onboarding-workflow#paletteonboardingworkflow) process to streamline user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 * Palette helps out new users in their purchase decision by offering free tier services.
   * [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
   * [Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
-* Palette encourages our users to add the `ec2:DeleteNetworkInterface` permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
-* Packs and Integrations:
-  * [Ubuntu 20.04](/integrations/ubuntu)
-  * Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image location.
+
+**Enhancements:**
+
+* * Palette users can now manually [Force Delete a Cluster](/clusters/new-clusters/aws#forcedeleteacluster), stuck in the **Deletion** state for more than **14 minutes**, through the User Interface. 
+* Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
+
+**Bug Fixes:**
+* * Palette encourages our users to add the `ec2:DeleteNetworkInterface` permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
+
+**Packs and Integrations:**
+
+* [Ubuntu 20.04](/integrations/ubuntu)
+* Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image location.
 
 
 
