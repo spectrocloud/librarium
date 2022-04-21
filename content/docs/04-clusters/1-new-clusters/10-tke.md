@@ -43,7 +43,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
-# Permissions for TKE Cluster CRUD Operations
+# Tencent Cloud Account Permissions
 
 ```yaml
 {
