@@ -21,15 +21,18 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-| Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) 
+|Release 2.5.0 |Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
+|              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
+| Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
 |              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
-| Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)
+| Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
  #  Palette Docker Image Version
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
 |---------------------------|----------------------------------------|
+|Release 2.5.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.5.0`</p> |
 |Release 2.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0`</p> |
 |Release 2.2.0 |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0`</p> | 
 
