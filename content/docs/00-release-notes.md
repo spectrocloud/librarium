@@ -34,7 +34,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 * Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
 
 **Bug Fixes:**
-* Palette encourages our users to add the `ec2:DeleteNetworkInterface` permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
+* Palette encourages our users to attach the `ec2:DeleteNetworkInterface` to their AWS Cloud account permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
 
 **Packs and Integrations:**
 
