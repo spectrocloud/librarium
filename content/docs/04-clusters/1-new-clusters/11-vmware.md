@@ -511,7 +511,7 @@ Delete action is only available for clusters that are fully provisioned. For clu
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
 
 ## To force delete a cluster:
 
@@ -520,12 +520,9 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 14 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
+      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
     
-      - If the **Force Delete Cluster** button is not enabled, wait for 14 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
-# Cluster Force Deletion
-
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **14 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
+      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 
 <WarningBox>
