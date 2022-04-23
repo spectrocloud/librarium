@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # April 19, 2022 - Release 2.5.0
 
-Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), user favorable product adoption policies, many enhancements, and bug fixes.
+Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), Palette free service offerings, many enhancements, and bug fixes.
 
 **Features:**
 
@@ -34,7 +34,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 * Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
 
 **Bug Fixes:**
-* Palette encourages our users to attach the `ec2:DeleteNetworkInterface` to their AWS Cloud account permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
+* We request our users to please add the `ec2:DeleteNetworkInterface` permission to their AWS cloud account Controller Policy Permissions to detach and delete the network interface for [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS](/clusters/new-clusters/eks) clusters.
 
 **Packs and Integrations:**
 
