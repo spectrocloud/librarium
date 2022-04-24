@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# April 19, 2022 - Release 2.5.0
+# April 24, 2022 - Release 2.5.0
 
 Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), Palette free service offerings, many enhancements, and bug fixes.
 
@@ -30,7 +30,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 
 **Enhancements:**
 
-* Palette users can now manually [Force Delete a Cluster](/clusters/new-clusters/aws#forcedeleteacluster), stuck in the **Deletion** state for more than **14 minutes**, through the User Interface. 
+* Palette users can now manually [Force Delete a Cluster](/clusters/new-clusters/aws#forcedeleteacluster), stuck in the **Deletion** state for more than **15 minutes**, through the User Interface. 
 * Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
 
 **Bug Fixes:**
