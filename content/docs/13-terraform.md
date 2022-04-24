@@ -44,6 +44,7 @@ Detailed documentation on supported data sources and resources are available in 
 |0.6.12| 0.0.10|
 |0.6.13|0.0.11 |
 |0.6.14|0.0.12 |
+|0.6.15|0.0.13 |
 
 ## Latest Version of Spectro Cloud Terraform Provider:
 The below section includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
