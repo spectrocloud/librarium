@@ -18,9 +18,9 @@ import InfoBox from "shared/components/InfoBox"
 
 </Intro>
 
+Create and modify the tenant and project scope resources and integration with other applications with Palette APIs.
 
-Palette platform capabilities are exposed via REST APIs that comply with open API standards. 
-
+Palette platform capabilities are exposed via REST APIs provide a subset of features that comply with open application programming interface (API) standards. 
 # Paths
 
 Every API's URI has the prefix of the version and the Palette resource, such as: `v1/spectroclusters/...`
@@ -74,6 +74,17 @@ The API returns standard HTTP response codes:
 | 404 | The resource or the dependent resource is not found for the operation. |
 | 500 | Operational error. For 500 error code, the server responds with an explicit error code and an error message. |
 
+# API Lifecycle
+
+To keep up with the API lifecycle, we expose the state or phase the API is in--*Production*, *Sunsetting* or *Deprecated*.
+### Production
+While in the Production stage, the Spectro Cloud APIs will work as intended and expected. 
+
+### Sunsetting
+As the API moves toward retirement, whether being replaced or no longer being supported, a notice is included in the documentation with the intent and a cut-off date. A notice is shared within three months to the date of deprecation as a countdown till the end date.
+### Deprecated
+When an API is no longer recommended to use, we indicate its state and include a tag as deprecated. The API documentation will continue to be available at as a subsection of deprecated APIs.
+ 
 # Versioning
 
 The version information is part of the API URI like `v1alpha1`, `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will undergo changes like adding new attributes or query params with backward compatibility of earlier schema. While advancing to the next version, ample notice to migrate to the new API will be provided.
