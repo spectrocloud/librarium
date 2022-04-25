@@ -23,6 +23,12 @@ cert-manager adds certificates and certificate issuers as resource types in Kube
 
 <Tabs>
 
+<Tabs.TabPane tab="1.7.x" key="1.7.x">
+
+**1.7.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.4.x" key="1.4.x">
 
 **1.4.0**

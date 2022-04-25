@@ -41,6 +41,13 @@ Please make sure that your worker node pool size satisfies the minimum nodes req
 
 <Tabs>
 
+<Tabs.TabPane tab="1.8.x" key="1.8.x">
+
+**1.8.3**
+
+</Tabs.TabPane>
+
+
 <Tabs.TabPane tab="1.5.x" key="1.5.x">
 
 **1.5.9**
