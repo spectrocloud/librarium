@@ -22,6 +22,13 @@ Falco integration is a behavioral activity monitor designed to detect anomalous 
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="1.16.x" key="1.16.x">
+
+* **1.16.3**
+
+ 
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 * **1.0.11**
