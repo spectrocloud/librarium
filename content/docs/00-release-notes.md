@@ -38,7 +38,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 
 **Packs and Integrations:**
 
-* [Ubuntu 20.04](/integrations/ubuntu)
+* [Ubuntu 20.04](/integrations/ubuntu)- A long term support release of highly popular Ubuntu Linux Operating System. 
 * Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image location.
 
 
