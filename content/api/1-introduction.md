@@ -45,7 +45,7 @@ Palette enables secure authentication and authorization for API with the help of
 All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.
 
 * *Metadata* consists of common attributes for all the resources such as ids, names, creation timestamps etc. 
-* *Sspec* consists of attributes that define the resource
+* *Spec* consists of attributes that define the resource
 * *Status* contains the status information of the resource. The API does not support creating or modifying the status section. 
 
 <InfoBox>
