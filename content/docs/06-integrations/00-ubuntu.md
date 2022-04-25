@@ -23,6 +23,19 @@ Ubuntu is a Linux distribution based on Debian and composed mostly of free and o
 
 **Ubuntu LTS__18.04**
 
+
+## Ubuntu 18.4.x to Kubernetes Dependency Matrix
+|**Ububtu Version**|**Kubernetes**|
+|--------------|----------|
+|**LTS__18.04**| 1.21.10  |
+|              | 1.21.9   |
+|              | 1.20.14  |
+|              | 1.20.12  |
+|              | 1.19.16  |
+|              | 1.19.15  |
+
+
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="LTS__20.4.x" key="LTS__20.4.x">
