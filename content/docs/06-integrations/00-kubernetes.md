@@ -1,11 +1,11 @@
 ---
-title: 'Kubernetes'
-metaTitle: 'Kubernetes with Spectro Cloud'
-metaDescription: 'Kubernetes pack in Spectro Cloud'
+title: "Kubernetes"
+metaTitle: "Kubernetes with Spectro Cloud"
+metaDescription: "Kubernetes pack in Spectro Cloud"
 hiddenFromNav: true
 isIntegration: true
-category: ['kubernetes']
-logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
+category: ["kubernetes"]
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -68,6 +68,7 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 
 <Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
 
+- **1.21.10**
 - **1.21.6**
 - **1.21.5**
 - **1.21.4**
@@ -75,6 +76,19 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 - **1.21.2**
 - **1.21.1**
 - **1.21.0**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
+
+- **1.22.11**
+- **1.22.7**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
+
+- **1.23.4**
 
 </Tabs.TabPane>
 
@@ -103,9 +117,9 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 kubeadmconfig:
   apiServer:
     extraArgs:
-      anonymous-auth: 'true'
-      insecure-port: '0'
-      profiling: 'false'
+      anonymous-auth: "true"
+      insecure-port: "0"
+      profiling: "false"
     extraVolumes:
       - name: audit-policy
         hostPath: /etc/kubernetes/audit-policy.yaml
@@ -114,21 +128,21 @@ kubeadmconfig:
         pathType: File
   controllerManager:
     extraArgs:
-      profiling: 'false'
-      terminated-pod-gc-threshold: '25'
-      use-service-account-credentials: 'true'
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      use-service-account-credentials: "true"
   scheduler:
     extraArgs:
-      profiling: 'false'
+      profiling: "false"
   kubeletExtraArgs:
-    read-only-port: '0'
-    event-qps: '0'
-    protect-kernel-defaults: 'true'
+    read-only-port: "0"
+    event-qps: "0"
+    protect-kernel-defaults: "true"
   files:
     - path: hardening/audit-policy.yaml
       targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: 'root:root'
-      targetPermissions: '0600'
+      targetOwner: "root:root"
+      targetPermissions: "0600"
   preKubeadmCommands:
     - 'echo "Executing preKubeadmCmds"'
   postKubeadmCommands:

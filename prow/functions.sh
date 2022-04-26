@@ -11,6 +11,13 @@ build_docs() {
 	GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID} GATSBY_ALGOLIA_SEARCH_KEY=${GATSBY_ALGOLIA_SEARCH_KEY} ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY} make build
 }
 
+# Initialize & Build  release docs
+build_release_docs() {
+	apk --update add autoconf automake build-base libtool nasm pkgconf
+	make initialize
+	GATSBY_ALGOLIA_APP_ID=${REL_GATSBY_ALGOLIA_APP_ID} GATSBY_ALGOLIA_SEARCH_KEY=${REL_GATSBY_ALGOLIA_SEARCH_KEY} ALGOLIA_ADMIN_KEY=${REL_ALGOLIA_ADMIN_KEY} make build
+}
+
 # Sync docs to s3
 sync_s3() {
 	aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete

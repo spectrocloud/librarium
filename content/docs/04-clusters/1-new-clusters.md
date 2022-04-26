@@ -32,4 +32,5 @@ The following pages provide detailed instructions for setting up new workload cl
 * [GCP](/clusters/new-clusters/gcp)
 * [Bare Metal using Canonical's Metal-as-a-Service (MaaS)](/clusters/new-clusters/maas)
 * [OpenStack](/clusters/new-clusters/openstack)
+* [Tencent (TKE)](/clusters/new-clusters/tke)
 * [VMWare](/clusters/new-clusters/vmware)

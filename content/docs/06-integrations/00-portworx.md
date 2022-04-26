@@ -21,6 +21,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 ## Versions Supported
 
 <Tabs>
+<Tabs.TabPane tab="2.8.x" key="2.8.x">
+
+* **2.8.0** 
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
 * **2.6.1** 

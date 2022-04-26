@@ -24,6 +24,12 @@ Spectro Network Pack(s) helps provision resources for setting up Cluster network
 [Calico](/integrations/calico)
 
 <Tabs>
+<Tabs.TabPane tab="3.22.x" key="3.22.x">
+
+* ** 3.22.0** 
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="3.19.x" key="3.19.x">
 
 * **3.19.0** 
