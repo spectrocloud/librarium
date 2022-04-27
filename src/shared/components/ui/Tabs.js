@@ -18,10 +18,6 @@ const StyledTabs = styled(AntTabs)`
     color: inherit;
   }
 
-  .ant-tabs-ink-bar {
-    background: #206cd1;
-  }
-
   .ant-tabs-tab-btn {
     font-weight: 500;
     font-size: 16px;
@@ -75,6 +71,7 @@ export default function Tabs({ identifier, ...rest }) {
       {renderIdentifier()}
       <StyledTabs
         {...rest}
+        type={"card"}
         activeKey={activeKey}
         onChange={setActiveKey}
         destroyInactiveTabPane={true}
