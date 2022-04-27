@@ -176,14 +176,21 @@ The following steps need to be performed to provision a new TKS cluster:
 
 <InfoBox>
 
-While configuring the Operating System layer of the TKE cluster profile, use the values for the OS name as any of the following:
+While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with any one of the following images:
 
 ```yaml
 "OsName": "centos7.6.0_x64"
 ```
 ```yaml
+"OsName": "centos7.6.0_x64 GPU"
+```
+```yaml
 "OsName": "ubuntu18.04.1x86_64"
 ```
+```yaml
+"OsName": "ubuntu18.04.1x86_64 GPU"
+```
+
 </InfoBox>
 
 <WarningBox>
