@@ -249,7 +249,6 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
     |-------------|----------------|
     | **Name** |A descriptive name for the node pool.
     | **Size** | Make your choice of minimum, maximum, and desired <br /> sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
-    |  [Label and Taints](./clusters/cluster-management/taints)| Create as per user requirements.|
     | **Instance type** | Select the Tencent Instance Type for the nodes<br /> in the node pool with availability zones and disk size.|
     
 
