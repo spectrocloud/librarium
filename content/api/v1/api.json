@@ -296,20 +296,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1055,20 +1055,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1209,20 +1209,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1355,20 +1355,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1501,20 +1501,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1769,20 +1769,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2127,20 +2127,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2185,20 +2185,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2331,20 +2331,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2684,20 +2684,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -3001,20 +3001,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -3319,20 +3319,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -3944,20 +3944,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -4261,20 +4261,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -4578,20 +4578,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -5171,20 +5171,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -5764,20 +5764,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -6081,20 +6081,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -8311,20 +8311,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -9154,20 +9154,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -9224,20 +9224,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -9272,20 +9272,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -9345,20 +9345,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -10544,20 +10544,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -10658,20 +10658,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -12756,20 +12756,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -12846,20 +12846,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -13895,20 +13895,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -13958,20 +13958,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -14433,20 +14433,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -14919,20 +14919,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15293,20 +15293,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15394,20 +15394,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15866,20 +15866,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15973,20 +15973,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -16249,20 +16249,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -16551,20 +16551,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -23028,20 +23028,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -23161,20 +23161,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -23418,20 +23418,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -24037,7 +24037,8 @@
       },
       "put": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Updates the credit account for tenants with free tier access",
         "operationId": "v1TenantsCreditAccountUpdate",
@@ -24940,20 +24941,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -25025,20 +25026,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -25979,20 +25980,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "offset is the next index number from which the response will start..",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
             "name": "offset",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
