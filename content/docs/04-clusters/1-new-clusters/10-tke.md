@@ -43,6 +43,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
+
 # Tencent Cloud Account Permissions
 
 ```yaml
@@ -172,6 +173,18 @@ The following steps need to be performed to provision a new TKS cluster:
 
 
 3. Review and override Pack parameters as desired. By default, parameters for all Packs are set with values defined in the Cluster Profile.
+
+<InfoBox>
+
+While configuring the Operating System layer of the TKE cluster profile, use the values for the OS name as any of the following:
+
+```yaml
+"OsName": "centos7.6.0_x64"
+```
+```yaml
+"OsName": "ubuntu18.04.1x86_64"
+```
+</InfoBox>
 
 <WarningBox>
 
