@@ -296,13 +296,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1048,13 +1055,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1195,13 +1209,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1334,13 +1355,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1473,13 +1501,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -1734,13 +1769,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2085,13 +2127,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2105,6 +2154,152 @@
           }
         }
       }
+    },
+    "/v1/cloudaccounts/tencent": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Tencent cloud accounts",
+        "operationId": "v1CloudAccountsTencentList",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "name": "orderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cloud account items",
+            "schema": {
+              "$ref": "#/definitions/v1TencentAccounts"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Creates an Tencent cloud account",
+        "operationId": "v1CloudAccountsTencentCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentAccount"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/cloudaccounts/tencent/{uid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified Tencent account",
+        "operationId": "v1CloudAccountsTencentGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TencentAccount"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified Tencent account",
+        "operationId": "v1CloudAccountsTencentUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentAccount"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified AWS account",
+        "operationId": "v1CloudAccountsTencentDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1/cloudaccounts/vsphere": {
       "get": {
@@ -2136,13 +2331,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2482,13 +2684,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -2792,13 +3001,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -3103,13 +3319,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -3721,13 +3944,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -4031,13 +4261,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -4341,13 +4578,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -4927,13 +5171,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -5338,6 +5589,323 @@
         }
       ]
     },
+    "/v1/cloudconfigs/tke/{configUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified TKE cloud config",
+        "operationId": "v1CloudConfigsTkeGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TencentCloudConfig"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/tke/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1CloudConfigsTkeUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/tke/{configUid}/machinePools": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Creates an TKE cloud config's machine pool",
+        "operationId": "v1CloudConfigsTkeMachinePoolCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/tke/{configUid}/machinePools/{machinePoolName}": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified TKE cloud config's machine pool",
+        "operationId": "v1CloudConfigsTkeMachinePoolUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified machine pool",
+        "operationId": "v1CloudConfigsTkeMachinePoolDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/tke/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of TKE machines",
+        "operationId": "v1CloudConfigsTkePoolMachinesList",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "name": "orderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of TKE machine items",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachines"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Adds the machine to cloud config's machine pool",
+        "operationId": "v1CloudConfigsTkePoolMachinesAdd",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/tke/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified Tke machine",
+        "operationId": "v1CloudConfigsTkePoolMachinesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachine"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified machine to the cloud config's machine pool",
+        "operationId": "v1CloudConfigsTkePoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TencentMachine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified Tencent machine",
+        "operationId": "v1CloudConfigsTkePoolMachinesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machineUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/cloudconfigs/vsphere/{configUid}": {
       "get": {
         "tags": [
@@ -5513,13 +6081,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -5721,6 +6296,33 @@
                 "type": "string",
                 "description": "Audit uid for the request"
               }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/aws/cost": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves AWS cloud account usage cost from cost explorer.",
+        "operationId": "v1AwsCloudCost",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AwsCloudCostSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsCloudCostSummary"
             }
           }
         }
@@ -6008,6 +6610,11 @@
             "type": "number",
             "format": "double",
             "name": "gpuGtEq",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
             "in": "query"
           }
         ],
@@ -7167,6 +7774,271 @@
         }
       }
     },
+    "/v1/clouds/tencent/account/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate the specified Tencent account credentials",
+        "operationId": "V1TencentAccountValidate",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TencentCloudAccount"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Tencent regions for the sepcified account",
+        "operationId": "V1TencentRegions",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentRegions"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/instancetypes": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Tencent instance types",
+        "operationId": "V1TencentInstanceTypes",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "number",
+            "format": "double",
+            "name": "cpuGtEq",
+            "in": "query"
+          },
+          {
+            "type": "number",
+            "format": "double",
+            "name": "memoryGtEq",
+            "in": "query"
+          },
+          {
+            "type": "number",
+            "format": "double",
+            "name": "gpuGtEq",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentInstanceTypes"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/keypairs": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of keypairs for the specified account",
+        "operationId": "V1TencentKeypairs",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentKeypairs"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/securitygroups": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of secutity groups for the specified account",
+        "operationId": "V1TencentSecurityGroups",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentSecurityGroups"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/storagetypes": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Tencent storage types",
+        "operationId": "V1TencentStorageTypes",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "zone",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentStorageTypes"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/vpcs": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of vpcs for the specified account",
+        "operationId": "V1TencentVpcs",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentVpcs"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/tencent/regions/{region}/zones": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Tencent availability zones for the specified region",
+        "operationId": "V1TencentZones",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TencentAvailabilityZones"
+            }
+          }
+        }
+      }
+    },
     "/v1/clouds/vsphere/account/validate": {
       "post": {
         "description": "Returns no contents if account is valid else error.",
@@ -7439,13 +8311,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -7485,6 +8364,23 @@
                 "type": "string",
                 "description": "Audit uid for the request"
               }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clusterprofiles/macros": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "List all macros",
+        "operationId": "v1MacrosList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
             }
           }
         }
@@ -8258,13 +9154,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -8286,6 +9189,29 @@
         }
       }
     },
+    "/v1/dashboard/internal/tenants/{tenantUid}/cleanup": {
+      "delete": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Clean up the metrics associated with the deleted tenant",
+        "operationId": "v1MetricsTenantCleanUp",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/dashboard/projects": {
       "get": {
         "tags": [
@@ -8298,13 +9224,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -8339,13 +9272,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -8405,13 +9345,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -9203,6 +10150,18 @@
         ],
         "summary": "Retrieves a list of registered edge host devices",
         "operationId": "v1EdgeHostDevicesList",
+        "parameters": [
+          {
+            "enum": [
+              "libvirt",
+              "edge",
+              "vsphere"
+            ],
+            "type": "string",
+            "name": "type",
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "An array of edge host device items",
@@ -9585,13 +10544,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -9692,13 +10658,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -11783,13 +12756,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -11866,13 +12846,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -12908,13 +13895,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -12964,13 +13958,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           },
@@ -13432,13 +14433,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -13911,13 +14919,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -14109,6 +15124,52 @@
         }
       ]
     },
+    "/v1/projects/{uid}/macros": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "List the macros of the specified project",
+        "operationId": "v1ProjectsUidMacrosList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros of the specified project",
+        "operationId": "v1ProjectsUidMacrosUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/projects/{uid}/meta": {
       "put": {
         "tags": [
@@ -14232,13 +15293,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -14326,13 +15394,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -14501,6 +15576,36 @@
           "name": "uid",
           "in": "path",
           "required": true
+        }
+      ]
+    },
+    "/v1/registries/metadata": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of registries metadata",
+        "operationId": "v1RegistriesMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of registry metadata items",
+            "schema": {
+              "$ref": "#/definitions/v1RegistriesMetadata"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "enum": [
+            "system",
+            "tenant",
+            "all"
+          ],
+          "type": "string",
+          "default": "all",
+          "name": "scope",
+          "in": "query"
         }
       ]
     },
@@ -14761,13 +15866,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -14861,13 +15973,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15130,13 +16249,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -15308,7 +16434,9 @@
               "tick",
               "edge",
               "lodge",
-              "level"
+              "level",
+              "edge-config",
+              "firth"
             ],
             "type": "string",
             "description": "service name",
@@ -15347,7 +16475,9 @@
               "tick",
               "edge",
               "lodge",
-              "level"
+              "level",
+              "edge-config",
+              "firth"
             ],
             "type": "string",
             "description": "service name",
@@ -15421,13 +16551,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -16519,6 +17656,45 @@
           "name": "tenantUid",
           "in": "path",
           "required": true
+        },
+        {
+          "type": "boolean",
+          "name": "forceDelete",
+          "in": "query"
+        }
+      ]
+    },
+    "/v1/spectroclusters/internal/tenants/{tenantUid}/creditAccount/{cloudAccountUid}": {
+      "delete": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Clean up the free cloud credit clusters",
+        "operationId": "v1CreditAccountClustersCleanUp",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "cloudAccountUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "boolean",
+          "name": "forceDelete",
+          "in": "query"
         }
       ]
     },
@@ -16934,6 +18110,101 @@
         }
       }
     },
+    "/v1/spectroclusters/tke": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Creates an Tke cluster",
+        "operationId": "v1SpectroClustersTkeCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroTencentClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/tke/rate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get tke spectro cluster estimated rate information",
+        "operationId": "v1SpectroClustersTkeRate",
+        "parameters": [
+          {
+            "enum": [
+              "hourly",
+              "monthly",
+              "yearly"
+            ],
+            "type": "string",
+            "default": "hourly",
+            "name": "periodType",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroTencentClusterRateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tke Cluster estimated rate response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterRate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/tke/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate tke spectro cluster create",
+        "operationId": "v1SpectroClustersTkeValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroTencentClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tke Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/spectroclusters/usage/compute": {
       "post": {
         "tags": [
@@ -17163,6 +18434,18 @@
             "default": false,
             "name": "resolvePackValues",
             "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "includes pack meta such as schema, presets",
+            "name": "includePackMeta",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "filter cluster profile templates by profileType",
+            "name": "profileType",
+            "in": "query"
           }
         ],
         "responses": {
@@ -17180,6 +18463,13 @@
         ],
         "summary": "Deletes the specified cluster",
         "operationId": "v1SpectroClustersDelete",
+        "parameters": [
+          {
+            "type": "boolean",
+            "name": "forceDelete",
+            "in": "query"
+          }
+        ],
         "responses": {
           "204": {
             "description": "The resource was deleted successfully"
@@ -17192,12 +18482,6 @@
           "name": "uid",
           "in": "path",
           "required": true
-        },
-        {
-          "type": "string",
-          "description": "includes pack meta such as schema, presets",
-          "name": "includePackMeta",
-          "in": "query"
         }
       ]
     },
@@ -17798,6 +19082,34 @@
             "headers": {
               "Content-Disposition": {
                 "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/downloadProfileArtifacts": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Initiate download of profile artificats for a specified cluster",
+        "operationId": "v1SpectroClustersUidDownloadProfileArtifacts",
+        "responses": {
+          "202": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
               }
             }
           }
@@ -18972,6 +20284,31 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/profileUpdates": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the profile updates of a specified cluster",
+        "operationId": "v1SpectroClustersGetProfileUpdates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterProfileUpdates"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/profiles": {
       "get": {
         "tags": [
@@ -19162,6 +20499,34 @@
           "default": "hourly",
           "name": "periodType",
           "in": "query"
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/reset": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "reset the spectroclusters by deleting machine pools and condtions",
+        "operationId": "V1SpectroClustersUidReset",
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
         }
       ]
     },
@@ -19629,6 +20994,46 @@
           "required": true
         }
       ]
+    },
+    "/v1/system/appFeatures": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Get system app features",
+        "operationId": "v1SystemAppFeaturesGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AppFeatures"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Update system app features",
+        "operationId": "v1SystemAppFeaturesUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AppFeatures"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
     },
     "/v1/system/config/aws/account": {
       "get": {
@@ -20619,6 +22024,67 @@
         }
       }
     },
+    "/v1/system/config/registries/{registryName}": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Gets the specified Registry",
+        "operationId": "V1SystemRegistriesNameGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemRegistry"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Updates the specified Registry",
+        "operationId": "V1SystemRegistriesNameUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SystemRegistry"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Deletes the specified Registry",
+        "operationId": "V1SystemRegistriesNameDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "registryName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/system/config/reverseproxy": {
       "get": {
         "tags": [
@@ -20856,6 +22322,52 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1SystemSsoSpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/config/tencent/account": {
+      "get": {
+        "tags": [
+          "v1",
+          "system",
+          "private"
+        ],
+        "summary": "Get the system config tencent devops account",
+        "operationId": "V1SystemConfigTencentAccountGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemTencentAccount"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "system",
+          "private"
+        ],
+        "summary": "updates the system config tencent devops account",
+        "operationId": "V1SystemConfigTencentAccountUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SystemTencentAccount"
             }
           }
         ],
@@ -21516,13 +23028,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -21594,8 +23113,26 @@
         }
       }
     },
+    "/v1/teams/meta": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of teams metadata",
+        "operationId": "v1TeamsMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of teams metadata items",
+            "schema": {
+              "$ref": "#/definitions/v1TeamsMetadata"
+            }
+          }
+        }
+      }
+    },
     "/v1/teams/summary": {
       "get": {
+        "description": "Deprecated, Use Post api - Returns a list of team summaries",
         "tags": [
           "v1"
         ],
@@ -21624,13 +23161,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -21640,6 +23184,30 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/v1TeamsSummary"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of teams summary with provided filter spec",
+        "operationId": "v1TeamsSummaryGet",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TeamsSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of teams summary items",
+            "schema": {
+              "$ref": "#/definitions/v1TeamsSummaryList"
             }
           }
         }
@@ -21850,13 +23418,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -22376,6 +23951,11 @@
           "type": "boolean",
           "name": "useTenantCtx",
           "in": "query"
+        },
+        {
+          "type": "boolean",
+          "name": "forceDelete",
+          "in": "query"
         }
       ]
     },
@@ -22427,6 +24007,73 @@
                 "description": "Audit uid for the request"
               }
             }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/tenants/{tenantUid}/creditAccount/aws": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get the credit accounts for the tenants with free tier access",
+        "operationId": "v1TenantsCreditAccountGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AwsCreditAccountEntity"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Updates the credit account for tenants with free tier access",
+        "operationId": "v1TenantsCreditAccountUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AwsCreditAccount"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the aws credit account for tenants",
+        "operationId": "v1TenantsCreditAccountDelete",
+        "parameters": [
+          {
+            "type": "boolean",
+            "default": false,
+            "name": "forceDelete",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -22504,6 +24151,31 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/tenants/{tenantUid}/freemiumUsage": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get tenant freemium usage",
+        "operationId": "v1TenantFreemiumUsageGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantFreemiumUsage"
+            }
           }
         }
       },
@@ -22784,6 +24456,52 @@
             "schema": {
               "$ref": "#/definitions/v1CleanUpResource"
             }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/tenants/{tenantUid}/macros": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "List the macros of the specified tenant",
+        "operationId": "v1TenantsUidMacrosList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros of the specified tenant",
+        "operationId": "v1TenantsUidMacrosUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
           }
         }
       },
@@ -23223,13 +24941,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -23301,13 +25026,20 @@
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -24132,6 +25864,23 @@
         }
       }
     },
+    "/v1/users/meta": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of users metadata",
+        "operationId": "v1UsersMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of users metadata items",
+            "schema": {
+              "$ref": "#/definitions/v1UsersMetadata"
+            }
+          }
+        }
+      }
+    },
     "/v1/users/password/change": {
       "patch": {
         "description": "User password change request via current password and emailId",
@@ -24220,24 +25969,31 @@
     },
     "/v1/users/summary": {
       "get": {
-        "description": "Returns a list of user summaries",
+        "description": "Deprecated, Use Post api - Returns a list of user summaries",
         "tags": [
           "v1"
         ],
-        "summary": "Returns the specified User Summary list",
+        "summary": "Returns the specified user summary list",
         "operationId": "v1UsersSummary",
         "parameters": [
           {
             "type": "integer",
             "format": "int64",
             "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "name": "limit",
             "in": "query"
           },
           {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
             "type": "string",
-            "description": "continue token for the dataset",
+            "description": "continue token to paginate the subsequent data items",
             "name": "continue",
             "in": "query"
           }
@@ -24248,6 +26004,68 @@
             "schema": {
               "$ref": "#/definitions/v1UsersSummary"
             }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of users summary with provided filter spec",
+        "operationId": "v1UsersSummaryGet",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1UsersSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of users summary items",
+            "schema": {
+              "$ref": "#/definitions/v1UsersSummaryList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/system/macros": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "List the macros of the system",
+        "operationId": "v1UsersSystemMacrosList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros of the system",
+        "operationId": "v1UsersSystemMacrosUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
           }
         }
       }
@@ -24725,6 +26543,34 @@
           "required": true
         }
       ]
+    },
+    "/v1/workspaces/validate/name": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validates the workspace name",
+        "operationId": "v1WorkspacesValidateName",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
     },
     "/v1/workspaces/{uid}": {
       "get": {
@@ -25520,6 +27366,41 @@
         }
       }
     },
+    "v1AppFeatureFreemium": {
+      "description": "Freemium information",
+      "properties": {
+        "activeClustersLimit": {
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "isFreemium": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "overageUsageLimit": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        },
+        "totalUsageLimit": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1AppFeatures": {
+      "description": "System app features",
+      "properties": {
+        "freeCloudCredit": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "freemium": {
+          "$ref": "#/definitions/v1AppFeatureFreemium"
+        }
+      }
+    },
     "v1AppVersion": {
       "description": "spectro application management app version information",
       "properties": {
@@ -25954,6 +27835,81 @@
         }
       }
     },
+    "v1AwsCloudCostSpec": {
+      "description": "Aws cloud account usage cost payload spec",
+      "type": "object",
+      "required": [
+        "credentials"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "credentials": {
+          "$ref": "#/definitions/v1AwsCloudAccount"
+        },
+        "filter": {
+          "$ref": "#/definitions/v1AwsCloudCostSpecFilter"
+        }
+      }
+    },
+    "v1AwsCloudCostSpecFilter": {
+      "description": "Aws cloud account usage cost payload filter. startTime and endTime should be within 12 months range from now.",
+      "type": "object",
+      "required": [
+        "startTime"
+      ],
+      "properties": {
+        "endTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "iamUserId": {
+          "type": "string"
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1Time"
+        }
+      }
+    },
+    "v1AwsCloudCostSummary": {
+      "description": "Aws cloud account usage cost summary response data",
+      "type": "object",
+      "properties": {
+        "cost": {
+          "$ref": "#/definitions/v1AwsCloudCostSummaryCloudCost"
+        }
+      }
+    },
+    "v1AwsCloudCostSummaryCloudCost": {
+      "description": "Aws cloud account usage cost summary of monthlyCosts and totalCost",
+      "type": "object",
+      "properties": {
+        "monthlyCosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AwsCloudCostSummaryMonthlyCost"
+          }
+        },
+        "total": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1AwsCloudCostSummaryMonthlyCost": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        },
+        "timestamp": {
+          "type": "integer"
+        }
+      }
+    },
     "v1AwsClusterConfig": {
       "description": "cluster level configuration for aws cloud, same for all machinepools",
       "type": "object",
@@ -25978,6 +27934,42 @@
         "vpcId": {
           "description": "VPC Id to deploy cluster into should have one public and one private subnet for the the cluster creation, this field is optional, If VPC Id is not provided a fully managed VPC will be created",
           "type": "string"
+        }
+      }
+    },
+    "v1AwsCreditAccount": {
+      "type": "object",
+      "properties": {
+        "creditLimitInDollars": {
+          "type": "number",
+          "format": "float64"
+        },
+        "loginCredentials": {
+          "$ref": "#/definitions/v1AwsLoginCredentials"
+        },
+        "userCloudAccount": {
+          "$ref": "#/definitions/v1AwsUserCloudAccount"
+        }
+      }
+    },
+    "v1AwsCreditAccountEntity": {
+      "type": "object",
+      "properties": {
+        "creditLimitInDollars": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        },
+        "creditUsedInDollars": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        },
+        "loginCredentials": {
+          "$ref": "#/definitions/v1AwsLoginCredentials"
+        },
+        "userCloudAccount": {
+          "$ref": "#/definitions/v1AwsUserCloudAccount"
         }
       }
     },
@@ -26027,6 +28019,18 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "v1AwsLoginCredentials": {
+      "type": "object",
+      "properties": {
+        "iamUser": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string",
+          "format": "password"
         }
       }
     },
@@ -26412,6 +28416,16 @@
         },
         "id": {
           "type": "string"
+        }
+      }
+    },
+    "v1AwsUserCloudAccount": {
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "cloudAccount": {
+          "$ref": "#/definitions/v1AwsCloudAccount"
         }
       }
     },
@@ -27668,7 +29682,9 @@
         "eks",
         "aks",
         "edge",
-        "libvirt"
+        "libvirt",
+        "tencent",
+        "tke"
       ]
     },
     "v1CloudWatch": {
@@ -30372,8 +32388,11 @@
             "$ref": "#/definitions/v1Disk"
           }
         },
-        "gpu": {
-          "$ref": "#/definitions/v1GPU"
+        "gpus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1GPUDeviceSpec"
+          }
         },
         "memory": {
           "$ref": "#/definitions/v1Memory"
@@ -30661,7 +32680,8 @@
           "type": "string",
           "enum": [
             "libvirt",
-            "edge"
+            "edge",
+            "vsphere"
           ]
         },
         "version": {
@@ -31195,6 +33215,10 @@
           "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default =\u003e \"Internet-facing\" \"Internet-facing\" =\u003e \"Internet-facing\" \"internal\" =\u003e \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
           "type": "string"
         },
+        "encryptionConfig": {
+          "description": "EncryptionConfig specifies the encryption configuration for the cluster",
+          "$ref": "#/definitions/v1EncryptionConfig"
+        },
         "endpointAccess": {
           "description": "Endpoints specifies access to this cluster's control plane endpoints",
           "$ref": "#/definitions/v1EksClusterConfigEndpointAccess"
@@ -31416,6 +33440,48 @@
         },
         "id": {
           "type": "string"
+        }
+      }
+    },
+    "v1EncryptionConfig": {
+      "description": "EncryptionConfig specifies the encryption configuration for the EKS clsuter.",
+      "type": "object",
+      "properties": {
+        "isEnabled": {
+          "description": "Is encryption configuration enabled for the cluster",
+          "type": "boolean"
+        },
+        "provider": {
+          "description": "Provider specifies the ARN or alias of the CMK (in AWS KMS)",
+          "type": "string"
+        },
+        "resources": {
+          "description": "Resources specifies the resources to be encrypted",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1EndpointAccess": {
+      "description": "EndpointAccess specifies how control plane endpoints are accessible",
+      "type": "object",
+      "properties": {
+        "private": {
+          "description": "Private points VPC-internal control plane access to the private endpoint",
+          "type": "boolean"
+        },
+        "public": {
+          "description": "Public controls whether control plane endpoints are publicly accessible",
+          "type": "boolean"
+        },
+        "publicCIDRs": {
+          "description": "PublicCIDRs specifies which blocks can access the public endpoint",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -31665,13 +33731,65 @@
         }
       }
     },
-    "v1GPU": {
+    "v1FreemiumUsage": {
       "type": "object",
       "properties": {
-        "cores": {
-          "description": "number of gpu cores",
+        "usage": {
+          "type": "number",
+          "format": "float64"
+        }
+      }
+    },
+    "v1FreemiumUsageLimit": {
+      "type": "object",
+      "properties": {
+        "activeClusters": {
+          "type": "integer"
+        },
+        "overageUsage": {
+          "type": "number"
+        },
+        "usage": {
+          "type": "number",
+          "format": "float64"
+        }
+      }
+    },
+    "v1GPUConfig": {
+      "type": "object",
+      "properties": {
+        "deviceModel": {
+          "description": "DeviceModel is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
+          "type": "string"
+        },
+        "numGPUs": {
+          "description": "NumGPUs is the number of GPUs",
           "type": "integer",
           "format": "int32"
+        },
+        "vendorName": {
+          "description": "VendorName is the GPU vendor, for eg., NVIDIA or AMD",
+          "type": "string"
+        }
+      }
+    },
+    "v1GPUDeviceSpec": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "model": {
+          "description": "Model is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
+          "type": "string"
+        },
+        "vendor": {
+          "description": "Vendor is the GPU vendor, for eg., NVIDIA or AMD",
+          "type": "string"
         }
       }
     },
@@ -33757,6 +35875,10 @@
           "description": "DataStoragePool is the storage pool from which additional disks are assigned",
           "type": "string"
         },
+        "managed": {
+          "description": "Managed indicates if the disk is a persistent or not. By default its false indicating all disks are ephemeral.",
+          "type": "boolean"
+        },
         "sizeInGB": {
           "description": "SizeInGB is the target size in GB of the disk to be added",
           "type": "integer",
@@ -33814,6 +35936,10 @@
         "cpuset": {
           "description": "CPUSet defines cpuset for an instance which allows allocation specific set of cpus E.g  cpuset=\"1-4,^3,6\" See https://libvirt.org/formatdomain.html#cpu-allocation",
           "type": "string"
+        },
+        "gpuConfig": {
+          "description": "GPU configuration",
+          "$ref": "#/definitions/v1GPUConfig"
         },
         "memoryInMB": {
           "description": "MemoryinMB is the memory in megabytes",
@@ -34091,12 +36217,20 @@
       "required": [
         "hostUid",
         "hostAddress",
+        "networks",
         "sourceStoragePool"
       ],
       "properties": {
         "dataStoragePool": {
           "description": "DataStoragePool is the storage pool from which additional disks are assigned",
           "type": "string"
+        },
+        "gpuDevices": {
+          "description": "GPU Devices is the list of LibvirtHost GPU devices, to be used for this placement",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1GPUDeviceSpec"
+          }
         },
         "hostAddress": {
           "description": "HostAddress is a FQDN or IP address of the LibvirtHost",
@@ -34160,11 +36294,23 @@
       "properties": {
         "continue": {
           "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
-          "type": "string"
+          "type": "string",
+          "x-omitempty": false
         },
         "count": {
           "description": "Total count of the resources which might change during pagination based on the resources addition or deletion",
-          "type": "integer"
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "limit": {
+          "description": "Number of records feteched",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "offset": {
+          "description": "The next offset for the pagination. Starting index for which next request will be placed.",
+          "type": "integer",
+          "x-omitempty": false
         }
       }
     },
@@ -35041,6 +37187,27 @@
         },
         "rate": {
           "$ref": "#/definitions/v1CloudRate"
+        }
+      }
+    },
+    "v1Macro": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Macros": {
+      "properties": {
+        "macros": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Macro"
+          }
         }
       }
     },
@@ -40233,6 +42400,22 @@
         }
       }
     },
+    "v1RegistriesMetadata": {
+      "description": "Pack Registries Metadata",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1RegistryMetadata"
+          }
+        }
+      }
+    },
     "v1RegistryAuth": {
       "description": "Auth credentials of the registry",
       "type": "object",
@@ -40258,6 +42441,18 @@
         }
       }
     },
+    "v1RegistryConf": {
+      "description": "Registry configuration",
+      "type": "object",
+      "properties": {
+        "auth": {
+          "$ref": "#/definitions/v1RegistryAuth"
+        },
+        "endpoint": {
+          "type": "string"
+        }
+      }
+    },
     "v1RegistryConfigEntity": {
       "description": "Registry configuration entity",
       "type": "object",
@@ -40278,6 +42473,21 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RegistryMetadata": {
+      "description": "Registry meta",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
           "type": "string"
         }
       }
@@ -40506,6 +42716,9 @@
       "description": "Resource consumption options",
       "type": "object",
       "properties": {
+        "enableSummaryView": {
+          "type": "boolean"
+        },
         "groupBy": {
           "type": "string",
           "default": "namespace",
@@ -40659,6 +42872,9 @@
       "description": "Resource cost summary options",
       "type": "object",
       "properties": {
+        "enableSummaryView": {
+          "type": "boolean"
+        },
         "groupBy": {
           "type": "string",
           "default": "cluster",
@@ -40927,6 +43143,9 @@
       "description": "Resource usage summary options",
       "type": "object",
       "properties": {
+        "enableSummaryView": {
+          "type": "boolean"
+        },
         "groupBy": {
           "type": "string",
           "default": "cluster",
@@ -42223,6 +44442,18 @@
         }
       }
     },
+    "v1SpectroClusterProfileUpdates": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileTemplate"
+          }
+        }
+      }
+    },
     "v1SpectroClusterProfileValidatorResponse": {
       "description": "Spectro cluster profile validator response",
       "type": "object",
@@ -42382,6 +44613,9 @@
       "description": "SpectroClusterStatus",
       "type": "object",
       "properties": {
+        "abortTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
         "apiEndpoints": {
           "type": "array",
           "items": {
@@ -42493,6 +44727,9 @@
     "v1SpectroClusterUidStatusSummary": {
       "description": "Spectro cluster status summary",
       "properties": {
+        "abortTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
         "apiEndpoints": {
           "type": "array",
           "items": {
@@ -43349,6 +45586,65 @@
         }
       }
     },
+    "v1SpectroTencentClusterEntity": {
+      "description": "Spectro Tencent cluster entity for create and update",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "type": "object",
+          "required": [
+            "cloudType",
+            "cloudAccountUid",
+            "cloudConfig"
+          ],
+          "properties": {
+            "cloudAccountUid": {
+              "type": "string"
+            },
+            "cloudConfig": {
+              "$ref": "#/definitions/v1TencentClusterConfig"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac",
+              "$ref": "#/definitions/v1ClusterConfigEntity"
+            },
+            "machinepoolconfig": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
+              }
+            },
+            "policies": {
+              "$ref": "#/definitions/v1SpectroClusterPolicies"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1SpectroTencentClusterRateEntity": {
+      "description": "Spectro Tencent cluster entity for estimating rate",
+      "type": "object",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1TencentClusterConfig"
+        },
+        "machinepoolconfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
+          }
+        }
+      }
+    },
     "v1SpectroVsphereClusterEntity": {
       "description": "Spectro vSphere cluster entity for create and update",
       "type": "object",
@@ -43359,7 +45655,6 @@
         "spec": {
           "type": "object",
           "required": [
-            "cloudAccountUid",
             "cloudConfig"
           ],
           "properties": {
@@ -43372,6 +45667,10 @@
             "clusterConfig": {
               "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac",
               "$ref": "#/definitions/v1ClusterConfigEntity"
+            },
+            "edgeHostUid": {
+              "description": "Appliance (Edge Host) uid for Edge env",
+              "type": "string"
             },
             "machinepoolconfig": {
               "type": "array",
@@ -44158,6 +46457,18 @@
         }
       }
     },
+    "v1SystemRegistry": {
+      "description": "Registry configuration",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1RegistryConf"
+        }
+      }
+    },
     "v1SystemReverseProxy": {
       "description": "system config reverse proxy",
       "properties": {
@@ -44305,6 +46616,26 @@
       "properties": {
         "systemStartDate": {
           "$ref": "#/definitions/v1Time"
+        }
+      }
+    },
+    "v1SystemTencentAccount": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/v1SystemTencentSpec"
+        }
+      }
+    },
+    "v1SystemTencentSpec": {
+      "description": "system tencent account specifications",
+      "properties": {
+        "secretId": {
+          "type": "string"
+        },
+        "secretKey": {
+          "type": "string"
         }
       }
     },
@@ -44516,6 +46847,24 @@
         }
       }
     },
+    "v1TeamSummarySortFields": {
+      "type": "string",
+      "enum": [
+        "name",
+        "creationTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1TeamSummarySortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1TeamSummarySortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1SortOrder"
+        }
+      }
+    },
     "v1TeamTenantRolesEntity": {
       "type": "object",
       "properties": {
@@ -44563,7 +46912,31 @@
         "$ref": "#/definitions/v1Team"
       }
     },
+    "v1TeamsFilterSpec": {
+      "description": "Teams filter spec",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/v1FilterString"
+        }
+      }
+    },
+    "v1TeamsMetadata": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ObjectEntity"
+          }
+        }
+      }
+    },
     "v1TeamsSummary": {
+      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
       "type": "object",
       "required": [
         "items"
@@ -44578,6 +46951,37 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1TeamsSummaryList": {
+      "description": "Returns Team summary",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TeamSummary"
+          }
+        }
+      }
+    },
+    "v1TeamsSummarySpec": {
+      "description": "Teams filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1TeamsFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TeamSummarySortSpec"
+          }
         }
       }
     },
@@ -44736,6 +47140,21 @@
         },
         "spec": {
           "$ref": "#/definitions/v1TenantSpecEntity"
+        }
+      }
+    },
+    "v1TenantFreemiumUsage": {
+      "type": "object",
+      "properties": {
+        "isFreemium": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "limit": {
+          "$ref": "#/definitions/v1FreemiumUsageLimit"
+        },
+        "usage": {
+          "$ref": "#/definitions/v1FreemiumUsage"
         }
       }
     },
@@ -45119,6 +47538,552 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "v1TencentAccount": {
+      "description": "Tencent cloud account information",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1TencentCloudAccount"
+        },
+        "status": {
+          "$ref": "#/definitions/v1CloudAccountStatus"
+        }
+      }
+    },
+    "v1TencentAccounts": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TencentAccount"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1TencentAvailabilityZone": {
+      "description": "Tencent availability zone",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zoneId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentAvailabilityZones": {
+      "type": "object",
+      "required": [
+        "zones"
+      ],
+      "properties": {
+        "zones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentAvailabilityZone"
+          }
+        }
+      }
+    },
+    "v1TencentCloudAccount": {
+      "type": "object",
+      "required": [
+        "secretId",
+        "secretKey"
+      ],
+      "properties": {
+        "secretId": {
+          "description": "Tencent api secretID and secretKey",
+          "type": "string"
+        },
+        "secretKey": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentCloudClusterConfigEntity": {
+      "description": "Tencent cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1TencentClusterConfig"
+        }
+      }
+    },
+    "v1TencentCloudConfig": {
+      "description": "TencentCloudConfig is the Schema for the tencentcloudconfigs API",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1TencentCloudConfigSpec"
+        }
+      }
+    },
+    "v1TencentCloudConfigSpec": {
+      "description": "TencentCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec/machinespec for cluster-api",
+      "type": "object",
+      "properties": {
+        "cloudAccountRef": {
+          "description": "cloudAccountRef should point to the secret which contains TencentCloudAccount",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "clusterConfig": {
+          "$ref": "#/definitions/v1TencentClusterConfig"
+        },
+        "machinePoolConfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentMachinePoolConfig"
+          }
+        }
+      }
+    },
+    "v1TencentClusterConfig": {
+      "description": "cluster level configuration for tencent cloud, same for all machinepools",
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "properties": {
+        "endpointAccess": {
+          "description": "Endpoints specifies access to this cluster's control plane endpoints",
+          "$ref": "#/definitions/v1EndpointAccess"
+        },
+        "region": {
+          "type": "string"
+        },
+        "sshKeyIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vpcID": {
+          "description": "VPC Id to deploy cluster into should have one public and one private subnet for the the cluster creation, this field is optional, If VPC Id is not provided a fully managed VPC will be created",
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentInstanceTypes": {
+      "type": "object",
+      "properties": {
+        "instanceTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1InstanceType"
+          }
+        }
+      }
+    },
+    "v1TencentKeypair": {
+      "description": "Tencent Keypair",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "publickey": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentKeypairs": {
+      "type": "object",
+      "properties": {
+        "keypairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentKeypair"
+          }
+        }
+      }
+    },
+    "v1TencentMachine": {
+      "description": "Tencent cloud VM definition",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1TencentMachineSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1CloudMachineStatus"
+        }
+      }
+    },
+    "v1TencentMachinePoolCloudConfigEntity": {
+      "type": "object",
+      "properties": {
+        "azs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "instanceType": {
+          "description": "instance type",
+          "type": "string"
+        },
+        "rootDeviceSize": {
+          "description": "rootDeviceSize in GBs",
+          "type": "integer",
+          "format": "int64",
+          "maximum": 2000,
+          "minimum": 1
+        },
+        "subnetIds": {
+          "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"ap-guangzhou-6\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first subnet from the AZ will be picked up for deployment",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1TencentMachinePoolConfig": {
+      "type": "object",
+      "properties": {
+        "additionalLabels": {
+          "description": "AdditionalLabels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "additionalTags": {
+          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "azs": {
+          "description": "AZs is only used for dynamic placement",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "infraProfileRef": {
+          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "infraProfileTemplate": {
+          "description": "InfraProfile contains OS/Kernel for this NodePool",
+          "$ref": "#/definitions/v1ClusterProfileTemplate"
+        },
+        "instanceType": {
+          "description": "instance type",
+          "type": "string"
+        },
+        "isControlPlane": {
+          "description": "whether this pool is for control plane",
+          "type": "boolean"
+        },
+        "labels": {
+          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "maxSize": {
+          "description": "max size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minSize": {
+          "description": "min size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rootDeviceSize": {
+          "description": "rootDeviceSize in GBs",
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "description": "size of the pool, number of machines",
+          "type": "integer",
+          "format": "int32"
+        },
+        "subnetIds": {
+          "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"ap-guangzhou-6\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first subnet from the AZ will be picked up for deployment",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "taints": {
+          "description": "master or worker taints",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
+        },
+        "updateStrategy": {
+          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut",
+          "$ref": "#/definitions/v1UpdateStrategy"
+        },
+        "useControlPlaneAsWorker": {
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1TencentMachinePoolConfigEntity": {
+      "type": "object",
+      "required": [
+        "cloudConfig"
+      ],
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1TencentMachinePoolCloudConfigEntity"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        }
+      }
+    },
+    "v1TencentMachineSpec": {
+      "description": "Tencent cloud VM definition spec",
+      "type": "object",
+      "required": [
+        "nics",
+        "instanceType",
+        "imageId"
+      ],
+      "properties": {
+        "dnsName": {
+          "type": "string"
+        },
+        "imageId": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "nics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentNic"
+          }
+        },
+        "securityGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnetId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "vpcId": {
+          "type": "string"
+        },
+        "zoneId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentMachines": {
+      "description": "Tencent machine list",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TencentMachine"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1TencentNic": {
+      "description": "Tencent network interface",
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "format": "int8"
+        },
+        "privateIPs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publicIp": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentRegion": {
+      "description": "Tencent region",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentRegions": {
+      "type": "object",
+      "required": [
+        "regions"
+      ],
+      "properties": {
+        "regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentRegion"
+          }
+        }
+      }
+    },
+    "v1TencentSecurityGroup": {
+      "description": "Tencent Security Group",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentSecurityGroups": {
+      "type": "object",
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentSecurityGroup"
+          }
+        }
+      }
+    },
+    "v1TencentStorageTypes": {
+      "type": "object",
+      "properties": {
+        "storageTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1StorageType"
+          }
+        }
+      }
+    },
+    "v1TencentSubnet": {
+      "description": "Tencent Subnet",
+      "type": "object",
+      "properties": {
+        "cidrBlock": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "subnetId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentVpc": {
+      "description": "Tencent Vpc",
+      "type": "object",
+      "required": [
+        "vpcId"
+      ],
+      "properties": {
+        "cidrBlock": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "subnets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentSubnet"
+          }
+        },
+        "vpcId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TencentVpcs": {
+      "type": "object",
+      "required": [
+        "vpcs"
+      ],
+      "properties": {
+        "vpcs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TencentVpc"
           }
         }
       }
@@ -45619,6 +48584,21 @@
         }
       }
     },
+    "v1UserMetaEntity": {
+      "description": "User meta entity",
+      "type": "object",
+      "properties": {
+        "emailId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
     "v1UserPatch": {
       "type": "array",
       "items": {
@@ -45844,6 +48824,24 @@
         }
       }
     },
+    "v1UserSummarySortFields": {
+      "type": "string",
+      "enum": [
+        "name",
+        "creationTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1UserSummarySortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1UserSummarySortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1SortOrder"
+        }
+      }
+    },
     "v1UserToken": {
       "description": "Auth token response",
       "type": "object",
@@ -45905,7 +48903,34 @@
         }
       }
     },
+    "v1UsersFilterSpec": {
+      "description": "Users filter spec",
+      "properties": {
+        "emailId": {
+          "$ref": "#/definitions/v1FilterString"
+        },
+        "name": {
+          "$ref": "#/definitions/v1FilterString"
+        }
+      }
+    },
+    "v1UsersMetadata": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1UserMetaEntity"
+          }
+        }
+      }
+    },
     "v1UsersSummary": {
+      "description": "Deprecated, Use v1UsersSummaryList - Returns User summary",
       "type": "object",
       "required": [
         "items"
@@ -45920,6 +48945,36 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1UsersSummaryList": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1UserSummary"
+          }
+        }
+      }
+    },
+    "v1UsersSummarySpec": {
+      "description": "Users filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1UsersFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1UserSummarySortSpec"
+          }
         }
       }
     },
@@ -46078,7 +49133,6 @@
       "description": "VsphereCloudConfigSpec defines the desired state of VsphereCloudConfig",
       "type": "object",
       "required": [
-        "cloudAccountRef",
         "clusterConfig",
         "machinePoolConfig"
       ],
@@ -46089,6 +49143,10 @@
         },
         "clusterConfig": {
           "$ref": "#/definitions/v1VsphereClusterConfig"
+        },
+        "edgeHostRef": {
+          "description": "Appliance (Edge Host) uid for Edge env",
+          "$ref": "#/definitions/v1ObjectReference"
         },
         "machinePoolConfig": {
           "type": "array",
@@ -47037,17 +50095,20 @@
     "v1WorkspaceClusterRestoreConfig": {
       "description": "Workspace cluster restore config",
       "properties": {
+        "backupName": {
+          "type": "string"
+        },
         "clusterRestoreRefs": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1WorkspaceClusterRestoreResponse"
           }
         },
-        "requestTime": {
-          "$ref": "#/definitions/v1Time"
-        },
         "restoreState": {
           "$ref": "#/definitions/v1WorkspaceRestoreState"
+        },
+        "restoreTime": {
+          "$ref": "#/definitions/v1Time"
         }
       }
     },
@@ -47063,13 +50124,24 @@
         "clusterUid": {
           "type": "string"
         },
+        "restoreStatusMeta": {
+          "$ref": "#/definitions/v1WorkspaceClusterRestoreState"
+        },
+        "restoreUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1WorkspaceClusterRestoreState": {
+      "description": "Workspace cluster restore state",
+      "properties": {
         "msg": {
           "type": "string"
         },
-        "restoreStatusMeta": {
-          "$ref": "#/definitions/v1RestoreStatusMeta"
+        "restoreTime": {
+          "$ref": "#/definitions/v1Time"
         },
-        "restoreUid": {
+        "state": {
           "type": "string"
         }
       }
