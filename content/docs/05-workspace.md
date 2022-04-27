@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The Palette extends its multi-cluster management and governance capabilities with the introduction of "Workspaces". Workspaces enable the logical grouping of clusters and namespaces to provide application- or team-specific governance and visibility into workloads, cost, and usage metrics. The application or team workload may be deployed into namespaces across clusters for achieving High Availability (HA), Disaster Recovery (DR), and organization-specific placement policies, etc. Grouping such namespaces and clusters into a workspace provides central management and governance in a multi-cluster distributed environment. The following sections describe various aspects of multi-cluster management via workspaces.
+Palette extends its multi-cluster management and governance capabilities with the introduction of "Workspaces". Workspaces enable the logical grouping of clusters and namespaces to provide application- or team-specific governance and visibility into workloads, cost, and usage metrics. The application or team workload may be deployed into namespaces across clusters for achieving High Availability (HA), Disaster Recovery (DR), and organization-specific placement policies, etc. Grouping such namespaces and clusters into a workspace provides central management and governance in a multi-cluster distributed environment. The following sections describe various aspects of multi-cluster management via workspaces.
 
 # Namespace Management
 
