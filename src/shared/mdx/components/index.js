@@ -36,6 +36,11 @@ const Copy = styled.button`
   }
 `;
 
+const Anchor = styled.div`
+  position: absolute;
+  top: -120px;
+`;
+
 const ButtonWrapper = styled.div`
   position: absolute;
   top: 10px;
@@ -131,7 +136,10 @@ export default {
         <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
           <FontAwesomeIcon icon="link" />
         </a>
-        <h1 id={generateHeadingId(props.children)} {...props} />
+        <h1 {...props}>
+          {props.children}
+          <Anchor id={generateHeadingId(props.children)} />
+        </h1>
       </HeaderWrap>
     );
   },
@@ -143,7 +151,10 @@ export default {
         <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
           <FontAwesomeIcon icon="link" />
         </a>
-        <h2 id={generateHeadingId(props.children)} {...props} />
+        <h2 {...props}>
+          {props.children}
+          <Anchor id={generateHeadingId(props.children)} />
+        </h2>
       </HeaderWrap>
     );
   },

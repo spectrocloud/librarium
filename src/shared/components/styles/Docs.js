@@ -89,16 +89,9 @@ export const StyledMainWrapper = styled.div`
     font-size: 32px;
     line-height: 48px;
     letter-spacing: -0.5px;
+    position: relative;
 
     color: #0d1440;
-
-    ::before {
-      display: block;
-      content: "";
-      width: 1px;
-      margin-top: -110px;
-      height: 110px;
-    }
   }
 
   h2 {
@@ -106,18 +99,11 @@ export const StyledMainWrapper = styled.div`
     font-size: 24px;
     line-height: 36px;
     letter-spacing: 0.25px;
+    position: relative;
 
     color: #2d2e55;
 
-    margin: 20px 0;
-
-    ::before {
-      display: block;
-      content: "";
-      width: 1px;
-      margin-top: -110px;
-      height: 110px;
-    }
+    margin: 10px 0;
   }
 
   h3 {
@@ -133,7 +119,6 @@ export const StyledMainWrapper = styled.div`
     -moz-padding-start: 40px;
     -o-padding-start: 40px;
     padding: 0px 0px 0px 2em;
-    margin: 20px 0;
 
     li {
       font-weight: normal;
