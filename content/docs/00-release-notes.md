@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# April 24, 2022 - Release 2.5.0
+# April 26, 2022 - Release 2.5.0
 
 Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), Palette free service offerings, many enhancements, and bug fixes.
 
