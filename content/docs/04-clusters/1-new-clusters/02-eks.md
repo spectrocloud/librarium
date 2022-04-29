@@ -54,7 +54,7 @@ The following **four** policies include all the required permissions for provisi
 
 <Tabs.TabPane tab="Controller Policy" key="Controller Policy">
 
-### Controller Policy
+### Controller Policy (Last Update: 2021-06-01)
 
 ``` json
 {
@@ -387,7 +387,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 </Tabs.TabPane>
 <Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
 
-### Control Plane Policy
+### Control Plane Policy (Last Update: 2021-06-01)
 
 ``` json
 {
@@ -469,7 +469,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 <Tabs.TabPane tab="Nodes Policy" key="Nodes Policy">
 
-### Nodes Policy
+### Nodes Policy (Last Update: 2021-06-01)
 
 ``` json
 {
@@ -529,7 +529,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 <Tabs.TabPane tab="Deployment Policy" key="Deployment Policy">
 
-### Deployment Policy
+### Deployment Policy (Last Update: 2021-06-01)
 
 ``` json
 {

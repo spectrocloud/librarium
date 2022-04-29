@@ -41,7 +41,8 @@ The following are required for deploying a workload cluster on GCP:
 
 4. Palette creates compute, network, and storage resources on GCP during the provisioning of Kubernetes clusters. Therefore, Sufficient capacity in the desired GCP region should exist for the creation of the cluster.
   
-# GCP Cloud Account Permissions
+# GCP Cloud Account Permissions 
+## (Last Update: 2020-12-13)
 
 Create a service account in GCP with the required permissions and register it with Palette to create a GCP cloud account in Palette. To create a service account, you should have one of the following Identity and Access Management (IAM) roles:
 `roles/iam.serviceAccountAdmin` or `roles/editor`. For detailed instructions on creating a service account refers to [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
