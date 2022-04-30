@@ -73,7 +73,9 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Cinder Service" key="Cinder Service">
 
 
-### Cinder Service (Last Update: 2021-06-28)
+### Cinder Service 
+
+**Last Update**: June 28, 2021
 
 ``` json
 "volume:attachment_update": "rule:admin_or_owner"
@@ -152,7 +154,9 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Neutron Service" key="Neutron Service">
 
 
-### Neutron Service (Last Update: 2021-06-28)
+### Neutron Service 
+
+**Last Update**: June 28, 2021
 
 ``` json
     "create_subnet": "rule:admin_or_network_owner",
@@ -229,7 +233,9 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Glance Service" key="Glance Service">
 
 
-### Glance Service (Last Update: 2021-06-28)
+### Glance Service 
+
+**Last Update**: June 28, 2021
 
 ``` json
     "add_image": "role:admin or role:member",
@@ -249,7 +255,9 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Nova Compute Service" key="Nova Compute Service">
 
 
-### Nova Compute Service (Last Update: 2021-06-28)
+### Nova Compute Service 
+
+**Last Update**: June 28, 2021
 
 ``` json
  "os_compute_api:os-admin-password": "rule:admin_or_owner",
@@ -452,7 +460,7 @@ cp /tmp/install-pcg-xxx/pcg.yaml /tmp
 
 ## Deploy Private Cloud Gateway
 
-Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+Invoke the gateway installer in *silent mode*, providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ```bash
 docker run -it --rm \
@@ -478,7 +486,7 @@ The following steps need to be performed to delete a cloud gateway:
 2. Invoke the **Delete** action on the cloud gateway instance that needs to be deleted.
 
 
-3. The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
+3. The system performs a validation to ensure that there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
 
 
 4. Delete the gateway.
@@ -499,7 +507,7 @@ A cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 3. Update the size from 1 to 3.
 
 
-4. The gateway upgrade begins shortly after the update. Two new nodes are created and the gateway is upgraded to a 3-node cluster.
+4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a 3-node cluster.
 
 
 # Creating an OpenStack Cloud Account

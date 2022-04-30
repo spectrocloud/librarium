@@ -98,7 +98,8 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 **Note:** The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
 
 # VMware Cloud Account Permissions 
-## (Last Update: 2021-10-07)
+
+**Last Update**: October 7, 2021
 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
@@ -122,11 +123,11 @@ The root-level role privileges are applied to root object and data center object
 |**Storage views**|View|
 
 
-#### Privileges under Spectro role 
+#### Privileges Under the Spectro Role 
 
-<WarningBox>
+<InfoBox>
 The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
-</WarningBox>
+</InfoBox>
 
 |**vSphere Object**    |**Privileges**|
 |---------------|----------|
@@ -243,7 +244,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 |**vSAN**|Cluster|
 ||ShallowRekey|
 
-# Creating a VMware cloud gateway
+# Creating a VMware Cloud Gateway
 
  ![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
 
@@ -321,13 +322,17 @@ A Gateway cluster installation automatically creates a cloud account behind the 
 
 ## vSphere - Clean up installer
 
-Power off installer OVA which was initially imported at the start of this installation process.
+Power off the installer OVA which was initially imported at the start of this installation process.
 
 ## Troubleshooting
 
 ### Gateway installer - Unable to register with the Tenant Portal
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes five to ten minutes. Failure of the installer to register with the Tenant Portal, within this duration, might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at */var/log/cloud-init-output.log*. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
+The installer VM, when powered on, goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes five to ten minutes. Failure of the installer to register with the Tenant Portal, within this duration, might be indicative of a bootstrapping error. 
+
+SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at */var/log/cloud-init-output.log*. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. 
+
+Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
 
 Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
 
@@ -361,17 +366,23 @@ fi
 
 ### Gateway Cluster - Provisioning stalled/failure
 
-An installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. While these are most common, some other issue might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. Any intermittent errors will be displayed on this page next to the relevant orchestration task. The Events tab on this page, also provides a useful resource to look at lower-level operations being performed for the various orchestration steps.
+An installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc. 
 
-If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the **Reset** button on the gateway widget. This will reset the gateway state to **Pending** allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. If the problem persists, please contact Palette support, via the Service Desk.
+While these are most common, some other issue might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed. 
 
-## Upgrading a VMware cloud gateway
+Any intermittent errors will be displayed on this page next to the relevant orchestration task. The Events tab on this page, also provides a useful resource to look at lower-level operations being performed for the various orchestration steps.
+
+If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the **Reset** button on the gateway widget. This will reset the gateway state to **Pending** allowing you to reconfigure the gateway and start provisioning of a new gateway cluster. 
+
+If the problem persists, please contact Palette support, via the Service Desk.
+
+## Upgrading a VMware Cloud Gateway
 
 Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the Tenant Clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded and are processed as soon as the gateway upgrade is complete.
 
-## Deleting a VMware cloud gateway
+## Deleting a VMware Cloud Gateway
 
 The following steps need to be performed to delete a cloud gateway:
 
@@ -386,7 +397,7 @@ The following steps need to be performed to delete a cloud gateway:
 
 4. Delete the Gateway Virtual Machines from vSphere.
 
-## Resizing a VMware cloud gateway
+## Resizing a VMware Cloud Gateway
 
 A cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that three (3) nodes are set up. A cloud gateway can be initially set up with one (1) node and resized to three (3) nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
 
@@ -407,7 +418,11 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A loa
 
 # IP Address Management
 
-Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined, using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are shared across multiple clusters, but can optionally be restricted to a cluster. The following is a description of various IP Pool properties:
+Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined, using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway. 
+
+Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are shared across multiple clusters, but can optionally be restricted to a cluster. 
+
+The following is a description of various IP Pool properties:
 
 | **Property** | **Description** |
 |---|---|
@@ -421,7 +436,7 @@ Palette supports DHCP as well as Static IP based allocation strategies for the V
 | **Name server addresses** | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | **Restrict to a Single Cluster** | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
-# Creating a VMware cloud account
+# Creating a VMware Cloud Account
 
 <InfoBox>
 Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.

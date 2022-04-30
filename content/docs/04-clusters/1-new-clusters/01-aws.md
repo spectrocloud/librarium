@@ -63,7 +63,9 @@ The following **four** policies include all the required permissions for provisi
 <Tabs.TabPane tab="Controller Policy" key="Controller Policy">
 
 
-### Controller Policy (Last Update: 2022-04-26)
+### Controller Policy 
+
+**Last Update**: April 26, 2022
 
 ``` json
 {
@@ -393,7 +395,9 @@ The following **four** policies include all the required permissions for provisi
 <Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
 
 
-### Control Plane Policy (Last Update: 2021-05-02)
+### Control Plane Policy 
+
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -476,7 +480,9 @@ The following **four** policies include all the required permissions for provisi
 
 <Tabs.TabPane tab="Nodes Policy" key="Nodes Policy">
 
-### Nodes Policy (Last Update: 2021-05-02)
+### Nodes Policy 
+
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -536,7 +542,9 @@ The following **four** policies include all the required permissions for provisi
 <Tabs.TabPane tab="Deployment Policy" key="Deployment Policy">
 
 
-### Deployment Policy (Last Update: 2021-05-02)
+### Deployment Policy 
+
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -591,18 +599,18 @@ The following **four** policies include all the required permissions for provisi
 </Tabs>
 
 
-<WarningBox>
+<InfoBox>
 Ensure that the role created contain all the policies defined above.
-</WarningBox>
+</InfoBox>
 
-<WarningBox>
+<InfoBox>
 These policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
-</WarningBox>
+</InfoBox>
 
-<WarningBox>
+<InfoBox>
 The following warning is expected and can be ignored:<p></p>
-<i>These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
-</WarningBox>
+<i>These policies define some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
+</InfoBox>
 
 # Creating an AWS Cloud Account
 
@@ -631,7 +639,7 @@ To create an AWS cloud account, provide a name and a description for the account
 
 
 2. Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user, or the IAM user to be used from Palette.
+    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
     - In Palette, provide the access key and secret key for the user.
 
 
@@ -649,7 +657,7 @@ To create an AWS cloud account, provide a name and a description for the account
     |**Role Name**|SpectroCloudRole|
     
 
-4. In the AWS console, browse to the Role Details page and copy the Amazon Resource Name (ARN) Role.Arn.
+4. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) Role.Arn.
 
 
 5. In Palette, enter the Role ARN in the field provided. 
@@ -664,7 +672,7 @@ To create an AWS cloud account, provide a name and a description for the account
 
 The following steps need to be performed to provision a new AWS cluster:
 
-1. Provide basic cluster information: Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
+1. Provide the basic cluster information: Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
 
 
 2. Select the Cluster Profile created for the AWS cloud. The profile definition will be used as the cluster construction template.
