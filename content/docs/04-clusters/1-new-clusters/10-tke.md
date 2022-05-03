@@ -43,7 +43,10 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
-# Tencent Cloud Account Permissions
+
+# Tencent Cloud Account Permissions 
+
+**Last Update**: April 26, 2022
 
 ```yaml
 {
@@ -173,6 +176,25 @@ The following steps need to be performed to provision a new TKS cluster:
 
 3. Review and override Pack parameters as desired. By default, parameters for all Packs are set with values defined in the Cluster Profile.
 
+<InfoBox>
+
+While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with any one of the following images:
+
+```yaml
+"OsName": "centos7.6.0_x64"
+```
+```yaml
+"OsName": "centos7.6.0_x64 GPU"
+```
+```yaml
+"OsName": "ubuntu18.04.1x86_64"
+```
+```yaml
+"OsName": "ubuntu18.04.1x86_64 GPU"
+```
+
+</InfoBox>
+
 <WarningBox>
 
 While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and also are in multiples of 10 (10,20,30 …).
@@ -228,9 +250,8 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
     |**Parameter**| **Description**|
     |-------------|----------------|
     | **Name** |A descriptive name for the node pool.
-    | **Size** | Make your choice of minimum, maximum, and desired <br /> sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
-    |  [Label and Taints](./clusters/cluster-management/taints)| Create as per user requirements.|
-    | **Instance type** | Select the Tencent Instance Type for the nodes<br /> in the node pool with availability zones and disk size.|
+    | **Size** | Make your choice of minimum, maximum, and desired <br />sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
+    | **Instance type** | Select the Tencent Instance Type for the nodes <br />in the node pool with availability zones and disk size.|
     
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
