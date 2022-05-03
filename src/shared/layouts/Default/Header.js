@@ -23,7 +23,7 @@ const MaxWidth = styled.div`
   height: 100%;
   align-items: center;
   ${(props) =>
-    !props.isHomePage &&
+    !props.showLogo &&
     css`
       max-width: 100%;
     `}
@@ -107,7 +107,7 @@ const BackButton = styled.div`
   display: none;
 `;
 
-const LogoWrap = styled.div`
+const LogoWrap = styled(Link)`
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -173,7 +173,8 @@ export const DEFAULT_MENU = [
 export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
   const [expanded, expandSearchConsole] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const showLogo = location.pathname === "/" || location.pathname.includes("/search");
+
   function renderMenuItem({ link, title, isActive = () => false }, index) {
     return (
       <Link key={index} className={isActive(location) ? "isActive" : ""} to={link}>
@@ -184,9 +185,9 @@ export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {
 
   return (
     <Wrap>
-      <MaxWidth isHomePage={isHomePage}>
-        {isHomePage && (
-          <LogoWrap>
+      <MaxWidth showLogo={showLogo}>
+        {showLogo && (
+          <LogoWrap to="/">
             <Logo src={logo} />
           </LogoWrap>
         )}
