@@ -44,7 +44,9 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
 
-# Tencent Cloud Account Permissions
+# Tencent Cloud Account Permissions 
+
+**Last Update**: April 26, 2022
 
 ```yaml
 {
@@ -248,8 +250,8 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
     |**Parameter**| **Description**|
     |-------------|----------------|
     | **Name** |A descriptive name for the node pool.
-    | **Size** | Make your choice of minimum, maximum, and desired <br /> sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
-    | **Instance type** | Select the Tencent Instance Type for the nodes<br /> in the node pool with availability zones and disk size.|
+    | **Size** | Make your choice of minimum, maximum, and desired <br />sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
+    | **Instance type** | Select the Tencent Instance Type for the nodes <br />in the node pool with availability zones and disk size.|
     
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.

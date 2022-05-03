@@ -56,6 +56,8 @@ The following **four** policies include all the required permissions for provisi
 
 ### Controller Policy
 
+**Last Update**: June 1, 2021
+
 ``` json
 {
   "Version": "2012-10-17",
@@ -389,6 +391,8 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 ### Control Plane Policy
 
+**Last Update**: June 6, 2021
+
 ``` json
 {
   "Version": "2012-10-17",
@@ -471,6 +475,8 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 ### Nodes Policy
 
+**Last Update**: June 1, 2021
+
 ``` json
 {
   "Version": "2012-10-17",
@@ -531,6 +537,8 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 ### Deployment Policy
 
+ **Last Update**: June 1, 2021
+
 ``` json
 {
     "Version": "2012-10-17",
@@ -585,18 +593,18 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 </Tabs>
 
-<WarningBox>
+<InfoBox>
 Ensure that the role created encompasses all the policies defined above.
-</WarningBox>
+</InfoBox>
 
-<WarningBox>
+<InfoBox>
 These policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
-</WarningBox>
+</InfoBox>
 
-<WarningBox>
+<InfoBox>
 The following warning is expected and can be ignored:<p></p>
-<i>These policies defines some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
-</WarningBox>
+<i>These policies define some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
+</InfoBox>
 
 # Creating an AWS Cloud Account
 
@@ -651,7 +659,7 @@ To create an AWS cloud account, provide a name and a description for the account
 
 The following steps need to be performed to provision a new EKS cluster:
 
-1. Provide basic cluster information like Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
+1. Provide the basic cluster information like Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
 
 
 2. Select the Cluster Profile created for the EKS cloud. The profile definition will be used as the cluster construction template.
