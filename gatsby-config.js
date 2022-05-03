@@ -168,6 +168,7 @@ module.exports = {
     title: config.siteMetadata.title,
     description: config.siteMetadata.description,
     docsLocation: config.siteMetadata.docsLocation,
+    apiLocation: config.siteMetadata.apiLocation,
     ogImage: config.siteMetadata.ogImage,
     favicon: config.siteMetadata.favicon,
     logo: {
