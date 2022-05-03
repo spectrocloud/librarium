@@ -14,7 +14,7 @@ Palette provides a cloud account—with required credentials—for user deployme
 
 ## Request a Free Cloud Account
 
-To request an authorization to the Spectro Cloud Free Cloud Credit program, connect via the [Slack Spectro Cloud Community](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-g8gfzrhf-cKavsGD_myOh30K24pImLA) or [email](developer@spectrocloud.com) and ask about the Free Cloud Credit program. A $100 of free cloud credit will be granted to use with the Spectro Cloud's Palette platform. The user is encouraged to monitor the usage and expenditure percentage through Palette, and as they reach the conclusion of the credit usage, a message will remind the user of the Usage Status.
+To request an authorization to the Spectro Cloud Free Cloud Credit program, connect via the [Slack Spectro Cloud Community](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-g8gfzrhf-cKavsGD_myOh30K24pImLA) or [email](mailto:developer@spectrocloud.com) and ask about the Free Cloud Credit program. A $100 of free cloud credit will be granted to use with the Spectro Cloud's Palette platform. The user is encouraged to monitor the usage and expenditure percentage through Palette, and as they reach the conclusion of the credit usage, a message will remind the user of the Usage Status.
 
 
 ## Managing a Free Cloud Account
