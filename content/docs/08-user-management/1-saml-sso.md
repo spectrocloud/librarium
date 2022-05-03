@@ -31,9 +31,9 @@ Palette supports the following two types of SSO authentication mechanisms:
 # SAML 2.0 Based SSO
 
 1. To set up an identity provider (IdP) based SSO, sign in to the Palette console as the *Tenant Admin*.
-2. Access the Tenant Admin settings area by clicking the **Admin** button on the left panel. 
-3. Choose the IdP from the **Service** dropdown menu, select the **Tenant Settings** from the **Tenant Admin** menu, and then click from the SSO click **SAML** on the Palette console to view the SAML panel. 
-4. Toggle the **Enable SSO** button to bring up the configuration boxes. 
+2. Access the Tenant Admin settings area by clicking the **Admin** button on the left panel.
+3. Choose the IdP from the **Service** dropdown menu, select the **Tenant Settings** from the **Tenant Admin** menu, and then click from the SSO click **SAML** on the Palette console to view the SAML panel.
+4. Toggle the **Enable SSO** button to bring up the configuration boxes.
 5. The following parameters will be available for enabling the addition of Palette as a **Service Provider** into the IdPs:
     - EntityId
     - NameId Format
@@ -123,18 +123,21 @@ To set up OIDC based SSO:
 3. Choose *SSO* from the Tenant Admin settings menu.
 4. From the **Manage the SSO** wizard, select the *SSO Auth* type.
 5. The following parameters will be available to enable Palette as a **Service Provider**.
+  - **Issuer UR**L - The URL of the OpenID identity
 
-    * **Issuer UR**L - The URL of the OpenID identity provider.
+<InfoBox>
 
-        **Note**: For AWS users, the issuer URL is to be generated in the below format:
-    https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-ID]
+ **Note**: For AWS users, the issuer URL is to be generated in the below format:
+ https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-ID]
 
-    * **Client ID** - The ID for the client application that makes authentication requests.
-    * **Client Secret** - Secret is known only to the application and the authorization server
-    * **Callback URL** - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
-    * **Logout URL** - URL is taken from IdP - URL to be provided into IDP for Logout
-    * **Default Teams** - Default team to which members unassigned to specific team belongs.
-    * **Scopes** - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes, called claims.
+</InfoBox>
+
+  - **Client ID** - The ID for the client application that makes authentication requests.
+  - **Client Secret** - Secret is known only to the application and the authorization server
+  - **Callback URL** - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
+  - **Logout URL** - URL is taken from IdP - URL to be provided into IDP for Logout
+  - **Default Teams** - Default team to which members unassigned to specific team belongs.
+  - **Scopes** - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes, called claims.
 
 **Required Claims**: The parameter values claimed by the user to be mapped with the identity provider platform. The choice of parameters can be done by the users which can be an email, first name, last name, or Spectro Team.
 

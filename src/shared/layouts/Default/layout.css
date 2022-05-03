@@ -31,7 +31,11 @@ button {
   font-weight: normal;
   line-height: 28px;
   color: #666a80;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+
+.paragraph + .paragraph {
+  margin-top: 20px;
 }
 
 a:hover {
