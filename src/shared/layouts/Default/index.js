@@ -16,6 +16,11 @@ const Wrapper = styled.div`
   display: flex;
   overflow: hidden;
   height: 100%;
+
+  @media print {
+    display: block;
+    overflow: visible;
+  }
 `;
 
 export const Content = styled.main`
