@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "@reach/router";
 import styled from "styled-components";
 
 import { Link } from "gatsby";
@@ -8,16 +7,13 @@ import {
   Hits,
   Index,
   InstantSearch,
-  SearchBox,
   Highlight,
   Snippet,
+  connectSearchBox,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import config from "../../../config";
-
-const HiddenSearchBox = styled(SearchBox)`
-  display: none;
-`;
+import { useURLQuery } from "shared/utils/location";
 
 const SearchWrap = styled.div`
   display: flex;
@@ -41,25 +37,26 @@ const HitWrap = styled.div`
   border-bottom: 1px solid #e2e2e2;
 
   a {
+    display: block;
     font-size: 18px;
     color: #206cd1;
   }
 `;
 
-export const Hit = ({ hit }) => (
+const Hit = ({ hit }) => (
   <HitWrap>
-    <div>
-      <Link to={hit.slug}>
-        <Highlight attribute="title" hit={hit} tagName="mark" />
-      </Link>
-    </div>
+    <Link to={hit.slug}>
+      <Highlight attribute="title" hit={hit} tagName="mark" />
+    </Link>
+
     <Snippet attribute="excerpt" hit={hit} tagName="mark" />
   </HitWrap>
 );
 
+const HiddenSearchBox = connectSearchBox(() => null);
+
 const SearchResults = () => {
-  const { search } = useLocation();
-  const term = search.slice(6);
+  const { term } = useURLQuery();
 
   if (!config?.header?.search?.algoliaAppId) {
     return null;
@@ -73,16 +70,19 @@ const SearchResults = () => {
     <InstantSearch
       searchState={{ query: term }}
       searchClient={searchClient}
-      indexName={`${config.header.search.indexName}`}
+      indexName={config?.header?.search?.indexName}
     >
       <SearchWrap>
-        <Index key={config.header.search.indexName} indexName={config.header.search.indexName}>
+        <Index
+          key={config?.header?.search?.indexName}
+          indexName={config?.header?.search?.indexName}
+        >
           <h1>Here are all the results for “{term}”</h1>
           <Hits hitComponent={Hit} />
         </Index>
         <Configure hitsPerPage={1000} />
+        <HiddenSearchBox />
       </SearchWrap>
-      <HiddenSearchBox />
     </InstantSearch>
   );
 };
