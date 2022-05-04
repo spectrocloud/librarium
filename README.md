@@ -243,7 +243,7 @@ Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234`.
+_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234 `.
 This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
 
 _Components_:
@@ -252,3 +252,62 @@ _Components_:
 - `|` - separator between lines interval and color
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
+
+### Using Warning Box compponent/Info Box component
+
+To use these components you will have to import them from the shared folder:
+
+```js
+import WarningBox from "@librarium/shared/src/components/WarningBox";
+import InfoBox from "@librarium/shared/src/components/InfoBox";
+```
+
+After that you can use them like this:
+
+```js
+<InfoBox>
+  *Markdown cotent*
+</InfoBox>
+
+<WarningBox>
+  *Markdown content*
+</WarningBox>
+```
+
+To avoid adding extra space in the box:
+
+- If you have bullet points, the content will have at the beginning and at the end, a new line ;
+
+Example:
+
+```js
+  <InfoBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </InfoBox>
+
+  <WarningBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </WarningBox>
+```
+
+- If you only have text, then there is no need for new lines;
+
+Example:
+
+```js
+  <InfoBox>
+    *TEXT content that you write without new lines*
+  </InfoBox>
+
+  <WarningBox>
+    *TEXT content that you write without new lines*
+  </WarningBox>
+```
