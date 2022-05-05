@@ -169,3 +169,7 @@ Once the deployment of the pack registry server is complete, configure it with t
 1. Click on "Confirm" once the details are filled.
 
 Upon successful registration, users can build and deploy custom packs on to the custom pack registry and use these packs in their cluster profiles.
+
+**Note:**
+
+To know more about the use of Spectro CLI to push packs to a custom registry and sync it to Palette [click here..](/registries-and-packs/spectro-cli-reference/?cliCommands=cli_push#push)
