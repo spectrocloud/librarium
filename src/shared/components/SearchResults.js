@@ -60,7 +60,7 @@ const Results = connectStateResults(({ term, searchResults: res }) => {
   if (!term) {
     return <h1>Please insert a keyword in the search bar</h1>;
   }
-  if (res?.nbHits === undefined) {
+  if (typeof res?.nbHits === "undefined") {
     return <h1>Searching...</h1>;
   }
 
