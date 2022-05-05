@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useURLQuery } from "shared/utils/location";
 import { connectSearchBox } from "react-instantsearch-dom";
 
 import styled, { css } from "styled-components";
@@ -55,7 +56,8 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
     e.preventDefault();
   };
 
-  const [inputValue, setInputValue] = useState("");
+  const { term = "" } = useURLQuery();
+  const [inputValue, setInputValue] = useState(term);
 
   useEffect(() => {
     if (focus) {
@@ -82,10 +84,9 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
       />
       <ClearIcon
         icon="times"
-        onClick={(e) => {
+        onClick={() => {
           setInputValue("");
           ref.current.focus();
-          refine(e.target.value);
         }}
       />
     </Form>

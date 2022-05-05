@@ -10,6 +10,7 @@ import {
   Highlight,
   Snippet,
   connectSearchBox,
+  connectStateResults,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
 import config from "../../../config";
@@ -55,8 +56,23 @@ const Hit = ({ hit }) => (
 
 const HiddenSearchBox = connectSearchBox(() => null);
 
+const Results = connectStateResults(({ term, searchResults: res }) => {
+  if (!term) {
+    return <h1>Please insert a keyword in the search bar</h1>;
+  }
+  if (res?.nbHits === undefined) {
+    return <h1>Searching...</h1>;
+  }
+
+  if (res?.nbHits === 0) {
+    return <h1>{`No results for '${term}'`}</h1>;
+  }
+
+  return <h1>{`Here are all the results for “${term}”`}</h1>;
+});
+
 const SearchResults = () => {
-  const { term } = useURLQuery();
+  const { term = "" } = useURLQuery();
 
   if (!config?.header?.search?.algoliaAppId) {
     return null;
@@ -77,7 +93,7 @@ const SearchResults = () => {
           key={config?.header?.search?.indexName}
           indexName={config?.header?.search?.indexName}
         >
-          <h1>Here are all the results for “{term}”</h1>
+          <Results term={term} />
           <Hits hitComponent={Hit} />
         </Index>
         <Configure hitsPerPage={1000} />

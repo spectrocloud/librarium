@@ -200,7 +200,9 @@ function SearchBar({ indices = [], collapse, hitsAsGrid, searchClient, focusInpu
         })}
         <PoweredByWrapper>
           <PoweredBy />
-          <Link to={`/search?term=${query}`}>See more results</Link>
+          <Link to={`/search?term=${query}`} onClick={() => setFocus(!focus)}>
+            See more results
+          </Link>
         </PoweredByWrapper>
       </HitsWrapper>
       <Configure hitsPerPage={5} />
