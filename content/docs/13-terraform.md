@@ -41,26 +41,43 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Provider Version| Module|
 |------|-------|
-|0.6.12| 0.0.10|
-|0.6.13|0.0.11 |
-|0.6.14|0.0.12 |
+|0.7.0 |0.1.0  |
 |0.6.15|0.0.13 |
+|0.6.14|0.0.12 |
+|0.6.13|0.0.11 |
+|0.6.12|0.0.10 |
 
 ## Latest Version of Spectro Cloud Terraform Provider:
 The below section includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
-### Latest Version Supported : `0.6.x`
+### Latest Version Supported : `0.7.x`
 
 Find the detailed patch changes and comparisons of **0.6.x** within these tabs.
 
+
+
 <Tabs>
+
+
+<Tabs.TabPane tab="v0.7.0" key="v0.7.0">
+
+## Changes
+
+The major change is:
+
+* Download and Install version for cluster profile.  
+
+Refer to Full Changelog: [v0.6.x to v0.7.0](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.0)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.6.14" key="v0.6.14">
 
 ## Changes
 
 The major change is:
-* Update VMware cluster configuration to allow ssh key rotation. 
+* Update VMware cluster configuration to allow ssh key rotation.
+
 
 Refer to Full Changelog: [v0.6.1 to v0.6.13](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.6.14)
 
