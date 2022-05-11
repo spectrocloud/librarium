@@ -4,7 +4,7 @@ const fsScript = `
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
 window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
-window['_fs_org'] = '${process.env.FULLSTORY_TOKEN}';
+window['_fs_org'] = '${process.env.GATSBY_FULLSTORY_TOKEN}';
 window['_fs_namespace'] = 'FS';
 (function(m,n,e,t,l,o,g,y){
     if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
@@ -26,15 +26,17 @@ window['_fs_namespace'] = 'FS';
 `;
 
 const HeadComponents = [
-  process.env.APPZI_TOKEN && (
+  process.env.GATSBY_APPZI_TOKEN && (
     <script
       key="appzi"
-      src={`https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`}
+      src={`https://w.appzi.io/w.js?token=${process.env.GATSBY_APPZI_TOKEN}`}
       crossOrigin="anonymous"
     />
   ),
-  process.env.FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
+  process.env.GATSBY_FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
 ].filter(Boolean);
+
+console.log(HeadComponents);
 
 const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(HeadComponents);
