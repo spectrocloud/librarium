@@ -7,12 +7,31 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
+import { Link } from "shared/components";
 
 import styled, { css } from "styled-components";
 import { PoweredBy } from "./styles";
 import Input from "./input";
 import * as hitComps from "./hitComps";
 import { useLocation } from "@reach/router";
+
+const PoweredByWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  font-size: 12px;
+  color: #555;
+
+  > :nth-child(2) {
+    font-weight: 600;
+    letter-spacing: -0.05em;
+
+    color: #206cd1;
+  }
+`;
 
 const HitsWrapper = styled.div`
   display: ${(props) => (props.show ? `grid` : `none`)};
@@ -22,7 +41,7 @@ const HitsWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
   position: absolute;
   top: 85px;
-  width: 500px;
+  width: 615px;
   box-shadow: 0 2px 64px 0 rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -64,7 +83,7 @@ const HitsWrapper = styled.div`
   }
   ul {
     list-style: none;
-    padding: 0;
+    padding: 10px;
     margin: 0;
   }
   header {
@@ -85,13 +104,6 @@ const HitsWrapper = styled.div`
   h4 {
     color: black;
     margin-bottom: 0.3em;
-  }
-
-  .poweredBy {
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    font-size: 12px;
-    color: #555;
   }
 
   .front {
@@ -121,50 +133,30 @@ const Results = connectStateResults(({ searching, searchState: state, searchResu
 ));
 
 const useClickOutside = (ref, handler, events) => {
-  if (!events) events = [`click`, `touch`];
+  let defaultEvents = [`click`, `touch`];
+
+  if (events) {
+    defaultEvents = events;
+  }
+
   const detectClickOutside = (event) =>
     ref && ref.current && !ref.current.contains(event.target) && handler();
 
   useEffect(() => {
-    for (const event of events) document.addEventListener(event, detectClickOutside);
+    for (const event of defaultEvents) document.addEventListener(event, detectClickOutside);
     return () => {
-      for (const event of events) document.removeEventListener(event, detectClickOutside);
+      for (const event of defaultEvents) document.removeEventListener(event, detectClickOutside);
     };
   });
 };
 
-export default function SearchComponent({
-  indices = [],
-  collapse,
-  hitsAsGrid,
-  config,
-  focusInput = false,
-}) {
+function SearchBar({ indices = [], collapse, hitsAsGrid, searchClient, focusInput = false }) {
   const ref = createRef();
   const location = useLocation();
-
-  if (!config?.header?.search?.algoliaAppId) {
-    return <div></div>;
-  }
 
   const [query, setQuery] = useState(``);
 
   const [focus, setFocus] = useState(false);
-
-  const searchClient = algoliasearch(
-    config.header.search.algoliaAppId,
-    config.header.search.algoliaSearchKey
-  );
-
-  if (config?.header?.search?.indexName) {
-    indices = [
-      {
-        name: `${config.header.search.indexName}`,
-        title: `Results`,
-        hitComp: `PageHit`,
-      },
-    ];
-  }
 
   useEffect(() => {
     if (focusInput) {
@@ -173,7 +165,9 @@ export default function SearchComponent({
   }, [focusInput]);
 
   useClickOutside(ref, () => setFocus(false));
+
   const displayResult = query?.length > 0 && focus ? "showResults" : "hideResults";
+  const center = location.pathname !== "/" && !location.pathname.includes("/search");
 
   return (
     <InstantSearch
@@ -182,18 +176,14 @@ export default function SearchComponent({
       onSearchStateChange={({ query }) => setQuery(query)}
       root={{ Root, props: { ref } }}
     >
-      <Input
-        onFocus={() => setFocus(true)}
-        {...{ collapse, focus }}
-        center={location.pathname !== "/"}
-      />
+      <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} center={center} />
       <HitsWrapper
         className={"hitWrapper " + displayResult}
         show={query?.length > 0 && focus}
         asGrid={hitsAsGrid}
-        center={location.pathname !== "/"}
+        center={center}
       >
-        {indices.map(({ name, title, hitComp, type }) => {
+        {indices.map(({ name, hitComp }) => {
           const Component = hitComps[hitComp];
           return (
             <Index key={name} indexName={name}>
@@ -208,9 +198,37 @@ export default function SearchComponent({
             </Index>
           );
         })}
-        <PoweredBy />
+        <PoweredByWrapper>
+          <PoweredBy />
+          <Link to={`/search?term=${query}`} onClick={() => setFocus(!focus)}>
+            See more results
+          </Link>
+        </PoweredByWrapper>
       </HitsWrapper>
       <Configure hitsPerPage={5} />
     </InstantSearch>
   );
+}
+
+export default function SearchComponent({ config, ...rest }) {
+  if (!config?.header?.search?.algoliaAppId) {
+    return <div></div>;
+  }
+
+  let indices;
+  if (config?.header?.search?.indexName) {
+    indices = [
+      {
+        name: `${config.header.search.indexName}`,
+        title: `Results`,
+        hitComp: `PageHit`,
+      },
+    ];
+  }
+  const searchClient = algoliasearch(
+    config.header.search.algoliaAppId,
+    config.header.search.algoliaSearchKey
+  );
+
+  return <SearchBar {...rest} searchClient={searchClient} indices={indices} />;
 }
