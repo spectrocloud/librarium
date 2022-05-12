@@ -23,6 +23,12 @@ Kubevious integration provides a graphical interface that renders easy to unders
 ## Versions Supported
 
 <Tabs>
+<Tabs.TabPane tab="1.0.x" key="1.0.x">
+
+* **1.0** 
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="0.8.x" key="0.8.x">
 
 * **0.8.15** 
@@ -39,21 +45,26 @@ Kubevious integration provides a graphical interface that renders easy to unders
 
 This integration deploys the following components:
 
-* Deployment.
-* MySql DB.
-* UI.
+* Backend.
+* Collector.
 * Parser.
+* UI.
+* MySQL DB.
+* Redis.
+
 
 # Ingress
 
 Follow below steps to configure Ingress on Kubevious
 
-1. Change kubevious.ui.svcType from "LoadBalancer" to "ClusterIP" (line #60)
+1. Change *ui.service.type* from "LoadBalancer" to "ClusterIP" (line #60)
 2. Ingress (line #118)
    * Enable Ingress; Change enabled from false to "true"
    * Set Ingress rules like annotations, path, hosts, etc.
 
 With these config changes, you can access Kubevious service on the Ingress Controller LoadBalancer hostname / IP
+
+See the Helm chart documentation for reference: https://github.com/kubevious/helm#configuration
 
 ## References
 
