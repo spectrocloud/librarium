@@ -115,6 +115,28 @@ For Alertmanager to work fine, alerting config should be set while deploying the
    ```
 * Alertmanager pod will recover from the crash in the next reconciliation
 
+## Configure scrape metrics for controller-manager, kube-schedule and etcd
+
+
+Due to security reasons, controller-manager, kube-schedule & etcd runs in the localhost leading Prometheus to fail scrape metrics. Therefore, these targets are marked as down on Prometheus. Change the following in the Kubernetes pack layer in the cluster profile to scrape metrics for these services.
+
+
+```yaml
+kubeadmconfig:
+  controllerManager:
+    extraArgs:
+  	  ...
+      bind-address: "0.0.0.0"
+  scheduler:
+    extraArgs:
+      ...
+      bind-address: "0.0.0.0"  
+  etcd:
+    local:
+      extraArgs:
+        listen-metrics-urls: "http://0.0.0.0:2381"    
+```
+
 # Ingress
 
 Follow below steps to configure Ingress on Grafana
