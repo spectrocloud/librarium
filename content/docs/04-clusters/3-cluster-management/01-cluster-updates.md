@@ -29,6 +29,11 @@ Palette supports various kinds of updates to running clusters, such as upgrade o
 
 Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated from the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or the previous update. In addition, users can update the clusters individually at an appropriate time. 
 
+<InfoBox>
+
+**Note:** Cluster Profile Changes will not be shown or allowed on Clusters when the cluster is in Provisioning state untill worker node Additions are completed. This is done in order to prevent the Kubernetes clusters to go into unrecovarable states by changing core components. 
+</InfoBox>
+
 
 ![Cluster Notification - Update Available](/cluster_list_update_available.png)
 
