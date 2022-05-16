@@ -31,7 +31,7 @@ Fundamental changes to the cluster’s definition, such as upgrading Kubernetes 
 
 <InfoBox>
 
-**Note:** Cluster Profile Changes will not be shown or allowed on Clusters when the cluster is in Provisioning state untill worker node Additions are completed. This is done in order to prevent the Kubernetes clusters to go into unrecovarable states by changing core components. 
+**Note:** Cluster Profile Changes will not be shown or allowed on clusters when the cluster is in a provisioning state until worker node additions are completed. This is done to prevent the Kubernetes clusters from going into an unrecoverable state due to the changes in core components. 
 </InfoBox>
 
 
