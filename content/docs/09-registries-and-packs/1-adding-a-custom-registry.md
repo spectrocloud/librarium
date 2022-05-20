@@ -13,17 +13,23 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Adding custom registries
 
-Setting up a custom pack registry involves the installation of a registry server and configuring it with the management console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry. Pack contents are periodically synchronized with the management console.
+Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry. Pack contents are periodically synchronized with the Palette console.
 
-# Pre Requisites
+# Prerequisites
 
-* Need container runtime docker to be installed on the machine.
+The following is a list of prerequisites to have in place before deploying a pack registry server within Palette are as follows:
+
+* Ensure you have a container runtime Docker installed on the machine.
+
 
 * HTTP utility *htpasswd* is required to be installed for user auth encryption.
 
+
 * Required minimum machine compute specifications - 1 vCPU and 2GB Memory.
 
-* Firewall ports 443/80 are required to be opened on the machine to allow traffic from the management console and Spectro CLI tool.
+
+* Firewall ports 443/80 are required to be opened on the machine to allow traffic from the Palette console and Spectro CLI tool.
+
 
 <InfoBox>
 Please ensure that the ports 443/80 are exclusively allocated to the registry server and are not in use on any other servers.
@@ -31,26 +37,26 @@ Please ensure that the ports 443/80 are exclusively allocated to the registry se
 
 # Deploying a pack registry server
 
-Spectro Cloud provides a docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
+Palette provides a Docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
 
-* Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
+1. Configure the user credentials by using the **htpasswd utility** and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
 
 ```bash
 mkdir -p /root/auth
 ```
 
-* For Admin Users: The command-line below has a placeholder to specify your unique, secure password for admin users.
+2. For Admin Users: The command-line below has a placeholder to specify your unique, secure password for admin users.
 
 ```bash
 htpasswd -Bbn admin {enter your secure password choice} > /root/auth/htpasswd-basic
 ```
-* For Other Users: The command-line following has the placeholder to specify your unique, secure password for read-only users.
+3. For Other Users: The command-line following has the placeholder to specify your unique, secure password for read-only users.
 
 ```bash
 htpasswd -Bbn spectro {enter your secure password choice} >> /root/auth/htpasswd-basic
 ```
 
-* If HTTPS mode is being used, create a directory called `certs`.
+4. If HTTPS mode is being used, create a directory called `certs`.
 
 ```bash
 mkdir -p /root/certs
@@ -118,7 +124,7 @@ REGISTRY_HOST_DNS - registry.com
 
   <InfoBox>
 
-  Spectro Cloud CLI registry login command fails with the error message *“x509: certificate signed by unknown authority”* in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
+  Spectro Cloud CLI registry login command fails with the error message *"x509: certificate signed by unknown authority"* in case of self-signed certificates or if the certificate is invalid. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
   </InfoBox>
 
   * HTTP mode - **not recommended**
@@ -143,7 +149,7 @@ REGISTRY_HOST_DNS - registry.com
 
     </InfoBox>
 
-* Expose the container host's port publicly to allow the management console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
+* Expose the container host's port publicly to allow the Palette console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 * Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
   * HTTPS mode -
@@ -160,12 +166,12 @@ REGISTRY_HOST_DNS - registry.com
     curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
-# Configure a custom pack registry on the management Console
+# Configure a custom pack registry on the Palette Console
 
-Once the deployment of the pack registry server is complete, configure it with the management console as follows:
+Once the deployment of the pack registry server is complete, configure it with the Palette console as follows:
 
-1. As a tenant administrator, navigate to Admin Settings -> Registries -> Pack Registries.
-1. Click on "Add New Pack Registry" and provide the pack registry name, endpoint, and user credentials.
-1. Click on "Confirm" once the details are filled.
+1. As a Tenant Administrator, navigate to **Admin Settings** > **Registries** > **Pack Registries**.
+1. Click on "**Add New Pack Registry**" and provide the pack registry name, endpoint, and user credentials.
+1. Click on "**Confirm**" once the details are filled.
 
 Upon successful registration, users can build and deploy custom packs on to the custom pack registry and use these packs in their cluster profiles.
