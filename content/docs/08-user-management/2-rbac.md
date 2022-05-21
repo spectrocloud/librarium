@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import WarningBox from 'shared/components/WarningBox';
+import Tooltip from "shared/components/ui/Tooltip";
+
+
 # Role-Based Access Control (RBAC)
 
 **RBAC** stands for Role-Based Access Control. This is a method that allows the same user to have a different type of access control, based on the resource being accessed. In other words, whereas a user logged in to a computer as a Tenant Admin can access all parts and data of the system, a guest user cannot. 
@@ -15,7 +19,10 @@ RBAC is an expansion as well as a modification of this scenario. RBAC allows the
 
 Palette's RBAC design allows granting granular access to resources and its operations. This is achieved using *Roles* and *Permissions*. Role-based access control primarily focuses on assigning permissions to roles instead of individual users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource.
 
-The Tenant Admin can access these settings in the Palette console under **Admin** > **Roles**. This page lists all the roles available along with the scope and status.
+
+The Tenant Admin can access these settings in the Palette console under **Tenant Admin -> Roles**. This page lists all the roles available along with the scope and status.
+
+
 # Scope
 
 A **Scope** defines the resources on which the role has coverage. The Scope will be either *Tenant* or *Project*. For example, a Role with the **Scope** *Project* can operate in only the projects. A combination of the user and the roles given to a user indicates the totality of the accesses made available to this user.

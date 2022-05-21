@@ -30,11 +30,11 @@ For a Tenant admin, the password shall be set upon the initial login. The Tenant
 
 ## RBAC
 
-Palette allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the <Tooltip trigger={<u>RBAC</u>}>Palette's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations </Tooltip> page.
+Palette allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the <Tooltip trigger={<u>RBAC</u>}>Palette's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations </Tooltip> [page](/user-management/rbac#rbac).
 
 # Roles and Permissions
 
-The Tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> and <Tooltip trigger={<u>Permissions</u>}><a href="/user-management/rbac#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip> sections in the RBAC page provide more details on this.
+The Tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> and <Tooltip trigger={<u>Permissions</u>}><a href="/user-management/rbac#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip> sections in the [RBAC](/user-management/rbac#rbac) page provide more details on this.
 
 To add a user to a project:
   1. Sign in as a Tenant admin and go to the **Users and Teams** section of the [Tenant Admin Dashboard](/getting-started#admindashboard). 
