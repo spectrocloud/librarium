@@ -21,16 +21,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 Cluster profiles are created by configuring various layers of the Kubernetes infrastructure stack. The following steps need to be performed to create a new cluster profile:
 
 
-1. Provide basic profile information such as Name, Description, Profile Type and Tags. Profile Type (Full, Infra, Add-on) will dictate the layers that can be configured in the cluster profile. Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile.
+1. Provide basic profile information such as Name, Description, Profile Type and Tags. Profile Type (Full, Infra, Add-on) will dictate the layers that can be configured in the cluster profile. Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile.Give the custom [Version](/cluster-profiles/task-define-profile#clusterprofileversioning) number under which the cluster profile needs to be created. 
 
 
-2. Give the custom [Version](/cluster-profiles/task-define-profile#clusterprofileversioning) number under which the cluster profile needs to be created. 
+2. For a cluster profile of the type Infra or Full, select a cloud/data center environment.
 
 
-3. For a cluster profile of the type Infra or Full, select a cloud/data center environment.
-
-
-4. Configure the layers of the infrastructure stack. The following layers are considered "core infrastructure" layers. Configuring these layers is mandatory for cluster profiles of the type Infra or Full. These layers are not configurable for "Add-On" cluster profiles:
+3. Configure the layers of the infrastructure stack. The following layers are considered "core infrastructure" layers. Configuring these layers is mandatory for cluster profiles of the type Infra or Full. These layers are not configurable for "Add-On" cluster profiles:
 
   * OS
   * Kubernetes
