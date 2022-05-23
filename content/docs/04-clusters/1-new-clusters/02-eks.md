@@ -668,46 +668,83 @@ The following steps need to be performed to provision a new EKS cluster:
 3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 
 
-4. Provide the AWS Cloud account and placement information.
+4. Provide the AWS Cloud account and configure the cluster.
 
     |**Parameter**| **Description**|
     |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
-    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets. |
-
-
+    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings|
+    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets|
+    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned|
+    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned|
+    |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
+    |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values| 
+    |**Enable Encryption**|The user can enable secret encryption by toggling the [Enable Encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN  to complete the wizard|
+    |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel|
+   
 <InfoBox>
 The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public <br />
 kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
-
 </InfoBox>
 
-5. Configure one or more worker node pools. A single worker node will be configured by default.
+5. Configure the Node Pools
+
+   * Configure one or more worker node pools. A single worker node will be configured by default.
 
     |**Parameter**| **Description**|
     |-------------|----------------|
     |**Name** | A descriptive name for the node pool.|
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.|
-    |**Instance Type** | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
+    |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
+    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)|
+    |**Instance Type** | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool|
+  * Cloud Configuration settings:
 
-6. Optionally, create one or more Fargate Profile(s) to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-
+     |**Parameter**| **Description**|
+     |-------------|----------------|
+     |**Instance Option**:| Make the selection of instance allocation|
+     | |* On Demand|
+     | |* Spot|
+     |**Instance Type**:|Make the selection of the instance type|
+     |**Availability Zones**:|Select atleast one availability zone within the VPC|
+     |**Disk Size**|Make the choice of disk size as per requirement|
+ *  Optionally, create one or more Fargate Profile(s) to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
+    
     |**Parameter**| **Description**|
     |-------------|---------------|
     |**Name** |Provide a name for the Fargate profile.|
     |**Subnets** |Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.|
     |**Selectors** |Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.|
 
+6. Configure the [Cluster Management](/clusters/cluster-management#manageclusters) options as per user requirements.
+
+
 7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>m3.large</i> instance types for general-purpose workloads, and another worker pool with instance type <i>g2.2xlarge</i> can be configured to run GPU workloads.
 </InfoBox>
+
+# EKS Cluster Secrets Encryption
+
+Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
+a defense-in-depth security strategy to protect the sensitive data  such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
+
+## Prerequisites:
+* KMS key created in the AWS console.
+* Key Type: Symmetric
+* Key Usage: Encrypt and Decrypt
+
+## AWS Cloud Account Permissions:
+
+The AWS permissions listed below need to be configured in the AWS account to enable key creation:
+
+```json
+kms:CreateGrant
+```
+Enable secret encryption at step 4 of EKS cluster creation by toggling the botton and by updating ARN of the encryption key to the wizard.
 
 # AWS Instance Type and Pod Capacity
 Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability. 
