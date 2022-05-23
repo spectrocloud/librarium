@@ -24,7 +24,7 @@ Spectro Cloud Palette 2.6 is released with the support of cluster profile versio
 
 * Palette encourages the use of AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 
-* Palette envelops wide list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for csi-aws-1.0.0 pack manifest.
+* Palette envelops wide list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest.
   
 
 **Enhancement:**
