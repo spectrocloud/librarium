@@ -138,6 +138,8 @@ export const StyledMainWrapper = styled.div`
   a {
     transition: color 0.15s;
     color: #206cd1;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   code {

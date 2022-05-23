@@ -10,7 +10,7 @@ fullWidth: false
 import WarningBox from 'shared/components/WarningBox';
 
 # What is Palette?
-Palette is a complete and integrated platform that enables organizations to easily manage the entire lifecycle of any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center or the cloud. 
+Palette is a complete and integrated platform that enables organizations to easily manage the entire lifecycle of any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center or the cloud.
 
 With a unique approach to managing multiple clusters, Palette gives IT teams complete control, visibility and production-scale efficiencies to provide developers with highly-curated Kubernetes stacks and tools based on their specific needs, with granular governance and enterprise-grade security.
 
@@ -30,7 +30,7 @@ Palette has the richest coverage in supported environments, including public clo
 
 
 
-## What is under the hood? 
+## What is under the hood?
 Palette uniquely extends and integrates CNCF’s open-source Cluster API project and provides comprehensive full-stack modeling and orchestration, governance, security and day0, day1, day2 management capabilities.
 
 With Palette’s Cluster Profiles, teams can define full-stack clusters that include both the K8s infrastructure, as well as any add-on application services. Cluster Profiles enable a repeatable way to deploy and reuse clusters across any environment. Palette also enables importing of existing Kubernetes environments and creating equivalent Cluster Profiles.
@@ -52,8 +52,3 @@ Declarative management makes life easier for IT teams, with consistency, repeata
 ### IT Executives
 
 With an open and enterprise-grade platform, IT leaders can get peace of mind without being locked into any proprietary orchestration technologies or one-size-fits-all solutions. This helps lower the TCO and reduce the operational risk.
-
-
-
-
-
