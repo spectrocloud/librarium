@@ -18,6 +18,7 @@ Custom packs are built by users and deployed to custom registries using Spectro 
 # Steps to create a custom pack
 
 1. Create a directory with a suitable name for all the pack contents. Example: `prometheus_1_0`
+
 2. Create a metadata file named `pack.json` to describe the pack. Example:
 
 ```json
@@ -79,6 +80,7 @@ ansibleRoles:
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
+
 5. Login to the pack registry using the following command:
 
 ```bash
@@ -102,6 +104,7 @@ ansibleRoles:
 The OS is one of the core layers in a cluster profile. An OS pack can be built to use a custom OS image for cluster nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure. There are typically the following two scenarios for the OS image:
 
 1. Pre-Installed Kubernetes - The OS image has the desired version of Kubernetes components like kubelet, kubectl, etc installed.
+
 2. Vanilla OS Image - Kubernetes components are not installed.
 
 Additionally, for both the scenarios additional components or packages may need to be installed at runtime to prepare the final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples of building custom OS pack to cover the some of these scenarios.

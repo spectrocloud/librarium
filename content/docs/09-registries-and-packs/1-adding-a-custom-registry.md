@@ -33,6 +33,7 @@ Please ensure that the ports 443/80 are exclusively allocated to the registry se
 
 Spectro Cloud provides a docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
 
+
 * Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
 
 ```bash
@@ -87,12 +88,14 @@ REGISTRY_HOST_DNS - registry.com
 
 * Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry docker container
 
+
 * Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
+
 
 * Pull the latest Spectro Cloud pack registry docker image using the docker CLI.
 
 ```bash
-    docker pull gcr.io/spectro-images-public/release/spectro-registry:2.5.0
+    docker pull gcr.io/spectro-images-public/release/spectro-registry:2.6.0
 ```
 
 * Create the docker container using the docker `run` command:
@@ -165,7 +168,9 @@ REGISTRY_HOST_DNS - registry.com
 Once the deployment of the pack registry server is complete, configure it with the management console as follows:
 
 1. As a tenant administrator, navigate to Admin Settings -> Registries -> Pack Registries.
+
 1. Click on "Add New Pack Registry" and provide the pack registry name, endpoint, and user credentials.
+
 1. Click on "Confirm" once the details are filled.
 
 Upon successful registration, users can build and deploy custom packs on to the custom pack registry and use these packs in their cluster profiles.

@@ -19,6 +19,8 @@ A pack is a collection of files such as manifests, helm charts, ansible roles, c
 
 Spectro Cloud provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. The following is a typical structure of a pack:
 
+
+
     | - PACKNAME           ==> pack directory name
         | - pack.json        ==> mandatory : pack config
         | - values.yaml      ==> mandatory : pack params + values.yaml from charts + templated params from ansible-roles + all config from manifests
@@ -51,6 +53,6 @@ Spectro CLI is a Command Line Interface to interact with the Spectro Cloud Pack 
 
 Spectro CLI is currently available in two platforms - OSX & Linux:
 
-OSX     : https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro
+OSX     : https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro
 
-Linux   : https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro
+Linux   : https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro

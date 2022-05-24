@@ -28,34 +28,62 @@ Palette provides users with a stable repo of Helm Charts accessible to all the t
 # Setting up Helm Registry with Tenant Scope
 
 Palette also provides an exclusive Helm Registry for tenants to add their private Helm charts. To create your private repo from the management console:
-* Login as a tenant administrator, navigate to Admin -> Settings -> Registries.
-* Click on “Add New Helm Registry” and provide the registry name, endpoint, and user credentials.
-* **Protected Mode**: Enable "Protected" mode if the user’s Helm registry is deployed within a private network. Palette's orchestrator running in the tenant clusters deployed in private networks downloads and deploys charts from these protected chart registries.
-	* The user credential validation is disabled in protected mode.
-	* In protected mode, the charts are not synchronized into the management console.
-	* The users can manually input the Helm chart names and versions during Cluster Profile creation in protected mode. 
-* **Unprotected Mode**: Disable "Protected" mode if the user’s Helm registry is deployed within a public network. 
-	* The charts need to be synchronized into the management console in unprotected mode. 
-	* Charts are selected from the drop-down menu during the cluster profile creation.
-* Enable “**No authentication**” if the tenant choice is not to set up credentials for the registry.
-	* If the user wants to create the registry without authentication, only a custom registry name and endpoint are required for the validation to complete. 
-* Disabling the “No authentication” requires a specific user name and password set up along with the custom registry name and endpoint. Upon successful registration, users can build and deploy custom charts onto the custom Helm registry and use these packs while creating Cluster Profiles.
-* Click “Confirm” to complete the registry creation process.
+
+
+1. Login as a tenant administrator, navigate to **Admin -> Settings -> Registries**.
+
+
+2. Click on **“Add New Helm Registry”** and provide the registry name, endpoint, and user credentials.
+
+
+3. **Protected Mode**: Enable "Protected" mode if the user’s Helm registry is deployed within a private network. Palette's orchestrator running in the tenant clusters deployed in private networks downloads and deploys charts from these protected chart registries.
+   * The user credential validation is disabled in protected mode.
+   * In protected mode, the charts are not synchronized into the management console.
+   * The users can manually input the Helm chart names and versions during Cluster Profile creation in protected mode. 
+
+
+4. **Unprotected Mode**: Disable "Protected" mode if the user’s Helm registry is deployed within a public network. 
+   * The charts need to be synchronized into the management console in unprotected mode. 
+   * Charts are selected from the drop-down menu during the cluster profile creation.
+
+
+5. Enable “**No authentication**” if the tenant choice is not to set up credentials for the registry.
+   * If the user wants to create the registry without authentication, only a custom registry name and endpoint are required for the validation to complete. 
+
+
+6. Disabling the “No authentication” requires a specific user name and password set up along with the custom registry name and endpoint. Upon successful registration, users can build and deploy custom charts onto the custom Helm registry and use these packs while creating Cluster Profiles.
+
+
+7. Click **“Confirm”** to complete the registry creation process.
+
+
 # Use Your Helm Registry
 Charts from the Helm registries can be used in your cluster profiles as follows:
-* From the Repository menu, select the desired Helm registry.
-* For Protected Helm Registries:
+
+1. From the Repository menu, select the desired **Helm registry**.
+
+
+2. For Protected Helm Registries:
 	* Key in the required chart name and version. 
 	* The name and version should match the chart name and version hosted in the Helm registry.
-* For Unprotected Helm Registries:
+
+
+3. For Unprotected Helm Registries:
 	* The synchronized charts will be available within the Palette Management console. 
 	* Select the required charts from the drop-down menu.
-* Click done to get your Helm layer added to the cluster profile.
+
+
+4. Click done to get your Helm layer added to the cluster profile.
 
 # Helm Chart Discovery for Brownfield Clusters
+
 * Palette discovers the Helm charts already installed within the imported brownfield clusters.
+
 * These charts are synchronized into the Palette Management Console.
+
 * While creating a new Cluster Profile, at step 3, “Profile Layer” creation, select “Import from Cluster.”
-* Select the name of the brownfield cluster and select the existing charts from the drop-down menu
+
+* Select the name of the brownfield cluster and select the existing charts from the drop-down menu.
+
 * Complete the wizard to add the chart as an add-on layer to the newly created Cluster Profile.
 
