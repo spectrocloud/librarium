@@ -20,7 +20,7 @@ RBAC is an expansion as well as a modification of this scenario. RBAC allows the
 Palette's RBAC design allows granting granular access to resources and its operations. This is achieved using *Roles* and *Permissions*. Role-based access control primarily focuses on assigning permissions to roles instead of individual users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource.
 
 
-The Tenant Admin can access these settings in the Palette console under **Tenant Admin -> Roles**. This page lists all the roles available along with the scope and status.
+The Tenant Admin can access these settings in the Palette console under **Tenant Admin** > **Roles**. This page lists all the roles available along with the scope and status.
 
 
 # Scope
