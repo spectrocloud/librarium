@@ -35,7 +35,8 @@ A **Scope** defines the resources on which the role has coverage. The Scope will
 
 A **Role** is a collection of permissions.
 
-The Role will have a *Type* and a *Scope*. The Type signifies the creator's scope and the Scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under **Tenant** and the *Tenant* nor the *Project* admins cannot modify the Project Scopes.
+The Role will have a *Type* and a *Scope*. The Type signifies the creator's scope and the Scope signifies the role visibility. Based on the role's scope, the permissions will be restricted to the permission's scope list. The *ProfileEditor* will be visible under **Tenant**, but neither the *Tenant* nor the *Project* admins are allowed to modify the Project Scopes.
+
 
 # Creating roles
 
