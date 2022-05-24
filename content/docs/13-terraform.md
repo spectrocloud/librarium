@@ -39,13 +39,14 @@ Detailed documentation on supported data sources and resources are available in 
 
 ## Module to Provider Compatibility Matrix
 
-|Provider Version| Module|
-|------|-------|
-|0.7.0 |0.1.0  |
-|0.6.15|0.0.13 |
-|0.6.14|0.0.12 |
-|0.6.13|0.0.11 |
-|0.6.12|0.0.10 |
+|Module|Provider Version|
+|-----|------|
+|0.1.8 |0.7.1|
+|0.1.0 |0.7.0 |  
+|0.0.13|0.6.15| 
+|0.0.12 |0.6.14|
+|0.0.11|0.6.13| 
+|0.0.10|0.6.12|
 
 ## Latest Version of Spectro Cloud Terraform Provider:
 The below section includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
@@ -57,7 +58,6 @@ Find the detailed patch changes and comparisons of **0.6.x** within these tabs.
 
 
 <Tabs>
-
 
 <Tabs.TabPane tab="v0.7.0" key="v0.7.0">
 
