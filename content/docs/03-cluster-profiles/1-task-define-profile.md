@@ -123,9 +123,9 @@ Palette enables users to create multiple versions of a cluster profile within th
  
 Cluster profile versions are grouped under their unique names and their uniqueness is decided by the name and version within the scope and promotes backward compatibility to profile changes.
 
- Eg:,Profile-1 can have multiple versions like 1.0.0 and 2.0.1. These versions are grouped under the **Cluster Profile Name** Profile-1. The menu next to the cluster profile name contains the different versions under that name.
+ **Example:** Profile-1 can have multiple versions like 1.0.0 and 2.0.1. These versions are grouped under the **Cluster Profile Name** Profile-1. The menu next to the cluster profile name contains the different versions under that name.
           
- The version numbers can be edited from the **Settings -> Edit Info** option from the Cluster Profile page. While deleting the profile, select the version to be deleted.
+ The version numbers can be edited from the **Settings > Edit Info** option from the Cluster Profile page. While deleting the profile, select the version to be deleted.
       
  
 
