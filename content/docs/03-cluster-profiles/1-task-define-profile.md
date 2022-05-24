@@ -32,13 +32,11 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
 
 
 2. In the **Cloud Type** section, select the **Environment** you are working with. This list displays the environments supported in Palette.
-    - Infrastructure provider
-    - Managed Kubernetes 
   
 
-3. Configure the **Profile Layers** of the infrastructure stack. The following layers are considered **Core Infrastructure** layers. Configuring these layers is mandatory Full or Infrastructure cluster profiles type. 
+3. Configure the **Profile Layers** of the infrastructure stack. The following layers are considered **Core Infrastructure** layers. Configuring these layers is mandatory for Full or Infrastructure cluster profiles. 
 
-    **Note**: These layers are not configurable for **Add-On** type cluster profiles:
+    **Note**: These layers are not configurable for **Add-On** cluster profiles:
 
     - OS
     - Kubernetes
