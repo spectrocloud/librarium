@@ -49,7 +49,7 @@ Detailed documentation on supported data sources and resources are available in 
 |0.0.10|0.6.12|
 
 ## Latest Version of Spectro Cloud Terraform Provider:
-The below section includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
+The section below includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
 ### Latest Version Supported : `0.7.x`
 
