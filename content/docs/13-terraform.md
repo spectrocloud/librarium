@@ -53,11 +53,24 @@ The below section includes the different versions of Terraform providers, suppor
 
 ### Latest Version Supported : `0.7.x`
 
-Find the detailed patch changes and comparisons of **0.6.x** within these tabs.
-
+Find the detailed patch changes and comparisons of **0.7.x** within these tabs.
 
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.7.1" key="v0.7.1">
+
+## Changes
+
+The major changes are:
+
+* Support of OS patching in EKS. 
+
+* Support EKS cluster encryption.
+
+Refer to Full Changelog: [v0.7.0 to v0.7.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.1)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.7.0" key="v0.7.0">
 
@@ -76,6 +89,7 @@ Refer to Full Changelog: [v0.6.x to v0.7.0](https://registry.terraform.io/provid
 ## Changes
 
 The major change is:
+
 * Update VMware cluster configuration to allow ssh key rotation.
 
 
