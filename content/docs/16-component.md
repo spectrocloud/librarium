@@ -21,8 +21,10 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-|Release 2.5.0 |Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
-|              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
+|Release 2.6.0 |Download for CLI v2.6.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro)|
+|              |Download for CLI v2.6.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro)|
+|Release 2.5.0 |Download for CLI v2.5.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
+|              |Download for CLI v2.5.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
 | Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
 |              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
 | Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
