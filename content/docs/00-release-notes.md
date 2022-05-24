@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # May 23, 2022 - Release 2.6.0
 
-Spectro Cloud Palette 2.6 is released with the support of cluster profile versioning, EKS secret encryption and reconciling CSI storageclass with added parameters support.
+Spectro Cloud Palette 2.6 is released with the support of cluster profile versioning, EKS secret encryption, and reconciling CSI storageclass with added parameters support.
 
 **Features:**
 
@@ -24,12 +24,12 @@ Spectro Cloud Palette 2.6 is released with the support of cluster profile versio
 
 * Palette encourages the use of AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 
-* Palette envelops wide list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest.
+* Palette covers wide list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest.
   
 
 **Enhancement:**
 
-* Palette enables reconciliation of CSI layer Storageclass for managed clusters of Amazon Elastic Kubernetes Service (EKS).
+* Palette allows reconciliation of CSI layer Storageclass for managed clusters of Amazon Elastic Kubernetes Service (EKS).
 
 
 # April 26, 2022 - Release 2.5.0
