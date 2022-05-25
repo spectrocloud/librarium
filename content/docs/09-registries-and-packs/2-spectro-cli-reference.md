@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Registry server to upload or download the packs using commands.
 
-# Pre-requisites
+# Prerequisites
 
 1. The Spectro CLI tool must be installed.
 2. A custom pack registry server must be up and running.
@@ -28,35 +28,35 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
 1. Download the CLI binary file:
 
-<Tabs>
-
-<Tabs.TabPane tab="OSX" key="osx_cli">
-
-```bash
-wget https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro
-```
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Linux" key="linux_cli">
-
-```bash
-wget https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro
-```
-
-</Tabs.TabPane>
-
-</Tabs>
+    <Tabs>
+    
+    <Tabs.TabPane tab="OSX" key="osx_cli">
+    
+    ```bash
+    wget https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro
+    ```
+    
+    </Tabs.TabPane>
+    
+    <Tabs.TabPane tab="Linux" key="linux_cli">
+    
+    ```bash
+    wget https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro
+    ```
+    
+    </Tabs.TabPane>
+    
+    </Tabs>
 
 2. Provide the executable permission to the CLI spectro.
 
-```bash
-chmod +x spectro
-```
+    ```bash
+    chmod +x spectro
+    ```
 
 # Global Arguments
 
-List of Arguments available to all the Spectro CLI commands -
+List of Arguments available to all the Spectro CLI commands:
 
 # Global Flags
 
@@ -102,13 +102,14 @@ Authenticate user with Spectro Cloud pack registry by using the login command:
 
 SERVER - Spectro Cloud pack registry server in the format [host:port]
 
+
 ### Flags
 
 -i, --insecure - Insecure is used when the pack registry is installed in HTTP or HTTPS with self-signed certificates.
 
 -d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
 
-**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the insecure flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]/ca.crt
+**Note:** In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the insecure flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]/ca.crt.
 
 </Tabs.TabPane>
 
