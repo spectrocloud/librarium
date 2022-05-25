@@ -25,7 +25,7 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     |**Parameter**  |**Description**  |
     |---------|---------|
     |**Name**     |    Give a name for the new cluster.     |
-    |**Version**    |   Include the [Cluster Profile Version](/cluster-profiles/task-define-profile#Version) number for the cluster under which the cluster profile needs to be created.  See below for more information.      |
+    |**Version**    |   Include the [Cluster Profile Version](/cluster-profiles/task-define-profile#clusterprofileversioning) number for the cluster under which the cluster profile needs to be created.  See below for more information.      |
     |**Description**     |   Provide quick description of your cluster. This is optional. |
     |**Profile Type (Full, Infrastructure, Add-on)**| Dictates the layers that can be configured in the cluster profile.  If the cluster profile type is Infrastructure or Full, you are able to select a Cloud Type or Data Center environments. For more information on [Add-on](/cluster-profiles/task-define-profile#Addon) types go to step four.  |
     |**Tags**     |  Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile. This is optional.      |
@@ -46,7 +46,7 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     Select the **Registry**, **Pack Name**, **Pack Version**, and **Pack Values** and click on **Next Layer** to go through each profile layer to completely build the core infrastructure.
 
 
-4. <a href="Addon"></a>**Add-on Layers** are additional layers such as **Monitoring, Security**, or **Load Balancers** may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
+4. **Add-on Layers** are additional layers such as **Monitoring, Security**, or **Load Balancers** may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
 
     <Tabs>
     <Tabs.TabPane tab="Add New Pack" key="Add New Pack"> 
@@ -113,39 +113,21 @@ In order to allow packs to be added multiple times in a profile, add the followi
 
 <br />   
 
-5. **Cluster Profile Versioning**
+## Cluster Profile Versioning
 
-  Palette enables users to create multiple versions of a cluster profile within the scope of a single profile name. The **Version** field of the cluster profile takes a semantic versioning format (only numbers supported) as below: 
+Palette enables users to create multiple versions of a cluster profile within the scope of a single profile name. The **Version** field of the cluster profile takes a semantic versioning format (only numbers supported) as below: 
 
-  **`major.minor.patch`**
+  **`major.minor.patch`** represented as: Version 1.1.2
+         
+ Profile versioning is an optional field with a default value of **1.0.0** . The users can create multiple versions of a cluster profile under a single profile name and each of these versions can have its own pack configurations.
+ 
+Cluster profile versions are grouped under their unique names and their uniqueness is decided by the name and version within the scope and promotes backward compatibility to profile changes.
 
-<br />
-
-  <Tabs>
-    
-  <Tabs.TabPane tab="Example Version 1.1.2" key="Example Version 1.1.2">
-<br />  
-      <b>Example : </b> 
-      <em>Version 1.1.2</em> <br />   
-<br />            
-  <p> Profile versioning is an optional field with a default value of *1.0.0*. The users can create multiple versions of a cluster profile under a single profile name and each of these versions can have its own pack configurations. </p>
-              
-  <p> Cluster profile versions are grouped under their unique names and their uniqueness is decided by the name and version within the scope and promotes backward compatibility to profile changes. </p>
-      
-  </Tabs.TabPane>
-    
-  <Tabs.TabPane tab="Example Profile-1" key="Example Profile-1">
-<br />        
-  <b> Example : </b>
-      <em>Profile-1 can have multiple versions like 1.0.0 and 2.0.1.</em> <br />   
-<br />          
-  <p> These versions are grouped under the <b>Cluster Profile Name</b> <em> Profile-1 </em>. The menu next to the cluster profile name contains the different versions under that name. </p>
+ **Example:** Profile-1 can have multiple versions like 1.0.0 and 2.0.1. These versions are grouped under the **Cluster Profile Name** Profile-1. The menu next to the cluster profile name contains the different versions under that name.
           
-  <p> The version numbers can be edited from the <b> Settings</b> > <b>Edit Info</b> option from the Cluster Profile page. While deleting the profile, select the version to be deleted. </p>
+ The version numbers can be edited from the **Settings > Edit Info** option from the Cluster Profile page. While deleting the profile, select the version to be deleted.
       
-  </Tabs.TabPane>
-    
-  </Tabs>
+ 
 
 
 
