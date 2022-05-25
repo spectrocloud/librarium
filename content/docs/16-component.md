@@ -21,17 +21,20 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-|Release 2.5.0 |Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
-|              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
-| Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
+|Release 2.6.0 |Download for CLI v2.6.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro)|
+|              |Download for CLI v2.6.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro)|
+|Release 2.5.0 |Download for CLI v2.5.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
+|              |Download for CLI v2.5.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
+|Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
 |              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
-| Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
+|Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
  #  Palette Docker Image Version
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
 |---------------------------|----------------------------------------|
+|Release 2.6.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.6.0`</p> |
 |Release 2.5.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.5.0`</p> |
 |Release 2.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0`</p> |
 |Release 2.2.0 |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0`</p> | 
@@ -40,18 +43,24 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|On-Premises Installer Version|
 |--|---|
+|2.6|2.0.2|
+|2.5|2.0.2|
 |2.3|2.0.2|
 
 # Latest Air Gapped OVA Version
 
 |Palette Release|Air Gapped Version|
 |--|---|
+|2.6|2.0.1|
+|2.5|2.0.1|
 |2.3|2.0.1|
 
 # vSphere PCG Image Version
 
 |Palette Release|vSphere PCG Version|
 |--|---|
+|2.6|2.0.2|
+|2.5|2.0.2|
 |2.3|2.0.2|
 ------
 
@@ -59,6 +68,8 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|MAAS PCG Version|
 |--|---|
+|2.6|1.0.9|
+|2.5|1.0.9|
 |2.3|1.0.9|
 ---------
 
@@ -66,6 +77,8 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
+|2.6|1.0.9|
+|2.5|1.0.9|
 |2.3|1.0.9|
 -------
 
