@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # May 23, 2022 - Release 2.6.0
 
-Spectro Cloud Palette 2.6 is released with the support of Cluster Profile Versioning, EKS Secret Encryption, and reconciling CSI Storageclass with added parameters support.
+Spectro Cloud Palette 2.6 is released to support of Cluster Profile Version, EKS Secret Encryption, CSI Storageclass, and added Parameters capabilities.
 
 **Features:**
 
@@ -24,7 +24,7 @@ Spectro Cloud Palette 2.6 is released with the support of Cluster Profile Versio
 
 * Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 
-* Palette covers wide list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest. 
+* Palette covers a long list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for the[csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest. 
 
 **Enhancement:**
 
@@ -32,7 +32,7 @@ Spectro Cloud Palette 2.6 is released with the support of Cluster Profile Versio
 
 **Bug Fixes**
 
-* We request our users to please add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route within a route table in a Virtula Private Cloud to smoothen the cluster deletion.
+* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route within a route table in a Virtual Private Cloud to smoothen the cluster deletion process.
 
 
 # April 26, 2022 - Release 2.5.0
