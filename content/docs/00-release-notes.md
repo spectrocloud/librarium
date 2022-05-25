@@ -31,6 +31,10 @@ Spectro Cloud Palette 2.6 is released with the support of Cluster Profile Versio
 
 * Palette allows reconciliation of CSI layer Storageclass for managed clusters of Amazon Elastic Kubernetes Service (EKS).
 
+**Bug Fixes**
+
+* We request our users to please add the `ec2:ReplaceRoute` permission to their [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy Permissions to replaces an existing route within a route table in a Virtula Private Cloud.
+
 
 # April 26, 2022 - Release 2.5.0
 

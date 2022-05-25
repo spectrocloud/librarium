@@ -56,7 +56,7 @@ The following **four** policies include all the required permissions for provisi
 
 ### Controller Policy
 
-**Last Update**: June 1, 2021
+**Last Update**: May 25, 2022
 
 ``` json
 {
@@ -73,6 +73,7 @@ The following **four** policies include all the required permissions for provisi
         "ec2:CreateNatGateway",
         "ec2:CreateRoute",
         "ec2:CreateRouteTable",
+        "ec2:ReplaceRoute",       
         "ec2:CreateSecurityGroup",
         "ec2:CreateSubnet",
         "ec2:CreateTags",
