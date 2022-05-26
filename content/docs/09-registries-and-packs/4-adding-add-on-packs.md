@@ -33,7 +33,7 @@ An Add-on Pack defines deployment specifics of a Kubernetes application to be in
 
 Custom Add-on packs can be built to extend the list of integrations. Two different methods are used in the following examples to create custom add-on packs.
 <br />
-b
+
 <Tabs>
 
 <Tabs.TabPane tab="Using Helm Charts" key="add_on_packs_helm_charts">
