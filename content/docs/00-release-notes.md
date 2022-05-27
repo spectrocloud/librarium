@@ -13,6 +13,28 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+
+# May 23, 2022 - Release 2.6.0
+
+Spectro Cloud Palette 2.6 is released to support of Cluster Profile Version, EKS Secret Encryption, CSI Storageclass, and added Parameters capabilities.
+
+**Features:**
+
+* Palette supports multiple [versions](/cluster-profiles/task-define-profile#clusterprofileversioning) of a single-cluster profile under a unique name to allow backward compatibility. 
+
+* Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
+
+* Palette covers a long list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for the[csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest. 
+
+**Enhancement:**
+
+* Palette allows reconciliation of CSI layer Storageclass for managed clusters of Amazon Elastic Kubernetes Service (EKS).
+
+**Bug Fixes**
+
+* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route within a route table in a Virtual Private Cloud to smoothen the cluster deletion process.
+
+
 # April 26, 2022 - Release 2.5.0
 
 Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), Palette free service offerings, many enhancements, and bug fixes.

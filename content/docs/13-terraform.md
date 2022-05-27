@@ -39,25 +39,38 @@ Detailed documentation on supported data sources and resources are available in 
 
 ## Module to Provider Compatibility Matrix
 
-|Provider Version| Module|
-|------|-------|
-|0.7.0 |0.1.0  |
-|0.6.15|0.0.13 |
-|0.6.14|0.0.12 |
-|0.6.13|0.0.11 |
-|0.6.12|0.0.10 |
+|Module|Provider Version|
+|-----|------|
+|0.1.8 |0.7.1|
+|0.1.0 |0.7.0 |  
+|0.0.13|0.6.15| 
+|0.0.12 |0.6.14|
+|0.0.11|0.6.13| 
+|0.0.10|0.6.12|
 
 ## Latest Version of Spectro Cloud Terraform Provider:
-The below section includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
+The section below includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
 ### Latest Version Supported : `0.7.x`
 
-Find the detailed patch changes and comparisons of **0.6.x** within these tabs.
-
+Find the detailed patch changes and comparisons of **0.7.x** within these tabs.
 
 
 <Tabs>
 
+<Tabs.TabPane tab="v0.7.1" key="v0.7.1">
+
+## Changes
+
+The major changes are:
+
+* Support of OS patching in EKS. 
+
+* Support EKS cluster encryption.
+
+Refer to Full Changelog: [v0.7.0 to v0.7.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.1)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.7.0" key="v0.7.0">
 
@@ -76,6 +89,7 @@ Refer to Full Changelog: [v0.6.x to v0.7.0](https://registry.terraform.io/provid
 ## Changes
 
 The major change is:
+
 * Update VMware cluster configuration to allow ssh key rotation.
 
 
