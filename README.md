@@ -106,7 +106,7 @@ These pages will have the same attributes as for the main page.
 
 The url of a page will be composed from the path of the file relative to the `content` directory. The "number" used for ordering the menu will be stripped.
 
-**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:8000/introduction/what-is as the url
+**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
 
 In markdown you can reference this page relatively to the root of the domain using this syntax:
 
