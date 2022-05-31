@@ -32,7 +32,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 **Bug Fixes**
 
-* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route, within a route table in a Virtual Private Cloud, to smoothen the cluster deletion process.
+* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/new-clusters/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/new-clusters/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route, within a route table in a Virtual Private Cloud, to facilitate the cluster deletion process.
 
 
 # April 26, 2022 - Release 2.5.0
