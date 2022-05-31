@@ -144,18 +144,18 @@ function isMenuActive(location, link) {
 }
 
 export const DEFAULT_MENU = [
-  {
-    title: "Docs",
-    link: "/",
-    icon: "folder",
-    isActive(location) {
-      const othersAreActive = DEFAULT_MENU.filter((item) => item.title !== "Docs").some((item) => {
-        return item.isActive && item.isActive(location);
-      });
+  // {
+  //   title: "Docs",
+  //   link: "/",
+  //   icon: "folder",
+  //   isActive(location) {
+  //     const othersAreActive = DEFAULT_MENU.filter((item) => item.title !== "Docs").some((item) => {
+  //       return item.isActive && item.isActive(location);
+  //     });
 
-      return !othersAreActive;
-    },
-  },
+  //     return !othersAreActive;
+  //   },
+  // },
   {
     title: "API",
     link: "/api/",
@@ -164,10 +164,10 @@ export const DEFAULT_MENU = [
       return isMenuActive(location, "/api");
     },
   },
-  {
-    title: "Back to Spectro Cloud",
-    link: "https://console.spectrocloud.com",
-  },
+  // {
+  //   title: "Back to Spectro Cloud",
+  //   link: "https://console.spectrocloud.com",
+  // },
 ];
 
 export default function Header({ menu = DEFAULT_MENU, toggleMenu }) {

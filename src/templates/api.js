@@ -4,6 +4,7 @@ import Layout from "shared/layouts/Default";
 import DocsLayout from "shared/layouts/Docs";
 import ApiSidebar from "shared/components/common/ApiSidebar";
 import Swagger from "shared/components/common/Swagger";
+import AppSidebar from "shared/components/styles/Sidebar";
 
 // TODO use graphql to get api.jsons
 import v1 from "../../content/api/v1/api.json";
@@ -11,6 +12,33 @@ import v1 from "../../content/api/v1/api.json";
 const APIS = {
   v1,
 };
+
+function formatApi(endPoints) {
+  let apiObj = {};
+  for(var index = 0; index < endPoints.length; index++) {
+      let endPoint = endPoints[index].path;
+      let operations = endPoints[index].operations;
+      let arr = endPoint.split("/");
+      arr.shift();
+      fillInApiObj(0, arr, operations, apiObj);
+  }
+  return apiObj;
+}
+
+function fillInApiObj(index, arr, operations, obj) {
+  let elem = arr[index];
+  if(index == (arr.length -1)) {
+      obj[elem] = obj[elem] || {};
+      obj[elem]["operations"] = operations;
+      return;
+  }
+  if(!obj[elem]) {
+      obj[elem] = {
+          status : false
+      };
+  }
+  fillInApiObj(index+1, arr, operations, obj[elem])
+}
 
 export default function MDXLayout({ data = {} }) {
   const {
@@ -25,57 +53,130 @@ export default function MDXLayout({ data = {} }) {
     return DocsLayout.calculateMenuTree(allMdx.edges, { base: "/api", trailingSlash: true });
   }, [allMdx.edges]);
 
+  const api = APIS[mdx?.fields?.version || "v1"];
+  const paths = mdx.frontmatter?.paths;
+  const apiEndpoints = Object.keys(api.paths)
+    .map(path => {
+        return {
+            path,
+            operations: Object.keys(api.paths[path])
+                .filter(method => method !== "parameters")
+                .map(method => {
+                    const apiMethod = api.paths[path][method]
+                    const parameters = apiMethod?.parameters;
+                    return ({
+                        method,
+                        ...apiMethod,
+                        parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                        pathParameters: api.paths[path]?.parameters || [],
+                    })
+                }),
+        };
+    });
+
+  const apiObj = formatApi(apiEndpoints);
+
+  if(Array.isArray(mdx.frontmatter?.paths)) {
+    let urlPathName = mdx.frontmatter?.paths[0];
+    if (urlPathName) {
+        urlPathName = urlPathName.split("/");
+        urlPathName = urlPathName[urlPathName.length - 1];
+        apiObj.v1[urlPathName].status = true;
+    }
+  }
+
   function renderAPIDoc() {
-    // TODO refactor this function
+    // TODO refactor this functionendPoint
     const paths = mdx.frontmatter?.paths;
     if (!paths || !mdx?.fields?.version) {
       return null;
     }
 
     const api = APIS[mdx?.fields?.version];
+    const endpoints = Object.keys(api.paths)
+      .filter(path => paths.some(entry => path.startsWith(entry)))
+      .map(path => {
+              return {
+                  path,
+                  operations: Object.keys(api.paths[path])
+                      .filter(method => method !== "parameters")
+                      .map(method => {
+                          const apiMethod = api.paths[path][method]
+                          const parameters = apiMethod?.parameters;
+                          const responses = apiMethod?.responses;
+                          const bodyParameter = parameters?.find(parameter => parameter.name === "body");
+                          let body;
+
+                          if (bodyParameter) {
+                              body = bodyParameter.schema?.$ref ?
+                                  extractDefinition(bodyParameter.schema?.$ref) :
+                                  renderProperties(bodyParameter.schema);
+                          }
+
+                          return ({
+                              method,
+                              ...apiMethod,
+                              body: JSON.stringify(body, null, 2),
+                              parameters: parameters?.filter(parameter => parameter.name !== "body") || [],
+                              pathParameters: api.paths[path]?.parameters || [],
+                              responseMessages: Object.keys(responses || {}).map(
+                                  response => {
+                                      return ({
+                                          code: response,
+                                          ...responses[response],
+                                          schema: JSON.stringify(extractDefinition(responses[response]?.schema?.$ref), null, 2),
+                                      })
+                                  }
+                              ),
+                          })
+                      }),
+              };
+          });
 
     function renderProperties(defObject) {
       // if there are no properties, render the format or type (this seems to apply only for timestamps)
+
       if (!defObject?.properties) {
         return defObject?.format || defObject.type;
       }
 
-      return Object.keys(defObject?.properties).reduce((propertiesAcc, property) => {
-        const definitionProperty = defObject.properties[property];
-        const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
+      return Object.keys(defObject?.properties)
+        .reduce((propertiesAcc, property) => {
+          const definitionProperty = defObject.properties[property];
+          const definitionPropertyRef = definitionProperty?.$ref || definitionProperty?.items?.$ref;
 
-        const propertyName = definitionProperty?.description?.includes("Deprecated")
-          ? `${property} deprecated`
-          : property;
-        // if the property contains a ref, call again extractDefinition
-        if (definitionPropertyRef) {
-          return {
-            ...propertiesAcc,
-            [propertyName]:
-              definitionProperty.type === "array"
-                ? [extractDefinition(definitionPropertyRef)]
-                : extractDefinition(definitionPropertyRef),
-          };
-        } else {
-          // if property value is an array, render what type the elements are
-          if (definitionProperty.type === "array") {
-            return {
+          if(definitionPropertyRef === '#/definitions/v1MgmtErrStack') return {};
+
+          const propertyName = definitionProperty?.description?.includes("Deprecated") ? `${property} deprecated` : property;
+          // if the property contains a ref, call again extractDefinition
+          if (definitionPropertyRef) {
+            return ({
               ...propertiesAcc,
-              [propertyName]: [definitionProperty?.items.type || definitionProperty.type],
-            };
+              [propertyName]: definitionProperty.type === "array" ?
+                [extractDefinition(definitionPropertyRef)] :
+                extractDefinition(definitionPropertyRef)
+            });
           } else {
-            // if the property value is an object that contains the properties key
-            // call again renderProperties function in case it has refs inside
-            // otherwise render the property type
-            return {
-              ...propertiesAcc,
-              [propertyName]: definitionProperty?.properties
-                ? renderProperties(definitionProperty)
-                : definitionProperty.type,
-            };
+            // if property value is an array, render what type the elements are
+            if(definitionProperty.type === "array") {
+              return ({
+                ...propertiesAcc,
+                [propertyName]: [definitionProperty?.items.type || definitionProperty.type]
+              });
+            } else {
+              // if the property value is an object that contains the properties key
+              // call again renderProperties function in case it has refs inside
+              // otherwise render the property type
+
+              return ({
+                ...propertiesAcc,
+                [propertyName]: definitionProperty?.properties ?
+                  renderProperties(definitionProperty) :
+                  definitionProperty.type
+              });
+            }
           }
-        }
-      }, {});
+        }, {});
     }
 
     function extractDefinition(ref) {
@@ -90,59 +191,15 @@ export default function MDXLayout({ data = {} }) {
 
       // the response schema is type array - encounter only 2 times and seems to always have the items prop
       if (defObject?.type === "array") {
-        return {
-          items: extractDefinition(defObject.items.$ref),
-        };
+        return ({
+          items: extractDefinition(defObject.items.$ref)
+        });
       }
 
       return renderProperties(defObject);
     }
 
-    const endpoints = Object.keys(api.paths)
-      .filter((path) => paths.some((entry) => path.startsWith(entry)))
-      .filter((path) => !path.split("/").includes("internal"))
-      .map((path) => {
-        return {
-          path,
-          operations: Object.keys(api.paths[path])
-            .filter((method) => method !== "parameters")
-            .filter((method) => !method?.tags?.some((tag) => ["private", "system"].includes(tag)))
-            .map((method) => {
-              const apiMethod = api.paths[path][method];
-              const parameters = apiMethod?.parameters;
-              const responses = apiMethod?.responses;
-              const bodyParameter = parameters?.find((parameter) => parameter.name === "body");
-              let body;
-
-              if (bodyParameter) {
-                body = bodyParameter.schema?.$ref
-                  ? extractDefinition(bodyParameter.schema?.$ref)
-                  : renderProperties(bodyParameter.schema);
-              }
-
-              return {
-                method,
-                ...apiMethod,
-                body: JSON.stringify(body, null, 2),
-                parameters: parameters?.filter((parameter) => parameter.name !== "body") || [],
-                pathParameters: api.paths[path]?.parameters || [],
-                responseMessages: Object.keys(responses || {}).map((response) => {
-                  return {
-                    code: response,
-                    ...responses[response],
-                    schema: JSON.stringify(
-                      extractDefinition(responses[response]?.schema?.$ref),
-                      null,
-                      2
-                    ),
-                  };
-                }),
-              };
-            }),
-        };
-      });
-
-    return <Swagger documentation={{ apis: endpoints }} prefix="https://api.spectrocloud.com" />;
+    return <Swagger documentation={{ apis: endpoints }} prefix="" />;
   }
 
   return (
@@ -156,7 +213,7 @@ export default function MDXLayout({ data = {} }) {
           fill="url(#paint1_linear)"
         />
       }
-      extraMenu={<ApiSidebar allMdx={allMdx} />}
+      extraMenu={<div className={"xxx"} style={{ marginLeft: 20 }}><AppSidebar data={apiObj.v1} count={-1} /></div>}
     >
       <DocsLayout
         menu={menu}

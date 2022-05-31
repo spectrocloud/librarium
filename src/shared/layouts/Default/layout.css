@@ -41,3 +41,17 @@ button {
 a:hover {
   color: #206cd1;
 }
+
+.cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cut-textt {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

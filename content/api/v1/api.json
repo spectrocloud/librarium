@@ -9147,7 +9147,7 @@
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster profiles filter summary Supported filter fields - [\"profileName\", \"tags\", \"profileType\", \"environment\"] Supported sort fields - [\"profileName\", \"environment\", \"profileType\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "summary": "Retrieves a list of cluster profiles filter summary. \n Supported filter fields - [\"profileName\", \"tags\", \"profileType\", \"environment\"]. \n Supported sort fields - [\"profileName\", \"environment\", \"profileType\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
@@ -9265,7 +9265,7 @@
         "tags": [
           "v1"
         ],
-        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "summary": "Retrieves a list of cluster summary with provided filter spec. \n Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"]. \n Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "operationId": "v1SpectroClustersFilterSummary",
         "parameters": [
           {
