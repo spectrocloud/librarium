@@ -253,7 +253,7 @@ _Components_:
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
 
-### Using Warning Box compponent/Info Box component
+### Using Warning Box compponent/Info Box component or any component that wraps content
 
 To use these components you will have to import them from the shared folder:
 
