@@ -68,16 +68,16 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|MAAS PCG Version|
 |--|---|
-|2.6|1.0.9|
+|2.6|1.0.11|
 |2.5|1.0.9|
 |2.3|1.0.9|
 ---------
 
-# OpenStack PCG Image
+# OpenStack PCG Image Version
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
-|2.6|1.0.9|
+|2.6|1.0.11|
 |2.5|1.0.9|
 |2.3|1.0.9|
 -------
