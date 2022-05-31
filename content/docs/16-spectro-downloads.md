@@ -68,14 +68,14 @@ chmod 755 ./airgap-v${VERSION}.bin
 
 |Version|URL|Info|
 |---|---|--|
-|1.0.9|gcr.io/spectro-images-public/release/spectro-installer:1.0.9|Oct 15 2021|
+|1.0.11|gcr.io/spectro-images-public/release/spectro-installer:v1.0.11|May 28 2022|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL|Info|
 |---|---|--|
-|1.0.9|gcr.io/spectro-images-public/release/spectro-installer:1.0.9|Oct 15 2021|
+|1.0.11|gcr.io/spectro-images-public/release/spectro-installer:v1.0.11|May 28 2022|
 -------
 
 
