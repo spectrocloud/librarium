@@ -8398,6 +8398,11 @@
             "type": "string",
             "name": "name",
             "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "query"
           }
         ],
         "responses": {
@@ -8543,6 +8548,50 @@
         }
       ]
     },
+    "/v1/clusterprofiles/{uid}/export": {
+      "get": {
+        "produces": [
+          "application/octet-stream"
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Download the specified cluster profile",
+        "operationId": "V1ClusterProfilesUidExport",
+        "responses": {
+          "200": {
+            "description": "download cluster profile format file",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "enum": [
+            "yaml",
+            "json"
+          ],
+          "type": "string",
+          "default": "yaml",
+          "name": "format",
+          "in": "query"
+        }
+      ]
+    },
     "/v1/clusterprofiles/{uid}/metadata": {
       "patch": {
         "tags": [
@@ -8555,7 +8604,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/v1ObjectMetaInputEntitySchema"
+              "$ref": "#/definitions/v1ProfileMetaEntity"
             }
           }
         ],
@@ -9184,6 +9233,23 @@
             "description": "An array of cluster profiles summary items",
             "schema": {
               "$ref": "#/definitions/v1ClusterProfilesSummary"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dashboard/clusterprofiles/metadata": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of cluster profiles metadata",
+        "operationId": "v1ClusterProfilesMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfilesMetadata"
             }
           }
         }
@@ -16183,6 +16249,28 @@
         }
       ]
     },
+    "/v1/registries/{uid}": {
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified registry",
+        "operationId": "v1RegistriesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/resources/internal/clusters/{clusterUid}": {
       "get": {
         "tags": [
@@ -16435,7 +16523,7 @@
               "edge",
               "lodge",
               "level",
-              "edge-config",
+              "edgeconfig",
               "firth"
             ],
             "type": "string",
@@ -16476,7 +16564,7 @@
               "edge",
               "lodge",
               "level",
-              "edge-config",
+              "edgeconfig",
               "firth"
             ],
             "type": "string",
@@ -16664,6 +16752,40 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/v1SpectroCluster"
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/agents/{messageKey}/notify": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "operationId": "V1SpectroClustersAgentsNotify",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "messageKey",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersAgentsNotifyEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
             }
           }
         }
@@ -19096,34 +19218,6 @@
         }
       ]
     },
-    "/v1/spectroclusters/{uid}/downloadProfileArtifacts": {
-      "patch": {
-        "tags": [
-          "v1"
-        ],
-        "summary": "Initiate download of profile artificats for a specified cluster",
-        "operationId": "v1SpectroClustersUidDownloadProfileArtifacts",
-        "responses": {
-          "202": {
-            "description": "Ok reponse without content",
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        }
-      ]
-    },
     "/v1/spectroclusters/{uid}/edge/edgeHosts": {
       "get": {
         "tags": [
@@ -20667,6 +20761,80 @@
               "items": {
                 "$ref": "#/definitions/v1LoadBalancerService"
               }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/status/spcApply": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the SPC apply information for the agent",
+        "operationId": "v1SpectroClustersUidStatusSpcApplyGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SpcApply"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Set the CanBeApplied to true on the spcApply status. CanBeApplied indicates the agent to orchestrate the spc changes",
+        "operationId": "v1SpectroClustersUidStatusSpcApply",
+        "responses": {
+          "202": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/status/spcApply/patchTime": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the agent patch time for the SPC changes",
+        "operationId": "v1SpectroClustersUidStatusSpcPatchTime",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpcPatchTimeEntity"
             }
           }
         ],
@@ -29317,6 +29485,18 @@
         }
       }
     },
+    "v1CPUPassthroughSpec": {
+      "type": "object",
+      "properties": {
+        "cachePassthrough": {
+          "type": "boolean"
+        },
+        "isEnabled": {
+          "description": "Enables the CPU Passthrough for the libvirt domain",
+          "type": "boolean"
+        }
+      }
+    },
     "v1Card": {
       "description": "Card details",
       "properties": {
@@ -30396,6 +30576,9 @@
           "items": {
             "$ref": "#/definitions/v1ClusterProfileNotificationUpdateEntity"
           }
+        },
+        "spcApplySettings": {
+          "$ref": "#/definitions/v1SpcApplySettings"
         }
       }
     },
@@ -30457,6 +30640,9 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       }
     },
@@ -30472,6 +30658,9 @@
           "properties": {
             "template": {
               "$ref": "#/definitions/v1ClusterProfileTemplateDraft"
+            },
+            "version": {
+              "type": "string"
             }
           }
         }
@@ -30499,6 +30688,27 @@
         },
         "tags": {
           "$ref": "#/definitions/v1FilterArray"
+        },
+        "version": {
+          "$ref": "#/definitions/v1FilterVersionString"
+        }
+      }
+    },
+    "v1ClusterProfileMetadata": {
+      "description": "Cluster profile filter spec",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectEntity"
+        },
+        "spec": {
+          "properties": {
+            "cloudType": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -30630,6 +30840,25 @@
         },
         "published": {
           "$ref": "#/definitions/v1ClusterProfileTemplate"
+        },
+        "version": {
+          "type": "string"
+        },
+        "versions": {
+          "description": "Cluster profile's list of all the versions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileVersion"
+          }
+        }
+      }
+    },
+    "v1ClusterProfileSpecEntity": {
+      "description": "Cluster profile spec entity",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
         }
       }
     },
@@ -30637,6 +30866,11 @@
       "description": "ClusterProfileStatus defines the observed state of ClusterProfile",
       "type": "object",
       "properties": {
+        "hasUserMacros": {
+          "description": "If it is true then profile pack values has a reference to user defined macros",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "inUseClusterUids": {
           "type": "array",
           "items": {
@@ -30675,6 +30909,17 @@
             },
             "published": {
               "$ref": "#/definitions/v1ClusterProfileTemplateSummary"
+            },
+            "version": {
+              "description": "Cluster profile's latest version",
+              "type": "string"
+            },
+            "versions": {
+              "description": "Cluster profile's list of all the versions",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1ClusterProfileVersion"
+              }
             }
           }
         },
@@ -30723,6 +30968,10 @@
             "$ref": "#/definitions/v1PackRef"
           }
         },
+        "profileVersion": {
+          "description": "version start from 1.0.0, matching the index of ClusterProfileSpec.Versions[] will be used by clusterSpec to identify which version is applied to the cluster",
+          "type": "string"
+        },
         "type": {
           "type": "string"
         },
@@ -30730,7 +30979,7 @@
           "type": "string"
         },
         "version": {
-          "description": "version start from 0, matching the index of ClusterProfileSpec.Versions[] will be used by clusterSpec to identify which version is applied to the cluster",
+          "description": "Deprecated. Use profileVersion",
           "type": "integer",
           "format": "int32"
         }
@@ -30798,10 +31047,6 @@
         },
         "type": {
           "type": "string"
-        },
-        "version": {
-          "type": "integer",
-          "format": "int32"
         }
       }
     },
@@ -30833,6 +31078,9 @@
           "properties": {
             "template": {
               "$ref": "#/definitions/v1ClusterProfileTemplateUpdate"
+            },
+            "version": {
+              "type": "string"
             }
           }
         }
@@ -30844,6 +31092,17 @@
       "properties": {
         "packs": {
           "$ref": "#/definitions/v1ConstraintValidatorResponse"
+        }
+      }
+    },
+    "v1ClusterProfileVersion": {
+      "description": "Cluster profile with version",
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       }
     },
@@ -30876,6 +31135,21 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1ClusterProfileSortSpec"
+          }
+        }
+      }
+    },
+    "v1ClusterProfilesMetadata": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ClusterProfileMetadata"
           }
         }
       }
@@ -32702,6 +32976,9 @@
             "$ref": "#/definitions/v1ObjectEntity"
           }
         },
+        "profileStatus": {
+          "$ref": "#/definitions/v1ProfileStatus"
+        },
         "state": {
           "type": "string",
           "enum": [
@@ -33464,27 +33741,6 @@
         }
       }
     },
-    "v1EndpointAccess": {
-      "description": "EndpointAccess specifies how control plane endpoints are accessible",
-      "type": "object",
-      "properties": {
-        "private": {
-          "description": "Private points VPC-internal control plane access to the private endpoint",
-          "type": "boolean"
-        },
-        "public": {
-          "description": "Public controls whether control plane endpoints are publicly accessible",
-          "type": "boolean"
-        },
-        "publicCIDRs": {
-          "description": "PublicCIDRs specifies which blocks can access the public endpoint",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "v1Event": {
       "description": "Event information organized by tags",
       "type": "object",
@@ -33724,6 +33980,31 @@
         "ignoreCase": {
           "type": "boolean",
           "default": true
+        },
+        "ne": {
+          "type": "string",
+          "x-nullable": true
+        }
+      }
+    },
+    "v1FilterVersionString": {
+      "type": "object",
+      "properties": {
+        "beginsWith": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "eq": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "gt": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "lt": {
+          "type": "string",
+          "x-nullable": true
         },
         "ne": {
           "type": "string",
@@ -34984,6 +35265,12 @@
     "v1ImportClusterConfig": {
       "type": "object",
       "properties": {
+        "importMode": {
+          "type": "string",
+          "enum": [
+            "read-only"
+          ]
+        },
         "proxy": {
           "description": "Cluster proxy settings",
           "$ref": "#/definitions/v1ClusterProxySpec"
@@ -35933,6 +36220,10 @@
         "memoryInMB"
       ],
       "properties": {
+        "cpuPassthroughSpec": {
+          "description": "Defines CPU Passthrough Spec. A not null value enables CPU Passthrough for the libvirt domain. Further cache passthrough can be enabled with the CPU passthrough spec.",
+          "$ref": "#/definitions/v1CPUPassthroughSpec"
+        },
         "cpuset": {
           "description": "CPUSet defines cpuset for an instance which allows allocation specific set of cpus E.g  cpuset=\"1-4,^3,6\" See https://libvirt.org/formatdomain.html#cpu-allocation",
           "type": "string"
@@ -41982,6 +42273,21 @@
         }
       }
     },
+    "v1ProfileMetaEntity": {
+      "description": "Cluster profile meta input entity",
+      "type": "object",
+      "required": [
+        "metadata"
+      ],
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterProfileSpecEntity"
+        }
+      }
+    },
     "v1ProfileResolvedValues": {
       "description": "Resolved profile pack values",
       "properties": {
@@ -41993,6 +42299,16 @@
         },
         "uid": {
           "type": "string"
+        }
+      }
+    },
+    "v1ProfileStatus": {
+      "type": "object",
+      "properties": {
+        "hasUserMacros": {
+          "description": "If it is true then profile pack values has a reference to user defined macros",
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -43739,6 +44055,49 @@
         "desc"
       ]
     },
+    "v1SpcApply": {
+      "type": "object",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "DownloadAndInstall",
+            "DownloadAndInstallLater"
+          ]
+        },
+        "canBeApplied": {
+          "description": "If it is true then Agent can apply the changes to the palette",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "lastModifiedTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "patchAppliedTime": {
+          "$ref": "#/definitions/v1Time"
+        }
+      }
+    },
+    "v1SpcApplySettings": {
+      "type": "object",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "DownloadAndInstall",
+            "DownloadAndInstallLater"
+          ]
+        }
+      }
+    },
+    "v1SpcPatchTimeEntity": {
+      "type": "object",
+      "properties": {
+        "patchTime": {
+          "$ref": "#/definitions/v1Time"
+        }
+      }
+    },
     "v1SpectroAppMgmtUpgrade": {
       "description": "Spectro application management upgrade information",
       "type": "object",
@@ -44104,8 +44463,22 @@
     "v1SpectroClusterFilterSpec": {
       "description": "Spectro cluster filter spec",
       "properties": {
+        "cloudAccounts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
         "clusterName": {
           "$ref": "#/definitions/v1FilterString"
+        },
+        "clusterProfiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
         "clusterState": {
           "description": "Deprecated. Use clusterStates",
@@ -44477,6 +44850,9 @@
           "items": {
             "$ref": "#/definitions/v1SpectroClusterProfileEntity"
           }
+        },
+        "spcApplySettings": {
+          "$ref": "#/definitions/v1SpcApplySettings"
         }
       }
     },
@@ -44633,6 +45009,9 @@
           "x-kubernetes-patch-merge-key": "type",
           "x-kubernetes-patch-strategy": "merge"
         },
+        "profileStatus": {
+          "$ref": "#/definitions/v1ProfileStatus"
+        },
         "services": {
           "type": "array",
           "items": {
@@ -44640,6 +45019,9 @@
           },
           "x-kubernetes-patch-merge-key": "name",
           "x-kubernetes-patch-strategy": "merge"
+        },
+        "spcApply": {
+          "$ref": "#/definitions/v1SpcApply"
         },
         "state": {
           "description": "current operational state",
@@ -44664,6 +45046,9 @@
           "description": "Spectro cluster spec summary",
           "type": "object",
           "properties": {
+            "cloudAccountMeta": {
+              "$ref": "#/definitions/v1CloudAccountMeta"
+            },
             "cloudConfig": {
               "$ref": "#/definitions/v1CloudConfigMeta"
             },
@@ -44763,6 +45148,9 @@
             "$ref": "#/definitions/v1LoadBalancerService"
           }
         },
+        "spcApply": {
+          "$ref": "#/definitions/v1SpcApply"
+        },
         "state": {
           "description": "current operational state",
           "type": "string"
@@ -44857,6 +45245,20 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
+    "v1SpectroClustersAgentsNotifyEntity": {
+      "description": "SpectroClusters for which agents has to be notified",
+      "properties": {
+        "clusterUids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notifyAllClusters": {
+          "type": "boolean"
         }
       }
     },
@@ -47675,7 +48077,7 @@
       "properties": {
         "endpointAccess": {
           "description": "Endpoints specifies access to this cluster's control plane endpoints",
-          "$ref": "#/definitions/v1EndpointAccess"
+          "$ref": "#/definitions/v1TkeEndpointAccess"
         },
         "region": {
           "type": "string"
@@ -48111,6 +48513,35 @@
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
       "format": "date-time"
+    },
+    "v1TkeEndpointAccess": {
+      "description": "TKEEndpointAccess specifies how control plane endpoints are accessible",
+      "type": "object",
+      "properties": {
+        "IsExtranet": {
+          "description": "IsExtranet Whether it is external network access (TRUE external network access FALSE internal network access, default value: FALSE)",
+          "type": "boolean"
+        },
+        "private": {
+          "description": "Private points VPC-internal control plane access to the private endpoint",
+          "type": "boolean"
+        },
+        "privateCIDR": {
+          "description": "PrivateCIDRs specifies which blocks can access the public endpoint",
+          "type": "string"
+        },
+        "public": {
+          "description": "Public controls whether control plane endpoints are publicly accessible",
+          "type": "boolean"
+        },
+        "publicCIDRs": {
+          "description": "PublicCIDRs specifies which blocks can access the public endpoint",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
     "v1TotalClusterRate": {
       "description": "Cluster total estimated rate information",
