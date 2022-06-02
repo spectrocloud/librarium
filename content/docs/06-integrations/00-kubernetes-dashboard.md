@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes Dashboard
 
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself.
 
 ## Versions Supported
 
@@ -65,7 +65,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 * **ClusterIP service type**
 
-When connected to the cluster remotely, run the following command to establish a connection to dashboard deployment on port 8080
+When connected to the cluster remotely, run the following command to establish a connection to dashboard deployment on port 8080:
 
 ```bash
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -73,13 +73,13 @@ kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:4
 
 To access Kubernetes Dashboard, go to the below URL in a browser of your choice `https://localhost:8080`
 
-In the Dashboard login page, to get the bearer token, run the below command from the Terminal window:
+From the Dashboard login page, run the below command from the Terminal window to get the bearer token:
 
 ```bash
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
-The output of the above command will look like this, where the token value is in the last line
+The output of the above command will look as below, where the token value is in the last line:
 
 ```yaml
 Name:         kubernetes-dashboard-token-h4lnf
@@ -99,7 +99,7 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 
 * **LoadBalancer service type**
 
-Use the LB service IP & port to connect to the dashboard
+Use the Load Balancer service IP & Port to connect to the Dashboard
 
 # Ingress
 
@@ -107,15 +107,15 @@ Follow below steps to configure Ingress on Kubernetes Dashboard
 
 1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #17)
 2. Ingress (line #23)
-   * Enable Ingress; Change enabled from false to "true"
+   * Enable Ingress: Change enabled from "false" to "true"
    * Set Ingress rules like annotations, path, hosts, etc.
 
-With these config changes, you can access Kubernetes Dashboard service on the Ingress Controller LoadBalancer hostname / IP
+With these configuration changes, you can access Kubernetes Dashboard service on the Ingress Controller LoadBalancer hostname / IP
 
 ## Troubleshooting
 
-* If the Dashboard is not accessible, check the dashboard pod for any errors and ensure the Dashboard service is in the 'Running' state.
-* When the namespace is customized while deploying Dashboard, make sure to replace the namespace values in the above commands.
+* If the Dashboard is not accessible, check the dashboard pod for errors and ensure the Dashboard service is in the 'Running' state.
+* When the namespace is customized while deploying Dashboard replace the namespace values in the above commands.
 
 ## References
 
