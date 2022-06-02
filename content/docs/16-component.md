@@ -59,9 +59,9 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|2.6|2.0.2|
-|2.5|2.0.2|
-|2.3|2.0.2|
+|2.6|1.2.0|
+|2.5|1.1.9|
+|2.3|1.1.9|
 ------
 
 # MAAS PCG Image Version

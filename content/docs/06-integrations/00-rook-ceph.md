@@ -17,15 +17,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Rook Ceph
 
-Rook Ceph is an open source cloud-native storage orchestration providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments.
-
-Rook turns storage software into self-managing, self-scaling, and self-healing storage services. It does this by automating deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management. Rook uses the facilities provided by the underlying cloud-native container management, scheduling and orchestration platform to perform its duties.
+Rook turns storage software into self-managing, self-scaling, and self-healing storage services. It automates deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management. Rook uses the facilities provided by the underlying cloud-native container management, scheduling, and orchestration platform to perform its duties.
 
 The pack provides the following two configurations:
 * A three-node Ceph cluster (recommended).
 * A single node Ceph cluster. 
 
-Please make sure that your worker node pool size satisfies the minimum nodes requirement for your Ceph cluster. Additional disks should be attached to your worker pool nodes to deploy a Ceph cluster. Suppose you are using an existing appliances for your Kubernetes cluster (typical for edge clusters), you will need to ensure that additional disks (1 or 3 - based on your Ceph cluster settings) are attached to the appliance. The device filter needs to be configured in the pack settings for such cases. As an example, if the additional disks were sdd, sde, sdf, the following configuration would be required:
+Please make sure that your worker node pool size satisfies the minimum nodes requirement for your Ceph cluster. Additional disks should be attached to your worker pool nodes to deploy a Ceph cluster. For example, suppose you are using existing appliances for your Kubernetes cluster (typical for edge clusters); you will need to ensure that additional disks (1 or 3 - based on your Ceph cluster settings) are attached to the appliance. The device filter needs to be configured in the pack settings for such cases. As an example, if the additional disks were sdd, sde, sdf, the following configuration would be required:
 
 **Example:**		
 ```json
@@ -40,6 +38,12 @@ Please make sure that your worker node pool size satisfies the minimum nodes req
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="1.9.x" key="1.9.x">
+
+**1.9.2**
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="1.8.x" key="1.8.x">
 
