@@ -40,11 +40,12 @@ Detailed documentation on supported data sources and resources are available in 
 ## Module to Provider Compatibility Matrix
 
 |Module|Provider Version|
-|-----|------|
-|0.1.8 |0.7.1|
+|----- |------|
+|0.1.8 |0.7.2 |
+|0.1.8 |0.7.1 |
 |0.1.0 |0.7.0 |  
 |0.0.13|0.6.15| 
-|0.0.12 |0.6.14|
+|0.0.12|0.6.14|
 |0.0.11|0.6.13| 
 |0.0.10|0.6.12|
 
@@ -57,6 +58,21 @@ Find the detailed patch changes and comparisons of **0.7.x** within these tabs.
 
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.7.2" key="v0.7.2">
+
+## Changes
+
+The major changes are:
+
+* Fix: Dynamic provisioning in EKS.
+
+* Import cluster tags and generic cloud changes.
+
+Refer to Full Changelog: [v0.7.1 to v0.7.2](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.2)
+
+</Tabs.TabPane>
+
 
 <Tabs.TabPane tab="v0.7.1" key="v0.7.1">
 
@@ -72,6 +88,7 @@ Refer to Full Changelog: [v0.7.0 to v0.7.1](https://registry.terraform.io/provid
 
 </Tabs.TabPane>
 
+
 <Tabs.TabPane tab="v0.7.0" key="v0.7.0">
 
 ## Changes
@@ -83,6 +100,7 @@ The major change is:
 Refer to Full Changelog: [v0.6.x to v0.7.0](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.0)
 
 </Tabs.TabPane>
+
 
 <Tabs.TabPane tab="v0.6.14" key="v0.6.14">
 
