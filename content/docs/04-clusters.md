@@ -113,7 +113,7 @@ Additionally, usage metrics for individual nodes and node conditions are accessi
 
 # Application Services
 
-Palette enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. TThese include the applications and services deployed through Palette and the ones deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer or NodePort are displayed on the management console.
+Palette enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include the applications and services deployed through Palette and the ones deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
 ![Cluster Update Details](04-clusters/cluster_services.png "#width=500px")
 
