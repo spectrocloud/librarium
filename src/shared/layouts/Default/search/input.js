@@ -59,6 +59,7 @@ const gaSearchDebounced = debounce((query) => {
     label: query,
     nonInteraction: false,
   });
+  console.log("here", query);
 }, 3000);
 
 export default connectSearchBox(({ refine, focus, center, ...rest }) => {
