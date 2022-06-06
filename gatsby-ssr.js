@@ -36,8 +36,6 @@ const HeadComponents = [
   process.env.GATSBY_FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
 ].filter(Boolean);
 
-console.log(HeadComponents);
-
 const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(HeadComponents);
 };

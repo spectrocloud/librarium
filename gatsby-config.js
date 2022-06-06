@@ -23,6 +23,15 @@ const plugins = [
   },
   "gatsby-plugin-antd",
   {
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: "UA-152704919-1",
+      head: true,
+      anonymize: true,
+      respectDNT: true,
+    },
+  },
+  {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `shared`,

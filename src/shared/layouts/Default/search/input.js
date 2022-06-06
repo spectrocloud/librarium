@@ -4,6 +4,7 @@ import { connectSearchBox } from "react-instantsearch-dom";
 
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { debounce } from "lodash";
 
 const SearchIcon = styled(FontAwesomeIcon)`
   width: 1em;
@@ -50,6 +51,14 @@ const Form = styled.form`
     `}
 `;
 
+const gaSearchDebounced = debounce((query) => {
+  if (!window.ga) {
+    return;
+  }
+  window.ga("set", "page", `/?q=${query}`);
+  window.ga("send", "pageView", `/?q=${query}`);
+}, 3000);
+
 export default connectSearchBox(({ refine, focus, center, ...rest }) => {
   const ref = useRef(null);
   const preventSubmit = (e) => {
@@ -64,6 +73,13 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
       ref.current.focus();
     }
   }, [focus]);
+
+  useEffect(() => {
+    if (!inputValue) {
+      return;
+    }
+    gaSearchDebounced(inputValue);
+  }, [inputValue]);
 
   return (
     <Form className="formElement" onSubmit={preventSubmit} center={center}>
