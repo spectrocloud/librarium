@@ -22,6 +22,12 @@ Palette supports **Cilium**, an open-source software for securing and observing 
 
 The Cilium agent runs on all clusters and servers to provide networking, security and observability to the workload running on that node.
 
+## Pre-requisite
+
+* If the user is going for the BYO (Bring your own) Operating system use case then, HWE (Hardware Enabled) Kernel or a Kernel that supports [eBPF](https://ebpf.io/) modules needs to be provisioned. 
+
+**Palette OS images are by default provisioned with the above pre-requisite.**
+
 ## Versions Supported
 
 <Tabs>
