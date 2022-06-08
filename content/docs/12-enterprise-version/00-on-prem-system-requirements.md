@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
+The Palette SaaS platform is also available as a self-hosted, on-premises deployment. The on-premises version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premises is available in two modes:
 
 | **On-premises Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ The following section provides the hardware requirements for Palette Platform VM
 The size of the tenant cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
 </InfoBox>
 
-## On-premise Configurations
+## On-premises Configurations
 
 | **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
 | ---------------------- | ------------------------------------------ | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
