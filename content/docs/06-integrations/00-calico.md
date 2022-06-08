@@ -15,49 +15,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Overview
-
-Spectro Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
-
-## Versions Supported 
-
-[Calico](/integrations/calico)
-
-<Tabs>
-<Tabs.TabPane tab="3.22.x" key="3.22.x">
-
-* ** 3.22.0** 
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="3.19.x" key="3.19.x">
-
-* **3.19.0** 
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="3.16.x" key="3.16.x">
-
-* **3.16.0** 
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="3.10.x" key="3.10.x">
-
-* **3.10.2** 
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="3.9.x" key="3.9.x">
-
-* **3.9.4** 
-
-</Tabs.TabPane>
-
-</Tabs>
-
-
 # Calico
+
+Palette Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
 [Project Calico](http://docs.projectcalico.org/) is an open-source container networking provider and network policy engine.
 
@@ -76,6 +36,41 @@ Limitations:
 AWS, VMWare supports IP-in-IP encapsulation type.  
 Azure supports VXLAN encapsulation type.
 </WarningBox>
+
+# Versions Supported
+
+<Tabs>
+<Tabs.TabPane tab="3.22.x" key="3.22.x">
+
+* ** 3.22.0**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.19.x" key="3.19.x">
+
+* **3.19.0**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.16.x" key="3.16.x">
+
+* **3.16.0**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.10.x" key="3.10.x">
+
+* **3.10.2**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="3.9.x" key="3.9.x">
+
+* **3.9.4**
+
+</Tabs.TabPane>
+
+</Tabs>
 
 # Notable Parameters
 
