@@ -3,10 +3,11 @@ title: "System Requirements"
 metaTitle: "On-Prem System Requirements"
 metaDescription: "an overview of On-Prem System Requirements"
 icon: ""
-hideToC: false
-fullWidth: false
+hideToC: true
+fullWidth: true
 ---
 
+import Tabs from 'shared/components/ui/Tabs';
 import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
@@ -14,150 +15,243 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-
 # System Requirements
 
-The Palette SaaS platform is also available as a self-hosted on-premise deployment. The On-Premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-prem is available in two modes:
+The Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
 
-* Quick Start Mode - A single VM deployment of the platform ideal for PoC purposes.
-* Enterprise Mode - A multi-node highly available version for production purposes.
+| **On-premises Modes** | **Description**                                                                   |
+| --------------------- | --------------------------------------------------------------------------------- |
+| **Enterprise Mode**   | A multi-node highly available version for production purposes.                    |
+| **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
 
 The sections below describe the standard requirements and highlight specific requirements for both the deployment modes.
-
 ## vSphere Environment Prerequisites
 
-* General requirements:
+### General requirements
    - vCenter version :  6.7 and above
+  
+
    - NTP configured on all ESXi Hosts
 
 
+### Zone Tagging
 
-* Zone Tagging
+  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Palette platform itself and is also useful for Workloads deployed in the Tenant Clusters, if they have persistent storage needs. Use vSphere tags on data centers (kubernates-region) and compute clusters (kubernetes-zone) to create distinct zones in your environment.
 
-  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+  As an example, assume your vCenter environment includes three compute clusters: *cluster-1*, *cluster-2*, and *cluster-3* that are part of data center dc-1. You can tag them as follows:
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of datacenter dc-1. You can tag them as follows:
-
-    | vSphere Object       | Tag Category     | Tag Value     |
-    | :-------------       | :----------      | :-----------  |
-    |  dc-1                | k8s-region       | region1       |
-    | cluster-1            | k8s-zone         | az1           |
-    | cluster-2            | k8s-zone         | az2           |
-    | cluster-3            | k8s-zone         | az3           |
-
-    Note: The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+| **vSphere Object** | **Tag Category** | **Tag Value** |
+| ------------------ | ---------------- | ------------- |
+| dc-1               | k8s-region       | region1       |
+| cluster-1          | k8s-zone         | az1           |
+| cluster-2          | k8s-zone         | az2           |
+| cluster-3          | k8s-zone         | az3           |
 
 
-* Permissions
+**Note**: The exact values for the kubernates-region and kubernates-zone tags can be different from the ones described in the above example, as long as they are unique.
+<br />
+
+### Permissions
+
+The following permissions are required for the account used to install the platform:
+
+### vSphere Object     
+
+<Tabs>
+
+<Tabs.TabPane tab="Datastore" key="Datastore">
+
+  #### Datastore Privileges
+  - Allocate Space                                
+  - Browse Datastore                              
+  - Low level file operations                     
+  - Remove file                                   
+  - Update virtual machine files                  
+  - Update virtual machine metadata
 
 
-  The following permissions are required for the account used to install the platform:
+</Tabs.TabPane>
 
- | vSphere Object | Privileges |
-| --- | --- |
-| Datastore | Allocate Space |
-| | Browse Datastore |
-| | Low level file operations |
-| | Remove file |
-| | Update virtual machine files |
-| | Update virtual machine metadata |
-| Folder | Create folder |
-| | Delete folder |
-| | Move folder |
-| | Rename folder|
-| Network | Assign Network |
-| Resource | Apply recommendation
-| | Assign virtual machine to resource pool |
-| | Migrate powered off virtual machine |
-| | Migrate powered on virtual machine |
-| | Query vMotion |
-| Sessions| Validate session |
-| Storage views | View|
-| Tasks | Create task |
-| | Update Task |
-| Virtual Machines | Change Configuration |
-| | * Change Settings |
-| | * Change Swapfile Placement
-| | * Configure host USB device
-| | * Configure raw device
-| | * Add existing disk
-| | * Add new disk
-| | * Add or remove device
-| | * Advanced configuration
-| | * Change CPU count
-| | * Change resource
-| | * Configure managedBy
-| | * Display connection settings
-| | * Extend virtual disk
-| | * Modify device settings
-| | * Query Fault Tolerance compatibility
-| | * Query unowned files
-| | * Reload from path
-| | * Remove disk
-| | * Rename
-| | * Reset guest information
-| | * Set annotation
-| | * Toggle fork parent
-| | * Upgrade virtual machine compatibility
-| | Guest operations
-| | * Guest operation alias modification
-| | * Guest operation alias query
-| | * Guest operation modifications
-| | * Guest operation program execution
-| | * Guest operation queries
-| | Interaction
-| | * Power off
-| | * Power on
-| | Inventory
-| | * Create from existing
-| | * Create new
-| | * Move
-| | * Remove
-| | Provisioning
-| | * Allow disk access
-| | * Allow file access
-| | * Allow read-only disk access
-| | * Allow virtual machine download
-| | * Allow virtual machine files upload
-| | * Clone template
-| | * Clone virtual machine
-| | * Create template from virtual machine
-| | * Customize guest
-| | * Deploy template
-| | * Mark as template
-| | * Mark as virtual machine
-| | * Modify customization specification
-| | * Promote disks
-| | * Read customization specifications
-| | Service Configuration
-| | * Allow notifications
-| | * Allow polling of global event notifications
-| | * Manage service configurations
-| | * Modify service configuration
-| | * Query service configurations
-| | * Read service configuration
-| | Snapshot management
-| | * Create snapshot
-| | * Remove snapshot
-| | * Rename snapshot
-| | * Revert to snapshot
-| | vSphere Replication
-| | * Configure replication
-| | * Manage replication
-| | * Monitor replication
-| vApp | Import
-| | View OVF environment
-| | vApp application configuration
-| | vApp instance configuration
-| vSphere Tagging| Create vSphere Tag
-| | Edit vSphere Tag
+<Tabs.TabPane tab="Folder" key="Folder">
+
+  #### Folder Privileges
+  - Create folder                                 
+  - Delete folder                                 
+  - Move folder                                   
+  - Rename folder   
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Network" key="Network">
+
+  #### Network Privileges
+
+  - Assign Network  
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Resource" key="Resource">
+
+  #### Resource Privileges
+    
+  - Apply recommendation                          
+  - Assign virtual machine to resource pool       
+  - Migrate powered off virtual machine           
+  - Migrate powered on virtual machine            
+  - Query vMotion 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Sessions" key="Sessions">
+
+  #### Sessions Privileges
+  - Validate session 
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Storage views" key="Storage views">
+
+  #### Storage Views Privileges
+  - View  
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Tasks" key="Tasks">
+
+  #### Task Privileges
+
+  - Create task                                  
+  - Update Task
+  
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="vApp" key="vApp">
+
+  #### vApp Privileges
+
+  - Import                                        
+  - View OVF environment                          
+  - vApp application configuration                
+  - vApp instance configuration                   
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="vSphere Tagging" key="vSphere Tagging">
+
+  #### vSphere Tagging
+
+  - Create vSphere Tag
+  - Edit vSphere Tag 
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="VMs" key="Virtual Machines">
+
+  #### Virtual Machines Privileges
+
+
+<br />
+
+  **Change Configuration**   
+
+|                           |                                     |                                       |
+| ------------------------- | ----------------------------------- | ------------------------------------- |
+| Change Settings           | Configure managedBy                 | Reload from path                      |
+| Change Swapfile Placement | Display connection settings         | Remove disk                           |
+| Configure host USB device | Advanced configuration              | Rename                                |
+| Configure raw device      | Change CPU count                    | Reset guest information               |
+| Add existing disk         | Extend virtual disk                 | Set annotation                        |
+| Add new disk              | Modify device settings              | Toggle fork parent                    |
+| Add or remove device      | Query Fault Tolerance compatibility | Upgrade virtual machine compatibility |
+| Change resource           | Query un-owned files                |                                       |
+
+
+
+  **Guest operations**  
+ 
+|                                    |                                    |                             |
+| ---------------------------------- | ---------------------------------- | --------------------------- |
+| Guest operation alias modification | Guest operation alias modification | Guest operation alias query |
+| Guest operation modifications      | Guest operation program execution  | Guest operation queries     |
+
+
+
+  **Interaction**
+
+|           |          |     |
+| --------- | -------- | --- |
+| Power off | Power on |     |
+
+
+
+  **Inventory**
+
+|                      |            |        |
+| -------------------- | ---------- | ------ |
+| Create from existing | Create new | Remove |
+| Create from existing | Move       |        |
+|                      |            |        |
+
+
+  **Provisioning**
+
+|                                |                                      |                         |                                    |
+| ------------------------------ | ------------------------------------ | ----------------------- | ---------------------------------- |
+| Allow disk access              | Allow virtual machine files upload   | Customize guest         | Modify customization specification |
+| Allow file access              | Clone template                       | Deploy template         | Promote disks                      |
+| Allow read-only disk access    | Clone virtual machine                | Mark as template        | Read customization specifications  |
+| Allow virtual machine download | Create template from virtual machine | Mark as virtual machine |                                    |
+
+
+  **Service Configuration**
+
+|                                             |                              |
+| ------------------------------------------- | ---------------------------- |
+| Allow notifications                         | Modify service configuration |
+| Allow polling of global event notifications | Query service configurations |
+| Manage service configurations               | Read service configuration   |
+
+
+  **Snapshot <anagement**
+
+|                 |                    |
+| --------------- | ------------------ |
+| Create snapshot | Remove snapshot    |
+| Rename snapshot | Revert to snapshot |
+
+
+  **vSphere Replication**
+
+|                       |
+| --------------------- |
+| Configure replication |
+| Manage replication    |
+| Monitor replication   |
+
+
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
 
 ##  Network Requirements
 
 * Outgoing access from the platform VMs to the internet either directly or via a proxy.
+
+
 * An IP Address (static or DHCP) for the quick start virtual machine (also used as an installer for enterprise version).
-* A block of 5 IP addresses reserved for enterprise cluster. One IP address for each of the three enterprise cluster VMs. An IP to be used as VIP and an additional IP reserved for rolling upgrades.
-* Interconnectivity across all the 3 VMs on all ports.
+
+
+* A block of five (5) IP addresses reserved for enterprise cluster. One IP address for each of the three enterprise cluster VMs, an IP to be used as a VIP, and an additional IP reserved for rolling upgrades.
+
+
+* Interconnectivity across all the three (3) VMs on all ports.
+
+
 * Connectivity from the Virtual Machines to the vCenter.
 
 
@@ -168,67 +262,75 @@ The sections below describe the standard requirements and highlight specific req
 
 ##  Proxy Requirements
 *   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic.
+
+
 *   Connectivity to the following domains and ports should be allowed:
 
-    | Top-level Domain | Port | Description |
-    | --- | --- | --- |
-    | spectrocloud.com | 443 | Spectro Cloud content repository and pack registry |
-    | s3.amazonaws.com | 443 | Spectro Cloud VMware OVA files |
-    | gcr.io | 443 | Spectro Cloud and common 3rd party container images |
-    | docker.io | 443 | Common 3rd party container images |
-    | googleapis.com | 443 | For pulling Spectro Cloud images |
-    | docker.com | 443 | Common 3rd party container images |
-    | raw.githubusercontent.com | 443 | Common 3rd party content |
-    | projectcalico.org | 443 | Calico container images |
-    | quay.io | 443 | Common 3rd party container images |
-    | grafana.com | 443 | Grafana container images and manifests |
-    | github.com | 443 | Common 3rd party content|
+    | **Top-level Domain**      | **Port** | **Description**                                     |
+    | ------------------------- | -------- | --------------------------------------------------- |
+    | spectrocloud.com          | 443      | Spectro Cloud content repository and pack registry  |
+    | s3.amazonaws.com          | 443      | Spectro Cloud VMware OVA files                      |
+    | gcr.io                    | 443      | Spectro Cloud and common 3rd party container images |
+    | docker.io                 | 443      | Common 3rd party container images                   |
+    | googleapis.com            | 443      | For pulling Spectro Cloud images                    |
+    | docker.com                | 443      | Common 3rd party container images                   |
+    | raw.githubusercontent.com | 443      | Common 3rd party content                            |
+    | projectcalico.org         | 443      | Calico container images                             |
+    | quay.io                   | 443      | Common 3rd party container images                   |
+    | grafana.com               | 443      | Grafana container images and manifests              |
+    | github.com                | 443      | Common 3rd party content                            |
 
 
 ## Hardware Requirements
 
 The following section provides the hardware requirements for Palette Platform VMs for various capacity levels.
-* Concurrent Tenant Clusters - The number of concurrent tenant cluster provisioning or deletion requests.
-* Total Managed Clusters - The number of parallel running tenant clusters.
-
-    <InfoBox>
-     The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below.
-    </InfoBox>
-
-### Quick Start
-
-| Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
-| --- | :---: | :-----: | :---: | :---: | :---: | --- |
-| Standard | 3 | 20 | 1 | 8Gb | 4 Virtual CPUs | 80 GB |
-
-### Enterprise
-
-| Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
-| --- | :---: | :-----: | :---: | :---: | :---: | --- |
-| Standard | 3 | 200 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
 
 
+| **Capacity Levels**            | **Description**                                                            |
+| ------------------------------ | -------------------------------------------------------------------------- |
+| **Concurrent Tenant Clusters** | The number of concurrent tenant cluster provisioning or deletion requests. |
+| **Total Managed Clusters**     | The number of parallel running tenant clusters.                            |
+
+
+<br />
 <InfoBox>
- For high availability purposes, it is recommended that you deploy the 3 VMs across 3 compute clusters.
+The size of the tenant cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
 </InfoBox>
 
+## On-premise Configurations
 
-## Best Practices
+| **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
+| ---------------------- | ------------------------------------------ | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
+| **Small**              | 4                                          | 1000          | 4        | 8 GB       | 60 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
+| **Medium(Default)**    | 8                                          | 3000          | 8        | 16 GB      | 120 GB      | 60 GB, 2 CPU, 4 GB Mem | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
+| **Large**              | 12                                         | 5000          | 12       | 32 GB      | 150 GB      | 80 GB, 2 CPU, 6 GB Mem | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
+
+
+<br />
+
+## Quick Start and Enterprise Configurations
+
+|                 | **Category** | **Concurrent <br /> Tenant <br /> Clusters** | **Total <br /> Managed <br /> Clusters**                 | **No. <br /> of <br /> VMs** | **Memory** | **CPUs**       | **Storage** |
+| --------------- | ------------ | ------------------------------------------- | ------------------------------------------------------- | --------------------------- | ---------- | ------------- | ----------- |
+| **Quick Start** | Small        | 4                                            | 20                                                       | 1                            | 8 GB       | 4 Virtual CPUs | 80 GB       |
+| **Enterprise**  | Medium       | 8                                            | 500* (Cluster having 6 nodes <br /> and each node with 30 pods) | 3                            | 16 GB      | 8 Virtual CPUs | 120 GB      |
+
+
+
+<br />
+  <InfoBox>
+  For high availability purposes, it is recommended that you deploy the three (3) VMs across three (3) compute clusters.
+  </InfoBox>
+    
+
+## Best Practices 
 
 The following steps are optional but recommended for production environments.
 
-* DNS Mapping:
 
-  A DNS is  used to access Palette Management Console. While the Virtual IP Address (VIP) configured on the platform can be used to access the  platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.
-
-* SMTP Settings:
-
-  Configure SMTP settings to enable the Palette platform to send out email notifications. Email Notifications are sent out to new users when they are initially on-boarded to the platform so they can activate their accounts as well as to reset their password at a later time.
-
-* Trusted Certificate:
-
-  Configure your platform with a trusted CA certificates.
-
-* FTP Location for backups:
-
-   Configure a FTP location for platform backups and schedule daily backups.
+|                              |                                                                                                                                                                                                                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **DNS Mapping**              | A DNS is used to access the Palette Management Console. While the Virtual IP Address (VIP) configured on the platform can be used <br /> to access the platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.                     |
+| **SMTP Setting**s            | Configure the SMTP settings to enable the Palette platform to send out email notifications. Email Notifications are sent out to new <br /> users when they are initially onboarded to the platform, <br /> so they can activate their accounts and reset their password at a later time. |
+| **Trusted Certificate**      | Configure your platform with a trusted CA certificates.                                                                                                                                                                                                                                  |
+| **FTP Location for backups** | Configure an FTP location for platform backups and schedule daily backups.                                                                                                                                                                                                               |
