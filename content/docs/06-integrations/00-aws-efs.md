@@ -16,18 +16,28 @@ import InfoBox from 'shared/components/InfoBox';
 
 # AWS EFS
 
-Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic encryption of data at rest and in transit. You can access information from an EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
+Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic encryption of data at rest and in transit. You can access information from an AWS EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
 
-Palette handles setting up the EFS as a volume with ease when adding the persistentvolume storage container. Palette will dynamically provision the EFS storage layer for the worker node. 
+Palette handles setting up the AWS EFS as a volume with ease when adding the persistentvolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
 
 
 # Requirements
 
-- The Identity and Access Management (IAM) policy below contains the minimum access required for Palette to the work with EFS.
+- The Identity and Access Management (IAM) policy below contains the minimum access required for Palette to work with AWS EFS.
 
-- The EFS policy needs to be attached as `*roleadditionalpolicies*` in the Kubernetes layer of the Cluster.
+- The AWS EFS policy needs to be attached as `*roleadditionalpolicies*` in the Kubernetes layer of the Cluster.
 
 - Create and add this policy as a `roleAdditionalPolicies` in the `managedMachinePool` policy of kubernetes layer.
+
+## Usage
+
+There are two ways to add AWS EFS to Palette:
+
+1. Add AWS EFS as a CSI layer in AWS/EKS.
+
+
+2. You can also load AWS EFS as an Add-on layer, which will create a new storage class using the AWS EFS file system.
+
 
 
 ## Policy Information
@@ -75,8 +85,8 @@ Palette handles setting up the EFS as a volume with ease when adding the persist
 | ---------------- | ---------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | storageClassName |                  | spectro-storage-class | AWS Volume type to be used.                                                                                                                                                      |
 | isDefaultClass   |                  | true                  | Toggle for Default class                                                                                                                                                         |
-| fileSystemId     | true, false      |                       | This is the File System under which access points are created. <br /> This is a mandatory field and needs to be set to pre-created EFS volume. <br /> Other values can be at default setting.    |
-| provisioningMode | efs-ap           | efs-ap                | The type of volume provisioned by EFS. For now, this is the <br /> only access point.supported.                                                                                           |
+| fileSystemId     | true, false      |                       | This is the File System under which access points are created. <br /> This is a mandatory field and needs to be set to pre-created AWS EFS volume. <br /> Other values can be at default setting.    |
+| provisioningMode | efs-ap           | efs-ap                | The type of volume provisioned by AWS EFS. For now, this is the <br /> only access point supported.                                                                                           |
 | directoryPerms   |                  | 700                   | Directory permissions for Access Point root directory.creation.                                                                                                                |
 | gidRangeStart    |                  | 1000                  | Starting range of the Portable Operating System Interface(POSIX) group Id <br /> to be applied for access point root directory creation (optional).                          |
 | gidRangeEnd      |                  | 2000                  | End range of the POSIX group Id.(optional)                                                                                                                                     |
@@ -86,7 +96,7 @@ Palette handles setting up the EFS as a volume with ease when adding the persist
 # Troubleshooting
 
 ### Storage Class
-Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+Storage classes created by Palette will be with the name *spectro-storage-class* and can be fetched from kubectl using the following CLI command:
 
 ```bash
 kubectl get storageclass
@@ -120,7 +130,7 @@ Mounted By:  <none> </p>
 
 # References
 
-See the following information on all EFS parameters:
+See the following information on all AWS EFS parameters:
 
 - https://github.com/kubernetes-sigs/aws-efs-csi-driver
 
@@ -138,5 +148,6 @@ Example of an IAM Policy:
 To learn more info about Storage Classes see following links:
 
 https://kubernetes.io/docs/concepts/storage/storage-classes/
+
 
 
