@@ -195,17 +195,27 @@ The following section provides the hardware requirements for Palette Platform VM
      The size of the tenant cluster in terms of the number of nodes or size of the nodes does not impact the capacity guidance below.
     </InfoBox>
 
+## On-Prem Configuration
+|Configuration Name|Concurrent Cluster Launch|Max Nodes|CPUs|Memory|Storage|MongoDB Limit|Running Workload
+|------------------|---------|----|------|-------|-------------|------|
+|Small| 4|1000|4|8 GB|60 GB|20 GB, 1 CPU, 2 GB Mem|Up to 1000 Nodes each with 30 Pods (30,000 pods)|
+|Medium(Default)|8|3000|8|16 GB|120 GB|60 GB, 2 CPU, 4 GB Mem|Up to 3000 Nodes each with 30 Pods (90,000 pods)|
+|Large|12|5000|12|32 GB|150 GB|80 GB, 2 CPU, 6 GB Mem|Up to 5000 Nodes each with 30 Pods (150,000 pods)|
+
 ### Quick Start
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
-| --- | :---: | :-----: | :---: | :---: | :---: | --- |
-| Standard | 3 | 20 | 1 | 8Gb | 4 Virtual CPUs | 80 GB |
+|---|---|-----|---|---|---|----|
+| Small | 4    | 20      |     1 |   8GB | 4 Virtual CPUs | 80 GB |
 
 ### Enterprise
 
 | Category | Concurrent Tenant Clusters | Total Managed Clusters | No. of VMs | Memory | CPUs | Storage |
-| --- | :---: | :-----: | :---: | :---: | :---: | --- |
-| Standard | 3 | 200 | 3 | 8Gb | 4 Virtual CPUs | 80 GB |
+| --- | --- | ----- | --- | --- | --- | --- |
+| Medium | 8 | 500* (Cluster having 6 nodes and each node with 30 pods)| 3 | 16GB | 8 Virtual CPUs | 120 GB |
+
+ 
+
 
 
 <InfoBox>
