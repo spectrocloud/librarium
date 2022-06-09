@@ -5,7 +5,7 @@ metaDescription: 'AWS EFS storage add on into Spectro Cloud'
 hiddenFromNav: true
 isIntegration: true
 category: ['storage']
-logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
+logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -20,15 +20,6 @@ Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows f
 
 Palette handles setting up the AWS EFS as a volume with ease when adding the persistentvolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
 
-
-# Requirements
-
-- The Identity and Access Management (IAM) policy below contains the minimum access required for Palette to work with AWS EFS.
-
-- The AWS EFS policy needs to be attached as `*roleadditionalpolicies*` in the Kubernetes layer of the Cluster.
-
-- Create and add this policy as a `roleAdditionalPolicies` in the `managedMachinePool` policy of kubernetes layer.
-
 ## Usage
 
 There are two ways to add AWS EFS to Palette:
@@ -38,6 +29,13 @@ There are two ways to add AWS EFS to Palette:
 
 2. As an Add-on layer, which will create a new storage class using the AWS EFS file system.
 
+
+# Requirements
+
+- Create the Identity and Access Management (IAM) role that allows the driver to manage EFS access points.  See (EFSCSIControllerIAMPolicy)[https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/]
+
+
+- Have a filesystem created and available before you provision AWS EFS to Palette.
 
 
 ## Policy Information
@@ -80,17 +78,18 @@ There are two ways to add AWS EFS to Palette:
 
 
 ## Notable Parameters
+While adding the AWS EFS layer the following parameters can be configured: 
 
-| Name             | Supported Values | Default Value         | Description                                                                                                                                                                      |
-| ---------------- | ---------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| storageClassName |                  | spectro-storage-class | AWS Volume type to be used.                                                                                                                                                      |
-| isDefaultClass   |                  | true                  | Toggle for Default class                                                                                                                                                         |
-| fileSystemId     | true, false      |                       | This is the File System under which access points are created. <br /> This is a mandatory field and needs to be set to pre-created AWS EFS volume. <br /> Other values can be at default setting.    |
-| provisioningMode | efs-ap           | efs-ap                | The type of volume provisioned by AWS EFS. For now, this is the <br /> only access point supported.                                                                                           |
-| directoryPerms   |                  | 700                   | Directory permissions for Access Point root directory.creation.                                                                                                                |
-| gidRangeStart    |                  | 1000                  | Starting range of the Portable Operating System Interface(POSIX) group Id <br /> to be applied for access point root directory creation (optional).                          |
-| gidRangeEnd      |                  | 2000                  | End range of the POSIX group Id.(optional)                                                                                                                                     |
-| basePath         |                  | /base_efs             | Path under which access points for dynamic provisioning is created. <br /> If this parameter is not specified, access points <br /> are created under the root directory of the file system. |
+| Name             | Supported Values | Default Value         | Description                                                                                                                                                                                                                              |
+| ---------------- | ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| storageClassName |                  | spectro-storage-class | AWS Volume type to be used.                                                                                                                                                                                                              |
+| isDefaultClass   |                  | true                  | Toggle for Default class                                                                                                                                                                                                                 |
+| fileSystemId     |                  |                       | This is the File System under which access points are created. It should be created prior this setup. <br /> This is a mandatory field and needs to be set to pre-created AWS EFS volume. <br /> Other values can be at default setting. |
+| provisioningMode | efs-ap           | efs-ap                | The type of volume provisioned by AWS EFS. For now, this is the <br /> only access point supported.                                                                                                                                      |
+| directoryPerms   |                  | 700                   | Directory permissions for Access Point root directory.creation.                                                                                                                                                                          |
+| gidRangeStart    |                  | 1000                  | Starting range of the Portable Operating System Interface(POSIX) group Id <br /> to be applied for access point root directory creation (optional).                                                                                      |
+| gidRangeEnd      |                  | 2000                  | End range of the POSIX group Id.(optional)                                                                                                                                                                                               |
+| basePath         |                  | /base_efs             | Path under which access points for dynamic provisioning is created. <br /> If this parameter is not specified, access points <br /> are created under the root directory of the file system.                                             |
 
 
 # Troubleshooting
