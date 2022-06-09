@@ -99,27 +99,27 @@ The following steps need to be performed to provision a new AKS cluster:
 
 4. Provide the Azure Cloud account and placement information.
 
-    |**Parameter**| **Description**|
-    |-------------|---------------|
+    |**Parameter**      | **Description**|
+    |-------------------|---------------|
     | **Cloud Account** | Select the desired cloud account. Azure cloud accounts with credentials need to be preconfigured in project settings.|
-    | **Subscription** | Select the subscription which is to be used to access Azure Services.|
-    | **Region** | Select a region in Azure in which the cluster should be deployed.|
-    | **Resource Group** | Select the resource group in which the cluster should be deployed.|
-    | **SSH Key** | Public key to configure remote SSH access to the nodes.|
-    | **Placement** | If the choice of placement is Static, then select:
-        || **Virtual Network**: Select the virtual network from dropdown menu.|
-        || **Control plane Subnet**: Select the control plane network from the dropdown menu.|
-        || **Worker Network**: Select the worker network from the dropdown menu.|
+    | **Subscription**  | Select the subscription which is to be used to access Azure Services.|
+    | **Region**        | Select a region in Azure in which the cluster should be deployed.|
+    | **Resource Group**| Select the resource group in which the cluster should be deployed.|
+    | **SSH Key**       | Public key to configure remote SSH access to the nodes.|
+    | **Placement**     | If the choice of placement is Static, then select:
+    |                   | **Virtual Network**: Select the virtual network from dropdown menu.|
+    |                   | **Control plane Subnet**: Select the control plane network from the dropdown menu.|
+    |                   | **Worker Network**: Select the worker network from the dropdown menu.|
 
 5. Configure the worker node pools. A worker node pool is configured by default.
 
     |**Parameter**| **Description**|
-    |---------|---------------| 
-    |**Name**|A descriptive name for the node pool.|
-    |**Size** |Number of nodes to be provisioned for the node pool.|
+    |-----------------|---------------| 
+    |**Name**         |A descriptive name for the node pool.|
+    |**Size**         |Number of nodes to be provisioned for the node pool.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool.|
-    |**Managed Disk**| Select the managed disk type to be used|
-    |**Disk Size**|Storage disk size in GB to be attached to the node.|
+    |**Managed Disk** | Select the managed disk type to be used|
+    |**Disk Size**    |Storage disk size in GB to be attached to the node.|
     |**Availability Zones (if any)**|Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools|
     
 <InfoBox>
@@ -145,6 +145,7 @@ New worker pools may be added if it desired to customize certain worker nodes to
 
 
 # Deleting an AKS Cluster
+
 The deletion of an AKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AKS cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
