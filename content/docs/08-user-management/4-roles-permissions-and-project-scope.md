@@ -17,31 +17,33 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Project Scope
 
-The Global Project Scope holds a cluster of resources in a logical grouping to that specific project. Users and Teams with specific Roles can be associated with the Project(s) you create. Below is a list of Roles types within the Project Scope. 
+The Global Project Scope holds a cluster of resources in a logical grouping to that specific project. Users and Teams with specific Roles can be associated with the Project(s) you create. Below is a list of Role types within the Project Scope. 
+
+1. [Project Administrator Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-administrator-role)
+2. [Project Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-editor-role)
+3. [Project Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-viewer-role)
+4. [Cluster Profile Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-admin-role)
+5. [Cluster Profile Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-editor-role)
+6. [Cluster Profile Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-viewer-role)
+7. [Cluster Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-admin-role)
+8. [Cluster Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-viewer-role)
+9. [Cloud Account Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-admin-role)
+10. [Cloud Account Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-editor-role)
+11. [Cloud Account Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-viewer-role)
+12. [Workspace Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#workspace-admin-role)
+13. [Workspace Operator Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#workspace-operator-role)
 
 
-1. [Cloud Account Admin](/08-user-management/4-roles-permissions-and-project-scope#cloud-account-admin)
-2. [Cloud Account Editor](/08-user-management/4-roles-permissions-and-project-scope#cloud-account-editor)
-3. [Cloud Account Viewer](/08-user-management/4-roles-permissions-and-project-scope#cloud-account-viewer)
-4. [Cluster Admin](/08-user-management/4-roles-permissions-and-project-scope#cluster-admin)
-5. [Cluster Profile Admin](/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-admin)
-6. [Cluster Profile Editor](/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-editor)
-7. [Cluster Profile Viewer](/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-viewer)
-8. [Cluster Viewer](/08-user-management/4-roles-permissions-and-project-scope#cluster-viewer)
-9. [Project Admin](/08-user-management/4-roles-permissions-and-project-scope#project-administrator)
-10. [Project Editor](/08-user-management/4-roles-permissions-and-project-scope#project-editor)
-11. [Project Viewer](/08-user-management/4-roles-permissions-and-project-scope#project-viewer)
-12. [Workspace Admin](/08-user-management/4-roles-permissions-and-project-scope#workspace-admin)
-13. [Workspace Operator](/08-user-management/4-roles-permissions-and-project-scope#workspace-operator)
+Palette has adopted the security principle of least privilege.  Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permission's format is `component`.`operation` where component refers to resource or API functionality. 
 
-
-Each user is assigned Roles and Permissions to the scopes, resources, and components.  
+Permissions are of format component.operation where component refers to resource or API functionality. There are two ways to assign permissions. The first method is to select from the **Global Roles** list under **Tenant Settings** or **Create Role**, if you need to extend your permissions.
 
 <br />
 <br />
 <br />
 
 # Project
+
 <br />
 <br />
 <br />
@@ -51,54 +53,73 @@ Each user is assigned Roles and Permissions to the scopes, resources, and compon
 <Tabs.TabPane tab="Admin" key="Project Admin">
 <br />
 
-## Project Administrator
+## Project Administrator Role
 
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-|                    |         |          |            |                 |            |            |             |             |            |
-| **cloudaccount**   |    √    |          |            |                 |            |     √      |             |             |            |
-| **cluster**        |    √    |          |            |                 |     √      |     √      |             |             |            |
-| **clusterProfile** |         |          |     √      |                 |            |     √      |      √      |             |     √      |
-| **clusterRbac**    |    √    |    √     |     √      |                 |            |            |             |             |     √      |
-| **dnsMapping**     |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **edgehost**       |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **location**       |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **machine**        |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **privateGateway** |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **project**        |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **sshKey**         |    √    |    √     |     √      |                 |            |     √      |             |      √      |     √      |
-| **workspace**      |    √    |    √     |     √      |        √        |            |     √      |             |             |     √      |
-| **packRegistry**   |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
+The Project Administrator can manage a project where the user has the ProjectAdmin role. This applies to that specific project.
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **audit**          | √       | √        |            |            |            |            |             |            |             |
+| **cloudaccount**   | √       | √        | √          | √          | √          |            |             |            |             |
+| **cloudconfig**    | √       | √        | √          | √          | √          |            |             |            |             |
+| **cluster**        | √       | √        | √          | √          | √          | √          |             |            |             |
+| **clusterProfile** | √       | √        | √          | √          | √          |            | √           |            |             |
+| **clusterRbac**    | √       | √        | √          | √          | √          |            |             |            |             |
+| **dnsMapping**     | √       | √        | √          | √          | √          |            |             |            |             |
+| **edgehost**       | √       | √        | √          | √          | √          |            |             |            |             |
+| **location**       | √       | √        | √          | √          | √          |            |             |            |             |
+| **machine**        | √       | √        | √          | √          | √          |            |             |            |             |
+| **packRegistry**   | √       | √        | √          | √          | √          |            |             |            |             |
+| **privateGateway** | √       | √        | √          | √          | √          |            |             |            |             |
+| **project**        | √       | √        |            | √          |            |            |             |            |             |
+| **sshKey**         | √       | √        | √          | √          | √          |            |             |            |             |
+| **workspace**      | √       | √        | √          | √          | √          |            |             | √          | √           |
+
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Editor" key="Project Editor">
-<br />
-
-## Project Editor
-
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **audit**          |    √    |    √     |            |                 |            |            |             |             |            |
-| **cloudaccount**   |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **cloudconfig**    |    √    |    √     |            |                 |            |     √      |             |             |     √      |
-| **cluster**        |    √    |    √     |            |        √        |     √      |            |             |             |            |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |      √      |             |     √      |
-| **clusterRbac**    |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **dnsMapping**     |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **edgehost**       |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **location**       |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **machine**        |    √    |    √     |     √      |                 |            |            |             |             |     √      |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **privateGateway** |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **project**        |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **sshKey**         |    √    |    √     |            |                 |            |            |             |             |     √      |
-| **workspace**      |    √    |    √     |            |        √        |            |            |             |      √      |     √      |
 
 <br />
-<br />
+
+## Project Editor Role
+
+The Project Editor user can perform edit operations within a project, but the user is not able to create and delete operations. 
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **audit**          | √       | √        |            |            |            |            |             |            |             |
+| **cloudaccount**   | √       | √        |            | √          |            |            |             |            |             |
+| **cloudconfig**    | √       | √        | √          | √          |            |            |             |            |             |
+| **cluster**        | √       | √        |            | √          |            | √          |             |            |             |
+| **clusterProfile** | √       | √        |            | √          |            |            | √           |            |             |
+| **clusterRbac**    | √       | √        |            | √          |            |            |             |            |             |
+| **dnsMapping**     | √       | √        |            | √          |            |            |             |            |             |
+| **edgehost**       | √       | √        |            | √          |            |            |             |            |             |
+| **location**       | √       | √        |            | √          |            |            |             |            |             |
+| **machine**        | √       | √        |            | √          | √          |            |             |            |             |
+| **packRegistry**   | √       | √        |            | √          |            |            |             |            |             |
+| **privateGateway** | √       | √        |            | √          |            |            |             |            |             |
+| **project**        | √       | √        |            | √          |            |            |             |            |             |
+| **sshKey**         | √       | √        |            | √          |            |            |             |            |             |
+| **workspace**      | √       | √        |            | √          |            |            |             | √          | √           |
+
 <br />
 
 </Tabs.TabPane>
@@ -107,26 +128,36 @@ Each user is assigned Roles and Permissions to the scopes, resources, and compon
 
 <br />
 
-## Project Viewer
+## Project Viewer Role
 
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **audit**          |    √    |    √     |            |                 |            |            |             |             |            |
-| **cloudaccount**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **cloudconfig**    |         |    √     |            |                 |            |     √      |             |             |            |
-| **cluster**        |    √    |    √     |            |                 |     √      |            |             |             |            |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |             |             |            |
-| **clusterRbac**    |    √    |    √     |            |                 |            |            |             |             |            |
-| **dnsMapping**     |    √    |    √     |            |                 |            |            |             |             |            |
-| **edgehost**       |    √    |    √     |            |                 |            |            |             |             |            |
-| **location**       |    √    |    √     |            |                 |            |            |             |             |            |
-| **machine**        |    √    |    √     |            |                 |            |            |             |             |            |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **privateGateway** |    √    |    √     |            |                 |            |            |             |             |            |
-| **project**        |    √    |    √     |            |                 |            |            |             |             |            |
-| **sshKey**         |    √    |    √     |            |                 |            |            |             |             |            |
-| **workspace**      |    √    |    √     |            |                 |            |            |             |             |            |
+The Project Viewer user will be able to view all the resources within a project, but is unable to modify a project.
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **audit**          | √       | √        |            |            |            |            |             |            |             |
+| **cloudaccount**   | √       | √        |            |            |            |            |             |            |             |
+| **cloudconfig**    | √       | √        | √          |            |            |            |             |            |             |
+| **cluster**        | √       | √        |            |            |            | √          |             |            |             |
+| **clusterProfile** | √       | √        |            |            |            |            |             |            |             |
+| **clusterRbac**    | √       | √        |            |            |            |            |             |            |             |
+| **dnsMapping**     | √       | √        |            |            |            |            |             |            |             |
+| **edgehost**       | √       | √        |            |            |            |            |             |            |             |
+| **location**       | √       | √        |            |            |            |            |             |            |             |
+| **machine**        | √       | √        |            |            |            |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+| **privateGateway** | √       | √        |            |            |            |            |             |            |             |
+| **project**        | √       | √        |            |            |            |            |             |            |             |
+| **sshKey**         | √       | √        |            |            |            |            |             |            |             |
+| **workspace**      | √       | √        |            |            |            |            |             |            |             |
+
 
 
 </Tabs.TabPane>
@@ -134,10 +165,11 @@ Each user is assigned Roles and Permissions to the scopes, resources, and compon
 </Tabs>
 
 <br />
-<br />
-<br />
+
 
 # Cluster Profile
+
+The user with these permissions is able to manage the Cluster Profiles within a project.
 
 <br />
 <br />
@@ -148,193 +180,316 @@ Each user is assigned Roles and Permissions to the scopes, resources, and compon
 <Tabs.TabPane tab="Cluster Profile Admin" key="Cluster Profile Admin">
 <br />
 
-## Cluster Profile Admin
+## Cluster Profile Admin Role
 
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **clusterProfile** |    √    |    √     |     √      |                 |            |     √      |      √      |             |            |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
+The user with these permissions can create and modify within the project.  
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterProfile** | √       | √        | √          | √          | √          |            | √           |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
 
 <br />
-<br />
-<br />
+
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Cluster Profile Editor" key="Cluster Profile Editor">
+
 <br />
 
-## Cluster Profile Editor
+## Cluster Profile Editor Role
 
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |      √      |             |     √      |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterProfile** | √       | √        | √          | √          |            |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+
+<br />
 
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Cluster Profile Viewer" key="Cluster Profile Viewer">
-<br />
-
-## Cluster Profile Viewer
-
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |             |             |            |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
 
 <br />
-<br />
+
+## Cluster Profile Viewer Role
+
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterProfile** | √       | √        |            |            |            |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+
+
 <br />
 
 </Tabs.TabPane>
 
 </Tabs>
 
+<br />
 
 # Cluster
 
-<br />
-<br />
 <br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Cluster Admin" key="Cluster Admin">
+
 <br />
 
-## Cluster Admin
+## Cluster Admin Role
 
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **cloudaccount**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **cloudconfig**    |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **cluster**        |    √    |    √     |     √      |                 |     √      |     √      |             |             |     √      |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |             |             |            |
-| **clusterRbac**    |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **dnsMapping**     |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **edgehost**       |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **location**       |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **machine**        |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **privateGateway** |    √    |    √     |            |                 |            |            |             |             |            |
-| **sshKey**         |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount**   | √       | √        |            |            |            |            |             |            |             |
+| **cloudconfig**    | √       | √        | √          | √          | √          | √          |             |            |             |
+| **cluster**        | √       | √        | √          | √          | √          |            |             |            |             |
+| **clusterProfile** | √       | √        |            |            |            |            |             |            |             |
+| **clusterRbac**    | √       | √        | √          | √          | √          |            |             |            |             |
+| **dnsMapping**     | √       | √        | √          | √          | √          |            |             |            |             |
+| **edgehost**       | √       | √        | √          | √          | √          |            |             |            |             |
+| **location**       | √       | √        | √          | √          | √          |            |             |            |             |
+| **machine**        | √       | √        | √          | √          | √          |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+| **privateGateway** | √       | √        |            |            |            |            |             |            |             |
+| **sshKey**         | √       | √        | √          | √          | √          |            |             |            |             |
+
+<br />
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Cluster Editor" key="Cluster Editor">
+
+<br />
+
+## Cluster Editor Role
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount**   | √       | √        |            |            |            |            |             |            |             |
+| **cloudconfig**    | √       | √        | √          |            |            |            |             |            |             |
+| **cluster**        | √       | √        |            | √          |            | √          |             |            |             |
+| **clusterProfile** | √       | √        |            |            |            |            |             |            |             |
+| **clusterRbac**    | √       | √        | √          |            |            |            |             |            |             |
+| **dnsMapping**     | √       | √        | √          |            |            |            |             |            |             |
+| **edgehost**       | √       | √        | √          |            |            |            |             |            |             |
+| **location**       | √       | √        | √          |            |            |            |             |            |             |
+| **machine**        | √       | √        | √          | √          |            |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+| **privateGateway** | √       | √        |            |            |            |            |             |            |             |
+| **sshKey**         | √       | √        | √          | √          |            |            |             |            |             |
+
+<br />
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Cluster Viewer" key="Cluster Viewer">
+
 <br />
 
-## Cluster Viewer
-
-|                    |         |          |            | **Permissions** |            |            |             |             |            |
-| :----------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                    | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **cloudaccount**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **cloudconfig**    |    √    |    √     |            |                 |            |            |             |             |            |
-| **cluster**        |    √    |    √     |            |                 |     √      |            |             |             |            |
-| **clusterProfile** |    √    |    √     |            |                 |            |            |             |             |            |
-| **clusterRbac**    |    √    |    √     |            |                 |            |            |             |             |            |
-| **dnsMapping**     |    √    |    √     |            |                 |            |            |             |             |            |
-| **edgehost**       |    √    |    √     |            |                 |            |            |             |             |            |
-| **location**       |    √    |    √     |            |                 |            |            |             |             |            |
-| **machine**        |    √    |    √     |            |                 |            |            |             |             |            |
-| **packRegistry**   |    √    |    √     |            |                 |            |            |             |             |            |
-| **privateGateway** |    √    |    √     |            |                 |            |            |             |             |            |
-| **sshKey**         |    √    |    √     |            |                 |            |     √      |             |             |            |
+## Cluster Viewer Role
+    
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
 
 
+|                    | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount**   | √       | √        |            |            |            |            |             |            |             |
+| **cloudconfig**    | √       | √        |            |            |            |            |             |            |             |
+| **cluster**        | √       | √        |            |            |            | √          |             |            |             |
+| **clusterProfile** | √       | √        |            |            |            |            |             |            |             |
+| **clusterRbac**    | √       | √        |            |            |            |            |             |            |             |
+| **dnsMapping**     | √       | √        |            |            |            |            |             |            |             |
+| **edgehost**       | √       | √        |            |            |            |            |             |            |             |
+| **location**       | √       | √        |            |            |            |            |             |            |             |
+| **machine**        | √       | √        |            |            |            |            |             |            |             |
+| **packRegistry**   | √       | √        |            |            |            |            |             |            |             |
+| **privateGateway** | √       | √        |            |            |            |            |             |            |             |
+| **sshKey**         | √       | √        | √          |            |            |            |             |            |             |
+
+<br />
 
 </Tabs.TabPane>
 
 </Tabs>
+
 <br />
-<br />
-<br />
+
 
 
 # Cloud Account
-<br />
-<br />
+
+The user holding these permissions is able to manage the Cloudaccounts within a project.
+
+
 <br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Cloud Account Admin" key="Cloud Account Admin">
+
 <br />
 
-## Cloud Account Admin
+## Cloud Account Admin Role
 
-|                  |         |          |            | **Permissions** |            |            |             |             |            |
-| :--------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                  | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **cloudaccount** |    √    |    √     |     √      |                 |            |     √      |             |             |     √      |
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                  | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount** | √       | √        | √          | √          | √          |            |             |            |             |
+
+<br />
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Cloud Account Editor" key="Cloud Account Editor">
+
 <br />
 
 
-## Cloud Account Editor
+## Cloud Account Editor Role
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
 
-|                  |         |          |            | **Permissions** |            |            |             |             |            |
-| :--------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                  | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **cloudaccount** |    √    |    √     |            |                 |            |            |             |             |     √      |
+
+|                  | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount** | √       | √        |            | √          |            |            |             |            |             |
+
 
 <br />
-<br />
-<br />
+
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Cloud Account Viewer" key="Cloud Account Viewer">
-<br />
-
-## Cloud Account Viewer
-
-|                  |         |          |            | **Permissions** |            |            |             |             |            |
-| :--------------- | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|                  | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **cloudaccount** |    √    |    √     |            |                 |            |            |             |             |            |
 
 <br />
-<br />
+
+## Cloud Account Viewer Role
+
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|                  | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cloudaccount** | √       | √        |            |            |            |            |             |            |             |
+
 <br />
 
 </Tabs.TabPane>
 
 </Tabs>
-<br />
-<br />
+
 <br />
 
 
 # Workspace
-<br />
-<br />
+
+
 <br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Workspace Admin" key="Workspace Admin">
-<br />
-
-## Workspace Admin
-
-|               |         |          |            | **Permissions** |            |            |             |             |            |
-| :------------ | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|               | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **workspace** |    √    |    √     |     √      |        √        |            |     √      |             |      √      |     √      |
 
 <br />
-<br />
+
+## Workspace Admin Role
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+
+|               | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------- | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **workspace** | √       | √        | √          | √          | √          |            |             | √          | √           |
+
+
 <br />
 
 </Tabs.TabPane>
@@ -343,15 +498,22 @@ Each user is assigned Roles and Permissions to the scopes, resources, and compon
 
 <br />
 
-## Workspace Operator
+## Workspace Operator Role
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>Components</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
 
-|               |         |          |            | **Permissions** |            |            |             |             |            |
-| :------------ | :-----: | :------: | :--------: | :-------------: | :--------: | :--------: | :---------: | :---------: | :--------: |
-|               | **Get** | **List** | **Delete** |   **Backup**    | **Import** | **Create** | **Publish** | **Restore** | **Update** |
-| **workspace** |    √    |    √     |            |        √        |            |            |             |      √      |            |
 
-<br />
-<br />
+|               | **Get** | **List** | **Create** | **Update** | **Delete** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------- | ------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **workspace** | √       | √        |            |            |            |            |             | √          | √           |
+
+
 <br />
 
 </Tabs.TabPane>
