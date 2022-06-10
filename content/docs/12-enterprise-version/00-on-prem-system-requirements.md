@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Palette SaaS platform is also available as a self-hosted, on-premises deployment. The on-premises version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premises is available in two modes:
+The Palette SaaS platform is also available as a self-hosted, on-premises deployment. The on-premises version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premises is available in two modes: 
 
 | **On-premises Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
@@ -332,4 +332,7 @@ The following steps are optional but recommended for production environments.
 | **DNS Mapping**              | A DNS is used to access the Palette Management Console. While the Virtual IP Address (VIP) configured on the platform can be used <br /> to access the platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.                     |
 | **SMTP Setting**s            | Configure the SMTP settings to enable the Palette platform to send out email notifications. Email Notifications are sent out to new <br /> users when they are initially onboarded to the platform, <br /> so they can activate their accounts and reset their password at a later time. |
 | **Trusted Certificate**      | Configure your platform with a trusted CA certificates.                                                                                                                                                                                                                                  |
-| **FTP Location for backups** | Configure an FTP location for platform backups and schedule daily backups.                                                                                                                                                                                                               |
+| **FTP Location for backups** | Configure an FTP location for platform backups and schedule daily backups.                                                                                                                       
+
+
+
