@@ -34,7 +34,7 @@ The Global Project Scope holds a cluster of resources in a logical grouping to t
 13. [Workspace Operator Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#workspace-operator-role)
 
 
-Palette has adopted the security principle of least privilege.  Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permission's format is `component`.`operation` where component refers to resource or API functionality. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permission's format is `component`.`operation` where component refers to resource or API functionality. 
 
 Permissions are of format component.operation where component refers to resource or API functionality. There are two ways to assign permissions. The first method is to select from the **Global Roles** list under **Tenant Settings** or **Create Role**, if you need to extend your permissions.
 
@@ -169,7 +169,7 @@ The Project Viewer user will be able to view all the resources within a project,
 
 # Cluster Profile
 
-The user with these permissions is able to manage the Cluster Profiles within a project.
+The user with these permissions can manage the Cluster Profiles within a project.
 
 <br />
 <br />
@@ -182,7 +182,7 @@ The user with these permissions is able to manage the Cluster Profiles within a 
 
 ## Cluster Profile Admin Role
 
-The user with these permissions can create and modify within the project.  
+The user with these permissions can create and modify the project.  
 <br / >
 <table>
     <tr>
@@ -377,7 +377,7 @@ The user with these permissions can create and modify within the project.
 
 # Cloud Account
 
-The user holding these permissions is able to manage the Cloudaccounts within a project.
+The user holding these permissions is able to manage the Cloud Accounts within a project.
 
 
 <br />

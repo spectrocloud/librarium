@@ -15,6 +15,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Tenant Scope
 
+A Tenant is an isolated workspace within the Spectro system dedicated to a customer.
+
 The Global Tenant Scope holds all the tenant resources of an organization. Each Tenant Scope is separate from the other.  Users and Teams with specific Roles can be associated with the Tenant Scope. Below is a list of Role types within the Tenant Scope. 
 
 1. [Tenant Administrator Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-administrator-role)
