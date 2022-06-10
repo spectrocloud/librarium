@@ -168,7 +168,6 @@ The following permissions are required for the account used to install the platf
 | Change resource           | Query un-owned files                |                                       |
 
 
-
   **Guest operations**  
  
 |                                    |                                    |                             |
