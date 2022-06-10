@@ -30,16 +30,7 @@ kube-bench runs against series of checks specified in a `controls` YAML file. Fo
 <Tabs.TabPane tab="v0.6.x" key="0.6.x">
 
 
-v0.6.8
-v0.6.7-rc1
-v0.6.7
-v0.6.6
-v0.6.5
-v0.6.4
-v0.6.3
-v0.6.2
-v0.6.0
-v0.6.1 
+**v0.6.8**
 
 </Tabs.TabPane>
 </Tabs>
