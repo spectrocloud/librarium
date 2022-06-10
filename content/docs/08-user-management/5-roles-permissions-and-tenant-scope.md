@@ -32,6 +32,7 @@ Palette has adopted the security principle of least privilege.  Each user is ass
 
 Permissions are of format component.operation where component refers to resource or API functionality. There are two ways to assign permissions. The first method is to select from the **Global Roles** list under **Tenant Settings** or **Create Role**, if you need to extend your permissions.
 
+
 <br />
 <br />
 <br />
