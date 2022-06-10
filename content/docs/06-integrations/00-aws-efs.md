@@ -118,6 +118,7 @@ The output of the kubectl describe pvc ${PVC_NAME} command is:
 
  `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
 
+
 Name:          efs
 Namespace:     default
 StorageClass:  aws-efs
@@ -157,7 +158,7 @@ Example of an IAM Policy:
 
 To learn more info about Storage Classes see following links:
 
-https://kubernetes.io/docs/concepts/storage/storage-classes/
+https://kubernetes.io/docs/concepts/storage/storage-classes/ 
 
 
 
