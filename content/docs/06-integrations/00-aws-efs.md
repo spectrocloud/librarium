@@ -48,7 +48,6 @@ There are two ways to add AWS EFS to Palette:
 2. You can also load AWS EFS as an Add-on layer, which will create a new storage class using the AWS EFS file system.
 
 
-
 ## Policy Information
 
       {
