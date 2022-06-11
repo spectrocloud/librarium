@@ -124,7 +124,7 @@ Labels:<none>
 
 Annotations:   kubectl.kubernetes.io/last-applied-configuration:
 {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{"volume.beta.kubernetes.io/
-storage-class":"aws-efs"},"name":"...
+storage-class":"aws-efs"},"name":"..."
 
 volume.beta.kubernetes.io/storage-class: aws-efs
 
