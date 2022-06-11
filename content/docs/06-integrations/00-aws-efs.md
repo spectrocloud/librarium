@@ -109,8 +109,10 @@ kubectl get storageclass
 
 The output of the kubectl describe pvc ${PVC_NAME} command is:
 
- `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
+```yaml
 
+ `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
+ 
 
 Name:          efs
 
@@ -142,7 +144,7 @@ Events:
 | Warning | ProvisioningFailed | 43s (x12 over 11m) | persistentvolume-controller | no volume plugin matched |
 Mounted By:  <none> 
 
-
+```
 
 # References
 
