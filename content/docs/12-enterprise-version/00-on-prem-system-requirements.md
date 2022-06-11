@@ -213,7 +213,7 @@ The following permissions are required for the account used to install the platf
 | Manage service configurations               | Read service configuration   |
 
 
-  **Snapshot <anagement**
+  **Snapshot Management**
 
 |                 |                    |
 | --------------- | ------------------ |
