@@ -2,7 +2,7 @@
 title: 'kube-bench'
 metaTitle: 'kube-bench'
 metaDescription: 'kube-bench security pack in Spectro Cloud'
-hiddenFromNav: true
+hiddenFromNav: false
 isIntegration: true
 category: ['monitoring']
 # logoUrl: 'https://registry.dev.spectrocloud.com/v1/kubehbench/blobs/'  Logo needs to be added
@@ -19,8 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are configured in a secure manner.
 
-kube-bench runs against series of checks specified in a `controls` YAML file. For more information on how to write tests and config files, refer to the [controls]
-(https://github.com/aquasecurity/kube-bench/blob/main/docs/controls.md).
+kube-bench runs against a series of checks specified in a `controls` YAML file. For more information on how to write tests and config files, refer to the [controls](https://github.com/aquasecurity/kube-bench/blob/main/docs/controls.md).
 
 
 ## Versions Supported
@@ -30,7 +29,7 @@ kube-bench runs against series of checks specified in a `controls` YAML file. Fo
 <Tabs.TabPane tab="v0.6.x" key="0.6.x">
 
 
-**v0.6.8**
+**v.0.6.8**
 
 </Tabs.TabPane>
 </Tabs>
