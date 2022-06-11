@@ -17,7 +17,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # AWS EFS
 
-Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic encryption of data at rest and in transit. You can access information from an AWS EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
+Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic data encryption at rest and in transit. You can access information from an AWS EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
 
 Palette handles setting up the AWS EFS as a volume with ease when adding the persistentvolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
 
@@ -31,60 +31,52 @@ There are two ways to add AWS EFS to Palette:
 2. As an Add-on layer, which will create a new storage class using the AWS EFS file system.
 
 
-# Requirements
+# Prerequisites
 
-- Create the Identity and Access Management (IAM) role that allows the driver to manage EFS access points.  See (EFSCSIControllerIAMPolicy)[https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/]
+- Create the Identity and Access Management (IAM) role that allows the driver to manage EFS access points. See [EFSCSIControllerIAMPolicy](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 
 
 - Have a filesystem created and available before you provision AWS EFS to Palette.
 
-## Usage
-
-There are two ways to add AWS EFS to Palette:
-
-1. Add AWS EFS as a CSI layer in AWS/EKS.
-
-
-2. You can also load AWS EFS as an Add-on layer, which will create a new storage class using the AWS EFS file system.
-
 
 ## Policy Information
 
-      {
-          "Version": "2012-10-17",
-          "Statement": [
-              {
-                  "Effect": "Allow",
-                  "Action": [
-                      "elasticfilesystem:DescribeAccessPoints",
-                      "elasticfilesystem:DescribeFileSystems"
-                  ],
-                  "Resource": "*"
-              },
-              {
-                  "Effect": "Allow",
-                  "Action": [
-                      "elasticfilesystem:CreateAccessPoint"
-                  ],
-                  "Resource": "*",
-                  "Condition": {
-                      "StringLike": {
-                          "aws:RequestTag/efs.csi.aws.com/cluster": "true"
-                      }
-                  }
-              },
-              {
-                  "Effect": "Allow",
-                  "Action": "elasticfilesystem:DeleteAccessPoint",
-                  "Resource": "*",
-                  "Condition": {
-                      "StringEquals": {
-                          "aws:ResourceTag/efs.csi.aws.com/cluster": "true"
-                      }
-                  }
-              }
-          ]
-
+```yaml
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticfilesystem:DescribeAccessPoints",
+                "elasticfilesystem:DescribeFileSystems"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticfilesystem:CreateAccessPoint"
+        ],
+        "Resource": "*",
+        "Condition": {
+            "StringLike": {
+                "aws:RequestTag/efs.csi.aws.com/cluster": "true"
+            }
+        }
+    },
+    {
+        "Effect": "Allow",
+        "Action": "elasticfilesystem:DeleteAccessPoint",
+        "Resource": "*",
+        "Condition": {
+            "StringEquals": {
+                "aws:ResourceTag/efs.csi.aws.com/cluster": "true"
+            }
+        }
+    }
+    ]
+```
 
 
 ## Notable Parameters
@@ -167,9 +159,9 @@ Example of an IAM Policy:
 - https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master/docs/example-iam-policy.json
 
 
-To learn more info about Storage Classes see following links:
+To learn more info about Storage Classes see following link:
 
-https://kubernetes.io/docs/concepts/storage/storage-classes/
+- https://kubernetes.io/docs/concepts/storage/storage-classes/
 
 
 
