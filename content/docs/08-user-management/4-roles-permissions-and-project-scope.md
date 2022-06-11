@@ -17,22 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Project Scope
 
-The Global Project Scope holds a cluster of resources in a logical grouping to that specific project. Users and Teams with specific Roles can be associated with the Project(s) you create. Below is a list of Role types within the Project Scope. 
-
-1. [Project Administrator Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-administrator-role)
-2. [Project Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-editor-role)
-3. [Project Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#project-viewer-role)
-4. [Cluster Profile Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-admin-role)
-5. [Cluster Profile Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-editor-role)
-6. [Cluster Profile Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-profile-viewer-role)
-7. [Cluster Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-admin-role)
-8. [Cluster Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cluster-viewer-role)
-9. [Cloud Account Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-admin-role)
-10. [Cloud Account Editor Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-editor-role)
-11. [Cloud Account Viewer Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#cloud-account-viewer-role)
-12. [Workspace Admin Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#workspace-admin-role)
-13. [Workspace Operator Role](/content/docs/08-user-management/4-roles-permissions-and-project-scope#workspace-operator-role)
-
+The Global Project Scope holds a cluster of resources in a logical grouping to that specific project. Users and Teams with specific Roles can be associated with the Project(s) you create.
 
 Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permission's format is `component`.`operation` where component refers to resource or API functionality. 
 

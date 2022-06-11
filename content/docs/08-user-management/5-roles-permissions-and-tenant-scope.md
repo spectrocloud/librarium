@@ -17,16 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 A Tenant is an isolated workspace within the Spectro system dedicated to a customer.
 
-The Global Tenant Scope holds all the tenant resources of an organization. Each Tenant Scope is separate from the other.  Users and Teams with specific Roles can be associated with the Tenant Scope. Below is a list of Role types within the Tenant Scope. 
-
-1. [Tenant Administrator Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-administrator-role)
-2. [Tenant Viewer Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-viewer-role)
-3. [Tenant Project Admin Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-project-admin-role)
-4. [Tenant Cluster Profile Admin Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-cluster-profile-admin-role)
-3. [Tenant Role Admin Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-role-admin-role)
-4. [Tenant Team Admin Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-team-admin-role)
-5. [Tenant User Admin Role](/content/docs/08-user-management/5-roles-permissions-and-tenant-scope#tenant-user-admin-role)
-
+The Global Tenant Scope holds all the tenant resources of an organization. Each Tenant Scope is separate from the other.  Users and Teams with specific Roles can be associated with the Tenant Scope. 
 
 Palette has adopted the security principle of least privilege.  Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permission's format is `component`.`operation` where component refers to resource or API functionality. 
 
