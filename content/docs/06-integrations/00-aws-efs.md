@@ -2,7 +2,7 @@
 title: 'AWS-EFS'
 metaTitle: 'AWS EFS Integration with Palette'
 metaDescription: 'AWS EFS storage add on into Spectro Cloud'
-hiddenFromNav: false
+hiddenFromNav: true
 isIntegration: true
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png'
