@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # kube-bench
 
-Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are configured in a secure manner. It is available as and Add-on layer within Palette.
+Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are configured securely. It is available as an Add-on pack within Palette. Kube-bench is an open-source security tool that runs [Kubernetes CIS Benchmark](https://www.cisecurity.org/benchmark/kubernetes) Tests. CIS provides more than one hundred benchmarks across multiple vendor product categories. CIS benchmarks are widely accepted consensus-based, best-practice security planning guides.
 
 kube-bench runs against a series of checks specified in a `controls` YAML file. For more information on how to write tests and config files, refer to the [controls](https://github.com/aquasecurity/kube-bench/blob/main/docs/controls.md).
 
