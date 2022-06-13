@@ -29,7 +29,7 @@ Custom packs are built by users and deployed to custom registries using the Spec
     ```json
     {
         "annotations": {
-            "name": "value",
+            "name": "value"
         },
         "ansibleRoles": [],
         "displayName": "<PACK_DISPLAY_NAME>",
