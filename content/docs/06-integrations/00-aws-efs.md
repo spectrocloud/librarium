@@ -2,18 +2,17 @@
 title: 'AWS-EFS'
 metaTitle: 'AWS EFS Integration with Palette'
 metaDescription: 'AWS EFS storage add on into Spectro Cloud'
-hiddenFromNav: false
+hiddenFromNav: true
 isIntegration: true
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png'
 
 ---
 
+
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
-import Tooltip from "shared/components/ui/Tooltip";
 
 
 
@@ -80,6 +79,18 @@ There are two ways to add AWS EFS to Palette:
     ]
 ```
 
+## Versions Supported
+
+<Tabs>
+
+<Tabs.TabPane tab="1.3.x" key="1.3.x">
+
+
+* **1.3.6**
+
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Notable Parameters
 While adding the AWS EFS layer the following parameters can be configured: 
