@@ -20,7 +20,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic data encryption at rest and in transit. You can access information from an AWS EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
 
-Palette handles setting up the AWS EFS as a volume with ease when adding the persistentvolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
+Palette handles setting up the AWS EFS as a volume with ease when adding the PersistentVolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
 
 ## Usage
 
@@ -29,12 +29,12 @@ There are two ways to add AWS EFS to Palette:
 1. Add EFS as a CSI layer in AWS/EKS.
 
 
-2. As an Add-on layer, which will create a new storage class using the AWS EFS file system.
+2. Add EFS as an Add-on layer, which will create a new storage class using the AWS EFS file system.
 
 
 # Prerequisites
 
-- Create the Identity and Access Management (IAM) role that allows the driver to manage EFS access points. See [EFSCSIControllerIAMPolicy](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
+- Create the Identity and Access Management (IAM) role that allows the driver to manage AWS EFS access points. See the [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/) blog for information on `EFSCSIControllerIAMPolicy`.
 
 
 - Have a filesystem created and available before you provision AWS EFS to Palette.
@@ -93,18 +93,18 @@ There are two ways to add AWS EFS to Palette:
 </Tabs>
 
 ## Notable Parameters
-While adding the AWS EFS layer the following parameters can be configured: 
+While adding the AWS EFS layer, the following parameters can be configured: 
 
 | Name             | Supported Values | Default Value         | Description                                                                                                                                                                                                                              |
 | ---------------- | ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | storageClassName |                  | spectro-storage-class | AWS Volume type to be used.                                                                                                                                                                                                              |
-| isDefaultClass   |                  | true                  | Toggle for Default class                                                                                                                                                                                                                 |
-| fileSystemId     |                  |                       | This is the File System under which access points are created. It should be created prior this setup. <br /> This is a mandatory field and needs to be set to pre-created AWS EFS volume. <br /> Other values can be at default setting. |
+| isDefaultClass   |                  | true                  | Toggle for Default class.                                                                                                                                                                                                                   |
+| fileSystemId     |                  |                       | This is the File System under which access points are created. It should be created prior to this setup. <br /> This is a mandatory field and needs to be set to a pre-created AWS EFS volume.  Other values can be at the default setting. |
 | provisioningMode | efs-ap           | efs-ap                | The type of volume provisioned by AWS EFS. For now, this is the <br /> only access point supported.                                                                                                                                      |
-| directoryPerms   |                  | 700                   | Directory permissions for Access Point root directory.creation.                                                                                                                                                                          |
-| gidRangeStart    |                  | 1000                  | Starting range of the Portable Operating System Interface(POSIX) group Id <br /> to be applied for access point root directory creation (optional).                                                                                      |
-| gidRangeEnd      |                  | 2000                  | End range of the POSIX group Id.(optional)                                                                                                                                                                                               |
-| basePath         |                  | /base_efs             | Path under which access points for dynamic provisioning is created. <br /> If this parameter is not specified, access points <br /> are created under the root directory of the file system.                                             |
+| directoryPerms   |                  | 700                   | Directory permissions for Access Point root directory creation.                                                                                                                                                                          |
+| gidRangeStart    |                  | 1000                  | Starting range of the Portable Operating System Interface(POSIX) group Id to be applied for access point root directory creation (optional).                                                                                      |
+| gidRangeEnd      |                     | 2000                  | End range of the POSIX group Id (optional).                                                                                                                                                                                                 |
+| basePath         |                  | /base_efs             | Path under which access points for dynamic provisioning is created. <br /> If this parameter is not specified, access points are created under the root directory of the file system.                                             |
 
 
 # Troubleshooting
@@ -118,7 +118,7 @@ kubectl get storageclass
 
 ### PersistentVolumeClaim
 
-The output of the kubectl describe pvc ${PVC_NAME} command is:
+The `kubectl describes pvc` ${PVC_NAME} command output is as follows:
 
 ```yaml
 
