@@ -41,6 +41,11 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|
 |----- |------|
+|0.1.8 |0.7.7 |
+|0.1.8 |0.7.6 |
+|0.1.8 |0.7.5 |
+|0.1.8 |0.7.4 |
+|0.1.8 |0.7.3 |
 |0.1.8 |0.7.2 |
 |0.1.8 |0.7.1 |
 |0.1.0 |0.7.0 |  
@@ -49,15 +54,85 @@ Detailed documentation on supported data sources and resources are available in 
 |0.0.11|0.6.13| 
 |0.0.10|0.6.12|
 
+<br />
+
 ## Latest Version of Spectro Cloud Terraform Provider:
 The section below includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
+
+<br />
+<br />
 
 ### Latest Version Supported : `0.7.x`
 
 Find the detailed patch changes and comparisons of **0.7.x** within these tabs.
 
+<br />
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.7.7" key="v0.7.7">
+
+## Changes
+
+The major changes are:
+
+* Fix: Dynamic provisioning in EKS.
+
+* Import cluster tags and generic cloud changes.
+
+Refer to Full Changelog: [v0.7.6 to v0.7.7](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.7)
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="v0.7.6" key="v0.7.6">
+
+## Changes
+
+The major changes are:
+
+* Generic day 2 read. 
+
+Refer to Full Changelog: [v0.7.5 to v0.7.6](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.6)
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="v0.7.5" key="v0.7.5">
+
+## Changes
+
+The major changes are:
+
+* Parameter 'Role Bindings' should not be empty.
+
+Refer to Full Changelog: [v0.7.4 to v0.7.5](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.5)
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="v0.7.4" key="v0.7.4">
+
+## Changes
+
+The major changes are:
+
+* Profile fix for imported clusters.
+
+Refer to Full Changelog: [v0.7.3 to v0.7.4](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.4)
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="v0.7.3" key="v0.7.3">
+
+## Changes
+
+The major changes are:
+
+* Update hapi for request retry.
+* Fix of EKS update failure when encryption is enabled.
+* Support of macros resource.
+* Fix: Cluster import and appliance deletion errors.
+
+Refer to Full Changelog: [v0.7.2 to v0.7.3](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.7.3)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.7.2" key="v0.7.2">
 
@@ -163,6 +238,5 @@ Refer to the Full Changelog: [v0.5.18 to v0.6.0](https://registry.terraform.io/p
 
 </Tabs>
 
-
-
-
+<br />
+<br />
