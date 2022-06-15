@@ -58,7 +58,7 @@ There are additional prerequisites if Azure Active Directory integration for the
   
     || |
     |-------------|---------------|
-    | Microsoft Graph:| Group.Read.All (Application Type)|
+    | Microsoft Graph :| Group.Read.All (Application Type)|
     | Microsoft Graph: |Directory.Read.All (Application Type)|
 
   3. These permissions can be configured from the Azure cloud console under **App registrations** > **API permissions** for the specified App.
