@@ -21,7 +21,7 @@ The Global Project Scope holds a cluster of resources in a logical grouping to a
 
 Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `component`.`operation` where *component* refers to a resource or the API functionality and *operation* refers to the action or activity allowed. 
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles** and you will find the **Global Roles**. If you need to extend your permissions, use the other method—the **Create Role** option. 
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles** and you will find the of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
 Below is the predefined list of Roles and Permissions for the Global Project Scope.
 
