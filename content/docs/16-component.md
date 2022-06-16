@@ -43,7 +43,7 @@ The page lists the version details of various Palette components with respect to
 
 |Palette Release|On-Premises Installer Version|
 |--|---|
-|2.6|2.0.2|
+|2.6|2.1.0|
 |2.5|2.0.2|
 |2.3|2.0.2|
 
