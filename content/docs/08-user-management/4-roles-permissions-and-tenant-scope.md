@@ -17,9 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Tenant is an isolated workspace within the Spectro system. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `component`.`operation` where component refers to resource or the API functionality.
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `component`.`operation`, where component refers to resource or the API functionality, and *operation* refers to the action or activity allowed. 
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles** and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
 Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope.
 
@@ -49,7 +49,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 </table>
 <hr />
 
-
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
 | **apiKey**         | √          | √          | √       | √        | √          |            |             |            |             |
@@ -77,7 +76,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="Tenant Viewer" key="Tenant Viewer Role">
 
 
@@ -117,8 +115,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 
 </Tabs.TabPane>
-
-
 <Tabs.TabPane tab="Tenant Project Admin" key="Tenant Project Admin">
 
 <br />
@@ -156,7 +152,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 
 </Tabs.TabPane>
-
 </Tabs>
 
 <br />
@@ -164,8 +159,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 
 <Tabs>
-
-
 <Tabs.TabPane tab="Tenant Cluster Profile Admin" key="Tenant Cluster Profile Admin">
 
 <br />
@@ -193,9 +186,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 
 </Tabs.TabPane>
-
-
-
 <Tabs.TabPane tab="Tenant Role Admin" key="Tenant Role Admin">
 
 <br />
@@ -222,8 +212,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 
 </Tabs.TabPane>
-
-
 <Tabs.TabPane tab="Tenant Team Admin" key="Tenant Team Admin">
 
 <br />
@@ -252,8 +240,6 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 
 </Tabs.TabPane>
-
-
 <Tabs.TabPane tab="Tenant User Admin" key="Tenant User Admin">
 
 <br />
@@ -281,7 +267,6 @@ A user can manage user operations in the tenant scope.
 <br />
 
 </Tabs.TabPane>
-
 </Tabs>
 
 <br />
