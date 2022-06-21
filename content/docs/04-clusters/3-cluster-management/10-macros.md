@@ -125,7 +125,7 @@ The Macros are overridden into the Cluster Profile layers:
 
 3. Add the macro name to the desired layer of the profile in the format:
 
- `{{.spectro. Macro.macro-name}}`, where the *macro-name* is the **Custom name**, created by the user.
+ `{{.spectro.macro.macro-name}}`, where the *macro-name* is the **Custom name**, created by the user.
 
 
 4. Save the changes to the **Cluster Profile**. This Macro can be replaced or edited later.
@@ -148,7 +148,7 @@ The Macros are overridden into the Cluster Profile layers:
 
 4. In the desired existing pack, replace the value with the Macro name as:
 
- `{{.spectro. Macro.macroname}}`
+ `{{.spectro.macro.macro-name}}`
 
 
 5. Save the changes to the **Cluster Profile**.
