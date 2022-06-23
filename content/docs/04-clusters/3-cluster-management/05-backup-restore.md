@@ -201,14 +201,14 @@ The below section will describe:
 
 ## Create a Cluster Backup
 
-Backups can be scheduled or initiated in an on demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
+Backups can be scheduled or initiated in an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
 
 1. **Backup Prefix / Backup Name**:
   * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-  * For an on demand backup, a name of user choice can be used.
+  * For an on demand Backup, a name of user choice can be used.
 
 
-2. Select the backup location.
+2. Select the Backup location.
 
 
 3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.

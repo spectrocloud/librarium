@@ -18,14 +18,14 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Create your Workspace
 
-## Basic Information
+## 1. Basic Information
 Provide basic information for the Workspace such as:
 
 * Unique Name
 * Optional Description
 * Optional Tag
 
-## Associate Clusters
+## 2. Associate Clusters
 
 * Select cluster(s) to be added to the Workspace. Palette clusters, as well as brownfield clusters, could be added to your Workspace.
 * Configure the Cluster Role Binding (Optional). Optionally role bindings could be created on all Workspace clusters.
@@ -40,7 +40,7 @@ Provide basic information for the Workspace such as:
 |Service Account|a valid path segment name|Granting super-user access to all service accounts cluster-wide is strongly discouraged. Hence Grant a role to all service accounts in a namespace|
 ------------
   
-## Associate Namespaces
+## 3. Associate Namespaces
   
 * Enter one or more namespaces that need to be part of the Workspace. The combination of Workspace and cluster is unique across workspaces in a project. Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
 * Add resource quota for the namespaces by specifying CPU and Memory limits (Optional).
@@ -52,3 +52,13 @@ Provide basic information for the Workspace such as:
 For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
    * Confirm the information provided to complete the configuration of role binding.
   
+## 4. Settings
+
+
+* [Schedule Backups](/clusters/cluster-management/backup-restore#createaworkspacebackup)
+	
+* [Container Image](/workspace/workload-features#restrictedcontainerimages), list out the conatiner images to be restricted within a Workspace namespace.
+
+## 5. Review and finish the configuration and complete the deployment.
+
+
