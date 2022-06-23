@@ -33,7 +33,6 @@ Management server has a timeout of 10 mins for heartbeat detection. An alert is 
 
 * As project administrator, navigate to project settings.
 * Click Alerts to access the Manage Alerts page.
-* Enable ClusterHealth.
 * Click on add new Webhook.
 * Follow the Webhook creation wizard with the following details:
 	* Alert type: ClusterHealth
