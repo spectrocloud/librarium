@@ -349,7 +349,7 @@ The user with these permissions can create and modify the project.
 
 <br />
 
-# Cluster Account
+# Cloud Account
 
 The user holding these permissions is able to manage the Cloud Accounts within a project.
 
@@ -360,7 +360,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 
 <br />
 
-## Cluster Account Admin
+## Cloud Account Admin
 
 <br / >
 <table>
@@ -382,7 +382,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 
 <br />
 
-## Cluster Account Editor
+## Cloud Account Editor
 <br / >
 <table>
     <tr>
@@ -403,7 +403,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 
 <br />
 
-## Cluster Account Viewer 
+## Cloud Account Viewer 
 
 <br / >
 <table>
