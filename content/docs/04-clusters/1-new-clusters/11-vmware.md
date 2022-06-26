@@ -40,7 +40,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 1. vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
 
 
-2. NTP configured on all Hosts.
+2. Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
 
 
 3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
@@ -52,7 +52,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 5. Install a Private Cloud Gateway for VMware as described in the **Installing Private Cloud Gateway - VMware** section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the **Creating a VMware Cloud account** section below.
 
 
-6. Egress access to the internet (direct or via proxy):
+6. Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 
@@ -66,21 +66,13 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 8. IPs for application workload services (e.g.: LoadBalancer services).
 
 
-9. Subnet with egress access to the internet (direct or via proxy):
-    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    - Outgoing internet connection on port 443 to api.spectrocloud.com.
+9. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 
 
-10. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+10. Shared Storage between vSphere hosts.
 
 
-11. Shared Storage between vSphere hosts.
-
-
-12. Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, in order to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
-
-
-13. Zone Tagging: A dynamic storage allocation for persistent storage. Find more details on Zone Tagging below:
+11. Zone Tagging: A dynamic storage allocation for persistent storage. Find more details on Zone Tagging below:
 
 ## Zone Tagging 
 
