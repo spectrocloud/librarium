@@ -57,7 +57,7 @@ Permission determine the type of operations allowed on a resource. Permissions c
 
 Examples:
 
-*  `Cluster.create`
+*  `cluster.create`
 *  `cluster.edit`
 *  `cluster.activate`
 
