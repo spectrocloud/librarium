@@ -28,11 +28,11 @@ Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster
 * Securing the cluster infrastructure and configuration according to the relevant OS, Kubernetes, and cloud security best practices.
 
 
-* Deployment of additional Add-ons such as Prometheus, Permissions Manager, or Vault, as specified in the cluster profile.
+* Deployment of additional Add-ons such as Prometheus, Permissions Manager, or Vault, as specified in the Cluster Profile.
 
 # Images
 
-Palette provides Virtual Machine (VM) images for cluster-computing infrastructure out of the box for the most recent versions of operating systems such as Ubuntu or CentOS. These images are security-hardened based on the respective CIS Benchmarks. In addition, Kubernetes components such as kubelet, kubeadm, etc. are preinstalled in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
+Palette provides Virtual Machine (VM) images for cluster-computing infrastructure out of the box for the most recent versions of Operating Systems such as Ubuntu or CentOS. These images are security-hardened based on the respective CIS Benchmarks. In addition, Kubernetes components such as kubelet, kubeadm, etc. are preinstalled in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
 The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD) or Palette's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private data center.
 
@@ -139,11 +139,11 @@ The active condition indicates what task Palette's orchestration system is tryin
 
 ![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
 
-For example, failure to create a virtual machine in AWS due to the exceeded vCPU limit would cause this error to be shown to the end-users. Then, they could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed, and the condition would be marked as a success.
+For example, failure to create a Virtual Machine in AWS due to the exceeded vCPU limit will cause this error to be shown to the end-users. Then, they can choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it will succeed, and the condition will be marked as a success.
 
 ## Rolling upgrade
 
-Palette will perform a rolling upgrade on the nodes for any fundamental changes to the cluster config. Below are some of the actions that will result in a rolling upgrade:
+Palette will perform a rolling upgrade on the nodes for any fundamental changes to the Cluster Configuration file. Below are some of the actions that will result in a rolling upgrade:
 
 * OS layer changes
 
@@ -206,7 +206,7 @@ Palette maintains an event stream with low-level details of the various orchestr
 
 ## Download Cluster Logs
 
-At times, it might be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require access to the various containers, nodes, and Kube system logs. Palette automates this log collection process and provides an easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various cluster nodes individually and fetch these logs.
+At times, you may be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require access to the various containers, nodes, and Kube system logs. Palette automates this log-collection process and provides an easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various cluster nodes individually and fetch these logs.
 <br />
 
 ### Collect the Logs
@@ -214,7 +214,7 @@ At times, it might be required to work with the Palette Support Team to troubles
 1. Select the running cluster.
 
 
-2. Go to settings and select **Download Logs**.
+2. Go to **Settings* and select **Download Logs**.
 
 
 3. Choose the desired log from the below options:
@@ -232,16 +232,16 @@ At times, it might be required to work with the Palette Support Team to troubles
     At the end of this short log fetching interval, the message will be displayed on the UI: "The logs archive for {Cluster-name} was created successfully."
 
 
-5. Click **Download <*cluster-name*> logs** to download the Logs folder to your local machine.
+5. Click **Download <*cluster-name*> logs** to download the **Logs** folder to your local machine.
 
 
-6. Unzip and rename the Logs folder as per customer choice.
+6. Unzip and rename the Logs folder as per the customer choice.
 
 <InfoBox>
 
-* In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the cluster.
+* In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the Cluster.
 
-* Palette recommends its users attach these logs along with the Support Request for accelerated troubleshooting.
+* Palette recommends its users attach these Logs, along with the Support Request, for accelerated troubleshooting.
 
 * Expect an average log fetching time of five (5) minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
 
