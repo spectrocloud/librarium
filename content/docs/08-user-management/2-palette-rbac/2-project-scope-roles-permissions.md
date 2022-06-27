@@ -19,7 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 The Global Project Scope holds a cluster of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `component`.`operation`, where *component* refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey`.`operation`, where *resourceKey* refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
@@ -31,8 +31,14 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 <br />
 
 # Project
+--------------------------------
 
-<br />
+|Role Names   | Description  |
+|---|---|
+|Project Admin  |   |
+|Project Editor||   |
+|Project Viewer||.  |
+
 <br />
 <br />
 
@@ -46,7 +52,7 @@ The Project Administrator can manage a project, where the user has the Project A
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -82,7 +88,7 @@ The Project Editor user can perform edit operations within a project, but the us
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -121,7 +127,7 @@ The Project Viewer user will be able to view all the resources within a project,
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -153,11 +159,18 @@ The Project Viewer user will be able to view all the resources within a project,
 
 
 # Cluster Profile
+-----------------------------
 
 The user with these permissions can manage the Cluster Profiles within a project.
 
 <br />
-<br />
+
+|Role Names| Description  |
+|---|---|
+|Cluster Profile Admin |The user with these permissions can create and modify the Palette cluster profile.     |
+|Cluster Profile Editor|   |
+|Cluster Profile Viewer|  |
+
 <br />
 
 <Tabs>
@@ -166,11 +179,10 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Admin
 
-The user with these permissions can create and modify the project.  
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -194,7 +206,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -218,7 +230,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -238,6 +250,16 @@ The user with these permissions can create and modify the project.
 <br />
 
 # Cluster
+--------------------------------------
+<br />
+
+<br />
+
+|Role Names| Description  |
+|---|---|
+|Cluster Admin  |   |
+|Cluster Editor||   |
+|Cluster Viewer||.  |
 
 <br />
 
@@ -252,7 +274,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -285,7 +307,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -320,7 +342,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -350,22 +372,30 @@ The user with these permissions can create and modify the project.
 <br />
 
 # Cloud Account
-
-The user holding these permissions is able to manage the Cloud Accounts within a project.
+-----------------------------
 
 <br />
+
+|Role Names| Description |
+|---|---|
+|Cluster Account Admin  |   |
+|Cluster Account Editor||   |
+|Cluster Account Viewer||.  |
+
+<br />
+
 
 <Tabs>
-<Tabs.TabPane tab="Cloud Account Admin" key="Cloud Account Admin">
+<Tabs.TabPane tab="Cluster Account Admin" key="Cloud Account Admin">
 
 <br />
 
-## Cloud Account Admin
+## Cluster Account Admin
 
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -378,15 +408,15 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Cloud Account Editor" key="Cloud Account Editor">
+<Tabs.TabPane tab="Cluster Account Editor" key="Cluster Account Editor">
 
 <br />
 
-## Cloud Account Editor
+## Cluster Account Editor
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -399,16 +429,16 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Cloud Account Viewer" key="Cloud Account Viewer">
+<Tabs.TabPane tab="Cluster Account Viewer" key="Cluster Account Viewer">
 
 <br />
 
-## Cloud Account Viewer 
+## Cluster Account Viewer 
 
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -424,6 +454,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 </Tabs>
 
 # Workspace
+------------------------------------
 
 <br />
 
@@ -436,7 +467,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -455,10 +486,15 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 ## Workspace Operator
+
+|Role Names| Description  |
+|---|---|
+|Workspace Admin  |   |
+|Workspace Editor||   |
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>

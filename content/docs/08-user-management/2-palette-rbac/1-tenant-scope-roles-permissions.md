@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Tenant is an isolated workspace within the Spectro system. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `component`.`operation`, where component refers to resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `resourceKey`.`operation`, where resourceKey refers to resource or the API functionality, and *operation* refers to the action or activity allowed. 
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
@@ -29,7 +29,7 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 
 # Tenants 
-
+----------------------------
 <Tabs>
 
 <Tabs.TabPane tab="Tenant Admin" key="Tenant Admin">
@@ -43,7 +43,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -84,7 +84,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -124,7 +124,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -167,7 +167,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -195,7 +195,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -221,7 +221,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -250,7 +250,7 @@ A user can manage user operations in the tenant scope.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
