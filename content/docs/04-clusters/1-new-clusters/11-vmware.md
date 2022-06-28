@@ -26,7 +26,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 3. IP pool management for assigning blocks of IPs dedicated to clusters or projects.
 
 
-4. To facilitate communications between the Palette management platform and vCenter installed in the private data center, a Private Cloud Gateway (PCG) needs to be set up within the environment.
+4. To facilitate communications between the Palette management platform and vCenter installed in the private data center, set up a Private Cloud Gateway (PCG) within the environment.
 
 
 5. Private Cloud Gateway is Palette's on-premises component to enable support for isolated, private cloud or data center environments. The Palette Gateway, once installed on-premises, registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
