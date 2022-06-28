@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, and reconfiguration.
+Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as grocery stores and restaurants, unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, and reconfiguration.
 
 <InfoBox>
 
@@ -98,7 +98,7 @@ The following sections cover the prerequisites and detailed instructions for dep
 
 
 4. Navigate to the appliance section under the **Clusters** menu and register the appliance by providing its _unique ID_.
-  This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'hospital-1').
+  This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'store-1').
 
 
 5. Optionally, specify one or more tags for the appliance. For example, Palette supports a unique **Name** tag. If specified, Palette would use the value of this tag in other User Interfaces (UIs) to make identification of the device easier.
@@ -128,12 +128,6 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
                                    --http-proxy <Proxy for Http connections> 
                                    --https-proxy <Proxy for Https connections> 
                                    --no-proxy <comma separated list for No Proxy>
-```
-
-**Example:**
-
-```bash
-./edge-installer.bin -- -i 10.200.3.126 -d hospital-docker-app-01 -a console.gehc-ehl.spectrocloud.com --http-proxy http://10.10.132.89:3128 --https-proxy http://10.10.132.89:3128 --no-proxy 10.10.128.10,.spectrocloud.local,10.0.0.0/8
 ```
 
 ## Cluster Profile Creation
@@ -298,3 +292,4 @@ The Cluster Status is updated to **Deleting** while cluster resources are being 
 <InfoBox>
 Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, an Abort action is available to stop provisioning and delete all resources.
 </InfoBox>
+
