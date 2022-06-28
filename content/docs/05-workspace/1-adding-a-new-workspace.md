@@ -19,7 +19,7 @@ import InfoBox from 'shared/components/InfoBox';
 # Create your Workspace
 
 ## 1. Add the Basic Information
-Provide the basic information for the Workspace such as:
+Provide the basic information for the workspace such as:
 
 * Unique Name
 * Optional Description
@@ -27,10 +27,10 @@ Provide the basic information for the Workspace such as:
 
 ## 2. Associate Clusters
 
-  * Select the Cluster(s) to be added to the Workspace. (See [ New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your Workspace.
+  * Select the cluster(s) to be added to the workspace. (See [ New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
 
-  * Configure the Cluster Role Binding (optional). Role bindings can be created on all Workspace clusters.
+  * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
     - As step 2 of the new Workspace creation, select **Add Cluster Role Binding**.
     - Provide the name of the role for which the cluster role binding needs to be created. The role should be pre-existing or an in-built system role. Palette does not create cluster roles.  
     - Subjects for the cluster role binding can be groups, users, or service accounts.
@@ -44,10 +44,10 @@ Provide the basic information for the Workspace such as:
   
 ## 3. Associate Namespaces
   
-* Enter one or more Namespaces that need to be part of the Workspace. The combination of Workspace and Cluster is unique across workspaces in a project. Palette ensures that all the Namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
+* Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is unique across workspaces in a project.   Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
 
 
-* Add the resource quota for the Namespaces by specifying CPU and Memory limits (Optional).
+* Add the resource quota for the namespaces by specifying CPU and Memory limits (Optional).
 
 
 * Configure the Role Binding (optional). The following information is required for each role binding:
