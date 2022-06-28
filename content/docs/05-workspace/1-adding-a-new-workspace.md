@@ -14,9 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Prerequisites
 
-* One or more running workload clusters within the project
+  You should have one or more running Workload Clusters within the project.
 
-# Create your Workspace
+# Create Your Workspace
 
 ## 1. Add the Basic Information
 Provide the basic information for the workspace such as:
