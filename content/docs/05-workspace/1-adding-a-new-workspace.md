@@ -55,7 +55,7 @@ Provide the basic information for the Workspace such as:
    * Specific name for the role which is pre-existing
    * Make the selection of Subjects from the dropdown list (User, Group, or ServiceAccount).
   
-    For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
+For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
 
   
    * Confirm the information provided to complete the configuration of role binding.
