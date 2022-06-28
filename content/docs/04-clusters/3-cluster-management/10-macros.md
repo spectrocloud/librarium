@@ -13,21 +13,21 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports placeholder variables as Macros in our Cluster Profile Layers. These Macros make regression and update of variables, across multiple running clusters, easier. We encourage creating these Macros and using them within any of our Cluster Profile Layers. Hence, changes to the existing Macros get updated to the corresponding cluster profile and the clusters with these profiles attached. 
+Palette supports placeholder variables as Macros in our Cluster Profile Layers. These Macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these Macros and using them within any of our Cluster Profile Layers. Hence, changes to the existing Macros get updated to the corresponding Cluster Profile and the Clusters with these Profiles attached. 
 
 # Scope of Palette Macros
 
-Palette users can declare the Macros under three different scopes:
+Palette users can declare the Macros under three different Scopes:
 
-1. **Project Scope**: Create Macros from the Project dashboard with project privileges.
+1. **Project Scope**: Create Macros from the Project Dashboard with Project privileges.
 
 
-2. **Tenant Admin Scope**: Create Macros from the Tenant Admin dashboard with admin privileges.
+2. **Tenant Admin Scope**: Create Macros from the Tenant Admin Dashboard with Administrative privileges.
 
 
 3. **System Scope**: Includes the Default System Macros and User-created System Macros.
 
-The Macros must have unique names within a given application, but Macros with a different scope can have a unique name. In such cases, the precedence followed is in decreasing order (the highest precedence being Project scope).
+The Macros must have unique names within a given application, but Macros with a different Scope can have a unique name. In such cases, the precedence followed is in decreasing order (the highest precedence being Project Scope).
 
 
   **Project Scope** > **Tenant Scope** > **System Scope**
@@ -35,7 +35,7 @@ The Macros must have unique names within a given application, but Macros with a 
 
 # Create your Macro
 
-Palette users can use Macros in three different scopes. Following user preferences and privileges, log in as a Tenant Admin or Project Admin, to create Macros under Tenant Admin scope and Project Scope respectively. System Scope Macros can be created via API's. The steps to create a Macro are as below:
+Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a Tenant Admin or Project Admin, to create Macros under Tenant Admin scope and Project Scope, respectively. System Scope Macros can be created via API's. The steps to create a Macro are as below:
 
 <Tabs>
 <Tabs.TabPane tab="Tenant Scope Macro" key="Tenant Scope Macro">
@@ -107,11 +107,15 @@ manifests:
 
 The Macros are overridden into the Cluster Profile layers:
 * During a Cluster Profile creation.
+
+
 * For a Cluster Profile used by a running cluster or during cluster provisioning.
 
+<br />
 <Tabs>
 
 <Tabs.TabPane tab="Add a Macro to a Cluster Profile Pack" key="Add a Macro to a Cluster Profile Pack">
+<br />
 
 ## Add a Macro to a Cluster Profile Pack:
 
@@ -120,7 +124,7 @@ The Macros are overridden into the Cluster Profile layers:
 
 2. From the **Cluster Profiles** tab, select the **Cluster Profile** to which the Macro is to be added.
 
-    **Note:** A macro can be attached to any infrastructure or add-on layers of a profile.
+    **Note:** A macro can be attached to any Infrastructure or Add-on layers of a Profile.
 
 
 3. Add the macro name to the desired layer of the profile in the format:
@@ -170,7 +174,7 @@ The Macros are overridden into the Cluster Profile layers:
 2. From the menu on the left-hand side, go to **Tenant Settings** and select the **Macros** tab. 
 
 
-3. Click on the **Delete** button to remove the macro.
+3. Click the **Delete** button to remove the macro.
 
 
 4. Click the **Save changes** button to complete the wizard.
@@ -185,22 +189,25 @@ The Macros are overridden into the Cluster Profile layers:
 2. From the menu on the left-hand side, go to **Project Settings** and select the **Macros** tab.
 
 
-4. Click on the **Delete** button to remove the macro.
+3. Click on the **Delete** button to remove the macro.
 
 
-5. Click the **Save changes** button to complete the wizard.
+4. Click the **Save changes** button to complete the wizard.
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="System Scope Macro" key="System Scope Macro">
 
+<br />
 Delete your System Level Macros via an API.
 
 </Tabs.TabPane>
 
 </Tabs>
+
+<br />
 <WarningBox>
-When a Macro is deleted from the UI, it needs to be  cleared from the Cluster Profile to avoid Macro deletion anomalies in the running cluster.
+When a Macro is deleted from the UI, it needs to be cleared from the Cluster Profile to avoid Macro deletion anomalies in the running Cluster.
 </WarningBox>
 
 
