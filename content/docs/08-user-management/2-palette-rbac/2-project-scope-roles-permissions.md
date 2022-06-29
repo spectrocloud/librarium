@@ -23,11 +23,16 @@ Palette has adopted the security principle of least privilege. Each user is assi
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
-Below is the predefined list of Roles and Permissions for the Global Project Scope.
-
+Below is the predefined list of Roles and Permissions for the Global Project Scope for the following Resources:
 
 <br />
-<br />
+
+* [Project](/user-management/palette-rbac/project-scope-roles-permissions#project)
+* [Cluster Profile](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofile)
+* [Cluster](/user-management/palette-rbac/project-scope-roles-permissions#cluster)
+* [Cloud Account](/user-management/palette-rbac/project-scope-roles-permissions#cloudaccount)
+* [Workspace](/user-management/palette-rbac/project-scope-roles-permissions#workspace)
+
 <br />
 
 # Project

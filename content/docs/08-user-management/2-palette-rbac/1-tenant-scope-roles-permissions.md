@@ -21,7 +21,13 @@ Palette has adopted the security principle of least privilege. Each user is assi
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
-Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope.
+Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope for the following resources:
+
+1. [Tenant](/user-management/palette-rbac/tenant-scope-roles-permissions#tenants)
+2. [Cluster Profile](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantclusterprofileadmin)
+3. [Role](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantroleadmin)
+4. [Team](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantteamadmin)
+5. [User](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantuseradminrole)
 
 <br />
 <br />
@@ -30,6 +36,13 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 # Tenants 
 ----------------------------
+
+|Role Names   | Description  |
+|---|---|
+|Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to cluster profiles|
+|Tenant Viewer||   |
+|Tenant Project Admin|The role with access to |
+
 <Tabs>
 
 <Tabs.TabPane tab="Tenant Admin" key="Tenant Admin">
@@ -37,8 +50,6 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 <br />
 
 ## Tenant Admin
-
-Tenant is an isolated workspace within the Palette system dedicated to a customer. The Tenant Administrator Role allows the user to create profiles and manage projects within the tenant.
 
 <br / >
 <table>
@@ -72,6 +83,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 | **user**           | √          | √          | √       | √        | √          |            |             |            |             |
 | **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
 
+<br />
 <br />
 <br />
 
@@ -156,22 +168,14 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 <br />
 <br />
-<br />
 
-<Tabs>
-<Tabs.TabPane tab="Tenant Cluster Profile Admin" key="Tenant Cluster Profile Admin">
+## Cluster Profile 
 
-<br />
+----------------------------
 
-## Tenant Cluster Profile Admin
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+|Role Names   | Description  |
+|---|---|
+|Tenant Cluster Profile Admin  |   |
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -179,28 +183,17 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
 
-
 <br />
 <br />
 <br />
 
+## Tenant Role 
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant Role Admin" key="Tenant Role Admin">
+----------------------------
 
-<br />
-
-## Tenant Role Admin Role
-
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
-
+|Role Names   | Description  |
+|---|---|
+|Tenant Role Admin  |   |
 
 |          | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | -------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -211,21 +204,13 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 <br />
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant Team Admin" key="Tenant Team Admin">
+## Tenant Team
 
-<br />
+----------------------------
 
-## Tenant Team Admin
-
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+|Role Names   | Description  |
+|---|---|
+|Tenant Team Admin |   |
 
 |            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -239,22 +224,15 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 <br />
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant User Admin" key="Tenant User Admin">
+## Tenant User
 
-<br />
+----------------------------
 
-## Tenant User Admin Role
-A user can manage user operations in the tenant scope.
+|Role Names   | Description  |
+|---|---|
+|Tenant User Admin Role|A user can manage user operations in the tenant scope|
 
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+
 
 |            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -262,12 +240,7 @@ A user can manage user operations in the tenant scope.
 | **audit**  |            |            | √       | √        |            |            |             |            |             |
 | **user**   | √          | √          | √       | √        | √          |            |             |            |             |
 
-<br />
-<br />
-<br />
 
-</Tabs.TabPane>
-</Tabs>
 
 <br />
 <br />
