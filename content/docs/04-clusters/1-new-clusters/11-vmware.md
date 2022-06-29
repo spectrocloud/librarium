@@ -72,7 +72,12 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 10. Shared Storage between vSphere hosts.
 
 
-11. Zone Tagging: A dynamic storage allocation for persistent storage. Find more details on Zone Tagging below:
+11. Zone Tagging: A dynamic storage allocation for persistent storage.
+
+
+<InfoBox>
+If access switching is VMware vSphere Distributed Switch (VDS) then permissions needs to be provided only for the virtual switch and not the VDS object.
+</InfoBox>
 
 ## Zone Tagging 
 
@@ -87,7 +92,11 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 | cluster-2            | k8s-zone         | az2           |
 | cluster-3            | k8s-zone         | az3           |
 
-**Note:** The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+**Note:** 
+
+The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
+
+<br />
 
 # VMware Cloud Account Permissions 
 
@@ -95,7 +104,11 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
-#### Privileges under root-level role
+<br />
+
+## Privileges Under Root-Level Role
+
+<br />
 
 <WarningBox>
 The root-level role privileges are applied to root object and data center objects only.
@@ -114,8 +127,10 @@ The root-level role privileges are applied to root object and data center object
 |**Profile-driven storage**|Profile-driven storage view|
 |**Storage views**|View|
 
+<br />
 
-#### Privileges Under the Spectro Role 
+## Privileges Under the Spectro Role 
+<br />
 
 <InfoBox>
 The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
@@ -240,16 +255,25 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 ![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
 
+<br />
+<br />
+
 <InfoBox>
 For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote data center that do not have direct incoming connection from the management console.
 </InfoBox>
+
+<br />
 
 * Minimum capacity required for a Private Cloud Gateway:
   + One (1) node - two (2) vCPU, 4GB memory, 30GB storage.
   + Three (3)nodes - six (6) vCPU, 12GB memory, 70GB storage.
 
 
-Setting up a cloud gateway involves initiating the install from the tenant portal, deploying gateway installer VM in vSphere, and launching the cloud gateway from the tenant portal.
+* Setting up a cloud gateway involves: 
+
+  * Initiating the install from the tenant portal
+  * Deploying gateway installer VM in vSphere
+  * Launching the cloud gateway from the tenant portal
 
 <br />
 
@@ -272,6 +296,8 @@ Setting up a cloud gateway involves initiating the install from the tenant porta
 
 3. At the **Customize Template** step, specify Palette properties as follows:
 
+<br />
+
 | **Parameter** | **Value** | **Remarks** |
 |---|---|---|
 |**Installer Name** | Desired Palette Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed, however, multiple gateways might be required for managing clusters across multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
@@ -281,7 +307,7 @@ Setting up a cloud gateway involves initiating the install from the tenant porta
 | **Pod CIDR** | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
 | **Service cluster IP range** | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
 
-   Additional properties that are required to be set only for a Proxy Environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
+ * Additional properties that are required to be set only for a proxy environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
 
 | **Parameter** | **Value** | **Remarks** |
 |---|---|---|
@@ -289,10 +315,10 @@ Setting up a cloud gateway involves initiating the install from the tenant porta
 | **HTTPS PROXY** | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., http://USERNAME: PASSWORD@PROXYIP: PROXYPORT |
 | **NO Proxy** | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . e.g., vcenter.company.com, .company.org, 10.10.0.0/16 |
 
-4. Finish the OVF deployment wizard and wait for the OVA to be imported and Virtual Machine to be deployed.
+4. Finish the OVF deployment wizard and wait for the OVA to be imported and virtual machine to be deployed.
 
 
-5. Power on the Virtual Machine.
+5. Power on the virtual machine.
 
 ## Tenant Portal - Launch Cloud Gateway
 
