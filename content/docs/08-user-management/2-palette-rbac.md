@@ -16,9 +16,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 # Role-Based Access Control(RBAC)
 ## Overview
 
-RBAC stands for Role-Based Access Control. RBAC allows a single user to have different types of access control, based on the resource being accessed. RBAC is the scenario that allows the Tenant Admin to grant full and unrestricted access to some parts of the system and withhold it for some others. 
+RBAC stands for Role-Based Access Control. RBAC allows a single user to have different types of access control based on the resource being accessed. RBAC is the scenario that allows the Tenant Admin to grant full and unrestricted access to some parts of the system and withhold it for some others. 
 
-Palette enforces a very well-structured RBAC design on how to grant granular access to resources and their operations within our management console. Role-based access control primarily assigns permissions to roles instead of individual users. We maintain precise Roles and Resource Access Control List. Role-based access control primarily focuses on assigning permissions to roles instead of individual users and then assigning these roles to users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource. This module lists and enumerates all the roles available within the Palette console within specific scopes. 
+Palette enforces a very well-structured RBAC design on how to grant granular access to resources and their operations within our management console. We maintain precise Roles and Resource Access Control List. Role-based access control primarily focuses on assigning permissions to roles instead of individual users and then assigning these roles to users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource. This module lists and enumerates all the roles available within the Palette console within specific scopes. 
 
 Palette enables:
 
@@ -37,23 +37,43 @@ The Palette RBAC Model, is based on the following three components:
 
 ### Scopes
 
-A Scope defines the resources on which the role has coverage. The Scope will be either Tenant or Project. For example, a Role with the Scope Project can operate within the projects. A combination of the user and the roles given to a user indicates the totality of the accesses made available to that user. Scopes are structured in a parent-child relationship. Each level of hierarchy makes the scope more specific. The roles are assigned at any of these levels of scope. The level you select determines how widely the role is applied. Lower levels inherit role permissions from higher levels.
+A Scope defines the resources on which the role has coverage. The scope will be either `Tenant` or `Project`. For example, a role within the scope project can operate within the projects. The combination of user and roles indicates the totality of the accessibility available to that user. Scopes are structured in a parent-child relationship. Each level of hierarchy makes the Scope more specific. The roles are assigned at any of these levels of Scope. The level you select determines how widely the role is applied. Lower levels inherit role permissions from higher levels.
 ![palette-rbac-scope.png](./2-palette-rbac/palette-rbac-scope.png)
  
 The following are the major properties of Palette driven Scopes:
-* Scopes control the visibility of the resource
-* Resource created in the higher scope will be visible in the lower scope as read-only. Cluster Profiles created by a tenant will be available to all the projects created by that Tenant.
+
+
+* Scopes control the visibility of the resource.
+
+
+* Resource created in the higher scope will be visible in the lower scope as read-only. The cluster profiles created by a tenant will be available to all the projects created by that tenant.
+
+
 * Resource Isolation: Resources within the same scope will be restricted to the respective scope entity.
     * Cluster Profile created in project-1 will not be available in project-2 of the same tenant
+
+
 * Resource with the same name can co-exist across scopes and will be distinguished with scope prefix (icon)
   * A profile with the same name can be created in tenant and project scope. The resource will have the scope information, which helps to distinguish them.
 
-Palette resources can be allocated to Roles under 3 Scopes:
-* System (The service accounts internal to Palette)
-* Tenant
-* Project
+
+
+Palette resources can be allocated to roles under **Three Scopes**:
+
+
+
+* **System** (The service accounts internal to Palette)
+
+
+* **Tenant**
+
+
+* **Project**
+
 
 ### Permissions
+
+
 Permissions determine the type of operations allowed on a resource. Permissions can be defined in the following format:
 
 `resourceKey.operation’ 
@@ -64,12 +84,16 @@ Examples:
 *  `cluster.edit`
 *  `cluster.activate`
 
-Each Permission has a defined scope. The Role creation is limited based on scope, type and permissions.
+Each permission has a defined scope. The role creation is based on scope, type and permissions.
 
-### Palette Permissions
+<br />
+
+#### Palette Permissions
 
 Palette has a wide range of permissions and these permissions can be combined in any combination as per the user requirements to create a role. If the Palette built-in roles does not meet the specific needs of your organization, custom roles can be created using different combination of these permissions. Just like built-in roles, you can assign custom roles to users or teams within a specific scope (Tenant or Project). Refer to the available set of permissions in the [Palette Resource Scope Matrix](/user-management/palette-rbac#resourcescopematrix).
  
+<br />
+<br />
 
 ### Roles
 A Role is a collection of permissions. When a role is assigned to a user, it means all the permissions the role contains are assigned to that user. The Role will have a **Type** and a **Scope**. The Type signifies the creator's scope and the Scope signifies the role visibility. The permissions will be restricted to the permission's scope list based on the role's scope. The ProfileEditor will be visible under Tenant, but neither the Tenant nor the Project admins are allowed to modify the Project Scopes. 
@@ -81,21 +105,22 @@ A Role is a collection of permissions. When a role is assigned to a user, it mea
 * Project
 
 ### Tenant
-Tenant is an isolated workspace within the Palette. Users and Teams with specific Roles can be associated with the Tenant(s) you create. Palette provides a [wide set of permissions](/user-management/palette-rbac/tenant-scope-roles-permissions#globaltenantscope) under the scope of a Tenant. Everyone is a user. User with SuperAdmin role will become SuperAdmin and similarly Tenant
+Tenant is an isolated workspace within the Palette. `Users` and `Teams` with specific `Roles` can be associated with the Tenant(s) you create. Palette provides a [wide set of permissions](/user-management/palette-rbac/tenant-scope-roles-permissions#globaltenantscope) under the scope of a Tenant. Everyone is a user. User with SuperAdmin role will become SuperAdmin and similarly Tenant
 <br />
 
 ### Project
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create. Users are members of a tenant who are assigned [project scope roles](/user-management/palette-rbac/project-scope-roles-permissions#globalprojectscope) that control their access within the platform.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or cluster profile you create. Users are members of a tenant who are assigned [project scope roles](/user-management/palette-rbac/project-scope-roles-permissions#globalprojectscope) that control their access within the platform.
 <br />
 
 ## Palette Specific (Default) Roles:
 
-Palette RBAC has several Palette built-in roles that can be assigned to users and teams. Role assignments are the way you control access to Palette resources.
+Palette RBAC has several built-in roles that can be assigned to users and teams. Role assignments are the way you control access to Palette resources.
+<br />
 
 ### Tenant Scope Default Roles:
 
-The Global Tenant Scope holds all the tenant resources of Palette. The list of Role types within the Tenant Scope are as follows:
+The Global Tenant Scope holds all the tenant resources of Palette. The list of `Role` types within the `Tenant Scope` are as follows:
 <br />
 
 1. [Tenant Administrator Role](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantadmin)
@@ -117,6 +142,9 @@ The Global Tenant Scope holds all the tenant resources of Palette. The list of R
 
 
 5. [Tenant User Admin Role](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantuseradminrole)
+
+
+<br />
 
 ### Project Scope Default Roles:
 
@@ -169,7 +197,9 @@ The Global Project Scope holds a group of resources in a logical grouping. Users
 
 ## Assign Palette Specific Roles to Users
 
-The Default (built-in) roles of Palette system can be directly assigned to a user. The roles needs to be assigned based on who needs the access. The roles can be assigned to `Users` or `Teams`. The appropriate role needs to be selected from the list of several built-in roles. If the built-in roles are not meeting the specific needs of your organization, you can [create your own custom roles](/user-management/palette-rbac#customrolesinpalette).
+The Default (built-in) roles of Palette can be directly assigned to a user. The roles needs to be assigned based on who needs the access. The roles can be assigned to `Users` or `Teams`. The appropriate role needs to be selected from the list of several built-in roles. If the built-in roles are not meeting the specific needs of your organization, you can [create your own custom roles](/user-management/palette-rbac#customrolesinpalette).
+
+<br />
 
 1. Login to Palette console as `Tenant Admin`.
 
@@ -231,7 +261,7 @@ Palette enables the users to have custom Roles. These custom roles can be create
  
 
 ## Create Custom Role in Palette
-To create a custom role, login to the Palette console as Tenant Admin:
+To create a custom role, login to the Palette console as `Tenant Admin`:
 
 
 1. Go to **Roles** from the left ribbon menu
@@ -240,21 +270,23 @@ To create a custom role, login to the Palette console as Tenant Admin:
 2. Click **Create Role**, to open the `Add New Role` wizard
 
 
-3. Give a Role Name
+3. Give a `Role Name` of user choice.
 
 
-4. Clicking on a Role will show the permissions available under this Role. Default Roles (built-in into the Palette system) cannot be edited or deleted. Select the scope from the available options:
-    * Tenant
-    * Project
+4. Clicking on a `Role Name` will show the permissions available under this role. `Default Roles` (built-in into the Palette system) cannot be edited or deleted. Select the scope from the available options:
+
+ 	 * Tenant
+ 	 * Project
 
 
-5. Make your choice of **Permissions** and **Operations** to create a custom Palette Role. After entering the Role name, use the checkboxes to select the permissions. The checkbox list can be expanded to fine-tune the required permissions.
+5. Make your choice of **Permissions** and **Operations** to create a custom Palette role. After entering the `Role Name`, use the checkboxes to select the permissions. The checkbox list can be expanded to fine-tune the required permissions.
 
 
 6. The created role can be viewed under the `Global Roles` list
 
 
 7. Click on the name of the role to:
+
     * `View` 
     * `Edit Role`
     * `Delete Role`
@@ -302,26 +334,26 @@ Palette has a number of permissions that you can potentially include in your cus
 
 <br />
 
-#### Decide the actions, scopes and permissions required by the user to Create a Cluster.
+#### 1. Decide the actions, scopes and permissions required by the user to Create a Cluster.
 
 The role creation is done from the `Tenant Admin' console. For the above scenario, two roles needs to be created under `Project` and `Tenant` scope and attached to the user.
 
 <br />
 
-#### Identify the Permissions required under `Project Scope`:
+#### 2. Identify the Permissions required under `Project Scope`:
 
-  * Add the minimum project management permissions
+  * Add the minimum `Project` management permissions
     * project.list
     * project.get
 
 
-  * Add the minimum permissions required for cloud account creation
+  * Add the minimum permissions required for `Cloud Account` creation
     * cloudaccount.create 
     * cloudaccount.get 
     * cloudaccount.list
 
 
-   * Add the ClusterProfile permissions
+   * Add the `ClusterProfile` permissions
      * clusterProfile.create
      * clusterProfile.delete
      * clusterProfile.get
@@ -330,29 +362,29 @@ The role creation is done from the `Tenant Admin' console. For the above scenari
      * clusterProfile.update
 
 
-  * Add the cluster permissions (for creating and listing the cluster) 
+  * Add the `Cluster` permissions (for creating and listing the cluster) 
     * cluster.create
     * cluster.list 
     * cluster.get
 
 
-  * Add the location permission.
+  * Add the `Location` permission.
     * location.list
 
 
-  * Add the cloud configuration permission for node pool management
+  * Add the 'Cloud Configuration' permissions for node pool management
     * cloudconfig.create  
 
 
-#### Identify the Permissions required under `Tenant Scope`:
+#### 3. Identify the Permissions required under `Tenant Scope`:
  
-To attach the packs and integrations from Palette public repository, add the `Registry Permissions`.
+To attach the Packs and Integrations from Palette public repository, add the `Registry Permissions`.
 The minimum permission required in this scenario is:  
   
    *  packRegistry.get 
 
  
-#### Attach Roles to the User and Create the Cluster
+#### 4. Attach Roles to the User and Create the Cluster
 
 * Once both the roles are created with the above scopes, attach them to the user. 
 

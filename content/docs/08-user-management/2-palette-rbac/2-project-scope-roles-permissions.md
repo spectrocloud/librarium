@@ -17,9 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Project Scope
 
-The Global Project Scope holds a cluster of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey`.`operation`, where *resourceKey* refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
@@ -40,9 +40,9 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 |Role Names   | Description  |
 |---|---|
-|Project Admin  |   |
-|Project Editor||   |
-|Project Viewer||.  |
+|Project Admin  | The Project Administrator can manage a project, where the user has the Project Admin role. The permission applies to this specific project|
+|Project Editor|The Project Editor user can perform edit operations within a project, but the user is not able to create or delete operations|
+|Project Viewer|The Project Viewer will be able to view all the resources within a project, but is unable to modify a project|
 
 <br />
 <br />
@@ -53,7 +53,6 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Admin
 
-The Project Administrator can manage a project, where the user has the Project Admin role. The permission applies to this specific project.
 <br / >
 <table>
     <tr>
@@ -89,7 +88,6 @@ The Project Administrator can manage a project, where the user has the Project A
 
 ## Project Editor
 
-The Project Editor user can perform edit operations within a project, but the user is not able to create or delete operations. 
 <br / >
 <table>
     <tr>
@@ -128,7 +126,6 @@ The Project Editor user can perform edit operations within a project, but the us
 
 ## Project Viewer 
 
-The Project Viewer user will be able to view all the resources within a project, but is unable to modify a project.
 <br / >
 <table>
     <tr>
@@ -263,8 +260,8 @@ The user with these permissions can manage the Cluster Profiles within a project
 |Role Names| Description  |
 |---|---|
 |Cluster Admin  |   |
-|Cluster Editor||   |
-|Cluster Viewer||.  |
+|Cluster Editor |   |
+|Cluster Viewer |   |
 
 <br />
 
@@ -463,6 +460,13 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br />
 
+|Role Names| Description  |
+|---|---|
+|Workspace Admin  |   |
+|Workspace Editor||   |
+
+<br />
+
 <Tabs>
 <Tabs.TabPane tab="Workspace Admin" key="Workspace Admin">
 
@@ -492,10 +496,6 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Workspace Operator
 
-|Role Names| Description  |
-|---|---|
-|Workspace Admin  |   |
-|Workspace Editor||   |
 <br / >
 <table>
     <tr>

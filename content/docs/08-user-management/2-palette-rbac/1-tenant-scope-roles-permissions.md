@@ -15,11 +15,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Tenant Scope
 
-Tenant is an isolated workspace within the Spectro system. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
+Tenant is an isolated workspace within the Palette Console. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `resourceKey`.`operation`, where resourceKey refers to resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and resourceKey. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to resource or the API functionality, and **Operation** refers to the permitted action or activitie. 
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the [Create Role](/user-management/palette-rbac#createcustomroleinpalette) option. 
 
 Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope for the following resources:
 
@@ -42,6 +42,11 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 |Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to cluster profiles|
 |Tenant Viewer||   |
 |Tenant Project Admin|The role with access to |
+
+The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
+
+<br />
+<br />
 
 <Tabs>
 
