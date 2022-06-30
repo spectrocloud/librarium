@@ -62,7 +62,7 @@ Palette resources can be allocated to roles under **Three Scopes**:
 
 
 
-* **System** (The service accounts internal to Palette)
+* **System** (The system admin internal to Palette)
 
 
 * **Tenant**
@@ -82,7 +82,7 @@ Examples:
 
 *  `cluster.create`
 *  `cluster.edit`
-*  `cluster.activate`
+*  `cluster.delete`
 
 Each permission has a defined scope. The role creation is based on scope, type and permissions.
 
@@ -96,7 +96,7 @@ Palette has a wide range of permissions and these permissions can be combined in
 <br />
 
 ### Roles
-A Role is a collection of permissions. When a role is assigned to a user, it means all the permissions the role contains are assigned to that user. The Role will have a **Type** and a **Scope**. The Type signifies the creator's scope and the Scope signifies the role visibility. The permissions will be restricted to the permission's scope list based on the role's scope. The ProfileEditor will be visible under Tenant, but neither the Tenant nor the Project admins are allowed to modify the Project Scopes. 
+A Role is a collection of permissions. When a role is assigned to a user, it means all the permissions the role contains are assigned to that user. The Role will have a **Scope**. The Type signifies the creator's scope and the Scope signifies the role visibility. The permissions will be restricted to the permission's scope list based on the role's scope. The ProfileEditor will be visible under Tenant, but neither the Tenant nor the Project admins are allowed to modify the Project Scopes. 
 
 <br />
 
@@ -105,7 +105,7 @@ A Role is a collection of permissions. When a role is assigned to a user, it mea
 * Project
 
 ### Tenant
-Tenant is an isolated workspace within the Palette. `Users` and `Teams` with specific `Roles` can be associated with the Tenant(s) you create. Palette provides a [wide set of permissions](/user-management/palette-rbac/tenant-scope-roles-permissions#globaltenantscope) under the scope of a Tenant. Everyone is a user. User with SuperAdmin role will become SuperAdmin and similarly Tenant
+Tenant is an isolated workspace within the Palette. `Users` and `Teams` with specific `Roles` can be associated with the Tenant(s) you create. Palette provides a [wide set of permissions](/user-management/palette-rbac/tenant-scope-roles-permissions#globaltenantscope) under the scope of a Tenant. Everyone is a user and there should be at least one user with Tenant Admin privilege to control the product operations.
 <br />
 
 ### Project
@@ -230,7 +230,7 @@ The Default (built-in) roles of Palette can be directly assigned to a user. The 
 <br />
 
 ## Custom Roles in Palette
-Palette enables the users to have custom Roles. These custom roles can be created either under the Tenant Scope or the Project Scope, but not both. These roles need to have unique names for identification. The names are case-insensitive which means, a role name KEY_MANAGER is the same as key_manager. To create custom role in Palette Platform, we need to understand the components and operations in the Palette Platform enumerated as a `Resource Scope Matrix` as below:
+Palette enables the users to have custom Roles. These custom roles can be created either under the Tenant Scope or the Project Scope, but not both. These roles need to have unique names for identification. The names are case-insensitive. To create custom role in Palette Platform, we need to understand the components and operations in the Palette Platform enumerated as a `Resource Scope Matrix` as below:
 
 <br />
 <br />

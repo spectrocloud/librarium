@@ -21,13 +21,7 @@ Palette has adopted the security principle of least privilege. Each user is assi
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the [Create Role](/user-management/palette-rbac#createcustomroleinpalette) option. 
 
-Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope for the following resources:
-
-1. [Tenant](/user-management/palette-rbac/tenant-scope-roles-permissions#tenants)
-2. [Cluster Profile](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantclusterprofileadmin)
-3. [Role](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantroleadmin)
-4. [Team](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantteamadmin)
-5. [User](/user-management/palette-rbac/tenant-scope-roles-permissions#tenantuseradminrole)
+Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope:
 
 <br />
 <br />
@@ -39,9 +33,9 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 |Role Names   | Description  |
 |---|---|
-|Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to cluster profiles|
-|Tenant Viewer||   |
-|Tenant Project Admin|The role with access to |
+|Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to projects|
+|Tenant Viewer| Tenant Viewer has a read only access to all the project resources|
+|Tenant Project Admin|The role with complete access to an existing project|
 
 The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
 
@@ -179,8 +173,8 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 ----------------------------
 
 |Role Names   | Description  |
-|---|---|
-|Tenant Cluster Profile Admin  |   |
+|---|---| 
+|Tenant Cluster Profile Admin  | A role which has complete access to all the `Cluster Profile` related operations|
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -198,7 +192,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 |Role Names   | Description  |
 |---|---|
-|Tenant Role Admin  |   |
+|Tenant Role Admin  | A role which has complete access to all the `Role` related perations  |
 
 |          | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | -------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -215,7 +209,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 |Role Names   | Description  |
 |---|---|
-|Tenant Team Admin |   |
+|Tenant Team Admin | A role which has complete access to all the `Team` related operations  |
 
 |            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -235,7 +229,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 |Role Names   | Description  |
 |---|---|
-|Tenant User Admin Role|A user can manage user operations in the tenant scope|
+|Tenant User Admin Role|A role which has complete access to all the `User` related operations|
 
 
 

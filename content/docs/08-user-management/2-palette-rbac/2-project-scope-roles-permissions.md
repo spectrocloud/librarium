@@ -23,15 +23,7 @@ Palette has adopted the security principle of least privilege. Each user is assi
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
-Below is the predefined list of Roles and Permissions for the Global Project Scope for the following Resources:
-
-<br />
-
-* [Project](/user-management/palette-rbac/project-scope-roles-permissions#project)
-* [Cluster Profile](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofile)
-* [Cluster](/user-management/palette-rbac/project-scope-roles-permissions#cluster)
-* [Cloud Account](/user-management/palette-rbac/project-scope-roles-permissions#cloudaccount)
-* [Workspace](/user-management/palette-rbac/project-scope-roles-permissions#workspace)
+Below is the predefined list of Roles and Permissions for the Global Project Scope:
 
 <br />
 
@@ -40,9 +32,9 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 |Role Names   | Description  |
 |---|---|
-|Project Admin  | The Project Administrator can manage a project, where the user has the Project Admin role. The permission applies to this specific project|
-|Project Editor|The Project Editor user can perform edit operations within a project, but the user is not able to create or delete operations|
-|Project Viewer|The Project Viewer will be able to view all the resources within a project, but is unable to modify a project|
+|Project Admin |The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
+|Project Editor|The Project Editor role can perform edit operations within a project, but the user  is not able to create or delete a project|
+|Project Viewer|The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications|
 
 <br />
 <br />
@@ -169,9 +161,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 |Role Names| Description  |
 |---|---|
-|Cluster Profile Admin |The user with these permissions can create and modify the Palette cluster profile.     |
-|Cluster Profile Editor|   |
-|Cluster Profile Viewer|  |
+|Cluster Profile Admin |Cluster Profile Admin role has admin privileges to all the cluster profile operations|
+|Cluster Profile Editor|Cluster Profile Editor role has privileges to edit and list operations on the cluster profile|
+|Cluster Profile Viewer|Cluster Profile Viewer role has read-only privileges to cluster profiles|
 
 <br />
 
@@ -259,9 +251,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 |Role Names| Description  |
 |---|---|
-|Cluster Admin  |   |
-|Cluster Editor |   |
-|Cluster Viewer |   |
+|Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation|
+|Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
+|Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations |
 
 <br />
 
@@ -380,9 +372,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 |Role Names| Description |
 |---|---|
-|Cluster Account Admin  |   |
-|Cluster Account Editor||   |
-|Cluster Account Viewer||.  |
+|Cluster Account Admin  | An administrative access to cloud account operations|
+|Cluster Account Editor | An editor access to cloud cloud account operations  |
+|Cluster Account Viewer |  A read-only role for cloud account operations |
 
 <br />
 
@@ -462,8 +454,8 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 |Role Names| Description  |
 |---|---|
-|Workspace Admin  |   |
-|Workspace Editor||   |
+|Workspace Admin  | Administrator role to workspace operations|
+|Workspace Editor | Editor role to workspace operations |
 
 <br />
 
