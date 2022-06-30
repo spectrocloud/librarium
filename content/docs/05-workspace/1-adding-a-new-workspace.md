@@ -1,5 +1,5 @@
 ---
-title: "Adding a workspace"
+title: "Adding a Workspace"
 metaTitle: "Adding a workspace"
 metaDescription: "How to create multi-cluster workspace in Spectro Cloud"
 icon: ""
@@ -12,20 +12,25 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
+
+# Overview
+
+Palette enables multi-cluster management and governance capabilities by introducing Workspaces. This section explains how a workspace can be created in the Palette console.
+
 # Prerequisites
 
-  You should have one or more running Workload Clusters within the project.
+  One or more running workload clusters within the project.
 
 # Create Your Workspace
 
-## 1. Add the Basic Information
+#### 1. Add the Basic Information
 Provide the basic information for the workspace such as:
 
 * Unique Name
 * Optional Description
 * Optional Tag
 
-## 2. Associate Clusters
+#### 2. Associate Clusters
 
   * Select the cluster(s) to be added to the workspace. (See [ New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
@@ -42,7 +47,7 @@ Provide the basic information for the workspace such as:
     | **Service Account**  | a valid path segment name | Granting super-user access to all service accounts <br /> cluster-wide is strongly discouraged. Hence, grant a <br /> role to all service accounts in a namespace. |
 
   
-## 3. Associate Namespaces
+#### 3. Associate Namespaces
   
 * Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is unique across workspaces in a project.   Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
 
@@ -53,20 +58,18 @@ Provide the basic information for the workspace such as:
 * Configure the Role Binding (optional). The following information is required for each role binding:
    * Select a namespace
    * Specific name for the role which is pre-existing
-   * Make the selection of Subjects from the dropdown list (User, Group, or ServiceAccount).
-  
-For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
+   * Make the selection of Subjects from the dropdown list (User, Group, or ServiceAccount). For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
 
   
    * Confirm the information provided to complete the configuration of role binding.
   
-## 4. Settings
+#### 4. Settings
 
 
 * [Schedule Backups](/clusters/cluster-management/backup-restore#createaworkspacebackup) - set the backup and restore policies.
     
 * [Container Image](/workspace/workload-features#restrictedcontainerimages) - list out the container images to be restricted within a Workspace namespace.
 
-## 5. Review and finish the configuration and complete the deployment.
+#### 5. Review and finish the configuration and complete the deployment.
 
 
