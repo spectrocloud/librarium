@@ -13,19 +13,19 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports placeholder variables as Macros in our Cluster Profile Layers. These Macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these Macros and using them within any of our Cluster Profile Layers. Hence, changes to the existing Macros get updated to the corresponding Cluster Profile and the Clusters with these Profiles attached. 
+Palette supports placeholder variables as Macros in our cluster profile layers. These macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these macros and using them within any of our cluster profile layers. Hence, changes to the existing Macros get updated to the corresponding cluster profile and the clusters with these profiles attached. 
 
 # Scope of Palette Macros
 
-Palette users can declare the Macros under three different Scopes:
+Palette users can declare the Macros under three different scopes:
 
-1. **Project Scope**: Create Macros from the Project Dashboard with Project privileges.
-
-
-2. **Tenant Admin Scope**: Create Macros from the Tenant Admin Dashboard with Administrative privileges.
+1. **Project Scope**: Create `Macros` from the project dashboard with project privileges.
 
 
-3. **System Scope**: Includes the Default System Macros and User-created System Macros.
+2. **Tenant Admin Scope**: Create macros from the `Tenant Admin Dashboard` with administrative privileges.
+
+
+3. **System Scope**: Includes the default system macros and user-created system macros.
 
 The Macros must have unique names within a given application, but Macros with a different Scope can have a unique name. In such cases, the precedence followed is in decreasing order (the highest precedence being Project Scope).
 
@@ -35,7 +35,7 @@ The Macros must have unique names within a given application, but Macros with a 
 
 # Create your Macro
 
-Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a Tenant Admin or Project Admin, to create Macros under Tenant Admin scope and Project Scope, respectively. System Scope Macros can be created via API's. The steps to create a Macro are as below:
+Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a Tenant Admin or Project Admin, to create macros under Tenant Admin scope and Project Scope, respectively. System Scope Macros can be created via API's. The steps to create a macro are as below:
 
 <Tabs>
 <Tabs.TabPane tab="Tenant Scope Macro" key="Tenant Scope Macro">
@@ -199,7 +199,7 @@ The Macros are overridden into the Cluster Profile layers:
 <Tabs.TabPane tab="System Scope Macro" key="System Scope Macro">
 
 <br />
-Delete your System Level Macros via an API.
+Delete your system level macros via an API.
 
 </Tabs.TabPane>
 
@@ -207,7 +207,7 @@ Delete your System Level Macros via an API.
 
 <br />
 <WarningBox>
-When a Macro is deleted from the UI, it needs to be cleared from the Cluster Profile to avoid Macro deletion anomalies in the running Cluster.
+When a Macro is deleted from the UI, it needs to be cleared from the cluster profile to avoid Macro deletion anomalies in the running cluster.
 </WarningBox>
 
 
