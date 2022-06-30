@@ -37,8 +37,13 @@ The Macros must have unique names within a given application, but Macros with a 
 
 Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a Tenant Admin or Project Admin, to create macros under Tenant Admin scope and Project Scope, respectively. System Scope Macros can be created via API's. The steps to create a macro are as below:
 
+<br />
+<br />
+
 <Tabs>
 <Tabs.TabPane tab="Tenant Scope Macro" key="Tenant Scope Macro">
+
+<br />
 
 1. Log in to the Palette Management Console as a **Tenant Admin**.
 
