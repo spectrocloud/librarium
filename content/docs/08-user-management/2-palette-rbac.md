@@ -76,7 +76,7 @@ Palette resources can be allocated to roles under **Three Scopes**:
 
 Permissions determine the type of operations allowed on a resource. Permissions can be defined in the following format:
 
-`resourceKey.operation’ 
+`resourceKey.operation`
 
 Examples:
 
@@ -336,7 +336,7 @@ Palette has a number of permissions that you can potentially include in your cus
 
 #### 1. Decide the actions, scopes and permissions required by the user to Create a Cluster.
 
-The role creation is done from the `Tenant Admin' console. For the above scenario, two roles needs to be created under `Project` and `Tenant` scope and attached to the user.
+The role creation is done from the `Tenant Admin` console. For the above scenario, two roles needs to be created under `Project` and `Tenant` scope and attached to the user.
 
 <br />
 
@@ -372,7 +372,7 @@ The role creation is done from the `Tenant Admin' console. For the above scenari
     * location.list
 
 
-  * Add the 'Cloud Configuration' permissions for node pool management
+  * Add the `Cloud Configuration` permissions for node pool management
     * cloudconfig.create  
 
 
