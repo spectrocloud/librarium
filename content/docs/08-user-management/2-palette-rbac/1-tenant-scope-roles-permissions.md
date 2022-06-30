@@ -15,13 +15,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Tenant Scope
 
-Tenant is an isolated workspace within the Spectro system. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
+Tenant is an isolated workspace within the Palette Console. Users and Teams with specific Roles can be associated with the Tenant(s) you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and components. The Permissions format is `component`.`operation`, where component refers to resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the scopes, resources, and resourceKey. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to resource or the API functionality, and **Operation** refers to the permitted action or activitie. 
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the [Create Role](/user-management/palette-rbac#createcustomroleinpalette) option. 
 
-Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope.
+Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope:
 
 <br />
 <br />
@@ -29,6 +29,18 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 
 # Tenants 
+----------------------------
+
+|Role Names   | Description  |
+|---|---|
+|Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to projects|
+|Tenant Viewer| Tenant Viewer has a read only access to all the project resources|
+|Tenant Project Admin|The role with complete access to an existing project|
+
+The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
+
+<br />
+<br />
 
 <Tabs>
 
@@ -38,12 +50,10 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 ## Tenant Admin
 
-Tenant is an isolated workspace within the Palette system dedicated to a customer. The Tenant Administrator Role allows the user to create profiles and manage projects within the tenant.
-
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -74,6 +84,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 <br />
 <br />
+<br />
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Tenant Viewer" key="Tenant Viewer Role">
@@ -84,7 +95,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -124,7 +135,7 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -156,22 +167,14 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 
 <br />
 <br />
-<br />
 
-<Tabs>
-<Tabs.TabPane tab="Tenant Cluster Profile Admin" key="Tenant Cluster Profile Admin">
+## Cluster Profile 
 
-<br />
+----------------------------
 
-## Tenant Cluster Profile Admin
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>Components</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+|Role Names   | Description  |
+|---|---| 
+|Tenant Cluster Profile Admin  | A role which has complete access to all the `Cluster Profile` related operations|
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -179,28 +182,17 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
 
-
 <br />
 <br />
 <br />
 
+## Tenant Role 
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant Role Admin" key="Tenant Role Admin">
+----------------------------
 
-<br />
-
-## Tenant Role Admin Role
-
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>Components</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
-
+|Role Names   | Description  |
+|---|---|
+|Tenant Role Admin  | A role which has complete access to all the `Role` related perations  |
 
 |          | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | -------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -211,21 +203,13 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 <br />
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant Team Admin" key="Tenant Team Admin">
+## Tenant Team
 
-<br />
+----------------------------
 
-## Tenant Team Admin
-
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>Components</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+|Role Names   | Description  |
+|---|---|
+|Tenant Team Admin | A role which has complete access to all the `Team` related operations  |
 
 |            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -239,22 +223,15 @@ Tenant is an isolated workspace within the Palette system dedicated to a custome
 <br />
 <br />
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Tenant User Admin" key="Tenant User Admin">
+## Tenant User
 
-<br />
+----------------------------
 
-## Tenant User Admin Role
-A user can manage user operations in the tenant scope.
+|Role Names   | Description  |
+|---|---|
+|Tenant User Admin Role|A role which has complete access to all the `User` related operations|
 
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>Components</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
+
 
 |            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -262,12 +239,7 @@ A user can manage user operations in the tenant scope.
 | **audit**  |            |            | √       | √        |            |            |             |            |             |
 | **user**   | √          | √          | √       | √        | √          |            |             |            |             |
 
-<br />
-<br />
-<br />
 
-</Tabs.TabPane>
-</Tabs>
 
 <br />
 <br />
