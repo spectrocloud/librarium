@@ -17,22 +17,25 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Global Project Scope
 
-The Global Project Scope holds a cluster of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `component`.`operation`, where *component* refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
 
 To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
 
-Below is the predefined list of Roles and Permissions for the Global Project Scope.
+Below is the predefined list of Roles and Permissions for the Global Project Scope:
 
-
-<br />
-<br />
 <br />
 
 # Project
+--------------------------------
 
-<br />
+|Role Names   | Description  |
+|---|---|
+|Project Admin |The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
+|Project Editor|The Project Editor role can perform edit operations within a project, but the user  is not able to create or delete a project|
+|Project Viewer|The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications|
+
 <br />
 <br />
 
@@ -42,11 +45,10 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Admin
 
-The Project Administrator can manage a project, where the user has the Project Admin role. The permission applies to this specific project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -78,11 +80,10 @@ The Project Administrator can manage a project, where the user has the Project A
 
 ## Project Editor
 
-The Project Editor user can perform edit operations within a project, but the user is not able to create or delete operations. 
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -117,11 +118,10 @@ The Project Editor user can perform edit operations within a project, but the us
 
 ## Project Viewer 
 
-The Project Viewer user will be able to view all the resources within a project, but is unable to modify a project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -153,11 +153,18 @@ The Project Viewer user will be able to view all the resources within a project,
 
 
 # Cluster Profile
+-----------------------------
 
 The user with these permissions can manage the Cluster Profiles within a project.
 
 <br />
-<br />
+
+|Role Names| Description  |
+|---|---|
+|Cluster Profile Admin |Cluster Profile Admin role has admin privileges to all the cluster profile operations|
+|Cluster Profile Editor|Cluster Profile Editor role has privileges to edit and list operations on the cluster profile|
+|Cluster Profile Viewer|Cluster Profile Viewer role has read-only privileges to cluster profiles|
+
 <br />
 
 <Tabs>
@@ -166,11 +173,10 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Admin
 
-The user with these permissions can create and modify the project.  
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -194,7 +200,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -218,7 +224,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -238,6 +244,16 @@ The user with these permissions can create and modify the project.
 <br />
 
 # Cluster
+--------------------------------------
+<br />
+
+<br />
+
+|Role Names| Description  |
+|---|---|
+|Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation|
+|Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
+|Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations |
 
 <br />
 
@@ -252,7 +268,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -285,7 +301,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -320,7 +336,7 @@ The user with these permissions can create and modify the project.
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -349,14 +365,22 @@ The user with these permissions can create and modify the project.
 
 <br />
 
-# Cluster Account
-
-The user holding these permissions is able to manage the Cloud Accounts within a project.
+# Cloud Account
+-----------------------------
 
 <br />
 
+|Role Names| Description |
+|---|---|
+|Cluster Account Admin  | An administrative access to cloud account operations|
+|Cluster Account Editor | An editor access to cloud cloud account operations  |
+|Cluster Account Viewer |  A read-only role for cloud account operations |
+
+<br />
+
+
 <Tabs>
-<Tabs.TabPane tab="Cloud Account Admin" key="Cloud Account Admin">
+<Tabs.TabPane tab="Cluster Account Admin" key="Cloud Account Admin">
 
 <br />
 
@@ -365,7 +389,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -378,7 +402,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Cloud Account Editor" key="Cloud Account Editor">
+<Tabs.TabPane tab="Cluster Account Editor" key="Cluster Account Editor">
 
 <br />
 
@@ -386,7 +410,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -399,7 +423,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Cloud Account Viewer" key="Cloud Account Viewer">
+<Tabs.TabPane tab="Cluster Account Viewer" key="Cluster Account Viewer">
 
 <br />
 
@@ -408,7 +432,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -424,6 +448,14 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 </Tabs>
 
 # Workspace
+------------------------------------
+
+<br />
+
+|Role Names| Description  |
+|---|---|
+|Workspace Admin  | Administrator role to workspace operations|
+|Workspace Editor | Editor role to workspace operations |
 
 <br />
 
@@ -436,7 +468,7 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
@@ -455,10 +487,11 @@ The user holding these permissions is able to manage the Cloud Accounts within a
 <br />
 
 ## Workspace Operator
+
 <br / >
 <table>
     <tr>
-        <td width="400"><b>Components</b></td>
+        <td width="400"><b>resourceKeys</b></td>
         <td><b>Operations</b></td>
     </tr>
 </table>
