@@ -27,7 +27,7 @@ Palette provides a convenient backup option to back up the Kubernetes cluster st
 
 ## For an Amazon Web Services (AWS) Bucket as Backup Location
 
-* The Amazon Simple Storage Service (S3) Amazon S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
+* The Amazon Simple Storage Service (S3) permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 * Pre-created bucket at the AWS or MinIO object-store.
 
