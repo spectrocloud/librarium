@@ -1,7 +1,7 @@
 ---
 title: "Adding a Workspace"
 metaTitle: "Adding a workspace"
-metaDescription: "How to create multi-cluster workspace in Spectro Cloud"
+metaDescription: "How to create multi-cluster workspace in Palette"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -32,7 +32,7 @@ Provide the basic information for the workspace such as:
 
 #### 2. Associate Clusters
 
-  * Select the cluster(s) to be added to the workspace. (See [ New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
 
   * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
@@ -49,10 +49,10 @@ Provide the basic information for the workspace such as:
   
 #### 3. Associate Namespaces
   
-* Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is unique across workspaces in a project.   Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
+* Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is unique across workspaces in a project. Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
 
 
-* Add the resource quota for the namespaces by specifying CPU and Memory limits (Optional).
+* Add the resource quota for the namespaces by specifying CPU and Memory limits (optional).
 
 
 * Configure the Role Binding (optional). The following information is required for each role binding:

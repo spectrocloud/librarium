@@ -87,13 +87,13 @@ To create your **Workspace Role**, follow the steps below:
 
 # Prerequisites
 
-## For AWS Bucket as Backup Location
+## For an Amazon Web Services (AWS) Bucket as Backup Location
 
 * The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 * Pre-create a bucket at the AWS or MinIO object-store.
 
-## For GCP Backup Location
+## For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a **Storage Admin** role.
 
@@ -101,7 +101,7 @@ To create your **Workspace Role**, follow the steps below:
 
 # Backup Locations
 
-AWS S3 and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed under the **Project** > **Settings** option and can be selected as a backup location, while backing up any cluster in the project.
+AWS Simple Cloud Storage (S3) and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed under the **Project** > **Settings** option and can be selected as a backup location, while backing up any cluster in the project.
 
 ## Configure your Backup in AWS S3 
 
@@ -283,7 +283,7 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 ## To set your Namespace Quota:
 
-1. During [Step: 3 Associate Namespaces](/workspace/adding-a-new-workspace#3.associatenamespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can utilize the set Quota. 
+1. During [Step: 3 Associate Namespaces](/workspace/adding-a-new-workspace#3.associatenamespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota. 
 
 
 2. Namespace Quota can be set for an already deployed workspace as:
