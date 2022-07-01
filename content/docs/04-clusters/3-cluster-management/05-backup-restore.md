@@ -25,13 +25,13 @@ Palette provides a convenient backup option to back up the Kubernetes cluster st
 
 # Prerequisites
 
-## For AWS Bucket as Backup Location
+## For an Amazon Web Services (AWS) Bucket as Backup Location
 
-* The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
+* The AWS Simple Cloud Storage (S3) AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 * Pre-created bucket at the AWS or MinIO object-store.
 
-## For GCP Backup Location
+## For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a `storage admin` role.
 
