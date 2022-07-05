@@ -11,13 +11,73 @@ import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
+import Tabs from 'shared/components/ui/Tabs';
+
+# Overview
+
+Palette supports several day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette On Prem Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like Backup/Restore and Cluster Migration across PCGs.
+
+<br />
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Palette PCG Migration" key="Palette PCG Migration">
 
 
+# Palette PCG Migration
+
+Palette enables Public Cloud Gateway (PCG) migration to route the traffic between PCGs to ensure uninterrupted PCG service availability. If a PCG goes unhealthy, it can be deleted after migrating the clusters launched through that PCG to another healthy PCG. This ensures that cluster operations such as deletion are carried out without interruption.  
+
+## When Will You Migrate
+
+The possible conditions of PCG migration are:
+
+* Unhealthy PCG to healthy PCG
+
+
+* Healthy PCG to healthy PCG
+
+
+## How to Migrate a PCG Traffic 
+
+To migrate the traffic from a PCG:
+<br />
+
+1. Log in as `Tenant Admin` to the Palette Console.
+
+
+2. From the `Tenant Settings`, go to the `Private Cloud Gateways` tab to list all PCGs.
+
+
+3. Click the 'Kebab` menu towards the PCG to be migrated to see the drop-down option of **Migrate**.
+
+
+4. Click the **Migrate** option to open the wizard to select your destination PCG.
+
+
+5. The wizard will display the drop-down list of all healthy PCGs to which traffic can be migrated. Select the PCG of your choice from the drop-down.
+
+
+6. Confirm the migration operation to get a UI confirmation of the successful migration. 
+
+
+7. Once migration is completed, the unhealthy/source PCG can be deleted successfully. Clear the residual resources manually to complete the deletion process.
+
+
+8. The `Audit Logs` gives the migration update.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Backup and Restore" key="Backup and Restore">
 
 # Backup and Restore for Enterprise Clusters
 
 Palette provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., snapshot of persistent volumes is taken and maintained as part of the backup. The two options of backup creation are:
+
 * FTP
+
+
 * S3
 
 FTP mode backup is sending the backup data of your enterprise cluster to a dedicated FTP server using the File Transfer Protocol (FTP).
@@ -26,28 +86,53 @@ S3 buckets for backup make it trivial for everyone to use Amazon’s infrastruct
 
 ## Instructions
 
-* Login to your enterprise mode as administrator
+1. Login to enterprise mode as administrator:
 
-  * https://system_IP/system
-  * Username: admin
-  * Password: custom password
-* Select administration from left panel
-* On the administration page, select Backup /Restore from the top ribbon
-* Complete the Backup configuration wizard to complete the mode of backup creation
-* Select the mode of backup from the two available options - FTP and S3
+  	* https://system_IP/system
+  	* Username: admin
+  	* Password: custom password
+
+
+2. Select administration from left panel.
+
+
+3. On the administration page, select Backup /Restore from the top ribbon.
+
+
+4. Complete the Backup configuration wizard to complete the mode of backup creation.
+
+
+5. Select the mode of backup from the two available options: 
+    	* FTP 
+	* S3
+
+
 ### FTP
 
 The following information is filled to create a backup location in FTP mode:
-* ftp:// server details
-* The directory name for the backup storage
-* Username and Password to login to the server
-* Scheduling details of the backup
+
+1. Provide the ftp:// server details
+
+
+2. The directory name for the backup storage
+
+
+3. Username and Password to login to the server
+
+
+4. Scheduling details of the backup
 	* Interval is specifying the number of days between two consecutive backups
 	* Retention period for backup in days
 	* Hours of the day (UTC 0 to 23 hours) specifying the time of the specified day to take the backup
-* This configuration is saved and used for creating an FTP backup by clicking the +create FTP backup button on the top right corner of the page
-* The configuration can be edited as per requirements
-* Delete / Restore a specific backup from the actions panel
+
+
+5. This configuration is saved and used for creating an FTP backup by clicking the +create FTP backup button on the top right corner of the page
+
+
+6. The configuration can be edited as per requirements
+
+
+7. Delete / Restore a specific backup from the actions panel
 
 <InfoBox>
 The saved configuration details can be used to create multiple backup locations. 
@@ -109,20 +194,49 @@ Ensure that the IAM user or the ROOT user role created should have the following
 ```
 
 The following information is needed:
+
+
 * AWS Account Access key
+
+
 * AWS Account Secret Key
+
+
 * AWS Region
+
+
 * AWS Bucket name
+
+
 * Folder name to which the backup is stored in the S3 bucket
+
+
 * Scheduling details of the backup,
 	* Interval specifies the number of days between two consecutive backups
 	* Retention period of backup in days
 	* Hours of the day (UTC 0 to 23 hours) specifies the time of the specified day to take the backup
+
+
 * Validate the information and save the configurations
+
+
 * The saved configuration is used for creating an S3 backup by clicking the +create S3 backup button on the top right corner of the page
+
+
 * Once the backup is created, the details such as backup uid, mode, status, finish time, and actions is viewed from the console for individual backup
+
+
 * Delete / Restore a specific backup from the actions panel 
+
 
 <InfoBox>
 The saved configuration details can be used to create multiple backup locations. Any changes can be made to the existing configuration and saved for reuse. 
 </InfoBox>
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
+<br />
+<br />
