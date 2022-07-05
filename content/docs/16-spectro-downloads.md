@@ -28,7 +28,7 @@ The Palette Quickstart and Enterprise Mode on-prem installations are highly avai
 
 |Version|URL|Info|
 |--|---|--|
-|2.0.2|hubble-installer-202-10152021.ova|Oct 15 2021|
+|2.1.0|hubble-installer-210.ova|Jun 1 2022 (Cert Manager change to 1.8)|
 ------
 
 

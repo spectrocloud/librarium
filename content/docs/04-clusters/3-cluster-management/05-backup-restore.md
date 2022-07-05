@@ -22,56 +22,16 @@ Palette provides two ways to back up and restore Kubernetes clusters:
 
 Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
-# Workspace Backup and Restore
-
-Palette users can create cluster backups from within a workspace (usually consisting of multiple clusters) and restore them later time as desired. Palette allows granular controls within a workspace for users to perform specific tasks within the workspace, without having the ability to update workspace details. In order to provide granular access within a workspace for specific actions, Palette provides the following two roles:
-
-## Workspace Operator
-
-Users assigned the `workspace operator` role can only perform back and restore actions within the workspace.
-
-## Workspace Admin
-
-A role that has all admin permissions and privileges within the workspace.
-
-## Create your Workspace Roles
-
-To create your workspace role, follow the steps below:
-
-1. Login to Palette management console as Tenant Admin.
-
-
-2. Go to the **Users and Teams** option.
-
-
-3. From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](/projects/#projects).
-
-
-4. Select the **Workspace Roles** tab and click **+ New Workspace Role** to create a new role.
-
-
-5. Fill the following information into the **Add Roles to User-Name** wizard:
-   * Project
-   * Workspace
-   * Choose the role from the options:
-      * Workspace Admin
-      * Workspace Operator
-
-
-6. Confirm the information provided to complete the wizard.
-
-
-7. The user set with the Workspace role can take Workspace-wide backup and Restores in compliance with their permissions and privileges.
 
 # Prerequisites
 
-## For AWS Bucket as Backup Location
+## For an Amazon Web Services (AWS) Bucket as Backup Location
 
-* The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
+* The Amazon Simple Storage Service (S3) permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 * Pre-created bucket at the AWS or MinIO object-store.
 
-## For GCP Backup Location
+## For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a `storage admin` role.
 
@@ -201,14 +161,14 @@ The below section will describe:
 
 ## Create a Cluster Backup
 
-Backups can be scheduled or initiated in an on demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
+Backups can be scheduled or initiated in an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
 
 1. **Backup Prefix / Backup Name**:
   * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-  * For an on demand backup, a name of user choice can be used.
+  * For an on demand Backup, a name of user choice can be used.
 
 
-2. Select the backup location.
+2. Select the Backup location.
 
 
 3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
@@ -232,37 +192,6 @@ Backups can be scheduled or initiated in an on demand basis during cluster creat
 |Scheduled Backup |
 |-----------------|
 |**Cluster Creation** > **Policies** > **Backup Policies**|
-
-## Create a Workspace Backup
-
-Backups can be scheduled or initiated in an on demand basis, during the workspace creation. The following information is required for configuring a Workspace Backup, on demand:
-
-1. Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an on demand backup, a name of user choice can be used.
-
-
-2. Select the backup location.
-
-
-3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
-
-
-4. **Expiry Date**: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
-
-
-5. **Include all disks**: Optionally backup persistent disks as part of the backup.
-
-
-6. **Include Cluster Resources**: Select or deselect on your choice.
-
-
-|On Demand Backup   |
-|-------------------|
-|Select the **Workspace to Backup** > **Settings** > **Schedule Backups**|
-
-
-|Scheduled Backup |
-|-----------------|
-|**Workspace Creation** > **Policies** > **Backup Policies**|
 
 
 ### Backup Scheduling Options
