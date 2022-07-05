@@ -68,7 +68,7 @@ The target workload cluster is then responsible for provisioning and maintaining
 
 Palette pivots these clusters for several reasons, related to scalability and availability:
 
-* **Scalability** - The management platform scales to meet the demand of all your workload clusters as the number of tenant clusters and nodes increases in size. 
+* **Scalability** - The management platform scales to meet the demand of all your workload clusters as the number of tenant clusters and nodes increases in size.
 
 * **Resiliency** - Even if the management platform were to experience an outage, the workload clusters would retain their resiliency capabilities, auto-recovery, launching of new nodes on failures, auto-scaling, and other policies still work!
 
