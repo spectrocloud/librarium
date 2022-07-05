@@ -52,14 +52,11 @@ const Form = styled.form`
     `}
 `;
 
-const gaSearchDebounced = debounce((query) => {
+const gaSearchDebounced = debounce(() => {
   trackCustomEvent({
     category: "Search Terms",
     action: "search",
-    label: query,
-    nonInteraction: false,
   });
-  console.log("here", query);
 }, 3000);
 
 export default connectSearchBox(({ refine, focus, center, ...rest }) => {
@@ -81,11 +78,11 @@ export default connectSearchBox(({ refine, focus, center, ...rest }) => {
     if (!inputValue) {
       return;
     }
-    gaSearchDebounced(inputValue);
+    gaSearchDebounced();
   }, [inputValue]);
 
   return (
-    <Form className="formElement" onSubmit={preventSubmit} center={center}>
+    <Form id="algolia-search" className="formElement" onSubmit={preventSubmit} center={center}>
       <SearchIcon icon="search" />
       <Input
         ref={ref}
