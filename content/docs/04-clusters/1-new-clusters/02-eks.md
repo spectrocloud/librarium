@@ -18,10 +18,10 @@ Following are some architectural highlights of Amazon Web Services' (AWS) manage
 1. Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 
 
-2. Full support for EKS Fargate profiles
+2. Full support for EKS Fargate profiles.
 
 
-3. Spot instance support
+3. Spot instance support.
 
  ![eks_cluster_architecture.png](eks_cluster_architecture.png)
 
@@ -465,6 +465,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 }
 
 ```
+
 <InfoBox>
 <b>Note</b>:
 All the above policies are required as part of the Cluster API requirement, derived using <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
@@ -586,6 +587,260 @@ All the above policies are required as part of the Cluster API requirement, deri
             ]
         }
     ]
+}
+
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+## Restricting Palette Static Minimum Permissions for Existing VPC
+
+You can choose to have Palette work in a static or dynamic environment. You can also set it to restrict or allow Palette to perform an AWS EKS cluster creation into an existing VPC. The following policy allows Palette work but restricts it to the Principle of Least Privilege.
+
+
+<br />
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Minimum Dynamic Permissions" key="Minimum Dynamic Permissions">
+
+
+This is a policy for use for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+
+<br />
+<br />
+
+### Mimimum Dynamic Permissions
+
+
+```json
+{
+ "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:DescribeInstances",
+        "iam:RemoveRoleFromInstanceProfile",
+        "ec2:AttachInternetGateway",
+        "iam:AddRoleToInstanceProfile",
+        "ec2:DeleteRouteTable",
+        "ec2:AssociateRouteTable",
+        "ec2:DescribeInternetGateways",
+        "ec2:CreateRoute",
+        "ec2:CreateInternetGateway",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeNetworkAcls",
+        "ec2:DescribeRouteTables",
+        "ec2:CreateTags",
+        "ec2:CreateRouteTable",
+        "ec2:RunInstances",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:TerminateInstances",
+        "ec2:DetachInternetGateway",
+        "ec2:DisassociateRouteTable",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:DescribeIpv6Pools",
+        "ec2:DeleteVpc",
+        "ec2:CreateSubnet",
+        "ec2:DescribeSubnets",
+        "iam:CreateInstanceProfile",
+        "ec2:DisassociateAddress",
+        "ec2:DescribeAddresses",
+        "ec2:CreateNatGateway",
+        "ec2:DescribeRegions",
+        "ec2:CreateVpc",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:CreateSecurityGroup",
+        "ec2:ModifyVpcAttribute",
+        "iam:DeleteInstanceProfile",
+        "ec2:ReleaseAddress",
+        "iam:GetInstanceProfile",
+        "ec2:DescribeTags",
+        "ec2:DeleteRoute",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeIpamPools",
+        "ec2:AllocateAddress",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeImages",
+        "ec2:DescribeVpcs",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeTags",
+        "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:TagResource",
+        "secretsmanager:GetSecretValue",
+        "autoscaling:StartInstanceRefresh",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "ecr:GetAuthorizationToken",
+        "iam:PassRole",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "ecr:BatchGetImage",
+        "ec2:DeleteInternetGateway",
+        "ec2:DeleteNatGateway",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSubnet",
+        "ec2:DeleteTags",
+        "ssm:UpdateInstanceInformation",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "pricing:GetProducts",
+        "sts:AssumeRole",
+        "ec2:ReplaceRoute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:AssociateAddress",
+        "tag:GetResources",
+        "ec2:ModifySubnetAttribute"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+         "iam:PassRole"
+      ],
+      "Resource": [
+          "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+      ]
+    }
+  ]
+}
+
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Minimum Static Permissions" key="Minimum Static Permissions">
+
+
+This is a policy for use for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+
+<br />
+<br />
+
+### Mimimum Static Permissions
+
+```json
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+              "ec2:AuthorizeSecurityGroupIngress",
+              "ec2:DescribeInstances",
+            "iam:RemoveRoleFromInstanceProfile",
+            "pricing:GetProducts",
+            "sts:AssumeRole",
+            "ec2:DescribeRegions",
+            "ec2:DescribeKeyPairs",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeVpcAttribute",
+            "ec2:DescribeSubnets",
+            "cloudformation:DescribeStacks",
+            "cloudformation:CreateStack",
+            "cloudformation:UpdateStack",
+            "ec2:DescribeRouteTables",
+            "ec2:DescribeNatGateways",
+            "ec2:DescribeSecurityGroups",
+            "elasticloadbalancing:DescribeLoadBalancers",
+            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+            "elasticloadbalancing:DescribeTags",
+            "secretsmanager:CreateSecret",
+            "secretsmanager:TagResource",
+            "secretsmanager:GetSecretValue",
+            "secretsmanager:DeleteSecret",
+            "iam:GetInstanceProfile",
+            "iam:AddRoleToInstanceProfile",
+            "iam:CreateInstanceProfile",
+            "iam:DeleteInstanceProfile",
+            "ec2:RunInstances",
+            "ec2:ModifyInstanceAttribute",
+            "ec2:TerminateInstances",
+            "autoscaling:StartInstanceRefresh",
+            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+            "ssm:UpdateInstanceInformation",
+            "ec2:DescribeAvailabilityZones",
+            "eks:DescribeCluster",
+            "eks:ListClusters",
+            "ec2:CreateSecurityGroup",
+            "ec2:DeleteSecurityGroup",
+            "ec2:RevokeSecurityGroupIngress",
+            "ssmmessages:CreateControlChannel",
+            "ssmmessages:CreateDataChannel",
+            "ssmmessages:OpenControlChannel",
+            "ssmmessages:OpenDataChannel",
+            "elasticloadbalancing:ConfigureHealthCheck",
+            "elasticloadbalancing:DescribeTargetHealth",
+            "ec2:CreateTags",
+            "ec2:DescribeNetworkInterfaces",
+            "elasticloadbalancing:DeleteLoadBalancer",
+            "elasticloadbalancing:CreateLoadBalancer",
+            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+            "ec2:DisassociateAddress",
+            "ec2:DescribeAddresses",
+            "ec2:DescribeVolumes",
+            "ec2:DescribeImages",
+            "ec2:ModifyVpcAttribute",
+            "s3:GetEncryptionConfiguration",
+            "ec2:ModifyVolume",
+            "ec2:AttachVolume",
+            "ec2:DescribeVolumesModifications",
+            "ec2:DetachVolume",
+            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+            "ec2:DetachInternetGateway",
+            "ec2:DeleteNetworkInterface",
+            "tag:GetResources",
+            "ec2:ReleaseAddress",
+            "ec2:ModifyNetworkInterfaceAttribute",
+            "ec2:DescribeNetworkInterfaceAttribute",
+            "ec2:AllocateAddress",
+            "ec2:AssociateAddress"
+        ],
+        "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "iam:PassRole"
+        ],
+        "Resource": [
+            "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+        ]
+    }
+  ]
 }
 
 ```
@@ -745,7 +1000,7 @@ The AWS permissions listed below need to be configured in the AWS account to ena
 ```json
 kms:CreateGrant
 ```
-Enable secret encryption at step 4 of EKS cluster creation by toggling the botton and by updating ARN of the encryption key to the wizard.
+Enable secret encryption at step 4 of EKS cluster creation by toggling the bottom and by updating ARN of the encryption key to the wizard.
 
 # AWS Instance Type and Pod Capacity
 Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability. 
@@ -794,9 +1049,9 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 1. Log in to the Palette Management Console.
 
 
-2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
+2. Navigate to the **Cluster Details** page of the cluster stuck in deletion mode.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
+      - If the deletion status is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
     
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
 
