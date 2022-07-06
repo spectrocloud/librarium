@@ -20,7 +20,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 Palette supports Azure Container Network Interface (CNI) networking for AKS clusters. Azure CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. To allocate unique IP addresses to individual pods advanced forethought needs to be put in. As per the maximum pods supported by a node [IP addresses need to be reserved](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster) in advance. The default [maximum number](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per node varies between kubenet and Azure CNI networking, and based on the method of cluster deployment. 
 
 
-
 ## Versions Supported
 
 <Tabs>
@@ -36,15 +35,16 @@ Palette supports Azure Container Network Interface (CNI) networking for AKS clus
 
 # Azure CNI Policy Support
 
-Palette supports 3 policies for Azure CNI:
+Network Policy is a Kubernetes specification that defines access policies for communication between pods. By default, AKS cluster pods can send and receive traffic without limitations. However, to ensure security, rules to control traffic flow can be defined. Network Policies defines an ordered set of rules to send and receive traffic and apply them to a collection of pods that match one or more label selectors. Palette enables Network Policies to be included as part of a wider manifest that also creates a deployment or service. Palette leverages 2 Network Policies from Azure CNI:
 
-* none
+<br />
+* azure: Azure's own implementation, called Azure Network Policy.
 
-* azure
 
-* calico
+* calico: An open-source network and network security solution founded by [Tigera](https://www.tigera.io/).
 
-Palette users can choose any one of the above network policies and provide it to the pack YAML file as `networkPolicy` as given below:
+
+Palette users can choose any one of the above Network Policies and provide it to the pack YAML file as `networkPolicy` as given below:
 
 <br />
 <br />
@@ -55,7 +55,25 @@ pack:
   networkPolicy: "none"
 ```
 <br />
+
+ <InfoBox>
+ Provide networkPolicy value as none if no policy to be applied.
+</InfoBox>
+
+
 <br />
+
+
+## Azure and Calico Policies and their Capabilities
+
+|Capability |Azure  |Calico|
+|-----------|-------|------|
+|Supported platforms|Linux|Linux, Windows Server 2019 and 2022|
+|Supported networking options|Azure CNI|Azure CNI (Linux, Windows Server 2019 and 2022) and kubenet (Linux)|
+|Compliance with Kubernetes specification|All policy types supported|	All policy types supported|
+|Additional features|	None	|Extended policy model consisting of Global Network Policy, Global Network Set, and Host Endpoint. For more information on using the calicoctl CLI to manage these extended features, see calicoctl user reference.|
+|Support|Supported by Azure support and Engineering team|Calico community support.|
+|Logging|Rules added or deleted in IP Tables are logged on every host under `/var/log/azure-npm.log`|For more information, see [Calico component logs](https://projectcalico.docs.tigera.io/maintenance/troubleshoot/component-logs)
 
 <WarningBox>
 Make sure to use Azure CNI with Windows operating system as the 
@@ -66,6 +84,8 @@ kubenet is not available for Windows environment
 <br />
 
 ## References
-* https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-* https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni
+*[Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
+*[Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)
+
+
 
