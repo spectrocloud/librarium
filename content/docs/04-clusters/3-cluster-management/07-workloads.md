@@ -15,13 +15,34 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Palette provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. Following is the list of resources shown in the workload browser:
 
+<br />
+
 * Namespaces
+
+
 * Pods
+
+
 * DeploymentSets
+
+
 * DaemonSets
+
+
 * StatefulSets
+
+
 * Jobs
+
+
 * CronJobs
+
+
+* Role Bindings
+
+
+* Cluster Role Bindings
+
 
 <InfoBox>
     Workloads are displayed for all cloud types (new, existing) (public, private) across all cloud types.
