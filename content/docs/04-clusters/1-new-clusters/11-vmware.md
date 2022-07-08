@@ -21,6 +21,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 
 2. Support for static IP as well as DHCP.
+   *  If using DHCP, Dynamic DNS is required.
 
 
 3. IP pool management for assigning blocks of IPs dedicated to clusters or projects.
