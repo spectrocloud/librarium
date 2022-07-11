@@ -14,6 +14,50 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
+# Draft
+# July 11, 2022 - Release 2.7
+
+Spectro Cloud Palette 2.7 is released to support Windows node pool, Canonical Ubuntu Advantage embedding, Private Cloud Gateway migration, and various packs and charts.
+
+**Enhancements** 
+
+- Spectro Cloud Palette has improved the import cluster functionality to restrict permissions starting at the lower-level. Configure Palette to import the cluster with minimal permissions, and then you can gradually grant access to meet your needs. 
+
+
+- The Azure CNI is available within Palette will recognize it as you set up Windows worker node. With the Azure CNI you are able to ... and give you the option to select Windows or Linux as an option.
+
+
+- Certificate Manager is part of the Infrastructure Layer through Palette. Add and edit the configuration similar to how you select the Kubernetes layer.
+
+
+- When creating the Cluster Profile leverage Canonical's Ubuntu Advantage for an Infrastructure subscription include this feature to ... as a profile layer.
+
+**Workspace Enhancements**:
+
+- Palette makes the resources running inside the workload clusters visible. These resources are displayed on the Cluster Details page within Palette. The visible resources shown in the workload browser listed below:
+
+    Namespaces * Pods * DeploymentSets * DaemonSets * StatefulSets * Jobs * CronJobs * Role Bindings * Cluster Role Bindings
+
+- Auto scale virtual machines instances with ease when setting up Microsoft Azure Kubernetes service and Amazon Web Services Kubernetes clusters.
+
+- We have included additional system macros to aid...
+
+
+**Bug fixes**
+
+**API update**
+
+**TF update**
+
+**Pack update**
+
+Azure CNI
+Helm charts support for CSI/CNI
+
+
+
+
+
 # May 30, 2022 - Release 2.6.0
 
 Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Secret Encryption, CSI Storageclass, and added Parameters capabilities.
