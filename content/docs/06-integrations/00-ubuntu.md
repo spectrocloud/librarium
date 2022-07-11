@@ -103,7 +103,7 @@ Spectro Golden images includes most of the hardening standards recommended by CI
 ```
 
 # Ubuntu Advantage
-Canonical Ubuntu Advantage extends security, certified compliance, and 24x7 support to your infrastructure. The Ubuntu Advantage (UA) service is available only for MAAS cloud.  With Palette, enable the UA services when modifying the Pack Value. See below for steps on how to modify the Preset options. 
+Canonical Ubuntu Advantage extends your infrastructure's security, certified compliance, and 24x7 support. The Ubuntu Advantage (UA) service is available only for the MAAS cloud. With Palette, enable the UA services when modifying the Pack Value. See below for steps on how to modify the Preset options.
 
 **Benefits with UA**:
 
