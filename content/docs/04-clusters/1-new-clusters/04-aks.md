@@ -46,10 +46,10 @@ These prerequisites must be met before deploying an AKS workload cluster:
 3. Register your Azure cloud account in Palette as described in the "Creating an Azure Cloud account" section below.
 
 
-4. You should have an Infrastructure cluster profile created in Palette for AKS.
+4. You should have a cluster profile created in Palette for AKS.
    
 
-5. Create a new SSH key pair or have an existing one ready to use when creating work node clusters.
+5. Associate a SSH key pair to the cluster worker node.
 
 
 <br />
@@ -62,7 +62,7 @@ There are additional prerequisites if you want to set up Azure Active Directory 
   1. A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
    
 
-  2. For the Azure client used in the Azure cloud account, these API permission have to be provided:
+  2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
   
     |                 |                                       |
     | --------------- | ------------------------------------- |
