@@ -40,7 +40,7 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 1. You must enable API communication and retrieve the API key. The [key], [secret], [consumer_key] tokens are the three elements that compose the API key (API key = '[consumer_key]:[key]:[secret]').
 
 
-2. You should have an Infrastructure cluster profile created in the Palette Palette UI for MAAS.
+2. You should have an Infrastructure cluster profile created in the Palette UI for MAAS.
 
 
 3. You should install a Private Cloud Gateway for MAAS as described in the "**Installing Private Cloud Gateway - MAAS**" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MAAS in Palette. You can register your additional MAAS cloud accounts in Palette as described in the "**Creating a MAAS Cloud account**" section below.

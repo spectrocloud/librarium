@@ -117,10 +117,12 @@ The following steps need to be performed to provision a new AKS cluster:
     |-----------------|---------------| 
     |**Name**         |A descriptive name for the node pool.|
     |**Size**         |Number of nodes to be provisioned for the node pool.|
+    |**Autoscaler**   |Toggle the selector to enable the AKS Autoscaler.|
+    |                 |Give the minimum and maximum number of nodes. Depending on the load on the worker pool the number of nodes will scale up and down between the minimum and maximum size provided.| 
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool.|
-    |**Managed Disk** | Select the managed disk type to be used|
+    |**Managed Disk** | Select the managed disk type to be used.|
     |**Disk Size**    |Storage disk size in GB to be attached to the node.|
-    |**Availability Zones (if any)**|Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools|
+    |**Availability Zones (if any)**|Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones if multiple zones are selected. Zones are supported only for worker pools.|
     
 <InfoBox>
 Every AKS cluster must contain at least one system node pool with at least one node.
@@ -178,8 +180,6 @@ If there are any cloud resources still on the cloud, the you should cleanup thos
 </WarningBox>
 
 # Configuring an Azure Active Directory 
-
-
 The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the Cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin *kubeconfig* file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to create manually the User's *kubeconfig* file to enable AAD completely. The following are the steps to create the custom user *kubeconfig* file:
 
 1. Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to cluster resources.
