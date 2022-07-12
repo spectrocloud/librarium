@@ -601,7 +601,7 @@ The following **four** policies include all the required permissions for provisi
 
 ## Restricting Palette Static Minimum Permissions for Existing VPC
 
-You can choose to have Palette work in a static or dynamic environment. You can also set it to restrict or allow Palette to perform an AWS EKS cluster creation into an existing VPC. The following policy allows Palette work but restricts it to the Principle of Least Privilege.
+You can choose to have Palette work in a static or dynamic environment. You can also set it to restrict or allow Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette work but restricts it to the Principle of Least Privilege.
 
 
 <br />
