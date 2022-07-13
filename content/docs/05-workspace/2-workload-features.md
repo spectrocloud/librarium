@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Manage Palette Workspace
 
-Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters through Workspaces. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up to date, and perform ongoing management operations like Backup and Restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs.
+Palette supports several day 2 operations to manage the end-to-end lifecycle of the Kubernetes clusters through Workspaces. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up to date, and perform ongoing management operations like Backup and Restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs.
 
 The following sections describe these capabilities in detail:
 
@@ -274,26 +274,26 @@ Backups created manually or as part of the schedule are listed under the Backup/
 To initiate a restore operation:
 <br />
 
-1. Log in to the Palette console as the`Project Admin` and go to `Workspaces` page.
+1. Log in to the Palette console as the **Project Admin** and go to **Workspaces** page.
 
 
-2. Select the `Workspace Name` to be restored.
+2. Select the **Workspace Name** to be restored.
 
 
-3. From the selected Workspace overview, select `Backups` from the top menu.
+3. From the selected Workspace overview, select **Backups** from the top menu.
 
 
 4. The Backup option lists all the backups scheduled for the selected Workspace. Towards the name of the backup, click the meatball (three horizontal dots) button to open the restore wizard.
 
 
-5. Click on the `Restore Backup` option to complete the wizard:
+5. Click on the **Restore Backup** option to complete the wizard:
    * Choose of the namespaces to be restored
    * Three options are available to filter the resources to be restored:
-        * Include Cluster Resources - To restore all the cluster scoped resources.
-        * Preserve Node Ports - To preserve ports for node port service running in the cluster.
-        * Restore PVs - To restore the persistent volumes.
+        * **Include Cluster Resources** - To restore all the cluster scoped resources.
+        * **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
+        * **Restore PVs** - To restore the persistent volumes.
         
-         **Note**: Check `Include Cluster Resource` and `Restore PVs` options together.
+         **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
 
 
 6. Make the appropriate choice of resources as per user requirements to complete the wizard.
@@ -325,7 +325,7 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 * The palette allows quotas to be allocated to individual namespaces under a specific workspace. In that case, individual clusters belonging to that namespace can utilize the quota per their resource requirements. When a namespace is allocated with a quota, all the clusters belonging to that namespace get allocated individually. 
 
-    **Example**: If Namespace palette-ns has 2 clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 Gb memory individually.
+    **Example**: If Namespace palette-ns has two (2) clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 GB memory individually.
 
 <br />
 
