@@ -114,7 +114,7 @@ The following steps need to be performed to provision a new AKS cluster profile:
 
     - Next, select **AKS** from the **Managed Kubernetes** list.
 
-    - Build the Profile Layers and override the Pack Parameters as desired. The profile definition will be used as the Cluster Construction Template.
+    - Build the Infrastructure Layers and override the Pack Parameters as desired. The profile definition will be used as the Cluster Construction Template.
 
       | **Layers**           | **Pack Name**                                                            |
       | -------------------- | ------------------------------------------------------------------------ |
@@ -146,12 +146,8 @@ The following steps need to be performed to provision a new AKS cluster profile:
     | **Region**         | Select a region in Azure in which the cluster should be deployed.                            |
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
     | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                      |
-    | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:         |
-    |                    | **Virtual Network**: Select the virtual network from dropdown menu.                          |
-    |                    | **CIDR Block**: Enter the groups of addresses:                                               |
-    |                    | **Control plane Subnet**: Select the control plane network from the dropdown menu.           |
-    |                    | **Worker Network**: Select the worker network from the dropdown menu.                        |
-    |                    | **Update worker pools in parallel** : Check the box to concurrently update the worker pools. |
+    | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:<br /> **Virtual Network**: Select the virtual network from dropdown menu. <br /> **CIDR Block**: Enter the groups of addresses: <br /> **Control plane Subnet**: Select the control plane network from the dropdown menu. <br /> **Worker Network**: Select the worker network from the dropdown menu.  <br /> **Update worker pools in parallel**: Check the box to concurrently update the worker pools.|
+    
 
 7.  Configure the worker node. 
 
@@ -210,7 +206,7 @@ The System Node Pool serves to run critical system components. Its operating sys
   | **Parameter**     | **Action**                                                                                                                                                                                                                                         |
   | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | **Instance type** | Select the Azure cloud instance. The cost will be displayed.                                                                                                                                                                                       |
-  | **OS Type**       | Set the Worker Node to **Linux** or **Windows**. If setting an <br /> AKS node pool the cluster must contain at least one system node pool with at least one node. The system node pool must be created first, then the Windows node pool can be created.  <br /> <br /> Once the clusters are created, you can modify the parameters; however, the operating systems are static. If you wish to change the OS, you have to delete the cluster and create a new one.|
+  | **OS Type**       | Set the Worker Node to **Linux** or **Windows**. If setting an <br /> AKS node pool the cluster must contain at least one system node pool with at least one node. <br /> The system node pool must be created first, then the Windows node pool can be created.   <br /> Once the clusters are created, you can modify the parameters; however, the operating systems <br /> are static. If you wish to change the OS, you have to delete the cluster and create a new one.|
   | **Managed disk**  | This is defined in Azure.                                                                                                                                                                                                                          |
   | **Disk Size**     | Select the disk size.                                                                                                                                                                                                                              |
 
