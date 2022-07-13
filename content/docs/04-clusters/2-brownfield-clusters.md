@@ -17,17 +17,19 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Existing Kubernetes clusters that were not deployed by Palette can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows import and management of Kubernetes clusters on various public, private, and bare-metal environments.
 
-Palette also supports generic cluster imports, where the users import their existing clusters to Palette regardless of the cloud service provider. If the existing cluster's cloud type is not supported by Palette, then those clusters could be imported as Generic Clusters.
+Palette also supports generic cluster imports, where the users import their existing clusters to Palette regardless of the cloud service provider. If the existing cluster's cloud type is not supported by Palette, then those clusters could be imported as Generic clusters.
 
-The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For generic-imported clusters, the user will not be able to add cloud-specific, add-on profiles. Rather they can add profiles of the cloud type which is supported for all.
+The name generic implies our support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc. which are not specific to the cloud infrastructure. For generic-imported clusters, the user will not be able to add cloud-specific, add-on profiles. Rather, they can add profiles of the cloud type which is supported for all.
 
  * In addition to Palette Generic cluster import, we support public cloud managed services such as:
   
-    * Amazon EKS
-    * Azure AKS
-    * Google GKE
+    * Amazon
+    * Azure
+    * Google Cloud
     * VMware
-    * OpenShift   <!--  Confirm it we will include other clouds -->
+    * OpenShift
+    * EKS-Anywhere
+
   
  * Clusters provisioned through other management platforms (Rancher, CCP, etc.)
  * Clusters provisioned using orchestration tools (Kubeadm, kops, etc.)
@@ -54,13 +56,18 @@ The following steps need to be performed to import a brownfield cluster into the
 
 
 6. Select **Import mode** and click the **Create & Open Cluster Instance** button. Follow the steps in the Cluster Import procedure (Read-Only) slide-out to install Palette's Cluster Management agent with your brownfield cluster using the `kubectl` command provided.
+   
+   <InfoBox>
+   It is important to follow through with the `kubectl` commands to complete the cluster import procedure for both the (Read-Only) and (Full Permissions) mode. Otherwise, the instance will stay in pending mode, and the Metrics Server will not visualize the full capabilities, making it unusable until you run the procedure that is in the call out box.
 
-    * **Read-Only mode** - With minimal permission, this mode allows health check, event logging, cost, and usage analysis.
+   </InfoBox>
 
-       **Note**: When you are ready to expand the permissions or enable Day-2 operations, you can later migrate to Full Permissions mode.
+* **Read-Only mode** - Starting out with minimal permission, allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict the minimal permissions allowed in the initial set up. 
 
-    
-    * **Full Permissions mode** - This mode unlocks the Day-2 operations.
+     **Note**: When you are ready to expand the permissions or enable day 2 operations, you can later migrate to Full Permissions mode.
+
+
+* **Full Permissions mode** - This mode unlocks and supports full cluster management capabilities that will take you from day 0 to day 2 operations.
 
 
 7. Wait for the import process to complete. The cluster status will transition from **Pending** to **Running** and the cluster health will transition to **Healthy**, signaling a successful import of the brownfield cluster.
