@@ -32,11 +32,11 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 
 ## Ubuntu 20.4.x to Kubernetes Dependency Matrix
 
-|**Ububtu Version**|**Kubernetes**|
-|--------------|----------|
-|**LTS__20.04**| 1.23.4  |    
-|              | 1.22.7  |  
-|              | 1.21.10 | 
+| **Ububtu Version** | **Kubernetes** |
+| ------------------ | -------------- |
+| **LTS__20.04**     | 1.23.4         |
+|                    | 1.22.7         |
+|                    | 1.21.10        |
 
 
 </Tabs.TabPane>
@@ -48,16 +48,32 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 <br />
 
 ## Ubuntu 18.4.x to Kubernetes Dependency Matrix
-|**Ububtu Version**|**Kubernetes**|
-|--------------|----------|
-|**LTS__18.04**| 1.21.10  |
-|              | 1.21.9   |
-|              | 1.20.14  |
-|              | 1.20.12  |
-|              | 1.19.16  |
-|              | 1.19.15  |
+| **Ububtu Version** | **Kubernetes** |
+| ------------------ | -------------- |
+| **LTS__18.04**     | 1.21.10        |
+|                    | 1.21.9         |
+|                    | 1.20.14        |
+|                    | 1.20.12        |
+|                    | 1.19.16        |
+|                    | 1.19.15        |
 
+</Tabs.TabPane>
+<Tabs.TabPane tab="LTS-HWE__18.4.x" key="LTS-HWE__18.4.x">
 
+**Ubuntu LTS-HWE__18.04**
+
+<br />
+<br />
+
+## Ubuntu 18.4.x to Kubernetes Dependency Matrix
+| **Ububtu Version** | **Kubernetes** |
+| ------------------ | -------------- |
+| **LTS-HWE__18.04** | 1.21.10        |
+|                    | 1.21.9         |
+|                    | 1.20.14        |
+|                    | 1.20.12        |
+|                    | 1.19.16        |
+|                    | 1.19.15        |
 </Tabs.TabPane>
 </Tabs>
 
@@ -103,7 +119,7 @@ Spectro Golden images includes most of the hardening standards recommended by CI
 ```
 
 # Ubuntu Advantage
-Canonical Ubuntu Advantage extends your infrastructure's security, certified compliance, and 24x7 support. The Ubuntu Advantage (UA) service is available only for the MAAS cloud. With Palette, enable the UA services when modifying the Pack Value. See below for steps on how to modify the Preset options.
+Canonical Ubuntu Advantage extends your infrastructure's security, certified compliance, and 24x7 support. With Palette, enable the UA services when modifying the Pack Values. See below for steps on how to modify the Preset options.
 
 **Benefits with UA**:
 
@@ -124,7 +140,7 @@ Canonical Ubuntu Advantage extends your infrastructure's security, certified com
 
 For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage) site.
 
-## Modifying the Presets for MAAS Cloud
+## Modifying the Presets
 
 1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile. 
 
@@ -132,17 +148,17 @@ For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.co
 2. Give the new Pack a **Name**, **Version number**, **Description**, **Type**, and **Tags** and click the **Next** button.
 
 
-3. Select **MAAS** as the Infrastructure provider and click the **Next** button.
+3. Choose the cloud provider as the **Infrastructure provider** and click the **Next** button.
 
 
-4. Edit the Pack with the following parameters:
+4. Edit the Packs with the following parameters:
     -  **Pack Type** - *OS*
   
     -  **Registry** - *Public Repo*
   
     -  **Pack Name** - *Ubuntu*
   
-    -  **Pack Version** - *LTS_ _18.4.x or LTS_ _20.4.x*
+    -  **Pack Version** - *LTS_ _18.4.x or LTS-HWE__18.04 or LTS_ _20.4.x*
 
 
 
@@ -160,13 +176,13 @@ For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.co
 
 ## Notable Parameters
 
-|**Services**  |**Option**|**Values**  |**Description**|
-|---------|--|-------|---|
-|**Token** | ||Enter the token key in the text box. <br /> eg: C13RaHQDqgvvG3YsnXT6kQJqqLGxyz|
-| **cis**     |enable/disable   |true <br /> <br />  <br /> false|  Get access to OpenSCAP-based tooling that automates both hardening and <br /> auditing with certified content based off of the published CIS benchmarks. <br />  <br /> Do not access OpenSCAP-based tooling.  |       |
-|**esm-infra**|enable/disable   |true <br /> <br />  <br /> <br />  <br /> <br /> false| Continue to receive security updates for the Ubuntu base OS, <br /> critical software packages and infrastructure components <br /> with Extended Security Maintenance (ESM). <br />  ESM provides five additional years of security maintenance, enabling an <br /> organization's continuous vulnerability management.  <br /> <br />  Do not receive security updates for Ubuntu Base OS etc. |
-|**fips**|enable/disable    |true <br /> <br />  false|FIPS 140 validated cryptography for Linux workloads on Ubuntu. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu. |
-|**livepatch**|enable/disable   |true <br /> <br />  <br />  <br /> false|Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by  <br /> patching the Linux kernel while the system runs.  <br /> <br /> Do not activate Livepatch. |
+| **Services**  | **Option**     | **Values**                                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------- | -------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Token**     |                |                                                        | Enter the token key in the text box. <br /> eg: C13RaHQDqgvvG3YsnXT6kQJqqLGxyz                                                                                                                                                                                                                                                                                                                   |
+| **cis**       | enable/disable | true <br /> <br />  <br /> false                       | Get access to OpenSCAP-based tooling that automates both hardening and <br /> auditing with certified content based off of the published CIS benchmarks. <br />  <br /> Do not access OpenSCAP-based tooling.                                                                                                                                                                                    |       
+| **esm-infra** | enable/disable | true <br /> <br />  <br /> <br />  <br /> <br /> false | Continue to receive security updates for the Ubuntu base OS, <br /> critical software packages and infrastructure components <br /> with Extended Security Maintenance (ESM). <br />  ESM provides five additional years of security maintenance, enabling an <br /> organization's continuous vulnerability management.  <br /> <br />  Do not receive security updates for Ubuntu Base OS etc. |
+| **fips**      | enable/disable | true <br /> <br />  false                              | FIPS 140 validated cryptography for Linux workloads on Ubuntu. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.                                                                                                                                                                                                                                           |
+| **livepatch** | enable/disable | true <br /> <br />  <br />  <br /> false               | Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by  <br /> patching the Linux kernel while the system runs.  <br /> <br /> Do not activate Livepatch.                                                                                                                                                               |
 
 
 # References
