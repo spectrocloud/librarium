@@ -318,7 +318,7 @@ Palette enables the users to limit resource usage within the workspace optionall
 2. Namespace Quota can be set for an already deployed workspace as:
    `Workspace Settings -> Namespaces -> Workspace Quota`
 
-### Workspace Quota Notes
+### Workspace Quota Notes:
 
 * The quota allocated to the workspace scope is split across all the workspace-wide resources per their resource requirements.
 
