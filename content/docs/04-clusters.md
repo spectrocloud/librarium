@@ -8,9 +8,11 @@ fullWidth: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
-import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
+import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
+
 
 # Cluster Overview
 
@@ -42,7 +44,7 @@ Palette provides various forms of customization options for VM images. All these
 
 ### Customize Out-of-the Box Images
 
-Palette's out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
+The Palette out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
 # Security
 
@@ -50,7 +52,7 @@ Palette secures the Kubernetes clusters provisioned by following security best p
 
 ## Operating System
 
-Palette's out-of-the-box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly, and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in Palette's Pack Registry and are available to the users to apply to their existing clusters at a time convenient to them.
+The Palette out-of-the-box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly, and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in the Palette Pack Registry and are available to the users to apply to their existing clusters at a time convenient to them.
 
 ## Kubernetes
 
@@ -79,7 +81,7 @@ Palette monitors the cluster infrastructure regularly and reports health on the 
 
 Overall health is computed based on the following factors:
 
-* **Heartbeat** - Palette's management agent, which runs inside the cluster, periodically sends a heartbeat to the management console. Missing heartbeats typically indicate of a problem such as a cluster infrastructure going down or lack of network connectivity. Failure to detect heartbeat over a while results in an unhealthy status for the cluster.
+* **Heartbeat** - The Palette management agent, which runs inside the cluster, periodically sends a heartbeat to the management console. Missing heartbeats typically indicate of a problem such as a cluster infrastructure going down or lack of network connectivity. Failure to detect heartbeat over a while results in an unhealthy status for the cluster.
 
 
 * **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node, results in an unhealthy status for the cluster.
@@ -135,7 +137,7 @@ Examples include:
 
   - Customizing Image 
 
-The active condition indicates what task Palette's orchestration system is trying to perform. If a task fails, the condition is marked as *failed*, with relevant error messages. Reconciliation, however, continues behind the scenes, and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
+The active condition indicates what task Palette orchestration system is trying to perform. If a task fails, the condition is marked as *failed*, with relevant error messages. Reconciliation, however, continues behind the scenes, and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
 ![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
 
@@ -197,7 +199,7 @@ Palette maintains an event stream with low-level details of the various orchestr
 * Cluster events are retained for the last 1000 events.
 
 
-* Due to Palette's reconciliation logic, intermittent errors appear in the event stream. <br /><br /> As an example, errors might show up in the event stream regarding being unable to reach the node after launching a node. However, the errors clear up once the node comes up.
+* Due to the Palette reconciliation logic, intermittent errors appear in the event stream. <br /><br /> As an example, errors might show up in the event stream regarding being unable to reach the node after launching a node. However, the errors clear up once the node comes up.
 <br />
 <br />
   Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.
@@ -235,13 +237,13 @@ At times, you may be required to work with the Palette Support Team to troublesh
 5. Click **Download <*cluster-name*> logs** to download the **Logs** folder to your local machine.
 
 
-6. Unzip and rename the Logs folder as per the customer choice.
+6. Unzip and rename the Logs folder as per the customer's choice.
 
 <InfoBox>
 
 * In addition to the log contents briefed above, the folder will also contain a Manifest.yaml file describing the CRDs, Deployments, Pods, ConfigMap, Events, and Nodes details of the Cluster.
 
-* Palette recommends its users attach these Logs, along with the Support Request, for accelerated troubleshooting.
+* Palette recommends its users attach these logs, along with the support request, for accelerated troubleshooting.
 
 * Expect an average log fetching time of five (5) minutes for the ready-to-download message to appear on the UI, once the download log is clicked.
 
@@ -269,7 +271,7 @@ This table lists the proxy requirements for enabling the Palette management cons
 
 # Scope
 
-Clusters are launched from within Projects in Palette, and they belong to a single project. In the **Project** view, all clusters that are launched from that project are listed for users with the Project Administrator Role or Cluster Administrator Role. A Tenant Administrator can get an aggregated view of clusters running across all projects from the **Organization** view, as follows:
+Clusters are launched from within Projects in Palette, and they belong to a single project. In the **Project** view, all clusters that are launched from that project are listed for users with the Project Administrator role or Cluster Administrator role. A Tenant Administrator can get an aggregated view of clusters running across all projects from the **Organization** view, as follows:
 <br />
 
 1.    Log in to the **Palette Management Console** as a Tenant Administrator.
