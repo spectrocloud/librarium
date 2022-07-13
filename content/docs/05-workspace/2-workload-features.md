@@ -269,6 +269,35 @@ Backups created manually or as part of the schedule are listed under the Backup/
 3. Finally, restore operations can be done to the cluster running on the same project.
 
 
+## Restore Your Backup
+
+To initiate a restore operation:
+<br />
+
+1. Log in to the Palette console as the`Project Admin` and go to `Workspaces` page.
+
+
+2. Select the `Workspace Name` to be restored.
+
+
+3. From the selected Workspace overview, select `Backups` from the top menu.
+
+
+4. The Backup option lists all the backups scheduled for the selected Workspace. Towards the name of the backup, click the meatball (three horizontal dots) button to open the restore wizard.
+
+
+5. Click on the `Restore Backup` option to complete the wizard:
+   * Choose of the namespaces to be restored
+   * Three options are available to filter the resources to be restored:
+        * Include Cluster Resources - To restore all the cluster scoped resources.
+        * Preserve Node Ports - To preserve ports for node port service running in the cluster.
+        * Restore PVs - To restore the persistent volumes.
+        
+         **Note**: Check `Include Cluster Resource` and `Restore PVs` options together.
+
+
+6. Make the appropriate choice of resources as per user requirements to complete the wizard.
+
 
 </Tabs.TabPane>
 
@@ -318,6 +347,8 @@ The user can add a list of restricted images to an already deployed workspace as
 
 
 2. Click on **Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can be restricted within a Namespace by separating them with commas.
+
+
 
 
 
