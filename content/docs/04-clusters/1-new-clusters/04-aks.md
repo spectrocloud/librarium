@@ -50,7 +50,7 @@ These prerequisites must be met before deploying an AKS workload cluster:
 4. You should have a cluster profile created in Palette for AKS.
    
 
-5. Associate a SSH key pair to the cluster worker node.
+5. Associate an SSH key pair to the cluster worker node.
 
 
 <br />
