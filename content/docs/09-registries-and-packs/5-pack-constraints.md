@@ -555,6 +555,7 @@ user:
 
 * user.name
 * user.uid
+* user.email
 * project.name
 * project.uid
 * clusterprofile.name
@@ -568,6 +569,9 @@ user:
 * reverseproxy.port
 * reverseproxy.protocol
 * reverseproxy.vhostport
+* cloud.type
+* cloud.region
+
 
 </Tabs.TabPane>
 
