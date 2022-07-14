@@ -320,14 +320,13 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 ### Workspace Quota Notes:
 
-* The quota allocated to the workspace scope is split across all the workspace-wide resources per their resource requirements.
+* The quota allocated to the workspace scope is split across all the namespaces under that workspace per their resource requirements.
 
 
 * The palette allows quotas to be allocated to individual namespaces under a specific workspace. In that case, individual clusters belonging to that namespace can utilize the quota per their resource requirements. When a namespace is allocated with a quota, all the clusters belonging to that namespace get allocated with that resource quota individually. 
 
-    **Example**: If Namespace palette-ns has two (2) clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 GB memory individually.
+    **Example**: If Namespace palette-ns belongs to two (2) clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 GB memory individually.
 
-<br />
 
 * Palette allows quota to be allocated to individual clusters under a specific workspace. In that case, the allocated quota should be less than the namespace quota set or the workspace quota set to which that cluster belongs.
 
@@ -335,7 +334,6 @@ Palette enables the users to limit resource usage within the workspace optionall
 * To set an unlimited quota, set the quota value as -1.
    * If -1 is set as the quota for a cluster or namespace, then we cannot set a quota for the workspace to which the cluster or namespace belongs.
    
-
 
 </Tabs.TabPane>
 
@@ -345,7 +343,6 @@ Palette enables the users to limit resource usage within the workspace optionall
 # Restricted Container Images
 
 Palette users can restrict a few container images from getting deployed into a specific Namespace. This helps the tenants from accidentally installing a delisted or unwanted container to that specific namespace.
-
 
 <br />
 
