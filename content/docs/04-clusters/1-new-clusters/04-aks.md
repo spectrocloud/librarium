@@ -135,7 +135,7 @@ The following steps need to be performed to provision a new AKS cluster profile:
 4.  Next, in the **Cluster profile** tab from the **Managed Kubernetes** list, pick **AKS**, and select the AKS cluster profile definition that was created above.
 
 
-5. Review the **Parameters** for the selected cluster profile definitions. By default, parameters for all packs are set with values defined in the Cluster Profile.
+5. Review the **Parameters** for the selected cluster profile definitions. By default, parameters for all packs are set with values defined in the cluster profile.
    
 
 6. Complete the **Cluster config** section with the information for each parameter listed below.
@@ -179,15 +179,15 @@ The System Node Pool serves to run critical system components. Its operating sys
 6. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
 
 
-7. Enter the **Managed Disk information** and its size.
+7. Enter the **Managed Disk Information** and its size.
 
 
 8. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Nodes** button to create the next node.
 
 
-## Include Additional Nodes to Create a Node Pool
+## Include Additional Nodes to Create Worker Node Pools
 
-1. Identify the next node pool as a worker node and give it a worker name. 
+1. Identify the next node pool as a worker node and give it a worker node pool name. 
 
 
 2. This time, you are able to enable **Autoscaler** and System Node Pool will not be enabled.
@@ -228,6 +228,9 @@ A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes
 
 
 6.  When you finish setting up these nodes, click **Next** to go to the **Settings** page.
+
+
+7. Validate and finish the cluster deployment wizard.
 
     **Note**: Notice the Cluster Status once you click **Finish Configuration**. It will say *Provisioning*. This process will take a little while to complete. Alternately, when you go into the Azure portal under **Kubernetes services** > **Node pools**, the recently created Node pools will display as **Ready**, and you can see the assigned operating systems and its status.
 
