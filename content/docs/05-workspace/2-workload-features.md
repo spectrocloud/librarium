@@ -293,7 +293,7 @@ To initiate a restore operation:
         * **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
         * **Restore PVs** - To restore the persistent volumes.
         
-         **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
+    **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
 
 
 6. Make the appropriate choice of resources as per user requirements to complete the wizard.
