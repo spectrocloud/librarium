@@ -1,7 +1,7 @@
 ---
 title: 'Ubuntu'
 metaTitle: 'Ubuntu Operating System'
-metaDescription: 'Choosing Ubuntu as an Operating System within the Spectro Cloud console'
+metaDescription: 'Choosing Ubuntu as an Operating System within the Palette console'
 hiddenFromNav: true
 isIntegration: true
 category: ['operating system']
@@ -21,6 +21,9 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 <br />
 
 ## Version Supported
+
+<br />
+<br />
 
 <Tabs>
 <Tabs.TabPane tab="LTS__20.4.x" key="LTS__20.4.x">
@@ -80,7 +83,7 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 
 ## Customize Your Image File 
 
-Spectro Golden images includes most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute list of commands before or after`kubeadm init`/`join` is executed.
+Spectro Golden images include most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute list of commands before or after`kubeadm init`/`join` is executed.
 
 <br />
 <br />
@@ -123,22 +126,15 @@ Canonical Ubuntu Advantage extends your infrastructure's security, certified com
 
 **Benefits with UA**:
 
-<br />
-
-#### Enterprise 
-
 - Extended Security Maintenance
 - Kernel Livepatch service to avoid reboots
 - FIPS 140-2 Level 1 certified crypto modules
 - Common Criteria EAL2
 
-<br />
+For more information see the [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage) site.
 
-#### Personal Use
-
-- Free Personal Token for up to three machines with UAI.
-
-For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage) site.
+<br/>
+<br/>
 
 ## Modifying the Presets
 
@@ -162,7 +158,7 @@ For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.co
 
 
 
-5.  Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file.  You can also make additional modifications to the original kubeadmconfig file.
+5. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file.  You can also make additional modifications to the original `kubeadmconfig` file.
 
 
 6. Click the **Ubuntu Advantage** checkbox to include the UA parameters listed below in the configuration file.
@@ -176,10 +172,10 @@ For more information see [Ubuntu Advantage for Infrastructure](https://ubuntu.co
 
 ## Notable Parameters
 
-| **Services**  | **Option**     | **Values**                                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Services**  | **Options**    | **Values**                                             | **Description**                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------- | -------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Token**     |                |                                                        | Enter the token key in the text box. <br /> eg: C13RaHQDqgvvG3YsnXT6kQJqqLGxyz                                                                                                                                                                                                                                                                                                                   |
-| **cis**       | enable/disable | true <br /> <br />  <br /> false                       | Get access to OpenSCAP-based tooling that automates both hardening and <br /> auditing with certified content based off of the published CIS benchmarks. <br />  <br /> Do not access OpenSCAP-based tooling.                                                                                                                                                                                    |       
+| **Token**     |                |                                                        | Enter the token key in the text box. <br /> eg: C13RaHQDqgvvG3Ys                                                                                                                                                                                                                                                                                                                             |
+| **cis**       | enable/disable | true <br /> <br />  <br /> false                       | Get access to OpenSCAP-based tooling that automates both hardening and <br /> auditing with certified content based off of the published CIS benchmarks. <br />  <br /> Do not access OpenSCAP-based tooling.                                                                                                                                                                                    |
 | **esm-infra** | enable/disable | true <br /> <br />  <br /> <br />  <br /> <br /> false | Continue to receive security updates for the Ubuntu base OS, <br /> critical software packages and infrastructure components <br /> with Extended Security Maintenance (ESM). <br />  ESM provides five additional years of security maintenance, enabling an <br /> organization's continuous vulnerability management.  <br /> <br />  Do not receive security updates for Ubuntu Base OS etc. |
 | **fips**      | enable/disable | true <br /> <br />  false                              | FIPS 140 validated cryptography for Linux workloads on Ubuntu. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.                                                                                                                                                                                                                                           |
 | **livepatch** | enable/disable | true <br /> <br />  <br />  <br /> false               | Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by  <br /> patching the Linux kernel while the system runs.  <br /> <br /> Do not activate Livepatch.                                                                                                                                                               |
