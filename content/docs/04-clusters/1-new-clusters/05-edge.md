@@ -133,7 +133,7 @@ The appliance will register with the PCG-E once PCG-E is installed successfully.
 **Example:**
 
 ```bash
-./edge-installer.bin -- -i 10.200.3.126 -d hospital-docker-app-01 -a console.gehc-ehl.spectrocloud.com --http-proxy http://10.10.132.89:3128 --https-proxy http://10.10.132.89:3128 --no-proxy 10.10.128.10,.spectrocloud.local,10.0.0.0/8
+./edge-installer.bin -- -i 10.200.3.126 -d hospital-docker-app-01 -a console.sometenant.spectrocloud.com --http-proxy http://10.10.132.89:3128 --https-proxy http://10.10.132.89:3128 --no-proxy 10.10.128.10,.spectrocloud.local,10.0.0.0/8
 ```
 
 ## Cluster Profile Creation
