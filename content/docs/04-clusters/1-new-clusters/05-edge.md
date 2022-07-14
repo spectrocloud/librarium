@@ -98,7 +98,7 @@ The following sections cover the prerequisites and detailed instructions for dep
 
 
 4. Navigate to the appliance section under the **Clusters** menu and register the appliance by providing its _unique ID_.
-  This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'edge-1').
+  This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'store-1').
 
 
 5. Optionally, specify one or more tags for the appliance. For example, Palette supports a unique **Name** tag. If specified, Palette would use the value of this tag in other User Interfaces (UIs) to make identification of the device easier.
