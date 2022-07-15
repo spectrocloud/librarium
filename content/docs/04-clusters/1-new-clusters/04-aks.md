@@ -137,7 +137,17 @@ The following steps need to be performed to provision a new AKS cluster profile:
 
 <br />
 
-## Adding a Worker Node
+## Adding a Worker Node Pool
+
+Adding a worker node pool involves the deployment of:
+
+
+* A system Node Pool
+
+
+* Worker Node pools as per workload 
+
+### Creating  a System Node Pool
 
 1. In this section, we will learn how to configure a Worker Node. However, in a production environment, the ideal settings are to create a node pool with at least three (3) nodes. In that case, a System Node Pool must be created first.
 
@@ -161,9 +171,9 @@ The System Node Pool serves to run critical system components. Its operating sys
 
 6. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
 
-    
-    Notice if the System Node Pool option is checked, the Cloud Configuration section does not make the OS **Linux** or **Windows** selection available. Keep the System Node Pool option checked if you are creating a system node pool; otherwise uncheck it to create a worker node and have the option to select the OS. In addition, the Taints option will be disabled, when a System Node Pool option is checked.
-
+<InfoBox>    
+If the System Node Pool option is checked, the Cloud Configuration limits the choice of OS( **Linux** or **Windows**) and the Taints.
+</InfoBox>
 
 7. Enter the **Managed Disk** information and its size.
 
@@ -172,7 +182,7 @@ The System Node Pool serves to run critical system components. Its operating sys
 
 
 
-## Include Additional Nodes to Create Worker Node Pools
+### Include Additional Nodes to Create Worker Node Pools
 
 1. Identify the next node pool as a worker node and give it a worker node pool name. 
 
