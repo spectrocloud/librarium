@@ -147,7 +147,7 @@ Adding a worker node pool involves the deployment of:
 
 * Worker Node pools as per workload 
 
-### Creating  a System Node Pool
+### Creating a System Node Pool
 
 1. In this section, we will learn how to configure a Worker Node. However, in a production environment, the ideal settings are to create a node pool with at least three (3) nodes. In that case, a System Node Pool must be created first.
 
