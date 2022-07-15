@@ -427,35 +427,3 @@ The example below shows how to build the Permission Manager auth pack and push t
 
 </Tabs>
 
-
-# Add-on Pack Monitoring
-
-
-You may need a way to monitor which are in progress of installing and which are failed.  When there are just a few packs added to the cluster profile, it is easy to observe its status, but when you have many packs, it gets a little tricky.  The Cluster Profile page displays the list of packs associated with the cluster you are monitoring. In addition, the page also includes information on the status and the installation progress of the Add-on Packs. The following pack statuses are possible.
-
-<br />
-<br />
-
-| **Indicator Status** | **Description**                      |
-| -------------------- | ------------------------------------ |
-| **Blue**             | The pack is in processing.           |
-| **Green**            | The pack installation is successful. |
-| **Red**              | The pack installation has failed.    |
-
-
-<br />
-<br />
-
-#### Cluster Profiles and its Add-on Packs Status
-
-![Pack_Status](pack_status1.png)
-
-
-
-
-<br />
-<br />
-
-
-
-

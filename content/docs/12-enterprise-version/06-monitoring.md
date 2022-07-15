@@ -56,13 +56,6 @@ The below pods are dynamically created from jobs and can be excluded from monito
 * Node down
 * Node unreachable
 
-
-# Add-on Pack Monitoring
-
-Add-on packs are installed, and you may need a way to monitor which are in progress of installing and which are failed. When there are just a few packs added to the cluster profile, it is easy to observe its status, but when you have many packs, it gets a little tricky. The Cluster Profile page allows you to see the list of packs associated with the cluster you are monitoring, the status of each Add-on pack, and the install progress of the pack.  
-
-
-
 <br />
 <br />
 
