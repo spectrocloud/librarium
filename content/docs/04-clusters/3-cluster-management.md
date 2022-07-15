@@ -42,7 +42,7 @@ The following sections describe these capabilities in detail:
 * [Cost Visibility](/clusters/cluster-management/cloud-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration. Get additional insights into per namespace cost (Usage Cost) calculated based on the amount of resources consumed within the namespace.
 
 
-* [Workload Visibility](/clusters/cluster-management/workloads) - Palette provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page. 
+* [Workload Visibility](/clusters/cluster-management/workloads) - Palette provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page.
 
 
 * [Node Labels and Taints](/clusters/cluster-management/taints) - You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the recommended approaches such as, nodeSelector, node affinity, etc. all use label selectors to facilitate the selection. Taints allow a node to repel a set of pods for appropriate pod allocation to node pools.
@@ -51,9 +51,11 @@ The following sections describe these capabilities in detail:
 * [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespaced resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette also can define new namespaces for the cluster and manage (remove, assign quota, assign role bindings, etc.) them.
 
 
-* [Add-on Pack Status and Monitoring](/registries-and-packs/adding-add-on-packs#add-onpackmonitoring) - Packs associated with the cluster you are monitoring are displayed with information on the status and the installation progress of the Add-on Packs. The pack statuses appear as green representing a successful installation, blue as processing the install, and red as a failed install and requires attention.
+* [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring)- Packs associated with the cluster you are monitoring are displayed with information on the status and the installation progress of the Add-on Packs. The pack statuses appear as gray indicating as an initial onboarding and before deployment status, green representing a successful installation, blue as processing the installation, and red as a failed install and requires attention.
 
 
 <InfoBox>
 Palette supports new and existing clusters across public and private clouds. Furthermore, in public clouds, Palette supports managed Kubernetes cluster services such as EKS, AKS, etc. The capabilities described above may not be available for all cluster types or may work slightly different in some cluster types. Relevant sections will highlight these exceptions.
 </InfoBox>
+
+<br />
