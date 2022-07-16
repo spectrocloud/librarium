@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Manage Palette Workspace
 
-Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters through Workspaces. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up to date, and perform ongoing management operations like Backup and Restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs.
+Palette supports several day 2 operations to manage the end-to-end lifecycle of the Kubernetes clusters through Workspaces. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up to date, and perform ongoing management operations like Backup and Restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs.
 
 The following sections describe these capabilities in detail:
 
@@ -41,7 +41,7 @@ Workspace provides visibility into workloads deployed across clusters.
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Schedule Backups" key="Schedule Backups">
+<Tabs.TabPane tab="Backups and Restore" key="Backups and Restore">
 
 
 # Workspace Backup and Restore
@@ -269,6 +269,35 @@ Backups created manually or as part of the schedule are listed under the Backup/
 3. Finally, restore operations can be done to the cluster running on the same project.
 
 
+## Restore Your Backup
+
+To initiate a restore operation:
+<br />
+
+1. Log in to the Palette console as the **Project Admin** and go to **Workspaces** page.
+
+
+2. Select the **Workspace Name** to be restored.
+
+
+3. From the selected Workspace overview, select **Backups** from the top menu.
+
+
+4. The Backup option lists all the backups scheduled for the selected Workspace. Towards the name of the backup, click the meatball (three horizontal dots) button to open the restore wizard.
+
+
+5. Click on the **Restore Backup** option to complete the wizard:
+   * Choose of the namespaces to be restored
+   * Three options are available to filter the resources to be restored:
+        * **Include Cluster Resources** - To restore all the cluster scoped resources.
+        * **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
+        * **Restore PVs** - To restore the persistent volumes.
+        
+    **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
+
+
+6. Make the appropriate choice of resources as per user requirements to complete the wizard.
+
 
 </Tabs.TabPane>
 
@@ -281,13 +310,31 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 <br />
 
-## To set your Namespace Quota:
+## To set your Resource Quota:
 
 1. During [Step: 3 Associate Namespaces](/workspace/adding-a-new-workspace#3.associatenamespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota. 
 
 
 2. Namespace Quota can be set for an already deployed workspace as:
    `Workspace Settings -> Namespaces -> Workspace Quota`
+
+### Workspace Quota Notes:
+
+* The quota allocated to the workspace scope is split across all the namespaces under that workspace per their resource requirements.
+
+
+* The palette allows quotas to be allocated to individual namespaces under a specific workspace. In that case, individual clusters belonging to that namespace can utilize the quota per their resource requirements. When a namespace is allocated with a quota, all the clusters belonging to that namespace get allocated with that resource quota individually. 
+
+    **Example**: If Namespace palette-ns belongs to two (2) clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 GB memory individually.
+
+
+* Palette allows quota to be allocated to individual clusters under a specific workspace. In that case, the allocated quota should not exceed the namespace quota.
+
+
+* To set an unlimited quota, set the quota value as -1.
+   * If -1 is set as the quota for a cluster, then we cannot set a quota for the workspace to which the cluster belongs.
+   * If -1 is set as the quota for a Workspace, then we cannot set a quota for the clusters belonging that Workspace.
+   
 
 </Tabs.TabPane>
 
@@ -318,6 +365,8 @@ The user can add a list of restricted images to an already deployed workspace as
 
 
 2. Click on **Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can be restricted within a Namespace by separating them with commas.
+
+
 
 
 
