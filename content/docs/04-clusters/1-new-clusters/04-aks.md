@@ -102,7 +102,7 @@ For this, we first need to create an Azure Active Directory (AAD) application wh
 ![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
 
 
-The following steps need to be performed to provision a new AKS cluster profile:
+The following steps need to be performed to provision a new cluster:
 <br />
 
 
