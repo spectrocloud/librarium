@@ -175,10 +175,10 @@ The System Node Pool serves to run critical system components. Its operating sys
 If the System Node Pool option is checked, the Cloud Configuration limits the choice of OS(<b>Linux</b> or <b>Windows</b>) and the Taints.
 </InfoBox>
 
-1. Enter the **Managed Disk** information and its size.
+7. Enter the **Managed Disk** information and its size.
 
 
-2. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. 
+8. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. 
 
 
 
