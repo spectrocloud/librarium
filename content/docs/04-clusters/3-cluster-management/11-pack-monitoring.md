@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Pack Monitoring
 
-You may need a way to monitor which are in progress of installing and which are failed.  When there are just a few packs added to the cluster profile, it is easy to observe its status, but when you have many packs, it gets a little tricky.  
+Palette provides a well defined color scheme to monitor the deployment status of packs during Palete Workload Cluster deployment. Different colors represent the different stages of pack installation status. It clearly defines the progress of installation. As the number of packs added to a cluster via cluster profile increases, this monitoring technique is highly user friendly for status recognition.
 
 The Cluster Profile page displays the list of packs associated with the cluster you are monitoring. In addition, the page also includes information on the status and the installation progress of the installed packs. The following are the possible pack statuses.
 
@@ -33,7 +33,7 @@ The Cluster Profile page displays the list of packs associated with the cluster 
 <br />
 <br />
 
-#### Cluster Profiles and Pack Status
+#### Cluster Profiles Pack Status
 
 ![Pack_Status](pack_status.png)
 
