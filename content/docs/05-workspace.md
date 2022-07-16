@@ -47,8 +47,8 @@ A workspace-based backup is similar to a cluster backup, with the additional cov
 
 # Regex for Namespaces
 
-Palette leverages Regex to apply Role bindings to namespaces that match a specific pattern. Use Regex expression to select multiple namespaces for deploying role binding. When we have large number of namespaces to be configured with role binding, instead of giving namespace name, generate a Regex matching to multiple namespaces. This will help to select all the namespaces matching the given regex to be selected together for rolebinding.
+Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace name. This will help to select all the namespaces matching the given Regex pattern to be selected together for role binding. A Regex pattern must start and end with a " / ".
 
-Example: /^web-app/
+Example: /^palette-ns/
 <br />
 <br />

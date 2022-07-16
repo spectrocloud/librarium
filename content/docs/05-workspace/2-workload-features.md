@@ -289,11 +289,11 @@ To initiate a restore operation:
 5. Click on the **Restore Backup** option to complete the wizard:
    * Choose of the namespaces to be restored
    * Three options are available to filter the resources to be restored:
-        * **Include Cluster Resources** - To restore all the cluster scoped resources.
-        * **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
-        * **Restore PVs** - To restore the persistent volumes.
+     * **Include Cluster Resources** - To restore all the cluster scoped resources.
+     * **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
+     * **Restore PVs** - To restore the persistent volumes.
         
-    **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
+   **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
 
 
 6. Make the appropriate choice of resources as per user requirements to complete the wizard.
