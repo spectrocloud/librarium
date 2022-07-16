@@ -14,51 +14,37 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Draft
 # July 15, 2022 - Release 2.7.0
 
 Spectro Cloud Palette 2.7 is released which enhancements to the workspace and new features to support Windows Node Pools, Canonical Ubuntu Advantage embedding, Private Cloud Gateway migration, various packs and charts and many more.
 
+**Features**
+
+- Spectro Cloud Palette has enhanced the import cluster functionality by adding a ["minimal permission"](/clusters/brownfield-clusters) mode in addition to the "full permission" mode. Users can start exploring Palette by importing a cluster in minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
+
+- Palette now supports both Windows and Linux worker node in Azure Kubernetes Services (AKS).
+
+- When using Ubuntu as an OS layer in many operating environments, users can leverage [Canonical's Ubuntu Advantage for Infrastructure](/integrations/ubuntu#ubuntuadvantage) subscription which can ensure security and OS patching.
+
+- Scale your virtual machines instances automatically with [Autoscaler](/clusters/new-clusters/aks) when you set up the Microsoft Azure Kubernetes service and the Amazon Web Services Kubernetes clusters.
+
+- You can now add Container Storage Interface (CSI) and Container Network Interface (CNI) layers using [Helm Charts](/cluster-profiles#layers) as an alternative to using manifests.
+
 **Enhancements** 
 
-- Spectro Cloud Palette has improved the import cluster functionality to restrict permissions starting at the lower-level. Configure Palette to [import the cluster with minimal permissions](/clusters/brownfield-clusters), and then, gradually grant access to meet access needs.
-
-
-- The [Azure CNI pack](/integrations/azure-cni#azurecnipolicysupport) and [Calico Policies](/integrations/azure-cni#azureandcalicopoliciesandtheircapabilities) are available within Palette and will recognize it as you set up a Windows worker node. With the Azure CNI you are able to...
-
-
-- When creating the Cluster Profile, leverage [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for an Infrastructure subscription include this feature to ... as a profile layer.
-
-
-- Monitor these resources running inside the workload clusters with the [Palette Cluster Details](/clusters/cluster-management/workloads) page.
-* Namespaces 
-* Pods 
-* DeploymentSets 
-* DaemonSets 
-* StatefulSets 
-* Jobs 
-* CronJobs 
-* Role Bindings 
-* Cluster Role Bindings
-
-- Scale your virtual machines instances automatically with and with ease [Autoscaler](/clusters/new-clusters/aks) when you set up the Microsoft Azure Kubernetes service and the Amazon Web Services Kubernetes clusters.
+- The [Azure CNI pack](/integrations/azure-cni#azurecnipolicysupport) and [Calico Policies](/integrations/azure-cni#azureandcalicopoliciesandtheircapabilities) are available within Palette on AKS.
 
 - We have included additional [supporting variables to the system]() making Palette capable of detecting invalid pack values before the cluster is submitted for deployment) within the system macros, improving the capability to detect invalid pack values before the cluster is submitted for deployment.
 
 - Continuity of service is just a couple of clicks away if your Public Cloud Gateway goes into an unhealthy state. Quickly switch from an [unhealthy PCG and route the traffic seamlessly](/enterprise-version/enterprise-cluster-management) to another healthy PCGs, then just remove the unhealthy cluster. 
 
-Workspace Enhancements within Palette makes for easier provisoning, monitoring and other administrative functions:
+- Workspace Enhancements within Palette makes for easier provisoning, monitoring and other administrative functions:
   - [BackUp and Restore](/clusters/cluster-management/backup-restore)
   - [Associate](/clusters/cluster-management/backup-restore) new clusters, as well as brownfield clusters, to your already created workspace.
   - [Add Cluster Role Bindings](/workspace/adding-a-new-workspace)
   - [Associate Namespaces](/workspace/adding-a-new-workspace)
   - [Manage Palette Workspace](/workspace/workload-features)
 
-
-- You can now add Container Storage Interface (CSI) and Container Network Interface (CNI) layers using [Helm Charts](/cluster-profiles#layers) as an alternative to using manifests.
-
-Categories and order
-Validate all links
 
 
 # May 30, 2022 - Release 2.6.0
