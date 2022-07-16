@@ -328,11 +328,12 @@ Palette enables the users to limit resource usage within the workspace optionall
     **Example**: If Namespace palette-ns belongs to two (2) clusters, p1 and p2, and palette-ns is allocated a quota of 1 CPU and 1 Gb memory, each of p1 and p2 gets allocated 1 CPU and 1 GB memory individually.
 
 
-* Palette allows quota to be allocated to individual clusters under a specific workspace. In that case, the allocated quota should be less than the namespace quota set or the workspace quota set to which that cluster belongs.
+* Palette allows quota to be allocated to individual clusters under a specific workspace. In that case, the allocated quota should not exceed the namespace quota.
 
 
 * To set an unlimited quota, set the quota value as -1.
-   * If -1 is set as the quota for a cluster or namespace, then we cannot set a quota for the workspace to which the cluster or namespace belongs.
+   * If -1 is set as the quota for a cluster, then we cannot set a quota for the workspace to which the cluster belongs.
+   * If -1 is set as the quota for a Workspace, then we cannot set a quota for the clusters belonging that Workspace.
    
 
 </Tabs.TabPane>
