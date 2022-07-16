@@ -19,11 +19,11 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 
 **Features:**
 * Spectro Cloud Palette has enhanced the import cluster functionality with ["minimal permission"](/clusters/brownfield-clusters#importingabrownfieldcluster) mode and the "full permission" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
-* Palette now supports [Windows worker nodes](link to be updated) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
+* Palette now supports [Windows worker nodes](/clusters/new-clusters/aks) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](https://docs-latest.spectrocloud.com/clusters/new-clusters/aks#deployinganakscluster) to meet the dynamic user workloads.
 * Palette leverages the Container Storage Interface (CSI) and Container Network Interface (CNI) layers using Helm Chart  in addition to manifest-based deployment.
-* Palette introduces a well-defined [color scheme to monitor](link to be added after merge) the different stages of pack deployment during cluster creation.
+* Palette introduces a well-defined [color scheme to monitor](/clusters/cluster-management/pack-monitoring#packmonitoring) the different stages of pack deployment during cluster creation.
 
 **Enhancements:**
 
@@ -33,7 +33,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
   * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
   * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.
   * Enable the collective role binding of namespaces using [Regex for namespaces](/workspace#regexfornamespaces) selection.
-  * Selective [Resource Restore](link to be updated after the merge) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
+  * Selective [Resource Restore](/workspace/workload-features#restoreyourbackup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
 * Palette provides visibility into [Role Binding and Cluster Role Binding](/clusters/cluster-management/workloads#overview) resources running inside our workload clusters.
 
 
