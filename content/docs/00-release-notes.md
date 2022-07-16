@@ -32,7 +32,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 * Palette Workspace upgraded with
   * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
   * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.
-  * Enable the collective role binding of namespaces using [Regex for namespaces](/workspace#regexfornamespaces) selection.
+  * Enable the collective role binding of namespaces using [regular expressions for namespaces](/workspace#regexfornamespaces) selection.
   * Selective [Resource Restore](/workspace/workload-features#restoreyourbackup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
 * Palette provides visibility into [Role Binding and Cluster Role Binding](/clusters/cluster-management/workloads#overview) resources running inside our workload clusters.
 
