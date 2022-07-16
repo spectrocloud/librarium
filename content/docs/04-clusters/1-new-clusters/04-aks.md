@@ -172,7 +172,7 @@ The System Node Pool serves to run critical system components. Its operating sys
 6. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
 
 <InfoBox>    
-If the System Node Pool option is checked, the Cloud Configuration limits the choice of OS(<b>Linux</b> or <b>Windows</b>) and the Taints.
+If the System Node Pool option is checked, the Cloud Configuration limits the choice of OS (<b>Linux</b> or <b>Windows</b>) and the Taints.
 </InfoBox>
 
 7. Enter the **Managed Disk** information and its size.
