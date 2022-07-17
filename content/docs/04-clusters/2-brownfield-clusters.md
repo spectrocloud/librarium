@@ -74,7 +74,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
    
 
 <InfoBox>
-<b>Read-Only mode</b>: Starting with minimal permission, allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict the minimal permissions allowed in the initial setup. When you are ready to raise the permissions levels, migrate to full permissions mode.
+<b>Read-Only mode</b>: Starting with minimal permission allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict the minimal permissions allowed in the initial setup. When you are ready to raise the permissions levels, migrate to full permissions mode.
 
 <br />
 <br />
@@ -108,20 +108,23 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 ### Install the Read-Only Agent
 
+
 1. Follow the steps in the Cluster Import procedure (Read-Only) slide-out. This installs the Palette Cluster Management Agent to use with your imported brownfield cluster.
 
 
-
-2. Copy and paste, in a Terminal window, the following kubectl command to the cluster that you are importing:
+2. Copy and paste in a Terminal window the following kubectl command to the cluster that you are importing:
+<br />
 
    ```yml
    kubectl apply -n cluster-xxxxxxxxxx -f https://api.dev.spectrocloud.com/v1/spectroclusters/xxxxxxxxx/import/manifest`
    ```
    After this command is applied, the cluster will go to an *Importing* state and eventually show as *Running* in the console interface. At this point, metrics and installed services will be populated.
 
+
 3. Install the metrics server.
    
    The Read-Only Agent relies on the metrics server to capture usage metrics in the cluster. If the metrics server is not installed already, execute the following command(s):
+<br />
 
    ```yml
    helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -130,7 +133,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
    ```yml 
    helm install my-release bitnami/metrics-server
    ```
-
+<br />
 
 4. Wait for the import process to complete. The cluster status will transition from *Pending* to *Running*, and the cluster health will transition to *Healthy*, signaling a successful import of the brownfield cluster.
 
@@ -140,13 +143,18 @@ Run the following steps to import a brownfield cluster into the Palette platform
 When you are ready to expand the permissions or enable day 2 operations, migrate to Full Permissions mode.
 <br />
 
-1. To migrate to Full Permissions mode, go to the slide menu **Clusters**, select the read-only cluster you wish to migrate, and click the **Migrate To Full Permissions**.
+1. To migrate to Full Permissions mode, go to the slide menu and select **Clusters**.
 
 
-2. Click **OK** to confirm.
+2. Pick the read-only cluster you wish to migrate and click the **Migrate To Full Permissions** button.
 
 
-3. Proceed to install the agent.
+3. Click **OK** to confirm.
+
+
+4. Proceed to install the agent.
+
+<br />
 
 ### Prerequisites
 
@@ -161,20 +169,23 @@ When you are ready to expand the permissions or enable day 2 operations, migrate
 
 <br />
 
-### Install the agent (full permissions mode)
+### Install the Agent (Full Permissions Mode)
 
 1. Copy and paste the command in a Terminal window to apply the following `kubectl` command to the cluster that you are migrating:
+<br />
 
    ```yml
    kubectl apply -n cluster-xxxxx -f https://api.dev.spectrocloud.com/v1/spectroclusters/xxxxx/import/manifest
    ```
+<br />
 
 2. Wait for the import process to complete. The cluster status will transition from *Pending* to *Running*, and the cluster health will transition to *Healthy*, signaling a successful import of the brownfield cluster.
 
 # Attach Add-On Profiles
 
-Add-on cluster profiles can be attached to brownfield clusters after import to install and manage various applications/integrations above the Core Infrastructure layers. The following steps need to be performed to attach Add-on profiles to existing clusters:
+Add-on cluster profiles can be attached to brownfield clusters, after an import, to install and manage various applications/integrations above the Core Infrastructure layers. The following steps need to be performed to attach Add-on profiles to existing clusters:
 
+<br />
 
 1. Choose the desired cluster from the **Clusters** list and navigate to the **Profile** tab.
 
@@ -197,11 +208,12 @@ The deletion of the imported cluster results in the removal of the workspace, cl
 
 The following tasks need to be performed to delete an imported cluster:
 
+<br />
+
 1. Go to the **Clusters** tab from the slide menu.
 
 
 2. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
-
 
 
 3. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete Cluster**.
