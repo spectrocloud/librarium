@@ -101,7 +101,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
    - DNS configured for public internet name resolution
 
 
-   - Metrics server
+   - Metrics server (highly recommended)
 
 
 <br />
