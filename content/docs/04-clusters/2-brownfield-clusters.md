@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Existing Kubernetes clusters that Palette has not deploy can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. In addition, Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments. 
+Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. In addition, Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments. 
 
 Palette also supports generic cluster imports, where the users import their existing clusters to Palette, regardless of the cloud service provider. For example, if Palette does not support the existing cluster's cloud type, those clusters could be imported as Generic clusters.
 
