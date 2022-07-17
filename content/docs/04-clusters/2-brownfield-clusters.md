@@ -108,7 +108,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 ### Install the Read-Only Agent
 
-1. Follow the steps in the Cluster Import procedure (Read-Only) slide-out. This installs the Palette Cluster Management Agent to use with your imported brownfield cluster. 
+1. Follow the steps in the Cluster Import procedure (Read-Only) slide-out. This installs the Palette Cluster Management Agent to use with your imported brownfield cluster.
 
 
 
@@ -119,9 +119,9 @@ Run the following steps to import a brownfield cluster into the Palette platform
    ```
    After this command is applied, the cluster will go to an *Importing* state and eventually show as *Running* in the console interface. At this point, metrics and installed services will be populated.
 
-3. Install the metrics server. These commands are optional. 
+3. Install the metrics server.
    
-   The Read-Only Agent relies on the metric server to capture usage metrics in the cluster. If the metrics server is not installed already, execute the following command(s):
+   The Read-Only Agent relies on the metrics server to capture usage metrics in the cluster. If the metrics server is not installed already, execute the following command(s):
 
    ```yml
    helm repo add bitnami https://charts.bitnami.com/bitnami
