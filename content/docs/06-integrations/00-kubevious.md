@@ -23,6 +23,11 @@ Kubevious integration provides a graphical interface that renders easy to unders
 ## Versions Supported
 
 <Tabs>
+<Tabs.TabPane tab="1.0.x" key="1.0.x">
+
+* **1.0.10**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="0.8.x" key="0.8.x">
 
 * **0.8.15** 
