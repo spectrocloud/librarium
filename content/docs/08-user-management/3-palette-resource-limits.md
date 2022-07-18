@@ -22,14 +22,14 @@ import InfoBox from 'shared/components/InfoBox';
 |Cluster profiles    |     200              |
 |Registries          |      50              |
 |Private Gateway     |      50              |
-|Api Keys            |20 keys per user      |
-|Locations(Backup)   |100                   |
-|Certificates        |20                    |
-|Macros              |200 (Per Project)     |
-|SSH Keys            |300                   |
-|Alerts or Webhook   | 100 (Per Project)    |
-|Clusters(assuming average 30 nodes per cluster|200|
-|Appliances(Edgehosts)|200                   |  
+|Api Keys            |   20 keys per user   |
+|Locations(Backup)   |      100             |
+|Certificates        |       20             |
+|Macros              |      200 (Per Project)|
+|SSH Keys            |      300              |
+|Alerts or Webhook   |   100 (Per Project)   |
+|Clusters.           |      200              |
+|Appliances(Edgehosts|      200              |  
 
 
 <InfoBox>
