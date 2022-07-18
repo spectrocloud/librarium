@@ -36,7 +36,6 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
   * Selective [Resource Restore](/workspace/workload-features#restoreyourbackup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
 * Palette provides visibility into [Role Binding and Cluster Role Binding](/clusters/cluster-management/workloads#overview) resources running inside our workload clusters.
 
-
 # May 30, 2022 - Release 2.6.0
 
 Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Secret Encryption, CSI Storageclass, and added Parameters capabilities.
