@@ -28,7 +28,8 @@ import InfoBox from 'shared/components/InfoBox';
 |Macros              |200 (Per Project)     |
 |SSH Keys            |300                   |
 |Alerts or Webhook   | 100 (Per Project)    |
-|Clusters (assuming on avg 30 nodes per cluster|200 (depends on the infra configuration)|Appliances (Edgehosts)|1000 (depends on the infra configuration)|  
+|Clusters(assuming average 30 nodes per cluster|200|
+|Appliances(Edgehosts)|200                   |  
 
 
 <InfoBox>
