@@ -50,7 +50,7 @@ To migrate the traffic from a PCG:
 2. From the **Tenant Settings**, go to the **Private Cloud Gateways** tab to list all PCGs.
 
 
-3. Click the 'Kebab` menu towards the PCG to be migrated to see the drop-down option of **Migrate**.
+3. Click the 'Kebab' menu (three-dot elipsis) towards the PCG to be migrated to see the drop-down option of **Migrate**.
 
 
 4. Click the **Migrate** option to open the wizard to select your destination PCG.
