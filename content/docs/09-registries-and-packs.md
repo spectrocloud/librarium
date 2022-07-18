@@ -57,5 +57,5 @@ Spectro CLI is currently available in two platforms - OSX & Linux:
 
 |**OS**  |**Download Site**  |
 |---------|---------|
-|OSX     |   https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro     |
-|Linux   |   https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro      |
+|OSX     |   https://spectro-cli.s3.amazonaws.com/v2.7.0/osx/spectro     |
+|Linux   |   https://spectro-cli.s3.amazonaws.com/v2.7.0/linux/spectro      |
