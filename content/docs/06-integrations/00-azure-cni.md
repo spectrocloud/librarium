@@ -40,10 +40,10 @@ To allocate unique IP addresses to individual pods, advanced forethought needs t
 Network Policy is a Kubernetes specification that defines access policies for communication between pods. By default, AKS cluster pods can send and receive traffic without limitations. However, to ensure security, rules to control traffic flow can be defined. Network Policies define an ordered set of rules to send and receive traffic and applies them to a collection of pods that match one or more label selectors. Palette enables Network Policies to be included as part of a wider manifest that also creates a deployment or service. Palette leverages two (2) Network Policies from Azure CNI:
 
 <br />
-* azure: Azure's own implementation, called Azure Network Policy.
 
+* **azure**: Azure's own implementation, called Azure Network Policy.
 
-* calico: An open-source network and network security solution founded by [Tigera](https://www.tigera.io/).
+* **calico**: An open-source network and network security solution founded by [Tigera](https://www.tigera.io/).
 
 
 Palette users can choose any one of the above Network Policies and provide it to the pack YAML file as `networkPolicy` as given below:
@@ -86,8 +86,8 @@ kubenet is not available for the Windows environment.
 <br />
 
 ## References
-*[Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
-*[Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)
+* [Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
+* [Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)
 
 
 
