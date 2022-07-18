@@ -28,7 +28,6 @@ The following pages provide detailed instructions for setting up new workload cl
 * [Amazon Elastic Kubernetes Service (EKS)](/clusters/new-clusters/eks)
 * [Azure](/clusters/new-clusters/azure)
 * [Azure Kubernetes Service (AKS)](/clusters/new-clusters/aks)
-* [Edge (Beta)](/clusters/new-clusters/edge)
 * [GCP](/clusters/new-clusters/gcp)
 * [Bare Metal using Canonical's Metal-as-a-Service (MaaS)](/clusters/new-clusters/maas)
 * [OpenStack](/clusters/new-clusters/openstack)
