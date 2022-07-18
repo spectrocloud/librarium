@@ -1,5 +1,5 @@
 ---
-title: "Palette Resource Limit"
+title: "Palette Resource Limits"
 metaTitle: "Default Palette Resource Limits"
 metaDescription: "Palette Resource Limit table "
 icon: ""
