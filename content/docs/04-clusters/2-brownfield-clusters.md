@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. In addition, Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments. 
+Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments. 
 
 Palette also supports generic cluster imports, where the users import their existing clusters to Palette, regardless of the cloud service provider. For example, if Palette does not support the existing cluster's cloud type, those clusters could be imported as Generic clusters.
 
@@ -42,6 +42,20 @@ The name *generic* implies support will be extended to the generic operations on
 
  * Clusters provisioned using orchestration tools (Kubeadm, kops, etc.)
 
+# Prerequisites
+
+   - Kubernetes version >= 1.19.X
+
+
+   - Egress internet access (e.g: api.spectrocloud.com)
+
+
+   - DNS configured for public internet name resolution
+
+
+   - Metrics server (highly recommended for full permissions mode import)
+
+
 # Importing a Brownfield Cluster
 
 
@@ -67,7 +81,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 6. Choose from the **Cloud Type** list where the cluster is currently deployed.
    
-   **Note**: If you are importing a Generic cluster, there is an option to provide the proxy/non-proxy information, if applicable. This is optional.
+   **Note**: If you are importing a Generic cluster, there is an option to provide the proxy/non-proxy information, if applicable.
 
 
 7. Select **Import mode** by choosing the permissions level and clicking the **Create & Open Cluster Instance** button.
@@ -90,19 +104,6 @@ Run the following steps to import a brownfield cluster into the Palette platform
 </InfoBox>
 <br />
 
-### Prerequisites
-
-   - Kubernetes version >= 1.19.X
-
-
-   - Egress internet access (e.g: api.spectrocloud.com)
-
-
-   - DNS configured for public internet name resolution
-
-
-   - Metrics server (highly recommended)
-
 
 <br />
 
@@ -112,7 +113,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 1. Follow the steps in the Cluster Import procedure (Read-Only) slide-out. This installs the Palette Cluster Management Agent to use with your imported brownfield cluster.
 
 
-2. Copy and paste in a Terminal window the following kubectl command to the cluster that you are importing:
+2. Copy and paste in a terminal window the following kubectl command to the cluster that you are importing:
 <br />
 
    ```yml
@@ -156,18 +157,6 @@ When you are ready to expand the permissions or enable day 2 operations, migrate
 
 <br />
 
-### Prerequisites
-
-   - Kubernetes version >= 1.19.X
-     
-
-   - Egress internet access (e.g: api.spectrocloud.com)
-
-
-   - DNS configured for public internet name resolution
-
-
-<br />
 
 ### Install the Agent (Full Permissions Mode)
 
@@ -224,6 +213,13 @@ The following tasks need to be performed to delete an imported cluster:
 
 5. Click **Confirm** and delete.
 
+
+<InfoBox>
+In Read-Only mode, if user want to delete/detach cluster then they need to run the following command manually on the cluster.
+
+       kubectl delete -n cluster-xxxxxx 
+
+</InfoBox>
 
 Cluster status is updated to *Deleting* while cluster resources are being deleted. In addition, the cluster status is updated with the ongoing progress of the delete operation. This deletion state can go up to 15 minutes.
 
