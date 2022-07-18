@@ -137,84 +137,40 @@ The following steps need to be performed to provision a new cluster:
 
 <br />
 
-## Adding a Worker Node Pool
+## Node Pools
 
-Adding a worker node pool involves the deployment of:
+The Nodes section during cluster creation will allow you to customize node pools. AKS Clusters are comprised of System and User node pools and all pool types can be configured to use the autoscaler which scales out pools horizontally based on per node workload counts. A complete AKS cluster contains the following: 
 
+* A mandatory primary system Node Pool, this pool will run the pods necessary to run a kubernetes cluster like the control plane and etcd. All system pools have to have at least a single node, for a development cluster one (1) node is enough, for high availability production clusters three (3) or more is recommended.
 
-* A system Node Pool
+* One (1) or more Worker Node pools per workload requirements, worker node pools can be sized to zero (0) nodes when not in use.
 
+### Creating/Removing Node Pools
 
-* Worker Node pools as per workload 
+During cluster creation you will be defaulted to a single pool. To add additional pools click **Add Node Pool**, to remove a pool click **Remove** across from the title for each pool. 
 
 ### Creating a System Node Pool
 
-1. In this section, we will learn how to configure a Worker Node. However, in a production environment, the ideal settings are to create a node pool with at least three (3) nodes. In that case, a System Node Pool must be created first.
+Each cluster requires at least one (1) system node pool, to define a pool as a system pool check the box labeled **System Node Pool**
 
 <InfoBox>
-The System Node Pool serves to run critical system components. Its operating system type must be created prior to other worker node pools. Palette automatically determines this, when you turn the worker node into a system node.
+Identifying a Node Pool as a System pool will deactivate taints and the Operating System options within the **Cloud Configuration** section as you are unable to taint or change their Operating System from Linux, see the [AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools) for more details on pool limitations.
 </InfoBox>
 
-2. Click the checkbox to turn this into the System Node if you are creating a node pool with multiple worker nodes; otherwise, uncheck the box.
+### Configuring Node Pools
+In all types of node pools the following can be configured.
 
-    **Note**: Identifying the System Node Pool as such will deactivate the **Linux** and **Windows** options within the **Cloud Configuration** section, disabling the ability to select an OS. This is because a System Pool Node can not be set in a Windows environment. The System Node Pool runs on a Linux OS. In addition, the Taints option will be invisible.
+* Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an identifying name. **Note:** Windows clusters have a name limitation of 6 characters.
 
+* Provide how many nodes the pool will contain by adding the count to the box labeled **Number of nodes in the pool**, each pool can be configured to use the autoscaler and there are more details on how to configure that below.
 
-3. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an identifying name as such.
+* Alternative to a static node pool count you can enable the autoscaler, click **Enable Autoscaler** to change to the **Minimum size** and **Maximum size** fields which will enable AKS to increase or decrease the size of the nodepool based on workloads. The smallest size of a dynamic pool is zero (0) and maximum is one thousand (1000), setting both to the same value is identical to using a static pool size.
 
+* Provide any additional kubernetes labels to assign to each node in the pool. This section is optional and you can use a `key:value` structure, hit your spacebar to add additional labels and click the **X** with your mouse to remove unwanted labels.
 
-4. Add the **Desired size**. You can start with three for multiple nodes.
+In the **Azure Cloud Configuration** section:
 
-
-5. Include **Additional Labels**. This is optional.
-
-
-6. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
-
-<InfoBox>    
-If the System Node Pool option is checked, the Cloud Configuration limits the choice of OS (<b>Linux</b> or <b>Windows</b>) and the Taints.
-</InfoBox>
-
-7. Enter the **Managed Disk** information and its size.
-
-
-8. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. 
-
-
-
-### Include Additional Nodes to Create Worker Node Pools
-
-1. Identify the next node pool as a worker node and give it a worker node pool name. 
-
-
-2. Enable **Autoscaler** to ensure capacity requirements are met throughout peaks and valleys.
-
-
-3. Select the **Minimum** and **Maximum sizes** number. For example, two (2) for minimum and five (5) for maximum.
-
-
-4. **Additional Labels** - This is an optional feature.
-
-
-5. Proceed to set up the **Cloud Configuration**.
-
-    Notice if the System Node Pool option is unchecked, the OS selection option, within the Cloud Configuration section is activated. It appears with the choice to select **Linux** or **Windows**, as your OS environment. Keep the System Node Pool option unchecked, since you are now configuring the worker node. The Taints option is available to select.
-    
-    * In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
-    * Select the OS type if creating a worker node: **Linux** or **Windows**.
-    * Enter the **Managed Disk** information and its size.
-
-  | **Parameter**     | **Action**                                                                                                                                                                                                                                         |
-  | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | **Instance type** | Select the Azure cloud instance. The cost will be displayed.                                                                                                                                                                                       |
-  | **OS Type**       | Set the Worker Node to **Linux** or **Windows**. If setting an <br /> AKS node pool, the cluster must contain at least one <br /> system node pool with at least one node. <br /> <br /> The system node pool must be created first, then the <br /> Windows node pool can be created. Once the clusters <br /> are created, you can modify the parameters; however, the <br /> operating systems are static. <br /> <br /> If you wish to change the OS, you have to delete <br /> the cluster and create a new one.|
-  | **Managed disk**  | This is defined in Azure.                                                                                                                                                                                                                          |
-  | **Disk Size**     | Select the disk size.                                                                                                                                                                                                                              |
-
-
-<InfoBox>
-Every AKS cluster must contain at least one system node pool with at least one node. If you run a single system node pool for your AKS cluster in a production environment, it is recommended to use at least three nodes for the node pool.
-</InfoBox>
+* Provide instance details for all nodes in the pool with the **Instance type** drop down. The cost details present for a review.
 
 <InfoBox>
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
@@ -226,15 +182,11 @@ A minimum allocation of <i>two (2)</i> CPU cores is required across all worker n
 A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
 </InfoBox>
 
-6. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. Repeat the steps above until you reach the amount of nodes you need for your node pool.
+* Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (Gb) in the **Disk size** field.
 
+When you finish setting up all node pools click **Next** to go to the **Settings** page to **Validate** and finish the cluster deployment wizard.
 
-7. When you finish setting up these nodes, click **Next** to go to the **Settings** page.
-
-
-8. **Validate** and finish the cluster deployment wizard.
-
-    **Note**: Notice the Cluster Status once you click **Finish Configuration**. It will say *Provisioning*. This process will take a little while to complete. Alternately, when you go into the Azure portal under **Kubernetes services** > **Node pools**, the recently created node pools will display as **Ready**, and you can see the assigned operating systems and its status.
+    **Note**: Keep an eye on Cluster Status once you click **Finish Configuration** as it will start as *Provisioning*. Deploying an AKS cluster does take a considerable amount of time to complete and the cluster status in Palette will say *Ready* when it is complete and ready to use.
 
 <br />
 
