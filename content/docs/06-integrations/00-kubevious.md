@@ -35,7 +35,7 @@ Kubevious integration provides a graphical interface that renders easy to unders
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.5.x" key="0.5.x">
 
-  * **0.5.9**
+ * **0.5.9**
 
 </Tabs.TabPane>
 </Tabs>
@@ -44,21 +44,28 @@ Kubevious integration provides a graphical interface that renders easy to unders
 
 This integration deploys the following components:
 
-* Deployment.
-* MySql DB.
-* UI.
-* Parser.
+* Deployment
+* MySql DB
+* UI
+* Parser
 
 # Ingress
 
-Follow below steps to configure Ingress on Kubevious
+Follow the steps below to configure Ingress on Kubevious, according to the corresponding version
 
-1. Change kubevious.ui.svcType from "LoadBalancer" to "ClusterIP" (line #60)
-2. Ingress (line #118)
-   * Enable Ingress; Change enabled from false to "true"
+1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change, according to the Kubevious version as listed in the table below.
+
+   | **Versions** | **Parameters**                   | **Action**                                                           |
+   | ------------ | -------------------------------- | -------------------------------------------------------------------- |
+   | **1.0.10**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.8.15**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.5.9**    | ui: svcType: **LoadBalancer**    | Change kubevious.ui.svcType from **LoadBalancer** to **Cluster IP**. |
+
+2. Configure Ingress
+   * Enable Ingress; change enabled from *false* to **true**.
    * Set Ingress rules like annotations, path, hosts, etc.
 
-With these config changes, you can access Kubevious service on the Ingress Controller LoadBalancer hostname / IP
+With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer hostname/IP.
 
 ## References
 
