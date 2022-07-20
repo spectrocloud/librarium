@@ -15,22 +15,23 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
+Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Palette Native Edge solution can run natively on bare metal machines or virtual appliances. The users can make the choice of the machine or appliance based on their intend. It is built upon a highly immutable P6OS with embedded K8s distro, a stable base Operating System and Palette’s edge agent. Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions. 
 
 # Prerequisites
 
-* Two choices of running a native setup - depending on your intent pick either bare metal or virtual machine setup:
+* Two choices of running a Native Edge Deployment:
   * Choice 1: Bare metal box with at least 2GB of RAM
-  * Choice 2: Laptops with virtual machine management software: install Virtual Box if you are using x86-based laptops or UTM on M1-based Mac.
+  * Choice 2: Laptops with virtual machine management software: Install the Virtual Box if you are using x86-based laptops or UTM on M1-based Mac.
 
-* A Palette account (sign up)
+* A Palette Account [sign up](https://spectrocloud.com/free-trial)
 
 
 * Make a choice of P6OS as per user requirement. The flavors are made available from the combination of the following components:
-  * Pick your flavor of base Operating System with versions (CentOS, Ubuntu)
-  * Pick your flavor of Kubernetes with version (CNCF, etc.)
+  * Pick your flavor of base Operating System with versions (CentOS, Ubuntu, etc..)
+  * Pick your flavor of Kubernetes with version (CNCF, RKE or K3s)
 
 
-* Download and save the ISO file for later (Contact Sale for file).
+* Download and save the ISO file for later usage (Contact Sale for file).
 
 
 # Deploy your Edge Native Machine
@@ -54,7 +55,7 @@ The follow steps needs to be followed to setup your Edge Native Machine:
 5. After the boot process finishes, the VM will shut down automatically.
 
 
-6. Go into settings to mark hard disk as primary boot device
+6. Go into settings to mark hard disk as primary boot device.
 
 
 7. Boot up the VM and wait for it to finish. When the VM finishes booting, a QR Code with **Edge-host ID** will be displayed.
