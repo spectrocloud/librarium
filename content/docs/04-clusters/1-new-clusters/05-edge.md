@@ -81,5 +81,7 @@ Kubernetes nodes for master and worker pools are launched as Kernel-based Virtua
 
 Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Palette Native Edge solution can run natively on bare metal machines or virtual appliances. The users can choose the machine or appliance based on their intended. It is built upon a highly immutable P6OS with embedded K8s distro, a stable base Operating System and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
 
+![native-edge.png](native-edge.png)
+
 <br />
 
