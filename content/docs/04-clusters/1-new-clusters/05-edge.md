@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. Palette supports edge cluster provisioning by virtualizing Kubernetes nodes (CAPL) or deploying them as docker containers(CAPD). Additonally, PaletteOS offers two capabilities to host as a Native Edge deployment or as a Virtualized Edge appliances.
+Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. Palette supports edge cluster provisioning by virtualizing Kubernetes nodes (CAPL). PaletteOS offers two capabilities to host as a Native Edge deployment or as a Virtualized Edge appliance.
 
 <br />
 
@@ -38,12 +38,12 @@ Kubernetes nodes for master and worker pools are launched as Kernel-based Virtua
 
 #### Edge Appliances
 
-Palette supports several kinds of appliances at the Edge. These appliances can be registered with the Palette Management console and used for provisioning a Virtualized or a Native OS. The following is a list of all the supported Edge appliance types:
+Palette supports several kinds of appliances at the Edge. These appliances can be registered with the Palette Management console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is a list of all the supported Edge appliance types:
 
 
   | **Appliance Type**              | **Cluster Type**                          |
   | :------------------------------ | :---------------------------------------- |
   | Native Edge Deployment          | Bare metal machines or virtual appliances |
   | Bare Metal Machine with Libvirt | Virtualized                               |
-  | KVM-based virtual machines      | Virtualized mode                          |
+  | KVM-based virtual machines      | Virtualized                           |
  
