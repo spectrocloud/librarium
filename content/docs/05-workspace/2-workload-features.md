@@ -38,7 +38,10 @@ Workspace provides visibility into workloads deployed across clusters.
 |**Deployments**|All the running deployments specific to clusters belonging to the Workspace with namespace to which these deployments belong, pods details, replicas, and age are enumerated|
 |**DaemonSets**|DaemonSet resource utilization is described, with details on namespaces, pods, and age of individual Daemon sets|
 |**StatefulSets**|All the active StatefulSets specific to clusters belonging to the Workspace with corresponding namespace, pods details, replicas, and age are enumerated|
-
+|**Jobs**|A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate.|
+|**CronJobs**|Crone Jobs are regularly scheduled actions or jobs such as backups, report generation, etc.    Each of these jobs will recur as scheduled.|
+|**RoleBinding**|A role binding grants the permissions defined in a role to a user or set of users. |
+|**ClusterRoleBinding**|A Cluster Role binding defines the permissions defined across a cluster.|
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Backups and Restore" key="Backups and Restore">
