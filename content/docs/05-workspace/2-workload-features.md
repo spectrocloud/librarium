@@ -85,6 +85,16 @@ To create your **Workspace Role**, follow the steps below:
 
 7. The user set with the Workspace Role can take Workspace-wide Backups and Restores in compliance with their permissions and privileges.
 
+Palette leverages the BackUps to the following locations:
+
+<br />
+
+#### Amazon Web Services (AWS) S3 Buckets
+
+#### Google Cloud Platform (GCP) Buckets
+
+#### MinIO S3 Buckets
+
 # Prerequisites
 
 ## For an Amazon Web Services (AWS) Bucket as Backup Location
@@ -98,6 +108,15 @@ To create your **Workspace Role**, follow the steps below:
 * GCP service account with a **Storage Admin** role.
 
 * Pre-create a bucket at the GCP object storage.
+
+## For MinIO S3 Backup
+
+* S3 bucket with Read/Write Access
+
+* A unique access key (username) and corresponding secret key (password) from MinIO Console. 
+
+* Service provider certificate (Optional)
+
 
 # Backup Locations
 
@@ -210,6 +229,38 @@ The following details are required to configure a backup location in GCP:
 4. **JSON Credentials** - For external authentication of the GCP storage.
 
 
+## Configure your Backup in MinIO
+
+The following details are required to configure a backup location in AWS:
+
+1. **Location Name**: Name of your choice.
+
+
+2. **Location Provider**: Minio
+
+
+3. **Certificate**: Optionally required for MinIO.
+
+
+4. **S3 Bucket**: S3 bucket name must be pre-created on the MinIO object-store.
+
+
+5. **Region**: Region in which the S3 bucket is created. Example: us-east-1 
+
+
+6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000/'
+
+
+7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
+
+
+8. **Authenticate** using MinIo access key and secret access key.
+
+
+9. Click **Create** to complete the location creation wizard. 
+
+
+
 ## Add a Backup Location
 
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
@@ -267,6 +318,7 @@ Backups created manually or as part of the schedule are listed under the Backup/
 
 
 3. Finally, restore operations can be done to the cluster running on the same project.
+
 
 
 ## Restore Your Backup
