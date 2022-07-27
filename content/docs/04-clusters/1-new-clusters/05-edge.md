@@ -26,21 +26,25 @@ Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be inst
 
 ## P6OS
 
-Palette provisions an immutable OS P6OS, embedded with a base Operating System such as Ubuntu, k3OS, etc., and one of the Kubernetes distributions such as CNCF (Cloud Native Computing Foundation), K3s (a Lightweight Kubernetes Distribution), or RKE (Rancher Kubernetes Engine). Palette builds several of these based on the most desired versions of the base operating system and Kubernetes distribution. Examples s(Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own. 
+P6OS is an immutable OS provisioned by Palette. It is embedded with a base Operating System such as Ubuntu, k3OS, etc., and one of the Kubernetes distributions such as CNCF (Cloud Native Computing Foundation), K3s (a Lightweight Kubernetes Distribution), or RKE (Rancher Kubernetes Engine). Palette builds several of these based on the most desired versions of the base operating system and Kubernetes distribution. 
 
-## Gearbox
-
-A Palette framework to build P6OS with elemental Toolkit. This is made available to Palette customers to build custom P6OS using their own base Operating System.
+**Examples**: s(Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own.  
 
 ## Palette Upgrade Controller 
 
 A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
 
-## TUI 
+## Site Configuration Text User Interface (TUI)
 
-Interface to site operator to provide site specific settings - NW Settings (Static IP, DHCP, WAN, GW, Proxy) , Palette end point, Device ID override. Palette Edge Manager (Local API) - A web based application that provides APIs for supporting TUI operations & site diagnostics.
+TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file. 
 
-## Edge Appliances
+## Palette Edge Manager (Local API)
+
+A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge Manager can be used to upload cluster configurations.
+
+<br />
+
+# Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
 
@@ -52,7 +56,7 @@ Palette supports several kinds of appliances for the Edge deployment. These appl
   | KVM-based virtual machines      | Virtualized                               |
  
 
-**Note:** Palette Edge Manage  & TUI would be embedded in P6OS.
+**Note:** Palette Edge Manager & TUI would be embedded in P6OS.
 
 <br />
 
@@ -64,7 +68,7 @@ Palette currently supports x86-based Edge devices. ARM-based support will be add
 
 <br />
 
-## Cluster Types
+# Cluster Types
 
 Palette supports the following two configurations for Edge clusters:
 
@@ -79,7 +83,9 @@ Kubernetes nodes for master and worker pools are launched as Kernel-based Virtua
 
 ### Native Edge
 
-Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Palette Native Edge solution can run natively on bare metal machines or virtual appliances. The users can choose the machine or appliance based on their intended. It is built upon a highly immutable P6OS with embedded K8s distro, a stable base Operating System and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
+The Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Native Edge solution runs natively on bare metal machines or virtual appliances. 
+
+The users can choose the machine or appliance based on their intended use case. It is built upon a immutable P6OS with embedded Kubernetes Distro, a stable base Operating System, and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
 
 ![native-edge.png](native-edge.png)
 
