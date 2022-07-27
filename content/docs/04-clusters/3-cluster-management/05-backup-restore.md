@@ -16,11 +16,21 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 Palette provides two ways to back up and restore Kubernetes clusters:
 
 * Cluster Backup and Restore for a single cluster which is managed from within the cluster.
-* [Workspace](/workspace) Backup and Restore for multiple clusters managed from workspaces.
+* [Workspace](/workspace/workload-features#workspaceoperator) Backup and Restore for multiple clusters managed from workspaces.
 
 # Cluster Backup and Restore
 
 Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
+
+Palette leverages the BackUps to the following locations:
+
+<br />
+
+#### Amazon Web Services (AWS) S3 Buckets
+
+#### Google Cloud Platform (GCP) Buckets
+
+#### MinIO S3 Buckets
 
 
 # Prerequisites
@@ -29,13 +39,21 @@ Palette provides a convenient backup option to back up the Kubernetes cluster st
 
 * The Amazon Simple Storage Service (S3) permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
-* Pre-created bucket at the AWS or MinIO object-store.
+* Pre-created bucket at the AWS Console.
 
 ## For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a `storage admin` role.
 
 * Pre-created bucket at the GCP object storage.
+
+## For MinIO S3 Backup
+
+* S3 bucket with Read/Write Access
+
+* A unique access key (username) and corresponding secret key (password) from MinIO Console. 
+
+* Service provider certificate (Optional)
 
 # Backup Locations
 
@@ -48,7 +66,7 @@ The following details are required to configure a backup location in AWS:
 1. **Location Name**: Name of your choice.
 
 
-2. **Location Provider**: AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store).
+2. **Location Provider**: AWS
 
 
 3. **Certificate**: Required for MinIO.
@@ -147,17 +165,41 @@ The following details are required to configure a backup location in GCP:
 
 4. **JSON Credentials**: For external authentication of the GCP storage.
 
+## Configure your Backup in MinIO
+
+The following details are required to configure a backup location in AWS:
+
+1. **Location Name**: Name of your choice.
+
+
+2. **Location Provider**: Minio
+
+
+3. **Certificate**: Optionally required for MinIO.
+
+
+4. **S3 Bucket**: S3 bucket name must be pre-created on the MinIO object-store.
+
+
+5. **Region**: Region in which the S3 bucket is created. Example: us-east-1 
+
+
+6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
+
+
+7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
+
+
+8. **Authenticate** using MinIo access key and secret access key.
+
+
+9. Click **Create** to complete the location creation wizard. 
+
 
 ## Add a Backup Location
 
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
-# Create a Backup
-
-The below section will describe:
-
-* Create a Cluster Backup
-* Create a Workspace Backup
 
 ## Create a Cluster Backup
 
@@ -168,7 +210,7 @@ Backups can be scheduled or initiated in an on-demand basis during cluster creat
   * For an on demand Backup, a name of user choice can be used.
 
 
-2. Select the Backup location.
+2. Select the **Backup location**.
 
 
 3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
@@ -211,10 +253,10 @@ Backups created manually or as part of the schedule are listed under the Backup/
 1. Restore operation can be initiated by selecting the restore option for a specific backup. 
 
 
-1. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
+2. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
 
 
-1. Finally, restore operation can be done to the cluster running on the same project.
+3. Finally, restore operation can be done to the cluster running on the same project.
 
 <WarningBox>
 Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
