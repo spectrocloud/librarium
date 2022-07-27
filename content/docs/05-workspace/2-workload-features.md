@@ -248,7 +248,7 @@ The following details are required to configure a backup location in AWS:
 5. **Region**: Region in which the S3 bucket is created. Example: us-east-1 
 
 
-6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000/'
+6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
 
 
 7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
