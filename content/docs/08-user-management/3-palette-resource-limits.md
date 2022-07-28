@@ -41,10 +41,7 @@ The resource limit can be customized according to per tenant resource requiremen
 * API operations are limited to 10 requests per second for an IP Address.
 
 
-* The API request limits are categorized by resources such as  `/v1/cloudconfig/:uid` and `/v1/cloudconfig/:uid/`.
-
-
-* Machine pools are counted for rate limits as both belong to the same cloud-config resource.
+* The API request limits are categorized by resources such as  `/v1/cloudconfig/:uid` and `/v1/cloudconfig/:uid/`. Machine pools are counted for rate limits as both belong to the same cloud-config resource.
 
 
 * In case of too many requests, the user will receive an error with HTTP code 429 - `TooManyRequests.` In that event, it is recommended to retry the API call after a specific interval.
