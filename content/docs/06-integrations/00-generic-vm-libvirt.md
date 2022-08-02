@@ -163,27 +163,6 @@ files:
 
 <br />
 
-## Hooks
-
-Mounts section can be used to mount data inside the existing config maps or secrets into the pod as files where pre and post hooks are executed so that data present in config map or secret can be accessed while executing pre and post exec hooks.
-
-<br />
-
-```yaml
-mounts:
-    configMap:
-#     - name: system-config
-#       path: /data/system-config
-#     - name: system-config-2
-#       path: /data/system-config-2
-    secret:
-#     - name: system-config
-#       path: /data/system-config
-#     - name: system-config-2
-#       path: /data/system-config-2
-```
-
-<br />
 
 ## Mounts
 
