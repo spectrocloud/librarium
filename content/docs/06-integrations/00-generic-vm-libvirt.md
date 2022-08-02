@@ -44,6 +44,7 @@ If multiple instances of this pack has to be deployed on the cluster for differe
 
 <br />
 
+
 ```yaml
 spectrocloud.com/display-name: vm-app-1 
 releaseNameOverride: 
