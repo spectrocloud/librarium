@@ -41,6 +41,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|
 |----- |------|
+|0.2.3 |0.8.8 |
 |0.1.8 |0.7.7 |
 |0.1.8 |0.7.6 |
 |0.1.8 |0.7.5 |
@@ -62,13 +63,100 @@ The section below includes the different versions of Terraform providers, suppor
 <br />
 <br />
 
-### Latest Version Supported : `0.7.x`
+### Latest Version Supported : `0.8.x`
 
-Find the detailed patch changes and comparisons of **0.7.x** within these tabs.
+Find the detailed patch changes and comparisons within below **tabs**.
 
 <br />
 
 <Tabs>
+<Tabs.TabPane tab="v0.8.8" key="v0.8.8">
+
+# Provider Changes 
+
+* Read back `ssh_key_name` for clusters .
+
+
+* Added `Unknown` status for deployed clusters.
+
+
+* Error message improvisation.
+
+
+* Support RBACs, Taints, and additional Labels in AKS, AWS, and Azure clouds.
+
+
+* Patch tags for Cluster Profiles.
+
+
+* RBAC creation and update for AKS clusters.
+
+
+* Tenant, organization, and system scope support for Cluster Profiles.
+
+
+* Refactored cluster update strategy.
+
+
+* Set versioning for the profile data source.
+
+
+* Supports manifest for Maas, OpenStack, AWS, Azure, AKS, GCP, and VMware.
+
+**Fixes:**
+
+<br />
+
+* `registry_uid` and `tags` correction on read .
+
+
+* `os_type` and `system pool` settings.
+
+
+# Module Changes 
+
+
+The compatible **Module** for provider 0.8.8 is **0.2.3**
+
+<br />
+
+* Changing index for resources, adding outputs
+
+
+* Refactoring profiles and packs resources.
+
+
+* Support profiles contexting.
+
+
+* Support dynamic placement for TKE clusters.   
+
+
+* Assign min-max by default to count for TKE clusters.
+
+
+* Support SSH key for TKE cloud.
+
+
+* Profile context for libvirt API
+
+
+* Support of multiple cloud types in one configuration folder.
+
+
+* Support of macro resources. 
+
+**Fixes:**
+
+
+* Fixing profile dependency within a single module.
+
+
+* Fixing profile version and override for the boolean value.
+
+Refer to Full Changelog: [v0.7.7 to v0.8.8](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.8.8)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.7.7" key="v0.7.7">
 
