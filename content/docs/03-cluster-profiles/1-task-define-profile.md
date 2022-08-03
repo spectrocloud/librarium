@@ -115,6 +115,22 @@ In order to allow packs to be added multiple times in a profile, add the followi
 
 <br />   
 
+<InfoBox>
+By Default, Palette uses the packName-chartNames convention while installing Helm Charts. However, if the name goes beyond 64 characters for a custom name, use pack.releaseNameOverride in the layer.
+
+ 
+**Example:**
+       
+```yaml
+pack:
+  namespace: kube-system
+  releaseNameOverride:
+    actual_chart_name1: custom_name1
+    actual_chart_name2: custom_name2
+```
+
+</InfoBox>
+
 ## Cluster Profile Versioning
 
 Palette enables users to create multiple versions of a cluster profile within the scope of a single profile name. The **Version** field of the cluster profile takes a semantic versioning format (only numbers supported) as below: 
