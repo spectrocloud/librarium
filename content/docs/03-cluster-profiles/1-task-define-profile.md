@@ -116,7 +116,7 @@ In order to allow packs to be added multiple times in a profile, add the followi
 <br />   
 
 <InfoBox>
-By Default, Palette uses the packName-chartNames convention while installing Helm Charts. However, if the name goes beyond 64 characters for a custom name, use pack.releaseNameOverride in the layer.
+By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart releaseNames using the format below:
 
  
 **Example:**
