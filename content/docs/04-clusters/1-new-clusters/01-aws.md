@@ -580,6 +580,7 @@ The following **four** policies include all the required permissions for provisi
                 "iam:GetInstanceProfile",
                 "iam:GetUser",
                 "iam:GetPolicy",
+                "iam:ListPolicies",  
                 "iam:ListPolicyVersions",
                 "iam:RemoveRoleFromInstanceProfile",
                 "iam:RemoveUserFromGroup",
