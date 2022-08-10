@@ -180,15 +180,15 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 | **Service**  | **Options**    |  **Description**                                                                                                                                                                                                                                                                                                                                                                                |
 | --------------- | -------------- | ------------------------------------------------------------------ | ------------------------------ |
 |  **Token**      |                                    | Enter the token key in the text box. <br /> e.g.: C13RaHQDqgvvG3Ys|
-| **ESM-infra** | enable <br /> <br /> <br /> <br /> <br /> disable | Continue to receive security updates for the Ubuntu base OS, critical software <br /> packages and infrastructure components with Extended Security Maintenance (ESM). <br />  ESM provides five additional years of security maintenance, enabling an organization's <br />continuous vulnerability management. <br /> <br />  Disable the ESM repository. Do not receive security updates for Ubuntu Base OS etc. |
+| **ESM-infra** | enable <br /> <br /> <br /> <br /> <br /> disable | Continue to receive security updates for the Ubuntu base OS, critical software <br /> packages and infrastructure components with Extended Security Maintenance (ESM). <br /> ESM provides five additional years of security maintenance, enabling an organization's <br />continuous vulnerability management. <br /> <br /> Disable the ESM repository. Do not receive security updates for Ubuntu Base OS etc. |
 |||||
-|**Livepatch**| enable <br /> <br /> <br /> <br />  disable| Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by patching the Linux <br /> kernel while the system runs. <br /> <br /> Do not enable/manage live kernel patching. The Livepatch service will be disabled. |
+|**Livepatch**| enable <br /> <br /> <br /> <br /> disable| Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by patching the Linux <br /> kernel while the system runs. <br /> <br /> Do not enable/manage live kernel patching. The Livepatch service will be disabled. |
 |||||
-| **FIPS** | enable <br /> <br /> <br /> <br /> disable | Federal Information Processing Standards (FIPS) 140 validated cryptography for  <br /> Linux workloads on Ubuntu. Install, configure, and enable <br /> FIPS 140 certified modules.  <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
+| **FIPS** | enable <br /> <br /> <br /> <br /> disable | Federal Information Processing Standards (FIPS) 140 validated cryptography for <br /> Linux workloads on Ubuntu. Install, configure, and enable <br /> FIPS 140 certified modules. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
 |||||
 | **FIPS-updates** | enable <br /> <br /> <br /> disable | The option enables the FIPS-UPDATES. It installs the updated FIPS modules sets <br />it in FIPS mode. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
 |||||
-| **CC-EAL** | enable <br /> <br /> <br /> <br /> <br />  disable | After the completion of a Common Criteria (CC) security evaluation, a grade is given <br /> indicating the level the system was tested. Common criteria evaluated configuration is <br /> currently available for Ubuntu 16.04.4 LTS (Server) and Ubuntu 18.04.4 LTS (Server). <br /> The option shows as disabled for Ubuntu 20 & 20+ as per this documentation. <br /> <br /> Do not make enable and install the CC artifacts. |
+| **CC-EAL** | enable <br /> <br /> <br /> <br /> <br /> disable | After the completion of a Common Criteria (CC) security evaluation, a grade is given <br /> indicating the level the system was tested. Common Criteria evaluated <br /> configuration is currently available for Ubuntu 16.04.4 LTS (Server) and <br /> Ubuntu 18.04.4 LTS (Server). The option shows as disabled for Ubuntu 20 & 20+. <br /> <br /> Do not install the CC artifacts. |
 |||||
 | **CIS**       | enable <br /> <br /> <br /> disable | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with <br /> certified content based off of the published CIS benchmarks. <br /> <br /> Do not access OpenSCAP-based tooling.|
 
@@ -203,3 +203,5 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage)
 
+
+[Common Criteria for Ubuntu](https://ubuntu.com/security/certifications/docs/16-18/cc)
