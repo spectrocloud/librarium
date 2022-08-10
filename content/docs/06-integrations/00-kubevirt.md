@@ -4,8 +4,8 @@ metaTitle: 'KubeVirt'
 metaDescription: 'Choosing KubeVirt within the Palette console'
 hiddenFromNav: true
 isIntegration: true
-category: ['operating system']
-logoUrl: ''
+category: ['system app']
+logoUrl: 'https://registry.spectrocloud.com/v1/kubevirt/blobs/sha256:185e7a7658c05ab478f2822b080a7e21da9113b4a8bf5fb7fb3338d9a5796eed?type=image/png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -35,6 +35,8 @@ KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create 
 </Tabs.TabPane>
 </Tabs>
 
+<br />
+<br />
 
 ## Notable Parameters
 
