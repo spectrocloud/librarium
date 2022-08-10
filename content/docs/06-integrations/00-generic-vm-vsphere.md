@@ -1,6 +1,6 @@
 ---
 title: 'generic-vm-vsphere'
-metaTitle: ' Generic Virtual Machine vSphere'
+metaTitle: 'Generic Virtual Machine vSphere'
 metaDescription: 'Choosing vSphere Generic Virtual Machine within the Palette console'
 hiddenFromNav: true
 isIntegration: true
@@ -34,7 +34,7 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 
 ## Configuring Palette Generic-VM-vSphere  Add-on
 
-To begin configuring the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
+To configure the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
 
 `cluster-{{ .spectro.system.cluster.uid }}`
 <br />
@@ -197,7 +197,7 @@ The Generic-VM-vSphere pack supports various hooks while deploying VM applicatio
 
 ## Using extraVMHclConfig
 
-The extraVMHclConfig command can be used to provide an extra configuration in the virtual machine and config should be provided in HashiCorp Configuration Language (HCL) format.
+The extraVMHclConfig command can be used to provide an extra configuration in the virtual machine and the configuration file should be provided in HashiCorp Configuration Language (HCL) format.
 
 ```terraform
 # extraVMHclConfig: |
@@ -244,7 +244,7 @@ postVMInitCmd: "echo 'Ooho! VM is created.'"
 
 ## Using preVMDestroyCmd
 
-Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be executed only when the VM is getting deleted. VM deletion can happen for any reason, like changing anything in cloud-init or removing the pack from the profile.
+Any command or script provided in this virtual machine hook will execute before the virtual machine is destroyed. It will be executed only when the VM is getting deleted. A virtual machine deletion can happen for any reason, like changing anything in cloud-init or removing the pack from the profile.
 
 <br />
 
@@ -254,11 +254,11 @@ preVMDestroyCmd: ""
 <br />
 
 <InfoBox>
-During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init, then the VM resource will get recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, then only the VM resource will be deleted.
+During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, only then the VM resource will be deleted.
 
 <br />
 <br />
-Once the VM is deleted, before another VM is created, <b>preVMInitCmd</b> will be invoked.
+Once the VM is deleted and before another virtual machine is created, <b>preVMInitCmd</b> will be invoked.
 </InfoBox>
 
 <br />
@@ -266,7 +266,7 @@ Once the VM is deleted, before another VM is created, <b>preVMInitCmd</b> will b
 
 ## Mounts
 
-Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are executed so that the data present in the configuration map or secrets can be accessed while running pre-and-post exec hooks.
+Mount the data inside the existing configuration map or secret into the pod as files, where pre-and-post hooks are executed. This allows the data present in the configuration map or the secrets file to be accessible while running pre-and-post exec hooks.
 
 
 <br />
@@ -289,7 +289,7 @@ mounts:
 
 ## Environment Variables
 
-The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where pre-and post-hooks are executed so that data present in the config map or the secret can be accessed while running pre-and-post exec hooks.
+The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running pre-and-post exec hooks.
 
 <br />
 
@@ -309,7 +309,7 @@ envs:
 
 ## Files
 
-Files present in this section will be added to the pod and will be accessible, while executing pre-and-post execution hooks and absolute file path would be '/var/files/<file_name>'.
+Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution hooks and absolute file path would be '/var/files/<file_name>'.
 
 <br />
 
