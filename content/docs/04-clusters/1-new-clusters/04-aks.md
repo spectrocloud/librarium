@@ -11,26 +11,19 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-
 # Overview
 
 The following is the detailing of the Microsoft Azure Kubernetes Service (AKS) cluster provisioning by Palette:
 
-
-1. The Palette platform enables the effortless deployment and management of containerized applications with fully-managed AKS. 
-
+1. The Palette platform enables the effortless deployment and management of containerized applications with fully-managed AKS.
 
 2. It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
 
-
 3. This unites the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credence.
-
 
 4. The infrastructure has an event-driven autoscaling and triggers that enable Elastic provisioning for this self-managed infrastructure.
 
-
 5. Leverage extensive authentication and authorization capabilities using Azure Active Directory and dynamic rules enforcement, across multiple clusters with Azure Policy.
-
 
 ![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
@@ -40,18 +33,13 @@ These prerequisites must be met before deploying an AKS workload cluster:
 
 1. You need an active Azure cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
-
 2. You will need to have permissions to deploy clusters using AKS service on Azure.
-
 
 3. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud Account](#creatinganazurecloudaccount) section below.
 
-
 4. You should have a cluster profile created in Palette for AKS.
-   
 
 5. Associate an SSH key pair to the cluster worker node.
-
 
 <br />
 
@@ -59,29 +47,27 @@ These prerequisites must be met before deploying an AKS workload cluster:
 
 There are additional prerequisites if you want to set up Azure Active Directory integration for the AKS cluster:
 
+1. A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
 
-  1. A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
-   
+2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
 
-  2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
-  
+
     |                 |                                       |
     | --------------- | ------------------------------------- |
     | Microsoft Graph | Group.Read.All (Application Type)     |
     | Microsoft Graph | Directory.Read.All (Application Type) |
 
-  3. These permissions can be configured from the Azure cloud console under **App registrations** > **API permissions** for the specified application.
-
+3. These permissions can be configured from the Azure cloud console under **App registrations** > **API permissions** for the specified application.
 
 # Creating an Azure Cloud Account
 
-![Azure-cloud-account](/cloud-accounts/azure.mp4)
+`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 To create an Azure cloud account, we need:
 
-* Client ID
-* Tenant ID
-* Client secret
+- Client ID
+- Tenant ID
+- Client secret
 
 For this, we first need to create an Azure Active Directory (AAD) application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
 
@@ -89,9 +75,7 @@ For this, we first need to create an Azure Active Directory (AAD) application wh
 
 1. Follow the steps described [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) to create a new Azure Active Directory application. Note down your ClientID and TenantID.
 
-
-2. On creating the application, assign a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor). To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). Follow the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link learn more about roles. 
-
+2. On creating the application, assign a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor). To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). Follow the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link learn more about roles.
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
@@ -99,41 +83,32 @@ For this, we first need to create an Azure Active Directory (AAD) application wh
 
 <br />
 
-![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
-
+`video: title: "aks-cluster-creation": ./cluster-creation-videos/aks.mp4`
 
 The following steps need to be performed to provision a new cluster:
 <br />
 
-
 1. If you already have a profile to use, go to the **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select an Azure profile. If you do not have a profile to use, reference the [Creating a Cluster Profile](https://docs.spectrocloud.com/cluster-profiles/task-define-profile) page for steps on how to create one.
-
 
 2. Once you have **Deployed** the new cluster profile, fill the basic cluster profile information such as **Name**, **Description**, **Tags** and **Cloud Account**.
 
-
 3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. See the [Creating an Azure Cloud Account](#creatinganazurecloudaccount) section above.
-
 
 4. Next, in the **Cluster profile** tab from the **Managed Kubernetes** list, pick **AKS**, and select the AKS cluster profile definition.
 
-
 5. Review the **Parameters** for the selected cluster profile definitions. By default, parameters for all packs are set with values defined in the cluster profile.
-   
 
 6. Complete the **Cluster config** section with the information for each parameter listed below.
-   
-    | **Parameter**      | **Description**                                                                              |
-    | ------------------ | -------------------------------------------------------------------------------------------- |
-    | **Subscription**   | Select the subscription which is to be used to access Azure Services.                        |
-    | **Region**         | Select a region in Azure in which the cluster should be deployed.                            |
-    | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
-    | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                      |
-    | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:<br /> <br /> **Virtual Network**: Select the virtual network from dropdown menu. <br /> <br /> **CIDR Block**: Enter the groups of addresses. <br /> <br /> **Control plane Subnet**: Select the control plane network from the dropdown menu. <br /> <br /> **Worker Network**: Select the worker network from the dropdown menu.  <br /> <br /> **Update worker pools in parallel**: Check the box to concurrently update the worker pools.|
-    
+
+   | **Parameter**      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Subscription**   | Select the subscription which is to be used to access Azure Services.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   | **Region**         | Select a region in Azure in which the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+   | **Resource Group** | Select the resource group in which the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+   | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:<br /> <br /> **Virtual Network**: Select the virtual network from dropdown menu. <br /> <br /> **CIDR Block**: Enter the groups of addresses. <br /> <br /> **Control plane Subnet**: Select the control plane network from the dropdown menu. <br /> <br /> **Worker Network**: Select the worker network from the dropdown menu. <br /> <br /> **Update worker pools in parallel**: Check the box to concurrently update the worker pools. |
 
 7. Click **Next** to configure the node pools.
-
 
 <br />
 
@@ -141,11 +116,9 @@ The following steps need to be performed to provision a new cluster:
 
 Adding a worker node pool involves the deployment of:
 
+- A system Node Pool
 
-* A system Node Pool
-
-
-* Worker Node pools as per workload 
+- Worker Node pools as per workload
 
 ### Creating a System Node Pool
 
@@ -157,17 +130,13 @@ The System Node Pool serves to run critical system components. Its operating sys
 
 2. Click the checkbox to turn this into the System Node if you are creating a node pool with multiple worker nodes; otherwise, uncheck the box.
 
-    **Note**: Identifying the System Node Pool as such will deactivate the **Linux** and **Windows** options within the **Cloud Configuration** section, disabling the ability to select an OS. This is because a System Pool Node can not be set in a Windows environment. The System Node Pool runs on a Linux OS. In addition, the Taints option will be invisible.
-
+   **Note**: Identifying the System Node Pool as such will deactivate the **Linux** and **Windows** options within the **Cloud Configuration** section, disabling the ability to select an OS. This is because a System Pool Node can not be set in a Windows environment. The System Node Pool runs on a Linux OS. In addition, the Taints option will be invisible.
 
 3. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an identifying name as such.
 
-
 4. Add the **Desired size**. You can start with three for multiple nodes.
 
-
 5. Include **Additional Labels**. This is optional.
-
 
 6. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
 
@@ -177,40 +146,32 @@ If the System Node Pool option is checked, the Cloud Configuration limits the ch
 
 7. Enter the **Managed Disk** information and its size.
 
-
-8. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. 
-
-
+8. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node.
 
 ### Include Additional Nodes to Create Worker Node Pools
 
-1. Identify the next node pool as a worker node and give it a worker node pool name. 
-
+1. Identify the next node pool as a worker node and give it a worker node pool name.
 
 2. Enable **Autoscaler** to ensure capacity requirements are met throughout peaks and valleys.
 
-
 3. Select the **Minimum** and **Maximum sizes** number. For example, two (2) for minimum and five (5) for maximum.
-
 
 4. **Additional Labels** - This is an optional feature.
 
-
 5. Proceed to set up the **Cloud Configuration**.
 
-    Notice if the System Node Pool option is unchecked, the OS selection option, within the Cloud Configuration section is activated. It appears with the choice to select **Linux** or **Windows**, as your OS environment. Keep the System Node Pool option unchecked, since you are now configuring the worker node. The Taints option is available to select.
-    
-    * In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
-    * Select the OS type if creating a worker node: **Linux** or **Windows**.
-    * Enter the **Managed Disk** information and its size.
+   Notice if the System Node Pool option is unchecked, the OS selection option, within the Cloud Configuration section is activated. It appears with the choice to select **Linux** or **Windows**, as your OS environment. Keep the System Node Pool option unchecked, since you are now configuring the worker node. The Taints option is available to select.
 
-  | **Parameter**     | **Action**                                                                                                                                                                                                                                         |
-  | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | **Instance type** | Select the Azure cloud instance. The cost will be displayed.                                                                                                                                                                                       |
-  | **OS Type**       | Set the Worker Node to **Linux** or **Windows**. If setting an <br /> AKS node pool, the cluster must contain at least one <br /> system node pool with at least one node. <br /> <br /> The system node pool must be created first, then the <br /> Windows node pool can be created. Once the clusters <br /> are created, you can modify the parameters; however, the <br /> operating systems are static. <br /> <br /> If you wish to change the OS, you have to delete <br /> the cluster and create a new one.|
-  | **Managed disk**  | This is defined in Azure.                                                                                                                                                                                                                          |
-  | **Disk Size**     | Select the disk size.                                                                                                                                                                                                                              |
+   - In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details present for a review.
+   - Select the OS type if creating a worker node: **Linux** or **Windows**.
+   - Enter the **Managed Disk** information and its size.
 
+| **Parameter**     | **Action**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Instance type** | Select the Azure cloud instance. The cost will be displayed.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **OS Type**       | Set the Worker Node to **Linux** or **Windows**. If setting an <br /> AKS node pool, the cluster must contain at least one <br /> system node pool with at least one node. <br /> <br /> The system node pool must be created first, then the <br /> Windows node pool can be created. Once the clusters <br /> are created, you can modify the parameters; however, the <br /> operating systems are static. <br /> <br /> If you wish to change the OS, you have to delete <br /> the cluster and create a new one. |
+| **Managed disk**  | This is defined in Azure.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Disk Size**     | Select the disk size.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 <InfoBox>
 Every AKS cluster must contain at least one system node pool with at least one node. If you run a single system node pool for your AKS cluster in a production environment, it is recommended to use at least three nodes for the node pool.
@@ -228,16 +189,13 @@ A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes
 
 6. If you are including additional or multiple nodes to make a node pool, then click the **Add Worker Pool** button to create the next node. Repeat the steps above until you reach the amount of nodes you need for your node pool.
 
-
 7. When you finish setting up these nodes, click **Next** to go to the **Settings** page.
-
 
 8. **Validate** and finish the cluster deployment wizard.
 
-    **Note**: Notice the Cluster Status once you click **Finish Configuration**. It will say *Provisioning*. This process will take a little while to complete. Alternately, when you go into the Azure portal under **Kubernetes services** > **Node pools**, the recently created node pools will display as **Ready**, and you can see the assigned operating systems and its status.
+   **Note**: Notice the Cluster Status once you click **Finish Configuration**. It will say _Provisioning_. This process will take a little while to complete. Alternately, when you go into the Azure portal under **Kubernetes services** > **Node pools**, the recently created node pools will display as **Ready**, and you can see the assigned operating systems and its status.
 
 <br />
-
 
 # Deleting an AKS Cluster
 
@@ -245,9 +203,7 @@ The deletion of an AKS cluster results in the removal of all Virtual Machines an
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
 
-
 2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
-
 
 3. Click **Confirm** to delete.
 
@@ -255,55 +211,44 @@ The Cluster Status is updated to **Deleting** while cluster resources are being 
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 ## To force delete a cluster:
 
 1. Log in to the Palette Management Console.
 
-
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion mode.
 
-      - If the deletion status is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
-      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
+   - If the deletion status is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
+   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 <WarningBox>
 If there are any cloud resources still on the cloud, the you should cleanup those resources before going for the force deletion.
 </WarningBox>
 
-
 # Configuring an Azure Active Directory
 
-
-The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the Cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin *kubeconfig* file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to create manually the User's *kubeconfig* file to enable AAD completely. The following are the steps to create the custom user *kubeconfig* file:
+The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the Cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin _kubeconfig_ file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to create manually the User's _kubeconfig_ file to enable AAD completely. The following are the steps to create the custom user _kubeconfig_ file:
 
 1. Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to cluster resources.
 
-
 2. After you create the groups, create users in the Azure AD.
 
-
-3. Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings, using the Admin *kubeconfig* file.
-
+3. Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings, using the Admin _kubeconfig_ file.
 
 <InfoBox>
 The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
 </InfoBox>
 
-
 4. Once the roles and role bindings are created, these roles can be linked to the Groups created in Azure AD.
 
+5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific _kubeconfig_ file please run the following command:
 
-5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific *kubeconfig* file please run the following command:
-
-
-  `az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
-
+`az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
 
 ### References:
 
 [Use Kubernetes RBAC with Azure AD integration](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Faks%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-
 
 <br />
