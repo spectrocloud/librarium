@@ -47,33 +47,33 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
 
 
-4. You should have an Infrastructure cluster profile created in Palette for VMWare.
+4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Clod Gateway](/clusters/new-clusters/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the **Creating a VMware Cloud account** section below.
 
 
-5. Install a Private Cloud Gateway for VMware as described in the **Installing Private Cloud Gateway - VMware** section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the **Creating a VMware Cloud account** section below.
-
-
-6. Subnet with egress access to the internet (direct or via proxy):
+5. Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 
 
-7. The Private cloud gateway IP requirements are:
+6. The Private cloud gateway IP requirements are:
     - One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
     - One (1) Kubernetes control-plane VIP.
     - One (1) Kubernetes control-plane extra.
 
 
-8. IPs for application workload services (e.g.: LoadBalancer services).
+7. IPs for application workload services (e.g.: LoadBalancer services).
 
 
-9. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+8. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 
 
-10. Shared Storage between vSphere hosts.
+9. Shared Storage between vSphere hosts.
 
 
-11. Zone Tagging: A dynamic storage allocation for persistent storage.
+10. Zone Tagging: A dynamic storage allocation for persistent storage.
+
+
+11. A cluster profile created in Palette for VMWare.
 
 
 <InfoBox>
@@ -323,7 +323,7 @@ For self hosted version, a system gateway is provided out of the box and typical
 
 ## Tenant Portal - Launch Cloud Gateway
 
-1. Close the **Create New Gateway** dialogue if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
+1. Close the **Create New Gateway** dialog box if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
 
 
 2. Wait for a gateway widget to be displayed on the page and for the **Configure** option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the Virtual Machine is powered on. Failure of the installer to register with the Palette Management Platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
