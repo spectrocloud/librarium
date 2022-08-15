@@ -542,6 +542,10 @@ manifests:
 
 ## References
 
-https://docs.portworx.com/portworx-install-with-kubernetes/
-https://docs.portworx.com/reference/lighthouse/
-https://docs.portworx.com/install-portworx/prerequisites/
+[Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
+
+[Lighthouse](https://docs.portworx.com/reference/lighthouse/)
+
+[Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
+
+[Install Portworx on AWS ASG using the DaemonSet](https://docs.portworx.com/install-portworx/cloud/aws/aws-asg/daemonset/)
