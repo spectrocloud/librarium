@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
+The following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
 
 1. Kubernetes nodes can be distributed across multiple availability zones (AZs) to achieve high availability (HA). For each of the AZs that you select, a public subnet and a private subnet is created.
 
@@ -26,7 +26,7 @@ Following are some architectural highlights of the Amazon Web Services (AWS) clu
 3. A Network Address Translation (NAT) Gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
 
 
-4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. A bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
+4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. In addition, a bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet, and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
 
 
 5. The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across all the control plane nodes.
@@ -40,13 +40,13 @@ The following prerequisites must be met before deploying an Amazon Elastic Kuber
 1. You need an active AWS cloud account with all the permissions listed below in the **AWS Cloud Account Permissions** section.
 
 
-2. Register your AWS cloud account in Palette, as described in the **Creating an AWS Cloud Account** section below.
+2. Register your AWS cloud account in Palette, as described below in the **Creating an AWS Cloud Account** section.
 
 
 3. You should have an Infrastructure Cluster profile created in Palette for AWS.
 
 
-4. Palette creates compute, network, and storage resources on AWS, during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
+4. Palette creates compute, network, and storage resources on AWS while provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
       - vCPU
       - VPC
       - Elastic IP
@@ -618,7 +618,7 @@ This is a policy for use for those who want to restrict Palette to a single VPC 
 <br />
 <br />
 
-### Mimimum Dynamic Permissions
+### Minimum Dynamic Permissions
 
 
 ```json
@@ -754,7 +754,7 @@ This is a policy for use for those who want to restrict Palette to a single VPC 
 <br />
 <br />
 
-### Mimimum Static Permissions
+### Minimum Static Permissions
 
 
 ```json
@@ -858,11 +858,11 @@ This is a policy for use for those who want to restrict Palette to a single VPC 
 
 
 <InfoBox>
-Ensure that the role created contain all the policies defined above.
+Ensure that the role created contains all the policies defined above.
 </InfoBox>
 
 <InfoBox>
-These policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+These policies cannot be used as an inline policy, as they exceed AWS' 2048 non-whitespace character limit.
 </InfoBox>
 
 <InfoBox>
@@ -897,8 +897,8 @@ To create an AWS cloud account, provide a name and a description for the account
 
 
 2. Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
-    - In Palette, provide the access key and secret key for the user.
+    - In the AWS console, create a role with all the four policies created in the previous step. Then, assign this role to the root user or the IAM user to be used from Palette.
+    - In Palette, provide the user's access and secret keys.
 
 
 3. Security Token Service (STS)
@@ -911,11 +911,11 @@ To create an AWS cloud account, provide a name and a description for the account
     |**Account ID**|Copy the Account ID displayed on the UI|
     |**Require External ID**| Enable|
     |**External ID**|Copy the External ID displayed on the UI|
-    |**Permissions Policy**|Search and select the 4 policies added in step #2|
+    |**Permissions Policy**|Search and select the four policies added in step #2|
     |**Role Name**|SpectroCloudRole|
     
 
-4. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) Role.Arn.
+4. In the AWS console, browse the **Role Details** page and copy the Acquirer Reference Number (ARN) Role.Arn.
 
 
 5. In Palette, enter the Role ARN in the field provided. 
@@ -936,7 +936,7 @@ The following steps need to be performed to provision a new AWS cluster:
 2. Select the Cluster Profile created for the AWS cloud. The profile definition will be used as the cluster construction template.
 
 
-3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values, defined in the Cluster Profile.
+3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 
 
 4. Provide the AWS cloud account and placement information.
@@ -946,8 +946,8 @@ The following steps need to be performed to provision a new AWS cluster:
     |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Network**: Select the virtual network from dropdown menu.
+    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
+    ||**Virtual Network**: Select the virtual network from the dropdown menu.
     ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
     ||**Worker Network**: Select the worker network from the dropdown menu. |
     
@@ -955,29 +955,29 @@ The following steps need to be performed to provision a new AWS cluster:
 5. Make the choice of updating the worker pool in parallel, if required.
 
 <InfoBox>
-The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
+Add the following Tags to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public <br />
 kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 </InfoBox>
 
-6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+1. Configure the master and worker node pools. A master and a worker node pool are configured by default.
  
 
-7. An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, the created label can be edited as well as a new label can be added.
+2. An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, the created label can be edited as well as a new label can be added.
 
 
-8. Enable or disable node pool Taint as per the user's choice. If Taint is enabled, the following parameters need to be passed:
+3. Enable or disable node pool Taint as per the user's choice. If Taint is enabled, the following parameters need to be passed:
     
     |**Parameter**| **Description**|
     |-------------|---------------|
     |**Key**      |Custom key for the Taint.|
     |**Value**    | Custom value for the Taint key.|
-    | **Effect**  | Make the choice of effect from the dropdown menu. <p> There are three options to go with: </p>
+    | **Effect**  | Choose the effect from the dropdown menu. <p> There are three options to go with: </p>
     |             |**NoSchedule**: A pod that cannot tolerate the node Taint, should not be scheduled to the node. 
     |             |**PreferNoSchedule**: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
-    |             |**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
+    |             |**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node, if any, will be evicted if they do not tolerate the Taint.
     
     
 ## Running Clusters through Edit Node Pool
@@ -992,24 +992,26 @@ Palette allows its users to apply/edit the Taints, for a running cluster, throug
 |**Allow worker capability (master pool)**|Select this option for allowing workloads to be provisioned on master nodes.|
 |**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
 |**Rolling Update**| There are two choices of Rolling Update:
-|                  |**Expand First**: Launches the new node and then shut down the old node.
+|                  |**Expand First**: Launches the new node and then shuts down the old node.
 |                  |**Contract First**: Shut down the old node first and then launches the new node.
-|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 
 
 ## On-Demand Instances and On-Spot
 
 
-By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the **On-Spot** option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the On-Demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
-* Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+By default, worker pools are configured to use On-Demand instances. Select the **On-Spot** option to take advantage of discounted spot instance pricing. This option allows you to specify a maximum bid price for the nodes as a percentage of the On-Demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
+
+
+Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
-New worker pools may be added if it's desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>m3.large</i> instance types for general-purpose workloads, and another worker pool with instance type <i>g2.2xlarge</i> can be configured to run GPU workloads.
+New worker pools may be added if it's desired to customize certain worker nodes to run specialized workloads. For example, the default worker pool may be configured with the <i>m3.large</i> instance types for general-purpose workloads, and another worker pool with instance type <i>g2.2xlarge</i> can be configured to run GPU workloads.
 </InfoBox>
 
 # Deleting an AWS Cluster
 
-The deletion of an AWS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AWS cluster:
+The deletion of an AWS cluster results in removing all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AWS cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
 
@@ -1020,7 +1022,7 @@ The deletion of an AWS cluster results in the removal of all Virtual Machines an
 3. Click **Confirm** to delete.
 
 
-The Cluster Status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
+The Cluster status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
 
 # Force Delete a Cluster
 
@@ -1031,14 +1033,14 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 1. Log in to the Palette Management Console.
 
 
-2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
+2. Navigate to the **Cluster Details** page of the cluster stuck in deletion mode.
 
       - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
     
-      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
+      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for auto-enabling the force delete button.
     
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion. 
+If any cloud resources are still on the cloud, the user should clean up those resources before going for the force deletion.
 </WarningBox>
 
 
