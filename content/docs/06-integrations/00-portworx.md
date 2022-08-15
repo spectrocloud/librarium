@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Portworx
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install Portworx on the cloud or on-premises.
 
 ## Versions Supported
 
@@ -51,46 +51,38 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## Prerequisites
 
-For deploying Portworx storage on vSphere environments, make sure to configure the following properties in the pack:
-* vsphereConfig
-* storageType
-* k8sVersion
+For deploying Portworx for Kubernetes, make sure to configure the properties in the pack:
+
+
+* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
+
+
+* Ensure you are using a supported Kubernetes version.
+
+
+* Identify and set up the storageType.
+ 
 
 <br />
 
 ## Contents
 
-The default installation of Portworx will deploy the following components in the Kubernetes cluster
+The default installation of Portworx will deploy the following components in the Kubernetes cluster.
+
+
 * Portworx
+
+
 * CSI Provisioner
+
+
 * [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new)
+
+
 * [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
-* Storage class making use of portworx-volume provisioner  
-
-## Integrating to an External etcd
-
-Starting Portworx v2.6.1, you can make use of presets feature to toggle between the available ETCD options.
-
-By default, Portworx is set to use internal KVDB. You can integrate Portworx to an external etcd server by following the steps below.
-
-1. Enable `useExternalKvdb` flag by setting it to *true*.
 
 
-2. Configure the external etcd endpoints in `externalKvdb.endpoints`.
-
-
-If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the following:
-
-1. Enable `externalKvdb.useCertsForSSL` flag by setting it to *true*.
-
-
-2. Setup certificate related configuration in `externalKvdb.cacert`, `externalKvdb.cert`, and `externalKvdb.key`.
-
-
-<WarningBox>
-Make sure to follow the correct indentation style, otherwise certs will not be imported correctly and will result in Portworx deployment failure.
-</WarningBox>
-
+* Storage class making use of portworx-volume provisioner.
 
 ## Notable Parameters
 
@@ -112,18 +104,6 @@ manifests:
 
     # Node recovery timeout in seconds
     nodeRecoveryTimeout: 1500
-
-    # VSphere cloud configurations
-    vsphereConfig:
-      insecure: "true"
-      host: ""
-      port: "443"
-      datastorePrefix: "datastore"
-      installMode: "shared"
-      userName: ""
-      password: ""
-      # Enter the name of the secret which has vsphere user credentials (Use keys VSPHERE_USER, VSPHERE_PASSWORD)
-      userCredsSecret: ""
 
     # Portworx storage class config
     storageClass:
@@ -156,13 +136,37 @@ manifests:
       csiSnapshotController:
       csiResizer:
 
-    # The private registry from where images will be pulled from. When left empty, images will be pulled from public registry
+    # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
     # Example, imageRegistry: "harbor.company.com/portworx"
     imageRegistry: ""
     
 ```
+# Integrating to an External etcd
 
-# etcd Presets
+Starting Portworx v2.6.1, you can use the presets feature to toggle between the available ETCD options.
+
+By default, Portworx is set to use internal KVDB. However, you can integrate Portworx to an external etcd server by following the steps below.
+
+1. Enable `useExternalKvdb` flag by setting it to *true*.
+
+
+2. Configure the external etcd endpoints in `externalKvdb.endpoints`.
+
+
+If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the following:
+
+1. Enable `externalKvdb.useCertsForSSL` flag by setting it to *true*.
+
+
+2. Setup certificate related configuration in `externalKvdb.cacert`, `externalKvdb.cert`, and `externalKvdb.key`.
+
+
+<WarningBox>
+Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in Portworx deployment failure.
+</WarningBox>
+
+
+## etcd Presets
 
 These are the three types of Presets that can be selected and modified.
 
@@ -194,7 +198,7 @@ vsphere-cloud-controller-manager:
 ```yaml
 # External kvdb related config
     externalKvdb:
-      # List of External KVDB endpoints to use with portworx. Used only when useExternalKvdb is true
+      # List of External KVDB endpoints to use with Portworx. Used only when useExternalKvdb is true
       endpoints:
         - etcd:http://100.26.199.167:2379
         - etcd:http://100.26.199.168:2379
@@ -213,9 +217,9 @@ vsphere-cloud-controller-manager:
 
 ```yaml 
 
-# External kvdb related config        
+# External KVDB Related Configuration        
  externalKvdb:
-  # List of External KVDB endpoints to use with portworx. Used only when useExternalKvdb is true
+  # List of External KVDB endpoints to use with Portworx. Used only when useExternalKvdb is true
   endpoints:
     - etcd:https://100.26.199.167:2379
     - etcd:https://100.26.199.168:2379
@@ -302,16 +306,59 @@ vsphere-cloud-controller-manager:
 </Tabs.TabPane>
 </Tabs>
 
+# Environments
+
+<br/>
+
+<Tabs>
+<Tabs.TabPane tab="vSphere" key="vSphere">
+
+## vSphere Environment
+
+For deploying Portworx storage on vSphere environments, make sure to configure the following properties in the pack:
+
+* vSphere Configuration file
+
+
+* Storage Type
+
+
+* Kubernetes Version
+
+### vSphere Manifest
+
+Additional parameters for the manifest is as follows:
+
+<br />
+
+```yaml
+
+# VSphere cloud configurations
+vsphereConfig:
+  insecure: "true"
+  host: ""
+  port: "443"
+  datastorePrefix: "datastore"
+  installMode: "shared"
+  userName: ""
+  password: ""
+  # Enter the name of the secret which has vsphere user credentials (Use keys VSPHERE_USER, VSPHERE_PASSWORD)
+  userCredsSecret: ""
+```
+<br />
 
 ## Using Secrets for vSphere User Credentials
 
-Portworx pack values allows you to configure vSphere user credentials in two ways
+Portworx pack values allow you to configure vSphere user credentials in two ways:
+
+
 1. Username & password - (`portworx.vsphereConfig.userName` and `portworx.vsphereConfig.password`).
 
 
 2. Secret - (`portworx.vsphereConfig.userCredsSecret` is available with v2.6.1 and above).
 
-If you chose the latter, make sure to create the secret in the target cluster manually or by making use of bring your own (BYO) manifest Add-on pack.
+
+If you chose the latter, make sure to create the secret in the target cluster manually or by bringing your own (BYO) manifest Add-on pack.
 
 <br />
 
@@ -322,6 +369,7 @@ Until the secret is created in the cluster, Portworx deployments might fail to r
 Secret can be created using the spec below,
 
 <br />
+
 
 ```yaml
 apiVersion: v1
@@ -345,7 +393,150 @@ manifests:
       userCredsSecret: "px-vsphere-secret"
 ``` 
 
-Make sure to follow the correct indentation style, otherwise certificates will not be imported correctly and will result in a Portworx deployment failure.
+Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in a Portworx deployment failure.
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="AWS" key="AWS">
+
+
+## AWS Environment
+Palette provisions Portworx in an AWS environment. The following are the packs supported: 
+<br />
+
+### Packs Supported
+
+<Tabs>
+<Tabs.TabPane tab="2.9" key="2.9">
+
+**portworx-aws-2.9**
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="2.10" key="2.10">
+
+
+**portworx-aws-2.10**
+
+</Tabs.TabPane>
+</Tabs>
+
+
+<br />
+
+### Prerequisites
+
+To deploy Portworx in an AWS environment, have the following prerequisites in place.
+
+
+* Ensure the Portworx Nodes have the TCP ports open at **9001-9022**.
+
+
+* Ensure there is an open UDP port at **9002**.
+
+
+* Apply the following policy to the **User** in AWS:
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "<stmt-id>",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AttachVolume",
+                "ec2:ModifyVolume",
+                "ec2:DetachVolume",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:DeleteTags",
+                "ec2:DeleteVolume",
+                "ec2:DescribeTags",
+                "ec2:DescribeVolumeAttribute",
+                "ec2:DescribeVolumesModifications",
+                "ec2:DescribeVolumeStatus",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeInstances",
+                "autoscaling:DescribeAutoScalingGroups"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+
+<br />
+
+## AWS Manifest
+
+```yaml
+manifests:
+   portworx:
+
+     # The namespace to install Portworx resources
+     namespace: "portworx"
+
+     # Portworx storage type and size
+     storageType: "type=gp3,size=150"
+
+     # Max storage nodes per zone
+     maxStorageNodesPerZone: 3
+
+     # Node recovery timeout in seconds
+     nodeRecoveryTimeout: 1500
+
+     # Portworx storage class config
+     storageClass:
+       enabled: true
+       isDefaultStorageClass: true
+       allowVolumeExpansion: true
+       reclaimPolicy: Retain
+       volumeBindingMode: Immediate
+       parameters:
+         repl: "3"
+         priority_io: "high"
+         #sharedv4: true
+
+     # Kubernetes version.
+     k8sVersion: '{{.spectro.system.kubernetes.version}}'
+
+     templateVersion: "v4"
+
+     # List of additional container args to be passed
+     args:
+       ociMonitor:
+         #- "-dedicated_cache"
+         #- "-a"
+       storkDeployment:
+         #- "--app-initializer=true"
+       storkScheduler:
+         #- "--scheduler-name=xyz"
+       autoPilot:
+       csiProvisioner:
+       csiSnapshotter:
+       csiSnapshotController:
+       csiResizer:
+
+     # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
+     # Example, imageRegistry: "harbor.company.com/portworx"
+     imageRegistry: ""
+
+     # ECTD selection
+     useExternalKvdb: false
+
+     # External kvdb related config
+     externalKvdb:
+
+       useCertsForSSL: false
+```
+
+</Tabs.TabPane>
+
+
+</Tabs>
+
+<br />
 
 <br />
 
@@ -353,3 +544,4 @@ Make sure to follow the correct indentation style, otherwise certificates will n
 
 https://docs.portworx.com/portworx-install-with-kubernetes/
 https://docs.portworx.com/reference/lighthouse/
+https://docs.portworx.com/install-portworx/prerequisites/
