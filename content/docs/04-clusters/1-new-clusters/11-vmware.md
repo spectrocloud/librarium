@@ -76,10 +76,6 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 11. A cluster profile created in Palette for VMWare.
 
 
-<InfoBox>
-If access switching is VMware vSphere Distributed Switch (VDS) then permissions needs to be provided only for the virtual switch and not the VDS object.
-</InfoBox>
-
 ## Zone Tagging 
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
