@@ -77,7 +77,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 
 <InfoBox>
-If access switching is VMware vSphere Distributed Switch (VDS) then permissions needs to be provided only for the virtual switch and not the VDS object.
+IF the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), please grant ReadOnly access to the VDS without "Propogate to children".
 </InfoBox>
 
 ## Zone Tagging 
