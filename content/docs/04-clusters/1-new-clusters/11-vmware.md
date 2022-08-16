@@ -82,9 +82,9 @@ If access switching is VMware vSphere Distributed Switch (VDS) then permissions 
 
 ## Zone Tagging 
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of data center dc-1. You can tag them as follows:
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of Datacenter dc-1. You can tag them as follows:
 
 | **vSphere Object**       | **Tag Category**     | **Tag Value**     |
 | :-------------       | :----------      | :-----------  |
@@ -112,7 +112,7 @@ The vSphere user account used in the various Palette tasks must have the minimum
 <br />
 
 <WarningBox>
-The root-level role privileges are applied to root object and data center objects only.
+The root-level role privileges are applied to root object and Datacenter objects only.
 </WarningBox>
 
 |**vSphere Object**    |**Privileges**|
@@ -260,7 +260,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 <br />
 
 <InfoBox>
-For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote data center that do not have direct incoming connection from the management console.
+For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote Datacenter that do not have direct incoming connection from the management console.
 </InfoBox>
 
 <br />
@@ -332,7 +332,7 @@ For self hosted version, a system gateway is provided out of the box and typical
 3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 
 
-4. Choose the desired values for the data center, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys and/or NTP server addresses.
+4. Choose the desired values for the Datacenter, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys and/or NTP server addresses.
 
 
 5. Choose the IP Allocation Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to the gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the **Restrict to a single cluster** button. A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
@@ -499,7 +499,7 @@ In addition to the default cloud account already associated with the private clo
 
 The following steps need to be performed to provision a new VMware cluster:
 
-1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/data center environments.
+1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/Datacenter environments.
 
 
 2. Select a Cluster Profile created for the VMware environment. The profile definition will be used as the cluster construction template.
@@ -513,7 +513,7 @@ The following steps need to be performed to provision a new VMware cluster:
     |**Parameter**                            | **Description**|
     |-----------------------------------------|----------------|
         | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
-        | **Data center** |The vSphere data center where the cluster nodes will be launched.|
+        | **Datacenter** |The vSphere Datacenter where the cluster nodes will be launched.|
         | **Folder** | The vSphere VM Folder where the cluster nodes will be launched.|
         | **SSH Keys (Optional)** | Public key to configure remote SSH access to the nodes (User: spectro).|
         | **NTP Server (Optional)** | Setup time synchronization for all the running nodes.|
@@ -530,9 +530,9 @@ The following steps need to be performed to provision a new VMware cluster:
     | **Memory** | Amount of memory in GB to be allocated to the nodes.|
     | **Disk** | Storage disk size in GB to be attached to the node.|
     | **Placement Domains** |One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.|
-       || * **Compute Cluster** - A Compute cluster under the selected data center.|
-       || * **Datastore** - The vSphere storage in the selected data center.|
-       || * **Network** - The vSphere Network in the selected data center, to enable connectivity for the cluster nodes.|
+       || * **Compute Cluster** - A Compute cluster under the selected Datacenter.|
+       || * **Datastore** - The vSphere storage in the selected Datacenter.|
+       || * **Network** - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.|
        || * **Resource Pool**- The vSphere resource pool where the cluster nodes will be launched.|
        || * **IP Pool** - An IP pool to be used for allocation <br /> IP addresses to cluster VMs. Required only <br /> for Static IP allocation. IP pools need to be predefined for private cloud gateways.|
 
