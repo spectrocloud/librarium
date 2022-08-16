@@ -113,7 +113,7 @@ The following details are required to configure a backup location in AWS:
                     "s3:ListMultipartUploadParts"
                 ],
                 "Resource": [
-                    "arn:aws:s3:::${BUCKET}/*"
+                    "arn:aws:s3:::BUCKET-NAME/*"
                 ]
             },
             {
@@ -122,7 +122,7 @@ The following details are required to configure a backup location in AWS:
                     "s3:ListBucket"
                 ],
                 "Resource": [
-                    "arn:aws:s3:::${BUCKET}"
+                    "arn:aws:s3:::BUCKET-NAME"
                 ]
             }
         ]
