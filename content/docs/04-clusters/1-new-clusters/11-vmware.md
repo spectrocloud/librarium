@@ -70,10 +70,15 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 9. Shared Storage between vSphere hosts.
 
 
-10. Zone Tagging: A dynamic storage allocation for persistent storage.
+10. A cluster profile created in Palette for VMWare.
 
 
-11. A cluster profile created in Palette for VMWare.
+11. Zone Tagging: A dynamic storage allocation for persistent storage.
+
+
+<InfoBox>
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+</InfoBox>
 
 
 ## Zone Tagging 
