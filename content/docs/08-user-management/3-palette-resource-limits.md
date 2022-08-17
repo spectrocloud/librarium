@@ -36,6 +36,15 @@ import InfoBox from 'shared/components/InfoBox';
 The resource limit can be customized according to per tenant resource requirements 
 </InfoBox>
 
+# Palette API Rate Limits
+
+* API operations are limited to 10 requests per second for an IP Address.
+
+
+* The API request limits are categorized by resources such as /v1/cloudconfig/:uid and /v1/cloudconfig/:uid/machinepools. Both API requests are counted for the same rate limits as both belong to the same cluster's cloud config resource.
+
+
+* In case of too many requests, the user will receive an error with HTTP code 429 - `TooManyRequests.` In that event, it is recommended to retry the API call after a specific interval.
 
 <br />
 <br />
