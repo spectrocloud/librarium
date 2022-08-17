@@ -77,7 +77,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 
 <InfoBox>
-IF the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), please grant ReadOnly access to the VDS without "Propogate to children".
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
 </InfoBox>
 
 
