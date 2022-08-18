@@ -27,10 +27,10 @@ The following are some architectural highlights of Kubernetes clusters provision
 3. IP pool management for assigning blocks of IPs dedicated to clusters or projects.
 
 
-4. To facilitate communications between the Palette management platform and vCenter installed in the private data center, set up a Private Cloud Gateway (PCG) within the environment.
+4. To facilitate communications between the Palette management platform and vCenter installed in the private Datacenter, set up a Private Cloud Gateway (PCG) within the environment.
 
 
-5. Private Cloud Gateway is Palette's on-premises component to enable support for isolated, private cloud or data center environments. The Palette Gateway, once installed on-premises, registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
+5. Private Cloud Gateway is Palette's on-premises component to enable support for isolated, private cloud or Datacenter environments. The Palette Gateway, once installed on-premises, registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 ![vmware_arch_oct_2020.png](vmware_arch_oct_2020.png)
 
@@ -47,44 +47,40 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
 
 
-4. You should have an Infrastructure cluster profile created in Palette for VMWare.
+4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Cloud Gateway](/clusters/new-clusters/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Creating a VMware Cloud account](/clusters/new-clusters/vmware#creatingavmwarecloudaccount) section.
 
 
-5. Install a Private Cloud Gateway for VMware as described in the **Installing Private Cloud Gateway - VMware** section below. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the **Creating a VMware Cloud account** section below.
-
-
-6. Subnet with egress access to the internet (direct or via proxy):
+5. Subnet with egress access to the internet (direct or via proxy):
     * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
     * Outgoing internet connection on port 443 to api.spectrocloud.com.
 
 
-7. The Private cloud gateway IP requirements are:
+6. The Private cloud gateway IP requirements are:
     - One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
     - One (1) Kubernetes control-plane VIP.
     - One (1) Kubernetes control-plane extra.
 
 
-8. IPs for application workload services (e.g.: LoadBalancer services).
+7. IPs for application workload services (e.g.: LoadBalancer services).
 
 
-9. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+8. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 
 
-10. Shared Storage between vSphere hosts.
+9. Shared Storage between vSphere hosts.
+
+
+10. A cluster profile created in Palette for VMWare.
 
 
 11. Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
-<InfoBox>
-If access switching is VMware vSphere Distributed Switch (VDS) then permissions needs to be provided only for the virtual switch and not the VDS object.
-</InfoBox>
-
 ## Zone Tagging 
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of data center dc-1. You can tag them as follows:
+  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of Datacenter dc-1. You can tag them as follows:
 
 | **vSphere Object**       | **Tag Category**     | **Tag Value**     |
 | :-------------       | :----------      | :-----------  |
@@ -107,12 +103,16 @@ The vSphere user account used in the various Palette tasks must have the minimum
 
 <br />
 
+<InfoBox>
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+</InfoBox>
+
 ## Privileges Under Root-Level Role
 
 <br />
 
 <WarningBox>
-The root-level role privileges are applied to root object and data center objects only.
+The root-level role privileges are applied to root object and Datacenter objects only.
 </WarningBox>
 
 |**vSphere Object**    |**Privileges**|
@@ -260,7 +260,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 <br />
 
 <InfoBox>
-For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote data center that do not have direct incoming connection from the management console.
+For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote Datacenter that do not have direct incoming connection from the management console.
 </InfoBox>
 
 <br />
@@ -323,7 +323,7 @@ For self hosted version, a system gateway is provided out of the box and typical
 
 ## Tenant Portal - Launch Cloud Gateway
 
-1. Close the **Create New Gateway** dialogue if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
+1. Close the **Create New Gateway** dialog box if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
 
 
 2. Wait for a gateway widget to be displayed on the page and for the **Configure** option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the Virtual Machine is powered on. Failure of the installer to register with the Palette Management Platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
@@ -332,7 +332,7 @@ For self hosted version, a system gateway is provided out of the box and typical
 3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 
 
-4. Choose the desired values for the data center, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys and/or NTP server addresses.
+4. Choose the desired values for the Datacenter, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys and/or NTP server addresses.
 
 
 5. Choose the IP Allocation Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to the gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the **Restrict to a single cluster** button. A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
@@ -499,7 +499,7 @@ In addition to the default cloud account already associated with the private clo
 
 The following steps need to be performed to provision a new VMware cluster:
 
-1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/data center environments.
+1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/Datacenter environments.
 
 
 2. Select a Cluster Profile created for the VMware environment. The profile definition will be used as the cluster construction template.
@@ -513,7 +513,7 @@ The following steps need to be performed to provision a new VMware cluster:
     |**Parameter**                            | **Description**|
     |-----------------------------------------|----------------|
         | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
-        | **Data center** |The vSphere data center where the cluster nodes will be launched.|
+        | **Datacenter** |The vSphere Datacenter where the cluster nodes will be launched.|
         | **Folder** | The vSphere VM Folder where the cluster nodes will be launched.|
         | **SSH Keys (Optional)** | Public key to configure remote SSH access to the nodes (User: spectro).|
         | **NTP Server (Optional)** | Setup time synchronization for all the running nodes.|
@@ -530,9 +530,9 @@ The following steps need to be performed to provision a new VMware cluster:
     | **Memory** | Amount of memory in GB to be allocated to the nodes.|
     | **Disk** | Storage disk size in GB to be attached to the node.|
     | **Placement Domains** |One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.|
-       || * **Compute Cluster** - A Compute cluster under the selected data center.|
-       || * **Datastore** - The vSphere storage in the selected data center.|
-       || * **Network** - The vSphere Network in the selected data center, to enable connectivity for the cluster nodes.|
+       || * **Compute Cluster** - A Compute cluster under the selected Datacenter.|
+       || * **Datastore** - The vSphere storage in the selected Datacenter.|
+       || * **Network** - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.|
        || * **Resource Pool**- The vSphere resource pool where the cluster nodes will be launched.|
        || * **IP Pool** - An IP pool to be used for allocation <br /> IP addresses to cluster VMs. Required only <br /> for Static IP allocation. IP pools need to be predefined for private cloud gateways.|
 
