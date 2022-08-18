@@ -76,11 +76,6 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 11. Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
-<InfoBox>
-If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
-</InfoBox>
-
-
 ## Zone Tagging 
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
@@ -107,6 +102,10 @@ The exact values for the k8s-region and k8s-zone tags can be different from the 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
 <br />
+
+<InfoBox>
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+</InfoBox>
 
 ## Privileges Under Root-Level Role
 
