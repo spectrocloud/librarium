@@ -36,7 +36,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 ## Prerequisites
 
 For deploying Portworx with Operator for Kubernetes, make sure to configure the properties in the pack:
-
+ 
+<br /> 
 
 * Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
 
@@ -51,7 +52,7 @@ For deploying Portworx with Operator for Kubernetes, make sure to configure the 
 ## Contents
 
 The default installation of Portworx /w Operator will deploy the following components in the Kubernetes cluster:
-
+<br />
 
 * Portworx Operator
 
@@ -222,6 +223,7 @@ Use the presets in the pack user interface to select which license model you wan
 Portworx Enterprise supports multiple Etcd scenarios.
 
 Portworx will default use its internal key-value store (KVDB). However, you can integrate Portworx to an external Etcd server by following the steps below.
+<br />
 
 1. Select the `Use External Kvdb over HTTP` or `Use External Kvdb over SSL` preset in the pack user interface. If your external Etcd server requires certificate authentication, you need the `Use External Kvdb over SSL` preset.
 
@@ -233,6 +235,7 @@ Portworx will default use its internal key-value store (KVDB). However, you can 
 
 
 When using the `Use External Kvdb over SSL` preset, you additionally need to configure the `charts.portworx-generic.externalKvdb` section:
+<br />
 
 1. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication.
 
