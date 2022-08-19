@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Portworx /w Operator
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install Portworx on a cloud platform, on-premises or at the edge.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers via container orchestrators such as Kubernetes. You can use Palette to install Portworx on a cloud platform, on-premises ,or at the edge.
 
 ## Versions Supported
 
@@ -41,7 +41,7 @@ For deploying Portworx with Operator for Kubernetes, make sure to configure the 
 * Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
 
 
-* Ensure you are using a supported Kubernetes version (1.19+).
+* Ensure you use a supported Kubernetes version (1.19 or above).
 
 
 * Identify and set up the storageType.
@@ -65,7 +65,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 * [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
 
 
-Optionally, you can enable [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new) for basic monitoring of your Portworx cluster.
+Optionally, you can enable [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new) for essential monitoring of the Portworx cluster.
 
 <br />
 
@@ -217,13 +217,13 @@ Use the presets in the pack user interface to select which license model you wan
 </Tabs>
 
 
-# Integrating to an External Etcd
+# Integrating into an External Etcd
 
 Portworx Enterprise supports multiple Etcd scenarios.
 
-By default, Portworx will use its own internal key-value store (KVDB). However, you can integrate Portworx to an external Etcd server by following the steps below.
+Portworx will default use its internal key-value store (KVDB). However, you can integrate Portworx to an external Etcd server by following the steps below.
 
-1. Select either the `Use External Kvdb over HTTP` or `Use External Kvdb over SSL` preset in the pack user interface. If your external Etcd server requires certificate authentication, you need the `Use External Kvdb over SSL` preset.
+1. Select the `Use External Kvdb over HTTP` or `Use External Kvdb over SSL` preset in the pack user interface. If your external Etcd server requires certificate authentication, you need the `Use External Kvdb over SSL` preset.
 
 
 2. Configure the external Etcd endpoint(s) in `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
@@ -334,7 +334,7 @@ For deploying Portworx with Operator on bare metal and on-premesis environments,
 
 ### Prerequisites
 
-To deploy Portworx in an AWS environment, ensure the following IAM Policy is created in AWS:
+To deploy Portworx in an AWS environment, ensure the following IAM Policy is created in AWS and attached to the correct IAM Role:
 <br/>
 
 ```yaml
@@ -367,10 +367,7 @@ To deploy Portworx in an AWS environment, ensure the following IAM Policy is cre
 }
 ```
 
-then attach this IAM Policy to the correct IAM Role:
-
-* When deploying an regular Kubernetes cluster on AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM Role. Or alternatively, edit the AWS cloud account in Palette and enable the `Add IAM Policies` option and select the Portworx IAM Policy describe above. This will automatically attach the IAM Policy to the correct IAM Role.
-
+* When deploying a regular Kubernetes cluster on AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM Role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM Policy described above. This will automatically attach the IAM Policy to the correct IAM Role.
 
 * When deploying an EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the `kubernetes-eks` pack to automatically attach the Portworx IAM Policy to the EKS worker pool IAM role that Palette will manage for you. For example:
 
@@ -384,7 +381,7 @@ managedMachinePool:
 
 ## AWS spec
 
-For deploying Portworx with Operator on AWS environments, it's recommended to generate a `StorageCluster` spec for your AWS environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+To deploy Portworx with Operator on AWS environments, generate a `StorageCluster` spec for your AWS environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
 <br/>
 
 ```yaml
@@ -423,7 +420,8 @@ For deploying Portworx with Operator on AWS environments, it's recommended to ge
 
 ## Azure and AKS
 
-For deploying Portworx with Operator on Azure environments, it's recommended to generate a `StorageCluster` spec for your Azure environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+For deploying Portworx with Operator on Azure environments, generating a `StorageCluster` spec for your Azure environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+
 <br/>
 
 ```yaml
@@ -471,7 +469,8 @@ For deploying Portworx with Operator on Azure environments, it's recommended to 
                   key: AZURE_TENANT_ID
 ```
 
-Note that the spec will reference a `secret` in your cluster (`px-azure` by default), that is assumed to hold your Azure credentials. You will need to create this secret, which you can do by adding an additional manifest to your cluster profile that contains the YAML for the secret. For example:
+**Note** that the spec will reference a `secret` in your cluster (`px-azure` by default) that is assumed to hold your Azure credentials. You will need to create this secret, which you can do by adding a manifest to your cluster profile that contains the YAML for the secret. For example:
+
 <br/>
 
 ```yaml
@@ -494,7 +493,8 @@ data:
 
 ## Google Cloud Platform and GKE
 
-For deploying Portworx with Operator on Google environments, it's recommended to generate a `StorageCluster` spec for your Google environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+For deploying Portworx with Operator on Google environments, generate a `StorageCluster` spec for your Google environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+
 <br/>
 
 ```yaml
@@ -532,7 +532,8 @@ For deploying Portworx with Operator on Google environments, it's recommended to
 
 ## VMware vSphere
 
-For deploying Portworx with Operator on vSphere environments, it's recommended to generate a `StorageCluster` spec for your vSphere environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+To deploy Portworx with Operator on vSphere environments, generate a `StorageCluster` spec for your vSphere environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+
 <br/>
 
 ```yaml
@@ -581,7 +582,8 @@ For deploying Portworx with Operator on vSphere environments, it's recommended t
         - name: VSPHERE_INSTALL_MODE
           value: "shared"
 ```
-Note that the spec will reference a `secret` in your cluster (`px-vsphere-secret` by default), that is assumed to hold your vSphere credentials. You will need to create this secret, which you can do by adding an additional manifest to your cluster profile that contains the YAML for the secret. For example:
+Note that the spec will reference a `secret` in your cluster (`px-vsphere-secret` by default), that is assumed to hold your vSphere credentials. You will need to create this secret, which you can do by adding a manifest to your cluster profile that contains the YAML for the secret. For example:
+
 <br/>
 
 ```yaml
@@ -603,7 +605,8 @@ data:
 
 ## Pure Storage Flash Array integration
 
-For deploying Portworx with Operator with Pure Flash Array integratuib, it's recommended to generate a `StorageCluster` spec for your environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+For deploying Portworx with Operator with Pure Flash Array integratuib, generate a `StorageCluster` spec for your environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
+
 <br/>
 
 ```yaml
@@ -638,12 +641,11 @@ For deploying Portworx with Operator with Pure Flash Array integratuib, it's rec
             value: "ISCSI"
 ```
 
-In order for the Pure Flash Array integration to activate, you will need to create a `secret` on your cluster named `px-pure-secret` that contains your Flash Array license. You can do this by running
+To activate the Pure Flash Array integration, you will need to create a `secret` on your cluster named `px-pure-secret` that contains your Flash Array license. You can do this by running the below kubectl command:
+
 ```
 kubectl create secret generic px-pure-secret --namespace kube-system --from-file=pure.json=<file path>
 ```
-on the cluster.
-
 
 </Tabs.TabPane>
 </Tabs>
