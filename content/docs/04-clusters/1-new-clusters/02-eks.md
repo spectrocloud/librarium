@@ -17,13 +17,11 @@ Following are some architectural highlights of Amazon Web Services' (AWS) manage
 
 1. Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 
-
 2. Full support for EKS Fargate profiles
-
 
 3. Spot instance support
 
- ![eks_cluster_architecture.png](eks_cluster_architecture.png)
+![eks_cluster_architecture.png](eks_cluster_architecture.png)
 
 # Prerequisites
 
@@ -31,20 +29,17 @@ The following prerequisites must be met before deploying an EKS workload cluster
 
 1. You must have an active AWS cloud account with all the permissions listed below in the **AWS Cloud Account Permissions** section.
 
-
 2. You must register your AWS cloud account in Palette as described in the **Creating an AWS Cloud account** section below.
-
 
 3. Have an Infrastructure cluster profile already created in Palette for EKS.
 
-
 4. Sufficient capacity in the desired AWS region should exist for the creation of the following resources:
-    - vCPU
-    - VPC
-    - Elastic IP
-    - Internet Gateway
-    - Elastic Load Balancers
-    - NAT Gateway
+   - vCPU
+   - VPC
+   - Elastic IP
+   - Internet Gateway
+   - Elastic Load Balancers
+   - NAT Gateway
 
 # AWS Cloud Account Permissions
 
@@ -58,7 +53,7 @@ The following **four** policies include all the required permissions for provisi
 
 **Last Update**: May 25, 2022
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -73,7 +68,7 @@ The following **four** policies include all the required permissions for provisi
         "ec2:CreateNatGateway",
         "ec2:CreateRoute",
         "ec2:CreateRouteTable",
-        "ec2:ReplaceRoute",       
+        "ec2:ReplaceRoute",
         "ec2:CreateSecurityGroup",
         "ec2:CreateSubnet",
         "ec2:CreateTags",
@@ -135,9 +130,7 @@ The following **four** policies include all the required permissions for provisi
         "ec2:DeleteLaunchTemplate",
         "ec2:DeleteLaunchTemplateVersions"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     },
     {
       "Effect": "Allow",
@@ -149,15 +142,11 @@ The following **four** policies include all the required permissions for provisi
         "autoscaling:DeleteAutoScalingGroup",
         "autoscaling:DeleteTags"
       ],
-      "Resource": [
-        "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
-      ]
+      "Resource": ["arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
       ],
@@ -169,9 +158,7 @@ The following **four** policies include all the required permissions for provisi
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
       ],
@@ -183,9 +170,7 @@ The following **four** policies include all the required permissions for provisi
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
       ],
@@ -197,12 +182,8 @@ The following **four** policies include all the required permissions for provisi
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ]
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
     },
     {
       "Effect": "Allow",
@@ -211,24 +192,16 @@ The following **four** policies include all the required permissions for provisi
         "secretsmanager:DeleteSecret",
         "secretsmanager:TagResource"
       ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ]
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameter"
-      ],
-      "Resource": [
-        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
-      ]
+      "Action": ["ssm:GetParameter"],
+      "Resource": ["arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
       ],
@@ -240,9 +213,7 @@ The following **four** policies include all the required permissions for provisi
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
       ],
@@ -254,9 +225,7 @@ The following **four** policies include all the required permissions for provisi
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:aws:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
       ],
@@ -275,9 +244,7 @@ The following **four** policies include all the required permissions for provisi
         "iam:UpdateOpenIDConnectProviderThumbprint",
         "iam:DeleteOpenIDConnectProvider"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     },
     {
       "Effect": "Allow",
@@ -290,18 +257,12 @@ The following **four** policies include all the required permissions for provisi
         "iam:TagRole",
         "iam:AttachRolePolicy"
       ],
-      "Resource": [
-        "arn:*:iam::*:role/*"
-      ]
+      "Resource": ["arn:*:iam::*:role/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:GetPolicy"
-      ],
-      "Resource": [
-        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-      ]
+      "Action": ["iam:GetPolicy"],
+      "Resource": ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"]
     },
     {
       "Effect": "Allow",
@@ -320,30 +281,17 @@ The following **four** policies include all the required permissions for provisi
         "eks:UpdateNodegroupConfig",
         "eks:CreateNodegroup"
       ],
-      "Resource": [
-        "arn:*:eks:*:*:cluster/*",
-        "arn:*:eks:*:*:nodegroup/*/*/*"
-      ]
+      "Resource": ["arn:*:eks:*:*:cluster/*", "arn:*:eks:*:*:nodegroup/*/*/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "eks:AssociateIdentityProviderConfig",
-        "eks:ListIdentityProviderConfigs"
-      ],
-      "Resource": [
-        "arn:aws:eks:*:*:cluster/*"
-      ]
+      "Action": ["eks:AssociateIdentityProviderConfig", "eks:ListIdentityProviderConfigs"],
+      "Resource": ["arn:aws:eks:*:*:cluster/*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "eks:DisassociateIdentityProviderConfig",
-        "eks:DescribeIdentityProviderConfig"
-      ],
-      "Resource": [
-        "*"
-      ]
+      "Action": ["eks:DisassociateIdentityProviderConfig", "eks:DescribeIdentityProviderConfig"],
+      "Resource": ["*"]
     },
     {
       "Effect": "Allow",
@@ -359,18 +307,12 @@ The following **four** policies include all the required permissions for provisi
         "eks:CreateFargateProfile",
         "eks:DeleteFargateProfile"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "*"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["*"],
       "Condition": {
         "StringEquals": {
           "iam:PassedToService": "eks.amazonaws.com"
@@ -379,7 +321,6 @@ The following **four** policies include all the required permissions for provisi
     }
   ]
 }
-
 ```
 
 <InfoBox>
@@ -394,7 +335,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 **Last Update**: June 6, 2021
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -457,14 +398,12 @@ All the above policies are required as part of the Cluster API requirement, deri
         "iam:CreateServiceLinkedRole",
         "kms:DescribeKey"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     }
   ]
 }
-
 ```
+
 <InfoBox>
 <b>Note</b>:
 All the above policies are required as part of the Cluster API requirement, derived using <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
@@ -478,7 +417,7 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 **Last Update**: June 1, 2021
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -495,19 +434,12 @@ All the above policies are required as part of the Cluster API requirement, deri
         "ecr:ListImages",
         "ecr:BatchGetImage"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:GetSecretValue"
-      ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ]
+      "Action": ["secretsmanager:DeleteSecret", "secretsmanager:GetSecretValue"],
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"]
     },
     {
       "Effect": "Allow",
@@ -519,14 +451,12 @@ All the above policies are required as part of the Cluster API requirement, deri
         "ssmmessages:OpenDataChannel",
         "s3:GetEncryptionConfiguration"
       ],
-      "Resource": [
-        "*"
-      ]
+      "Resource": ["*"]
     }
   ]
 }
-
 ```
+
 <InfoBox>
 <b>Note</b>:
 All the above policies are required as part of the Cluster API requirement, derived using the <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_iam_print-policy.html/">clusterawsadm bootstrap iam print-policy.</a>
@@ -538,56 +468,53 @@ All the above policies are required as part of the Cluster API requirement, deri
 
 ### Deployment Policy
 
- **Last Update**: June 1, 2021
+**Last Update**: June 1, 2021
 
-``` json
+```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:CreateStack",
-                "cloudformation:DescribeStacks",
-                "cloudformation:UpdateStack",
-                "ec2:CreateSnapshot",
-                "ec2:DeleteSnapshot",
-                "ec2:DescribeKeyPairs",
-                "ec2:DetachNetworkInterface",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DescribeSnapshots",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumesModifications",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AddUserToGroup",
-                "iam:AttachGroupPolicy",
-                "iam:CreateGroup",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreatePolicyVersion",
-                "iam:CreateUser",
-                "iam:DeleteGroup",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DetachGroupPolicy",
-                "iam:DeletePolicyVersion",
-                "iam:GetGroup",
-                "iam:GetInstanceProfile",
-                "iam:GetUser",
-                "iam:GetPolicy",
-                "iam:ListPolicyVersions",
-                "iam:RemoveRoleFromInstanceProfile",
-                "iam:RemoveUserFromGroup",
-                "pricing:GetProducts",
-                "sts:AssumeRole"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "ec2:CreateSnapshot",
+        "ec2:DeleteSnapshot",
+        "ec2:DescribeKeyPairs",
+        "ec2:DetachNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumesModifications",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:AttachGroupPolicy",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:DeletePolicy",
+        "iam:DetachGroupPolicy",
+        "iam:DeletePolicyVersion",
+        "iam:GetGroup",
+        "iam:GetInstanceProfile",
+        "iam:GetUser",
+        "iam:GetPolicy",
+        "iam:ListPolicyVersions",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup",
+        "pricing:GetProducts",
+        "sts:AssumeRole"
+      ],
+      "Resource": ["*"]
+    }
+  ]
 }
-
 ```
 
 </Tabs.TabPane>
@@ -615,15 +542,15 @@ The following warning is expected and can be ignored:<p></p>
 
 ## AWS Account Creation Using the Access Credentials Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-credentials.mp4`
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="Using the Security Token Service (STS) Method"> 
+<Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="Using the Security Token Service (STS) Method">
 
 ## AWS Account Creation Using the Security Token Service (STS) Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-sts.mp4`
 
 ## Security Token Service (STS) Method
 
@@ -631,57 +558,52 @@ To create an AWS cloud account, provide a name and a description for the account
 
 1. In the AWS console, create the four policies listed above.
 
-
 2. Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
-    - In Palette, provide the access key and secret key for the user.
 
+   - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
+   - In Palette, provide the access key and secret key for the user.
 
 3. Security Token Service (STS)
 
-    In the AWS console, create a new IAM role called using the following options:
+   In the AWS console, create a new IAM role called using the following options:
 
-    |**Parameter**|**Description**|
-    |---------|---------------|
-    |**Trusted Entity Type**| Another AWS account|
-    |**Account ID**|Copy the Account ID displayed on the UI|
-    |**Require External ID**| Enable|
-    |**External ID**|Copy the External ID displayed on the UI|
-    |**Permissions Policy**|Search and select the 4 policies added in step #2|
-    |**Role Name**|SpectroCloudRole|
-
+   | **Parameter**           | **Description**                                   |
+   | ----------------------- | ------------------------------------------------- |
+   | **Trusted Entity Type** | Another AWS account                               |
+   | **Account ID**          | Copy the Account ID displayed on the UI           |
+   | **Require External ID** | Enable                                            |
+   | **External ID**         | Copy the External ID displayed on the UI          |
+   | **Permissions Policy**  | Search and select the 4 policies added in step #2 |
+   | **Role Name**           | SpectroCloudRole                                  |
 
 </Tabs.TabPane>
 </Tabs>
 
 # Deploying an EKS Cluster
 
- ![eks-cluster-creation](./cluster-creation-videos/eks.mp4)
+`video: title: "eks-cluster-creation": ./cluster-creation-videos/eks.mp4`
 
 The following steps need to be performed to provision a new EKS cluster:
 
 1. Provide the basic cluster information like Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
 
-
 2. Select the Cluster Profile created for the EKS cloud. The profile definition will be used as the cluster construction template.
-
 
 3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 
-
 4. Provide the AWS Cloud account and configure the cluster.
 
-    |**Parameter**| **Description**|
-    |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.|
-    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
-    |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling the [Enable Encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN to complete the wizard.|
-    |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
-   
+   | **Parameter**                | **Description**                                                                                                                                                                                                                                                                                                                                                                   |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cloud Account**            | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.                                                                                                                                                                                                                                                           |
+   | **Static Placement**         | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets. |
+   | **Region**                   | Choose the preferred AWS region where you would like the clusters to be provisioned.                                                                                                                                                                                                                                                                                              |
+   | **SSH Key Pair Name**        | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.                                                                                                                                                                                                                    |
+   | **Cluster Endpoint Access**: | Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.                                                                                                                                                                                             |
+   | **Public Access CIDR**:      | For Public or Private & Public end point access, give the CIDR values.                                                                                                                                                                                                                                                                                                            |
+   | **Enable Encryption**        | The user can enable secret encryption by toggling the [Enable Encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN to complete the wizard.                                                                                                                                                                                |
+   | **Worker Pool Update**       | Optionally enable the option to update the worker pool in parallel.                                                                                                                                                                                                                                                                                                               |
+
 <InfoBox>
 The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
@@ -692,35 +614,36 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 
 5. Configure the Node Pools.
 
-   * Configure one or more worker node pools. A single worker node will be configured by default.
+   - Configure one or more worker node pools. A single worker node will be configured by default.
 
-    |**Parameter**| **Description**|
-    |-------------|----------------|
-    |**Name** | A descriptive name for the node pool.|
-    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.|
-    |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
-    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)|
-    |**Instance Type** | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
-  * Cloud Configuration settings:
+   | **Parameter**                                                   | **Description**                                                                                                                                                                            |
+   | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Name**                                                        | A descriptive name for the node pool.                                                                                                                                                      |
+   | **Size**                                                        | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. |
+   | [Taints](/clusters/cluster-management/taints#overviewontaints): | Optionally enable node affinity optionally to attracts pods to a set of nodes                                                                                                              |
+   | [Labels](/clusters/cluster-management/taints#overviewonlabels): | Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)                                                                                                     |
+   | **Instance Type**                                               | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.                                                      |
 
-     |**Parameter**| **Description**|
-     |-------------|----------------|
-     |**Instance Option**:| Make the selection of instance allocation|
-     | |* On Demand|
-     | |* Spot|
-     |**Instance Type**:|Make the selection of the instance type|
-     |**Availability Zones**:|Select at least one availability zone within the VPC|
-     |**Disk Size**|Make the choice of disk size as per requirement|
- *  Optionally, create one or more Fargate Profile(s) to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
-    
-    |**Parameter**| **Description**|
-    |-------------|---------------|
-    |**Name** |Provide a name for the Fargate profile.|
-    |**Subnets** |Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.|
-    |**Selectors** |Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.|
+- Cloud Configuration settings:
+
+  | **Parameter**           | **Description**                                      |
+  | ----------------------- | ---------------------------------------------------- |
+  | **Instance Option**:    | Make the selection of instance allocation            |
+  |                         | \* On Demand                                         |
+  |                         | \* Spot                                              |
+  | **Instance Type**:      | Make the selection of the instance type              |
+  | **Availability Zones**: | Select at least one availability zone within the VPC |
+  | **Disk Size**           | Make the choice of disk size as per requirement      |
+
+- Optionally, create one or more Fargate Profile(s) to aid the provisioning of on-demand, optimized compute capacity for the workload clusters.
+
+  | **Parameter** | **Description**                                                                                                                                                                                                                                                                                                                 |
+  | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | **Name**      | Provide a name for the Fargate profile.                                                                                                                                                                                                                                                                                         |
+  | **Subnets**   | Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.                                                      |
+  | **Selectors** | Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile. |
 
 6. Configure the [Cluster Management](/clusters/cluster-management#manageclusters) options as per user requirements.
-
 
 7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
@@ -730,13 +653,14 @@ New worker pools may be added if it is desired to customize certain worker nodes
 
 # EKS Cluster Secrets Encryption
 
-Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
-a defense-in-depth security strategy to protect the sensitive data  such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
+Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is
+a defense-in-depth security strategy to protect the sensitive data such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 ## Prerequisites:
-* KMS key created in the AWS console.
-* Key Type: Symmetric
-* Key Usage: Encrypt and Decrypt
+
+- KMS key created in the AWS console.
+- Key Type: Symmetric
+- Key Usage: Encrypt and Decrypt
 
 ## AWS Cloud Account Permissions:
 
@@ -745,27 +669,31 @@ The AWS permissions listed below need to be configured in the AWS account to ena
 ```json
 kms:CreateGrant
 ```
+
 Enable secret encryption at step 4 of EKS cluster creation by toggling the botton and by updating ARN of the encryption key to the wizard.
 
 # AWS Instance Type and Pod Capacity
-Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability. 
 
+Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability.
 
 The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
 
 ## Formula for Pod Calculation
-Number of pods = N * (M-1) + 2 
+
+Number of pods = N \* (M-1) + 2
 
 Where:
-* **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
-* **M** is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
-* Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
+
+- **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
+- **M** is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
+- Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
 
 ## Example Calculation:
-* For instance type = t3.medium 
-* For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
-* N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
-* In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
+
+- For instance type = t3.medium
+- For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
+- N \* (M-1) + 2 = 3(6-1)+2 =17 pods/instances
+- In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
 
 <InfoBox>
 Select the type and number of instances to support a minimum of 30 pods.
@@ -774,13 +702,12 @@ Select the type and number of instances to support a minimum of 30 pods.
 Hence, while setting the desired size of the worker pool, make the choice as per pod requirement. In the example given above, we need to launch a minimum of two (2) instances of t3.medium to satisfy the resource requirement of an EKS cluster.
 
 # Deleting an EKS Cluster
+
 The deletion of an EKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an EKS cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
 
-
 2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
-
 
 3. Click **Confirm** to delete.
 
@@ -788,22 +715,18 @@ Cluster status is updated to **Deleting** while cluster resources are being dele
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope.
 
 ## To force delete a cluster:
-1. Log in to the Palette Management Console.
 
+1. Log in to the Palette Management Console.
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
-      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
+   - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
+   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
 
 <WarningBox>
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
 </WarningBox>
-
-
-
-
