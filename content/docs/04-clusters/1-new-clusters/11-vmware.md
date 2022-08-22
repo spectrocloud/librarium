@@ -481,29 +481,20 @@ The following steps need to be performed to provision a new VMware cluster:
 
 3. Review and override Pack Parameters as desired. By default, parameters for all Packs are set with values defined in the Cluster Profile.
 
-4. Provide a vSphere Cloud account and placement information.
+4. Provide a vSphere Cloud account and placement information. |
+
+5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
 
    | **Parameter**              | **Description**                                                                                                                                                                                                                                                                                                     |
    | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Cloud Account**          | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator. |
-   | **Data center**            | The vSphere data center where the cluster nodes will be launched.                                                                                                                                                                                                                                                   |
+   | **Datacenter**             | The vSphere Datacenter where the cluster nodes will be launched.                                                                                                                                                                                                                                                    |
    | **Folder**                 | The vSphere VM Folder where the cluster nodes will be launched.                                                                                                                                                                                                                                                     |
    | **SSH Keys (Optional)**    | Public key to configure remote SSH access to the nodes (User: spectro).                                                                                                                                                                                                                                             |
    | **NTP Server (Optional)**  | Setup time synchronization for all the running nodes.                                                                                                                                                                                                                                                               |
    | **IP Allocation strategy** | DHCP or Static IP                                                                                                                                                                                                                                                                                                   |
 
-<<<<<<< HEAD 5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
-
-    |**Parameter**                            | **Description**|
-    |-----------------------------------------|----------------|
-        | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
-        | **Datacenter** |The vSphere Datacenter where the cluster nodes will be launched.|
-        | **Folder** | The vSphere VM Folder where the cluster nodes will be launched.|
-        | **SSH Keys (Optional)** | Public key to configure remote SSH access to the nodes (User: spectro).|
-        | **NTP Server (Optional)** | Setup time synchronization for all the running nodes.|
-        | **IP Allocation strategy** | DHCP or Static IP|
-
-5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
 
    | **Parameter**                             | **Description**                                                                                                                                                                                     |
    | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -520,7 +511,7 @@ The following steps need to be performed to provision a new VMware cluster:
    |                                           | \* **Resource Pool**- The vSphere resource pool where the cluster nodes will be launched.                                                                                                           |
    |                                           | \* **IP Pool** - An IP pool to be used for allocation <br /> IP addresses to cluster VMs. Required only <br /> for Static IP allocation. IP pools need to be predefined for private cloud gateways. |
 
-6. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+7. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8 GB of memory for general-purpose workloads, and another worker pool with 8 CPUs, 16 GB of memory for advanced workloads that demand larger resources.
