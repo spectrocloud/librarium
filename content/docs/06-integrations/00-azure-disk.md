@@ -23,6 +23,12 @@ Azure Disk storage is designed to be used with Azure virtual machines for the te
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="1.20.x" key="1.20.x">
+
+* **1.20.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 * **1.0.0** 

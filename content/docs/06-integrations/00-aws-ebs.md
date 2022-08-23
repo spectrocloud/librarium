@@ -13,13 +13,24 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-
-
 # AWS EBS
 
 AWS Elastic Block Store is an easy to use, high performance block storage at any scale. It helps in the easy deployment, management, and scaling of the most demanding and high-performance tenant workloads. AWS EBS also ensures availability with replication and durability.
 
+# Versions Supported
 
+<Tabs>
+<Tabs.TabPane tab="1.8.x" key="1.8.x">
+
+* ** 1.8.0**
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="1.5.x" key="1.5.x">
+
+* ** 1.5.1**
+
+</Tabs.TabPane>
+</Tabs>
 
 ## Notable Parameters
 
