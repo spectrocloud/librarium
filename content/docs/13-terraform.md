@@ -41,6 +41,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|
 |----- |------|
+|0.2.3 |0.8.9 |
 |0.2.3 |0.8.8 |
 |0.1.8 |0.7.7 |
 |0.1.8 |0.7.6 |
@@ -70,6 +71,18 @@ Find the detailed patch changes and comparisons within below **tabs**.
 <br />
 
 <Tabs>
+<Tabs.TabPane tab="v0.8.9" key="v0.8.9">
+
+The compatible **Module** for provider 0.8.9 is **0.2.3** 
+# Changes
+
+* Static placement support for AKS clusters.
+
+* Tag update of cluster resources for all Palette-supported clouds.
+
+Refer to Full Changelog: [v0.8.8 to v0.8.9](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.8.9)
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="v0.8.8" key="v0.8.8">
 
 # Provider Changes 
