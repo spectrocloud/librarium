@@ -251,9 +251,9 @@ If there are any cloud resources still on the cloud, the user should cleanup tho
 # Example Cluster Imports Illustration
 
 ## EKS Cluster Import to Palette Console
- ![eks cluster import](cluster-import/eks.mp4)
+`video: title: "eks cluster import": cluster-import/eks.mp4`
 
 
 ## Generic Cluster Import to Palette Console
- ![generic cluster import](cluster-import/generic.mp4) 
+`video: title: "generic cluster import": cluster-import/generic.mp4`
 

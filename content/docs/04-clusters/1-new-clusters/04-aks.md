@@ -75,7 +75,7 @@ There are additional prerequisites if you want to set up Azure Active Directory 
 
 # Creating an Azure Cloud Account
 
-![Azure-cloud-account](/cloud-accounts/azure.mp4)
+`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 To create an Azure cloud account, we need:
 
@@ -100,7 +100,7 @@ For this, we first need to create an Azure Active Directory (AAD) application th
 <br />
 
 
-![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
+`video: title: "aks-cluster-creation": ./cluster-creation-videos/aks.mp4`
 
 
 The following steps need to be performed to provision a new cluster:

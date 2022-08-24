@@ -42,7 +42,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 # Creating an Azure cloud account
 
- ![Azure-cloud-account](/cloud-accounts/azure.mp4)
+`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 To create an Azure cloud account, we need:
 
@@ -62,7 +62,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 # Deploying an Azure Cluster
 
- ![azure-cluster-creation](./cluster-creation-videos/azure.mp4)
+`video: title: "azure-cluster-creation": ./cluster-creation-videos/azure.mp4`
 
 The following steps need to be performed to provision a new Azure cluster:
 

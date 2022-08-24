@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
- ![alt text](/aws-full-profile.mp4)
+ `video: /aws-full-profile.mp4`
 
 # Basic Information and Core Layers
 

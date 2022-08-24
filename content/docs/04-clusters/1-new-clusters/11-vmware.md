@@ -254,7 +254,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 # Creating a VMware Cloud Gateway
 
-![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
+`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
 <br />
 <br />
@@ -495,7 +495,7 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploying a VMware Cluster
 
-![vmware-cluster-creation](./cluster-creation-videos/vmware.mp4)
+`video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
 
 The following steps need to be performed to provision a new VMware cluster:
 
