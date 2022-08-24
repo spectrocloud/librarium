@@ -96,7 +96,7 @@ The page lists the version details of various Palette components with respect to
 
 <Tabs.TabPane tab="Kubernetes" key="Kubernetes">
 
-## Kubernetes Version Support for Managed Clouds
+## Kubernetes Version Support for Managed Clusters
 
 |Managed Cloud|Version |Reference Release Calender|
 |-------------|--------|--------------------------|
