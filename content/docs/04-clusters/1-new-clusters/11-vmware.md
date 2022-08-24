@@ -308,7 +308,9 @@ For self hosted version, a system gateway is provided out of the box and typical
 | **Pod CIDR** | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
 | **Service cluster IP range** | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
 
- * Additional properties that are required to be set only for a proxy environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
+ 
+Additional properties that are required to be set only for a proxy environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
+
 
 | **Parameter** | **Value** | **Remarks** |
 |---|---|---|
@@ -514,7 +516,8 @@ The following steps need to be performed to provision a new VMware cluster:
     |-----------------------------------------|----------------|
         | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
         | **Datacenter** |The vSphere Datacenter where the cluster nodes will be launched.|
-        | **Folder** | The vSphere VM Folder where the cluster nodes will be launched.|
+        | **Deployment Folder**      | The vSphere VM Folder where the cluster nodes will be launched.|                                                                                                                                                                                                                                                     |
+        | **Image Template Folder**  | The vSphere folder to which the Spectro templates are imported.|
         | **SSH Keys (Optional)** | Public key to configure remote SSH access to the nodes (User: spectro).|
         | **NTP Server (Optional)** | Setup time synchronization for all the running nodes.|
         | **IP Allocation strategy** | DHCP or Static IP|
