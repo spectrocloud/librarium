@@ -40,7 +40,7 @@
     "gatsby-remark-image-attributes": "^1.1.0",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-remark-images-medium-zoom": "^1.7.0",
-    "gatsby-remark-video": "^1.2.5",
+    "gatsby-remark-local-videos": "0.0.3",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-transformer-sharp": "3.14",
     "import-sort-parser-babylon": "^6.0.0",
