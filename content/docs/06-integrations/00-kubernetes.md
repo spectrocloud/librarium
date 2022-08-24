@@ -19,8 +19,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes hardening standards recommended by the Center for Internet Security is enabled by default.
 
 <WarningBox>
-Info: Only Kubernetes versions 1.19 and above is supported
+Info: Only Kubernetes versions 1.19 and above is supported.
 </WarningBox>
+
+## Kubernetes Version Support for Managed Clouds
+
+|Managed Cloud|Version |Reference Release Calender|
+|-------------|--------|--------------------------|
+|Amazon EKS   | 1.20.x onwards|[Amazon Release Calender](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#:~:text=.-,Amazon%20EKS%20Kubernetes%20release%20calendar,-Note)
+|Azure AKS    |1.21.x onwards|[Azure Release Calender](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar)|        
 
 ## Supported Kubernetes versions
 
