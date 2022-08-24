@@ -22,7 +22,7 @@ This pack defines the properties that will be used by Spectro Cloud to bring up 
 Info: Only Kubernetes versions 1.19 and above is supported.
 </WarningBox>
 
-## Kubernetes Version Support for Managed Clouds
+## Kubernetes Version Support for Managed Clusters
 
 |Managed Cloud|Version |Reference Release Calender|
 |-------------|--------|--------------------------|
