@@ -57,3 +57,13 @@ This option provides a way to perform an immediate update to the latest version.
     This operation is not available for existing Kubernetes clusters imported into Palette.
     This operation is not available for managed Kubernetes Services such as EKS, AKS etc. For EKS clusters, an OS update can be triggered from Palette. This would initiate a request on AWS to update cluster node groups to the latest patch version. 
 </InfoBox>
+
+# Monitoring
+
+The Palette clusters OS patching status can be monitored through the `Node` tab of cluster details page. Following are the patch details available for the customer to monitor:
+
+|   |   |
+|---|---|
+| Last Applied Patch Time | The date and time of the last OS Patch|
+|  | |
+| Patched Version| The latest patched version|
