@@ -68,6 +68,16 @@ https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-applicat
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="Google SAML" key="google-SAML">
+
+### Google SAML
+
+#### References
+
+https://support.google.com/a/answer/6087519?hl=en
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="KeyCloak" key="keycloak">
 
 ### KeyCloak
@@ -155,6 +165,7 @@ SpectroTeam Parameter
 
 <Tabs>
 
+
 <Tabs.TabPane tab="Okta" key="okta">
 
 ### Okta
@@ -173,6 +184,18 @@ https://developer.okta.com/docs/guides/build-sso-integration/openidconnect/befor
 #### References
 
 https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Google OIDC" key="google-OIDC">
+
+### Google OIDC
+
+#### References
+
+https://developers.google.com/identity/protocols/oauth2/openid-connect
+
 
 </Tabs.TabPane>
 
@@ -213,6 +236,7 @@ https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/development/ad-fs
 
 </Tabs.TabPane>
 
-
-
 </Tabs>
+
+<br />
+<br />
