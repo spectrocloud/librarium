@@ -127,10 +127,10 @@ The following steps need to be performed to provision a new cluster:
     | **Parameter**      | **Description**                                                                              |
     | ------------------ | -------------------------------------------------------------------------------------------- |
     | **Subscription**   | Select the subscription which is to be used to access Azure Services.                        |
-    | **Region**         | Select a region in Azure in where the cluster should be deployed.                            |
+    | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
     | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                      |
-    | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:<br /> <br /> **Virtual Network**: Select the virtual network from the dropdown menu. <br /> <br /> **CIDR Block**: Enter the groups of addresses. <br /> <br /> **Control plane Subnet**: Select the control plane network from the dropdown menu. <br /> <br /> **Worker Network**: Select the worker network from the dropdown menu.  <br /> <br /> **Update worker pools in parallel**: Check the box to concurrently update the worker pools.|
+    | **Placement**      | You may leave this unchecked, unless the choice of placement is Static, then select:<br /> <br /> **Virtual Network**: Select the virtual network from the dropdown menu. <br /><br /> **Network Resource Group**: Controls the inbound or outbound network traffic from multiple Azure resources. <br /> <br /> **CIDR Block**: Enter the groups of addresses. <br /> <br /> **Control plane Subnet**: Select the control plane network from the dropdown menu. <br /> <br /> **Worker Network**: Select the worker network from the dropdown menu.  <br /> <br /> **Update worker pools in parallel**: Check the box to concurrently update the worker pools.|
     
 
 7. Click **Next** to configure the node pools.
