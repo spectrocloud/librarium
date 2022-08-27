@@ -10,6 +10,9 @@ fullWidth: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
+
 
 # Add-on Packs
 
@@ -423,3 +426,4 @@ The example below shows how to build the Permission Manager auth pack and push t
 </Tabs.TabPane>
 
 </Tabs>
+

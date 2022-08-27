@@ -23,6 +23,12 @@ Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable 
 
 <Tabs>
 
+<Tabs.TabPane tab="1.2.x" key="1.2.x">
+
+* **1.2.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 * **1.0.4**

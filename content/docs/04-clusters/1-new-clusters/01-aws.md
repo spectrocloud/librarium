@@ -580,6 +580,7 @@ The following **four** policies include all the required permissions for provisi
                 "iam:GetInstanceProfile",
                 "iam:GetUser",
                 "iam:GetPolicy",
+                "iam:ListPolicies",  
                 "iam:ListPolicyVersions",
                 "iam:RemoveRoleFromInstanceProfile",
                 "iam:RemoveUserFromGroup",
@@ -714,13 +715,13 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 8. Enable or disable node pool Taint as per the user's choice. If Taint is enabled, the following parameters need to be passed:
     
     |**Parameter**| **Description**|
-    |---------|---------------|
-    |**Key** |Custom key for the Taint.|
-    |**Value**| Custom value for the Taint key.|
-    | **Effect**| Make the choice of effect from the dropdown menu. <p> There are three options to go with: </p>
-    ||**NoSchedule**: A pod that cannot tolerate the node Taint, should not be scheduled to the node. 
-    ||**PreferNoSchedule**: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
-    ||**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
+    |-------------|---------------|
+    |**Key**      |Custom key for the Taint.|
+    |**Value**    | Custom value for the Taint key.|
+    | **Effect**  | Make the choice of effect from the dropdown menu. <p> There are three options to go with: </p>
+    |             |**NoSchedule**: A pod that cannot tolerate the node Taint, should not be scheduled to the node. 
+    |             |**PreferNoSchedule**: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
+    |             |**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
     
     
 ## Running Clusters through Edit Node Pool
@@ -728,17 +729,21 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
 Palette allows its users to apply/edit the Taints, for a running cluster, through the <b>Edit node pool</b> option under the <b>Nodes</b> tab.
 </InfoBox>
 
-  |**Parameter**| **Description**|
-        |---------|---------------|
-        |**Name** |A descriptive name for the node pool.|
-        |**Size** |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
-        |**Allow worker capability (master pool)**|Select this option for allowing workloads to be provisioned on master nodes.|
-        |**Instance type**|Select the AWS instance type to be used for all nodes in the node pool.|
-        |**Rolling Update**| There are two choices of Rolling Update:
-        ||**Expand First**: Launches the new node and then shut down the old node.
-        ||**Contract First**: Shut down the old node first and then launches the new node.
-        |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
+|**Allow worker capability (master pool)**|Select this option for allowing workloads to be provisioned on master nodes.|
+|**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
+|**Rolling Update**| There are two choices of Rolling Update:
+|                  |**Expand First**: Launches the new node and then shut down the old node.
+|                  |**Contract First**: Shut down the old node first and then launches the new node.
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
+
+
 ## On-Demand Instances and On-Spot
+
+
 By default, worker pools are configured to use On-Demand instances. Optionally, to take advantage of discounted spot instance pricing, the **On-Spot** option can be selected. This option allows you to specify a maximum bid price for the nodes as a percentage of the On-Demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
 * Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
@@ -747,6 +752,7 @@ New worker pools may be added if it's desired to customize certain worker nodes 
 </InfoBox>
 
 # Deleting an AWS Cluster
+
 The deletion of an AWS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AWS cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.

@@ -16,66 +16,44 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 Palette provides two ways to back up and restore Kubernetes clusters:
 
 * Cluster Backup and Restore for a single cluster which is managed from within the cluster.
-* [Workspace](/workspace) Backup and Restore for multiple clusters managed from workspaces.
+* [Workspace](/workspace/workload-features#workspaceoperator) Backup and Restore for multiple clusters managed from workspaces.
 
 # Cluster Backup and Restore
 
 Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
-# Workspace Backup and Restore
+Palette leverages the BackUps to the following locations:
 
-Palette users can create cluster backups from within a workspace (usually consisting of multiple clusters) and restore them later time as desired. Palette allows granular controls within a workspace for users to perform specific tasks within the workspace, without having the ability to update workspace details. In order to provide granular access within a workspace for specific actions, Palette provides the following two roles:
+<br />
 
-## Workspace Operator
+#### Amazon Web Services (AWS) S3 Buckets
 
-Users assigned the `workspace operator` role can only perform back and restore actions within the workspace.
+#### Google Cloud Platform (GCP) Buckets
 
-## Workspace Admin
+#### MinIO S3 Buckets
 
-A role that has all admin permissions and privileges within the workspace.
-
-## Create your Workspace Roles
-
-To create your workspace role, follow the steps below:
-
-1. Login to Palette management console as Tenant Admin.
-
-
-2. Go to the **Users and Teams** option.
-
-
-3. From the listed users, select the user to be assigned with workspace roles. See here for [User Creation](/projects/#projects).
-
-
-4. Select the **Workspace Roles** tab and click **+ New Workspace Role** to create a new role.
-
-
-5. Fill the following information into the **Add Roles to User-Name** wizard:
-   * Project
-   * Workspace
-   * Choose the role from the options:
-      * Workspace Admin
-      * Workspace Operator
-
-
-6. Confirm the information provided to complete the wizard.
-
-
-7. The user set with the Workspace role can take Workspace-wide backup and Restores in compliance with their permissions and privileges.
 
 # Prerequisites
 
-## For AWS Bucket as Backup Location
+## For an Amazon Web Services (AWS) Bucket as Backup Location
 
-* The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
+* The Amazon Simple Storage Service (S3) permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
-* Pre-created bucket at the AWS or MinIO object-store.
+* Pre-created bucket at the AWS Console.
 
-## For GCP Backup Location
+## For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a `storage admin` role.
 
 * Pre-created bucket at the GCP object storage.
+
+## For MinIO S3 Backup
+
+* S3 bucket with Read/Write Access
+
+* A unique access key (username) and corresponding secret key (password) from MinIO Console. 
+
+* Service provider certificate (Optional)
 
 # Backup Locations
 
@@ -88,7 +66,7 @@ The following details are required to configure a backup location in AWS:
 1. **Location Name**: Name of your choice.
 
 
-2. **Location Provider**: AWS (This is currently the only choice on the UI. Choose this option when backing up to AWS S3 or any S3 compliance object store).
+2. **Location Provider**: AWS
 
 
 3. **Certificate**: Required for MinIO.
@@ -135,7 +113,7 @@ The following details are required to configure a backup location in AWS:
                     "s3:ListMultipartUploadParts"
                 ],
                 "Resource": [
-                    "arn:aws:s3:::${BUCKET}/*"
+                    "arn:aws:s3:::BUCKET-NAME/*"
                 ]
             },
             {
@@ -144,7 +122,7 @@ The following details are required to configure a backup location in AWS:
                     "s3:ListBucket"
                 ],
                 "Resource": [
-                    "arn:aws:s3:::${BUCKET}"
+                    "arn:aws:s3:::BUCKET-NAME"
                 ]
             }
         ]
@@ -187,28 +165,52 @@ The following details are required to configure a backup location in GCP:
 
 4. **JSON Credentials**: For external authentication of the GCP storage.
 
+## Configure your Backup in MinIO
+
+The following details are required to configure a backup location in AWS:
+
+1. **Location Name**: Name of your choice.
+
+
+2. **Location Provider**: Minio
+
+
+3. **Certificate**: Optionally required for MinIO.
+
+
+4. **S3 Bucket**: S3 bucket name must be pre-created on the MinIO object-store.
+
+
+5. **Region**: Region in which the S3 bucket is created. Example: us-east-1 
+
+
+6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
+
+
+7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
+
+
+8. **Authenticate** using MinIo access key and secret access key.
+
+
+9. Click **Create** to complete the location creation wizard. 
+
 
 ## Add a Backup Location
 
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
-# Create a Backup
-
-The below section will describe:
-
-* Create a Cluster Backup
-* Create a Workspace Backup
 
 ## Create a Cluster Backup
 
-Backups can be scheduled or initiated in an on demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
+Backups can be scheduled or initiated in an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
 
 1. **Backup Prefix / Backup Name**:
   * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-  * For an on demand backup, a name of user choice can be used.
+  * For an on demand Backup, a name of user choice can be used.
 
 
-2. Select the backup location.
+2. Select the **Backup location**.
 
 
 3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
@@ -233,37 +235,6 @@ Backups can be scheduled or initiated in an on demand basis during cluster creat
 |-----------------|
 |**Cluster Creation** > **Policies** > **Backup Policies**|
 
-## Create a Workspace Backup
-
-Backups can be scheduled or initiated in an on demand basis, during the workspace creation. The following information is required for configuring a Workspace Backup, on demand:
-
-1. Backup Prefix / Backup Name: For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name. For an on demand backup, a name of user choice can be used.
-
-
-2. Select the backup location.
-
-
-3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
-
-
-4. **Expiry Date**: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
-
-
-5. **Include all disks**: Optionally backup persistent disks as part of the backup.
-
-
-6. **Include Cluster Resources**: Select or deselect on your choice.
-
-
-|On Demand Backup   |
-|-------------------|
-|Select the **Workspace to Backup** > **Settings** > **Schedule Backups**|
-
-
-|Scheduled Backup |
-|-----------------|
-|**Workspace Creation** > **Policies** > **Backup Policies**|
-
 
 ### Backup Scheduling Options
 
@@ -282,10 +253,10 @@ Backups created manually or as part of the schedule are listed under the Backup/
 1. Restore operation can be initiated by selecting the restore option for a specific backup. 
 
 
-1. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
+2. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
 
 
-1. Finally, restore operation can be done to the cluster running on the same project.
+3. Finally, restore operation can be done to the cluster running on the same project.
 
 <WarningBox>
 Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:

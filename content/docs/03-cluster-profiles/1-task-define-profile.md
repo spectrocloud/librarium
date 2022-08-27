@@ -45,6 +45,8 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     
     Select the **Registry**, **Pack Name**, **Pack Version**, and **Pack Values** and click on **Next Layer** to go through each profile layer to completely build the core infrastructure.
 
+    **Note**: Container Storage Interface (CSI) and Container Network Interface (CNI) layers can be added as Helm Charts from customized Helm registries and linked to Spectro Registry packs. 
+
 
 4. **Add-on Layers** are additional layers such as **Monitoring, Security**, or **Load Balancers** may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
 
@@ -112,6 +114,22 @@ In order to allow packs to be added multiple times in a profile, add the followi
 </InfoBox>
 
 <br />   
+
+<InfoBox>
+By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart releaseNames using the format below:
+
+ 
+**Example:**
+       
+```yaml
+pack:
+  namespace: kube-system
+  releaseNameOverride:
+    actual_chart_name1: custom_name1
+    actual_chart_name2: custom_name2
+```
+
+</InfoBox>
 
 ## Cluster Profile Versioning
 

@@ -28,7 +28,7 @@ The Palette Quickstart and Enterprise Mode on-prem installations are highly avai
 
 |Version|URL|Info|
 |--|---|--|
-|2.0.2|hubble-installer-202-10152021.ova|Oct 15 2021|
+|2.1.0|hubble-installer-210.ova|Jun 1 2022 (Cert Manager change to 1.8)|
 ------
 
 
@@ -54,14 +54,16 @@ chmod 755 ./airgap-v${VERSION}.bin
 ```
 
 # SAAS - Private Cloud Gateway(PCG)
- PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
+
+
+PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables the installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
 
 
 ## vSphere PCG Image
 
 |Version|URL|Info|
 |---|---|--|
-|2.0.2|https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/gateway-installer-119-06162021.ova|June 17 2021|
+|1.2.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-120.ova|May 29 2022|
 ------
 
 ## MAAS PCG Image

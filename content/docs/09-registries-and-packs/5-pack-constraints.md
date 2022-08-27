@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# About
+# Overview
 
 Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster *before* it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
 
@@ -555,6 +555,8 @@ user:
 
 * user.name
 * user.uid
+* user.email
+* tenant.uid
 * project.name
 * project.uid
 * clusterprofile.name
@@ -568,6 +570,9 @@ user:
 * reverseproxy.port
 * reverseproxy.protocol
 * reverseproxy.vhostport
+* cloud.type
+* cloud.region
+
 
 </Tabs.TabPane>
 
