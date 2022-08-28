@@ -55,6 +55,11 @@ The name *generic* implies support will be extended to the generic operations on
 
    - Metrics server (highly recommended for full permissions mode import)
 
+<WarningBox>
+
+While importing EKS clusters, Palette encourages importing Standard clusters over [Autopilot Clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview).
+
+</WarningBox>
 
 # Importing a Brownfield Cluster
 
