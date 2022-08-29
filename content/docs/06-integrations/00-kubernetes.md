@@ -26,7 +26,7 @@ Info: Only Kubernetes versions 1.19 and above is supported.
 
 |Managed Cloud|Version |Reference Release Calender|
 |-------------|--------|--------------------------|
-|Amazon EKS   | 1.20.x and above|[Amazon Release Calender](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#:~:text=.-,Amazon%20EKS%20Kubernetes%20release%20calendar,-Note)
+|Amazon EKS   |1.20.x and above|[Amazon Release Calender](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#:~:text=.-,Amazon%20EKS%20Kubernetes%20release%20calendar,-Note)
 |Azure AKS    |1.21.x and above|[Azure Release Calender](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar)|        
 
 ## Supported Kubernetes versions
