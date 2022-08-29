@@ -34,7 +34,9 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 # Pre-Requisite Permissions
 
-1. The AWS managed policy `AmazonEBSCSIDriverPolicy` is to be attached.
+The following permissions needs to be attached to the AWS cloud account:
+
+1. The AWS managed policy `AmazonEBSCSIDriverPolicy`.
 
 
 2. [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable EBS encryption.
