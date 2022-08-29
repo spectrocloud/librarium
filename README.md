@@ -266,17 +266,19 @@ After that you can use them like this:
 
 ```js
 <InfoBox>
+
   *Markdown cotent*
+
 </InfoBox>
 
 <WarningBox>
+
   *Markdown content*
+
 </WarningBox>
 ```
 
-To avoid adding extra space in the box:
-
-- If you have bullet points, the content will have at the beginning and at the end, a new line ;
+The content must have a new line at the beginning and at the end of the tag like this:
 
 Example:
 
@@ -295,19 +297,5 @@ Example:
   - Point 2
   - ...
 
-  </WarningBox>
-```
-
-- If you only have text, then there is no need for new lines;
-
-Example:
-
-```js
-  <InfoBox>
-    *TEXT content that you write without new lines*
-  </InfoBox>
-
-  <WarningBox>
-    *TEXT content that you write without new lines*
   </WarningBox>
 ```
