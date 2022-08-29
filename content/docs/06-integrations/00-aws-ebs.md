@@ -34,13 +34,13 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 # Pre-requisite Permissions
 
-1. AmazonEBSCSIDriverPolicy the minimum permission to be attached.
+1. [AmazonEBSCSIDriverPolicy](/integrations/aws-ebs#amazonebscsidriverpolicy) the minimum permission to be attached.
 
 
-2. If the user wants to enable encyption, EBSCSIKMSEncryptionPolicy needs to be attached.
+2. [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable KMS Key encryption.
 
 
-3. For EKS, modify kubernetes values.yaml attached to the cluster profile as follows:
+3. For EKS cluster, make the following modifcation to the Kubernetes values.yaml file attached to the cluster profile:
 
 ```
 managedMachinePool:
@@ -53,7 +53,21 @@ managedMachinePool:
   ```
 
 
-## Policy to be created
+# Policies to be attached
+
+The following are the permissions described in the prerequisite section to be attached to the cloud account.
+<br />
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="AmazonEBSCSIDriverPolicy" key="AmazonEBSCSIDriverPolicy">
+
+
+## AmazonEBSCSIDriverPolicy
+
+<br />
+<br />
 
 ```{
     "Version": "2012-10-17",
@@ -201,8 +215,16 @@ managedMachinePool:
     ]
 }
 ```
+<br />
+<br />
+</Tabs.TabPane>
 
-EBSCSIKMSEncryptionPolicy
+<Tabs.TabPane tab="KMS Key Encryption Policy" key="Encryption Policy">
+
+## EBSCSIKMSEncryptionPolicy
+
+<br />
+<br />
 
 ```
 {
@@ -220,6 +242,9 @@ EBSCSIKMSEncryptionPolicy
 ]
 }
 ```
+</Tabs.TabPane>
+</Tabs>
+
 ## Notable Parameters
 
 | Name | Supported Values | Default Value | Description |
