@@ -32,7 +32,7 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 </Tabs.TabPane>
 </Tabs>
 
-# Pre-requisite Permissions
+# Pre-Requisite Permissions
 
 1. The AWS managed policy `AmazonEBSCSIDriverPolicy` is to be attached.
 
@@ -47,18 +47,18 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 ```
 {
-"Version": "2012-10-17",
-"Statement": [
-{
-"Sid": "VisualEditor0",
-"Effect": "Allow",
-"Action": [
-"kms:GenerateDataKeyWithoutPlaintext",
-"kms:CreateGrant"
-],
-"Resource": "*"
-}
-]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:CreateGrant"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
