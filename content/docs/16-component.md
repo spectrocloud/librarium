@@ -100,7 +100,7 @@ The page lists the version details of various Palette components with respect to
 
 |Managed Cloud|Version |Reference Release Calender|
 |-------------|--------|--------------------------|
-|Amazon EKS   | 1.20.x and above|[Amazon Release Calender](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#:~:text=.-,Amazon%20EKS%20Kubernetes%20release%20calendar,-Note)
+|Amazon EKS   |1.20.x and above|[Amazon Release Calender](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#:~:text=.-,Amazon%20EKS%20Kubernetes%20release%20calendar,-Note)
 |Azure AKS    |1.21.x and above|[Azure Release Calender](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar)|
 
 
