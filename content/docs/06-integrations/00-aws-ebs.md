@@ -32,18 +32,26 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 </Tabs.TabPane>
 </Tabs>
 
-# Permissions
+# Pre-requisite Permissions
 
-For the below [Scenario](/integrations/aws-ebs#scenario:) the minimum iam [Policy](/integrations/aws-ebs#policytobecreated) described in this section needs to be provisioned to the AWS console:
+1. AmazonEBSCSIDriverPolicy the minimum permission to be attached.
 
-## Scenario:
 
-|AWS EBS Version | Kubernetes Version|
-|----------------|-------------------|
-| 1.15.x         | 1.22.x            |
-| 1.15.x         | 1.23.x            |
-| 1.18.x         | 1.22.x            |
-| 1.18.x         | 1.23.x            |
+2. If the user wants to enable encyption, EBSCSIKMSEncryptionPolicy needs to be attached.
+
+
+3. For EKS, modify kubernetes values.yaml attached to the cluster profile as follows:
+
+```
+managedMachinePool:
+  #roleName: {{ name of the self-managed role | format "${string}" }}
+
+  ## A list of additional policies to attach to the node group role
+  roleAdditionalPolicies:
+  - "arn:aws:iam::214575254960:policy/kmswrite"
+  - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  ```
+
 
 ## Policy to be created
 
@@ -194,6 +202,24 @@ For the below [Scenario](/integrations/aws-ebs#scenario:) the minimum iam [Polic
 }
 ```
 
+EBSCSIKMSEncryptionPolicy
+
+```
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Sid": "VisualEditor0",
+"Effect": "Allow",
+"Action": [
+"kms:GenerateDataKeyWithoutPlaintext",
+"kms:CreateGrant"
+],
+"Resource": "*"
+}
+]
+}
+```
 ## Notable Parameters
 
 | Name | Supported Values | Default Value | Description |
