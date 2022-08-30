@@ -41,6 +41,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|
 |----- |------|
+|0.3.0 | 0.9.0|
 |0.2.3 |0.8.9 |
 |0.2.3 |0.8.8 |
 |0.1.8 |0.7.7 |
@@ -64,13 +65,32 @@ The section below includes the different versions of Terraform providers, suppor
 <br />
 <br />
 
-### Latest Version Supported : `0.8.x`
+### Latest Version Supported : `0.9.x`
 
 Find the detailed patch changes and comparisons within below **tabs**.
 
 <br />
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.9.0" key="v0.9.0">
+
+The compatible **Module** for provider 0.9.0 is **0.3.0**
+
+# Changes
+
+* Image template folder support.
+ 
+
+* VMware cloud type support for TF modules.
+
+
+* Adding static IP-Pool for VMware.
+
+
+Refer to Full Changelog: [v0.8.9 to v0.9.0](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.9.0)
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="v0.8.9" key="v0.8.9">
 
 The compatible **Module** for provider 0.8.9 is **0.2.3** 
