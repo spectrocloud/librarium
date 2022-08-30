@@ -442,7 +442,8 @@
     "/v1/auth/cookie/refresh": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Refreshes authentication token using the cookie data",
         "operationId": "v1AuthRefreshCookie",
@@ -833,7 +834,8 @@
       "post": {
         "description": "Edge service like edge, lodge can login to get the JWT for the application interactions",
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Edge service authentication",
         "operationId": "v1EdgeServicesLogin",
@@ -861,7 +863,8 @@
       "post": {
         "description": "System service like ally, jet can login to get the JWT for the application interactions",
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "System service authentication",
         "operationId": "v1SystemServicesLogin",
@@ -905,7 +908,8 @@
     "/v1/auth/syslogin": {
       "post": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "System admin login",
         "operationId": "V1SysLogin",
@@ -3462,6 +3466,282 @@
         }
       ]
     },
+    "/v1/cloudconfigs/edge-native/{configUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified edge-native cloud config",
+        "operationId": "v1CloudConfigsEdgeNativeGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeCloudConfig"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/edge-native/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1CloudConfigsEdgeNativeUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/edge-native/{configUid}/machinePools": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Creates a edge-native cloud config's machine pool",
+        "operationId": "v1CloudConfigsEdgeNativeMachinePoolCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/edge-native/{configUid}/machinePools/{machinePoolName}": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified edge-native cloud config's machine pool",
+        "operationId": "v1CloudConfigsEdgeNativeMachinePoolUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified machine pool",
+        "operationId": "v1CloudConfigsEdgeNativeMachinePoolDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/edge-native/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of edge-native machines",
+        "operationId": "v1CloudConfigsEdgeNativePoolMachinesList",
+        "responses": {
+          "200": {
+            "description": "An array of edge-native machine items",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachines"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Adds the edge-native machine to cloud config's machine pool",
+        "operationId": "v1CloudConfigsEdgeNativePoolMachinesAdd",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/edge-native/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified edge-native machine",
+        "operationId": "v1CloudConfigsEdgeNativePoolMachinesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachine"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified machine to cloud config's machine pool",
+        "operationId": "v1CloudConfigsEdgeNativePoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified edge-native machine",
+        "operationId": "v1CloudConfigsEdgeNativePoolMachinesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machineUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/cloudconfigs/edge/{configUid}": {
       "get": {
         "tags": [
@@ -5313,6 +5593,271 @@
         }
       ]
     },
+    "/v1/cloudconfigs/nested/{configUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified Nested cloud config",
+        "operationId": "v1CloudConfigsNestedGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1NestedCloudConfig"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/nested/{configUid}/clusterConfig": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the cluster configuration information",
+        "operationId": "v1CloudConfigsNestedUidClusterConfig",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1NestedCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified Nested cloud config's machine pool",
+        "operationId": "v1CloudConfigsNestedMachinePoolUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1NestedMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Nested machines",
+        "operationId": "v1CloudConfigsNestedPoolMachinesList",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "name": "orderBy",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Nested machine items",
+            "schema": {
+              "$ref": "#/definitions/v1NestedMachines"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Adds the machine to cloud config's machine pool",
+        "operationId": "v1CloudConfigsNestedPoolMachinesAdd",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1NestedMachine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified Nested machine",
+        "operationId": "v1CloudConfigsNestedPoolMachinesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1NestedMachine"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified machine to the cloud config's machine pool",
+        "operationId": "v1CloudConfigsNestedPoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1NestedMachine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified Nested machine",
+        "operationId": "v1CloudConfigsNestedPoolMachinesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machinePoolName",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "machineUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/cloudconfigs/openstack/{configUid}": {
       "get": {
         "tags": [
@@ -6223,6 +6768,31 @@
         }
       ]
     },
+    "/v1/cloudconfigs/{configUid}/machinePools/machineUids": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified cloud config's machine pools and machine uid",
+        "operationId": "v1CloudConfigsMachinePoolsMachineUidsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1MachinePoolsMachineUids"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "configUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/clouds/aws/account/sts": {
       "get": {
         "tags": [
@@ -6404,6 +6974,73 @@
             "schema": {
               "$ref": "#/definitions/v1EcrAuthorizationRequestEntity"
             }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/aws/policies": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of AWS policies for the specified account",
+        "operationId": "V1AwsIamPolicies",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AwsCloudAccount"
+            }
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsPolicies"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/aws/policyArns/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate the aws policy arns validate",
+        "operationId": "V1AwsPolicyArnsValidate",
+        "parameters": [
+          {
+            "name": "spec",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AwsPolicyArnsSpec"
+            }
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query"
           }
         ],
         "responses": {
@@ -6654,6 +7291,77 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1AwsKeyPairs"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/aws/regions/{region}/kmskeys": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of Aws KMS keys for the specified account",
+        "operationId": "V1AwsKmsKeys",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsKmsKeys"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/aws/regions/{region}/kmskeys/validate": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate an Aws KMS key for the specified account",
+        "operationId": "V1AwsKmsKeyValidate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "region",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "cloudAccountUid",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "keyArn",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
             }
           }
         }
@@ -6975,6 +7683,11 @@
             "name": "subscriptionId",
             "in": "path",
             "required": true
+          },
+          {
+            "type": "string",
+            "name": "resourceGroup",
+            "in": "query"
           }
         ],
         "responses": {
@@ -7139,6 +7852,36 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1GcpCloudAccountValidateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clouds/gcp/bucketname/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate the specified GCP bucket name credentials",
+        "operationId": "V1GcpBucketNameValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1GcpAccountNameValidateSpec"
             }
           }
         ],
@@ -8283,6 +9026,7 @@
     },
     "/v1/clusterprofiles": {
       "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/clusterprofiles",
         "tags": [
           "v1"
         ],
@@ -8369,6 +9113,135 @@
         }
       }
     },
+    "/v1/clusterprofiles/bulk": {
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Delete multiple cluster profiles",
+        "operationId": "v1ClusterProfilesBulkDelete",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1BulkDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bulk delete response",
+            "schema": {
+              "$ref": "#/definitions/v1BulkDeleteResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/clusterprofiles/import": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Imports a cluster profile",
+        "operationId": "v1ClusterProfilesImport",
+        "parameters": [
+          {
+            "type": "boolean",
+            "description": "If true then cluster profile will be published post successful import",
+            "name": "publish",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clusterprofiles/import/file": {
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Imports a cluster profile via file upload",
+        "operationId": "v1ClusterProfilesImportFile",
+        "parameters": [
+          {
+            "type": "boolean",
+            "description": "If true then cluster profile will be published post successful import",
+            "name": "publish",
+            "in": "query"
+          },
+          {
+            "type": "file",
+            "name": "importFile",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/clusterprofiles/import/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validates cluster profile import",
+        "operationId": "v1ClusterProfilesImportValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cluster profile import validated response",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileImportEntity"
+            }
+          }
+        }
+      }
+    },
     "/v1/clusterprofiles/macros": {
       "get": {
         "tags": [
@@ -8391,8 +9264,8 @@
         "tags": [
           "v1"
         ],
-        "summary": "Validates the clusterprofiles name",
-        "operationId": "v1ClusterProfilesValidateName",
+        "summary": "Validates the clusterprofiles",
+        "operationId": "v1ClusterProfilesValidateNameVersion",
         "parameters": [
           {
             "type": "string",
@@ -8548,6 +9421,43 @@
         }
       ]
     },
+    "/v1/clusterprofiles/{uid}/clone/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validates the clusterprofiles clone",
+        "operationId": "v1ClusterProfilesUidCloneValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileCloneMetaInputEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/clusterprofiles/{uid}/export": {
       "get": {
         "produces": [
@@ -8556,8 +9466,52 @@
         "tags": [
           "v1"
         ],
-        "summary": "Download the specified cluster profile",
+        "summary": "Export the specified cluster profile",
         "operationId": "V1ClusterProfilesUidExport",
+        "responses": {
+          "200": {
+            "description": "Export cluster profile as file",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "enum": [
+            "yaml",
+            "json"
+          ],
+          "type": "string",
+          "default": "json",
+          "name": "format",
+          "in": "query"
+        }
+      ]
+    },
+    "/v1/clusterprofiles/{uid}/export/terraform": {
+      "get": {
+        "produces": [
+          "application/octet-stream"
+        ],
+        "tags": [
+          "v1"
+        ],
+        "summary": "Download the specified cluster profile",
+        "operationId": "V1ClusterProfilesUidExportTerraform",
         "responses": {
           "200": {
             "description": "download cluster profile format file",
@@ -8782,6 +9736,21 @@
       ]
     },
     "/v1/clusterprofiles/{uid}/packs/{packName}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified cluster profile's pack information",
+        "operationId": "V1ClusterProfilesUidPacksNameGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1PackRefSummaryResponse"
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "v1"
@@ -9191,6 +10160,32 @@
         }
       ]
     },
+    "/v1/dashboard/appliances/metadata": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of edgehosts summary",
+        "operationId": "v1EdgeHostsMetadata",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostsMetadataFilter"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of edgehost summary items",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostsMetadataSummary"
+            }
+          }
+        }
+      }
+    },
     "/v1/dashboard/clusterprofiles": {
       "post": {
         "tags": [
@@ -9254,6 +10249,31 @@
           }
         }
       }
+    },
+    "/v1/dashboard/clusterprofiles/{uid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a specified cluster profile summary",
+        "operationId": "v1ClusterProfilesUidSummary",
+        "responses": {
+          "200": {
+            "description": "Cluster profile summary response",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfileSummary"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1/dashboard/internal/tenants/{tenantUid}/cleanup": {
       "delete": {
@@ -9321,6 +10341,75 @@
             "description": "An array of project summary items",
             "schema": {
               "$ref": "#/definitions/v1ProjectsSummary"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "operationId": "v1ProjectsFilterSummary",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ProjectsFilterSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of project filter summary items",
+            "schema": {
+              "$ref": "#/definitions/v1ProjectsSummary"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dashboard/projects/metadata": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of projects metadata",
+        "operationId": "v1ProjectsMetadata",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the project",
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of project metadata items",
+            "schema": {
+              "$ref": "#/definitions/v1ProjectsMetadata"
             }
           }
         }
@@ -9440,6 +10529,31 @@
       }
     },
     "/v1/dashboard/spectroclusters/metadata": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of cluster summary metadata",
+        "operationId": "v1SpectroClustersMetadataGet",
+        "parameters": [
+          {
+            "enum": [
+              "hostclusters"
+            ],
+            "type": "string",
+            "name": "quickFilter",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersMetadata"
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "v1"
@@ -9538,6 +10652,53 @@
             "description": "An array of resources usage summary items",
             "schema": {
               "$ref": "#/definitions/v1ResourcesUsageSummary"
+            }
+          }
+        }
+      }
+    },
+    "/v1/dashboard/spectroclusters/search": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of cluster summary with provided search filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "operationId": "v1SpectroClustersSearchFilterSummary",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterSearchSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersSummary"
             }
           }
         }
@@ -9672,6 +10833,40 @@
             "description": "An array of cluster workloads",
             "schema": {
               "$ref": "#/definitions/v1ClusterWorkload"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/dashboard/spectroclusters/{uid}/workloads/clusterrolebinding": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves specified cluster workload clusterrolebindings",
+        "operationId": "v1DashboardSpectroClustersUidWorkloadsClusterRoleBinding",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterWorkloadsSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster workload clusterrolebindings",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterWorkloadRoleBindings"
             }
           }
         }
@@ -9889,6 +11084,40 @@
         }
       ]
     },
+    "/v1/dashboard/spectroclusters/{uid}/workloads/rolebinding": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves specified cluster workload rolebindings",
+        "operationId": "v1DashboardSpectroClustersUidWorkloadsRoleBinding",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterWorkloadsSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster workload rolebindings",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterWorkloadRoleBindings"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/dashboard/spectroclusters/{uid}/workloads/statefulset": {
       "post": {
         "tags": [
@@ -9940,6 +11169,40 @@
         }
       }
     },
+    "/v1/dashboard/workspaces/{uid}/spectroclusters/workloads/clusterrolebinding": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves specified workspace clusters workload clusterrolebindings",
+        "operationId": "v1DashboardWorkspacesUidSpectroClustersWorkloadsClusterRoleBinding",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceWorkloadsSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of clusters workload clusterrolebindings",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceClustersWorkloadRoleBindings"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/dashboard/workspaces/{uid}/spectroclusters/workloads/cronjob": {
       "post": {
         "tags": [
@@ -9958,7 +11221,7 @@
         ],
         "responses": {
           "200": {
-            "description": "An array of clusters workload jobs",
+            "description": "An array of clusters workload cronjobs",
             "schema": {
               "$ref": "#/definitions/v1WorkspaceClustersWorkloadCronJobs"
             }
@@ -10131,6 +11394,40 @@
             "description": "An array of clusters workload pods",
             "schema": {
               "$ref": "#/definitions/v1WorkspaceClustersWorkloadPods"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/dashboard/workspaces/{uid}/spectroclusters/workloads/rolebinding": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves specified workspace clusters workload rolebindings",
+        "operationId": "v1DashboardWorkspacesUidSpectroClustersWorkloadsRoleBinding",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceWorkloadsSpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of clusters workload rolebindings",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceClustersWorkloadRoleBindings"
             }
           }
         }
@@ -10360,6 +11657,49 @@
         }
       ]
     },
+    "/v1/edgehosts/{uid}/cluster/associate": {
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deassociate the clusters to the edge host",
+        "operationId": "v1EdgeHostDevicesUidClusterDeassociate",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Associate the clusters to the edge host",
+        "operationId": "v1EdgeHostDevicesUidClusterAssociate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/edgehosts/{uid}/health": {
       "patch": {
         "tags": [
@@ -10460,6 +11800,37 @@
           }
         }
       }
+    },
+    "/v1/edgehosts/{uid}/packs/status": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Patch update specified edge host's packs status",
+        "operationId": "v1EdgeHostDevicesUidPacksStatusPatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterPacksStatusEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1/edgehosts/{uid}/profiles": {
       "get": {
@@ -10988,7 +12359,8 @@
     "/v1/health/internal/locks": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "List the locks",
         "operationId": "V1LocksHealthList",
@@ -11357,7 +12729,8 @@
       "get": {
         "description": "Deprecated: please use the generic api",
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Returns the spectro installer",
         "operationId": "v1SpectroInstallerGetDeprecated",
@@ -11765,7 +13138,8 @@
     "/v1/locks/internal": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "List the locks",
         "operationId": "V1LocksList",
@@ -11789,7 +13163,8 @@
     "/v1/locks/internal/{lock}/unlock": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Unlock the lock",
         "operationId": "V1LocksName",
@@ -12692,6 +14067,32 @@
         }
       }
     },
+    "/v1/mgmt/db/health": {
+      "get": {
+        "tags": [
+          "v1",
+          "system",
+          "private"
+        ],
+        "summary": "mgmt db health",
+        "operationId": "v1MgmtDbHealth",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1MgmtDbHealth"
+            }
+          }
+        }
+      }
+    },
     "/v1/mgmt/msgbroker/reinit": {
       "get": {
         "tags": [
@@ -13214,6 +14615,29 @@
           "required": true
         }
       ]
+    },
+    "/v1/overlords/migrate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "migrate all the clusters from source overlord to target overlord",
+        "operationId": "V1OverlordsMigrate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1OverlordMigrateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
     },
     "/v1/overlords/openstack/manifest": {
       "get": {
@@ -14957,6 +16381,7 @@
     },
     "/v1/projects": {
       "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/projects",
         "tags": [
           "v1"
         ],
@@ -15163,6 +16588,36 @@
           }
         }
       },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Create the specified alert to the specified project",
+        "operationId": "v1ProjectsUidAlertCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Channel"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "v1"
@@ -15190,6 +16645,76 @@
         }
       ]
     },
+    "/v1/projects/{uid}/alerts/{component}/{alertUid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get the specified alert of the specified project",
+        "operationId": "v1ProjectsUidAlertsUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Channel"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the specified alert of the specified project",
+        "operationId": "v1ProjectsUidAlertsUidUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Channel"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Deletes the specified alert of the specified project",
+        "operationId": "v1ProjectsUidAlertsUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "component",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "name": "alertUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/projects/{uid}/macros": {
       "get": {
         "tags": [
@@ -15212,6 +16737,69 @@
         ],
         "summary": "Update the macros of the specified project",
         "operationId": "v1ProjectsUidMacrosUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Create or add new macros for the specified project",
+        "operationId": "v1ProjectsUidMacrosCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Delete the macros for the specified project by macro name",
+        "operationId": "v1ProjectsUidMacrosDeleteByMacroName",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros for the specified project by macro name",
+        "operationId": "v1ProjectsUidMacrosUpdateByMacroName",
         "parameters": [
           {
             "name": "body",
@@ -16476,6 +18064,46 @@
         }
       ]
     },
+    "/v1/roles/{uid}/clone": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Clone the role",
+        "operationId": "v1RolesClone",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1RoleClone"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/services/images": {
       "get": {
         "tags": [
@@ -16611,6 +18239,7 @@
     },
     "/v1/spectroclusters": {
       "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters",
         "tags": [
           "v1"
         ],
@@ -16678,6 +18307,11 @@
         "parameters": [
           {
             "type": "string",
+            "name": "hostClusterUid",
+            "in": "query"
+          },
+          {
+            "type": "string",
             "name": "overlordUid",
             "in": "query"
           },
@@ -16721,6 +18355,11 @@
         "summary": "Returns the spectro cluster for deletion with lock",
         "operationId": "v1SpectroClusterAcquireDelete",
         "parameters": [
+          {
+            "type": "string",
+            "name": "hostClusterUid",
+            "in": "query"
+          },
           {
             "type": "string",
             "name": "overlordUid",
@@ -17198,6 +18837,133 @@
                 "type": "string",
                 "description": "Audit uid for the request"
               }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/edge-native": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Createa a EdgeNative cluster",
+        "operationId": "v1SpectroClustersEdgeNativeCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroEdgeNativeClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/edge-native/import": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Import a EdgeNative cluster",
+        "operationId": "v1SpectroClustersEdgeNativeImport",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroEdgeNativeClusterImportEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/edge-native/rate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get edge-native spectro cluster estimated rate information",
+        "operationId": "v1SpectroClustersEdgeNativeRate",
+        "parameters": [
+          {
+            "enum": [
+              "hourly",
+              "monthly",
+              "yearly"
+            ],
+            "type": "string",
+            "default": "hourly",
+            "name": "periodType",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroEdgeNativeClusterRateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "EdgeNative Cluster estimated rate response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterRate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/edge-native/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate edge-native spectro cluster create",
+        "operationId": "v1SpectroClustersEdgeNativeValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroEdgeNativeClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "EdgeNative Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
             }
           }
         }
@@ -17939,7 +19705,7 @@
         ],
         "responses": {
           "200": {
-            "description": "libvirt Cluster validation response",
+            "description": "Libvirt Cluster validation response",
             "schema": {
               "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
             }
@@ -18100,6 +19866,64 @@
                 "type": "string",
                 "description": "Audit uid for the request"
               }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/nested": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Creates an Nested cluster",
+        "operationId": "v1SpectroClustersNestedCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroNestedClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spectroclusters/nested/validate": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Validate nested spectro cluster create",
+        "operationId": "v1SpectroClustersNestedValidate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroNestedClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nested Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
             }
           }
         }
@@ -18327,6 +20151,51 @@
         }
       }
     },
+    "/v1/spectroclusters/upgrade/settings": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get cluster settings by context",
+        "operationId": "v1SpectroClustersUpgradeSettingsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Update all clusters upgrade settings",
+        "operationId": "v1SpectroClustersUpgradeSettings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/spectroclusters/usage/compute": {
       "post": {
         "tags": [
@@ -18548,12 +20417,14 @@
         "parameters": [
           {
             "type": "string",
+            "description": "comma separated tags like system,profile",
             "name": "includeTags",
             "in": "query"
           },
           {
             "type": "boolean",
             "default": false,
+            "description": "resolve pack values if set to true",
             "name": "resolvePackValues",
             "in": "query"
           },
@@ -18567,6 +20438,13 @@
             "type": "string",
             "description": "filter cluster profile templates by profileType",
             "name": "profileType",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "default": false,
+            "description": "include non spectro labels in the cluster labels if set to true",
+            "name": "includeNonSpectroLabels",
             "in": "query"
           }
         ],
@@ -18932,6 +20810,37 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/clusterConfig/hostCluster": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified spectro cluster host config",
+        "operationId": "V1HostClusterConfigUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1HostClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/clusterConfig/osPatch": {
       "patch": {
         "tags": [
@@ -19218,6 +21127,31 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/edge-native/edgeHosts": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Retrieves a list of edge host of edge-native cluster",
+        "operationId": "v1EdgeNativeClustersHostsList",
+        "responses": {
+          "200": {
+            "description": "List of edge host device",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostDevices"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/edge/edgeHosts": {
       "get": {
         "tags": [
@@ -19314,6 +21248,18 @@
                 "description": "Audit uid for the request"
               }
             }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Reset cluster backup schedule settings",
+        "operationId": "v1ClusterFeatureBackupScheduleReset",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
           }
         }
       },
@@ -20040,6 +21986,28 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/import/upgrade": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Upgrade the specified imported read only cluster with full permissions",
+        "operationId": "v1SpectroClustersUidImportUpgradePatch",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/k8certificates": {
       "get": {
         "tags": [
@@ -20075,6 +22043,31 @@
         "responses": {
           "204": {
             "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/kubectl/redirect": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified cluster's kube config file",
+        "operationId": "V1SpectroClustersUidKubeCtlRedirect",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterKubeCtlRedirect"
+            }
           }
         }
       },
@@ -20323,8 +22316,40 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/packs/status": {
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Patch update specified cluster's packs status",
+        "operationId": "v1SpectroClustersUidPacksStatusPatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterPacksStatusEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/packs/{packName}/config": {
       "get": {
+        "description": "Deprecated",
         "tags": [
           "v1"
         ],
@@ -20437,6 +22462,56 @@
           {
             "type": "boolean",
             "default": false,
+            "description": "resolve pending cluster notification if set to true",
+            "name": "resolveNotification",
+            "in": "query"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterProfiles"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Remove cluster profiles from the specified cluster",
+        "operationId": "v1SpectroClustersDeleteProfiles",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterProfilesDeleteEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Patch cluster profiles to the specified cluster",
+        "operationId": "v1SpectroClustersPatchProfiles",
+        "parameters": [
+          {
+            "type": "boolean",
+            "default": false,
+            "description": "resolve pending cluster notification if set to true",
             "name": "resolveNotification",
             "in": "query"
           },
@@ -20501,6 +22576,46 @@
           "required": true
         }
       ]
+    },
+    "/v1/spectroclusters/{uid}/profiles/{profileUid}/packs/{packName}/config": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified cluster's profile pack configuration",
+        "operationId": "v1SpectroClustersUidProfilesUidPacksConfigGet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "cluster uid",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "profile uid",
+            "name": "profileUid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "pack name",
+            "name": "packName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster pack values",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterPackConfigList"
+            }
+          }
+        }
+      }
     },
     "/v1/spectroclusters/{uid}/profiles/{profileUid}/packs/{packName}/manifests": {
       "get": {
@@ -20884,6 +22999,44 @@
         }
       ]
     },
+    "/v1/spectroclusters/{uid}/upgrade/settings": {
+      "post": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Update specific cluster upgrade settings",
+        "operationId": "v1SpectroClustersUidUpgradeSettings",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/validate/packs": {
       "post": {
         "tags": [
@@ -20981,7 +23134,9 @@
             "statefulset",
             "daemonset",
             "job",
-            "cronjob"
+            "cronjob",
+            "rolebinding",
+            "clusterrolebinding"
           ],
           "type": "string",
           "name": "workloadKind",
@@ -20993,7 +23148,8 @@
     "/v1/svc/hutil/internal/hubble/info": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "get hubble info",
         "operationId": "V1SvcHutilInternalHubbleInfo",
@@ -21010,7 +23166,8 @@
     "/v1/svc/hutil/internal/pause": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "pause all the services",
         "operationId": "V1SvcHutilInternalPause",
@@ -21030,7 +23187,8 @@
     "/v1/svc/hutil/internal/reinit/nats": {
       "get": {
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "reinit nats",
         "operationId": "V1SvcHutilInternalReinitNats",
@@ -21626,32 +23784,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "v1",
-          "system"
-        ],
-        "summary": "updates the system domain config",
-        "operationId": "V1SystemConfigDomainUpdate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1SystemConfigDomainSpec"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1Updated"
-            }
-          }
-        }
-      },
       "patch": {
         "tags": [
           "v1",
@@ -21710,6 +23842,50 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1SystemEdgeImage"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/config/edgeNative/image": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "get the system edge-native image",
+        "operationId": "V1SystemConfigEdgeNativeImageGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemEdgeNativeImage"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "updates the system default edge-native devops image",
+        "operationId": "V1SystemConfigEdgeNativeImageUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SystemEdgeNativeImage"
             }
           }
         ],
@@ -21842,6 +24018,50 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1SystemGcpImage"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/config/kubectl": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "get the system web kubectl config",
+        "operationId": "V1SystemConfigKubectlGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemKubectlSpec"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "updates the system web kubectl config",
+        "operationId": "V1SystemConfigKubectlUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SystemKubectlSpec"
             }
           }
         ],
@@ -22379,6 +24599,24 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1Updated"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/config/scar/validate": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "validate existing scar config",
+        "operationId": "V1SystemConfigScarValidate",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemScarValidationResponse"
             }
           }
         }
@@ -23130,6 +25368,80 @@
         }
       }
     },
+    "/v1/system/ratelimit": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "get the system plan",
+        "operationId": "V1SystemRateLimitGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemRateLimit"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "toggles the rate limit",
+        "operationId": "V1SystemRateLimitPatch",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemRateLimit"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/resourceLimits": {
+      "get": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Get system resource limits",
+        "operationId": "v1SystemResourceLimitsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SystemResourceLimits"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1",
+          "system"
+        ],
+        "summary": "Update system resource limits",
+        "operationId": "v1SystemResourceLimitsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SystemResourceLimits"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      }
+    },
     "/v1/system/version/installed": {
       "get": {
         "tags": [
@@ -23645,6 +25957,36 @@
         }
       }
     },
+    "/v1/tenants/activity": {
+      "get": {
+        "tags": [
+          "v1",
+          "system",
+          "private"
+        ],
+        "summary": "Get tenants meta and clusters data",
+        "operationId": "v1TenantsActivity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantsActivities"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "collectionFormat": "multi",
+          "name": "tenantOrgs[]",
+          "in": "query"
+        }
+      ]
+    },
     "/v1/tenants/internal/msgbroker/accounts/reinit": {
       "get": {
         "tags": [
@@ -23666,6 +26008,59 @@
         {
           "type": "boolean",
           "name": "ignoreErrors",
+          "in": "query"
+        }
+      ]
+    },
+    "/v1/tenants/internal/upgrade/settings": {
+      "get": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Get tenant upgrade settings",
+        "operationId": "v1TenantUpgradeSettingsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantUpgradeSettingsEntity"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1",
+          "private"
+        ],
+        "summary": "Update tenant upgrade settings",
+        "operationId": "v1TenantUpgradeSettingsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TenantUpgradeSettingsEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "projectUid",
           "in": "query"
         }
       ]
@@ -24331,6 +26726,52 @@
         }
       ]
     },
+    "/v1/tenants/{tenantUid}/freemium": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get tenant level freemium configuration",
+        "operationId": "v1TenantFreemiumGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TenantFreemium"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update tenant freemium configuration",
+        "operationId": "v1TenantFreemiumUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TenantFreemium"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/tenants/{tenantUid}/freemiumUsage": {
       "get": {
         "tags": [
@@ -24673,6 +27114,69 @@
           }
         }
       },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Create or add new macros for the specified tenant",
+        "operationId": "v1TenantsUidMacrosCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Delete the macros for the specified tenant by given macro name",
+        "operationId": "v1TenantsUidMacrosDeleteByMacroName",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros for the specified tenant by given macro name",
+        "operationId": "v1TenantsUidMacrosUpdateByMacroName",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
       "parameters": [
         {
           "type": "string",
@@ -24868,6 +27372,52 @@
             "in": "body",
             "schema": {
               "$ref": "#/definitions/v1RateConfig"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "tenantUid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/v1/tenants/{tenantUid}/resourceLimits": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Get tenant level resource limits configuration",
+        "operationId": "v1TenantResourceLimitsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TenantResourceLimits"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update tenant resource limits configuration",
+        "operationId": "v1TenantResourceLimitsUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TenantResourceLimitsEntity"
             }
           }
         ],
@@ -25253,126 +27803,6 @@
         }
       }
     },
-    "/v1/users/assets/clusterrbacs": {
-      "get": {
-        "description": "Returns a list of users assets cluster rbacs",
-        "tags": [
-          "v1"
-        ],
-        "summary": "Returns the specified Users assets cluster rbacs",
-        "operationId": "v1UsersAssetsClusterRbacGet",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "name": "filters",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "name": "orderBy",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterRbacs"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "v1"
-        ],
-        "summary": "Stores the specified Users assets cluster rbac",
-        "operationId": "v1UserAssetsClusterRbacCreate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/v1UserAssetClusterRbacEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            },
-            "headers": {
-              "AuditUid": {
-                "type": "string",
-                "description": "Audit uid for the request"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/assets/clusterrbacs/{uid}": {
-      "get": {
-        "tags": [
-          "v1"
-        ],
-        "summary": "Returns the specified users cluster rbac",
-        "operationId": "v1UsersAssetClusterRbacGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterRbac"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "v1"
-        ],
-        "summary": "Updates the specified users clusters rbac",
-        "operationId": "v1UsersAssetClusterRbacUpdate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterRbac"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "v1"
-        ],
-        "summary": "Returns the specified users cluster rbac",
-        "operationId": "v1UsersAssetClusterRbacDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        }
-      },
-      "parameters": [
-        {
-          "type": "string",
-          "name": "uid",
-          "in": "path",
-          "required": true
-        }
-      ]
-    },
     "/v1/users/assets/locations": {
       "get": {
         "description": "Returns a list of users location",
@@ -25404,6 +27834,84 @@
           }
         }
       }
+    },
+    "/v1/users/assets/locations/azure": {
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Stores the specified Users assets Azure location",
+        "operationId": "v1UsersAssetsLocationAzureCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1UserAssetsLocationAzure"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            },
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/assets/locations/azure/{uid}": {
+      "get": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Returns the specified users Azure location",
+        "operationId": "v1UsersAssetsLocationAzureGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserAssetsLocationAzure"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified users Azure location",
+        "operationId": "v1UsersAssetsLocationAzureUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1UserAssetsLocationAzure"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1/users/assets/locations/gcp": {
       "post": {
@@ -26014,6 +28522,89 @@
         }
       }
     },
+    "/v1/users/kubectl/session": {
+      "post": {
+        "description": "save users kubectl session state",
+        "tags": [
+          "v1"
+        ],
+        "summary": "save users kubectl session state",
+        "operationId": "V1UsersKubectlSession",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1UserKubectlSession"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/kubectl/session/{sessionUid}": {
+      "get": {
+        "description": "gets users kubectl session",
+        "tags": [
+          "v1"
+        ],
+        "summary": "gets users kubectl session",
+        "operationId": "V1UsersKubectlSessionUid",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "sessionUid",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserKubectlSession"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "deletes users kubectl session",
+        "tags": [
+          "v1"
+        ],
+        "summary": "deletes users kubectl session",
+        "operationId": "V1UsersKubectlSessionUidDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "sessionUid",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "type": "string",
+                "description": "Audit uid for the request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/users/me": {
       "get": {
         "description": "Returns a User with permissions with scopes",
@@ -26236,6 +28827,69 @@
             "description": "The resource was updated successfully"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Create or add new macros for the system user",
+        "operationId": "v1UsersSystemMacrosCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Delete the macros for the system user by macro name",
+        "operationId": "v1UsersSystemMacrosDeleteByMacroName",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Update the macros for the system user by macro name",
+        "operationId": "v1UsersSystemMacrosUpdateByMacroName",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1Macros"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
       }
     },
     "/v1/users/{uid}": {
@@ -26326,7 +28980,8 @@
       "get": {
         "description": "API to get the user  activation link to reset the password",
         "tags": [
-          "v1"
+          "v1",
+          "private"
         ],
         "summary": "Returns the specified User activation link to reset the password",
         "operationId": "V1UsersUidActivationLink",
@@ -26921,6 +29576,37 @@
         }
       ]
     },
+    "/v1/workspaces/{uid}/clusterNamespaces": {
+      "put": {
+        "tags": [
+          "v1"
+        ],
+        "summary": "Updates the specified workspace namespaces",
+        "operationId": "v1WorkspacesUidClusterNamespacesUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceClusterNamespacesEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "uid",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/v1/workspaces/{uid}/clusterRbacs": {
       "post": {
         "tags": [
@@ -27043,6 +29729,7 @@
     },
     "/v1/workspaces/{uid}/resourceAllocations": {
       "put": {
+        "description": "Deprecated",
         "tags": [
           "v1"
         ],
@@ -27154,6 +29841,20 @@
           "type": "string"
         },
         "externalId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1.AzureAccountEntitySpec": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "tenantId": {
           "type": "string"
         }
       }
@@ -27670,6 +30371,26 @@
         }
       }
     },
+    "v1AuditResourceReference": {
+      "type": "object",
+      "required": [
+        "uid"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
     "v1AuditSpec": {
       "description": "Audit specifications",
       "properties": {
@@ -27693,7 +30414,7 @@
           "type": "string"
         },
         "resource": {
-          "$ref": "#/definitions/v1ResourceReference"
+          "$ref": "#/definitions/v1AuditResourceReference"
         },
         "userMsg": {
           "type": "string"
@@ -27892,6 +30613,12 @@
         "credentialType": {
           "$ref": "#/definitions/v1AwsCloudAccountCredentialType"
         },
+        "policyARNs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "secretKey": {
           "type": "string"
         },
@@ -27971,9 +30698,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "images": {
           "description": "Images array items should be 1-to-1 mapping to Spec.MachinePoolConfig",
@@ -28153,6 +30878,21 @@
         }
       }
     },
+    "v1AwsIamPolicy": {
+      "description": "Aws policy",
+      "type": "object",
+      "properties": {
+        "arn": {
+          "type": "string"
+        },
+        "policyId": {
+          "type": "string"
+        },
+        "policyName": {
+          "type": "string"
+        }
+      }
+    },
     "v1AwsImage": {
       "description": "Aws image name and ami",
       "type": "object",
@@ -28186,6 +30926,39 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "v1AwsKmsKey": {
+      "description": "Aws KMS Key",
+      "type": "object",
+      "required": [
+        "keyId",
+        "keyArn"
+      ],
+      "properties": {
+        "keyAlias": {
+          "type": "string"
+        },
+        "keyArn": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AwsKmsKeys": {
+      "type": "object",
+      "required": [
+        "kmsKeys"
+      ],
+      "properties": {
+        "kmsKeys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AwsKmsKey"
           }
         }
       }
@@ -28482,6 +31255,39 @@
         }
       }
     },
+    "v1AwsPolicies": {
+      "type": "object",
+      "required": [
+        "policies"
+      ],
+      "properties": {
+        "policies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AwsIamPolicy"
+          }
+        }
+      }
+    },
+    "v1AwsPolicyArnsSpec": {
+      "description": "Aws policy arns spec",
+      "type": "object",
+      "required": [
+        "policyArns",
+        "account"
+      ],
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1AwsCloudAccount"
+        },
+        "policyArns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v1AwsRegion": {
       "description": "Aws region",
       "type": "object",
@@ -28512,7 +31318,7 @@
       }
     },
     "v1AwsS3BucketCredentials": {
-      "description": "Aws S Bucket credentials",
+      "description": "Aws S3 Bucket credentials",
       "type": "object",
       "required": [
         "credentials",
@@ -28699,6 +31505,10 @@
           "description": "ClientSecret is the secret associated with Client",
           "type": "string"
         },
+        "settings": {
+          "description": "Palette internal cloud settings",
+          "$ref": "#/definitions/v1CloudAccountSettings"
+        },
         "tenantId": {
           "description": "Tenant ID is the ID for the Azure AD tenant that the user belongs to.",
           "type": "string"
@@ -28773,9 +31583,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "images": {
           "description": "Images array items should be 1-to-1 mapping to Spec.MachinePoolConfig",
@@ -28841,6 +31649,9 @@
         },
         "vnetName": {
           "description": "VNETName is the virtual network in which the cluster is to be provisioned.",
+          "type": "string"
+        },
+        "vnetResourceGroup": {
           "type": "string"
         },
         "workerSubnet": {
@@ -29024,6 +31835,10 @@
         "osDisk": {
           "$ref": "#/definitions/v1AzureOSDisk"
         },
+        "osType": {
+          "type": "string",
+          "$ref": "#/definitions/v1OsType"
+        },
         "size": {
           "description": "size of the pool, number of machines",
           "type": "integer",
@@ -29187,6 +32002,10 @@
           "description": "whether this pool is for system node Pool",
           "type": "boolean",
           "x-omitempty": false
+        },
+        "osType": {
+          "type": "string",
+          "$ref": "#/definitions/v1OsType"
         }
       }
     },
@@ -29220,7 +32039,8 @@
           "$ref": "#/definitions/v1ManagedDisk"
         },
         "osType": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/definitions/v1OsType"
         }
       }
     },
@@ -29276,6 +32096,33 @@
           "items": {
             "$ref": "#/definitions/v1StorageAccountEntity"
           }
+        }
+      }
+    },
+    "v1AzureStorageConfig": {
+      "description": "User asset Azure location config",
+      "type": "object",
+      "required": [
+        "resourceGroup",
+        "containerName",
+        "storageName",
+        "credentials"
+      ],
+      "properties": {
+        "containerName": {
+          "type": "string"
+        },
+        "credentials": {
+          "$ref": "#/definitions/v1.AzureAccountEntitySpec"
+        },
+        "resourceGroup": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "storageName": {
+          "type": "string"
         }
       }
     },
@@ -29468,6 +32315,57 @@
         }
       }
     },
+    "v1BulkDeleteFailure": {
+      "properties": {
+        "errMsg": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1BulkDeleteRequest": {
+      "required": [
+        "uids"
+      ],
+      "properties": {
+        "uids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1BulkDeleteResponse": {
+      "properties": {
+        "deletedCount": {
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "failures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1BulkDeleteFailure"
+          },
+          "x-omitempty": false
+        },
+        "isSucceeded": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "message": {
+          "type": "string",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1BulkEvents": {
       "type": "array",
       "uniqueItems": true,
@@ -29579,6 +32477,9 @@
           "type": "boolean",
           "x-omitempty": false
         },
+        "createdBy": {
+          "type": "string"
+        },
         "http": {
           "type": "object",
           "properties": {
@@ -29619,6 +32520,9 @@
             "app",
             "http"
           ]
+        },
+        "uid": {
+          "type": "string"
         }
       }
     },
@@ -29643,6 +32547,17 @@
         },
         "uid": {
           "type": "string"
+        }
+      }
+    },
+    "v1CloudAccountSettings": {
+      "description": "Cloud account settings",
+      "type": "object",
+      "properties": {
+        "disablePropertiesRequest": {
+          "description": "Will disable certain properties request to cloud and the input is collected directly from the user",
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -29858,13 +32773,16 @@
         "vsphere",
         "openstack",
         "maas",
+        "nested",
         "baremetal",
         "eks",
         "aks",
         "edge",
+        "edge-native",
         "libvirt",
         "tencent",
-        "tke"
+        "tke",
+        "generic"
       ]
     },
     "v1CloudWatch": {
@@ -30179,6 +33097,10 @@
           "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes. If the node is not ready within the time out set, the node will be deleted and a new node will be launched.",
           "type": "string"
         },
+        "hostClusterConfig": {
+          "description": "HostClusterConfiguration defines the configuration of host clusters, where nested clusters be deployed",
+          "$ref": "#/definitions/v1HostClusterConfig"
+        },
         "machineHealthConfig": {
           "description": "MachineHealthCheckConfig defines the healthcheck timeouts for the node. The timeouts are configured by the user to overide the default healthchecks.",
           "$ref": "#/definitions/v1MachineHealthCheckConfig"
@@ -30196,6 +33118,9 @@
     "v1ClusterConfigEntity": {
       "type": "object",
       "properties": {
+        "hostClusterConfig": {
+          "$ref": "#/definitions/v1HostClusterConfig"
+        },
         "machineManagementConfig": {
           "$ref": "#/definitions/v1MachineManagementConfig"
         },
@@ -30451,6 +33376,36 @@
         }
       }
     },
+    "v1ClusterMeta": {
+      "description": "Active cluster meta",
+      "type": "object",
+      "properties": {
+        "cloudType": {
+          "type": "string"
+        },
+        "clusterType": {
+          "type": "string"
+        },
+        "creationTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "projectName": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/v1ClusterState"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
     "v1ClusterNamespace": {
       "description": "Cluster's namespace",
       "properties": {
@@ -30535,6 +33490,10 @@
     "v1ClusterNamespaceSpec": {
       "description": "Cluster namespace spec",
       "properties": {
+        "isRegex": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "relatedObject": {
           "$ref": "#/definitions/v1RelatedObject"
         },
@@ -30582,19 +33541,71 @@
         }
       }
     },
+    "v1ClusterPackManifestStatus": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/v1ClusterCondition"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterPackStatus": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/v1ClusterCondition"
+        },
+        "endTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "manifests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterPackManifestStatus"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1ClusterPreference": {
       "description": "cluster preference",
       "properties": {
-        "archivalInterval": {
-          "description": "Time unit is hour",
+        "archivalIntervalInHour": {
+          "description": "clusters cleanup interval post deletion",
           "type": "integer"
         },
-        "deletePeriod": {
-          "description": "Time unit is hour",
+        "deletePeriodInHour": {
+          "description": "clusters deleted before delete period are eligible for cleanup",
           "type": "integer"
         },
-        "monitorInterval": {
-          "description": "Time unit is minutes",
+        "healthPollIntervalInMinutes": {
+          "description": "clusters health poll interval",
+          "type": "integer",
+          "maximum": 60,
+          "minimum": 3
+        },
+        "monitorIntervalInMinutes": {
+          "description": "clusters state and consistency monitor",
           "type": "integer"
         }
       }
@@ -30641,8 +33652,26 @@
         "name": {
           "type": "string"
         },
+        "target": {
+          "$ref": "#/definitions/v1ClusterProfileCloneTarget"
+        },
         "version": {
           "type": "string"
+        }
+      }
+    },
+    "v1ClusterProfileCloneTarget": {
+      "description": "Cluster profile clone meta input entity",
+      "type": "object",
+      "required": [
+        "scope"
+      ],
+      "properties": {
+        "projectUid": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/v1Scope"
         }
       }
     },
@@ -30694,6 +33723,18 @@
         }
       }
     },
+    "v1ClusterProfileImportEntity": {
+      "description": "Cluster profile input for import",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ClusterProfileMetadataImportEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterProfileSpecImportEntity"
+        }
+      }
+    },
     "v1ClusterProfileMetadata": {
       "description": "Cluster profile filter spec",
       "properties": {
@@ -30709,6 +33750,24 @@
               "type": "string"
             }
           }
+        }
+      }
+    },
+    "v1ClusterProfileMetadataImportEntity": {
+      "description": "Cluster profile metadata import entity",
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
         }
       }
     },
@@ -30862,6 +33921,18 @@
         }
       }
     },
+    "v1ClusterProfileSpecImportEntity": {
+      "description": "Cluster profile spec import entity",
+      "type": "object",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/v1ClusterProfileTemplateImportEntity"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1ClusterProfileStatus": {
       "description": "ClusterProfileStatus defines the observed state of ClusterProfile",
       "type": "object",
@@ -30872,9 +33943,16 @@
           "x-omitempty": false
         },
         "inUseClusterUids": {
+          "description": "Deprecated. Use inUseClusters",
           "type": "array",
           "items": {
             "type": "string"
+          }
+        },
+        "inUseClusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ObjectEntity"
           }
         },
         "isPublished": {
@@ -30887,6 +33965,19 @@
       "description": "ClusterProfileStatusSummary defines the observed state of ClusterProfile",
       "type": "object",
       "properties": {
+        "inUseClusterUids": {
+          "description": "Deprecated. Use inUseClusters",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inUseClusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ObjectEntity"
+          }
+        },
         "isPublished": {
           "type": "boolean",
           "x-omitempty": false
@@ -30933,19 +34024,7 @@
       "type": "object",
       "properties": {
         "cloudType": {
-          "type": "string",
-          "enum": [
-            "aws",
-            "eks",
-            "gcp",
-            "azure",
-            "vsphere",
-            "openstack",
-            "libvirt",
-            "edge",
-            "aks",
-            "all"
-          ]
+          "$ref": "#/definitions/v1CloudType"
         },
         "name": {
           "type": "string"
@@ -31001,6 +34080,25 @@
         },
         "type": {
           "$ref": "#/definitions/v1ProfileType"
+        }
+      }
+    },
+    "v1ClusterProfileTemplateImportEntity": {
+      "description": "Cluster profile template import entity",
+      "type": "object",
+      "properties": {
+        "cloudType": {
+          "type": "string"
+        },
+        "packs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1PackImportEntity"
+          }
+        },
+        "type": {
+          "type": "string"
         }
       }
     },
@@ -31598,6 +34696,17 @@
         "Importing"
       ]
     },
+    "v1ClusterUpgradeSettingsEntity": {
+      "properties": {
+        "spectroComponents": {
+          "type": "string",
+          "enum": [
+            "lock",
+            "unlock"
+          ]
+        }
+      }
+    },
     "v1ClusterUsageSummary": {
       "description": "Cluster usage summary",
       "type": "object",
@@ -32133,10 +35242,40 @@
         }
       }
     },
+    "v1ClusterWorkloadRoleBinding": {
+      "description": "Cluster workload rbac binding summary",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ClusterWorkloadMetadata"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterRbacBinding"
+        }
+      }
+    },
+    "v1ClusterWorkloadRoleBindings": {
+      "description": "Cluster workload rbac bindings summary",
+      "type": "object",
+      "properties": {
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterWorkloadRoleBinding"
+          }
+        }
+      }
+    },
     "v1ClusterWorkloadSpec": {
       "description": "Cluster workload spec",
       "type": "object",
       "properties": {
+        "clusterroleBindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterWorkloadRoleBinding"
+          }
+        },
         "cronJobs": {
           "type": "array",
           "items": {
@@ -32165,6 +35304,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterWorkloadPod"
+          }
+        },
+        "roleBindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterWorkloadRoleBinding"
           }
         },
         "statefulSets": {
@@ -32227,6 +35372,39 @@
       "properties": {
         "filter": {
           "$ref": "#/definitions/v1ClusterWorkloadsFilter"
+        }
+      }
+    },
+    "v1ClustersInfo": {
+      "description": "Active clusters information",
+      "type": "object",
+      "properties": {
+        "clustersMeta": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ClusterMeta"
+          }
+        },
+        "totalActiveClusters": {
+          "type": "number",
+          "format": "int64"
+        },
+        "totalActiveGreenFieldClusters": {
+          "type": "number",
+          "format": "int64"
+        },
+        "totalActiveImportedClusters": {
+          "type": "number",
+          "format": "int64"
+        },
+        "totalClustersDeleted": {
+          "type": "number",
+          "format": "int64"
+        },
+        "totalClustersDeployed": {
+          "type": "number",
+          "format": "int64"
         }
       }
     },
@@ -32484,6 +35662,29 @@
         }
       }
     },
+    "v1DashboardWorkspaceQuota": {
+      "description": "Workspace resource quota",
+      "properties": {
+        "resourceAllocation": {
+          "$ref": "#/definitions/v1DashboardWorkspaceQuotaResourceAllocation"
+        }
+      }
+    },
+    "v1DashboardWorkspaceQuotaResourceAllocation": {
+      "description": "Workspace quota resource allocation",
+      "properties": {
+        "cpu": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "memory": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true
+        }
+      }
+    },
     "v1DashboardWorkspaceResourceAllocation": {
       "description": "Workspace resource allocation",
       "properties": {
@@ -32515,6 +35716,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "quota": {
+          "$ref": "#/definitions/v1DashboardWorkspaceQuota"
         }
       }
     },
@@ -32903,6 +36107,14 @@
         }
       }
     },
+    "v1EdgeHostClusterEntity": {
+      "type": "object",
+      "properties": {
+        "clusterUid": {
+          "type": "string"
+        }
+      }
+    },
     "v1EdgeHostDevice": {
       "properties": {
         "aclmeta": {
@@ -32974,6 +36186,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ObjectEntity"
+          }
+        },
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterPackStatus"
           }
         },
         "profileStatus": {
@@ -33094,6 +36312,14 @@
         }
       }
     },
+    "v1EdgeHostState": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "unpaired",
+        "in-use"
+      ]
+    },
     "v1EdgeHostStoragePool": {
       "description": "StoragePool is the storage pool for the vm image",
       "properties": {
@@ -33109,6 +36335,119 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1VsphereCloudDatacenter"
+          }
+        }
+      }
+    },
+    "v1EdgeHostsMetadata": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1EdgeHostsMetadataSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1EdgeHostsMetadataStatus"
+        }
+      }
+    },
+    "v1EdgeHostsMetadataFilter": {
+      "description": "Edge host metadata spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1EdgeHostsMetadataFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeHostsMetadataSortSpec"
+          }
+        }
+      }
+    },
+    "v1EdgeHostsMetadataFilterSpec": {
+      "description": "Edge hosts metadata filter spec",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/v1FilterString"
+        },
+        "states": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeHostState"
+          }
+        }
+      }
+    },
+    "v1EdgeHostsMetadataSortFields": {
+      "type": "string",
+      "enum": [
+        "name",
+        "state",
+        "creationTimestamp",
+        "lastModifiedTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1EdgeHostsMetadataSortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1EdgeHostsMetadataSortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1SortOrder"
+        }
+      }
+    },
+    "v1EdgeHostsMetadataSpec": {
+      "type": "object",
+      "properties": {
+        "clusterProfileTemplates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ProfileTemplateSummary"
+          }
+        },
+        "device": {
+          "$ref": "#/definitions/v1DeviceSpec"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeHostsMetadataStatus": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "$ref": "#/definitions/v1EdgeHostHealth"
+        },
+        "inUseClusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ObjectEntity"
+          }
+        },
+        "state": {
+          "$ref": "#/definitions/v1EdgeHostState"
+        }
+      }
+    },
+    "v1EdgeHostsMetadataSummary": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeHostsMetadata"
           }
         }
       }
@@ -33371,11 +36710,381 @@
         }
       }
     },
+    "v1EdgeNativeCloudClusterConfigEntity": {
+      "description": "EdgeNative cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+        }
+      }
+    },
+    "v1EdgeNativeCloudConfig": {
+      "description": "EdgeNativeCloudConfig is the Schema for the edgenativecloudconfigs API",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1EdgeNativeCloudConfigSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1EdgeNativeCloudConfigStatus"
+        }
+      }
+    },
+    "v1EdgeNativeCloudConfigSpec": {
+      "description": "EdgeNativeCloudConfigSpec defines the desired state of EdgeNativeCloudConfig",
+      "type": "object",
+      "required": [
+        "clusterConfig",
+        "machinePoolConfig"
+      ],
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+        },
+        "machinePoolConfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+          }
+        }
+      }
+    },
+    "v1EdgeNativeCloudConfigStatus": {
+      "description": "EdgeNativeCloudConfigStatus defines the observed state of EdgeNativeCloudConfig",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterCondition"
+          }
+        },
+        "nodeImage": {
+          "type": "string"
+        },
+        "sourceImageId": {
+          "description": "SourceImageId can be from packref's annotations or from pack.json",
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeNativeClusterConfig": {
+      "description": "EdgeNativeClusterConfig definnes Edge Native Cluster specific Spec",
+      "type": "object",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN",
+          "$ref": "#/definitions/v1EdgeNativeControlPlaneEndPoint"
+        },
+        "ntpServers": {
+          "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "sshKeys": {
+          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "staticIp": {
+          "description": "StaticIP indicates if IP allocation type is static IP. DHCP is the default allocation type",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1EdgeNativeControlPlaneEndPoint": {
+      "type": "object",
+      "properties": {
+        "ddnsSearchDomain": {
+          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint. If Host is already a DDNS FQDN, DDNSSearchDomain is not required",
+          "type": "string"
+        },
+        "host": {
+          "description": "Host is FQDN(DDNS) or IP",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type indicates DDNS or VIP",
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeNativeHost": {
+      "description": "EdgeNativeHost is the underlying appliance",
+      "type": "object",
+      "required": [
+        "hostUid",
+        "hostAddress"
+      ],
+      "properties": {
+        "IsCandidateCaption": {
+          "description": "Is Edge host nominated as candidate",
+          "type": "boolean",
+          "default": false,
+          "x-omitempty": false
+        },
+        "caCert": {
+          "description": "CACert for TLS connections",
+          "type": "string"
+        },
+        "hostAddress": {
+          "description": "HostAddress is a FQDN or IP address of the Host",
+          "type": "string",
+          "default": ""
+        },
+        "hostUid": {
+          "description": "HostUid is the ID of the EdgeHost",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "v1EdgeNativeInstanceType": {
+      "description": "EdgeNativeInstanceType defines the instance configuration for a docker container node",
+      "type": "object",
+      "properties": {
+        "diskGiB": {
+          "description": "DiskGiB is the size of a virtual machine's disk",
+          "type": "integer",
+          "format": "int32"
+        },
+        "memoryMiB": {
+          "description": "MemoryMiB is the size of a virtual machine's memory, in MiB",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "description": "Name is the instance name",
+          "type": "string"
+        },
+        "numCPUs": {
+          "description": "NumCPUs is the number of CPUs",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1EdgeNativeMachine": {
+      "description": "EdgeNative cloud VM definition",
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1EdgeNativeMachineSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1CloudMachineStatus"
+        }
+      }
+    },
+    "v1EdgeNativeMachinePoolCloudConfigEntity": {
+      "required": [
+        "edgeHosts"
+      ],
+      "properties": {
+        "edgeHosts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeMachinePoolHostEntity"
+          }
+        }
+      }
+    },
+    "v1EdgeNativeMachinePoolConfig": {
+      "type": "object",
+      "required": [
+        "hosts"
+      ],
+      "properties": {
+        "additionalLabels": {
+          "description": "AdditionalLabels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalTags": {
+          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeHost"
+          }
+        },
+        "infraProfileRef": {
+          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "infraProfileTemplate": {
+          "description": "InfraProfile contains OS/Kernel for this NodePool",
+          "$ref": "#/definitions/v1ClusterProfileTemplate"
+        },
+        "isControlPlane": {
+          "description": "whether this pool is for control plane",
+          "type": "boolean"
+        },
+        "labels": {
+          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "maxSize": {
+          "description": "max size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minSize": {
+          "description": "min size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "osType": {
+          "description": "the os type for the pool, must be supported by the provider",
+          "type": "string"
+        },
+        "size": {
+          "description": "size of the pool, number of machines",
+          "type": "integer",
+          "format": "int32"
+        },
+        "taints": {
+          "description": "master or worker taints",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
+        },
+        "updateStrategy": {
+          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut",
+          "$ref": "#/definitions/v1UpdateStrategy"
+        },
+        "useControlPlaneAsWorker": {
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1EdgeNativeMachinePoolConfigEntity": {
+      "type": "object",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1EdgeNativeMachinePoolCloudConfigEntity"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        },
+        "profileConfig": {
+          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
+        }
+      }
+    },
+    "v1EdgeNativeMachinePoolHostEntity": {
+      "required": [
+        "hostUid"
+      ],
+      "properties": {
+        "hostUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EdgeNativeMachineSpec": {
+      "description": "EdgeNative cloud VM definition spec",
+      "type": "object",
+      "properties": {
+        "edgeHostUid": {
+          "type": "string"
+        },
+        "instanceType": {
+          "$ref": "#/definitions/v1EdgeNativeInstanceType"
+        },
+        "nics": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeNic"
+          }
+        }
+      }
+    },
+    "v1EdgeNativeMachines": {
+      "description": "EdgeNative machine list",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeMachine"
+          }
+        }
+      }
+    },
+    "v1EdgeNativeNic": {
+      "description": "Generic network interface",
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "format": "int8"
+        },
+        "networkName": {
+          "type": "string"
+        },
+        "privateIPs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publicIp": {
+          "type": "string"
+        }
+      }
+    },
     "v1EdgeServiceLogin": {
       "description": "System service login input",
       "type": "object",
       "properties": {
         "edgeHostUid": {
+          "type": "string"
+        },
+        "secret": {
+          "description": "Common shared secret string between the server \u0026 client.",
           "type": "string"
         },
         "serviceName": {
@@ -33384,6 +37093,9 @@
             "edge",
             "lodge"
           ]
+        },
+        "spectroClusterUid": {
+          "type": "string"
         },
         "tenantUid": {
           "type": "string"
@@ -34017,7 +37729,8 @@
       "properties": {
         "usage": {
           "type": "number",
-          "format": "float64"
+          "format": "float64",
+          "x-omitempty": false
         }
       }
     },
@@ -34025,20 +37738,30 @@
       "type": "object",
       "properties": {
         "activeClusters": {
-          "type": "integer"
+          "type": "integer",
+          "x-omitempty": false
         },
         "overageUsage": {
-          "type": "number"
+          "type": "number",
+          "x-omitempty": false
         },
         "usage": {
           "type": "number",
-          "format": "float64"
+          "format": "float64",
+          "x-omitempty": false
         }
       }
     },
     "v1GPUConfig": {
       "type": "object",
       "properties": {
+        "addresses": {
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "deviceModel": {
           "description": "DeviceModel is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
           "type": "string"
@@ -34123,6 +37846,25 @@
           "type": "string"
         },
         "jsonCredentialsFileUid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GcpAccountNameValidateSpec": {
+      "description": "Gcp cloud account name validate spec",
+      "type": "object",
+      "required": [
+        "credentials",
+        "bucketName"
+      ],
+      "properties": {
+        "bucketName": {
+          "type": "string"
+        },
+        "credentials": {
+          "$ref": "#/definitions/v1GcpAccountValidateSpec"
+        },
+        "projectId": {
           "type": "string"
         }
       }
@@ -34241,9 +37983,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "images": {
           "description": "Images array items should be 1-to-1 mapping to Spec.MachinePoolConfig",
@@ -34505,6 +38245,9 @@
         "image": {
           "type": "string"
         },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
+        },
         "instanceType": {
           "type": "string"
         },
@@ -34727,6 +38470,13 @@
         },
         "clusterConfig": {
           "$ref": "#/definitions/v1GenericClusterConfig"
+        },
+        "edgeHostRefs": {
+          "description": "Appliances (Edge Host) uids",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ObjectReference"
+          }
         },
         "machinePoolConfig": {
           "type": "array",
@@ -35162,6 +38912,53 @@
         }
       }
     },
+    "v1HostClusterConfig": {
+      "properties": {
+        "clusterEndpoint": {
+          "description": "host cluster configuration",
+          "$ref": "#/definitions/v1HostClusterEndpoint"
+        },
+        "isHostCluster": {
+          "description": "is enabled as host cluster",
+          "type": "boolean",
+          "default": false,
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1HostClusterConfigEntity": {
+      "type": "object",
+      "properties": {
+        "hostClusterConfig": {
+          "$ref": "#/definitions/v1HostClusterConfig"
+        }
+      }
+    },
+    "v1HostClusterEndpoint": {
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1HostClusterEndpointConfig"
+        },
+        "type": {
+          "description": "is enabled as host cluster",
+          "type": "string",
+          "enum": [
+            "Ingress",
+            "LoadBalancer"
+          ]
+        }
+      }
+    },
+    "v1HostClusterEndpointConfig": {
+      "properties": {
+        "ingressConfig": {
+          "$ref": "#/definitions/v1IngressConfig"
+        },
+        "loadBalancerConfig": {
+          "$ref": "#/definitions/v1LoadBalancerConfig"
+        }
+      }
+    },
     "v1HttpPatch": {
       "type": "object",
       "required": [
@@ -35277,6 +39074,29 @@
         }
       }
     },
+    "v1ImportEdgeHostConfig": {
+      "type": "object",
+      "properties": {
+        "edgeHostUid": {
+          "description": "Deprecated. Use 'edgeHostUids' field",
+          "type": "string"
+        },
+        "edgeHostUids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1IngressConfig": {
+      "description": "ingress configuration",
+      "properties": {
+        "host": {
+          "type": "string"
+        }
+      }
+    },
     "v1InstallerStatus": {
       "description": "Spectro cluster installer status",
       "type": "object",
@@ -35290,6 +39110,26 @@
         "endpoint": {
           "type": "string",
           "x-omitempty": false
+        }
+      }
+    },
+    "v1InstanceConfig": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "memoryMiB": {
+          "description": "MemoryMiB is the size of a virtual machine's memory, in MiB",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numCPUs": {
+          "description": "NumCPUs is the number of virtual processors in a virtual machine",
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
@@ -36605,6 +40445,26 @@
         }
       }
     },
+    "v1LoadBalancerConfig": {
+      "description": "load balancer configuration",
+      "properties": {
+        "externalIPs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "externalTrafficPolicy": {
+          "type": "string"
+        },
+        "loadBalancerSourceRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v1LoadBalancerService": {
       "type": "object",
       "properties": {
@@ -36764,6 +40624,14 @@
         },
         "apiKey": {
           "type": "string"
+        },
+        "preferredSubnets": {
+          "description": "list of preferred subnets order in the list reflects order in which subnets will be selected for ip address selection in apiserver dns endpoint this way user can specify external or preferable subnet \"10.11.130.0/24,10.10.10.0/24\"",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
         }
       }
     },
@@ -36830,12 +40698,10 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "isAddonLayer": {
-          "description": "addon layes present in spc",
+          "description": "addon layers present in spc",
           "type": "boolean"
         },
         "nodeImage": {
@@ -37478,6 +41344,26 @@
         },
         "rate": {
           "$ref": "#/definitions/v1CloudRate"
+        }
+      }
+    },
+    "v1MachinePoolsMachineUids": {
+      "properties": {
+        "machinePools": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1MachineUids"
+          }
+        }
+      }
+    },
+    "v1MachineUids": {
+      "properties": {
+        "machineUids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -38237,6 +42123,100 @@
         }
       }
     },
+    "v1MgmtDbCollectionIndexInfo": {
+      "description": "Database info",
+      "type": "object",
+      "properties": {
+        "key": {
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1MgmtDbCollectionInfo": {
+      "description": "Database info",
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "indexes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1MgmtDbCollectionIndexInfo"
+          }
+        },
+        "isCapped": {
+          "type": "boolean"
+        },
+        "isReadOnly": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "storageSize": {
+          "type": "integer"
+        },
+        "totalIndexSize": {
+          "type": "integer"
+        }
+      }
+    },
+    "v1MgmtDbHealth": {
+      "type": "object",
+      "properties": {
+        "databases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1MgmtDbInfo"
+          }
+        },
+        "totalIndexSize": {
+          "type": "integer"
+        },
+        "totalSize": {
+          "type": "integer"
+        }
+      }
+    },
+    "v1MgmtDbInfo": {
+      "description": "Database info",
+      "type": "object",
+      "properties": {
+        "collections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1MgmtDbCollectionInfo"
+          }
+        },
+        "isEmpty": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "totalIndexSize": {
+          "type": "integer"
+        }
+      }
+    },
     "v1MgmtDeleteBackupFtpEntity": {
       "description": "delete backups based on retention period",
       "type": "object",
@@ -38264,11 +42244,11 @@
     "v1MgmtErrLog": {
       "type": "object",
       "properties": {
-        "err": {
-          "$ref": "#/definitions/v1MgmtErrStack"
-        },
         "ref": {
           "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1MgmtErrSpec"
         }
       }
     },
@@ -38279,27 +42259,52 @@
         "$ref": "#/definitions/v1MgmtErrLog"
       }
     },
-    "v1MgmtErrStack": {
+    "v1MgmtErrSpec": {
       "type": "object",
       "properties": {
         "causes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v1MgmtErrStack"
+            "type": "string"
           }
         },
-        "code": {
+        "data": {
           "type": "string"
         },
-        "data": {
-          "description": "this map will be for ansible roles present in eack pack",
+        "debug": {
           "type": "object",
           "additionalProperties": {
             "type": "object"
           }
         },
-        "message": {
+        "errCode": {
           "type": "string"
+        },
+        "errMsg": {
+          "type": "string"
+        },
+        "stackTraces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "userCtx": {
+          "type": "object",
+          "properties": {
+            "projectUid": {
+              "type": "string"
+            },
+            "serviceResUid": {
+              "type": "string"
+            },
+            "tenantUid": {
+              "type": "string"
+            },
+            "userUid": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -39122,6 +43127,308 @@
         }
       }
     },
+    "v1Nested": {
+      "properties": {
+        "hostCluster": {
+          "description": "host cluster reference",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "nestedClusters": {
+          "description": "list of nested clusters deployed on the cluster",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ObjectReference"
+          }
+        },
+        "state": {
+          "description": "cluster nested host status",
+          "type": "string"
+        }
+      }
+    },
+    "v1NestedCloudClusterConfigEntity": {
+      "description": "Nested cloud cluster config entity",
+      "type": "object",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1NestedClusterConfig"
+        }
+      }
+    },
+    "v1NestedCloudConfig": {
+      "description": "NestedCloudConfig is the Schema for the nestedcloudconfigs API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1NestedCloudConfigSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1NestedCloudConfigStatus"
+        }
+      }
+    },
+    "v1NestedCloudConfigSpec": {
+      "description": "NestedCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec for cluster-api.",
+      "type": "object",
+      "required": [
+        "clusterConfig",
+        "hostClusterUid",
+        "machinePoolConfig"
+      ],
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1NestedClusterConfig"
+        },
+        "hostClusterUid": {
+          "type": "string"
+        },
+        "machinePoolConfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1NestedMachinePoolConfig"
+          }
+        }
+      }
+    },
+    "v1NestedCloudConfigStatus": {
+      "description": "NestedCloudConfigStatus defines the observed state of NestedCloudConfig",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterCondition"
+          },
+          "x-kubernetes-patch-merge-key": "type",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "isAddonLayer": {
+          "description": "addon layers present in spc",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1NestedClusterConfig": {
+      "description": "cluster level configuration for nested cluster",
+      "type": "object",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "$ref": "#/definitions/v1APIEndpoint"
+        },
+        "helmRelease": {
+          "$ref": "#/definitions/v1VirtualClusterHelmRelease"
+        },
+        "kubernetesVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NestedInstanceType": {
+      "type": "object",
+      "properties": {
+        "maxCPU": {
+          "description": "Maximum CPU cores",
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxMemInMiB": {
+          "description": "Maximum memory in MiB",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minCPU": {
+          "description": "Minimum CPU cores",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minMemInMiB": {
+          "description": "Minimum memory in MiB",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1NestedMachine": {
+      "description": "Nested cloud machine definition",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1NestedMachineSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1CloudMachineStatus"
+        }
+      }
+    },
+    "v1NestedMachinePoolCloudConfigEntity": {
+      "type": "object",
+      "required": [
+        "instanceType",
+        "resourcePool"
+      ],
+      "properties": {
+        "instanceType": {
+          "$ref": "#/definitions/v1NestedInstanceType"
+        },
+        "resourcePool": {
+          "description": "the resource pool",
+          "type": "string"
+        }
+      }
+    },
+    "v1NestedMachinePoolConfig": {
+      "type": "object",
+      "required": [
+        "instanceType"
+      ],
+      "properties": {
+        "additionalLabels": {
+          "description": "additionalLabels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "additionalTags": {
+          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "azs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "infraProfileRef": {
+          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate",
+          "$ref": "#/definitions/v1ObjectReference"
+        },
+        "infraProfileTemplate": {
+          "description": "InfraProfile contains OS/Kernel for this NodePool",
+          "$ref": "#/definitions/v1ClusterProfileTemplate"
+        },
+        "instanceType": {
+          "description": "InstanceType defines the required CPU, Memory",
+          "$ref": "#/definitions/v1NestedInstanceType"
+        },
+        "isControlPlane": {
+          "description": "whether this pool is for control plane",
+          "type": "boolean"
+        },
+        "labels": {
+          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "maxSize": {
+          "description": "max size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "minSize": {
+          "description": "min size of the pool, for scaling",
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourcePool": {
+          "type": "string"
+        },
+        "size": {
+          "description": "size of the pool, number of machines",
+          "type": "integer",
+          "format": "int32"
+        },
+        "taints": {
+          "description": "master or worker taints",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          }
+        },
+        "updateStrategy": {
+          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut",
+          "$ref": "#/definitions/v1UpdateStrategy"
+        },
+        "useControlPlaneAsWorker": {
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "type": "boolean"
+        }
+      }
+    },
+    "v1NestedMachinePoolConfigEntity": {
+      "type": "object",
+      "required": [
+        "cloudConfig"
+      ],
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1NestedMachinePoolCloudConfigEntity"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        },
+        "profileConfig": {
+          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
+        }
+      }
+    },
+    "v1NestedMachineSpec": {
+      "description": "Nested cloud machine definition spec",
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NestedMachines": {
+      "description": "Nested machine list",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1NestedMachine"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
+    },
     "v1Nic": {
       "type": "object",
       "properties": {
@@ -39684,9 +43991,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "nodeImage": {
           "type": "string"
@@ -40283,6 +44588,14 @@
         }
       }
     },
+    "v1OsType": {
+      "type": "string",
+      "default": "Linux",
+      "enum": [
+        "Linux",
+        "Windows"
+      ]
+    },
     "v1OverloadSpec": {
       "description": "Overload spec",
       "type": "object",
@@ -40414,6 +44727,16 @@
       "type": "object",
       "properties": {
         "manifest": {
+          "type": "string"
+        }
+      }
+    },
+    "v1OverlordMigrateEntity": {
+      "properties": {
+        "sourceUid": {
+          "type": "string"
+        },
+        "targetUid": {
           "type": "string"
         }
       }
@@ -40645,6 +44968,39 @@
         }
       }
     },
+    "v1PackImportEntity": {
+      "description": "Pack import entity",
+      "type": "object",
+      "properties": {
+        "layer": {
+          "type": "string"
+        },
+        "manifests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackManifestImportEntity"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "registry": {
+          "$ref": "#/definitions/v1PackRegistryImportEntity"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "values": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1PackInputEntity": {
       "description": "Pack input entity with values to overwrite and manifests for the intial creation",
       "properties": {
@@ -40714,6 +45070,18 @@
         },
         "values": {
           "description": "values represents the values.yaml used as input parameters either Params OR Values should be used, not both If both applied at the same time, will only use Values",
+          "type": "string"
+        }
+      }
+    },
+    "v1PackManifestImportEntity": {
+      "description": "Pack manifest import entity",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "name": {
           "type": "string"
         }
       }
@@ -41051,6 +45419,10 @@
             "$ref": "#/definitions/v1PackPreset"
           }
         },
+        "registryUid": {
+          "description": "pack registry uid",
+          "type": "string"
+        },
         "schema": {
           "type": "array",
           "items": {
@@ -41090,11 +45462,20 @@
         "addonType": {
           "type": "string"
         },
+        "annotations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "displayName": {
           "type": "string"
         },
         "layer": {
           "$ref": "#/definitions/v1PackLayer"
+        },
+        "logoUrl": {
+          "type": "string"
         },
         "name": {
           "type": "string"
@@ -41110,6 +45491,32 @@
         },
         "version": {
           "type": "string"
+        }
+      }
+    },
+    "v1PackRefSummaryResponse": {
+      "description": "Pack summary information",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1PackRefSummarySpec"
+        }
+      }
+    },
+    "v1PackRefSummarySpec": {
+      "description": "Pack summary specs",
+      "properties": {
+        "macros": {
+          "$ref": "#/definitions/v1PackResolvedValues"
+        },
+        "pack": {
+          "$ref": "#/definitions/v1PackSummarySpec"
+        },
+        "registry": {
+          "$ref": "#/definitions/v1RegistryMetadata"
         }
       }
     },
@@ -41168,6 +45575,33 @@
         },
         "status": {
           "$ref": "#/definitions/v1PackRegistryStatus"
+        }
+      }
+    },
+    "v1PackRegistryImportEntity": {
+      "description": "Pack registry import entity",
+      "type": "object",
+      "properties": {
+        "matchingRegistries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackRegistryMetadata"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1PackRegistryMetadata"
+        }
+      }
+    },
+    "v1PackRegistryMetadata": {
+      "description": "Pack registry metadata",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       }
     },
@@ -42312,6 +46746,33 @@
         }
       }
     },
+    "v1ProfileTemplateSummary": {
+      "description": "Edge host clusterprofile template summary",
+      "type": "object",
+      "properties": {
+        "cloudType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PackRefSummary"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1ProfileType": {
       "type": "string",
       "default": "cluster",
@@ -42401,6 +46862,33 @@
         }
       }
     },
+    "v1ProjectFilterSortFields": {
+      "type": "string",
+      "enum": [
+        "name",
+        "creationTimestamp",
+        "lastModifiedTimestamp"
+      ],
+      "x-nullable": true
+    },
+    "v1ProjectFilterSortSpec": {
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v1ProjectFilterSortFields"
+        },
+        "order": {
+          "$ref": "#/definitions/v1SortOrder"
+        }
+      }
+    },
+    "v1ProjectFilterSpec": {
+      "description": "Project filter spec",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/v1FilterString"
+        }
+      }
+    },
     "v1ProjectMeta": {
       "type": "object",
       "properties": {
@@ -42409,6 +46897,14 @@
         },
         "uid": {
           "type": "string"
+        }
+      }
+    },
+    "v1ProjectMetadata": {
+      "description": "Project metadata",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectEntity"
         }
       }
     },
@@ -42544,7 +47040,7 @@
           "$ref": "#/definitions/v1ProjectSpecSummary"
         },
         "status": {
-          "description": "Spectro cluster status summary",
+          "description": "Project status summary",
           "$ref": "#/definitions/v1ProjectStatusSummary"
         }
       }
@@ -42637,6 +47133,36 @@
         }
       }
     },
+    "v1ProjectsFilterSpec": {
+      "description": "Project filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1ProjectFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ProjectFilterSortSpec"
+          }
+        }
+      }
+    },
+    "v1ProjectsMetadata": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1ProjectMetadata"
+          }
+        }
+      }
+    },
     "v1ProjectsSummary": {
       "type": "object",
       "required": [
@@ -42694,6 +47220,9 @@
           "$ref": "#/definitions/v1PublicCloudRateConfig"
         },
         "edge": {
+          "$ref": "#/definitions/v1PrivateCloudRateConfig"
+        },
+        "edgeNative": {
           "$ref": "#/definitions/v1PrivateCloudRateConfig"
         },
         "gcp": {
@@ -42797,6 +47326,10 @@
       "description": "Registry meta",
       "type": "object",
       "properties": {
+        "isPrivate": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "kind": {
           "type": "string"
         },
@@ -43033,7 +47566,8 @@
       "type": "object",
       "properties": {
         "enableSummaryView": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "groupBy": {
           "type": "string",
@@ -43189,7 +47723,8 @@
       "type": "object",
       "properties": {
         "enableSummaryView": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "groupBy": {
           "type": "string",
@@ -43199,6 +47734,7 @@
             "workspace",
             "cluster",
             "namespace",
+            "deployment",
             "cloud"
           ]
         },
@@ -43252,6 +47788,28 @@
           "type": "string"
         }
       }
+    },
+    "v1ResourceLimitType": {
+      "type": "string",
+      "enum": [
+        "user",
+        "project",
+        "apiKey",
+        "team",
+        "role",
+        "cloudaccount",
+        "clusterprofile",
+        "workspace",
+        "registry",
+        "privategateway",
+        "location",
+        "certificate",
+        "macro",
+        "sshkey",
+        "alert",
+        "spectrocluster",
+        "edgehost"
+      ]
     },
     "v1ResourceReference": {
       "type": "object",
@@ -43460,7 +48018,8 @@
       "type": "object",
       "properties": {
         "enableSummaryView": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "groupBy": {
           "type": "string",
@@ -43625,6 +48184,22 @@
         },
         "status": {
           "$ref": "#/definitions/v1RoleStatus"
+        }
+      }
+    },
+    "v1RoleClone": {
+      "description": "Role clone specifications",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1RoleCloneMetadata"
+        }
+      }
+    },
+    "v1RoleCloneMetadata": {
+      "description": "Role clone metadata",
+      "properties": {
+        "name": {
+          "type": "string"
         }
       }
     },
@@ -43802,6 +48377,53 @@
         "system",
         "tenant",
         "project"
+      ]
+    },
+    "v1SearchFilterConjunctionOperator": {
+      "type": "string",
+      "enum": [
+        "and",
+        "or"
+      ],
+      "x-nullable": true
+    },
+    "v1SearchFilterDateOperator": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "gt",
+        "gte",
+        "lt",
+        "lte",
+        "range"
+      ]
+    },
+    "v1SearchFilterIntegerOperator": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "gt",
+        "gte",
+        "lt",
+        "lte"
+      ]
+    },
+    "v1SearchFilterPropertyType": {
+      "type": "string",
+      "enum": [
+        "string",
+        "int",
+        "float",
+        "bool",
+        "date"
+      ]
+    },
+    "v1SearchFilterStringOperator": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "contains",
+        "beginsWith"
       ]
     },
     "v1ServiceImage": {
@@ -44522,6 +49144,11 @@
           "type": "boolean",
           "default": false
         },
+        "isHostCluster": {
+          "type": "boolean",
+          "default": false,
+          "x-omitempty": false
+        },
         "memoryUsage": {
           "$ref": "#/definitions/v1FilterNumberRange"
         },
@@ -44625,16 +49252,33 @@
         }
       }
     },
+    "v1SpectroClusterKubeCtlRedirect": {
+      "description": "Active resources of tenant",
+      "type": "object",
+      "properties": {
+        "redirectUri": {
+          "type": "string"
+        }
+      }
+    },
     "v1SpectroClusterMetadataFilterSpec": {
       "description": "Spectro cluster filter spec",
       "properties": {
         "environment": {
           "$ref": "#/definitions/v1CloudType"
         },
+        "includeNested": {
+          "type": "boolean",
+          "default": false
+        },
         "isAlloy": {
           "description": "isAlloy is renamed to isImported",
           "type": "boolean",
           "default": false
+        },
+        "isImportReadOnly": {
+          "type": "boolean",
+          "default": true
         },
         "isImported": {
           "type": "boolean",
@@ -44701,6 +49345,30 @@
         }
       }
     },
+    "v1SpectroClusterPackCondition": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "ReadyForInstall",
+            "Installed",
+            "Ready",
+            "Error",
+            "UpgradeAvailable"
+          ]
+        }
+      }
+    },
     "v1SpectroClusterPackConfigList": {
       "type": "object",
       "required": [
@@ -44726,6 +49394,32 @@
         }
       }
     },
+    "v1SpectroClusterPackStatusEntity": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/v1SpectroClusterPackCondition"
+        },
+        "endTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profileUid": {
+          "type": "string"
+        },
+        "startTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "type": {
+          "$ref": "#/definitions/v1PackType"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
     "v1SpectroClusterPacksEntity": {
       "description": "Spectro cluster entity for pack refs validate",
       "type": "object",
@@ -44734,6 +49428,17 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterPacksStatusEntity": {
+      "type": "object",
+      "properties": {
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterPackStatusEntity"
           }
         }
       }
@@ -44856,6 +49561,18 @@
         }
       }
     },
+    "v1SpectroClusterProfilesDeleteEntity": {
+      "type": "object",
+      "properties": {
+        "profileUids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v1SpectroClusterProfilesPacksManifests": {
       "type": "object",
       "required": [
@@ -44917,6 +49634,200 @@
         }
       }
     },
+    "v1SpectroClusterSearchFilterBoolCondition": {
+      "properties": {
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterCondition": {
+      "properties": {
+        "bool": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterBoolCondition"
+        },
+        "date": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterDateCondition"
+        },
+        "float": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterFloatCondition"
+        },
+        "int": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterIntegerCondition"
+        },
+        "string": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterStringCondition"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterDateCondition": {
+      "properties": {
+        "match": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterDateConditionMatch"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterDateOperator"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterDateConditionMatch": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Time"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterFloatCondition": {
+      "properties": {
+        "match": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterFloatConditionMatch"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterIntegerOperator"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterFloatConditionMatch": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "number",
+            "format": "float64"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterGroup": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "filters": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterSearchFilterItem"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterIntegerCondition": {
+      "properties": {
+        "match": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterIntegerConditionMatch"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterIntegerOperator"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterIntegerConditionMatch": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterItem": {
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterCondition"
+        },
+        "property": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/v1SearchFilterPropertyType"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterSpec": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "filterGroups": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterSearchFilterGroup"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterStringCondition": {
+      "properties": {
+        "ignoreCase": {
+          "type": "boolean"
+        },
+        "match": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterStringConditionMatch"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterStringOperator"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterStringConditionMatch": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1SpectroClusterSearchSummarySpec": {
+      "description": "Spectro cluster search filter summary spec",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterSpec"
+        },
+        "sort": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterSortSpec"
+          }
+        }
+      }
+    },
     "v1SpectroClusterSortFields": {
       "type": "string",
       "enum": [
@@ -44949,19 +49860,7 @@
           "$ref": "#/definitions/v1ObjectReference"
         },
         "cloudType": {
-          "type": "string",
-          "enum": [
-            "aws",
-            "gcp",
-            "azure",
-            "vsphere",
-            "openstack",
-            "libvirt",
-            "edge",
-            "aks",
-            "eks",
-            "all"
-          ]
+          "$ref": "#/definitions/v1CloudType"
         },
         "clusterConfig": {
           "description": "ClusterConfig is the configuration related to a general cluster. Configuration related to the health of the cluster.",
@@ -45005,9 +49904,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
+        },
+        "nested": {
+          "$ref": "#/definitions/v1Nested"
+        },
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterPackStatus"
+          }
         },
         "profileStatus": {
           "$ref": "#/definitions/v1ProfileStatus"
@@ -45016,9 +49922,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1LoadBalancerService"
-          },
-          "x-kubernetes-patch-merge-key": "name",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "spcApply": {
           "$ref": "#/definitions/v1SpcApply"
@@ -45084,6 +49988,9 @@
             "metrics": {
               "$ref": "#/definitions/v1SpectroClusterMetrics"
             },
+            "nested": {
+              "$ref": "#/definitions/v1Nested"
+            },
             "notifications": {
               "$ref": "#/definitions/v1SpectroClusterNotifications"
             },
@@ -45141,6 +50048,18 @@
         },
         "kubeMeta": {
           "$ref": "#/definitions/v1KubeMeta"
+        },
+        "metrics": {
+          "$ref": "#/definitions/v1SpectroClusterMetrics"
+        },
+        "nested": {
+          "$ref": "#/definitions/v1Nested"
+        },
+        "packs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterPackStatus"
+          }
         },
         "services": {
           "type": "array",
@@ -45421,6 +50340,74 @@
         }
       }
     },
+    "v1SpectroEdgeNativeClusterEntity": {
+      "description": "Spectro EdgeNative cluster entity for create and update",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "type": "object",
+          "properties": {
+            "cloudConfig": {
+              "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac",
+              "$ref": "#/definitions/v1ClusterConfigEntity"
+            },
+            "machinepoolconfig": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1EdgeNativeMachinePoolConfigEntity"
+              }
+            },
+            "policies": {
+              "$ref": "#/definitions/v1SpectroClusterPolicies"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1SpectroEdgeNativeClusterImportEntity": {
+      "description": "Spectro EdgeNative cluster import entity",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "type": "object",
+          "properties": {
+            "clusterConfig": {
+              "$ref": "#/definitions/v1ImportClusterConfig"
+            }
+          }
+        }
+      }
+    },
+    "v1SpectroEdgeNativeClusterRateEntity": {
+      "description": "Spectro edge-native cluster entity for estimating rate",
+      "type": "object",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+        },
+        "machinepoolconfig": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeMachinePoolConfigEntity"
+          }
+        }
+      }
+    },
     "v1SpectroEksClusterEntity": {
       "description": "Spectro EKS cluster entity for create and update",
       "type": "object",
@@ -45573,6 +50560,9 @@
           "properties": {
             "clusterConfig": {
               "$ref": "#/definitions/v1ImportClusterConfig"
+            },
+            "edgeConfig": {
+              "$ref": "#/definitions/v1ImportEdgeHostConfig"
             }
           }
         }
@@ -45875,6 +50865,49 @@
         },
         "version": {
           "type": "string"
+        }
+      }
+    },
+    "v1SpectroNestedClusterEntity": {
+      "description": "Spectro Nested cluster entity for create and update",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "type": "object",
+          "required": [
+            "cloudType",
+            "cloudConfig"
+          ],
+          "properties": {
+            "cloudConfig": {
+              "$ref": "#/definitions/v1NestedClusterConfig"
+            },
+            "clusterConfig": {
+              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac",
+              "$ref": "#/definitions/v1ClusterConfigEntity"
+            },
+            "hostClusterUid": {
+              "type": "string"
+            },
+            "machinepoolconfig": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1NestedMachinePoolConfigEntity"
+              }
+            },
+            "policies": {
+              "$ref": "#/definitions/v1SpectroClusterPolicies"
+            },
+            "profiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+              }
+            }
+          }
         }
       }
     },
@@ -46539,6 +51572,23 @@
         }
       }
     },
+    "v1SystemEdgeNativeImage": {
+      "description": "SystemAdmin",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/v1SystemEdgeNativeImageSpec"
+        }
+      }
+    },
+    "v1SystemEdgeNativeImageSpec": {
+      "description": "system edge-native account specifications",
+      "properties": {
+        "imagesHostEndpoint": {
+          "type": "string"
+        }
+      }
+    },
     "v1SystemFtpSpec": {
       "description": "system ftp config spec",
       "type": "object",
@@ -46609,6 +51659,18 @@
         },
         "username": {
           "$ref": "#/definitions/v1SystemGitAuthSpec"
+        }
+      }
+    },
+    "v1SystemKubectlSpec": {
+      "description": "system web kubectl config spec",
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "isEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -46859,6 +51921,14 @@
         }
       }
     },
+    "v1SystemRateLimit": {
+      "description": "system rate-limit",
+      "properties": {
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
     "v1SystemRegistry": {
       "description": "Registry configuration",
       "type": "object",
@@ -46868,6 +51938,32 @@
         },
         "spec": {
           "$ref": "#/definitions/v1RegistryConf"
+        }
+      }
+    },
+    "v1SystemResourceLimit": {
+      "properties": {
+        "kind": {
+          "type": "string",
+          "x-omitempty": false,
+          "$ref": "#/definitions/v1ResourceLimitType"
+        },
+        "limit": {
+          "type": "number",
+          "format": "int64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1SystemResourceLimits": {
+      "description": "System resource limits. Supported resources keys are 'user','project','apiKey','team','role','cloudaccount','clusterprofile','workspace','registry','privategateway','location','certificate','macro','sshkey','alert','spectrocluster','edgehost'.",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1SystemResourceLimit"
+          }
         }
       }
     },
@@ -46942,12 +52038,25 @@
         }
       }
     },
+    "v1SystemScarValidationResponse": {
+      "description": "system proxy config spec",
+      "type": "object",
+      "properties": {
+        "spectroVersion": {
+          "type": "string"
+        }
+      }
+    },
     "v1SystemServiceLogin": {
       "description": "System service login input",
       "type": "object",
       "properties": {
         "isSystem": {
           "type": "boolean"
+        },
+        "secret": {
+          "description": "Common shared secret string between the server \u0026 client.",
+          "type": "string"
         },
         "serviceName": {
           "type": "string",
@@ -46957,7 +52066,8 @@
             "git",
             "ambit",
             "edge",
-            "lodge"
+            "lodge",
+            "shelly"
           ]
         },
         "spectroClusterUid": {
@@ -47412,6 +52522,39 @@
         }
       }
     },
+    "v1TenantActivity": {
+      "description": "Active tenant and clusters data",
+      "type": "object",
+      "properties": {
+        "clustersInfo": {
+          "$ref": "#/definitions/v1ClustersInfo"
+        },
+        "org": {
+          "type": "string"
+        },
+        "planType": {
+          "type": "string"
+        },
+        "totalProjects": {
+          "type": "number",
+          "format": "int64"
+        },
+        "totalUsers": {
+          "type": "number",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1UserActivityInfo"
+          }
+        }
+      }
+    },
     "v1TenantAddressPatch": {
       "description": "Tenant Address",
       "type": "object",
@@ -47545,10 +52688,41 @@
         }
       }
     },
+    "v1TenantFreemium": {
+      "description": "Tenant freemium configuration",
+      "properties": {
+        "activeClustersLimit": {
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "isFreemium": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isUnlimited": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "overageUsageLimit": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        },
+        "totalUsageLimit": {
+          "type": "number",
+          "format": "float64",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1TenantFreemiumUsage": {
       "type": "object",
       "properties": {
         "isFreemium": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isUnlimited": {
           "type": "boolean",
           "x-omitempty": false
         },
@@ -47669,6 +52843,60 @@
         },
         "updateTimestamp": {
           "$ref": "#/definitions/v1Time"
+        }
+      }
+    },
+    "v1TenantResourceLimit": {
+      "properties": {
+        "kind": {
+          "type": "string",
+          "$ref": "#/definitions/v1ResourceLimitType"
+        },
+        "label": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "format": "int64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1TenantResourceLimitEntity": {
+      "properties": {
+        "kind": {
+          "type": "string",
+          "x-omitempty": false,
+          "$ref": "#/definitions/v1ResourceLimitType"
+        },
+        "limit": {
+          "type": "number",
+          "format": "int64",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1TenantResourceLimits": {
+      "description": "Tenant resource limits",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TenantResourceLimit"
+          }
+        }
+      }
+    },
+    "v1TenantResourceLimitsEntity": {
+      "description": "Tenant resource limits. Supported resources keys are 'user','project','apiKey','team','role','cloudaccount','clusterprofile','workspace','registry','privategateway','location','certificate','macro','sshkey','alert','spectrocluster','edgehost'.",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1TenantResourceLimitEntity"
+          }
         }
       }
     },
@@ -47889,6 +53117,14 @@
         }
       }
     },
+    "v1TenantUpgradeSettingsEntity": {
+      "properties": {
+        "enableLock": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1TenantUsage": {
       "description": "Tenant usage",
       "properties": {
@@ -47940,6 +53176,18 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "v1TenantsActivities": {
+      "description": "Active tenants and clusters data",
+      "type": "object",
+      "properties": {
+        "tenants": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1TenantActivity"
           }
         }
       }
@@ -48441,6 +53689,9 @@
       "description": "Tencent Subnet",
       "type": "object",
       "properties": {
+        "az": {
+          "type": "string"
+        },
         "cidrBlock": {
           "type": "string"
         },
@@ -48755,15 +54006,21 @@
         }
       }
     },
-    "v1UserAssetClusterRbacEntity": {
-      "description": "User asset cluster rbac input entity for create",
+    "v1UserActivityInfo": {
+      "description": "Active user data",
       "type": "object",
       "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        "lastLogin": {
+          "type": "string"
         },
-        "spec": {
-          "$ref": "#/definitions/v1ClusterRbacSpec"
+        "lastLoginTimestamp": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       }
     },
@@ -48809,6 +54066,36 @@
         },
         "spec": {
           "$ref": "#/definitions/v1UserAssetsLocationSpec"
+        }
+      }
+    },
+    "v1UserAssetsLocationAzure": {
+      "description": "User asset Azure location input entity to create",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1UserAssetsLocationAzureSpec"
+        }
+      }
+    },
+    "v1UserAssetsLocationAzureSpec": {
+      "description": "User asset Azure location spec",
+      "type": "object",
+      "required": [
+        "config"
+      ],
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1AzureStorageConfig"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
         }
       }
     },
@@ -48926,6 +54213,47 @@
         },
         "spec": {
           "$ref": "#/definitions/v1UserSpecEntity"
+        }
+      }
+    },
+    "v1UserKubectlSession": {
+      "type": "object",
+      "properties": {
+        "clusterUid": {
+          "type": "string"
+        },
+        "creationTime": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "podIp": {
+          "type": "string"
+        },
+        "podName": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "projectUid": {
+          "type": "string"
+        },
+        "sessionUid": {
+          "type": "string"
+        },
+        "shellyCluster": {
+          "type": "string"
+        },
+        "tenantClusterEndpoint": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userUid": {
+          "type": "string"
         }
       }
     },
@@ -49202,10 +54530,16 @@
           "type": "string"
         },
         "projects": {
+          "description": "Deprecated.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1UidSummary"
           }
+        },
+        "projectsCount": {
+          "type": "integer",
+          "format": "int32",
+          "x-omitempty": false
         },
         "roles": {
           "type": "array",
@@ -49231,6 +54565,11 @@
         },
         "isActive": {
           "description": "Specifies if user account is active/disabled",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isPasswordResetting": {
+          "description": "Specifies if user in multi org requested password reset",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -49433,6 +54772,31 @@
         }
       }
     },
+    "v1VirtualClusterHelmChart": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "repo": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1VirtualClusterHelmRelease": {
+      "type": "object",
+      "properties": {
+        "chart": {
+          "$ref": "#/definitions/v1VirtualClusterHelmChart"
+        },
+        "values": {
+          "type": "string"
+        }
+      }
+    },
     "v1VirtualNetwork": {
       "description": "Azure virtual network",
       "type": "object",
@@ -49598,9 +54962,7 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "x-kubernetes-patch-merge-key": "type",
-          "x-kubernetes-patch-strategy": "merge"
+          }
         },
         "isAddonLayer": {
           "description": "addon layers present in spc",
@@ -50504,11 +55866,40 @@
     "v1WorkspaceClusterNamespace": {
       "description": "Workspace cluster namespace",
       "properties": {
+        "image": {
+          "$ref": "#/definitions/v1WorkspaceNamespaceImage"
+        },
+        "isRegex": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "name": {
           "type": "string"
         },
         "namespaceResourceAllocation": {
           "$ref": "#/definitions/v1WorkspaceNamespaceResourceAllocation"
+        }
+      }
+    },
+    "v1WorkspaceClusterNamespacesEntity": {
+      "description": "Workspace cluster namespaces update entity",
+      "properties": {
+        "clusterNamespaces": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1WorkspaceClusterNamespace"
+          }
+        },
+        "clusterRefs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1WorkspaceClusterRef"
+          }
+        },
+        "quota": {
+          "$ref": "#/definitions/v1WorkspaceQuota"
         }
       }
     },
@@ -50667,6 +56058,21 @@
         }
       }
     },
+    "v1WorkspaceClusterWorkloadRoleBindings": {
+      "description": "Workspace cluster workload rbac bindings summary",
+      "type": "object",
+      "properties": {
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClusterWorkloadRoleBinding"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1RelatedObject"
+        }
+      }
+    },
     "v1WorkspaceClusterWorkloadStatefulSets": {
       "description": "Workspace cluster workload statefulsets summary",
       "type": "object",
@@ -50772,6 +56178,21 @@
         }
       }
     },
+    "v1WorkspaceClustersWorkloadRoleBindings": {
+      "description": "Workspace clusters workload rbac bindings summary",
+      "type": "object",
+      "properties": {
+        "clusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1WorkspaceClusterWorkloadRoleBindings"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        }
+      }
+    },
     "v1WorkspaceClustersWorkloadStatefulSets": {
       "description": "Workspace clusters workload statefulsets summary",
       "type": "object",
@@ -50815,6 +56236,18 @@
         }
       }
     },
+    "v1WorkspaceNamespaceImage": {
+      "description": "Workspace namespace image information",
+      "properties": {
+        "blackListedImages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v1WorkspaceNamespaceResourceAllocation": {
       "description": "Workspace namespace resource allocation",
       "properties": {
@@ -50838,18 +56271,26 @@
         }
       }
     },
+    "v1WorkspaceQuota": {
+      "description": "Workspace resource quota",
+      "properties": {
+        "resourceAllocation": {
+          "$ref": "#/definitions/v1WorkspaceResourceAllocation"
+        }
+      }
+    },
     "v1WorkspaceResourceAllocation": {
       "description": "Workspace resource allocation",
       "properties": {
         "cpuCores": {
           "type": "number",
-          "minimum": 0,
-          "exclusiveMinimum": true
+          "minimum": -1,
+          "x-omitempty": false
         },
         "memoryMiB": {
           "type": "number",
-          "minimum": 0,
-          "exclusiveMinimum": true
+          "minimum": -1,
+          "x-omitempty": false
         }
       }
     },
@@ -50869,6 +56310,9 @@
           "items": {
             "$ref": "#/definitions/v1WorkspaceClusterRef"
           }
+        },
+        "quota": {
+          "$ref": "#/definitions/v1WorkspaceQuota"
         }
       }
     },
@@ -51042,6 +56486,9 @@
         },
         "policies": {
           "$ref": "#/definitions/v1WorkspacePolicies"
+        },
+        "quota": {
+          "$ref": "#/definitions/v1WorkspaceQuota"
         }
       }
     },
