@@ -25,7 +25,9 @@ Info: Only Kubernetes versions 1.19 and above is supported
 ## Supported Kubernetes versions
 
 <InfoBox>
+
 Versions supported in the latest [release](/release-notes/) are highlighted.
+
 </InfoBox>
 
 <Tabs>

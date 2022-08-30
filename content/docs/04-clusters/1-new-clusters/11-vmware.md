@@ -97,7 +97,7 @@ The exact values for the k8s-region and k8s-zone tags can be different from the 
 
 # VMware Cloud Account Permissions 
 
-**Last Update**: October 7, 2021
+**Last Update**: August 18, 2022
 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
