@@ -24,12 +24,6 @@ Palette enables cluster profiles to be exported and then imported across multipl
 * The packs getting imported as part of the profile need to be present at the destination repositories.
 
 
-* By default, the profile packs will be fetched from the default registry like Palette `Public Repo` at the destination. 
-
-
-* The packs can be extracted from other repositories if the imported packs are present in them during the import process. 
-
-
 * The `macros` needs to be present within the destination for importing a cluster profile. If not [create the macros](/clusters/cluster-management/macros#createyourmacro) at the destination.
 
 # Use Cases
