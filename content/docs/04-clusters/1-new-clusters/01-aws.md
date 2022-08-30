@@ -621,6 +621,8 @@ The following warning is expected and can be ignored:<p></p>
 <Tabs.TabPane tab="Using the Access Credentials Method" key="Using the Access Credentials Method">
 
 ## AWS Account Creation Using the Access Credentials Method
+
+The following video demonstrates how to create a user in AWS and attach the four necessary policies.
  
 ![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
 
