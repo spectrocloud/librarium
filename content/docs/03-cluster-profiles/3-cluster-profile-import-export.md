@@ -67,6 +67,9 @@ To Import Palette cluster profiles the existing profile needs to be first export
 
 * Save the downloaded file for import.
 
+<InfoBox>
+While exporting the profile, the sensitive pack values will be masked and must be updated during import.
+</InfoBox>
 
 # Import Cluster Profile
 
