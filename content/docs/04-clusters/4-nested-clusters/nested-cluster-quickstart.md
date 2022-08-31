@@ -34,9 +34,9 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
     ![HostCluster](create-host-cluster.png "#width=600px")
 
-   2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and configure it to become a Nested Cluster.
+   2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and allow it to host Nested Clusters.
 
-   3. Or, you can import a [Brownfield Cluster](/clusters/brownfield-clusters#importingabrownfieldcluster) and then, enable the Nested Cluster.
+   3. Or, you can import a [Brownfield Cluster](/clusters/brownfield-clusters#importingabrownfieldcluster) and then, enable it to the Nested Cluster.
 
 
 # Enabling a Nested Cluster on a Host Cluster

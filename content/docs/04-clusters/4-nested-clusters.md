@@ -32,7 +32,7 @@ Two Nested Cluster accessibility options are supported:
   - The host cluster must support dynamic provisioning of load balancers, either via a Cloud Controller Manager in the public cloud or a bare metal load balancer provider, such as MetalLB.
 
 - **Ingress**
-  - The NGINX Ingress Controller must be deployed on the Host cluster with the SSL pass through enabled. This allows TLS termination to occur at the Nested Cluster's Kubernetes API server.
+  - The NGINX Ingress Controller must be deployed on the Host cluster with the SSL passthrough enabled. This allows TLS termination to occur at the Nested Cluster's Kubernetes API server.
 
   - A wildcard DNS record must be configured that maps to the load balancer associated with the NGINX Ingress Controller, e.g., *.nested.host.1.spectrocloud.com.
 
