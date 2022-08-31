@@ -1,7 +1,7 @@
 ---
-title: "Palette Webctl"
-metaTitle: "Webctl CLI on Palette"
-metaDescription: "Webctl CLI on Palette for cluster access"
+title: "Kubectl"
+metaTitle: "Web kubectl CLI on Palette"
+metaDescription: "Web kubectl CLI on Palette for cluster access"
 hideToC: false
 fullWidth: false
 ---
@@ -101,7 +101,7 @@ kubectl config set-cluster <CLUSTER_NAME> --insecure-skip-tls-verify=true
 
 <InfoBox>
 
-While creating EKS clusters with a **Private** endpoint, adding a proxy pack is mandatory for establishing Palette Webctl.
+While creating EKS clusters with a **Private** endpoint, adding a proxy pack is mandatory for establishing Palette Web kubectl connectivity.
 
 </InfoBox>
 
