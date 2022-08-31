@@ -56,7 +56,7 @@ All the clusters under a Project can be locked to restrict them from the Palette
 2. Select `Project Settings` from the left ribbon menu.
 
 
-3. From`Project Settings` page, select `Cluster Settings` and toggle the `Lock all clusters` button. This restricts all the clusters under that project scope from being locked from cluster management services upgrade on the upgrade of the Palette.
+3. From`Project Settings` page, select `Cluster Settings` and toggle the `Lock all clusters` button. This restricts all the clusters under that project scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 
 
 4. To unlock the clusters, toggle the ‘Lock all Clusters’ back and deselect. 
@@ -74,7 +74,7 @@ All the clusters under a Tenant can be locked to restrict them from the Palette 
 2. Select `Tenant Settings` from the left ribbon menu.
 
 
-3. From `Tenant Settings,` select `Cluster Settings` and toggle the `Lock all clusters` button.This restricts all the clusters under that tenant scope from being locked from cluster management services upgrade on the upgrade of the Palette.
+3. From `Tenant Settings,` select `Cluster Settings` and toggle the `Lock all clusters` button.This restricts all the clusters under that tenant scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 
 
 4. To unlock the clusters, toggle the `Lock all Clusters` back and deselect. 
