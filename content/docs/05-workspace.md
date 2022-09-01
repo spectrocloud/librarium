@@ -47,8 +47,20 @@ A workspace-based backup is similar to a cluster backup, with the additional cov
 
 # Regex for Namespaces
 
-Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the namespaces matching the given Regex pattern to be selected together for role binding. A Regex pattern must start and end with a " / ".
+Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the namespaces matching the given Regex pattern to be selected together for role binding. 
 
-Example: /^palette-ns/
+## Use Cases
+
+1. A Regex pattern that start and end with " / ", will select all the workspace names matching the given Regex pattern.
+
+   **Example:** `/^palette-ns/`
+<br />
+
+2. A Regex pattern that starts with `negation symbol(~)`, will select all the namespaces that *does not match* with the regex expression given.
+
+   **Example:** `~/^(kube|cluster|capi|jet|cert)[-].+/`
+
+Note: Please do not add any space beween the `~` operator and the `expression`.
+ 
 <br />
 <br />
