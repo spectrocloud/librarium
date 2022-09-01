@@ -19,7 +19,10 @@ Palette enables multi-cluster management and governance capabilities by introduc
 
 # Prerequisites
 
-  One or more running workload clusters within the project.
+  * One or more running workload clusters within the project.
+  * Cluster must not be imported with read-only mode.
+  * RBAC should not be set at cluster level but to be included at workspace level.
+  * Nested Clusters cannot be part of the workspace.
 
 # Create Your Workspace
 
