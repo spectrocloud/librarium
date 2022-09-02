@@ -83,5 +83,4 @@ The Palette extends the native containerized application orchestration capabilit
 
 The users can choose the machine or appliance based on their intended use case. It is built upon the real-time P6OS with embedded Kubernetes Distro, a stable base Operating System, and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
 
-
 <br />
