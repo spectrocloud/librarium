@@ -15,7 +15,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Getting Started with Nested Clusters
 
-With the Palette Nested Cluster option, you can deploy additional Kubernetes clusters, within an existing cluster, to provide teams with nested cluster environments. There are certain advantages to use a nested cluster environment. You are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
+With the Palette Nested Cluster option, you can deploy additional Kubernetes clusters, within an existing cluster, to provide teams with nested cluster environments.
+
+There are certain advantages to use a nested cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
 Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within the Palette orchestrator.
 
@@ -28,20 +30,20 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
   **Hosted Clusters**
 
-  There are three ways to engage with a Nested Cluster on Palette.
+  There are three ways to engage with a Nested Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when deploying a Host Cluster deployment wizard.
+   1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when deploying a Host Cluster deployment wizard.
 
-    ![HostCluster](create-host-cluster.png "#width=600px")
+    ![HostCluster](create-host-cluster.png "#width=650px")<p></p><br />
 
-   2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and allow it to host Nested Clusters.
+    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and allow it to host Nested Clusters.<p></p><br />
 
-   3. Or, you can import a [Brownfield Cluster](/clusters/brownfield-clusters#importingabrownfieldcluster) and then, enable it to the Nested Cluster.
+    3. Or, you can import a [Brownfield Cluster](/clusters/brownfield-clusters#importingabrownfieldcluster) and then, enable it to the Nested Cluster.
 
 
 # Enabling a Nested Cluster on a Host Cluster
 
-1. From the slide menu, select **Clusters** and view the list of Clusters.
+1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
 
 2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Nested Clusters**.
@@ -52,16 +54,16 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
     **Note**: This feature can be set when first creating a new cluster, so you may find that the host is already enabled.
 
 
-4. Select the **Cluster Endpoint Type**.
+4. Select the **Cluster Endpoint Type**: *Load Balancer* or *Ingress*.
 
 
 ## Load Balancer
 
-If **Load Balancer** is selected, the following must be true:
+If **Load Balancer** is selected, the following must be true:<p></p><br />
 
-  -  The Host Cluster must support dynamic provisioning of load balancers.
-  -  If the Host Cluster is in the public cloud, the AKS/EKS/GCP Cloud Controller Manager will provide this support by default. 
-  -  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.
+-  The Host Cluster must support dynamic provisioning of load balancers.<p></p><br />
+-  If the Host Cluster is in the public cloud, the AKS/EKS/GCP Cloud Controller Manager will provide this support by default. <p></p><br />
+-  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.<p></p><br />
 
 ## Ingress
   - If **Ingress** is selected, a **Host Pattern** must be specified for this Host Cluster. To create a valid Host Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the nested cluster's Kubernetes API server.
@@ -73,7 +75,7 @@ If **Load Balancer** is selected, the following must be true:
 <InfoBox>
 <b>Recap</b>
 
-- Deploy the NGINX Ingress Controller on the Host Cluster and ensure that the SSL passthrough is enabled in the NGINX Ingress Controller pack's values.yaml. Specifically, charts.ingress-nginx.controller.extraArgs must be set as follows:
+- Deploy the NGINX Ingress Controller on the Host Cluster and ensure that the SSL passthrough is enabled in the NGINX Ingress Controller pack's values.yaml. Specifically, `charts.ingress-nginx.controller.extraArgs` must be set as follows:
 
 ```yml
   charts:
@@ -84,7 +86,8 @@ If **Load Balancer** is selected, the following must be true:
         extraArgs:
           enable-ssl-passthrough: true
   ```
-- Identify the public DNS name of the load balancer associated with the LoadBalancer Service that is associated with your NGINX Ingress Controller deployment.
+- Identify the public DNS name of the load balancer associated with the LoadBalancer Service that is associated with your NGINX Ingress Controller deployment.<p></p><br />
+
 
 - Create a wildcard DNS record (e.g., in AWS Route53) mapping the Host Pattern to the NGINX Ingress Controller load balancer.
 
@@ -106,40 +109,38 @@ If **Load Balancer** is selected, the following must be true:
 1. From the slide menu, select the **Clusters** tab and click the **Nested Clusters** tab to list the available Nested Clusters, and then select **Add New Nested Cluster**.
 
 
-2. Complete the **Deploy New Nested Cluster** information:
-    - Select a Host cluster.
+2. Complete the **Deploy New Nested Cluster** information:<p></p><br />
+
+    - Select a Host cluster.<p></p><br />
 
     - Add a Cluster name.
 
-      **Note**: Use lowercase letters and do not add spaces.
+      **Note**: Use lowercase letters and do not add spaces.<p></p><br />
 
-    - Provide a Description and Tags. These are optional.
+    - Provide a Description and Tags. These are optional.<p></p><br />
 
     - Click the **Attach Profile** button to assign a profile.
 
       **Note**: Optionally, attach one or more Add-on layers to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.
 
 
-3. Set the **Quota Limits** for the following hardware settings:
+3. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<p></p><br />
 
-   These are default settings, but you can adjust as needed:
-    - 4 CPU units
-    - 8 GB Memory (RAM)
+   - External Traffic Policy - Cluster or Local<p></p><br />
 
+   - External IPs (Optional) - Include the external IPs if you have any.<p></p><br />
 
-4. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:
-   - External Traffic Policy - Cluster or Local
-   - External IPs (Optional) - Include the external IPs if you have any.
    - Load Balancer Source Ranges (Optional) - Add the load balancer source ranges. This is an optional feature.
+<p></p><br />
 
   ![Deploy-nested-cluster](deploy-nested-cluster.png "width=400px")
 
-You Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
+Congratulations! Your Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
 
 # Resources
 
-[Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
+[Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 
 [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
 
