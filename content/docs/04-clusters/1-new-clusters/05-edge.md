@@ -21,7 +21,7 @@ Edge Clusters are Kubernetes clusters set up on appliances installed in isolated
 
 ## Private Cloud Gateway-Edge (PCG-E)
 
-Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with thePalette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
+Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with the Palette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
 
 ## PaletteOS (P6OS)
 
