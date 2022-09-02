@@ -23,8 +23,7 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
 ## Prerequisites
 
-- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page.
-
+- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page.<p></p><br />
 
 - Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. During the cluster creation, you will be able to configure it as a Host Cluster.
 
@@ -34,7 +33,7 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
    1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when deploying a Host Cluster deployment wizard.
 
-    ![HostCluster](create-host-cluster.png "#width=650px")<p></p><br />
+    ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
     2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and allow it to host Nested Clusters.<p></p><br />
 
@@ -88,15 +87,12 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
   ```
 - Identify the public DNS name of the load balancer associated with the LoadBalancer Service that is associated with your NGINX Ingress Controller deployment.<p></p><br />
 
-
 - Create a wildcard DNS record (e.g., in AWS Route53) mapping the Host Pattern to the NGINX Ingress Controller load balancer.
 
 </InfoBox>
 
-
- 
-
-  This is an example AWS Route53 record for the `*.starship.te.spectrocloud.com` Host Pattern.
+**Example Record**<p></p>
+  Here is an example AWS Route53 record for the `*.starship.te.spectrocloud.com` Host Pattern.
 
 <br />
 
@@ -133,7 +129,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
    - Load Balancer Source Ranges (Optional) - Add the load balancer source ranges. This is an optional feature.
 <p></p><br />
 
-  ![Deploy-nested-cluster](deploy-nested-cluster.png "width=400px")
+  ![Deploy-nested-cluster](deploy-nested-cluster.png "Deploy a Nested Cluster")
 
 Congratulations! Your Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
