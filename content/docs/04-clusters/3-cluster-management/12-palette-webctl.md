@@ -48,6 +48,10 @@ The cluster access with OIDC authentication enables the clients to verify the en
 
 <br/>
 
+**Note:** For OIDC based cluster access a callback/redirect url configuration need to be provided to the Identity Provider.
+  
+  Example `https://console.spectrocloud.com/v1/shelly/`
+
 1. Launch a cluster from the ‘Project Administrator’ Console and enable cluster OIDC.
 
 	**Note:** To enable OIDC, the user can use the Spectro RBAC Add-on or the Kubernetes YAML file.
