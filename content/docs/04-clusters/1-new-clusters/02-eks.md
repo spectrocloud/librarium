@@ -654,6 +654,35 @@ To create an AWS cloud account, provide a name and a description for the account
 </Tabs.TabPane>
 </Tabs>
 
+<br />
+<br />
+
+<InfoBox>
+
+## Disable OIDC Associate Provider for AWS Service Account
+Palette customers can optionally disable the OIDC Associate Provider if the service provider restricts the cluster deployment with the OIDC associate provider in enable state. Customize the EKS Kubernetes pack values as follows:
+
+<br />
+
+```
+  # Disable creation of an identity provider for the controller
+  # for use with IAM roles for service accounts
+  # Changes to this field after the cluster is provisioned
+  # will have no effect on the associated OIDC Identity provider.
+  # Defaults to false
+  #disableAssociateOIDCProvider: true
+
+  ## Controlplane Logging
+  logging:
+
+    # Setting to toggle Kubernetes API Server logging (kube-apiserver)
+    apiServer: false
+```  
+</InfoBox>
+
+<br />
+<br />
+
 # Deploying an EKS Cluster
 
  ![eks-cluster-creation](./cluster-creation-videos/eks.mp4)
