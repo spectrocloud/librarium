@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Portworx /w Operator
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers via container orchestrators such as Kubernetes. You can use Palette to install Portworx on a cloud platform, on-premises ,or at the edge.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers via container orchestrators such as Kubernetes. You can use Palette to install Portworx on a cloud platform, on-premises, or at the edge.
 
 ## Versions Supported
 
@@ -36,14 +36,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 ## Prerequisites
 
 For deploying Portworx with Operator for Kubernetes, make sure to configure the properties in the pack:
- 
 <br /> 
 
 * Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
 
-
 * Ensure you use a supported Kubernetes version (1.19 or above).
-
 
 * Identify and set up the storageType.
 
@@ -56,12 +53,9 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 * Portworx Operator
 
-
 * `StorageCluster` resource that tells the Operator how to deploy & configure Portworx
 
-
 * `StorageClass` resource for dynamic provisioning of PersistentVolumes using the portworx-volume provisioner
-
 
 * [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
 
@@ -111,31 +105,8 @@ charts:
       name: "px-{{.spectro.system.cluster.name}}"
       # annotations:
       #   If you need additional annotations, specify them here
-      spec:
+      spec: {}
         # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
-        image: portworx/oci-monitor:2.11.1
-        imagePullPolicy: Always
-        kvdb:
-          internal: true
-          # endpoints:
-          # - etcd:https://etcd.company.domain:2379
-          # authSecret: px-kvdb-auth
-        storage:
-          useAll: true
-          journalDevice: auto
-        secretsProvider: k8s
-        stork:
-          enabled: true
-          args:
-            webhook-controller: "true"
-        autopilot:
-          enabled: true
-        csi:
-          enabled: true
-        monitoring:
-          prometheus:
-            enabled: false
-            exportMetrics: false
 
     storageClass:
       name: spectro-storage-class
@@ -217,6 +188,339 @@ Use the presets in the pack user interface to select which license model you wan
 </Tabs.TabPane>
 </Tabs>
 
+
+# Selecting a storage specification
+
+This pack can install Portworx in various different storage environment:
+
+* **Using existing disks (generic)**: This mode does not integrate with any particular storage solution, it just uses existing disks available on the nodes.
+
+
+* **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows EKS and EC2 kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
+
+
+* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows AKS and regular Azure kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+
+
+* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+
+
+* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+
+
+* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+
+
+Use the presets in the pack user interface to select which storage specification you want to use, then update the `charts.portworx-generic.storageCluster` section to your specific needs.
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Generic" key="Generic">
+
+```yaml
+    storageCluster:
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        storage:
+          useAll: true
+          journalDevice: auto
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="AWS" key="AWS">
+
+```yaml
+    storageCluster:
+      annotations:
+        portworx.io/is-eks: "true"
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        cloudStorage:
+          deviceSpecs:
+          - type=gp2,size=150
+          kvdbDeviceSpec: type=gp2,size=150
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+```
+### Prerequisites
+
+To deploy Portworx in an AWS environment, ensure the following IAM Policy is created in AWS and attached to the correct IAM Role:
+<br/>
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AttachVolume",
+                "ec2:ModifyVolume",
+                "ec2:DetachVolume",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:DeleteTags",
+                "ec2:DeleteVolume",
+                "ec2:DescribeTags",
+                "ec2:DescribeVolumeAttribute",
+                "ec2:DescribeVolumesModifications",
+                "ec2:DescribeVolumeStatus",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeInstances",
+                "autoscaling:DescribeAutoScalingGroups"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+
+* When deploying a regular Kubernetes cluster on AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM Role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM Policy described above. This will automatically attach the IAM Policy to the correct IAM Role.
+
+* When deploying an EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the `kubernetes-eks` pack to automatically attach the Portworx IAM Policy to the EKS worker pool IAM role that Palette will manage for you. For example:
+
+```yaml
+managedMachinePool:
+  roleAdditionalPolicies:
+    - "arn:aws:iam::012345678901:policy/my-portworx-policy"
+```
+
+<br />
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="Azure">
+
+```yaml
+    storageCluster:
+      annotations:
+        portworx.io/is-aks: "true"
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        cloudStorage:
+          deviceSpecs:
+          - type=Premium_LRS,size=150
+          kvdbDeviceSpec: type=Premium_LRS,size=150
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+        env:
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: px-azure
+              key: AZURE_CLIENT_SECRET
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: px-azure
+              key: AZURE_CLIENT_ID
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: px-azure
+              key: AZURE_TENANT_ID
+    azureSecret:
+      tenantId: "your_azure_tenant_id"
+      clientId: "your_azure_client_id"
+      clientSecret: "your_client_secret"
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Google" key="Google">
+
+```yaml
+    storageCluster:
+      annotations:
+        portworx.io/is-gke: "true"
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        cloudStorage:
+          deviceSpecs:
+          - type=pd-standard,size=150
+          kvdbDeviceSpec: type=pd-standard,size=150
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="VMware vSphere" key="VMware vSphere">
+
+```yaml
+    storageCluster:
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        cloudStorage:
+          deviceSpecs:
+          - type=lazyzeroedthick,size=150
+          kvdbDeviceSpec: type=lazyzeroedthick,size=32
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+        env:
+        - name: VSPHERE_INSECURE
+          value: "true"
+        - name: VSPHERE_USER
+          valueFrom:
+            secretKeyRef:
+              name: px-vsphere-secret
+              key: VSPHERE_USER
+        - name: VSPHERE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: px-vsphere-secret
+              key: VSPHERE_PASSWORD
+        - name: VSPHERE_VCENTER
+          value: "my-vcenter.company.local"
+        - name: VSPHERE_VCENTER_PORT
+          value: "443"
+        - name: VSPHERE_DATASTORE_PREFIX
+          value: "datastore"
+        - name: VSPHERE_INSTALL_MODE
+          value: "shared"
+    vsphereSecret:
+      user: "username_for_vCenter_here"
+      password: "your_password"
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Pure Flash Array" key="Pure Flash Array">
+
+```yaml
+    storageCluster:
+      spec:
+        # Use the Portworx Spec Builder at https://central.portworx.com/landing/login to define custom configurations, then paste the spec section here
+        image: portworx/oci-monitor:2.11.2
+        imagePullPolicy: Always
+        kvdb:
+          internal: true
+          # endpoints:
+          # - etcd:https://etcd.company.domain:2379
+          # authSecret: px-kvdb-auth
+        cloudStorage:
+          deviceSpecs:
+          - size=150
+          kvdbDeviceSpec: size=32
+        secretsProvider: k8s
+        stork:
+          enabled: true
+          args:
+            webhook-controller: "true"
+        autopilot:
+          enabled: true
+        csi:
+          enabled: true
+        monitoring:
+          prometheus:
+            enabled: false
+            exportMetrics: false
+        env:
+        - name: PURE_FLASHARRAY_SAN_TYPE
+          value: "ISCSI"
+```
+
+To activate the Pure Flash Array integration, you will need to create a `secret` on your cluster named `px-pure-secret` that contains your Flash Array license. You can do this by running the below kubectl command:
+
+```
+kubectl create secret generic px-pure-secret --namespace kube-system --from-file=pure.json=<file path>
+```
+
+
+</Tabs.TabPane>
+</Tabs>
 
 # Integrating into an External Etcd
 
@@ -315,345 +619,6 @@ These are the three types of Presets that can be selected and modified. The pack
 
 </Tabs.TabPane>
 </Tabs>
-
-# Environments
-
-<br/>
-
-<Tabs>
-<Tabs.TabPane tab="on-premises" key="on-premises">
-
-
-## Bare metal and on-premises environments
-
-For deploying Portworx with Operator on bare metal and on-premesis environments, either use the pack's defaults or generate a `StorageCluster` spec specific to your environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack.
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="AWS" key="AWS">
-
-
-## Amazon EC2 and EKS
-
-### Prerequisites
-
-To deploy Portworx in an AWS environment, ensure the following IAM Policy is created in AWS and attached to the correct IAM Role:
-<br/>
-
-```yaml
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:AttachVolume",
-                "ec2:ModifyVolume",
-                "ec2:DetachVolume",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:DeleteTags",
-                "ec2:DeleteVolume",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumeAttribute",
-                "ec2:DescribeVolumesModifications",
-                "ec2:DescribeVolumeStatus",
-                "ec2:DescribeVolumes",
-                "ec2:DescribeInstances",
-                "autoscaling:DescribeAutoScalingGroups"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
-}
-```
-
-* When deploying a regular Kubernetes cluster on AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM Role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM Policy described above. This will automatically attach the IAM Policy to the correct IAM Role.
-
-* When deploying an EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the `kubernetes-eks` pack to automatically attach the Portworx IAM Policy to the EKS worker pool IAM role that Palette will manage for you. For example:
-
-```yaml
-managedMachinePool:
-  roleAdditionalPolicies:
-    - "arn:aws:iam::012345678901:policy/my-portworx-policy"
-```
-
-<br />
-
-## AWS spec
-
-To deploy Portworx with Operator on AWS environments, generate a `StorageCluster` spec for your AWS environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
-<br/>
-
-```yaml
-    storageCluster:
-      annotations:
-        portworx.io/is-eks: "true"
-      spec:
-        spec:
-          image: portworx/oci-monitor:2.11.1
-          imagePullPolicy: Always
-          kvdb:
-            internal: true
-          cloudStorage:
-            deviceSpecs:
-            - type=gp2,size=150
-            kvdbDeviceSpec: type=gp2,size=150
-          secretsProvider: k8s
-          stork:
-            enabled: true
-            args:
-              webhook-controller: "true"
-          autopilot:
-            enabled: true
-          csi:
-            enabled: true
-          monitoring:
-            prometheus:
-              enabled: true
-              exportMetrics: true
-```
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="Azure">
-
-
-## Azure and AKS
-
-For deploying Portworx with Operator on Azure environments, generating a `StorageCluster` spec for your Azure environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
-
-<br/>
-
-```yaml
-    storageCluster:
-      annotations:
-        portworx.io/is-aks: "true"
-      spec:
-        spec:
-            image: portworx/oci-monitor:2.11.1
-            imagePullPolicy: Always
-            kvdb:
-              internal: true
-            cloudStorage:
-              deviceSpecs:
-              - type=Premium_LRS,size=150
-              kvdbDeviceSpec: type=Premium_LRS,size=150
-            secretsProvider: k8s
-            stork:
-              enabled: true
-              args:
-                webhook-controller: "true"
-            autopilot:
-              enabled: true
-            csi:
-              enabled: true
-            monitoring:
-              prometheus:
-                enabled: true
-                exportMetrics: true
-            env:
-            - name: AZURE_CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: px-azure
-                  key: AZURE_CLIENT_SECRET
-            - name: AZURE_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: px-azure
-                  key: AZURE_CLIENT_ID
-            - name: AZURE_TENANT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: px-azure
-                  key: AZURE_TENANT_ID
-```
-
-**Note** that the spec will reference a `secret` in your cluster (`px-azure` by default) that is assumed to hold your Azure credentials. You will need to create this secret, which you can do by adding a manifest to your cluster profile that contains the YAML for the secret. For example:
-
-<br/>
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: px-azure
-  namespace: kube-system
-type: Opaque
-data:
-  AZURE_TENANT_ID: "base64 encoded Azure Tenant ID"
-  AZURE_CLIENT_ID: "base64 encoded Azure Client ID"
-  AZURE_CLIENT_SECRET: "base64 encoded Azure Client secret"
-``` 
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google" key="Google">
-
-
-## Google Cloud Platform and GKE
-
-For deploying Portworx with Operator on Google environments, generate a `StorageCluster` spec for your Google environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
-
-<br/>
-
-```yaml
-    storageCluster:
-      annotations:
-        portworx.io/is-gke: "true"
-      spec:
-        spec:
-          image: portworx/oci-monitor:2.11.1
-          imagePullPolicy: Always
-          kvdb:
-            internal: true
-          cloudStorage:
-            deviceSpecs:
-            - type=pd-standard,size=150
-            kvdbDeviceSpec: type=pd-standard,size=150
-          secretsProvider: k8s
-          stork:
-            enabled: true
-            args:
-              webhook-controller: "true"
-          autopilot:
-            enabled: true
-          csi:
-            enabled: true
-          monitoring:
-            prometheus:
-              enabled: true
-              exportMetrics: true
-```
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="vSphere" key="vSphere">
-
-## VMware vSphere
-
-To deploy Portworx with Operator on vSphere environments, generate a `StorageCluster` spec for your vSphere environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
-
-<br/>
-
-```yaml
-    storageCluster:
-      spec:
-        image: portworx/oci-monitor:2.11.1
-        imagePullPolicy: Always
-        kvdb:
-          internal: true
-        cloudStorage:
-          deviceSpecs:
-          - type=lazyzeroedthick,size=150
-          kvdbDeviceSpec: type=lazyzeroedthick,size=32
-        secretsProvider: k8s
-        stork:
-          enabled: true
-          args:
-            webhook-controller: "true"
-        autopilot:
-          enabled: true
-        csi:
-          enabled: true
-        monitoring:
-          prometheus:
-            enabled: true
-            exportMetrics: true
-        env:
-        - name: VSPHERE_INSECURE
-          value: "true"
-        - name: VSPHERE_USER
-          valueFrom:
-            secretKeyRef:
-              name: px-vsphere-secret
-              key: VSPHERE_USER
-        - name: VSPHERE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: px-vsphere-secret
-              key: VSPHERE_PASSWORD
-        - name: VSPHERE_VCENTER
-          value: "1.2.3.4"
-        - name: VSPHERE_VCENTER_PORT
-          value: "443"
-        - name: VSPHERE_DATASTORE_PREFIX
-          value: "px_datastore_"
-        - name: VSPHERE_INSTALL_MODE
-          value: "shared"
-```
-Note that the spec will reference a `secret` in your cluster (`px-vsphere-secret` by default), that is assumed to hold your vSphere credentials. You will need to create this secret, which you can do by adding a manifest to your cluster profile that contains the YAML for the secret. For example:
-
-<br/>
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: px-vsphere-secret
-  namespace: kube-system
-type: Opaque
-data:
-  VSPHERE_USER: "base64 encoded admin username"
-  VSPHERE_PASSWORD: "base64 encoded admin password"
-``` 
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Pure Flash Array" key="Pure Flash Array">
-
-
-## Pure Storage Flash Array integration
-
-For deploying Portworx with Operator with Pure Flash Array integratuib, generate a `StorageCluster` spec for your environment at [PX-Central](https://central.portworx.com/specGen/wizard) and paste the resulting spec in the `charts.portworx-generic.storageCluster.spec` section of the pack. An example looks like this:
-
-<br/>
-
-```yaml
-    storageCluster:
-      annotations:
-        portworx.io/is-gke: "true"
-      spec:
-        spec:
-          image: portworx/oci-monitor:2.11.1
-          imagePullPolicy: Always
-          kvdb:
-            internal: true
-          cloudStorage:
-            deviceSpecs:
-            - size=150
-            kvdbDeviceSpec: size=32
-          secretsProvider: k8s
-          stork:
-            enabled: true
-            args:
-              webhook-controller: "true"
-          autopilot:
-            enabled: true
-          csi:
-            enabled: true
-          monitoring:
-            prometheus:
-              enabled: true
-              exportMetrics: true
-          env:
-          - name: PURE_FLASHARRAY_SAN_TYPE
-            value: "ISCSI"
-```
-
-To activate the Pure Flash Array integration, you will need to create a `secret` on your cluster named `px-pure-secret` that contains your Flash Array license. You can do this by running the below kubectl command:
-
-```
-kubectl create secret generic px-pure-secret --namespace kube-system --from-file=pure.json=<file path>
-```
-
-</Tabs.TabPane>
-</Tabs>
-
-<br />
 
 <br />
 
