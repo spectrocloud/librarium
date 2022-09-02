@@ -24,9 +24,9 @@ Palette leverages Kubectl through an in-built command line interface for the use
 * Cluster access with Spectro Proxy  
 * CLI-Based Cluster Access
 
-## Simple Cluster Access
+## Cluster Access
 
-For this scenario, a user can connect to the cluster directly as below:
+For general scenario, a user can connect to the cluster directly as below:
 
 <br/>
 
