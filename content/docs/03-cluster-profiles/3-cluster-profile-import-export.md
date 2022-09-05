@@ -21,25 +21,19 @@ Palette enables cluster profiles to be exported and then imported across multipl
 * [Export](/cluster-profiles/cluster-profile-import-export#exportclusterprofile) the cluster profile file in JSON format from the Palette console.
 
 
-* The packs getting imported as part of the profile need to be present at the destination repositories.
+* The packs in the exported profile should be available in the target environment during import.
 
 
-* The `macros` needs to be present within the destination for importing a cluster profile. If not [create the macros](/clusters/cluster-management/macros#createyourmacro) at the destination.
+* The `macros` used in the exported profile should be available in the target environment during import. If not [create the macros](/clusters/cluster-management/macros#createyourmacro) at the target environment.
 
 # Use Cases
 
 
-The Import Cluster Profile use cases include the following:
+The Export/Import Cluster Profile use cases:
 
 <br />
 
-* Import cluster profiles across tenants.
-
-
-* Import cluster profiles across projects.
-
-
-* Import cluster profiles across environments.
+* Export / Import use case is most suitable for different environments like stage & dev saas setups.
 
 # Export Cluster Profile
 
