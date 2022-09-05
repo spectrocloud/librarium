@@ -19,7 +19,7 @@ Palette leverages Kubectl through an in-built command line interface for the use
 
 # Usage Scenarios
 
-* Simple Cluster Access
+* Cluster Access
 * Cluster access with OIDC Authentication enabled
 * Cluster access with Spectro Proxy  
 * CLI-Based Cluster Access
