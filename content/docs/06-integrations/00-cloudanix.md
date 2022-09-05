@@ -5,7 +5,7 @@ metaDescription: 'Cloudanix container security helm chart for Spectro Cloud Pale
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
-logoUrl: 'cloudanix-logo-p.png'
+logoUrl: 'https://cloudanix-assets.s3.amazonaws.com/static/cloudanix-logo-p.png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
