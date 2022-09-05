@@ -26,7 +26,7 @@ This helm chart installs 3 Cloudanix services to enable container security capab
 
 ## Versions Supported
 
-Cloudanix helm chart supports the following versions with Palette..
+Cloudanix helm chart supports the following versions with Palette.
 
 <br />
 
