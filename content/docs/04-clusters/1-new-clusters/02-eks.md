@@ -802,6 +802,11 @@ Select the type and number of instances to support a minimum of 30 pods.
 
 Hence, while setting the desired size of the worker pool, make the choice as per pod requirement. In the example given above, we need to launch a minimum of two (2) instances of t3.medium to satisfy the resource requirement of an EKS cluster.
 
+# Troubleshooting
+
+If your EKS cluster  worker pool ends up in `Failed` or `Create Failed` or `Error nodes failed to join` state, please refer to this [Amazon provided Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
+)
+
 # Deleting an EKS Cluster
 The deletion of an EKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an EKS cluster:
 
@@ -832,7 +837,5 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 <WarningBox>
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
 </WarningBox>
-
-
 
 
