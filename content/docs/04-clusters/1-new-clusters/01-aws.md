@@ -626,6 +626,27 @@ The following video demonstrates how to create a user in AWS and attach the four
  
 ![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
 
+To create an AWS cloud account using access credentials follow the steps below:
+
+1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+
+
+2. Login to Palette console as Tenant Admin.
+
+
+3. Go to `Tenant Settings` > `Cloud Accounts` and click `+Add AWS Account`.
+
+
+4. In the cloud account creation wizard give the following information:
+   * Account Name
+   * Description
+   * Credentials:
+       * AWS Access key
+       * AWS Secret access key
+
+
+5. Validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="Using the Security Token Service (STS) Method">
@@ -637,17 +658,24 @@ The following video demonstrates how to create a user in AWS and attach the four
 
 ## Security Token Service (STS) Method
 
-To create an AWS cloud account, provide a name and a description for the account and follow the steps below, based on the account type desired:
+To create an AWS cloud account using STS credentials follow the steps below:
 
-1. In the AWS console, create the four policies listed above.
-
-
-2. Access Credentials
-    - In the AWS console, create a role with all the four policies created in the previous step. Assign this role to the root user or the IAM user to be used from Palette.
-    - In Palette, provide the access key and secret key for the user.
+1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
 
 
-3. Security Token Service (STS)
+2. Login to Palette console as Tenant Admin.
+
+
+3. Go to `Tenant Settings` > `Cloud Accounts` and click `+Add AWS Account`.
+
+
+4. In the cloud account creation wizard give the following information:
+   * Account Name
+   * Description
+   * Select STS authentication for validation:
+
+
+5. Security Token Service (STS)
 
     In the AWS console, create a new IAM role called using the following options:
 
@@ -661,11 +689,10 @@ To create an AWS cloud account, provide a name and a description for the account
     |**Role Name**|SpectroCloudRole|
     
 
-4. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) Role.Arn.
+6. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) Role.Arn.
 
 
-5. In Palette, enter the Role ARN in the field provided. 
-
+7. In Palette, enter the Role ARN in the field provided. Validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
 
 </Tabs.TabPane>
 </Tabs>
