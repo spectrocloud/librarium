@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-Cloudanix container security helm chart detects anamolous behaviours on kubernetes cluster and provides an interactive interface in Cloudanix dashboard to view on which resources like pods, containers and nodes the activiy is occuring in real-time.
+Cloudanix container security helm chart detects threats and anomalous behaviors on kubernetes cluster and provides an interactive interface in Cloudanix dashboard to view on which resources like pods, containers and nodes the activiy is occurring, in real-time.
 
 This helm chart installs 3 Cloudanix services to enable container security capabilities. The services are listed below:
 
@@ -31,9 +31,9 @@ Cloudanix helm chart supports the following versions with Palette.
 <br />
 
 <Tabs>
-<Tabs.TabPane tab="0.0.3" key="0.0.3">
+<Tabs.TabPane tab="1.0.0" key="1.0.0">
 
-* **0.0.3**
+* **1.0.0**
 
 <br />
 
@@ -41,5 +41,5 @@ Cloudanix helm chart supports the following versions with Palette.
 
 - Minumum CPU Cores: 1
 - Minimum Memory Required: 20 MiB
-- The minimum kubernetes version supported is 1.15
+- The minimum Kubernetes version supported is 1.15
 - Kernel version 4.5 or higher
