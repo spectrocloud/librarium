@@ -51,7 +51,13 @@ The following sections describe these capabilities in detail:
 * [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespaced resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette also can define new namespaces for the cluster and manage (remove, assign quota, assign role bindings, etc.) them.
 
 
-* [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring)- Packs associated with the cluster you are monitoring are displayed with information on the status and the installation progress of the Add-on Packs. The pack statuses appear as gray indicating as an initial onboarding and before deployment status, green representing a successful installation, blue as processing the installation, and red as a failed install and requires attention.
+* [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring) - Packs associated with the cluster you are monitoring are displayed with information on the status and the installation progress of the Add-on Packs. The pack statuses appear as gray indicating as an initial onboarding and before deployment status, green representing a successful installation, blue as processing the installation, and red as a failed install and requires attention.
+
+
+* [Web based kubectl](/clusters/cluster-management/palette-webctl#overview) - Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters.
+
+
+* [Lock Cluster](/clusters/cluster-management/palette-lock-cluster) - Palette supports the Cluster(s) Lock feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. 
 
 
 <InfoBox>
