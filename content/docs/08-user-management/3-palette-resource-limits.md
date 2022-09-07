@@ -29,9 +29,22 @@ import InfoBox from 'shared/components/InfoBox';
 |SSH Keys            |      300              |
 |Alerts or Webhook   |   100 (Per Project)   |
 |Clusters.           |      200              |
-|Appliances(Edgehosts|      200              |  
+|Appliances (Edge hosts)|      200              |  
+
+# Set Resource Limit 
+
+To set resource limit:
+
+<br />
+
+* Login to Palette console as `Tenant Admin`.
 
 
+* Select `Tenant Settings` from the left ribbon menu.
+
+
+* Select `Resource Limits` tab and set the values for different Palette resources as per tenant resource requirements.
+ 
 <InfoBox>
 The resource limit can be customized according to per tenant resource requirements 
 </InfoBox>
