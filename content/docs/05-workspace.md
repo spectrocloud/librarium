@@ -60,7 +60,7 @@ Palette leverages Regex Pattern matching to select multiple namespaces to apply 
 
    **Example:** `~/^(kube|cluster|capi|jet|cert)[-].+/`
 
-Note: Please do not add any space beween the `~` operator and the `expression`.
+**Note**: No spaces to be added between the `~` operator and the `expression`.
  
 <br />
 <br />
