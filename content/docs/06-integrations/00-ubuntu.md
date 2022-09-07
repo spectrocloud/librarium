@@ -126,7 +126,7 @@ kubeadmconfig:
 
 # Ubuntu Advantage
 
-Ubuntu Advantage services extend your infrastructure's security, compliance, and productivity requirements. With Palette, enable the UA services when modifying the Pack Values. See below for steps on how to modify the Preset options.
+Ubuntu Advantage services extend your infrastructure's security, compliance, and productivity requirements. Enable the UA services when modifying the Pack Values in Palette. See below for steps on how to modify the Preset options.
 
 **Benefits with UA**:
 
@@ -149,7 +149,7 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 2. Give the new Pack a **Name**, **Version number**, **Description**, **Type**, and **Tags** and click the **Next** button.
 
 
-3. Choose the cloud provider as the **Infrastructure provider** and click the **Next**.
+3. Choose the cloud provider as the **Infrastructure provider** and click **Next**.
 
 
 4. Edit the Packs with the following parameters:
