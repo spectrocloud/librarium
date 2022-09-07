@@ -670,10 +670,6 @@ To create an AWS cloud account, provide a name and a description for the account
 </Tabs.TabPane>
 </Tabs>
 
-# Add IAM Policies At Node Level:
-
-There will be situations where policies need to be added at the ec2 Instance level rather than the cluster level. For instance, the EBS storage pack requires Roles to be present at the node level rather than the cluster level. For such scenarios in the cloud account page, after validation of the credentials, `Add IAM policies` are enabled where you can specify additional Role ARNs which need to be attached. In addition, tenant administrators can now set the Palette resource limits.
-
 # Deploying an AWS Cluster
 
  ![aws-cluster-creation](./cluster-creation-videos/aws.mp4)
