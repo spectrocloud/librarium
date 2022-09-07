@@ -14,6 +14,74 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
+# September 10, 2022 - Release 2.8.0
+Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
+
+**Features**
+* Palette cluster API upgraded from [v1alpha4 to v1beta1](https://release-1-1.cluster-api.sigs.k8s.io/developer/providers/v1alpha4-to-v1beta1.html).
+* Palette now supports lightweight, cost-effective, secure, and resource-efficient [Nested Clusters](/clusters/nested-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
+* Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
+* Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](/cluster-profiles/cluster-profile-import-export#overview) across multiple environments, projects, and tenants. 
+* Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](/integrations/rke2#rke2overview) focusing on security and compliance.
+* The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](/terraform#moduletoprovidercompatibilitymatrix), focus on:
+  * Cluster resource tagging
+  * Static placement of AKS clusters
+  * VMware cloud-type support of Terraform modules 
+  * Image template support
+
+**Enhancements**
+* Palette upgrades the Vsphere Public Cloud Gateways and On-Prem cluster specifications to newer versions:
+
+   * K8s version has been upgraded from 1.21 to 1.22.12 [ the latest version in 1.22 ]
+   
+   * The storage layer has been upgraded from 2.3 to 2.5.2 to fix volume attachment issues
+   
+   * Ubuntu OS has been upgraded from LTS 18.04 to LTS 20.04
+   
+   * The PCG and On-Premise images now have all the latest OS patches updated
+
+* Palette enables [Cluster(s) Lock](/clusters/cluster-management/palette-lock-cluster#overview) to restrict the cluster(s) under the Tenant, Project, or single cluster from being upgraded from cluster management services upgrade on the upgrade of the Palette.
+* Palette feeds observability of [OS patching details](/clusters/cluster-management/os-patching#monitoring) such as `Last Applied Patch Time` and `The date and time of the last OS Patch.`
+* Palette boards the mapping between cluster profiles and clusters in cluster profiles details UI page listing the clusters created using a specific cluster profile.
+* Palette promotes VNet Resource Group filtering for AKS clusters, allowing the VNet to be a part of a different resource group than the AKS resource group.
+* Palette enables the users to override the [custom folder](/clusters/new-clusters/vmware#deployingavmwarecluster) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
+* [Regex Expression](/workspace#regexfornamespaces) for mass selection of workspace names for role binding. 
+* Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](/user-management/saml-sso#oidcbasedsso).
+* Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/new-clusters/eks#disableoidcassociateproviderforawsserviceaccount) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
+* Tenant administrators can now set the [Palette resource limits](/user-management/palette-resource-limits#setresourcelimit) though the Palette console.
+* Palette provisions user's infrastructure privacy for the Azure cloud account.
+
+**Deprecations**
+
+* API Deprecations
+
+  * Deprecated API: `GET /v1/clusterprofiles`
+
+    New API       : `POST /v1/dashboard/clusterprofiles` with better filter support
+
+  * Deprecated API: `GET /v1/projects`
+
+    New API       : `POST /v1/dashboard/projects` with better filter support
+  
+  * Deprecated API: `GET /v1/spectroclusters`
+    
+    New API       : `POST /v1/dashboard/spectroclusters` with better filter support
+  
+  * Deprecated API: `GET /v1/spectroclusters/{uid}/packs/{packName}/config`
+    
+    New API       : `GET /v1/spectroclusters/{uid}/profiles/{profileUid}/packs/{packName}/config` with multiple cluster profiles support within cluster, the profileUid is required to locate a uniquely within the cluster
+
+* Pack Deprecations:
+
+  * Azure Kubernetes Services (AKS) 1.21
+
+**Known Issues**
+
+* AKS Clusters in v1beta1 environment gives an empty report. 
+* OS Patch information not getting displayed for clusters with os patch scheduled on boot.
+
+
+
 # July 17, 2022 - Release 2.7.0
 Spectro Cloud Palette 2.7 is released with advanced features supporting Windows Worker Node Pools, Canonical Ubuntu Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and more.
 
@@ -354,16 +422,6 @@ The following features are included as part of Spectro Cloud 1.0:
 - Grouping of clusters logically into Projects for governance and control.
 - Rich set of enterprise features such as granular RBAC, Single Sign-on, detailed Audit logs, etc.
 
-# Known Issues
-
-- **BET-1491:** Portworx currently does not [support](https://docs.portworx.com/portworx-install-with-kubernetes/) Kubernetes version 1.19. This results in a failure to bring up the Stork scheduler pod.
-- **BET-1472:** In the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster/#enterprisemode), deleting a node in an Enterprise cluster renders the cluster unusable due to an [in-tree limitation](https://github.com/vmware/vsphere-storage-for-kubernetes/issues/55).
-  - _Recommendations:_
-    - To prevent VMDK deletion with the in-tree provider, drain the node, let all pods re-schedule on another node, let all volumes detach from the node, and then finally, delete the node VM.
-    - This issue is resolved with [vSphere 67u3](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-51D308C7-ECFE-4C04-AD56-64B6E00A6548.html) and a [new CSI driver](https://github.com/kubernetes-sigs/vsphere-csi-driver).
-    - A [related issue](https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/359) might occur where a persistent volume might not attach to a new node.
-- **BET-1461:** For AWS clusters, when the Static VPC option is used, clusters might not complete provisioning. This bug will be patched in subsequent releases.
-- **BET-768:** On the Azure cloud, the choice of Availability Zones (AZ) may be ignored if the selected AZs do not support the requested VM size. Non-Zoned VMs are created in such cases without a warning to the user.
 
 <InfoBox>
 Spectro Cloud adopts relevant security best practices for operating systems, Kubernetes components, and cloud environments. All Spectro Cloud container images are scanned for CVEs before a release. While Spectro Cloud takes ownership of securing the cluster infrastructure, there may be additional 3rd party integrations installed on the Kubernetes clusters provisioned. Security of such 3rd party integrations, including their container images and associated configurations, is the responsibility of the provider.
