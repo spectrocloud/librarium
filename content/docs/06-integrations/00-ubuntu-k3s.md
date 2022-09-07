@@ -4,7 +4,7 @@ metaTitle: 'Ubuntu Lightweight Kubernetes K3s'
 metaDescription: 'Choosing K3s with Ubuntu within the Palette console'
 hiddenFromNav: true
 isIntegration: true
-category: ['server']
+category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png'
 ---
 
@@ -13,29 +13,25 @@ import Tabs from 'shared/components/ui/Tabs';
 
 
 # Lightweight Kubernetes on Ubuntu
+K3s is a purpose-built container orchestrator for running Kubernetes on bare-metal servers. With the bloat stripped out, the CNCF (Cloud Native Computing Foundation) accredited Kubernetes distribution orchestrator makes installation and application deployment faster. Palette supports this Lightweight Kubernetes and Ubuntu pack versions to run at scale.
 
-K3s is a lightweight version of the Kubernetes distribution tool, developed by Rancher Labs. K3s is a purpose-built container orchestrator for running Kubernetes on bare-metal servers.  With the bloat stripped out, the CNCF (Cloud Native Computing Foundation) accredited Kubernetes distribution orchestrator makes installation and application deployment faster.
-
-Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms. Palette supports the following Lightweight Kubernetes and Ubuntu pack versions to run at scale.
-
-
-<br />
 <br />
 
 ## Version Supported
 
 <br />
-<br />
 
 ## Ubuntu K3s 
-
+<br />
 <Tabs>
 <Tabs.TabPane tab="Ubuntu-K3s-1.22.x" key="Ubuntu-K3s-1.22.x">
 
 <br />
 <br />
 
-**Ubuntu-K3s-1.21.12-k3s0**
+Name: **Ubuntu-K3s**
+Version: **Ubuntu-K3s-1.22.9-k3s0**
+
 
 <br />
 <br />
@@ -47,7 +43,8 @@ Ubuntu is a Linux distribution, based on Debian and composed mostly of free and 
 <br />
 <br />
 
-**Ubuntu-K3s-1.21.9-k3s0**
+Name: **Ubuntu-K3s**
+Version: **Ubuntu-K3s-1.21.12-k3s0**
 
 <br />
 <br />
