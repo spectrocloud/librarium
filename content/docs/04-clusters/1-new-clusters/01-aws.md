@@ -697,9 +697,9 @@ To create an AWS cloud account using STS credentials follow the steps below:
 </Tabs.TabPane>
 </Tabs>
 
-# Add IAM Policies At Node Level:
+# Global Role Additional Policies:
 
-There will be situations where policies need to be added at the node level rather than the cluster level. For instance, the EBS storage pack requires Roles to be present at the node level rather than the cluster level. For such scenarios in the cloud account page, after validation of the credentials, `Add IAM policies` are enabled where you can specify additional Role ARNs which need to be attached.
+There will be situations where additional Node Level policies needs to be added to your deployment. For instance, the EBS storage pack requires Roles to be present at the node level. For such scenarios in the cloud account page, after validation of the credentials, `Add IAM policies` are enabled where you can specify additional Role ARNs which need to be attached. This policy will be attached to all the clusters that are launched with this specific Cloud Account.
 
 # Deploying an AWS Cluster
 
