@@ -1,8 +1,8 @@
 ---
-title: "Quick Start with Nested Cluster"
-metaTitle: "Getting Started with nested clusters on Palette"
+title: "Quickstart with Nested Clusters"
+metaTitle: "Getting Started with Nested Clusters on Palette"
 metaDescription: "The methods of creating nested clusters for a speedy deployment on any CSP"
-icon: "clusters"
+icon: ""
 hideToC: false
 fullWidth: false
 ---
@@ -27,9 +27,11 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
 - Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. During the cluster creation, you will be able to configure it as a Host Cluster.
 
-  **Hosted Clusters**
 
-  There are three ways to engage with a Nested Cluster on Palette.<p></p><br />
+
+  **Host Clusters**
+
+  There are two ways to engage with a Nested Cluster on Palette.<p></p><br />
 
    1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when deploying a Host Cluster deployment wizard.
 
@@ -37,10 +39,23 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
     2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster and allow it to host Nested Clusters.<p></p><br />
 
-    3. Or, you can import a [Brownfield Cluster](/clusters/brownfield-clusters#importingabrownfieldcluster) and then, enable it to the Nested Cluster.
+<InfoBox>
+
+When you create a host cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
+
+<br />
+
+```yml
+roleName: "custom-ng-role"
+  roleAdditionalPolicies:
+  - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+```
+</InfoBox>
 
 
 # Enabling a Nested Cluster on a Host Cluster
+
+You can enable nested clusters on a host cluster by performing the following steps:<p></p><br />
 
 1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
@@ -117,7 +132,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
     - Click the **Attach Profile** button to assign a profile.
 
-      **Note**: Optionally, attach one or more Add-on layers to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.
+      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.
 
 
 3. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<p></p><br />
@@ -142,4 +157,6 @@ Congratulations! Your Nested Cluster is now deployed. If you like more informati
 
 [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
+[Amazon EBS CSI driver - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)
 
+[Creating the Amazon EBS CSI driver IAM role for service accounts - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
