@@ -18,7 +18,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
 **Features**
-* Palette cluster API upgraded from [v1alpha4 to v1beta1](https://release-1-1.cluster-api.sigs.k8s.io/developer/providers/v1alpha4-to-v1beta1.html).
 * Palette now supports lightweight, cost-effective, secure, and resource-efficient [Nested Clusters](/clusters/nested-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
 * Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
 * Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](/cluster-profiles/cluster-profile-import-export#overview) across multiple environments, projects, and tenants. 
