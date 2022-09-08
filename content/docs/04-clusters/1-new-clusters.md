@@ -14,9 +14,9 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # New Clusters 
 
-Spectro Cloud supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public clouds, private clouds, bare-metal servers (installed in data centers) as well as on Edge Appliances (isolated bare-metal servers or virtual machines installed on edge locations such as hospitals, restaurants, grocery stores, etc.).
+Palette supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public clouds, private clouds, bare-metal servers (installed in data centers) as well as on Edge Appliances (isolated bare-metal servers or virtual machines installed on edge locations such as hospitals, restaurants, grocery stores, etc.).
 
-On public clouds, Spectro Cloud supports provisioning new clusters, using the cloud provider's infrastructure, by provisioning new VMs for control plane and worker pools as well as through their managed Kubernetes services such as Amazon Elastic Kubernetes Service (Amazon EKS) and Azure Kubernetes Service (AKS). 
+On public clouds, Palette supports provisioning new clusters, using the cloud provider's infrastructure, by provisioning new VMs for control plane and worker pools as well as through their managed Kubernetes services such as Amazon Elastic Kubernetes Service (Amazon EKS) and Azure Kubernetes Service (AKS). 
 
 Provisioning of clusters on private environments like VMware or OpenStack requires a Private Cloud Gateway (PCG) to be installed for Spectro Cloud to be able to install Kubernetes clusters. Deploying Edge Clusters (clusters installed on edge appliances) requires a Private Cloud Gateway-Edge (PCG-Edge) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them.
 
