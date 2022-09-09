@@ -38,6 +38,12 @@ We highly recommend our users deploy the 2.3.x version of vSphere CSI.
 </WarningBox>
 
 <Tabs>
+
+<Tabs.TabPane tab="2.5.x" key="2.5.x">
+
+* **2.5.2**
+ 
+</Tabs.TabPane>
 <Tabs.TabPane tab="2.3.x" key="2.3.x">
 
 * **2.3.0**

@@ -40,6 +40,12 @@ Azure supports VXLAN encapsulation type.
 # Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="3.23.x" key="3.23.x">
+
+* ** 3.23.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="3.22.x" key="3.22.x">
 
 * ** 3.22.0**

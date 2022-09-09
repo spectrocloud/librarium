@@ -24,6 +24,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 <Tabs>
 
+<Tabs.TabPane tab="0.20.x" key="0.20.x">
+
+* **0.20.1**
+ 
+</Tabs.TabPane>
 <Tabs.TabPane tab="0.11.x" key="0.11.x">
 
 * **0.11.0**
