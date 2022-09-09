@@ -79,7 +79,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 * Nginx 1.3.0
 * Thanos - 10.5.3
 * EFK - 7.17.3
-* Kubernetes dashboard - 2.6.0
+* Kubernetes Dashboard - 2.6.0
 * Vault - 0.20.1
 * Calico - 3.23
 * Calico for Azure - 3.23
@@ -87,9 +87,9 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 * AWS EFS - 1.4.0
 * AWS EFS -addon - 1.4.0
 * gce-pd-csi-driver-v1.7.1
-* portworx-generic-addon-v2.11.2
-* portworx-generic-v2.11.2
-* vsphere_csi_2.5.2
+* Portworx-generic-addon-v2.11.2
+* Portworx-generic-v2.11.2
+* vSphere_csi_2.5.2
 
 **Known Issues**
 
