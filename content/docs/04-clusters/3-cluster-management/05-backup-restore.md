@@ -167,7 +167,7 @@ The following details are required to configure a backup location in GCP:
 
 ## Configure your Backup in MinIO
 
-The following details are required to configure a backup location in AWS:
+The following details are required to configure a backup location in MinIO:
 
 1. **Location Name**: Name of your choice.
 
