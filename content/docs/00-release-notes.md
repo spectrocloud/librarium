@@ -18,7 +18,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
 **Features**
-* Palette cluster API upgraded from [v1alpha4 to v1beta1](https://release-1-1.cluster-api.sigs.k8s.io/developer/providers/v1alpha4-to-v1beta1.html).
 * Palette now supports lightweight, cost-effective, secure, and resource-efficient [Nested Clusters](/clusters/nested-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
 * Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
 * Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](/cluster-profiles/cluster-profile-import-export#overview) across multiple environments, projects, and tenants. 
@@ -74,6 +73,23 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 * Pack Deprecations:
 
   * Azure Kubernetes Services (AKS) 1.21
+  
+**Packs and Integrations** 
+
+* Nginx 1.3.0
+* Thanos - 10.5.3
+* EFK - 7.17.3
+* Kubernetes Dashboard - 2.6.0
+* Vault - 0.20.1
+* Calico - 3.23
+* Calico for Azure - 3.23
+* AWS EBS CSI - 1.8.0
+* AWS EFS - 1.4.0
+* AWS EFS -addon - 1.4.0
+* gce-pd-csi-driver-v1.7.1
+* Portworx-generic-addon-v2.11.2
+* Portworx-generic-v2.11.2
+* vSphere_csi_2.5.2
 
 **Known Issues**
 
