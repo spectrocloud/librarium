@@ -93,7 +93,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 
 **Known Issues**
 
-* AKS Clusters in v1beta1 environment gives an empty report. 
+* AKS Clusters in v1beta1 environment gives an empty report for Kubernetes Conformance Testing (Sonobuoy scan). 
 * OS Patch information not getting displayed for clusters with os patch scheduled on boot.
 
 
