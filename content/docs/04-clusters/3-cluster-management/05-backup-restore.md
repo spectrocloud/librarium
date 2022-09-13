@@ -26,12 +26,11 @@ Palette leverages the BackUps to the following locations:
 
 <br />
 
-#### Amazon Web Services (AWS) S3 Buckets
+#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#foranamazonwebservices(aws)bucketasbackuplocation), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinawss3)
 
-#### Google Cloud Platform (GCP) Buckets
+#### Google Cloud Platform (GCP) Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#foragooglecloudplatform(gcp)backuplocation), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket)
 
-#### MinIO S3 Buckets
-
+#### MinIO S3 Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#forminios3backup), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinminio)
 
 # Prerequisites
 
@@ -181,7 +180,7 @@ The following details are required to configure a backup location in MinIO:
 4. **S3 Bucket**: S3 bucket name must be pre-created on the MinIO object-store.
 
 
-5. **Region**: Region in which the S3 bucket is created. Example: us-east-1 
+5. **Region**: Region in which Minio server is configured. Example: us-east-1
 
 
 6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
@@ -190,10 +189,7 @@ The following details are required to configure a backup location in MinIO:
 7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
 
 
-8. **Authenticate** using MinIo access key and secret access key.
-
-
-9. Click **Create** to complete the location creation wizard. 
+8. Click **Create** to complete the location creation wizard. 
 
 
 ## Add a Backup Location
