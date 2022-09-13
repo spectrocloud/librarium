@@ -189,7 +189,10 @@ The following details are required to configure a backup location in MinIO:
 7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
 
 
-8. Click **Create** to complete the location creation wizard. 
+8. Provide the MiniIO unique **Access Key** and **Secret Key**. An unique access key (username) and corresponding secret key (password) can be obtained for every MinIO user account from MinIO console.
+
+
+9. Click **Create** to complete the location creation wizard. 
 
 
 ## Add a Backup Location
