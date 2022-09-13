@@ -90,10 +90,9 @@ The following steps need to be performed to provision a new Azure cluster:
     | **SSH Key** | Public key to configure remote SSH access to the nodes.|
     | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Resource Group** : The logical container for grouping related Azure resources.
-    ||**Virtual Network**: Representation of your own network in the cloud.
-    ||**CIDR Block**: To assign Internet Protocol (IP) addresses that improve address distribution efficiency.
-    ||**Control plane Subnet**: For Azure resource management <br /> Name <br /> CIDR Block <br /> Security Group Name
-    ||**Worker Network**: <br /> Name <br /> CIDR Block <br /> Security Group Name
+    || **Virtual Network**: Select the virtual network from dropdown menu.
+    || **Control plane Subnet**: Select the control plane network from the dropdown menu.
+    || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 
 <InfoBox>
