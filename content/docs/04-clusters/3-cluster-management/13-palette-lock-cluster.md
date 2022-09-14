@@ -1,6 +1,6 @@
 ---
-title: "Lock Clusters"
-metaTitle: "Lock Clusters on Palette"
+title: "Pause Platform Updates"
+metaTitle: "Pause Platform Updates"
 metaDescription: "Lock Clusters on Palette"
 hideToC: false
 fullWidth: false
@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette supports the **Cluster(s) Lock** feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. The use cases of this feature are:
+Palette supports the **Pause Platform Updates** feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. The use cases of this feature are:
 
 <br />
 
@@ -39,10 +39,10 @@ Individual cluster under Project scope and Tenant scope can be locked to restric
 3. From the cluster details page, click `Settings -> Cluster Settings`
 
 
-4. Toggle the `Lock Cluster` button to lock the cluster so that the cluster management services are not upgraded on the upgrade of the Palette.
+4. Toggle the `Pause Platform Updates` button to lock the cluster so that the cluster management services are not upgraded on the upgrade of the Palette.
 
 
-5. To unlock the cluster, toggle the ‘Lock Cluster’ back and deselect. 
+5. To unlock the cluster, toggle the `Pause Platform Updates` back and deselect. 
 
 <br />
 
@@ -56,10 +56,10 @@ All the clusters under a Project can be locked to restrict them from the Palette
 2. Select `Project Settings` from the left ribbon menu.
 
 
-3. From`Project Settings` page, select `Cluster Settings` and toggle the `Lock all clusters` button. This restricts all the clusters under that project scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
+3. From `Project Settings` page, select `Platform Updates` and toggle the `Pause Platform Updates` button. This restricts all the clusters under that project scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 
 
-4. To unlock the clusters, toggle the ‘Lock all Clusters’ back and deselect. 
+4. To unlock the clusters, toggle the `Pause Platform Updates` back and deselect. 
 
 ## Lock all Clusters within the Tenant Scope
 
@@ -74,10 +74,10 @@ All the clusters under a Tenant can be locked to restrict them from the Palette 
 2. Select `Tenant Settings` from the left ribbon menu.
 
 
-3. From `Tenant Settings,` select `Cluster Settings` and toggle the `Lock all clusters` button.This restricts all the clusters under that tenant scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
+3. From `Tenant Settings,` select `Platform Updates` and toggle the `Pause Platform Updates` button.This restricts all the clusters under that tenant scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 
 
-4. To unlock the clusters, toggle the `Lock all Clusters` back and deselect. 
+4. To unlock the clusters, toggle the `Pause Platform Updates` back and deselect. 
 
 
 
