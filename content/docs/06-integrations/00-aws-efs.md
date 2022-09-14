@@ -83,6 +83,13 @@ There are two ways to add AWS EFS to Palette:
 
 <Tabs>
 
+<Tabs.TabPane tab="1.4.x" key="1.4.x">
+
+
+* **1.4.0**
+
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.3.x" key="1.3.x">
 
 
