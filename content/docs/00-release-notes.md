@@ -48,7 +48,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 * Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](/user-management/saml-sso#oidcbasedsso).
 * Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/new-clusters/eks#disableoidcassociateproviderforawsserviceaccount) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
 * Tenant administrators can now set the [Palette resource limits](/user-management/palette-resource-limits#setresourcelimit) though the Palette console.
-* Palette provisions user's infrastructure privacy for the Azure cloud account.
+* Palette provisions user's [infrastructure privacy](/clusters/new-clusters/azure#deployinganazurecluster) for the Azure cloud account.
 
 **Deprecations**
 
