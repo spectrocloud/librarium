@@ -52,25 +52,19 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 
 **Deprecations**
 
-* API Deprecations
+* **API Deprecations**
 
-  * Deprecated API: `GET /v1/clusterprofiles`
+   * Deprecated API: `GET /v1/clusterprofiles` <br />
+     New API       : `POST /v1/dashboard/clusterprofiles` with better filter support 
+   * Deprecated API: `GET /v1/projects` <br />
+     New API       : `POST /v1/dashboard/projects` with better filter support
+   * Deprecated API: `GET /v1/spectroclusters` <br />
+     New API       : `POST /v1/dashboard/spectroclusters` with better filter support
+   * Deprecated API: `GET /v1/spectroclusters/{uid}/packs/{packName}/config`. <br />
+     New API       : `GET /v1/spectroclusters/{uid}/profiles/{profileUid}/packs/{packName}/config` with multiple cluster profiles support within cluster, the profileUid is required to locate a uniquely within the cluster
 
-    New API       : `POST /v1/dashboard/clusterprofiles` with better filter support
 
-  * Deprecated API: `GET /v1/projects`
-
-    New API       : `POST /v1/dashboard/projects` with better filter support
-  
-  * Deprecated API: `GET /v1/spectroclusters`
-    
-    New API       : `POST /v1/dashboard/spectroclusters` with better filter support
-  
-  * Deprecated API: `GET /v1/spectroclusters/{uid}/packs/{packName}/config`
-    
-    New API       : `GET /v1/spectroclusters/{uid}/profiles/{profileUid}/packs/{packName}/config` with multiple cluster profiles support within cluster, the profileUid is required to locate a uniquely within the cluster
-
-* Pack Deprecations:
+* **Pack Deprecations:**
 
   * Azure Kubernetes Services (AKS) 1.21
   
