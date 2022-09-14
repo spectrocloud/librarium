@@ -19,11 +19,11 @@ With the Palette Nested Cluster option, you can deploy additional Kubernetes clu
 
 There are certain advantages to use a nested cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within the Palette orchestrator.
+Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
 
 ## Prerequisites
 
-- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page.<p></p><br />
+- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
 
 - Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. During the cluster creation, you will be able to configure it as a Host Cluster.
 
@@ -33,7 +33,7 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
   There are two ways to engage with a Nested Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when deploying a Host Cluster deployment wizard.
+   1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The same settings listed below are available, when you are enabling a Nested Cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
@@ -53,9 +53,9 @@ roleName: "custom-ng-role"
 </InfoBox>
 
 
-# Enabling a Nested Cluster on a Host Cluster
+# Enabling a Nested Clusters on an existing Host Cluster
 
-You can enable nested clusters on a host cluster by performing the following steps:<p></p><br />
+You can enable nested clusters on an existing host cluster by performing the following steps:<p></p><br />
 
 1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
