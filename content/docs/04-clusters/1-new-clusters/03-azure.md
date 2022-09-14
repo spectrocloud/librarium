@@ -10,6 +10,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
@@ -46,9 +47,13 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 To create an Azure cloud account, we need:
 
+* A custom Account Name
 * Client ID
 * Tenant ID
 * Client Secret
+* Tenant Name (optional)
+
+Once the above informations are provided to the cloud account creation wizard, click on **Disable Properties**, if the user do not want to have a network call from Palette console to the Azure account for linking the Azure networking details to Palette console.  
 
 For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
 
@@ -84,15 +89,21 @@ The following steps need to be performed to provision a new Azure cluster:
     | **Region** | Select a region in Azure in which the cluster should be deployed.|
     | **Resource Group** | Select the resource group in which the cluster should be deployed.|
     | **SSH Key** | Public key to configure remote SSH access to the nodes.|
-    | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster.<br /> These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
+    | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
+    ||**Virtual Resource Group** : The logical container for grouping related Azure resources.
     || **Virtual Network**: Select the virtual network from dropdown menu.
     || **Control plane Subnet**: Select the control plane network from the dropdown menu.
     || **Worker Network**: Select the worker network from the dropdown.
+    |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 
-5. Make the choice of updating the worker pool in parallel.
+<InfoBox>
 
+If the Palette [cloud account](/clusters/new-clusters/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
+**Static Placement** the network informations from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
 
-6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+</InfoBox>
+
+5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
 
     |**Parameter**| **Description**|
     |-------------|----------------|    
@@ -106,8 +117,9 @@ The following steps need to be performed to provision a new Azure cluster:
     ||**Expand First**: Launches the new node and then shut down the old node.|
     ||**Contract First**: Shut down the old node first and then launches the new node.|
     |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones, if multiple zones are selected. Zones are supported only for worker pools.|
+   
     
-7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+6. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
 <InfoBox>
 New worker pools may be added if its desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose workloads and another worker pool with instance type <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
