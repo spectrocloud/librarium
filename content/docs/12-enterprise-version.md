@@ -20,7 +20,7 @@ Single node installation of the platform, ideal for PoC environments.
 
 ## Enterprise Mode
 
-Highly available multi-node installation typically for production purposes.
+Highly available multi-node installation typically for production purposes dsadsa.
 
 
 Palette provides the platform installer to enable quick start mode and enterprise mode. 
