@@ -100,7 +100,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
     ```bash
-        docker pull gcr.io/spectro-images-public/release/spectro-registry:2.7.0
+        docker pull gcr.io/spectro-images-public/release/spectro-registry:2.8.0
     ```
 
 
