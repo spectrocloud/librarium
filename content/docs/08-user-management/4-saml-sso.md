@@ -1,7 +1,7 @@
 ---
 title: "SSO Setup"
 metaTitle: "SSO Setup"
-metaDescription: "Detailed instructions on creating SSO to log in to Spectro Cloud using SAML 2.0"
+metaDescription: "Detailed instructions on creating Single Sign-on to log in to Palette using SAML 2.0"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -10,40 +10,73 @@ fullWidth: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+
 
 # Overview
 
-Single sign-on (SSO) is an authentication method that enables secured user authentication with multiple applications and websites by using a single set of credentials.
-SSO works upon  a trust relationship set up between the service provider, and an identity provider such as Okta. This trust relationship is often based upon a certificate that is exchanged between the identity provider and the service provider. This certificate can be used to sign identity information that is being sent from the identity provider to the service provider so that the service provider knows it is coming from a trusted source. In SSO, this identity data takes the form of tokens which contain identifying bits of information about the users.
-Spectro Cloud supports the following two types of SSO authentication mechanisms:
+Single sign-on (SSO) is an authentication method that enables secure, user authentication with multiple applications and websites by using a single set of credentials.
 
-* SAML Based SSO
-* OIDC Based SSO
+SSO works upon a trust relationship set up between the service provider and an identity provider (IdP) such as Okta, Azure AD, KeyCloak, Google ID, OneLogin, etc.
+ 
+This trust relationship occurs when a certificate is exchanged between the IdP and the service provider (SP). This certificate can be used to sign identity information that is being sent from the IdP to the SP, so that the service provider knows where is coming from a trusted source.
+ 
+In SSO, this identity data takes the form of tokens which contain identifying bits of information about the users.
+ 
+This document provides information to synchronize the two different types of SSO authentication methods between Palette and the supported IdP.
+ 
+The two types of SSO authentication methods Palette supports are:
+ 
+* Security Assertion Markup Language (SAML) Based SSO 
+* OpenID Connect (OIDC) Based SSO - You can use OIDC to enable single sign-on (SSO) between Palette and the recommended IdP.
 
+SSO for Palette
+SSO for Kubernetes 
+across two applications 
 
 <Tabs>
-
 <Tabs.TabPane tab="SAML BASED SSO" key="saml">
 
+# SAML 2.0-Based SSO
 
-# SAML 2.0 Based SSO
+With Palette, you can use SAML 2.0 Single Sign-On (SSO) to enable authentication using an IdP when logging into Palette.   
+ 
+## Procedure 
 
-To setup IdP based SSO, log in to the Spectro Cloud console as the tenant admin. Access the tenant admin settings area by clicking the "Admin" button on the left panel. Choose the IdP from the "Service" dropdown menu. Select the "Tenant Settings" from the "Tenant Admin menu" and then click "SAML" from "SSO" on the Palette console to view the SAML panel. The following parameters will be available for enabling the addition of Spectro Cloud as a "Service Provider" into the IdPs:
+1. To set up an Identity provider (IdP) based SSO, log in to the Palette console as the Tenant Admin.<p></p><br />
+2. Select the **Tenant Settings** > **SSO Auth Type** > **SAML** to view the SAML panel.<p></p><br />
+3. Complete the assertion form with the requested parameters. See below for more details specific to supported IdPs.<p></p><br />
+ 
+     - Issuer - The unique identifier. In this case it is Palette.
+     - Certificate - This certificate is generated (from where?)
+     - Service - 
+     - Identity Provider Metadata
+     - Default Teams -
+         - Enable Single Logout -
+ 
+4. These parameters enable Palette as a **Service Provider** (SP) into the IdP:<br /> (Pre-configured from the …)
+     - Single Logout URL -
+     - EntityId - 
+     - NameId Format - 
+     - Login URL - 
+     - FirstName -
+     - LastName -
+     - Email - 
+     - SpectroTeam - 
+     - Service Provider Metadata -
+    
+4. Copy the **Identity Provider Metadata** from the IdP into the Palette SAML panel for each metadata. {There is no Metadata? Do we need this step?}
+ 
+5. Click **Enable** to complete the setup wizard.
 
-1. EntityId
-1. NameId Format
-1. Login URL
-1. FirstName
-1. LastName
-1. Email
-1. SpectroTeam
-1. Service Provider Metadata
+## Results
 
-Using these parameters, Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration. More details specific to IdPs follow.
-
-The next step is to copy the `Identity Provider Metadata` from the IdP into the Spectro Cloud SAML panel. Click on *"Confirm"* to complete the setup.
 
 ## Recommended Identity Providers
+
+Find the SSO solution with these supported IdPs with Palette.
+
+<br />
 
 <Tabs>
 
@@ -51,30 +84,22 @@ The next step is to copy the `Identity Provider Metadata` from the IdP into the 
 
 ### Okta
 
+Okta's single sign-on solution can quickly connect to and sync to Palette.
 
-#### References
+### References
 
 https://developer.okta.com/docs/guides/build-sso-integration/saml2/before-you-begin/
 
-</Tabs.TabPane>
+<br />
 
+</Tabs.TabPane>
 <Tabs.TabPane tab="Azure AD" key="azure_ad">
 
-### Azure Active Director
+### Azure Active Directory
 
 #### References
 
 https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-setup-sso
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Google SAML" key="google-SAML">
-
-### Google SAML
-
-#### References
-
-https://support.google.com/a/answer/6087519?hl=en
 
 </Tabs.TabPane>
 
@@ -118,84 +143,207 @@ https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fe
 <Tabs.TabPane tab="OIDC BASED SSO" key="oidc">
 
 
-# OIDC BASED SSO
+# OIDC-BASED SSO
 
-Spectro Cloud supports OpenID Connect, a de facto standard of contemporary authentication that provides secured identity management in a highly interoperable format.
+Palette supports OpenID Connect (OIDC) as the de facto standard of contemporary authentication providing secured, identity management in a highly interoperable format. The following steps will enable Palette as a Service Provider.
 
-To setup OIDC based SSO:
-* Log in to the Spectro Cloud console as the tenant admin.
-* Access the tenant admin settings area by clicking the "Admin Settings" button on the left panel.
-* Choose SSO from the admin settings menu.
-* From manage SSO wizard, select the SSO Auth type.
-* The following parameters will be available to enable Spectro Cloud as a "Service Provider".
+## Procedure
 
-	* Issuer URL - The URL of the OpenID identity provider.
+To set up an OIDC-based SSO:
 
-	Note: For AWS users issuer URL to be generated in the below format:
-	https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-ID]
+1. Log in to the Palette console as the Tenant Admin. <p></p><br />
+2. Select the **Tenant Settings** > **SSO** > **OIDC** to view the panel.<p></p><br />
+3. Enable Spectro Cloud as a **Service Provider** by completing the following parameters. Select the tabs below for more details specific to IdPs supported with Palette.
+   - **Issuer URL** - The URL of the OpenID identity provider.<br />
+**Note**: For AWS users issuer URL to be generated in the below format:
 
-	* Client ID - The ID for the client application that makes authentication requests.
-	* Client Secret - Secret is known only to the application and the authorization server
-	* Callback URL - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the app you registered with the OIDC Identity Provider.
-	* Logout URL - URL is taken from IdP - URL to be provided into IDP for Logout
-	* Default Teams - Default team to which members unassigned to specific team belongs.
-	* Scopes - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes, called claims.
+   `https://cognito-idp.[REGION].amazonaws.com/[USER-POOL-ID]`
+<br />
+
+   - **Client ID** - The ID for the client application that makes authentication requests.
+<br />
+
+   - **Client Secret** - Secret is known only to the application and the authorization server.
+<br />
+
+   - **Callback URL** - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the application you registered with the OIDC Identity Provider.
+<br />
+
+   - **Logout URL** - URL is taken from IdP - URL to be provided into IDP for logout to clear the provider-side session.
+<br />
+
+   - **Default Teams** - Default team to which members unassigned to specific team belongs.
+<br />
+
+   - **Scopes** - The scopes are used by an application during authentication to authorize access to a user's details, like name and picture. Each scope returns a set of user attributes, called claims. You can enter multiple scopes.
+<br />
+
+   - **REQUIRED CLAIMS** - These are the parameter values, claimed by the user, to be mapped with the Identity Provider Platform. Complete the Required Claims:
+     - **Email**
+    <br />
+     - **First Name**
+    <br />
+     - **Last Name**
+    <br />
+
+   4. Add Palette as the Service Provider (SP) application in the IdP's configuration using these parameters. More details specific to IdPs follow.
+
+      **SpectroTeam** - Notable info about SpectroTeam (continue intro)
+      - Any non-admin user that is added to a Tenant must be added to at least one Team when being created by the admin. This Team can be changed later on if needed. See the [Teams](/introduction/concept-overviews#team) section for more details on Teams and creating them.<p></p><br />
+      
+      - In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized. This gives the admin the flexibility to add users into teams from both Palette and from the IdP.<p></p><br />
+      
+      - The values of the **SpectroTeam** parameter is case-sensitive, so the Tenant Admin should ensure that the team names are identical on both the consoles. A team created on the IdP (which is not mentioned in Palette) will be ignored.<p></p><br />
+      
+      - A sample use case is where a new member is to be added to the Palette tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Palette SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
+
+## Role Based Access Control
+Configure the Role Based Access Control Pack (RBAC)
+
+### Adding an RBAC Pack
+   1. Under Tenant Admin, create a RBAC Cluster Profile.
+   2. Go to **Cluster Profile** and click the +**Add Cluster Profile**.
+   3. Complete the Basic Information
+      1. Name, Version, and Description (Optional)
+      2. Under **Type**, select **+Add-on New Pack**
+      3. Select **Authentication** as the Pack Type.
+      4. From the **Registry** dropdown, click **Public Repo**.
+      5. Choose **Spectro RBAC**  as the Pack Name.
+      6. Select the Pack Version.
+      7. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings.
+         **Note**: This is where you will edit the role settings.
+      8. Click the **Confirm & Create** button.
+
+### Editing the RBAC Cluster Profile
+   1. Go to **Profiles** and choose the **RBAC** cluster profile.
+   2. Click the layer in order to edit it.
+   3. Specify the ClusterRoleBindings:
+      1. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**.
+      2. name: bind-cluster-admin-role-to-cluster-admin
+      3. subjects:
+         1. type: Group
+         2. name:  Enter the **Azure AD Group ID name** and add a comment on what the **Azure AD displayname** is that corresponds to the **Azure AD Group Name**
+   Example: **Azure AD Group Object Id** "70d19fd6-355a-453b-aadf-7cc6c915e301" is linked to the **Azure AD Security Group** with the display name of "**cluster-admin-role**".
+          name: "AZURE AD GROUP ID NAME"
 
 
-* REQUIRED CLAIMS: The parameter values claimed by the user to be  mapped with the identity provider platform.The choice of parameters can be done by the users which can be an Email, First Name, Last Name, Spectro Team Etc.
 
-Spectro Cloud should be added as the Service Provider (SP) app in the IdP's configuration using these parameters. More details specific to IdPs follow.
+Bind the Cluster Admin Role AD to Cluster Admin
+You can also use a 
 
-<InfoBox>
+Group ID Name
 
-SpectroTeam Parameter
 
-* Any non-admin user that is added to a tenant must be added to at least one team when being created by the admin. This team can be changed later on if needed. See the ["teams"](/introduction/concept-overviews#team) section for more details on teams and creating them.
 
-* In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The `SpectroTeam` attribute carries forward the available team/s for the user being authorized. This gives the admin the flexibility to add users into teams from both Spectro Cloud as well as from the IdP.
+## Results
+You have now established the minimum configuration that is required to configure Palette OIDC, capable of communicating with other IdPs configured as OpenID Connect Providers.
 
-* The values of the `SpectroTeam` parameter is case sensitive, so the tenant admin should ensure that the team names are identical on both the consoles. A team created on the IdP which is not mentioned in Spectro Cloud will be ignored.
+<!-- (Clarify) -->
 
-* A sample use case is where a new member is to be added to the Spectro Cloud tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Spectro Cloud SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
 
-</InfoBox>
-
+<br />
 
 ## Recommended Identity Providers
+<br />
+
 
 <Tabs>
-
-
 <Tabs.TabPane tab="Okta" key="okta">
 
-### Okta
-
+## Okta
 
 #### References
 
 https://developer.okta.com/docs/guides/build-sso-integration/openidconnect/before-you-begin/
 
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="Azure AD" key="azure_ad">
 
-### Azure Active Director
+# Azure Active Directory
 
-#### References
-
-https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
-
-</Tabs.TabPane>
+(blurb on intro how AD works and connects to Palette)
 
 
-<Tabs.TabPane tab="Google OIDC" key="google-OIDC">
 
-### Google OIDC
+## Prerequisites
 
-#### References
+Before you begin, you will need - Azure AD (license Azure AD premium 2)
+- Access to Palette - Request access for a [Free Trial](/getting-started/palette-freemium)
+- Appropriate rights and enabled token IDs in Azure
+- [kubelogin](https://github.com/int128/kubelogin) - This is a kubectl plugin for Kubernetes OpenID Connect (OIDC) authentication, also known as kubectl oidc-login.
 
-https://developers.google.com/identity/protocols/oauth2/openid-connect
 
+
+  <br />
+
+## Architecture
+
+<br />
+
+![kubelogin](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg "Credential Plugin Diagram from kubelogin")
+
+<br />
+
+## Steps for OIDC Integration in Microsoft Azure Active Directory
+
+From within Microsoft Azure, log in and find the Azure Active Directory service page. The following two libraries contain the necessary parameters to include in Palette.
+
+<br />
+
+1. **App registrations** - This is where you will find the registered apps with the essential assertions {use dif word} to use within the Service Provider.  <br />
+
+2. **Enterprise applications** - You will set up your OIDC configuration for Azure AD
+
+![enterprise-app-registration](/enterprise-app-registration.png)
+
+
+## Integrating Palette OIDC SSO with Microsoft Azure Active Directory
+
+This section shows you how to configure the parameters inside the Kubernetes CNCF pack layer to perform an Azure AD authentication with a regular Kubernetes cluster.
+
+1. From the slide menu, select **Tenant Admin** and click the **Tenant Settings** dropdown.<p></p><br />
+
+2. Go to **Profiles** (from within Tenant Admin) and click the (corresponding) Cluster Profile from the list. You will see the Infrastructure layers in the picture.<p></p><br />
+
+3. Choose the **Kubernetes** layer and from the **Pack Version** dropdown, select the version to modify.<p></p><br />
+
+4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.
+
+### Configuring the Application OpenID Configuration in the Cluster
+
+1.  Go to the **Kubeadminconfig**:**apiServer**:**extraArgs** section of the pack layer. <br />
+
+    - **oidc-groups-claim** - "groups"
+    - **oidc-username-claim** - "email"
+    - **oidc-issuer-url** -
+    - **oidc-client-id** -
+
+       ![kubeadminconfig](/kubeadmconfig.png)
+
+2.  Next, find the **clientConfig** section and modify the following parameters:
+
+    - **oidc-issuer-url**  -  This is the provider URL which allows the Palette to discover public signing keys.
+    - **oid-client-id** -   The client ID is found under the Application Registration/Enterprise Application.
+    - **oidc-client-secret** - [enter description here] The secrets guide from Azure AD
+    - **oidc-extra-scope**  - [enter description here]
+
+{Add video of how to do this}
+
+
+
+![oidc](/client-config.png)
+
+## Results
+
+
+## References
+
+[Microsoft Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc)
+[Credential Plugin Diagram](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg)
+[kubelogin](https://github.com/int128/kubelogin)
+
+<br />
+<br />
 
 </Tabs.TabPane>
 
@@ -233,10 +381,5 @@ https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/development/ad-fs
 </Tabs>
 
 
-
 </Tabs.TabPane>
-
 </Tabs>
-
-<br />
-<br />
