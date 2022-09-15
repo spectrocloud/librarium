@@ -19,16 +19,17 @@ With the Palette Nested Cluster option, you can deploy additional Kubernetes clu
 
 There are certain advantages to use a nested cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
+Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
+
+<br />
 
 ## Prerequisites
 
 - You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
 
-- Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. If not, you can deploy a new cluster and enable the Nested Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Nested Cluster feature enabled are referred to as "Host Clusters".
+- Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. If not, you can deploy a new cluster and enable the Nested Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Nested Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
 
-
-  **Host Clusters**
+  ### Host Clusters
 
   There are two ways to engage with a Nested Cluster on Palette.<p></p><br />
 
@@ -36,11 +37,11 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
-    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablinganestedclusteronahostcluster) an existing cluster; thus allowing it to host Nested Clusters.<p></p><br />
+    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Nested Clusters.<p></p><br />
 
 <InfoBox>
 
-When you create a host cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
+When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
 
 <br />
 
@@ -52,7 +53,7 @@ roleName: "custom-ng-role"
 </InfoBox>
 
 
-# Enabling a Nested Clusters on an existing Host Cluster
+# Enabling Nested Clusters on an Existing Host Cluster
 
 You can enable nested clusters on an existing host cluster by performing the following steps:<p></p><br />
 
@@ -83,7 +84,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
    Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller.
 
-   For example `*.nested.host.1.spectrocloud.com.`
+   For example: `*.nested.host.1.spectrocloud.com`
 
 <InfoBox>
 <b>Recap</b>
@@ -131,7 +132,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
     - Click the **Attach Profile** button to assign a profile.
 
-      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.
+      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.<p></p><br />
 
 
 3. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<p></p><br />
