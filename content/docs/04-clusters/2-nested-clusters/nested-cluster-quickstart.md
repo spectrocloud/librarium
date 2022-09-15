@@ -139,7 +139,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
    - [External Traffic Policy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip) - Cluster or Local<p></p><br />
 
-   - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
+   - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
 <p></p><br />
 
   ![Deploy-nested-cluster](deploy-nested-cluster.png "Deploy a Nested Cluster")
