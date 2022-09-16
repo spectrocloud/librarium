@@ -19,7 +19,7 @@ With the Palette Nested Cluster option, you can deploy additional Kubernetes clu
 
 There are certain advantages to use a nested cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonahostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
+Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
 
 <br />
 
@@ -80,38 +80,39 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 -  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.<p></p><br />
 
 ## Ingress
-  - If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the nested cluster's Kubernetes API server.
+  If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the nested cluster's Kubernetes API server.
 
-   Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller.
+  Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller. See the Example Record in the recap below:
 
-   For example: `*.nested.host.1.spectrocloud.com`
+   **Host DNS Pattern**: `*.nested.host.1.spectrocloud.com`
+<br />
+
+<br />
 
 <InfoBox>
 <b>Recap</b>
 
-- Deploy the NGINX Ingress Controller on the Host Cluster and ensure that SSL passthrough is enabled in the NGINX Ingress Controller pack's values.yaml. Specifically, `charts.ingress-nginx.controller.extraArgs` must be set as follows:
-
-```yml
-  charts:
-    ingress-nginx:
-      ...
-      controller:
-        ...
-        extraArgs:
-          enable-ssl-passthrough: true
-  ```
-- Identify the public DNS name of the load balancer associated with the LoadBalancer Service that is associated with your NGINX Ingress Controller deployment.<p></p><br />
-
-- Create a wildcard DNS record (e.g., in AWS Route53) mapping the Host Pattern to the NGINX Ingress Controller load balancer.
-
-</InfoBox>
-
-**Example Record**<p></p>
-  Here is an example AWS Route53 record for the `*.starship.te.spectrocloud.com` Host DNS Pattern.
-
+1. Deploy the NGINX Ingress Controller on the Host Cluster and ensure that SSL passthrough is enabled in the NGINX Ingress Controller pack's values.yaml. Specifically, `charts.ingress-nginx.controller.extraArgs` must be set as follows:
 <br />
 
-![AWS Route 53](/record-details.png)
+  ```yml
+    charts:
+      ingress-nginx:
+        ...
+        controller:
+          ...
+          extraArgs:
+            enable-ssl-passthrough: true
+  ```
+2. Identify the public DNS name of the load balancer associated with the LoadBalancer Service that is associated with your NGINX Ingress Controller deployment.<p></p><br />
+
+3. Create a wildcard DNS record (e.g., in AWS Route53) mapping the Host Pattern to the NGINX Ingress Controller load balancer.
+
+  |Example Record with Host DNS Pattern||
+  |-|-|
+  |![AWS Route 53](/record-details.png) |Here is an example of an <br /> AWS Route53 record for the <br />`*.starship.te.spectrocloud.com` <br /> Host DNS Pattern.|
+ 
+</InfoBox>
 
 <br />
 
