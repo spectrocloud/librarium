@@ -144,7 +144,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
    - Load Balancer Source Ranges (Optional) - Add the load balancer source ranges. This is an optional feature.
 <p></p><br />
 
-  ![Deploy-nested-cluster](deploy-nested-cluster.png "Deploy a Nested Cluster")
+  ![Deploy-nested-cluster](deploy-nested-cluster.png)
 
 Congratulations! Your Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
