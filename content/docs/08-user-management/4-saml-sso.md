@@ -20,13 +20,13 @@ Single sign-on (SSO) is an authentication method that enables secure, user authe
 SSO works upon a trust relationship set up between the service provider and an identity provider (IdP) such as Okta, Azure AD, KeyCloak, Google ID, OneLogin, etc.
 
 This trust relationship occurs when a certificate is exchanged between the IdP and the service provider (SP). This certificate can be used to sign identity information that is being sent from the IdP to the SP, so that the service provider knows where is coming from a trusted source.
- 
+
 In SSO, this identity data takes the form of tokens which contain identifying bits of information about the users.
- 
+
 This document provides information to synchronize the two different types of SSO authentication methods between Palette and the supported IdP as well as SSO authentication across Kubernetes.
- 
+
 The two types of SSO authentication methods Palette supports are: <p></p><br />
- 
+
    1. **Security Assertion Markup Language (SAML) Based SSO** - You can create a Tenant cluster profile with SAML SSO within Palette. This is a manual process as explained below. <p></p><br />
    2.  **OpenID Connect (OIDC) Based SSO** - You can use OIDC to enable single sign-on (SSO) between Palette and the recommended IdP. It requires application registration to issue clientiD, client secret, and validation.
 
@@ -39,35 +39,40 @@ The two types of SSO authentication methods Palette supports are: <p></p><br />
 
 # How to Set Up SAML 2.0-Based SSO within Palette
 
-With Palette, you can use SAML 2.0 single sign-on (SSO) to enable authentication using an IdP when logging into Palette.   
- 
-## Procedure 
+With Palette, you can use SAML 2.0 single sign-on (SSO) to enable authentication using an IdP when logging into Palette.
+
+## Procedure
 
 1. To set up an Identity provider (IdP) based SSO, log in to the Palette console as the Tenant Admin.<p></p><br />
 2. Select the **Tenant Settings** > **SSO Auth Type** > **SAML** to view the SAML panel.<p></p><br />
 3. Complete the assertion form with the requested parameters. See below for more details specific to supported IdPs.<p></p><br />
- 
-     - Issuer - The unique identifier. In this case it is Palette.
-     - Certificate - This certificate is generated (from where?)
-     - Service - 
+
+     - Issuer - The unique identifier. In this case, it is Palette.
+     - Certificate
+     - Service
      - Identity Provider Metadata
-     - Default Teams -
-         - Enable Single Logout -
- 
-4. These parameters enable Palette as a **Service Provider** (SP) into the IdP:<br /> (Pre-configured from the …)
-     - Single Logout URL -
-     - EntityId - 
-     - NameId Format - 
-     - Login URL - 
-     - FirstName -
-     - LastName -
-     - Email - 
-     - SpectroTeam - 
-     - Service Provider Metadata -
-    
-4. Copy the **Identity Provider Metadata** from the IdP into the Palette SAML panel for each metadata. {There is no Metadata? Do we need this step?}
- 
-5. Click **Enable** to complete the setup wizard.
+     - Default Teams
+         - Enable Single Logout
+
+<p></p>
+
+4. These parameters enable Palette as a **Service Provider** (SP) into the IdP:<br />
+   - Single Logout URL
+   - EntityId
+   - NameId Format
+   - Login URL
+   - FirstName
+   - LastName
+   - Email
+   - SpectroTeam
+   - Service Provider Metadata
+
+<p></p>
+
+5. Copy the **Identity Provider Metadata** from the IdP into the Palette SAML panel for each metadata. {There is no Metadata? Do we need this step?}
+<p></p>
+
+6. Click **Enable** to complete the setup wizard.
 
 ## Results
 
@@ -190,11 +195,11 @@ To set up an OIDC-based SSO:
 
       **SpectroTeam** 
       - Any non-admin user that is added to a Tenant must be added to at least one Team when being created by the admin. This Team can be changed later on if needed. See the [Teams](/introduction/concept-overviews#team) section for more details on Teams and creating them.<p></p><br />
-      
+
       - In case a user is not added to any team, the user can still login successfully but will not be able to see the console. The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized. This gives the admin the flexibility to add users into teams from both Palette and from the IdP.<p></p><br />
-      
+
       - The values of the **SpectroTeam** parameter is case-sensitive, so the Tenant Admin should ensure that the team names are identical on both the consoles. A team created on the IdP (which is not mentioned in Palette) will be ignored.<p></p><br />
-      
+
       - A sample use case is where a new member is to be added to the Palette tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Palette SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.
 
 ## Results
@@ -229,8 +234,8 @@ https://developer.okta.com/docs/guides/build-sso-integration/openidconnect/befor
 ## Prerequisites
 
 Before you begin, you will need - Azure AD (license Azure AD premium 2)
-- Access to Palette - Request access for a [Free Trial](/getting-started/palette-freemium)
-- Appropriate rights and [enabled token IDs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#enable-id-tokens) in Azure
+- Access to Palette - Request access for a [Free Trial](/getting-started/palette-freemium)<p></p><br />
+- Appropriate rights and [enabled token IDs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#enable-id-tokens) in Azure<p></p><br />
 - [kubelogin](https://github.com/int128/kubelogin) - This is a kubectl plugin for Kubernetes OpenID Connect (OIDC) authentication, also known as kubectl oidc-login.
 
   <br />
@@ -249,12 +254,12 @@ From within Microsoft Azure, log in and find the Azure Active Directory service 
 
 <br />
 
-1. **App registrations** - This is where you will find the registered apps with the essential assertions {use dif word} to use within the Service Provider.  <br />
+1. **App registrations** - This is where you will find the registered apps with the essential assertions {use dif word} to use within the Service Provider. <p></p><br />
 
 2. **Enterprise applications** - You will set up your OIDC configuration for Azure AD
 
 ![enterprise-app-registration](/enterprise-app-registration.png)
-
+<p></p>
 
 ## Integrating Palette OIDC SSO with Microsoft Azure Active Directory
 
@@ -266,55 +271,56 @@ This section shows you how to configure the parameters inside the Kubernetes CNC
 
 3. Choose the **Kubernetes** layer and from the **Pack Version** dropdown, select the version to modify.<p></p><br />
 
-4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.
+4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.<p></p><br />
 
 ### Configuring the Application OpenID Configuration in the Cluster
 
 1.  Go to the **Kubeadminconfig**:**apiServer**:**extraArgs** section of the pack layer. <br />
 
-    - **oidc-groups-claim** - "groups"
-    - **oidc-username-claim** - "email"
-    - **oidc-issuer-url** - 
-    - **oidc-client-id** -
+    - **oidc-groups-claim** - "Groups"
+    - **oidc-username-claim** - "Email"
+    - **oidc-issuer-url** -  "Issuer's URL"
+    - **oidc-client-id** - "Client ID"
 
        ![kubeadminconfig](/kubeadmconfig.png)
 
+<p></p>
+
 2.  Next, find the **clientConfig** section and modify the following parameters:
 
-    - **oidc-issuer-url**  -  This is the provider URL which allows the Palette to discover public signing keys.
-    - **oid-client-id** -   The client ID is found under the Application Registration/Enterprise Application.
-    - **oidc-client-secret** - [enter description here] The secrets guide from Azure AD
-    - **oidc-extra-scope** - [enter description here]
-
-{Add video of how to do this / maybe}
+    - **oidc-issuer-url** - This is the provider URL which allows the Palette to discover public signing keys.
+    - **oid-client-id** - The client ID is found under the Application Registration/Enterprise Application.
+    - **oidc-client-secret** - The secrets guide from Azure AD.
+    - **oidc-extra-scope** - The scope tags.
 
 
-# Bind the Cluster Admin Role AD to Cluster Admin via RBAC
+![oidc](/client-config.png)
+<p></p><br />
 
-## Role Based Access Control
-Configure the Role Based Access Control Pack (RBAC)
+## Bind the Cluster Admin Role AD to Cluster Admin via RBAC
+
+Configure the Role Based Access Control Pack (RBAC).<p></p><br />
 
 ### Adding an RBAC Pack
-   1. Under Tenant Admin, create a RBAC Cluster Profile.
-   2. Go to **Cluster Profile** and click the +**Add Cluster Profile**.
-   3. Complete the Basic Information
-      1. Name, Version, and Description (Optional)
-      2. Under **Type**, select **+Add-on New Pack**
-      3. Select **Authentication** as the Pack Type.
-      4. From the **Registry** dropdown, click **Public Repo**.
-      5. Choose **Spectro RBAC**  as the Pack Name.
-      6. Select the Pack Version.
-      7. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings.
-         **Note**: This is where you will edit the role settings.
-      8. Click the **Confirm & Create** button.
+
+1. Under **Tenant Admin**, create an **RBAC Cluster** profile. <p></p><br />
+2. Go to **Cluster Profile** > +**Add Cluster Profile** and complete the Basic Information<p></p><br />
+3. Enter the **Name**, **Version**, and **Description** (Optional) and click **Next**. <p></p><br />
+4. Under **Type**, select **+Add-on New Pack**<p></p><br />
+5. Select **Authentication** as the Pack Type.<p></p><br />
+6. From the **Registry** dropdown, click **Public Repo**.<p></p><br />
+7. Choose **Spectro RBAC** as the Pack Name.<p></p><br />
+8. Select the Pack Version.<p></p><br />
+9. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings.<p></p><br />
+   **Note**: This is where you will edit the role settings.
+10. Click the **Confirm & Create** button.<p></p><br />
 
 ### Editing the RBAC Cluster Profile
 
-   1. From Palette, go to **Profiles** and choose the **RBAC** cluster profile.
-   2. Click the layer image in order to edit it.
-   3. Specify the ClusterRoleBindings:
-      1. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**.
-         Change the settings to your requirements and specific groups.
+1. From Palette, go to **Profiles** and choose the **RBAC** cluster profile.<p></p><br />
+2. Click the layer image and specify the ClusterRoleBindings:<p></p><br />
+3. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**.<p></p><br />
+4. Change the settings to your requirements and specific groups.<p></p><br />
 
 For Azure AD integration with RBAC, edit your RBAC pack value to below. Or, copy and paste the entire block to your RBAC pack, and modify you inputs where appropriate:
 
@@ -405,17 +411,11 @@ charts:
                 #name: group1
 ```
 
-   Example: **Azure AD Group Object Id** "70******-355a-453b-aadf-*********301" is linked to the **Azure AD Security Group** with the display name of "**cluster-admin-role**".
-          name: "AZURE AD GROUP ID NAME"
+**Example**:
 
+**Azure AD Group Object Id** "70\*\*\*\*\*\*\-355a-453b-aadf-\*\*\*\*\*\*\*\*\*301" is linked to the **Azure AD Security Group** with the display name of **cluster-admin-role**.
 
-
-
-You can also use a 
-
-Group ID Name
-
-
+**name**: "AZURE AD GROUP ID NAME"
 
 ![oidc](/client-config.png)
 
