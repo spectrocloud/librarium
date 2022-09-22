@@ -41,6 +41,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|
 |----- |------|
+|0.3.1 | 0.9.1|
 |0.3.0 | 0.9.0|
 |0.2.3 |0.8.9 |
 |0.2.3 |0.8.8 |
@@ -72,6 +73,21 @@ Find the detailed patch changes and comparisons within below **tabs**.
 <br />
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.9.1" key="v0.9.1">
+
+The compatible **Module** for provider 0.9.1 is **0.3.1**
+
+# Changes
+
+* **Bug Fix**
+
+  * **Issue**: Overriding the addon profile pack value for the vsphere_edge cloud type was impossible.
+  * **Fix**: Added missing profile name in addon profile pack parameters index.
+
+Refer to Full Changelog: [v0.9.0 to v0.9.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.9.1)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.9.0" key="v0.9.0">
 
