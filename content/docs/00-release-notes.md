@@ -43,12 +43,12 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters
 * Palette feeds observability of [OS patching details](/clusters/cluster-management/os-patching#monitoring) such as `Last Applied Patch Time` and `The date and time of the last OS Patch.`
 * Palette boards the mapping between cluster profiles and clusters in cluster profiles details UI page listing the clusters created using a specific cluster profile.
 * Palette promotes VNet Resource Group filtering for AKS clusters, allowing the VNet to be a part of a different resource group than the AKS resource group.
-* Palette enables the users to override the [custom folder](/clusters/new-clusters/vmware#deployingavmwarecluster) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
+* Palette enables the users to override the [custom folder](/clusters/data-center/vmware#deployingavmwarecluster) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
 * [Regex Expression](/workspace#regexfornamespaces) for mass selection of workspace names for role binding. 
 * Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](/user-management/saml-sso#oidcbasedsso).
-* Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/new-clusters/eks#disableoidcassociateproviderforawsserviceaccount) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
+* Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/eks#disableoidcassociateproviderforawsserviceaccount) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
 * Tenant administrators can now set the [Palette resource limits](/user-management/palette-resource-limits#setresourcelimit) though the Palette console.
-* Palette provisions user's [infrastructure privacy](/clusters/new-clusters/azure#deployinganazurecluster) for the Azure cloud account.
+* Palette provisions user's [infrastructure privacy](/clusters/public-cloud/azure#overview) for the Azure cloud account.
 
 **Deprecations**
 
