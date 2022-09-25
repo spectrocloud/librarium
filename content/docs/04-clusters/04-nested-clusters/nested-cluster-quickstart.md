@@ -27,13 +27,13 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
 - You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
 
-- Ensure you have a functioning [cluster](/clusters/new-clusters) already configured. If not, you can deploy a new cluster and enable the Nested Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Nested Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
+- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Nested Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Nested Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
 
   ### Host Clusters
 
   There are two ways to engage with a Nested Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters/new-clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Nested Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Nested Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 

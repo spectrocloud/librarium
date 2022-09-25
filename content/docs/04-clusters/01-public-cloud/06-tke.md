@@ -29,7 +29,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 # Prerequisites
 
-1. A Tencent Cloud account with appropriate [permissions](/clusters/new-clusters/tke#permissionsfortkeclustercrudoperations).
+1. A Tencent Cloud account with appropriate [permissions](/clusters/public-cloud/tke#permissionsfortkeclustercrudoperations).
 
 
 2. Create a Cloud API **Secret ID** and **Secret Key**.

@@ -71,6 +71,6 @@ profile section. Palette provides several cluster profiles out-of-the-box.
 | |
 |--|
 |[Create your Cluster Profile](/cluster-profiles/task-define-profile/#creatingclusterprofiles)|
-|[Create your Cluster](/clusters/new-clusters/#creatingclusters)|
+|[Create your Cluster](/clusters)|
 |[Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)|
 |[Cluster Management](/clusters/cluster-management/#managecl)|

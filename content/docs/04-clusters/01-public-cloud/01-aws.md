@@ -628,7 +628,7 @@ The following video demonstrates how to create a user in AWS and attach the four
 
 To create an AWS cloud account using access credentials follow the steps below:
 
-1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+1. In the AWS console, create the [four policies listed](/clusters/public-cloud/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
 
 
 2. Login to Palette console as Tenant Admin.
@@ -660,7 +660,7 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 To create an AWS cloud account using STS credentials follow the steps below:
 
-1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+1. In the AWS console, create the [four policies listed](/clusters/public-cloud/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
 
 
 2. Login to Palette console as Tenant Admin.

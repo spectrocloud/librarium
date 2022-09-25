@@ -47,7 +47,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
 
 
-4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Cloud Gateway](/clusters/new-clusters/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Creating a VMware Cloud account](/clusters/new-clusters/vmware#creatingavmwarecloudaccount) section.
+4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Cloud Gateway](/clusters/data-center/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Creating a VMware Cloud account](/clusters/data-center/vmware#creatingavmwarecloudaccount) section.
 
 
 5. Subnet with egress access to the internet (direct or via proxy):
