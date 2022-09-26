@@ -35,7 +35,7 @@ Provide the basic information for the workspace such as:
 
 #### 2. Associate Clusters
 
-  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
 
   * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
