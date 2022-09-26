@@ -39,9 +39,9 @@ Detailed documentation on supported data sources and resources are available in 
 
 ## Module to Provider Compatibility Matrix
 
-|Module|Provider Version|
-|----- |------|
-|0.4.0 |0.10.0|
+|Module|Provider Version|Module Example|
+|----- |------|------------------------|
+|0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)
 |0.3.1 |0.9.1 |
 |0.3.0 |0.9.0 |
 |0.2.3 |0.8.9 |
