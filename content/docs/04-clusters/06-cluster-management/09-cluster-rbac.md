@@ -95,7 +95,7 @@ Configure settings as described above.
 # Use RBAC-OIDC in your Public Cloud 
 
 
-This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/new-clusters/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
+This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/public-cloud/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
 
 The following content needs to be added into the kubernetes pack values while creating the Cluster Profile.
 

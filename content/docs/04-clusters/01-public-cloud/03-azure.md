@@ -98,7 +98,7 @@ The following steps need to be performed to provision a new Azure cluster:
 
 <InfoBox>
 
-If the Palette [cloud account](/clusters/new-clusters/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
+If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
 **Static Placement** the network informations from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
 
 </InfoBox>

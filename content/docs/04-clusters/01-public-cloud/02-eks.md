@@ -619,7 +619,7 @@ The following warning is expected and can be ignored:<p></p>
 
 To create an AWS cloud account using access credentials follow the steps below:
 
-1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+1. In the AWS console, create the [four policies listed](/clusters/public-cloud/eks#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
 
 
 2. Login to Palette console as Tenant Admin.
@@ -650,7 +650,7 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 To create an AWS cloud account using STS credentials follow the steps below:
 
-1. In the AWS console, create the [four policies listed](/clusters/new-clusters/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+1. In the AWS console, create the [four policies listed](/clusters/public-cloud/eks#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
 
 
 2. Login to Palette console as Tenant Admin.
@@ -746,7 +746,7 @@ The following steps need to be performed to provision a new EKS cluster:
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
     |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling the [Enable Encryption](/clusters/new-clusters/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN to complete the wizard.|
+    |**Enable Encryption**|The user can enable secret encryption by toggling the [Enable Encryption](/clusters/public-cloud/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN to complete the wizard.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
    
 <InfoBox>
@@ -767,7 +767,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions.|
     |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
     |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)|
-    |**Instance Type** | Select the AWS [instance type](/clusters/new-clusters/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
+    |**Instance Type** | Select the AWS [instance type](/clusters/public-cloud/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
   * Cloud Configuration settings:
 
      |**Parameter**| **Description**|
