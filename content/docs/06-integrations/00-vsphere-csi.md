@@ -28,14 +28,15 @@ The vSphere CSI driver includes the following components:
     * Metadata Syncer
     * Full Sync
 
+## vSphere CSI Compatibility Matrix
+
+|Palette Release| CSI-Driver Version| Kubernetes Versions |
+|---------------|-------------------|---------------------|
+|      2.2      |  2.3.0            | 1.20.x to 1.23.x    |
+|      2.8      |  2.5.2            | 1.20.x to 1.23.x    |
 
 
 ## Versions Supported
-
-
-<WarningBox>
-We highly recommend our users deploy the 2.3.x version of vSphere CSI.
-</WarningBox>
 
 <Tabs>
 
