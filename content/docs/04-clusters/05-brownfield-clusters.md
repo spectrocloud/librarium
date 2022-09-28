@@ -98,7 +98,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 <br />
 <br />
 
-<b>Full Permission mode</b>: This mode unlocks day 2 operations.
+<b>Full Permission mode</b>: This mode grants Palette the ability to apply Add-on Cluster Profiles to an imported cluster.
 </InfoBox>
 
 
