@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments. 
+Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments.
 
 Palette also supports generic cluster imports, where the users import their existing clusters to Palette, regardless of the cloud service provider. For example, if Palette does not support the existing cluster's cloud type, those clusters could be imported as Generic clusters.
 
@@ -40,7 +40,7 @@ The name *generic* implies support will be extended to the generic operations on
  * Clusters provisioned through other management platforms (Rancher, CCP, etc.)
 
 
- * Clusters provisioned using orchestration tools (Kubeadm, kops, etc.)
+ * Clusters provisioned using orchestration tools (Kubeadm, kOps, etc.)
 
 # Prerequisites
 
@@ -85,12 +85,12 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 
 6. Choose from the **Cloud Type** list where the cluster is currently deployed.
-   
+
    **Note**: If you are importing a Generic cluster, there is an option to provide the proxy/non-proxy information, if applicable.
 
 
 7. Select **Import mode** by choosing the permissions level and clicking the **Create & Open Cluster Instance** button.
-   
+
 
 <InfoBox>
 <b>Read-Only mode</b>: Starting with minimal permission allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict the minimal permissions allowed in the initial setup. When you are ready to raise the permissions levels, migrate to full permissions mode.
@@ -98,7 +98,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 <br />
 <br />
 
-<b>Full Permission mode</b>: This mode unlocks and supports full cluster management capabilities that will take you from day 0 to day 2 operations.
+<b>Full Permission mode</b>: This mode grants Palette the ability to apply Add-on Cluster Profiles to an imported cluster.
 </InfoBox>
 
 
@@ -128,7 +128,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 
 3. Install the metrics server.
-   
+
    The Read-Only Agent relies on the metrics server to capture usage metrics in the cluster. If the metrics server is not installed already, execute the following command(s):
 <br />
 
@@ -136,7 +136,7 @@ Run the following steps to import a brownfield cluster into the Palette platform
    helm repo add bitnami https://charts.bitnami.com/bitnami
    ```
 
-   ```yml 
+   ```yml
    helm install my-release bitnami/metrics-server
    ```
 <br />
@@ -175,7 +175,7 @@ When you are ready to expand the permissions or enable day 2 operations, migrate
 
 2. Wait for the import process to complete. The cluster status will transition from *Pending* to *Running*, and the cluster health will transition to *Healthy*, signaling a successful import of the brownfield cluster.
 
-# Attach Add-On Profiles
+# Attach Add-on Profiles
 
 Add-on cluster profiles can be attached to brownfield clusters, after an import, to install and manage various applications/integrations above the Core Infrastructure layers. The following steps need to be performed to attach Add-on profiles to existing clusters:
 
@@ -222,7 +222,7 @@ The following tasks need to be performed to delete an imported cluster:
 <InfoBox>
 In Read-Only mode, if user want to delete/detach cluster then they need to run the following command manually on the cluster.
 
-       kubectl delete -n cluster-xxxxxx 
+       kubectl delete -n cluster-xxxxxx
 
 </InfoBox>
 
@@ -233,22 +233,22 @@ Once all resources are successfully deleted, the cluster status changes to *Dele
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the user interface (UI). The user can go for a force deletion of the cluster, only if it is stuck in a deleting state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 ## To force delete a cluster:
 
 1. Log in to the Palette Management Console.
 
 
-2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
+2. Navigate to the **Cluster Details** page of the cluster stuck in a deleting mode.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
+      - If the deleting mode is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
-    
+
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
+If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion.
 </WarningBox>
 
 
@@ -260,5 +260,5 @@ If there are any cloud resources still on the cloud, the user should cleanup tho
 
 
 ## Generic Cluster Import to Palette Console
- ![generic cluster import](cluster-import/generic.mp4) 
+ ![generic cluster import](cluster-import/generic.mp4)
 
