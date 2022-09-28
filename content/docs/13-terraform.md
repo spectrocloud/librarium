@@ -75,7 +75,7 @@ Find the detailed patch changes and comparisons within below **tabs**.
 
 <Tabs>
 
-<Tabs.TabPane tab="v0.10.8" key="v0.10.0">
+<Tabs.TabPane tab="v0.10.0" key="v0.10.0">
 
 # Provider Changes 
 
@@ -84,7 +84,7 @@ Find the detailed patch changes and comparisons within below **tabs**.
    * Add-on deployments: Attach cluster profile by name
 
 
-* AWS cloud account is a mandatory attribute for AWS cluster resource.
+* AWS cloud account is a mandatory attribute for AWS cluster resources.
 
 
 * Nested Cluster schema support for all the cloud types.
