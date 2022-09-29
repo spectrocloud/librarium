@@ -1,7 +1,7 @@
 ---
 title: "System Requirements"
-metaTitle: "On-Prem System Requirements"
-metaDescription: "an overview of On-Prem System Requirements"
+metaTitle: "On-premise System Requirements"
+metaDescription: "An overview of On-premise System Requirements"
 icon: ""
 hideToC: true
 fullWidth: true
@@ -17,9 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Palette SaaS platform is also available as a self-hosted, on-premises deployment. The on-premises version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premises is available in two modes:
+The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
 
-| **On-premises Modes** | **Description**                                                                   |
+| **On-premise Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
 | **Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
 | **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
@@ -27,7 +27,7 @@ The Palette SaaS platform is also available as a self-hosted, on-premises deploy
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
 ## vSphere Environment Prerequisites
 
-### General requirements
+### General Requirements
    - vCenter version : 6.7 and above
   
 
@@ -36,7 +36,7 @@ The sections below describe the standard requirements and highlight specific req
 
 ### Zone Tagging
 
-  Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for the installation of the Palette platform itself and is also useful for Workloads deployed in the Tenant Clusters, if they have persistent storage needs. Use vSphere tags on data centers (kubernates-region) and compute clusters (kubernetes-zone) to create distinct zones in your environment.
+  Zone tagging is required for dynamic storage allocation, across fault domains, when provisioning workloads that require persistent storage. This is required for the installation of the Palette platform itself and is also useful for Workloads deployed in the Tenant Clusters, if they have persistent storage needs. Use vSphere tags on data centers (kubernetes-region) and compute clusters (kubernetes-zone) to create distinct zones in your environment.
 
   As an example, assume your vCenter environment includes three compute clusters: *cluster-1*, *cluster-2*, and *cluster-3* as part of data center dc-1. You can tag them as follows:
 
@@ -48,7 +48,7 @@ The sections below describe the standard requirements and highlight specific req
 | cluster-3          | k8s-zone         | az3           |
 
 
-**Note**: The exact values for the kubernates-region and kubernates-zone tags can be different from the ones described in the example above, as long as they are unique.
+**Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
 ### Permissions
@@ -58,7 +58,7 @@ The following permissions are required for the account used to install the platf
 <br />
 <br />
 
-### vSphere Object     
+### vSphere Object
 
 <br />
 
@@ -67,11 +67,11 @@ The following permissions are required for the account used to install the platf
 <Tabs.TabPane tab="Datastore" key="Datastore">
 
   #### Datastore Privileges
-  - Allocate Space                                
-  - Browse Datastore                              
-  - Low level file operations                     
-  - Remove file                                   
-  - Update virtual machine files                  
+  - Allocate Space
+  - Browse Datastore
+  - Low level file operations
+  - Remove file
+  - Update virtual machine files
   - Update virtual machine metadata
 
 
@@ -80,10 +80,10 @@ The following permissions are required for the account used to install the platf
 <Tabs.TabPane tab="Folder" key="Folder">
 
   #### Folder Privileges
-  - Create folder                                 
-  - Delete folder                                 
-  - Move folder                                   
-  - Rename folder   
+  - Create folder
+  - Delete folder
+  - Move folder
+  - Rename folder
 
 </Tabs.TabPane>
 
@@ -91,26 +91,26 @@ The following permissions are required for the account used to install the platf
 
   #### Network Privileges
 
-  - Assign Network  
+  - Assign Network
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Resource" key="Resource">
 
   #### Resource Privileges
-    
-  - Apply recommendation                          
-  - Assign virtual machine to resource pool       
-  - Migrate powered off virtual machine           
-  - Migrate powered on virtual machine            
-  - Query vMotion 
+
+  - Apply recommendation
+  - Assign virtual machine to resource pool
+  - Migrate powered off virtual machine
+  - Migrate powered on virtual machine
+  - Query vMotion
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Sessions" key="Sessions">
 
   #### Sessions Privileges
-  - Validate session 
+  - Validate session
 
 </Tabs.TabPane>
 
@@ -126,19 +126,19 @@ The following permissions are required for the account used to install the platf
 
   #### Task Privileges
 
-  - Create task                                  
-  - Update Task
-  
+  - Create task
+  - Update task
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="vApp" key="vApp">
 
   #### vApp Privileges
 
-  - Import                                        
-  - View OVF environment                          
-  - vApp application configuration                
-  - vApp instance configuration                   
+  - Import
+  - View OVF environment
+  - vApp application configuration
+  - vApp instance configuration
 
 </Tabs.TabPane>
 
@@ -147,7 +147,7 @@ The following permissions are required for the account used to install the platf
   #### vSphere Tagging
 
   - Create vSphere Tag
-  - Edit vSphere Tag 
+  - Edit vSphere Tag
 
 </Tabs.TabPane>
 
@@ -165,7 +165,7 @@ The following permissions are required for the account used to install the platf
 |                           | Change Settings                             | Extend virtual disk                   |
 |                           | Change Swapfile Placement                   | Modify device settings                |
 |                           | Configure host USB device                   | Query Fault Tolerance compatibility   |
-|                           | Configure raw device                        | Query un-owned files                  |
+|                           | Configure raw device                        | Query unowned files                  |
 |                           | Add existing disk                           | Reload from path                      |
 |                           | Add new disk                                | Remove disk                           |
 |                           | Add or remove device                        | Rename                                |
@@ -227,7 +227,7 @@ The following permissions are required for the account used to install the platf
 
 
 <InfoBox>
- Make sure that your Data center CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed during installation.
+ Make sure that your data center CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed during installation.
 </InfoBox>
 
 
@@ -268,7 +268,7 @@ The following section provides the hardware requirements for Palette Platform VM
 The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
 </InfoBox>
 
-## On-premises Configurations
+## On-premise Configurations
 
 | **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
 | ---------------------- | ------------------------------------------- | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
@@ -292,16 +292,16 @@ The size of the Tenant Cluster, in terms of the number of nodes or size of the n
   <InfoBox>
   For high availability purposes, it is recommended that you deploy the three (3) VMs across three (3) compute clusters.
   </InfoBox>
-    
 
-## Best Practices 
+
+## Best Practices
 
 The following steps are optional but recommended for production environments.
 
 
 |                              |                                                                                                                                                                                                                                                                                      |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **DNS Mapping**              | A DNS is used to access the Palette Management Console. While the Virtual IP Address (VIP) configured on the platform can be used <br /> to access the platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.                 |
+| **DNS Mapping**              | A DNS is used to access the Palette Management Console. While the Virtual IP Address (VIP), configured on the platform can be used <br /> to access the platform, it is recommended that you reserve a DNS for this purpose and map it to the VIP after installation.                 |
 | **SMTP Setting**s            | Configure the SMTP settings to enable the Palette platform to send out email notifications. Email notifications are sent out to new <br /> users, when they are initially onboarded onto the platform, so they can activate their accounts and reset their password at a later time. |
 | **Trusted Certificate**      | Configure your platform with a trusted CA certificates.                                                                                                                                                                                                                              |
 | **FTP Location for backups** | Configure an FTP location for platform backups and schedule daily backups.                                                                                                                                                                                                           |
