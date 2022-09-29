@@ -46,7 +46,7 @@ The following prerequisites must be met before deploying an Amazon Elastic Kuber
 3. You should have an Infrastructure Cluster profile created in Palette for AWS.
 
 
-4. Palette creates compute, network, and storage resources on AWS while provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
+4. Palette creates compute, network, and storage resources on AWS as it provisions the Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
       - vCPU
       - VPC
       - Elastic IP
