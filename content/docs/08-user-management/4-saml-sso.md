@@ -48,7 +48,7 @@ To set up Spectro Cloud Palette with an identity provider (IdP) SAML based SSO:<
 
     The following parameters will enable Spectro Cloud Palette as a **Service Provider** (SP) in your IdP. Your IdP will require some or all the information listed below to enable SSO with Palette. <p></p><br />
 
-      - **Single Logout URL** - This is the logout URL. Include the URL into the IdP for the logout to clear the provider-side session. <p></p><br />
+      - **Single Logout URL** - The IdP will use the logout URL for the SAML SSO configuration.<p></p><br />
       - **EntityId** - https://www.spectrocloud.com<p></p><br />
       - **FirstName** - Attribute in First Name format.<p></p><br />
       - **LastName** - Attribute in Last Name format.<p></p><br />
@@ -87,6 +87,11 @@ https://developer.okta.com/docs/guides/build-sso-integration/saml2/before-you-be
 <Tabs.TabPane tab="MFST Azure AD" key="azure_ad">
 
 ### Azure Active Directory
+
+
+
+
+
 
 #### References
 
@@ -143,25 +148,25 @@ To set up an OIDC-based SSO in Spectro Cloud Palette perform the following steps
    - **Client ID** - The ID for the client application that makes authentication requests.<p></p><br />
    - **Client Secret** - Enter the secret created by the IdP.<p></p><br />
    - **Default Teams** - The Default Palette team(s) to which authenticated members are assigned automatically.<p></p><br />
-   - **Scopes** - The user's details we will use as part of SSO, like *email*, *firstname*, *lastname* or *groups*. Each scope returns a set of user attributes, called claims. <p></p>Microsoft Azure AD Example: "openid, profile, email, allatclaims"<p></p><br />
+   - **Scopes** - The user's details will be used as part of SSO, like *email*, *firstname*, *lastname* or *groups*. Each scope returns a set of user attributes, called claims. <p></p>Microsoft Azure AD Example: "openid, profile, email, allatclaims"<p></p><br />
    - **REQUIRED CLAIMS** - These are the parameter values, claimed by the user, to be mapped with the Identity Provider Platform. Complete the Required Claims:<p></p><br />
      - **Email** - Azure AD Example: "email"<p></p><br />
      - **First Name** - Azure AD Example: "given_name"<p></p><br />
      - **Last Name** - Azure AD Example: "family_name"<p></p><br />
-     - **Spectro Team Name** - Azure AD Example: "groups". Any non-admin user that is added to a tenant, must be added to at least one Team. This Team can be changed later on if needed. See the [Teams](/glossary-all#team) section for more details on Teams and creating them.<p></p><br />
+     - **Spectro Team Name** - Azure AD Example: "groups". Any non-admin user that is added to a tenant, must be added to at least one Team. This Team can be changed later if needed. See the [Teams](/glossary-all#team) section for more details on Teams and creating them.<p></p><br />
 
-          - In case a user is not added to any team, the user can still log in successfully but will not be able to see the console. The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized. This gives the admin the flexibility to add users into teams from both Palette and from the IdP.<p></p><br />
+          - In case a user is not added to any team, the user can still log in successfully but will not be able to see the console until proper Project or Tenant permissions are applied (Tenant Admin, Project Admin, Project Viewer, and so on). The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized. This gives the admin the flexibility to grant access to Spectro Cloud Palette using either Users or Groups in their IdP or by adding users directly to a Palette Team(s).<p></p><br />
 
-          - The values of the **SpectroTeam** parameter is case-sensitive, so the Tenant Admin should ensure that the team names are identical on both the consoles. A team created on the IdP (which is not mentioned in Palette) will be ignored.<p></p><br />
+          - The values of the **SpectroTeam** parameter is case-sensitive, so the Tenant Admin should ensure that the team names are identical on both the consoles. To sync an IdP group with a Palette Team, ensure the IdP group Name (or if Azure Active Directory use Object Id corresponding to the IdP group Name) matches the Palette Team name.<p></p><br />
 
-          - A sample use case is where a new member is to be added to the Palette Tenant by the tenant admin. The admin can have a default team that is common to all users. This can be applied to the Palette SAML Panel as a one-time setting. When a new user is added, the IdP dashboard can be used to add this user to additional teams as required. Without this arrangement, the tenant admin would need to add the user and then perform the team assignment separately each time.<p></p><br />
+          - A sample use case is where a new member is to be added to the Palette Tenant by the Tenant Admin. The administrator can configure a default Palette Team or synced IdP group that is common to all authenticated users. This default Palette Team/IdP group can be applied to the Palette SAML Panel as a one-time setting.<p></p><br />
 
 <InfoBox>
 Your IdP may require the following settings to configure OIDC SSO with Palette:
 
   - **Callback URL** - URL to which Auth0 redirects users after they authenticate. Ensure that this value is configured for the application you registered with the OIDC Identity Provider.
 
-  - **Logout URL** - URL is taken from IdP. Include the URL into the IdP so when you log out, it will clear the provider-side session.
+  - **Logout URL** - The IdP will use the logout URL for the OIDC SSO configuration.
 
 </InfoBox>
 
@@ -190,7 +195,7 @@ https://developer.okta.com/docs/guides/build-sso-integration/openidconnect/befor
 
 ## Azure Active Directory
 
-After configuration, your organization can integrate Azure AD to authenticate access to Spectro CLoud Palette.
+After configuration, your organization can integrate Azure AD to authenticate access to Spectro Cloud Palette.
 
 ## Prerequisites
 
@@ -226,8 +231,8 @@ From within Microsoft Azure AD, log in and find the Azure Active Directory servi
 
 This section describes how to enable Azure AD SSO authentication to access a Kubernetes cluster.
 
-1. From the slide menu, select **Tenant Admin** and click the **Tenant Settings** dropdown.<p></p><br />
-2. Go to **Profiles** (from within Tenant Admin) and click the (corresponding) Cluster Profile from the list. You will see the Infrastructure layers in the picture.<p></p><br />
+1. From the sidebar menu, select **Tenant Admin** and click the **Tenant Settings** dropdown.<p></p><br />
+2. Go to **Profiles** from within Tenant Admin or a Prjoect, and select an existing Cluster Profile. Alternatively, if no cluster profile eists, create a new cluster profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.<p></p><br />
 3. Choose the **Kubernetes** layer and from the **Pack Version** dropdown, select the version to modify.<p></p><br />
 4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.<p></p><br />
 
@@ -248,7 +253,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
 
     - **oidc-issuer-url** - This is the provider URL which allows the Palette to discover public signing keys.<p></p><br />
     - **oid-client-id** - The client ID is found under the Application Registration/Enterprise Application.<p></p><br />
-    - **oidc-client-secret** - The secrets guide from Azure AD.<p></p><br />
+    - **oidc-client-secret** - The secret provided by Azure AD.<p></p><br />
     - **oidc-extra-scope** - The scope tags.<p></p><br />
 
 ![oidc](/client-config.png)
@@ -296,7 +301,7 @@ charts:
             #name: user5
           - type: Group
           # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "70d19fd6-355a-453b-aadf-7cc6c915e301" is tied to the Azure AD Security Group with the display name of "cluster-admin-role".
+          # Example: Azure AD Group Object Id "70d19fd6-####-####-####-##c6c915e301" is tied to the Azure AD Security Group with the display name of "cluster-admin-role".
           # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Cluster Admins"
       - role: admin
@@ -306,7 +311,7 @@ charts:
             #name: user5
           - type: Group
           # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "064f2e40-f848-4bc5-ab8c-88b9f7927976" is tied to the Azure AD Security Group with the display name of "admin-role".
+          # Example: Azure AD Group Object Id "064f2e40-####-####-####-##b9f7927976" is tied to the Azure AD Security Group with the display name of "admin-role".
           # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Admins"
       - role: view
@@ -316,7 +321,7 @@ charts:
             #name: user6
           - type: Group
           # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "732edc96-9549-45eb-a3c9-b4851dee3380" is tied to the Azure AD Security Group with the display name of "view-role".
+          # Example: Azure AD Group Object Id "732edc96--####-####-####-##851dee3380" is tied to the Azure AD Security Group with the display name of "view-role".
           # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Viewers"
           #- type: ServiceAccount
@@ -329,7 +334,7 @@ charts:
             #name: user6
           - type: Group
           # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "21b55c08-63bd-4119-8bd3-9fa3e2245ad7" is tied to the Azure AD Security Group with the display name of "edit-role".
+          # Example: Azure AD Group Object Id "21b55c08-6-####-####-####-##a3e2245ad7" is tied to the Azure AD Security Group with the display name of "edit-role".
           # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Edit"
           #- type: ServiceAccount
@@ -378,7 +383,7 @@ charts:
 
 ## Results
 
-You have now established the authentication between Microsoft Azure AD and Spectro Cloud Palette OIDC and capable of secured communications.
+You have now established SSO authentication integrating Microsoft Azure AD and Spectro Cloud Palette using OIDC.
 
 ## References
 
