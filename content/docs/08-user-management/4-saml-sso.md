@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Single sign-on (SSO) is an authentication method that enables secured exchange user authentication using a single set of credentials with multiple applications and websites. SSO works upon a trust relationship established and maintained between the service provider (SP) and an identity provider (IdP) using certificates.
+Single sign-on (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO works upon a trust relationship established and maintained between the service provider (SP) and an identity provider (IdP) using certificates.
 
 Spectro Cloud supports the following two types of SSO authentication options:<p></p><br />
 
@@ -84,7 +84,7 @@ https://developer.okta.com/docs/guides/build-sso-integration/saml2/before-you-be
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="MFST Azure AD" key="azure_ad">
+<Tabs.TabPane tab="Azure AD" key="azure_ad">
 
 ### Azure Active Directory
 
@@ -112,7 +112,7 @@ https://www.keycloak.org/docs/latest/server_admin/#saml-clients
 https://developers.onelogin.com/saml/app-catalog
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="MSFT AD FS" key="msft_adfs">
+<Tabs.TabPane tab="ADFS" key="msft_adfs">
 
 ### Microsoft AD FS
 
@@ -186,7 +186,7 @@ You have now established the minimum configuration that is required to configure
 https://developer.okta.com/docs/guides/build-sso-integration/openidconnect/before-you-begin/
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="MSFT Azure AD" key="azure_ad">
+<Tabs.TabPane tab="Azure AD" key="azure_ad">
 
 ## Azure Active Directory
 
@@ -411,9 +411,9 @@ https://developers.onelogin.com/openid-connect
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="MSFT AD FS" key="msft_adfs">
+<Tabs.TabPane tab="AD FS" key="msft_adfs">
 
-### Microsoft AD FS
+### Microsoft ADFS
 
 #### References
 
