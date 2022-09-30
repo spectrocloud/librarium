@@ -29,7 +29,7 @@ Spectro Cloud supports the following two types of SSO authentication options:<p>
 
 # How to Set Up SAML 2.0-based SSO within Palette
 
-With Palette, you can use SAML 2.0 single sign-on (SSO) to enable the secure exchange of user authentication via an IdP and Spectro Cloud Palette.
+With Spectro Cloud Palette, you can use SAML 2.0 protocols for single sign-on (SSO) authentication using your IdP.
 
 <br />
 
@@ -87,11 +87,6 @@ https://developer.okta.com/docs/guides/build-sso-integration/saml2/before-you-be
 <Tabs.TabPane tab="MFST Azure AD" key="azure_ad">
 
 ### Azure Active Directory
-
-
-
-
-
 
 #### References
 
@@ -231,9 +226,9 @@ From within Microsoft Azure AD, log in and find the Azure Active Directory servi
 
 This section describes how to enable Azure AD SSO authentication to access a Kubernetes cluster.
 
-1. From the sidebar menu, select **Tenant Admin** and click the **Tenant Settings** dropdown.<p></p><br />
-2. Go to **Profiles** from within Tenant Admin or a Prjoect, and select an existing Cluster Profile. Alternatively, if no cluster profile eists, create a new cluster profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.<p></p><br />
-3. Choose the **Kubernetes** layer and from the **Pack Version** dropdown, select the version to modify.<p></p><br />
+1. From the sidebar menu, select **Tenant Settings** and ensure the **Tenant Admin** from dropdown is selected.<p></p><br />
+2. Go to **Profiles** from within Tenant Admin or a Project and select an existing Cluster Profile. Alternatively, if a Cluster Profile does not exist, create a new Cluster Profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.<p></p><br />
+3. Choose the **Kubernetes** layer and select the **Pack Values** to modify.<p></p><br />
 4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.<p></p><br />
 
 ## Configuring the Application OpenID Configuration in the Cluster
