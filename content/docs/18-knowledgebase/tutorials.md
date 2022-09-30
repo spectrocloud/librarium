@@ -13,8 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Tutorial
-Learn what's possible with Palette. These quick instructions introduce the basics to provisioning clusters, workspaces, and more with Palette.<p></p><br />
+# Tutorials
+
+Learn what's possible with Spectro Cloud Palette. These quick instructions introduce the basics to provisioning clusters, workspaces, and more with Spectro Cloud Palette.<p></p><br />
 
 
 [Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial)<p></p>
