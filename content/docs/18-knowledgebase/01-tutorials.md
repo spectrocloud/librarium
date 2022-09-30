@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 Learn what's possible with Spectro Cloud Palette. These quick instructions introduce the basics to provisioning clusters, workspaces, and more with Spectro Cloud Palette.<p></p><br />
 
 
-[Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial)<p></p>
+[Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial) <p></p>
 [Practice for your CKS Exam with Palette](/knowledgebase/tutorials/cks-tutorial)<p></p>
 
 <br />

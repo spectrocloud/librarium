@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # How To
 
-Learn what Spectro Cloud Palette can do for you. Filter these quick instructions that will will walk you through Spectro Cloud Palette, its key functions, and more.<p></p><br />
+Learn what Spectro Cloud Palette can do for you. Walk through these quick instructions that will take you through Spectro Cloud Palette, its key functions, and more.<p></p><br />
 
 
 
