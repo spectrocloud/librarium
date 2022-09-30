@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
+The following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
 
 1. Kubernetes nodes can be distributed across multiple availability zones (AZs) to achieve high availability (HA). For each of the AZs that you select, a public subnet and a private subnet is created.
 
@@ -26,7 +26,7 @@ Following are some architectural highlights of the Amazon Web Services (AWS) clu
 3. A Network Address Translation (NAT) Gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
 
 
-4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. A bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
+4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. In addition, a bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet, and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
 
 
 5. The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across all the control plane nodes.
@@ -46,7 +46,7 @@ The following prerequisites must be met before deploying an Amazon Elastic Kuber
 3. You should have an Infrastructure Cluster profile created in Palette for AWS.
 
 
-4. Palette creates compute, network, and storage resources on AWS, during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
+4. Palette creates compute, network, and storage resources on AWS as it provisions the Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
       - vCPU
       - VPC
       - Elastic IP
@@ -600,13 +600,264 @@ The following **four** policies include all the required permissions for provisi
 
 </Tabs>
 
+## Restricting Palette Static Minimum Permissions for Existing VPC
+
+You can choose to have Palette work in a static or dynamic environment. You can also set it to restrict or allow Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette work but restricts it to the Principle of Least Privilege.
+
+
+<br />
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Minimum Dynamic Permissions" key="Minimum Dynamic Permissions">
+
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+
+<br />
+
+
+### Minimum Dynamic Permissions
+
+
+```json
+{
+ "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:DescribeInstances",
+        "iam:RemoveRoleFromInstanceProfile",
+        "ec2:AttachInternetGateway",
+        "iam:AddRoleToInstanceProfile",
+        "ec2:DeleteRouteTable",
+        "ec2:AssociateRouteTable",
+        "ec2:DescribeInternetGateways",
+        "ec2:CreateRoute",
+        "ec2:CreateInternetGateway",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeNetworkAcls",
+        "ec2:DescribeRouteTables",
+        "ec2:CreateTags",
+        "ec2:CreateRouteTable",
+        "ec2:RunInstances",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:TerminateInstances",
+        "ec2:DetachInternetGateway",
+        "ec2:DisassociateRouteTable",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:DescribeIpv6Pools",
+        "ec2:DeleteVpc",
+        "ec2:CreateSubnet",
+        "ec2:DescribeSubnets",
+        "iam:CreateInstanceProfile",
+        "ec2:DisassociateAddress",
+        "ec2:DescribeAddresses",
+        "ec2:CreateNatGateway",
+        "ec2:DescribeRegions",
+        "ec2:CreateVpc",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:CreateSecurityGroup",
+        "ec2:ModifyVpcAttribute",
+        "iam:DeleteInstanceProfile",
+        "ec2:ReleaseAddress",
+        "iam:GetInstanceProfile",
+        "ec2:DescribeTags",
+        "ec2:DeleteRoute",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeIpamPools",
+        "ec2:AllocateAddress",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeImages",
+        "ec2:DescribeVpcs",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeTags",
+        "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:TagResource",
+        "secretsmanager:GetSecretValue",
+        "autoscaling:StartInstanceRefresh",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "ecr:GetAuthorizationToken",
+        "iam:PassRole",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "ecr:BatchGetImage",
+        "ec2:DeleteInternetGateway",
+        "ec2:DeleteNatGateway",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSubnet",
+        "ec2:DeleteTags",
+        "ssm:UpdateInstanceInformation",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "pricing:GetProducts",
+        "sts:AssumeRole",
+        "ec2:ReplaceRoute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:AssociateAddress",
+        "tag:GetResources",
+        "ec2:ModifySubnetAttribute"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+         "iam:PassRole"
+      ],
+      "Resource": [
+          "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+      ]
+    }
+  ]
+}
+
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Minimum Static Permissions" key="Minimum Static Permissions">
+
+
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+
+<br />
+
+### Minimum Static Permissions
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+              "ec2:AuthorizeSecurityGroupIngress",
+              "ec2:DescribeInstances",
+            "iam:RemoveRoleFromInstanceProfile",
+            "pricing:GetProducts",
+            "sts:AssumeRole",
+            "ec2:DescribeRegions",
+            "ec2:DescribeKeyPairs",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeVpcAttribute",
+            "ec2:DescribeSubnets",
+            "cloudformation:DescribeStacks",
+            "cloudformation:CreateStack",
+            "cloudformation:UpdateStack",
+            "ec2:DescribeRouteTables",
+            "ec2:DescribeNatGateways",
+            "ec2:DescribeSecurityGroups",
+            "elasticloadbalancing:DescribeLoadBalancers",
+            "elasticloadbalancing:DescribeLoadBalancerAttributes",
+            "elasticloadbalancing:DescribeTags",
+            "secretsmanager:CreateSecret",
+            "secretsmanager:TagResource",
+            "secretsmanager:GetSecretValue",
+            "secretsmanager:DeleteSecret",
+            "iam:GetInstanceProfile",
+            "iam:AddRoleToInstanceProfile",
+            "iam:CreateInstanceProfile",
+            "iam:DeleteInstanceProfile",
+            "ec2:RunInstances",
+            "ec2:ModifyInstanceAttribute",
+            "ec2:TerminateInstances",
+            "autoscaling:StartInstanceRefresh",
+            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+            "ssm:UpdateInstanceInformation",
+            "ec2:DescribeAvailabilityZones",
+            "eks:DescribeCluster",
+            "eks:ListClusters",
+            "ec2:CreateSecurityGroup",
+            "ec2:DeleteSecurityGroup",
+            "ec2:RevokeSecurityGroupIngress",
+            "ssmmessages:CreateControlChannel",
+            "ssmmessages:CreateDataChannel",
+            "ssmmessages:OpenControlChannel",
+            "ssmmessages:OpenDataChannel",
+            "elasticloadbalancing:ConfigureHealthCheck",
+            "elasticloadbalancing:DescribeTargetHealth",
+            "ec2:CreateTags",
+            "ec2:DescribeNetworkInterfaces",
+            "elasticloadbalancing:DeleteLoadBalancer",
+            "elasticloadbalancing:CreateLoadBalancer",
+            "elasticloadbalancing:ModifyLoadBalancerAttributes",
+            "ec2:DisassociateAddress",
+            "ec2:DescribeAddresses",
+            "ec2:DescribeVolumes",
+            "ec2:DescribeImages",
+            "ec2:ModifyVpcAttribute",
+            "s3:GetEncryptionConfiguration",
+            "ec2:ModifyVolume",
+            "ec2:AttachVolume",
+            "ec2:DescribeVolumesModifications",
+            "ec2:DetachVolume",
+            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+            "ec2:DetachInternetGateway",
+            "ec2:DeleteNetworkInterface",
+            "tag:GetResources",
+            "ec2:ReleaseAddress",
+            "ec2:ModifyNetworkInterfaceAttribute",
+            "ec2:DescribeNetworkInterfaceAttribute",
+            "ec2:AllocateAddress",
+            "ec2:AssociateAddress"
+        ],
+        "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "iam:PassRole"
+        ],
+        "Resource": [
+            "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+        ]
+    }
+  ]
+}
+
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
 
 <InfoBox>
-Ensure that the role created contain all the policies defined above.
+Ensure that the role created contains all the policies defined above.
 </InfoBox>
 
 <InfoBox>
-These policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+These policies cannot be used as an inline policy, as they exceed AWS' 2048 non-whitespace character limit.
 </InfoBox>
 
 <InfoBox>
@@ -685,7 +936,7 @@ To create an AWS cloud account using STS credentials follow the steps below:
     |**Account ID**|Copy the Account ID displayed on the UI|
     |**Require External ID**| Enable|
     |**External ID**|Copy the External ID displayed on the UI|
-    |**Permissions Policy**|Search and select the 4 policies added in step #2|
+    |**Permissions Policy**|Search and select the four policies added in step #2|
     |**Role Name**|SpectroCloudRole|
     
 
@@ -713,7 +964,7 @@ The following steps need to be performed to provision a new AWS cluster:
 2. Select the Cluster Profile created for the AWS cloud. The profile definition will be used as the cluster construction template.
 
 
-3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values, defined in the Cluster Profile.
+3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 
 
 4. Provide the AWS cloud account and placement information.
@@ -723,8 +974,8 @@ The following steps need to be performed to provision a new AWS cluster:
     |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Network**: Select the virtual network from dropdown menu.
+    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
+    ||**Virtual Network**: Select the virtual network from the dropdown menu.
     ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
     ||**Worker Network**: Select the worker network from the dropdown menu. |
     
@@ -732,15 +983,16 @@ The following steps need to be performed to provision a new AWS cluster:
 5. Make the choice of updating the worker pool in parallel, if required.
 
 <InfoBox>
-The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
+Add the following Tags to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public <br />
 kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
+
 </InfoBox>
 
 6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
- 
+
 
 7. An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, the created label can be edited as well as a new label can be added.
 
