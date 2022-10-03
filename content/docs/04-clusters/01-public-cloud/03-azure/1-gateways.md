@@ -28,16 +28,16 @@ Palette provisions Self Hosted Private Cloud Gateways (Self Hosted PCGs) to laun
 To create an Azure Self-Hosted PCG, the significant steps are:
  <br />
 
-1. [Create a Virtual Network in the Azure console](/clusters/gateways#createanazurevirtualnetworkintheazureconsole)
+1. [Create a Virtual Network in the Azure console](/clusters/public-cloud/azure/gateways#createavirtualnetworkintheazureconsole)
 
 
-2. [Create an Azure Kubernetes Target Cluster in the Azure console](/clusters/gateways#createanazurekubernetestargetclusterintheazureconsole)
+2. [Create an Azure Kubernetes Target Cluster in the Azure console](/clusters/public-cloud/azure/gateways#createanazurekubernetestargetclusterintheazureconsole)
 
 
-3. [Establish external connectivity with the Target Azure Kubernetes Cluster](/clusters/gateways#establishexternalconnectivitywiththetargetazurekubernetescluster)
+3. [Establish external connectivity with the Target Azure Kubernetes Cluster](/clusters/public-cloud/azure/gateways#establishexternalconnectivitywiththetargetazurekubernetescluster)
 
 
-4. [Deploy Palette Self Hosted PCG to Palette Console](/clusters/gateways#deploypaletteselfhostedpcgtopaletteconsole)
+4. [Deploy Palette Self Hosted PCG to Palette Console](/clusters/public-cloud/azure/gateways#deploypaletteselfhostedpcgtopaletteconsole)
 
 
 ## Create a Virtual Network in the Azure Console
@@ -101,7 +101,7 @@ az aks create \
 
 6. Security: For network security enable **Private cluster**.
 
-In Azure CNI network configuration, select the static [virtual network created](/clusters/gateways#createanazurevirtualnetworkintheazureconsole) from the drop-down menu. 
+In Azure CNI network configuration, select the static [virtual network created](/clusters/public-cloud/azure/gateways#createanazurevirtualnetworkintheazureconsole) from the drop-down menu. 
 
 <br />
 
@@ -185,7 +185,7 @@ After getting connected to the Bastion host, establish a connection to the Targe
 
 <InfoBox>
 
-Palette users can launch Azure clusters without a PCG also. To enjoy the additional benefits of this private cloud Self-hosted PCG, users need to [attach them to the Palette Azure cloud account](/gateways#attachtheselfhostedpcgtotheazurecloudaccount).
+Palette users can launch Azure clusters without a PCG also. To enjoy the additional benefits of this private cloud Self-hosted PCG, users need to attach it to the Palette Azure cloud account.
 
 </InfoBox>
 
