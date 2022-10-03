@@ -93,7 +93,12 @@ The version information is part of the API URI like `v1alpha1`, `v1`. Future API
 
 # Scope
 
-Palette applications operate in *Tenant* and *Project* scopes. The resources can be logically grouped as projects and API requests within a project should carry the project uid in the context. The project scope can be specified in the API request as an HTTP header with the key as `projectUid` and value as the &lt;project uid&gt;
+Palette supports applications to operate under [**Tenant** and **Project**](/user-management/palette-rbac#accessmodes) scope. The resources can be logically grouped as projects and API requests. These resources within a project should carry the projectuid in the context. The project scope can be specified in the API request as an HTTP header with the key as `projectuid` and value as the &lt;project uid&gt; The `projectuid` needs to be specified for a request to be applied under the project scope.
+
+**Example**:
+
+While creating a cloud account under a specific project, the request should have the `projectuid.` If the request is submitted without the `projectuid` by default, it will be considered a Tenant Scope request.
+
 
 # Pagination
 
