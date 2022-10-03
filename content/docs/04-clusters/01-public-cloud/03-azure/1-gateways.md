@@ -13,7 +13,7 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Overview
 <br />
-Palette provisions Self Hosted Private Cloud Gateways (Self Hosted PCGs) to launch Azure Clusters within Azure Virtual networks (VNet) for enhanced security. Deploy an independent Kubernetes cluster in the Azure console to import and convert it to a self-hosted PCG connected to the Palette Management server using Palette manifests. This section discusses the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts.
+Palette enables provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a Private Cloud Gateway that is deployed within the same account as the private AKS clusters. This private cloud gateway (Self Hosted PCGs) is an AKS cluster itself which needs to be launched manually and linked to an Azure cloud account in Palette Managemnt Console. The following sections discuss the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts. Once the self hosted PCG is created and linked with an Azure cloud account in Palette, any Azure clusters provisioned using that cloud account will be orchestrated via this self hosted PCG, thereby enabling provisioning of Private AKS clusters. 
 
 # Prerequisites
 
