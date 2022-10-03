@@ -85,8 +85,13 @@ A custom Account Name
 * Tenant ID
 * Client Secret
 * Tenant Name (optional)
+* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
 
-For this, we first need to create an Azure Active Directory (AAD) application that can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
+**Note:**
+
+For existing cloud account go to `Edit` and toggle the `Connect Private Cloud Gateway` option to select the created gateway from the drop down menu.
+
+For Azure cloud account creation, we first need to create an Azure Active Directory (AAD) application that can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
 
 <br />
 
