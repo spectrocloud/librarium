@@ -41,7 +41,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 3. You should have an Infrastructure cluster profile created in Palette for Azure cloud.
 
-# Creating an Azure cloud account
+# Creating an Azure Cloud Account
 
  ![Azure-cloud-account](/cloud-accounts/azure.mp4)
 
@@ -52,6 +52,11 @@ To create an Azure cloud account, we need:
 * Tenant ID
 * Client Secret
 * Tenant Name (optional)
+* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
+
+**Note:**
+
+For existing cloud account go to `Edit` and toggle the `Connect Private Cloud Gateway` option to select the created gateway from the drop down menu.
 
 Once the above informations are provided to the cloud account creation wizard, click on **Disable Properties**, if the user do not want to have a network call from Palette console to the Azure account for linking the Azure networking details to Palette console.  
 
