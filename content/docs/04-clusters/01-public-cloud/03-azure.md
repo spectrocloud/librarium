@@ -52,7 +52,7 @@ To create an Azure cloud account, we need:
 * Tenant ID
 * Client Secret
 * Tenant Name (optional)
-* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
+* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
 
 **Note:**
 

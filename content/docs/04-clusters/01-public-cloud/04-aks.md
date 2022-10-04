@@ -73,6 +73,11 @@ There are additional prerequisites if you want to set up Azure Active Directory 
 
   3. You can configure these permissions from the Azure cloud console under **App registrations** > **API permissions** for the specified application.
 
+<InfoBox>
+
+Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. [Click here for more..](/clusters/public-cloud/azure/gateways#overview)
+
+</InfoBox>
 
 # Creating an Azure Cloud Account
 
@@ -85,7 +90,7 @@ A custom Account Name
 * Tenant ID
 * Client Secret
 * Tenant Name (optional)
-* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
+* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
 
 **Note:**
 
