@@ -13,7 +13,7 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Overview
 <br />
-Palette enables provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a Private Cloud Gateway that is deployed within the same account as the private AKS clusters. This private cloud gateway (Self Hosted PCGs) is an AKS cluster itself which needs to be launched manually and linked to an Azure cloud account in Palette Managemnt Console. The following sections discuss the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts. Once the self hosted PCG is created and linked with an Azure cloud account in Palette, any Azure clusters provisioned using that cloud account will be orchestrated via this self hosted PCG, thereby enabling provisioning of Private AKS clusters. 
+Palette enables the provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a Private Cloud Gateway deployed within the same account as the private AKS clusters. This private cloud gateway (Self Hosted PCGs) is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. The following sections discuss the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts. Once the self-hosted PCG is created and linked with an Azure cloud account in Palette, any Azure clusters provisioned using that cloud account will be orchestrated via this self-hosted PCG, thereby enabling the provisioning of Private AKS clusters. 
 
 # Prerequisites
 
@@ -181,7 +181,7 @@ After getting connected to the Bastion host, establish a connection to the Targe
   kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
 ```
 
-6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migratiom](/enterprise-version/enterprise-cluster-management#palettepcgmigration) for the public cloud self-hosted PCGs as well. 
+6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](/enterprise-version/enterprise-cluster-management#palettepcgmigration) for the public cloud self-hosted PCGs as well. 
 
 <InfoBox>
 
