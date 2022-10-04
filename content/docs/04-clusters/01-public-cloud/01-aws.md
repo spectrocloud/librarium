@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
+Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
 
 1. Kubernetes nodes can be distributed across multiple availability zones (AZs) to achieve high availability (HA). For each of the AZs that you select, a public subnet and a private subnet is created.
 
@@ -26,7 +26,7 @@ The following are some architectural highlights of the Amazon Web Services (AWS)
 3. A Network Address Translation (NAT) Gateway is created in the public subnet of each AZ, to allow nodes in the private subnet to be able to go out to the internet or call other AWS services.
 
 
-4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. In addition, a bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet, and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
+4. An Internet Gateway (IG) is created for each Virtual Private Cloud (VPC), to allow Secure Shell Protocol (SSH) access to the bastion node for debugging purposes. SSH into Kubernetes nodes is only available through the bastion node. A bastion node helps to provide access to the Amazon Elastic Compute Cloud (EC2) instances. This is because the EC2 instances are created in a private subnet and the bastion node operates as a secure, single point of entry into the infrastructure. The bastion node can be accessed via SSH or Remote Desktop (RDP).
 
 
 5. The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across all the control plane nodes.
@@ -46,7 +46,7 @@ The following prerequisites must be met before deploying an Amazon Elastic Kuber
 3. You should have an Infrastructure Cluster profile created in Palette for AWS.
 
 
-4. Palette creates compute, network, and storage resources on AWS as it provisions the Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
+4. Palette creates compute, network, and storage resources on AWS, during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
       - vCPU
       - VPC
       - Elastic IP
@@ -737,7 +737,6 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
     }
   ]
 }
-
 ```
 
 </Tabs.TabPane>
@@ -844,7 +843,6 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
     }
   ]
 }
-
 ```
 
 </Tabs.TabPane>
@@ -853,11 +851,11 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
 
 
 <InfoBox>
-Ensure that the role created contains all the policies defined above.
+Ensure that the role created contain all the policies defined above.
 </InfoBox>
 
 <InfoBox>
-These policies cannot be used as an inline policy, as they exceed AWS' 2048 non-whitespace character limit.
+These policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
 </InfoBox>
 
 <InfoBox>
@@ -936,7 +934,7 @@ To create an AWS cloud account using STS credentials follow the steps below:
     |**Account ID**|Copy the Account ID displayed on the UI|
     |**Require External ID**| Enable|
     |**External ID**|Copy the External ID displayed on the UI|
-    |**Permissions Policy**|Search and select the four policies added in step #2|
+    |**Permissions Policy**|Search and select the 4 policies added in step #2|
     |**Role Name**|SpectroCloudRole|
     
 
@@ -964,7 +962,7 @@ The following steps need to be performed to provision a new AWS cluster:
 2. Select the Cluster Profile created for the AWS cloud. The profile definition will be used as the cluster construction template.
 
 
-3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+3. Review and override pack parameters, as desired. By default, parameters for all packs are set with values, defined in the Cluster Profile.
 
 
 4. Provide the AWS cloud account and placement information.
@@ -974,8 +972,8 @@ The following steps need to be performed to provision a new AWS cluster:
     |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Network**: Select the virtual network from the dropdown menu.
+    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
+    ||**Virtual Network**: Select the virtual network from dropdown menu.
     ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
     ||**Worker Network**: Select the worker network from the dropdown menu. |
     
@@ -983,16 +981,15 @@ The following steps need to be performed to provision a new AWS cluster:
 5. Make the choice of updating the worker pool in parallel, if required.
 
 <InfoBox>
-Add the following Tags to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
+The following Tags should be added to the public subnet to enable automatic subnet discovery for integration with AWS load balancer service.<p> </p>
 kubernetes.io/role/elb = 1 <br />
 sigs.k8s.io/cluster-api-provider-aws/role = public <br />
 kubernetes.io/cluster/[ClusterName] = shared <br />
 sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
-
 </InfoBox>
 
 6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
-
+ 
 
 7. An optional Label can be applied to a node pool during the cluster creation. During the cluster creation, while configuring the node pools, tag an optional Label in a unique key: value format. For a running cluster, the created label can be edited as well as a new label can be added.
 
