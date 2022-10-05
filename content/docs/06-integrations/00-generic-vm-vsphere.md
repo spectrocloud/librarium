@@ -210,7 +210,7 @@ The extraVMHclConfig command can be used to provide an extra configuration in th
 
 The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval. 
 
-If you want to run the command or script only, whenever the virtual machine is getting created or after virtual machine is destroyed, then use **preVMInitCmd** and **postVMInitCmd**, respectively.
+**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.  
 
 <br />
 
