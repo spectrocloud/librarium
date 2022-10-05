@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
+Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
 <br />
 
