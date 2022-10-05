@@ -40,7 +40,7 @@ To configure the Generic-VM-vSphere Add-on pack for the application cluster, the
 <br />
 
 ```yaml
-namespace: jet-system
+namespace: cluster-{{ .spectro.system.cluster.uid }}
 ```
 
 If multiple instances of this pack has to be deployed on the cluster for different virtual machine applications, then modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with different names to make it unique across all the packs in the cluster.
