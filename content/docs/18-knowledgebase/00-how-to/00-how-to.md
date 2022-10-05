@@ -5,7 +5,10 @@ metaDescription: "KnowledgeBase with How to"
 icon: "laptop"
 hideToC: true
 fullWidth: false
+hideToCSidebar: true
+hiddenFromNav: true
 ---
+
 
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';

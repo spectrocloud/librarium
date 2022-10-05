@@ -5,6 +5,7 @@ metaDescription: "KnowledgeBase with How to"
 icon: "laptop"
 hideToC: true
 fullWidth: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
