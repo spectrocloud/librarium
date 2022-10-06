@@ -41,16 +41,21 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
 <InfoBox>
 
-When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
+# Global Role Additional Policies:
+
+There will be situations where additional node-level policies must be added to your deployment. For instance, when you create a Host cluster with **AWS EBS CSI** storage layer, ensure `AmazonEBSCSIDriverPolicy` is included. For such scenarios in the cloud account page, after validation of the credentials, `Add IAM policies` are enabled, where you can specify additional Role ARNs which need to be attached. This policy will be attached to all the clusters launched with this specific Cloud Account.
 
 <br />
 
+** AmazonEBSCSIDriverPolicy:**
 ```yml
 roleName: "custom-ng-role"
   roleAdditionalPolicies:
   - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 ```
 </InfoBox>
+
+
 
 
 # Enabling Nested Clusters on an Existing Host Cluster
