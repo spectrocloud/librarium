@@ -1,0 +1,154 @@
+---
+title: "Security"
+metaTitle: "Spectro Cloud Palette"
+metaDescription: "Spectro Cloud provides scalable, policy-based cluster management of Kubernetes for enterprises that need a high degree of control over their infrastructure, whether it is in public cloud, private cloud, bare metal or any combination."
+icon: "lock" 
+hideToC: true
+fullWidth: true
+hiddenFromNav: false
+isIntegration: false
+hideMenuSidebar: false 
+hideToCSidebar: false
+---
+
+import SecurityWP from "shared/components/common/SecurityWP"; 
+ 
+
+<SecurityWP
+  title="Spectro Cloud Palette Platform Security"
+  description
+  options={[
+    {
+      title: "Deployment Architecture",
+      description: "Modern micro services-based architecture with logically categorized services into isolated into containers",
+      icon: "bundles",
+      href: "/security/palette-platform-security#deploymentarchitecture",
+    },
+    {
+    title: "Platform Security",
+    description:"Spectro Cloud Platform is composed with a multi-layer deployment stack.",
+    icon: "nodes",
+    href: "/security/palette-platform-security#platformsecurity",
+    },
+    {
+    title: "Data Encryption",
+    description: "Encryption keys are unique and generated for each installation.",
+    icon: "workspaces",
+    href: "/security/palette-platform-security#dataencryption",
+    },
+    {
+      title: "Authentication & Authorization",
+      description: "Supports two authentication modes and supports RBAC",
+      icon: "clusters",
+      href: "/security/palette-platform-security#authenticationandauthorization",
+    },
+    {
+    title: "SaaS Tenanat Isolation",
+    description: "Tenant isolation capabilities where every tenant is a customer.",
+    icon: "clusters",
+    href: "/security/palette-platform-security#saastenantisolation",
+    },
+    {
+    title: "Audit Logs",
+    description: "All activies are audited and accessible according to permission levels.",
+    icon: "list",
+    href: "/security/palette-platform-security#auditlogs"
+    }
+  ]} />
+<SecurityWP
+  title="Spectro Cloud Tenant Cluster Security"
+  options={[
+    {
+      title: "Cloud",
+      description: "Uses best practices of the cloud environment by default when deploying tenant clusters.",
+      icon: "project",
+      href: "/security/tenant-cluster-security#cloud",
+    },
+    {
+      title: "Instance",
+      description: "Network access restrictions specific to cloud environments",
+      icon: "cloud",
+      href: "/security/tenant-cluster-security#instance",
+    },
+    {
+      title: "Operating System",
+      description: "We provide hardened Ubuntu or CentOS images for all supported cloud environments.",
+      icon: "cog",
+      href: "/security/tenant-cluster-security#operatingsystem",
+    },
+    {
+      title: "Kubernetes",
+      description: "Kubernetes packs are hardened to CIS Benchmarks",
+      icon: "user-astronaut",
+      href: "/security/tenant-cluster-security#kubernetes",
+    },
+    {
+      title: "Kubernetes Runtime Security",
+      description: "Runtime Security through packs are extensible",
+      icon: "user-astronaut",
+      href: "/security/tenant-cluster-security#kubernetesruntimesecurity",
+    },
+    {
+      title: "Kubernetes Authentication & Authorization",
+      description: "Integrated with Kubelogin with OIDC against external IDP",
+      icon: "user-astronaut",
+      href: "/security/tenant-cluster-security#kubernetesauthenticationandauthorization",
+    },
+    {
+      title: "Kubernetes Conformance & Compliance Test",
+      description: "Run scheduled Kubernetes conformance & compliance tests",
+      icon: "tachometer-alt",
+      href: "/security/tenant-cluster-security#kubernetesconformanceandcompliancetest"
+    }
+  ]} />
+<SecurityWP
+  title="Spectro Cloud SaaS Operation Security Controls"
+   options={[
+    {
+      title: "High Level Architecture",
+      description: "Palette uses both public cloud providers and its own security controls to secure the SaaS infrastructure.",
+      icon: "columns",
+      href: "/security/saas-operation-security-controls#highlevelarchitecture",
+    },
+    {
+      title: "Infrastructure Security",
+      description: "Palette covers security from OS, Container runtime, Kubernetes, and POD from the platform's perspective.",
+      icon: "warehouse",
+      href: "/security/saas-operation-security-controls#infrastructuresecurity",
+    },
+    {
+      title: "Operations",
+      description: "Spectro Cloud has a dedicated SaaS operations team to ensure secure, reliable, and resilient operations.",
+      icon: "user-cog",
+      href: "/security/saas-operation-security-controls#operations",
+    },
+    {
+      title: "Reliability",
+      description: "Designed for High Availability and Disaster Recovery to make its services highly reliable.",
+      icon: "cog",
+      href: "/security/saas-operation-security-controls#reliability"
+    },
+    {
+      title: "Software Development Life Cycle Management",
+      description: "Structured sofware development to produce highest quality product.",
+      icon: "user-astronaut",
+      href: "/security/saas-operation-security-controls#softwaredevelopmentlifecyclemanagement"
+    },
+    {
+      title: "Security and Compliance Scans",
+      description: "Performing 3rd party scans to ensure its services are secure, compliant, and conformant.",
+      icon: "user-astronaut",
+      href: "/security/saas-operation-security-controls#securityandcompliancescans"
+    }
+  ]} />
+<SecurityWP
+  title="Spectro Cloud Self-Managed Operation Security Controls"
+   options={[
+    {
+      title: "Managed Operations",
+      description: "Managed Services",
+      icon: "columns",
+      href: "/security/self-managed-operation-security-controls#spectrocloudself-managedoperationsecuritycontrols",
+    }
+  ]} />
+
