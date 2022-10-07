@@ -151,7 +151,7 @@ Congratulations! Your Nested Cluster is now deployed. If you like more informati
 
 <InfoBox>
 
-Palette does not support **Usage** and **Cost** update for the GKE (Google Kubernetes Engine) nested clusters.
+Palette does not support **Usage** and **Cost** matrics for the nested clusters running on GKE (Google Kubernetes Engine).
 
 </InfoBox>
 
