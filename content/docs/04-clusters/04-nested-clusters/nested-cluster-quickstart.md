@@ -148,6 +148,14 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 Congratulations! Your Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
 
+
+<InfoBox>
+
+Palette does not support **Usage** and **Cost** metrics for the nested clusters running on GKE (Google Kubernetes Engine).
+
+</InfoBox>
+
+
 # Resources
 
 [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
