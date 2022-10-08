@@ -97,7 +97,7 @@ Palette supports applications to operate under [**Tenant** and **Project**](/use
 
 **Example**:
 
-While creating a cloud account under a specific project, the request should have the `projectUid in the http header.` If the request is submitted without the `projectUid` by default, it will be considered a Tenant Scope request.
+While creating a cloud account under a specific project, the request should have the `ProjectUid in the http header.` If the request is submitted without the `ProjectUid` by default, it will be considered a Tenant Scope request.
 
 
 # Pagination
