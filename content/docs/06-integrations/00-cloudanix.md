@@ -45,5 +45,5 @@ Cloudanix helm chart supports the following versions with Palette.
 
 - Minumum CPU Cores: 1
 - Minimum Memory Required: 25 MiB
-- The minimum Kubernetes version supported is 1.15
+- The minimum Kubernetes version supported is 1.19
 - Kernel version 4.5 or higher
