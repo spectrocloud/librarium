@@ -54,4 +54,43 @@ The applications follows a hierarchy, where in the output parameter values from 
 
 </InfoBox>
 
+<WarningBox>
+
+Palette encourages the developers to [securely distribute their credential using secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/). We can achieve security by constructing their manifests to consume the parameter by references. They can also add a manifest to create their Kubernetes secrets, using macros to inject the values. In the App tier, set the environment variables using a secret reference. 
+
+**Example Scenario**
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+  namespace: mywebnamespace
+data:
+  password: {{.spectro.app.$appDepName-mongodb.PASSWORD}}
+	
+```
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myweb
+  namespace: mywebnamespace
+  ...
+spec:
+  template:
+  ...
+      containers:
+        - env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: password
+```
+
+
+
+</WarningBox>
+
 
