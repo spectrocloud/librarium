@@ -45,7 +45,6 @@ Palette Edge Platform provides two solutions for the edge, designed to support l
 
 Designed for sites that typically have a single appliance such as HPE xyz. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
-![virtualized-edge.png](virtualized-edge.png)
 
 ### Native Edge
 
@@ -54,7 +53,6 @@ Designed for sites that typically have one or more small form factor appliances 
 The Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Native Edge solution runs natively on bare metal machines or virtual appliances.
 The users can choose the machine or appliance based on their intended use case. It is built upon the real-time P6OS with embedded Kubernetes Distro, a stable base Operating System, and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
 
-![native-edge.png](native-edge.png) -  **diagram place holder**
 
 <br />
 
