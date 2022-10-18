@@ -38,7 +38,6 @@ To create your App Profile,
 |         Parameter           | Description  |
 |-------------------------------|-----------------|
 |Application Profile Name | A custom name for the App Profile|
-|Version| Palette enables developers to create multiple versions of an App profile within the scope of a single profile name.|
 |Description (optional)   | Description of the App Profile, if any | 
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
