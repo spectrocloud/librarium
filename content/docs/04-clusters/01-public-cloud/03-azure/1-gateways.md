@@ -45,7 +45,9 @@ To create an Azure Self-Hosted PCG, the significant steps are:
 Log in to the Azure portal and create a Virtual Network taking care of the following steps:
 <br />
 
-1. Azure Virtual Network (VNet) with **three subnets**. Each of the subnets should have a minimum of **333 available IPs**. 
+1. Azure Virtual Network (VNet) with **three subnets**. Each of the subnets should have a minimum of **333 available 
+   IPs**. (Note: 333 IP's are required if you want to use Azure Container Networking Interface (CNI) networking and 
+   not necessary if you are using Kubenet networking)
 
 
 2. The VNet should have the ** `Microsoft.Authorization/roleAssignments/write` ** action required to connect the virtual network to the Azure Kubernetes Cluster if the network configuration is `Azure CNI.` for the cluster.
@@ -94,7 +96,8 @@ az aks create \
 		--enable-private-cluster \
 		--node-count count-value \
 		--network-plugin kubenet \
-		--vnet-subnet-id $SUBNET_ID
+		--vnet-subnet-id $SUBNET_ID \
+        --max-pods 110
 ```
 
  #### Azure CNI: 
