@@ -67,7 +67,7 @@ metadata:
   name: mysecret
   namespace: mywebnamespace
 data:
-  password: {{.spectro.app.$appDepName-mongodb.PASSWORD}}
+  password: "{{.spectro.app.$appDepName-mongodb.PASSWORD}}"
 	
 ```
 ```
