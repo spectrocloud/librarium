@@ -16,9 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-As an enterprise developer the product experience can be explored from the Tenant Scope of DevOps as well as from the Palette Dev Engine persona. The system experience progresses as per the below diagram:
-
-![dev-enterprise.png](dev-enterprise.png "#width=500px")
+As an enterprise developer the product experience can be explored from the Tenant Scope of DevOps as well as from the Palette Dev Engine persona. 
 
 # Tenant Scope - DevOps Persona
 
@@ -30,7 +28,7 @@ From the Tenant scope the enterprise user can:
 * [Allocate user Quota](/devx/resource-quota)
 
 
-# DevX Persona
+# Palette Dev Engine Persona
 
  * [Create App Profile](/devx/app-profile)
 
@@ -48,7 +46,7 @@ Palette Developer Engine provides the following additional capabilities for deve
 1. Create your application profiles and deploy your applications.
 
 
-2. Switching between the Developer experience and Palette SaaS console and exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
+2. Switching between the App Mode and Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
 
 
 3. Host the nested clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).

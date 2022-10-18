@@ -1,6 +1,6 @@
 ---
 title: "Land and Expand"
-metaTitle: "Palette Devx for Free User"
+metaTitle: "Palette Dev Engine for Free User"
 metaDescription: "Explore Palette Dev Engine as Free User"
 hideToC: false
 fullWidth: false
@@ -24,21 +24,13 @@ Palette is offering complimentary compute resources to the developers who sign u
 
 In either case, they are governed by the quota set by Spectro Cloud. There is no limit to the number of application profiles they can model. 
 
-The general Land and Explore experience of a developer can be demonstrated as below:
 
-![devx-start.png](devx-start.png "#width=500px")
+# Quickly Land and Expand
 
-
-## Quick Start Palette Dev Engine as a Land and Expand Developer
-
-1. Log in to Palette Freemium account using the Social sign-in credentials such as Google or Git Hub.
+1. Log in to Palette Free tier account using the Social sign-in credentials such as Google or Git Hub.
 
 
-2. The user logs in to the Dev Engine console, where all his primary resources are created and allocated by Palette System Admin. The resources available are:
-
- * Palette Resource Quota
-
- * Palette Host Cluster Groups  
+2. The user logs in to the Dev Engine console, where all his primary resources are created and allocated by Palette System Admin. 
 
 3. These resources can be used by the developer to:
 
@@ -59,7 +51,7 @@ Palette Developer Engine provides the following additional capabilities for deve
 1. Create your application profiles and deploy your applications.
 
 
-2. Switching between the Developer experience and Palette SaaS console exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
+2. Switching between the App Mode to Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
 
 
 3. Host the nested clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
