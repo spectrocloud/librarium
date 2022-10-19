@@ -33,7 +33,7 @@ Cluster Group is an aggregation of host clusters deployed through Palette. Palet
 
 ### Create Your Cluster Group 
 
-To create Palette Host Cluster Groups, the developer needs to deploy healthy running Palette host clusters. Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster:
+To create Palette Host Cluster Groups, the developer needs to [deploy healthy running Palette host clusters](/clusters). Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster group:
 
 <br />
 
@@ -90,6 +90,20 @@ Once the cluster group is created, the day two operations on them can be done as
 
 
 2. To delete a cluster group, select `Delete Cluster,` enter the cluster name, and confirm the delete operation.
+
+### Platforms Supported
+
+* AWS
+* EKS
+* Azure
+* AKS
+* VMWare
+
+### Cluster Import Support
+
+* EKS
+* AKS
+* GKE
 
 
 <br />

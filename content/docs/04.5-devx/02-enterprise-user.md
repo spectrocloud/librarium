@@ -25,7 +25,7 @@ From the Tenant scope the enterprise user can:
 * [Create the Cluster Group](/devx/cluster-groups)
 
 
-* [Allocate user Quota](/devx/resource-quota)
+* [Allocate User Quota](/devx/resource-quota)
 
 
 # Palette Dev Engine Persona
