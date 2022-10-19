@@ -26,7 +26,7 @@ The enterprise developer can create and utilize the Palette compute under the sc
 * The Cluster Groups launched in the developer's enterprise datacenter/environment
 
 ## Cluster Groups
-Cluster Group is an aggregation of host clusters deployed through Palette. Palette nested clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
+Cluster Group is an aggregation of host clusters deployed through Palette. Palette sandbox clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
 
 * System Scope
 * Tenant Scope
@@ -70,16 +70,16 @@ To create Palette Host Cluster Groups, the developer needs to deploy healthy run
 **Note:**  Please ensure that a wildcard DNS record exists that maps the provided Host Pattern to the NGINX Ingress Controller load balancer for this cluster.
 
 
-   **Nested Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the nested clusters are getting launched.
+   **Sandbox Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the sandbox clusters are getting launched.
 
- |**Nested Cluster Limits ** | **Description**   |
+ |**Sandbox andbox Cluster Limits ** | **Description**   |
  |------------------------ --|-------------------|
  |CPU (per request)          | 6 default         |
  | Memory (per request)      | 8 Gi default      |
  | Storage (per request)     |  10 Gi default    |
 
 
-3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the nested clusters.
+3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the sandbox clusters.
 
 
 ### Manage your Cluster Group

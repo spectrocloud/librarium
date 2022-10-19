@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## App Profiles:
 
-App Profiles are templates created with preconfigured services required for nested cluster deployment. App Profiles provide a way to drive consistency across nested clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Nested Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
+App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Sandbox Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
 
 <br />
 

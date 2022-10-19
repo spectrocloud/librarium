@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Apps
 
-The developers can create applications based on their use cases to the Palette Dev Engine. Palette encourages the developers to deploy their own use cases to the Palette nested clusters in addition to a set of general purpose applications available within the Palette Dev Engine. This section will introduce how these use applications can be deployed to a Nested cluster.
+The developers can create applications based on their use cases to the Palette Dev Engine. Palette encourages the developers to deploy their own use cases to the Palette sandbox clusters in addition to a set of general purpose applications available within the Palette Dev Engine. This section will introduce how these use applications can be deployed to a Sandbox cluster.
 
 ## Start Creating a new App
 
@@ -31,13 +31,13 @@ To create your new App,
   * Application Name: A custom name for the application.
 
   * Select the App Profile: Select an App profile from the existing list by clicking `Select App Profile.’
-  * Make the choice of Deploying Nested Cluster. The options available here are:
+  * Make the choice of Deploying Sandbox Cluster. The options available here are:
 
-   **[Deploy In A New Palette Nested Cluster](/devx/nested-clusters)**
+   **[Deploy In A New Palette Sandbox Cluster](/devx/nested-clusters)**
 
-   ** Deploy In An Existing Palette Nested Cluster**
+   ** Deploy In An Existing Palette Sandbox Cluster**
 
-	Select an existing nested cluster from the available list.
+	Select an existing sandbox cluster from the available list.
 
 
 3. Click on `Create an application` to complete the wizard. The application will start getting deployed and wait for the application to get ready.

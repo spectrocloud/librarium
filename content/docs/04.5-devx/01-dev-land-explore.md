@@ -1,5 +1,5 @@
 ---
-title: "Land and Expand"
+title: "Overview"
 metaTitle: "Palette Dev Engine for Free User"
 metaDescription: "Explore Palette Dev Engine as Free User"
 hideToC: false
@@ -17,15 +17,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette is offering complimentary compute resources to the developers who sign up for Palette Dev Engine. These developers can use this compute resources to either, 
 
-* Provision a nested cluster to get full access to all the namespaces
+* Provision a Sandbox Cluster to get full access to all the namespaces
 
 
-* Deploy an application (profile) which would in turn spin up a nested cluster
+* Deploy an application (profile) which would in turn spin up a Sandbox Cluster
 
-In either case, they are governed by the quota set by Spectro Cloud. There is no limit to the number of application profiles they can model. 
+In either case, they are governed by the quota set by Spectro Cloud. There is no limit to the number of application profiles they can model. We offer 12 vCPU, 16 GiB of memory, and 20 GiB of storage complimentary to the developers.
 
 
-# Quickly Land and Expand
+# Quickly Explore
 
 1. Log in to Palette Free tier account using the Social sign-in credentials such as Google or Git Hub.
 
@@ -38,9 +38,9 @@ In either case, they are governed by the quota set by Spectro Cloud. There is no
 
  * [Create App](/devx/apps)
 
- * [Create Nested Clusters](/devx/nested-clusters)
+ * [Create Sandbox Clusters](/devx/nested-clusters)
 
- * [Create Custom Registries](/devx/registries)
+ * [Connect Custom Registries](/devx/registries)
 
 <InfoBox>
 
@@ -54,7 +54,7 @@ Palette Developer Engine provides the following additional capabilities for deve
 2. Switching between the App Mode to Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
 
 
-3. Host the nested clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
+3. Host the Sandbox Clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
 
 </InfoBox>
 
