@@ -19,7 +19,7 @@ With the Palette Sandbox  Cluster option, you can deploy additional Kubernetes c
 
 There are certain advantages to use a sandbox  cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Sandbox  Cluster from within Palette.
+Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a managed Sandbox  Cluster from within Palette.
 
 <br />
 
@@ -33,11 +33,11 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
   There are two ways to engage with a Sandbox  Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/sandbox-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
-    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
+    2. Similarly, you can [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
 
 <InfoBox>
 
@@ -143,7 +143,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
    - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
 <p></p><br />
 
-  ![Deploy-sandbox-cluster](deploy-nested-cluster.png "Deploy a Sandbox  Cluster")
+  ![Deploy-sandbox-cluster](deploy-sandbox-cluster.png "Deploy a Sandbox  Cluster")
 
 Congratulations! Your Sandbox  Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />

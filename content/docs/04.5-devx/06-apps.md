@@ -33,7 +33,7 @@ To create your new App,
   * Select the App Profile: Select an App profile from the existing list by clicking `Select App Profile.’
   * Make the choice of Deploying Sandbox Cluster. The options available here are:
 
-   **[Deploy In A New Palette Sandbox Cluster](/devx/nested-clusters)**
+   **[Deploy In A New Palette Sandbox Cluster](/devx/sandbox-clusters)**
 
    ** Deploy In An Existing Palette Sandbox Cluster**
 

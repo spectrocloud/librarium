@@ -34,7 +34,7 @@ From the Tenant scope the enterprise user can:
 
  * [Create App](/devx/apps)
 
- * [Create Sandbox Clusters](/devx/nested-clusters)
+ * [Create Sandbox Clusters](/devx/sandbox-clusters)
 
  * [Create Custom Registries](/devx/registries)
 

@@ -38,7 +38,7 @@ In either case, they are governed by the quota set by Spectro Cloud. There is no
 
  * [Create App](/devx/apps)
 
- * [Create Sandbox Clusters](/devx/nested-clusters)
+ * [Create Sandbox Clusters](/devx/sandbox-clusters)
 
  * [Connect Custom Registries](/devx/registries)
 
