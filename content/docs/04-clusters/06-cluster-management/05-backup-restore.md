@@ -32,6 +32,8 @@ Palette leverages the BackUps to the following locations:
 
 #### MinIO S3 Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#forminios3backup), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinminio)
 
+#### Azure Blob:[Prerequisites](/clusters/cluster-management/backup-restore#forazureblobbackup),[Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinazure:azureblob)
+
 # Prerequisites
 
 ## For an Amazon Web Services (AWS) Bucket as Backup Location
@@ -53,6 +55,22 @@ Palette leverages the BackUps to the following locations:
 * A unique access key (username) and corresponding secret key (password) from MinIO Console. 
 
 * Service provider certificate (Optional)
+
+## For Azure Blob Backup
+
+* An active Azure cloud account with the following pieces of information noted down:
+  * Tenant Id
+  * Client Id
+  * Subscription Id
+  * Client Secret created
+
+
+* An [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) created with the following information to be noted down for Palette use:
+  * Storage Name: Custom name given to the Azure storage created.
+  * Stock-keeping unit
+
+
+* A container to be created in the Azure Storage account
 
 # Backup Locations
 
@@ -164,6 +182,9 @@ The following details are required to configure a backup location in GCP:
 
 4. **JSON Credentials**: For external authentication of the GCP storage.
 
+
+5. Click Create to complete the location creation wizard.
+
 ## Configure your Backup in MinIO
 
 The following details are required to configure a backup location in MinIO:
@@ -186,13 +207,50 @@ The following details are required to configure a backup location in MinIO:
 6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
 
 
-7. **Force S3 path style** : To force S3 pathstyle addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
+7. **Force S3 path style** : To force S3 path style addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
 
 
 8. Provide the MiniIO unique **Access Key** and **Secret Key**. An unique access key (username) and corresponding secret key (password) can be obtained for every MinIO user account from MinIO console.
 
 
 9. Click **Create** to complete the location creation wizard. 
+
+
+# Configure your Backup in Azure: Azure Blob
+
+The following details are required to configure a backup location in Azure:
+
+1. **Location Name**: A custom name for the storage location getting created.
+
+
+2. **Location Provider:** Select **Azure** from the drop-down.
+
+
+3. **Container Name:** The container created in Azure Storage.
+
+
+4. **Storage Name**: Name of the Azure storage created.
+
+
+5. **Stock-Keeping Unit**: Information from the Azure storage.
+
+
+6. **Resource Group:** Azure Resource Group name
+
+
+7. **Tenant ID:** Azure Account Credential.
+
+
+8. **Client ID:** Azure Account Credential.
+
+
+9. **Subscription ID**: Azure Account Credential.
+
+
+10. **Client Secret:** Secret created in the Azure console needs to be validated.
+
+
+11. Click **Create** to complete the location creation wizard.
 
 
 ## Add a Backup Location
@@ -256,6 +314,7 @@ Backups created manually or as part of the schedule are listed under the Backup/
 
 
 3. Finally, restore operation can be done to the cluster running on the same project.
+
 
 <WarningBox>
 Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
