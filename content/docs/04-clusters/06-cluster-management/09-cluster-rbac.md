@@ -55,9 +55,9 @@ Palette users can choose role creation based on their resource requirements.
 A single RoleBinding can have multiple subjects.
 “Confirm” the information to complete the creation of the ClusterRoleBinding.
 
-## Configure role bindings
+## Configure role bindings: Namespace Scope
 
-Users can now allocate CPU and Memory quotas for each namespace at the cluster level.
+Users can now allocate CPU and Memory quotas for each **namespace** at the cluster level.
 
 * Select Cluster Settings -> RBAC -> Namespace.
 * Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”.
