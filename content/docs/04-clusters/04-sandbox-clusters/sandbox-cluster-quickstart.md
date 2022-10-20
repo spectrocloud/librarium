@@ -1,7 +1,7 @@
 ---
-title: "Quickstart with Nested Clusters"
-metaTitle: "Getting Started with Nested Clusters on Palette"
-metaDescription: "The methods of creating nested clusters for a speedy deployment on any CSP"
+title: "Quickstart with Sandbox Clusters"
+metaTitle: "Getting Started with Sandbox  Clusters on Palette"
+metaDescription: "The methods of creating Sandbox  clusters for a speedy deployment on any CSP"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,13 +13,13 @@ import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Getting Started with Nested Clusters
+# Getting Started with Sandbox  Clusters
 
-With the Palette Nested Cluster option, you can deploy additional Kubernetes clusters within an existing cluster to provide users and teams with nested cluster environments.
+With the Palette Sandbox  Cluster option, you can deploy additional Kubernetes clusters within an existing cluster to provide users and teams with sandbox  cluster environments.
 
-There are certain advantages to use a nested cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
+There are certain advantages to use a sandbox  cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a managed Nested Cluster from within Palette.
+Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a managed Sandbox  Cluster from within Palette.
 
 <br />
 
@@ -27,22 +27,22 @@ Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#ena
 
 - You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
 
-- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Nested Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Nested Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
+- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Sandbox  Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Sandbox  Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
 
   ### Host Clusters
 
-  There are two ways to engage with a Nested Cluster on Palette.<p></p><br />
+  There are two ways to engage with a Sandbox  Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployinganestedcluster) a new Host Cluster, there is an option to **Enable Nested Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Nested Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/sandbox-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
-    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablingnestedclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Nested Clusters.<p></p><br />
+    2. Similarly, you can [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
 
 <InfoBox>
 
 When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
-
+Sandbox 
 <br />
 
 ```yml
@@ -53,17 +53,17 @@ roleName: "custom-ng-role"
 </InfoBox>
 
 
-# Enabling Nested Clusters on an Existing Host Cluster
+# Enabling Sandbox  Clusters on an Existing Host Cluster
 
-You can enable nested clusters on an existing host cluster by performing the following steps:<p></p><br />
+You can enable sandbox  clusters on an existing host cluster by performing the following steps:<p></p><br />
 
 1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
 
-2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Nested Clusters**.
+2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Sandbox  Clusters**.
 
 
-3. Toggle the **Enable Nested Clusters** option (yes/no).
+3. Toggle the **Enable Sandbox  Clusters** option (yes/no).
 
     **Note**: This feature can be enabled when first creating a new cluster, so you may find that it is already enabled.
 
@@ -80,11 +80,11 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 -  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.<p></p><br />
 
 ## Ingress
-  If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the nested cluster's Kubernetes API server.
+  If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the sandbox  cluster's Kubernetes API server.
 
   Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller. See the Example Record in the recap below:
 
-   **Host DNS Pattern**: `*.nested.host.1.spectrocloud.com`
+   **Host DNS Pattern**: `*.sandbox .host.1.spectrocloud.com`
 <br />
 
 <br />
@@ -116,12 +116,12 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
 <br />
 
-# Deploying a Nested Cluster
+# Deploying a Sandbox  Cluster
 
-1. From the slide menu, select the **Clusters** tab and click the **Nested Clusters** tab to list the available Nested Clusters, and then select **Add New Nested Cluster**.
+1. From the slide menu, select the **Clusters** tab and click the **Sandbox  Clusters** tab to list the available Sandbox  Clusters, and then select **Add New Sandbox  Cluster**.
 
 
-2. Complete the **Deploy New Nested Cluster** information:<p></p><br />
+2. Complete the **Deploy New Sandbox  Cluster** information:<p></p><br />
 
     - Select a Host Cluster.<p></p><br />
 
@@ -143,15 +143,15 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
    - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
 <p></p><br />
 
-  ![Deploy-nested-cluster](deploy-nested-cluster.png "Deploy a Nested Cluster")
+  ![Deploy-sandbox-cluster](deploy-sandbox-cluster.png "Deploy a Sandbox  Cluster")
 
-Congratulations! Your Nested Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
+Congratulations! Your Sandbox  Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
 
 
 <InfoBox>
 
-Palette does not support **Usage** and **Cost** metrics for the nested clusters running on GKE (Google Kubernetes Engine).
+Palette does not support **Usage** and **Cost** metrics for the Sandbox  clusters running on GKE (Google Kubernetes Engine).
 
 </InfoBox>
 
