@@ -39,10 +39,11 @@ Detailed documentation on supported data sources and resources are available in 
 
 ## Module to Provider Compatibility Matrix
 
-|Module|Provider Version|
-|----- |------|
-|0.3.1 | 0.9.1|
-|0.3.0 | 0.9.0|
+|Module|Provider Version|Module Example|
+|----- |------|------------------------|
+|0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)
+|0.3.1 |0.9.1 |
+|0.3.0 |0.9.0 |
 |0.2.3 |0.8.9 |
 |0.2.3 |0.8.8 |
 |0.1.8 |0.7.7 |
@@ -66,13 +67,73 @@ The section below includes the different versions of Terraform providers, suppor
 <br />
 <br />
 
-### Latest Version Supported : `0.9.x`
+### Latest Version Supported : `0.10.x`
 
 Find the detailed patch changes and comparisons within below **tabs**.
 
 <br />
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.10.0" key="v0.10.0">
+
+# Provider Changes 
+
+* Palette Terraform support for Add-on deployment.
+   * Add-on deployments: Support skip_packs tag
+   * Add-on deployments: Attach cluster profile by name
+
+
+* AWS cloud account is a mandatory attribute for AWS cluster resources.
+
+
+* Nested Cluster schema support for all the cloud types.
+
+
+**Fixes:**
+
+* Disable machine pool hash for Edge to preserve pool order.
+
+
+* Day-2 machine pool preserve for pool order.
+
+
+* Name attribute improvement for error handling.
+
+<br />
+
+
+# Module Changes 
+
+
+The compatible **Module** for provider 0.10.0 is **0.4.0**
+
+<br />
+
+* Support of add-on deployment.
+
+
+* Add-on pack values override support for VMware cloud.
+
+
+* Error handling for pack manifests.
+
+
+* Cluster profile pack manifests provisioning for empty pack list.
+
+
+* System profile update support.
+
+
+* Add-on layers parameter override for edge clouds.
+
+
+* Parameters override for system profile for edge clouds.
+
+
+Refer to Full Changelog: [v0.9.1 to v0.10.0](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.10.0)
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.9.1" key="v0.9.1">
 
