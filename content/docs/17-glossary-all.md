@@ -129,16 +129,56 @@ A Private Cloud Gateway is a Palette component that enables the communication be
 
 The multi-cluster management and governance capabilities are supervised with Palette Workspaces. Workspaces enable the logical grouping of clusters and namespaces to provide application or team-specific governance and visibility into workloads, cost, and usage metrics. For example, the application or team workload may be deployed into namespaces across clusters for achieving High Availability (HA), Disaster Recovery (DR), organization-specific placement policies, etc. Grouping the namespaces and clusters into a workspace provide central management and governance in a multi-cluster distributed environment. 
 
+# Edge Terminology
 
 ## Edge Clusters
 
 Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as hospitals, grocery stores, restaurants, etc., unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of Workload Clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration, etc.
 
-### PCG-E
-Deploying Edge clusters requires a Private Cloud Gateway - Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision Workload Clusters on them. PCG-E is similar to Palette [PCG](/glossary-all/#privatecloudgateway).
+## Private Cloud Gateway-Edge (PCG-E)
 
-### System Profiles
+Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with the Palette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
+
+
+## System Profiles
 System Profiles provide a way to bootstrap an edge appliance with an initial set of virtual and containerized applications. Similar to cluster profiles, System Profiles are templates created using one or more layers that are based on packs or helm charts.
+
+## PaletteOS (P6OS)
+
+PaletteOS is a real-time operating system provisioned by Palette. It is embedded with a base Operating System such as Ubuntu, K3OS, etc., and one of the Kubernetes distributions such as CNCF (Cloud Native Computing Foundation), K3s (a Lightweight Kubernetes Distribution), or RKE (Rancher Kubernetes Engine). Palette builds several of these based on the most desired versions of the base operating system and Kubernetes distribution.
+
+**Examples**: (Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own Operating system.
+
+## Palette Upgrade Controller
+
+A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
+
+## Site Configuration Text User Interface (TUI)
+
+TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
+
+## Palette Edge Manager (Local API)
+
+A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge Manager can be used to upload cluster configurations.
+
+<br />
+
+# Edge Appliances
+
+Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
+
+  | **Appliance Type**              | **Environment**                           |
+  | :------------------------------ | :---------------------------------------- |
+  | Native Edge Deployment          | Bare Metal Machines or Virtual Appliances |
+  | Bare Metal Machine              | Virtualized                               |
+  | KVM-based virtual machines      | Virtualized                               |
+
+**Note:** Palette Edge Manager & TUI would be embedded in P6OS.
+
+<br />
+
+
+
 
 
 
