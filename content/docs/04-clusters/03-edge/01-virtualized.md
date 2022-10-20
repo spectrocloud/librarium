@@ -17,6 +17,8 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Kubernetes nodes for master and worker pools are launched as KVM-based virtual machines in the virtualized mode. Each VM represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pool. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
+![virtualized-edge.png](virtualized-edge.png)
+
 # Prerequisites
 
 * Create an Admin account/Tenant Admin account in Palette Console.
