@@ -162,6 +162,19 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
 
 <br />
 
+<InfoBox>
+
+The [maximum number of pods per node in an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) is 250. If you don't specify maxPods when creating new node pools, you receive a default value of 30 for Azure CNI. This value can be edited from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
+
+```
+managedMachinePool:
+  maxPodPerNode: 30
+
+ #NOTE: The recommended minimum value set for maxPodPerNode is 30, setting value less than the recommended one can result in palette system pods in pending state.
+```
+
+</InfoBox>
+
 # Node Pools
 
 This section guides you to through configuring Node Pools. As you set up the cluster, the **Nodes config** section will allow you to customize node pools. AKS Clusters are comprised of System and User node pools, and all pool types can be configured to use the Autoscaler, which scales out pools horizontally based on per node workload counts. 
