@@ -104,7 +104,7 @@ The Palette Edge Management agent inside the edge host waits for the configurati
 
 <InfoBox>
 
-Some Palette  Edge Native Packs disables a few items to allow users to install those items independently or avoid duplication.
+Some Palette  Edge Native Packs disables a few items to allow users to install those items independently or to avoid duplication.
 
 **Example Scenario:**
 
