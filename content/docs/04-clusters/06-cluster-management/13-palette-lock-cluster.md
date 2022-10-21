@@ -24,13 +24,13 @@ Palette supports the **Pause Platform Updates** feature to exclude a cluster or 
 
 <br />
 
-* Lock Single Cluster
-* Lock all the Clusters within the Project Scope
-* Lock all Clusters within the Tenant Scope
+* Pause Updates for Single Cluster
+* Pause Updates for all the Clusters within the Project Scope
+* Pause Updates for all Clusters within the Tenant Scope
 
 <br />
 
-## Lock Single Cluster
+## Pause Updates for Single Cluster
 
 Individual cluster under Project scope and Tenant scope can be locked to restrict them from the Palette upgrades. To lock a cluster follow the below steps:
 <br />
@@ -38,22 +38,22 @@ Individual cluster under Project scope and Tenant scope can be locked to restric
 1. Log in to Palette console as Tenant or Project administrator.
 
 
-2. Go to the `Clusters` page from the left ribbon menu and select the cluster to be locked.
+2. Go to the `Clusters` page from the left ribbon menu and select the cluster to be paused with updates.
 
 
 3. From the cluster details page, click `Settings -> Cluster Settings`
 
 
-4. Toggle the `Pause Platform Updates` button to lock the cluster so that the cluster management services are not upgraded on the upgrade of the Palette.
+4. Toggle the `Pause Platform Updates` button to pause updates of the cluster so that the cluster management services are not upgraded on the upgrade of the Palette.
 
 
-5. To unlock the cluster, toggle the `Pause Platform Updates` back and deselect. 
+5. To unpause the cluster updates, toggle the `Pause Platform Updates` back and deselect. 
 
 <br />
 
-## Lock all the Clusters within the Project Scope
+## Pause Updates for all the Clusters within the Project Scope
 
-All the clusters under a Project can be locked to restrict them from the Palette upgrades. To lock all clusters under Project scope:
+All the clusters under a Project can be unpaused for updates to restrict them from the Palette upgrades. To pause updates for all clusters under Project scope:
 
 1. Log in to Palette console as Project administrator.
 
@@ -64,12 +64,12 @@ All the clusters under a Project can be locked to restrict them from the Palette
 3. From `Project Settings` page, select `Platform Updates` and toggle the `Pause Platform Updates` button. This restricts all the clusters under that project scope from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 
 
-4. To unlock the clusters, toggle the `Pause Platform Updates` back and deselect. 
+4. To unpause the clusters updates, toggle the `Pause Platform Updates` back and deselect. 
 
-## Lock all Clusters within the Tenant Scope
+## Pause Updates for all Clusters within the Tenant Scope
 
 
-All the clusters under a Tenant can be locked to restrict them from the Palette upgrades. To lock all clusters under a Tenant scope:
+All the clusters under a Tenant can be update paused to restrict them from the Palette upgrades. To lock all clusters under a Tenant scope:
 
 <br />
 
@@ -100,7 +100,7 @@ To enable auto remediation:
 
 * Go to `Tenant Settings`/`Project Settings` as per the user scope.
 
-* Select `Platform Settings` from the left menu and toggle `Show Nodes Auto Remediation Setting` and `Cluster Auto Remediation` toggle buttons.
+* Select `Platform Settings` from the left menu and toggle `Cluster Auto Remediation` toggle button.
 
 <InfoBox>
 This does not apply to EKS, AKS or TKE clusters.
