@@ -154,7 +154,7 @@ These settings are typically customized in a Site template YAML file called user
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    registrationUrl: https://edge-registration.vercel.app
+    registrationURL: https://edge-registration.vercel.app
 
 stages:
   initramfs:
