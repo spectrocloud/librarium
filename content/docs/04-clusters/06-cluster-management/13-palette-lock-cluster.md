@@ -1,7 +1,7 @@
 ---
-title: "Pause Platform Updates"
-metaTitle: "Pause Platform Updates"
-metaDescription: "Lock Clusters on Palette"
+title: "Platform Settings"
+metaTitle: "Platform Settings"
+metaDescription: "Platform Settings on Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -13,7 +13,12 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Overview
+# Manage Platform Settings
+
+* [Pause Platform Updates](/clusters/cluster-management/palette-lock-cluster#pauseplatformupdates)
+* [Auto Remediation](/clusters/cluster-management/palette-lock-cluster#autoremediation)
+
+# Pause Platform Updates
 
 Palette supports the **Pause Platform Updates** feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. The use cases of this feature are:
 
@@ -80,5 +85,23 @@ All the clusters under a Tenant can be locked to restrict them from the Palette 
 4. To unlock the clusters, toggle the `Pause Platform Updates` back and deselect. 
 
 
+# Auto Remediation
 
+Palette provides Cluster Auto Remediation as a node reconciliation operation. When Cluster Auto Remediation is on, unhealthy nodes in all the Palette-provisioned clusters will automatically be replaced with new nodes. Turning off this feature will disable auto remediation. 
+This feature can work under the scope of:
 
+* Tenant
+
+* Project
+
+To enable auto remediation:
+ 
+* Login to Palette console as Tenant/Project admin.
+
+* Go to `Tenant Settings`/`Project Settings` as per the user scope.
+
+* Select `Platform Settings` from the left menu and toggle `Show Nodes Auto Remediation Setting` and `Cluster Auto Remediation` toggle buttons.
+
+<InfoBox>
+This does not apply to EKS, AKS or TKE clusters.
+</InfoBox>
