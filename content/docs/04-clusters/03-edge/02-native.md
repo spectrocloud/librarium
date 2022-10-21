@@ -22,7 +22,7 @@ At the site, Palette provides a plug-n-play experience to the operator. First, a
 
 # Palette Native Edge Architecture
 
-![native-edge.png](native-edge.png) **image placeholder**
+![native-edge.png](native-edge.png)
 
 Following are some of the architectural highlights of the Palette-provisioned Edge Native clusters:
 
@@ -89,8 +89,7 @@ The typical end-to-end lifecycle of deploying clusters at edge locations involve
 * [Staging](/clusters/edge/native#staging) - Central IT/Ops teams prepare an edge host installer variant from the base installer provided by Palette. Available customizations common to all edge locations are applied to the base installer in this phase. This includes specifying/overriding properties such as Palette endpoint, Registration App URL (for QR code-based registration), default OS users, default network settings, etc. This edge host installer variant is then shipped to all site locations. The Edge Installer Variant can be an ISO (bare-metal), OVA (VMware),  AMI (AWS), or QCOW2 (OpenStack or MaaS). The staging section below describes the procedures to create each of these variants. 
 
 
-* [Installation](/clusters/edge/native#installation) - Site Operators provision one or more edge hosts using the image prepared by the Staging phase at the edge location. Site-specific properties are supplied during this phase by the site operator. This typically involves specifying site-specific properties such as static IP address, network proxy, certificate, etc. Find the exact procedure below. 
-
+* [Installation](/clusters/edge/native#installation) - Site Operators provision one or more edge hosts using the image prepared by the Staging phase at the edge location. Site-specific properties are supplied during this phase by the site operator. This typically involves specifying site-specific properties such as static IP address, network proxy, certificate, etc. 
 
 * [Registration](/clusters/edge/native#registration) - Edge hosts need to be registered with the Palette management console, and cluster configuration needs to be created with these edge hosts. Clusters are configured with infrastructure and add-on profiles modeled by app architects during the modeling phase. This step can be performed in one of the following two ways:
 
@@ -100,6 +99,31 @@ needs. Detailed instructions for this are provided below.
    * Central IT / Ops manually register the edge hosts and configure clusters using Palette Management UI, API or Terraform. Detailed instructions for each of these methods are provided below. 
 
 The Palette Edge Management agent inside the edge host waits for the configuration to be available in Palette Management Console. Once registration and configuration are complete, it proceeds to install the Kubernetes cluster. The Kubernetes distribution, version, and other configuration properties are read from the associated infrastructure profile in the cluster configuration. Additional add-ons, if any, are deployed after the Kubernetes installation is complete. You can install a single or multi-node cluster using this process. You can also scale up your cluster at a later point after deployment.
+
+<br />
+
+<InfoBox>
+
+Some Palette  Edge Native Packs disables a few items to allow users to install those items independently or avoid duplication.
+
+**Example Scenario:**
+
+For the Palette Optimized K3s pack, we disabled the network component `flannel` to allow the user to independently use any Palette recommended CNI pack or Flannel as part of the Network Layer (Infrastructure Layer).
+
+The component `metric server` is disabled to avoid duplication of the metrics server as the Palette agent, by default, runs an in-built metrics server.
+
+```
+cluster:
+ config: 
+   # disable the built in cni
+   flannel-backend: none
+   no-flannel: true
+   disable-network-policy: true
+   Disable:
+     - metrics-server
+```
+
+</InfoBox>
 
 Suppose the edge location configuration is known and predictable. In that case, Staging, Installation, and Registration can be potentially combined into one step by the central IT/Ops team and then ship the fully configured edge hosts to the edge location. The Site Operator at the edge location needs to hook up power and network cable without any further configuration. The edge cluster will be ready to be centrally managed for future upgrades.
 
