@@ -78,6 +78,8 @@ Find the detailed patch changes and comparisons within below **tabs**.
 
 <Tabs.TabPane tab="v0.10.1" key="v0.10.1">
 
+**Supported Module Version: 0.4.1**
+
 # Changes 
 
 **New Features:**
