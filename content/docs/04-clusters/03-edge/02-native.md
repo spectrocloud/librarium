@@ -104,13 +104,13 @@ The Palette Edge Management agent inside the edge host waits for the configurati
 
 <InfoBox>
 
-Some Palette  Edge Native Packs disables a few items to allow users to install those items independently or to avoid duplication.
+The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
 **Example Scenario:**
-
-For the Palette Optimized K3s pack, we disabled the network component `flannel` to allow the user to independently use any Palette recommended CNI pack or Flannel as part of the Network Layer (Infrastructure Layer).
-
-The component `metric server` is disabled to avoid duplication of the metrics server as the Palette agent, by default, runs an in-built metrics server.
+	
+For the Palette Optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any CNI pack (Flannel or others), as part of the Network Layer (Infrastructure Layer).
+	
+The component metric server is disabled to avoid duplication of the metrics server, since the Palette agent already installs the metrics-server by default.
 
 ```
 cluster:
