@@ -39,14 +39,15 @@ Detailed documentation on supported data sources and resources are available in 
 
 ## Module to Provider Compatibility Matrix
 
-|Module|Provider Version|Module Example|
-|----- |------|------------------------|
-|0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)
-|0.3.1 |0.9.1 |
-|0.3.0 |0.9.0 |
-|0.2.3 |0.8.9 |
-|0.2.3 |0.8.8 |
-|0.1.8 |0.7.7 |
+|Module|Provider Version|Module Example|Palette Version|
+|----- |------|------------------------|---------------|
+|0.4.1 |0.10.1|            |3.0, 2.8|
+|0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)| 2.8|
+|0.3.1 |0.9.1 |  |2.8, 2.7|
+|0.3.0 |0.9.0 |  |
+|0.2.3 |0.8.9 |  |2.8, 2.7|
+|0.2.3 |0.8.8 |  |
+|0.1.8 |0.7.7 |  |2.7, 2.6|
 |0.1.8 |0.7.6 |
 |0.1.8 |0.7.5 |
 |0.1.8 |0.7.4 |
@@ -74,6 +75,39 @@ Find the detailed patch changes and comparisons within below **tabs**.
 <br />
 
 <Tabs>
+
+<Tabs.TabPane tab="v0.10.1" key="v0.10.1">
+
+# Changes 
+
+**New Features:**
+
+* Native Edge cluster support.
+ 
+**Bugfix:**
+
+
+* Pass host configuration to EKS cluster on create.
+
+
+* Honor update timeout for add-on deployments.
+
+
+* Read back the host uid and labels.
+
+
+* Support regex for namespace selection.
+
+
+* Fixing day-2 operations for cluster profile description.
+
+
+* Fixing day-1 operations for cluster roles and role bindings.
+
+
+* Fixing NPE issue when reading nested machine pool.
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.10.0" key="v0.10.0">
 
