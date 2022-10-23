@@ -216,7 +216,7 @@ The following details are required to configure a backup location in MinIO:
 9. Click **Create** to complete the location creation wizard. 
 
 
-# Configure your Backup in Azure: Azure Blob
+## Configure your Backup in Azure: Azure Blob
 
 The following details are required to configure a backup location in Azure:
 
