@@ -32,7 +32,6 @@ Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Canoni
 
 * Palette customers can now provision the fully scalable Kubernetes distribution [Canonical micro Kubernetes](), focusing on resource optimization.
 
-
 * Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
 * Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
@@ -40,10 +39,11 @@ Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase
 
 **Enhancements**
 
+* Palette enables the provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
+
 * For Azure Kubernetes Clusters, the [pod limit](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) ranges from 10 to 250, with a default value of 30. [Customize this value](/clusters/public-cloud/aks#deployinganakscluster) from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value.
 
 * The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
-
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.0], support:
   * Native Edge cluster
