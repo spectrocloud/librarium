@@ -392,6 +392,103 @@ Palette enables the users to limit resource usage within the workspace optionall
    
 
 </Tabs.TabPane>
+<Tabs.TabPane tab="Regex for Namespaces" key="Regex for Namespaces">
+
+# Regex for Namespaces
+
+Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the namespaces matching the given Regex pattern to be selected together for role binding. 
+
+## Use Cases
+
+1. A Regex pattern that start and end with " / ", will select all the workspace names matching the given Regex pattern.
+
+   **Example:** `/^palette-ns/`
+<br />
+
+2. A Regex pattern that starts with `negation symbol(~)`, will select all the namespaces that *does not match* with the regex expression given.
+
+   **Example:** `~/^(kube|cluster|capi|jet|cert)[-].+/`
+
+**Note**: No spaces to be added between the `~` operator and the `expression`.
+ 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Workspace Role Binding" key="Workspace Role Binding">
+
+# Workspace Role Binding
+
+Workspace Role Binding is a Project scope operation. There are two available options for setting up Roll Binding for a Workspace:
+
+* **Cluster** to create a RoleBinding with cluster-wide scope (ClusterRoleBinding).
+
+
+* **Namespaces** to create a RoleBinding within namespaces scope (RoleBinding).
+
+Palette users can choose role creation based on their resource requirements.
+
+## Configure cluster role bindings
+
+* Login to Palette as Project admin and select the Workspace to which the Role Binding need to configured.
+
+
+* Select Settings -> Cluster
+
+
+* Select the clusters from the workspace to Role Bind.
+
+
+* Click on “Add new binding” to open the “Add Cluster Role Binding” wizard. Fill in the following details:
+  * Role Name: Define a custom role name to identify the cluster role
+  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or a team can perform. There are three types of subjects:
+    * Subject Type:
+      * Users: These are global and meant for humans or processes living outside the cluster.
+      * Groups: Set of users.
+      * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
+  * Subject Name: Custom name to identify a subject.
+A single RoleBinding can have multiple subjects.
+
+
+* “Confirm” the information to complete the creation of the ClusterRoleBinding.
+
+## Configure role bindings: Namespace Scope
+
+Users can now allocate CPU and Memory [quotas](/workspace/workload-features#workspacequota) for each **namespace** at the cluster level.
+
+* Login to Palette as Project admin and select the Workspace to which the Role Binding need to be configured.
+
+
+* Select Cluster Settings -> Namespace.
+
+
+* Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”.
+
+
+* [Allocate resources](/workspace/workload-features#workspacequota) to the created namespace (CPU and Memory).
+
+
+* Click on “Add new binding” to open the “Add ClusterRoleBinding” wizard. Fill in the following details:
+  * Namespace: Select the namespace from the drop-down (the list will display the namespaces created during the previous step.
+  * Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
+
+<InfoBox>
+A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding.
+</InfoBox>
+
+* Role Name: Define a custom role name to identify the cluster role
+
+
+* Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or group can perform. There are three types of subjects:
+  * Subject Type:
+    * Users: These are global, and meant for humans or processes living outside the cluster.
+    * Groups: Set of users.
+    * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are name spaced and meant for intra-cluster processes running inside pods.
+  * Subject Name: Custom name to identify a subject.
+A single RoleBinding can have multiple subjects. 
+
+
+* “Confirm” the information to complete the creation of the RoleBinding.
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="Restricted Container Images" key="Restricted Container Images">
 
