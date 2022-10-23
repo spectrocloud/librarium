@@ -92,11 +92,13 @@ Palette leverages the BackUps to the following locations:
 
 <br />
 
-#### Amazon Web Services (AWS) S3 Buckets
+#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](/workspace/workload-features#foranamazonwebservices(aws)bucketasbackuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupinawss3)
 
-#### Google Cloud Platform (GCP) Buckets
+#### Google Cloud Platform (GCP) Buckets: [Prerequisites](/workspace/workload-features#foragooglecloudplatform(gcp)backuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupingcpbucket)
 
-#### MinIO S3 Buckets
+#### MinIO S3 Buckets: [Prerequisites](/workspace/workload-features#forminios3backup), [Configure your Backup](/workspace/workload-features#configureyourbackupinminio)
+
+#### Azure Blob: [Prerequisites](/workspace/workload-features#forazureblobbackup), [Configure your Backup](/workspace/workload-features#configureyourbackupinazure:azureblob)
 
 # Prerequisites
 
@@ -120,6 +122,21 @@ Palette leverages the BackUps to the following locations:
 
 * Service provider certificate (Optional)
 
+## For Azure Blob Backup
+
+* An active Azure cloud account with the following pieces of information noted down:
+  * Tenant Id
+  * Client Id
+  * Subscription Id
+  * Client Secret created
+
+
+* An [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) created with the following information to be noted down for Palette use:
+  * Storage Name: Custom name given to the Azure storage created.
+  * Stock-keeping unit
+
+
+* A container to be created in the Azure Storage account
 
 # Backup Locations
 
@@ -262,6 +279,41 @@ The following details are required to configure a backup location in AWS:
 
 9. Click **Create** to complete the location creation wizard. 
 
+## Configure your Backup in Azure: Azure Blob
+
+The following details are required to configure a backup location in Azure:
+
+1. **Location Name**: A custom name for the storage location getting created.
+
+
+2. **Location Provider:** Select **Azure** from the drop-down.
+
+
+3. **Container Name:** The container created in Azure Storage.
+
+
+4. **Storage Name**: Name of the Azure storage created.
+
+
+5. **Stock-Keeping Unit**: Information from the Azure storage.
+
+
+6. **Resource Group:** Azure Resource Group name
+
+
+7. **Tenant ID:** Azure Account Credential.
+
+
+8. **Client ID:** Azure Account Credential.
+
+
+9. **Subscription ID**: Azure Account Credential.
+
+
+10. **Client Secret:** Secret created in the Azure console needs to be validated.
+
+
+11. Click **Create** to complete the location creation wizard.
 
 
 ## Add a Backup Location
