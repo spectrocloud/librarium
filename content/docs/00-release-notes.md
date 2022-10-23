@@ -14,6 +14,68 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
+
+# October 24, 2022 - Release 3.0.0
+
+Spectro Cloud Palette is released with Edge V2, Palette Dev Engine, Canonical Micro Kubernetes, Noc UI, and many more proficient capabilities.
+
+**Features**
+
+* Palette brings in a new persona of operations focusing on [developer experience](/devx) supporting
+  * Rapid Application deployment with a smooth onboarding experience.
+  * RBAC with a developer-centric view.
+  * System scope resource quota.
+  * System Scope Cluster groups to host Sandbox clusters.
+  * Out-of-the-box application profiles and applications deployment with Sandbox Clusters.
+
+* The Palette [Native Edge](/clusters/edge/native) architecture, an instance of Palette Edge Distribution based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
+
+* Palette customers can now provision the fully scalable Kubernetes distribution [Canonical micro Kubernetes](), focusing on resource optimization.
+
+
+* Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations with [NOC-UI](/clusters/cluster-management/noc-ui). 
+
+* Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
+Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using Spectro Proxy pack with RBAC authentication.
+
+**Enhancements**
+
+* For Azure Kubernetes Clusters, the [pod limit](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) ranges from 10 to 250, with a default value of 30. [Customize this value](/clusters/public-cloud/aks#deployinganakscluster) from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value.
+
+* The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+
+
+* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.0], support:
+  * Native Edge cluster
+  * Fixes towards [Enhancements]
+
+**Packs and Integrations**
+
+* Dex version 2.35.1
+* Harbor version 1.9.3
+* Calico Network Policy version 3.24
+* Istio version 1.14.3
+* Image Swap version 1.5.1
+* Generic-VM Libvirt version 1.0.1
+* Generic VM vSphere version1.0.3
+* Tekton-chains version 0.12.0
+* Tekton-operator version 0.61.0
+* K3s_v1.24.4
+* Spectro Proxy version 1.1.0
+* DB services (Mongo, Redis, Postgres)
+* External DNS version 0.12.2
+* MetalLB-version 0.13.5
+* Reloader version 0.0.118
+* AWS Cluster Autoscaler version 1.22.2
+* Fluentbit version 1.9.6
+* Kubernetes-dashboard-2.6.1
+* Calico version 3.24
+* Calico version 3.24_azure
+* Cert-Manager version 1.9.1
+* Open Policy Agent version 3.9.0
+* AWS EBS  CSI version 1.10.0
+
+
 # September 10, 2022 - Release 2.8.0
 Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
