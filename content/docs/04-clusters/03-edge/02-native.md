@@ -363,37 +363,6 @@ Site operators install edge hosts using the Palette Edge Installer variant. Inst
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
 
-### Installation Steps for different Environments:
-
-<Tabs>
-<Tabs.TabPane tab="Bare-metal" key="Bare-metal">
-
-Bare-metal
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="VMware" key="VMWare">
-
-VMware
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="AWS" key="AWS">
-
-AWS
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="KVM" key="KVM">
-
-KVM
-
-</Tabs.TabPane>
-
-</Tabs>
-
----------
-
 **Note:**
 
 Automated QR code-based registration is set up in the installer, a QR code will be displayed on the console when the edge hosts boot up. The site operators can scan this QR code on their phones to bring up the registration web application. First, the unique edge host Id is pre-populated in the web application. Then, site operators can select a site nominated for the edge location and save it to automatically register the appliance in Palette Management Console and create a cluster definition. If multiple edge hosts need to be added to the same site, repeat the procedure for all of them, selecting the same site. Once the Palette Edge Host agent running inside edge hosts detect their configuration in Palette, it proceeds with cluster installation. 
