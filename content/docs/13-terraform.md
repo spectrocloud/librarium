@@ -62,6 +62,17 @@ Detailed documentation on supported data sources and resources are available in 
 
 <br />
 
+<InfoBox>
+
+Palette Terraform Supports:
+
+* Sandbox Clusters starting from Provider version 0.10.1
+* Edge Native Clusters starting from Provider version 0.10.1
+
+</InfoBox>
+
+<br />
+
 ## Latest Version of Spectro Cloud Terraform Provider:
 The section below includes the different versions of Terraform providers, supported by Spectro Cloud Palette and the changes pertaining to each version.
 
