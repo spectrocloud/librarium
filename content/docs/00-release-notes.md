@@ -26,7 +26,8 @@ Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Canoni
   * RBAC with a developer-centric view.
   * System scope resource quota.
   * System Scope Cluster groups to host Sandbox clusters.
-  * Out-of-the-box application profiles and applications deployment with Sandbox Clusters.
+  * Out-of-the-box application profiles and applications deployment with Sandbox Clusters. 
+     * Data Base services such as MongoDB, Redis, PostgreSQL 
 
 * The Palette [Native Edge](/clusters/edge/native) architecture, an instance of Palette Edge Distribution based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
 
@@ -57,12 +58,11 @@ Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase
 * Istio version 1.14.3
 * Image Swap version 1.5.1
 * Generic-VM Libvirt version 1.0.1
-* Generic VM vSphere version1.0.3
+* Generic VM vSphere version 1.0.3
 * Tekton-chains version 0.12.0
 * Tekton-operator version 0.61.0
-* K3s_v1.24.4
+* K3s version 1.24.4
 * Spectro Proxy version 1.1.0
-* DB services (Mongo, Redis, Postgres)
 * External DNS version 0.12.2
 * MetalLB-version 0.13.5
 * Reloader version 0.0.118
