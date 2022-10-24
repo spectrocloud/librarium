@@ -40,6 +40,9 @@ With limited resource requirements, MicroK8s extends its support in:
 * 4G Memory
 
 
+* [AmazonEBSCSIDriverPolicy](/clusters/public-cloud/eks#globalroleadditionalpolicies:) to be added to the AWS Cloud Account
+
+
 
 # Versions Supported
 
@@ -52,6 +55,22 @@ With limited resource requirements, MicroK8s extends its support in:
 </Tabs.TabPane>
 
 </Tabs>
+
+# Quick Workflow
+
+1. [Create AWS Cloud Account](/clusters/public-cloud/eks#creatinganawscloudaccount) in Palette Console.
+
+2. [Create a Infrastructure or Add-on Cluster Profile](/cluster-profiles/task-define-profile) for AWS cloud.
+
+3. Add Micro Kubernetes as the Kubernetes distribution for the `Infrastructure Layer`.
+
+4. Launch your Palette [AWS Cluster](/clusters/public-cloud/aws#deployinganawscluster).
+
+5. Wait for the provisioning to get completed.
+
+<InfoBox>
+Currently Palette supports Micro Kubernetes for AWS clusters only.
+</InfoBox>
 
 ## References
 
