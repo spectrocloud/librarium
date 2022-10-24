@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Canonical Micro Kubernetes, Noc UI, and many more proficient capabilities.
+Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Noc UI, and many more proficient capabilities.
 
 **Features**
 
@@ -30,8 +30,6 @@ Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Canoni
      * Data Base services such as MongoDB, Redis, PostgreSQL 
 
 * The Palette [Native Edge](/clusters/edge/native) architecture, an instance of Palette Edge Distribution based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
-
-* Palette customers can now provision the fully scalable Kubernetes distribution [Canonical micro Kubernetes](), focusing on resource optimization.
 
 * Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
