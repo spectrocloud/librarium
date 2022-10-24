@@ -21,8 +21,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-|Release 2.9.0 |Download for CLI v2.9.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.9.0/osx/spectro)|
-|              |Download for CLI v2.9.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.9.0/linux/spectro)|
+|Release 3.0.0 |Download for CLI v3.0.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro)|
+|              |Download for CLI v3.0.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro)|
 |Release 2.8.0 |Download for CLI v2.8.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.8.0/osx/spectro)|
 |              |Download for CLI v2.8.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.8.0/linux/spectro)|
 |Release 2.7.0 |Download for CLI v2.7.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.7.0/osx/spectro)|
@@ -40,7 +40,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
 |---------------------------|----------------------------------------|
-|Release 2.9.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.9.0`</p> |
+|Release 3.0.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.0.0`</p> |
 |Release 2.8.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.8.0`</p> |
 |Release 2.7.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.7.0`</p> |
 |Release 2.6.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.6.0`</p> |
@@ -52,7 +52,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|On-Premises Installer Version|
 |--|---|
-|2.9|2.1.0|
+|3.0|2.1.0|
 |2.8|2.1.0|
 |2.7|2.1.0|
 |2.6|2.1.0|
@@ -63,7 +63,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|Air Gapped Version|
 |--|---|
-|2.9|2.0.1|
+|3.0|2.0.1|
 |2.8|2.0.1|
 |2.7|2.0.1|
 |2.6|2.0.1|
@@ -74,7 +74,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|2.9|1.2.0|
+|3.0|1.2.0|
 |2.8|1.2.0|
 |2.7|1.2.0|
 |2.6|1.2.0|
@@ -86,7 +86,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|MAAS PCG Version|
 |--|---|
-|2.9|1.0.11|
+|3.0|1.0.11|
 |2.8|1.0.11|
 |2.7|1.0.11|
 |2.6|1.0.11|
@@ -98,7 +98,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
-|2.9|1.0.11|
+|3.0|1.0.11|
 |2.8|1.0.11|
 |2.7|1.0.11|
 |2.6|1.0.11|
