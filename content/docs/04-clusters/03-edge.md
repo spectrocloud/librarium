@@ -36,22 +36,22 @@ Following are the highlights of the comprehensive Palette Edge Solution:
 
 # Palette Edge Solutions
 
-Palette Edge Platform provides two solutions for the edge, designed to support large and small edge sites:
+Palette Edge Platform provides two solutions for edge, designed to support large and small edge sites:
 
 
 <br />
 
 ### Virtualized Edge
 
-Designed for sites that typically have a single appliance such as HPE xyz. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
+Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
 
 ### Native Edge
 
-Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS-K8s is installed natively onto the devices. Palette Management Console manages the installation (Day 1) and all the Day 2 activities, such as scaling, upgrades, reconfiguration, etc., 
+Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS and K8s is installed natively onto the devices. Palette Management Console manages the day-1 installation as well as all the day-2 activities, such as scaling, upgrades, reconfiguration, etc.
 
-The Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Native Edge solution runs natively on bare metal machines or virtual appliances.
-The users can choose the machine or appliance based on their intended use case. It is built upon the real-time P6OS with embedded Kubernetes Distro, a stable base Operating System, and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
+Palette's native edge solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
+
 
 
 <br />
