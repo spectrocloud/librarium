@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Noc UI, and many more proficient capabilities.
+Spectro Cloud Palette 3.0.0 is released with Native Edge, Palette Dev Engine, NOC-UI, and many more proficient capabilities.
 
 **Features**
 
@@ -53,7 +53,6 @@ Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase
 
 * Dex version 2.35.1
 * Harbor version 1.9.3
-* Calico Network Policy version 3.24
 * Istio version 1.14.3
 * Image Swap version 1.5.1
 * Generic-VM Libvirt version 1.0.1
