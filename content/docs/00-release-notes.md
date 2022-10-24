@@ -27,11 +27,11 @@ Spectro Cloud Palette 3.0.0 is released with Edge V2, Palette Dev Engine, Noc UI
   * System scope resource quota.
   * System Scope Cluster groups to host Sandbox clusters.
   * Out-of-the-box application profiles and applications deployment with Sandbox Clusters. 
-     * Data Base services such as MongoDB, Redis, PostgreSQL 
+  * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
 * The Palette [Native Edge](/clusters/edge/native) architecture, an instance of Palette Edge Distribution based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
 
-* Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations with [NOC-UI](/clusters/cluster-management/noc-ui). 
+* Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
 * Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
 Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using Spectro Proxy pack with RBAC authentication.
@@ -63,13 +63,12 @@ Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase
 * K3s version 1.24.4
 * Spectro Proxy version 1.1.0
 * External DNS version 0.12.2
-* MetalLB-version 0.13.5
-* Reloader version 0.0.118
+* MetalLB-version version 0.13.5
+* Reloader version version 0.0.118
 * AWS Cluster Autoscaler version 1.22.2
 * Fluentbit version 1.9.6
-* Kubernetes-dashboard-2.6.1
+* Kubernetes dashboard version 2.6.1
 * Calico version 3.24
-* Calico version 3.24_azure
 * Cert-Manager version 1.9.1
 * Open Policy Agent version 3.9.0
 * AWS EBS  CSI version 1.10.0
