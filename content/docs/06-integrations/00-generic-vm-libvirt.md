@@ -23,7 +23,8 @@ Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtu
 <Tabs>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-**generic-vm-libvirt** **1.0.0**
+* **1.0.1**
+* **1.0.0**
 
 </Tabs.TabPane>
 </Tabs>

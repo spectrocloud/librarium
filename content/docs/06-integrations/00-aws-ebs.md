@@ -21,6 +21,11 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 <Tabs>
 
+<Tabs.TabPane tab="1.10.x" key="1.10.x">
+
+* ** 1.10.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.8.x" key="1.8.x">
 
 * ** 1.8.0**
