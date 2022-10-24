@@ -44,9 +44,10 @@ Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase
 
 * The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
-* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.0], support:
-  * Native Edge cluster
-  * Fixes towards [Enhancements]
+* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
+  * Native Edge clusters
+  * Palette Sandbox Clusters
+  * Fixes towards [Enhancements](/terraform#changes)
 
 **Packs and Integrations**
 
