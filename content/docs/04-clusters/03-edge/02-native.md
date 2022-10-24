@@ -80,10 +80,10 @@ At the edge locations, Palette provides the following distributions for installa
 
 # Edge Deployment Lifecycle
 
+ ![native-edge-deployment-lifecycle.png](native-edge-deployment-lifecycle.png)
+
 The typical end-to-end lifecycle of deploying clusters at edge locations involves several distinct phases, and within each phase, different teams/organizations need to perform specific tasks. 
  <br />
- 
- ![native-edge-deployment-lifecycle.png](native-edge-deployment-lifecycle.png)
 
 * [Modeling](/clusters/edge/native#modeling) - App architects build and test the applications in lab environments and model application profiles in Palette for cluster installation.
 
@@ -103,7 +103,33 @@ needs. Detailed instructions for this are provided below.
 
 The Palette Edge Management agent inside the edge host waits for the configuration to be available in Palette Management Console. Once registration and configuration are complete, it proceeds to install the Kubernetes cluster. The Kubernetes distribution, version, and other configuration properties are read from the associated infrastructure profile in the cluster configuration. Additional add-ons, if any, are deployed after the Kubernetes installation is complete. You can install a single or multi-node cluster using this process. You can also scale up your cluster at a later point after deployment.
 
-If the edge location configuration is known and predictable Staging, Installation, and Registration can be potentially combined into one step by the central IT/Ops team and then ship the fully configured edge hosts to the edge location. The Site Operator at the edge location needs to hook up power and network cable without any further configuration. The edge cluster will be ready to be centrally managed for future upgrades.
+If the edge location configuration is known and predictable Staging, Installation, and Registration can be potentially combined into one step by the central IT/Ops team and then ship the fully configured edge hosts to the edge location. The Site Operator at the edge location needs to hook up power and network cable without any further configuration. The edge cluster will be ready to be 
+centrally managed for future upgrades.
+
+<br />
+
+<InfoBox>
+
+The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+
+**Example Scenario:**
+
+For the Palette Optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any CNI pack (Flannel or others), as part of the Network Layer (Infrastructure Layer).
+
+The component metric server is disabled to avoid duplication of the metrics server, since the Palette agent already installs the metrics-server by default.
+
+```
+cluster:
+ config: 
+   # disable the built in cni
+   flannel-backend: none
+   no-flannel: true
+   disable-network-policy: true
+   Disable:
+     - metrics-server
+```
+
+</InfoBox>
 
 ## Modeling
 
@@ -184,6 +210,7 @@ For bare metal edge hosts, creating the palette edge installer variant involves 
 
 Following are the steps to customize **site settings** and **build an installer image**: 
 
+<br />
 
 1. Checkout the following [Git Repo](https://github.com/spectrocloud/pxke-samples) on your local machine or server where you intend to run the customization procedure.
 
