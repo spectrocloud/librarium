@@ -53,7 +53,7 @@ Individual cluster under Project scope and Tenant scope can be locked to restric
 
 ## Pause Updates for all the Clusters within the Project Scope
 
-All the clusters under a Project can be unpaused for updates to restrict them from the Palette upgrades. To pause updates for all clusters under Project scope:
+All the clusters under a Project can be paused for updates to restrict them from the Palette upgrades. To pause updates for all clusters under Project scope:
 
 1. Log in to Palette console as Project administrator.
 
