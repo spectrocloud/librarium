@@ -55,31 +55,6 @@ spec:
       property: my-value # custom value
 ```
 
-
-### Sample ExternalSecret YAML file
-
-
-<br />
-
-```yml
-
-apiVersion: [external-secrets.io/v1beta1](http://external-secrets.io/v1beta1)
-kind: ExternalSecret
-metadata:
-  name: vault-example # Custom name
-spec:
-  refreshInterval: "15s"
-  secretStoreRef:
-    name: vault-backend # Custom value
-    kind: SecretStore
-  target:
-    name: mysecretfoobar
-  data:
-  - secretKey: foobar
-    remoteRef:
-      key: secret/foo   # custom value
-      property: my-value # custom value
-```
 # References
 
 [Amazon IAM-Policy-Examples-ASM-Secrets](https://docs.aws.amazon.com/mediaconnect/latest/ug/iam-policy-examples-asm-secrets.html)
