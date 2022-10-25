@@ -17,32 +17,33 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with Native Edge, Palette Dev Engine, NOC-UI, and many more proficient capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
 **Features**
 
-* Palette brings in a new persona of operations focusing on [developer experience](/devx) supporting
+* A new set of capabilities that improve the [developer experience](/devx) are introduced in this release:
   * Rapid Application deployment with a smooth onboarding experience.
   * RBAC with a developer-centric view.
   * System scope resource quota.
-  * System Scope Cluster groups to host Sandbox clusters.
+  * System Scope Cluster groups to host [Sandbox clusters](/clusters/sandbox-clusters).
   * Out-of-the-box application profiles and applications deployment with Sandbox Clusters. 
   * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
-* The Palette [Native Edge](/clusters/edge/native) architecture, an instance of Palette Edge Distribution based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
+* The Palette [Native Edge](/clusters/edge/native) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
 
 * Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
 * Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
-Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using Spectro Proxy pack with RBAC authentication.
+
+* Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using [Spectro Proxy](/integrations/frp) pack with RBAC authentication.
 
 **Enhancements**
 
-* Palette enables the provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
+* Palette enables the provisioning of private Azure Kubernetes Clusters (AKS) clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
 
-* For Azure Kubernetes Clusters, the [pod limit](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) ranges from 10 to 250, with a default value of 30. [Customize this value](/clusters/public-cloud/aks#deployinganakscluster) from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value.
+* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file]((/clusters/public-cloud/aks#deployinganakscluster)) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](/clusters/edge/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
   * Native Edge clusters
