@@ -33,7 +33,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
-* Palette production clusters configured in [enterprise mode](/enterprise-version/deploying-an-enterprise-cluster) can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
+* Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
 
 * Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using [Spectro Proxy](/integrations/frp) pack with RBAC authentication.
 
