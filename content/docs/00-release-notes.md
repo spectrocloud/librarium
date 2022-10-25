@@ -21,7 +21,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Features**
 
-* A new set of capabilities that improve the developer experience are introduced in this release:
+* A new set of capabilities that improve the [developer experience](/devx) are introduced in this release:
   * Rapid Application deployment with a smooth onboarding experience.
   * RBAC with a developer-centric view.
   * System scope resource quota.
