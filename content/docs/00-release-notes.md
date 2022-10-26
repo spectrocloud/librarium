@@ -73,6 +73,11 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 * Open Policy Agent version 3.9.0
 * AWS EBS  CSI version 1.10.0
 
+**Known Issues**
+
+* [PPD-359](https://spectrocloud.atlassian.net/browse/PPD-359): While deploying multiple applications on a Sandbox cluster, the first installed application gets stuck at deployment, leads to other applications within the same Sandbox cluster getting stuck.
+
+
 
 # September 10, 2022 - Release 2.8.0
 Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 

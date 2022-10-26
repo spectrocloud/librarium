@@ -51,6 +51,7 @@ The Palette Dev Engine App Profile is created successfully and can be used for `
 
 The applications follows a hierarchy, where in the output parameter values from the application added first can be passed to application tiers added after that. The reverse is not possible.
 
+To view these output parameters in the code editor, type in ```{{.spectro.}}``` 
 </InfoBox>
 
 <WarningBox>
