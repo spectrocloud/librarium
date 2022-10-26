@@ -75,7 +75,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* [PPD-359](https://spectrocloud.atlassian.net/browse/PPD-359): While deploying multiple applications on a Sandbox cluster, the first installed application gets stuck at deployment, leads to other applications within the same Sandbox cluster getting stuck.
+* While deploying multiple applications on a Sandbox cluster, the first installed application gets stuck at deployment, leads to other applications within the same Sandbox cluster getting stuck.
 
 
 
