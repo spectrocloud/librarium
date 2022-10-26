@@ -32,9 +32,11 @@ You can use the External-Secrets-Operator Add-on pack as an authenticator, withi
 <br />
 
 
-### Sample ExternalSecret YAML file
+### Example ExternalSecret YAML file
 
 <br />
+
+First example.
 
 ```yml
 apiVersion: [external-secrets.io/v1beta1](http://external-secrets.io/v1beta1)
@@ -53,6 +55,31 @@ spec:
     remoteRef:
       key: secret/foo   # custom value
       property: my-value # custom value
+
+```
+
+<br />
+
+Second example.
+
+```yml
+apiVersion: [external-secrets.io/v1beta1](http://external-secrets.io/v1beta1)
+kind: ExternalSecret
+metadata:
+  name: vault-example # Custom name
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: vault-backend # Custom value
+    kind: SecretStore
+  target:
+    name: mysecretfoobar
+  data:
+  - secretKey: foobar
+    remoteRef:
+      key: secret/foo   # custom value
+      property: my-value # custom value
+
 ```
 
 # References
