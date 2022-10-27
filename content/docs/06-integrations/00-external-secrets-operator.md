@@ -32,7 +32,7 @@ You can use the External-Secrets-Operator Add-on pack as an authenticator, withi
 <br />
 
 
-### Sample ExternalSecret YAML file
+### Sample SecretStore YAML file
 
 <br />
 
@@ -53,33 +53,39 @@ spec:
     remoteRef:
       key: secret/foo   # custom value
       property: my-value # custom value
+
 ```
 
-
 ### Sample ExternalSecret YAML file
-
 
 <br />
 
 ```yml
-
-apiVersion: [external-secrets.io/v1beta1](http://external-secrets.io/v1beta1)
-kind: ExternalSecret
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
 metadata:
-  name: vault-example # Custom name
+  name: custom-name
 spec:
-  refreshInterval: "15s"
-  secretStoreRef:
-    name: vault-backend # Custom value
-    kind: SecretStore
-  target:
-    name: mysecretfoobar
-  data:
-  - secretKey: foobar
-    remoteRef:
-      key: secret/foo   # custom value
-      property: my-value # custom value
+  provider:
+    vault:
+      server: "http://12.34.567.133:0000" # custom server end point
+      path: "secret" # custom path
+      version: "v2" # custom version
+      auth:
+        # points to a secret that contains a vault token
+        # https://www.vaultproject.io/docs/auth/token
+        tokenSecretRef:
+          name: "vault-token1"  # Custom name and key
+          key: "token1"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token1
+data:
+  token: cm9vdA== # "root"   # custome value
 ```
+
 # References
 
 [Amazon IAM-Policy-Examples-ASM-Secrets](https://docs.aws.amazon.com/mediaconnect/latest/ug/iam-policy-examples-asm-secrets.html)
