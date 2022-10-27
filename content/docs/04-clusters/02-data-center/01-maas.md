@@ -97,7 +97,7 @@ docker run -it --rm \
  --net=host \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v /tmp:/opt/spectrocloud \
- gcr.io/spectro-images-public/release/spectro-installer:1.0.9 \
+ gcr.io/spectro-images-public/release/spectro-installer:1.0.11 \
  -o true
 ```
 

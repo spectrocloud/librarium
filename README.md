@@ -114,6 +114,12 @@ In markdown you can reference this page relatively to the root of the domain usi
 [Go to introduction](/introduction/what-is)
 ```
 
+You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+
+```md
+[Go to Dev Enging](/devx)
+```
+
 #### Images or other assets
 
 You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
