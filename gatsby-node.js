@@ -19,6 +19,20 @@ exports.createPages = async ({ graphql, actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: `/clusters/nested-clusters/`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/clusters/nested-clusters`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+
   const result = await graphql(`
     {
       allMdx {
