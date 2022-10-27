@@ -1,5 +1,5 @@
 ---
-title: "Nested Clusters (Beta)"
+title: " Quick Look at Nested Clusters (Beta)"
 metaTitle: "Creating sandbox clusters on Palette"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 icon: "nodes"
