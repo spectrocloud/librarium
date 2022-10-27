@@ -75,7 +75,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* While deploying multiple applications on a Sandbox cluster, the first installed application gets stuck at deployment, leads to other applications within the same Sandbox cluster getting stuck.
+* While deploying multiple applications on a Sandbox cluster, if one of the application get stuck because of some errors it can cause other deployments in the same sandbox cluster to get stuck in deploying state.
 
 
 
