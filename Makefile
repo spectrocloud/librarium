@@ -26,10 +26,10 @@ docker-image:
 	docker build -t $(IMAGE) .
 
 docker-initialize: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium $(IMAGE) npm install
+	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ $(IMAGE)
 
 docker-start: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium -p 9000:9000 $(IMAGE)
+	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
 
 docker-build: docker-image
 	rm -rf public

@@ -12,7 +12,7 @@ git config --global user.email sam@example.com
   - install https://brew.sh/
   - `brew install node`
 
-# Setup (one time)
+# Local Development Setup (one time)
 
 Make a folder somewhere you can easily find
 
@@ -28,6 +28,9 @@ git clone https://github.com/spectrocloud/librarium.git
 cd librarium
 make initialize
 ```
+
+# Local Development (Docker)
+
 
 # Documentation Content
 
