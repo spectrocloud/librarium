@@ -1,5 +1,5 @@
 ---
-title: "Sandbox Clusters (Beta)"
+title: " Quick Look at Nested Clusters (Beta)"
 metaTitle: "Creating sandbox clusters on Palette"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 icon: "nodes"
@@ -22,7 +22,7 @@ Palette provisions and orchestrates Sandbox Clusters and makes it easy to use th
 
 Palette also supports Day 2 operations such as upgrades, backup/restore and more, to keep Sandbox Clusters secure, compliant, and up to date. Additionally, it provides visibility into the workloads running inside your Sandbox Clusters and its associated costs.
 
-To get started and create your Sandbox Cluster, see the [Sandbox Cluster Quick Start](/clusters/sandbox-clusters/cluster-quickstart) page.
+To get started and create your Sandbox Cluster, see the [Sandbox Cluster Quick Start](/clusters/nested-clusters/cluster-quickstart) page.
 
 
 <br />
