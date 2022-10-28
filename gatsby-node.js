@@ -1,36 +1,13 @@
 const componentWithMDXScope = require("gatsby-plugin-mdx/component-with-mdx-scope");
+const redirects = require("./src/shared/utils/redirects");
 const path = require("path");
 const startCase = require("lodash.startcase");
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
-  createRedirect({
-    fromPath: `/api/`,
-    toPath: `/api/introduction`,
-    redirectInBrowser: true,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/api`,
-    toPath: `/api/introduction`,
-    redirectInBrowser: true,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
-    redirectInBrowser: true,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/clusters/nested-clusters`,
-    toPath: `/clusters/sandbox-clusters`,
-    redirectInBrowser: true,
-    isPermanent: true,
+  redirects.forEach((redirect) => {
+    createRedirect(redirect);
   });
 
   const result = await graphql(`
