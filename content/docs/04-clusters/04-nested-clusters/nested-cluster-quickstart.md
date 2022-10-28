@@ -1,5 +1,5 @@
 ---
-title: "Quickstart with Sandbox Clusters"
+title: "Quickstart with Nested Clusters"
 metaTitle: "Getting Started with Sandbox  Clusters on Palette"
 metaDescription: "The methods of creating Sandbox  clusters for a speedy deployment on any CSP"
 icon: ""
@@ -15,11 +15,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Getting Started with Sandbox  Clusters
 
-With the Palette Sandbox Cluster option, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
+With the Palette Sandbox  Cluster option, you can deploy additional Kubernetes clusters within an existing cluster to provide users and teams with sandbox  cluster environments.
 
 There are certain advantages to use a sandbox  cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a managed Sandbox  Cluster from within Palette.
+Try the steps below to [enable](/clusters/nested-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployingasandboxcluster) a managed Sandbox  Cluster from within Palette.
 
 <br />
 
@@ -33,11 +33,11 @@ Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#en
 
   There are two ways to engage with a Sandbox  Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/sandbox-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](/clusters/nested-clusters/cluster-quickstart#deployingasandboxcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/nested-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
-    2. Similarly, you can [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
+    2. Similarly, you can [enable](/clusters/nested-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
 
 <InfoBox>
 
