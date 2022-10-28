@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM node:18-alpine
 
 WORKDIR /librarium
 COPY ./scripts/entry.sh /entry.sh
@@ -8,6 +8,7 @@ chmod +x /entry.sh && \
 mkdir .cache && \
 npm install && \
 chown -R node:node /librarium
+
 EXPOSE 9000
 USER node
 ENTRYPOINT ["/entry.sh"]
