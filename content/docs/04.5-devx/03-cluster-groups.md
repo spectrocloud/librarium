@@ -30,7 +30,7 @@ Cluster Group is an aggregation of host clusters deployed through Palette. Palet
 
 ## System Scope
 
-  * Palette provides a default cluster group called the Beehive Cluster group at the system scope in the `us-east` region. 
+  * Palette provides a default cluster group called `beehive` at the system scope in the us-east region. 
 
 ## Tenant Scope
 
