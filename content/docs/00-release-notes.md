@@ -77,13 +77,11 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * While deploying multiple apps in a sandbox cluster, if the deployment of one of the apps is blocked due to errors then subsequent apps deployed to the same sandbox cluster might also be stuck in deploying state.
 
- **Suggested Workaround:**
-    * Delete the stuck App.
-    * Fix the App with the error.
-    * Redeploy the App again.
+   **Suggested Workaround:**
+  * Delete the stuck App.
+  * Fix the App with the error.
+  * Redeploy the App again.
       
-
-
 # September 10, 2022 - Release 2.8.0
 Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
