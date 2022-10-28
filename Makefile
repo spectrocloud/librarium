@@ -7,7 +7,7 @@ clean:
 	docker image rm $(IMAGE)
 
 initialize:
-	npm install
+	npm ci
 
 start:
 	npm run start
