@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Getting Started with Sandbox  Clusters
 
-With the Palette Sandbox  Cluster option, you can deploy additional Kubernetes clusters within an existing cluster to provide users and teams with sandbox  cluster environments.
+With the Palette Sandbox Cluster option, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
 
 There are certain advantages to use a sandbox  cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 

@@ -20,18 +20,21 @@ The enterprise developer can create and utilize the Palette compute under the sc
 
 <br />
 
-* The Cluster Groups available under the Palette System Scope
+* The Cluster Groups available under the Palette [System Scope](/devx/cluster-groups#systemscope).
 
 
-* The Cluster Groups launched in the developer's enterprise datacenter/environment
+* The Cluster Groups launched in the [developer's enterprise datacenter/environment](/devx/cluster-groups#tenantscope).
 
-## Cluster Groups
+# Cluster Groups
 Cluster Group is an aggregation of host clusters deployed through Palette. Palette sandbox clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
 
-* System Scope
-* Tenant Scope
+## System Scope
 
-### Create Your Cluster Group 
+  * Palette provides a default cluster group called `beehive` at the system scope in the us-east region. 
+
+## Tenant Scope
+
+### Create Your Cluster Group (Tenant Scope) 
 
 To create Palette Host Cluster Groups, the developer needs to [deploy healthy running Palette host clusters](/clusters). Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster group:
 
