@@ -75,8 +75,13 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* While deploying multiple applications on a Sandbox cluster, if one of the application get stuck because of some errors it can cause other deployments in the same sandbox cluster to get stuck in deploying state.
+* While deploying multiple apps in a sandbox cluster, if the deployment of one of the apps is blocked due to errors then subsequent apps deployed to the same sandbox cluster might also be stuck in deploying state.
 
+ **Suggested Workaround:**
+    * Delete the stuck App.
+    * Fix the App with the error.
+    * Redeploy the App again.
+      
 
 
 # September 10, 2022 - Release 2.8.0
