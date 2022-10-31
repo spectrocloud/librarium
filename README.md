@@ -164,6 +164,19 @@ You can also reference pages that reside in the root `/docs` folder, such as ind
 ```md
 [Go to Dev Enging](/devx)
 ```
+### Redirects
+
+To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
+
+```js
+  {
+    fromPath: `/clusters/nested-clusters/`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+```
+
 
 #### Images or other assets
 
