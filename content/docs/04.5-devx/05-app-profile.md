@@ -93,4 +93,50 @@ spec:
 
 </WarningBox>
 
+# Pack Macros
 
+Pack macros are the variables defined in the App Profile, and these variables are resolved only at the cluster deployment time.
+<br />
+
+```
+{{.spectro.system.appprofile. <variable.name>}}
+```
+**Supported Variables**
+* name
+* uid
+
+**Example:** <br />
+{{.spectro.system.appprofile.name}} <br />
+{{.spectro.system.appprofile.uid}}
+ 
+<br />
+
+```
+{{.spectro.system.appdeployment.<variable.name>}} 
+```
+**Supported Variables**
+* name
+* Uid
+* tiername : Resolves to a string value in the format `<deployment name>-<tier name>`
+ 
+**Example:** <br />
+{{.spectro.system.appdeployment.name}} <br />
+{{.spectro.system.appdeployment.uid}} <br />
+{{.spectro.system.appdeployment.tiername}}
+
+<br />
+
+```
+{{.spectro.system.apptier.<tierInputVariableName>}}
+``` 
+Resolves to a value of the variable defined in parameters.yaml.
+
+<br />
+
+```
+{{.spectro.app.$appdeploymentName.<tiername>.<tierOutputVariableName>}} 
+```
+To refer the tier output variables of the top tiers.
+
+<br />
+<br />
