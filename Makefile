@@ -7,7 +7,7 @@ clean:
 	docker image rm $(IMAGE)
 
 initialize:
-	npm install
+	npm ci
 
 start:
 	npm run start
@@ -25,12 +25,5 @@ build:
 docker-image:
 	docker build -t $(IMAGE) .
 
-docker-initialize: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium $(IMAGE) npm install
-
-docker-start: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium -p 9000:9000 $(IMAGE)
-
-docker-build: docker-image
-	rm -rf public
-	docker run --rm -it -v $(CURDIR):/librarium $(IMAGE) npm run build
+docker-start:
+	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
