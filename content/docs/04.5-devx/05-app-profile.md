@@ -65,9 +65,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mysecret
-  namespace: mywebnamespace
+  namespace: {{.spectro.system.apptier.NAMESPACE}}
 data:
-  password: "{{.spectro.app.$appDepName-mongodb.PASSWORD}}"
+  
+  username: "{{.spectro.system.apptier.NAMESPACE}}" # Resolves to a value of the variable defined in App Profile tier parameters.yaml file.
+
+  password: "{{.spectro.app.$appDepName-mongodb.PASSWORD}}" # To refer the tier output variables of the top tiers.
 	
 ```
 ```
@@ -99,44 +102,15 @@ Pack macros are the variables defined in the App Profile, and these variables ar
 <br />
 
 ```
-{{.spectro.system.appprofile. <variable.name>}}
+{{.spectro.system.<variable.name>}}
 ```
 **Supported Variables**
-* name
-* uid
+* appprofile.name
+* appprofile.uid
+* appdeployment.name
+* appdeployment.uid
+* appdeployment.tiername : Resolves to a string value in the format `<deployment name>-<tier name>`
 
-**Example:** <br />
-{{.spectro.system.appprofile.name}} <br />
-{{.spectro.system.appprofile.uid}}
- 
-<br />
-
-```
-{{.spectro.system.appdeployment.<variable.name>}} 
-```
-**Supported Variables**
-* name
-* Uid
-* tiername : Resolves to a string value in the format `<deployment name>-<tier name>`
- 
-**Example:** <br />
-{{.spectro.system.appdeployment.name}} <br />
-{{.spectro.system.appdeployment.uid}} <br />
-{{.spectro.system.appdeployment.tiername}}
-
-<br />
-
-```
-{{.spectro.system.apptier.<tierInputVariableName>}}
-``` 
-Resolves to a value of the variable defined in parameters.yaml.
-
-<br />
-
-```
-{{.spectro.app.$appdeploymentName.<tiername>.<tierOutputVariableName>}} 
-```
-To refer the tier output variables of the top tiers.
 
 <br />
 <br />
