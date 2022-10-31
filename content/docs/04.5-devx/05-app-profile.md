@@ -104,7 +104,7 @@ Pack macros are the variables defined in the App Profile and are only resolved a
 ```
 {{.spectro.system.[VARIABLE_NAME]}}
 ```
-|**Supported Variables**|  |
+|Supported Variables|  |
 |-----------------------|--|
 |appprofile.name | |
 |appprofile.uid| |
@@ -115,15 +115,19 @@ Pack macros are the variables defined in the App Profile and are only resolved a
 <br />
 
 ```
-{{.spectro.system.apptier.NAMESPACE}}" 
+{{.spectro.system.apptier.<tierInput_Variable_Name>}}
 ```
+
 Resolves to a value of the variable defined in App Profile tier parameters.yaml file.
 
-<br />
+**Example**
+{{.spectro.system.apptier.NAMESPACE}}: 
 
 ```
-{{.spectro.app.$appDepName-mongodb.PASSWORD}}" 
+{{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}} 
 ```
-To refer the tier output variables of the top tiers.
+
+**Example**
+{{.spectro.app.$appDepName-mongodb.PASSWORD}}: To refer the tier output variables of the top tiers.
 <br />
 <br />
