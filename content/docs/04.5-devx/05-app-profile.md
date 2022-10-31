@@ -102,7 +102,7 @@ Pack macros are the variables defined in the App Profile, and these variables ar
 <br />
 
 ```
-{{.spectro.system.<variable.name>}}
+{{.spectro.system.[variable.name]}}
 ```
 **Supported Variables**
 * appprofile.name
