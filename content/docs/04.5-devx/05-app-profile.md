@@ -96,7 +96,7 @@ spec:
 
 </WarningBox>
 
-# Pack Macros
+# App Profile Macros
 
 Pack macros are the variables defined in the App Profile, and these variables are resolved only at the cluster deployment time.
 <br />
