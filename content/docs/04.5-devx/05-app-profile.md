@@ -49,9 +49,9 @@ The Palette Dev Engine App Profile is created successfully and can be used for `
 
 <InfoBox>
 
-The applications follows a hierarchy, where in the output parameter values from the application added first can be passed to application tiers added after that. The reverse is not possible.
+The applications follows a hierarchy, where in the output variables values from the application added first can be passed to application tiers added after that. The reverse is not possible.
 
-To view the available output parameters from the below tiers in the code editor, type in ```{{.spectro.}}```.
+To view the available output variables from the below tiers in the code editor, type in ```{{.spectro.}}```.
 </InfoBox>
 
 <WarningBox>
@@ -108,14 +108,14 @@ Pack macros are the variables defined in the App Profile and are only resolved a
 
 The variables are of two types:
 
-* [The Input Parameters](/devx/app-profile#inputparameters)
+* [The Input Variables](/devx/app-profile#inputparameters)
 
-* [The Output Parameters](/devx/app-profile#outputparameters)
+* [The Output Variables](/devx/app-profile#outputparameters)
 <br />
 
-## Input parameters
+## Input Variables
 
-What user can specify and will be consumed by the current tier. It can even use output variables from below tier. This parameter resolves to a value of the variable defined in App Profile tier parameters.yaml file.
+What user can specify and will be consumed by the current tier. It can even use output variables from below tier. This Variable resolves to a value of the variable defined in App Profile tier parameters.yaml file.
 
 ```
 {{.spectro.system.[VARIABLE_NAME]}}
@@ -142,7 +142,7 @@ The parameter which will be generated once the tier gets deployed. It can be con
 {{.spectro.system.apptier.NAMESPACE}}: 
 
 
-## Output parameters
+## Output Variables
 
 The variables which are generated once the tier gets deployed. It can be consumed by the higher tiers.
 
