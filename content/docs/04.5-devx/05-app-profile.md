@@ -98,19 +98,39 @@ spec:
 
 # App Profile Macros
 
-Pack macros are the variables defined in the App Profile and are only resolved at the cluster deployment time.
+Pack macros are the variables defined in the App Profile and are only resolved at the cluster deployment time. The app profile variables can be:
+
+* directly given by the developers while modelling the application profiles.
+
+* resolved during the app instatiation.
+
+* funnelled/inherited from the lower tiers of the profile.
+
+The variables are of two types:
+
+* [The Input Parameters](/devx/app-profile#inputparameters)
+
+* [The Output Parameters](/devx/app-profile#outputparameters)
 <br />
+
+## Input parameters
+
+What user can specify and will be consumed by the current tier. It can even use output variables from below tier. This parameter resolves to a value of the variable defined in App Profile tier parameters.yaml file.
 
 ```
 {{.spectro.system.[VARIABLE_NAME]}}
 ```
-|Supported Variables|  |
-|-----------------------|--|
-|appprofile.name | |
-|appprofile.uid| |
-|appdeployment.name| |
-|appdeployment.uid||
-|appdeployment.tiername | Resolves to a string value in the format `<deployment name>-<tier name>`|
+|**Supported Variables**|  
+|-----------------------|
+|appprofile.name| 
+|appprofile.uid| 
+|appdeployment.name| 
+|appdeployment.uid|
+|appdeployment.tiername: Resolves to a string value in the format `<deployment name>-<tier name>`.|
+
+<br />
+
+The parameter which will be generated once the tier gets deployed. It can be consumed by the above tiers. It refers to the tier output variables of the top tiers. Refer the format and example below:
 
 <br />
 
@@ -118,16 +138,31 @@ Pack macros are the variables defined in the App Profile and are only resolved a
 {{.spectro.system.apptier.<tierInput_Variable_Name>}}
 ```
 
-Resolves to a value of the variable defined in App Profile tier parameters.yaml file.
-
 **Example**
 {{.spectro.system.apptier.NAMESPACE}}: 
+
+
+## Output parameters
+
+The variables which are generated once the tier gets deployed. It can be consumed by the higher tiers.
+
+
+<br /> 
+
 
 ```
 {{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}} 
 ```
 
 **Example**
-{{.spectro.app.$appDepName-mongodb.PASSWORD}}: To refer the tier output variables of the top tiers.
+{{.spectro.app.$appDepName-mongodb.PASSWORD}}: 
+
+<br />
+
+### Important Links to Refer Palette Macros
+
+* [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
+
+* [Palette User Macros](/clusters/cluster-management/macros#overview)
 <br />
 <br />
