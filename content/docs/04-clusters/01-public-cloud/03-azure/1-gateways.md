@@ -59,7 +59,7 @@ Log in to the Azure portal and create a Virtual Network taking care of the follo
 
 <InfoBox>
 
-  **Note**: A bastion hosted is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the PCG cluster then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove later if no longer required. 
+  **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required. 
 
 </InfoBox>
 
