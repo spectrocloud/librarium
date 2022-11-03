@@ -639,6 +639,39 @@
         }
       }
     },
+    "v1AppDeploymentProfileVersion": {
+      "description": "Application deployment profile version",
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppDeploymentProfileVersions": {
+      "description": "Application deployment profile versions",
+      "properties": {
+        "availableVersions": {
+          "items": {
+            "$ref": "#/definitions/v1AppDeploymentProfileVersion"
+          },
+          "type": "array"
+        },
+        "latestVersions": {
+          "items": {
+            "$ref": "#/definitions/v1AppDeploymentProfileVersion"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1AppDeploymentProfileMeta"
+        }
+      },
+      "type": "object"
+    },
     "v1AppDeploymentSortFields": {
       "enum": [
         "appDeploymentName",
@@ -864,6 +897,42 @@
       },
       "type": "object"
     },
+    "v1AppProfileCloneEntity": {
+      "description": "Application profile input for clone",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1AppProfileCloneMetaInputEntity"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppProfileCloneMetaInputEntity": {
+      "description": "Application profile clone meta input entity",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/definitions/v1AppProfileCloneTarget"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "v1AppProfileCloneTarget": {
+      "description": "Application profile clone target entity",
+      "properties": {
+        "projectUid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AppProfileEntity": {
       "description": "Application profile input for create and update",
       "properties": {
@@ -902,12 +971,30 @@
       "description": "Application profile meta input entity",
       "properties": {
         "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+          "$ref": "#/definitions/v1AppProfileMetaUpdateEntity"
         }
       },
       "required": [
         "metadata"
       ],
+      "type": "object"
+    },
+    "v1AppProfileMetaUpdateEntity": {
+      "description": "Application profile metadata update entity",
+      "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
       "type": "object"
     },
     "v1AppProfileSortFields": {
@@ -946,6 +1033,13 @@
             },
             "version": {
               "type": "string"
+            },
+            "versions": {
+              "description": "Application profile's list of all the versions",
+              "items": {
+                "$ref": "#/definitions/v1AppProfileVersion"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -1037,6 +1131,18 @@
           },
           "type": "array",
           "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "v1AppProfileVersion": {
+      "description": "Application profile version",
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1886,7 +1992,7 @@
           "type": "boolean"
         },
         "controlPlaneLoadBalancer": {
-          "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default => \"Internet-facing\" \"Internet-facing\" => \"Internet-facing\" \"internal\" => \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
+          "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default =\u003e \"Internet-facing\" \"Internet-facing\" =\u003e \"Internet-facing\" \"internal\" =\u003e \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
           "type": "string"
         },
         "region": {
@@ -2218,7 +2324,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -2935,7 +3041,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -4182,6 +4288,9 @@
           "$ref": "#/definitions/v1HostClusterConfig",
           "description": "HostClusterConfiguration defines the configuration of host clusters, where nested clusters be deployed"
         },
+        "lifecycleConfig": {
+          "$ref": "#/definitions/v1LifecycleConfig"
+        },
         "machineHealthConfig": {
           "$ref": "#/definitions/v1MachineHealthCheckConfig",
           "description": "MachineHealthCheckConfig defines the healthcheck timeouts for the node. The timeouts are configured by the user to overide the default healthchecks."
@@ -4201,6 +4310,9 @@
       "properties": {
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfig"
+        },
+        "lifecycleConfig": {
+          "$ref": "#/definitions/v1LifecycleConfig"
         },
         "location": {
           "$ref": "#/definitions/v1ClusterLocation"
@@ -4327,6 +4439,21 @@
         "endpointConfig": {
           "$ref": "#/definitions/v1HostClusterEndpointConfig",
           "description": "host cluster endpoint configuration"
+        }
+      }
+    },
+    "v1ClusterGroupHostClusterEntity": {
+      "description": "Clusters and clusters config of cluster group",
+      "properties": {
+        "clusterRefs": {
+          "items": {
+            "$ref": "#/definitions/v1ClusterGroupClusterRef"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "clustersConfig": {
+          "$ref": "#/definitions/v1ClusterGroupClustersConfig"
         }
       }
     },
@@ -4473,7 +4600,8 @@
       "description": "Cluster group summay spec",
       "properties": {
         "cpu": {
-          "$ref": "#/definitions/v1ClusterGroupResource"
+          "$ref": "#/definitions/v1ClusterGroupResource",
+          "description": "Deprecated"
         },
         "endpointType": {
           "enum": [
@@ -4484,20 +4612,30 @@
         },
         "hostClusters": {
           "items": {
-            "$ref": "#/definitions/v1ObjectEntity"
+            "$ref": "#/definitions/v1ObjectResReference"
           },
           "type": "array",
           "uniqueItems": true
+        },
+        "hostClustersCount": {
+          "type": "integer",
+          "x-omitempty": false
         },
         "memory": {
-          "$ref": "#/definitions/v1ClusterGroupResource"
+          "$ref": "#/definitions/v1ClusterGroupResource",
+          "description": "Deprecated"
         },
         "nestedClusters": {
+          "description": "Deprecated. Use nestedClustersCount",
           "items": {
-            "$ref": "#/definitions/v1ObjectEntity"
+            "$ref": "#/definitions/v1ObjectResReference"
           },
           "type": "array",
           "uniqueItems": true
+        },
+        "nestedClustersCount": {
+          "type": "integer",
+          "x-omitempty": false
         },
         "scope": {
           "type": "string"
@@ -5453,7 +5591,7 @@
         },
         "inUseClusters": {
           "items": {
-            "$ref": "#/definitions/v1ObjectEntity"
+            "$ref": "#/definitions/v1ObjectResReference"
           },
           "type": "array"
         },
@@ -7314,6 +7452,17 @@
         }
       }
     },
+    "v1CoxEdgeInstanceTypes": {
+      "properties": {
+        "instanceTypes": {
+          "items": {
+            "$ref": "#/definitions/v1InstanceType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1CoxEdgeMachine": {
       "description": "CoxEdge cloud VM definition",
       "properties": {
@@ -7385,9 +7534,6 @@
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
         },
-        "instanceType": {
-          "type": "string"
-        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -7439,13 +7585,12 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
       "required": [
-        "isControlPlane",
-        "instanceType"
+        "isControlPlane"
       ],
       "type": "object"
     },
@@ -7552,6 +7697,35 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1CoxEdgeRegion": {
+      "description": "CoxEdge region",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/v1ClusterLocation"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1CoxEdgeRegions": {
+      "properties": {
+        "regions": {
+          "items": {
+            "$ref": "#/definitions/v1CoxEdgeRegion"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "regions"
+      ],
       "type": "object"
     },
     "v1CoxEdgeSecurityGroupRule": {
@@ -8140,6 +8314,7 @@
         },
         "hostPairingKey": {
           "description": "HostPairingKey is the one-time pairing key to pair the edge host with the device registered in SaaS",
+          "format": "password",
           "type": "string"
         },
         "hostUid": {
@@ -8190,7 +8365,7 @@
       "description": "Edge host device information",
       "properties": {
         "metadata": {
-          "$ref": "#/definitions/v1ObjectEntity"
+          "$ref": "#/definitions/v1ObjectTagsEntity"
         },
         "spec": {
           "$ref": "#/definitions/v1EdgeHostDeviceSpecEntity"
@@ -8209,6 +8384,7 @@
     "v1EdgeHostDeviceHostPairingKey": {
       "properties": {
         "hostPairingKey": {
+          "format": "password",
           "type": "string"
         }
       },
@@ -8218,7 +8394,7 @@
       "description": "Edge host device uid and name",
       "properties": {
         "metadata": {
-          "$ref": "#/definitions/v1ObjectEntity"
+          "$ref": "#/definitions/v1ObjectTagsEntity"
         }
       },
       "type": "object"
@@ -8262,6 +8438,7 @@
       "description": "Edge host device spec",
       "properties": {
         "hostPairingKey": {
+          "format": "password",
           "type": "string"
         }
       },
@@ -8674,7 +8851,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -9081,7 +9258,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -9178,7 +9355,7 @@
           "type": "string"
         },
         "secret": {
-          "description": "Common shared secret string between the server & client.",
+          "description": "Common shared secret string between the server \u0026 client.",
           "type": "string"
         },
         "serviceName": {
@@ -9292,7 +9469,7 @@
           "type": "boolean"
         },
         "controlPlaneLoadBalancer": {
-          "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default => \"Internet-facing\" \"Internet-facing\" => \"Internet-facing\" \"internal\" => \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
+          "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default =\u003e \"Internet-facing\" \"Internet-facing\" =\u003e \"Internet-facing\" \"internal\" =\u003e \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
           "type": "string"
         },
         "encryptionConfig": {
@@ -9497,7 +9674,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -9853,7 +10030,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object"
         },
         "deviceModel": {
@@ -9878,7 +10055,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object"
         },
         "model": {
@@ -10212,6 +10389,12 @@
         "subnet": {
           "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
           "type": "string"
+        },
+        "subnets": {
+          "items": {
+            "$ref": "#/definitions/v1GcpSubnetEntity"
+          },
+          "type": "array"
         }
       },
       "required": [
@@ -10290,6 +10473,13 @@
           "description": "Subnet specifies the subnetwork to use for given instance. If not specified, the first subnet from the cluster region and network is used",
           "type": "string"
         },
+        "subnetIds": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"us-west-2d\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first private subnet from the AZ will be picked up for deployment",
+          "type": "object"
+        },
         "taints": {
           "description": "master or worker taints",
           "items": {
@@ -10303,7 +10493,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -10507,11 +10697,24 @@
     },
     "v1GcpSubnet": {
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         }
       },
       "type": "object"
+    },
+    "v1GcpSubnetEntity": {
+      "properties": {
+        "az": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
     },
     "v1GcpZone": {
       "properties": {
@@ -10667,7 +10870,7 @@
           "type": "integer"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -12399,7 +12602,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -12592,6 +12795,42 @@
         "hostUid"
       ],
       "type": "object"
+    },
+    "v1LifecycleConfig": {
+      "properties": {
+        "pause": {
+          "default": false,
+          "description": "enable pause life cycle config",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1LifecycleConfigEntity": {
+      "properties": {
+        "lifecycleConfig": {
+          "$ref": "#/definitions/v1LifecycleConfig"
+        }
+      },
+      "type": "object"
+    },
+    "v1LifecycleStatus": {
+      "properties": {
+        "msg": {
+          "description": "error or success msg of lifecycle",
+          "type": "string"
+        },
+        "status": {
+          "description": "lifecycle status",
+          "enum": [
+            "Pausing",
+            "Paused",
+            "Resuming",
+            "Running"
+          ],
+          "type": "string"
+        }
+      }
     },
     "v1ListMetaData": {
       "description": "ListMeta describes metadata for the resource listing",
@@ -13113,7 +13352,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -13446,7 +13685,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -13636,7 +13875,7 @@
       }
     },
     "v1ManifestPublishedSpec": {
-      "description": "Manifest spec data as draft & published",
+      "description": "Manifest spec data as draft \u0026 published",
       "properties": {
         "published": {
           "$ref": "#/definitions/v1ManifestData"
@@ -13689,7 +13928,7 @@
       ]
     },
     "v1ManifestSpec": {
-      "description": "Manifest spec data as draft & published",
+      "description": "Manifest spec data as draft \u0026 published",
       "properties": {
         "draft": {
           "$ref": "#/definitions/v1ManifestData"
@@ -15321,10 +15560,14 @@
           "$ref": "#/definitions/v1ObjectReference",
           "description": "host cluster reference"
         },
+        "lifecycleStatus": {
+          "$ref": "#/definitions/v1LifecycleStatus",
+          "description": "cluster life cycle status"
+        },
         "nestedClusters": {
           "description": "list of nested clusters deployed on the cluster",
           "items": {
-            "$ref": "#/definitions/v1ObjectReference"
+            "$ref": "#/definitions/v1ObjectResReference"
           },
           "type": "array"
         },
@@ -15569,7 +15812,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -15954,6 +16197,27 @@
       },
       "type": "object"
     },
+    "v1ObjectResReference": {
+      "description": "Object resource reference",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "projectUid": {
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1ObjectScopeEntity": {
       "description": "Object scope identity meta",
       "properties": {
@@ -15961,6 +16225,24 @@
           "type": "string"
         },
         "scope": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ObjectTagsEntity": {
+      "description": "Object identity meta with tags",
+      "properties": {
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "name": {
           "type": "string"
         },
         "uid": {
@@ -16572,7 +16854,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -16985,7 +17267,7 @@
           "$ref": "#/definitions/v1MaasCloudAccount"
         },
         "name": {
-          "description": "Name for the private gateway & cloud account",
+          "description": "Name for the private gateway \u0026 cloud account",
           "type": "string"
         },
         "shareWithProjects": {
@@ -17049,7 +17331,7 @@
           "$ref": "#/definitions/v1OpenStackCloudAccount"
         },
         "name": {
-          "description": "Name for the private gateway & cloud account",
+          "description": "Name for the private gateway \u0026 cloud account",
           "type": "string"
         },
         "shareWithProjects": {
@@ -17094,7 +17376,7 @@
           "$ref": "#/definitions/v1VsphereCloudAccount"
         },
         "name": {
-          "description": "Name for the private gateway & cloud account",
+          "description": "Name for the private gateway \u0026 cloud account",
           "type": "string"
         },
         "shareWithProjects": {
@@ -24891,7 +25173,7 @@
           "type": "boolean"
         },
         "secret": {
-          "description": "Common shared secret string between the server & client.",
+          "description": "Common shared secret string between the server \u0026 client.",
           "type": "string"
         },
         "serviceName": {
@@ -26035,6 +26317,10 @@
         "enableLock": {
           "type": "boolean",
           "x-omitempty": false
+        },
+        "supportedVersionsRange": {
+          "type": "integer",
+          "x-omitempty": false
         }
       }
     },
@@ -26430,7 +26716,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -26690,7 +26976,7 @@
           "type": "boolean"
         },
         "privateCIDR": {
-          "description": "PrivateCIDRs specifies which blocks can access the public endpoint",
+          "description": "Deprecated. PrivateCIDRs specifies which blocks can access the public endpoint",
           "type": "string"
         },
         "public": {
@@ -26698,11 +26984,19 @@
           "type": "boolean"
         },
         "publicCIDRs": {
-          "description": "PublicCIDRs specifies which blocks can access the public endpoint",
+          "description": "Deprecated. PublicCIDRs specifies which blocks can access the public endpoint",
           "items": {
             "type": "string"
           },
           "type": "array"
+        },
+        "securityGroup": {
+          "description": "Tencent security group",
+          "type": "string"
+        },
+        "subnetId": {
+          "description": "Tencent Subnet",
+          "type": "string"
         }
       },
       "type": "object"
@@ -26834,7 +27128,7 @@
       "uniqueItems": true
     },
     "v1UpdateStrategy": {
-      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut =\u003e maxSurge=1, maxUnavailable=0 ScaleIn =\u003e maxSurge=0, maxUnavailable=1",
       "properties": {
         "type": {
           "description": "update strategy, either ScaleOut or ScaleIn if empty, will default to RollingUpdateScaleOut",
@@ -28413,7 +28707,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -29626,10 +29920,45 @@
     }
   },
   "info": {
-    "title": "Palette 3.0 APIs",
+    "title": "Palette APIs - 3.0",
     "version": "v1"
   },
   "paths": {
+    "/cluster/{uid}/manifest": {
+      "get": {
+        "description": "Deprecated",
+        "operationId": "v1SpectroClustersUidInstallerManifest",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "download file",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Returns the specified cluster's installer manifest file",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/apiKeys": {
       "get": {
         "operationId": "v1ApiKeysList",
@@ -30075,6 +30404,31 @@
         ]
       }
     },
+    "/v1/appDeployments/{uid}/profile/versions": {
+      "get": {
+        "operationId": "v1AppDeploymentsUidProfileVersionsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AppDeploymentProfileVersions"
+            }
+          }
+        },
+        "summary": "Returns profile versions of the specified application deployment",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/appProfiles": {
       "post": {
         "operationId": "v1AppProfilesCreate",
@@ -30177,6 +30531,83 @@
           }
         },
         "summary": "Updates the specified application profile",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/appProfiles/{uid}/clone": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1AppProfilesUidClone",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AppProfileCloneEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Clone the specified application profile",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/appProfiles/{uid}/clone/validate": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1AppProfilesUidCloneValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AppProfileCloneMetaInputEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Validates the application profile clone",
         "tags": [
           "v1"
         ]
@@ -32806,7 +33237,7 @@
             }
           }
         },
-        "summary": "Get the vSphere datacenters & datacluster for the given overlord account",
+        "summary": "Get the vSphere datacenters \u0026 datacluster for the given overlord account",
         "tags": [
           "v1"
         ]
@@ -38455,6 +38886,60 @@
         ]
       }
     },
+    "/v1/clouds/coxedge/regions": {
+      "get": {
+        "operationId": "V1CoxEdgeRegions",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CoxEdgeRegions"
+            }
+          }
+        },
+        "summary": "Retrieves a list of CoxEdge regions for the sepcified account",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/coxedge/regions/{region}/instancetypes": {
+      "get": {
+        "operationId": "V1CoxEdgeInstanceTypes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "double",
+            "in": "query",
+            "name": "cpuGtEq",
+            "type": "number"
+          },
+          {
+            "format": "double",
+            "in": "query",
+            "name": "memoryGtEq",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CoxEdgeInstanceTypes"
+            }
+          }
+        },
+        "summary": "Retrieves a list of CoxEdge instance types",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/clouds/gcp/account/validate": {
       "post": {
         "operationId": "V1GcpAccountValidate",
@@ -39903,6 +40388,7 @@
         }
       ],
       "put": {
+        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
         "operationId": "v1ClusterGroupsUidClustersUpdate",
         "parameters": [
           {
@@ -39924,6 +40410,37 @@
         ]
       }
     },
+    "/v1/clustergroups/{uid}/hostCluster": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1ClusterGroupsUidHostClusterUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterGroupHostClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates cluster reference and host cluster config",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/clustergroups/{uid}/hostCluster/config": {
       "parameters": [
         {
@@ -39934,6 +40451,7 @@
         }
       ],
       "put": {
+        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
         "operationId": "v1ClusterGroupsUidHostClusterConfigUpdate",
         "parameters": [
           {
@@ -41142,6 +41660,112 @@
         ]
       }
     },
+    "/v1/dashboard/clustergroups/{uid}/hostClusters": {
+      "post": {
+        "operationId": "v1ClusterGroupUidHostClustersSummary",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterSearchSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersSummary"
+            }
+          }
+        },
+        "summary": "Retrieves a list of cluster summary for a given cluster group",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/dashboard/clustergroups/{uid}/nestedClusters": {
+      "post": {
+        "operationId": "v1ClusterGroupUidNestedClustersSummary",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterSearchSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersSummary"
+            }
+          }
+        },
+        "summary": "Retrieves a list of cluster summary for a given cluster group",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/dashboard/clusterprofiles": {
       "post": {
         "operationId": "v1ClusterProfilesFilterSummary",
@@ -41467,7 +42091,8 @@
         "parameters": [
           {
             "enum": [
-              "hostclusters"
+              "hostclusters",
+              "strictHostclusters"
             ],
             "in": "query",
             "name": "quickFilter",
@@ -42451,6 +43076,37 @@
         ]
       }
     },
+    "/v1/datasinks/cloudwatch": {
+      "post": {
+        "description": "Sync data to cloud watch",
+        "operationId": "V1DataSinksCloudWatchSink",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "dataSinkCloudWatchConfig",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1.DataSinkCloudWatchConfig"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "sync data to cloud watch",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/edgehosts": {
       "get": {
         "operationId": "v1EdgeHostDevicesList",
@@ -43217,6 +43873,212 @@
         }
       ]
     },
+    "/v1/installers/spectro": {
+      "get": {
+        "operationId": "V1SpectroInstallers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroInstallers"
+            }
+          }
+        },
+        "summary": "Lists spectro installers",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/clusterprofile": {
+      "get": {
+        "operationId": "v1VsphereInstallerClusterProfilesGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfile"
+            }
+          }
+        },
+        "summary": "Returns the vsphere installer cluster profile",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/openstack/{uid}/cloudaccount": {
+      "delete": {
+        "operationId": "V1SpectroInstallerOpenStackCloudAccountDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Delete a OpenStack cloud account for specified installer uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "V1SpectroInstallerOpenStackCloudAccountGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1OpenStackAccount"
+            }
+          }
+        },
+        "summary": "Get a OpenStack cloud account for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroInstallerOpenStackCloudAccountCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1OpenStackAccount"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Create a OpenStack cloud account for spectroinstaller uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "put": {
+        "operationId": "V1SpectroInstallerOpenStackCloudAccountUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1OpenStackAccount"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Update a OpenStack cloud account for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/openstack/{uid}/spectrocluster": {
+      "delete": {
+        "operationId": "V1SpectroInstallerOpenStackSpectroClusterDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Delete a OpenStack spectro cluster for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "V1SpectroInstallerOpenStackSpectroClusterGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCluster"
+            }
+          }
+        },
+        "summary": "Get a OpenStack spectro cluster for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroInstallerOpenStackSpectroClusterCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroOpenStackClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Create a OpenStack spectro cluster for spectroinstaller uid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/status": {
+      "get": {
+        "operationId": "V1SpectroInstallerStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroInstallerStatus"
+            }
+          }
+        },
+        "summary": "Get the spectro installer status",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/installers/spectro/vsphere/{uid}": {
       "delete": {
         "description": "Deprecated: please use the generic api",
@@ -43227,6 +44089,223 @@
           }
         },
         "summary": "Deletes the spectroinstaller entity",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/installers/spectro/vsphere/{uid}/cloudaccount": {
+      "delete": {
+        "operationId": "V1SpectroInstallerCloudAccountDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Delete a vSphere cloud account for specified installer uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "V1SpectroInstallerCloudAccountGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1VsphereAccount"
+            }
+          }
+        },
+        "summary": "Get a vSphere cloud account for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroInstallerCloudAccountCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VsphereAccount"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Create a vSphere cloud account for spectroinstaller uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "put": {
+        "operationId": "V1SpectroInstallerCloudAccountUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VsphereAccount"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Update a vSphere cloud account for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/vsphere/{uid}/spectrocluster": {
+      "delete": {
+        "operationId": "V1SpectroInstallerSpectroClusterDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Delete a vSphere spectro cluster for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "V1SpectroInstallerSpectroClusterGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroCluster"
+            }
+          }
+        },
+        "summary": "Get a vSphere spectro cluster for spectrocluster uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroInstallerSpectroClusterCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroVsphereClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Create a vSphere spectro cluster for spectroinstaller uid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/installers/spectro/{uid}": {
+      "delete": {
+        "operationId": "v1SpectroInstallerDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the spectroinstaller entity",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "v1SpectroInstallerGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroInstallerEntity"
+            }
+          }
+        },
+        "summary": "Returns the spectro installer",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/installers/spectro/{uid}/clusterprofile": {
+      "get": {
+        "operationId": "v1SpectroInstallerClusterProfileGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfile"
+            }
+          }
+        },
+        "summary": "Get a vSphere spectro installer cluster profile",
         "tags": [
           "v1"
         ]
@@ -44453,7 +45532,7 @@
             }
           }
         },
-        "summary": "Retrieves the vSphere datacenters & datacluster for the specified private gateway's account",
+        "summary": "Retrieves the vSphere datacenters \u0026 datacluster for the specified private gateway's account",
         "tags": [
           "v1"
         ]
@@ -44759,6 +45838,54 @@
         }
       ]
     },
+    "/v1/payments/stripe/paymentMethods": {
+      "get": {
+        "operationId": "v1PaymentMethodsList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1PaymentMethods"
+            }
+          }
+        },
+        "summary": "Retrieves a payment method list",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/payments/stripe/subscriptions/{subscriptionUid}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "subscriptionUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1PaymentSubscriptionUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1PaymentSubscription"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Update Payment Subscription",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/pcg/selfHosted": {
       "post": {
         "operationId": "v1PcgSelfHosted",
@@ -44912,6 +46039,90 @@
           }
         },
         "summary": "Retrieves a list of permissions",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/plans/system/usage/report/pdf": {
+      "get": {
+        "operationId": "V1SystemUsageReportPdf",
+        "parameters": [
+          {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "format": "date-time",
+            "in": "query",
+            "name": "startDate",
+            "type": "string"
+          },
+          {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "format": "date-time",
+            "in": "query",
+            "name": "endDate",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              },
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "type": "file"
+            }
+          }
+        },
+        "summary": "Downloads the system usage report",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/plans/{uid}/developerCredit": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1PlansUidDevelopeCreditUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1DeveloperCredit"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "updates developer credit to the specified plan",
         "tags": [
           "v1"
         ]
@@ -46646,6 +47857,18 @@
             "in": "path",
             "name": "serviceName",
             "required": true,
+            "type": "string"
+          },
+          {
+            "description": "spectro cluster uid",
+            "in": "query",
+            "name": "clusterUid",
+            "type": "string"
+          },
+          {
+            "description": "edge host uid",
+            "in": "query",
+            "name": "edgeHostUid",
             "type": "string"
           }
         ],
@@ -49104,6 +50327,37 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/clusterConfig/lifecycleConfig": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1SpectroClustersUidLifecycleConfigUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1LifecycleConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified spectro cluster Life cycle configuration",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/spectroclusters/{uid}/clusterConfig/osPatch": {
       "parameters": [
         {
@@ -51460,6 +52714,28 @@
         ]
       }
     },
+    "/v1/system/alerts/{component}": {
+      "delete": {
+        "operationId": "v1SystemAlertDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the specified alert to the specified system",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "component",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/teams": {
       "get": {
         "operationId": "v1TeamsList",
@@ -52070,6 +53346,51 @@
           "v1"
         ]
       }
+    },
+    "/v1/tenants/{tenantUid}/creditAccount/aws": {
+      "delete": {
+        "operationId": "v1TenantsCreditAccountDelete",
+        "parameters": [
+          {
+            "default": false,
+            "in": "query",
+            "name": "forceDelete",
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the aws credit account for tenants",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "v1TenantsCreditAccountGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AwsCreditAccountEntity"
+            }
+          }
+        },
+        "summary": "Get the credit accounts for the tenants with free tier access",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ]
     },
     "/v1/tenants/{tenantUid}/domains": {
       "get": {
