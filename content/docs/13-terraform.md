@@ -113,6 +113,8 @@ Find the detailed patch changes and comparisons within below **tabs**.
 * Latest hapi dependency.
 
 
+Refer to Full Changelog: [v0.10.1 to v0.10.2](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.10.2)
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.10.1" key="v0.10.1">
@@ -168,6 +170,9 @@ The compatible **Module** for provider 0.10.1 is **0.4.1**
 * README.md documentation now includes REFERENCE.md
 
 * E2E addon deployment example.
+
+
+Refer to Full Changelog: [v0.10.0 to v0.10.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.10.1)
 
 </Tabs.TabPane>
 
