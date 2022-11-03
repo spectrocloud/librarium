@@ -115,7 +115,7 @@ The variables are of two types:
 
 ## Input Variables
 
-What user can specify and will be consumed by the current tier. It can even use output variables from below tier. This Variable resolves to a value of the variable defined in App Profile tier parameters.yaml file.
+User-provided values that will be consumed by the current tier. It can even use output variables from below tier. This parameter resolves to a value of the variable defined in App Profile tier parameters.yaml file.
 
 ```
 {{.spectro.system.[VARIABLE_NAME]}}
