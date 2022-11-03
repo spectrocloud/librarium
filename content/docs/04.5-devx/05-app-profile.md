@@ -104,7 +104,7 @@ Pack macros are the variables defined in the App Profile and are only resolved a
 
 * resolved during the app instatiation.
 
-* funnelled/inherited from the lower tiers of the profile.
+* inherited from the lower tiers of the App Profile.
 
 The variables are of two types:
 
