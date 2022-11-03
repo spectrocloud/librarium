@@ -144,7 +144,7 @@ The parameter which will be generated once the tier gets deployed. It can be con
 
 ## Output Variables
 
-The variables which are generated once the tier gets deployed. It can be consumed by the higher tiers.
+The variables are generated once the tier gets deployed. Output variables can be consumed by the higher tiers in the App Profile.
 
 
 <br /> 
