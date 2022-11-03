@@ -26,7 +26,8 @@ The enterprise developer can create and utilize the Palette compute under the sc
 * The Cluster Groups launched in the [developer's enterprise datacenter/environment](/devx/cluster-groups#tenantscope).
 
 # Cluster Groups
-Cluster Group is an aggregation of host clusters deployed through Palette. Palette sandbox clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
+
+Cluster Group is an aggregation of host clusters deployed through Palette Tenant Admin console. Palette sandbox clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
 
 ## System Scope
 
@@ -36,7 +37,7 @@ Cluster Group is an aggregation of host clusters deployed through Palette. Palet
 
 ### Create Your Cluster Group (Tenant Scope) 
 
-To create Palette Host Cluster Groups, the developer needs to [deploy healthy running Palette host clusters](/clusters). Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster group:
+To create Palette Host Cluster Groups, the developer needs to [deploy healthy running Palette host clusters](/clusters) under the **Tenant Admin Scope**. Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster group:
 
 <br />
 
@@ -75,11 +76,11 @@ To create Palette Host Cluster Groups, the developer needs to [deploy healthy ru
 
    **Sandbox Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the sandbox clusters are getting launched.
 
- |**Sandbox andbox Cluster Limits ** | **Description**   |
- |------------------------ --|-------------------|
- |CPU (per request)          | 6 default         |
- | Memory (per request)      | 8 Gi default      |
- | Storage (per request)     |  10 Gi default    |
+ |**Sandbox Cluster Resource ** | **Default**   |**Minimum Limit**|
+ |------------------------------|-------------------|-----------------|
+ |CPU (per request)             | 6                 | 4               |
+ | Memory (per request)         | 8 GiB             | 4 GiB           |
+ | Storage (per request)        | 10 GiB            | 2 GiB           |
 
 
 3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the sandbox clusters.
@@ -89,7 +90,7 @@ To create Palette Host Cluster Groups, the developer needs to [deploy healthy ru
 
 Once the cluster group is created, the day two operations on them can be done as follows:
 
-1. Select the `Cluster Group’ to be managed and click `Settings` to access different cluster management activities. 
+1. Select the `Cluster Group` to be managed and click `Settings` to access different cluster management activities. 
 
 
 2. To delete a cluster group, select `Delete Cluster,` enter the cluster name, and confirm the delete operation.
