@@ -15,6 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Getting Started with Sandbox  Clusters
 Hi world and wonderful day
+How are you?
 
 With the Palette Sandbox Cluster option, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
 
