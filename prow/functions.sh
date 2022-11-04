@@ -19,7 +19,7 @@ check_docs() {
 	vale sync
 	# Only compare changes in the content folder against the master branch
 	# remote=$(git rev-parse origin/master)
-	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA | grep content) 
+	vale $(git diff-tree -r --no-commit-id --name-only $PULL_PULL_SHA | grep content) 
 }
 
 # Initialize & Build  release docs
