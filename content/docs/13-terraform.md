@@ -18,6 +18,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette supports open-source Infrastructure as Code (IaC) software tools to provide consistent CLI workflow support to multiple cloud services. Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files, checks whether the execution plan for a configuration matches your expectations (before deployment), and applies these changes to hundreds of cloud resources. 
 
+a
+
 # Spectro Cloud Provider
 
 Spectro Cloud Palette's SaaS and On-Premise management API is resourced within the HashiCorp Terraform registry as [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
