@@ -9,3 +9,4 @@ set -u
 source prow/functions.sh
 
 build_docs
+check_docs
