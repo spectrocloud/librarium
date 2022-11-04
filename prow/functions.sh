@@ -18,8 +18,8 @@ check_docs() {
 	export PATH=./bin:"$PATH"
 	vale sync
 	# Only compare changes in the content folder against the master branch
+	env
 	remote=$(git rev-parse origin/master)
-	echo $remote
 	vale $(git diff-tree -r --no-commit-id --name-only $remote | grep content) 
 }
 
