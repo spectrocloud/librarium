@@ -88,12 +88,11 @@ To create a Palette Host Cluster Group, you need to [deploy a healthy running Pa
 
 ### Manage your Cluster Group
 
-Once the cluster group is created, the day two operations on them can be done as follows:
+Once the cluster group is created, the day two operations can be performed form the Palette Cluster Group **Settings** options by accessing different cluster management activities. 
 
-1. Select the Palette Cluster Group to be managed and click **Settings** to access different cluster management activities. 
+### Delete your Cluster Group
 
-
-2. To delete a cluster group, select `Delete Cluster,` enter the cluster name, and confirm the delete operation.
+To delete a cluster group, select `Delete Cluster form the **Settings** and enter the cluster name, and confirm the delete operation.
 
 ### Platforms Supported
 
