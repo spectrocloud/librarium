@@ -32,7 +32,18 @@ To create your new sandbox cluster:
 2. Select the `Sandbox Clusters` from the left ribbon menu, click `+ Sandbox Clusters,` and provide the following information to the app creation wizard.
    * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new sandbox cluster.
    * Sandbox cluster name: Provide a custom sandbox cluster name or go with the default name.
-   * Provide the resource Limits in terms of CPU, Memory, and Storage. The maximum limit is 6 CPU, 8 GiB memory, and 10 GiB storage (available to the developer by default), which can be reduced based on the use case.
-   * Review the information and deploy the sandbox cluster. The sandbox cluster will get provisioned and start running in a few minutes.
+   * Provide the resource limit in terms of CPU, memory, and storage. 
+
+ <br />
+
+ |**Sandbox Cluster Resource ** | **Default    **   |**Minimum Limit**|
+ |------------------------------|-------------------|-----------------|
+ | CPU (per request)            | 6                 | 2.5               |
+ | Memory (per request)         | 8 GiB             | 2.5 GiB           |
+ | Storage (per request)        | 10 GiB            | 0 GiB           |
+
+<br />
+
+   * Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
 
 <br />
