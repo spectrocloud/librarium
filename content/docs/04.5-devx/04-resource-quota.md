@@ -32,7 +32,7 @@ The developer quota can be managed through the Palette Platform as below:
 2. In the wizard to Manage Developer Settings, there is an option to `Hide system-level cluster groups from tenant users` using the toggle button. You will have to create your cluster groups by hiding the system-level cluster groups.
 
 
-3. Set the `User Quota,` where default values are as follows:
+3. Set the desired *User Quotas* values.  The user quotas have the following default values:
 
 |**Resource Requirement for 2 Sandbox Clusters**|**Default Quota**|**Minimum Value**|
 |--------|-------------|-------------|

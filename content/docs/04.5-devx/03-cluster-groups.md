@@ -27,7 +27,7 @@ The enterprise developer can create and utilize the Palette compute under the sc
 
 # Cluster Groups
 
-Cluster Group is an aggregation of host clusters deployed through Palette Tenant Admin console. Palette sandbox clusters can be launched into these host cluster groups. The cluster groups are created under two scopes:
+A Cluster Group is an aggregation of host clusters deployed through the Palette Tenant Admin console. Palette virtual clusters can be launched into host cluster groups. The cluster groups are created under two scopes:
 
 ## System Scope
 
@@ -37,7 +37,7 @@ Cluster Group is an aggregation of host clusters deployed through Palette Tenant
 
 ### Create Your Cluster Group (Tenant Scope) 
 
-To create Palette Host Cluster Groups, the developer needs to [deploy healthy running Palette host clusters](/clusters) under the **Tenant Admin Scope**. Then, these clusters can be aggregated as a Cluster Group. To create a Palette Host cluster group:
+To create a Palette Host Cluster Group, you need to [deploy a healthy running Palette host cluster](/clusters) under the *Tenant Admin Scope*.  The host clusters deployed under the Tenant Admin scope can be aggregated as a Palette Host Cluster Group. To create a Palette Host Cluster Group:
 
 <br />
 
@@ -90,7 +90,7 @@ To create Palette Host Cluster Groups, the developer needs to [deploy healthy ru
 
 Once the cluster group is created, the day two operations on them can be done as follows:
 
-1. Select the `Cluster Group` to be managed and click `Settings` to access different cluster management activities. 
+1. Select the Palette Cluster Group to be managed and click **Settings** to access different cluster management activities. 
 
 
 2. To delete a cluster group, select `Delete Cluster,` enter the cluster name, and confirm the delete operation.
