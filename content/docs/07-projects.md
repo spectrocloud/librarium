@@ -16,8 +16,6 @@ A **Project** helps to organize the cluster resources in a logical grouping. The
 
 ## Creating a Project
 
-a
-
 1. Navigate to **Tenant Admin** > **Projects** and click on the **Create Project** button to show the Project Creation form.
 
 1. Enter the **Name**, **Description**, and **Tags** to create a Project.

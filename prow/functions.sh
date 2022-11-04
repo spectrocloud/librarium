@@ -18,8 +18,8 @@ check_docs() {
 	mkdir bin && tar -xvzf vale_${VERSION}_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
 	vale sync
-	# Run Vale against all modified files in the current commit
-	vale $(git diff-tree -r --no-commit-id --name-only $PULL_PULL_SHA | grep content) 
+	# Run Vale against all modified files in the content folder for the current commit
+	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA $PULL_PULL_SHA | grep content) 
 }
 
 # Initialize & Build  release docs
