@@ -13,11 +13,12 @@ build_docs() {
 
 # Run Vale on the content folder
 check_docs() {
-	wget https://github.com/errata-ai/vale/releases/download/v2.21.0/vale_2.21.0_Linux_64-bit.tar.gz
-	mkdir bin && tar -xvzf vale_2.21.0_Linux_64-bit.tar.gz -C bin
+	VERSION=2.21.0
+	wget https://github.com/errata-ai/vale/releases/download/v$VERSION/vale_${VERSION}_Linux_64-bit.tar.gz
+	mkdir bin && tar -xvzf vale_${VERSION}_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
 	vale sync
-	# Run vale against modified files in the current commit
+	# Run Vale against all modified files in the current commit
 	vale $(git diff-tree -r --no-commit-id --name-only $PULL_PULL_SHA | grep content) 
 }
 
