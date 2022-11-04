@@ -18,7 +18,7 @@ check_docs() {
 	mkdir bin && tar -xvzf vale_${VERSION}_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
 	vale sync
-	# Run Vale against all modified files in the content folder but compare the difference between the master branch AND this commit
+	# Run Vale against all modified files in the content folder but compare the difference between the master branch git tree blob AND this commit's git tree blob
 	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA $PULL_PULL_SHA | grep content) 
 }
 
@@ -39,7 +39,7 @@ sync_s3() {
 
 # Sync docs to docs
 sync_s3_release() {
-        rm -f public/robots.txt
+    rm -f public/robots.txt
 	aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs.spectrocloud.com --delete
 	aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs.spectrocloud.com --delete
 	aws cloudfront create-invalidation --distribution-id E1LK6TRNPR90DX --paths "/*"
