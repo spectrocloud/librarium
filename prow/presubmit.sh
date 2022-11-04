@@ -9,5 +9,5 @@ set -u
 source prow/functions.sh
 
 check_docs
-build_docs
+# build_docs
 
