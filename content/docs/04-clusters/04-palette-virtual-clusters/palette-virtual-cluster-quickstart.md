@@ -1,7 +1,7 @@
 ---
-title: "Quickstart with Sandbox Clusters"
-metaTitle: "Getting Started with Sandbox  Clusters on Palette"
-metaDescription: "The methods of creating Sandbox  clusters for a speedy deployment on any CSP"
+title: "Quickstart with Palette Virtual Clusters"
+metaTitle: "Getting Started with Palette Virtual Clusters on Palette"
+metaDescription: "The methods of creating Palette Virtual Clusters for a speedy deployment on any CSP"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,13 +13,13 @@ import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Getting Started with Sandbox  Clusters
+# Getting Started with Palette Virtual Clusters
 
-With the Palette Sandbox Cluster option, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
+With Palette Virtual Clusters, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
 
-There are certain advantages to use a sandbox  cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
+There are certain advantages to use a Palette virtual cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a managed Sandbox  Cluster from within Palette.
+Try the steps below to [enable](#enablingpalettevirtualclustersonanexistinghostcluster) and [deploy](#deployingapalettevirtualcluster) a managed Palette Virtual Cluster from within Palette.
 
 <br />
 
@@ -27,22 +27,21 @@ Try the steps below to [enable](/clusters/sandbox-clusters/cluster-quickstart#en
 
 - You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
 
-- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Sandbox  Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Sandbox  Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
+- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Palette Virtual Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Palette Virtual Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
 
   ### Host Clusters
 
-  There are two ways to engage with a Sandbox  Cluster on Palette.<p></p><br />
+  There are two ways to engage with a Palette Virtual Cluster on Palette.<p></p><br />
 
-   1. When you [create](/clusters) and [deploy](/clusters/sandbox-clusters/cluster-quickstart#deployingasandboxcluster) a new Host Cluster, there is an option to **Enable Sandbox  Clusters**. <p></p><br />Refer to the [Cluster Endpoint](/clusters/sandbox-clusters/cluster-quickstart#loadbalancer) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Sandbox  Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](#deployingapalettevirtualcluster) a new Host Cluster, there is an option to **Enable Palette Virtual Clusters**. <p></p><br />Refer to the [Cluster Endpoint](#enablingpalettevirtualclustersonanexistinghostcluster) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Palette Virtual Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
-    2. Similarly, you can [enable](/clusters/sandbox-clusters/cluster-quickstart#enablingsandboxclustersonanexistinghostcluster) an existing cluster; thus allowing it to host Sandbox  Clusters.<p></p><br />
+    2. Similarly, you can [enable](/clusters/palette-virtual-clusters/cluster-quickstart#enablingpalettevirtualclusterssonanexistinghostcluster) an existing cluster; thus allowing it to host Palette Virtual Clusters.<p></p><br />
 
 <InfoBox>
 
-When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included.
-Sandbox 
+When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included. 
 <br />
 
 ```yml
@@ -53,17 +52,17 @@ roleName: "custom-ng-role"
 </InfoBox>
 
 
-# Enabling Sandbox  Clusters on an Existing Host Cluster
+# Enabling Palette Virtual Clusters on an Existing Host Cluster
 
-You can enable sandbox  clusters on an existing host cluster by performing the following steps:<p></p><br />
+You can enable Palette Virtual Clusters on an existing host cluster by performing the following steps:<p></p><br />
 
 1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
 
-2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Sandbox  Clusters**.
+2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Palette Virtual Clusters**.
 
 
-3. Toggle the **Enable Sandbox  Clusters** option (yes/no).
+3. Toggle the **Enable Palette Virtual Clusters** option (yes/no).
 
     **Note**: This feature can be enabled when first creating a new cluster, so you may find that it is already enabled.
 
@@ -80,7 +79,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 -  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.<p></p><br />
 
 ## Ingress
-  If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the sandbox  cluster's Kubernetes API server.
+  If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the Palette Virtual Cluster's Kubernetes API server.
 
   Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller. See the Example Record in the recap below:
 
@@ -116,12 +115,12 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
 <br />
 
-# Deploying a Sandbox  Cluster
+# Deploying a Palette Virtual Cluster
 
-1. From the slide menu, select the **Clusters** tab and click the **Sandbox  Clusters** tab to list the available Sandbox  Clusters, and then select **Add New Sandbox  Cluster**.
+1. From the slide menu, select the **Clusters** tab and click the **Palette Virtual Clusters** tab to list the available Palette Virtual Clusters, and then select **Add New Palette Virtual Cluster**.
 
 
-2. Complete the **Deploy New Sandbox  Cluster** information:<p></p><br />
+2. Complete the **Deploy New Palette Virtual Cluster** information:<p></p><br />
 
     - Select a Host Cluster.<p></p><br />
 
@@ -143,15 +142,15 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
    - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
 <p></p><br />
 
-  ![Deploy-sandbox-cluster](deploy-nested-cluster.png "Deploy a Sandbox  Cluster")
+  ![Deploy-palette-virtual-cluster](deploy-nested-cluster.png "Deploy a Palette Virtual Cluster")
 
-Congratulations! Your Sandbox  Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
+Congratulations! Your Palette Virtual Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
 <br />
 
 
 <InfoBox>
 
-Palette does not support **Usage** and **Cost** metrics for the Sandbox  clusters running on GKE (Google Kubernetes Engine).
+Palette does not support **Usage** and **Cost** metrics for the Palette Virtual Clusters running on GKE (Google Kubernetes Engine).
 
 </InfoBox>
 
