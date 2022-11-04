@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Spectro Cloud has SOC 2 certification and a FIPS certificate for its Cryptographic Module. 
 
-**SOC 2 Type II**
+## SOC 2 Type II
 
 ![soc2.png](soc2.png "#width=180px")
 
@@ -34,9 +34,9 @@ Spectro Cloud is certified against SOC2 Type II, compliance with the AICPA’s (
 * The annual certification of SOC2 is Independent 3rd Party Auditor. 
 * Spectro Cloud SOC 2 Type II report is available upon request for any customers or prospects with signed MNDA.
 
-**FIPS 140-2**
+## FIPS 140-2
 
-Spectro Cloud is certified against FIPS 140-2 with Certificate number 4349 in compliance with the Cryptographic Module Validation Program (CMVP).  
+Spectro Cloud is certified against FIPS 140-2 with [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in compliance with the Cryptographic Module Validation Program (CMVP).  
 
 The Spectro Cloud Cryptographic Module is a general-purpose cryptographic library incorporated into the Kubernetes Management Platform and Kubernetes distributions for the protection of sensitive information.  
 
