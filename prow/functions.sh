@@ -6,13 +6,15 @@ set -x
 
 # Initialize & Build  docs
 build_docs() {
-	apk --update add autoconf automake build-base libtool nasm pkgconf
+	apk --update add autoconf automake build-base libtool nasm pkgconf git
 	make initialize
 	GATSBY_APPZI_TOKEN=${GATSBY_APPZI_TOKEN} GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID} GATSBY_ALGOLIA_SEARCH_KEY=${GATSBY_ALGOLIA_SEARCH_KEY} ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY} make build
 }
 
 # Run Vale on the content folder
 check_docs() {
+	git version
+	apk --update add autoconf automake build-base libtool nasm pkgconf git
 	wget https://github.com/errata-ai/vale/releases/download/v2.21.0/vale_2.21.0_Linux_64-bit.tar.gz
 	mkdir bin && tar -xvzf vale_2.21.0_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
