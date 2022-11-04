@@ -17,8 +17,7 @@ check_docs() {
 	mkdir bin && tar -xvzf vale_2.21.0_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
 	vale sync
-	# Only compare changes in the content folder against the master branch
-	# remote=$(git rev-parse origin/master)
+	# Run vale against modified files in the current commit
 	vale $(git diff-tree -r --no-commit-id --name-only $PULL_PULL_SHA | grep content) 
 }
 
