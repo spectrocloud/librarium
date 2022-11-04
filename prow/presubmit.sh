@@ -8,5 +8,6 @@ set -e
 set -u
 source prow/functions.sh
 
-build_docs
 check_docs
+build_docs
+

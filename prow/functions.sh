@@ -17,8 +17,8 @@ check_docs() {
 	mkdir bin && tar -xvzf vale_2.21.0_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
 	vale sync
-	vale content/docs/*.md
-
+	# Only compare changes in the content folder against the master branch
+	vale $(git diff-tree -r --no-commit-id --name-only head origin/master | grep content) 
 }
 
 # Initialize & Build  release docs
