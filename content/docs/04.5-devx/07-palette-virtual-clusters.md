@@ -16,9 +16,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## Palette Virtual Clusters
 
-Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, Palette Virtual Clusters will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads.
+Palette Virtual Clusters (PVC) are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, PVC will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. PVC is powered by [vCluster](https://www.vcluster.com/)
 
-Palette provisions and orchestrates Palette Virtual Clusters and makes it easy to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy Palette Virtual Clusters on Host Cluster Group as simple as following the wizard and attaching Add-on profiles.
+The Palette platform provisions and orchestrates all PVC, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy Palette Virtual Clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
 
 ### Create your Palette Virtual Cluster:
 

@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Getting Started with Palette Virtual Clusters
 
-With Palette Virtual Clusters, you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
+With Palette Virtual Clusters (PVC), you can deploy additional Kubernetes clusters that run as nested clusters within an existing Host Cluster.
 
 There are certain advantages to use a Palette virtual cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 

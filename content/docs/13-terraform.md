@@ -134,7 +134,7 @@ Find the detailed patch changes and comparisons within below **tabs**.
 * AWS cloud account is a mandatory attribute for AWS cluster resources.
 
 
-* Nested Cluster schema support for all the cloud types.
+* Palette Virtual Cluster schema support for all the cloud types.
 
 
 **Fixes:**
