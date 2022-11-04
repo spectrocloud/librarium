@@ -18,9 +18,8 @@ check_docs() {
 	export PATH=./bin:"$PATH"
 	vale sync
 	# Only compare changes in the content folder against the master branch
-	git config --get remote.origin.url
 	# remote=$(git rev-parse origin/master)
-	# vale $(git diff-tree -r --no-commit-id --name-only $remote | grep content) 
+	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA | grep content) 
 }
 
 # Initialize & Build  release docs
