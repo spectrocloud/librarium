@@ -13,17 +13,14 @@ build_docs() {
 
 # Run Vale on the content folder
 check_docs() {
-	git version
-	git branch
-	git status
-	apk --update add autoconf automake build-base libtool nasm pkgconf git
 	wget https://github.com/errata-ai/vale/releases/download/v2.21.0/vale_2.21.0_Linux_64-bit.tar.gz
 	mkdir bin && tar -xvzf vale_2.21.0_Linux_64-bit.tar.gz -C bin
 	export PATH=./bin:"$PATH"
-	git version
 	vale sync
 	# Only compare changes in the content folder against the master branch
-	vale $(git diff-tree -r --no-commit-id --name-only head origin/master | grep content) 
+	remote=$(git rev-parse origin/master)
+	echo $remote
+	vale $(git diff-tree -r --no-commit-id --name-only $remote | grep content) 
 }
 
 # Initialize & Build  release docs
