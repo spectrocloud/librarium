@@ -38,9 +38,9 @@ To create your new sandbox cluster:
 
  |**Sandbox Cluster Resource ** | **Default    **   |**Minimum Limit**|
  |------------------------------|-------------------|-----------------|
- | CPU (per request)            | 6                 | 4               |
- | Memory (per request)         | 8 GiB             | 4 GiB           |
- | Storage (per request)        | 10 GiB            | 2 GiB           |
+ | CPU (per request)            | 6                 | 2.5               |
+ | Memory (per request)         | 8 GiB             | 2.5 GiB           |
+ | Storage (per request)        | 10 GiB            | 0 GiB           |
 
 <br />
 
