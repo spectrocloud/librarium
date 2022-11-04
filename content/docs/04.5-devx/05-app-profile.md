@@ -120,13 +120,13 @@ User-provided values that will be consumed by the current tier. It can even use 
 ```
 {{.spectro.system.[VARIABLE_NAME]}}
 ```
-|**Supported Variables**|  
-|-----------------------|
-|appprofile.name| 
-|appprofile.uid| 
-|appdeployment.name| 
-|appdeployment.uid|
-|appdeployment.tiername: Resolves to a string value in the format `<deployment name>-<tier name>`.|
+|**Supported Variables**|  Description|
+|-----------------------|-------------|
+|appprofile.name|Name of the app profile|
+|appprofile.uid|Unique id of the app profile|
+|appdeployment.name|Name of the deployment|
+|appdeployment.uid|Unique id of the deployment|
+|appdeployment.tiername| Resolves to a string value in the format `<deployment name>-<tier name>`|
 
 <br />
 
