@@ -32,14 +32,13 @@ The developer quota can be managed through the Palette Platform as below:
 2. In the wizard to Manage Developer Settings, there is an option to `Hide system-level cluster groups from tenant users` using the toggle button. You will have to create your cluster groups by hiding the system-level cluster groups.
 
 
-3. Set the `User Quota,` where default values are as follows:
+3. Set the desired *User Quotas* values.  The user quotas have the following default values:
 
-|Resource|Default Quota|
-|--------|-------------|
-|Number of sandbox clusters| 2|
-|CPU|12|
-|Memory| 16 GiB|
-|Storage| 20 GiB|
+|**Resource Requirement for 2 Sandbox Clusters**|**Default Quota**|**Minimum Value**|
+|--------|-------------|-------------|
+|CPU|12|4|
+|Memory| 16 GiB|4 GiB|
+|Storage| 20 GiB|2 GiB|
 
 <InfoBox>
 The Quota allocation can be interpreted as - Each user in this tenant may create up to 2 sandbox clusters and has a cumulative CPU/Memory/Storage quota across all their sandbox clusters. Each sandbox cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
