@@ -30,7 +30,7 @@ For a Tenant admin, the password shall be set upon the initial login. The Tenant
 
 ## RBAC
 
-Palette allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the <Tooltip trigger={<u>RBAC</u>}>Palette's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations </Tooltip> [page](/user-management/rbac#rbac).
+Palette allows the users that have been added to be allowed or restricted access to resources based on the roles set by the tenant admin. This Role-Based Access Control is explained in detail in the <Tooltip trigger={<u>RBAC</u>}>Palette's <a href="/user-management#rbac">RBAC</a> design allows granting granular access to resources and its operations </Tooltip> [page](/user-management/palette-rbac#rbac).
 
 # Roles and Permissions
 

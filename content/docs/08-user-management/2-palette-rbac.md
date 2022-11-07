@@ -170,7 +170,7 @@ The Global Project Scope holds a group of resources in a logical grouping. Users
 6. [Cluster Profile Viewer Role](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofileviewer)
 
 
-7. [Cluster Admin Role](user-management/palette-rbac/project-scope-roles-permissions#clusteradmin)
+7. [Cluster Admin Role](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofileadmin)
 
 
 8. [Cluster Editor Role](/user-management/palette-rbac/project-scope-roles-permissions#clustereditor)
