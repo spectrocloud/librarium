@@ -103,7 +103,7 @@ needs. Detailed instructions for this are provided below.
 
 The Palette Edge Management agent inside the edge host waits for the configuration to be available in Palette Management Console. Once registration and configuration are complete, it proceeds to install the Kubernetes cluster. The Kubernetes distribution, version, and other configuration properties are read from the associated infrastructure profile in the cluster configuration. Additional add-ons, if any, are deployed after the Kubernetes installation is complete. You can install a single or multi-node cluster using this process. You can also scale up your cluster at a later point after deployment.
 
-If the edge location configuration is known and predictable Staging, Installation, and Registration can be potentially combined into one step by the central IT/Ops team and then ship the fully configured edge hosts to the edge location. The Site Operator at the edge location needs to hook up power and network cable without any further configuration. The edge cluster will be ready to be 
+If the edge location configuration is known and predictable, then Staging, Installation, and Registration can be combined into one step by the central IT/Ops team, and then ship the fully configured edge hosts to the edge location. The Site Operator at the edge location needs to hook up power and network cable without any further configuration. The edge cluster will be ready to be 
 centrally managed for future upgrades.
 
 <br />
@@ -208,11 +208,11 @@ stages:
 
 For bare metal edge hosts, creating the palette edge installer variant involves generating an installer image which is derived by customizing the default Palette Edge Installer. Site-specific settings described above are baked into this image. The customization is performed by using the Palette Edge Installer Container. 
 
-Following are the steps to customize **site settings** and **build an installer image**: 
+The following are steps to customize *site settings* and build an *installer image*: 
 
 <br />
 
-1. Checkout the following [Git Repo](https://github.com/spectrocloud/pxke-samples) on your local machine or server where you intend to run the customization procedure.
+1. Checkout the following [Git Repo](https://github.com/spectrocloud/pxke-samples) on your local machine or server where you intend to invoke the customization procedure.
 
    ```
      git clone https://github.com/spectrocloud/pxke-samples
