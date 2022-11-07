@@ -144,7 +144,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
   ![Deploy-palette-virtual-cluster](deploy-nested-cluster.png "Deploy a Palette Virtual Cluster")
 
-Your Palette Virtual Cluster is now deployed. If you would like more information on managing your resources, review to the links below.
+Your Palette Virtual Cluster is now deployed. If you would like more information on managing your resources, review the links below.
 <br />
 
 
