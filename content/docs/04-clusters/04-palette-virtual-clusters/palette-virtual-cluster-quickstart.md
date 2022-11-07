@@ -144,25 +144,25 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
   ![Deploy-palette-virtual-cluster](deploy-nested-cluster.png "Deploy a Palette Virtual Cluster")
 
-Congratulations! Your Palette Virtual Cluster is now deployed. If you like more information on managing your resources, refer to the links below.
+Your Palette Virtual Cluster is now deployed. If you would like more information on managing your resources, review to the links below.
 <br />
 
 
 <InfoBox>
 
-Palette does not support **Usage** and **Cost** metrics for the Palette Virtual Clusters running on GKE (Google Kubernetes Engine).
+Palette does not support *Usage* and *Cost* metrics for the Palette Virtual Clusters running on GKE (Google Kubernetes Engine).
 
 </InfoBox>
 
 
 # Resources
 
-[Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
+- [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 
-[CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
+- [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu)
 
-[Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
+- [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
-[Amazon EBS CSI driver - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)
+- [Amazon EBS CSI driver - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)
 
-[Creating the Amazon EBS CSI driver IAM role for service accounts - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
+- [Creating the Amazon EBS CSI driver IAM role for service accounts - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html)
