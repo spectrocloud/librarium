@@ -41,6 +41,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 |Module|Provider Version|Module Example|
 |----- |------|------------------------|
+|0.4.1 |0.10.2|
 |0.4.1 |0.10.1|            |
 |0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)|
 |0.3.1 |0.9.1 |  |
@@ -87,6 +88,35 @@ Find the detailed patch changes and comparisons within below **tabs**.
 
 <Tabs>
 
+<Tabs.TabPane tab="v0.10.2" key="v0.10.2">
+
+**Supported Module Version:** [0.4.1](/terraform#modulechanges)
+
+# Changes 
+
+**New Features:**
+
+* Support of Palette Dev Engine application.
+
+
+* Support of Palette Dev Engine cluster context for tenant.
+
+**Bugfix:**
+
+* Support of appliance pairing key attribute.
+
+
+* Validation support for application deployment.
+
+**Misc:**
+
+* Latest hapi dependency.
+
+
+Refer to Full Changelog: [v0.10.1 to v0.10.2](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.10.2)
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="v0.10.1" key="v0.10.1">
 
 **Supported Module Version: 0.4.1**
@@ -120,13 +150,37 @@ Find the detailed patch changes and comparisons within below **tabs**.
 
 * Fixing NPE issue when reading nested machine pool.
 
+# Module Changes 
+
+
+The compatible **Module** for provider 0.10.1 is **0.4.1**
+
+**New Features:**
+
+* Placements support for vSphere.
+
+* Added appliance pairing key attribute.
+
+**Bugfix:**
+
+* Fix addon deployment timeout reference.
+
+**Terraform Documentation Updates:**
+
+* README.md documentation now includes REFERENCE.md
+
+* E2E addon deployment example.
+
+
+Refer to Full Changelog: [v0.10.0 to v0.10.1](https://registry.terraform.io/providers/spectrocloud/spectrocloud/0.10.1)
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="v0.10.0" key="v0.10.0">
 
 # Provider Changes 
 
-* Palette Terraform support for Add-on deployment.
+* Palette Terraform support for Add-on deployment:
    * Add-on deployments: Support skip_packs tag
    * Add-on deployments: Attach cluster profile by name
 
