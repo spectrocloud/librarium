@@ -393,7 +393,7 @@ You can provide a QR case-based automated registration to simplify the process. 
 
 The following steps are required to facilitate this flow:
 
-* Palette provides a sample serverless application (Palette Edge Registration App) built and deployed using the [Vercel](https://vercel.com/) platform. This application needs to be cloned and customized. Contact our sales team to access the GitHub repository that hosts the code for this application and set up automated deployments into the Vercel platform. 
+* Palette provides a sample serverless application (Palette Edge Registration App) built and deployed using the [Vercel](https://vercel.com/) platform. This application needs to be cloned and customized. Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to access the GitHub repository that hosts the code for this application and set up automated deployments into the Vercel platform. 
 
 
 * Clone the repository and change the company name, logo, and theme.
