@@ -66,7 +66,7 @@ Following are some of the architectural highlights of the Palette-provisioned Ed
 * Whitelist the sites and repositories mentioned in this(https://docs.spectrocloud.com/clusters#proxywhitelists) document.
 
 
-* For bare metal edge hosts, a bootable USB drive or pixie setup to boot devices from Palette Edge Distribution Installer image. 
+* For bare metal edge hosts, a bootable USB drive or PXE setup to boot devices using the Palette Edge Distribution Installer image. 
 
 # Palette Edge Distribution
 
@@ -272,7 +272,7 @@ USER_DATA_FILE="my-user-data.yaml”
 ```
 
 
-6. Mount this Palette Edge Installer ISO using a [bootable USB drive](http://tbd), [pixie server](http://tbd), or any other means to the bare metal appliances' primary drive (USB or CDROM). The installer will be flashed to the edge host hard disk, and the host will be shut down. The bare-metal edge host appliance is ready to be shipped to the edge location.
+6. Mount this Palette Edge Installer ISO using a [bootable USB drive](http://tbd), [PXE server](http://tbd), or any other means to the bare metal appliances' primary drive (USB or CDROM). The installer will be flashed to the edge host hard disk, and the host will be shut down. The bare-metal edge host appliance is ready to be shipped to the edge location.
 
 </Tabs.TabPane>
 
