@@ -30,8 +30,8 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 
 2. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
-   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new sandbox cluster.
-   * Palette virtual cluster name: Provide a custom sandbox cluster name or go with the default name.
+   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new PVC.
+   * Palette virtual cluster name: Provide a custom PVC name or go with the default name.
    * Provide the resource limit in terms of CPU, memory, and storage. 
 
  <br />
@@ -44,6 +44,6 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 <br />
 
-   * Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
+   * Review the information and deploy the PVC. The PVC will be provisioned within the next few minutes.
 
 <br />

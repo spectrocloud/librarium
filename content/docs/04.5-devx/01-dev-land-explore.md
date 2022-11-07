@@ -17,10 +17,10 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette is offering complimentary compute resources to the developers who sign up for Palette Dev Engine. These developers can use this compute resources to either, 
 
-* Provision a Sandbox Cluster to get full access to all the namespaces
+* Provision a Palette Virtual Cluster (PVC) to get full access to all the namespaces
 
 
-* Deploy an application (profile) which would in turn spin up a Sandbox Cluster
+* Deploy an application (profile) which would in turn spin up a Palette Virtual Cluster
 
 In either case, they are governed by the quota set by Spectro Cloud. There is no limit to the number of application profiles they can model. We offer 12 vCPU, 16 GiB of memory, and 20 GiB of storage complimentary to the developers.
 
@@ -38,7 +38,7 @@ In either case, they are governed by the quota set by Spectro Cloud. There is no
 
  * [Create App](/devx/apps)
 
- * [Create Sandbox Clusters](/devx/sandbox-clusters)
+ * [Create Palette Virtual Clusters](/devx/palette-virtual-clusters)
 
  * [Connect Custom Registries](/devx/registries)
 
@@ -54,7 +54,7 @@ Palette Developer Engine provides the following additional capabilities for deve
 2. Switching between the App Mode to Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
 
 
-3. Host the Sandbox Clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
+3. Host the Palette Virtual Cluster on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
 
 </InfoBox>
 

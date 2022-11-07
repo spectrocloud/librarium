@@ -25,8 +25,8 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
   * Rapid Application deployment with a smooth onboarding experience.
   * RBAC with a developer-centric view.
   * System scope resource quota.
-  * System Scope Cluster groups to host [Sandbox clusters](/clusters/sandbox-clusters).
-  * Out-of-the-box application profiles and applications deployment with Sandbox Clusters. 
+  * System Scope Cluster groups to host [Palette Virtual Clusters](/clusters/palette-virtual-clusters).
+  * Out-of-the-box application profiles and applications deployment with Palette Virtual Clusters. 
   * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
 * The Palette [Native Edge](/clusters/edge/native) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
@@ -47,7 +47,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
   * Native Edge clusters
-  * Palette Sandbox Clusters
+  * Palette Virtual Clusters
   * Fixes towards [Enhancements](/terraform#changes)
 
 **Packs and Integrations**
@@ -75,7 +75,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* While deploying multiple apps in a sandbox cluster, if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same sandbox cluster might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
+* While deploying multiple apps in a Palette Virtual Cluster (PVC), if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same PVC might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
 
   * Delete the stuck App.
   * Fix the App with the error.

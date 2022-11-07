@@ -83,7 +83,7 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
   Additionally, a wildcard DNS record must be configured that maps the Host DNS Pattern to the load balancer associated with the NGINX Ingress Controller. See the Example Record in the recap below:
 
-   **Host DNS Pattern**: `*.sandbox .host.1.spectrocloud.com`
+   **Host DNS Pattern**: `*.sandbox.host.1.spectrocloud.com`
 <br />
 
 <br />
