@@ -27,3 +27,7 @@ docker-image:
 
 docker-start:
 	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
+
+verify-url-links:
+	rm link_report.csv
+	linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv

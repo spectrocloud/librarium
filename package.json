@@ -69,6 +69,7 @@
     "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-react-router-scroll": "^4.0.0",
+    "linkinator": "^4.1.0",
     "prettier": "^2.4.1"
   },
   "scripts": {
