@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## App Profiles
 
-App Profiles are templates created with preconfigured services required for Palette Virtual Cluster (PVC) deployment. App Profiles provide a way to drive consistency across PVC. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on PVC. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
+App Profiles are templates created with preconfigured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across Palette Virtual Clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on virtual cluster. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
 
 <br />
 

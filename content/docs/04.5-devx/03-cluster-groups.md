@@ -27,7 +27,7 @@ The enterprise developer can create and utilize the Palette compute under the sc
 
 # Cluster Groups
 
-A Cluster Group is an aggregation of host clusters deployed through the Palette Tenant Admin console. Palette Virtual Clusters (PVC) can be launched into host cluster groups. The cluster groups are created under two scopes:
+A Cluster Group is an aggregation of host clusters deployed through the Palette Tenant Admin console. Palette Virtual Clusters can be launched into host cluster groups. The cluster groups are created under two scopes:
 
 ## System Scope
 
@@ -74,7 +74,7 @@ To create a Palette Host Cluster Group, you need to [deploy a healthy running Pa
 **Note:**  Please ensure that a wildcard DNS record exists that maps the provided Host Pattern to the NGINX Ingress Controller load balancer for this cluster.
 
 
-   **Palette Virtual Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the PVC are getting launched.
+   **Palette Virtual Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the Palette Virtual Clusters are getting launched.
 
  |**Palette Virtual Cluster Resource ** | **Default**   |**Minimum Limit**|
  |------------------------------|-------------------|-----------------|
@@ -83,7 +83,7 @@ To create a Palette Host Cluster Group, you need to [deploy a healthy running Pa
  | Storage (per request)        | 10 GiB            | 2 GiB           |
 
 
-3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the PVC.
+3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the Palette Virtual Cluster.
 
 
 ### Manage your Cluster Group

@@ -33,14 +33,14 @@ The developer quota can be managed through the Palette Platform as below:
 
 3. Set the desired *User Quotas* values.  The user quotas have the following default values:
 
-|**Resource Requirement for two PVC**|**Default Quota**|**Minimum Value**|
+|**Resource Requirement for two Palette Virtual Clusters**|**Default Quota**|**Minimum Value**|
 |--------|-------------|-------------|
 |CPU|12|4|
 |Memory| 16 GiB|4 GiB|
 |Storage| 20 GiB|2 GiB|
 
 <InfoBox>
-The Quota allocation can be interpreted as each user in this tenant may create up to two PVC with a cumulative CPU/memory/storage quota across all their PVCs. Each PVC may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
+The Quota allocation can be interpreted as each user in this tenant may create up to two Palette Virtual Clusters with a cumulative CPU/memory/storage quota across all their PVCs. Each virtual cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
 </InfoBox>
 
 <br />

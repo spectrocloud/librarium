@@ -16,9 +16,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## Palette Virtual Clusters
 
-Palette Virtual Clusters (PVC) are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, PVC will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. PVC is powered by [vCluster](https://www.vcluster.com/)
+Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, Palette Virtual Clusters will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
 
-The Palette platform provisions and orchestrates all PVC, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy Palette Virtual Clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
+The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
 
 ### Create your Palette Virtual Cluster:
 
@@ -30,8 +30,8 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 
 2. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
-   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new PVC.
-   * Palette virtual cluster name: Provide a custom PVC name or go with the default name.
+   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
+   * Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    * Provide the resource limit in terms of CPU, memory, and storage. 
 
  <br />
@@ -44,6 +44,6 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 <br />
 
-   * Review the information and deploy the PVC. The PVC will be provisioned within the next few minutes.
+   * Review the information and deploy the Palette Virtual Cluster. The virtual cluster will be provisioned within the next few minutes.
 
 <br />

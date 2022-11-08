@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Apps
 
-Users can create applications based on their use cases to the Palette Dev Engine. Palette encourages the user to deploy their own use cases to the Palette Virtual Clusters (PVC), in addition to a set of general purpose applications available within the Palette Dev Engine. This section will introduce how these use applications can be deployed to a PVC.
+Users can create applications based on their use cases to the Palette Dev Engine. Palette encourages the user to deploy their own use cases to the Palette Virtual Clusters, in addition to a set of general purpose applications available within the Palette Dev Engine. This section will introduce how these use applications can be deployed to a Palette Virtual Cluster.
 
 ## Start Creating a new App
 
@@ -31,13 +31,13 @@ To create your new App,
   * Application Name: A custom name for the application.
 
   * Select the App Profile: Select an App profile from the existing list by clicking `Select App Profile.’
-  * Make the choice of deploying PVC. The options available here are:
+  * Make the choice of deploying Palette Virtual Cluster. The options available here are:
 
    **[Deploy In A Palette Virtual Cluster](/devx/palette-virtual-clusters)**
 
-   ** Deploy In An Existing PVC**
+   ** Deploy In An Existing Palette Virtual Cluster**
 
-	Select an existing PVC from the available list.
+	Select an existing virtual cluster from the available list.
 
 
 3. Click on `Create an application` to complete the wizard. The application will start getting deployed and wait for the application to get ready.

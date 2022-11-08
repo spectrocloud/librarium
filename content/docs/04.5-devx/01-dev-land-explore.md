@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette is offering complimentary compute resources to the developers who sign up for Palette Dev Engine. These developers can use this compute resources to either, 
 
-* Provision a Palette Virtual Cluster (PVC) to get full access to all the namespaces
+* Provision a Palette Virtual Cluster to get full access to all the namespaces
 
 
 * Deploy an application (profile) which would in turn spin up a Palette Virtual Cluster

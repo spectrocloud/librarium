@@ -90,10 +90,10 @@ Palette discovers the Helm charts already installed within the imported brownfie
 
 # Resource Quota
 
-Palette allocates quota to users consuming the Palette cluster group(s) to try out our free tier offering. They may launch a new Palette Virtual Cluster (PVC) or deploy apps to new PVC or existing ones. Users will use the quota defined at the system level while exploring the capabilities offered by Palette (SaaS). 
+Palette allocates quota to users consuming the Palette cluster group(s) to try out our free tier offering. They may launch a new Palette Virtual Cluster or deploy apps to new Palette Virtual Cluster or existing ones. Users will use the quota defined at the system level while exploring the capabilities offered by Palette (SaaS). 
 
 At the same time, our Enterprise developers might offer the above capabilities to their internal developers, i.e., enterprise developers. These enterprise developers (in theory) could use the system-level quota offered to every other developer. Still, in all likelihood, the tenant admin will set up different cluster groups(s) and quotas for enterprise developers. You may view this as the enterprise developer's quota offered at the tenant level.
-Enterprise developers may not exceed their system-level quota while launching PVCs in system-level cluster group(s). In addition, they may not exceed their tenant-level quota while launching PVC in their tenant-level cluster groups.
+Enterprise developers may not exceed their system-level quota while launching Palette Virtual Clusters in system-level cluster group(s). In addition, they may not exceed their tenant-level quota while launching Palette Virtual Clusters in their tenant-level cluster groups.
 
 ## Manage the User Quota
 
@@ -109,13 +109,13 @@ The user quota can be managed through the Palette Platform as below:
 
 |Resource|Default Quota|
 |--------|-------------|
-|Number of PVC | 2|
+|Number of Palette Virtual Clusters | 2|
 |CPU|12|
 |Memory| 16 GiB|
 |Storage| 20 GiB|
 
 <InfoBox>
-The Quota allocation can be interpreted as each developer in this tenant may create up to two PVCs with a cumulative CPU/memory/storage quota across all their PVCs. Each PVC cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
+The Quota allocation can be interpreted as each developer in this tenant may create up to two Palette Virtual Clusters with a cumulative CPU/memory/storage quota across all their virtual clusters. Each virtual cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
 </InfoBox>
 
 <br />
