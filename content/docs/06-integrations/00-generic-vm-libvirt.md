@@ -4,7 +4,7 @@ metaTitle: 'Generic Virtual Machines Libvirt'
 metaDescription: 'Choosing Libvirt Generic Virtual Machine within the Palette console'
 hiddenFromNav: true
 isIntegration: true
-category: ['system apps']
+category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png'
 ---
 
