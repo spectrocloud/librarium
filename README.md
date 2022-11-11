@@ -82,10 +82,10 @@ To check for broken URLs in production issue the following command but be aware 
 make verify-url-links
 ```
 
-If you want to check against the staging environment then use the following command.
+If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
 
 ```shell
-make verify-url-links-staging
+make verify-url-links-local
 ```
 
 An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
