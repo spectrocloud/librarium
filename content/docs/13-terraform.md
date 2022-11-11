@@ -65,7 +65,7 @@ The [Spectro Cloud Terraform Modules](https://registry.terraform.io/modules/spec
 
 Palette Terraform Supports:
 
-* Sandbox Clusters starting from Provider version 0.10.1
+* Palette Virtual Clusters starting from Provider version 0.10.1
 * Edge Native Clusters starting from Provider version 0.10.1
 
 </InfoBox>
