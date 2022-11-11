@@ -51,13 +51,13 @@ To create your new sandbox cluster:
 
 ## Palette Virtual Cluster Pause and Resume
 
-The Palette allows the Pause and Resume of Palette Virtual Clusters when not in use. This feature enables the users with optimized resource sharing by pausing the virtual clusters, not in use. This adds significant flexibility in managing operating costs and resource management for the Palette virtual clusters. 
+Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users with optimized resource sharing by pausing the Virtual Clusters, not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters. 
 
 <br />
 
-### Resource Dependencies
+### Resource Allocation Behaviors
 
-* The Quota allocation is independent of a Virtual Cluster's Pause or Resume status.
+* The quota allocation is independent of a Virtual Cluster's Pause or Resume status.
 
 
 * The CPU and Memory are freed upon pausing a Virtual Cluster.
@@ -76,7 +76,7 @@ The Palette allows the Pause and Resume of Palette Virtual Clusters when not in 
 
 <br />
 
-### How to Pause and Resume your Palette Virtual Cluster
+###  Pause and Resume your Palette Virtual Cluster
 
 Invoke the pause and resume operations from the Palette Console. 
 
