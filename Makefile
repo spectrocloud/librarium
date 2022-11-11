@@ -30,8 +30,8 @@ docker-start:
 
 verify-url-links:
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
 
-verify-url-links-staging:
-	rm link_report.csv  || echo "No report exists. Proceeding to scan step"
-	linkinator https://docs-latest.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
+verify-url-links-local: build
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npm run test-links
