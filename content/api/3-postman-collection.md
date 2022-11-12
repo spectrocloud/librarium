@@ -21,8 +21,12 @@ Spectro Cloud provides a Postman collection for your convenience to help you int
 
 To interact with the API, you will need the following:
 
-* A base URL (https://api.spectrocloud.com/v1).
+* A base URL (https://api.spectrocloud.com).
 * An authentication method. 
+
+<InfoBox>
+If you're running Palette on a self-hosted server instead of the SaaS version, use your server URL as the base URL in the API request.
+</InfoBox>
 
 ## Authentication
 
@@ -32,17 +36,20 @@ Two forms of authentication are available to interact with the Spectro Cloud API
 or
 * An API Key with an ApiKey value.
 
-To learn more about these authentication methods, navigate to https://docs.spectrocloud.com/api/introduction.
+Learn more about [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) in Palette documentation.
 
-## Import the Payload
+## Import the Postman Collection
 
-After you set up authorization, use this URL to import your configuration:
+Use this URL to import your configuration:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/master/content/api/palette-apis.json.
+https://raw.githubusercontent.com/spectrocloud/librarium/master/content/api/palette-apis.json
 
-![Copy/paste the URL in the **Import** dialog as a link.](URL-as-a-link.png)
+1. Open the **Import** dialog. 
+2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot. 
+3. Click the **Continue** button.  
+Postman imports your collection and lists it under Import Complete.
+
+![Copy/paste the URL in the **Import** dialog as a link.](URL-as-a-link.png)   
 
 
-
-
-To learn more about importing a Postman collection, navigate to https://learning.postman.com/docs/getting-started/importing-and-exporting-data/.
+Find details about importing in Postman's [import/export](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/) tutorial.
