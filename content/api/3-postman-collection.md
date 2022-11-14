@@ -47,10 +47,13 @@ Use the following URL to import your configuration into Postman:
 
 https://raw.githubusercontent.com/spectrocloud/librarium/master/content/api/palette-apis.json
 <br />
+
 1. Open the **Import** dialog. 
 2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot. 
-3. Click the **Continue** button.  
+3. Click the **Continue** button.
+  
 Postman imports your collection and lists it under Import Complete.
+<br />
 
 ![Copy/paste the URL in the **Import** dialog as a link.](URL-as-a-link.png)   
 
