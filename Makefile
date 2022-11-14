@@ -27,3 +27,11 @@ docker-image:
 
 docker-start:
 	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
+
+verify-url-links:
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
+
+verify-url-links-local: build
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npm run test-links
