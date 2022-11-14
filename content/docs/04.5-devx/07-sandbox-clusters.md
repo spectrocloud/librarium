@@ -55,7 +55,7 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 
 <br />
 
-### Resource Allocation Behaviors
+### System and Resource Impact
 
 * The quota allocation is independent of a Virtual Cluster's Pause or Resume status.
 
