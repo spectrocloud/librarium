@@ -25,7 +25,7 @@ To interact with the API, you will need the following:
 
 * Postman application (10.2.2 or greater)
 * A base URL (https://api.spectrocloud.com).
-* An authentication method. 
+* An authentication credential. 
 
 <InfoBox>
 If you're running Palette on a self-hosted server instead of the SaaS version, use your server URL as the base URL in the API request.
@@ -43,7 +43,7 @@ Learn more about [authentication methods](https://docs.spectrocloud.com/user-man
 
 ## Import the Postman Collection
 
-Use this URL to import your configuration:
+Use the following URL to import your configuration into Postman:
 
 https://raw.githubusercontent.com/spectrocloud/librarium/master/content/api/palette-apis.json
 
