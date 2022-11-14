@@ -19,8 +19,11 @@ import InfoBox from "shared/components/InfoBox"
 
 Spectro Cloud provides a Postman collection for your convenience to help you interact with the Spectro Cloud API.
 
+## Prerequisites
+
 To interact with the API, you will need the following:
 
+* Postman application (10.2.2 or greater)
 * A base URL (https://api.spectrocloud.com).
 * An authentication method. 
 
