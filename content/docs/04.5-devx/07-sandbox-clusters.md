@@ -69,7 +69,7 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * The Apps deployed on a Virtual Cluster go to a pause state when the cluster is paused.
 
 
-* New apps cannot be deployed on a Virtual Cluster in the paused state.
+* New Apps cannot be deployed on a Virtual Cluster in the paused state.
 
 
 * Virtual Clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console. 
