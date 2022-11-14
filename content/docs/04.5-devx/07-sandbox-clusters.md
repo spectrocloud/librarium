@@ -63,16 +63,16 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * The CPU and Memory are freed to the Cluster Group upon pausing a Virtual Cluster.
 
 
-* Resources like Storage and Load Balancers are allocated to the paused Virtual Cluster.
+* Resources such as storage, and Load Balancers remain allocated to a virtual cluster regardless of the state.
 
 
-* The Apps deployed on a Palette Virtual Cluster goes to a Pause state when the Virtual Cluster is paused.
+* The Apps deployed on a virtual cluster go to a pause state when the cluster is paused.
 
 
-* To a paused Palette Virtual Cluster, deploying new apps cannot be done until it is resumed.
+* New apps cannot be deployed on a virtual cluster in the paused state.
 
 
-* The paused virtual clusters will still appear as an entry in the Palette Dev Engine Console. 
+* Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console. 
 
 <br />
 
