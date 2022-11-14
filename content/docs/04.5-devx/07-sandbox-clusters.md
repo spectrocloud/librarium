@@ -47,3 +47,29 @@ To create your new sandbox cluster:
    * Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
 
 <br />
+
+### Resource Tracking for Palette Virtual Clusters
+
+Palette users can track the available resources within a Cluster Group while launching a Virtual Cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:
+
+<br />
+
+* **Grey**: Resources already in use.
+
+
+* **Green**: The resources allocated for the Virtual Cluster under deployment.
+
+
+* **White**: Resources available within the Cluster Group which can be utilized after deploying the new Virtual Cluster.
+
+
+### Example Scenario
+
+![color-tracking.png](color-tracking.png) 
+
+The above example screenshot displays the scenario. The Cluster Group selected in the example has a Virtual Cluster already running on it. The info box displays the recommended minimum CPU and memory to be allocated to the new Virtual Cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. The users can hence plan the resource utilization as per the available resources. 
+
+<br />
+<br />
+
+
