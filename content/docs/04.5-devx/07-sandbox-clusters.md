@@ -51,7 +51,7 @@ To create your new sandbox cluster:
 
 ## Palette Virtual Cluster Pause and Resume
 
-Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users with optimized resource sharing by pausing the Virtual Clusters, not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters. 
+Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to optimize resource utilization by pausing the Virtual Clusters, not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters. 
 
 <br />
 
@@ -63,16 +63,16 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * The CPU and Memory are freed to the Cluster Group upon pausing a Virtual Cluster.
 
 
-* Resources such as storage, and Load Balancers remain allocated to a virtual cluster regardless of the state.
+* Resources such as storage, and Load Balancers remain allocated to a Virtual Cluster regardless of the state.
 
 
-* The Apps deployed on a virtual cluster go to a pause state when the cluster is paused.
+* The Apps deployed on a Virtual Cluster go to a pause state when the cluster is paused.
 
 
-* New apps cannot be deployed on a virtual cluster in the paused state.
+* New apps cannot be deployed on a Virtual Cluster in the paused state.
 
 
-* Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console. 
+* Virtual Clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console. 
 
 <br />
 
