@@ -23,7 +23,7 @@ Spectro Cloud provides a Postman collection for your convenience to help you int
 
 To interact with the API, you will need the following:
 
-* Postman application (10.2.2 or greater)
+* [Postman application](https://www.postman.com/downloads/) v10.2.2+
 * A base URL (https://api.spectrocloud.com).
 * An authentication credential. 
 
