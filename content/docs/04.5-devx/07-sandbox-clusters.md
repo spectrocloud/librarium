@@ -60,7 +60,7 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * The quota allocation is independent of a Virtual Cluster's Pause or Resume status.
 
 
-* The CPU and Memory are freed upon pausing a Virtual Cluster.
+* The CPU and Memory are freed to the Cluster Group upon pausing a Virtual Cluster.
 
 
 * Resources like Storage and Load Balancers are allocated to the paused Virtual Cluster.
