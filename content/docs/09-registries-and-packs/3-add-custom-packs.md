@@ -1,6 +1,6 @@
 ---
-title: "Adding a custom pack"
-metaTitle: "Adding a custom pack"
+title: "Adding a Custom Pack"
+metaTitle: "Adding a Custom Pack"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
