@@ -17,17 +17,17 @@ import Tooltip from "shared/components/ui/Tooltip";
 # Canonical Micro Kubernetes
 
 
-MicroK8s is a scalable Kubernetes distribution providing core Kubernetes functionalities with optimal resource consumption. 
+Micro Kubernetes is a scalable Kubernetes distribution that provides core Kubernetes functionalities with optimal resource consumption. 
 
-With limited resource requirements, MicroK8s extends its support in:
+With limited resource requirements, Micro Kubernetes extends its support with the following:
 
-* Turning Kubernetes into a lightweight development tool.
-
-
-* Making Kubernetes available for use in minimal environments such as GitHub CI.
+* Turns Kubernetes into a lightweight development tool.
 
 
-* Adapting Kubernetes for small-appliance IoT applications.
+* Makes Kubernetes available for use in minimal environments such as GitHub Continuous Integration (CI).
+
+
+* Adaps Kubernetes for small-appliance internet of things (IoT) applications.
 
 # Prerequisites
 
@@ -58,15 +58,15 @@ With limited resource requirements, MicroK8s extends its support in:
 
 # Quick Workflow
 
-1. [Create AWS Cloud Account](/clusters/public-cloud/eks#creatinganawscloudaccount) in Palette Console.
+1. [Create an AWS Cloud Account](/clusters/public-cloud/eks#creatinganawscloudaccount) in the Palette Console.
 
-2. [Create a Infrastructure or Add-on Cluster Profile](/cluster-profiles/task-define-profile) for AWS cloud.
+2. [Create an Infrastructure or Add-on Cluster Profile](/cluster-profiles/task-define-profile) for AWS cloud.
 
 3. Add Micro Kubernetes as the Kubernetes distribution for the `Infrastructure Layer`.
 
-4. Launch your Palette [AWS Cluster](/clusters/public-cloud/aws#deployinganawscluster).
+4. Launch Palette [AWS Cluster](/clusters/public-cloud/aws#deployinganawscluster).
 
-5. Wait for the provisioning to get completed.
+5. Wait for provisioning to complete.
 
 <InfoBox>
 Currently Palette supports Micro Kubernetes for AWS clusters only.
