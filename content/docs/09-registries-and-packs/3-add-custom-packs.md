@@ -11,7 +11,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Add custom packs
+# Add Custom Packs
 
 Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](/registries-and-packs/spectro-cli-reference).
 
@@ -44,7 +44,7 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 | | | | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
 
-# Steps to create a custom pack
+# Create a Custom Pack
 
 Follow the steps below to create a custom pack.
 
@@ -147,7 +147,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="AWS Custom OS Pack" key="aws_custom_os_pack">
 
-## AWS Custom-OS Pack
+### AWS Custom-OS Pack
 
 ```yaml
 {
@@ -178,7 +178,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="Azure Custom OS Pack" key="azure_custom_os_pack">
 
-## Azure Custom OS Pack
+### Azure Custom OS Pack
 
 ```yaml
 {
@@ -209,7 +209,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
 
-## VMWare Custom OS Pack - Local Image
+### VMWare Custom OS Pack - Local Image
 
 ```yaml
 {
@@ -236,7 +236,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-## VMWare Custom OS Pack - Remote Image
+### VMWare Custom OS Pack - Remote Image
 
 ```yaml
 {
@@ -266,9 +266,9 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 </Tabs>
 
-## Ansible Roles
+# Ansible Roles
 
-In all the examples above, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
+In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
 
 ```
 ./pack.json
