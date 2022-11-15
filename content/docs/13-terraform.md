@@ -72,6 +72,7 @@ Palette Terraform Supports:
 
 |Module|Provider Version|Module Example|
 |----- |------|------------------------|
+|0.4.1 |0.10.5|
 |0.4.1 |0.10.2|
 |0.4.1 |0.10.1|            |
 |0.4.0 |0.10.0|[Edge](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge), [Edge vSphere](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/edge-vsphere), [EKS](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/eks), [libvirt](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/libvirt), [Macro](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/macro), [TKE](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest/examples/tke)|
