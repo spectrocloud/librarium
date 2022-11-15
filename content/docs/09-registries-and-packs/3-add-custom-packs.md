@@ -1,6 +1,6 @@
 ---
-title: "Adding a custom pack"
-metaTitle: "Adding a custom pack"
+title: "Adding a Custom Pack"
+metaTitle: "Adding a Custom Pack"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
@@ -11,11 +11,42 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Add custom packs
+# Add Custom Packs
 
-Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool.
+Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](/registries-and-packs/spectro-cli-reference).
 
-# Steps to create a custom pack
+## Prerequsites
+
+The following items are required to create a custom pack.
+
+- [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference)
+- A Spectro Cloud [account](https://www.spectrocloud.com/)
+- [Custom Pack registry](/registries-and-packs/adding-a-custom-registry)
+
+## JSON Schema
+
+Each pack contains a metadata file named `pack.json`. The table below explains in greater detail the JSON schema attributes.
+
+
+| Property Name | Data type | Required | Description |
+| --- | --- | --- | --- |
+| name | String | True | Name of the pack |
+| displayName | String | True | Name of the pack as it is to be displayed on the Palette management console. |
+| layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
+| addonType | String | False | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
+| version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
+| cloudTypes | Array | True | Supported cloud types are AWS, Azure, VMware. One or more types can be provided for a pack. |
+| group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
+| annotations | Array | False | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
+| eol | String | False | End of life date for integration. |
+| KubeManifests | Array | False | Relative path to Kubernetes manifest yaml files. |
+| ansibleRoles | Array | False | Relative part to the Ansible role folders. These folders should contain all the artifacts required by Ansible. Please refer to the Ansible documentation for more details on how Ansible roles are constructed. |
+| | | | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
+| charts | Array | False | Relative path to the helm chart archives. |
+
+# Create a Custom Pack
+
+Follow the steps below to create a custom pack.
 
 1. Create a directory with a suitable name for all the pack contents. 
 
@@ -44,51 +75,35 @@ Custom packs are built by users and deployed to custom registries using the Spec
     }
     ```
 
-    An explanation for the parameters of the JSON is given in the table below:
-
-    | Property Name | Data type | Required | Description |
-    | --- | --- | --- | --- |
-    | name | String | True | Name of the pack |
-    | displayName | String | True | Name of the pack as it is to be displayed on the Palette management console. |
-    | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
-    | addonType | String | False | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
-    | version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
-    | cloudTypes | Array | True | Supported cloud types are AWS, Azure, VMware. One or more types can be provided for a pack. |
-    | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
-    | annotations | Array | False | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
-    | eol | String | False | End of life date for integration. |
-    | KubeManifests | Array | False | Relative path to Kubernetes manifest yaml files. |
-    | ansibleRoles | Array | False | Relative part to the Ansible role folders. These folders should contain all the artifacts required by Ansible. Please refer to the Ansible documentation for more details on how Ansible roles are constructed. |
-    | | | | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
-    | charts | Array | False | Relative path to the helm chart archives. |
-
 3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. 
 
-    **Parameters** for all charts, manifests, and Ansible roles defined in the pack are defined in this file. 
+<InfoBox>
+A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
 
-    **Helm** charts natively support values override. Any values defined are merged with those defined within a chart. 
-    
-    **Manifests** and **Ansible** roles need to be explicitly templatized if parameter configuration is desired.
+</InfoBox>
 
-    ```yaml
-        pack:
-          namespace : <default namespace for charts and manifests>
-        charts:
-          chart1:
-            <configurable chart1 parameters>
-          chart2:
-            <configurable chart2 parameters>
-        manifests:
-          manifest1:
-              <templatized manifest1 parameters>
-          manifest2:
-              <templatized manifest2 parameters>
-        ansibleRoles:
-          role1:
-            <templatized role1 parameters>
-          role2:
-              <templatized role2 parameters>
-    ```
+Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in the `values.yaml` file. 
+*Helm* charts natively support values override. Any values defined are merged with those defined within a chart. *Manifests* and *Ansible* roles need to be explicitly templatized if parameter configuration is desired.
+
+```yaml
+    pack:
+        namespace : <default namespace for charts and manifests>
+    charts:
+        chart1:
+        <configurable chart1 parameters>
+        chart2:
+        <configurable chart2 parameters>
+    manifests:
+        manifest1:
+            <templatized manifest1 parameters>
+        manifest2:
+            <templatized manifest2 parameters>
+    ansibleRoles:
+        role1:
+        <templatized role1 parameters>
+        role2:
+            <templatized role2 parameters>
+```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
 
@@ -132,7 +147,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="AWS Custom OS Pack" key="aws_custom_os_pack">
 
-## AWS Custom-OS Pack
+### AWS Custom-OS Pack
 
 ```yaml
 {
@@ -163,7 +178,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="Azure Custom OS Pack" key="azure_custom_os_pack">
 
-## Azure Custom OS Pack
+### Azure Custom OS Pack
 
 ```yaml
 {
@@ -194,7 +209,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
 
-## VMWare Custom OS Pack - Local Image
+### VMWare Custom OS Pack - Local Image
 
 ```yaml
 {
@@ -221,7 +236,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-## VMWare Custom OS Pack - Remote Image
+### VMWare Custom OS Pack - Remote Image
 
 ```yaml
 {
@@ -251,9 +266,9 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 </Tabs>
 
-## Ansible Roles
+# Ansible Roles
 
-In all the examples above, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
+In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
 
 ```
 ./pack.json
@@ -268,14 +283,8 @@ In all the examples above, additional customization in the form of an Ansible ro
 
 Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is constructed, push it to the pack registry using the Spectro CLI tool.
 
-<InfoBox>
-
-A `values.yaml` file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
-
-</InfoBox>
-
-<InfoBox>
+<WarningBox>
 
 During the image customization phase of a cluster deployment, failures related to missing packages or package version mismatch could occur when using a custom OS pack. These errors are presented on the console. The image needs to be updated to resolve any such issues.
 
-</InfoBox>
+</WarningBox>
