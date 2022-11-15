@@ -16,7 +16,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## App Profiles
 
-App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Sandbox Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
+App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Sandbox Clusters. For example, you may create a Development App Profile with <Tooltip trigger={<u>Helm Charts</u>}>Add a Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public/private chart registries to Palette. </Tooltip>
+, <Tooltip trigger={<u>Manifest</u>}>Layers can be constructed using raw manifests to provision Kubernetes resources unavailable via Palette or Charts. Pack Manifests provide a pass-through mechanism wherein additional Kubernetes resources can be orchestrated onto a cluster and the rest of the stack. Specific integrations may require the creation of Secrets or CustomResourceDefinition (CRDs); manifest files can be attached to the layer to achieve this. </Tooltip>, different database applications, etc. 
 
 <br />
 
@@ -41,8 +42,18 @@ To create your App Profile,
 |Description (optional)   | Description of the App Profile, if any | 
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
-3. **Add Service**: Select a service to start the configuration of the App Profile from the available services and configure the service per the use case.
+3. **Add Service**: Select a service to start the configuration of the App Profile from the available services and configure the service per the use case. The users can go for the following key services:
 
+  * Container Deployment: Containers are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment.
+ 
+
+ * [Helm](/devx/registries#palettehelmregistry): Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public or private chart registries to Palette.
+ 
+
+ * Manifest: Layers can be constructed using raw manifests to provision Kubernetes resources unavailable via Palette or Charts. Pack Manifests provide a pass-through mechanism wherein additional Kubernetes resources can be orchestrated onto a cluster and the rest of the stack. Specific integrations may require the creation of Secrets or CustomResourceDefinition (CRDs); manifest files can be attached to the layer to achieve this.
+  
+
+ *  Database Services: Different database applications such as MongoDB, PostgreSQl, Redis, etc.
 
 4. **Review** the configuration and finish the deployment.
 The Palette Dev Engine App Profile is created successfully and can be used for `Apps` deployment. To edit or delete the App Profile, access the App Profile `Settings` option. 
