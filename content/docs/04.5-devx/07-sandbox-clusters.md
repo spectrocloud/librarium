@@ -67,7 +67,7 @@ Palette users can track the available resources within a Cluster Group while lau
 
 ![color-tracking.png](color-tracking.png) 
 
-The above example screenshot displays the scenario. The Cluster Group selected in the example has a Virtual Cluster already running on it. The info box displays the recommended minimum CPU and memory to be allocated to the new Virtual Cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. The users can hence plan the resource utilization as per the available resources. 
+The example screenshot below illustrates the following scenario. The Cluster Group selected in the example has a virtual cluster already running on it. The info box displays the recommended minimum CPU and memory allocated to the new virtual cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. Users can use this information to plan resource utilization per available resources. 
 
 <br />
 <br />
