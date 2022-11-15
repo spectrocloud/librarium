@@ -22,7 +22,7 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 
 * A Running [Palette Virtual Cluster](/devx/sandbox-clusters#createyoursandboxcluster:).
 
-#  How to Pause and Resume your Palette Virtual Cluster
+#  Pause and Resume a Palette Virtual Cluster
 
 Invoke the pause and resume operations from the Palette Console.
 
