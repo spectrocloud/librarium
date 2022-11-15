@@ -26,13 +26,13 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 
 Invoke the pause and resume operations from the Palette Console.
 
-* Log in to the **Palette Dev Engine** Console.
+1. Log in to the **Palette Dev Engine** Console.
 
 
-* Select Palette Virtual Cluster from the **left ribbon menu**.
+2. Select Palette Virtual Cluster from the **left ribbon menu**.
 
 
-* Go to the cluster details page by clicking the name of the Palette Virtual Cluster to be paused.
+3. Go to the cluster details page by clicking the name of the Palette Virtual Cluster to be paused.
 
 
-* Click **Settings** and Select the **Pause** option. To resume a paused Virtual Cluster, select the **Resume** option.
+4. Click **Settings** and Select the **Pause** option. To resume a paused Virtual Cluster, select the **Resume** option.
