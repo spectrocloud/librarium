@@ -50,7 +50,7 @@ To create your new sandbox cluster:
 
 ### Resource Tracking for Palette Virtual Clusters
 
-Palette users can track the available resources within a Cluster Group while launching a Virtual Cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:
+Palette users can track the available resources within a Cluster Group while launching a virtual cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:
 
 <br />
 
