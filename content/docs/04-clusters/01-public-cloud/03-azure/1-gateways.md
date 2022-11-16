@@ -2,7 +2,7 @@
 title: "Self Hosted PCG"
 metaTitle: "Creating a Self Hosted PCG on Palette"
 metaDescription: "The methods of creating Self Hosted PCG on Palette for secured cluster deployment"
-icon: "wifi"
+icon: ""
 hideToC: false
 fullWidth: false
 ---
