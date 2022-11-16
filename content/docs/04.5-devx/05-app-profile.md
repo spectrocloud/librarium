@@ -16,8 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## App Profiles
 
-App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Sandbox Clusters. For example, you may create a Development App Profile with <Tooltip trigger={<u>Helm Charts</u>}>Add a Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public/private chart registries to Palette. </Tooltip>
-Manifest
+App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Sandbox Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc.
 
 <br />
 
