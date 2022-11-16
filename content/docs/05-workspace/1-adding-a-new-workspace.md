@@ -19,7 +19,10 @@ Palette enables multi-cluster management and governance capabilities by introduc
 
 # Prerequisites
 
-  One or more running workload clusters within the project.
+  * One or more running workload clusters within the project.
+  * Cluster must not be imported with read-only mode.
+  * RBAC should not be set at cluster level but to be included at workspace level.
+  * Nested Clusters cannot be part of the workspace.
 
 # Create Your Workspace
 
@@ -32,7 +35,7 @@ Provide the basic information for the workspace such as:
 
 #### 2. Associate Clusters
 
-  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters/new-clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
 
   * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.

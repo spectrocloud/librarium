@@ -28,30 +28,29 @@ The vSphere CSI driver includes the following components:
     * Metadata Syncer
     * Full Sync
 
+## vSphere CSI Compatibility Matrix
+
+|Palette Release| CSI-Driver Version| Kubernetes Versions |
+|---------------|-------------------|---------------------|
+|      2.2      |  2.3.0            | 1.20.x to 1.23.x    |
+|      2.8      |  2.5.2            | 1.20.x to 1.23.x    |
 
 
 ## Versions Supported
 
-
-<WarningBox>
-We highly recommend our users deploy the 2.3.x version of vSphere CSI.
-</WarningBox>
-
 <Tabs>
+
+<Tabs.TabPane tab="2.5.x" key="2.5.x">
+
+* **2.5.2**
+ 
+</Tabs.TabPane>
 <Tabs.TabPane tab="2.3.x" key="2.3.x">
 
 * **2.3.0**
  
 </Tabs.TabPane>
 </Tabs>
-
-## Notable Parameters
-
-| Name | Supported Values | Default Value | Description |
-| --- | --- | --- | --- |
-| diskformat | thin, zeroedthick and eagerzeroedthick | zeroedthick | The storage account type to use |
-| datastore | Datastore Name | | If specified, the volume will be created on the datastore specified in the storage class |
-| isDefaultClass | true, false | true | Flag to denote if this StorageClass will be the default |
 
 **References:**
 

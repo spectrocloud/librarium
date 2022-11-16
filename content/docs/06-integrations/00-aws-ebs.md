@@ -20,6 +20,12 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 # Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="1.10.x" key="1.10.x">
+
+* ** 1.10.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.8.x" key="1.8.x">
 
 * ** 1.8.0**
@@ -31,6 +37,38 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 </Tabs.TabPane>
 </Tabs>
+
+# Pre-Requisite Permissions
+
+The following permissions needs to be attached to the AWS cloud account:
+
+1. The AWS managed policy `AmazonEBSCSIDriverPolicy`.
+
+
+2. [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable EBS encryption.
+
+
+## EBSCSIKMSEncryptionPolicy
+
+<br />
+<br />
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:CreateGrant"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
 ## Notable Parameters
 
