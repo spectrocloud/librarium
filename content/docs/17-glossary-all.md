@@ -16,6 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 # Glossary
 
 This page gives a quick reference to various object types and concepts within the Palette platform.
+
+## App Mode
+A mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your Kubernetes applications. App Mode removes the need to worry about the infrastructure management of a Kubernetes cluster and results in a PaaS-like experience, enabling you to only focus on deploying [App Profiles](#app-profile). App Mode also allows you to deploy [Palette Virtual Clusters](#palette-virtual-cluster).
+
+## App Profile
+App Profiles are templates created with preconfigured services required for Palette Virtual Clusters deployment. App Profiles provide a way to drive consistency across virtual clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of workloads on Palette Virtual Clusters.
+
 ## Air-Gapped
 
 Palette on-prem installation supports Air-Gapped, a security measure in which its management platform is installed on VMware environments with no direct or indirect connectivity to any other devices or networks of the outside world. This feature provides airtight security to the platform without the risk of compromise or disaster. In addition, it ensures the total isolation of a given system from other networks, especially those that are not secure.
@@ -28,6 +35,9 @@ Chart Repositories are public or private web servers that host Helm Charts. A fe
 ## Cloud Account
 
 Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
+
+## Cluster Mode
+Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can deploy Kubernetes cluster to public cloud providers, on-prem datacenters, and on the edge. 
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Palette provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) pre-installed.
@@ -83,6 +93,10 @@ PaletteOS is a real-time operating system provisioned by Palette. It is embedded
 ## Palette Upgrade Controller
 
 A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
+
+## Palette Virtual Cluster
+Palette Virtual Clusters enable operations teams to partition a host Kubernetes cluster and deploy lightweight virtual clusters on top, similar to how virtualization creates logically isolated virtual servers on top of physical machines. This is great for giving developers quick access to a sandbox environment for testing their code. Virtual clusters provide as strong a level of separation without introducing complicated overhead, such as separating physical resources and managing namespaces with complex RBAC configurations. Palette Virtual Clusters is powered by [vCluster](https://www.vcluster.com/). 
+
 ## Permissions
 
 Permissions are associated with specific actions within the platform such as Create New user in a tenant, Add a Cluster Profile in a project, View Clusters within a cluster, etc. Permissions are granted to the [users](#user) and [teams](#team) through [roles](#role).
@@ -108,11 +122,11 @@ Palette maintains a public pack registry containing various [packs](#pack) that 
 ## Role
 
 A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster, etc.
-## Spectro Agent
-Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects the information on metrics, workloads, heartbeats, etc., and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
 ## Site Configuration Text User Interface (TUI)
 
 TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
+## Spectro Agent
+Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects the information on metrics, workloads, heartbeats, etc., and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
 ## System Profiles
