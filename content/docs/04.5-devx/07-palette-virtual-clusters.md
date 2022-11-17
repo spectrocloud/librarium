@@ -46,7 +46,7 @@ To create your new Palette Virtual Cluster complete the following actions.
 <br />
 
 
-* Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
+3. Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
 
 <br />
 
