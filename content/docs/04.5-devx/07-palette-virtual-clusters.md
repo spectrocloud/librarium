@@ -14,6 +14,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
+
 ## Palette Virtual Clusters
 
 Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, Palette Virtual Clusters will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
@@ -24,10 +25,10 @@ The Palette platform provisions and orchestrates all Palette Virtual CLusters, m
 
 To create your new Palette Virtual Cluster complete the following actions.
 
+
 <br />
 
 1. Log in to the Palette Dev Engine console
-
 
 2. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
    * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
@@ -44,6 +45,31 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 <br />
 
-   * Review the information and deploy the Palette Virtual Cluster. The virtual cluster will be provisioned within the next few minutes.
 
+3. Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
+
+<br />
+
+### Resource Tracking for Palette Virtual Clusters
+
+Palette users can track the available resources within a Cluster Group while launching a virtual cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:
+
+<br />
+
+* **Grey**: Resources already in use.
+
+
+* **Green**: The resources allocated for the Virtual Cluster under deployment.
+
+
+* **White**: Resources available within the Cluster Group which can be utilized after deploying the new Virtual Cluster.
+
+
+### Example Scenario
+
+The example screenshot below illustrates the following scenario. The Cluster Group selected in the example has a virtual cluster already running on it. The info box displays the recommended minimum CPU and memory allocated to the new virtual cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. Users can use this information to plan resource utilization per available resources. 
+
+![color-tracking.png](color-tracking.png) 
+
+<br />
 <br />
