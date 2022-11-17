@@ -1,5 +1,5 @@
 ---
-title: "Sandbox Clusters"
+title: "Palette Virtual Clusters"
 metaTitle: "Palette Dev Engine for Enterprise Developers"
 metaDescription: "Explore Palette Dev Engine as Free Developers"
 hideToC: false
@@ -14,29 +14,30 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-## Sandbox Clusters
 
-Sandbox Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, Sandbox Clusters will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads.
+## Palette Virtual Clusters
 
-Palette provisions and orchestrates Sandbox Clusters and makes it easy to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy Sandbox Clusters on Host Cluster Group as simple as following the wizard and attaching Add-on profiles.
+Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, Palette Virtual Clusters will use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
 
-### Create your Sandbox Cluster:
+The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
 
-To create your new sandbox cluster:
+### Create your Palette Virtual Cluster:
+
+To create your new Palette Virtual Cluster complete the following actions.
+
 
 <br />
 
 1. Log in to the Palette Dev Engine console
 
-
-2. Select the `Sandbox Clusters` from the left ribbon menu, click `+ Sandbox Clusters,` and provide the following information to the app creation wizard.
-   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new sandbox cluster.
-   * Sandbox cluster name: Provide a custom sandbox cluster name or go with the default name.
+2. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
+   * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
+   * Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    * Provide the resource limit in terms of CPU, memory, and storage. 
 
  <br />
 
- |**Sandbox Cluster Resource ** | **Default    **   |**Minimum Limit**|
+ |**Palette Virtual Cluster Resource ** | **Default    **   |**Minimum Limit**|
  |------------------------------|-------------------|-----------------|
  | CPU (per request)            | 6                 | 2.5               |
  | Memory (per request)         | 8 GiB             | 2.5 GiB           |
@@ -44,7 +45,8 @@ To create your new sandbox cluster:
 
 <br />
 
-   * Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
+
+* Review the information and deploy the Palette virtual cluster. The Palette virtual cluster will be provisioned within the next few minutes.
 
 <br />
 
@@ -71,5 +73,3 @@ The example screenshot below illustrates the following scenario. The Cluster Gro
 
 <br />
 <br />
-
-

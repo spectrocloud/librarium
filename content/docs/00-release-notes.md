@@ -25,8 +25,8 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
   * Rapid Application deployment with a smooth onboarding experience.
   * RBAC with a developer-centric view.
   * System scope resource quota.
-  * System Scope Cluster groups to host [Sandbox clusters](/clusters/sandbox-clusters).
-  * Out-of-the-box application profiles and applications deployment with Sandbox Clusters. 
+  * System Scope Cluster groups to host [Palette Virtual Clusters](/clusters/palette-virtual-clusters).
+  * Out-of-the-box application profiles and applications deployment with Palette Virtual Clusters. 
   * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
 * The Palette [Native Edge](/clusters/edge/native) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
@@ -41,13 +41,13 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * Palette enables the provisioning of private Azure Kubernetes Clusters (AKS) clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
 
-* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file]((/clusters/public-cloud/aks#deployinganakscluster)) at any time by editing the `maxPodPerNode` value.
+* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/public-cloud/aks#deployinganakscluster) at any time by editing the `maxPodPerNode` value.
 
 * The Kubernetes Packs for [Edge Native](/clusters/edge/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
   * Native Edge clusters
-  * Palette Sandbox Clusters
+  * Palette Virtual Clusters
   * Fixes towards [Enhancements](/terraform#changes)
 
 **Packs and Integrations**
@@ -75,16 +75,16 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* While deploying multiple apps in a sandbox cluster, if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same sandbox cluster might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
+* While deploying multiple apps in a Palette Virtual Cluster, if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same Palette Virtual Clusters might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
 
   * Delete the stuck App.
   * Fix the App with the error.
   * Redeploy the App again.  
 # September 10, 2022 - Release 2.8.0
-Spectro Cloud Palette 2.8.0 is now available with the support of Nested Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
+Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
 **Features**
-* Palette now supports lightweight, cost-effective, secure, and resource-efficient [Nested Clusters](/clusters/nested-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
+* Palette now supports lightweight, cost-effective, secure, and resource-efficient [Palette Virtual Clusters](/clusters/palette-virtual-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
 * Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
 * Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](/cluster-profiles/cluster-profile-import-export#overview) across multiple environments, projects, and tenants. 
 * Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](/integrations/rke2#rke2overview) focusing on security and compliance.

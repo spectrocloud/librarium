@@ -86,6 +86,6 @@ With these config changes, you can access Dex, Dex Client service(s) on the Ingr
 
 ## References
 
-https://github.com/dexidp/dex
-https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md
-https://github.com/mintel/dex-k8s-authenticator
+- [Dex](https://github.com/dexidp/dex)
+- [Dex Documentation](https://dexidp.io/docs/)
+- [Dex K8s Authenticator](https://github.com/mintel/dex-k8s-authenticator)
