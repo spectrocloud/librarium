@@ -1,5 +1,5 @@
 ---
-title: "Pause and Restore Palette Virtual Clusters"
+title: "Pause and Resume Palette Virtual Clusters"
 metaTitle: "Palette Dev Engine Pause and Restore Palette Virtual Clusters"
 metaDescription: "Pause and Restore Palette Virtual Clusters"
 hideToC: false
