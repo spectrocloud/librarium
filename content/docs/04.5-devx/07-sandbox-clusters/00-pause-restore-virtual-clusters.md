@@ -29,7 +29,7 @@ Invoke the pause and resume operations from the Palette Console.
 1. Log in to the **Palette Dev Engine** Console.
 
 
-2. Select Palette Virtual Cluster from the **left ribbon menu**.
+2. Navigate to the **Main Menu** and select **Palette Virtual Cluster**.
 
 
 3. Go to the cluster details page by clicking the name of the Palette Virtual Cluster to be paused.
