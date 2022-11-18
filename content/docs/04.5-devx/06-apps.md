@@ -45,3 +45,6 @@ To create your new App,
 
 4. Once the application starts running, we can manage the application from the Kebab Menu (3 dots) against the running application. 
 
+<WarningBox>
+When adding layers to the App profile using manifest files, specify a namespace name to which the resource must belong.
+</WarningBox>

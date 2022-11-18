@@ -43,6 +43,10 @@ To create your App Profile,
 
 3. **Add Service**: Select a service to start the configuration of the App Profile from the available services and configure the service per the use case.
 
+<WarningBox>
+When adding layers to the App profile using manifest files, specify a namespace name to which the resource must belong.
+</WarningBox>
+
 
 4. **Review** the configuration and finish the deployment.
 The Palette Dev Engine App Profile is created successfully and can be used for `Apps` deployment. To edit or delete the App Profile, access the App Profile `Settings` option. 
