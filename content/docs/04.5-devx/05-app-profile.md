@@ -40,7 +40,7 @@ To create your App Profile,
 
 3. **Add Service**: Select a service to start configuring the App Profile from the available services and configure the service based on your requirements. The following services are provided:
 
-  * Container Deployment: Containers are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment.
+  * [Container Deployment](/devx/app-profile/container-deployment): Containers are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment.
  
 
  * [Helm](/devx/registries#palettehelmregistry): Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public or private chart registries to Palette.
