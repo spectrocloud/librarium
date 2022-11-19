@@ -39,6 +39,10 @@ The developer quota can be managed through the Palette Platform as below:
 |Memory| 16 GiB|4 GiB|
 |Storage| 20 GiB|2 GiB|
 
+**Note:**
+
+ Palette users can track the status of the resource quota from the **Left Main Menu** of Palette Dev Engine console.
+
 <InfoBox>
 The Quota allocation can be interpreted as each user in this tenant may create up to two Palette Virtual Clusters with a cumulative CPU/memory/storage quota across all their Palette Virtual Clusters. Each virtual cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota.
 </InfoBox>

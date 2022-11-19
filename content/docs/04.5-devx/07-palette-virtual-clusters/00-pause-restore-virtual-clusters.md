@@ -36,3 +36,10 @@ Invoke the pause and resume operations from the Palette Console.
 
 
 4. Click **Settings** and select the **Pause** option. To resume a paused virtual cluster, select the **Resume** option.
+
+# Validate the Pause or Resume Status of a Palette Virtual Cluster
+
+1. In the cluster detail page of the Palette Virtual Cluster shows the cluster **Status** as:
+
+*  **Paused**: For a paused virtual cluster
+*  **Running**: For a resumed or running virtual cluster

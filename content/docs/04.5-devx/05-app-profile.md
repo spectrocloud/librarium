@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 ## App Profiles
 
-App Profiles are templates created with preconfigured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across Palette Virtual Clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on virtual cluster. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc. 
+App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Virtual Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc.
 
 <br />
 
@@ -41,7 +41,18 @@ To create your App Profile,
 |Description (optional)   | Description of the App Profile, if any | 
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
-3. **Add Service**: Select a service to start the configuration of the App Profile from the available services and configure the service per the use case.
+3. **Add Service**: Select a service to start configuring the App Profile from the available services and configure the service based on your requirements. The following services are provided:
+
+  * Container Deployment: Containers are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment.
+ 
+
+ * [Helm](/devx/registries#palettehelmregistry): Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public or private chart registries to Palette.
+ 
+
+ * Manifest: Layers can be constructed using raw manifests to provision Kubernetes resources that are unavailable in Palette or Charts. Pack Manifests provide a pass-through mechanism in which additional Kubernetes resources can be orchestrated onto a cluster and the rest of the stack. Specific integrations may require the creation of Secrets or CustomResourceDefinition (CRDs). Manifest files can be attached to the layer to achieve this. 
+  
+
+ *  Database Services: Different database applications such as MongoDB, PostgreSQl, Redis, etc.
 
 <WarningBox>
 When adding layers to the App profile using manifest files, specify a namespace name to which the resource must belong.
