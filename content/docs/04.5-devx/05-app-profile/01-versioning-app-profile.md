@@ -28,7 +28,27 @@ Cluster profile versions are grouped under their unique names and their uniquene
           
  The version numbers can be edited from the **Settings > Edit Info**  option from the App Profile page. While deleting the profile, select the version to be deleted.
 
-## To apply version to a profile
+The new versions of the App Profile may:
+
+* contain additional tiers
+
+* drop existing tiers
+
+* contain new versions of a tier
+
+* update the configuration of the existing tiers
+
+<InfoBox>
+
+The following attributes are non-editable during versioning:
+
+* App Profile name and version number. New version numbers are created and existing version number can be deleted.
+
+* App Profile tier name and type.
+ 
+</InfoBox>
+
+# To apply version to a profile
 
 * Select the App Profile to be versioned.
 
@@ -42,3 +62,4 @@ Cluster profile versions are grouped under their unique names and their uniquene
 * **Confirm** the version number to complete the versioning wizard.
 
 The new version of the app profile will be saved under the same app profile name. Users can select the app profile by selecting the name and version number for deployments.
+
