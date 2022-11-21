@@ -17,7 +17,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 This page gives a quick reference to various object types and concepts within the Palette platform.
 ## App Mode
-A mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your Kubernetes applications. App Mode removes the need to worry about the infrastructure management of a Kubernetes cluster and results in a PaaS-like experience, enabling you to only focus on deploying [App Profiles](#app-profile). App Mode also allows you to deploy [Palette Virtual Clusters](#palette-virtual-cluster).
+A mode optimized for a simpler and streamlined developer experience that allows you to focus on the building, maintenance, testing, deployment, and monitoring of your applications. App Mode removes the need to worry about the infrastructure management of a Kubernetes cluster and results in a PaaS-like experience, enabling you to focus on deploying [App Profiles](#app-profile), Apps, and [Palette Virtual Clusters](#palette-virtual-cluster).
+
 
 ## App Profile
 App Profiles are templates created with preconfigured services required for Palette Virtual Clusters deployment. App Profiles provide a way to drive consistency across virtual clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of workloads on Palette Virtual Clusters.
