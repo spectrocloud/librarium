@@ -51,6 +51,9 @@ https://raw.githubusercontent.com/spectrocloud/librarium/master/content/api/pale
 1. Open the **Import** dialog. 
 2. Select the **Link** tab and copy/paste the URL in the field as shown in the screenshot. 
 3. Click the **Continue** button.
+4.  Click on **Show advanced settings** and uncheck the **Optimize conversion** feature. For additional context on why this feature is disabled, review the Postman GitHub issue related to [nesting bug](https://github.com/postmanlabs/postman-app-support/issues/10928).
+5. Click on the **Import** button. 
+
   
 Postman imports your collection and lists it under Import Complete.
 <br />
