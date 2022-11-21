@@ -126,7 +126,7 @@ A Role is a collection of [permissions](#permission). There are two kinds of rol
 
 TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
 ## Spectro Agent
-Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects the information on metrics, workloads, heartbeats, etc., and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
+Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects information on metrics, workloads, heartbeats, etc., and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
 ## System Profiles
