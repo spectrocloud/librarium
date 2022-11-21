@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Palette Dev Engine Registries
 
-The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Palette supports the configuration of multiple registries.
+The Pack registry is a server-side application that stores and serves packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Palette supports the configuration of multiple registries.
 
 ## Default Registry
 The default pack registry is Spectro Cloud's public pack registry. It consists of several packs that make it simple for a user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Spectro Cloud maintains all packs in the default pack registry, this includes taking care of upgrades in the pack registry whenever required.
