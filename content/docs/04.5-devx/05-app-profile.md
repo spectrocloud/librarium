@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # App Profiles
 
-App Profiles are templates created with preconfigured services required for sandbox cluster deployment. App Profiles provide a way to drive consistency across sandbox clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of Workload on Palette Virtual Clusters. For example, you may create a Development App Profile with Helm Charts, Manifest, different database applications, etc.
+App Profiles are templates created with preconfigured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. You can create as many app profiles as required. An App Profile can be created to meet specific types of workloads on Palette Virtual Clusters. For example, you may create a development app profile with Helm Charts, Manifest, different database applications, etc.
 	
 ### Create Your App Profile
 
