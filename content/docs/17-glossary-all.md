@@ -21,7 +21,7 @@ A mode optimized for a simpler and streamlined developer experience that allows 
 
 
 ## App Profile
-App Profiles are templates created with preconfigured services required for Palette Virtual Clusters deployment. App Profiles provide a way to drive consistency across virtual clusters. You can create as many profiles as required. An App Profile can be created to meet specific types of workloads on Palette Virtual Clusters.
+App Profiles are templates created with preconfigured services required for Palette Virtual Clusters deployment. The App Profile allow creators to integrate various services or tiers, required to run an application, such as cache, databases, and more into a single deliverable. App Profiles provide a way to drive consistency across virtual clusters. You can create as many profiles as required, with multiple tiers serving different functionalities per use case.
 
 ## Air-Gapped
 
@@ -64,6 +64,11 @@ Edge Clusters are Kubernetes clusters set up on appliances installed in isolated
 ## Helm Charts
 
 Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package. Just like Palette's native Packs, Palette supports and orchestrates helm charts hosted in any public or private Helm chart registry on to Kubernetes clusters.
+
+## Host Cluster
+
+A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
+
 ## Management Clusters
 
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette.  As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
@@ -95,7 +100,7 @@ PaletteOS is a real-time operating system provisioned by Palette. It is embedded
 A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
 
 ## Palette Virtual Cluster
-Palette Virtual Clusters enable operations teams to partition a host Kubernetes cluster and deploy lightweight virtual clusters on top, similar to how virtualization creates logically isolated virtual servers on top of physical machines. This is great for giving developers quick access to a sandbox environment for testing their code. Virtual clusters provide as strong a level of separation without introducing complicated overhead, such as separating physical resources and managing namespaces with complex RBAC configurations. Palette Virtual Clusters is powered by [vCluster](https://www.vcluster.com/). 
+Palette Virtual Clusters enable operations teams to partition a [host cluster](#host-cluster) and deploy lightweight virtual clusters on top, similar to how virtualization creates logically isolated virtual servers on top of physical machines. This is great for giving developers quick access to a sandbox environment for testing their code. Virtual clusters provide as strong a level of separation without introducing complicated overhead, such as separating physical resources and managing namespaces with complex RBAC configurations. Palette Virtual Clusters is powered by [vCluster](https://www.vcluster.com/). 
 
 ## Permissions
 
