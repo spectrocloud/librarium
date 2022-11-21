@@ -24,11 +24,11 @@ To learn more about App Profiles and its capabilities checkout the following res
 
 <br />
 
-- [Create an App Profile]()
-- [Container Deployment]()
-- [App Profile Macros]()
-- [App Profile Cloning]()
-- [App Profile Versioning]()
+- [Create an App Profile](/devx/app-profile/create-app-profile)
+- [Container Deployment](/devx/app-profile/container-deployment)
+- [App Profile Macros](/devx/app-profile/app-profile-macros)
+- [App Profile Cloning](/devx/app-profile/app-profile-cloning)
+- [App Profile Versioning](/devx/app-profile/versioning-app-profile)
 
 
 

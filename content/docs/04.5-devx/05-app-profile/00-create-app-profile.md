@@ -14,14 +14,18 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Create an App Profile
 
-You can create as many App Profiles as you need to fit your various types of workloads. Each App Profile may contain multiple services, also called tiers. Palette Dev Engine supports the creation of multiple versions of an App Profile. To learn more visit the App versioning documentation [page](/devx/app-profile/versioning-app-profile).
+You can create as many App Profiles as you need to fit your various types of workloads. Each App Profile may contain multiple services, also called tiers. Palette Dev Engine also supports the creation of multiple versions of an App Profile. To learn more visit the App versioning documentation [page](/devx/app-profile/versioning-app-profile).
 
 
-### Create Your App Profile
+# Prerequisites
+
+* A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
+
+# Create Your App Profile
 
 To create an App Profile, follow the steps below.
 
-1. Log in to the Palette Dev Engine console
+1. Login to the Palette Dev Engine console
 
 
 2. Select the **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right handside of the main screen. 
