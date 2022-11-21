@@ -24,7 +24,7 @@ The default pack registry is Spectro Cloud's public pack registry. It consists o
 ## Custom Pack Registry
 Users can set up a custom pack registry using a Docker image provided by Spectro Cloud to upload and maintain custom packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
 
-Palette Dev Engine provides the following two custom registry support:
+Palette Dev Engine supports the following types of custom registries:
 
 * [Helm Registry](/devx/registries/helm-registry#palettehelmregistry): Visit here for more information on Palette Helm Registry
 * [OCI Registry](/devx/registries/oci-registry#setupociregistry:): Visit here for more information on Palette OCI Registry
