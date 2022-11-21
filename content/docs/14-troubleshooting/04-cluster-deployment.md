@@ -76,9 +76,12 @@ Common reasons for why a service may fail.
         ```
 
 4. If the Kubelet servoce is not operational:
-    4. Navigate to folder **/var/log/**
+    1. Navigate to folder **/var/log/**
         ```shell
         cd /var/log/
         ```
-    5. Check cloud-init-output for any errors.
+    2. Scan the cloud-init-output for any errors. If there are errors, make note of the errors.
+        ```
+        cat 
+        ```
     6. If no errors check stdout log for errors.
