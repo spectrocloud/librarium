@@ -39,7 +39,18 @@ Invoke the pause and resume operations from the Palette Console.
 
 # Validate the Pause or Resume Status of a Palette Virtual Cluster
 
-1. In the cluster detail page of the Palette Virtual Cluster shows the cluster **Status** as:
+You can verify the state of a cluster by reviewing the cluster details. To review the state of a cluster and its details, do the following steps.
+
+1. First, navigate to the left "Main Menu" on the Palette Dev Engine console and click on Virtual Clusters.
+
+
+2. Click on the specific cluster you want to check the status. This will take you to the cluster detail page. On this page, look for a section titled Status. The status section displays the current state of the cluster.
+
+
+3. The Palette Virtual Cluster shows the following cluster **Status**:
 
 *  **Paused**: For a paused virtual cluster
 *  **Running**: For a resumed or running virtual cluster
+
+**Note:** The status of a Palette Virtual cluster can also be viewed against the cluster name, in the existing cluster listing page of Palette Dev Engine console.
+
