@@ -68,7 +68,6 @@ Helm Charts are Kubernetes YAML manifests that describe a related set of Kuberne
 ## Host Cluster
 
 A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
-
 ## Management Clusters
 
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette.  As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
