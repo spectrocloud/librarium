@@ -22,7 +22,6 @@ jobs:
           version: 2.21.1
           files: '${{ steps.get_changed_files.outputs.all }}'
           reporter: github-pr-review
-          vale_flags: "--glob=*.{md,mdx}."
           fail_on_error: false
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
