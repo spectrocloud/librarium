@@ -14,9 +14,10 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           version: 2.21.1
-          files: content/
-          reporter: github-pr-check
-          fail_on_error: false
           files: __onlyModified
+          reporter: github-pr-check
+          vale_flags: "--glob=*.{md,mdx}."
+          fail_on_error: false
+          
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
