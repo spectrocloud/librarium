@@ -14,5 +14,5 @@ jobs:
       reporter: github-pr-check
       fail_on_error: false
       files: __onlyModified
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
