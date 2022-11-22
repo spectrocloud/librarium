@@ -15,6 +15,10 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
+## New Section
+
+Blah Blah Blah and more
+
 Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
 
 1. Kubernetes nodes can be distributed across multiple availability zones (AZs) to achieve high availability (HA). For each of the AZs that you select, a public subnet and a private subnet is created.
