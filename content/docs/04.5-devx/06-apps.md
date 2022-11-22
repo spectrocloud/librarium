@@ -20,6 +20,10 @@ The developers can create applications based on their use cases to the Palette D
 
 ## Start Creating a new App
 
+## New Section
+
+Blah Blah Blah...
+
 
 To create your new App,
 
