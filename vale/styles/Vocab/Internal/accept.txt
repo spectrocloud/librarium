@@ -9,3 +9,6 @@ data center
 CVEs
 hotfixes
 kubectl
+is
+Cloud
+cloud
