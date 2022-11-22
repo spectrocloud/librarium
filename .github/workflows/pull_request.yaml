@@ -3,16 +3,20 @@ on: [pull_request]
 
 jobs:
   vale:
-    name: runner / vale
+    name: Writing Checks
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: errata-ai/vale-action@reviewdog
-    with:
-      version: 2.21.1
-      files: content/
-      reporter: github-pr-check
-      fail_on_error: false
-      files: __onlyModified
-    env:
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: vale
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          version: 2.21.1
+          files: content/
+          reporter: github-pr-check
+          fail_on_error: false
+          files: __onlyModified
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
