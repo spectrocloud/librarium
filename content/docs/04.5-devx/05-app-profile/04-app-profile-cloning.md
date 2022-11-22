@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Clone App Profiles
 
-Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](/glossary-all#tenant).The ability to clone App Profiles can be usufull for the following use cases.
+Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](/glossary-all#tenant). The ability to clone App Profiles can be useful for the following use cases.
 
 * Share commonly used App Profiles to all projects.
 
@@ -29,7 +29,7 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 
 To clone an App Profile follow the steps below:
 
-1. [Login to Palette](/devx#quickstartwithpaletteappmode)
+1. Login to [Palette](/devx#quickstartwithpaletteappmode)
 
 2. Select **App Profiles** fron the left **Main Menu**. Identify the App Profile you want to clone and click on the three dots at the right handside of the row. Click on the **Clone** button from the drop down.
 
