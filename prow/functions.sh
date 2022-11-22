@@ -12,14 +12,14 @@ build_docs() {
 }
 
 # Run Vale on the content folder
-check_docs() {
-	VERSION=2.21.0
-	wget https://github.com/errata-ai/vale/releases/download/v$VERSION/vale_${VERSION}_Linux_64-bit.tar.gz
-	mkdir bin && tar -xvzf vale_${VERSION}_Linux_64-bit.tar.gz -C bin
-	export PATH=./bin:"$PATH"
-	# Run Vale against all modified files in the content folder but compare the difference between the master branch git tree blob AND this commit's git tree blob
-	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA $PULL_PULL_SHA | grep content) 
-}
+# check_docs() {
+# 	VERSION=2.21.0
+# 	wget https://github.com/errata-ai/vale/releases/download/v$VERSION/vale_${VERSION}_Linux_64-bit.tar.gz
+# 	mkdir bin && tar -xvzf vale_${VERSION}_Linux_64-bit.tar.gz -C bin
+# 	export PATH=./bin:"$PATH"
+# 	# Run Vale against all modified files in the content folder but compare the difference between the master branch git tree blob AND this commit's git tree blob
+# 	vale $(git diff-tree -r --no-commit-id --name-only $PULL_BASE_SHA $PULL_PULL_SHA | grep content) 
+# }
 
 # Initialize & Build  release docs
 build_release_docs() {
