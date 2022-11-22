@@ -40,6 +40,7 @@ swap:
   check: select
   CLI: command-line tool
   click on: click|click in
+  Cloud: Google Cloud Platform|GCP
   Container Engine: Kubernetes Engine
   content type: media type
   curated roles: predefined roles
