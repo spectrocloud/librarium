@@ -19,9 +19,9 @@ jobs:
       - name: Vale Check
         uses: errata-ai/vale-action@reviewdog
         with:
-          files: '${{ steps.get_changed_files.outputs.all }}'
+          # files: '${{ steps.get_changed_files.outputs.all }}'
           filter_mode: added
-          reporter: github-pr-check
+          reporter: github-pr-review
           vale_flags: --glob=*.{md}
           fail_on_error: false
         env:
