@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: vale
-        uses: errata-ai/vale-action@reviewdog
+      - name: Vale Check
+        uses: errata-ai/vale-action@master
         with:
           version: 2.21.1
           files: __onlyModified
