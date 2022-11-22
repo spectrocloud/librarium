@@ -10,14 +10,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Get Changed Files
+        id: get_changed_files
+        uses: lots0logs/gh-action-get-changed-files@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Vale Check
         uses: errata-ai/vale-action@reviewdog
         with:
           version: 2.21.1
-          files: content/
-          reporter: github-pr-check
+          files: '${{ steps.get_changed_files.outputs.all }}'
+          reporter: github-pr-review
           vale_flags: "--glob=*.{md,mdx}."
           fail_on_error: false
-          
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
