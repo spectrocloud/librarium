@@ -12,7 +12,11 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
+# New Section
 
+Blah Blah Blah
+
+Here is more content.
 # Overview
 
 Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
