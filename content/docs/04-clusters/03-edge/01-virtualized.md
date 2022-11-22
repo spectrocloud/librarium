@@ -21,39 +21,35 @@ Kubernetes nodes for master and worker pools are launched as KVM-based virtual m
 
 # Prerequisites
 
-* Create an Admin account/Tenant Admin account in Palette Console.
-
-
-* Bare metal is refreshed with the latest release Spectro Cloud Palette Installer Bin.
+* Create an Admin account/Tenant Admin account in [Palette](https://console.spectrocloud.com/).
+* Bare metal is refreshed with the latest release Spectro Cloud Palette Installer binary. The binary can be found on the Clusters page. Navigate to the **Main Menu** and click on **Clusters**. Next, click on the **Download Palette Edge Installer** button to start the binary download.
 
 # Detailed Instructions
 
-The following sections cover the prerequisites and detailed instructions for deploying clusters on virtualized edge appliances.
+The following sections cover the prerequisites and detailed instructions for deploying clusters on virtualized edge hosts.
 
-## Appliance Registration
+## Edge Host Registration
 
 * Log in to Palette Console as a Tenant.
 
 
-* Go to the **Clusters** page and click open the **Appliances** tab.
+* Go to the **Clusters** page and click open the **Edge Hosts** tab.
 
 
-* Click on **Add Appliances** to open the wizard.
+* Click on the **Add Edge Hosts** button in the top right handside to open the wizard.
 
 
-* Navigate to the **Appliance** section under the **Clusters** menu and register the appliance by providing its unique ID.
+* Register the edge host by providing its unique ID.
 
 
-* This ID should match the ID sent over by the PCG-Edge running on the appliance. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'store-1').
+* This ID should match the ID sent over by the PCG-Edge running on the edge host. By default, PCG-E uses the machine ID, but it can be overridden to something different (e.g. 'store-1').
 
 
-* Optionally, designate one or more tags for the appliance. For example, Palette supports a unique 'name' tag. If specified, Palette would use the value of this tag in other UIs to make identification of the device easier.
+* Optionally, designate one or more tags for the edge host. For example, Palette supports a unique 'name' tag. If specified, Palette would use the value of this tag in other UIs to make identification of the device easier.
 
-
-* Open the kebab (three-dot ellipsis) menu and click **Delete** to delete the appliance.
 
 <InfoBox>
-The appliance will register with the PCG-E once PCG-E is installed successfully.
+The host will register with the PCG-E once PCG-E is installed successfully.
 </InfoBox>
 
 ## Create your Edge System Profile
@@ -70,29 +66,27 @@ The following steps need to be performed to create a new System Profile:
 2. From the slide menu, go to **Profiles**, open the **System Profile** tab and click **Add System Profiles**.
 
 
-3. Provide basic profile information such as **System profile name**, **Description** (optional), and **Tags** (optional). Tags on a cluster profile are propagated to the VMs deployed on the edge device when clusters are created from the system profile.
+3. Provide basic profile information such as **System profile name**, **Description** (optional), and **Tags** (optional). Tags on a cluster profile are propagated to the VMs deployed on the edge device when clusters are created from the system profile. Click on **Next**.
+
+4. Select the Cloud Type by selecting **Edge Virtualized**. Click on **Next**.
 
 
-4. Additional layers such as Monitoring, Security, or Load Balancers may be added and configured as desired. These Add-on layers can be included in one of the following ways:
+5. Additional layers such as Monitoring, Security, or Load Balancers may be added and configured as desired. These Add-on layers can be included in one of the following ways:
    
    * **Add New** - Add a Palette Pack from a pack registry or a Helm Chart from a chart registry. The public Spectro Cloud Pack registry and a few popular Helm chart repositories are already available out of the box. Additional pack registries or public/private chart registries can be added to Palette.
 
    * **Add Manifest** - Layers can be constructed using raw manifests to provision Kubernetes resources that are unavailable via Palette or Charts. In addition, Pack Manifests provide a pass-through mechanism, wherein additional Kubernetes resources can be orchestrated onto a cluster, along with the rest of the stack.
   
-   * Fill the wizard with a **Layer name**, enable **VM manifest** and give an optional layer value and install order. Users can also avail themselves of the option to **Attach a manifest**.
+   * Fill the wizard with a **Layer name**, Users can also have the option to **Attach a manifest**. Select the Pack for each respective layer and provide the required information. Clicking on **Next layer** when you are ready to move to the next layer.
 
 
-5. Click the **Confirm Updates** button to save the configuration.
+6. Click the **Confirm Updates** button to save the configuration.
 
 
-6. Click the **Next** button to go to the review page.
+7. Click the **Next** button to go to the review page.
 
 
-7. Click the **Finish** button to save the system profile.
-
-<InfoBox>
-You can add other Virtualized applications as layers to your system profile as desired. You can also make changes to the profile after deployment to update the system at a later point.
-</InfoBox>
+8. Click the **Finish** button to save the system profile.
 
 <br />
 
@@ -105,9 +99,9 @@ You can add other Virtualized applications as layers to your system profile as d
 
 <br />
 
-## Register Appliance 
+## Register Edge Host 
 
-Log in to the Palette console and register a new appliance with a unique ID, such as _device-123_.
+Log in to the Palette console and register a new Edge host with a unique ID, such as _device-123_.
 
 <br />
 
@@ -119,11 +113,11 @@ Please note that this ID needs to be globally unique across all tenants and user
 
 ## Install Edge Services
 
-The following steps describe the interim process for installing services into the bare metal appliance. This will be replaced in future milestones when these steps will be integrated into the AutoYast-based manufacturing process.
+The following steps describe the interim process for installing services into the bare metal instance. This will be replaced in future milestones when these steps will be integrated into the AutoYast-based manufacturing process.
 
 <br />
 
-1. SSH into the appliance.
+1. SSH into the host.
 
 
 2. Switch to root user `sudo -i`.
@@ -141,7 +135,7 @@ The following steps describe the interim process for installing services into th
 
    * Make the below changes to the unattended YAML:
   
-     * **Edge appliance id** : Same as the appliance ID created via UI or Use an ID and create an appliance with same ID.
+     * **Edge host id** : Same as the host ID created via UI or Use an ID and create a host with same ID.
      
      * **HA/Standalone Configuration**
     
@@ -155,7 +149,7 @@ The following steps describe the interim process for installing services into th
 
     The PCG-E service starts deploying the bootstrap container, which in turn launches the system kind cluster. The high-level logs are in the `edge.log` file located at `/opt/spectrocloud`.
 
-    The edge service pairs up with the appliance registered in Palette SaaS, during this process and associates it with the System Profile provided, during installation. This creates a live link between the System Profile and the PCG-E. Changes to the System Profile are picked up by the PCG-E and System Applications are created/modified/deleted as specified.
+    The edge service pairs up with the edge host registered in Palette SaaS, during this process and associates it with the System Profile provided, during installation. This creates a live link between the System Profile and the PCG-E. Changes to the System Profile are picked up by the PCG-E and System Applications are created/modified/deleted as specified.
 
     **Note:**: Monitor the progress of the System Cluster.
 
@@ -295,7 +289,7 @@ The following steps need to be performed to provision a new Edge cluster:
         * Root Disk: Secondary disk required in GB
         * CPUs Set - optional number of CPU grouping 
 
-    * **Appliances** - Select the registered appliance from the drop-down. Can add multiple appliances for pool configuration. For Virtualized cluster provisioning, in addition to the appliance selection, a few extra pieces of information need to be provided, such as:
+    * **Edge Hosts** - Select the registered edge host from the drop-down. You can add multiple edge hosts for pool configuration. For virtualized cluster provisioning, in addition to the edge host selection, a few extra pieces of information must be provided, such as:
 
         * Network Type: Select the network type from the drop-down
         * Network Names: Make the selection of the network from the drop-down
