@@ -24,6 +24,10 @@ Palette is offering complimentary compute resources to the developers who sign u
 
 In either case, they are governed by the quota set by Spectro Cloud. There is no limit to the number of application profiles they can model. We offer 12 vCPU, 16 GiB of memory, and 20 GiB of storage complimentary to the developers.
 
+## New Section
+
+More changes to review.
+
 
 # Quickly Explore
 
