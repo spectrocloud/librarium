@@ -21,6 +21,7 @@ jobs:
         with:
           files: '${{ steps.get_changed_files.outputs.all }}'
           reporter: github-pr-check
+           vale_flags: --glob=*.{md}
           fail_on_error: false
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
