@@ -1,5 +1,5 @@
 ---
-title: "Edge"
+title: "Edge (Beta)"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -30,6 +30,12 @@ Following are the highlights of the comprehensive Palette Edge Solution:
 
 
 <br />
+
+<WarningBox>
+
+Edge Clusters are still in active development and subject to changes. Review the Palette [release notes](/release-notes) for updates and changes.
+
+</WarningBox>
 
 
 <br />
