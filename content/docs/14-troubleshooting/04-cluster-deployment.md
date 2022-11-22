@@ -80,7 +80,7 @@ Common reasons for why a service may fail.
         </InfoBox>
 
 4. If the Kubelet service is not operational:
-    1. Navigate to folder **/var/log/**
+    1. Navigate to the folder **/var/log/**
         ```shell
         cd /var/log/
         ```
