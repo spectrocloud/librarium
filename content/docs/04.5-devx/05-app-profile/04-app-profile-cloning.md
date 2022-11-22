@@ -15,51 +15,42 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Clone App Profiles
 
-Palette supports the cloning of app profiles across multiple projects. For example, clone an app profile created under the project scope to the scope of another project within the same tenant. Hence, use an app profile's clone under different project scopes for app deployment. The use case are as follows:
+Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](/glossary-all#tenant).The ability to clone App Profiles can be usufull for the following use cases.
 
-* Clone app profiles from system scope to project scope.
+* Share commonly used App Profiles to all projects.
 
-
-* Clone app profiles across different project scopes under the same tenant.
+* Share App Profiles amongst different projects.
 
 ## Prerequisites
 
-* An App Profile created on Palette Dev Engine console
+* An App Profile created in Palette. Check out the [Create an App Profile](/devx/app-profile/create-app-profile) for guidance.
 
 ## Clone an App Profile
 
-To clone an App Profile follow the steps as below:
+To clone an App Profile follow the steps below:
 
-1. [Login to Palette Dev Engine](/devx#quickstartwithpaletteappmode)
+1. [Login to Palette](/devx#quickstartwithpaletteappmode)
 
+2. Select **App Profiles** fron the left **Main Menu**. Identify the App Profile you want to clone and click on the three dots at the right handside of the row. Click on the **Clone** button from the drop down.
 
-
-2. Select **App Profiles** fron the left main menu
-
- 
-3. Open the Edit Menu (3 dots or Kebab Menu) towards the name of the app profile to be cloned and click **Clone** button from the drop down.
-
-
-4. To the wizard, provide the following information:
+4. You will be prompted to fill out the following information:
    * **Name:** Name of the new app profile.
    * **Profile Version:** Version number for the new app profile.
    * **Source Profile Version:** The version number of the source app profile getting cloned.
    * **Target Project:** The target project to which the profile is to be cloned. Select the project name from the drop-down menu.
 
+5. Click **Confirm** to conclude the cloning of the App Profile. 
 
-5. Click **Confirm** to complete the wizard. This completes the cloning of an app profile to the target project and can be used for app deployments under the target project scope.
-
+In the target project specified during the clone process, you can now use the App Profile for app deployments.
 ## Validation
 
-To validate the cloning:
+To validate the App Profile is clone and available in the target project conduct the following steps:
 
-1. Log in to Palette Dev Engine Console
+1. Login to [Palette](/devx#quickstartwithpaletteappmode)
 
+2. Select the **App Profiles** option from the left **Main Menu**.     
 
-2. Select the **App Profiles** option from the left main menu.     
-
-
-3. This page will list all the App Profiles within the scope of the user. In addition, this should list all the cloned App Profiles as well. Use the cloned App Profile for App deployment under the target scope.
+3. This page will list all the App Profiles available to you. In addition, this should list all the cloned App Profiles as well. Use the cloned App Profile for App deployment under the target scope.
 
 
 
