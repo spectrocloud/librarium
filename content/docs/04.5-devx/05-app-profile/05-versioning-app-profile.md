@@ -60,7 +60,7 @@ The following attributes are non-editable during versioning:
 * Give the version number per the semantic format described above.
 
 
-* Click **Confirm** to the wizard. The UI will give a versioning successful message.
+* Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
 
 
 * The App Profile list will display the new version of the App Profile. The users can select the app profile by selecting the name and version number for deployments.
