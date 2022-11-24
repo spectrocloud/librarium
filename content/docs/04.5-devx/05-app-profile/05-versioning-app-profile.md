@@ -50,6 +50,7 @@ The following attributes are non-editable during versioning:
 
 # Apply Version to a Profile
 
+
 * Select the App Profile to be versioned.
 
 
@@ -93,3 +94,5 @@ To validate the App Profile is versioned  and available in the target project co
 
 
 3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
+
+

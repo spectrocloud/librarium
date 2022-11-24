@@ -46,6 +46,7 @@ To create an App Profile, follow the steps below.
  
 
  * [Helm](/devx/registries#palettehelmregistry): Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public or private chart registries to Palette.
+
  
 
  * Manifest: Layers can be constructed using raw manifests to provision Kubernetes resources that are unavailable in Palette or Charts. Pack Manifests provide a pass-through mechanism in which additional Kubernetes resources can be orchestrated onto a cluster and the rest of the stack. Specific integrations may require the creation of Secrets or CustomResourceDefinition (CRDs). Manifest files can be attached to the layer to achieve this. 

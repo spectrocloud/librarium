@@ -19,6 +19,7 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 
 * Share system scope App Profiles to projects scope.
 
+
 * Share App Profiles amongst different projects.
 
 ## Prerequisites
@@ -43,9 +44,11 @@ To clone an App Profile follow the steps below:
 
 In the target project specified during the clone process, you can now use the App Profile for app deployments.
 
+
 ## Validation
 
 To validate the App Profile is cloned and available in the target project conduct the following steps:
+
 
 1. Login to [Palette](/devx#quickstartwithpaletteappmode)
 
