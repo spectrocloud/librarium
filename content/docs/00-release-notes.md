@@ -75,7 +75,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 **Known Issues**
 
-* While deploying multiple apps in a Palette Virtual Cluster, if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same Palette Virtual Clusters might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
+* While deploying multiple apps in a Palette Virtual Cluster, if the deployment of one of the apps is blocked due to errors, then subsequent apps deployed to the same virtual cluster might also be stuck in deploying state.  Apply the following workarounds if you encounter the issue.
 
   * Delete the stuck App.
   * Fix the App with the error.

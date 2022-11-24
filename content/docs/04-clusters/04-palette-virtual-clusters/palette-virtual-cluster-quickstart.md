@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 With Palette Virtual Clusters, you can deploy additional Kubernetes clusters that run as nested clusters within an existing *Host Cluster*.
 
-There are certain advantages to use a virtual cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
+There are certain advantages to using a virtual cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
 Try the steps below to [enable](#enablingpalettevirtualclustersonanexistinghostcluster) and [deploy](#deployingapalettevirtualcluster) a managed Palette Virtual Cluster from within Palette.
 
