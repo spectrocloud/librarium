@@ -48,7 +48,7 @@ The following attributes are non-editable during versioning:
  
 </InfoBox>
 
-# To apply version to a profile
+# Apply Version To a Profile
 
 * Select the App Profile to be versioned.
 
