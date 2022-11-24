@@ -34,7 +34,7 @@ From the Tenant scope the enterprise user can:
 
  * [Create App](/devx/apps)
 
- * [Create Sandbox Clusters](/devx/sandbox-clusters)
+ * [Create Palette Virtual Clusters](/devx/palette-virtual-clusters)
 
  * [Create Custom Registries](/devx/registries)
 
@@ -49,7 +49,7 @@ Palette Developer Engine provides the following additional capabilities for deve
 2. Switching between the App Mode and Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
 
 
-3. Host the sandbox clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
+3. Host the Palette Virtual Clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
 
 </InfoBox>
 
