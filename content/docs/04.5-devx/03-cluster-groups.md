@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Tenant Scope - DevOps Persona
 
-The enterprise developer can create and utilize the Palette compute under the scope of a Tenant admin. Once these compute resources are launched and ready to use they can shift to the Palette Dev Engine to explore our developer centric offerings. The creation of Cluster Groups is a deployment under the tenant scope. They can also utilize:
+The enterprise developer can create and utilize the Palette compute under the scope of a *Tenant admin*. Once these compute resources are launched and ready to use they can shift to the Palette Dev Engine to explore our developer centric offerings. The creation of Cluster Groups is a deployment under the tenant scope. They can also utilize:
 
 <br />
 
@@ -27,7 +27,7 @@ The enterprise developer can create and utilize the Palette compute under the sc
 
 # Cluster Groups
 
-A Cluster Group is an aggregation of host clusters deployed through the Palette Tenant Admin console. Palette virtual clusters can be launched into host cluster groups. The cluster groups are created under two scopes:
+A Cluster Group is an aggregation of host clusters deployed through the Palette Tenant Admin console. Palette Virtual Clusters can be launched into host cluster groups. The cluster groups are created under two scopes:
 
 ## System Scope
 
@@ -74,16 +74,16 @@ To create a Palette Host Cluster Group, you need to [deploy a healthy running Pa
 **Note:**  Please ensure that a wildcard DNS record exists that maps the provided Host Pattern to the NGINX Ingress Controller load balancer for this cluster.
 
 
-   **Sandbox Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the sandbox clusters are getting launched.
+   **Palette Virtual Cluster Configuration:** The configuration for clusters launched into the host clusters. This configuration can be done when the Palette Virtual Clusters are getting launched.
 
- |**Sandbox Cluster Resource ** | **Default**   |**Minimum Limit**|
+ |**Palette Virtual Cluster Resource ** | **Default**   |**Minimum Limit**|
  |------------------------------|-------------------|-----------------|
  |CPU (per request)             | 6                 | 4               |
  | Memory (per request)         | 8 GiB             | 4 GiB           |
  | Storage (per request)        | 10 GiB            | 2 GiB           |
 
 
-3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the sandbox clusters.
+3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the Palette Virtual Cluster.
 
 
 ### Manage your Cluster Group
