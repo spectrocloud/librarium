@@ -27,7 +27,6 @@ To create an App Profile, follow the steps below.
 
 1. Login to the Palette Dev Engine console
 
-
 2. Select the **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right handside of the main screen. 
 
 3. Provide the wizard with the following information and click on **Next** button after you have filled out the information.
@@ -84,9 +83,7 @@ The Palette Dev Engine App Profile is now created and and can be used for Apps d
 
 ## Validation
 
-You can validate the App Profile is avaiable and ready for us by visiting the App Profiles page. In the App Profiles page, you will find your App Profile listed.
-
-<br />
+You can validate the App Profile is available and ready for use by visiting the App Profiles page. In the App Profiles page, you will find your App Profile listed.
 
 <br />
 

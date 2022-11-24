@@ -32,13 +32,16 @@ To clone an App Profile follow the steps below:
 
 1. Login to [Palette](/devx#quickstartwithpaletteappmode)
 
-2. Select **App Profiles** fron the left **Main Menu**. Identify the App Profile you want to clone and click on the three dots at the right handside of the row. Click on the **Clone** button from the drop down.
+
+2. Select **App Profiles** from the left **Main Menu**. Identify the App Profile you want to clone and click on the three dots at the right handside of the row. Click on the **Clone** button from the drop down.
+
 
 4. You will be prompted to fill out the following information:
    * **Name:** Name of the new app profile.
    * **Profile Version:** Version number for the new app profile.
    * **Source Profile Version:** The version number of the source app profile getting cloned.
    * **Target Project:** The target project to which the profile is to be cloned. Select the project name from the drop-down menu.
+
 
 5. Click **Confirm** to conclude the cloning of the App Profile. 
 
@@ -52,7 +55,9 @@ To validate the App Profile is cloned and available in the target project conduc
 
 1. Login to [Palette](/devx#quickstartwithpaletteappmode)
 
+
 2. Select the **App Profiles** option from the left **Main Menu**.     
+
 
 3. This page will list all the App Profiles available to you. In addition, this should list all the cloned App Profiles as well. Use the cloned App Profile for App deployment under the target scope.
 
