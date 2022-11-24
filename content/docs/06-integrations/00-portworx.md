@@ -550,7 +550,7 @@ manifests:
 
 [Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
 
-[Lighthouse](https://docs.portworx.com/reference/lighthouse/)
+[Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new.html)
 
 [Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
 

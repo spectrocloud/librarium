@@ -20,7 +20,7 @@ To optimize resource utilization, Palette allows you to pause and resume virtual
 
 # Prerequisite
 
-* A Running [Palette Virtual Cluster](/devx/sandbox-clusters#createyoursandboxcluster:).
+* A Running [Palette Virtual Cluster](/clusters/palette-virtual-clusters/virtual-cluster-quickstart).
 
 #  Pause and Resume a Palette Virtual Cluster
 
@@ -37,7 +37,7 @@ Invoke the pause and resume operations from the Palette Console.
 
 4. Click **Settings** and select the **Pause** option. To resume a paused virtual cluster, select the **Resume** option.
 
-# Validate the Pause or Resume Status of a Palette Virtual Cluster
+# Validate Pause/Resume
 
 You can verify the state of a cluster by reviewing the cluster details. To review the state of a cluster and its details, do the following steps.
 

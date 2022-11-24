@@ -34,7 +34,7 @@ Palette allows the users that have been added to be allowed or restricted access
 
 # Roles and Permissions
 
-The Tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> and <Tooltip trigger={<u>Permissions</u>}><a href="/user-management/rbac#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip> sections in the [RBAC](/user-management/rbac#rbac) page provide more details on this.
+The Tenant admin can allow or restrict access of resources to users which can differ as per the scenario. A user can have complete access to a specific project but can be restricted access to other projects in which there is no involvement. An intermediate stage is also possible where read-only access can be provided in some projects. The <Tooltip trigger={<u>Roles</u>}>A <a href="/user-management/rbac#roles">Role</a> is a collection of permissions.</Tooltip> and <Tooltip trigger={<u>Permissions</u>}><a href="/user-management/rbac#permission">Permissions</a> are associated with specific actions within the platform.</Tooltip> sections in the [RBAC](/user-management/palette-rbac#rbac) page provide more details on this.
 
 To add a user to a project:
   1. Sign in as a Tenant admin and go to the **Users and Teams** section of the [Tenant Admin Dashboard](/getting-started#admindashboard). 
