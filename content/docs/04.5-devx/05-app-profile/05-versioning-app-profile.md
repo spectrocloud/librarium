@@ -63,7 +63,7 @@ The following attributes are non-editable during versioning:
 * Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
 
 
-* The App Profile list will display the new version of the App Profile. The users can select the app profile by selecting the name and version number for deployments.
+* The App Profile list will display the new version of the App Profile. Users can select the App Profile by selecting the name and version number for deployments.
 
 
 ## Delete an App Profile
