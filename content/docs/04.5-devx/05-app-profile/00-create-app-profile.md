@@ -45,7 +45,8 @@ To create an App Profile, follow the steps below.
   * Container Deployment: [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
  
 
- * [Helm](/devx/registries/helm-registry#palettehelmregistry): Helm chart repositories are availabe for use. You can add additional Helm registries to Palette, visit the [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry) documentation page for guidance..
+ * [Helm](/devx/registries/helm-registry#palettehelmregistry): Helm chart repositories are available for use. You can add additional Helm registries to Palette, visit the [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry) documentation page for guidance.
+
  
 
  * Manifest: Layers can be constructed using raw manifests to provision Kubernetes resources that are unavailable in Palette or Charts. Pack Manifests provide a pass-through mechanism in which additional Kubernetes resources can be orchestrated onto a cluster and the rest of the stack. Specific integrations may require the creation of Secrets or CustomResourceDefinition (CRDs). Manifest files can be attached to the layer to achieve this. 

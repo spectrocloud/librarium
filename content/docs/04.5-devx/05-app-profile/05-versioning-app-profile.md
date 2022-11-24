@@ -30,13 +30,13 @@ Cluster profile versions are grouped under their unique names and their uniquene
 
 The new versions of the App Profile may:
 
-* contain additional tiers
+* Contain additional tiers
 
-* drop existing tiers
+* Drop existing tiers
 
-* contain new versions of a tier
+* Contain new versions of a tier
 
-* update the configuration of the existing tiers
+* Update the configuration of the existing tiers
 
 <InfoBox>
 
@@ -48,18 +48,51 @@ The following attributes are non-editable during versioning:
  
 </InfoBox>
 
-# Apply Version To a Profile
+# Apply Version to a Profile
+
 
 * Select the App Profile to be versioned.
 
 
-* From the **Drop Down** menu next to the app profile name select the **Create New Version**.
+* From the **Drop Down** menu next to the App Profile name, select the **Create New Version**.
 
 
-* Give the version number as per the format described.    
+* Give the version number per the semantic format described above.
 
 
-* **Confirm** the version number to complete the versioning wizard.
+* Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
 
-The new version of the app profile will be saved under the same app profile name. Users can select the app profile by selecting the name and version number for deployments.
+
+* The App Profile list will display the new version of the App Profile. Users can select the App Profile by selecting the name and version number for deployments.
+
+
+## Delete an App Profile
+
+1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+
+
+2. Select the **App Profiles** option from the left **Main Menu**.
+
+
+3. This page will list all the App Profiles available to you. Select the App Profile to be deleted.
+
+
+4. From the drop-down next to the App Profile Name, select the version to be deleted and click **Delete** to delete the profile successfully.
+
+
+5. The selected App Profile version will be deleted. 
+
+## Validation
+
+
+To validate the App Profile is versioned  and available in the target project conduct the following steps:
+
+1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+
+
+2. Select the **App Profiles** option from the left **Main Menu**.     
+
+
+3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
+
 
