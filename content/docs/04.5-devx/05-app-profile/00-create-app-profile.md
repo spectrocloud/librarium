@@ -45,7 +45,7 @@ To create an App Profile, follow the steps below.
   * Container Deployment: [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
  
 
- * [Helm](/devx/registries#palettehelmregistry): Palette App profile Pack from Helm registry charts. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Add additional pack registries or public or private chart registries to Palette.
+ * [Helm](/devx/registries/helm-registry#palettehelmregistry): Helm chart repositories are available for use. You can add additional Helm registries to Palette, visit the [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry) documentation page for guidance.
 
  
 
