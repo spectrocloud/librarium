@@ -17,7 +17,7 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 ## Scenario - Instances Continuously Delete Every 30 Min
 
-In the scenario that an instance is launched and terminated every 30 minutes prior to deployment conclusion. Additionaly, you may observe in the **Events Tab** errors with the following message. 
+An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab** lists errors with the following message:
 
 <br />
 
@@ -25,80 +25,88 @@ In the scenario that an instance is launched and terminated every 30 minutes pri
 Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint
 ```
 
-This behavior can occur when launched instance's Kubernetes services fail to start properly. 
-Common reasons for why a service may fail.
+This behavior can occur when Kubernetes services for the launched instance fail to start properly. 
+Common reasons for why a service may fail are:
 
-- Unable to pull the specified image from the specified image repository.
-- The cloud init process has failures.
+- The specified image could not be pulled from the image repository.
+- The cloud init process failed.
 
 ### Debugging Steps
 
-1. Initiate an SSH session with the Kubernetes instance by using the SSH key provided during provisioning. Log in with the following user `spectro`. If you are initiating an SSH session into an installer instance, use the username `ubuntu`.
+1. Initiate an SSH session with the Kubernetes instance using the SSH key provided during provisioning, and log in as user `spectro`. If you are initiating an SSH session into an installer instance, log in as user `ubuntu`.
 
     ```shell
-        ssh --identity_file pathToYourSSHkey spectro@X.X.X.X 
+        ssh --identity_file <_pathToYourSSHkey_> spectro@X.X.X.X 
     ```
 
-2. Elevate the user access with the sudo command. 
+2. Elevate the user access. 
 
     ```shell
         sudo -i
     ```
-2. Check the kubelet service is operational with the systemctl command.
+3. Verify the kubelet service is operational.
 	```shell
         systemctl status kubelet.service
     ```
-3. If the kubelet service is operational, otherwise skip to step four:
+5. If the kubelet service works as expected, do the following.  
 	- Export the kubeconfig file. 
 
     ```shell
         export KUBECONFIG=/etc/kubernetes/admin.conf
     ```
-	- Attempt to connect with the Kubernetes cluster's Kubernetes API 
+	- Connect with the cluster's Kubernetes API. 
 
     ```shell
         kubectl get pods --all-namespaces
     ```
-	- If a connection is established and you receive a positive reply check, if all the pods are in a *Running* state.  Make note of the reason if the pods are not in a healthy state.
+	- When the connection is established, verify the pods are in a *Running* state. Take note of any pods that are not in *Running* state.
 
     ```shell
         kubectl get pods -o wide
     ```
 
-	- If all the pods are operational, verify the connectivity with the Palette API is possible 
-		- For Clusters with Gateway- Installer to Gateway instance connectivity
+	- If all the pods are operating correctly, verify their connection with the Palette API. 
+		- For Clusters using Gateway, verify the connection between the Installer and Gateway instance:
         ```shell
            curl -k https://<KUBE_API_SERVER_IP>:6443
         ```
-		- For Public Clouds without Gateway	- Public Internet to Kube endpoint
+		- For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kube endpoint:
         ```shell
             curl -k https://<KUBE_API_SERVER_IP>:6443
         ```
 
         <InfoBox>
-            Use the command kubectl cluster-info  if you need to aquire the Kubernetes API URL.
+            You can obtain the URL for the Kubernetes API using this command: ``kubectl cluster-info`` 
         </InfoBox>
 
-4. If the Kubelet service is not operational:
-    1. Navigate to the folder **/var/log/**
+4. If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip this step. 
+    1. Navigate to the **/var/log/** folder.
         ```shell
         cd /var/log/
         ```
-    2. Scan the cloud-init-output for any errors. If there are errors, make note of the errors.
+    2. Scan the cloud-init-output for any errors. Take note of any errors and fix them.
         ```
         cat cloud-init-output.log
         ```
-5. Lastly, check stdout for for errors. You can also reach out to Spectro Cloud Support and open up suppor ticket by visiting our [support page](http://support.spectrocloud.io/).
+5. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).
 
 
 
 ## Scenario - Gateway Installer Registration Failures
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 minutes. Failure of the installer to  register with the tenant portal within this duration might be indicative of a bootstrapping error. SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. This log file will contain error messages in the event there are failures with connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+There are a couple reasons the Gateway Installer might fail: 
 
-Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
+- A bootstrap error might have occured. When the Gateway Installer VM is powered on, it initiates a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 minutes. If the installer fails to register with the tenant portal during this time, it indicates a bootstrapping error. 
 
-If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Spectro Cloud Support team to troubleshoot and provide further guidance:
+To address the issue, SSH into the Installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. 
+
+The log file contains error messages about any failures that occur while connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. 
+
+A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+
+- The VM may not have an outbound connection. The Gateway Installer VM requires outbound connectivity directly or using a proxy. Adjust proxy settings, if applicable, to fix the connectivity or power down and delete the Installer VM, then relaunch it in a network that enables outbound connections.
+
+If these steps do not resolve the Gateway Installer issues, copy the following script to the Installer VM to generate a logs archive. Open a support ticket by visiting our [support page](http://support.spectrocloud.io/). Attach the logs archive so the Spectro Cloud Support team can troubleshoot the issue and provide further guidance:
 
 ```bash
 #!/bin/bash
