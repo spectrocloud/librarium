@@ -22,9 +22,10 @@
     "gatsby-link": "^3.0.0",
     "gatsby-plugin-algolia": "^0.25.0",
     "gatsby-plugin-antd": "^2.2.0",
+    "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-google-tagmanager": "^3.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
-    "gatsby-plugin-mdx": "^2.10.0",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-offline": "^4.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-react-helmet-canonical-urls": "^1.4.0",
@@ -39,7 +40,7 @@
     "gatsby-remark-image-attributes": "^1.1.0",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-remark-images-medium-zoom": "^1.7.0",
-    "gatsby-remark-local-videos": "0.0.3",
+    "gatsby-remark-video": "^1.2.5",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-transformer-sharp": "3.14",
     "import-sort-parser-babylon": "^6.0.0",
@@ -53,6 +54,7 @@
     "react-instantsearch-dom": "^6.20.0",
     "react-live": "^2.4.0",
     "react-loadable": "^5.5.0",
+    "sharp": "^0.30.5",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
@@ -67,15 +69,19 @@
     "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-react-router-scroll": "^4.0.0",
-    "prettier": "^2.4.1"
+    "linkinator": "^4.1.0",
+    "prettier": "^2.4.1",
+    "start-server-and-test": "^1.14.0"
   },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0 -p 9000",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -p 9000",
     "clean": "gatsby clean",
+    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --format csv >> link_report.csv",
+    "test-links": "start-server-and-test serve http://localhost:9000 linkinator",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }

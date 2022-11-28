@@ -23,6 +23,19 @@ Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable 
 
 <Tabs>
 
+<Tabs.TabPane tab="1.3.x" key="1.3.x">
+
+* **1.3.0**
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="1.2.x" key="1.2.x">
+
+* **1.2.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 * **1.0.4**
@@ -79,4 +92,4 @@ https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
 
 ## References
 
-https://www.nginx.com/products/nginx/kubernetes-ingress-controller/
+- [Nginx Ingress Controller](https://www.nginx.com/products/nginx-ingress-controller/)

@@ -1,18 +1,62 @@
-# Prerequisites
+# Overview
 
-- an text editor (I recommend [vscode](https://code.visualstudio.com/))
+![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
+
+Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
+
+For internal Spectro Cloud users, please review the [contributions](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765572627/Contribution) section of the Documentation & Education's teams home page. 
+
+There are two local development paths available; Docker based, and non-Docker based. To reduce complexities, we recommended the Docker based development approach. 
+
+## Prerequisites
+
+To contribute, we recommende having the following software installed locally on your workstation.
+
+- Text Editor
+- [Docker](https://docs.docker.com/desktop/)
 - git configured and access to github repository
+- node and npm (optional)
 
-```sh
-git config --global user.name "Sam Smith"
-git config --global user.email sam@example.com
+## Local Development (Docker)
+
+To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+
+Next, issue the following command to build the Docker image.
+
+**Note**: The first time issuing the command may take several minutes.
+
+```shell
+make docker-image
 ```
 
-- node and npm
-  - install https://brew.sh/
-  - `brew install node`
+To start the Dockererized local development server, issue the command:
 
-# Setup (one time)
+```
+make docker-start
+```
+
+The local development server is ready when the following output is displayed in your terminal.
+
+```shell
+You can now view root in the browser.
+⠀
+  Local:            http://localhost:9000/
+  On Your Network:  http://172.17.0.2:9000/
+⠀
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+⠀
+  Local:            http://localhost:9000/___graphql
+  On Your Network:  http://172.17.0.2:9000/___graphql
+⠀
+Note that the development build is not optimized.
+To create a production build, use gatsby build
+```
+
+Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
+
+To exit from the local development Docker container. Press `Ctrl + Z`.
+
+## Local Development Setup (Non-Docker)
 
 Make a folder somewhere you can easily find
 
@@ -106,13 +150,32 @@ These pages will have the same attributes as for the main page.
 
 The url of a page will be composed from the path of the file relative to the `content` directory. The "number" used for ordering the menu will be stripped.
 
-**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:8000/introduction/what-is as the url
+**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
 
 In markdown you can reference this page relatively to the root of the domain using this syntax:
 
 ```md
 [Go to introduction](/introduction/what-is)
 ```
+
+You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+
+```md
+[Go to Dev Enging](/devx)
+```
+### Redirects
+
+To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
+
+```js
+  {
+    fromPath: `/clusters/nested-clusters/`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+```
+
 
 #### Images or other assets
 
@@ -159,7 +222,7 @@ After that, you can use it like this
 **Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
 
 - provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>`
-- when creating the link to this page, include (in the query) the identifier provided and the value you want (eg: /clusters?clusterType=aws#section1)
+- when creating the link to this page, include (in the query) the identifier provided and the **value** you want (eg: /clusters?clusterType=aws#section1)
 - the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
 
@@ -243,7 +306,7 @@ Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234`.
+_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234 `.
 This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
 
 _Components_:
@@ -252,3 +315,66 @@ _Components_:
 - `|` - separator between lines interval and color
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
+
+### Using Warning Box compponent/Info Box component or any component that wraps content
+
+To use these components you will have to import them from the shared folder:
+
+```js
+import WarningBox from "@librarium/shared/src/components/WarningBox";
+import InfoBox from "@librarium/shared/src/components/InfoBox";
+```
+
+After that you can use them like this:
+
+```js
+<InfoBox>
+
+  *Markdown cotent*
+
+</InfoBox>
+
+<WarningBox>
+
+  *Markdown content*
+
+</WarningBox>
+```
+
+The content must have a new line at the beginning and at the end of the tag like this:
+
+Example:
+
+```js
+  <InfoBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </InfoBox>
+
+  <WarningBox>
+
+  - Point 1
+  - Point 2
+  - ...
+
+  </WarningBox>
+```
+
+## Check for Broken URLs
+
+To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
+
+```shell
+make verify-url-links
+```
+
+If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
+
+```shell
+make verify-url-links-local
+```
+
+An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.

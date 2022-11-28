@@ -107,12 +107,6 @@ $ ssh -i <key> spectro@<node-ip>
 $ sudo -i (to login as root)
 ```
 
-<InfoBox>
-
-The SSH user will always be `spectro`, independent of whether the distribution is Ubuntu, CentOS, etc.
-
-</InfoBox>
-
 Inside the node, review the standard system services and log files:
 
 * Containerd:
@@ -188,7 +182,6 @@ Installation of the gateway cluster may run into errors or might get stuck in th
     * Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to debug to see additional info on the logs.
 * [Calico](/integrations/calico/#troubleshooting)
 * [Kubernetes Dashboard](/integrations/kubernetes-dashboard/#troubleshooting)
-* [CSI](/integrations/csi/#troubleshooting)
 
 # Troubleshooting vSphere cluster with ARP Table
 We have observed that certain vSphere clusters run into issues where non-VIP nodes could not contact VIP node because their ARP entries became stale.

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const StyledHeading = styled.h1`
   font-style: normal;
-  margin: 32px 0;
+  margin: 20px 0;
   font-size: 40px;
   line-height: 60px;
   letter-spacing: -0.02em;
@@ -84,21 +84,14 @@ export const StyledMainWrapper = styled.div`
     `};
 
   h1 {
-    margin: 32px 0;
+    margin: 20px 0;
     font-weight: 500;
     font-size: 32px;
     line-height: 48px;
     letter-spacing: -0.5px;
+    position: relative;
 
     color: #0d1440;
-
-    ::before {
-      display: block;
-      content: "";
-      width: 1px;
-      margin-top: -110px;
-      height: 110px;
-    }
   }
 
   h2 {
@@ -106,25 +99,20 @@ export const StyledMainWrapper = styled.div`
     font-size: 24px;
     line-height: 36px;
     letter-spacing: 0.25px;
+    position: relative;
 
     color: #2d2e55;
 
-    margin: 20px 0;
-
-    ::before {
-      display: block;
-      content: "";
-      width: 1px;
-      margin-top: -110px;
-      height: 110px;
-    }
+    margin: 10px 0;
   }
 
   h3 {
+    color: #4d526c;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
-    margin: 30px 0;
+    position: relative;
+    margin: 5px 0;
   }
 
   ul,
@@ -133,7 +121,6 @@ export const StyledMainWrapper = styled.div`
     -moz-padding-start: 40px;
     -o-padding-start: 40px;
     padding: 0px 0px 0px 2em;
-    margin: 24px 0;
 
     li {
       font-weight: normal;
@@ -153,6 +140,8 @@ export const StyledMainWrapper = styled.div`
   a {
     transition: color 0.15s;
     color: #206cd1;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   code {

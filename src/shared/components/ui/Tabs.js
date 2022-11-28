@@ -3,7 +3,6 @@ import { Tabs as AntTabs } from "antd";
 import styled from "styled-components";
 import { useURLQuery } from "../../utils/location";
 import { useLocation } from "@reach/router";
-//
 
 const StyledTabs = styled(AntTabs)`
   &.ant-tabs {
@@ -17,10 +16,6 @@ const StyledTabs = styled(AntTabs)`
 
   .ant-tabs-tab:hover {
     color: inherit;
-  }
-
-  .ant-tabs-ink-bar {
-    background: #206cd1;
   }
 
   .ant-tabs-tab-btn {
@@ -45,13 +40,14 @@ export default function Tabs({ identifier, ...rest }) {
   const query = useURLQuery();
   const clickedOnHash = useRef(null);
   const [activeKey, setActiveKey] = React.useState(rest?.children?.[0]?.key || "");
+  const location = useLocation();
 
   React.useEffect(() => {
     if (query[identifier]) {
       setActiveKey(query[identifier]);
       clickedOnHash.current = false;
     }
-  }, []);
+  }, [identifier, query]);
 
   React.useEffect(() => {
     if (location.hash && clickedOnHash.current === false) {
@@ -60,7 +56,7 @@ export default function Tabs({ identifier, ...rest }) {
       anchor.click();
       clickedOnHash.current = true;
     }
-  }, [activeKey]);
+  }, [activeKey, location]);
 
   function renderIdentifier() {
     if (identifier) {
@@ -75,6 +71,7 @@ export default function Tabs({ identifier, ...rest }) {
       {renderIdentifier()}
       <StyledTabs
         {...rest}
+        type={"card"}
         activeKey={activeKey}
         onChange={setActiveKey}
         destroyInactiveTabPane={true}

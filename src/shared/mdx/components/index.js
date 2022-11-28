@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ClipboardJS from "clipboard";
 import { CopyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
@@ -21,6 +21,9 @@ const PreContainer = styled.div`
 
 const VideoWrap = styled.div`
   max-width: 840px;
+  video {
+    width: 100%;
+  }
 `;
 
 const Copy = styled.button`
@@ -34,6 +37,11 @@ const Copy = styled.button`
   :hover {
     opacity: 0.9;
   }
+`;
+
+const Anchor = styled.div`
+  position: absolute;
+  top: -120px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -67,32 +75,6 @@ const HeaderWrap = styled.div`
   }
 `;
 
-function Pre(props) {
-  const preRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    new ClipboardJS(buttonRef.current, {
-      text: (trigger) => {
-        return preRef.current.innerText;
-      },
-    });
-  }, []);
-
-  return (
-    <PreContainer>
-      <div ref={preRef} {...props} />
-      <ButtonWrapper>
-        <Tooltip title="Copy to clipboard" placement="top">
-          <Copy ref={buttonRef}>
-            <CopyOutlined />
-          </Copy>
-        </Tooltip>
-      </ButtonWrapper>
-    </PreContainer>
-  );
-}
-
 function generatePermalinkAnchor(children, tabsIdentifierData) {
   const headingId = generateHeadingId(children);
 
@@ -122,44 +104,118 @@ function generateHeadingId(children) {
   return title.replace(/\s+/g, "").toLowerCase();
 }
 
-export default {
-  h1: (props) => {
-    const tabsIdentifierData = useTabsContext();
+function Pre(props) {
+  const preRef = useRef(null);
+  const buttonRef = useRef(null);
 
-    return (
-      <HeaderWrap>
-        <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
-          <FontAwesomeIcon icon="link" />
-        </a>
-        <h1 id={generateHeadingId(props.children)} {...props} />
-      </HeaderWrap>
-    );
-  },
-  h2: (props) => {
-    const tabsIdentifierData = useTabsContext();
+  useEffect(() => {
+    new ClipboardJS(buttonRef.current, {
+      text: (trigger) => {
+        return preRef.current.innerText;
+      },
+    });
+  }, []);
 
-    return (
-      <HeaderWrap>
-        <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
-          <FontAwesomeIcon icon="link" />
-        </a>
-        <h2 id={generateHeadingId(props.children)} {...props} />
-      </HeaderWrap>
-    );
-  },
-  h3: (props) => <h3 id={generateHeadingId(props.children)} {...props} />,
-  h4: (props) => <h4 id={generateHeadingId(props.children)} {...props} />,
-  h5: (props) => <h5 id={generateHeadingId(props.children)} {...props} />,
-  h6: (props) => <h6 id={generateHeadingId(props.children)} {...props} />,
+  return (
+    <PreContainer>
+      <div ref={preRef} {...props} />
+      <ButtonWrapper>
+        <Tooltip title="Copy to clipboard" placement="top">
+          <Copy ref={buttonRef}>
+            <CopyOutlined />
+          </Copy>
+        </Tooltip>
+      </ButtonWrapper>
+    </PreContainer>
+  );
+}
+
+const Header1 = (props) => {
+  const tabsIdentifierData = useTabsContext();
+
+  return (
+    <HeaderWrap>
+      <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+        <FontAwesomeIcon icon="link" />
+      </a>
+      <h1 {...props}>
+        {props.children}
+        <Anchor id={generateHeadingId(props.children)} />
+      </h1>
+    </HeaderWrap>
+  );
+};
+
+const Header2 = (props) => {
+  const tabsIdentifierData = useTabsContext();
+
+  return (
+    <HeaderWrap>
+      <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+        <FontAwesomeIcon icon="link" />
+      </a>
+      <h2 {...props}>
+        {props.children}
+        <Anchor id={generateHeadingId(props.children)} />
+      </h2>
+    </HeaderWrap>
+  );
+};
+
+const Header3 = (props) => {
+  const tabsIdentifierData = useTabsContext();
+
+  return (
+    <HeaderWrap>
+      <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+        <FontAwesomeIcon icon="link" />
+      </a>
+      <h3 {...props}>
+        {props.children}
+        <Anchor id={generateHeadingId(props.children)} />
+      </h3>
+    </HeaderWrap>
+  );
+};
+
+const mdxComponents = {
+  h1: Header1,
+  h2: Header2,
+  h3: Header3,
+  h4: (props) => (
+    <h4 id={generateHeadingId(props.children)} {...props}>
+      {props.children}
+    </h4>
+  ),
+  h5: (props) => (
+    <h5 id={generateHeadingId(props.children)} {...props}>
+      {" "}
+      {props.children}
+    </h5>
+  ),
+  h6: (props) => (
+    <h6 id={generateHeadingId(props.children)} {...props}>
+      {props.children}
+    </h6>
+  ),
   p: (props) => <p className="paragraph" {...props} />,
   pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
   img: (props) => {
-    return <img {...props} />;
+    return <img alt="MDXimage" {...props} />;
   },
+  video: (props) => (
+    <VideoWrap>
+      <video {...props}>
+        <track default kind="captions" srcLang="en" />
+      </video>
+    </VideoWrap>
+  ),
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`
   // TODO add `table`
 };
+
+export default mdxComponents;

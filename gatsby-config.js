@@ -75,14 +75,24 @@ const plugins = [
     resolve: "gatsby-plugin-mdx",
     options: {
       plugins: [
-        `gatsby-remark-local-videos`,
+        `gatsby-remark-video`,
         `gatsby-remark-images`,
         `gatsby-remark-images-medium-zoom`,
         "gatsby-remark-image-attributes",
       ],
       gatsbyRemarkPlugins: [
         {
-          resolve: `gatsby-remark-local-videos`,
+          resolve: "gatsby-remark-video",
+          options: {
+            width: 800,
+            height: "auto",
+            preload: "auto",
+            muted: false,
+            autoplay: false,
+            playsinline: true,
+            controls: true,
+            loop: false,
+          },
         },
         {
           resolve: "gatsby-remark-images",
@@ -168,6 +178,7 @@ module.exports = {
     title: config.siteMetadata.title,
     description: config.siteMetadata.description,
     docsLocation: config.siteMetadata.docsLocation,
+    apiLocation: config.siteMetadata.apiLocation,
     ogImage: config.siteMetadata.ogImage,
     favicon: config.siteMetadata.favicon,
     logo: {

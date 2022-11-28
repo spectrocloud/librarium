@@ -18,7 +18,8 @@ const config = {
     title: "Spectro cloud documentation",
     description: "Spectro cloud documentation, guides, API documentation, integrations and more",
     ogImage: null,
-    docsLocation: "https://github.com/spectrocloud/librarium/edit/master/content/docs/",
+    docsLocation: "https://github.com/spectrocloud/librarium/edit/master/content/docs",
+    apiLocation: "https://github.com/spectrocloud/librarium/edit/master/content/api",
     favicon: "assets/icons/favicon.png",
   },
   pwa: {

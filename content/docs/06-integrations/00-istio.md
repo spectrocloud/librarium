@@ -22,11 +22,20 @@ This Integration aims to automate and simplify the rollout of the various Istio 
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="1.14.x" key="1.14.x">
+
+* **1.14.3**
+* **1.14.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.6.x" key="1.6.x">
 
 * **1.6.2** 
 
 </Tabs.TabPane>
+
 </Tabs>
 
 ## Contents
