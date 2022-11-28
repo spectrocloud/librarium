@@ -67,7 +67,7 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 
 # Installing Private Cloud Gateway - MAAS
 
-![maas-pcg-creation](/pcg-creation-video/maas.mp4)
+`video: title: "maas-pcg-creation": /pcg-creation-video/maas.mp4`
 
 The following system requirements should be met in order to install a private cloud gateway for MAAS:
 
@@ -227,7 +227,7 @@ A default cloud account is automatically created when the private cloud gateway 
 
 # Deploying a bare metal cluster using MAAS
 
-![maas-cluster-creation](./cluster-creation-videos/maas.mp4)
+`video: title: "maas-cluster-creation": ./cluster-creation-videos/maas.mp4`
 
 The following steps need to be performed to provision a new MAAS cluster:
 
