@@ -948,7 +948,7 @@ To create an AWS cloud account using STS credentials follow the steps below:
 
 ## Global Role Additional Policies:
 
-There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a Host cluster with the **AWS EBS CSI** storage layer, ensure `AmazonEBSCSIDriverPolicy` is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts** . Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional ARNs to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
+There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a Host cluster with the **AWS EBS CSI** storage layer, ensure `AmazonEBSCSIDriverPolicy` is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional ARNs to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 <br />
 
