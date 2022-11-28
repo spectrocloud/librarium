@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Container Deployment
 
-To add a container tier to Palette Dev Engine App Profile,
+Containers run small microservices to large applications efficiently. They contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile follow the steps below.
 
 <br />
 
@@ -24,15 +24,15 @@ To add a container tier to Palette Dev Engine App Profile,
 * [Spectro Cloud Palette account](https://www.spectrocloud.com/get-started/)
 
 
-## How to Deploy Container to App Profile
+## Add Container to App Profile
 
-1. Login to the Palette Dev Engine console.
-
-
-2. Select the **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right handside of the main screen. 
+1. Login to the [Palette](/devx#quickstartwithpaletteappmode).
 
 
-3. Provide the wizard with the following information and click on **Next** button after you have filled out the information.
+2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 
+
+
+3. Provide the wizard with the following information and click on the **Next** button after you have filled out the information.
 
 **Basic Information: **
 
@@ -43,7 +43,7 @@ To add a container tier to Palette Dev Engine App Profile,
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
 
-4. **Add Service**: From the available services select the **Container Deployment**, [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
+4. **Add Service**: From the available services list, select **Container Deployment**. [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
 
 
 5. Provide the following information to the wizard:
@@ -74,6 +74,8 @@ To add a container tier to Palette Dev Engine App Profile,
 6. Click **Review** the information and complete the app profile creation wizard. Deploy more tiers to the profile per user requirements, and Palette Clusters can be deployed using the deployed app profile. 
 
 
+
+
 ## Validation
 
 1. Login to [Palette](/devx#quickstartwithpaletteappmode).
@@ -82,7 +84,7 @@ To add a container tier to Palette Dev Engine App Profile,
 2. Select the **App Profiles** option from the left **Main Menu**.   
 
 
-3. In the App Profiles page, you will find your App Profile listed. Click the name of the App Profile to view the profile details. The app profile tier details will show the container deployed to the profile.
+3. In the App Profiles page, you will find your App Profile listed. Click the name of the App Profile to view the profile details. The app profile tier details will show the container added to the profile.
 
 
 
