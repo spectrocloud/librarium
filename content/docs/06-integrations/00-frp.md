@@ -26,8 +26,14 @@ Do not change any values which are available by default, as it is required by ou
 </InfoBox>
 
 ## Versions Supported
+
 <Tabs>
 
+<Tabs.TabPane tab="1.1.x" key="1.1.x">
+
+**1.1.0**
+
+</Tabs.TabPane>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 **1.0.x**

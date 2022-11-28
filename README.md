@@ -1,18 +1,62 @@
-# Prerequisites
+# Overview
 
-- an text editor (I recommend [vscode](https://code.visualstudio.com/))
+![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
+
+Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
+
+For internal Spectro Cloud users, please review the [contributions](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765572627/Contribution) section of the Documentation & Education's teams home page. 
+
+There are two local development paths available; Docker based, and non-Docker based. To reduce complexities, we recommended the Docker based development approach. 
+
+## Prerequisites
+
+To contribute, we recommende having the following software installed locally on your workstation.
+
+- Text Editor
+- [Docker](https://docs.docker.com/desktop/)
 - git configured and access to github repository
+- node and npm (optional)
 
-```sh
-git config --global user.name "Sam Smith"
-git config --global user.email sam@example.com
+## Local Development (Docker)
+
+To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+
+Next, issue the following command to build the Docker image.
+
+**Note**: The first time issuing the command may take several minutes.
+
+```shell
+make docker-image
 ```
 
-- node and npm
-  - install https://brew.sh/
-  - `brew install node`
+To start the Dockererized local development server, issue the command:
 
-# Setup (one time)
+```
+make docker-start
+```
+
+The local development server is ready when the following output is displayed in your terminal.
+
+```shell
+You can now view root in the browser.
+⠀
+  Local:            http://localhost:9000/
+  On Your Network:  http://172.17.0.2:9000/
+⠀
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+⠀
+  Local:            http://localhost:9000/___graphql
+  On Your Network:  http://172.17.0.2:9000/___graphql
+⠀
+Note that the development build is not optimized.
+To create a production build, use gatsby build
+```
+
+Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
+
+To exit from the local development Docker container. Press `Ctrl + Z`.
+
+## Local Development Setup (Non-Docker)
 
 Make a folder somewhere you can easily find
 
@@ -113,6 +157,25 @@ In markdown you can reference this page relatively to the root of the domain usi
 ```md
 [Go to introduction](/introduction/what-is)
 ```
+
+You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+
+```md
+[Go to Dev Enging](/devx)
+```
+### Redirects
+
+To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
+
+```js
+  {
+    fromPath: `/clusters/nested-clusters/`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+```
+
 
 #### Images or other assets
 
@@ -299,3 +362,19 @@ Example:
 
   </WarningBox>
 ```
+
+## Check for Broken URLs
+
+To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
+
+```shell
+make verify-url-links
+```
+
+If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
+
+```shell
+make verify-url-links-local
+```
+
+An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.

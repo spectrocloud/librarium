@@ -111,6 +111,8 @@ export const StyledMainWrapper = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 32px;
+    position: relative;
+    margin: 5px 0;
   }
 
   ul,
