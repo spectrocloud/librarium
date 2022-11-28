@@ -19,21 +19,34 @@ To add a container tier to Palette Dev Engine App Profile,
 
 <br />
 
-1. Log in to the Palette Dev Engine console
+# Prerequisite
+
+* [Spectro Cloud Palette account](https://www.spectrocloud.com/get-started/)
 
 
-2. Select the `App Profiles` from the left ribbon menu, click `+ New App Profile` and provide the following information to the app creation wizard.
+## How to Deploy Container to App Profile
+
+1. Login to the Palette Dev Engine console.
+
+
+2. Select the **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right handside of the main screen. 
+
+
+3. Provide the wizard with the following information and click on **Next** button after you have filled out the information.
 
 **Basic Information: **
 
 |         Parameter           | Description  |
 |-------------------------------|-----------------|
 |Application Profile Name | A custom name for the App Profile|
-|Description (optional)   | Description of the App Profile, if any |
+|Description (optional)   | Description of the App Profile, if any | 
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
 
-3. Select **Container Deployment** from the **Services** and provide the following information to the wizard:
+4. **Add Service**: From the available services select the **Container Deployment**, [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
+
+
+5. Provide the following information to the wizard:
   * **Container Name**: An unique name for the container deployment
   * **Registry**: Select the registry from which the image is to be extracted
   * **Image**: Image of the container to be deployed
@@ -58,6 +71,20 @@ To add a container tier to Palette Dev Engine App Profile,
        argument: HOSTNAME
  
  
-4. **Review** the information and complete the app profile creation wizard. Deploy more tiers to the profile per user requirements, and Palette Clusters can be deployed using the deployed app profile. 
+6. Click **Review** the information and complete the app profile creation wizard. Deploy more tiers to the profile per user requirements, and Palette Clusters can be deployed using the deployed app profile. 
+
+
+## Validation
+
+1. Login to [Palette](/devx#quickstartwithpaletteappmode).
+
+
+2. Select the **App Profiles** option from the left **Main Menu**.   
+
+
+3. In the App Profiles page, you will find your App Profile listed. Click the name of the App Profile to view the profile details. The app profile tier details will show the container deployed to the profile.
+
+
+
 
 
