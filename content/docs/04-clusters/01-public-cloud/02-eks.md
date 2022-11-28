@@ -866,7 +866,7 @@ The following warning is expected and can be ignored:<p></p>
 
 ## AWS Account Creation Using the Access Credentials Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-credentials.mp4`
 
 To create an AWS cloud account using access credentials follow the steps below:
 
@@ -895,7 +895,7 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 ## AWS Account Creation Using the Security Token Service (STS) Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-sts.mp4`
 
 ## Security Token Service (STS) Method
 
@@ -974,7 +974,7 @@ Palette customers can optionally disable the OIDC Associate Provider if the serv
 
 # Deploying an EKS Cluster
 
- ![eks-cluster-creation](./cluster-creation-videos/eks.mp4)
+`video: title: "eks-cluster-creation": ./cluster-creation-videos/eks.mp4`
 
 The following steps need to be performed to provision a new EKS cluster:
 
