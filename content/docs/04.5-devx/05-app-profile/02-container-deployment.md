@@ -48,7 +48,7 @@ Containers run small microservices to large applications efficiently. They conta
 
 5. Provide the following information to the wizard:
   * **Container Name**: An unique name for the container deployment
-  * **Registry**: Select the registry from which the image is to be extracted
+  * **Registry**: Select the registry from which the image is to be extracted. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.
   * **Image**: Image of the container to be deployed
   * **Network Access:**
     * Private
