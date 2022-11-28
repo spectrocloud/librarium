@@ -57,7 +57,11 @@ The following sections describe these capabilities in detail:
 * [Web based kubectl](/clusters/cluster-management/palette-webctl#overview) - Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters.
 
 
-* [Lock Cluster](/clusters/cluster-management/palette-lock-cluster) - Palette supports the Cluster(s) Lock feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. 
+* [Platform Management](/clusters/cluster-management/palette-lock-cluster) - Palette supports the Cluster(s) Management feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded.
+
+
+* [NOC UI](/clusters/cluster-management/palette-lock-cluster) - Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
+
 
 
 <InfoBox>

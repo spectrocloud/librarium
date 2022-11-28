@@ -94,6 +94,11 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="1.24.x" key="k8s_v1.24">
+
+- **1.24.4**
+
+</Tabs.TabPane>
 </Tabs>
 
 ## Notable parameters
