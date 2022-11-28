@@ -365,7 +365,7 @@ Example:
 
 ### Video
 
-To add a video use the following syntax
+To add a video, use the following syntax:
 
 ```
 `video: title: "<video title>": <path/to/video`
