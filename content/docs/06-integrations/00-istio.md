@@ -25,6 +25,7 @@ This Integration aims to automate and simplify the rollout of the various Istio 
 
 <Tabs.TabPane tab="1.14.x" key="1.14.x">
 
+* **1.14.3**
 * **1.14.1**
 
 </Tabs.TabPane>

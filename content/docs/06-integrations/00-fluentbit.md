@@ -14,6 +14,10 @@ import WarningBox from 'shared/components/WarningBox';
 
 Fluent-Bit is a multi-platform log forwarder. The default integration will help forward logs from the Kubernetes cluster to an external ElasticSearch cluster
 
+## Version
+
+* **1.9.6**
+
 ## Contents
 
 Fluent-Bit is installed as a DaemonSet & so, an instance of fluent-bit will be running on all the nodes in the cluster.

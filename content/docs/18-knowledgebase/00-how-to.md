@@ -3,9 +3,9 @@ title: "How to"
 metaTitle: "Get started with a quick How-to"
 metaDescription: "KnowledgeBase with How to"
 icon: "laptop"
-hideToC: true
+hideToC: false
 fullWidth: false
-hiddenFromNav: true
+hiddenFromNav: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -17,7 +17,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 # How To
 
 Learn what Spectro Cloud Palette can do for you. Walk through these quick instructions that will take you through Spectro Cloud Palette, its key functions, and more.<p></p><br />
-
 
 
 <br />
