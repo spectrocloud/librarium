@@ -52,14 +52,6 @@ The vSphere CSI driver includes the following components:
 </Tabs.TabPane>
 </Tabs>
 
-## Notable Parameters
-
-| Name | Supported Values | Default Value | Description |
-| --- | --- | --- | --- |
-| diskformat | thin, zeroedthick and eagerzeroedthick | zeroedthick | The storage account type to use |
-| datastore | Datastore Name | | If specified, the volume will be created on the datastore specified in the storage class |
-| isDefaultClass | true, false | true | Flag to denote if this StorageClass will be the default |
-
 **References:**
 
 https://vsphere-csi-driver.sigs.k8s.io/

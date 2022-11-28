@@ -7,7 +7,7 @@ clean:
 	docker image rm $(IMAGE)
 
 initialize:
-	npm install
+	npm ci
 
 start:
 	npm run start
@@ -25,12 +25,13 @@ build:
 docker-image:
 	docker build -t $(IMAGE) .
 
-docker-initialize: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium $(IMAGE) npm install
+docker-start:
+	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
 
-docker-start: docker-image
-	docker run --rm -it -v $(CURDIR):/librarium -p 9000:9000 $(IMAGE)
+verify-url-links:
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
 
-docker-build: docker-image
-	rm -rf public
-	docker run --rm -it -v $(CURDIR):/librarium $(IMAGE) npm run build
+verify-url-links-local: build
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npm run test-links

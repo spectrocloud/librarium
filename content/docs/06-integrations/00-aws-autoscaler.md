@@ -76,6 +76,12 @@ managedMachinePool:
 
 <Tabs>
 
+<Tabs.TabPane tab="1.22.x" key="1.22.x">
+
+**1.22.2**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 **1.0.0**

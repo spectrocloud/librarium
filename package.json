@@ -69,15 +69,19 @@
     "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-react-router-scroll": "^4.0.0",
-    "prettier": "^2.4.1"
+    "linkinator": "^4.1.0",
+    "prettier": "^2.4.1",
+    "start-server-and-test": "^1.14.0"
   },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0 -p 9000",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -p 9000",
     "clean": "gatsby clean",
+    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --format csv >> link_report.csv",
+    "test-links": "start-server-and-test serve http://localhost:9000 linkinator",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }

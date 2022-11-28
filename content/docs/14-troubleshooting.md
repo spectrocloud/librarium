@@ -182,7 +182,6 @@ Installation of the gateway cluster may run into errors or might get stuck in th
     * Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to debug to see additional info on the logs.
 * [Calico](/integrations/calico/#troubleshooting)
 * [Kubernetes Dashboard](/integrations/kubernetes-dashboard/#troubleshooting)
-* [CSI](/integrations/csi/#troubleshooting)
 
 # Troubleshooting vSphere cluster with ARP Table
 We have observed that certain vSphere clusters run into issues where non-VIP nodes could not contact VIP node because their ARP entries became stale.
