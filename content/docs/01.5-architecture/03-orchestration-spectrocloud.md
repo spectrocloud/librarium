@@ -1,5 +1,5 @@
 ---
-title: "Orchestration - Palette"
+title: "Provisioning Order of Operations"
 metaTitle: "Workload Cluster Provisioning"
 metaDescription: "The methods of workload cluster provisioning for K8S clusters"
 icon: ""
@@ -26,7 +26,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 ## Workload Cluster Provisioning
 
-![workload_cluster_provisioning.png](workload_cluster_provisioning.png)
+![workload_cluster_provisioning.png](/workload_cluster_provisioning.png)
 
 
 <br />
@@ -57,7 +57,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-![distributed_orchestration.png](distributed_orchestration.png)
+![distributed_orchestration.png](/distributed_orchestration.png)
 
 
 <br />

@@ -1,5 +1,5 @@
 ---
-title: "Architecture Overview"
+title: "Overview"
 metaTitle: "Spectro Cloud Architecture"
 metaDescription: "Spectro Cloud Architecture Overview"
 icon: ""

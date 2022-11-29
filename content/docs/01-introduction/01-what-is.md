@@ -1,7 +1,7 @@
 ---
-title: "What is Palette?"
+title: "Overview"
 metaTitle: "About Palette"
-metaDescription: "Most important concepts of Spectro Cloud"
+metaDescription: "Overview of Spectro Cloud and Palette"
 icon: ""
 hideToC: true
 fullWidth: false

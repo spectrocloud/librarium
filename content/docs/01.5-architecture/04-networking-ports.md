@@ -1,5 +1,5 @@
 ---
-title: "On-Premises Network Communication and Ports"
+title: "Network Ports"
 metaTitle: "Network Communication and Ports Management Platform on Prem"
 metaDescription: "Port-Direction-Purpose Management Platform and Workload Clusters"
 icon: ""
@@ -11,6 +11,8 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
+
+
 
 
 # On-Premises Network Communications and Ports

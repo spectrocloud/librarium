@@ -49,7 +49,7 @@ Upon login, the dashboard shows the views available for a non-admin user.
 
 
 
- ![project-dashboard](project-dashboard.png)
+ ![project-dashboard](/docs_introduction_dashboard_projects-overview.png)
 
 
 
@@ -72,7 +72,7 @@ The menu within the Tenant Admin Dashboard contains the Projects button. This is
 
 
 
-![admin-dashboard](admin-dashboard.png)
+![admin-dashboard](/docs_introduction_dashboard_admin-dashboard-tenant.png)
 
 
 

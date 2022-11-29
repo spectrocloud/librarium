@@ -47,6 +47,42 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/introduction/architecture-overview`,
+    toPath: `/architecture/architecture-overview`,
+  },
+  {
+    fromPath: `/getting-started/palette-freemium`,
+    toPath: `/introduction/palette-freemium`,
+  },
+  {
+    fromPath: `/getting-started/free-cloud-credit`,
+    toPath: `/introduction/palette-freemium`,
+  },
+  {
+    fromPath: `/getting-started/dashboard`,
+    toPath: `/introduction/dashboard`,
+  },
+  {
+    fromPath: `/getting-started/onboarding-workflow`,
+    toPath: `/introduction/onboarding-workflow`,
+  },
+  {
+    fromPath: `/troubleshooting/palette-namespaces-podes`,
+    toPath: `/architecture/palette-namespaces-podes`,
+  },
+  {
+    fromPath: `/troubleshooting/Network-Communications-and-Ports`,
+    toPath: `/architecture/networking-ports`,
+  },
+  {
+    fromPath: `/troubleshooting/SAAS-Network-Communications-and-Ports`,
+    toPath: `/architecture/networking-ports`,
+  },
+  {
+    fromPath: `/troubleshooting/orchestration-spectrocloud`,
+    toPath: `/architecture/orchestration-spectrocloud`,
+  }
 ];
 
 module.exports = redirects;

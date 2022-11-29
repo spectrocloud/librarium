@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Spectro Cloud"
+title: "What is Palette?"
 metaTitle: "What is Spectro Cloud?"
 metaDescription: "A brief introduction to Spectro Cloud"
 icon: "graph"
