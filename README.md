@@ -363,6 +363,20 @@ Example:
   </WarningBox>
 ```
 
+### Video
+
+To add a video, use the following syntax:
+
+```
+`video: title: "<video title>": <path/to/video`
+```
+
+Example: 
+
+```
+`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
+```
+
 ## Check for Broken URLs
 
 To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
