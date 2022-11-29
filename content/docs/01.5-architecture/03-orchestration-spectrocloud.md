@@ -1,7 +1,7 @@
 ---
-title: "Provisioning Order of Operations"
-metaTitle: "Workload Cluster Provisioning"
-metaDescription: "The methods of workload cluster provisioning for K8S clusters"
+title: "Order of Operations"
+metaTitle: "Provision and Order of Operations in Palette"
+metaDescription: "The methods of workload cluster provisioning for K8S clusters with Palette"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,8 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-
-# Orchestration - Palette
+# Order of Operations
 
 Spectro Cloud Palette provisions standard, upstream Kubernetes clusters using [Cluster API](https://cluster-api.sigs.k8s.io/).
  
