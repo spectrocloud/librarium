@@ -26,7 +26,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 ## Workload Cluster Provisioning
 
-![workload_cluster_provisioning.png](/workload_cluster_provisioning.png)
+![workload_cluster_provisioning.png](/architecture_orchestartion-spectrocloud_provision-flow.png)
 
 
 <br />
@@ -57,7 +57,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-![distributed_orchestration.png](/distributed_orchestration.png)
+![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
 
 
 <br />
