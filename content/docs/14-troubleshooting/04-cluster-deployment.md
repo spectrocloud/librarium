@@ -44,10 +44,21 @@ Common reasons for why a service may fail are:
     ```shell
         sudo -i
     ```
-3. Verify the kubelet service is operational.
+3. Verify the Kubelet service is operational.
 	```shell
         systemctl status kubelet.service
     ```
+
+4. If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip this step. 
+    1. Navigate to the **/var/log/** folder.
+        ```shell
+        cd /var/log/
+        ```
+    2. Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
+        ```
+        cat cloud-init-output.log
+        ```
+
 5. If the kubelet service works as expected, do the following.  
 	- Export the kubeconfig file. 
 
@@ -76,20 +87,10 @@ Common reasons for why a service may fail are:
         ```
 
         <InfoBox>
-            You can obtain the URL for the Kubernetes API using this command: ``kubectl cluster-info`` 
+            You can obtain the URL for the Kubernetes API using this command: kubectl cluster-info 
         </InfoBox>
 
-4. If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip this step. 
-    1. Navigate to the **/var/log/** folder.
-        ```shell
-        cd /var/log/
-        ```
-    2. Scan the cloud-init-output for any errors. Take note of any errors and fix them.
-        ```
-        cat cloud-init-output.log
-        ```
-5. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).
-
+6. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).
 
 
 ## Scenario - Gateway Installer Registration Failures
@@ -98,11 +99,12 @@ There are a couple reasons the Gateway Installer might fail:
 
 - A bootstrap error might have occured. When the Gateway Installer VM is powered on, it initiates a bootstrap process and registers itself with the tenant portal. This process typically takes 5 to 10 minutes. If the installer fails to register with the tenant portal during this time, it indicates a bootstrapping error. 
 
-To address the issue, SSH into the Installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. 
+    To address the issue, SSH into the Installer virtual machine using the key provided during OVA import and inspect the log file located at *'/var/log/cloud-init-output.log'*. 
 
-The log file contains error messages about any failures that occur while connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. 
+    The log file contains error messages about any failures that occur while connecting to the Spectro Cloud management platform portal, authenticating, or downloading installation artifacts. 
 
-A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+    A common cause for these errors is that the Spectro Cloud management platform console endpoint or the pairing code is typed incorrectly. Ensure that the tenant portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and re-launch with the correct values.
+
 
 - The VM may not have an outbound connection. The Gateway Installer VM requires outbound connectivity directly or using a proxy. Adjust proxy settings, if applicable, to fix the connectivity or power down and delete the Installer VM, then relaunch it in a network that enables outbound connections.
 
