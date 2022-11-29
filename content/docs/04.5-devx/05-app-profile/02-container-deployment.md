@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Container Deployment
 
-Containers run small microservices to large applications efficiently. They contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile follow the steps below.
+Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. They contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile follow the steps below. 
 
 <br />
 
@@ -50,9 +50,19 @@ Containers run small microservices to large applications efficiently. They conta
   * **Container Name**: An unique name for the container deployment
   * **Registry**: Select the registry from which the image is to be extracted. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.
   * **Image**: Image of the container to be deployed
+ 
+ <InfoBox>
+  
+  While specifing an image from a public registry, the registry hostname may be skipped.
+  
+  Example: <br />
+   For container NGINX if added from the public registry, specify the image as `nginx.`
+  
+  </InfoBox>
+  
   * **Network Access:**
-    * Private
-    * Public
+    * Private: To establish connectivity to container service through private network.
+    * Public: To establish connectivity to container service through public network.
     * Port number to expose the container for external communication.  
   * **Environment Variables:** Environment variables can be specified as **Key-Value** pairs during the container deployment.  
      Example: <br />
@@ -71,7 +81,9 @@ Containers run small microservices to large applications efficiently. They conta
        argument: HOSTNAME
  
  
-6. Click **Review** the information and complete the app profile creation wizard. Deploy more tiers to the profile per user requirements, and Palette Clusters can be deployed using the deployed app profile. 
+6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
+
+Once the container is added as a tier to the App Profle continue with the remaining steps of [App Profile creation](/devx/app-profile/create-app-profile). You can add more services as tiers to the app profile per use case. 
 
 
 
