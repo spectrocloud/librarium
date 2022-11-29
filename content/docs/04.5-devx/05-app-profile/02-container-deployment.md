@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Container Deployment
 
-Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. They contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile follow the steps below. 
+Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. Containers contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile, follow the steps below. 
 
 <br />
 
