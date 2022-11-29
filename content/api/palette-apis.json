@@ -136,6 +136,32 @@
       ],
       "type": "object"
     },
+    "v1APIServerAccessProfile": {
+      "description": "APIServerAccessProfile - access profile for AKS API server.",
+      "properties": {
+        "authorizedIPRanges": {
+          "description": "AuthorizedIPRanges - Authorized IP Ranges to kubernetes API server.",
+          "items": {
+            "default": "",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "enablePrivateCluster": {
+          "description": "EnablePrivateCluster - Whether to create the cluster as a private cluster or not.",
+          "type": "boolean"
+        },
+        "enablePrivateClusterPublicFQDN": {
+          "description": "EnablePrivateClusterPublicFQDN - Whether to create additional public FQDN for private cluster or not.",
+          "type": "boolean"
+        },
+        "privateDNSZone": {
+          "description": "PrivateDNSZone - Private dns zone mode for private cluster.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AclMeta": {
       "description": "Resource access control information",
       "properties": {
@@ -563,6 +589,15 @@
       ],
       "type": "object"
     },
+    "v1AppDeploymentNotifications": {
+      "description": "Application deployment notifications",
+      "properties": {
+        "isAvailable": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1AppDeploymentProfile": {
       "description": "Application deployment profile response",
       "properties": {
@@ -712,6 +747,10 @@
           },
           "type": "array"
         },
+        "lifecycleStatus": {
+          "$ref": "#/definitions/v1LifecycleStatus",
+          "description": "cluster life cycle status"
+        },
         "state": {
           "type": "string"
         }
@@ -721,6 +760,9 @@
     "v1AppDeploymentStatusSummary": {
       "description": "Application deployment status summary",
       "properties": {
+        "notifications": {
+          "$ref": "#/definitions/v1AppDeploymentNotifications"
+        },
         "state": {
           "type": "string"
         }
@@ -890,6 +932,24 @@
             },
             "version": {
               "type": "string"
+            },
+            "versions": {
+              "description": "Application profile's list of all the versions",
+              "items": {
+                "$ref": "#/definitions/v1AppProfileVersion"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "status": {
+          "properties": {
+            "inUseApps": {
+              "items": {
+                "$ref": "#/definitions/v1ObjectResReference"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -972,6 +1032,9 @@
       "properties": {
         "metadata": {
           "$ref": "#/definitions/v1AppProfileMetaUpdateEntity"
+        },
+        "version": {
+          "type": "string"
         }
       },
       "required": [
@@ -993,6 +1056,22 @@
             "type": "string"
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppProfileMetadata": {
+      "description": "Application profile metadata summary",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectEntity"
+        },
+        "spec": {
+          "properties": {
+            "version": {
+              "type": "string"
+            }
+          }
         }
       },
       "type": "object"
@@ -1162,6 +1241,18 @@
         }
       }
     },
+    "v1AppProfilesMetadata": {
+      "properties": {
+        "appProfiles": {
+          "items": {
+            "$ref": "#/definitions/v1AppProfileMetadata"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
     "v1AppProfilesSummary": {
       "properties": {
         "appProfiles": {
@@ -1190,6 +1281,9 @@
     "v1AppTierEntity": {
       "description": "Application tier input entity for the initial creation",
       "properties": {
+        "containerRegistryUid": {
+          "type": "string"
+        },
         "installOrder": {
           "format": "int32",
           "type": "integer"
@@ -1340,6 +1434,10 @@
     "v1AppTierSpec": {
       "description": "Application tier specs",
       "properties": {
+        "containerRegistryUid": {
+          "description": "Container registry uid",
+          "type": "string"
+        },
         "installOrder": {
           "description": "Application Tier installation order",
           "format": "int32",
@@ -1415,6 +1513,9 @@
     "v1AppTierUpdateEntity": {
       "description": "Application tier update entity",
       "properties": {
+        "containerRegistryUid": {
+          "type": "string"
+        },
         "installOrder": {
           "format": "int32",
           "type": "integer"
@@ -1801,6 +1902,10 @@
         },
         "secretKey": {
           "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/v1CloudAccountSettings",
+          "description": "Palette internal cloud settings"
         },
         "sts": {
           "$ref": "#/definitions/v1AwsStsCredentials"
@@ -2801,12 +2906,21 @@
           "$ref": "#/definitions/v1AADProfile",
           "description": "AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication."
         },
+        "apiServerAccessProfile": {
+          "$ref": "#/definitions/v1APIServerAccessProfile",
+          "description": "APIServerAccessProfile is the access profile for AKS API server."
+        },
         "controlPlaneSubnet": {
           "$ref": "#/definitions/v1Subnet",
           "description": "Subnet for Kubernetes control-plane node"
         },
         "enablePrivateCluster": {
+          "description": "Deprecated. use apiServerAccessProfile.enablePrivateCluster",
           "type": "boolean"
+        },
+        "infraLBConfig": {
+          "$ref": "#/definitions/v1InfraLBConfig",
+          "description": "APIServerLB is the configuration for the control-plane load balancer."
         },
         "location": {
           "description": "Location is the Azure datacenter location",
@@ -3228,6 +3342,33 @@
       },
       "type": "object"
     },
+    "v1AzurePrivateDnsZone": {
+      "description": "Azure Private DNS zone",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1AzurePrivateDnsZones": {
+      "description": "Azure Storage Accounts",
+      "properties": {
+        "privateDnsZones": {
+          "items": {
+            "$ref": "#/definitions/v1AzurePrivateDnsZone"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1AzureRegion": {
       "description": "Azure region",
       "properties": {
@@ -3277,6 +3418,18 @@
         "storageAccountTypes": {
           "items": {
             "$ref": "#/definitions/v1StorageAccountEntity"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1AzureStorageAccounts": {
+      "description": "Azure Storage Accounts",
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/definitions/v1StorageAccount"
           },
           "type": "array"
         }
@@ -3479,6 +3632,14 @@
           "$ref": "#/definitions/v1RegistryAuth"
         },
         "endpoint": {
+          "type": "string"
+        },
+        "providerType": {
+          "default": "helm",
+          "enum": [
+            "helm",
+            "zarf"
+          ],
           "type": "string"
         },
         "scope": {
@@ -4114,6 +4275,9 @@
         },
         "sonobuoy": {
           "$ref": "#/definitions/v1ClusterComplianceScanSonobuoyConfig"
+        },
+        "syft": {
+          "$ref": "#/definitions/v1ClusterComplianceScanSyftConfig"
         }
       }
     },
@@ -4191,6 +4355,12 @@
             "$ref": "#/definitions/v1ClusterScanLogSonobuoy"
           },
           "type": "array"
+        },
+        "syftLogs": {
+          "items": {
+            "$ref": "#/definitions/v1ClusterScanLogSyft"
+          },
+          "type": "array"
         }
       }
     },
@@ -4224,6 +4394,22 @@
         }
       }
     },
+    "v1ClusterComplianceScanSyftConfig": {
+      "description": "Cluster Compliance Scan config for syft driver",
+      "properties": {
+        "runScan": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ClusterComplianceScanSyftScheduleConfig": {
+      "description": "Cluster Compliance Scan schedule config for syft driver",
+      "properties": {
+        "schedule": {
+          "$ref": "#/definitions/v1ClusterFeatureSchedule"
+        }
+      }
+    },
     "v1ClusterComplianceScheduleConfig": {
       "description": "Cluster Compliance Scan schedule config",
       "properties": {
@@ -4235,6 +4421,9 @@
         },
         "sonobuoy": {
           "$ref": "#/definitions/v1ClusterComplianceScanSonobuoyScheduleConfig"
+        },
+        "syft": {
+          "$ref": "#/definitions/v1ClusterComplianceScanSyftScheduleConfig"
         }
       }
     },
@@ -4772,7 +4961,7 @@
       "type": "object"
     },
     "v1ClusterKubeBenchLogStatus": {
-      "description": "Cluster Compliance Scan Kube Bench Log Status",
+      "description": "Cluster Compliance Scan KubeBench Log Status",
       "properties": {
         "actor": {
           "$ref": "#/definitions/v1ClusterFeatureActor"
@@ -4795,7 +4984,7 @@
       }
     },
     "v1ClusterKubeHunterLogStatus": {
-      "description": "Cluster Compliance Scan Kube Hunter Log Status",
+      "description": "Cluster Compliance Scan KubeHunter Log Status",
       "properties": {
         "actor": {
           "$ref": "#/definitions/v1ClusterFeatureActor"
@@ -6250,7 +6439,7 @@
       "type": "object"
     },
     "v1ClusterScanLogKubeBench": {
-      "description": "Cluster Compliance Scan Kube Bench Log",
+      "description": "Cluster Compliance Scan KubeBench Log",
       "properties": {
         "metadata": {
           "$ref": "#/definitions/v1ObjectMeta"
@@ -6264,7 +6453,7 @@
       }
     },
     "v1ClusterScanLogKubeHunter": {
-      "description": "Cluster Compliance Scan Kube Hunter Log",
+      "description": "Cluster Compliance Scan KubeHunter Log",
       "properties": {
         "metadata": {
           "$ref": "#/definitions/v1ObjectMeta"
@@ -6288,6 +6477,20 @@
         },
         "status": {
           "$ref": "#/definitions/v1ClusterSonobuoyLogStatus"
+        }
+      }
+    },
+    "v1ClusterScanLogSyft": {
+      "description": "Cluster Compliance Scan Syft Log",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ClusterComplianceScanLogSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ClusterSyftLogStatus"
         }
       }
     },
@@ -6401,6 +6604,29 @@
         "Importing"
       ],
       "type": "string"
+    },
+    "v1ClusterSyftLogStatus": {
+      "description": "Cluster Compliance Scan Syft Log Status",
+      "properties": {
+        "actor": {
+          "$ref": "#/definitions/v1ClusterFeatureActor"
+        },
+        "reports": {
+          "additionalProperties": {
+            "$ref": "#/definitions/v1SyftReport"
+          },
+          "type": "object"
+        },
+        "requestUid": {
+          "type": "string"
+        },
+        "scanTime": {
+          "$ref": "#/definitions/v1ClusterScanTime"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
     },
     "v1ClusterUpgradeSettingsEntity": {
       "properties": {
@@ -7404,8 +7630,8 @@
     "v1CoxEdgeClusterConfig": {
       "description": "cluster level configuration for coxedge cloud, same for all machinepools",
       "properties": {
-        "region": {
-          "type": "string"
+        "coxEdgeLoadBalancerConfig": {
+          "$ref": "#/definitions/v1CoxEdgeLoadBalancerConfig"
         },
         "sshAuthorizedKeys": {
           "description": "CoxEdge ssh authorized keys",
@@ -7416,7 +7642,8 @@
         }
       },
       "required": [
-        "sshAuthorizedKeys"
+        "sshAuthorizedKeys",
+        "coxEdgeLoadBalancerConfig"
       ],
       "type": "object"
     },
@@ -7457,6 +7684,19 @@
         "instanceTypes": {
           "items": {
             "$ref": "#/definitions/v1InstanceType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1CoxEdgeLoadBalancerConfig": {
+      "description": "CoxEdge loadbalancer config",
+      "properties": {
+        "pops": {
+          "description": "CoxEdge PoPs - geographical location for the loadbalancer",
+          "items": {
+            "type": "string"
           },
           "type": "array"
         }
@@ -11420,6 +11660,15 @@
       },
       "type": "object"
     },
+    "v1InfraLBConfig": {
+      "properties": {
+        "apiServerLB": {
+          "$ref": "#/definitions/v1LoadBalancerSpec",
+          "description": "APIServerLB is the configuration for the control-plane load balancer."
+        }
+      },
+      "type": "object"
+    },
     "v1IngressConfig": {
       "description": "ingress configuration",
       "properties": {
@@ -11944,7 +12193,7 @@
       "type": "object"
     },
     "v1KubeBenchEntity": {
-      "description": "Kube bench response",
+      "description": "KubeBench response",
       "properties": {
         "reports": {
           "additionalProperties": {
@@ -11972,7 +12221,7 @@
       ]
     },
     "v1KubeBenchLog": {
-      "description": "Compliance Scan Kube Bench Report",
+      "description": "Compliance Scan KubeBench Log",
       "properties": {
         "description": {
           "type": "string"
@@ -11995,7 +12244,7 @@
       }
     },
     "v1KubeBenchLogEntity": {
-      "description": "Kube bench log",
+      "description": "KubeBench log",
       "properties": {
         "description": {
           "type": "string"
@@ -12018,7 +12267,7 @@
       }
     },
     "v1KubeBenchReport": {
-      "description": "Compliance Scan Kube Bench Report",
+      "description": "Compliance Scan KubeBench Report",
       "properties": {
         "fail": {
           "format": "int32",
@@ -12054,7 +12303,7 @@
       }
     },
     "v1KubeBenchReportEntity": {
-      "description": "Kube bench report",
+      "description": "KubeBench report",
       "properties": {
         "fail": {
           "format": "int32",
@@ -12090,7 +12339,7 @@
       }
     },
     "v1KubeHunterEntity": {
-      "description": "Kube hunter response",
+      "description": "KubeHunter response",
       "properties": {
         "reports": {
           "additionalProperties": {
@@ -12118,7 +12367,7 @@
       ]
     },
     "v1KubeHunterLog": {
-      "description": "Compliance Scan Kube Hunter Log",
+      "description": "Compliance Scan KubeHunter Log",
       "properties": {
         "description": {
           "type": "string"
@@ -12141,7 +12390,7 @@
       }
     },
     "v1KubeHunterLogEntity": {
-      "description": "Kube hunter log",
+      "description": "KubeHunter log",
       "properties": {
         "description": {
           "type": "string"
@@ -12164,7 +12413,7 @@
       }
     },
     "v1KubeHunterReport": {
-      "description": "Compliance Scan Kube Hunter Report",
+      "description": "Compliance Scan KubeHunter Report",
       "properties": {
         "logs": {
           "items": {
@@ -12181,7 +12430,7 @@
       }
     },
     "v1KubeHunterReportEntity": {
-      "description": "Kube hunter report",
+      "description": "KubeHunter report",
       "properties": {
         "logs": {
           "items": {
@@ -12198,7 +12447,7 @@
       }
     },
     "v1KubeHunterVulnerabilities": {
-      "description": "Compliance Scan Kube Hunter Vulnerabilities",
+      "description": "Compliance Scan KubeHunter Vulnerabilities",
       "properties": {
         "high": {
           "format": "int32",
@@ -12215,7 +12464,7 @@
       }
     },
     "v1KubeHunterVulnerabilityDataEntity": {
-      "description": "Kube hunter vulnerability data",
+      "description": "KubeHunter vulnerability data",
       "properties": {
         "high": {
           "format": "int32",
@@ -12826,7 +13075,8 @@
             "Pausing",
             "Paused",
             "Resuming",
-            "Running"
+            "Running",
+            "Error"
           ],
           "type": "string"
         }
@@ -12894,6 +13144,35 @@
             "$ref": "#/definitions/v1ServicePort"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1LoadBalancerSpec": {
+      "description": "LoadBalancerSpec defines an Azure load balancer.",
+      "properties": {
+        "apiServerLBStaticIP": {
+          "type": "string"
+        },
+        "ipAllocationMethod": {
+          "default": "Dynamic",
+          "enum": [
+            "Static",
+            "Dynamic"
+          ],
+          "type": "string"
+        },
+        "privateDNSName": {
+          "type": "string"
+        },
+        "type": {
+          "default": "Public",
+          "description": "Load Balancer type",
+          "enum": [
+            "Internal",
+            "Public"
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -13574,6 +13853,9 @@
             "$ref": "#/definitions/v1MachineHealthCondition"
           },
           "type": "array"
+        },
+        "lastHeartBeatTimestamp": {
+          "$ref": "#/definitions/v1Time"
         },
         "state": {
           "type": "string"
@@ -15556,13 +15838,20 @@
     },
     "v1Nested": {
       "properties": {
+        "appDeployments": {
+          "description": "list of apps deployed on the nested cluster",
+          "items": {
+            "$ref": "#/definitions/v1ObjectResReference"
+          },
+          "type": "array"
+        },
         "hostCluster": {
           "$ref": "#/definitions/v1ObjectReference",
           "description": "host cluster reference"
         },
         "lifecycleStatus": {
           "$ref": "#/definitions/v1LifecycleStatus",
-          "description": "cluster life cycle status"
+          "description": "cluster life cycle status of nested cluster"
         },
         "nestedClusters": {
           "description": "list of nested clusters deployed on the cluster",
@@ -16303,6 +16592,9 @@
         "endpoint": {
           "type": "string"
         },
+        "providerType": {
+          "type": "string"
+        },
         "scope": {
           "type": "string"
         },
@@ -16323,6 +16615,9 @@
         },
         "isPrivate": {
           "type": "boolean"
+        },
+        "providerType": {
+          "type": "string"
         },
         "registryType": {
           "type": "string"
@@ -20529,7 +20824,9 @@
         "sshkey",
         "alert",
         "spectrocluster",
-        "edgehost"
+        "edgehost",
+        "appprofile",
+        "appdeployment"
       ],
       "type": "string"
     },
@@ -21297,7 +21594,7 @@
       ]
     },
     "v1SonobuoyLog": {
-      "description": "Compliance Scan Sonobuoy Report",
+      "description": "Compliance Scan Sonobuoy Log",
       "properties": {
         "description": {
           "type": "string"
@@ -21910,6 +22207,13 @@
           "description": "Metric period in minutes defines latest metrics by period",
           "format": "int32",
           "type": "integer"
+        },
+        "projectUids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "tags": {
           "$ref": "#/definitions/v1FilterArray"
@@ -24196,6 +24500,24 @@
       "type": "array",
       "uniqueItems": true
     },
+    "v1StorageAccount": {
+      "description": "Azure Storage Account",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1StorageAccountEntity": {
       "description": "Azure Storage Account Entity",
       "properties": {
@@ -24326,6 +24648,266 @@
         }
       },
       "type": "object"
+    },
+    "v1SyftDependency": {
+      "description": "Compliance Scan Syft Dependency",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SyftDependencyEntity": {
+      "description": "Syft dependency",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SyftEntity": {
+      "description": "Syft response",
+      "properties": {
+        "reports": {
+          "additionalProperties": {
+            "$ref": "#/definitions/v1SyftReportEntity"
+          },
+          "type": "object"
+        },
+        "requestUid": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "Completed",
+            "InProgress",
+            "Failed",
+            "Initiated"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestUid",
+        "status",
+        "reports"
+      ]
+    },
+    "v1SyftImageContext": {
+      "description": "Compliance Scan Syft Image Context",
+      "properties": {
+        "containerName": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "podName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SyftReport": {
+      "description": "Compliance Scan Syft Report",
+      "properties": {
+        "batchNo": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "batchSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dependencies": {
+          "items": {
+            "$ref": "#/definitions/v1SyftDependency"
+          },
+          "type": "array"
+        },
+        "image": {
+          "type": "string"
+        },
+        "imageContexts": {
+          "items": {
+            "$ref": "#/definitions/v1SyftImageContext"
+          },
+          "type": "array"
+        },
+        "sbom": {
+          "type": "string"
+        },
+        "time": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "vulnerabilities": {
+          "items": {
+            "$ref": "#/definitions/v1SyftVulnerability"
+          },
+          "type": "array"
+        },
+        "vulnerabilitySummary": {
+          "$ref": "#/definitions/v1SyftVulnerabilitySummary"
+        }
+      }
+    },
+    "v1SyftReportEntity": {
+      "description": "Syft report",
+      "properties": {
+        "batchNo": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "batchSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dependencies": {
+          "items": {
+            "$ref": "#/definitions/v1SyftDependencyEntity"
+          },
+          "type": "array"
+        },
+        "image": {
+          "type": "string"
+        },
+        "imageContexts": {
+          "items": {
+            "$ref": "#/definitions/v1SyftImageContext"
+          },
+          "type": "array"
+        },
+        "sbom": {
+          "type": "string"
+        },
+        "time": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "vulnerabilities": {
+          "items": {
+            "$ref": "#/definitions/v1SyftVulnerabilityEntity"
+          },
+          "type": "array"
+        },
+        "vulnerabilitySummary": {
+          "$ref": "#/definitions/v1SyftVulnerabilitySummaryEntity"
+        }
+      }
+    },
+    "v1SyftVulnerability": {
+      "description": "Compliance Scan Syft Vulnerability",
+      "properties": {
+        "fixedIn": {
+          "type": "string"
+        },
+        "installed": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "vulnerability": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SyftVulnerabilityEntity": {
+      "description": "Syft vulnerability",
+      "properties": {
+        "fixedIn": {
+          "type": "string"
+        },
+        "installed": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "vulnerability": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SyftVulnerabilitySummary": {
+      "description": "Compliance Scan Syft Vulnerability Summary",
+      "properties": {
+        "critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "high": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "low": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "medium": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "negligible": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unknown": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "v1SyftVulnerabilitySummaryEntity": {
+      "description": "Syft vulnerability summary",
+      "properties": {
+        "critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "high": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "low": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "medium": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "negligible": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unknown": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
     },
     "v1SysLogin": {
       "description": "System admin login input",
@@ -29920,7 +30502,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 3.0",
+    "title": "Palette APIs 3.0",
     "version": "v1"
   },
   "paths": {
@@ -30223,6 +30805,33 @@
           }
         },
         "summary": "Updates the specified application deployment profile",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/appDeployments/{uid}/profile/apply": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "notify",
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1AppDeploymentsUidProfileApply",
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Apply the app deployment profile updates",
         "tags": [
           "v1"
         ]
@@ -38775,6 +39384,82 @@
         ]
       }
     },
+    "/v1/clouds/azure/resourceGroups/{resourceGroup}/privateDnsZones": {
+      "get": {
+        "description": "Returns Azure private DNS zones",
+        "operationId": "V1AzurePrivateDnsZones",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "subscriptionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AzurePrivateDnsZones"
+            }
+          }
+        },
+        "summary": "Get Azure private DNS zones for the given resource group",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/azure/resourceGroups/{resourceGroup}/storageAccounts": {
+      "get": {
+        "description": "Returns Azure storage accounts.",
+        "operationId": "V1AzureStorageAccounts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "subscriptionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AzureStorageAccounts"
+            }
+          }
+        },
+        "summary": "Get Azure storage accounts",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/clouds/azure/storageaccounttypes": {
       "get": {
         "description": "Returns Azure storage account types.",
@@ -41473,6 +42158,23 @@
           }
         },
         "summary": "Retrieves a list of application profiles filter summary Supported filter fields - [\"profileName\", \"tags\"] Supported sort fields - [\"profileName\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/dashboard/appProfiles/metadata": {
+      "get": {
+        "operationId": "v1DashboardAppProfilesMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of application profile summary items",
+            "schema": {
+              "$ref": "#/definitions/v1AppProfilesMetadata"
+            }
+          }
+        },
+        "summary": "Retrieves a list of application profile metadata",
         "tags": [
           "v1"
         ]
@@ -48625,7 +49327,7 @@
             }
           }
         },
-        "summary": "Downloads the Log fetcher uid for cluster",
+        "summary": "Download log fetcher logs for cluster by log fetcher uid",
         "tags": [
           "v1"
         ]
@@ -48671,7 +49373,7 @@
             }
           }
         },
-        "summary": "Update the log in log fetcher uid",
+        "summary": "Update log fetcher logs by log fetcher uid",
         "tags": [
           "v1"
         ]
@@ -50429,7 +51131,7 @@
             }
           }
         },
-        "summary": "Returns the  cluster backup result",
+        "summary": "Returns the cluster backup result",
         "tags": [
           "v1"
         ]
@@ -50528,7 +51230,7 @@
             }
           }
         },
-        "summary": "Create On demand Cluster Backup",
+        "summary": "Create on demand cluster backup",
         "tags": [
           "v1"
         ]
@@ -50579,7 +51281,7 @@
             }
           }
         },
-        "summary": "Returns the Compliance scan of cluster, if driverType is provided then specific status of driverType will be returned",
+        "summary": "Returns the compliance scan of cluster, if driverType is provided then specific status of driverType will be returned",
         "tags": [
           "v1"
         ]
@@ -50655,7 +51357,7 @@
             }
           }
         },
-        "summary": "Returns the Compliance scan log by cluster uid and driver type",
+        "summary": "Returns the compliance scan log by cluster uid and driver type",
         "tags": [
           "v1"
         ]
@@ -50694,7 +51396,7 @@
             "description": "The resource was updated successfully"
           }
         },
-        "summary": "Update the Compliance scan kube bench log by uid",
+        "summary": "Update the KubeBench compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50725,7 +51427,7 @@
             "description": "The resource was updated successfully"
           }
         },
-        "summary": "Update the Compliance scan kube hunter log by uid",
+        "summary": "Update the KubeHunter compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50756,7 +51458,38 @@
             "description": "The resource was updated successfully"
           }
         },
-        "summary": "Update Compliance scan sonobuoy log by uid",
+        "summary": "Update the Sonobuoy compliance scan log by uid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/features/complianceScan/logs/drivers/syft": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1ClusterFeatureScanSyftLogUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SyftEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Update the Syft compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50770,7 +51503,7 @@
             "description": "The resource was deleted successfully"
           }
         },
-        "summary": "Delete the Compliance scan log by uid",
+        "summary": "Delete the compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50801,7 +51534,7 @@
             }
           }
         },
-        "summary": "Returns the Compliance scan kube bench log by uid",
+        "summary": "Returns the KubeBench compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50837,7 +51570,7 @@
             }
           }
         },
-        "summary": "Returns the Compliance scan kube hunter log by uid",
+        "summary": "Returns the KubeHunter compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50873,7 +51606,43 @@
             }
           }
         },
-        "summary": "Returns the Compliance scan sonobuoy log by uid",
+        "summary": "Returns the Sonobuoy compliance scan log by uid",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "logUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "reportId",
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/features/complianceScan/logs/{logUid}/drivers/syft": {
+      "get": {
+        "operationId": "v1ClusterFeatureSyftLogGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterScanLogSyft"
+            }
+          }
+        },
+        "summary": "Returns the Syft compliance scan log by uid",
         "tags": [
           "v1"
         ]
@@ -50942,7 +51711,8 @@
           "enum": [
             "kubeBench",
             "kubeHunter",
-            "sonobuoy"
+            "sonobuoy",
+            "syft"
           ],
           "in": "path",
           "name": "driver",
@@ -50991,7 +51761,7 @@
             }
           }
         },
-        "summary": "Create On demand cluster compliance scan",
+        "summary": "Create on demand cluster compliance scan",
         "tags": [
           "v1"
         ]
@@ -51168,7 +51938,7 @@
             }
           }
         },
-        "summary": "Create On demand Cluster restore",
+        "summary": "Create on demand cluster restore",
         "tags": [
           "v1"
         ]
