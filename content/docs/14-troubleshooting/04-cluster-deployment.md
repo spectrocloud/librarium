@@ -1,6 +1,6 @@
 ---
 title: "Cluster Deployment"
-metaTitle: "Troubleshooting steps for erros during a cluster deployment"
+metaTitle: "Troubleshooting steps for errors during a cluster deployment"
 metaDescription: "Troubleshooting steps for errors during a cluster deployment."
 icon: ""
 hideToC: false
@@ -15,7 +15,7 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 
 
-## Scenario - Instances Continuously Delete Every 30 Min
+## Scenario - Instances Continuously Delete Every 30 Minutes
 
 An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab** lists errors with the following message:
 
@@ -66,7 +66,7 @@ Common reasons for why a service may fail are:
     ```
 
 	- If all the pods are operating correctly, verify their connection with the Palette API. 
-		- For Clusters using Gateway, verify the connection between the Installer and Gateway instance:
+		- For clusters using Gateway, verify the connection between the Installer and Gateway instance:
         ```shell
            curl -k https://<KUBE_API_SERVER_IP>:6443
         ```
