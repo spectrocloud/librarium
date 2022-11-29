@@ -14,7 +14,6 @@ import InfoBox from 'shared/components/InfoBox';
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.  
 
 
-
 ## Scenario - Instances Continuously Delete Every 30 Minutes
 
 An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab** lists errors with the following message:
