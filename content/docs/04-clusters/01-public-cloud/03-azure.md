@@ -76,35 +76,43 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 The following steps need to be performed to provision a new Azure cluster:
 
-1. Provide the basic cluster information like Name, Description, and Tags.
+1. Provide the basic cluster information like **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials need to be pre-configured in project settings. Click **next** button.
 
 
-2. Select the Cluster Profile created for the Azure environment. The profile definition will be used as the Cluster Construction Template.
+2. Select the **Cluster Profile** created for the Azure environment. The profile definition will be used as the cluster construction template and click **Next**.
 
 
-3. Review and override Pack Parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile.
+3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile and click **Next**.
 
 
-4. Provide the Azure Cloud account and placement information.
+4. Provide the Azure Cloud account placement information for cluster configuration.
 
     |**Parameter**| **Description**|
     |-------------|---------------|
-    | **Cloud Account** | Select the desired cloud account. Azure cloud accounts with credentials need to be preconfigured in project settings.|
-    | **Subscription** | Select the subscription which is to be used to access Azure Services.|
+    | **Subscription** | Select the subscription which is to be used to access Azure Services from the drop down menu.|
     | **Region** | Select a region in Azure in which the cluster should be deployed.|
-    | **Resource Group** | Select the resource group in which the cluster should be deployed.|
+    | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
+    | **Storage Account** | Optionally provide the storage account.|
+    | **Storage Container**| Optionally provide the Azure storage container|
     | **SSH Key** | Public key to configure remote SSH access to the nodes.|
     | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Resource Group** : The logical container for grouping related Azure resources.
+    ||**Network Resource Group** : The logical container for grouping related Azure resources.
     || **Virtual Network**: Select the virtual network from dropdown menu.
+    || **CIDR Block**: Select the CIDR address from the drop down.|
     || **Control plane Subnet**: Select the control plane network from the dropdown menu.
     || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
-
+    |**Private API Server LB**|This option is applicable when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways) to choose if your API Server needs to be accessed privately.|
+    ||**Private DNS Zone**: Optionally select the DNS Zone from the drop-down, or a default DNS zone will be generated and assigned.|
+    ||IP Allocation Method: Allocate available IP from the private endpoint VNet. The two possible allocations are:
+    ||*  **Dynamic**: The Dynamic Host Configuration Protocol (DHCP) dynamically allocates IP addresses from the available  Virtual Network IP CIDR range.
+    ||* **Static**: The user from the available  Virtual Network IP range can explicitly specify a static IP address.|
+    |**Update worker pools in parallel**|If the user has multiple worker pools, select the check box to enable the simultaneous upgrade of all the pools. The default is the sequential upgrade of the worker pools.|
+Once all the cluster configuration details are provided to the wizard click next to proceed to the node configuration.
 <InfoBox>
 
 If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
-**Static Placement** the network informations from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
+**Static Placement** the network information from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
 
 </InfoBox>
 
