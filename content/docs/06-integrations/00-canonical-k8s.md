@@ -27,7 +27,7 @@ With limited resource requirements, Micro Kubernetes extends its support with th
 * Makes Kubernetes available for use in minimal environments such as GitHub Continuous Integration (CI).
 
 
-* Adaps Kubernetes for small-appliance internet of things (IoT) applications.
+* Adapts Kubernetes for small-appliance internet of things (IoT) applications.
 
 # Prerequisites
 
