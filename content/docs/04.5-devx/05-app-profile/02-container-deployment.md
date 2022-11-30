@@ -60,4 +60,3 @@ To add a container tier to Palette Dev Engine App Profile,
  
 4. **Review** the information and complete the app profile creation wizard. Deploy more tiers to the profile per user requirements, and Palette Clusters can be deployed using the deployed app profile. 
 
-
