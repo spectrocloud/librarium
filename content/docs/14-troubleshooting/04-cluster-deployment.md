@@ -11,6 +11,8 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
+# Cluster Deployment Errors Scenarios
+
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.  
 
 
