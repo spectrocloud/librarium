@@ -362,29 +362,6 @@ Example:
 
   </WarningBox>
 ```
-
-## Check Writing
-
-We leverage [Vale](https://vale.sh/) to help us enforce our writing style programmatically and to avoid common writing mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the Vale CLI. Follow the steps below to install the Vale CLI and execute the writing checks.
-
-Start by installing Vale by following the [installation steps](https://vale.sh/docs/vale-cli/installation/) in the Vale documentation.
-
-Next, download the required Vale plugins.
-
-```
-make sync-vale
-```
-
-To execute to writing check, issue command below. You must provide vale with a file path to the specify file you want to scan. You can also specify a directory if you want to.
-
-```
-make check-writing <pathToMarkdownFile>
-
-Example: 
-
-```shell
-make check-writing content/docs/08-user-management.md
-```
 ### Video
 
 To add a video, use the following syntax:
@@ -416,3 +393,49 @@ An auto generated spreedsheet is created with the name **link_report.csv**. To f
 ## Approvers/Reviewers
 
 The content in the `docs/` folder require approval from the documentation team. The list of approvers and reviewers can be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this file.
+
+# Check Writing
+
+We leverage [Vale](https://vale.sh/) to help us enforce our writing style programmatically and to avoid common writing mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the Vale CLI. Follow the steps below to install the Vale CLI and execute the writing checks.
+
+Start by installing Vale by following the [installation steps](https://vale.sh/docs/vale-cli/installation/) in the Vale documentation.
+
+Next, download the required Vale plugins.
+
+```
+make sync-vale
+```
+
+To execute the writing check, issue the command below. The command below will identify files that are modified by comparing the current git branch against the `master` branch. Ensure your local `master` branch is up to date for accurate results.
+
+```
+make check-writing 
+```
+
+You may also use the Vale CLI to directly scan a file and receive feedback. 
+
+Example: 
+
+```shell
+vale content/docs/08-user-management.md
+```
+
+## Modify Writing Rules
+
+The [vale.ini](vale.ini) file contains the configuration for Vale. Changes to [vale.ini](vale.ini), [accept.txt](/vale/styles/Vocab/Internal/accept.txt), and [reject.txt](/vale/styles/Vocab/Internal/reject.txt) require approval by the [docs-education](https://github.com/orgs/spectrocloud/teams/docs-education) team.
+
+### Disable Rule
+To disable a specific rule, add the rule name and the word "NO" to the  vale.ini](vale.ini) file.
+
+Example:
+```
+Google.Headings = NO
+```
+
+### Approved Words
+
+Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/accept.txt) file. You can add or remove words from the list by modifying the file.
+
+### Rejected Words
+
+Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
