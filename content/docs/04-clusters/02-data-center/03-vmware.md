@@ -76,6 +76,21 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 11. Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
+<InfoBox>
+
+### Naming conventions for vSphere Region and Zone Tags
+The following points needs to be taken care while creating the Tags:
+* A valid tag must consist of alphanumeric characters
+* The tag must start and end with an alphanumeric characters
+* The regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+
+**Example Tags:**
+* MyValue
+* my_value
+* 12345
+
+</InfoBox>
+
 ## Zone Tagging 
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
@@ -254,7 +269,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 # Creating a VMware Cloud Gateway
 
-![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
+`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
 <br />
 <br />
@@ -498,7 +513,7 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploying a VMware Cluster
 
-![vmware-cluster-creation](./cluster-creation-videos/vmware.mp4)
+`video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
 
 The following steps need to be performed to provision a new VMware cluster:
 

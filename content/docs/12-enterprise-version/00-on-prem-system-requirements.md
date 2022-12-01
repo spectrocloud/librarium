@@ -51,6 +51,21 @@ The sections below describe the standard requirements and highlight specific req
 **Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
+<InfoBox>
+
+### Naming conventions for vSphere Region and Zone Tags
+The following points needs to be taken care while creating the Tags:
+* A valid tag must consist of alphanumeric characters
+* The tag must start and end with an alphanumeric characters
+* The regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+
+**Example Tags:**
+* MyValue
+* my_value
+* 12345
+
+</InfoBox>
+
 ### Permissions
 
 The following permissions are required for the account used to install the platform:
@@ -66,7 +81,7 @@ The following permissions are required for the account used to install the platf
 
 <Tabs.TabPane tab="Datastore" key="Datastore">
 
-  #### Datastore Privileges
+#### Datastore Privileges
   - Allocate Space
   - Browse Datastore
   - Low level file operations

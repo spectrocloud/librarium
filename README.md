@@ -375,22 +375,28 @@ Next, download the required Vale plugins.
 make sync-vale
 ```
 
-
 To execute to writing check, issue command below. You must provide vale with a file path to the specify file you want to scan. You can also specify a directory if you want to.
 
 ```
 make check-writing <pathToMarkdownFile>
-```
 
 Example: 
 
 ```shell
 make check-writing content/docs/08-user-management.md
 ```
+### Video
+
+To add a video, use the following syntax:
+
+```
+`video: title: "<video title>": <path/to/video`
+```
 
 
-
-
+```
+`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
+```
 ## Check for Broken URLs
 
 To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
@@ -406,3 +412,7 @@ make verify-url-links-local
 ```
 
 An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
+
+## Approvers/Reviewers
+
+The content in the `docs/` folder require approval from the documentation team. The list of approvers and reviewers can be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this file.

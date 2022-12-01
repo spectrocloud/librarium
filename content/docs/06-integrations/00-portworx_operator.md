@@ -624,8 +624,6 @@ These are the three types of Presets that can be selected and modified. The pack
 
 ## References
 
-[Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
-
-[Lighthouse](https://docs.portworx.com/reference/lighthouse/)
-
-[Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
+- [Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
+- [Lighthouse](https://docs.portworx.com/reference/lighthouse/)
+- [Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)

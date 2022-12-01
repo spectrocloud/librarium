@@ -873,7 +873,7 @@ The following warning is expected and can be ignored:<p></p>
 
 The following video demonstrates how to create a user in AWS and attach the four necessary policies.
  
-![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-credentials.mp4`
 
 To create an AWS cloud account using access credentials follow the steps below:
 
@@ -902,7 +902,7 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 ## AWS Account Creation Using the Security Token Service (STS) Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-sts.mp4`
 
 
 ## Security Token Service (STS) Method
@@ -952,7 +952,7 @@ There will be situations where additional Node Level policies needs to be added 
 
 # Deploying an AWS Cluster
 
- ![aws-cluster-creation](./cluster-creation-videos/aws.mp4)
+`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
 
 The following steps need to be performed to provision a new AWS cluster:
 
