@@ -1,3 +1,4 @@
 spectro cloud
 datacenter
 spectrocloud
+cli

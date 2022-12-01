@@ -13,3 +13,8 @@ is
 Cloud
 cloud
 simple
+execute
+CLI
+reject
+disable
+modify
