@@ -7,7 +7,7 @@ hideToC: true
 fullWidth: false
 ---
 
-# Infrastructure
+# Infrastructure Security
 
 Spectro Cloud has security controls for the operating system, containers, and Kubernetes. Data is also protected with secure keys, encryption, secure communication, standard authentication/authorization, and API security. Audit logs record actions taken on the platform.
 
@@ -15,13 +15,13 @@ Spectro Cloud has security controls for the operating system, containers, and Ku
 
 Spectro Cloud provides an Ubuntu or CentOS image for all supported cloud environments. Images hardened according to Center for Internet Security (CIS) Benchmarks are used to launch control planes and worker nodes for the Kubernetes cluster hosting Spectro Cloud platform. Spectro Cloud’s OS hardening utility performs the following tasks:
 
-- Applies the latest available security updates
-- Hardens SSH server parameters, network parameters (using sysctl), and system files by ensuring proper file permissions are set.
+- Applies the latest available security updates.
+- Hardens SSH server parameters, network parameters (sysctl), and system files by ensuring proper file permissions are set.
 - Removes legacy services and graphical user interface (GUI) packages.
 
 Spectro Cloud allows you to set up OS patching policies. You can patch the base OS when you deploy the cluster.
 
-## Secure Containers
+## Hardened Containers
 
 Container images for various application services are built using distroless images, which have significantly fewer packages and improve security by reducing attack surface.
 
@@ -54,17 +54,17 @@ Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A u
 - Tenant's private registry password
 - Tenant's GitHub access token
 
-In self-managed deployments, the keys are generated during installation and stored as secrets in Management Cluster’s etc directory.
+In self-managed deployments, the keys are generated during installation and stored as secrets in the management cluster’s etc directory (etcd).
 
 ## Data Encryption
 
-In SaaS deployments, MongoDB cluster storage volumes backup snapshots are encrypted to secure cluster data on disk.
+In SaaS deployments, backup snapshots of MongoDB cluster storage volumes are encrypted to secure cluster data on disk.
 
 In self-managed deployments, the administrator can set up a disk encryption policy for management cluster VMs if required.
 
 ## Secure Communications
 
-Spectro Cloud secures data in motion using an encrypted TLS communication channel for all internal and external interactions. 
+Spectro Cloud secures data in motion using an encrypted transport layer security (TLS) communication channel for all internal and external interactions. 
 
 Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster fully qualified domain name (FQDN).
 
@@ -85,14 +85,15 @@ The platform administrator can set password policy to control the requirements f
 <br />
 - Single sign-on (SSO) and multi-factor authentication (MFA)
 <br />
-In this mode, the tenant is configured to have security assertion markup language (SAML) 2.0 IDP integrations. If the IDP requires MFA, the user is redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
+In this mode, the tenant is configured to have security assertion markup language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you will be redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
 
 ## API Security
 
-Spectro Cloud uses JWT-based authentication/authorization for REST API access over HTTPS.  Spectro Cloud API documents provide more details.
+Spectro Cloud uses JWT-based authentication/authorization for REST API access over HTTPS.  Spectro Cloud's [API Authentication](https://docs.spectrocloud.com/api/v1/auth/) document provides more details.
 
 The authentication token is valid for 15 minutes. If the token is about to expire, you can make a token refresh request before making other API calls. 
 
 The Spectro Cloud backend has a common API gateway validation service that ensures there are no invalid parameter values or potential vulnerabilities, such as SQL injection or cross-site scripting.
 
 Since API requests are made through a common API gateway service, you can use the service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid revealing unnecessary information, all UIDs are 48-bit random hex strings.
+<br />
