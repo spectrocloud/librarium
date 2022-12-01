@@ -95,7 +95,6 @@ The following steps need to be performed to provision a new Azure cluster:
 | **Storage Account** | Optionally provide the storage account.|
 | **Storage Container**| Optionally provide the Azure storage container.|
 | **SSH Key** | Public key to configure remote SSH access to the nodes.|
-ovided.
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option, which requires that you provide the following placement information:|
 | |**Network Resource Group**: The logical container for grouping related Azure resources.|
 | | **Virtual Network**: Select the virtual network from the drop-down menu.|
