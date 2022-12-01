@@ -1,3 +1,4 @@
+<!-- vale off -->
 # Overview
 
 ![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
