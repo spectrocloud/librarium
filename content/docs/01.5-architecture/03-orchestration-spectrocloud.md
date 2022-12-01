@@ -49,6 +49,13 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 6. The Palette agent will install all the additional add-ons as specified by the cluster's cluster profile (e.g: logging, monitoring, security).
 
+<InfoBox>
+    We do not hardcode credentials. Palette useses the <strong>cloud-init</strong> process to inject the user-defined SSH key(s) into the clusters. 
+    Login using the command: 
+        <code>ssh -i sshKeyHere spectro@host</code>
+
+</InfoBox>
+
 
 ## Why Palette Pivots
 
@@ -74,5 +81,4 @@ Palette pivots these clusters for several reasons, related to scalability and av
 * **Intermittent network resiliency** - The design supports use cases where the workload clusters can still operate in intermittent and disconnected network availability situations.
 
 
-<br />
 <br />
