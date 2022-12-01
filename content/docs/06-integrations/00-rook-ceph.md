@@ -63,4 +63,4 @@ Please make sure that your worker node pool size satisfies the minimum nodes req
 
 ## References
 
-https://github.com/rook/rook/blob/master/Documentation/ceph-quickstart.md
+- [Rook Cepth Documentation](https://rook.io/docs/rook/v1.10/Getting-Started/intro/)

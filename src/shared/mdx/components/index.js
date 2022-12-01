@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ClipboardJS from "clipboard";
 import { CopyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
@@ -21,6 +21,9 @@ const PreContainer = styled.div`
 
 const VideoWrap = styled.div`
   max-width: 840px;
+  video {
+    width: 100%;
+  }
 `;
 
 const Copy = styled.button`
@@ -202,6 +205,13 @@ const mdxComponents = {
   img: (props) => {
     return <img alt="MDXimage" {...props} />;
   },
+  video: (props) => (
+    <VideoWrap>
+      <video {...props}>
+        <track default kind="captions" srcLang="en" />
+      </video>
+    </VideoWrap>
+  ),
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`

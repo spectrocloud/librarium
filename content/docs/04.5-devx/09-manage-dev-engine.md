@@ -45,7 +45,7 @@ Palette provides the flexibility to disable social sign in to restrict this capa
 
 # Troubleshooting
 
-In the free tier, Palette specifies a [LimitRange](https://kubernetes.io/docs/concepts/policy/limit-range/) for each Sandbox Cluster namespace as part of the values.yaml in Cluster Groups. Therefore, every `resources:` section in every pack's values.yaml file should specify **BOTH** `requests` and `limits` or **NEIGHTER**.
+In the free tier, Palette specifies a [LimitRange](https://kubernetes.io/docs/concepts/policy/limit-range/) for each Palette Virtual Cluster namespace as part of the values.yaml in Cluster Groups. Therefore, every `resources:` section in every pack's values.yaml file should specify **BOTH** `requests` and `limits` or **NEIGHTER**.
 
 **Example:**
 If you specify requests but not limits, the default limits imposed by the LimitRange will likely be lower than the requests, causing an error as below:
