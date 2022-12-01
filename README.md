@@ -363,6 +363,34 @@ Example:
   </WarningBox>
 ```
 
+## Check Writing
+
+We leverage [Vale](https://vale.sh/) to help us enforce our writing style programmatically and to avoid common writing mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the Vale CLI. Follow the steps below to install the Vale CLI and execute the writing checks.
+
+Start by installing Vale by following the [installation steps](https://vale.sh/docs/vale-cli/installation/) in the Vale documentation.
+
+Next, download the required Vale plugins.
+
+```
+make sync-vale
+```
+
+
+To execute to writing check, issue command below. You must provide vale with a file path to the specify file you want to scan. You can also specify a directory if you want to.
+
+```
+make check-writing <pathToMarkdownFile>
+```
+
+Example: 
+
+```shell
+make check-writing content/docs/08-user-management.md
+```
+
+
+
+
 ## Check for Broken URLs
 
 To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
