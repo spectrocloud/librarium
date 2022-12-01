@@ -12,3 +12,4 @@ kubectl
 is
 Cloud
 cloud
+simple
