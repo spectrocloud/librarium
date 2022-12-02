@@ -50,6 +50,8 @@ const redirects = [
   {
     fromPath: `/clusters/edge/virtualized`,
     toPath: `/clusters/edge`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },  
 ];
 
