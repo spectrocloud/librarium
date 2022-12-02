@@ -24,7 +24,7 @@ Kubernetes nodes for master and worker pools are launched as KVM-based virtual m
 
 Palette recommends Virtualized Edge deployment only when the user has a **single edge appliance and needs HA virtualized Kubernetes Cluster.**
 
-Contact Spectro support via the Service Desk for more details on the deployment of Virtualized Edge Architecture.
+[Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
 
 </WarningBox>
 
