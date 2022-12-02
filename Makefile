@@ -35,3 +35,4 @@ verify-url-links:
 verify-url-links-local: build
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
 	npm run test-links
+LLALALALALALA
