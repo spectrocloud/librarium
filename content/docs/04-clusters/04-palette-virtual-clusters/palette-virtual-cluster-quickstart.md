@@ -19,21 +19,29 @@ With Palette Virtual Clusters, you can deploy additional Kubernetes clusters tha
 
 There are certain advantages to using a virtual cluster environment. For example, you are free to operate with admin level privileges, while simultaneously ensuring strong isolation, reducing operational overhead, and improving resource utilization.
 
-Try the steps below to [enable](#enablingpalettevirtualclustersonanexistinghostcluster) and [deploy](#deployingapalettevirtualcluster) a managed Palette Virtual Cluster from within Palette.
-
+Try the steps below to [enable](#enablingpalettevirtualclustersonanexistinghostcluster) and [deploy](#deployingapalettevirtualcluster) a managed Palette Virtual Cluster from within Palette.  
 <br />
 
 ## Prerequisites
 
-- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<p></p><br />
+- You will need to have access to a Palette Account. Refer to the [Getting Started with Palette](/getting-started) page, and sign up for free [here](https://www.spectrocloud.com/get-started/).<br />
 
-- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Palette Virtual Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Palette Virtual Cluster feature enabled are referred to as **Host Clusters**.<p></p><br />
+- Ensure you have a functioning [cluster](/clusters) already configured. If not, you can deploy a new cluster and enable the Palette Virtual Clusters feature at the Settings step of your new cluster's deployment configuration. Clusters with the Palette Virtual Cluster feature enabled are referred to as **Host Clusters**.  
+
+<InfoBox>
+
+Palette does not support *Usage* and *Cost* metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
+
+</InfoBox>
 
   ### Host Clusters
 
-  There are two ways to engage with a Palette Virtual Cluster on Palette.<p></p><br />
+  There are two ways to engage with a Palette Virtual Cluster on Palette.<br />
 
-   1. When you [create](/clusters) and [deploy](#deployingapalettevirtualcluster) a new Host Cluster, there is an option to **Enable Palette Virtual Clusters**. <p></p><br />Refer to the [Cluster Endpoint](#enablingpalettevirtualclustersonanexistinghostcluster) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Palette Virtual Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
+   1. When you [create](/clusters) and [deploy](#deployingapalettevirtualcluster) a new Host Cluster, there is an option to **Enable Virtual Clusters**.   
+   <br />
+   
+   Refer to the [Cluster Endpoint](#enablingpalettevirtualclustersonanexistinghostcluster) step below for more information on how to configure this option. The settings listed below are available when you are enabling the Palette Virtual Clusters feature on a pre-existing cluster and when using the Host Cluster deployment wizard.
 
     ![HostCluster](create-host-cluster.png "Host Cluster")<p></p><br />
 
@@ -63,20 +71,24 @@ You can enable Palette Virtual Clusters on an existing host cluster by performin
 
 
 3. Toggle the **Enable Palette Virtual Clusters** option (yes/no).
+<InfoBox>
 
-    **Note**: This feature can be enabled when first creating a new cluster, so you may find that it is already enabled.
-
+    This feature can be enabled when first creating a new cluster, so you may find that it is already enabled.
+</InfoBox>
 
 4. Select the **Cluster Endpoint Type**: *Load Balancer* or *Ingress*.
 
 
 ## Load Balancer
 
-If **Load Balancer** is selected, the following must be true:<p></p><br />
+If **Load Balancer** is selected, the following must be true:  
 
--  The Host Cluster must support dynamic provisioning of load balancers.<p></p><br />
--  If the Host Cluster is in the public cloud, the AKS/EKS/GCP Cloud Controller Manager will provide this support by default. <p></p><br />
--  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.<p></p><br />
+-  The Host Cluster must support dynamic provisioning of load balancers.  
+
+-  If the Host Cluster is in the public cloud, the AKS/EKS/GCP Cloud Controller Manager will provide this support by default.   
+
+-  If the Host Cluster is in a private data center, a bare metal load balancer provider such as MetalLB must be installed and correctly configured.
+<br />
 
 ## Ingress
   If **Ingress** is selected, a **Host DNS Pattern** must be specified for this Host Cluster. To create a valid Host DNS Pattern, the NGINX Ingress Controller must be deployed on the Host Cluster with SSL passthrough enabled. This allows TLS termination to occur at the Palette Virtual Cluster's Kubernetes API server.
@@ -117,32 +129,37 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
 # Deploying a Palette Virtual Cluster
 
-1. From the **Main** menu, click **Clusters** and select a project from the drop-down menu. 
-
+1. Select a project from the drop-down menu, and click **Clusters** in the **Main** menu. 
+<br />
 2. Click the **Virtual Clusters** tab to list the available Palette Virtual Clusters, and then select **Add New Virtual Cluster**.
+<br />
+3. Complete the **Deploy New Virtual Cluster** information:<br />
 
-3. Complete the **Deploy New Palette Virtual Cluster** information:<br />
-
-    - Select a Host Cluster.<br />
+    - Select a Host Cluster.  
 
     - Add a Cluster name.
-
-      **Note**: Use lowercase letters and do not add spaces.<br />
-
-    - Optionally, you can provide a Description and Tags.<br />
+    <br />
+    <InfoBox>
+    Use lowercase letters and do not add spaces.
+    </InfoBox>
+    
+    - Optionally, you can provide a Description and Tags. 
 
     - Click the **Attach Profile** button to assign a profile.
-
-      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.<br />
-
-
-4. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<br />
+    <br />
+      <InfoBox>
+      Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.
+      </InfoBox>
+      <br />
+    
+4. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:
+<br />
 
    - [External Traffic Policy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip) - Cluster or Local.<br />
 
    - Load Balancer Source Ranges (Optional) - Limit which client IPs can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) provides additional details.
 
-Your Virtual Cluster is now deployed. If you would like more information on managing your resources, review the links below.
+Your Virtual Cluster is now deployed. Next, try deploying an application by [creating an app profile](/devx/app-profile/create-app-profile).
 <br />
 
 
