@@ -61,7 +61,7 @@ Designed for sites that typically have a single large bare-metal appliance. Virt
 
 <WarningBox>
 
-Palette recommends Virtualized Edge deployment only when the user has a **single edge appliance and needs HA virtualized Kubernetes Cluster.**
+Palette recommends Virtualized Edge deployment only when the user has a single edge appliance and needs HA virtualized Kubernetes Cluster.
 
 [Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
 
