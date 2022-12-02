@@ -1,5 +1,5 @@
 ---
-title: "Edge (Beta)"
+title: "Edge"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -47,9 +47,17 @@ Palette Edge Platform provides two solutions for edge, designed to support large
 
 <br />
 
+### Native Edge
+
+Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS and K8s is installed natively onto the devices. Palette Management Console manages the day-1 installation as well as all the day-2 activities, such as scaling, upgrades, reconfiguration, etc.
+
+Palette's native edge solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
+
 ### Virtualized Edge
 
 Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
+
+<br />
 
 <WarningBox>
 
@@ -58,14 +66,6 @@ Palette recommends Virtualized Edge deployment only when the user has a **single
 [Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
 
 </WarningBox>
-
-
-### Native Edge
-
-Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS and K8s is installed natively onto the devices. Palette Management Console manages the day-1 installation as well as all the day-2 activities, such as scaling, upgrades, reconfiguration, etc.
-
-Palette's native edge solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
-
 
 
 <br />
