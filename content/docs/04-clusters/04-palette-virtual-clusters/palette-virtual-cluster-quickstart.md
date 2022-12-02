@@ -67,10 +67,11 @@ You can enable Palette Virtual Clusters on an existing host cluster by performin
 1. From the slide menu, select **Clusters** and view the list of **Clusters**.
 
 
-2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Palette Virtual Clusters**.
+2. Click any Host Cluster from the list and select **Settings** > **Cluster Settings** > **Virtual Clusters**.
 
 
-3. Toggle the **Enable Palette Virtual Clusters** option (yes/no).
+3. Toggle the **Enable Virtual Clusters** option (yes/no).
+<br />
 <InfoBox>
 
     This feature can be enabled when first creating a new cluster, so you may find that it is already enabled.
