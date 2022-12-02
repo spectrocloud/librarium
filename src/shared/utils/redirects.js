@@ -47,6 +47,10 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/clusters/edge/virtualized`,
+    toPath: `/clusters/edge`,
+  },  
 ];
 
 module.exports = redirects;
