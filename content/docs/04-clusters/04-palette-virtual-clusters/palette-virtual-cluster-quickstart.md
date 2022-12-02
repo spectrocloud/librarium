@@ -117,43 +117,41 @@ If **Load Balancer** is selected, the following must be true:<p></p><br />
 
 # Deploying a Palette Virtual Cluster
 
-1. From the slide menu, select the **Clusters** tab and click the **Palette Virtual Clusters** tab to list the available Palette Virtual Clusters, and then select **Add New Palette Virtual Cluster**.
+1. From the **Main** menu, click **Clusters** and select a project from the drop-down menu. 
 
+2. Click the **Virtual Clusters** tab to list the available Palette Virtual Clusters, and then select **Add New Virtual Cluster**.
 
-2. Complete the **Deploy New Palette Virtual Cluster** information:<p></p><br />
+3. Complete the **Deploy New Palette Virtual Cluster** information:<br />
 
-    - Select a Host Cluster.<p></p><br />
+    - Select a Host Cluster.<br />
 
     - Add a Cluster name.
 
-      **Note**: Use lowercase letters and do not add spaces.<p></p><br />
+      **Note**: Use lowercase letters and do not add spaces.<br />
 
-    - Provide a Description and Tags. These are optional.<p></p><br />
+    - Optionally, you can provide a Description and Tags.<br />
 
     - Click the **Attach Profile** button to assign a profile.
 
-      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.<p></p><br />
+      **Note**: Optionally, attach one or more Add-on layer(s) to this cluster. If you do not have a Cluster Profile, see the [Creating Cluster Profile](/cluster-profiles/task-define-profile) page for more information.<br />
 
 
-3. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<p></p><br />
+4. If the Host Cluster's **Cluster Endpoint Type** is a _Load Balancer_, you may optionally provide the following advanced configurations here:<br />
 
-   - [External Traffic Policy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip) - Cluster or Local<p></p><br />
+   - [External Traffic Policy](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip) - Cluster or Local.<br />
 
-   - Load Balancer Source Ranges (Optional) - Limit which client IP's can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. See [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) for additional details.
-<p></p><br />
+   - Load Balancer Source Ranges (Optional) - Limit which client IPs can access the load balancer. Inputs **must** be a comma-separated list of CIDR ranges in the `a.b.c.d/x` format. [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) provides additional details.
 
-  ![Deploy-palette-virtual-cluster](deploy-nested-cluster.png "Deploy a Palette Virtual Cluster")
-
-Your Palette Virtual Cluster is now deployed. If you would like more information on managing your resources, review the links below.
+Your Virtual Cluster is now deployed. If you would like more information on managing your resources, review the links below.
 <br />
 
 
 <InfoBox>
 
-Palette does not support *Usage* and *Cost* metrics for the Palette Virtual Clusters running on GKE (Google Kubernetes Engine).
+Palette does not support *Usage* and *Cost* metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
 
 </InfoBox>
-
+<br />
 
 # Resources
 
