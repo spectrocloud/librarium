@@ -1,0 +1,28 @@
+name: style_check
+on: [pull_request]
+
+jobs:
+  vale:
+    name: Writing Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # - name: Get Changed Files
+      #   id: get_changed_files
+      #   uses: lots0logs/gh-action-get-changed-files@2.1.4
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Vale Check
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          # files: '${{ steps.get_changed_files.outputs.all }}'
+          filter_mode: added
+          reporter: github-pr-review
+          vale_flags: --glob=*.{md}
+          fail_on_error: false
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
