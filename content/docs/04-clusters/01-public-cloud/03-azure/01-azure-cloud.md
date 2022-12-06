@@ -25,8 +25,6 @@ Find the video demonstration of Azure Cloud Creation for Palette console.
 `video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 
-# How to register your Azure cloud account in Palette 
-
 The below section will guide the users with the prerequisites, steps and validation of Azure Cloud Account creation within the Palette console.
 
 ## Prerequisites
@@ -41,7 +39,9 @@ The below section will guide the users with the prerequisites, steps and validat
 
 * Client Secret: Created at Azure console.
 
-## To create an Azure cloud account in Palette console
+## How to Register Your Azure Cloud Account in Palette 
+
+To create an Azure cloud account in the Palette console
 
 1. Login to Palette console as **Tenant Admin** and select **Tenant Settings** from the **left main menu**. 
 
@@ -49,24 +49,24 @@ The below section will guide the users with the prerequisites, steps and validat
 2. From the Tenant Settings go to **Cloud Accounts** and click **+ Add Azure Account**.
 
 
-3. To the Add azure cloud account wizard provide the following information:
+3. To the Add azure cloud account wizard, provide the following information:
 
 |   **Basic Information** |Description|
 |-------------------------|-----------|
-| Account Name| A custom account name|
+|Account Name| A custom account name|
 |Client ID| Unique client Id from Azure console|
 |Tenant ID| Unique tenant Id from Azure console|
 |[Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)| Azure secret for authentication|
-|Tenant Name| An aptional tenant name|
+|Tenant Name| An optional tenant name|
 |[Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties)| To disable the import of Azure networking details.|
-|Toggle `Connect Private Cloud Gateway`| An option to select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. |
-| |
+|Toggle **Connect Private Cloud Gateway**| An option to select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. |
+
+**Note:** For existing cloud accounts go to **Edit** and toggle the **Connect Private Cloud Gateway** option to select the created Gateway from the drop-down menu.
+
+<br />
 
 4. Click **Confirm** to complete the wizard.
 
-<InfoBox>
-
-For existing cloud account go to **Edit** and toggle the **Connect Private Cloud Gateway** option to select the created Gateway from the drop-down menu.
 
 ### Disable Properties  
 
@@ -81,9 +81,6 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
-
-
-</InfoBox>
 
 <br />
 
@@ -107,7 +104,9 @@ To edit the Azure Cloud account created in Palette console:
 
 2. From the Tenant Settings go to **Cloud Accounts** and in this page under the Label of **Azure** the registered cloud account will be listed.
 
+
 3. Towards the name of the cloud account to be delete, click the **3 dots** kebab menu and select **Edit**.
+
 
 4. Make the required changes and click **Confirm** to complete the wizard.
 
@@ -115,12 +114,13 @@ To edit the Azure Cloud account created in Palette console:
 
 ## Delete the Azure Cloud Account
 
-1. To delete the Azure Cloud account created in Palette console:
+To delete the Azure Cloud account created in Palette console:
 
 1. Login to Palette console as **Tenant Admin** and select **Tenant Settings** from the **left main menu**. 
 
 
 2. From the Tenant Settings go to **Cloud Accounts** and in this page under the Label of **Azure** the registered cloud account will be listed.
+
 
 3. Towards the name of the cloud account to be delete, click the **3 dots** kebab menu and select **Delete**.
 
