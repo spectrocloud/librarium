@@ -4,5 +4,7 @@ node_modules
 *DS_Store
 *.env
 *.csv
-
+vale/styles/alex/
+vale/styles/Google/
+vale/styles/write-good/
 .idea/
