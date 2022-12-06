@@ -9,7 +9,7 @@ fullWidth: false
 
 # SaaS Operation
 
-Spectro Cloud’s SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](##control-plane-and-worker-nodes) for the Kubernetes cluster are launched in the private network. An additional bastion node is launched in the public subnet for troubleshooting purposes.
+Spectro Cloud’s SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](##control-plane-and-worker-nodes) for the Kubernetes cluster are launched in the private network.
 <br />
 
 ## Platform Security
