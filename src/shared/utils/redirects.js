@@ -50,39 +50,63 @@ const redirects = [
   {
     fromPath: `/introduction/architecture-overview`,
     toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/getting-started/palette-freemium`,
     toPath: `/introduction/palette-freemium`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/getting-started/free-cloud-credit`,
     toPath: `/introduction/palette-freemium`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/getting-started/dashboard`,
     toPath: `/introduction/dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/getting-started/onboarding-workflow`,
     toPath: `/introduction/onboarding-workflow`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/troubleshooting/palette-namespaces-podes`,
     toPath: `/architecture/palette-namespaces-podes`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/troubleshooting/Network-Communications-and-Ports`,
     toPath: `/architecture/networking-ports`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/troubleshooting/SAAS-Network-Communications-and-Ports`,
     toPath: `/architecture/networking-ports`,
+    redirectInBrowser: true,
+    isPermanent: true,
   },
   {
     fromPath: `/troubleshooting/orchestration-spectrocloud`,
     toPath: `/architecture/orchestration-spectrocloud`,
-  }
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/virtualized`,
+    toPath: `/clusters/edge`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }  
 ];
 
 module.exports = redirects;
