@@ -72,11 +72,11 @@ spec:
 
 </InfoBox>
 
-<!-- <br />
+<br />
 
 <WarningBox>
     When adding services to App Profiles using manifest files, specify a namespace name to which the resource belongs.
-</WarningBox> -->
+</WarningBox> 
 
 ## Messaging System Services
 
@@ -104,29 +104,20 @@ These Database Services are available:
 - **MySQL** 
 - **PostgreSQl** 
 - **Redis**
-<!--
+
 
 <InfoBox>
-Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can be passed to services you add next, which appear higher in the stack. However, variable values *cannot be passed from the top service layers down.
-<br />
-To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
+  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can be passed to services you add next, which appear higher in the stack. However, variable values cannot be passed from the top service layers down.
+
+  To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
 </InfoBox>
-<br />
+
 <br />
 
 # Resources
-
-<br />
-
 - [Create an App Profile](/devx/app-profile/create-app-profile)
 - [Container Deployment](/devx/app-profile/container-deployment)
 - [App Profile Macros](/devx/app-profile/app-profile-macros)
 - [App Profile Cloning](/devx/app-profile/app-profile-cloning)
 - [App Profile Versioning](/devx/app-profile/versioning-app-profile)
 
-
-
-
-
-	
- -->
