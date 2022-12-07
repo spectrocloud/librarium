@@ -1,7 +1,7 @@
 ---
-title: "Azure Cluster Creation"
+title: "Create and Manage Azure Cluster"
 metaTitle: "Creating new Azure clusters on Palette"
-metaDescription: "The methods of creating clusters for a speedy deployment on Azure"
+metaDescription: "The methods of creating an Azure cluster in Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -13,9 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Deploying an Azure Cluster
+# Deploy an Azure Cluster
 
-Users can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
+You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
 
 # Prerequisites
 
@@ -27,14 +27,14 @@ The following prerequisites must be met before deploying a workload cluster in A
 2. You must register your Azure cloud account in Palette as described in the "Creating an Azure Cloud account" section below.
 
 
-3. You should have an Infrastructure cluster profile created in Palette for Azure cloud.
+3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
 
 ## Video Demonstration
 
 `video: title: "azure-cluster-creation": ./cluster-creation-videos/azure.mp4`
 
-## How to Deploy an Azure Cluster in Palette Console
+## Deploy an Azure Cluster with Palette
 
 The following steps need to be performed to provision a new Azure cluster:
 
