@@ -24,7 +24,7 @@ You can create as many App Profiles as needed to fit various types of workloads 
 
 To create an App Profile:
 
-1. Log in to the Palette Dev Engine console.
+1. Log in to the [Palette Dev Engine console](console.spectrocloud.com).
 
 2. In **App Mode**, select **App Profiles** in the **Main Menu**, and click the **New App Profile** button. 
 
