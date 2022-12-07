@@ -14,7 +14,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Create an App Profile
 
-You can create as many App Profiles as needed to fit various types of workloads on your Palette Virtual Clusters. Each App Profile can contain multiple services, also called layers in the App Profile stack. In addition, you can create multiple versions of an App Profile. For more information, visit [App Profile Versioning](/devx/app-profile/versioning-app-profile).
+You can create as many App Profiles as needed to fit various types of workloads on your Palette Virtual Clusters. Each App Profile can contain multiple services, also called layers in the App Profile stack. You can also create multiple versions of an App Profile. For more information, visit [App Profile Versioning](/devx/app-profile/versioning-app-profile). 
+
+Use the following steps to create an App Profile.
 
 
 # Prerequisites
@@ -22,9 +24,11 @@ You can create as many App Profiles as needed to fit various types of workloads 
 * A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 <br />
 
+# App Profile Creation
+
 To create an App Profile:
 
-1. Log in to the [Palette Dev Engine console](console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. In **App Mode**, select **App Profiles** in the **Main Menu**, and click the **New App Profile** button. 
 
@@ -40,7 +44,7 @@ To create an App Profile:
 
 4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
 
-5. Provide configuration information for the service you are adding.
+5. Provide configuration information for the service you're adding.
 
 6. You can add more services to the App Profile if needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
@@ -48,4 +52,8 @@ To create an App Profile:
 
 Your App Profile is now created and can be used for Apps deployment. 
 
-To edit or delete an App Profile, navigate to the **App Profile** page. Select the App Profile and click the **Settings** button. 
+# Validation
+
+To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find it listed.
+
+From this page, you can edit and delete App Profiles. Select an App Profile and click the **Settings** button. 

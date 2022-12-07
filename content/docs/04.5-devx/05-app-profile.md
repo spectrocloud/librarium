@@ -28,7 +28,7 @@ These basic Services are available:
 
 - **Container Deployment**: [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to [Container Deployment](/devx/app-profile/container-deployment).
 
-- **Helm**: Palette provides out-of-box Helm registries and allows you to add additional registries. For more information, visit [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry).
+- **Helm**: Palette provides out-of-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry).
 
 - **Manifest**: You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require creation of Secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
 
@@ -106,7 +106,7 @@ These Database Services are available:
 
 
 <InfoBox>
-  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can be passed to services you add next, which appear higher in the stack. However, variable values cannot be passed from the top service layers down.
+  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values can't pass from the top service layers down.
 
   To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
 </InfoBox>
