@@ -24,7 +24,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 1. You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
 
-2. You must register your Azure cloud account in Palette as described in the "Creating an Azure Cloud account" section below.
+2. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud account](/clusters/public-cloud/azure/azure-cloud) section.
 
 
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
