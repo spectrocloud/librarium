@@ -22,7 +22,7 @@ You create App Profiles to meet specific types of workloads on your Palette Virt
 
 Several Services are available to build App Profiles.
 
-## Services
+# Services
 
 These basic Services are available:
 
