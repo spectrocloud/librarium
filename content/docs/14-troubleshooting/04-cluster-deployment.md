@@ -11,6 +11,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
+
 # Cluster Deployment Errors Scenarios
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.  
@@ -137,3 +138,13 @@ else
 	echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
 fi
 ```
+
+## Scenario - Gateway Cluster Provisioning Failures
+
+Installation of the Gateway cluster may run into errors or get stuck in the provisioning state for various reasons like lack of infrastructure resources, lack of availability of IP addresses, inability to perform NTP sync, etc. 
+
+While these are the most common failures, some other issues might be related to the underlying VMware environment. The **Cluster Details** page, which you can access by clicking anywhere on the Gateway widget, contains details of every orchestration step, including an indication of the current task. 
+
+Intermittent errors are displayed on the **Cluster Details** page next to the relevant orchestration task. The **Events** tab on this page also provides helpful insights into lower-level operations currently being performed. Suppose you believe the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure. You may reset the Gateway by clicking on the **Reset** button on the Gateway widget. The Gateway state will transition to Pending. A Gateway in the Pending state allows you to reconfigure the Gateway and start provisioning a new Gateway cluster. If the problem persists, don't hesitate to contact Spectro support via the Service Desk or our [support page](http://support.spectrocloud.io/).
+
+<br />
