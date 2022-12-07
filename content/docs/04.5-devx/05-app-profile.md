@@ -1,5 +1,5 @@
 ---
-title: "App Profile"
+title: "App Profiles"
 metaTitle: "Palette Dev Engine for Enterprise Developers"
 metaDescription: "Explore Palette Dev Engine as Free Developers"
 hideToC: false

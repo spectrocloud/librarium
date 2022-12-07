@@ -1,7 +1,7 @@
 ---
 title: "Create an App Profile"
 metaTitle: "Learn how to create an App Profile"
-metaDescription: "This guide provides guidance on how to create a Palette App Profile"
+metaDescription: "This document provides guidance on how to create a Palette App Profile"
 hideToC: false
 fullWidth: false
 ---
@@ -14,13 +14,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Create an App Profile
 
-You can create as many App Profiles as you need to fit your various types of workloads. Each App Profile may contain multiple services, also called tiers. Palette Dev Engine also supports the creation of multiple versions of an App Profile. To learn more visit the App versioning documentation [page](/devx/app-profile/versioning-app-profile).
+You can create as many App Profiles as needed to fit various types of workloads on your Palette Virtual Clusters. Each App Profile can contain multiple services, also called layers in the App Profile stack. In addition, you can create multiple versions of an App Profile. For more information, visit [App Profile Versioning](/devx/app-profile/versioning-app-profile).
 
 
 # Prerequisites
 
 * A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
-<br />
 <br />
 
 To create an App Profile:
@@ -29,9 +28,8 @@ To create an App Profile:
 
 2. In **App Mode**, select **App Profiles** in the **Main Menu**, and click the **New App Profile** button. 
 
-3. Provide basic information for your App Profile and click **Next**.
+3. Provide the following basic information for your App Profile and click **Next**.
 
-**Basic Information: **
 
 |         Parameter           | Description  |
 |-------------------------------|-----------------|
@@ -40,15 +38,13 @@ To create an App Profile:
 |Description (optional)   | Description of the App Profile. | 
 |Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
-4. Select one of the available services to start configuring your App Profile. 
+4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
 
-5. Provide configuration information for the service.
+5. Provide configuration information for the service you are adding.
 
-6. You can add more services to the App Profile if needed. To do this, click the **Actions** button next to the **Configure tier** pane. Each service becomes a layer in the App Profile stack.
-<br />
-To rearrange layers, select a service and drag it up or down in the **Configure tier** pane.
+6. You can add more services to the App Profile if needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
-7. Click **Review** to proceed. 
+7. When you've provided the required configuration information for services, click **Review**. 
 
 Your App Profile is now created and can be used for Apps deployment. 
 
