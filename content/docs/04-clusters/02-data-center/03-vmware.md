@@ -378,7 +378,7 @@ Power off the installer OVA which was initially imported at the start of this in
 
 The installer VM, when powered on, goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes five to ten minutes. Failure of the installer to register with the Tenant Portal, within this duration, might be indicative of a bootstrapping error. 
 
-SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at */var/log/cloud-init-output.log*. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. 
+SSH into the installer virtual machine using the username "ubuntu" and the key provided during OVA import and inspect the log file located at **/var/log/cloud-init-output.log**. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. 
 
 Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
 
