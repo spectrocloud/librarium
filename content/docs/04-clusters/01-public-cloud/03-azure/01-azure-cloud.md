@@ -1,7 +1,7 @@
 ---
-title: "Azure Cloud Account Creation"
-metaTitle: "Register Azure cloud account to Palette console"
-metaDescription: "The methods of registering Azure cloud account to Palette console"
+title: "Register and Manage Azure Cloud Account"
+metaTitle: "Register and manage an Azure cloud account in Palette"
+metaDescription: "This guide will help you register and manage an Azure cloud account in Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -14,34 +14,33 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# Creating an Azure Cloud Account
+# Register an Azure Cloud Account
 
-To deploy the Azure Clusters in the Palette Platform, having the Azure Cloud Account registered to the Palette Platform is a significant prerequisite. This section will guide you on creating an Azure cloud account in the Palette console.
+To deploy the Azure Clusters in the Palette Platform, having the Azure Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an Azure cloud account in the Palette console.
 
 ## Video Demonstration
 
-Find the video demonstration of Azure Cloud Creation for Palette console.
+The following video demonstrates the integration of Azure Cloud with the Palette console.
 
 `video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 
-The below section will guide the users with the prerequisites, steps and validation of Azure Cloud Account creation within the Palette console.
+This guide will provide steps for how you can integrate your Azure account with Palette.
 
 ## Prerequisites
 
-* Palette Account
+* * A [Palette Account](https://console.spectrocloud.com/)
 
-* An active Azure cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
+* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
-* Client ID: From Azure console
-
-* Tenant ID: From Azure console
-
-* Client Secret: Created at Azure console.
+* An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials as below:
+  * Client ID: From Azure console
+  * Tenant ID: From Azure console
+  * Client Secret: Created at Azure console.
 
 ## How to Register Your Azure Cloud Account in Palette 
 
-To create an Azure cloud account in the Palette console
+To register an Azure cloud account in the Palette console
 
 1. Login to Palette console as **Tenant Admin** and select **Tenant Settings** from the **left main menu**. 
 
@@ -49,7 +48,7 @@ To create an Azure cloud account in the Palette console
 2. From the Tenant Settings go to **Cloud Accounts** and click **+ Add Azure Account**.
 
 
-3. To the Add azure cloud account wizard, provide the following information:
+3. To the add Azure cloud account wizard, provide the following information:
 
 |   **Basic Information** |Description|
 |-------------------------|-----------|
@@ -65,7 +64,7 @@ To create an Azure cloud account in the Palette console
 
 <br />
 
-4. Click **Confirm** to complete the wizard.
+4. Click on the **Confirm** button to complete the wizard.
 
 
 ### Disable Properties  
@@ -84,7 +83,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 <br />
 
-## Validation
+# Validation
 
 To validate the Azure Cloud account creation in Palette console:
 
@@ -94,6 +93,9 @@ To validate the Azure Cloud account creation in Palette console:
 2. From the Tenant Settings go to **Cloud Accounts** and in this page under the Label of **Azure** the registered cloud account will be listed.
 
 <br />
+
+# Manage Azure Account
+After an Azure cloud account has been registered with Palette, you can change the integration settings or remove the Azure account with **Edit and Delete** capabilities respectively.
 
 ## Edit the Azure Cloud Account
 
