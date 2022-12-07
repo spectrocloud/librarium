@@ -69,7 +69,6 @@ spec:
                   key: password
 ```
 
-
 </InfoBox>
 
 <br />
