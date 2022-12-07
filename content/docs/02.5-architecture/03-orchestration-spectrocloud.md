@@ -50,7 +50,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 6. The Palette agent will install all the additional add-ons as specified by the cluster's cluster profile (e.g: logging, monitoring, security).
 
 <InfoBox>
-    We do not hardcode credentials. Palette useses the <strong>cloud-init</strong> process to inject the user-defined SSH keys into the clusters. 
+    We do not hard code credentials. Palette uses the <strong>cloud-init</strong> process to inject the user-defined SSH keys into the clusters. 
     Login using the command: 
         <code>ssh -i sshKeyHere spectro@host</code>
 

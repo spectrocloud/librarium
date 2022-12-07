@@ -13,9 +13,9 @@ This page is covers common debugging scenarios for nodes and clusters post deplo
 
 # Nodes
 
-## Scenario - Nodes are Repaved
+## Scenario - Repaved Nodes
 
-Palette will perform a rolling upgrade on the nodes for any changes in kubeadm config. Below are some of the actions that will cause kubeadm config change and will result in nodes getting upgraded:
+Palette performs a rolling upgrade on the nodes when a chang is detected in the kubeadm config. Below are some of the actions including but not limited to that will cause the kubeadm configuration to change and result in the nodes getting an upgrade:
 * OS layer changes
 * Kubernetes layer changes
 * Kubernetes version upgrade
@@ -23,9 +23,9 @@ Palette will perform a rolling upgrade on the nodes for any changes in kubeadm c
 * Machine pool updates for disk size
 * Changes in availability zones
 * Changes in instance types
-* Certificate renewal and many more...
+* Certificate renewal
 
-Logs are provided in Palette for traceability. However these logs may be lost when the pods get relaunched. To ensure that cause and context is persisted across repaving, a field **upgrades** has been added to the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This field is represented in the Palette UI so that you can understand why and when repaving happened.
+Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, a field titled **upgrades** is available in the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This field is represented in the Palette UI so that you can understand why and when repaving happened.
 
 For detailed information, review the cluster upgrades [page](/clusters/#clusterupgradedetails).
 
