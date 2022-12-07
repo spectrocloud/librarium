@@ -11,7 +11,7 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Deployment Architecture Overview
 
-Palette can be consumed via three flexible deployment models:
+Palette is available in three flexible deployment models:
 
 * **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions (us-east-1, us-west-1, us-west-2) and managed by Spectro Cloud. Each customer will occupy a tenant. The Spectro Cloud operation team controls when to upgrade the management plane.
 
