@@ -12,7 +12,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Kubernetes Debugging
 
-Spectro Cloud provisions standard, upstream Kubernetes clusters using `kubeadm` and `cluster-api`. All of the Kubernetes documentation related to support and troubleshooting can be used as guides. The official Kubernetes [debugging guide](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster) is about cluster troubleshooting and offers excellent advice on how to resolve common issues that may arise.
+Spectro Cloud provisions standard, upstream Kubernetes clusters using `kubeadm` and `cluster-api`. The official Kubernetes documentation related to support and troubleshooting are great troubleshooting resources that you should also consider reviewing. The official Kubernetes [debugging guide](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster) is about cluster troubleshooting and offers excellent advice on how to resolve common issues that may arise.
 
 
 ## Logging Tips
