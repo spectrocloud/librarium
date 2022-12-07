@@ -38,7 +38,7 @@ This guide will provide steps for how you can integrate your Azure account with 
   * Tenant ID: From Azure console
   * Client Secret: Created at Azure console.
 
-## How to Register Your Azure Cloud Account in Palette 
+## Enable Azure Cloud Account Registration to Palette 
 
 To register an Azure cloud account in the Palette console
 
