@@ -92,4 +92,4 @@ https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
 
 ## References
 
-https://www.nginx.com/products/nginx/kubernetes-ingress-controller/
+- [Nginx Ingress Controller](https://www.nginx.com/products/nginx-ingress-controller/)

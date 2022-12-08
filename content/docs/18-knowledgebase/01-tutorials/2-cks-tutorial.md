@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
-# Tutorial: Practice for Your CKS Exam with Palette
+# Practice for Your CKS Exam with Palette
 
 [Certified Kubernetes Security Specialist (CKS)](https://www.cncf.io/certification/cks/) is the hardest exam offered by [CNCF](https://www.cncf.io/). While there are a lot of resources available to study, it's not always so easy to practice what you've learned.
 

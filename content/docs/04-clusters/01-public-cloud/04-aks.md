@@ -81,7 +81,7 @@ Palette **also** enables the provisioning of private AKS clusters via a private 
 
 # Creating an Azure Cloud Account
 
-![Azure-cloud-account](/cloud-accounts/azure.mp4)
+`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 To create an Azure cloud account, we need:
 
@@ -113,7 +113,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 <br />
 
 
-![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
+`video: title: "aks-cluster-creation": ./cluster-creation-videos/aks.mp4`
 
 
 The following steps need to be performed to provision a new cluster:
@@ -161,6 +161,19 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
 
 
 <br />
+
+<InfoBox>
+
+The [maximum number of pods per node in an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) is 250. If you don't specify maxPods when creating new node pools, you receive a default value of 30. This value can be edited from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
+
+```
+managedMachinePool:
+  maxPodPerNode: 30
+
+ #NOTE: The recommended minimum value set for maxPodPerNode is 30, setting value less than the recommended one can result in palette system pods in pending state.
+```
+
+</InfoBox>
 
 # Node Pools
 
