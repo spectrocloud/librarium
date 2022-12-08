@@ -54,6 +54,6 @@ Your App Profile is now created and can be used for Apps deployment.
 
 # Validation
 
-To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find it listed.
+To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find all your app profiles listed.
 
 From this page, you can edit and delete App Profiles. Select an App Profile and click the **Settings** button. 
