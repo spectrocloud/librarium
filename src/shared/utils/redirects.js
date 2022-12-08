@@ -47,6 +47,36 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/clusters/edge/virtualized`,
+    toPath: `/clusters/edge`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },  
+  {
+    fromPath: `/troubleshooting/palette-namespaces-podes`,
+    toPath: `/architecture/palette-namespaces-podes`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/troubleshooting/Network-Communications-and-Ports`,
+    toPath: `/architecture/networking-ports`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/troubleshooting/SAAS-Network-Communications-and-Ports`,
+    toPath: `/architecture/networking-ports`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/troubleshooting/orchestration-spectrocloud`,
+    toPath: `/architecture/orchestration-spectrocloud`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;

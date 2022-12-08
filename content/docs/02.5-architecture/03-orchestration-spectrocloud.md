@@ -1,7 +1,7 @@
 ---
-title: "Orchestration - Palette"
-metaTitle: "Workload Cluster Provisioning"
-metaDescription: "The methods of workload cluster provisioning for K8S clusters"
+title: "Order of Operations"
+metaTitle: "Provision and Order of Operations in Palette"
+metaDescription: "The methods of workload cluster provisioning for K8S clusters with Palette"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,8 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-
-# Orchestration - Palette
+# Order of Operations
 
 Spectro Cloud Palette provisions standard, upstream Kubernetes clusters using [Cluster API](https://cluster-api.sigs.k8s.io/).
  
@@ -26,7 +25,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 ## Workload Cluster Provisioning
 
-![workload_cluster_provisioning.png](workload_cluster_provisioning.png)
+![workload_cluster_provisioning.png](/architecture_orchestartion-spectrocloud_provision-flow.png)
 
 
 <br />
@@ -50,6 +49,13 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 6. The Palette agent will install all the additional add-ons as specified by the cluster's cluster profile (e.g: logging, monitoring, security).
 
+<InfoBox>
+    We do not hard code credentials. Palette uses the <strong>cloud-init</strong> process to inject the user-defined SSH keys into the clusters. 
+    Login using the command: 
+        <code>ssh -i sshKeyHere spectro@host</code>
+
+</InfoBox>
+
 
 ## Why Palette Pivots
 
@@ -57,7 +63,7 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-![distributed_orchestration.png](distributed_orchestration.png)
+![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
 
 
 <br />
@@ -75,5 +81,4 @@ Palette pivots these clusters for several reasons, related to scalability and av
 * **Intermittent network resiliency** - The design supports use cases where the workload clusters can still operate in intermittent and disconnected network availability situations.
 
 
-<br />
 <br />

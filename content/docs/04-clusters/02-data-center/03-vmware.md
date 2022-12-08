@@ -76,6 +76,21 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 11. Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
+<InfoBox>
+
+### Naming conventions for vSphere Region and Zone Tags
+The following points needs to be taken care while creating the Tags:
+* A valid tag must consist of alphanumeric characters
+* The tag must start and end with an alphanumeric characters
+* The regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+
+**Example Tags:**
+* MyValue
+* my_value
+* 12345
+
+</InfoBox>
+
 ## Zone Tagging 
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
@@ -254,7 +269,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 # Creating a VMware Cloud Gateway
 
-![vsphere-pcg-creation](/pcg-creation-video/vmware.mp4)
+`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
 <br />
 <br />
@@ -363,7 +378,7 @@ Power off the installer OVA which was initially imported at the start of this in
 
 The installer VM, when powered on, goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes five to ten minutes. Failure of the installer to register with the Tenant Portal, within this duration, might be indicative of a bootstrapping error. 
 
-SSH into the installer virtual machine using the key provided during OVA import and inspect the log file located at */var/log/cloud-init-output.log*. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. 
+SSH into the installer virtual machine using the username "ubuntu" and the key provided during OVA import and inspect the log file located at **/var/log/cloud-init-output.log**. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly. 
 
 Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
 
@@ -498,7 +513,7 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploying a VMware Cluster
 
-![vmware-cluster-creation](./cluster-creation-videos/vmware.mp4)
+`video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
 
 The following steps need to be performed to provision a new VMware cluster:
 
