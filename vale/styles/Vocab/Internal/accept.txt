@@ -28,4 +28,3 @@ gzip
 json
 unshipped
 Nano
-only
