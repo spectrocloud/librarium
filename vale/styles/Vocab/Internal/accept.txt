@@ -1,0 +1,26 @@
+Xeon
+Spectro
+Spectro Cloud
+SOC 2
+IPs
+VMware
+kCh
+data center
+CVEs
+hotfixes
+kubectl
+is
+Cloud
+cloud
+simple
+execute
+CLI
+reject
+disable
+modify
+Kubelet
+We
+we
+vSphere
+kubeadm
+upsize
