@@ -126,7 +126,6 @@ Go ahead and add the following audit parameters under the `- kube-apiserver` lin
 Save your changes and exit the file. When you exit the file, the changes will automatically get picked up by the Kubelet process and applied.
 
 To learn more about each of the Kubernetes API server flags, visit the Kubernetes API parameter [documentation page](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
-                                                                                                                   |
 
 <InfoBox>
 You can optionally add the following Kubernetes API parameters to fine-tune the audit logging.
