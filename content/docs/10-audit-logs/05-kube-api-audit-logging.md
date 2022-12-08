@@ -125,26 +125,11 @@ Go ahead and add the following audit parameters under the `- kube-apiserver` lin
 
 Save your changes and exit the file. When you exit the file, the changes will automatically get picked up by the Kubelet process and applied.
 
-The following is an explanation of the audit flags. To learn more about the Kubernetes API server flags, check out Kubernetes API parameter [documentation page](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
-
-| **Parameter**                           | **Type**   | **Description**                                                                                                                                                                                                                  |
-|-------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| --audit-policy-file                 | string | If set, all requests coming to the apiserver will be logged to this file. `'-'` means standard out.                                                                                                                            |
-| --audit-log-path                    | string | If set, all requests coming to the apiserver will be logged to this file. `'-'` means standard out.                                                                                                                            |
-| --audit-log-batch-buffer-size       | int    | The size of the buffer to store events before batching and writing. Only used in batch mode.                                                                                                                                 |
-| --audit-log-compress                |        | If set, the rotated log files will be compressed using gzip                                                                                                                                                                  |
-| --audit-log-format                  | string | Format of saved audits. `"legacy"` indicates 1-line text format for each event. `"json"` indicates structured json format. Known formats are legacy,json.                                                                        |
-| --audit-log-maxage                  | int    | The maximum number of days to retain old audit log files                                                                                                                                                                     |
-| --audit-log-maxbackup               | int    | The maximum number of audit log files to retain                                                                                                                                                                              |
-| --audit-log-maxsize                 | int    | The maximum size in megabytes of the audit log file before it gets rotated                                                                                                                                                   |
-| --audit-log-mode                    | string | Strategy for sending audit events. Blocking indicates sending events should block server responses. Batch causes the backend to buffer and write events asynchronously. Known modes are `batch`,`blocking`,`blocking-strict`.      |
-| --audit-log-truncate-enabled        |        | Whether event and batch truncating is enabled.                                                                                                                                                                               |
-| --audit-log-truncate-max-batch-size | int    | Maximum size of the batch sent to the underlying backend. Actual serialized size can be several hundreds of bytes greater. If a batch exceeds this limit, it is split into several batches of smaller size.                  |
-| --audit-log-truncate-max-event-size | int    | Maximum size of the audit event sent to the underlying backend. If the size of an event is greater than this number, first request and response are removed, and if this doesn't reduce the size enough, event is discarded. |
-| --audit-log-version                 | string | The API group and version used for serializing audit events written to log. Default: `"audit.k8s.io/v1"`                                                                                                                       |
+To learn more about each of the Kubernetes API server flags, visit the Kubernetes API parameter [documentation page](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
+                                                                                                                   |
 
 <InfoBox>
-You may optionally add the following Kubernetes API parameters to fine-tune the audit logging.
+You can optionally add the following Kubernetes API parameters to fine-tune the audit logging.
 
 | Parameter                         | Type     | Description                                                                                                                   |
 |-----------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------|
