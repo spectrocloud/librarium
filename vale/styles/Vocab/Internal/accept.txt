@@ -24,3 +24,8 @@ we
 vSphere
 kubeadm
 upsize
+gzip
+json
+unshipped
+Nano
+only
