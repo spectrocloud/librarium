@@ -81,8 +81,8 @@ spec:
 
 These Messaging System services are available for client-server data exchange and monitoring:
 
-- **NATS**
-- **Kafka**
+- **[NATS](https://nats.io/)**
+- **[Kafka](https://kafka.apache.org/)**
 
 ## Security Service
 
