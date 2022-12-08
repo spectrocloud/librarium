@@ -948,6 +948,8 @@ Palette customers can optionally disable the OIDC Associate Provider if the serv
 
 <br />
 
+<InfoBox>
+
 ```
   # Disable creation of an identity provider for the controller
   # for use with IAM roles for service accounts
