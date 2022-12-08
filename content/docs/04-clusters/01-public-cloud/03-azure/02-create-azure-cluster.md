@@ -15,7 +15,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Deploy an Azure Cluster
 
-You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
+You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters. 
+
+Azure clusters can be created under the following scopes:
+
+* Tenant Admin
+
+* Project Scope - This is the recommended scope.
+
+Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
 # Prerequisites
 
@@ -38,25 +46,28 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 The following steps need to be performed to provision a new Azure cluster:
 
-1. Login to Palette console and select **Clusters** from the **left main menu**.
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Click on **Clusters** from the left **Main Menu**.
 
 
 2. In the cluster page click **+ Add New Cluster** button and select **create new cluster**.
 
 
-3. Select **Azure** cloud type and click **Start Azure Configuration** to give the following basic information: 
+3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information 
 
 
-* Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click the **next** button.
+4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
 
 
-4. Select the **Cluster Profile** created for the Azure environment. The profile definition will be used as the cluster construction template. Click on **Next**.
+5. Select the **Cluster Profile** created for the Azure environment. The profile definition will be used as the cluster construction template. Click on **Next**.
 
 
-5. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click **Next**.
+6. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click on **Next**.
 
 
-6. Provide the Azure Cloud account placement information for cluster configuration.
+7. Provide the Azure Cloud account placement information for cluster configuration.
 
 |**Parameter**| **Description**|
 |-------------|---------------|
@@ -79,7 +90,7 @@ The following steps need to be performed to provision a new Azure cluster:
 | |* **Dynamic**: The Dynamic Host Configuration Protocol (DHCP) dynamically allocates IP addresses from the available  Virtual Network IP CIDR range.
 | |* **Static**: You specify a static IP address from the available Virtual Network IP range.|
 |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
-When you have provided all the cluster configuration details to the wizard, click **Next** and proceed to node configuration.
+When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
 
 <InfoBox>
 
@@ -132,10 +143,12 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 ## To force delete a cluster:
 
-1. Log in to the Palette Management Console.
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Click on **Cluster** on the left **Main Menu**
 
 
-2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
+3. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
       - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
     
@@ -143,7 +156,7 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
     
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
+Remove all outstanding cloud resources deployed by Palette before proceeding with a force delete.  
 </WarningBox>
 
 
@@ -151,22 +164,14 @@ If there are any cloud resources still on the cloud, the user should cleanup tho
 
 To validate the Azure cluster creation and deletion status
 
-1. Login to the Palette console .
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Click **Clusters** at **left main menu** and the exsting cluster names will be displayed in the **Cluster** page.
+2. Click on **Cluster** on the left **Main Menu**
 
 
-3. Click the check box **Deleted only** to view all the clusters deleted in last 72 hours.
+4. Click on the check box **Deleted only** to view all the clusters deleted in last 72 hours.
 
-
-## Scope of Cluster Creation
-
-* Palette Azure clusters can be created under the scope of Tenant as well as Project admin.
-
-* The clusters created under project scope of a tenant are visible under that **Tenant Admin** scope and also under the corresponding **Project** scope.
-
-* The clusters created under tenant scope are visible under that **Tenant Admin** scope only.
 
 
 
