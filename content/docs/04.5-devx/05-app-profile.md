@@ -81,19 +81,15 @@ spec:
 
 These Messaging System services are available for client-server data exchange and monitoring:
 
-- **[NATS](https://nats.io/)**
-- **[Kafka](https://kafka.apache.org/)**
-
-## Security Service
-
-**Vault** is available as a Security service to store encrypted data and sensitive configuration details such as password encryption keys and API keys.
+- **NATS**
+- **Kafka**
+<br />
 
 ## Object Storage Services
 
-These Object Storage services are available:
+**MinIO** is available as a distributed object storage system.
+<br />
 
-- **MinIO Operator**
-- **Amazon S3**
 
 ## Database Services
 
@@ -106,12 +102,12 @@ These Database Services are available:
 
 
 <InfoBox>
-  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values can't pass from the top service layers down.
+
+  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values _cannot_ pass from the top service layers down.
 
   To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
 </InfoBox>
 
-<br />
 
 # Resources
 - [Create an App Profile](/devx/app-profile/create-app-profile)

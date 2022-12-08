@@ -44,9 +44,9 @@ To create an App Profile:
 
 4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
 
-5. Provide configuration information for the service you're adding.
+5. Provide configuration information for the service.
 
-6. You can add more services to the App Profile if needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
+6. You can add more services to the App Profile as needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
 7. When you've provided the required configuration information for services, click **Review**. 
 
@@ -54,4 +54,4 @@ Your App Profile is now created and can be used for Apps deployment.
 
 # Validation
 
-To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find all your app profiles listed. From this page, you can edit and delete App Profiles in **Settings**.
+To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find all your app profiles listed. From this page, you can also edit and delete App Profiles in **Settings**.
