@@ -1,5 +1,5 @@
 ---
-title: "Palette specific namespaces and pods"
+title: "Namespaces and Pods"
 metaTitle: "Palette specific namespaces and pods mapping"
 metaDescription: "Palette specific namespaces and pods mapping"
 icon: ""
@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Palette specific Namespaces and Pods 
+# Palette Specific Namespaces and Pods 
 
 The page encompasses the set of Palette specific namespaces and pods belonging to each of these individual namespaces. 
 The information is organised as follows:

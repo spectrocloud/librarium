@@ -47,18 +47,11 @@ Palette does not support *Usage* and *Cost* metrics for Virtual Clusters running
 
     2. Similarly, you can [enable](/clusters/palette-virtual-clusters/cluster-quickstart#enablingpalettevirtualclusterssonanexistinghostcluster) an existing cluster; thus allowing it to host Palette Virtual Clusters.<p></p><br />
 
-<InfoBox>
 
-When you create a Host Cluster and the storage layer is AWS EKS CSI, ensure the following role policies are included. 
-<br />
 
-```yml
-roleName: "custom-ng-role"
-  roleAdditionalPolicies:
-  - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-```
-</InfoBox>
+## Global Role Additional Policies:
 
+There may be situations where additional node-level policies must be added to your deployment. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the credentials, ensure `Add IAM policies` are enabled. You can specify additional policies to be attached. The attached policies will be included to all the clusters launched with this specific cloud Account.
 
 # Enabling Palette Virtual Clusters on an Existing Host Cluster
 
