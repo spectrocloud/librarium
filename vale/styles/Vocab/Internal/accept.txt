@@ -19,3 +19,8 @@ reject
 disable
 modify
 VNet
+Kubelet
+We
+vSphere
+kubeadm
+upsize
