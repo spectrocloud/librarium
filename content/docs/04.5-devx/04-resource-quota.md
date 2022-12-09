@@ -1,5 +1,5 @@
 ---
-title: "Resourse Quota"
+title: "Resource Quota"
 metaTitle: "Palette Dev Engine for Enterprise developers"
 metaDescription: "Explore Palette Dev Engine as Free developers"
 hideToC: false
