@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 App Profiles are templates created with preconfigured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. 
 
-You create App Profiles to meet specific types of workloads on your Palette Virtual Clusters. For example, you may want to create a development App Profile with Helm Charts, Manifests, and different database applications. You can create as many App Profiles as you need.
+You create App Profiles to meet specific types of workloads on your Palette Virtual Clusters. For example, you may want to create an App Profile with Helm Charts, Manifests, and different database applications. You can create as many App Profiles as you need.
 
 Several Services are available to build App Profiles.
 
@@ -103,7 +103,7 @@ These Database Services are available:
 
 <InfoBox>
 
-  Database services have output variables that follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values _cannot_ pass from the top service layers down.
+  Variables used in services follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values _cannot_ pass from the top service layers down.
 
   To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
 </InfoBox>
