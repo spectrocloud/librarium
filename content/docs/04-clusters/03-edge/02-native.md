@@ -225,49 +225,45 @@ The following are steps to customize *site settings* and build an *installer ima
    ```
 
 3. Update contents of this file to customize:
-   * Installer Name
-   * Base palette installer version(typically latest)
-   * Location of the docker registry where the installation container image should be uploaded (optional)
-   * Location of the user data.yaml file where customized installer settings described above are stored
-   
+   * Installer name
 
-   A. `Name of the ISO image to be generated`- (Optional - defaults to pxe-installer if not specified)
+   * Base Palette installer version
+   * Location of the Docker registry where the installation container image should be uploaded to (optional)
+   * Location of the user data.yaml file where the customized installer settings are stored
 
-   ```
-     ISO_IMAGE="pxe-installer-custom"
-   ```
+      -  Name of the ISO image to be generated - (Optional - defaults to pxe-installer if not specified)
 
-<br />
+         ```shell
+         ISO_IMAGE="pxe-installer-custom"
+         ```
 
-   B. `Version of the palette edge installer agent`- (Optional) Defaults to whatever is current latest release)
+      -  The version of the Palette Edge installer agent - (Optional) Defaults to the latest release)
 
-```
-INSTALLER_VERSION="latest"
-```
+         ```shell
+         INSTALLER_VERSION="latest"
+         ```
 
-<br />
+      - Target Docker image for the installer to generate
 
-   C. `Target Docker image for the installer to generate`
+         ```shell
+         IMAGE_NAME="gcr.io/my-repo/palette-edge-installer"
+         ```
 
-```
-IMAGE_NAME="gcr.io/my-repo/palette-edge-installer"
-```
+      - Path to user the data file  (Optional - Defaults to "user-data" in the current directory. Change the value below and uncomment the line if the file is different).
 
-   D. `Path to user data file`- (Optional - Defaults to "user-data" in the current directory. Change the value below and uncomment the line if the file is different).
-
-```
-USER_DATA_FILE="my-user-data.yaml”
-```
+         ```shell
+         USER_DATA_FILE="my-user-data.yaml”
+         ```
 
 
-4. The default user-data file is named `user-data` in the home directory. So create that file or file named as specified in USER_DATA_FILE in the `.installer.env`
+4. The default user-data file is named `user-data` in the home directory. Create the file or file named as specified in USER_DATA_FILE in the `.installer.env`
 
 	**Example:**  “my-user-data.yaml” above. The user data settings are as described in the [site settings](/clusters/edge/native#staging) section above. 
 
 
-5. Build the custom ISO: A custom ISO should be built with the name specified in the settings and the user data file baked inside the ISO.
+5. Build the custom ISO - A custom ISO should be built with the name specified in the settings and the user data file baked inside the ISO.
 
-```
+```shell
 ./build-installer.sh
 ```
 
@@ -297,15 +293,15 @@ We will create an OVA file from the base Palette Edge Installer ISO for VMware e
 4. Create a cloud init iso using the following command:
 
 ```
-mkisofs -output ci.iso -volid cidata -joliet -
-rock user-data meta-data
+mkisofs -output ci.iso -volid cidata -joliet -rock user-data meta-data
 ```
  
- **Note** - You may need to install prerequisites using:
+You may need cdrtools to interact with other devices.
  
 ```
 brew install cdrtools
 ```
+
 This will generate an ISO file called ci.iso in the current directory. 
 
 <br />
