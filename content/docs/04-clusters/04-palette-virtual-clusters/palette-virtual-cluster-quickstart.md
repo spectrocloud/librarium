@@ -1,5 +1,5 @@
 ---
-title: "Add Vurtual Clusters to a Host Cluster"
+title: "Add Virtual Clusters to a Host Cluster"
 metaTitle: "Get Started with Palette Virtual Clusters"
 metaDescription: "How to create Palette Virtual Clusters for quick deployment on any CSP"
 icon: ""
