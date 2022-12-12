@@ -22,11 +22,10 @@ This section talks about how we can configure the Kubernetes Dashboard exposed t
 
 # Prerequisite
 
-* Kubernetes Dashboard Pack to be part of the Cluster Profile.
+* [Kubernetes Dashboard Pack](/integrations/kubernetes-dashboard) to be part of the Cluster Profile.
 
+* To expose the dashboard, use [Spectro-Proxy Pack (1.1.0)](/integrations/frp). If the Kubernetes Dashboard is not using a load balancer. Make the following changes to the Spectro-Proxy pack.
  
-* To expose the dashboard,  use Spectro-Proxy Pack (1.1.0) if Kubernetes Dashboard is not using LoadBalancer. Make the following changes to the Spectro-Proxy pack.
-
 <br />
 
 ```
