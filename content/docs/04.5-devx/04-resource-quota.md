@@ -29,7 +29,7 @@ Enterprise developers may not exceed these quotas:
 
 To create your cluster groups, you must manage the developer quota in Palette by hiding the system-level cluster groups as follows:
 
-1. Log in to the Palette console. 
+1. Log in to [Palette](https://console.spectrocloud.com/). 
 
 2. In **Cluster Mode**, select **Tenant Admin** from the drop-down menu 
 
