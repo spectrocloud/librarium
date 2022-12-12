@@ -14,7 +14,6 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-
 # System Requirements
 
 The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
@@ -25,13 +24,48 @@ The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-p
 | **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
 
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
-## vSphere Environment Prerequisites
 
-### General Requirements
-   - vCenter version : 6.7 and above
-  
+<br />
 
-   - NTP configured on all ESXi Hosts
+## Prerequisites
+
+The following are prerequisites for deploying a Kubernetes cluster in VMware:
+* vCenter version 6.7U3 or above is recommended.
+
+
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to use high-availability control planes. Network Time Protocol (NTP) must be configured on each ESXi host.
+
+
+* You need an active vCenter account with all the permissions listed below in the VMware Cloud Account Permissions section.
+
+
+* Install a Private Cloud Gateway for VMware as described in the Creating a VMware Cloud Gateway section. Installing the Private Cloud Gateway automatically registers a cloud account for VMware in Palette. You can register additional VMware cloud accounts in Palette as described in the Creating a VMware Cloud account section.
+
+
+* Subnet with egress access to the internet (direct or via proxy):
+  * For proxy: HTTP_PROXY, HTTPS_PROXY (both are required).
+  * Outgoing internet connection on port 443 to api.spectrocloud.com.
+
+
+* The Private cloud gateway IP requirements are:
+  * One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
+  * One (1) Kubernetes control-plane VIP.
+  * One (1) Kubernetes control-plane extra.
+
+
+* Assign IPs for application workload services (e.g., Load Balancer services).
+
+
+* A DNS to resolve public internet names (e.g., api.spectrocloud.com).
+
+
+* Shared Storage between vSphere hosts.
+
+
+* A cluster profile created in Palette for VMware.
+
+
+* Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
 ### Zone Tagging
@@ -66,18 +100,56 @@ The following points needs to be taken care while creating the Tags:
 
 </InfoBox>
 
-### Permissions
 
-The following permissions are required for the account used to install the platform:
+## Privilages 
+
+**Last Update**: August 18, 2022
+
+The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
 <br />
 <br />
 
-### vSphere Object
+<InfoBox>
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+</InfoBox>
+
+## Privileges Under Root-Level Role
+
+<br />
+
+<WarningBox>
+The root-level role privileges are applied to root object and Datacenter objects only.
+</WarningBox>
+
+|**vSphere Object**    |**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable|
+|**Datastore**|Browse datastore
+|**Host**|Configuration
+||* Storage partition configuration
+|**vSphere** **Tagging**|Create vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Sessions**|Validate session|
+|**Profile-driven storage**|Profile-driven storage view|
+|**Storage views**|View|
+
+<br />
+
+## Privileges Under the Spectro Role 
+
 
 <br />
 
 <Tabs>
+
+<Tabs.TabPane tab="Cns" key="Cns">
+
+#### Cns Privileges
+  - Searchable
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="Datastore" key="Datastore">
 
@@ -99,6 +171,14 @@ The following permissions are required for the account used to install the platf
   - Delete folder
   - Move folder
   - Rename folder
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Host" key="Host">
+
+  #### Host Privileges
+  - Local Operations
+    * Reconfigure virtual machine 
 
 </Tabs.TabPane>
 
@@ -127,6 +207,13 @@ The following permissions are required for the account used to install the platf
   #### Sessions Privileges
   - Validate session
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Profile Driven Storage" key="Profile Driven Storager">
+
+  #### Profile Driven Storage
+  - Profile-driven storage view
+ 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Storage views" key="Storage views">
@@ -221,6 +308,15 @@ The following permissions are required for the account used to install the platf
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="vSAN" key="vSAN">
+
+  #### vSAN
+
+  - Cluster
+    * ShallowRekey
+
+</Tabs.TabPane>
+
 </Tabs>
 
 
@@ -242,7 +338,7 @@ The following permissions are required for the account used to install the platf
 
 
 <InfoBox>
- Make sure that your data center CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed during installation.
+ Ensure your data center CIDR IP address does not overlap Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
 </InfoBox>
 
 
