@@ -26,9 +26,9 @@ Spectro Cloud Palette allows its deployment to be done in-house within the custo
 
 The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA given below:
 
-|Version|URL|Info|
-|--|---|--|
-|2.1.0|hubble-installer-210.ova|Jun 1 2022 (Cert Manager change to 1.8)|
+|Version|URL|Valid From|Info|
+|--|---|--|--|
+|2.4.0|hubble-installer-240.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8Gb RAM, 100GB HDD, OpenSSL Fix, Add Spectro Cert|
 ------
 
 
@@ -38,13 +38,17 @@ We support the installation of our management platform on VMware environments th
 
 ## Latest Air Gapped OVA
 
-|Version|URL|Info|
-|---|---|--|
-|2.0.1|airgap-v1.14.27.ova|Sep 21, 2021|
+|Version|URL|Valid From|Info|
+|---|---|--|--|
+|2.1.0|spectro-airgap-v2.1.0.ova|Nov 4, 2022| Ubuntu 20, 2 vCPU, 4Gb RAM, 120GB HDD|
 ------
 
 ## Air Gapped Binaries
+
 Download and execute the version-specific binary
+
+<br />
+
 
 ```json
 export VERSION=1.14.3
@@ -61,9 +65,9 @@ PCG is Palette's on-prem component to enable support for isolated private cloud 
 
 ## vSphere PCG Image
 
-|Version|URL|Info|
-|---|---|--|
-|1.3.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-130.ova|Nov 02 2022|
+|Version|URL|Date|Info|
+|---|---|--|--|
+|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8Gb RAM, 100GB HDD, OpenSSL Fix, Add Spectro Cert
 ------
 
 ## MAAS PCG Image
