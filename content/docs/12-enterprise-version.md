@@ -29,7 +29,9 @@ To obtain the platform installer, please contact our Sales team by completing [t
 <br />
 
 
+
 ## Resources 
+
 
 * [System Requirements](/enterprise-version/on-prem-system-requirements)
 
@@ -56,4 +58,6 @@ To obtain the platform installer, please contact our Sales team by completing [t
 
 
 <br />
+
 <br />
+

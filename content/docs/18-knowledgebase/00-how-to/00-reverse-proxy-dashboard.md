@@ -11,8 +11,6 @@ import InfoBox from 'shared/components/InfoBox';
 
 
 
-
-
 # Overview
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself. 
