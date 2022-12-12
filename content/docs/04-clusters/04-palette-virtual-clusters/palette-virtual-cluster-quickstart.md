@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Add Virtual Clusters to a Host Cluster
 
-You can deploy Palette Virtual Clusters in a Host Cluster. To do this, Palette provides the **Enable Virtual Clusters** option for new or existing clusters. Clusters with this feature enabled are called Host Clusters.
+You can deploy Palette Virtual Clusters in a [Host Cluster](/glossary-all#hostcluster). To do this, Palette provides the **Enable Virtual Clusters** option for new or existing clusters. Clusters with this feature enabled are called Host Clusters.
 
 The advantages of a virtual cluster environment are:
 - You can operate with admin-level privileges while ensuring strong isolation.
@@ -23,7 +23,7 @@ The advantages of a virtual cluster environment are:
 
 Follow steps below to enable and deploy a virtual cluster.
 
-## Prerequisites
+# Prerequisites
 
 - A Spectro Cloud account.
 
@@ -37,7 +37,7 @@ Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running
 
 </InfoBox>
 
-# Add Node-Level Policies in your Cloud Account
+## Add Node-Level Policies in your Cloud Account
 
 In some situations additional node-level policies must be added to your deployment. 
 
@@ -62,7 +62,7 @@ Follow these steps to enable virtual clusters on a new or existing Host Cluster:
 <Tabs>
 <Tabs.TabPane tab="Configure Load Balancer Endpoint" key="Configure Load Balancer Endpoint">
 
-<b>Configure Load Balancer Endpoint</b> 
+### Configure Load Balancer Endpoint 
 <br />
 These requirements apply to a Load Balancer endpoint:
 <br />
