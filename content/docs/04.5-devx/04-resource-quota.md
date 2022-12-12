@@ -16,9 +16,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Resource Quota
 
-Palette allocates a quota to users of Palette Cluster Groups as part of Spectro Cloud's free tier offering. You can launch Palette Virtual Clusters or deploy applications to new or existing virtual clusters. You may use the quota defined at the system level while exploring Palatte SaaS capabilities. 
+Palette allocates a quota to users of Palette Cluster Groups as part of Spectro Cloud's free tier offering. You can launch Palette Virtual Clusters or deploy applications to new or existing virtual clusters. You may use the quota defined at the system level while exploring Palette SaaS capabilities. 
 
-Palette enterprise users may offer these capabilities to their internal developers. Theoretically, enterprise developers would be able to use the system-level quota offered to other developers, but the tenant admin will most likely set up different cluster groups and quotas for enterprise developers. You can view this as the enterprise developer's quota offered at the tenant level.
+Palette enterprise users may offer these capabilities to their internal developers. Theoretically, enterprise developers would be able to use the system-level quota offered to other developers, but the tenant administrator will most likely set up different cluster groups and quotas for enterprise developers. You can view this as the enterprise developer's quota offered at the tenant level.
 
 Enterprise developers may not exceed these quotas:
 
