@@ -11,8 +11,6 @@ import InfoBox from 'shared/components/InfoBox';
 
 
 
-
-
 # Overview
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself. 
@@ -22,10 +20,10 @@ This section talks about how we can configure the Kubernetes Dashboard exposed t
 
 # Prerequisite
 
-* Kubernetes Dashboard Pack to be part of the Cluster Profile.
+* [Kubernetes Dashboard Pack](/integrations/kubernetes-dashboard) to be part of the Cluster Profile.
 
  
-* To expose the dashboard,  use Spectro-Proxy Pack (1.1.0) if Kubernetes Dashboard is not using LoadBalancer. Make the following changes to the Spectro-Proxy pack.
+* To expose the dashboard, use [Spectro-Proxy Pack (1.1.0)](/integrations/frp) if Kubernetes Dashboard is not using LoadBalancer. Make the following changes to the Spectro-Proxy pack.
 
 <br />
 
