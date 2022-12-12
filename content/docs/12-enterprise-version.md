@@ -25,3 +25,35 @@ Highly available multi-node installation typically for production purposes.
 
 Palette provides the platform installer to enable quick start mode and enterprise mode. 
 To obtain the platform installer, please contact our Sales team by completing [the form here](https://www.spectrocloud.com/contact/).
+
+<br />
+
+
+## Important Resources 
+
+* [System Requirements](/enterprise-version/on-prem-system-requirements)
+
+
+* [Quick Start Mode](/enterprise-version/deploying-the-platform-installer)
+
+
+* [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster)
+
+
+* [System Console Dashboard](/enterprise-version/system-console-dashboard)
+
+
+* [Creating a VMware Cloud Gateway](/clusters/data-center/vmware#creatingavmwarecloudgateway)
+
+
+* [Create VMware Cloud Account](/clusters/data-center/vmware#creatingavmwarecloudaccount)
+
+
+* [Deploy a VMware Cluster](/clusters/data-center/vmware#deployingavmwarecluster)
+
+
+* [Troubleshooting](/clusters/data-center/vmware#troubleshooting)
+
+
+<br />
+<br />
