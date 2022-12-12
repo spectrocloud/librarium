@@ -225,7 +225,8 @@ The following are steps to customize *site settings* and build an *installer ima
    ```
 
 3. Update contents of this file to customize:
-   * Installer Nnameame
+   * Installer name
+
    * Base Palette installer version
    * Location of the Docker registry where the installation container image should be uploaded to (optional)
    * Location of the user data.yaml file where the customized installer settings are stored
