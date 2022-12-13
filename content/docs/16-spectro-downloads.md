@@ -28,7 +28,7 @@ The Palette Quickstart and Enterprise Mode on-prem installations are highly avai
 
 |Version|URL|Valid From|Info|
 |--|---|--|--|
-|2.4.0|hubble-installer-240.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8Gb RAM, 100GB HDD, OpenSSL Fix, Add Spectro Cert|
+|2.4.0|hubble-installer-240.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8 Gb RAM, 100 GB HDD, OpenSSL Fix, Add Spectro Cert|
 ------
 
 
@@ -40,7 +40,7 @@ We support the installation of our management platform on VMware environments th
 
 |Version|URL|Valid From|Info|
 |---|---|--|--|
-|2.1.0|spectro-airgap-v2.1.0.ova|Nov 4, 2022| Ubuntu 20, 2 vCPU, 4Gb RAM, 120GB HDD|
+|2.1.0|spectro-airgap-v2.1.0.ova|Nov 4, 2022| Ubuntu 20, 2 vCPU, 4 Gb RAM, 120 GB HDD|
 ------
 
 ## Air Gapped Binaries
@@ -67,7 +67,7 @@ PCG is Palette's on-prem component to enable support for isolated private cloud 
 
 |Version|URL|Date|Info|
 |---|---|--|--|
-|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8Gb RAM, 100GB HDD, OpenSSL Fix, Add Spectro Cert
+|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8 Gb RAM, 100 GB HDD, OpenSSL Fix, Add Spectro Cert
 ------
 
 ## MAAS PCG Image
