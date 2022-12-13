@@ -18,9 +18,9 @@ CLI
 reject
 disable
 modify
+VNet
 Kubelet
 We
-we
 vSphere
 kubeadm
 upsize
