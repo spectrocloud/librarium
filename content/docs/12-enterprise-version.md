@@ -30,7 +30,7 @@ To obtain the platform installer, please contact our Sales team by completing [t
 
 
 
-## Resources 
+# Resources 
 
 
 * [System Requirements](/enterprise-version/on-prem-system-requirements)
