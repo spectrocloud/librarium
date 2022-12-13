@@ -32,6 +32,7 @@ The vSphere CSI driver includes the following components:
 
 |Palette Release| CSI-Driver Version| Kubernetes Versions |
 |---------------|-------------------|---------------------|
+|      3.0      |  2.6.0            | 1.20.x to 1.24.x    |
 |      2.2      |  2.3.0            | 1.20.x to 1.23.x    |
 |      2.8      |  2.5.2            | 1.20.x to 1.23.x    |
 
@@ -39,6 +40,11 @@ The vSphere CSI driver includes the following components:
 ## Versions Supported
 
 <Tabs>
+<Tabs.TabPane tab="2.6.x" key="2.6.x">
+
+* **2.6.0**
+ 
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="2.5.x" key="2.5.x">
 
@@ -52,23 +58,19 @@ The vSphere CSI driver includes the following components:
 </Tabs.TabPane>
 </Tabs>
 
-**References:**
-
-https://vsphere-csi-driver.sigs.k8s.io/
-
-https://github.com/kubernetes-sigs/vsphere-csi-driver
-
-
-# Further Info
-
-More info about Storage classes can be found in the following links:
-
-https://kubernetes.io/docs/concepts/storage/storage-classes/
-
-# Troubleshooting
+## Troubleshooting
 
 Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
 
 ```bash
 kubectl get storageclass
 ```
+
+
+# References
+
+More info about Storage classes can be found in the following links:
+
+[Storage Classes][https://kubernetes.io/docs/concepts/storage/storage-classes/]
+[CSI Driver Documentation](https://vsphere-csi-driver.sigs.k8s.io/)
+[CSi Driver GitHub](https://github.com/kubernetes-sigs/vsphere-csi-driver)
