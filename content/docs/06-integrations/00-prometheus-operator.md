@@ -23,6 +23,12 @@ The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io
 ## Versions Supported
 <Tabs>
 
+<Tabs.TabPane tab="37.0.x" key="37.0.x">
+
+* **37.2.0**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="35.5.x" key="35.5.x">
 
 * **35.5.1**
@@ -79,7 +85,7 @@ A default integration will install the following components:
 
 This integration also includes dashboards and alerts.
 
-## Use Custom Secrets for Alertmanager
+## Custom Secrets for Alertmanager
 
 For Alertmanager to work, the alerting configuration file should be set while deploying the integration. This configuration file includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below:
 
@@ -134,9 +140,9 @@ For Alertmanager to work, the alerting configuration file should be set while de
 
 6. Alertmanager pod will recover from the crash in the next reconciliation.
 
-## Configure scrape metrics for controller-manager, kube-schedule, and etcd
+## Configure Metrics
 
-Due to security reasons, controller-manager, kube-schedule, and etcd runs in the localhost leading Prometheus to fail scrape metrics. Therefore, these targets are marked as down on Prometheus. Change the following in the Kubernetes pack layer in the cluster profile to scrape metrics for these services.
+Due to security reasons, controller-manager, kube-schedule, and etcd runs in the localhost leading Prometheus to fail when attempting to scrape metrics. Therefore, these targets are marked as down in Prometheus. Change the following in the Kubernetes pack layer in the cluster profile to scrape metrics for these services.
 
 ```yaml
     kubeadmconfig:
@@ -154,7 +160,7 @@ Due to security reasons, controller-manager, kube-schedule, and etcd runs in the
             listen-metrics-urls: "http://0.0.0.0:2381"    
 ```
 
-# Ingress
+## Ingress
 
 Follow the below steps to configure Ingress on Grafana.
 
@@ -165,6 +171,6 @@ Follow the below steps to configure Ingress on Grafana.
 
 With these changes, you can access the Grafana service on the Ingress Controller LoadBalancer hostname/IP.
 
-## References
+# References
 
 [Prometheus-operator](https://github.com/coreos/prometheus-operator)
