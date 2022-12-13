@@ -13,18 +13,18 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# vSphere CSI
+# vSphere Storage Interface (CSI)
 
-The main goal of vSphere CSI is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used by various Kubernetes as a service providers including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready. 
+The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used by various Kubernetes as a service providers including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready. 
 
 ## vSphere CSI Driver Components
-
+<!-- vale off -->
 The vSphere CSI driver includes the following components:
 
 * vSphere CSI Controller
 * vSphere CSI Node
 * Syncer
-
+<!-- vale on -->
     * Metadata Syncer
     * Full Sync
 
@@ -60,7 +60,7 @@ The vSphere CSI driver includes the following components:
 
 ## Troubleshooting
 
-Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+Storage classes created by Spectro Cloud are named "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
 
 ```bash
 kubectl get storageclass
@@ -73,4 +73,4 @@ More info about Storage classes can be found in the following links:
 
 [Storage Classes][https://kubernetes.io/docs/concepts/storage/storage-classes/]
 [CSI Driver Documentation](https://vsphere-csi-driver.sigs.k8s.io/)
-[CSi Driver GitHub](https://github.com/kubernetes-sigs/vsphere-csi-driver)
+[CSI Driver GitHub](https://github.com/kubernetes-sigs/vsphere-csi-driver)
