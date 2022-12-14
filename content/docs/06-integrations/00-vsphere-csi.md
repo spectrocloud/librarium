@@ -15,7 +15,8 @@ import InfoBox from 'shared/components/InfoBox';
 
 # vSphere Storage Interface (CSI)
 
-The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used by various Kubernetes as a service providers including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready. 
+The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used on various Kubernetes platforms by service providers, including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready. 
+
 
 ## vSphere CSI Driver Components
 <!-- vale off -->
