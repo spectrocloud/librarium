@@ -108,21 +108,22 @@ To delete a cluster group, select `Delete Cluster form the **Settings** and ente
 
 #### Configure OpenShift 
 <br />
-To deploy a new virtual cluster on OpenShift:
+To deploy a virtual cluster on OpenShift:
 
 
-1. Select the new Cluster Group and click **Settings**.
+1. Create a new Cluster Group or edit an existing one and click **Settings**.
 2. Select **Settings** in **Cluster Group Settings**.
 3. In the **Advanced Config** file, locate the section ``Configure SecurityContext of the containers in the VCluster pod``.
 
 4. Comment out these lines: 
 
-    * ``fsgroup``
-    * ``runAsGroup``
-    * ``runAsUser``
+    * ``fsGroup 1001100000``
+    * ``runAsGroup 1001100000``
+    * ``runAsUser 1001100000``
 4. Set ``openshift: enable: true``.
-5. Ensure the following parameters are set as follows: 
+5. Verify these default parameter values are set as follows: 
     * ``allowPrivilegeEscalation: false``
+    * ``capabilities: drop: -all``
     * ``runAsNonRoot: true`` 
 
 ![The Advanced Config looks like this](devx_cluster-groups_advanced-config.png)
