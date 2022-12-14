@@ -128,7 +128,7 @@ To deploy a virtual cluster on OpenShift:
 5. Verify these default parameter values are set as follows:   
 
     * ``allowPrivilegeEscalation: false``
-    * ``capabilities.drop: -all``
+    * ``capabilities.drop: [-all]``
     * ``runAsNonRoot: true``
 
 The example shows the lines to comment out, lines to verify, and the line to enable OpenShift support.
