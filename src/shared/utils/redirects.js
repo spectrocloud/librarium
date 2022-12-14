@@ -77,6 +77,12 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/introduction/what-is`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;
