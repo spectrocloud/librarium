@@ -23,7 +23,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 <InfoBox>
 
-Palette also  provisions [Reverse Proxy Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) as an enhanced use case of Kubernetes Dashboard coupled with [Spectro Proxy](/integrations/frp). 
+Palette supports provisioning a [reverse proxy dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp)  pack to enable this capability.
+
 
 </InfoBox>
 
