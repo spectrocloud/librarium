@@ -48,4 +48,4 @@ The GCE Persistent disk are reliable, high-performance block storage for virtual
 
 # References
 
-[Google Cloud Persitent Disk](https://cloud.google.com/persistent-disk#section-7)
+[Google Cloud Persistent Disk](https://cloud.google.com/persistent-disk#section-7)
