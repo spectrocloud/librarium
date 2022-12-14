@@ -31,6 +31,12 @@ The GCE Persistent disk are reliable, high-performance block storage for virtual
 
 <Tabs>
 
+<Tabs.TabPane tab="1.7.x" key="1.7.x">
+
+**1.7.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 **1.0**
@@ -40,6 +46,6 @@ The GCE Persistent disk are reliable, high-performance block storage for virtual
 
 </Tabs>
 
-## References
+# References
 
-https://cloud.google.com/persistent-disk#section-7
+[Google Cloud Persitent Disk](https://cloud.google.com/persistent-disk#section-7)
