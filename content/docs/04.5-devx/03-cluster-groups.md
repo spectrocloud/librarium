@@ -100,11 +100,10 @@ To delete a cluster group, select `Delete Cluster form the **Settings** and ente
 * EKS
 * Azure
 * AKS
-* VMWare
+* VMware
 * OpenShift
 
-<Tabs>
-<Tabs.TabPane tab="Configure OpenShift" key="Configure OpenShift">
+<br />
 
 #### Configure OpenShift 
 
@@ -115,7 +114,7 @@ To deploy a virtual cluster on OpenShift:
 
 1. Create a new Cluster Group or edit an existing one and click **Settings**.
 2. Select **Settings** in the **Cluster Group Settings** pane.
-3. In the **Advanced Config** file, locate the section ``#Configure SecurityContext of the containers in the VCluster pod``.
+3. In the **Advanced Config** file, locate the section SecurityContext section.
 
 4. Comment out these lines: 
 
@@ -131,11 +130,10 @@ To deploy a virtual cluster on OpenShift:
     * ``capabilities.drop: [all]``
     * ``runAsNonRoot: true``
 
-The example shows the lines to comment out, lines to verify, and the line to enable OpenShift support.
+The example shows the lines to comment out, the lines to verify, and the line to enable OpenShift support.
 
 **Example**
 
-<br />
 
 ```yaml 
 #fsGroup: 12345
@@ -153,8 +151,6 @@ openshift:
   enable: true
 ```
 
-</Tabs.TabPane> 
-</Tabs>
 <br />
 
 ### Cluster Import Support
