@@ -128,13 +128,13 @@ You can add new worker pools to customize certain worker nodes to run specialize
 
 ## Azure Storage Account and Storage Container
 
-While deploying the Azure cluster, Palette creates a storage account and copies the base VHD image to the Palette default storage container within this storage account. This storage account will have unrestricted access and has an auto-generated name. But for specific use case scenarios, you can attach a custom storage account and storage containers to the Azure cluster. This section will cover emphasis on such use cases.
+While deploying the Azure cluster, Palette creates a storage account and copies the base VHD image to the Palette default storage container within this storage account. This storage account will have unrestricted access and has an auto-generated name. But for specific use case scenarios, you can attach a custom storage account and storage containers to the Azure cluster. This section will emphasis on such use cases.
 
-### Use Case
+### Use Cases
 
-The user wants to have a custom storage account to be used for the following reasons:
+You want to have a custom storage account to be used for the following reasons:
 * The use of a storage account with a custom name
-* The storage account with restricted access
+* A storage account with restricted access
 
 During Azure cluster provisioning, Palette allows linking custom storage accounts and containers to satisfy the above use case. This allows you to link the already created storage account from the UI drop-down option. 
 
