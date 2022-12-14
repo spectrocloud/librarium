@@ -38,9 +38,9 @@ The following prerequisites must be met before deploying a workload cluster in A
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
 
-4. A custom storage account and storage container (optional for [certain use case](/clusters/public-cloud/azure/create-azure-cluster#azurestorageaccountandstoragecontainer)) created in Azure console. 
+4. A custom storage account and storage container (optional for specific use cases) is created in the Azure console.
 
-**Note:** The storage account and container needs to be created within the same resource group as the Azure cluster.
+Note: The storage account and container must be created within the same resource group as the Azure cluster.
 
 ## Video Demonstration
 
