@@ -117,9 +117,9 @@ To deploy a virtual cluster on OpenShift:
 
 4. Comment out these lines: 
 
-    * ``fsGroup 1001100000``
-    * ``runAsGroup 1001100000``
-    * ``runAsUser 1001100000``
+    * ``fsGroup``
+    * ``runAsGroup``
+    * ``runAsUser``
 4. Set ``openshift: enable: true``.
 5. Verify these default parameter values are set as follows: 
     * ``allowPrivilegeEscalation: false``
