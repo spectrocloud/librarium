@@ -83,7 +83,11 @@ To create a Palette Host Cluster Group, you need to [deploy a healthy running Pa
  | Storage (per request)        | 10 GiB            | 2 GiB           |
 
 
-3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the Palette Virtual Cluster.
+3. Review the settings and deploy the cluster group. The Palette host cluster group is all set to host the virtual cluster.
+
+You can view a list of cluster groups in
+* **Cluster Mode** on the **Cluster Groups** page. 
+* **App Mode** in the **Cluster Groups** column on the **Virtual Clusters** page.
 
 
 ### Manage your Cluster Group
