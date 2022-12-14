@@ -38,6 +38,10 @@ The following prerequisites must be met before deploying a workload cluster in A
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
 
+4. A custom storage account and storage container (optional for [certain use case](/clusters/public-cloud/azure/create-azure-cluster#azurestorageaccountandstoragecontainer)) created in Azure console. 
+
+**Note:** The storage account and container needs to be created within the same resource group as the Azure cluster.
+
 ## Video Demonstration
 
 `video: title: "azure-cluster-creation": ./cluster-creation-videos/azure.mp4`
@@ -74,8 +78,8 @@ The following steps need to be performed to provision a new Azure cluster:
 | **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
 | **Region** | Select a region in Azure in which the cluster should be deployed.|
 | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
-| **Storage Account** | Optionally provide the storage account.|
-| **Storage Container**| Optionally provide the Azure storage container.|
+| **[Storage Account](/clusters/public-cloud/azure/create-azure-cluster#azurestorageaccountandstoragecontainer)** | Optionally provide the storage account.|
+| **[Storage Container](/clusters/public-cloud/azure/create-azure-cluster#azurestorageaccountandstoragecontainer)**| Optionally provide the Azure storage container.|
 | **SSH Key** | Public key to configure remote SSH access to the nodes.|
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option, which requires that you provide the following placement information:|
 | |**Network Resource Group**: The logical container for grouping related Azure resources.|
@@ -122,6 +126,41 @@ You can add new worker pools to customize certain worker nodes to run specialize
 
 </InfoBox>
 
+## Azure Storage Account and Storage Container
+
+While deploying the Azure cluster, Palette creates a storage account and copies the base VHD image to the Palette default storage container within this storage account. This storage account will have unrestricted access and has an auto-generated name. But for specific use case scenarios, you can attach a custom storage account and storage containers to the Azure cluster. This section will cover emphasis on such use cases.
+
+### Use Case
+
+The user wants to have a custom storage account to be used for the following reasons:
+* The use of a storage account with a custom name
+* The storage account with restricted access
+
+During Azure cluster provisioning, Palette allows linking custom storage accounts and containers to satisfy the above use case. This allows you to link the already created storage account from the UI drop-down option. 
+
+### Cases
+
+The above scenario can take the following three cases:
+
+**Case 1: Default Storage Account and Storage Containers:**
+
+If the user leaves this optional field empty, Palette will create a storage account and storage container. The base VHD image is copied to this default storage container created to the storage account.
+
+
+**Case 2: Providing custom storage account and storage container**
+
+Create a storage account and container in the Azure console. Palette will import the created storage and container; you can select and input them from the drop-down menu.
+
+
+**Case 3: Provide only the custom Azure storage account**
+
+Create a storage account in the Azure console and attach it to the cluster deployment wizard. Palette will create and select the default container to store the base VHD image.
+
+<br />
+
+<InfoBox>
+While creating a custom storage account for the Azure cluster provisioned through a private gateway, disable public access to restrict access to the storage account via the gateway vNet.
+</InfoBox>
 
 # Deleting an Azure Cluster
 The deletion of an Azure cluster results in the removal of all Virtual Machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Azure cluster:
@@ -136,6 +175,7 @@ The deletion of an Azure cluster results in the removal of all Virtual Machines 
 
 
 The Cluster Status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
+
 
 # Force Delete a Cluster
 
@@ -158,6 +198,7 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 <WarningBox>
 Remove all outstanding cloud resources deployed by Palette before proceeding with a force delete.  
 </WarningBox>
+
 
 
 ## Validation
