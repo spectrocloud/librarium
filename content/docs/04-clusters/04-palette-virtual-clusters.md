@@ -23,7 +23,7 @@ Palette provisions and orchestrates Palette Virtual Clusters and makes it easy t
 
 Palette also supports Day 2 operations such as upgrades, backup/restore and more, to keep Palette Virtual Clusters secure, compliant, and up to date. Additionally, it provides visibility into the workloads running inside your Palette Virtual Clusters and its associated costs.
 
-To get started and create your Palette Virtual Cluster, see the [Palette Virtual Cluster Quick Start](/clusters/palette-virtual-clusters/virtual-cluster-quickstart) page.
+To get started, refer to [Add Virtual Clusters to a Host Cluster](/clusters/add-virtual-cluster-to-host-cluster).
 
 
 <br />
@@ -41,7 +41,7 @@ The NGINX Ingress Controller must be deployed on the Host cluster with SSL passt
 
    For example:
 
-   `*.sandbox.host.1.spectrocloud.com`
+   `*.starship.te.spectrocloud.com`
 
 <br />
 <br />
