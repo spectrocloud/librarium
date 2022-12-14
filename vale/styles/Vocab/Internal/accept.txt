@@ -24,3 +24,10 @@ We
 vSphere
 kubeadm
 upsize
+Alertmanager 
+alertmanager
+application
+Application
+grafana
+Grafana
+etcd

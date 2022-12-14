@@ -22,7 +22,7 @@ jobs:
           # files: '${{ steps.get_changed_files.outputs.all }}'
           filter_mode: added
           reporter: github-pr-review
-          vale_flags: --glob=*.{md}
+          vale_flags: --glob=*.{md} --minAlertLevel=error
           fail_on_error: false
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
