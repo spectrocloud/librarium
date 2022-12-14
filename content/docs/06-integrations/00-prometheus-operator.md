@@ -87,7 +87,8 @@ This integration also includes dashboards and alerts.
 
 ## Custom Secrets for Alertmanager
 
-For Alertmanager to work, the alerting configuration file should be set while deploying the integration. This configuration file includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the procedure below:
+For Alertmanager to work, the alerting configuration file should be set while deploying the integration. This configuration file includes sensitive information like SMTP credentials. If you want to skip entering SMTP credentials in plain text, you can do so by following the steps below:
+
 
 
 1. Add **Prometheus-Operator** integration in the Cluster profile with changes to the following values:
@@ -142,7 +143,8 @@ For Alertmanager to work, the alerting configuration file should be set while de
 
 ## Configure Metrics
 
-Due to security reasons, controller-manager, kube-schedule, and etcd runs in the localhost leading Prometheus to fail when attempting to scrape metrics. Therefore, these targets are marked as down in Prometheus. Change the following in the Kubernetes pack layer in the cluster profile to scrape metrics for these services.
+Due to security reasons, controller-manager, kube-schedule, and etcd run in the localhost causing Prometheus to fail when attempting to scrape metrics. Therefore, these targets are indicated as being down in Prometheus. Change the following in the Kubernetes pack layer in the cluster profile to scrape metrics for these services.
+
 
 ```yaml
     kubeadmconfig:
