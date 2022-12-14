@@ -16,16 +16,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-Cloudanix container security add-on detects threats and abnormal behaviors in the Kubernetes clusters. Cloudanix Dashboard visualizes:
+Cloudanix container security add-on detects threats and abnormal behaviors in Kubernetes clusters. The Cloudanix dashboard visualizes the following:
 <br />
 
 * Threats and anomalies in real-time
-* Mapping the threats to Workloads (container, pod, node, etc.)
+* Mapping the threats to workloads in containers, pods, nodes, etc.
 * Associated events for the threats
-* The raw command executed
-* The user who initiated the threat, and much more..
+* The command that initiated or created the thread
+* The user who initiated the threat, and much more.
 
-Users can initiate workflows (Jira integration) and target specific workloads (excluding container, pod, or node while performing an anti-pattern) right from the Cloudanix Dashboard. This helm chart installs 3 Cloudanix services to enable container security capabilities. The services are listed below:
+Users can initiate Jira workflows and target specific workloads, excluding containers, pods, or nodes, right from the Cloudanix Dashboard. This Helm Chart installs three Cloudanix services to enable container security capabilities. The services are listed below:
 <br />
 
 * inventory-service
@@ -35,7 +35,7 @@ Users can initiate workflows (Jira integration) and target specific workloads (e
 
 ## Versions Supported
 
-Cloudanix helm chart supports the following versions with Palette.
+Cloudanix Helm Chart supports the following versions with Palette.
 
 <br />
 
@@ -57,7 +57,7 @@ Cloudanix helm chart supports the following versions with Palette.
 </Tabs>
 <br />
 
-## Prerequisites
+# Prerequisites
 
 * Minumum CPU Cores: 1
 * Minimum Memory Required: 25 MiB
