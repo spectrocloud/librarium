@@ -32,6 +32,12 @@ Users can initiate Jira workflows and target specific workloads, excluding conta
 * threat-service
 * config-cron
 
+# Prerequisites
+
+* Minumum CPU Cores: 1
+* Minimum Memory Required: 25 MiB
+* The Kubernetes version 1.15.x and above
+* Kernel version 4.5 or higher
 
 ## Versions Supported
 
@@ -57,10 +63,4 @@ Cloudanix Helm Chart supports the following versions with Palette.
 </Tabs>
 <br />
 
-# Prerequisites
-
-* Minumum CPU Cores: 1
-* Minimum Memory Required: 25 MiB
-* The Kubernetes version 1.15.x and above
-* Kernel version 4.5 or higher
 
