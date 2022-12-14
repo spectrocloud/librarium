@@ -1,5 +1,5 @@
 ---
-title: "App Mode and Cluster Mode?"
+title: "App Mode and Cluster Mode"
 metaTitle: "App Mode and Cluster Mode"
 metaDescription: "Learn about the two modes available in Palette and how they benefit your Kubernetes experience."
 icon: ""
