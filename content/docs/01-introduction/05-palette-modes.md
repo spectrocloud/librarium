@@ -20,7 +20,7 @@ Cluster mode is frequently leveraged by personas such as platform engineers, inf
 
 When you are operating in cluster mode, you have the ability to specify projects to control the scope of the Kubernetes cluster. The ability to specify projects is beneficial when segmenting resources for different teams. For example, a project titled “ml-modeling” could belong to a team focused on machine learning. In the project “modeling,” you could deploy various Kubernetes clusters for the machine learning team to conduct their work. These Kubernetes clusters could also be grouped together (cluster group) if the grouping of like resources is needed.  
 
-Other teams could be prevented from accessing the resources that belong to the project “modeling” by simply not being a member of the project. Palette offers resource-based access control (RBAC) that enables more fine-grained control of resources.  Lastly, you can also view the utilization of resources from the project level, which is helpful when understanding utilization and reviewing costs.
+Other teams could be prevented from accessing the resources that belong to the project “modeling” by not being a member of the project. Palette offers resource-based access control (RBAC) that enables more fine-grained control of resources.  Lastly, you can also view the utilization of resources from the project level, which is helpful when understanding utilization and reviewing costs.
 
 Another important feature of cluster mode is the ability to allow specific host clusters to support Palette Virtual Clusters. Virtual clusters are Kubernetes clusters that run as nested clusters within an existing host cluster. A virtual cluster looks and feels like a normal Kubernetes cluster, except that it resides inside a larger Kubernetes cluster or host cluster often deployed in a cloud provider or on-prem.  You can control the resources a virtual cluster is allocated, such as CPU, memory, and storage. 
 
@@ -65,7 +65,7 @@ Below are some of the characteristics of each mode. Use this to help you better 
     - Optimized for the developer experience
     - You’re a builder that is not part of an organization and needs quick access to a Kubernetes cluster
     - Expose a PaaS-like experience to organizational members by leveraging Palette-managed Kubernetes clusters
-    - Deploy applications without worrying about k8s infrastructure
+    - Deploy applications without worrying about Kubernetes infrastructure
     - Scope of concerns limited to app profiles
 
 <br />
@@ -77,7 +77,7 @@ Below are some of the characteristics of each mode. Use this to help you better 
     - Create cluster groups
     - Create cluster profiles
     - Create projects, workspaces, teams, 
-    - Leverage specialized hardware for k8s workload
+    - Leverage specialized hardware for Kubernetes workload
     - Audit logging
     - Enable cloud providers and other platforms
     - Configure registries
