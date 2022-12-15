@@ -9,5 +9,5 @@ set -u
 
 source prow/functions.sh
 
-build_docs
-sync_s3
+build_release_docs
+sync_s3_release
