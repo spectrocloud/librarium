@@ -46,7 +46,7 @@ Alternatively, you could also use App Mode to offer your own Palette-managed hos
 This makes App mode unique from Cluster Mode, the ability to leverage an out-of-the-box host cluster group managed by us here at Spectro Cloud, or you can leverage Palette-managed Kubernetes clusters you already have deployed configured to your organization’s standards and expose them as Kubernetes Paas experience. As the consumer of app mode, you simply focus on deploying your application to a Kubernetes cluster by specifying the app profile. The overhead of managing infrastructure has essentially been removed for you, thus freeing up your time to focus on what matters the most, developing an application that solves business problems.   
 
 
-# How to access each mode? 
+# How to Access Each Mode? 
 
 You can quickly toggle between the two modes by navigating to your window's top right-hand side corner and expanding the user drop-down menu. Depending on which mode you are in, the name of the other mode will appear in the menu. Example: If you are in cluster mode, your menu will have the option “Switch to App Mode” and vice versa. 
  
