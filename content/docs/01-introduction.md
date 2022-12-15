@@ -62,7 +62,7 @@ With an open and enterprise-grade platform, IT leaders can get peace of mind wit
 
 
 # Next Steps
-Learn more about Palette and how it can improve your Kubernete experience but also for your organization. Try [Palette](https://console.spectrocloud.com/) for free today and experience Kubernetes unlike anything before. 
+Learn more about Palette and how it can improve your Kubernetes experience and those in your organization. Try [Palette](https://console.spectrocloud.com/) for free today and experience a better way of working with Kubernetes. 
 
 <br />
 
