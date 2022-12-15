@@ -19,17 +19,25 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 ## What Makes Palette Different?
  
 ### Full-Stack Management
+
 Unlike rigid and prepackaged Kubernetes solutions, Palette allows users to construct flexible stacks from OS, Kubernetes, container network interfaces (CNI), and container storage interfaces (CSI) to additional add-on application services. As a result, the entire stack - not just the infrastructure - of Kubernetes is deployed, updated, and managed as one unit, without split responsibility from virtual machines, base OS, Kubernetes infra, and add-ons.
  
 ### End-to-End Declarative Lifecycle Management
+
 Palette offers the most comprehensive profile-based management for Kubernetes. It enables teams to drive consistency, repeatability, and operational efficiency across multiple clusters in multiple environments with comprehensive day 0 - day 2 management.
  
 ### Any Environment
-Palette has the richest coverage in supported environments, including public clouds: AWS, Azure, Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE); data center: VMware, OpenStack; Bare metal: Canonical MaaS; Edge.
+
+Palette has the richest coverage in supported environments that includes:
+- Public Clouds: AWS, Azure, and Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE)
+- Data Centers: VMware, OpenStack
+- Bare Metal: Canonical MaaS
+- Edge
  
  
  
 ## What is Under the Hood?
+
 Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open-source Cluster API project. Palette does this by providing comprehensive full-stack modeling and orchestration, governance, security, and day 0 - day 2 management capabilities.
  
 With Palette’s Cluster Profiles, teams can define full-stack clusters that include both the Kubernetes infrastructure and any add-on application services. Cluster Profiles enable a repeatable way to deploy and reuse clusters across any environment. Palette also enables importing of existing Kubernetes environments and creating equivalent Cluster Profiles.
@@ -40,7 +48,7 @@ With Palette’s Cluster Profiles, teams can define full-stack clusters that inc
 ## Who Can Benefit From Palette?
  
 ### Developers
- 
+
 Development teams will get the flexibility and freedom they are looking for to increase the speed of innovation, whether it is the cluster template with the add-on application services or choosing a Kubernetes version with integrations like logging, monitoring, and service mesh for your application development. They need not worry about Kubernetes configurations but focus on the stuff that matters.
  
 ### IT Operations and SREs
@@ -51,3 +59,13 @@ Declarative management makes life easier for IT teams, with consistency, repeata
 ### IT Executives
  
 With an open and enterprise-grade platform, IT leaders can get peace of mind without being locked into proprietary orchestration technologies or one-size-fits-all solutions. This helps lower the total cost of ownership (TCO) and reduce operational risk.
+
+
+# Next Steps
+Learn more about Palette and how it can improve your Kubernete experience but also for your organization. Try [Palette](https://console.spectrocloud.com/) for free today and experience Kubernetes unlike anything before. 
+
+<br />
+
+- [Try Palette for Free](/getting-started/palette-freemium)
+- [App Mode and Cluster Mode](/introduction/palette-modes)
+- [Palette Architecture](/architecture/architecture-overview/)
