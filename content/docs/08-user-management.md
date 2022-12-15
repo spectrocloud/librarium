@@ -1,6 +1,6 @@
 ---
-title: "User management"
-metaTitle: "User management"
+title: "User Management"
+metaTitle: "User Management"
 metaDescription: "Learn about adding and managing access to users on Spectro Cloud using SAML based SSO. Also explains how users and tenant admin have been setup on Spectro Cloud"
 icon: "roles"
 hideToC: false
