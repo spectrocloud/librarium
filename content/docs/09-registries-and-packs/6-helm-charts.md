@@ -36,10 +36,10 @@ To add your private Helm Chart Registry to Palette:
 
 3. Type the name of your registry and its endpoint.
 
-3. Choose **Protected** mode based on whether your network is private or public:
+3. Choose ``Protected`` mode based on whether your network is private or public:
 
 
-   * Toggle **Protected** mode to *on* if your Helm registry is deployed in a private network. Palette downloads and deploys charts from protected chart registries instead of scanning a private network for them.
+   * Toggle ``Protected`` mode to *on* if your Helm registry is deployed in a private network. Palette downloads and deploys charts from protected chart registries instead of scanning a private network for them.
 
       When your registry is protected:
 
@@ -48,7 +48,7 @@ To add your private Helm Chart Registry to Palette:
    <br />
    <br />
 
-    * Leave **Protected** mode toggled *off* if your Helm registry is deployed in a public network. We refer to Helm registries with this option disabled as being unprotected.  
+    * Leave ``Protected`` mode toggled *off* if your Helm registry is deployed in a public network. We refer to Helm registries with this option disabled as being unprotected.  
     
       When your registry is unprotected: 
 
@@ -58,7 +58,7 @@ To add your private Helm Chart Registry to Palette:
 
 5. If you haven’t set up credentials for your registry, leave **No Authentication** toggled *on*.
 
-   If your registry has credentials, toggle **No Authentication** to *off* and type the registry **Username** and **Password**.
+   If your registry has credentials, toggle ``No Authentication`` to *off* and type the registry **Username** and **Password**.
 <br />
 
 7. Confirm your changes. 
