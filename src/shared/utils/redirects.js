@@ -89,6 +89,18 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/troubleshooting/orchestration-spectrocloud`,
+    toPath: `/architecture/orchestration-spectrocloud`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
+    toPath: `/devx/palette-virtual-clusters/pause-restore-virtual-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;
