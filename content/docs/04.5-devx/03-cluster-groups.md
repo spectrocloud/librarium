@@ -104,7 +104,58 @@ To delete a cluster group, select `Delete Cluster form the **Settings** and ente
 * EKS
 * Azure
 * AKS
-* VMWare
+* VMware
+* OpenShift
+
+<br />
+
+#### Configure OpenShift 
+
+<br />
+
+To deploy a virtual cluster on OpenShift:
+
+
+1. Create a new Cluster Group or edit an existing one and click **Settings**.
+2. Select **Settings** in the **Cluster Group Settings** pane.
+3. In the **Advanced Config** file, locate the section SecurityContext section.
+
+4. Comment out these lines: 
+
+    * ``fsGroup``
+    * ``runAsGroup``
+    * ``runAsUser``
+    
+4. Set ``openshift.enable: true``.  
+
+5. Verify these default parameter values are set as follows:   
+
+    * ``allowPrivilegeEscalation: false``
+    * ``capabilities.drop: [all]``
+    * ``runAsNonRoot: true``
+
+The example shows the lines to comment out, the lines to verify, and the line to enable OpenShift support.
+
+**Example**
+
+
+```yaml 
+#fsGroup: 12345
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - all
+  
+  #runAsGroup: 12345
+  #runAsUser: 12345
+  runAsNonRoot: true
+
+openshift:
+  enable: true
+```
+
+<br />
 
 ### Cluster Import Support
 
