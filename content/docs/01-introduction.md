@@ -22,7 +22,7 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 Unlike rigid and prepackaged Kubernetes solutions, Palette allows users to construct flexible stacks from OS, Kubernetes, container network interfaces (CNI), and container storage interfaces (CSI) to additional add-on application services. As a result, the entire stack - not just the infrastructure - of Kubernetes is deployed, updated, and managed as one unit, without split responsibility from virtual machines, base OS, Kubernetes infra, and add-ons.
  
 ### End-to-End Declarative Lifecycle Management
-Palette offers the most comprehensive profile-based management for Kubernetes, enabling teams to drive consistency, repeatability, and operational efficiency across multiple clusters in multiple environments, with comprehensive day 0 - day 2 management.
+Palette offers the most comprehensive profile-based management for Kubernetes. It enables teams to drive consistency, repeatability, and operational efficiency across multiple clusters in multiple environments with comprehensive day 0 - day 2 management.
  
 ### Any Environment
 Palette has the richest coverage in supported environments, including public clouds: AWS, Azure, Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE); data center: VMware, OpenStack; Bare metal: Canonical MaaS; Edge.
@@ -30,7 +30,7 @@ Palette has the richest coverage in supported environments, including public clo
  
  
 ## What is Under the Hood?
-Palette uniquely extends and integrates CNCF’s open-source Cluster API project and provides comprehensive full-stack modeling and orchestration, governance, security, and day0, day1, and day2 management capabilities.
+Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open-source Cluster API project. Palette does this by providing comprehensive full-stack modeling and orchestration, governance, security, and day 0 - day 2 management capabilities.
  
 With Palette’s Cluster Profiles, teams can define full-stack clusters that include both the Kubernetes infrastructure and any add-on application services. Cluster Profiles enable a repeatable way to deploy and reuse clusters across any environment. Palette also enables importing of existing Kubernetes environments and creating equivalent Cluster Profiles.
  
