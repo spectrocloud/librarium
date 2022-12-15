@@ -8,13 +8,13 @@ fullWidth: false
 ---
 
 # Palette Modes
-Palette supports two consumption modes - each aimed at different use cases and, potentially, different personas. The two modes are App Mode and Cluster Mode.  These modes can be used separately but often work together by sharing resources or relying on resources that each provides. 
+Palette supports two consumption modes - each aimed at different use cases and, potentially, different personas. The two modes are _App Mode_ and _Cluster Mode_.  These modes can be used separately but often work together by sharing resources or relying on resources that each provides. 
 
 ![App Mode and Cluster Mode](/docs_introduction_palette-modes.png)
 
 # What is Cluster Mode?
 
-Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a _Host Cluster_. 
+Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](/glossary-all#hostcluster). 
 
 Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure.  These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call Cluster Profiles. Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
 
@@ -37,7 +37,7 @@ Virtual clusters help reduce development time by allowing downstream consumers t
 
 App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App Mode, you can focus on creating and managing App Profiles. App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
 
-App mode comes with an out-of-the-box cluster group managed by us here at Spectro Cloud called beehive.  This cluster group, which under the cover is a collection of Kubernetes clusters, is configured to support Palette Virtual Clusters. As a consumer, you can deploy a new virtual cluster to the beehive cluster group and get started with a Kubernetes cluster in minutes. 
+App mode comes with an out-of-the-box cluster group managed by us here at Spectro Cloud called _beehive_.  This cluster group, which under the cover is a collection of Kubernetes clusters, is configured to support Palette Virtual Clusters. As a consumer, you can deploy a new virtual cluster to the beehive cluster group and get started with a Kubernetes cluster in minutes. 
 
 App Mode's ability to get you started with a Kubernetes cluster in minutes makes it a powerful development tool. You can use the virtual clusters temporarily, such as for testing, ad-hoc development, or any other scenario where you want a short-lived Kubernetes environment up and running quickly.  
 
@@ -48,7 +48,7 @@ This makes App mode unique from Cluster Mode, the ability to leverage an out-of-
 
 # How to Access Each Mode? 
 
-You can quickly toggle between App Mode and Cluster Mode by navigating to the **User** menu at top right and selecting the mode you want.
+You can quickly toggle between App Mode and Cluster Mode by navigating to the **User** Menu at top right and selecting the mode you want.
  
 
 # App Mode or Cluster Mode?
