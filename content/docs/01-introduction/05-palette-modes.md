@@ -16,11 +16,11 @@ Palette supports two consumption modes - each aimed at different use cases and, 
 
 Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](/glossary-all#hostcluster). 
 
-Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure.  These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call Cluster Profiles. Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
+Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure. These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call Cluster Profiles. Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
 
 When you operate in cluster mode, you have the ability to specify projects to control the scope of the Kubernetes cluster. The ability to specify projects is beneficial when segmenting resources for different teams. For example, a project titled “ml-modeling” could belong to a team focused on machine learning. In the project “modeling,” you could deploy various Kubernetes clusters for the machine learning team to conduct their work. These Kubernetes clusters could also be grouped together (Cluster Group) if grouping of similar resources is needed.  
 
-Other teams could be prevented from accessing the resources that belong to the project “modeling” by not being a member of the project. Palette offers resource-based access control (RBAC) that enables more fine-grained control of resources.  Lastly, you can also view the utilization of resources from the project level, which is helpful when understanding utilization and reviewing costs.
+Other teams could be prevented from accessing the resources that belong to the project “modeling” by not being a member of the project. Palette offers role-based access control (RBAC) that enables more fine-grained control of resources.  Lastly, you can also view the utilization of resources from the project level, which is helpful when understanding utilization and reviewing costs.
 
 Another important feature of cluster mode is the ability to allow specific host clusters to support Palette Virtual Clusters. Virtual clusters are Kubernetes clusters that run as nested clusters within an existing host cluster. A virtual cluster looks and feels like a normal Kubernetes cluster, except that it resides inside a larger Kubernetes cluster or host cluster often deployed in a cloud provider or on-prem.  You can control the resources a virtual cluster is allocated, such as CPU, memory, and storage. 
 
@@ -43,12 +43,12 @@ App Mode's ability to get you started with a Kubernetes cluster in minutes makes
 
 Alternatively, you could use App Mode to offer your own Palette-managed host clusters as a PaaS experience to downstream consumers. This concept is easier explained through an example. Assume you are a system administrator, and you want to expose Kubernetes to various in-house development teams. You could deploy several Kubernetes clusters to various platforms and create a " development " cluster group. You also ensured every cluster is enabled for Palette Virtual Cluster by selecting the option before deployment. You can now direct your organization members to use App Mode and create Palette Virtual Clusters as needed, or you can create virtual clusters ahead of time for them. The organization members or downstream consumers can now focus on creating app profiles and deploying their applications. You have essentially enabled a Kubernetes PaaS experience for your organization.
 
-This makes App mode unique from Cluster Mode, the ability to leverage an out-of-the-box host cluster group managed by us here at Spectro Cloud, or you can leverage Palette-managed Kubernetes clusters you already have deployed configured to your organization’s standards and expose them as Kubernetes Paas experience. As the consumer of app mode, you simply focus on deploying your application to a Kubernetes cluster by specifying the app profile. The overhead of managing infrastructure has essentially been removed for you, thus freeing up your time to focus on what matters the most, developing an application that solves business problems.   
+As the consumer of app mode, you simply focus on deploying your application to a Kubernetes cluster by specifying the app profile. The overhead of managing infrastructure has essentially been removed for you, thus freeing up your time to focus on what matters the most, developing an application that solves business problems.   
 
 
 # How to Access Each Mode? 
 
-You can quickly toggle between App Mode and Cluster Mode by navigating to the **User** Menu at top right and selecting the mode you want.
+You can quickly toggle between App Mode and Cluster Mode by navigating to the **User Menu** at top right and selecting the mode you want.
  
 
 # App Mode or Cluster Mode?
