@@ -15,7 +15,7 @@ The Spectro Cloud management platform application captures audit logs to track t
 
 The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update*, and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
 
-Audit logs are retained for the last 1 year.
+Audit logs are retained for the last one year.
 
 # Accessing Audit Logs
 
