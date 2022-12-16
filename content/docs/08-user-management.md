@@ -1,7 +1,7 @@
 ---
 title: "User Management"
 metaTitle: "User Management"
-metaDescription: "Learn about adding and managing access to users on Spectro Cloud using SAML based SSO. Also explains how users and tenant admin have been setup on Spectro Cloud"
+metaDescription: "Dive into Palette's user management capabilities and how to manage users' access and setting up controls, integrations, and more."
 icon: "roles"
 hideToC: false
 fullWidth: false

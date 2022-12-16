@@ -17,18 +17,18 @@ import Tooltip from "shared/components/ui/Tooltip";
 # Palette Helm Registry
 Helm Charts are a collection of Kubernetes resource files capable of deploying services of varying complexity. Palette provides some stable default Helm charts in its public Helm Chart Registry. 
 
-Palette also leverages developers' custom Helm registries. You can add your own public or private Helm registries to Palette's Helm registry.
+Palette also supports creating custom Helm registries. You can add your own public or private Helm registries to Palette's Helm registry.
 
-The Helm Chart registry synchronizes charts with the Palette console so you can use them when you create cluster profiles.
+The Helm Chart registry synchronizes charts with Palette, so you can use them when you create cluster profiles.
 
-## Prerequisite
+# Prerequisite
 For security, Palette requires Helm OCI version 3.7.0 and higher.
 
-## Add a Helm Chart Registry to Palette
+# Add a Helm Chart Registry to Palette
 
 To add your private Helm Chart Registry to Palette:
 
-1. Log in as a Tenant administrator.
+1. Log in to Palette as a Tenant administrator. 
 
 2. From the **Main Menu** navigate to **Tenant Settings > Registries**.
 
@@ -43,7 +43,7 @@ To add your private Helm Chart Registry to Palette:
 
       When your registry is protected:
 
-      * Charts are not synchronized with the Palette console, and you must type Helm chart names and versions when you create Cluster Profiles.
+      * Charts are not synchronized with Palette, and you must type Helm chart names and versions when you create Cluster Profiles.
       * The **Last Synced** column in the **Helm Registries** tab displays *n/a*. 
    <br />
    <br />

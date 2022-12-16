@@ -1,7 +1,7 @@
 ---
 title: "Add a Custom Registry"
 metaTitle: "Add a Custom Registry"
-metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
+metaDescription: "Learn how to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
 fullWidth: false
