@@ -55,7 +55,6 @@ To add your private Helm Chart Registry to Palette:
       * Palette synchronizes Helm charts with the console so you can select charts and versions from drop-down menus. 
       * The **Last Synced** column in the **Helm Registries** tab displays the date that charts were last synchronized in Palette.
    <br />
-   <br />
 
 6. If you haven’t set up credentials for your registry, leave **No Authentication** toggled *on*.
 
