@@ -44,6 +44,12 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 5. A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
 
+6. Create a security group for network security isolation.
+
+
+7. Inbound traffic rules set to TCP protocol:Port 443, to IPv4 and IPv6 sources.
+
+
 # Tencent Cloud Account Permissions 
 
 **Last Update**: April 26, 2022
@@ -144,10 +150,11 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 ```
 
 
-# Creating a Tencent Cloud Account
+# Create a Tencent Cloud Account
 
-A Tencent Cloud account needs to be created for the Palette Console from the Tenant Admin or Project Admin scope. To create the Cloud Account:
-1. Log in to the Palette Management Console and from the **Project**/**Tenant Admin Settings**, select the **Cloud Accounts** tab.
+A Tencent Cloud account needs to be created for the Palette console from the Tenant Admin or Project Admin scope. To create the cloud account:
+
+1. Log in to the Palette Management Console, and from the **Project**/**Tenant Admin Settings**, select the **Cloud Accounts** tab.
 
 
 2. Click **+ Tencent Account** to open the Cloud Account Creation wizard and fill in the following details:
@@ -160,21 +167,29 @@ A Tencent Cloud account needs to be created for the Palette Console from the Ten
     | **Secret Key**| The secret key of the Tencent cloud account.|
     
 
-3. Validate and confirm the given information to complete the wizard. 
+3. Click **Validate** button to validate the credentials.
+
+
+4. Click **Confirm** button to complete the cloud account create wizard. 
 
 
 **Note**: The Cloud Account can be created during the first step of cluster creation, when you fill in the basic information by clicking the **+** next to **Cloud Account**. 
 
-# Deploying a Tencent Cluster
+# Deploy a Tencent Cluster
 
 The following steps need to be performed to provision a new TKS cluster:
-1. Provide the basic cluster information like Name, Description, and Tags. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments.
+
+1. Provide the basic cluster information such as:
+   * **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments. 
+   * Select the desired [Tencent cloud account](/clusters/public-cloud/tke#createatencentcloudaccount). The Tencent credentials need to be preconfigured in the Project/Tenant Admin settings.
+
+  **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud Account**.
+<br />
+
+2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment template.
 
 
-2. Select the Cluster Profile, created for Tencent Cloud. The profile definition will be used as the Cluster Deployment Template.
-
-
-3. Review and override Pack parameters as desired. By default, parameters for all Packs are set with values defined in the Cluster Profile.
+3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
 
 <InfoBox>
 
@@ -227,19 +242,17 @@ Example:
 
     |**Parameter** | **Description**|
     |--------------|----------------|
-    |  **Cloud Account**| Select the desired cloud account. 
-    | **Tencent Cloud Accounts** | The Tencent credentials need to be preconfigured in the **Project**/**Tenant Admin** settings.
-    ||**Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**. |
     | **Region** | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.
-    | **SSH Key Pair Name**| Choose the desired SSH Keypair. SSH key pairs <br />need to be preconfigured on TKS for the<br /> desired regions. The selected key is inserted into the VMs provisioned.
-    | **VPCID**|
-    | **Cluster endpoint access** | Private <br />  Public <br /> Private & Public|
+    | **SSH Key Pair Name**| Choose the desired SSH keypair. SSH key pairs <br />need to be preconfigured on TKS for the<br /> desired regions. The selected key is inserted into the VMs provisioned.
+    | **VPCID**|The ID of the Virtual Private Cloud that the stack is to be launched into. It must be in the specified region. All instances will be launched into this VPC. |
+    |**Cluster Endpoint Access**| Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.|
+    |**Public Security Group**|A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. | 
     
 <InfoBox>
 Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in the near future.
 </InfoBox>
 
-5. Public Access CIDRs - To enable access restrictions for the users.
+5. Public Access CIDRs - To enable access restrictions.
 
 
 6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
@@ -256,7 +269,7 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
-# Deleting a Tencent Cluster
+# Delete a Tencent Cluster
 
 The deletion of a Tencent cluster results in the removal of all Virtual Machines and associated Storage Disks created for the cluster. The following tasks need to be performed to delete a Tencent cluster:
 
@@ -272,9 +285,9 @@ The deletion of a Tencent cluster results in the removal of all Virtual Machines
     * Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
 
 
-# Forcing a Cluster Deletion
+# Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+You can force delete a cluster stuck in the **Deletion** state through the user interface. You can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
 
 ## To force delete a cluster:
 
@@ -289,7 +302,7 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before doing the force deletion. 
+If there are any cloud resources still on the cloud, you should clean up those resources before doing the force deletion. 
 </WarningBox>
 
 
