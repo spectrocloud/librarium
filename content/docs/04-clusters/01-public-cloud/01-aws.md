@@ -12,7 +12,6 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
-
 # Overview
 
 Following are some architectural highlights of the Amazon Web Services (AWS) clusters, provisioned by Palette:
@@ -65,329 +64,328 @@ The following **four** policies include all the required permissions for provisi
 
 ### Controller Policy 
 
-**Last Update**: May 25, 2022
+**Last Update**: December 16,, 2022
 
 ``` json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:AllocateAddress",
-        "ec2:AssociateRouteTable",
-        "ec2:AttachInternetGateway",
-        "ec2:AuthorizeSecurityGroupIngress",
-        "ec2:CreateInternetGateway",
-        "ec2:CreateNatGateway",
-        "ec2:CreateRoute",
-        "ec2:ReplaceRoute",
-        "ec2:CreateRouteTable",
-        "ec2:CreateSecurityGroup",
-        "ec2:CreateSubnet",
-        "ec2:CreateTags",
-        "ec2:CreateVpc",
-        "ec2:ModifyVpcAttribute",
-        "ec2:DeleteInternetGateway",
-        "ec2:DeleteNatGateway",
-        "ec2:DeleteNetworkInterface",
-        "ec2:DeleteRouteTable",
-        "ec2:DeleteSecurityGroup",
-        "ec2:DeleteSubnet",
-        "ec2:DeleteTags",
-        "ec2:DeleteVpc",
-        "ec2:DescribeAccountAttributes",
-        "ec2:DescribeAddresses",
-        "ec2:DescribeAvailabilityZones",
-        "ec2:DescribeInstances",
-        "ec2:DescribeInternetGateways",
-        "ec2:DescribeImages",
-        "ec2:DescribeNatGateways",
-        "ec2:DescribeNetworkInterfaces",
-        "ec2:DescribeNetworkInterfaceAttribute",
-        "ec2:DescribeRouteTables",
-        "ec2:DescribeSecurityGroups",
-        "ec2:DescribeSubnets",
-        "ec2:DescribeVpcs",
-        "ec2:DescribeVpcAttribute",
-        "ec2:DescribeVolumes",
-        "ec2:DetachInternetGateway",
-        "ec2:DisassociateRouteTable",
-        "ec2:DisassociateAddress",
-        "ec2:ModifyInstanceAttribute",
-        "ec2:ModifyNetworkInterfaceAttribute",
-        "ec2:ModifySubnetAttribute",
-        "ec2:ReleaseAddress",
-        "ec2:RevokeSecurityGroupIngress",
-        "ec2:RunInstances",
-        "ec2:TerminateInstances",
-        "tag:GetResources",
-        "elasticloadbalancing:AddTags",
-        "elasticloadbalancing:CreateLoadBalancer",
-        "elasticloadbalancing:ConfigureHealthCheck",
-        "elasticloadbalancing:DeleteLoadBalancer",
-        "elasticloadbalancing:DescribeLoadBalancers",
-        "elasticloadbalancing:DescribeLoadBalancerAttributes",
-        "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-        "elasticloadbalancing:DescribeTags",
-        "elasticloadbalancing:ModifyLoadBalancerAttributes",
-        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-        "elasticloadbalancing:RemoveTags",
-        "autoscaling:DescribeAutoScalingGroups",
-        "autoscaling:DescribeInstanceRefreshes",
-        "ec2:CreateLaunchTemplate",
-        "ec2:CreateLaunchTemplateVersion",
-        "ec2:DescribeLaunchTemplates",
-        "ec2:DescribeLaunchTemplateVersions",
-        "ec2:DeleteLaunchTemplate",
-        "ec2:DeleteLaunchTemplateVersions"
-      ],
-      "Resource": [
-        "*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:CreateAutoScalingGroup",
-        "autoscaling:UpdateAutoScalingGroup",
-        "autoscaling:CreateOrUpdateTags",
-        "autoscaling:StartInstanceRefresh",
-        "autoscaling:DeleteAutoScalingGroup",
-        "autoscaling:DeleteTags"
-      ],
-      "Resource": [
-        "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "autoscaling.amazonaws.com"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AllocateAddress",
+                "ec2:AssociateRouteTable",
+                "ec2:AttachInternetGateway",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:CreateInternetGateway",
+                "ec2:CreateNatGateway",
+                "ec2:CreateRoute",
+                "ec2:ReplaceRoute",
+                "ec2:CreateRouteTable",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateSubnet",
+                "ec2:CreateTags",
+                "ec2:CreateVpc",
+                "ec2:ModifyVpcAttribute",
+                "ec2:DeleteInternetGateway",
+                "ec2:DeleteNatGateway",
+                "ec2:DeleteNetworkInterface",
+                "ec2:DeleteRouteTable",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DeleteSubnet",
+                "ec2:DeleteTags",
+                "ec2:DeleteVpc",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeAddresses",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeInstances",
+                "ec2:DescribeInternetGateways",
+                "ec2:DescribeImages",
+                "ec2:DescribeNatGateways",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeNetworkInterfaceAttribute",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeVpcAttribute",
+                "ec2:DescribeVolumes",
+                "ec2:DetachInternetGateway",
+                "ec2:DisassociateRouteTable",
+                "ec2:DisassociateAddress",
+                "ec2:ModifyInstanceAttribute",
+                "ec2:ModifyNetworkInterfaceAttribute",
+                "ec2:ModifySubnetAttribute",
+                "ec2:ReleaseAddress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:RunInstances",
+                "ec2:TerminateInstances",
+                "tag:GetResources",
+                "elasticloadbalancing:AddTags",
+                "elasticloadbalancing:CreateLoadBalancer",
+                "elasticloadbalancing:ConfigureHealthCheck",
+                "elasticloadbalancing:DeleteLoadBalancer",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                "elasticloadbalancing:DescribeTags",
+                "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                "elasticloadbalancing:RemoveTags",
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeInstanceRefreshes",
+                "ec2:CreateLaunchTemplate",
+                "ec2:CreateLaunchTemplateVersion",
+                "ec2:DescribeLaunchTemplates",
+                "ec2:DescribeLaunchTemplateVersions",
+                "ec2:DeleteLaunchTemplate",
+                "ec2:DeleteLaunchTemplateVersions"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:CreateAutoScalingGroup",
+                "autoscaling:UpdateAutoScalingGroup",
+                "autoscaling:CreateOrUpdateTags",
+                "autoscaling:StartInstanceRefresh",
+                "autoscaling:DeleteAutoScalingGroup",
+                "autoscaling:DeleteTags"
+            ],
+            "Resource": [
+                "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "autoscaling.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "spot.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:CreateSecret",
+                "secretsmanager:DeleteSecret",
+                "secretsmanager:TagResource"
+            ],
+            "Resource": [
+                "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameter"
+            ],
+            "Resource": [
+                "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "eks.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "eks-fargate.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListOpenIDConnectProviders",
+                "iam:CreateOpenIDConnectProvider",
+                "iam:AddClientIDToOpenIDConnectProvider",
+                "iam:UpdateOpenIDConnectProviderThumbprint",
+                "iam:DeleteOpenIDConnectProvider"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:ListAttachedRolePolicies",
+                "iam:DetachRolePolicy",
+                "iam:DeleteRole",
+                "iam:CreateRole",
+                "iam:TagRole",
+                "iam:AttachRolePolicy"
+            ],
+            "Resource": [
+                "arn:*:iam::*:role/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetPolicy"
+            ],
+            "Resource": [
+                "arn:*:iam::aws:policy/AmazonEKSClusterPolicy"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:DescribeCluster",
+                "eks:ListClusters",
+                "eks:CreateCluster",
+                "eks:TagResource",
+                "eks:UpdateClusterVersion",
+                "eks:DeleteCluster",
+                "eks:UpdateClusterConfig",
+                "eks:UntagResource",
+                "eks:UpdateNodegroupVersion",
+                "eks:DescribeNodegroup",
+                "eks:DeleteNodegroup",
+                "eks:UpdateNodegroupConfig",
+                "eks:CreateNodegroup"
+            ],
+            "Resource": [
+                "arn:*:eks:*:*:cluster/*",
+                "arn:*:eks:*:*:nodegroup/*/*/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:AssociateIdentityProviderConfig",
+                "eks:ListIdentityProviderConfigs"
+            ],
+            "Resource": [
+                "arn:*:eks:*:*:cluster/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:DisassociateIdentityProviderConfig",
+                "eks:DescribeIdentityProviderConfig"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:ListAddons",
+                "eks:CreateAddon",
+                "eks:DescribeAddonVersions",
+                "eks:DescribeAddon",
+                "eks:DeleteAddon",
+                "eks:UpdateAddon",
+                "eks:TagResource",
+                "eks:DescribeFargateProfile",
+                "eks:CreateFargateProfile",
+                "eks:DeleteFargateProfile"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "eks.amazonaws.com"
+                }
+            }
         }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "spot.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "secretsmanager:CreateSecret",
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:TagResource"
-      ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameter"
-      ],
-      "Resource": [
-        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:aws:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks-fargate.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:ListOpenIDConnectProviders",
-        "iam:CreateOpenIDConnectProvider",
-        "iam:AddClientIDToOpenIDConnectProvider",
-        "iam:UpdateOpenIDConnectProviderThumbprint",
-        "iam:DeleteOpenIDConnectProvider"
-      ],
-      "Resource": [
-        "*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:GetRole",
-        "iam:ListAttachedRolePolicies",
-        "iam:DetachRolePolicy",
-        "iam:DeleteRole",
-        "iam:CreateRole",
-        "iam:TagRole",
-        "iam:AttachRolePolicy"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:GetPolicy"
-      ],
-      "Resource": [
-        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "eks:DescribeCluster",
-        "eks:ListClusters",
-        "eks:CreateCluster",
-        "eks:TagResource",
-        "eks:UpdateClusterVersion",
-        "eks:DeleteCluster",
-        "eks:UpdateClusterConfig",
-        "eks:UntagResource",
-        "eks:UpdateNodegroupVersion",
-        "eks:DescribeNodegroup",
-        "eks:DeleteNodegroup",
-        "eks:UpdateNodegroupConfig",
-        "eks:CreateNodegroup"
-      ],
-      "Resource": [
-        "arn:*:eks:*:*:cluster/*",
-        "arn:*:eks:*:*:nodegroup/*/*/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "eks:AssociateIdentityProviderConfig",
-        "eks:ListIdentityProviderConfigs"
-      ],
-      "Resource": [
-        "arn:aws:eks:*:*:cluster/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "eks:DisassociateIdentityProviderConfig",
-        "eks:DescribeIdentityProviderConfig"
-      ],
-      "Resource": [
-        "*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "eks:ListAddons",
-        "eks:CreateAddon",
-        "eks:DescribeAddonVersions",
-        "eks:DescribeAddon",
-        "eks:DeleteAddon",
-        "eks:UpdateAddon",
-        "eks:TagResource",
-        "eks:DescribeFargateProfile",
-        "eks:CreateFargateProfile",
-        "eks:DeleteFargateProfile"
-      ],
-      "Resource": [
-        "*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "*"
-      ],
-      "Condition": {
-        "StringEquals": {
-          "iam:PassedToService": "eks.amazonaws.com"
-        }
-      }
-    }
-  ]
+    ]
 }
-
 ```
 
 </Tabs.TabPane>
@@ -863,7 +861,25 @@ The following warning is expected and can be ignored:<p></p>
 <i>These policies define some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.</i>
 </InfoBox>
 
-# Creating an AWS Cloud Account
+# Create Cloud Account
+
+Palette supports 2 partitions of AWS Cloud Accounts:
+
+* AWS
+
+* AWS US Gov
+
+## Create AWS Cloud Account
+
+To deploy the AWS Clusters in the Palette Platform, having the AWS Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an AWS cloud account in the Palette console. You can follow any one of the below authentication method for the cloud account registration.
+<br />
+
+**Access Credentials Method**
+
+
+**Security Token Service (STS) Method**
+
+<br />
 
 <Tabs>
 
@@ -887,14 +903,15 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 
 4. In the cloud account creation wizard give the following information:
-   * Account Name
-   * Description
-   * Credentials:
+   * **Account Name:** Custom name for the Cloud Account.
+   * **Description:** Optional description for the cloud account.
+   * **Partition:** Choose **AWS** from the drop down-menu.
+   * **Credentials:**
        * AWS Access key
        * AWS Secret access key
 
 
-5. Validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
+5. Click **Validate** button to validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
 
 </Tabs.TabPane>
 
@@ -915,13 +932,13 @@ To create an AWS cloud account using STS credentials follow the steps below:
 2. Login to Palette console as Tenant Admin.
 
 
-3. Go to `Tenant Settings` > `Cloud Accounts` and click `+Add AWS Account`.
+3. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add AWS Account**.
 
 
 4. In the cloud account creation wizard give the following information:
-   * Account Name
-   * Description
-   * Select STS authentication for validation:
+   * **Account Name**
+   * **Description**
+   * Select **STS** authentication for validation:
 
 
 5. Security Token Service (STS)
@@ -945,6 +962,33 @@ To create an AWS cloud account using STS credentials follow the steps below:
 
 </Tabs.TabPane>
 </Tabs>
+
+## Create AWS US Gov Cloud Account
+
+ To deploy the AWS US Gov Clusters in the Palette Platform, having the AWS US Gov Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an AWS US Gov cloud account in the Palette console.
+
+To create an AWS US Gov cloud account using access credentials follow the steps below:
+
+1. In the AWS console, create the [four policies listed](/clusters/public-cloud/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+
+
+2. Login to Palette console as Tenant Admin.
+
+
+3. Go to `Tenant Settings` > `Cloud Accounts` and click `+Add AWS Account`.
+
+
+4. In the cloud account creation wizard give the following information:
+   * **Account Name:** Custom name for the Cloud Account.
+   * **Description:** Optional description for the cloud account.
+   * **Partition:** Choose **AWS Gov Cloud** from the drop down-menu.
+   * **Credentials:**
+       * AWS Access key
+       * AWS Secret access key
+
+
+5. Click **Validate** button to validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
+
 
 ## Global Role Additional Policies:
 
