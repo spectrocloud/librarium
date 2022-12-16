@@ -1,7 +1,7 @@
 ---
-title: "Adding a custom registry"
-metaTitle: "Adding a custom registry"
-metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
+title: "Add a Custom Registry"
+metaTitle: "Add a Custom Registry"
+metaDescription: "Learn how to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -11,7 +11,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Adding Custom Registries
+# Add Custom Registries
 
 Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry. Pack contents are periodically synchronized with the Palette console.
 
