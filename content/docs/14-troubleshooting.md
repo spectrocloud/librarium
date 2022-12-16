@@ -56,7 +56,3 @@ Spectro Cloud maintains specific milestones in a life cycle and presents them as
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it would succeed and the condition would be marked as a success.
 
 <br />
-
-
-
-

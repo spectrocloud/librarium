@@ -15,37 +15,24 @@ import Tooltip from 'shared/components/ui/Tooltip';
 <br />
 Palette enables the provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a Private Cloud Gateway deployed within the same account as the private AKS clusters. This private cloud gateway (Self Hosted PCGs) is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. The following sections discuss the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts. Once the self-hosted PCG is created and linked with an Azure cloud account in Palette, any Azure clusters provisioned using that cloud account will be orchestrated via the self-hosted PCG, thereby enabling the provisioning of Private AKS clusters. 
 
+<br />
+
+
 # Prerequisites
 
-* An active Azure Cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
+* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
 
-* Azure CLI installed
+* The [Azure CLI v2.0.0+](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
-
-# Create your Azure Self Hosted PCGs
-
-To create an Azure Self-Hosted PCG, the significant steps are:
- <br />
-
-1. [Create a Virtual Network in the Azure console](/clusters/public-cloud/azure/gateways#createavirtualnetworkintheazureconsole)
-
-
-2. [Create an Azure Kubernetes Target Cluster in the Azure console](/clusters/public-cloud/azure/gateways#createanazurekubernetestargetclusterintheazureconsole)
-
-
-3. [Establish external connectivity with the Target Azure Kubernetes Cluster](/clusters/public-cloud/azure/gateways#establishexternalconnectivitywiththetargetazurekubernetescluster)
-
-
-4. [Deploy Palette Self Hosted PCG to Palette Console](/clusters/public-cloud/azure/gateways#deploypaletteselfhostedpcgtopaletteconsole)
 
 
 ## Create a Virtual Network in the Azure Console
 
-Log in to the Azure portal and create a Virtual Network taking care of the following steps:
+Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) (VNet). Ensure the VNET contains the following network settings:
 <br />
 
-1. Azure Virtual Network (VNet) with **three subnets**. Each of the subnets should have a minimum of **333 available 
+1. Three subnets. Each of the subnets should have a minimum of **333 available 
    IPs**. (Note: 333 IP's are required if you want to use Azure Container Networking Interface (CNI) networking and 
    not necessary if you are using Kubenet networking)
 
@@ -53,7 +40,7 @@ Log in to the Azure portal and create a Virtual Network taking care of the follo
 2. The VNet should have the ** `Microsoft.Authorization/roleAssignments/write` ** action required to connect the virtual network to the Azure Kubernetes Cluster if the network configuration is `Azure CNI.` for the cluster.
 
 
-3. This VNet needs to be linked with:
+3. The VNet needs to be linked with:
     * Azure Kubernetes Cluster
     * Azure Bastion Host (Jump Box Virtual Machine) to connect to the Azure target Kubernetes cluster securely.
 
