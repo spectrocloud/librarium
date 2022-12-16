@@ -83,6 +83,12 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/introduction/architecture-overview`,
+    toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;

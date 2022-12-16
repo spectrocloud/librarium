@@ -17,7 +17,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The network ports for Palette in SaaS mode and on-prem are listed below.
 
-![saas_networks_ports.png](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
 ## Management Platform
 
@@ -37,8 +37,9 @@ The network ports for Palette in SaaS mode and on-prem are listed below.
 
 # On-Prem Network Communications and Ports
 
+The following diagram maps the network connections between the Palette components and deployed Kubernetes clusters.
 
-![network_communication_ports.png](/architecture_networking-ports_network-diagram.png "#title="network diagram")
+![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
 
 
 
