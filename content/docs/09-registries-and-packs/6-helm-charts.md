@@ -1,7 +1,7 @@
 ---
 title: "Helm Registries"
 metaTitle: "Helm Registries"
-metaDescription: "Palette Dev Engine Helm Registries"
+metaDescription: "Learn how to add your own Helm Registries to Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -34,12 +34,12 @@ To add your private Helm Chart Registry to Palette:
 
 3. From the **Helm Registries** tab, click **Add New Helm Registry** and type the registry name and endpoint. If the registries list is long, you may need to scroll down to see the Add link.
 
-3. Type the name of your registry and its endpoint.
+4. Type the name of your registry and its endpoint.
 
-3. Choose ``Protected`` mode based on whether your network is private or public:
+5. Choose **Protected** mode based on whether your network is private or public:
 
 
-   * Toggle ``Protected`` mode to *on* if your Helm registry is deployed in a private network. Palette downloads and deploys charts from protected chart registries instead of scanning a private network for them.
+   * Toggle **Protected** mode to *on* if your Helm registry is deployed in a private network. Palette downloads and deploys charts from protected chart registries instead of scanning a private network for them.
 
       When your registry is protected:
 
@@ -48,17 +48,18 @@ To add your private Helm Chart Registry to Palette:
    <br />
    <br />
 
-    * Leave ``Protected`` mode toggled *off* if your Helm registry is deployed in a public network. We refer to Helm registries with this option disabled as being unprotected.  
+    * Leave **Protected** mode toggled *off* if your Helm registry is deployed in a public network. We refer to Helm registries with this option disabled as being unprotected.  
     
       When your registry is unprotected: 
 
       * Palette synchronizes Helm charts with the console so you can select charts and versions from drop-down menus. 
       * The **Last Synced** column in the **Helm Registries** tab displays the date that charts were last synchronized in the Palette console.
    <br />
+   <br />
 
-5. If you haven’t set up credentials for your registry, leave **No Authentication** toggled *on*.
+6. If you haven’t set up credentials for your registry, leave **No Authentication** toggled *on*.
 
-   If your registry has credentials, toggle ``No Authentication`` to *off* and type the registry **Username** and **Password**.
+   If your registry has credentials, toggle **No Authentication** to *off* and type the registry **Username** and **Password**.
 <br />
 
 7. Confirm your changes. 
@@ -72,7 +73,7 @@ You can find your Helm Registry listed in the **Helm Registries** tab in **Tenan
 The following applies when adding Helm charts to cluster profiles.
 
 * When using charts from protected registries, you must type the chart name and version you want to use. These must match the name and version hosted in the Helm registry.
-* For unprotected Helm registries, charts are synchronized in the Palette console, and you can select them from lists and dropdowns.
+* For unprotected Helm registries, charts are synchronized in Palette, which allows you to select them from lists and dropdowns.
 
 # Resources
 
