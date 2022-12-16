@@ -17,6 +17,14 @@ import InfoBox from 'shared/components/InfoBox';
 
 AWS Elastic Block Store is an easy to use, high performance block storage at any scale. It helps in the easy deployment, management, and scaling of the most demanding and high-performance tenant workloads. AWS EBS also ensures availability with replication and durability.
 
+# Prerequisites
+
+The following permissions needs to be attached to the AWS cloud account:
+
+- The AWS managed policy `AmazonEBSCSIDriverPolicy`.
+
+- [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable EBS encryption.
+
 # Versions Supported
 
 <Tabs>
@@ -37,15 +45,6 @@ AWS Elastic Block Store is an easy to use, high performance block storage at any
 
 </Tabs.TabPane>
 </Tabs>
-
-# Pre-Requisite Permissions
-
-The following permissions needs to be attached to the AWS cloud account:
-
-1. The AWS managed policy `AmazonEBSCSIDriverPolicy`.
-
-
-2. [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable EBS encryption.
 
 
 ## EBSCSIKMSEncryptionPolicy

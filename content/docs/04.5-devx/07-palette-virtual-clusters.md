@@ -39,9 +39,9 @@ To create your new Palette Virtual Cluster complete the following actions.
 
  |**Palette Virtual Cluster Resource ** | **Default    **   |**Minimum Limit**|
  |------------------------------|-------------------|-----------------|
- | CPU (per request)            | 6                 | 2.5               |
- | Memory (per request)         | 8 GiB             | 2.5 GiB           |
- | Storage (per request)        | 10 GiB            | 0 GiB           |
+ | CPU (per request)            | 4                 | 3               |
+ | Memory (per request)         | 4 GiB             | 3 GiB           |
+ | Storage (per request)        | 2 GiB            | 0 GiB           |
 
 <br />
 
