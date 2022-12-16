@@ -159,7 +159,7 @@ Retrieve the JSON credential file for your service account. For detailed instruc
 
 # Creating a GCP Cloud Account
 
- ![gcp-cluster-creation](cloud-accounts/google.mp4)
+`video: title: "gcp-cluster-creation": cloud-accounts/google.mp4`
 
 1. To create a GCP cloud account, provide a name for the account and enter the JSON credentials for your service account either by pasting into the space provided or uploading from your JSON credential file. 
 
@@ -168,7 +168,7 @@ Retrieve the JSON credential file for your service account. For detailed instruc
 
 # Deploying a GCP Cluster
 
- ![gcp-cluster-creation](./cluster-creation-videos/google-cloud.mp4)
+`video: title: "gcp-cluster-creation": ./cluster-creation-videos/google-cloud.mp4`
 
 Performed the steps below to provision a new GCP cluster:
 

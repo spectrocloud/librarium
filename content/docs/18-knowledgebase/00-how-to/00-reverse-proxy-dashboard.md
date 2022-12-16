@@ -3,16 +3,11 @@ title: 'Reverse Proxy Dashboard'
 metaTitle: 'Kubernetes Dashboard with Spectro Proxy'
 metaDescription: 'Kubernetes Dashboard with Spectro Proxy'
 hiddenFromNav: false
-isIntegration: true
-category: ['storage']
-logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
-
-
 
 
 
@@ -25,11 +20,10 @@ This section talks about how we can configure the Kubernetes Dashboard exposed t
 
 # Prerequisite
 
-* Kubernetes Dashboard Pack to be part of the Cluster Profile.
+* [Kubernetes Dashboard Pack](/integrations/kubernetes-dashboard) to be part of the Cluster Profile.
 
+* To expose the dashboard, use [Spectro-Proxy Pack (1.1.0)](/integrations/frp). If the Kubernetes Dashboard is not using a load balancer. Make the following changes to the Spectro-Proxy pack.
  
-* To expose the dashboard,  use Spectro-Proxy Pack (1.1.0) if Kubernetes Dashboard is not using LoadBalancer. Make the following changes to the Spectro-Proxy pack.
-
 <br />
 
 ```

@@ -19,6 +19,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself.
 
+<br />
+
+<InfoBox>
+
+Palette supports provisioning a [reverse proxy dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp)  pack to enable this capability.
+
+
+</InfoBox>
+
 ## Versions Supported
 
 <Tabs>

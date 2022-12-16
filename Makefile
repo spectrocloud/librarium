@@ -1,6 +1,8 @@
 .PHONY: initialize start commit build
 
 IMAGE:=spectrocloud/librarium
+# Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
+CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
 
 clean:
 	rm -rf node_modules build public .cache
@@ -35,3 +37,9 @@ verify-url-links:
 verify-url-links-local: build
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
 	npm run test-links
+
+sync-vale:
+	vale sync
+
+check-writing: 
+	vale $(CHANGED_FILE) 

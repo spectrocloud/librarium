@@ -1,6 +1,6 @@
 ---
-title: "Adding a Custom Pack"
-metaTitle: "Adding a Custom Pack"
+title: "Add a Custom Pack"
+metaTitle: "Add a Custom Pack"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
@@ -11,7 +11,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Add Custom Packs
+# Add a Custom Pack
 
 Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](/registries-and-packs/spectro-cli-reference).
 

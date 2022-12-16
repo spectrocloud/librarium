@@ -81,7 +81,7 @@ Palette **also** enables the provisioning of private AKS clusters via a private 
 
 # Creating an Azure Cloud Account
 
-![Azure-cloud-account](/cloud-accounts/azure.mp4)
+`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
 
 To create an Azure cloud account, we need:
 
@@ -113,7 +113,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 <br />
 
 
-![aks-cluster-creation](./cluster-creation-videos/aks.mp4)
+`video: title: "aks-cluster-creation": ./cluster-creation-videos/aks.mp4`
 
 
 The following steps need to be performed to provision a new cluster:

@@ -866,7 +866,7 @@ The following warning is expected and can be ignored:<p></p>
 
 ## AWS Account Creation Using the Access Credentials Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-credentials.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-credentials.mp4`
 
 To create an AWS cloud account using access credentials follow the steps below:
 
@@ -895,7 +895,7 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 ## AWS Account Creation Using the Security Token Service (STS) Method
 
-![AWS-Cloud-Account](/cloud-accounts/aws-sts.mp4)
+`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-sts.mp4`
 
 ## Security Token Service (STS) Method
 
@@ -939,19 +939,16 @@ To create an AWS cloud account using STS credentials follow the steps below:
 </Tabs.TabPane>
 </Tabs>
 
-# Global Role Additional Policies:
+## Global Role Additional Policies:
 
-There will be situations where additional Node Level policies needs to be added to your deployment. For instance, the EBS storage pack requires Roles to be present at the node level. For such scenarios in the cloud account page, after validation of the credentials, `Add IAM policies` are enabled where you can specify additional Role ARNs which need to be attached. This policy will be attached to all the clusters that are launched with this specific Cloud Account.
-
-<br />
-<br />
-
-<InfoBox>
+There may be situations where additional node-level policies must be added to your deployment. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the cloud credentials, ensure `Add IAM policies` are enabled. You can specify additional policies to be attached. The attached policies will be included to all the clusters launched with this specific Google cloud Account.
 
 ## Disable OIDC Associate Provider for AWS Service Account
 Palette customers can optionally disable the OIDC Associate Provider if the service provider restricts the cluster deployment with the OIDC associate provider in enable state. Customize the EKS Kubernetes pack values as follows:
 
 <br />
+
+<InfoBox>
 
 ```
   # Disable creation of an identity provider for the controller
@@ -974,7 +971,7 @@ Palette customers can optionally disable the OIDC Associate Provider if the serv
 
 # Deploying an EKS Cluster
 
- ![eks-cluster-creation](./cluster-creation-videos/eks.mp4)
+`video: title: "eks-cluster-creation": ./cluster-creation-videos/eks.mp4`
 
 The following steps need to be performed to provision a new EKS cluster:
 

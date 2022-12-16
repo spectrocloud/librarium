@@ -361,7 +361,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # Installing Private Cloud Gateway - OpenStack
 
- ![openstack-pcg-creation](/pcg-creation-video/openstack.mp4)
+ `video: title: "openstack-pcg-creation": /pcg-creation-video/openstack.mp4`
 
 The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
@@ -534,7 +534,7 @@ A default cloud account is automatically created when the private cloud gateway 
 
 # Deploying an OpenStack Cluster
 
- ![openstack-cluster-creation](./cluster-creation-videos/openstack.mp4)
+`video: title: "openstack-cluster-creation": ./cluster-creation-videos/openstack.mp4`
 
 The following steps need to be performed to provision a new OpenStack cluster:
 
