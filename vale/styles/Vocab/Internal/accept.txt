@@ -31,3 +31,5 @@ Application
 grafana
 Grafana
 etcd
+Autoscaler
+Node(s)
