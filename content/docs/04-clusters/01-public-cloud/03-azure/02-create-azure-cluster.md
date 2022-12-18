@@ -99,18 +99,36 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
 </InfoBox>
 
 7. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+  
+  **Master Pool Configuration** 
 
     |**Parameter**| **Description**|
     |-------------|----------------|    
     |**Name** | A descriptive name for the node pool|
     |**Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5|
     |**Allow worker capability (master pool)**| To allow workloads to be provisioned on master nodes|
+    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+    |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
     |**Managed Disk**| Select the managed disk type to be used.|
     |**Disk Size**|Storage disk size in GB to be attached to the node.|
+   
+   **Worker Pool Configuration** 
+
+    |**Parameter**| **Description**|
+    |-------------|----------------| 
+    |**Node pool Name** | A descriptive name for the worker node pool| 
+    |**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scale up and scale down the resources between the set minimum and maximum number of nodes to optimize resource utilization.|
+    ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
+    |**Pool Size**|Number of nodes in the pool.|
     |**Rolling Updates**| There are two choices of Rolling Update.|
     ||**Expand First**: Launches the new node and then shut down the old node.|
     ||**Contract First**: Shut down the old node first and then launches the new node.|
+    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+    |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+    |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
+    |**Managed Disk**| Select the managed disk type to be used.|
+    |**Disk Size**|Storage disk size in GB to be attached to the node.|
     |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones, if multiple zones are selected. Zones are supported only for worker pools.|
    
     

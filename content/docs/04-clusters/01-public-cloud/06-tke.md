@@ -251,7 +251,10 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
     |-------------|----------------|
     | **Name** |A descriptive name for the node pool.
     | **Size** | Make your choice of minimum, maximum, and desired <br />sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
+    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+    |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     | **Instance type** | Select the Tencent Instance Type for the nodes <br />in the node pool with availability zones and disk size.|
+    |**Disk Size**| Set the desired storage size|
     
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
