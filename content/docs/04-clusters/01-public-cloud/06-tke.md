@@ -47,7 +47,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 6. Create a security group for network security isolation.
 
 
-7. Inbound traffic rules set to TCP protocol:Port 443, to IPv4 and IPv6 sources.
+7. Inbound traffic rules set to TCP protocol: Port 443, to IPv4 and IPv6 sources.
 
 
 # Tencent Cloud Account Permissions 
@@ -152,7 +152,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 # Create a Tencent Cloud Account
 
-A Tencent Cloud account needs to be created for the Palette console from the Tenant Admin or Project Admin scope. To create the cloud account:
+Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin scope. To create the cloud account:
 
 1. Log in to the Palette Management Console, and from the **Project**/**Tenant Admin Settings**, select the **Cloud Accounts** tab.
 
@@ -167,7 +167,7 @@ A Tencent Cloud account needs to be created for the Palette console from the Ten
     | **Secret Key**| The secret key of the Tencent cloud account.|
     
 
-3. Click **Validate** button to validate the credentials.
+3. Click the **Validate** button to validate credentials.
 
 
 4. Click **Confirm** button to complete the cloud account create wizard. 
@@ -243,7 +243,7 @@ Example:
     |**Parameter** | **Description**|
     |--------------|----------------|
     | **Region** | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.
-    | **SSH Key Pair Name**| Choose the desired SSH keypair. SSH key pairs <br />need to be preconfigured on TKS for the<br /> desired regions. The selected key is inserted into the VMs provisioned.
+     | **SSH Key Pair Name**| Choose the desired SSH keypair. You must preconfigure SSH key pairs <br /> on TKS for the<br /> desired regions. The selected key is inserted into the provisioned VMs.
     | **VPCID**|The ID of the Virtual Private Cloud that the stack is to be launched into. It must be in the specified region. All instances will be launched into this VPC. |
     |**Cluster Endpoint Access**| Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.|
     |**Public Security Group**|A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. | 
@@ -287,7 +287,7 @@ The deletion of a Tencent cluster results in the removal of all Virtual Machines
 
 # Force Delete a Cluster
 
-You can force delete a cluster stuck in the **Deletion** state through the user interface. You can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+In Tenant Admin and Project Admin scope, Palette allows you to force the deletion of a cluster that's been stuck in **Deletion** state for a minimum of **15 minutes**.
 
 ## To force delete a cluster:
 
@@ -302,7 +302,7 @@ You can force delete a cluster stuck in the **Deletion** state through the user 
 
 
 <WarningBox>
-If there are any cloud resources still on the cloud, you should clean up those resources before doing the force deletion. 
+If any resources remain in the cloud, you should clean them up before initiating a forced delete. 
 </WarningBox>
 
 
