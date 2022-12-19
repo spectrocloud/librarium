@@ -1,7 +1,7 @@
 ---
-title: "Registries and packs"
-metaTitle: "Registries and packs"
-metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make Kubernetes truly yours."
+title: "Registries and Packs"
+metaTitle: "Registries and Packs"
+metaDescription: "Learn about Packs, how to use and combine Packs, and how to create your Pack ."
 icon: "nodes"
 hideToC: false
 fullWidth: false

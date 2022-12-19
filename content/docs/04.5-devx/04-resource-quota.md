@@ -45,6 +45,8 @@ To create your cluster groups, you must manage the developer quota in Palette by
 |Memory| 16 GiB|4 GiB|
 |Storage| 20 GiB|2 GiB|
 
+If limits defined for cluster groups are lower than the default quota shown in the table, the size of the respective resource (CPU, memory, or storage) will update automatically to the lower limit. You can verify cluster group limits on the **Cluster Group Settings** page. 
+
 Palette offers a default ephemeral-storage of 1 GiB for virtual clusters launched on the Beehive cluster group.
 
  You can track the status of the resource quota from **Overview** in the **Main Menu** of Palette Dev Engine console.

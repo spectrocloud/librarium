@@ -77,6 +77,30 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/devx/registries/helm-registry`,
+    toPath: `/registries-and-packs/helm-charts`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/registries/oci-registry`,
+    toPath: `/registries-and-packs/oci-registry`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
+    toPath: `/devx/palette-virtual-clusters/pause-restore-virtual-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/introduction/architecture-overview`,
+    toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;
