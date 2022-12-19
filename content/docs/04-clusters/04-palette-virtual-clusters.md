@@ -41,7 +41,7 @@ The NGINX Ingress Controller must be deployed on the Host cluster with SSL passt
 
    For example:
 
-   `*.starship.te.spectrocloud.com`
+   `*.myapp.mydomain.com`
 
 <br />
 <br />
