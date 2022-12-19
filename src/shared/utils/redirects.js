@@ -91,7 +91,7 @@ const redirects = [
   },
   {
     fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
-    toPath: `/devx/palette-virtual-clusters/pause-restore-virtual-clusters`,
+    toPath: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
     redirectInBrowser: true,
     isPermanent: true,
   },
