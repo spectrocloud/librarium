@@ -281,7 +281,7 @@ For self hosted version, a system gateway is provided out of the box and typical
 <br />
 
 * Minimum capacity required for a Private Cloud Gateway:
-  + One (1) node - two (2) vCPU, 4GB memory, 60GB storage.
+  + One (1) node - two (2) vCPU, 4 GB memory, 60 GB storage.
   + Three (3)nodes - six (6) vCPU, 12GB memory, 70GB storage.
 
 
