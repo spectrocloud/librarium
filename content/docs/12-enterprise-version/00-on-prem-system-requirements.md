@@ -101,9 +101,9 @@ The following points needs to be taken care while creating the Tags:
 </InfoBox>
 
 
-## Privilages 
 
-**Last Update**: August 18, 2022
+## Privileges 
+
 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
@@ -111,18 +111,18 @@ The vSphere user account used in the various Palette tasks must have the minimum
 <br />
 
 <InfoBox>
+
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+
 </InfoBox>
 
 ## Privileges Under Root-Level Role
 
 <br />
 
-<WarningBox>
 The root-level role privileges are applied to root object and Datacenter objects only.
-</WarningBox>
 
-|**vSphere Object**    |**Privileges**|
+|**vSphere Object**|**Privileges**|
 |---------------|----------|
 |**Cns**|Searchable|
 |**Datastore**|Browse datastore
@@ -338,7 +338,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 
 <InfoBox>
- Ensure your data center CIDR IP address does not overlap Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
+Ensure your data center CIDR IP address does not overlap with the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
 </InfoBox>
 
 
