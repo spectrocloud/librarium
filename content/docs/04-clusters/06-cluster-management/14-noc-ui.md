@@ -76,9 +76,6 @@ Palette supports a wide range of custom filters in a fixed format. To add a cust
 * Log in to the Palette console and select **Clusters** from the left main menu.
 
 
-* Go to **Map View Icon** below the `Clusters` tab.
-
-
 * Click on the **+Add Filter** button on the top menu and select **+ Add custom filter** from the top menu.
 
 
@@ -90,6 +87,9 @@ Palette supports a wide range of custom filters in a fixed format. To add a cust
 * You can add more than one custom filter simultaneously, and they work together with the `conjunction` added.
 
 <br />
+<InfoBox>
+You can apply these filters for both map view and cluster listing view.
+</InfoBox>
 
 |Conjunction| Condition |Operator|Value
 |--|--|--|---|
