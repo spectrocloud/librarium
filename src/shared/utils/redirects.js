@@ -101,6 +101,18 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/introduction/what-is`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/getting-started/free-cloud-credit`,
+    toPath: `/getting-started/palette-freemium`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;
