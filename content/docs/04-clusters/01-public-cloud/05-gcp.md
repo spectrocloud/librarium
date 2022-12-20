@@ -189,10 +189,18 @@ Performed the steps below to provision a new GCP cluster:
   | **Project** | The project to which the cluster belongs.
   | **Region** | Choose the desired GCP region where you would like the clusters to be provisioned.
   | **SSH Key Pair Name** | Choose the desired SSH Key|pair. It is the Public key to configure remote SSH access to the nodes.
-  | **Static Placement** | By default, Palette uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information need to be provided:
-    ||- Virtual Network
-    ||- Control plane Subnet
-    ||- Worker Network
+  | **Static Placement** | By default, Palette uses dynamic placement wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. Review the [Static Placement](#static-placement) table for more details.
+
+  #### Static Placement
+  The static placement configuration accepts the following parameters.
+
+  | **Parameter**              | **Description**                                       |
+  |------------------------|------------------------------------------------------------|
+  | **Virtual Network**        | Select the virtual network from the drop-down menu.        |
+  | **Control Plane Subnet**   | Select the control plane network from the dropdown menu.   |
+  | **Worker Network**         | Select the worker network from the drop-down menu.         |
+
+
 
 5. Make the choice of updating the worker pool in parallel.
 

@@ -91,13 +91,25 @@ const redirects = [
   },
   {
     fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
-    toPath: `/devx/palette-virtual-clusters/pause-restore-virtual-clusters`,
+    toPath: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
     redirectInBrowser: true,
     isPermanent: true,
   },
   {
     fromPath: `/introduction/architecture-overview`,
     toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/introduction/what-is`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/getting-started/free-cloud-credit`,
+    toPath: `/getting-started/palette-freemium`,
     redirectInBrowser: true,
     isPermanent: true,
   },

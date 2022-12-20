@@ -69,34 +69,59 @@ The following steps need to be performed to provision a new Azure cluster:
 
 7. Provide the Azure Cloud account placement information for cluster configuration.
 
-|**Parameter**| **Description**|
-|-------------|---------------|
-| **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
-| **Region** | Select a region in Azure in which the cluster should be deployed.|
-| **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
-| **Storage Account** | Optionally provide the storage account.|
-| **Storage Container**| Optionally provide the Azure storage container.|
-| **SSH Key** | Public key to configure remote SSH access to the nodes.|
-| **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option, which requires that you provide the following placement information:|
-| |**Network Resource Group**: The logical container for grouping related Azure resources.|
-| | **Virtual Network**: Select the virtual network from the drop-down menu.|
-| | **CIDR Block**: Select the CIDR address from the drop-down menu.|
-| | **Control plane Subnet**: Select the control plane network from the dropdown menu.|
-| | **Worker Network**: Select the worker network from the drop-down menu.|
-|**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
-|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access.|
-| |**Private DNS Zone**: Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
-| |**IP Allocation Method**: Allocate an available IP from the private endpoint VNet. The two possible allocations are:
-| |* **Dynamic**: The Dynamic Host Configuration Protocol (DHCP) dynamically allocates IP addresses from the available  Virtual Network IP CIDR range.
-| |* **Static**: You specify a static IP address from the available Virtual Network IP range.|
-|**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
-When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
+  |**Parameter**| **Description**|
+  |-------------|---------------|
+  | **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
+  | **Region** | Select a region in Azure in which the cluster should be deployed.|
+  | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
+  | **Storage Account** | Optionally provide the storage account.|
+  | **Storage Container**| Optionally provide the Azure storage container.|
+  | **SSH Key** | Public key to configure remote SSH access to the nodes.|
+  | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement) table below for available parameters for static placement.|
+  |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
+  |**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb) table below for more details.|
+  |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
 
-<InfoBox>
+    #### Static Placement
+    
+    The static placement configuration accepts the following parameters.
 
-If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
-**Static Placement**, the network information from your Azure account will not be imported to Palette. You can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>**, but drop-down menu selections are not available.
-</InfoBox>
+| **Parameter**              | **Description**                                                |
+|------------------------|------------------------------------------------------------|
+| **Network Resource Group** | The logical container for grouping related Azure resources |
+| **Virtual Network**        | Select the virtual network from the drop-down menu.        |
+| **CIDR Block**             | Select the CIDR address from the drop-down menu.           |
+| **Control Plane Subnet**   | Select the control plane network from the dropdown menu.   |
+| **Worker Network**         | Select the worker network from the drop-down menu.         |
+
+    
+  #### Private API Server LB
+
+  The private API server load balancer accepts the following parameters.
+
+
+  | **Parameter**            | **Description**                                                                                                                            |
+  |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+  | **Private DNS Zone**   | Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.           |
+  | **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [table](#ip-allocation-method) below for more details.                                         |   
+
+
+
+  ##### IP Allocation Method
+
+  | **Parameter**            | **Description**                                                                                                                            |
+  |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+  | **Dynamic**              | Use Dynamic Host Configuration Protocol (DHCP) to dynamically allocates IP addresses from the available Virtual Network IP CIDR range. |
+  | **Static**               | You can specify a static IP address from the available Virtual Network IP range.                                                      |
+  
+  When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
+
+
+  <WarningBox>
+
+  If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
+  **Static Placement**, the network information from your Azure account will not be imported to Palette. You can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>**, but drop-down menu selections are not available.
+  </WarningBox>
 
 7. Configure the master and worker node pools. A master and a worker node pool are configured by default.
   
@@ -108,14 +133,17 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
     |**Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5|
     |**Allow worker capability (master pool)**| To allow workloads to be provisioned on master nodes|
     |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-
     |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
     |**Managed Disk**| Select the managed disk type to be used.|
     |**Disk Size**|Storage disk size in GB to be attached to the node.|
-   
-   **Worker Pool Configuration** 
 
+    <br />
+
+   
+    **Worker Pool Configuration** 
+
+   
     |**Parameter**| **Description**|
     |-------------|----------------| 
     |**Node pool Name** | A descriptive name for the worker node pool| 
@@ -126,7 +154,6 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
     ||**Expand First**: Launches the new node and then shut down the old node.|
     ||**Contract First**: Shut down the old node first and then launches the new node.|
     |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-
     |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
     |**Managed Disk**| Select the managed disk type to be used.|

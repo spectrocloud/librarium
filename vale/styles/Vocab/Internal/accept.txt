@@ -31,5 +31,11 @@ Application
 grafana
 Grafana
 etcd
+SRE
+SREs
+EKS
+AKS
+GKE
+admin
 Autoscaler
-Node(s)
+autoscaler
