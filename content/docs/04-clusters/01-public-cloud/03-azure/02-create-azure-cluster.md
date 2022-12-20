@@ -107,7 +107,8 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
     |**Name** | A descriptive name for the node pool|
     |**Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5|
     |**Allow worker capability (master pool)**| To allow workloads to be provisioned on master nodes|
-    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+
     |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
     |**Managed Disk**| Select the managed disk type to be used.|
@@ -124,7 +125,8 @@ If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloud
     |**Rolling Updates**| There are two choices of Rolling Update.|
     ||**Expand First**: Launches the new node and then shut down the old node.|
     ||**Contract First**: Shut down the old node first and then launches the new node.|
-    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+    |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+
     |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
     |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
     |**Managed Disk**| Select the managed disk type to be used.|

@@ -1015,7 +1015,8 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     |             |**NoExecute**: New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted if they do not tolerate the Taint.
     
     
-## Running Clusters through Edit Node Pool
+## Edit Node Pool
+
 <InfoBox>
 Palette allows its users to apply/edit the Taints, for a running cluster, through the <b>Edit node pool</b> option under the <b>Nodes</b> tab.
 </InfoBox>
@@ -1026,11 +1027,12 @@ Palette allows its users to apply/edit the Taints, for a running cluster, throug
 |------------------|---------------|
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
-|**Allow worker capability (master pool)**|Select this option for allowing workloads to be provisioned on master nodes.|
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+|**Allow worker capability **|Select this option for allowing workloads to be provisioned on master nodes.|
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
+
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
-|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Give the required storage size|
 
 **Worker Pool**
@@ -1038,17 +1040,19 @@ Palette allows its users to apply/edit the Taints, for a running cluster, throug
 |**Parameter**     | **Description**|
 |------------------|---------------|
 |**Name**          |A descriptive name for the node pool.|
-|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scale up and scale down the resources between the set minimum and maximum number of nodes to optimize resource utilization.|
+|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
 ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
 |**Size**          |Number of VMs to be provisioned for the node pool.|
 |**Rolling Update**| There are two choices of Rolling Update:
 |                  |**Expand First**: Launches the new node and then shut down the old node.
 |                  |**Contract First**: Shut down the old node first and then launches the new node.
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add to constrain a Pod to only run on a particular set of Node(s).
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
-|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
-|**Disk Size**|Give the required storage size|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Provide the required storage size|
+
 
 ## On-Demand Instances and On-Spot
 

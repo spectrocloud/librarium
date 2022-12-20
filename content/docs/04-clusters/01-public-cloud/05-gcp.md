@@ -217,7 +217,7 @@ Performed the steps below to provision a new GCP cluster:
   |**Parameter**| **Description**|
   |-------------|----------------| 
   |**Node pool Name** | A descriptive name for the worker node pool| 
-  |**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scale up and scale down the resources between the set minimum and maximum number of nodes to optimize resource utilization.|
+  |**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
   ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
   |**Pool Size**|Number of nodes in the pool.|
   |**Rolling Updates**| There are two choices of Rolling Update.|
