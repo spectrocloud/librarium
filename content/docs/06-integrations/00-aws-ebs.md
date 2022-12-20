@@ -29,16 +29,24 @@ The following permissions needs to be attached to the AWS cloud account:
 
 <Tabs>
 
-<Tabs.TabPane tab="1.10.x" key="1.10.x">
+<Tabs.TabPane tab="1.12.x" key="1.12.x">
 
-* ** 1.10.0**
+* **1.12.0**
 
 </Tabs.TabPane>
+
+<Tabs.TabPane tab="1.10.x" key="1.10.x">
+
+* **1.10.0**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="1.8.x" key="1.8.x">
 
 * ** 1.8.0**
 
 </Tabs.TabPane>
+
 <Tabs.TabPane tab="1.5.x" key="1.5.x">
 
 * ** 1.5.1**
