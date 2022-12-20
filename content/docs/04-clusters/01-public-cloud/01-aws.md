@@ -1017,9 +1017,7 @@ sigs.k8s.io/cluster-api-provider-aws/cluster/[ClusterName] = owned
     
 ## Edit Node Pool
 
-<InfoBox>
 Palette allows its users to apply/edit the Taints, for a running cluster, through the <b>Edit node pool</b> option under the <b>Nodes</b> tab.
-</InfoBox>
 
 **Master Pool**
 
