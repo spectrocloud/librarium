@@ -61,11 +61,11 @@ Palette Map Filters filter out specific clusters using built-in or custom filter
 Built-in filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down menu. You can use the following built-in filters.
 
 
-|**Built-In Filters** |
-|---------------------|
-|Deleted Only|
-|Imported Only|
-|Updates Pending|
+|**Built-In Filters** |Description|
+|---------------------|-----------|
+|Deleted Only| To dispaly the deleted Clusters for the last 72 hours|
+|Imported Only| To display the brown field clusters|
+|Updates Pending| To display the clusters with pending updates| 
 
 
 ## Custom Filters
@@ -87,9 +87,9 @@ Palette supports a wide range of custom filters in a fixed format. To add a cust
 * You can add more than one custom filter simultaneously, and they work together with the chosen conjunction.
 
 <br />
-<InfoBox>
+
 You can apply these filters for both map view and cluster listing view.
-</InfoBox>
+
 
 |Conjunction| Condition |Operator|Value
 |--|--|--|---|
