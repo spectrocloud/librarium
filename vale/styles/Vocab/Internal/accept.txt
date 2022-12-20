@@ -36,3 +36,6 @@ SREs
 EKS
 AKS
 GKE
+admin
+Autoscaler
+autoscaler
