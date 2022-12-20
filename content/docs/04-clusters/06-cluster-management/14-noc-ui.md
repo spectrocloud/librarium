@@ -25,13 +25,13 @@ The private cloud clusters must set the location explicitly. To set the location
 * Login to the Palette console.
 
 
-* Select the cluster to which the location needs to be updated and go to the **cluster details** page of the cluster.
+* Select the cluster to which the location needs to be updated and go to the **Cluster details** page of the cluster.
 
 
-* Open **Settings** and then **Cluster Settings**.
+* Open **Settings** and then navigate to the **Cluster Settings**.
 
 
-* Select **Location** from the left menu and set the location of that cluster to the wizard and save the changes.
+* Select **Location** from the left menu, set the cluster's location, and save the changes.
 
 
 * The location is then visualized on the UI map display.
@@ -44,21 +44,21 @@ To monitor the cluster location follow the below steps:
 
 <br />
 
-* Log in to the Palette console and select **Clusters** from the left main menu.
+* Log in to Palette and select **Clusters** from the left **Main Menu**.
 
 
-* Go to **Map View Icon** below the `Clusters` tab.
+* Go to **Map View Icon** below the **Clusters** tab.
 
 
 The map will display all the cluster locations under that user’s scope. 
 
 # Map Filters
 
-Palette Map Filters filter out specific cluster(s) using built-in or custom filters for an enhanced user experience. This map filter provides an enhanced user experience when you have many clusters dispersed geographically across multiple scopes and clouds. You have two types of filters:- **Built in Filters** and **Custom Filters**.
+Palette Map Filters filter out specific clusters using built-in or custom filters for an enhanced user experience. The map filter allows you to narrow down clusters that may be dispersed geographically, across multiple scopes, or different cloud providers. You have two types of filters:- **Built-in Filters** and **Custom Filters**.
 
-## Built-in filters
+## Built-In Filters
 
-The filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down menu. You can have the following built-in filters from the Palette console.
+Built-in filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down menu. You can use the following built-in filters.
 
 
 |**Built-In Filters** |
@@ -73,7 +73,7 @@ The filters are available in the Palette console by default and can be selected 
 Palette supports a wide range of custom filters in a fixed format. To add a custom filter:
 <br />
 
-* Log in to the Palette console and select **Clusters** from the left main menu.
+* Log in to Palette and select **Clusters** from the left **Main Menu**.
 
 
 * Click on the **+Add Filter** button on the top menu and select **+ Add custom filter** from the top menu.
@@ -84,7 +84,7 @@ Palette supports a wide range of custom filters in a fixed format. To add a cust
   `Conjunction - Condition - Operator - Value`
 
 
-* You can add more than one custom filter simultaneously, and they work together with the `conjunction` added.
+* You can add more than one custom filter simultaneously, and they work together with the chosen conjunction.
 
 <br />
 <InfoBox>
@@ -109,8 +109,6 @@ You can apply these filters for both map view and cluster listing view.
 
 
 ## Operators
-| |
-|-|
 is <br />
 is not  <br />
 contains  <br />
