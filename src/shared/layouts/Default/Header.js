@@ -119,7 +119,7 @@ const LogoWrap = styled(Link)`
 `;
 
 const Logo = styled.img`
-  height: 36px;
+  height: 44px;
 `;
 
 const SearchWrap = styled.div`
