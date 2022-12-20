@@ -78,6 +78,30 @@ const redirects = [
     isPermanent: true,
   },
   {
+    fromPath: `/devx/registries/helm-registry`,
+    toPath: `/registries-and-packs/helm-charts`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/registries/oci-registry`,
+    toPath: `/registries-and-packs/oci-registry`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
+    toPath: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/introduction/architecture-overview`,
+    toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
     fromPath: `/introduction/what-is`,
     toPath: `/introduction`,
     redirectInBrowser: true,
@@ -86,12 +110,6 @@ const redirects = [
   {
     fromPath: `/getting-started/free-cloud-credit`,
     toPath: `/getting-started/palette-freemium`,
-    redirectInBrowser: true,
-    isPermanent: true,
-  },
-  {
-    fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
-    toPath: `/devx/palette-virtual-clusters/pause-restore-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
   },
