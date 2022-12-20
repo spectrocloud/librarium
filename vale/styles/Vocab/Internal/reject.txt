@@ -2,3 +2,14 @@ spectro cloud
 datacenter
 spectrocloud
 cli
+ribbon menu
+left ribbon menu
+blue ribbon menu
+slide menu
+Palette console
+Palette Management console
+Palette management console
+Pre-requisite
+pre-requisite
+Hence
+hence
