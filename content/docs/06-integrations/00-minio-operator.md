@@ -28,14 +28,14 @@ The MinIO `kubectl minio` plugin wraps the Operator to provide a simplified inte
 
 # Prerequisites
 
-- An existing Kubernetes deployment where at least one worker node has a locally-attached drive.
+- An existing Kubernetes deployment where at least one worker node has a locally attached drive.
 - A local ``kubectl`` installation configured to create and access resources on the target Kubernetes deployment.
 
 # Version Supported
 
 MinIO Operator **4.5.4**.
 
-# Contents
+# MinIO Operator Templates
 
 MinIO Operator provides the following templates:
 

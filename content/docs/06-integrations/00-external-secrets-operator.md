@@ -20,7 +20,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 External Secrets Operator (ESO) is a Kubernetes operator that integrates external secret management 
 systems like AWS Secrets Manager, HashiCorp Vault, Google Secrets Manager, or Azure Key Vault. The operator reads information from external APIs and automatically injects the values into a Kubernetes Secret.
 
-You can use the External-Secrets-Operator Add-on pack as an authenticator in Palette.  
+You can use the External-Secrets-Operator Add-on pack as an authenticator in Palette.
+
+<InfoBox>
+
+Starting from Palette version 3.1, Palette no longer supports upgrades to Kubernetes External Secrets since this is reaching end of life. Migrate or switch to using External Secrets operator instead.
+
+</InfoBox>
 
 
 # Version Supported

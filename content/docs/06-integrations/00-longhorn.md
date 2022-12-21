@@ -16,13 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Longhorn Overview
 
-Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. You can install Longhorn on an existing Kubernetes cluster with one ``kubectl apply`` command or using Helm charts. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices.
+Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices.
 
 Longhorn creates a dedicated storage controller for each block device volume and replicates the volume across multiple nodes. 
 
 # Prerequisites
 
-- Kubernetes cluster is at least version 1.18 and not higher than 1.24.
+- Kubernetes cluster is at least version 1.22 and not higher than 1.24.
 
 # Version Supported
 

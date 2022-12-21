@@ -29,7 +29,7 @@ MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubern
     Or another operating system that supports snapd.
 
 
-- At least 20G of disk space and 4G of memory.
+- At least 20 GB of disk space and 4 GB of memory.
 - An internet connection.
 
 <InfoBox>
