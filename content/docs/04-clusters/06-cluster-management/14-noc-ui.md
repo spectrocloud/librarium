@@ -15,14 +15,14 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
+Palette provides intuitive UI-based location monitoring for the clusters running at multiple locations. Palette displays the region set during the cluster creation process for public cloud clusters and the location on the UI Map. The user can set the location for private cloud clusters through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
 
 # Set the Cluster Location
 
 The private cloud clusters must set the location explicitly. To set the location:
 <br />
 
-* Login to the Palette console.
+* Login to [Palette](https://console.spectrocloud.com).
 
 
 * Select the cluster to which the location needs to be updated and go to the **Cluster details** page of the cluster.
