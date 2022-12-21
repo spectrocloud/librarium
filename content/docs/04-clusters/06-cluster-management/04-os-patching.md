@@ -14,9 +14,10 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette deploys Kubernetes clusters using pre-built VM images. The operating system on these images is the latest patch version at the time of building the image for the supported major-minor streams. As an example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be 18.04.3 LTE, assuming that was the latest at the time the VM image was built. However, newer versions continue to be published in the upstream repositories as improvements, bug fixes and security patches are released. OS Patching allows operating system on the running clusters nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. In our example, let us assume 18.04.4 LTE and 18.04.5 LTE are released over time to fix important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade to it on the cluster nodes. Following choices are available for patching the operating system to the latest version.
+Palette deploys Kubernetes clusters using pre-built VM images. The operating system on these images is the latest patch version when building the image for the supported major-minor streams. For example, if Ubuntu 18.04 is selected for the OS layer during provisioning, the OS on the cluster nodes might be using 18.04.3 LTE, assuming that was the latest version available at the time the VM image was built. However, newer versions continue to be published in the upstream repositories as improvements, bug fixes, and security patches are released. OS Patching allows the operating system on the running cluster nodes to be updated to the latest patch version so that it is up-to-date with the latest fixes. Assume Ubuntu 18.04.4 LTE and 18.04.5 LTE are released over time to fix important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade it on the cluster nodes. The following choices are available for patching the operating system to the latest version.
  
-# Patch on boot
+# Patch on Boot
+
 During the cluster creation, while configuring the cluster (Cluster Configuration), the user can select “Patch OS on boot”. In this case, the operating system on all cluster nodes will be updated to the latest when the cluster VMs are initially deployed.
 
 |  **During Cluster Creation**       |
@@ -24,9 +25,10 @@ During the cluster creation, while configuring the cluster (Cluster Configuratio
 |Cluster Configuration -> **Patch on Boot**|
 
 
-# Reboot If Required
+# Reboot if Required
 
-Palette supports the **Reboot If Required** feature to control the system reboot as part of cluster upgrades. Some system upgrades will require a reboot to apply the changes to the cluster. You need to check the **Reboot if required** button to allow the reboot. If this option is unchecked, the system reboot will be restricted.
+
+Palette supports the **Reboot if Required** feature to control the system reboot as part of cluster upgrades. Some system upgrades will require a reboot to apply the changes to the cluster. You need to check the **Reboot if Required** checkbox to allow the reboot. If this option is unchecked, the system reboot will be restricted.
 
 |  **During Cluster Creation**       |
 | -----------------------------------|
@@ -34,7 +36,8 @@ Palette supports the **Reboot If Required** feature to control the system reboot
 
 
 # Scheduled
-Besides patching on boot, you have the option to set a schedule for OS patching. Patching schedule can be set initially when creating a cluster as well as at any given point later. Following scheduling options are provided:
+Besides patching on boot, you can set a schedule for OS patching. The patching schedule can be set initially when creating a cluster as well as at any given point later. The following scheduling options are provided:
+
 
 * Every week on Sunday at midnight
 * Every two weeks at midnight
