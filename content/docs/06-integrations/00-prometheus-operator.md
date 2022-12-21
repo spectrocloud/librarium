@@ -25,7 +25,7 @@ The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io
 
 <Tabs.TabPane tab="40.0.x" key="40.0.x">
 
-**40.5.0**
+* **40.5.0**
 
 </Tabs.TabPane>
 
