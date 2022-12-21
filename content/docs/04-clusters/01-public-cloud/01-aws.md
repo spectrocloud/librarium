@@ -979,19 +979,25 @@ Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/gov
  Ensure these policies are applied to the IAM User or IAM Role that Palette will use.
 
 
-2. Login to Palette console as Tenant Admin.
+2. Log in to Palette as Tenant Admin.
 
 
-3. Go to `Tenant Settings` > `Cloud Accounts` and click `+Add AWS Account`.
+
+3. Go to **Tenant Settings** > **Cloud Accounts** and click  on **+Add AWS Account**.
 
 
-4. In the cloud account creation wizard give the following information:
-   * **Account Name:** Custom name for the Cloud Account.
+
+4. In the cloud account creation wizard, provide the following information:
+
+   * **Account Name:** Custom name for the cloud account.
+
    * **Description:** Optional description for the cloud account.
-   * **Partition:** Choose **AWS Gov Cloud** from the drop down-menu.
+   * **Partition:** Choose **AWS Gov Cloud** from the drop-down menu.
+
    * **Credentials:**
-       * AWS Access key
-       * AWS Secret access key
+       * AWS access key
+       * AWS secret access key
+
 
 
 5. Click **Validate** button to validate the credentials, once the credentials are validated, a toggle button appears as `Add IAM Policies`, once the option is toggled, a `dropdown appears` listing all the policies attached in the AWS console. User can make the choice of policies from the dropdown and attach it to the cloud account being created.
