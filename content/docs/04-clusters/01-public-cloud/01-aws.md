@@ -871,7 +871,7 @@ Palette supports 2 partitions of AWS Cloud Accounts:
 
 ## Create AWS Cloud Account
 
-To deploy the AWS Clusters in the Palette Platform, having the AWS Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an AWS cloud account in the Palette console. You can follow any one of the below authentication method for the cloud account registration.
+This section explains how to create an AWS cloud account in Palette. You can follow any of the following  authentication methods to register your cloud account.
 <br />
 
 **Access Credentials Method**
@@ -903,9 +903,11 @@ To create an AWS cloud account using access credentials follow the steps below:
 
 
 4. In the cloud account creation wizard give the following information:
-   * **Account Name:** Custom name for the Cloud Account.
+   * **Account Name:** Custom name for the cloud account.
+
    * **Description:** Optional description for the cloud account.
-   * **Partition:** Choose **AWS** from the drop down-menu.
+   * **Partition:** Choose **AWS** from the drop-down menu.
+
    * **Credentials:**
        * AWS Access key
        * AWS Secret access key
@@ -965,11 +967,16 @@ To create an AWS cloud account using STS credentials follow the steps below:
 
 ## Create AWS US Gov Cloud Account
 
- To deploy the AWS US Gov Clusters in the Palette Platform, having the AWS US Gov Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an AWS US Gov cloud account in the Palette console.
+Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. To get started with AWS GovClud and Palette, use the following steps.
 
-To create an AWS US Gov cloud account using access credentials follow the steps below:
 
-1. In the AWS console, create the [four policies listed](/clusters/public-cloud/aws#awscloudaccountpermissions). Assign this role to the root user or the IAM user to be used from Palette.
+1. In the AWS console, create the following four policies. You can find the IAM policy JSON for each policy in the [AWS Cloud Account Permissions](/clusters/public-cloud/aws#awscloudaccountpermissions) section. 
+ - Controller Policy
+ - Control Plane Policy
+ -  Nodes Policy
+ - Deployment Policy
+ 
+ Ensure these policies are applied to the IAM User or IAM Role that Palette will use.
 
 
 2. Login to Palette console as Tenant Admin.
