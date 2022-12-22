@@ -69,6 +69,15 @@ The following steps need to be performed to provision a new Azure cluster:
 
 7. Provide the Azure Cloud account placement information for cluster configuration.
 
+
+<WarningBox>
+
+If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) with the option **Disable Properties** enabled and the cluster configuration option **Static Placement** is enabled, then the network information from your Azure account will not be imported by Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty.
+
+</WarningBox>
+
+<br />
+
 |**Parameter**| **Description**|
 |-------------|---------------|
 | **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
@@ -77,88 +86,110 @@ The following steps need to be performed to provision a new Azure cluster:
 | **Storage Account** | Optionally provide the storage account.|
 | **Storage Container**| Optionally provide the Azure storage container.|
 | **SSH Key** | Public key to configure remote SSH access to the nodes.|
-| **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option, which requires that you provide the following placement information:|
-| |**Network Resource Group**: The logical container for grouping related Azure resources.|
-| | **Virtual Network**: Select the virtual network from the drop-down menu.|
-| | **CIDR Block**: Select the CIDR address from the drop-down menu.|
-| | **Control plane Subnet**: Select the control plane network from the dropdown menu.|
-| | **Worker Network**: Select the worker network from the drop-down menu.|
+| **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
-|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access.|
-| |**Private DNS Zone**: Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
-| |**IP Allocation Method**: Allocate an available IP from the private endpoint VNet. The two possible allocations are:
-| |* **Dynamic**: The Dynamic Host Configuration Protocol (DHCP) dynamically allocates IP addresses from the available  Virtual Network IP CIDR range.
-| |* **Static**: You specify a static IP address from the available Virtual Network IP range.|
+|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
 |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
+   
+
+#### Static Placement Table
+
+| **Parameter**              | **Description** |
+|------------------------|------------------------------------------------------------|
+| **Network Resource Group** | The logical container for grouping related Azure resources |
+| **Virtual Network**        | Select the virtual network from the drop-down menu.        |
+| **CIDR Block**             | Select the CIDR address from the drop-down menu.           |
+| **Control Plane Subnet**   | Select the control plane network from the dropdown menu.   |
+| **Worker Network**         | Select the worker network from the drop-down menu.         |
+
+
+
+#### Private API Server LB Table
+
+
+| **Parameter**            | **Description**|
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **Private DNS Zone**   | Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
+| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|   
+
+##### IP Allocation Method Table
+
+| **Parameter**            | **Description** |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **Dynamic**              | Use Dynamic Host Configuration Protocol (DHCP) to dynamically allocates IP addresses from the available Virtual Network IP CIDR range.|
+| **Static**               | You can specify a static IP address from the available Virtual Network IP range.|
+  
 When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
 
-<InfoBox>
+<br />
 
-If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
-**Static Placement**, the network information from your Azure account will not be imported to Palette. You can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}><br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>**, but drop-down menu selections are not available.
-</InfoBox>
-
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default.
-
-    |**Parameter**| **Description**|
-    |-------------|----------------|    
-    |**Name** | A descriptive name for the node pool|
-    |**Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5|
-    |**Allow worker capability (master pool)**| To allow workloads to be provisioned on master nodes|
-    |**Instance Type**|Select the Azure instance type to be used for all the nodes in the pool|
-    |**Managed Disk**| Select the managed disk type to be used.|
-    |**Disk Size**|Storage disk size in GB to be attached to the node.|
-    |**Rolling Updates**| There are two choices of Rolling Update.|
-    ||**Expand First**: Launches the new node and then shut down the old node.|
-    ||**Contract First**: Shut down the old node first and then launches the new node.|
-    |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures or network failures, by provisioning nodes across availability zones, if multiple zones are selected. Zones are supported only for worker pools.|
-   
-    
-8. Click **Review** settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. 
 
 <InfoBox>
 
-You can add new worker pools to customize certain worker nodes to run specialized workloads. For example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose workloads and another worker pool with instance type <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
+You can add new worker pools to customize certain worker nodes to run specialized workloads. For example, the default worker pool may be configured with the Standard_D2_v2 instance types for general-purpose workloads and another worker pool with instance type Standard_NC12s_v3 can be configured to run GPU workloads.
 
 </InfoBox>
 
+<br />
 
-# Deleting an Azure Cluster
-The deletion of an Azure cluster results in the removal of all Virtual Machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an Azure cluster:
-
-1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
-
-
-2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
-
-
-3. Click **Confirm** to delete.
-
-
-The Cluster Status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
-
-# Force Delete a Cluster
-
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
-
-## To force delete a cluster:
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. Click on **Cluster** on the left **Main Menu**
-
-
-3. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
-
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
     
-      - If the **Force Delete Cluster** button is not enabled, wait for 15minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
-    
+8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+
+
+9. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
+
+
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+
+# Validate
+
+You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
+# Deleting an Azure IaaS Cluster
+
+The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+
+
+1. Ensure you are in the correct project scope.
+
+
+2. Navigate to the left **Main Menu** and click on **Clusters**
+
+
+3. Click on the cluster that you want to remove.
+
+
+4. Click on the **Settings** drop-down menu.
+
+
+5. Click on **Delete Cluster**
+
+
+6. Type in the name of the cluster and click on **OK**
+
+The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
+
+## Force Delete a Cluster
+
+If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+To force delete a cluster follow the same steps outlined in [Deleting an Azure IaaS Cluster](#deleting-an-azure-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available..
+
+<br />
 
 <WarningBox>
-Remove all outstanding cloud resources deployed by Palette before proceeding with a force delete.  
-</WarningBox>
+ 
 
+A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
+- VNet
+- Static Public IPs
+- Virtual Network Interfaces
+- Load Balancers
+- VHD
+- Virtual Network NAT
+
+Failure in removing provisioned resources can result in unexpected costs.   
+
+</WarningBox>
 
 ## Validation
 

@@ -228,7 +228,7 @@ Example:
     |**Parameter** | **Description**|
     |--------------|----------------|
     |  **Cloud Account**| Select the desired cloud account. 
-    | **Tencent Cloud Accounts** | The Tencent credentials need to be preconfigured in the **Project**/**Tenant Admin** settings.
+    | **Tencent Cloud Accounts** | The Tencent credentials need to be pre-configured in the **Project**/**Tenant Admin** settings.
     ||**Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**. |
     | **Region** | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.
     | **SSH Key Pair Name**| Choose the desired SSH Keypair. SSH key pairs <br />need to be preconfigured on TKS for the<br /> desired regions. The selected key is inserted into the VMs provisioned.
@@ -245,13 +245,7 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
 6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
 
 
-7. Configure one or more worker node pools. A single worker node will be configured by default.
-
-    |**Parameter**| **Description**|
-    |-------------|----------------|
-    | **Name** |A descriptive name for the node pool.
-    | **Size** | Make your choice of minimum, maximum, and desired <br />sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
-    | **Instance type** | Select the Tencent Instance Type for the nodes <br />in the node pool with availability zones and disk size.|
+7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
     
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
