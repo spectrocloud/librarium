@@ -25,7 +25,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Controller Policy 
 
-**Last Update**: December 16,, 2022
+**Last Update**: December 16th, 2022
 
 ``` json
 {
@@ -357,7 +357,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Control Plane Policy 
 
-**Last Update**: May 2, 2021
+**Last Update**: May 2nd, 2021
 
 ``` json
 {
@@ -442,7 +442,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Nodes Policy 
 
-**Last Update**: May 2, 2021
+**Last Update**: May 2nd, 2021
 
 ``` json
 {
@@ -504,7 +504,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Deployment Policy 
 
-**Last Update**: May 2, 2021
+**Last Update**: May 2nd, 2021
 
 ``` json
 {

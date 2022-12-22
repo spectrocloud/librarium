@@ -1,5 +1,5 @@
 ---
-title: "Add AWS Account"
+title: "Register and Manage AWS Accounts"
 metaTitle: "Add an AWS Account to Palette"
 metaDescription: "Learn how to add an AWS account to Palette."
 hideToC: false
@@ -70,9 +70,9 @@ To add an AWS cloud account using access credentials follow the steps below:
 
 6. Click the **Validate** button to validate the credentials. 
 
-7. Once the credentials are validated, a toggle button appears as **Add IAM Policies**. Click on the toggle button.
+7. Once the credentials are validated, the **Add IAM Policies** toggle displays. Toggle **Add IAM Policies** on.
 
-8. A **drop-down menu** will appear, containing all the policies available in your AWS account. Select any desired IAM policies you want to assign to Palette.
+8. A drop-down menu displays a lists of available AWS IAM policies in your AWS account. Select any desired IAM policies you want to assign to Palette IAM role or IAM user.
 
 
 ## Validate
@@ -198,9 +198,9 @@ To add an AWS GovCloud cloud account using the access credentials method follow 
 
 6. Click the **Validate** button to validate the credentials. 
 
-7. Once the credentials are validated, a toggle button appears as **Add IAM Policies**. Click on the toggle button.
+7. Once the credentials are validated, the **Add IAM Policies** toggle displays. Toggle **Add IAM Policies** on.
 
-8. A **drop-down menu** will appear, containing all the policies available in your AWS account. Select any desired IAM policies you want to assign to Palette.
+8. A drop-down menu displays a lists of available AWS IAM policies in your AWS account. Select any desired IAM policies you want to assign to Palette IAM role or IAM user.
 
 
 ## Validate

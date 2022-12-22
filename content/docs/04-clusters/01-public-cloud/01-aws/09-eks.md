@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Create and Manage AWS EKS Cluster
 
-Palette supports creating and managing AWS Elastic Kubernetes Service clusters deployed to an AWS account. This section guides you on how to create an AWS EKS cluster in AWS that is managed by Palette.
+Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an AWS EKS cluster in AWS that is managed by Palette.
 
 # Prerequisites
 
@@ -72,7 +72,7 @@ Use the following steps to provision a new AWS EKS cluster:
 7. Selected **Managed Kubernetes** and click on your cluster profile that supports AWS EKS. Click on **Next**.
 
 
-8. Review and customize pack parameters, as desired. By default, parameters for all packs are set with values, defined in the cluster profile.
+8. Review and customize pack parameters, as desired. By default, parameters for all packs are set with values, defined in the cluster profile. Click on **Next**.
 
 
 9. Provide the AWS cloud account and placement information.
@@ -85,22 +85,45 @@ Use the following steps to provision a new AWS EKS cluster:
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
     |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling the [Enable Encryption](/clusters/public-cloud/eks#eksclustersecretsencryption) option. Provide the provider KMS key ARN to complete the wizard.|
+    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
     
 
 10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
 
 
-11. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the avaiability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes.
+11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the avaiability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
+
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Name** | A descriptive name for the node pool.|
+    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](/clusters/public-cloud/aws/architecture#awsinstancetypeandpodcapacity) documentation for help in determining the proper instance type and size. |
+    |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
+    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)|
+    |**Instance Type** | Select the AWS [instance type](/clusters/public-cloud/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
+    
+  * Cloud Configuration settings:
+
+     |**Parameter**| **Description**|
+     |-------------|----------------|
+     |**Instance Option**:| Choose between on-demand or spot instances|
+     |**Instance Type**:| Choose an instance type |
+     |**Availability Zones**:|Select at least one availability zone within the VPC|
+     |**Disk Size**|Make the choice of disk size as per requirement|
+
+ *  You can create one or more Fargate profiles for the EKS cluster to use. 
+    
+    |**Parameter**| **Description**|
+    |-------------|---------------|
+    |**Name** |Provide a name for the Fargate profile.|
+    |**Subnets** |Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.|
+    |**Selectors** |Define pod selector by providing a target namespace and optionally labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.|
 
 <InfoBox>
 
 You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
 
 </InfoBox>
-
- 
 
 12. An optional taint label can be applied to a node pool during the cluster creation. For a an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
 
@@ -123,9 +146,9 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 
 14. Click on **Next**.  
     
-15. The settings page is where you can configure patching schedule, securituy scans, backup settings, setup role based access control (RBAC) and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take serveral minutes.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning an AWS EKS clusters can take serveral minutes.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deploment progress.
 
@@ -137,7 +160,7 @@ You can validate your cluster is up and running by reviewing the cluster details
 
 
 
-# Deploying an EKS Cluster
+<!-- # Deploying an EKS Cluster
 
 `video: title: "eks-cluster-creation": ./cluster-creation-videos/eks.mp4`
 
@@ -173,9 +196,7 @@ The following steps need to be performed to provision a new EKS cluster:
 
      |**Parameter**| **Description**|
      |-------------|----------------|
-     |**Instance Option**:| Make the selection of instance allocation|
-     | |* On Demand|
-     | |* Spot|
+     |**Instance Option**:| Chose between on-demand or spot instances|
      |**Instance Type**:|Make the selection of the instance type|
      |**Availability Zones**:|Select at least one availability zone within the VPC|
      |**Disk Size**|Make the choice of disk size as per requirement|
@@ -194,111 +215,78 @@ The following steps need to be performed to provision a new EKS cluster:
 
 <InfoBox>
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>m3.large</i> instance types for general-purpose workloads, and another worker pool with instance type <i>g2.2xlarge</i> can be configured to run GPU workloads.
-</InfoBox>
+</InfoBox> -->
 
 # EKS Cluster Secrets Encryption
 
 Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
 a defense-in-depth security strategy to protect the sensitive data  such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
-## Prerequisites:
-* KMS key created in the AWS console.
+## Prerequisites
+
+* KMS key created in the AWS account.
 * Key Type: Symmetric
-* Key Usage: Encrypt and Decrypt
+* Permitted Operations: Encrypt and Decrypt
 
-## AWS Cloud Account Permissions:
+## Configure KMS:
 
-The AWS permissions listed below need to be configured in the AWS account to enable key creation:
+The IAM User or IAM role that Palette is using must have the following IAM permissions.
 
 ```json
 kms:CreateGrant
 ```
-Enable secret encryption at step 4 of EKS cluster creation by toggling the botton and by updating ARN of the encryption key to the wizard.
+Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
+You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the amazon resource name (ARN) of the encryption key. The encryption option is available on the **Cluster Config** page of the cluster creation wizard.
 
-# AWS Instance Type and Pod Capacity
-Choose the instance type and the number of instances to be launched according to the number of pods required for the workload. The number of pods that can be scheduled on the nodes for an instance type needs to be calculated for the same; otherwise, the cluster creation cannot go to completion, as the pods cannot come up on the target cluster, due to resource unavailability. 
-
-
-The following section describes the method of calculating the pod capacity for individual AWS instance types. This will help in making exact choices of **desired size** of worker pool during **cluster creation**. We recommend selecting an instance that can support at least 30 pods.
-
-## Formula for Pod Calculation
-Number of pods = N * (M-1) + 2 
-
-Where:
-* **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
-* **M** is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
-* Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
-
-## Example Calculation:
-* For instance type = t3.medium 
-* For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
-* N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
-* In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
-
-<InfoBox>
-Select the type and number of instances to support a minimum of 30 pods.
-</InfoBox>
-
-Hence, while setting the desired size of the worker pool, make the choice as per pod requirement. In the example given above, we need to launch a minimum of two (2) instances of t3.medium to satisfy the resource requirement of an EKS cluster.
-
-# Troubleshooting
-
-If your EKS cluster  worker pool ends up in `Failed` or `Create Failed` or `Error nodes failed to join` state, please refer to this [Amazon provided Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
-)
 
 # Deleting an EKS Cluster
-The deletion of an EKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an EKS cluster:
 
-1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
-
-
-2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
+The deletion of an EKS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
 
 
-3. Click **Confirm** to delete.
-
-Cluster status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
-
-# Force Delete a Cluster
-
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the tenant admin and project admin scope. 
-
-## To force delete a cluster:
-1. Log in to the Palette Management Console.
+1. Ensure you are in the correct project scope.
 
 
-2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
-
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
-      - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
-
-<WarningBox>
-If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
-</WarningBox>
+2. Navigate to the left **Main Menu** and click on **Clusters**
 
 
+3. Click on the cluster that you want to remove.
 
 
-<!-- ## Disable OIDC Associate Provider for AWS Service Account
-Palette customers can optionally disable the OIDC Associate Provider if the service provider restricts the cluster deployment with the OIDC associate provider in enable state. Customize the EKS Kubernetes pack values as follows:
+4. Click on the **Settings** drop-down menu.
+
+
+5. Click on **Delete Cluster**
+
+
+6. Type in the name of the cluster and click on **OK**
+
+The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
+
+## Force Delete a Cluster
+
+If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+To force delete a cluster follow the same steps outlined in [Deleting an EKS Cluster](#deleting-an-eks-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available..
 
 <br />
 
-<InfoBox>
+<WarningBox>
+ 
 
-```
-  # Disable creation of an identity provider for the controller
-  # for use with IAM roles for service accounts
-  # Changes to this field after the cluster is provisioned
-  # will have no effect on the associated OIDC Identity provider.
-  # Defaults to false
-  #disableAssociateOIDCProvider: true
+A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
 
-  ## Controlplane Logging
-  logging:
+- VPC
+- Elastic IP
+- Elastic Network Interfaces
+- Internet Gateway
+- Elastic Load Balancers
+- EBS Volumes
+- NAT Gateway
 
-    # Setting to toggle Kubernetes API Server logging (kube-apiserver)
-    apiServer: false
-```  
-</InfoBox> -->
+Failure in removing provisioned resources can result in unexpected costs.   
+
+</WarningBox>
+
+# Next Steps
+
+Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about day two responsibilities. 

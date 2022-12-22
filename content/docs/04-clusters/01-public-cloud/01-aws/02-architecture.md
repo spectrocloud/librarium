@@ -49,6 +49,39 @@ Palette also supports deploying and managing AWS Elastic Kubernetes Service (EKS
  ![eks_cluster_architecture.png](clusters_aws_create-and-manage-aws-eks-cluster_architecture.png)
 
 
-# Spot Instances
+## Disable OIDC Associate Provider
+You can disable the OIDC associate provider if the service provider restricts the cluster deployment with the OIDC associate provider in the enabled state. Customize the EKS Kubernetes pack YAML values with the following option:
+
+<br />
+
+
+
+```yaml
+  disableAssociateOIDCProvider: true
+```  
+
+# AWS Instance Type and Pod Capacity
+Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You should also calculate the number of pods scheduled per node for an instance type. Improperly sized nodes can cause cluster creation to fail due to resource unavailability.
+
+The following section describes calculating the pod capacity for AWS instance types. This calculation will help you select the proper instance type and the number of desired workers in a worker pool. We recommend for most workloads choosing an instance that can support at least 30 pods.
+
+## Formula for Pod Calculation
+Number of pods = N * (M-1) + 2 
+
+Where:
+* **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
+* **M** is the number of IP addresses of a single ENI (Private IPv4 addresses per interface/IPv6 addresses per interface).
+* Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
+
+## Example Calculation:
+* For instance type = t3.medium 
+* For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
+* N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
+* In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
+
+When setting the desired size of the worker pool, make the choice as per pod requirement. In the example provided, two instances of t3.medium are needed to satisfy the resource requirement of an EKS cluster.
+
+
+## Spot Instances
 
 By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify Spot instances when creating a cluser. The **On-Spot** option can be selected in the node config page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.

@@ -125,7 +125,7 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 
 14. Click on **Next**.  
     
-15. The settings page is where you can configure patching schedule, securituy scans, backup settings, setup role based access control (RBAC) and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
 16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take serveral minutes.
 
@@ -137,6 +137,57 @@ The cluster details page of the cluster contains the status and details of the d
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
+
+
+# Deleting an AWS IaaS Cluster
+
+The deletion of an AWS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+
+
+1. Ensure you are in the correct project scope.
+
+
+2. Navigate to the left **Main Menu** and click on **Clusters**
+
+
+3. Click on the cluster that you want to remove.
+
+
+4. Click on the **Settings** drop-down menu.
+
+
+5. Click on **Delete Cluster**
+
+
+6. Type in the name of the cluster and click on **OK**
+
+The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
+
+## Force Delete a Cluster
+
+If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+To force delete a cluster follow the same steps outlined in [Deleting an AWS IaaS Cluster](#deleting-an-aws-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available..
+
+<br />
+
+<WarningBox>
+ 
+
+A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
+
+- VPC
+- Elastic IP
+- Elastic Network Interfaces
+- Internet Gateway
+- Elastic Load Balancers
+- EBS Volumes
+- NAT Gateway
+
+Failure in removing provisioned resources can result in unexpected costs.   
+
+</WarningBox>
+
+
 # Next Steps
 
-Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management responsibilities. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about day two responsibilities. 
+Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about day two responsibilities. 

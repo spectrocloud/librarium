@@ -20,7 +20,7 @@ Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/
 
 # Resources
 
-To learn more about Azure Cluster creation and its capabilities checkout the following resources:
+To learn more about Palette and Azure cluster creation and its capabilities check out the following resources:
 
 - [Register and Manage Azure Cloud Account](/clusters/public-cloud/azure/azure-cloud)
 
