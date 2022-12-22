@@ -29,10 +29,6 @@ Palette supports integration with AWS Cloud Accounts. This also includes support
 
 <Tabs.TabPane tab="Using the Access Credentials Method" key="Using the Access Credentials Method">
 
-<!-- The following video demonstrates how to create a user in AWS and attach the four necessary policies.
- 
-`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-credentials.mp4` -->
-
 To add an AWS cloud account using access credentials follow the steps below:
 
 ## Prerequisites

@@ -107,6 +107,12 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/clusters/public-cloud/aks`,
+    toPath: `/clusters/public-cloud/azure/eks`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ];
 
 module.exports = redirects;
