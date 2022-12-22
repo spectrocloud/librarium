@@ -151,10 +151,6 @@ Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/gov
 
 <Tabs.TabPane tab="Using the Access Credentials Method" key="GovCloud Using the Access Credentials Method"> -->
 
-
-
-To add an AWS GovCloud cloud account using the access credentials method follow the steps below:
-
 ## Prerequisites
 
 - An AWS account
