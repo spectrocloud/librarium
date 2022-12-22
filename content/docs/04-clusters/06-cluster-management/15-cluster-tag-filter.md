@@ -17,7 +17,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette provides granularity in toggling the access privileges using Tag Filtering.  This feature helps to set access privileges to clusters controlled using tags, roles, and permissions, Thereby filtering out the Clusters from multiple Projects to be accessible to you with different permissions and operations. 
 
-## Major Steps:
+You need to follow the below steps to control cluster access with Tag Filters:
+
 * [Create Tag Filter](/clusters/cluster-management/cluster-tag-filter#createtagfilter)
 
 
