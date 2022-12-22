@@ -15,7 +15,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette provides intuitive UI-based location monitoring for the clusters running at multiple locations. Palette displays the region set during the cluster creation process for public cloud clusters and the location on the UI Map. The user can set the location for private cloud clusters through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
+Palette provides an intuitive user interface (UI) based on location monitoring for the clusters running at multiple locations. The Palette 
+UI displays the region set during the cluster creation process for public cloud clusters and the location on the UI map. You can set the location for private cloud clusters through the Palette UI. You can also monitor the location details of all the clusters running under a specific scope. 
 
 # Set the Cluster Location
 
