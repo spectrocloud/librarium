@@ -34,11 +34,11 @@ The following are some architectural highlights of the Amazon Web Services (AWS)
 ![A diagram of AWS architecture](clusters_aws_architecture_aws_cluster_architecture.png)
 
 
-# AWS EKS Architecutre
+# AWS EKS Architecture
 
 Palette also supports deploying and managing AWS Elastic Kubernetes Service (EKS) clusters. Review the architectural highlights pertaining to EKS when managed by Palette.
 
-- Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (Gateways, VPCs, Subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
+- Cluster resources such as Virtual Machines (VMs) can be provisioned into an existing infrastructure (gateways, VPCs, subnets etc.) as part of static provisioning as well as new dedicated infrastructure as part of dynamic provisioning.
 
 
 - Palette supports the usage of [EKS Fargate Profiles](https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html).
@@ -77,11 +77,11 @@ Where:
 * For instance type = t3.medium 
 * For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
 * N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
-* In this example, we will need at least two (2) t3.medium instances to reach the minimum of 30 pods threshold.
+* In this example, at least two (2) t3.medium instances are needed to reach the minimum of 30 pods threshold.
 
 When setting the desired size of the worker pool, make the choice as per pod requirement. In the example provided, two instances of t3.medium are needed to satisfy the resource requirement of an EKS cluster.
 
 
 ## Spot Instances
 
-By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify Spot instances when creating a cluser. The **On-Spot** option can be selected in the node config page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
+By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify spot instances when creating a cluster. The **On-Spot** option can be selected in the node config page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.

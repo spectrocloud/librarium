@@ -28,10 +28,13 @@ To learn more about Palette and AWS clusters, check out the following resources:
 - [Create and Manage AWS IaaS Cluster](/clusters/public-cloud/aws/create-cluster)
 
 
-- [Create and Manage AWS IaaS Cluster](/clusters/public-cloud/azure/create-azure-cluster#deployinganazurecluster)
+- [Create and Manage AWS EKS Cluster](/clusters/public-cloud/aws/eks)
 
 
-- [Cluster Management Day Two Opeartions](/clusters/public-cloud/aws/eks)
+- [Cluster Management Day Two Operations](/clusters/cluster-management)
 
 
 - [AWS Architecture](/clusters/public-cloud/aws/architecture)
+
+
+- [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies)

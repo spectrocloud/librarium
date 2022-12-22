@@ -47,7 +47,7 @@ To add an AWS cloud account using access credentials follow the steps below:
 2. In the AWS console, assign the Palette required IAM policies to the role or the IAM user that Palette will use.
 
 
-3. Log in to [Palette](https://console.spectrocloud.com) as Tenant Admin.
+3. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 
 4. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add AWS Account**.
@@ -79,10 +79,6 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 <Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="Using the Security Token Service (STS) Method">
 
-<!-- The following video demonstrates how to create an IAM Role in AWS and attach the four necessary policies.
-
-`video: title: "AWS-Cloud-Account": /cloud-accounts/aws-sts.mp4` -->
-
 To add an AWS cloud account using STS credentials follow the steps below:
 
 ## Prerequisites
@@ -94,7 +90,7 @@ To add an AWS cloud account using STS credentials follow the steps below:
 
 ## Add AWS Account to Palette
 
-1. Log in to [Palette](https://console.spectrocloud.com) as Tenant Admin.
+1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 
 2. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add AWS Account**.
@@ -128,7 +124,7 @@ To add an AWS cloud account using STS credentials follow the steps below:
 7. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
 
 
-8. In Palette, paste the role arn into the **ARN** input box. 
+8. In Palette, paste the role ARN into the **ARN** input box. 
 
 
 9. Click the **Validate** button to validate the credentials.
@@ -151,9 +147,9 @@ You can validate the account is available in Palette by reviewing the list of cl
 Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. To get started with AWS GovClud and Palette, use the following steps.
 <br />
 
-<Tabs>
+<!-- <Tabs>
 
-<Tabs.TabPane tab="Using the Access Credentials Method" key="GovCloud Using the Access Credentials Method">
+<Tabs.TabPane tab="Using the Access Credentials Method" key="GovCloud Using the Access Credentials Method"> -->
 
 
 
@@ -175,7 +171,7 @@ To add an AWS GovCloud cloud account using the access credentials method follow 
 2. In the AWS console, assign the Palette required IAM policies to the role or the IAM user that Palette will use.
 
 
-3. Log in to [Palette](https://console.spectrocloud.com) as Tenant Admin.
+3. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 
 4. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add AWS Account**.
@@ -203,9 +199,9 @@ To add an AWS GovCloud cloud account using the access credentials method follow 
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
 
-</Tabs.TabPane>
+<!-- </Tabs.TabPane> -->
 
-<Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="GovCloud Using the Security Token Service (STS) Method">
+<!-- <Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="GovCloud Using the Security Token Service (STS) Method">
 
 To add an AWS GovCloud cloud account using STS credentials follow the steps below:
 
@@ -218,7 +214,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 ## Add AWS GovCloud Account to Palette
 
-1. Log in to [Palette](https://console.spectrocloud.com) as Tenant Admin.
+1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 
 2. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add AWS Account**.
@@ -260,12 +256,12 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 ## Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections. -->
 
-</Tabs.TabPane>
-</Tabs>
+<!-- </Tabs.TabPane>
+<!-- </Tabs> --->
 
-</Tabs.TabPane>
+</Tabs.TabPane> 
 
 
 </Tabs>
@@ -273,4 +269,4 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 # Next Steps
 
-Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, check out the [Create and Manage AWS Iaas Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS EKS Cluster](/clusters/public-cloud/aws/eks) guide.
+Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, check out the [Create and Manage AWS IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS EKS Cluster](/clusters/public-cloud/aws/eks) guide.

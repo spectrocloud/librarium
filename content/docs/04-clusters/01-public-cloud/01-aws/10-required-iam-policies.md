@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Required IAM Policies
 
-Palette requires proper AWS permissions in order to operate and perform actions on your behalf.
+Palette requires proper Amazone Web Services (AWS) permissions in order to operate and perform actions on your behalf.
 The following four policies include all the required permissions for provisioning clusters through Palette:
 
 <br />
@@ -25,7 +25,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Controller Policy 
 
-**Last Update**: December 16th, 2022
+**Last Update**: December 16, 2022
 
 ``` json
 {
@@ -357,7 +357,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Control Plane Policy 
 
-**Last Update**: May 2nd, 2021
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -442,7 +442,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Nodes Policy 
 
-**Last Update**: May 2nd, 2021
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -504,7 +504,7 @@ The following four policies include all the required permissions for provisionin
 
 ### Deployment Policy 
 
-**Last Update**: May 2nd, 2021
+**Last Update**: May 2, 2021
 
 ``` json
 {
@@ -823,7 +823,7 @@ The following are important points to be aware of.
 
 # Global Role Additional Policies:
 
-There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a Host cluster with the **AWS EBS CSI** storage layer, ensure `AmazonEBSCSIDriverPolicy` is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional ARNs to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
+There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 <br />
 

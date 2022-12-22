@@ -12,7 +12,7 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-# Create and Manage AWS Iaas Cluster
+# Create and Manage AWS IaaS Cluster
 
 Palette supports creating and managing Kubernetes clusters deployed to an AWS account. This section guides you on how to create a Kubernetes cluster in AWS that is managed by Palette.
 
@@ -69,7 +69,7 @@ Use the following steps to provision a new AWS cluster:
 5. Select **AWS** and click on **Start AWS Configuration**
 
 
-6. Populate the wizard page with the following informaton: name, description, tagsm and AWS account. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments. Click on **Next** after you have filled out all the required information.
+6. Populate the wizard page with the following information: name, description, tags and AWS account. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments. Click on **Next** after you have filled out all the required information.
 
 
 7. Select a cluster profile. Click on **Next**.
@@ -82,9 +82,9 @@ Use the following steps to provision a new AWS cluster:
 
     |**Parameter**| **Description**|
     |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
+    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
+    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Network**: Select the virtual network from dropdown menu.
     ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
@@ -94,7 +94,7 @@ Use the following steps to provision a new AWS cluster:
 10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
 
 
-11. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the avaiability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes.
+11. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes.
 
 <InfoBox>
 
@@ -127,9 +127,9 @@ You can add new worker pools if you need to customize certain worker nodes to ru
     
 15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take serveral minutes.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deploment progress.
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
 # Validate

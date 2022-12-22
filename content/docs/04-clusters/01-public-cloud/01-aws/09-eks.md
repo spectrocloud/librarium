@@ -67,7 +67,7 @@ Use the following steps to provision a new AWS EKS cluster:
 5. Select **AWS** and click on **Start AWS Configuration**
 
 
-6. Populate the wizard page with the following informaton: name, description, tagsm and AWS account. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments. Click on **Next** after you have filled out all the required information.
+6. Populate the wizard page with the following information: name, description, tags and AWS account. Tags on a cluster are propagated to the VMs deployed to the target environments. Click on **Next** after you have filled out all the required information.
 
 7. Selected **Managed Kubernetes** and click on your cluster profile that supports AWS EKS. Click on **Next**.
 
@@ -79,10 +79,10 @@ Use the following steps to provision a new AWS EKS cluster:
 
     |**Parameter**| **Description**|
     |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be preconfigured in project settings.|
+    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be preconfigured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
+    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
     |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
     |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
@@ -92,14 +92,14 @@ Use the following steps to provision a new AWS EKS cluster:
 10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
 
 
-11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the avaiability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
+11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
 
     |**Parameter**| **Description**|
     |-------------|----------------|
     |**Name** | A descriptive name for the node pool.|
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](/clusters/public-cloud/aws/architecture#awsinstancetypeandpodcapacity) documentation for help in determining the proper instance type and size. |
     |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
-    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable Labels to constrain a Pod to only run on a particular set of Node(s)|
+    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
     |**Instance Type** | Select the AWS [instance type](/clusters/public-cloud/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
     
   * Cloud Configuration settings:
@@ -148,9 +148,9 @@ You can add new worker pools if you need to customize certain worker nodes to ru
     
 15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning an AWS EKS clusters can take serveral minutes.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning an AWS EKS clusters can take several minutes.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deploment progress.
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
 # Validate
@@ -225,8 +225,8 @@ a defense-in-depth security strategy to protect the sensitive data  such as pass
 ## Prerequisites
 
 * KMS key created in the AWS account.
-* Key Type: Symmetric
-* Permitted Operations: Encrypt and Decrypt
+* KMS key is of the type symmetric.
+* KMS key policy permits the following actions; encrypt and decrypt.
 
 ## Configure KMS:
 

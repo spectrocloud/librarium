@@ -34,7 +34,7 @@ To learn more about Palette and Azure cluster creation and its capabilities chec
 - [Force Delete a Cluster](/clusters/public-cloud/azure/create-azure-cluster#forcedeleteacluster)
 
 
-- [Cluster Management Day Two Opeartions](/clusters/cluster-management)
+- [Cluster Management Day Two Operations](/clusters/cluster-management)
 
 
 - [Azure Architecture](/clusters/public-cloud/azure/architecture)
