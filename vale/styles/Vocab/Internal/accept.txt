@@ -48,3 +48,4 @@ AZs
 VMs
 IaaS
 autoscaling
+Tencent
