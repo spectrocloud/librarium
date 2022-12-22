@@ -47,3 +47,4 @@ subnet
 AZs
 VMs
 IaaS
+autoscaling

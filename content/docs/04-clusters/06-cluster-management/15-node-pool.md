@@ -33,7 +33,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 
 5. Click on **New Node Pool**. 
 
-6. Fill out the input fields in the **Add node pool** page. The following table contains an explenation of the available input parameters.
+6. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
  
 
 |**Parameter**     | **Description**|
@@ -42,7 +42,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
 |**Allow worker capability (master pool)**|Select this option for allowing workloads to be provisioned on master nodes.|
 |**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
-|**Rolling Update**| There are two choices of Rolling Update. Review the [Update Parameter](#update-parameter-table) table below for more details.
+|**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes across availability zones if multiple zones are selected.|
 
 ### Update Parameter Table

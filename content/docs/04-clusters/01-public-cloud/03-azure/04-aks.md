@@ -19,7 +19,7 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 Azure clusters can be created under the following scopes:
 
-* Tenant Admin
+* Tenant admin
 
 * Project Scope - This is the recommended scope.
 

@@ -84,4 +84,4 @@ When setting the desired size of the worker pool, make the choice as per pod req
 
 ## Spot Instances
 
-By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify spot instances when creating a cluster. The **On-Spot** option can be selected in the node config page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
+By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify spot instances when creating a cluster. The **On-Spot** option can be selected in the node configuration page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.

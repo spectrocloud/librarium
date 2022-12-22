@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Required IAM Policies
 
-Palette requires proper Amazone Web Services (AWS) permissions in order to operate and perform actions on your behalf.
+Palette requires proper Amazon Web Services (AWS) permissions in order to operate and perform actions on your behalf.
 The following four policies include all the required permissions for provisioning clusters through Palette:
 
 <br />

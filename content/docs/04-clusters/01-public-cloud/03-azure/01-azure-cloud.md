@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Register an Azure Cloud Account
 
-Palette supports deploy and managing Kubernetes clusters deploye to an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
+Palette supports deployment and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
 
 ## Video Demonstration
 
