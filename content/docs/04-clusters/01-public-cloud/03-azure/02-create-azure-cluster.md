@@ -38,9 +38,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
 
-4. A custom storage account and storage container (optional for specific use cases) is created in the Azure console.
-
-Note: The storage account and container must be created within the same resource group as the Azure cluster.
+4. A custom storage account and storage container (optional for specific use cases) is created in the Azure console. The storage account and container must be created within the same resource group as the Azure cluster.
 
 ## Video Demonstration
 
@@ -132,7 +130,8 @@ While deploying the Azure cluster, Palette creates a storage account and copies 
 
 ### Use Cases
 
-You want to have a custom storage account to be used for the following reasons:
+You want to have a custom storage account for the following reasons:
+
 * The use of a storage account with a custom name
 * A storage account with restricted access
 
@@ -140,19 +139,22 @@ During Azure cluster provisioning, Palette allows linking custom storage account
 
 ### Cases
 
-The above scenario can take the following three cases:
+The following are steps to address common scenarios related to Azure cluster storage.
 
-**Case 1: Default Storage Account and Storage Containers:**
+**Usecase: Default Storage Account and Storage Containers:**
+
 
 If the user leaves this optional field empty, Palette will create a storage account and storage container. The base VHD image is copied to this default storage container created to the storage account.
 
 
-**Case 2: Providing custom storage account and storage container**
+**Usecase: Provide custom storage account and storage container**
+
 
 Create a storage account and container in the Azure console. Palette will import the created storage and container; you can select and input them from the drop-down menu.
 
 
-**Case 3: Provide only the custom Azure storage account**
+**Usecase: Custom Azure storage account**
+
 
 Create a storage account in the Azure console and attach it to the cluster deployment wizard. Palette will create and select the default container to store the base VHD image.
 
