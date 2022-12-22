@@ -39,3 +39,12 @@ GKE
 admin
 Autoscaler
 autoscaler
+Fargate
+VPC
+VPCs
+subnets
+subnet
+AZs
+VMs
+IaaS
+autoscaling
