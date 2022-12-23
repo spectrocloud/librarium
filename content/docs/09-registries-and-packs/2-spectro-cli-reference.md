@@ -33,7 +33,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <Tabs.TabPane tab="OSX" key="osx_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro
+    wget https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro
     ```
     
     </Tabs.TabPane>
@@ -41,7 +41,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <Tabs.TabPane tab="Linux" key="linux_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v3.1.0/linux/spectro
+    wget https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro
     ```
     
     </Tabs.TabPane>
@@ -343,7 +343,7 @@ Check the version of the Spectro CLI Tool that is currently installed.
 
 ```bash
  spectro  version
-Spectro Cli Version 3.1.0 linux/amd64
+Spectro Cli Version 1.7.0 linux/amd64
 ```
 
 </Tabs.TabPane>
