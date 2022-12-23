@@ -47,11 +47,11 @@ Palette Edge Platform provides two solutions for edge, designed to support large
 
 <br />
 
-### Native Edge
+### Edge Native
 
 Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS and K8s is installed natively onto the devices. Palette Management Console manages the day-1 installation as well as all the day-2 activities, such as scaling, upgrades, reconfiguration, etc.
 
-Palette's native edge solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
+Palette's edge native solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
 
 ### Virtualized Edge
 

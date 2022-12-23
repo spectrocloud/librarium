@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Register an Azure Cloud Account
 
-To deploy the Azure Clusters in the Palette Platform, having the Azure Cloud Account registered to the Palette Platform is a significant prerequisite. This section guides you on creating an Azure cloud account in the Palette console.
+Palette supports deployment and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
 
 ## Video Demonstration
 

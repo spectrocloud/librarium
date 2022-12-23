@@ -44,4 +44,10 @@ You can verify the cleaning process by running the following command on non-VIP 
 watch ip -statistics neighbour
 ```
 
+
+## Secnario - EKS Cluster Worker Pool Failures
+
+If your EKS cluster  worker pool ends up in `Failed` or `Create Failed` or `Error nodes failed to join` state, please refer to this [Amazon provided Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
+)
+
 <br />

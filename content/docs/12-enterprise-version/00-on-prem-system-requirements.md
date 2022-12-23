@@ -383,7 +383,7 @@ The size of the Tenant Cluster, in terms of the number of nodes or size of the n
 
 | **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
 | ---------------------- | ------------------------------------------- | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
-| **Small**              | 4                                           | 1000          | 4        | 8 GB       | 60 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
+| **Small**              | 4                                           | 1000          | 4        | 8 GB       | 80 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
 | **Medium(Default)**    | 8                                           | 3000          | 8        | 16 GB      | 120 GB      | 60 GB, 2 CPU, 4 GB Mem | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
 | **Large**              | 12                                          | 5000          | 12       | 32 GB      | 150 GB      | 80 GB, 2 CPU, 6 GB Mem | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
 

@@ -210,28 +210,17 @@ While configuring the Operating System layer of the TKE cluster profile, configu
 
 <WarningBox>
 
-While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and also are in multiples of 10 (10,20,30 …).
+While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in multiples of 10.
 
 Example:
 
 ```yaml
-## Enable persistence using Persistent Volume Claims
-     ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-     ##
-     master:
-       persistence:
-         enabled: true
-         ## mariadb data Persistent Volume Storage Class
-         ## If defined, storageClassName: <storageClass>
-         ## If set to "-", storageClassName: "", which disables dynamic provisioning
-         ## If undefined (the default) or set to null, no storageClassName spec is
-         ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-         ##   GKE, AWS & OpenStack)
-         ##
-         # storageClass: "-"
-         accessModes:
-           - ReadWriteOnce
-         size: 20Gi
+master:
+persistence:
+    enabled: true
+    accessModes:
+    - ReadWriteOnce
+    size: 20Gi
 ```
 
 </WarningBox>
@@ -240,6 +229,9 @@ Example:
 
     |**Parameter** | **Description**|
     |--------------|----------------|
+    |  **Cloud Account**| Select the desired cloud account. 
+    | **Tencent Cloud Accounts** | The Tencent credentials need to be pre-configured in the **Project**/**Tenant Admin** settings.
+    ||**Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**. |
     | **Region** | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.
     | **SSH Key Pair Name**| Choose the desired SSH keypair. You must preconfigure SSH key pairs on TKS for the desired regions. The selected key is inserted into the provisioned VMs.
     | **VPCID**|The ID of the Virtual Private Cloud (VPC) that the stack is to be launched into. The VPC must be in the specified region. All cluster instances will be launched into this VPC. |
@@ -256,13 +248,7 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
 6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
 
 
-7. Configure one or more worker node pools. A single worker node will be configured by default.
-
-    |**Parameter**| **Description**|
-    |-------------|----------------|
-    | **Name** |A descriptive name for the node pool.
-    | **Size** | Make your choice of minimum, maximum, and desired <br />sizes for the worker pool. The size of the worker pool will <br />scale between the minimum and maximum size, under <br />varying workload conditions.
-    | **Instance type** | Select the Tencent Instance Type for the nodes <br />in the node pool with availability zones and disk size.|
+7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
     
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
@@ -290,7 +276,7 @@ The deletion of a Tencent cluster results in the removal of all Virtual Machines
 
 The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
 
-# Force Delete a Cluster
+## Force Delete a Cluster
 
 In Tenant Admin and Project Admin scope, Palette allows you to force the deletion of a cluster that's been stuck in **Deletion** state for a minimum of **15 minutes**.
 

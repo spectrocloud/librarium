@@ -1,7 +1,7 @@
 ---
-title: "Registries and packs"
-metaTitle: "Registries and packs"
-metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make Kubernetes truly yours."
+title: "Registries and Packs"
+metaTitle: "Registries and Packs"
+metaDescription: "Learn about Packs, how to use and combine Packs, and how to create your Pack ."
 icon: "nodes"
 hideToC: false
 fullWidth: false
@@ -57,5 +57,5 @@ Spectro CLI is currently available in two platforms - OSX & Linux:
 
 |**OS**  |**Download Site**  |
 |---------|---------|
-|OSX     |   https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro     |
-|Linux   |   https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro      |
+|OSX     |   https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro     |
+|Linux   |   https://spectro-cli.s3.amazonaws.com/v3.1.0/linux/spectro      |
