@@ -55,7 +55,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 |**Allow worker capability **|Select this option for allowing workloads to be provisioned on master nodes.|
 |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
-|**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Give the required storage size|
 
@@ -70,7 +70,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 |**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
 |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
-|**Instance type** |Select the AWS instance type to be used for all nodes in the node pool.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Provide the required storage size
  
