@@ -19,8 +19,7 @@ The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Regi
 
 # Prerequisites
 
-1. The Spectro CLI tool must be installed.
-2. A custom pack registry server must be up and running.
+1. A custom pack registry server must be up and running.
 
 # Installation
 
