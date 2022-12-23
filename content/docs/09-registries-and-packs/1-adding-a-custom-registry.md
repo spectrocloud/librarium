@@ -122,7 +122,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
             -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
             -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-            spectro-registry:3.0.0
+            spectro-registry:3.1.0
           ```
     
 <br />
@@ -148,7 +148,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
                 -e  REGISTRY_AUTH=htpasswd \
                 -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
                 -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-                spectro-registry:3.0.0
+                spectro-registry:3.1.0
         ```
 
 <br />
