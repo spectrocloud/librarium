@@ -76,7 +76,7 @@ To enable Project scope FIPS compliance
 * Click **Platform Settings** and toggle **Platform FIPS Support** button. 
 
 
-* To disable FIPS support, toggle back the Platform FIPS Support.
+* To disable FIPS support, toggle the **Platform FIPS Support** button .
 
 
 ## Cluster Scope
@@ -98,7 +98,7 @@ The FIPS mode can cover different use cases as below:
 |Only selected projects under a tenant needs to be FIPS enabled| Enable Project FIPS Support for the selected projects|Cluster Scope FIPS|
 |Only cluster scope FIPS to be enabled|Tenant and Project scope are not required| Enable only cluster scope FIPS mode|
    
-**Note:** when platform FIPS supported is enabled, then infra layers must be FIPS complaint.
+**Note:** when platform FIPS supported is enabled, infra layers must be FIPS complaint.
 
 <br />
 
