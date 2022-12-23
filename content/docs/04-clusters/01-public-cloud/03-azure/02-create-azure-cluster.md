@@ -37,7 +37,6 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
-
 ## Video Demonstration
 
 `video: title: "azure-cluster-creation": ../cluster-creation-videos/azure.mp4`
@@ -67,7 +66,7 @@ The following steps need to be performed to provision a new Azure cluster:
 6. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click on **Next**.
 
 
-7. Provide the Azure Cloud account placement information for cluster configuration.
+7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligble for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](/clusters/public-cloud/azure/architecture#azurestorage) page.
 
 
 <WarningBox>
@@ -83,8 +82,8 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
 | **Region** | Select a region in Azure in which the cluster should be deployed.|
 | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
-| **Storage Account** | Optionally provide the storage account.|
-| **Storage Container**| Optionally provide the Azure storage container.|
+| **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases. |
+| **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases.|
 | **SSH Key** | Public key to configure remote SSH access to the nodes.|
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
