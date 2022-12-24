@@ -1,7 +1,7 @@
 ---
 title: "Release Notes"
 metaTitle: "Release Notes"
-metaDescription: "Dates and descriptions of Spectro Cloud releases"
+metaDescription: "Spectro Cloud release notes for Palette and its sub-components."
 icon: "audits"
 hideToC: false
 fullWidth: false
@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # December 25, 2022 - Release 3.1.0
 
-Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause andresume clusters, new services for app profiles, and more. 
+Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, FIPS enablement at the scope level, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause andresume clusters, new services for app profiles, and more. 
 
 ## Palette
 
@@ -25,13 +25,13 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and P
 
 * Palette supporters integration with [AWS GovCloud services](/clusters/public-cloud/aws/add-aws-accounts#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
 * [Autoscaling](/clusters/cluster-management/node-pool#workerpool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
-* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](/compliance#fips140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the Platform Level with the Tenant and Project Scope and Cluster level with FIPS compliant Infra layer cluster profiles.
+* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](/compliance#fips140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
 * Palette supports tagging and the ability to filter user [access]() and [visibility](/clusters/cluster-management/noc-ui#monitoryourclusterlocation) to clusters using tags. 
 * Filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](/clusters/cluster-management/noc-ui#mapfilters) to have a granular view of cluster information.
-* Palette supports App Profile versioning. Versioning enables users to create multiple [versions of an App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) within the scope of a single profile name. 
+* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) within the scope of a single profile name. 
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
-* Palette supports the ability to update an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) with the ability to update the versions and manifests. You can also remove and add app tiers.
-* Palette App Mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
+* Palette supports the ability to update an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). 
+* Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
 * Palette suports [Helm and OCI registries](/devx/registries#custompackregistry) for packs. 
 * Palette supports [out-of-the-box](/devx/app-profile#messagingsystemservices) applications support for services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
