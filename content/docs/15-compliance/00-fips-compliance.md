@@ -1,7 +1,7 @@
 ---
 title: "FIPS Compliance"
 metaTitle: "Certification of FIPS Compliance"
-metaDescription: "Certification of FIPS Compliance"
+metaDescription: "Palette is FIPS certificated. Read to learn more about Palette and its certification of FIPS Compliance"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -25,7 +25,7 @@ Palette complies with FIPS certification, which implies that Palette supports th
 
 **Non-FIPS Mode:** The cluster mode with Palette-enabled security features. 
 
-**FIPS Mode**: Run your clusters with FIPS-compliant Kubernetes versions and Palette components. Palette provisions FIPS-compliant images for this mode of cluster deployment. Platform FIPS support is about enabling FIPS support at Tenant and Project scope. The cluster scope FIPS support is about deploying FIPS-enabled infra layers for the Palette cluster profiles. When platform FIPS support is enabled, infra layers must be FIPS compliant.
+**FIPS Mode**: Run your clusters with FIPS-compliant Kubernetes versions and Palette components. Palette provisions FIPS-compliant images for all cluster deployments. Platform FIPS support is about enabling FIPS support at the Tenant and Project scope. The cluster scope FIPS support is about deploying FIPS-enabled infra layers for the Palette cluster profiles. When platform FIPS support is enabled, infra layers must be FIPS compliant.
 
 # Configure FIPS for Cluster Deployment
 
@@ -47,11 +47,10 @@ To provide FIPS compliance for Palette platform internal components, you must en
 
 <br />
 
-### Enable Tenant Platform FIPS Support
 
 To enable Tenant Scope FIPS compliance:
 
-* Log in to Palette as Tenant Admin and go to **Tenant Settings** from the left main menu.
+* Log in to Palette as Tenant Admin and go to **Tenant Settings** from the left **Main Menu**.
 
 
 * Click **Platform Settings** and toggle **Platform FIPS Support** button. 
@@ -66,7 +65,6 @@ You can enable FIPS Mode for individual projects. This can be achieved by enabli
 
 <br />
 
-### Enable Project Platform FIPS Support
 
 To enable Project scope FIPS compliance
 
@@ -81,18 +79,17 @@ To enable Project scope FIPS compliance
 
 ## Cluster Scope
 
-Cluster scope FIPS mode provides FIPS-compliant Palette infrastructure layers. Palette supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for the cluster profiles. Cluster scope FIPS compliance is all about infra-layer FIPS compliance.
+Cluster scope FIPS mode provides FIPS-compliant Palette infrastructure layers. Palette supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for the cluster profiles.
 
 <br/>
 
-### Enable Cluster FIPS Support
 
-To enable cluster-level FIPS mode while [creating cluster profile](/cluster-profiles/task-define-profile) add the layers from the FIPS-compliant pack registry. To get access to the FIPS registry, contact [Contact Spectro support via the Service Desk](https://spectrocloud.atlassian.net/servicedesk/customer/portals).
-## Use Case Scenarios
+To enable cluster-level FIPS mode while [creating cluster profile](/cluster-profiles/task-define-profile) add the layers from the FIPS-compliant pack registry. To access the FIPS registry, [contact Spectro Cloud support](https://spectrocloud.atlassian.net/servicedesk/customer/portals).
+## Use Cases
 
 The FIPS mode can cover different use cases as below:
 
-|Use Cases | Enable   | Mandatory Condition|
+|Use Cases | FIPS Mode   | Mandatory Condition|
 |----------|--------------|--------------|                 
 |All the projects under a tenant needs to be in FIPS mode | Tenant FIPS Support|Cluster Scope FIPS |
 |Only selected projects under a tenant needs to be FIPS enabled| Enable Project FIPS Support for the selected projects|Cluster Scope FIPS|
@@ -102,15 +99,15 @@ The FIPS mode can cover different use cases as below:
 
 <br />
 
-<InfoBox>
+<WarningBox>
 
-The platform FIPS (Tenant and Project scope) can be **disabled or enabled** during cluster creation.  Toggle the **FIPS Mode** button while creating the cluster configurations of cluster deployment.
+FIPS enablement at the tenant or project scope can be disabled or enabled during cluster creation.  Toggle the **FIPS Mode** button while creating the cluster configurations of cluster deployment.
 
-</InfoBox>
+</WarningBox>
 
-### Clouds Supported:
+### Platforms Supported:
 
-Palette supports the following Clusters with FIPS compliance:
+Palette supports FIPS compliance for the following platforms:
 
 * AWS
 * VMware
