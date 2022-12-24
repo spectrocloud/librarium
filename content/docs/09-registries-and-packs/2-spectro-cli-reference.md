@@ -338,11 +338,11 @@ PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 
 ## VERSION
 
-Check the version of the Spectro CLI Tool that is currently installed.
+Check the version of the Spectro CLI that is currently installed.
 
 ```bash
  spectro  version
-Spectro Cli Version 1.7.0 linux/amd64
+Spectro ClI Version 1.7.0 linux/amd64
 ```
 
 </Tabs.TabPane>
