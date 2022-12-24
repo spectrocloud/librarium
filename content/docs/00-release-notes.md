@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # December 25, 2022 - Release 3.1.0
 
-Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause/resume clusters, new services for app profiles, and more. 
+Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause andresume clusters, new services for app profiles, and more. 
 
 ## Palette
 
@@ -32,15 +32,15 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and P
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
 * Palette supports the ability to update an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) with the ability to update the versions and manifests. You can also remove and add app tiers.
 * Palette App Mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages the [Helm and OCI registries](/devx/registries#custompackregistry) to configure, store and service packs. 
+* Palette suports [Helm and OCI registries](/devx/registries#custompackregistry) for packs. 
 * Palette supports [out-of-the-box](/devx/app-profile#messagingsystemservices) applications support for services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 ### Enhancements:
 
-* [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) support allows clusters to reboot to apply system updates if required.
+* [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) allows clusters to reboot to apply system updates if required.
 
-* Palette Tencent Clusters now support using [security groups](/clusters/public-cloud/tke#deployatencentcluster) for network isolation and improved security.
+* Palette Tencent clusters now support using [security groups](/clusters/public-cloud/tke#deployatencentcluster) for network isolation and improved security.
 
 * Reduced launch time when creating Palette Virtual Clusters.
 
