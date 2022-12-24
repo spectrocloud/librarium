@@ -19,8 +19,7 @@ The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Regi
 
 # Prerequisites
 
-1. The Spectro CLI tool must be installed.
-2. A custom pack registry server must be up and running.
+- A custom pack registry server must be up and running.
 
 # Installation
 
@@ -339,11 +338,11 @@ PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 
 ## VERSION
 
-Check the version of the Spectro CLI Tool that is currently installed.
+Check the version of the Spectro CLI that is currently installed.
 
 ```bash
  spectro  version
-Spectro Cli Version 3.1.0 linux/amd64
+Spectro ClI Version 3.1.0 linux/amd64
 ```
 
 </Tabs.TabPane>
