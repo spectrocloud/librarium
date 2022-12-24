@@ -37,7 +37,7 @@ Spectro Cloud is certified against SOC2 Type II, compliance with the AICPA’s (
 ## FIPS 140-2
 
  
-![FIPS-Compliance](compliance_FIPS.png "#width=180px")
+![FIPS-Compliance](docs_compliance_compliance_fips-logo.png "#width=180px")
 
 Spectro Cloud is certified against FIPS 140-2 with [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in compliance with the Cryptographic Module Validation Program (CMVP).  
 
@@ -50,5 +50,8 @@ The module is tested against these configurations:
 * Ubuntu 18.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 * Ubuntu 20.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 
+Review the [FIPS Compliance](/compliance/fips-compliance) page to learn how to enable FIPS mode in Palette.
+
+<br />
 
 

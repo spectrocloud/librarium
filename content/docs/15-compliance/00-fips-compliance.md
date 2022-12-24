@@ -17,19 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Federal Information Processing Standards (FIPS) 140-2 is a mandatory standard for protecting sensitive and valuable data within federal systems. FIPS 140-2 is a National Institute of Standards and Technology (NIST) publication that lists security requirements for cryptographic modules protecting sensitive but unclassified information in computer and telecommunications systems. In addition, it applies to not only cryptographic hardware components and modules but also software and firmware programs and modules. 
+Palette complies with FIPS certification and supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for enhanced security for your mission-critical workload. You can enable FIPS mode for Palette at three scopes: tenant, project, or cluster scope. 
 
-
-## Palette FIPS
-Palette complies with FIPS certification, which implies that Palette supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for enhanced security for your mission-critical workload. You can run Palette clusters in two modes. 
-
-**Non-FIPS Mode:** The cluster mode with Palette-enabled security features. 
-
-**FIPS Mode**: Run your clusters with FIPS-compliant Kubernetes versions and Palette components. Palette provisions FIPS-compliant images for all cluster deployments. Platform FIPS support is about enabling FIPS support at the Tenant and Project scope. The cluster scope FIPS support is about deploying FIPS-enabled infra layers for the Palette cluster profiles. When platform FIPS support is enabled, infra layers must be FIPS compliant.
-
-# Configure FIPS for Cluster Deployment
-
-You can apply FIPS compliance at three levels to Palette:
+Platform FIPS enables FIPS support at the **Tenant** and **Project** scope. The cluster scope FIPS support is for deploying FIPS-enabled infrastructure layers for [cluster profiles](/cluster-profiles). When platform FIPS support is enabled you must ensure the infrastructure layers is FIPS compliant.
 
 <br />
 
@@ -43,46 +33,46 @@ You can apply FIPS compliance at three levels to Palette:
 
 ## Tenant Scope
 
-To provide FIPS compliance for Palette platform internal components, you must enable FIPS mode at the Tenant level. The Tenant-level compliance covers all the projects under the tenant.
+To enable FIPS compliance for Palette's platform internal components, you must enable FIPS mode at the Tenant level. The tenant level compliance covers all the projects under the tenant.
 
 <br />
 
 
 To enable Tenant Scope FIPS compliance:
 
-* Log in to Palette as Tenant Admin and go to **Tenant Settings** from the left **Main Menu**.
+1. Log in to Palette as Tenant Admin and go to **Tenant Settings** from the left **Main Menu**.
 
 
-* Click **Platform Settings** and toggle **Platform FIPS Support** button. 
+2. Click **Platform Settings** and toggle **Platform FIPS Support** button. 
 
 
-* To disable FIPS support, toggle back the Platform FIPS Support.
+If you need to disable FIPS support, toggle back the **Platform FIPS Support** button.
 
 
 ## Project Scope
 
-You can enable FIPS Mode for individual projects. This can be achieved by enabling FIPS at the Project Platform scope.
+You can enable FIPS Mode for individual projects. This can be achieved by enabling FIPS at the project scope.
 
 <br />
 
 
 To enable Project scope FIPS compliance
 
-* Log in to Palette as Project Admin and go to **Project Settings** from the left main menu.
+1. Log in to Palette as Project Admin and go to **Project Settings** from the left main menu.
 
 
-* Click **Platform Settings** and toggle **Platform FIPS Support** button. 
+2. Click **Platform Settings** and toggle **Platform FIPS Support** button. 
 
 
-* To disable FIPS support, toggle the **Platform FIPS Support** button .
+If you need to disable FIPS support, toggle back the **Platform FIPS Support** button.
 
 
 ## Cluster Scope
 
-Cluster scope FIPS mode provides FIPS-compliant Palette infrastructure layers. Palette supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for the cluster profiles.
+Cluster scope FIPS mode provides FIPS-compliant Palette infrastructure layers. Palette supports the FIPS-compliant versions of Kubernetes (PXK and PXK-E) for the cluster profiles. Clusters by default run with Palette-enabled security features. When clusters are enabled in FIPS mode the cluster is deployed with FIPS-compliant Kubernetes versions and Palette components. Palette provisions FIPS-compliant images for all cluster deployments.
+
 
 <br/>
-
 
 To enable cluster-level FIPS mode while [creating cluster profile](/cluster-profiles/task-define-profile) add the layers from the FIPS-compliant pack registry. To access the FIPS registry, [contact Spectro Cloud support](https://spectrocloud.atlassian.net/servicedesk/customer/portals).
 ## Use Cases
@@ -113,14 +103,3 @@ Palette supports FIPS compliance for the following platforms:
 * VMware
 
 <br />
-
-<br />
-
-
-
-
-
-
-
-
-
