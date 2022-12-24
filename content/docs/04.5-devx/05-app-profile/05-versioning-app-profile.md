@@ -147,7 +147,7 @@ To apply updates to an App follow the below steps:
 5. Navigate to the left **Main Menu** and click on **Apps**
 
 
-5. On the App page, apps eligble for an update will have an **Updates Available** badge.
+5. On the App page, apps eligible for an update will have an **Updates Available** badge.
 
 
 * Click on the App with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
