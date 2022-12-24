@@ -1,7 +1,7 @@
 ---
-title: "App Profile Versioning and Updates"
-metaTitle: "Palette Dev Engine App Profile Versioning and Updates"
-metaDescription: "App Profile Versioning and Updates for Palette Dev Engine"
+title: "App Profile Versioning"
+metaTitle: "Palette Dev Engine App Profile Versioning"
+metaDescription: "Learn about App Profile Versioning, what it is, how to create a version, and how to manage a version."
 hideToC: false
 fullWidth: false
 ---
@@ -48,27 +48,54 @@ The following attributes are non-editable during versioning:
  
 </InfoBox>
 
+
 # Apply Version to a Profile
 
 
-* Select the App Profile to be versioned.
+## Prerequisites 
+
+- An App Profile
+
+## Create Version
+
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
 
-* From the **Drop Down** menu next to the App Profile name, select the **Create New Version**.
+2. Select the **App Profiles** option from the left **Main Menu**.
 
 
-* Give the version number per the semantic format described above.
+3. Select the App Profile to be versioned.
 
 
-* Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
+4. From the drop-down menu next to the App Profile name, select the **Create New Version**.
 
 
-* The App Profile list will display the new version of the App Profile. Users can select the App Profile by selecting the name and version number for deployments.
+5.  Give the version number per the semantic format described above.
 
+
+6.  Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
+
+## Validation
+
+To validate the App Profile is versioned and available in the target project conduct the following steps:
+
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+
+
+2. Select the **App Profiles** option from the left **Main Menu**.     
+
+
+3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
 
 # Delete an App Profile
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+## Prerequisites 
+
+- An App Profile
+
+## Delete Profile
+
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.
@@ -77,58 +104,68 @@ The following attributes are non-editable during versioning:
 3. This page will list all the App Profiles available to you. Select the App Profile to be deleted.
 
 
-4. From the drop-down next to the App Profile Name, select the version to be deleted and click **Delete** to delete the profile successfully.
+4. From the drop-down menu next to the App Profile Name, select the version to be deleted and click **Delete** to delete the profile.
 
 
 5. The selected App Profile version will be deleted. 
 
-# Validation
+## Validation
 
 
-To validate the App Profile is versioned and available in the target project conduct the following steps:
+To validate the App Profile is removed and not available in the target project, conduct the following steps:
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode)
-
-
-2. Select the **App Profiles** option from the left **Main Menu**.     
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
 
-3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
+2. Select the **App Profiles** option from the left **Main Menu**.   
 
 
-# App Profile Updates
+3. Verify the app profile is not in the list of available profiles.
 
-Through the App Profile, you can initiate fundamental changes to the App definition, such as version updates, manifest updates, app tier deletion, and app tier addition. These include both manual and system updates.
 
-These changes result in update notifications on all the Apps that are instantiated from that App Profile. Update notifications include information about all the changes applied to the profile since the initial installation or the previous update. You can apply the update to the Apps individually at any time.
+# Update an App Profile
+
+You can make changes to the app profile, such as version updates, manifest updates, app tier additions and removals.
+
+App Profile changes will generate an update notification on all the Apps that are created from  the app profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply the update to the Apps individually at any time.
 
 # Apply Updates to the App
 
 To apply updates to an App follow the below steps:
 
-* Navigate to the app profiles page and choose the profile to be updated.
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
 
-* Make the desired changes. You can add/delete layers, change pack versions, change pack values, etc. and save your changes.
+2. Select the **App Profiles** option from the left **Main Menu**.
 
 
-* On the App page, observe the ‘Updates Available’ tag on every previously launched App if it uses the updated app profile.
+3. This page will list all the App Profiles available to you. Select the App Profile you want to update.
 
 
-* Click on the App with the update notification to invoke the  **Apply** updates wizard. Click **Apply** button.
+4. Make the desired changes. You can add or delete layers, change pack versions, change pack values, etc. and save your changes.
+
+5. Navigate to the left **Main Menu** and click on **Apps**
 
 
-* An **Apply Updates** wizard opens with the update notification. The notification will give details of the updates to the applied. You can click the **Confirm**button to apply the updates to the App.
+5. On the App page, apps eligble for an update will have an **Updates Available** badge.
 
-# Validation
 
-To validate that the App profile updates are available in the target App, conduct the following steps:
+* Click on the App with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+
+* An **Apply Updates** wizard will open up with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
+
+## Validation
+
+To validate that the App profile updates are implemented on the target app, conduct the following steps:
+
+1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
 
 2. Select the **Apps** option from the left **Main Menu**.
 
 
-3. This page will list all the Apps. Click open the updated App to see the App profile details, which will include the applied updates.
-the applied updates.
+3. This page will list all the Apps. Click open the updated App.
+
+
+4.  Review the app profile details, which will include the applied updates.
