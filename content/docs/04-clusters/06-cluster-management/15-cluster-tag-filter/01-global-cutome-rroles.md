@@ -133,10 +133,7 @@ A UI pop-up message will confirm the successful creation of the new custom resou
 # Validation
 
 
-* To validate the role creation go to the **Roles** tab from the left main menu
-
-
-*  Click on **Resource Roles** tab to find the new role name listed.
+* To validate the role creation go to the **Roles** tab from the left main menu and click on **Resource Roles** tab to find the new role name listed.
 
 
 # Edit and Delete Role
