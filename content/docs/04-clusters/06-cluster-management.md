@@ -62,7 +62,7 @@ The following sections describe these capabilities in detail:
 
 * [NOC UI](/clusters/cluster-management/palette-lock-cluster) - Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
 
-
+* [Palette Access Control]() - Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing users' and roles' access to clusters by assigning tags. Tags can be used to cluster together, allowing you to apply access controls to the tag rather than to each cluster, user, or role, reducing the overhead of managing access controls for individual users and clusters.
 
 <InfoBox>
 Palette supports new and existing clusters across public and private clouds. Furthermore, in public clouds, Palette supports managed Kubernetes cluster services such as EKS, AKS, etc. The capabilities described above may not be available for all cluster types or may work slightly different in some cluster types. Relevant sections will highlight these exceptions.
