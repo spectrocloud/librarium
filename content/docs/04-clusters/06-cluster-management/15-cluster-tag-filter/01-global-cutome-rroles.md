@@ -29,7 +29,7 @@ The page encompasses the Palette Resource Roles. We support two broad classifica
 
 ## Global Resource Roles 
 
-The set of Global Resource Roles available within the Palette are:
+Palette provides the following global resource roles out-of-the-box:
 
 <br />
 
@@ -52,11 +52,11 @@ The set of Global Resource Roles available within the Palette are:
 
 
 
-##  Custom Roles
+##  Platform Permissions
 
 
 
-You can [create your set of custom resource roles]() in the Palette console and attach them to the user. The set of customizable Permissions and Operations supported by Palette to create custom roles are as follows:
+The following is a list of permissions and operations supported by Palette. Use these permissions when creating a custom role to control its access.
 
 <br />
 
@@ -116,21 +116,21 @@ You can [create your set of custom resource roles]() in the Palette console and 
 
 To create your custom resource roles in Palette:
 
-* Log in to Palette as Tenant Admin and select **Roles** from the left main menu.
+1.  Log in to Palette as Tenant Admin and select **Roles** from the left **Main Menu**.
 
 
-* Go to **Resource Roles** tab from top menu and Click **+Create Resource Role** button to open the **Add New Role (Resource)** wizard. 
-  * Custom name for the role
-  * Select permissions and operations from the list as per the user's requirements 
+2. Go to the **Resource Roles** tab from the top menu and click on the **+Create Resource Role** button to open the **Add New Role (Resource)** wizard. Fill out the following inputs.
+  * Name of the role.
+  3. Assign permissions and operations.
 
 
-* Once the required permissions are selected, click the **Save** button.
+4. Once the required permissions are selected, click the **Save** button.
 
 
-* A UI pop-up message will confirm the successful creation of the new custom resource role.
+A UI pop-up message will confirm the successful creation of the new custom resource role.
 
 
-### Validation
+# Validation
 
 
 * To validate the role creation go to the **Roles** tab from the left main menu
@@ -139,7 +139,7 @@ To create your custom resource roles in Palette:
 *  Click on **Resource Roles** tab to find the new role name listed.
 
 
-### Edit and Delete 
+# Edit and Delete Role
 
 
 * To **Edit and Delete** the role from the role listing page, click the role to be deleted or edited to go to the role details page.

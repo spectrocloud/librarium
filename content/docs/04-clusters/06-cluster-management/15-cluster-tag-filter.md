@@ -1,7 +1,7 @@
 ---
 title: "Cluster Access Control"
-metaTitle: "Cluster Access Control Using "
-metaDescription: "Clusters Location view on Map"
+metaTitle: "Cluster Access Control"
+metaDescription: "Learn how to manage and administer access control to clusters through tags."
 hideToC: false
 fullWidth: false
 ---
@@ -15,7 +15,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette provides granularity in toggling the access privileges using Tag Filtering.  This feature helps to set access privileges to clusters controlled using tags, roles, and permissions, Thereby filtering out the Clusters from multiple Projects to be accessible to you with different permissions and operations. 
+Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing users' and roles' access to clusters by assigning tags. Tags can be used to cluster together, allowing you to apply access controls to the tag rather than to each cluster, user, or role, reducing the overhead of managing access controls for individual users and clusters.
+
+To get started with an attribute access control through tags, check out the [Create Resource Filter](/clusters/cluster-management/cluster-tag-filter/create-add-filter) guide.
 
 
 # Resources

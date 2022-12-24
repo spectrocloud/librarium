@@ -16,18 +16,25 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The page highlights the method to create a user in Palette and assign roles to the user.
+The section guides you on how to create a user in Palette.
 
 <br />
 
-## Create a New User
+# Prerequisites 
+
+- A [Palette account](https://console.spectrocloud.com).
+- Tenant Admin access.
+
+< br />
+
+# Create a New User
 
 To create a new user in Palette:
 
-* Login to Palette as a Tenant Admin.
+* Log in to Palette as a Tenant Admin.
 
 
-* Select **Users and Teams** from the left main menu and click on **+Create User** button.
+* Select **Users and Teams** from the left **Main Menu** and click on **+Create User** button.
 
 
 * Give the following information to the  **create user** wizard:
@@ -40,7 +47,7 @@ To create a new user in Palette:
 * Click the **Confirm** button to complete the wizard.
   
 
-### Validation
+# Validation
 
 * The UI pop-up message will confirm the user's creation.
 
