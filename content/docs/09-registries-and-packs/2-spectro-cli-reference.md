@@ -342,7 +342,7 @@ Check the version of the Spectro CLI that is currently installed.
 
 ```bash
  spectro  version
-Spectro ClI Version 1.7.0 linux/amd64
+Spectro ClI Version 3.1.0 linux/amd64
 ```
 
 </Tabs.TabPane>
