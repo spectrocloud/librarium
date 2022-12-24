@@ -64,9 +64,9 @@ You must create a Resource Filter in Palette to establish user-based access rest
 
 You can assign the resource filter created along with Palette roles to the [users](/clusters/cluster-management/cluster-tag-filter/new-user) to provision the access restriction. Palette provisions two type of roles:
 
-* [Palette Global Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#globalresourceroles), the set of roles that are available in Palette console
+* [Palette Global Roles](http://localhost:9000/user-management/palette-rbac/resource-scope-roles-permissions#paletteglobalresourceroles), the set of roles that are available in Palette console
 
-* [Custom Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#customroles), that can be generated as per your requirements from the available set of permissions and operations. 
+* [Custom Resource Roles](http://localhost:9000/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles), that can be generated as per your requirements from the available set of permissions and operations. 
 To assign the resource roles and filter to the user follow the below steps:
 <br />
 
@@ -112,5 +112,5 @@ To remove or Edit an attached role:
 
 ## Resource
 
-* [Create New User](/clusters/cluster-management/cluster-tag-filter/new-user)
+* [Create New User](/user-management/new-user#createanewuser)
 
