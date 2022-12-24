@@ -49,7 +49,4 @@ To create a new user in Palette:
 
 # Validation
 
-* The UI pop-up message will confirm the user's creation.
-
-
-* Validate the user creation from the **Users & Teams** page in the Tenant Admin console.
+* The UI pop-up message will confirm the user's creation. Validate the user creation from the **Users & Teams** page in the Tenant Admin console.
