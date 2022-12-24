@@ -34,15 +34,13 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS Compliant PXK, and P
 * Palette App Mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
 * Palette leverages the [Helm and OCI registries](/devx/registries#custompackregistry) to configure, store and service packs. 
 * Palette supports [out-of-the-box](/devx/app-profile#messagingsystemservices) applications support for services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
-* Palette allows you to [pause and resume](https://deploy-preview-1058--docs-spectrocloud.netlify.app/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
+* Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 ### Enhancements:
 
 * [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) support allows clusters to reboot to apply system updates if required.
 
 * Palette Tencent Clusters now support using [security groups](/clusters/public-cloud/tke#deployatencentcluster) for network isolation and improved security.
-
-* Improved app profile modeling experience.
 
 * Reduced launch time when creating Palette Virtual Clusters.
 
