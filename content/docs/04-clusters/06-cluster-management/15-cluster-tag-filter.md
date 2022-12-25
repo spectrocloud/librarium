@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing users' and roles' access to clusters by assigning tags. Tags can be used to cluster together, allowing you to apply access controls to the tag rather than to each cluster, user, or role, reducing the overhead of managing access controls for individual users and clusters.
+Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing users' and roles' access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag rather than to each cluster, user, or role, reducing the overhead of managing access controls for individual users and clusters.
 
 To get started with an attribute access control through tags, check out the [Create Resource Filter](/clusters/cluster-management/cluster-tag-filter/create-add-filter) guide.
 
