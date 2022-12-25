@@ -110,5 +110,5 @@ To remove or Edit an attached role:
 
 ## Resource
 
-* [Create New User](/user-management/new-user#createanewuser)
+* [Create a New User](/user-management/new-user#createanewuser)
 
