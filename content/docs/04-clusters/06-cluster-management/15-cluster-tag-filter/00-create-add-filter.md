@@ -18,12 +18,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 The page encompasses the creation of a Palette Resource Filter and adding these filters to the users to establish cluster access restrictions.
 
-* [Create Resource Filter](/clusters/cluster-management/cluster-tag-filter/create-add-filter#createresourcefilter)
-
-
-* [Add Resource Role](/clusters/cluster-management/cluster-tag-filter/create-add-filter#addresourcerole)
-
-
 # Create Resource Filter
 
 You must create a Resource Filter in Palette to establish user-based access restrictions to clusters across multiple projects. The resource filters are created under the scope of Tenant Admin. To create a resource filter, follow the below steps:
