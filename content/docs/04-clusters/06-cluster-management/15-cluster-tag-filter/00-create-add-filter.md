@@ -24,13 +24,13 @@ You must create a Resource Filter in Palette to establish user-based access rest
  
 <br />
 
-* Log in to Palette as **Tenant Admin** and go to **Tenant Settings** from the left **Main Menu**.
+1. Log in to Palette as **Tenant Admin** and go to **Tenant Settings** from the left **Main Menu**.
 
 
-* Select **Filters** tab and click **+New Resource Filter**.
+2. Select **Filters** tab and click **+New Resource Filter**.
 
 
-* To the **Create New Filter** wizard give the following information:
+3. To the **Create New Filter** wizard give the following information:
   * Filter Name: A custom name for the tag filter.
   * A filter expression. Use the following table to familiarize yourself with the filter expression format: 
 
@@ -41,7 +41,7 @@ You must create a Resource Filter in Palette to establish user-based access rest
     |and    | Tag | is not  | Custom  tag value| 
     |or     | Tag | is not  | Custom  tag value|  
     
-* Click the **Confirm** button to complete the filter creation wizard.
+4. Click the **Confirm** button to complete the filter creation wizard.
 
 ## Validation
 
@@ -60,6 +60,13 @@ You can assign the resource filter created along with Palette roles to the [user
 * [Palette Global Roles](/user-management/palette-rbac/resource-scope-roles-permissions#paletteglobalresourceroles), the set of roles that are available in Palette console
 
 * [Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles), that can be generated as per your requirements from the available set of permissions and operations. 
+
+## Prerequisites
+
+* A [Palette account](https://www.spectrocloud.com/get-started/) with Tenant scope privileges.
+
+* A [user created](/user-management/new-user#createanewuser) to assign the resource privileges.
+
 To assign the resource roles and filter to the user follow the below steps:
 <br />
 
@@ -100,8 +107,6 @@ To remove or Edit an attached role:
 * The UI pop-up message will confirm the successful completion of the role assignment.
 
 * Log in to Palette and check the visibility of clusters as per the access privileges set for validation.
-
-
 
 ## Resource
 
