@@ -1,7 +1,7 @@
 ---
 title: "Palette Resource Roles"
 metaTitle: "Palette Global and Custom Resource Roles "
-metaDescription: "Palette Global and Custom Resource Roles "
+metaDescription: "Palette contains global resource roles and supports the ability to create custom resource roles."
 hideToC: false
 fullWidth: false
 ---
@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The page encompasses the Palette Resource Roles. We support two broad classifications of Resource Roles:
+Palette support two types of resource roles, global resource roles and custom resource roles:
 
 <br />
 
