@@ -16,11 +16,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The page encompasses the creation of a Palette Resource Filter and adding these filters to the users to establish cluster access restrictions.
+The page guides you on how to create a Palette Resource Filter and add these filters to the users to establish cluster access restrictions.
 
 # Create Resource Filter
 
-You must create a Resource Filter in Palette to establish user-based access restrictions to clusters across multiple projects. The resource filters are created under the scope of Tenant Admin. To create a resource filter, follow the below steps:
+You must create a Resource Filter in Palette to establish user-based access restrictions to clusters across multiple projects. The resource filters are created under the scope of Tenant Admin. To create a resource filter, follow the steps below:
  
 <br />
 
@@ -55,11 +55,11 @@ Upon creating a filter, a display message will pop up to confirm the successful 
 
 # Add Resource Role
 
-You can assign the resource filter created along with Palette roles to the [users](/clusters/cluster-management/cluster-tag-filter/new-user) to provision the access restriction. Palette provisions two type of roles:
+You can assign the resource filter created, in combination with roles, to a [user](/user-management/new-user#createanewuser) to enforce access restriction. Palette provisions two types of roles:
 
 * [Palette Global Roles](/user-management/palette-rbac/resource-scope-roles-permissions#paletteglobalresourceroles), the set of roles that are available in Palette console
 
-* [Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles), that can be generated as per your requirements from the available set of permissions and operations. 
+* [Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles),  can be generated according to your requirements from the available set of permissions and operations. 
 
 ## Prerequisites
 
@@ -70,10 +70,10 @@ You can assign the resource filter created along with Palette roles to the [user
 To assign the resource roles and filter to the user follow the below steps:
 <br />
 
-1. Login to Palette as Tenant Admin
+1. Log in to Palette as Tenant Admin
 
 
-2. Select the user to be assigned with role from the **Users & Teams** from the left main menu to go to **User Details**.
+2. Select the user to be assigned with a role from the **Users & Teams** from the left **Main Menu** to go to **User Details**.
 
 
 3. From the user details wizard, select **Resource Roles** Tab and click **+ New Resource Role**.
@@ -89,15 +89,15 @@ To assign the resource roles and filter to the user follow the below steps:
 
 ## Remove or Edit the Role 
 
-To remove or Edit an attached role:
+To remove or edit an attached role:
 
 1. Login to Palette as Tenant Admin
 
 
-2. Select the user from the **Users & Teams** from the left main menu to go to **User Details**.
+2. From the left ** Main Menu** click on **Users & Teams**. This will take you to the **User Details** page.
 
 
-3. From the **Resource Roles** tab, click the **three** dot menu towards the role name.
+3. From the **Resource Roles** tab, click the **three-dot** menu towards the role name.
 
 
 4. Click **Edit** or **Remove** option from the drop-down menu.
