@@ -20,11 +20,11 @@ The page encompasses the Palette Resource Roles. We support two broad classifica
 
 <br />
 
-* [Palette Global Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#globalresourceroles), the set of roles built in and available to you.
+* [Palette Global Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#globalresourceroles) are a set of roles built in and available to you.
 
-
-* [Palette Custom Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#customroles), the roles you can create in Palette using our available set of permissions and operations.
-   * [Create Custom Role](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#createcustomroles), how to create a custom role in the Palette console.
+* [Palette Custom Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#customroles), are roles you can create in Palette using a set of permissions and operations.
+  
+To learn how to create a custom role. Review the [Create Custom Role](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#createcustomroles) guide.
 
 
 # Palette Global Resource Roles 
@@ -299,6 +299,6 @@ The following is a list of platform permissions and operations supported by Pale
 
 ## Resources
 
-[Resource Scope Matrix](http://localhost:9000/user-management/palette-rbac#resourcescopematrix)
+[Resource Scope Matrix](/user-management/palette-rbac#resourcescopematrix)
 
 
