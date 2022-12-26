@@ -104,10 +104,6 @@ To remove or edit an attached role:
 
 ## Validation
 
-* The UI pop-up message will confirm the successful completion of the role assignment.
-
-* Log in to Palette and check the visibility of clusters as per the access privileges set for validation.
-
 Upon creating a filter, a display message will pop up to confirm the successful role assignment. You can also use the following steps to review the roles created:
 
 1. Navigate to the left **Main Menu** and click on **Clusters**.
