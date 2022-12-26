@@ -108,6 +108,12 @@ To remove or edit an attached role:
 
 * Log in to Palette and check the visibility of clusters as per the access privileges set for validation.
 
+Upon creating a filter, a display message will pop up to confirm the successful role assignment. You can also use the following steps to review the roles created:
+
+1. Navigate to the left **Main Menu** and click on **Clusters**.
+
+2. This page will list all the clusters to which the user has access based on the filter created. You need to switch to each project and view the accessible clusters.
+
 ## Resource
 
 * [Create a New User](/user-management/new-user#createanewuser)
