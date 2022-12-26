@@ -45,6 +45,12 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 * Palette Virtual Clusters now support ephemeral storage.
 
+### Deprecations:
+
+* Deprecated API : GET/v1/dashboard/projects , new API: POST /v1/dashboard/projects
+
+* Deprecated API: POST /v1/dashboard/spectroclusters , new API: POST /v1/dashboard/spectroclusters/search
+
 ### Known Issues:
 * Palette does not allow scaling of control plane nodes for the Microk8s pack. The workaround is to remove the scaling limit of the control plane.
 
