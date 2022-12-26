@@ -7,4 +7,3 @@ paths: ['/v1/filters']
 ---
 
 # Filters
-~
