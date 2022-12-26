@@ -91,7 +91,7 @@ To assign the resource roles and filter to the user follow the below steps:
 
 To remove or edit an attached role:
 
-1. Login to Palette as Tenant Admin
+1. Log in to Palette as Tenant Admin
 
 
 2. From the left ** Main Menu** click on **Users & Teams**. This will take you to the **User Details** page.
