@@ -546,7 +546,7 @@ The following steps need to be performed to provision a new VMware cluster:
 |------------------|---------------|
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
-|**Allow worker capability **|Select this option for allowing workloads to be provisioned on master nodes.|
+|**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
 |**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
