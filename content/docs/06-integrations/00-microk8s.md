@@ -69,7 +69,28 @@ microk8s kubectl
 ```
 
 If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows operating system. 
+
+<br />
  
+<WarningBox>
+
+### Caveat for MicroK8s with AWS EBS pack
+
+When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from: 
+
+```yaml
+    node:
+      env: []
+      kubeletPath: /var/lib/kubelet
+```
+to the below yaml content:  
+
+```yaml
+    node:
+      env: []
+      kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
+```
+</WarningBox>
 
 # References
 
