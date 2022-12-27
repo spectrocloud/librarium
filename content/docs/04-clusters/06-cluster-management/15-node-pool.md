@@ -74,6 +74,9 @@ You can create a new node pool for an active cluster. To create a new node pool 
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Provide the required storage size
  
+**Note**: Currently we do not support autoscalar for Azure Clusters.
+
+<br />
 
 #### Update Parameter Table
 

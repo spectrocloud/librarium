@@ -562,19 +562,37 @@ The following steps need to be performed to provision a new OpenStack cluster:
                 * Subnet CIDR
                 * DNS Name Server
         
-5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
 
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-    | **Name** | A descriptive name for the node pool
-    | **Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
-    | **Allow worker capability (master pool)** | To workloads to be provisioned on master nodes.
-    | **Availability zones**
-    | **Flavor** | VM instance type
-    | **Disk** | Storage disk size in GB to be attached to the node.
-    | **Rolling Updates**| Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
-        || **Expand First**: Launches the new node and then shut down the old node
-        || **Contract First**: Shut down the old node first and then launches the new node|
+### Master Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
+|**Allow worker capability **|Select this option for allowing workloads to be provisioned on master nodes.|
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Give the required storage size|
+
+### Worker Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
+||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
+|**Size**          |Number of VMs to be provisioned for the node pool.|
+|**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Provide the required storage size
+
+
 
 6. Configure the cluster policies/features.
     * Manage Machines
