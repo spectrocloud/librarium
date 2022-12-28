@@ -43,6 +43,8 @@ You must create a Resource Filter in Palette to establish user-based access rest
     
 4. Click the **Confirm** button to complete the filter creation wizard.
 
+**Note:** The tags are case-sensitive.
+
 ## Validation
 
 Upon creating a filter, a display message will pop up to confirm the successful creation of the tag. You can also use the following steps to review the filter is available for use.
