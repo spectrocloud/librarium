@@ -35,7 +35,7 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
 | addonType | String | False | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
-| cloudTypes | Array | True | Supported cloud types are AWS, Azure, VMware. One or more types can be provided for a pack. |
+| cloudTypes | Array | True | Supported cloud types are AWS, Azure, GCP, and VMware. One or more types can be provided for a pack. |
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
 | annotations | Array | False | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
 | eol | String | False | End of life date for integration. |

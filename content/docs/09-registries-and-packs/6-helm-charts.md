@@ -65,7 +65,7 @@ To add your private Helm Chart Registry to Palette:
 
 Your chart is now deployed in Palette's Helm Chart Registry and is ready to model in cluster profiles.
 
-## Validation
+# Validation
 
 You can find your Helm Registry listed in the **Helm Registries** tab in **Tenant Settings > Registries**. Use charts from Helm registries in your cluster profiles.
 
