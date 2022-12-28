@@ -185,7 +185,7 @@ Performed the steps below to provision a new GCP cluster:
 
   |**Parameter**| **Description**|
   |-------------|---------------|
-  | **Cloud Account** | Select the desired cloud account. GCP cloud accounts with GCP credentials need to be preconfigured in project settings.
+  | **Cloud Account** | Select the desired cloud account. GCP cloud accounts with GCP credentials need to be pre-configured in project settings.
   | **Project** | The project to which the cluster belongs.
   | **Region** | Choose the desired GCP region where you would like the clusters to be provisioned.
   | **SSH Key Pair Name** | Choose the desired SSH Key|pair. It is the Public key to configure remote SSH access to the nodes.
@@ -197,24 +197,16 @@ Performed the steps below to provision a new GCP cluster:
 5. Make the choice of updating the worker pool in parallel.
 
 
-6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+6. Configure the master and worker node pools. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
 
-    |**Parameter**| **Description**|
-    |---------|---------------|   
-    |**Name** |A descriptive name for the node pool.|
-    |**Size** | Number of VMs to be provisioned for the node pool. <br /> For the master pool, this number can be 1, 3, or 5.|
-    |**Allow worker capability (master pool)**  |Select this option for allowing workloads <br /> to be provisioned on master nodes.|
-    |**Instance type**|Select the instance type to be used <br /> for all nodes in the node pool.|
-    |**Rolling Update**|There are two choices of Rolling Update.|
-    |**Expand First**|Launches the new node and then shut down the old node.|
-    |**Contract First**|Shut down the old node first and then launches the new node.|
-    |**Availability Zones**|Choose one or more availability zones. Palette provides fault <br /> tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes <br /> across availability zones if multiple <br /> zones are selected.|
-    |**Disk size** |Set the desired disk size.|
-    * Configure the worker pool as per requirements or copy the master pool configuration.
-    * Users can configure the cluster policies as per need. These could be scheduled after cluster creation also.
+  
+8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
 
-7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+9. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
+
+
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
     
 # Deleting a GCP Cluster
 

@@ -23,6 +23,12 @@ The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io
 ## Versions Supported
 <Tabs>
 
+<Tabs.TabPane tab="40.0.x" key="40.0.x">
+
+* **40.5.0**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="37.0.x" key="37.0.x">
 
 * **37.2.0**

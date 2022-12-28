@@ -14,22 +14,17 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Public Cloud Clusters 
 
-Palette supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public clouds environments. On public clouds, Palette supports provisioning new clusters using the cloud provider's infrastructure by provisioning new VMs for control plane and worker pools as well as through their managed Kubernetes services such as EKS, AKS etc. 
+Palette supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public cloud environments. Palette supports provisioning new clusters on public clouds using the cloud provider's infrastructure by provisioning new VMs for control plane and worker pools and through their managed Kubernetes services such as EKS, AKS, GKE, and more. 
 
-<br />
+Workload clusters are instantiated from cloud specific [_Cluster Profiles_](/cluster-profiles) templates that are created with pre-configured layers and components required for cluster deployments. You can use one of the cluster profiles provided out-of-the-box or create a new one.
 
-<InfoBox>
-Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip>. You can use one of the cluster profiles provided out-of-the-box or create a new one.
-</InfoBox>
 
-# Environments
+# Supported Environments
 
-The following pages provide detailed instructions for setting up new workload clusters in various environments :
+The following pages provide detailed instructions for setting up new workload clusters in the various environments.
 
 * [Amazon Web Services](/clusters/public-cloud/aws)
-* [Amazon Elastic Kubernetes Service (EKS)](/clusters/public-cloud/eks)
 * [Azure](/clusters/public-cloud/azure)
-* [Azure Kubernetes Service (AKS)](/clusters/public-cloud/aks)
-* [GCP](/clusters/public-cloud/gcp)
-* [Tencent (TKE)](/clusters/public-cloud/tke)
+* [Google Cloud](/clusters/public-cloud/gcp)
+* [Tencent](/clusters/public-cloud/tke)
 

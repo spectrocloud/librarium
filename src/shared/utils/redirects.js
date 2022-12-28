@@ -108,8 +108,21 @@ const redirects = [
     isPermanent: true,
   },
   {
+
     fromPath: `/getting-started/free-cloud-credit`,
     toPath: `/getting-started/palette-freemium`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/public-cloud/eks`,
+    toPath: `/clusters/public-cloud/aws/eks`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/public-cloud/aks`,
+    toPath: `/clusters/public-cloud/azure/eks`,
     redirectInBrowser: true,
     isPermanent: true,
   },
