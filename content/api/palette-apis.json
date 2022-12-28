@@ -544,51 +544,6 @@
         }
       }
     },
-    "v1AppDeploymentNestedClusterConfigEntity": {
-      "description": "Application deployment nested cluster config entity",
-      "properties": {
-        "targetSpec": {
-          "$ref": "#/definitions/v1AppDeploymentNestedClusterTargetSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1AppDeploymentNestedClusterEntity": {
-      "description": "Application deployment nested cluster entity",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1AppDeploymentNestedClusterSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1AppDeploymentNestedClusterSpec": {
-      "description": "Application deployment nested cluster spec",
-      "properties": {
-        "config": {
-          "$ref": "#/definitions/v1AppDeploymentNestedClusterConfigEntity"
-        },
-        "profile": {
-          "$ref": "#/definitions/v1AppDeploymentProfileEntity"
-        }
-      },
-      "type": "object"
-    },
-    "v1AppDeploymentNestedClusterTargetSpec": {
-      "description": "Application deployment nested cluster target spec",
-      "properties": {
-        "clusterUid": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "clusterUid"
-      ],
-      "type": "object"
-    },
     "v1AppDeploymentNotifications": {
       "description": "Application deployment notifications",
       "properties": {
@@ -846,6 +801,51 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1AppDeploymentVirtualClusterConfigEntity": {
+      "description": "Application deployment virtual cluster config entity",
+      "properties": {
+        "targetSpec": {
+          "$ref": "#/definitions/v1AppDeploymentVirtualClusterTargetSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppDeploymentVirtualClusterEntity": {
+      "description": "Application deployment virtual cluster entity",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1AppDeploymentVirtualClusterSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppDeploymentVirtualClusterSpec": {
+      "description": "Application deployment virtual cluster spec",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1AppDeploymentVirtualClusterConfigEntity"
+        },
+        "profile": {
+          "$ref": "#/definitions/v1AppDeploymentProfileEntity"
+        }
+      },
+      "type": "object"
+    },
+    "v1AppDeploymentVirtualClusterTargetSpec": {
+      "description": "Application deployment virtual cluster target spec",
+      "properties": {
+        "clusterUid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "clusterUid"
+      ],
       "type": "object"
     },
     "v1AppDeploymentsFilterSpec": {
@@ -1725,6 +1725,34 @@
       ],
       "type": "object"
     },
+    "v1AuthKeyRequest": {
+      "properties": {
+        "edgeHostUid": {
+          "type": "string"
+        },
+        "hostClusterUid": {
+          "type": "string"
+        },
+        "jetUid": {
+          "type": "string"
+        },
+        "overlordUid": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1AuthKeyResponse": {
+      "properties": {
+        "authKey": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AuthLogin": {
       "properties": {
         "emailId": {
@@ -1761,7 +1789,7 @@
       "type": "object"
     },
     "v1AuthLogins": {
-      "description": "Applicable auth logins with multiple orgs",
+      "description": "Deprecated. Applicable auth logins with multiple orgs",
       "properties": {
         "appEnv": {
           "type": "string"
@@ -1788,6 +1816,43 @@
           "description": "Deprecated.",
           "type": "string",
           "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1AuthServiceTokenRequest": {
+      "properties": {
+        "authKey": {
+          "type": "string"
+        },
+        "edgeHostUid": {
+          "type": "string"
+        },
+        "hostClusterUid": {
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "jetUid": {
+          "type": "string"
+        },
+        "overlordUid": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1AuthServiceTokenResponse": {
+      "properties": {
+        "token": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1894,6 +1959,14 @@
         "credentialType": {
           "$ref": "#/definitions/v1AwsCloudAccountCredentialType"
         },
+        "partition": {
+          "default": "aws",
+          "enum": [
+            "aws",
+            "aws-us-gov"
+          ],
+          "type": "string"
+        },
         "policyARNs": {
           "items": {
             "type": "string"
@@ -1902,10 +1975,6 @@
         },
         "secretKey": {
           "type": "string"
-        },
-        "settings": {
-          "$ref": "#/definitions/v1CloudAccountSettings",
-          "description": "Palette internal cloud settings"
         },
         "sts": {
           "$ref": "#/definitions/v1AwsStsCredentials"
@@ -2365,6 +2434,9 @@
         "infraProfileTemplate": {
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
         },
         "instanceType": {
           "description": "instance type",
@@ -2910,6 +2982,9 @@
           "$ref": "#/definitions/v1APIServerAccessProfile",
           "description": "APIServerAccessProfile is the access profile for AKS API server."
         },
+        "containerName": {
+          "type": "string"
+        },
         "controlPlaneSubnet": {
           "$ref": "#/definitions/v1Subnet",
           "description": "Subnet for Kubernetes control-plane node"
@@ -2930,6 +3005,9 @@
           "type": "string"
         },
         "sshKey": {
+          "type": "string"
+        },
+        "storageAccountName": {
           "type": "string"
         },
         "subscriptionId": {
@@ -3091,6 +3169,9 @@
         "infraProfileTemplate": {
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
         },
         "instanceType": {
           "description": "Instance type stands for VMSize in Azure",
@@ -3461,6 +3542,18 @@
         "storageName",
         "credentials"
       ],
+      "type": "object"
+    },
+    "v1AzureStorageContainers": {
+      "description": "Azure Storage Containers",
+      "properties": {
+        "containers": {
+          "items": {
+            "$ref": "#/definitions/v1StorageContainer"
+          },
+          "type": "array"
+        }
+      },
       "type": "object"
     },
     "v1AzureStorageTypes": {
@@ -3898,6 +3991,17 @@
       },
       "type": "object"
     },
+    "v1CloudAccountMetadata": {
+      "description": "Cloud account metadata summary",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        }
+      }
+    },
     "v1CloudAccountSettings": {
       "description": "Cloud account settings",
       "properties": {
@@ -3942,6 +4046,21 @@
       },
       "type": "object"
     },
+    "v1CloudAccountsMetadata": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1CloudAccountMetadata"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "type": "object"
+    },
     "v1CloudAccountsPatch": {
       "items": {
         "$ref": "#/definitions/v1HttpPatch"
@@ -3977,6 +4096,10 @@
             "$ref": "#/definitions/v1MachinePoolMeta"
           },
           "type": "array"
+        },
+        "uid": {
+          "description": "Cluster's cloud config uid",
+          "type": "string"
         }
       },
       "type": "object"
@@ -4397,16 +4520,46 @@
     "v1ClusterComplianceScanSyftConfig": {
       "description": "Cluster Compliance Scan config for syft driver",
       "properties": {
+        "config": {
+          "$ref": "#/definitions/v1ClusterComplianceScanSyftDriverConfig"
+        },
         "runScan": {
           "type": "boolean"
         }
       }
     },
-    "v1ClusterComplianceScanSyftScheduleConfig": {
-      "description": "Cluster Compliance Scan schedule config for syft driver",
+    "v1ClusterComplianceScanSyftDriverConfig": {
+      "description": "Cluster Compliance Scan Spec",
       "properties": {
-        "schedule": {
-          "$ref": "#/definitions/v1ClusterFeatureSchedule"
+        "format": {
+          "enum": [
+            "cyclonedx-json",
+            "github-json",
+            "spdx-json",
+            "syft-json"
+          ],
+          "type": "string"
+        },
+        "labelSelector": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/v1ObjectEntity"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "podName": {
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "cluster",
+            "namespace",
+            "label-selector",
+            "pod"
+          ],
+          "type": "string"
         }
       }
     },
@@ -4421,9 +4574,6 @@
         },
         "sonobuoy": {
           "$ref": "#/definitions/v1ClusterComplianceScanSonobuoyScheduleConfig"
-        },
-        "syft": {
-          "$ref": "#/definitions/v1ClusterComplianceScanSyftScheduleConfig"
         }
       }
     },
@@ -4473,9 +4623,12 @@
           "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes. If the node is not ready within the time out set, the node will be deleted and a new node will be launched.",
           "type": "string"
         },
+        "fips": {
+          "$ref": "#/definitions/v1FipsConfig"
+        },
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfig",
-          "description": "HostClusterConfiguration defines the configuration of host clusters, where nested clusters be deployed"
+          "description": "HostClusterConfiguration defines the configuration of host clusters, where virtual clusters be deployed"
         },
         "lifecycleConfig": {
           "$ref": "#/definitions/v1LifecycleConfig"
@@ -4497,6 +4650,9 @@
     },
     "v1ClusterConfigEntity": {
       "properties": {
+        "fips": {
+          "$ref": "#/definitions/v1FipsConfig"
+        },
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfig"
         },
@@ -4514,6 +4670,15 @@
         },
         "updateWorkerPoolsInParallel": {
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterConfigResponse": {
+      "properties": {
+        "hostClusterConfig": {
+          "$ref": "#/definitions/v1HostClusterConfigResponse",
+          "description": "HostClusterConfig defines the configuration entity of host clusters config entity"
         }
       },
       "type": "object"
@@ -4815,7 +4980,7 @@
           "description": "Deprecated"
         },
         "nestedClusters": {
-          "description": "Deprecated. Use nestedClustersCount",
+          "description": "Deprecated. Use virtualClustersCount",
           "items": {
             "$ref": "#/definitions/v1ObjectResReference"
           },
@@ -4823,11 +4988,16 @@
           "uniqueItems": true
         },
         "nestedClustersCount": {
+          "description": "Deprecated. Use field 'virtualClustersCount'",
           "type": "integer",
           "x-omitempty": false
         },
         "scope": {
           "type": "string"
+        },
+        "virtualClustersCount": {
+          "type": "integer",
+          "x-omitempty": false
         }
       }
     },
@@ -6612,10 +6782,10 @@
           "$ref": "#/definitions/v1ClusterFeatureActor"
         },
         "reports": {
-          "additionalProperties": {
+          "items": {
             "$ref": "#/definitions/v1SyftReport"
           },
-          "type": "object"
+          "type": "array"
         },
         "requestUid": {
           "type": "string"
@@ -7774,6 +7944,9 @@
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
         },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
+        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -8298,7 +8471,7 @@
           "x-omitempty": false
         },
         "nestedClustersLimit": {
-          "description": "number of active nested clusters",
+          "description": "Deprecated. Use field 'virtualClustersLimit'",
           "format": "int32",
           "type": "number",
           "x-omitempty": false
@@ -8307,6 +8480,12 @@
           "description": "storage in GiB",
           "format": "int32",
           "type": "integer",
+          "x-omitempty": false
+        },
+        "virtualClustersLimit": {
+          "description": "number of active virtual clusters",
+          "format": "int32",
+          "type": "number",
           "x-omitempty": false
         }
       }
@@ -8546,7 +8725,8 @@
         },
         "hostChecksum": {
           "description": "HostChecksum is the checksum provided by the edge host, to be persisted in SaaS",
-          "type": "string"
+          "type": "string",
+          "x-omitempty": false
         },
         "hostIdentity": {
           "$ref": "#/definitions/v1EdgeHostIdentity",
@@ -8555,7 +8735,8 @@
         "hostPairingKey": {
           "description": "HostPairingKey is the one-time pairing key to pair the edge host with the device registered in SaaS",
           "format": "password",
-          "type": "string"
+          "type": "string",
+          "x-omitempty": false
         },
         "hostUid": {
           "description": "HostUid is the ID of the EdgeHost",
@@ -9591,18 +9772,18 @@
     "v1EdgeServiceLogin": {
       "description": "System service login input",
       "properties": {
+        "authToken": {
+          "description": "authToken helps in two step verification for the authorization.",
+          "type": "string"
+        },
         "edgeHostUid": {
           "type": "string"
         },
         "secret": {
-          "description": "Common shared secret string between the server \u0026 client.",
+          "description": "Deprecated. Common shared secret string between the server \u0026 client.",
           "type": "string"
         },
         "serviceName": {
-          "enum": [
-            "edge",
-            "lodge"
-          ],
           "type": "string"
         },
         "spectroClusterUid": {
@@ -9850,6 +10031,9 @@
         "infraProfileTemplate": {
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
         },
         "instanceType": {
           "description": "instance type",
@@ -10157,6 +10341,21 @@
       },
       "type": "object"
     },
+    "v1FilterMetadata": {
+      "description": "Filter metadata object",
+      "properties": {
+        "filterType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1FilterNumberRange": {
       "properties": {
         "eq": {
@@ -10211,6 +10410,25 @@
       },
       "type": "object"
     },
+    "v1FilterSummary": {
+      "description": "Filter summary object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1FilterSummarySpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1FilterSummarySpec": {
+      "properties": {
+        "filterType": {
+          "type": "string"
+        }
+      }
+    },
     "v1FilterVersionString": {
       "properties": {
         "beginsWith": {
@@ -10235,6 +10453,53 @@
         }
       },
       "type": "object"
+    },
+    "v1FiltersMetadata": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1FilterMetadata"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "type": "object"
+    },
+    "v1FiltersSummary": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1FilterSummary"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "type": "object"
+    },
+    "v1FipsConfig": {
+      "description": "FIPS configuration",
+      "properties": {
+        "mode": {
+          "default": "fipsDisabled",
+          "description": "enable or disable the FIPS complaint",
+          "enum": [
+            "fipsEnabled",
+            "fipsDisabled"
+          ],
+          "type": "string"
+        }
+      }
     },
     "v1FreemiumUsage": {
       "properties": {
@@ -10671,6 +10936,9 @@
         "infraProfileTemplate": {
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
         },
         "instanceType": {
           "type": "string"
@@ -11505,6 +11773,14 @@
       },
       "type": "object"
     },
+    "v1HostClusterConfigResponse": {
+      "properties": {
+        "clusterGroup": {
+          "$ref": "#/definitions/v1ObjectReference",
+          "description": "cluster group reference"
+        }
+      }
+    },
     "v1HostClusterEndpoint": {
       "properties": {
         "config": {
@@ -11632,7 +11908,11 @@
     },
     "v1ImportClusterConfig": {
       "properties": {
+        "fips": {
+          "$ref": "#/definitions/v1FipsConfig"
+        },
         "importMode": {
+          "description": "If the importMode is empty then cluster is imported with full permission mode. By default importMode is empty and cluster is imported in full permission mode.",
           "enum": [
             "read-only"
           ],
@@ -11697,6 +11977,14 @@
       "properties": {
         "category": {
           "type": "string"
+        },
+        "cpuSet": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "diskGiB": {
+          "format": "int64",
+          "type": "integer"
         },
         "memoryMiB": {
           "description": "MemoryMiB is the size of a virtual machine's memory, in MiB",
@@ -12188,6 +12476,37 @@
             "$ref": "#/definitions/v1JWKResponse"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1JetServiceLogin": {
+      "description": "jet service login input",
+      "properties": {
+        "authKey": {
+          "description": "authToken helps in two step verification for the authorization.",
+          "type": "string"
+        },
+        "edgeHostUid": {
+          "type": "string"
+        },
+        "hostClusterUid": {
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "jetUid": {
+          "type": "string"
+        },
+        "overlordUid": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -15836,91 +16155,6 @@
       },
       "type": "object"
     },
-    "v1Nested": {
-      "properties": {
-        "appDeployments": {
-          "description": "list of apps deployed on the nested cluster",
-          "items": {
-            "$ref": "#/definitions/v1ObjectResReference"
-          },
-          "type": "array"
-        },
-        "hostCluster": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "host cluster reference"
-        },
-        "lifecycleStatus": {
-          "$ref": "#/definitions/v1LifecycleStatus",
-          "description": "cluster life cycle status of nested cluster"
-        },
-        "nestedClusters": {
-          "description": "list of nested clusters deployed on the cluster",
-          "items": {
-            "$ref": "#/definitions/v1ObjectResReference"
-          },
-          "type": "array"
-        },
-        "state": {
-          "description": "cluster nested host status",
-          "type": "string"
-        }
-      }
-    },
-    "v1NestedCloudClusterConfigEntity": {
-      "description": "Nested cloud cluster config entity",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1NestedClusterConfig"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedCloudConfig": {
-      "description": "NestedCloudConfig is the Schema for the nestedcloudconfigs API",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1NestedCloudConfigSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1NestedCloudConfigStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedCloudConfigSpec": {
-      "description": "NestedCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec for cluster-api.",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1NestedClusterConfig"
-        },
-        "hostClusterUid": {
-          "type": "string"
-        },
-        "machinePoolConfig": {
-          "items": {
-            "$ref": "#/definitions/v1NestedMachinePoolConfig"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "clusterConfig",
-        "hostClusterUid",
-        "machinePoolConfig"
-      ],
-      "type": "object"
-    },
     "v1NestedCloudConfigStatus": {
       "description": "NestedCloudConfigStatus defines the observed state of NestedCloudConfig",
       "properties": {
@@ -15937,216 +16171,6 @@
           "type": "boolean"
         }
       },
-      "type": "object"
-    },
-    "v1NestedClusterConfig": {
-      "description": "cluster level configuration for nested cluster",
-      "properties": {
-        "controlPlaneEndpoint": {
-          "$ref": "#/definitions/v1APIEndpoint"
-        },
-        "helmRelease": {
-          "$ref": "#/definitions/v1VirtualClusterHelmRelease"
-        },
-        "kubernetesVersion": {
-          "default": "",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedInstanceType": {
-      "properties": {
-        "maxCPU": {
-          "description": "Maximum CPU cores",
-          "format": "int32",
-          "type": "integer"
-        },
-        "maxMemInMiB": {
-          "description": "Maximum memory in MiB",
-          "format": "int32",
-          "type": "integer"
-        },
-        "maxStorageGiB": {
-          "description": "Maximum storage in GiB",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minCPU": {
-          "description": "Minimum CPU cores",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minMemInMiB": {
-          "description": "Minimum memory in MiB",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minStorageGiB": {
-          "description": "Minimum storage in GiB",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedMachine": {
-      "description": "Nested cloud machine definition",
-      "properties": {
-        "apiVersion": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1NestedMachineSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudMachineStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedMachinePoolCloudConfigEntity": {
-      "properties": {
-        "instanceType": {
-          "$ref": "#/definitions/v1NestedInstanceType"
-        }
-      },
-      "required": [
-        "instanceType"
-      ],
-      "type": "object"
-    },
-    "v1NestedMachinePoolConfig": {
-      "properties": {
-        "additionalLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "additionalLabels",
-          "type": "object"
-        },
-        "additionalTags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
-          "type": "object"
-        },
-        "azs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
-        "instanceType": {
-          "$ref": "#/definitions/v1NestedInstanceType",
-          "description": "InstanceType defines the required CPU, Memory"
-        },
-        "isControlPlane": {
-          "description": "whether this pool is for control plane",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "maxSize": {
-          "description": "max size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minSize": {
-          "description": "min size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "resourcePool": {
-          "type": "string"
-        },
-        "size": {
-          "description": "size of the pool, number of machines",
-          "format": "int32",
-          "type": "integer"
-        },
-        "taints": {
-          "description": "master or worker taints",
-          "items": {
-            "$ref": "#/definitions/v1Taint"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "updateStrategy": {
-          "$ref": "#/definitions/v1UpdateStrategy",
-          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
-        },
-        "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "instanceType"
-      ],
-      "type": "object"
-    },
-    "v1NestedMachinePoolConfigEntity": {
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1NestedMachinePoolCloudConfigEntity"
-        }
-      },
-      "required": [
-        "cloudConfig"
-      ],
-      "type": "object"
-    },
-    "v1NestedMachineSpec": {
-      "description": "Nested cloud machine definition spec",
-      "properties": {
-        "hostname": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1NestedMachines": {
-      "description": "Nested machine list",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1NestedMachine"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
       "type": "object"
     },
     "v1Nic": {
@@ -16628,18 +16652,53 @@
       },
       "type": "object"
     },
+    "v1OidcAuth": {
+      "properties": {
+        "oidcToken": {
+          "type": "string"
+        },
+        "org": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1OidcAuthLogin": {
+      "properties": {
+        "emailId": {
+          "type": "string"
+        },
+        "password": {
+          "format": "password",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1OidcAuthorizationTokenResponse": {
       "properties": {
         "access_token": {
           "type": "string"
         },
-        "expiry": {
-          "$ref": "#/definitions/v1Time"
+        "error": {
+          "type": "string"
+        },
+        "error_description": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer"
+        },
+        "id_token": {
+          "type": "string"
         },
         "raw": {
           "type": "object"
         },
         "refresh_token": {
+          "type": "string"
+        },
+        "scope": {
           "type": "string"
         }
       },
@@ -17426,6 +17485,32 @@
       },
       "type": "object"
     },
+    "v1Organization": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "redirectUrl": {
+          "type": "string"
+        },
+        "ssoLogins": {
+          "$ref": "#/definitions/v1SsoLogins"
+        }
+      },
+      "type": "object"
+    },
+    "v1Organizations": {
+      "properties": {
+        "organizations": {
+          "items": {
+            "$ref": "#/definitions/v1Organization"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
     "v1OsPatchConfig": {
       "properties": {
         "onDemandPatchAfter": {
@@ -17760,6 +17845,45 @@
           "type": "string"
         },
         "values": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1PackDependency": {
+      "description": "Pack dependency",
+      "properties": {
+        "layer": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "readOnly": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1PackDependencyMeta": {
+      "description": "Pack dependency metadata information",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "logoUrl": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "registryUid": {
+          "type": "string"
+        },
+        "uid": {
           "type": "string"
         },
         "version": {
@@ -18685,6 +18809,9 @@
     "v1PackSummarySpec": {
       "description": "Specs of a pack summary",
       "properties": {
+        "addonSubType": {
+          "type": "string"
+        },
         "addonType": {
           "description": "If Layer is Addon, then can specify additional addonType=logging/monitoring/security etc",
           "type": "string"
@@ -18871,10 +18998,20 @@
         "optional": {
           "type": "boolean"
         },
+        "options": {
+          "additionalProperties": {
+            "$ref": "#/definitions/v1PackTemplateParameterOption",
+            "type": "object"
+          },
+          "type": "object"
+        },
         "readOnly": {
           "type": "boolean"
         },
         "regex": {
+          "type": "string"
+        },
+        "targetKey": {
           "type": "string"
         },
         "type": {
@@ -18884,6 +19021,24 @@
           "type": "string"
         }
       }
+    },
+    "v1PackTemplateParameterOption": {
+      "description": "Pack template parameter option",
+      "properties": {
+        "dependencies": {
+          "items": {
+            "$ref": "#/definitions/v1PackDependency"
+          },
+          "type": "array"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1PackTemplateParameters": {
       "description": "Pack template parameters",
@@ -18914,6 +19069,12 @@
     },
     "v1PackUidValues": {
       "properties": {
+        "dependencies": {
+          "items": {
+            "$ref": "#/definitions/v1PackDependencyMeta"
+          },
+          "type": "array"
+        },
         "packUid": {
           "type": "string"
         },
@@ -19831,11 +19992,14 @@
     },
     "v1ProjectClusterSettings": {
       "properties": {
+        "fips": {
+          "$ref": "#/definitions/v1FipsConfig"
+        },
         "nodesAutoRemediationSetting": {
           "$ref": "#/definitions/v1NodesAutoRemediationSetting"
         },
         "tenantClusterSettings": {
-          "$ref": "#/definitions/v1TenantProjectClusterSetting"
+          "$ref": "#/definitions/v1TenantClusterSettings"
         }
       }
     },
@@ -20373,6 +20537,9 @@
         "name": {
           "type": "string"
         },
+        "scope": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
@@ -20847,6 +21014,66 @@
       ],
       "type": "object"
     },
+    "v1ResourceRoles": {
+      "properties": {
+        "resourceRoles": {
+          "items": {
+            "$ref": "#/definitions/v1ResourceRolesEntity"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1ResourceRolesEntity": {
+      "properties": {
+        "filterRefs": {
+          "items": {
+            "$ref": "#/definitions/v1UidSummary"
+          },
+          "type": "array"
+        },
+        "projectUids": {
+          "items": {
+            "$ref": "#/definitions/v1UidSummary"
+          },
+          "type": "array"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/definitions/v1UidSummary"
+          },
+          "type": "array"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ResourceRolesUpdateEntity": {
+      "properties": {
+        "filterRefs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "projectUids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "roles": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1ResourceTotalCloudCost": {
       "description": "Resource total cloud cost information",
       "properties": {
@@ -21269,6 +21496,9 @@
           },
           "type": "array",
           "uniqueItems": true
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
         }
       },
       "required": [
@@ -21394,7 +21624,8 @@
       "enum": [
         "system",
         "tenant",
-        "project"
+        "project",
+        "resource"
       ],
       "type": "string"
     },
@@ -21427,13 +21658,20 @@
       ],
       "type": "string"
     },
+    "v1SearchFilterKeyValueOperator": {
+      "enum": [
+        "eq"
+      ],
+      "type": "string"
+    },
     "v1SearchFilterPropertyType": {
       "enum": [
         "string",
         "int",
         "float",
         "bool",
-        "date"
+        "date",
+        "keyValue"
       ],
       "type": "string"
     },
@@ -22357,6 +22595,9 @@
             "location": {
               "$ref": "#/definitions/v1ClusterMetaSpecLocation"
             },
+            "projectMeta": {
+              "$ref": "#/definitions/v1ProjectMeta"
+            },
             "tags": {
               "items": {
                 "type": "string"
@@ -22833,6 +23074,9 @@
         "int": {
           "$ref": "#/definitions/v1SpectroClusterSearchFilterIntegerCondition"
         },
+        "keyValue": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterKeyValueCondition"
+        },
         "string": {
           "$ref": "#/definitions/v1SpectroClusterSearchFilterStringCondition"
         }
@@ -22947,6 +23191,39 @@
         }
       }
     },
+    "v1SpectroClusterSearchFilterKeyValueCondition": {
+      "properties": {
+        "ignoreCase": {
+          "type": "boolean"
+        },
+        "key": {
+          "type": "string"
+        },
+        "match": {
+          "$ref": "#/definitions/v1SpectroClusterSearchFilterKeyValueConditionMatch"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterStringOperator"
+        }
+      }
+    },
+    "v1SpectroClusterSearchFilterKeyValueConditionMatch": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      }
+    },
     "v1SpectroClusterSearchFilterSpec": {
       "properties": {
         "conjunction": {
@@ -23032,8 +23309,6 @@
       "enum": [
         "environment",
         "clusterName",
-        "cpuUsage",
-        "memoryUsage",
         "healthState",
         "creationTimestamp",
         "lastModifiedTimestamp"
@@ -23115,7 +23390,8 @@
           "$ref": "#/definitions/v1ClusterLocation"
         },
         "nested": {
-          "$ref": "#/definitions/v1Nested"
+          "$ref": "#/definitions/v1Virtual",
+          "description": "Deprecated. Use field 'virtual'"
         },
         "packs": {
           "items": {
@@ -23144,6 +23420,9 @@
             "$ref": "#/definitions/v1Upgrades"
           },
           "type": "array"
+        },
+        "virtual": {
+          "$ref": "#/definitions/v1Virtual"
         }
       },
       "type": "object"
@@ -23162,6 +23441,9 @@
             },
             "cloudConfig": {
               "$ref": "#/definitions/v1CloudConfigMeta"
+            },
+            "clusterConfig": {
+              "$ref": "#/definitions/v1ClusterConfigResponse"
             },
             "clusterProfileTemplate": {
               "$ref": "#/definitions/v1ClusterProfileTemplateMeta"
@@ -23200,13 +23482,17 @@
               "$ref": "#/definitions/v1SpectroClusterMetrics"
             },
             "nested": {
-              "$ref": "#/definitions/v1Nested"
+              "$ref": "#/definitions/v1Virtual",
+              "description": "Deprecated. Use field 'virtual'"
             },
             "notifications": {
               "$ref": "#/definitions/v1SpectroClusterNotifications"
             },
             "state": {
               "type": "string"
+            },
+            "virtual": {
+              "$ref": "#/definitions/v1Virtual"
             }
           }
         }
@@ -23274,7 +23560,11 @@
           "$ref": "#/definitions/v1SpectroClusterMetrics"
         },
         "nested": {
-          "$ref": "#/definitions/v1Nested"
+          "$ref": "#/definitions/v1Virtual",
+          "description": "Deprecated. Use field 'virtual'"
+        },
+        "notifications": {
+          "$ref": "#/definitions/v1SpectroClusterNotifications"
         },
         "packs": {
           "items": {
@@ -23300,6 +23590,9 @@
             "$ref": "#/definitions/v1Upgrades"
           },
           "type": "array"
+        },
+        "virtual": {
+          "$ref": "#/definitions/v1Virtual"
         },
         "workspaces": {
           "items": {
@@ -24169,46 +24462,6 @@
         }
       }
     },
-    "v1SpectroNestedClusterEntity": {
-      "description": "Spectro Nested cluster entity for create and update",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "properties": {
-            "cloudConfig": {
-              "$ref": "#/definitions/v1NestedClusterConfig"
-            },
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigEntity",
-              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
-            },
-            "machinepoolconfig": {
-              "items": {
-                "$ref": "#/definitions/v1NestedMachinePoolConfigEntity"
-              },
-              "type": "array"
-            },
-            "policies": {
-              "$ref": "#/definitions/v1SpectroClusterPolicies"
-            },
-            "profiles": {
-              "items": {
-                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
-              },
-              "type": "array"
-            }
-          },
-          "required": [
-            "cloudType",
-            "clusterConfig"
-          ],
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
     "v1SpectroOpenStackClusterEntity": {
       "description": "Spectro OpenStack cluster entity for create and update",
       "properties": {
@@ -24378,6 +24631,46 @@
       },
       "type": "object"
     },
+    "v1SpectroVirtualClusterEntity": {
+      "description": "Spectro virtual cluster entity for create and update",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "properties": {
+            "cloudConfig": {
+              "$ref": "#/definitions/v1VirtualClusterConfig"
+            },
+            "clusterConfig": {
+              "$ref": "#/definitions/v1ClusterConfigEntity",
+              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
+            },
+            "machinepoolconfig": {
+              "items": {
+                "$ref": "#/definitions/v1VirtualMachinePoolConfigEntity"
+              },
+              "type": "array"
+            },
+            "policies": {
+              "$ref": "#/definitions/v1SpectroClusterPolicies"
+            },
+            "profiles": {
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "cloudType",
+            "clusterConfig"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroVsphereClusterEntity": {
       "description": "Spectro vSphere cluster entity for create and update",
       "properties": {
@@ -24525,6 +24818,21 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1StorageContainer": {
+      "description": "Azure Storage Container",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         }
       },
@@ -24680,11 +24988,8 @@
     "v1SyftEntity": {
       "description": "Syft response",
       "properties": {
-        "reports": {
-          "additionalProperties": {
-            "$ref": "#/definitions/v1SyftReportEntity"
-          },
-          "type": "object"
+        "report": {
+          "$ref": "#/definitions/v1SyftReportEntity"
         },
         "requestUid": {
           "type": "string"
@@ -24702,7 +25007,7 @@
       "required": [
         "requestUid",
         "status",
-        "reports"
+        "report"
       ]
     },
     "v1SyftImageContext": {
@@ -24722,14 +25027,6 @@
     "v1SyftReport": {
       "description": "Compliance Scan Syft Report",
       "properties": {
-        "batchNo": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "batchSize": {
-          "format": "int32",
-          "type": "integer"
-        },
         "dependencies": {
           "items": {
             "$ref": "#/definitions/v1SyftDependency"
@@ -24745,8 +25042,8 @@
           },
           "type": "array"
         },
-        "sbom": {
-          "type": "string"
+        "isSBOMExist": {
+          "type": "boolean"
         },
         "time": {
           "$ref": "#/definitions/v1Time"
@@ -25668,6 +25965,16 @@
         }
       }
     },
+    "v1SystemRetentionPolicy": {
+      "description": "system retention policy",
+      "properties": {
+        "retentionPeriod": {
+          "type": "integer",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1SystemReverseProxy": {
       "description": "system config reverse proxy",
       "properties": {
@@ -25751,23 +26058,18 @@
     "v1SystemServiceLogin": {
       "description": "System service login input",
       "properties": {
+        "authToken": {
+          "description": "authToken helps in two step verification for the authorization.",
+          "type": "string"
+        },
         "isSystem": {
           "type": "boolean"
         },
         "secret": {
-          "description": "Common shared secret string between the server \u0026 client.",
+          "description": "Deprecated.Common shared secret string between the server \u0026 client.",
           "type": "string"
         },
         "serviceName": {
-          "enum": [
-            "ally",
-            "jet",
-            "git",
-            "ambit",
-            "edge",
-            "lodge",
-            "shelly"
-          ],
           "type": "string"
         },
         "spectroClusterUid": {
@@ -25849,6 +26151,21 @@
           "$ref": "#/definitions/v1Time"
         }
       }
+    },
+    "v1SystemStorageS3ConfigSpec": {
+      "description": "system storage s3 config spec",
+      "properties": {
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "retentionPolicy": {
+          "$ref": "#/definitions/v1SystemRetentionPolicy"
+        },
+        "s3": {
+          "$ref": "#/definitions/v1SystemS3Spec"
+        }
+      },
+      "type": "object"
     },
     "v1SystemTencentAccount": {
       "description": "SystemAdmin",
@@ -25947,6 +26264,73 @@
           "type": "string"
         }
       }
+    },
+    "v1TagFilter": {
+      "description": "Tag Filter create spec",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1TagFilterSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1TagFilterGroup": {
+      "properties": {
+        "conjunction": {
+          "$ref": "#/definitions/v1SearchFilterConjunctionOperator"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/definitions/v1TagFilterItem"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      }
+    },
+    "v1TagFilterItem": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "negation": {
+          "type": "boolean"
+        },
+        "operator": {
+          "$ref": "#/definitions/v1SearchFilterKeyValueOperator"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      }
+    },
+    "v1TagFilterSpec": {
+      "description": "Filter create spec",
+      "properties": {
+        "filterGroup": {
+          "$ref": "#/definitions/v1TagFilterGroup"
+        }
+      },
+      "type": "object"
+    },
+    "v1TagFilterSummary": {
+      "description": "Filter summary object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1TagFilterSpec"
+        }
+      },
+      "type": "object"
     },
     "v1Taint": {
       "description": "Taint",
@@ -26353,6 +26737,9 @@
     },
     "v1TenantClusterSettings": {
       "properties": {
+        "fips": {
+          "$ref": "#/definitions/v1FipsConfig"
+        },
         "nodesAutoRemediationSetting": {
           "$ref": "#/definitions/v1NodesAutoRemediationSetting"
         }
@@ -26585,13 +26972,6 @@
         }
       },
       "type": "object"
-    },
-    "v1TenantProjectClusterSetting": {
-      "properties": {
-        "nodesAutoRemediationSetting": {
-          "$ref": "#/definitions/v1NodesAutoRemediationSetting"
-        }
-      }
     },
     "v1TenantResourceLimit": {
       "properties": {
@@ -27240,6 +27620,9 @@
         "infraProfileTemplate": {
           "$ref": "#/definitions/v1ClusterProfileTemplate",
           "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceConfig": {
+          "$ref": "#/definitions/v1InstanceConfig"
         },
         "instanceType": {
           "description": "instance type",
@@ -28674,6 +29057,118 @@
       },
       "type": "object"
     },
+    "v1Virtual": {
+      "properties": {
+        "appDeployments": {
+          "description": "list of apps deployed on the virtual cluster",
+          "items": {
+            "$ref": "#/definitions/v1ObjectResReference"
+          },
+          "type": "array"
+        },
+        "clusterGroup": {
+          "$ref": "#/definitions/v1ObjectResReference",
+          "description": "cluster group details of virtual cluster"
+        },
+        "hostCluster": {
+          "$ref": "#/definitions/v1ObjectReference",
+          "description": "host cluster reference"
+        },
+        "lifecycleStatus": {
+          "$ref": "#/definitions/v1LifecycleStatus",
+          "description": "cluster life cycle status of virtual cluster"
+        },
+        "nestedClusters": {
+          "description": "Deprecated. Use field 'virtualClusters'",
+          "items": {
+            "$ref": "#/definitions/v1ObjectResReference"
+          },
+          "type": "array"
+        },
+        "state": {
+          "description": "cluster virtual host status",
+          "type": "string"
+        },
+        "virtualClusters": {
+          "description": "list of virtual clusters deployed on the cluster",
+          "items": {
+            "$ref": "#/definitions/v1ObjectResReference"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "v1VirtualCloudClusterConfigEntity": {
+      "description": "Virtual cloud cluster config entity",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1VirtualClusterConfig"
+        }
+      },
+      "type": "object"
+    },
+    "v1VirtualCloudConfig": {
+      "description": "VirtualCloudConfig is the Schema for the virtual cloudconfigs API",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1VirtualCloudConfigSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1NestedCloudConfigStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1VirtualCloudConfigSpec": {
+      "description": "VirtualCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec for cluster-api.",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1VirtualClusterConfig"
+        },
+        "hostClusterUid": {
+          "type": "string"
+        },
+        "machinePoolConfig": {
+          "items": {
+            "$ref": "#/definitions/v1VirtualMachinePoolConfig"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "clusterConfig",
+        "hostClusterUid",
+        "machinePoolConfig"
+      ],
+      "type": "object"
+    },
+    "v1VirtualClusterConfig": {
+      "description": "cluster level configuration for virtual cluster",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "$ref": "#/definitions/v1APIEndpoint"
+        },
+        "helmRelease": {
+          "$ref": "#/definitions/v1VirtualClusterHelmRelease"
+        },
+        "kubernetesVersion": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1VirtualClusterHelmChart": {
       "properties": {
         "name": {
@@ -28701,6 +29196,200 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1VirtualInstanceType": {
+      "properties": {
+        "maxCPU": {
+          "description": "Maximum CPU cores",
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxMemInMiB": {
+          "description": "Maximum memory in MiB",
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxStorageGiB": {
+          "description": "Maximum storage in GiB",
+          "format": "int32",
+          "type": "integer"
+        },
+        "minCPU": {
+          "description": "Minimum CPU cores",
+          "format": "int32",
+          "type": "integer"
+        },
+        "minMemInMiB": {
+          "description": "Minimum memory in MiB",
+          "format": "int32",
+          "type": "integer"
+        },
+        "minStorageGiB": {
+          "description": "Minimum storage in GiB",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1VirtualMachine": {
+      "description": "Virtual cloud machine definition",
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1VirtualMachineSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1CloudMachineStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1VirtualMachinePoolCloudConfigEntity": {
+      "properties": {
+        "instanceType": {
+          "$ref": "#/definitions/v1VirtualInstanceType"
+        }
+      },
+      "required": [
+        "instanceType"
+      ],
+      "type": "object"
+    },
+    "v1VirtualMachinePoolConfig": {
+      "properties": {
+        "additionalLabels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "additionalLabels",
+          "type": "object"
+        },
+        "additionalTags": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
+          "type": "object"
+        },
+        "azs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "infraProfileRef": {
+          "$ref": "#/definitions/v1ObjectReference",
+          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
+        },
+        "infraProfileTemplate": {
+          "$ref": "#/definitions/v1ClusterProfileTemplate",
+          "description": "InfraProfile contains OS/Kernel for this NodePool"
+        },
+        "instanceType": {
+          "$ref": "#/definitions/v1VirtualInstanceType",
+          "description": "InstanceType defines the required CPU, Memory"
+        },
+        "isControlPlane": {
+          "description": "whether this pool is for control plane",
+          "type": "boolean"
+        },
+        "labels": {
+          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "maxSize": {
+          "description": "max size of the pool, for scaling",
+          "format": "int32",
+          "type": "integer"
+        },
+        "minSize": {
+          "description": "min size of the pool, for scaling",
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourcePool": {
+          "type": "string"
+        },
+        "size": {
+          "description": "size of the pool, number of machines",
+          "format": "int32",
+          "type": "integer"
+        },
+        "taints": {
+          "description": "master or worker taints",
+          "items": {
+            "$ref": "#/definitions/v1Taint"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "updateStrategy": {
+          "$ref": "#/definitions/v1UpdateStrategy",
+          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
+        },
+        "useControlPlaneAsWorker": {
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "instanceType"
+      ],
+      "type": "object"
+    },
+    "v1VirtualMachinePoolConfigEntity": {
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1VirtualMachinePoolCloudConfigEntity"
+        }
+      },
+      "required": [
+        "cloudConfig"
+      ],
+      "type": "object"
+    },
+    "v1VirtualMachineSpec": {
+      "description": "Virtual cloud machine definition spec",
+      "properties": {
+        "hostname": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1VirtualMachines": {
+      "description": "Virtual machine list",
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1VirtualMachine"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      },
+      "required": [
+        "items"
+      ],
       "type": "object"
     },
     "v1VirtualNetwork": {
@@ -30502,7 +31191,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs 3.0",
+    "title": "Palette APIs - 3.1.0",
     "version": "v1"
   },
   "paths": {
@@ -30663,6 +31352,38 @@
         ]
       }
     },
+    "/v1/appDeployments": {
+      "post": {
+        "operationId": "v1AppDeploymentsVirtualClusterCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AppDeploymentVirtualClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates a application deployment in the virtual cluster",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/appDeployments/clusterGroup": {
       "post": {
         "operationId": "v1AppDeploymentsClusterGroupCreate",
@@ -30689,39 +31410,7 @@
             }
           }
         },
-        "summary": "Creates a application deployment in one of nested clusters in the cluster group",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/appDeployments/nestedCluster": {
-      "post": {
-        "operationId": "v1AppDeploymentsNestedClusterCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1AppDeploymentNestedClusterEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Creates a application deployment in the nested cluster",
+        "summary": "Creates a application deployment in one of virtual clusters in the cluster group",
         "tags": [
           "v1"
         ]
@@ -31735,36 +32424,16 @@
         ]
       }
     },
-    "/v1/auth/login": {
-      "post": {
-        "operationId": "v1AuthLogin",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1Login"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1AuthLogins"
-            }
-          }
-        },
-        "summary": "Returns the authentication type for the specified user email id",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/auth/org": {
       "get": {
         "operationId": "v1AuthOrg",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "orgName",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -31774,6 +32443,38 @@
           }
         },
         "summary": "Returns the user organization details",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/auth/org/{orgName}/switch": {
+      "post": {
+        "description": "switches organisation for the user if user belongs to particular org",
+        "operationId": "V1AuthOrgSwitch",
+        "parameters": [
+          {
+            "default": true,
+            "in": "query",
+            "name": "setCookie",
+            "type": "boolean"
+          },
+          {
+            "in": "path",
+            "name": "orgName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserToken"
+            }
+          }
+        },
+        "summary": "switches organisation for the user if user belongs to particular org",
         "tags": [
           "v1"
         ]
@@ -31935,6 +32636,23 @@
           }
         },
         "summary": "Identity provider logout url for the SMAL",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/auth/orgs": {
+      "get": {
+        "operationId": "V1AuthOrgs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Organizations"
+            }
+          }
+        },
+        "summary": "Returns the list of user associated organizations based on the authorization token.",
         "tags": [
           "v1"
         ]
@@ -32156,6 +32874,34 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/auth/user/org/forgot": {
+      "get": {
+        "operationId": "V1AuthUserOrgForgot",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "emailId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Send the user organization information via email.",
+        "tags": [
+          "v1"
+        ]
+      }
     },
     "/v1/auth/user/password/reset": {
       "post": {
@@ -37254,323 +38000,6 @@
         ]
       }
     },
-    "/v1/cloudconfigs/nested/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsNestedGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1NestedCloudConfig"
-            }
-          }
-        },
-        "summary": "Returns the specified Nested cloud config",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/nested/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsNestedUidClusterConfig",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1NestedCloudClusterConfigEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/nested/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsNestedMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachinePoolConfigEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Creates a Nested cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsNestedMachinePoolDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsNestedMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachinePoolConfigEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified Nested cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsNestedPoolMachinesList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of Nested machine items",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachines"
-            }
-          }
-        },
-        "summary": "Retrieves a list of Nested machines",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsNestedPoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachine"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Adds the machine to cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/nested/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsNestedPoolMachinesUidDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Deletes the specified Nested machine",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsNestedPoolMachinesUidGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachine"
-            }
-          }
-        },
-        "summary": "Returns the specified Nested machine",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsNestedPoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1NestedMachine"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified machine to the cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/cloudconfigs/openstack/{configUid}": {
       "get": {
         "operationId": "v1CloudConfigsOpenStackGet",
@@ -38150,6 +38579,323 @@
             "name": "body",
             "schema": {
               "$ref": "#/definitions/v1TencentMachine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified machine to the cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/virtual/{configUid}": {
+      "get": {
+        "operationId": "v1CloudConfigsVirtualGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualCloudConfig"
+            }
+          }
+        },
+        "summary": "Returns the specified Virtual cloud config",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudconfigs/virtual/{configUid}/clusterConfig": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsVirtualUidClusterConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the cluster configuration information",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/virtual/{configUid}/machinePools": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsVirtualMachinePoolCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates a virtual cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/virtual/{configUid}/machinePools/{machinePoolName}": {
+      "delete": {
+        "operationId": "v1CloudConfigsVirtualMachinePoolDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the specified machine pool",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsVirtualMachinePoolUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified virtual cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/virtual/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "operationId": "v1CloudConfigsVirtualPoolMachinesList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of virtual machine items",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachines"
+            }
+          }
+        },
+        "summary": "Retrieves a list of virtual machines",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsVirtualPoolMachinesAdd",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Adds the machine to cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/virtual/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "delete": {
+        "operationId": "v1CloudConfigsVirtualPoolMachinesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the specified virtual machine",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "v1CloudConfigsVirtualPoolMachinesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachine"
+            }
+          }
+        },
+        "summary": "Returns the specified virtual machine",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "machineUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsVirtualPoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VirtualMachine"
             }
           }
         ],
@@ -38918,6 +39664,46 @@
         ]
       }
     },
+    "/v1/clouds/aws/regions/{region}/keypairs/{keypair}/validate": {
+      "post": {
+        "operationId": "V1AwsKeyPairValidate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "keypair",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Validate the specified AWS keypair",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/clouds/aws/regions/{region}/kmskeys": {
       "get": {
         "operationId": "V1AwsKmsKeys",
@@ -39436,7 +40222,6 @@
           {
             "in": "query",
             "name": "cloudAccountUid",
-            "required": true,
             "type": "string"
           },
           {
@@ -39455,6 +40240,49 @@
           }
         },
         "summary": "Get Azure storage accounts",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/azure/resourceGroups/{resourceGroup}/storageAccounts/{storageAccountName}/containers": {
+      "get": {
+        "description": "Returns Azure storage containers for the given account.",
+        "operationId": "V1AzureStorageContainers",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "resourceGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "subscriptionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "storageAccountName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AzureStorageContainers"
+            }
+          }
+        },
+        "summary": "Get Azure storage containers",
         "tags": [
           "v1"
         ]
@@ -41203,6 +42031,16 @@
             "in": "formData",
             "name": "importFile",
             "type": "file"
+          },
+          {
+            "default": "json",
+            "enum": [
+              "yaml",
+              "json"
+            ],
+            "in": "query",
+            "name": "format",
+            "type": "string"
           }
         ],
         "responses": {
@@ -42074,10 +42912,10 @@
         "operationId": "v1DashboardAppDeployments",
         "parameters": [
           {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
+            "maximum": 20,
             "name": "limit",
             "type": "integer"
           },
@@ -42121,10 +42959,10 @@
         "operationId": "v1DashboardAppProfiles",
         "parameters": [
           {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
+            "maximum": 20,
             "name": "limit",
             "type": "integer"
           },
@@ -42206,6 +43044,23 @@
         ]
       }
     },
+    "/v1/dashboard/cloudaccounts/metadata": {
+      "get": {
+        "operationId": "v1DashboardCloudAccountsMetadata",
+        "responses": {
+          "200": {
+            "description": "An array of cloud accounts summary items",
+            "schema": {
+              "$ref": "#/definitions/v1CloudAccountsMetadata"
+            }
+          }
+        },
+        "summary": "Retrieves a list of cloud accounts metadata",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/dashboard/clustergroups/{uid}/hostClusters": {
       "post": {
         "operationId": "v1ClusterGroupUidHostClustersSummary",
@@ -42259,9 +43114,9 @@
         ]
       }
     },
-    "/v1/dashboard/clustergroups/{uid}/nestedClusters": {
+    "/v1/dashboard/clustergroups/{uid}/virtualClusters": {
       "post": {
-        "operationId": "v1ClusterGroupUidNestedClustersSummary",
+        "operationId": "v1ClusterGroupUidVirtualClustersSummary",
         "parameters": [
           {
             "in": "path",
@@ -42317,10 +43172,10 @@
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
+            "maximum": 20,
             "name": "limit",
             "type": "integer"
           },
@@ -42402,52 +43257,6 @@
       ]
     },
     "/v1/dashboard/projects": {
-      "get": {
-        "operationId": "v1ProjectsSummary",
-        "parameters": [
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "default": 60,
-            "description": "Metric period in minutes defines latest metrics by period",
-            "format": "int32",
-            "in": "query",
-            "name": "metricPeriod",
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of project summary items",
-            "schema": {
-              "$ref": "#/definitions/v1ProjectsSummary"
-            }
-          }
-        },
-        "summary": "Retrieves a list of project summary",
-        "tags": [
-          "v1"
-        ]
-      },
       "post": {
         "operationId": "v1ProjectsFilterSummary",
         "parameters": [
@@ -42513,53 +43322,6 @@
           }
         },
         "summary": "Retrieves a list of projects metadata",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/dashboard/spectroclusters": {
-      "post": {
-        "operationId": "v1SpectroClustersFilterSummary",
-        "parameters": [
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterSummarySpec"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster summary items",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClustersSummary"
-            }
-          }
-        },
-        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "v1"
         ]
@@ -42809,10 +43571,10 @@
         "operationId": "v1SpectroClustersSearchFilterSummary",
         "parameters": [
           {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
+            "maximum": 20,
             "name": "limit",
             "type": "integer"
           },
@@ -42846,6 +43608,23 @@
           }
         },
         "summary": "Retrieves a list of cluster summary with provided search filter spec Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/dashboard/spectroclusters/search/schema": {
+      "get": {
+        "operationId": "v1SpectroClustersSearchSchema",
+        "responses": {
+          "200": {
+            "description": "An array of cluster filter schema items",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterSearchMetaSchemaSpec"
+            }
+          }
+        },
+        "summary": "Retrieves a schema for the cluster search filter",
         "tags": [
           "v1"
         ]
@@ -42912,6 +43691,31 @@
           }
         },
         "summary": "Retrieves the specified cluster cost summary",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/dashboard/spectroclusters/{uid}/overview": {
+      "get": {
+        "operationId": "v1SpectroClustersSummaryUidOverview",
+        "responses": {
+          "200": {
+            "description": "An spectro cluster summary overview",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterUidSummary"
+            }
+          }
+        },
+        "summary": "Returns the specified cluster summary overview",
         "tags": [
           "v1"
         ]
@@ -44418,6 +45222,161 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/filters": {
+      "get": {
+        "operationId": "v1FiltersList",
+        "parameters": [
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of filters",
+            "schema": {
+              "$ref": "#/definitions/v1FiltersSummary"
+            }
+          }
+        },
+        "summary": "Returns a list of Filters",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/filters/metadata": {
+      "get": {
+        "operationId": "v1FiltersMetadata",
+        "parameters": [
+          {
+            "description": "filterType can be - [tag, meta, resource]",
+            "in": "query",
+            "name": "filterType",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of filters",
+            "schema": {
+              "$ref": "#/definitions/v1FiltersMetadata"
+            }
+          }
+        },
+        "summary": "Returns a list of Filters metadata",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/filters/tag": {
+      "post": {
+        "operationId": "v1TagFiltersCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TagFilter"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates a Tag filter",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/filters/tag/{uid}": {
+      "delete": {
+        "operationId": "v1TagFilterUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Delete the specified Filter object",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "v1TagFilterUidGet",
+        "responses": {
+          "200": {
+            "description": "A Filter object",
+            "schema": {
+              "$ref": "#/definitions/v1TagFilterSummary"
+            }
+          }
+        },
+        "summary": "Returns the specified Filter object",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TagFilterUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1TagFilter"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates a Tag filter",
+        "tags": [
+          "v1"
+        ]
+      }
     },
     "/v1/installers/spectro": {
       "get": {
@@ -46546,7 +47505,8 @@
             "enum": [
               "system",
               "tenant",
-              "project"
+              "project",
+              "resource"
             ],
             "in": "query",
             "name": "scope",
@@ -47071,6 +48031,43 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/projects/{uid}/preferences/clusterSettings/fips": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1ProjectClusterFipsSettingUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1FipsConfig"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Update project clusters fips setting",
+        "tags": [
+          "v1"
+        ]
+      }
     },
     "/v1/projects/{uid}/preferences/clusterSettings/nodesAutoRemediationSetting": {
       "parameters": [
@@ -48318,7 +49315,8 @@
               "lodge",
               "level",
               "edgeconfig",
-              "firth"
+              "firth",
+              "stylus"
             ],
             "in": "path",
             "name": "serviceName",
@@ -48371,7 +49369,8 @@
               "lodge",
               "level",
               "edgeconfig",
-              "firth"
+              "firth",
+              "stylus"
             ],
             "in": "path",
             "name": "serviceName",
@@ -48401,6 +49400,18 @@
             "description": "resource file name",
             "in": "query",
             "name": "resourceFilename",
+            "type": "string"
+          },
+          {
+            "description": "spectro cluster uid",
+            "in": "query",
+            "name": "clusterUid",
+            "type": "string"
+          },
+          {
+            "description": "edge host uid",
+            "in": "query",
+            "name": "edgeHostUid",
             "type": "string"
           }
         ],
@@ -49829,81 +50840,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/nested": {
-      "post": {
-        "operationId": "v1SpectroClustersNestedCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroNestedClusterEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Creates an Nested cluster",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/spectroclusters/nested/validate": {
-      "post": {
-        "operationId": "v1SpectroClustersNestedValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroNestedClusterEntity"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Nested Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "summary": "Validate nested spectro cluster create",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/spectroclusters/nested/values": {
-      "get": {
-        "operationId": "v1SpectroClustersNestedValues",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "string"
-            }
-          }
-        },
-        "summary": "Get the default values yaml",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/spectroclusters/openstack": {
       "post": {
         "operationId": "v1SpectroClustersOpenStackCreate",
@@ -50191,6 +51127,81 @@
           }
         },
         "summary": "Validate spectro cluster packs",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/virtual": {
+      "post": {
+        "operationId": "v1SpectroClustersVirtualCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroVirtualClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates an virtual cluster",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/virtual/validate": {
+      "post": {
+        "operationId": "v1SpectroClustersVirtualValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroVirtualClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Virtual Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
+            }
+          }
+        },
+        "summary": "Validate virtual spectro cluster create",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/virtual/values": {
+      "get": {
+        "operationId": "v1SpectroClustersVirtualValues",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Get the default values yaml",
         "tags": [
           "v1"
         ]
@@ -50697,7 +51708,7 @@
             "description": "The resource was updated successfully"
           }
         },
-        "summary": "Updates the specified spectro cluster Cluster Role bindings",
+        "summary": "Deprecated. Updates the specified spectro cluster Cluster Role bindings",
         "tags": [
           "v1"
         ]
@@ -50807,7 +51818,7 @@
             }
           }
         },
-        "summary": "get the cluster rbacs associated with a cluster",
+        "summary": "Deprecated. Get the cluster rbacs associated with a cluster",
         "tags": [
           "v1"
         ]
@@ -51659,10 +52670,50 @@
           "name": "logUid",
           "required": true,
           "type": "string"
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/features/complianceScan/logs/{logUid}/drivers/syft/sbom": {
+      "get": {
+        "operationId": "v1SyftScanLogImageSBOMGet",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "download file",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Returns the image sbom of syft scan log of cluster",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "logUid",
+          "required": true,
+          "type": "string"
         },
         {
           "in": "query",
-          "name": "reportId",
+          "name": "image",
           "type": "string"
         }
       ]
@@ -53418,6 +54469,106 @@
         ]
       }
     },
+    "/v1/teams/{uid}/resourceRoles": {
+      "get": {
+        "description": "Returns resource roles for team",
+        "operationId": "v1TeamsUidResourceRoles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRoles"
+            }
+          }
+        },
+        "summary": "Returns the specified individual and resource roles for a team",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "description": "Resource roles added to specific team",
+        "operationId": "v1TeamsUidResourceRolesCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRolesUpdateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Add resource roles for team",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/teams/{uid}/resourceRoles/{resourceRoleUid}": {
+      "delete": {
+        "operationId": "v1TeamsUidResourceRolesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deleted the resource roles from team",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "resourceRoleUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "description": "Specific resource roles fo team is updated",
+        "operationId": "v1TeamsResourceRolesUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRolesUpdateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the resource roles for team",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/teams/{uid}/roles": {
       "get": {
         "operationId": "V1TeamsUidTenantRolesGet",
@@ -54337,6 +55488,43 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/tenants/{tenantUid}/preferences/clusterSettings/fips": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantClusterFipsSettingUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1FipsConfig"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok reponse without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Update tenant clusters fips setting",
+        "tags": [
+          "v1"
+        ]
+      }
     },
     "/v1/tenants/{tenantUid}/preferences/clusterSettings/nodesAutoRemediationSetting": {
       "parameters": [
@@ -55466,6 +56654,14 @@
     "/v1/users/config/scar": {
       "get": {
         "operationId": "V1UsersConfigScarGet",
+        "parameters": [
+          {
+            "default": false,
+            "in": "query",
+            "name": "fips",
+            "type": "boolean"
+          }
+        ],
         "responses": {
           "200": {
             "description": "(empty)",
@@ -55943,6 +57139,106 @@
           }
         },
         "summary": "Updates the projects and roles for user",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/users/{uid}/resourceRoles": {
+      "get": {
+        "description": "Returns resource roles for user",
+        "operationId": "v1UsersUidResourceRoles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRoles"
+            }
+          }
+        },
+        "summary": "Returns the specified individual and resource roles for a user",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "description": "Resource roles added to specific user",
+        "operationId": "v1UsersUidResourceRolesCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRolesUpdateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Add resource roles for user",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/users/{uid}/resourceRoles/{resourceRoleUid}": {
+      "delete": {
+        "operationId": "v1UsersUidResourceRolesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deleted the resource roles from user",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "resourceRoleUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "description": "Specific resource roles fo user is updated",
+        "operationId": "v1UsersResourceRolesUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ResourceRolesUpdateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the resource roles for user",
         "tags": [
           "v1"
         ]

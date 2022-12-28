@@ -20,7 +20,7 @@ Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/
 
 # Resources
 
-To learn more about Azure Cluster creation and its capabilities checkout the following resources:
+To learn more about Palette and Azure cluster creation and its capabilities check out the following resources:
 
 - [Register and Manage Azure Cloud Account](/clusters/public-cloud/azure/azure-cloud)
 
@@ -34,7 +34,7 @@ To learn more about Azure Cluster creation and its capabilities checkout the fol
 - [Force Delete a Cluster](/clusters/public-cloud/azure/create-azure-cluster#forcedeleteacluster)
 
 
-- [Cluster Management Day Two Opeartions](/clusters/cluster-management)
+- [Cluster Management Day Two Operations](/clusters/cluster-management)
 
 
 - [Azure Architecture](/clusters/public-cloud/azure/architecture)

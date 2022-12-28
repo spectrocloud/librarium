@@ -81,15 +81,16 @@ Palette monitors the cluster infrastructure regularly and reports health on the 
 
 Overall health is computed based on the following factors:
 
-* **Heartbeat** - The Palette management agent, which runs inside the cluster, periodically sends a heartbeat to the management console. Missing heartbeats typically indicate of a problem such as a cluster infrastructure going down or lack of network connectivity. Failure to detect heartbeat over a while results in an unhealthy status for the cluster.
+* **Heartbeat** - The Palette management agent, which runs inside the cluster, periodically sends a heartbeat to the management console. Missing heartbeats typically indicate of a problem such as a cluster infrastructure going down or lack of network connectivity. Failure to detect heartbeats over a 10 minute period results in an unhealthy status for the cluster.
 
+  Palette provides health check information for your workload clusters. This information is a value add to the cluster monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you in troubleshooting.
+
+![Cluster_Health_Heart_Beat](doc_cluster_clusters-cluster-heart-beat.png)
 
 * **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node, results in an unhealthy status for the cluster.
 
 
 * **Metrics** - Palette collects usage metrics such as CPU, Disk, or Memory. The cluster is marked as unhealthy if the usage metrics cross specific thresholds over some time.
-
-![Cluster Health](04-clusters/cluster_health.png)
 
 # Usage Monitoring
 

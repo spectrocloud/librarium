@@ -1,5 +1,5 @@
 ---
-title: "Azure-AKS"
+title: "Create and Manage Azure AKS Cluster"
 metaTitle: "Creating new clusters on Palette"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -15,25 +15,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The following is the detailing of the Microsoft Azure Kubernetes Service (AKS) cluster provisioning by Palette:
+Palette supports creating and managing Kubernetes clusters deployed to an Azure subscription. This section guides you on how to create an IaaS Kubernetes cluster in Azure that is managed by Palette.
 
+Azure clusters can be created under the following scopes:
 
-1. The Palette platform enables containerized applications' effortless deployment and management with fully-managed AKS. 
+* Tenant admin
 
+* Project Scope - This is the recommended scope.
 
-2. It provides the users with server-less Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
+Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-
-3. This unites the development and operations to a single platform achieving faster build, delivery, and scaling of applications with credence.
-
-
-4. The infrastructure has event-driven autoscaling and triggers that enable Elastic provisioning for this self-managed infrastructure.
-
-
-5. Leverage extensive authentication and authorization capabilities, using Azure Active Directory and dynamic rules enforcement, across multiple clusters with Azure Policy.
-
-
-![aks_cluster_architecture.png](aks_cluster_architecture.png)
 
 # Prerequisites
 

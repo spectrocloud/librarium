@@ -1,7 +1,7 @@
 ---
 title: "Release Notes"
 metaTitle: "Release Notes"
-metaDescription: "Dates and descriptions of Spectro Cloud releases"
+metaDescription: "Spectro Cloud release notes for Palette and its sub-components."
 icon: "audits"
 hideToC: false
 fullWidth: false
@@ -13,6 +13,75 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+
+
+# December 25, 2022 - Release 3.1.0
+
+Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, FIPS enablement at the scope level, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause and resume clusters, new services for app profiles, and more. 
+
+## Palette
+
+### Features: 
+
+* Palette supporters integration with [AWS GovCloud services](/clusters/public-cloud/aws/add-aws-accounts#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
+* [Autoscaling](/clusters/cluster-management/node-pool#workerpool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
+* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](/compliance#fips140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
+* Palette supports tagging and the ability to filter user [access]() and [visibility](/clusters/cluster-management/noc-ui#monitoryourclusterlocation) to clusters using tags. Filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](/clusters/cluster-management/noc-ui#mapfilters) to have a granular view of cluster information.
+* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) within the scope of a single profile name. 
+* Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
+* Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
+* Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
+* Palette leverages[Helm and OCI registries](/devx/registries#custompackregistry) for cutom pack management. 
+* Palette supports [out-of-the-box](/devx/app-profile#messagingsystemservices) applications support for services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
+
+### Enhancements:
+
+* [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) allows clusters to reboot to apply system updates if required.
+
+* Palette Tencent clusters now support using [security groups](/clusters/public-cloud/tke#deployatencentcluster) for network isolation and improved security.
+
+* Reduced launch time when creating Palette Virtual Clusters.
+
+* Palette Virtual Clusters now support ephemeral storage.
+
+### Deprecations:
+
+* Deprecated API : GET/v1/dashboard/projects , new API: POST /v1/dashboard/projects
+
+* Deprecated API: POST /v1/dashboard/spectroclusters , new API: POST /v1/dashboard/spectroclusters/search
+
+### Known Issues:
+
+* Palette does not allow scaling of control plane nodes for the Microk8s pack. The workaround is to remove the scaling limit of the control plane.
+
+* Currently, Microk8s does not support an out-of-box service load balancer.
+  * Work Around: To avoid this, you can install the [AWS Application Load Balancer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/service/nlb/) pack. The packs containing service type as a load balancer will require annotation and `loadBalancerClass` changes.
+
+## Edge
+
+### Features:
+
+* Palette supports the provision of [MicroK8s clusters](/integrations/microk8s#microk8soverview). Microk8s deployments are quick and ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to self-update Kubernetes dependencies.
+
+## [Spectro Image Updates](/spectro-downloads#on-premartifacts):
+
+* Private Cloud Gateway Installer updated to version 1.4.0.
+* On-Prem Installer updated to version 2.4.0.
+* Air Gap Repo Appliance updated to version 2.1.0.
+* EDGE Installer version 2.2.23.
+
+## [Packs and Integrations](/integrations):
+
+* csi-longhorn version 1.3.1 
+* csi-longhorn-addon version 1.3.1 
+* kafka-operator version 0.32.0 
+* minio-operator version 4.5.4 
+* mysql-operator version 0.6.2 
+* nats-operator version 0.18.2 
+* palette-upgrader version 3.0.70 
+* palette-upgrader version 3.0.51 
+* spectro-k8s-dashboard version 2.6.0 
 
 
 # October 24, 2022 - Release 3.0.0

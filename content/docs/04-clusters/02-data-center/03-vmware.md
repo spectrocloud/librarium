@@ -538,22 +538,35 @@ The following steps need to be performed to provision a new VMware cluster:
         | **NTP Server (Optional)** | Setup time synchronization for all the running nodes.|
         | **IP Allocation strategy** | DHCP or Static IP|
     
-5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
+5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
 
-    |**Parameter**                            | **Description**|
-    |-----------------------------------------|----------------|
-    | **Name** | A descriptive name for the node pool.|
-    | **Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
-    | **Allow worker capability (master pool)** | To workloads to be provisioned on master nodes.|
-    | **CPU** | Number of CPUs to be allocated to the nodes.|
-    | **Memory** | Amount of memory in GB to be allocated to the nodes.|
-    | **Disk** | Storage disk size in GB to be attached to the node.|
-    | **Placement Domains** |One or more placement domains. VMs are distributed across multiple placement domains on a round-robin basis. Currently, only one placement domain is supported for a master pool.|
-       || * **Compute Cluster** - A Compute cluster under the selected Datacenter.|
-       || * **Datastore** - The vSphere storage in the selected Datacenter.|
-       || * **Network** - The vSphere Network in the selected Datacenter, to enable connectivity for the cluster nodes.|
-       || * **Resource Pool**- The vSphere resource pool where the cluster nodes will be launched.|
-       || * **IP Pool** - An IP pool to be used for allocation <br /> IP addresses to cluster VMs. Required only <br /> for Static IP allocation. IP pools need to be predefined for private cloud gateways.|
+### Master Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
+|**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Give the required storage size|
+
+### Worker Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
+||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
+|**Size**          |Number of VMs to be provisioned for the node pool.|
+|**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Provide the required storage size
 
 6. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
