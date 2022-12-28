@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# December 25, 2022 - Release 3.1.0
+# December 28, 2022 - Release 3.1.0
 
 Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, FIPS enablement at the scope level, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause and resume clusters, new services for app profiles, and more. 
 
