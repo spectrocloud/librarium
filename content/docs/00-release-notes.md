@@ -23,7 +23,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 ### Upgrade Notes:
 
-* MaaS cluster's prekubeadmcommands have been updated to disable swap. This will result in MaaS cluster nodes becoming repaved.
+* MaaS cluster's initialization configuration has been updated to disable memory swap. This will result in MaaS cluster nodes becoming repaved when applying the new configuration.
 
 ### Features: 
 
