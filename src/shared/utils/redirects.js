@@ -12,8 +12,8 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
+    fromPath: `/clusters/nested-clusters`,
+    toPath: `/clusters/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
   },
