@@ -31,8 +31,8 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
 * Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
 * Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages[Helm and OCI registries](/devx/registries#custompackregistry) for cutom pack management. 
-* Palette supports [out-of-the-box](/devx/app-profile#messagingsystemservices) applications support for services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette leverages [Helm and OCI registries](/devx/registries#custompackregistry) for cutom pack management. 
+* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 ### Enhancements:
