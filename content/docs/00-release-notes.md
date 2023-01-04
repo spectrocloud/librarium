@@ -21,6 +21,10 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 ## Palette
 
+### Upgrade Notes:
+
+* MaaS cluster's initialization configuration has been updated to disable memory swap. This will result in MaaS cluster nodes becoming repaved when applying the new configuration.
+
 ### Features: 
 
 * Palette supports integration with [AWS GovCloud services](/clusters/public-cloud/aws/add-aws-accounts#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
