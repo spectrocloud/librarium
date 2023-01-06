@@ -26,7 +26,7 @@ For security, Palette requires Helm OCI version 3.7.0 and higher.
 
 # Add a Helm Chart Registry to Palette
 
-To add your private Helm Chart Registry to Palette:
+To add your private Helm Chart registry to Palette:
 
 1. Log in to Palette as a Tenant administrator. 
 
@@ -63,11 +63,11 @@ To add your private Helm Chart Registry to Palette:
 
 7. Confirm your changes. 
 
-Your chart is now deployed in Palette's Helm Chart Registry and is ready to model in cluster profiles.
+Your chart is now deployed in Palette's Helm Chart registry and is ready to model in cluster profiles.
 
 # Validation
 
-You can find your Helm Registry listed in the **Helm Registries** tab in **Tenant Settings > Registries**. Use charts from Helm registries in your cluster profiles.
+You can find your Helm registry listed in the **Helm Registries** tab in **Tenant Settings > Registries**. Use charts from Helm registries in your cluster profiles.
 
 The following applies when adding Helm charts to cluster profiles.
 
