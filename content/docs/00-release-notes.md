@@ -168,7 +168,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
   * Image template support
 
 **Enhancements**
-* Palette upgrades the Vsphere Public Cloud Gateways and On-Prem cluster specifications to newer versions:
+* Palette upgrades the vSphere Public Cloud Gateways and On-Prem cluster specifications to newer versions:
 
    * K8s version has been upgraded from 1.21 to 1.22.12 [ the latest version in 1.22 ]
    
