@@ -209,7 +209,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
 
-### VMWare Custom OS Pack - Local Image
+### VMware Custom OS Pack - Local Image
 
 ```yaml
 {
@@ -236,7 +236,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-### VMWare Custom OS Pack - Remote Image
+### VMware Custom OS Pack - Remote Image
 
 ```yaml
 {
