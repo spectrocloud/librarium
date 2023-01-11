@@ -50,7 +50,7 @@ The following diagram maps the network connections between the Palette component
 |HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
 |SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |IN        |Message Bus for workload clusters|
-|HTTPS (tcp/443) |OUT       |VSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/443) |OUT       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
 |HTTPS (tcp/6443)|OUT       |Workload K8s cluster API Server|
 
 
@@ -62,4 +62,4 @@ The following diagram maps the network connections between the Palette component
 |HTTPS (tcp/6443)|IN        |Kubernetes API Server|
 |SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |OUT       |Agent communication via Message Bus |
-|HTTPS (tcp/443) |OUT       |VSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+|HTTPS (tcp/443) |OUT       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.

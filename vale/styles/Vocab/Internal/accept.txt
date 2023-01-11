@@ -50,3 +50,4 @@ IaaS
 autoscaling
 Tencent
 serverless
+vCenter
