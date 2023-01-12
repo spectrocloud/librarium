@@ -48,7 +48,7 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     **Note**: Container Storage Interface (CSI) and Container Network Interface (CNI) layers can be added as Helm Charts from customized Helm registries and linked to Spectro Registry packs. 
 
 
-4. **Add-on Layers** are additional layers such as **Monitoring, Security**, or **Load Balancers** may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
+4. **Add-on Layers** are additional layers such as **Monitoring, Security**, **Load Balancers**, **Ingress**, **Logging**, **Monitoring**, **Security**, **Authentication**, **Service Mesh** etc. may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
 
     <Tabs>
     <Tabs.TabPane tab="Add New Pack" key="Add New Pack"> 
