@@ -74,7 +74,7 @@ Currently Palette supports Micro Kubernetes for AWS clusters only.
 
 ## References
 
-* https://microk8s.io/
+- [Micro k8s](https://microk8s.io/)
 
 
-* https://github.com/canonical/microk8s
+- [Canonical Micro k8s](https://github.com/canonical/microk8s)
