@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Proxy
-Spectro Proxy is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a NAT or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
+Spectro Proxy is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a network address translation (NAT) or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
 
 
 ## Versions Supported
@@ -53,6 +53,8 @@ The Kubernetes dashboard integration supports the followwing parameters.
 
 ## Usage
 
+To enable the 
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="1.1.x" key="1.1.x">
@@ -78,4 +80,20 @@ If the user goes for clusters other than EKS, add the following extra cert SAN v
 Example:
 
 ![frp-cert-san-example](frp-certsan.png)
+
+
+# Terraform
+
+The Spectro Proxy pack can be referenced through Terraform with a data resource.
+
+```tf
+data "spectrocloud_pack" "spectro-proxy" {
+  name    = "spectro-proxy"
+  version = "1.2.0"
+}
+```
+
+# References
+
+- [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
 
