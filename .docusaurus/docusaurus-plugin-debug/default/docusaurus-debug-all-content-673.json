@@ -1,0 +1,760 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs",
+          "editUrlLocalized": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/karlcardenas/projects/spectro-cloud/librarium/sidebars.js",
+          "contentPath": "/Users/karlcardenas/projects/spectro-cloud/librarium/docs",
+          "contentPathLocalized": "/Users/karlcardenas/projects/spectro-cloud/librarium/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "unversionedId": "clusters/index",
+              "id": "clusters/index",
+              "title": "Clusters",
+              "description": "Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster definition in Palette consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. The following high-level tasks are performed as part of the cluster creation:",
+              "source": "@site/docs/clusters/index.md",
+              "sourceDirName": "clusters",
+              "slug": "/clusters/",
+              "permalink": "/docs/clusters/",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/index.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "Clusters",
+                "metaTitle": "Creating clusters on Palette",
+                "metaDescription": "The methods of creating clusters for a speedy deployment on any CSP",
+                "icon": "clusters",
+                "hideToC": false,
+                "fullWidth": false
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "App Mode and Cluster Mode",
+                "permalink": "/docs/introduction/palette-modes"
+              },
+              "next": {
+                "title": "Public Cloud Clusters",
+                "permalink": "/docs/clusters/public-cloud/"
+              }
+            },
+            {
+              "unversionedId": "clusters/public-cloud/aws/add-aws-accounts",
+              "id": "clusters/public-cloud/aws/add-aws-accounts",
+              "title": "Register and Manage AWS Accounts",
+              "description": "Palette supports integration with AWS Cloud Accounts. This also includes support for AWS GovCloud (US) accounts. This section explains how to create an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.",
+              "source": "@site/docs/clusters/public-cloud/aws/add-aws-accounts.md",
+              "sourceDirName": "clusters/public-cloud/aws",
+              "slug": "/clusters/public-cloud/aws/add-aws-accounts",
+              "permalink": "/docs/clusters/public-cloud/aws/add-aws-accounts",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/public-cloud/aws/add-aws-accounts.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "Register and Manage AWS Accounts",
+                "metaTitle": "Add an AWS Account to Palette",
+                "metaDescription": "Learn how to add an AWS account to Palette.",
+                "hideToC": false,
+                "fullWidth": false
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Architecture",
+                "permalink": "/docs/clusters/public-cloud/aws/architecture"
+              }
+            },
+            {
+              "unversionedId": "clusters/public-cloud/aws/architecture",
+              "id": "clusters/public-cloud/aws/architecture",
+              "title": "Architecture",
+              "description": "The following are some architectural highlights of the Amazon Web Services (AWS) clusters that Palette provisions:",
+              "source": "@site/docs/clusters/public-cloud/aws/architecture.md",
+              "sourceDirName": "clusters/public-cloud/aws",
+              "slug": "/clusters/public-cloud/aws/architecture",
+              "permalink": "/docs/clusters/public-cloud/aws/architecture",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/public-cloud/aws/architecture.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "title": "Architecture",
+                "metaTitle": "AWS Architecture with Palette",
+                "metaDescription": "Learn about Palette and the architecture used to support Palette",
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "AWS",
+                "permalink": "/docs/clusters/public-cloud/aws/"
+              },
+              "next": {
+                "title": "Register and Manage AWS Accounts",
+                "permalink": "/docs/clusters/public-cloud/aws/add-aws-accounts"
+              }
+            },
+            {
+              "unversionedId": "clusters/public-cloud/aws/index",
+              "id": "clusters/public-cloud/aws/index",
+              "title": "AWS",
+              "description": "Palette supports integration with Amazon Web Services. You can deploy and manage Host Clusters in AWS. To get  started check out the Register and Manage AWS Accounts.",
+              "source": "@site/docs/clusters/public-cloud/aws/index.md",
+              "sourceDirName": "clusters/public-cloud/aws",
+              "slug": "/clusters/public-cloud/aws/",
+              "permalink": "/docs/clusters/public-cloud/aws/",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/public-cloud/aws/index.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "AWS",
+                "metaTitle": "Creating new clusters on Palette",
+                "metaDescription": "The methods of creating clusters for a speedy deployment on any CSP",
+                "hideToC": false,
+                "fullWidth": false
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Public Cloud Clusters",
+                "permalink": "/docs/clusters/public-cloud/"
+              },
+              "next": {
+                "title": "Architecture",
+                "permalink": "/docs/clusters/public-cloud/aws/architecture"
+              }
+            },
+            {
+              "unversionedId": "clusters/public-cloud/index",
+              "id": "clusters/public-cloud/index",
+              "title": "Public Cloud Clusters",
+              "description": "Palette supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public cloud environments. Palette supports provisioning new clusters on public clouds using the cloud provider's infrastructure by provisioning new VMs for control plane and worker pools and through their managed Kubernetes services such as EKS, AKS, GKE, and more.",
+              "source": "@site/docs/clusters/public-cloud/index.md",
+              "sourceDirName": "clusters/public-cloud",
+              "slug": "/clusters/public-cloud/",
+              "permalink": "/docs/clusters/public-cloud/",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/public-cloud/index.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "Public Cloud Clusters",
+                "metaTitle": "Creating new clusters on Spectro Cloud",
+                "metaDescription": "The methods of creating clusters for a speedy deployment on any CSP",
+                "icon": "server",
+                "hideToC": false,
+                "fullWidth": false
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Clusters",
+                "permalink": "/docs/clusters/"
+              },
+              "next": {
+                "title": "AWS",
+                "permalink": "/docs/clusters/public-cloud/aws/"
+              }
+            },
+            {
+              "unversionedId": "introduction/introduction",
+              "id": "introduction/introduction",
+              "title": "What is Palette?",
+              "description": "Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center or the cloud.",
+              "source": "@site/docs/introduction/index.md",
+              "sourceDirName": "introduction",
+              "slug": "/introduction",
+              "permalink": "/docs/introduction",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/introduction/index.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "title": "What is Palette?",
+                "metaTitle": "What is Palette?",
+                "metaDescription": "Learn what Spectro Cloud's Palette platform is, and how it reduce the complexities your encounter today with Kubernetes.",
+                "sidebar_label": "Introduction",
+                "slug": "/introduction",
+                "id": "introduction",
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "App Mode and Cluster Mode",
+                "permalink": "/docs/introduction/palette-modes"
+              }
+            },
+            {
+              "unversionedId": "introduction/palette-modes",
+              "id": "introduction/palette-modes",
+              "title": "App Mode and Cluster Mode",
+              "description": "Palette supports two consumption modes - each aimed at different use cases and, potentially, different personas. The two modes are App Mode and Cluster Mode.  These modes can be used separately but often work together by sharing resources or relying on resources that each provides.",
+              "source": "@site/docs/introduction/palette-modes.md",
+              "sourceDirName": "introduction",
+              "slug": "/introduction/palette-modes",
+              "permalink": "/docs/introduction/palette-modes",
+              "draft": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/introduction/palette-modes.md",
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "App Mode and Cluster Mode",
+                "metaTitle": "App Mode and Cluster Mode",
+                "metaDescription": "Learn about the two modes available in Palette and how they benefit your Kubernetes experience.",
+                "icon": "",
+                "hideToC": true,
+                "fullWidth": false
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/docs/introduction"
+              },
+              "next": {
+                "title": "Clusters",
+                "permalink": "/docs/clusters/"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "category",
+                "label": "Introduction",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "introduction/palette-modes"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "introduction/introduction"
+                }
+              },
+              {
+                "type": "category",
+                "label": "Clusters",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "category",
+                    "label": "Public Cloud Clusters",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "category",
+                        "label": "AWS",
+                        "collapsible": true,
+                        "collapsed": true,
+                        "items": [
+                          {
+                            "type": "doc",
+                            "id": "clusters/public-cloud/aws/architecture"
+                          },
+                          {
+                            "type": "doc",
+                            "id": "clusters/public-cloud/aws/add-aws-accounts"
+                          }
+                        ],
+                        "link": {
+                          "type": "doc",
+                          "id": "clusters/public-cloud/aws/index"
+                        }
+                      }
+                    ],
+                    "link": {
+                      "type": "doc",
+                      "id": "clusters/public-cloud/index"
+                    }
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "clusters/index"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "api": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/api",
+          "tagsPath": "/api/tags",
+          "isLast": true,
+          "routePriority": -1,
+          "contentPath": "/Users/karlcardenas/projects/spectro-cloud/librarium/api",
+          "contentPathLocalized": "/Users/karlcardenas/projects/spectro-cloud/librarium/i18n/en/docusaurus-plugin-content-docs-api/current",
+          "docs": [
+            {
+              "unversionedId": "index",
+              "id": "index",
+              "title": "Introduction",
+              "description": "Spectro Cloud Palette platform capabilities are exposed via REST APIs, providing a subset of features that comply with open application programming interface (API) standards.",
+              "source": "@site/api/index.md",
+              "sourceDirName": ".",
+              "slug": "/",
+              "permalink": "/api/",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "Introduction",
+                "metaTitle": "Introduction",
+                "metaDescription": "Palette API Introduction",
+                "icon": "graph",
+                "hideToC": false,
+                "fullWidth": false,
+                "hiddenFromNav": false,
+                "hideToCSidebar": false
+              },
+              "sidebar": "defaultSidebar",
+              "next": {
+                "title": "Authentication",
+                "permalink": "/api/v1/auth"
+              }
+            },
+            {
+              "unversionedId": "v1/auth",
+              "id": "v1/auth",
+              "title": "Authentication",
+              "description": "",
+              "source": "@site/api/v1/auth.mdx",
+              "sourceDirName": "v1",
+              "slug": "/v1/auth",
+              "permalink": "/api/v1/auth",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {
+                "title": "Authentication",
+                "metaTitle": "Authentication",
+                "metaDescription": "List of API endpoints that describes the authentication layer",
+                "api": true
+              },
+              "sidebar": "defaultSidebar",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/api/"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "defaultSidebar": [
+              {
+                "type": "doc",
+                "id": "index"
+              },
+              {
+                "type": "category",
+                "label": "v1",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "v1/auth"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [
+        {
+          "id": "welcome",
+          "metadata": {
+            "permalink": "/blog/welcome",
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-26-welcome/index.md",
+            "source": "@site/blog/2021-08-26-welcome/index.md",
+            "title": "Welcome",
+            "description": "Docusaurus blogging features are powered by the blog plugin.",
+            "date": "2021-08-26T00:00:00.000Z",
+            "formattedDate": "August 26, 2021",
+            "tags": [
+              {
+                "label": "facebook",
+                "permalink": "/blog/tags/facebook"
+              },
+              {
+                "label": "hello",
+                "permalink": "/blog/tags/hello"
+              },
+              {
+                "label": "docusaurus",
+                "permalink": "/blog/tags/docusaurus"
+              }
+            ],
+            "readingTime": 0.405,
+            "hasTruncateMarker": false,
+            "authors": [
+              {
+                "name": "Sébastien Lorber",
+                "title": "Docusaurus maintainer",
+                "url": "https://sebastienlorber.com",
+                "imageURL": "https://github.com/slorber.png",
+                "key": "slorber"
+              },
+              {
+                "name": "Yangshun Tay",
+                "title": "Front End Engineer @ Facebook",
+                "url": "https://github.com/yangshun",
+                "imageURL": "https://github.com/yangshun.png",
+                "key": "yangshun"
+              }
+            ],
+            "frontMatter": {
+              "slug": "welcome",
+              "title": "Welcome",
+              "authors": [
+                "slorber",
+                "yangshun"
+              ],
+              "tags": [
+                "facebook",
+                "hello",
+                "docusaurus"
+              ]
+            },
+            "nextItem": {
+              "title": "MDX Blog Post",
+              "permalink": "/blog/mdx-blog-post"
+            }
+          },
+          "content": "[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).\n\nSimply add Markdown files (or folders) to the `blog` directory.\n\nRegular blog authors can be added to `authors.yml`.\n\nThe blog post date can be extracted from filenames, such as:\n\n- `2019-05-30-welcome.md`\n- `2019-05-30-welcome/index.md`\n\nA blog post folder can be convenient to co-locate blog post images:\n\n![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)\n\nThe blog supports tags as well!\n\n**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config."
+        },
+        {
+          "id": "mdx-blog-post",
+          "metadata": {
+            "permalink": "/blog/mdx-blog-post",
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-01-mdx-blog-post.mdx",
+            "source": "@site/blog/2021-08-01-mdx-blog-post.mdx",
+            "title": "MDX Blog Post",
+            "description": "Blog posts support Docusaurus Markdown features, such as MDX.",
+            "date": "2021-08-01T00:00:00.000Z",
+            "formattedDate": "August 1, 2021",
+            "tags": [
+              {
+                "label": "docusaurus",
+                "permalink": "/blog/tags/docusaurus"
+              }
+            ],
+            "readingTime": 0.175,
+            "hasTruncateMarker": false,
+            "authors": [
+              {
+                "name": "Sébastien Lorber",
+                "title": "Docusaurus maintainer",
+                "url": "https://sebastienlorber.com",
+                "imageURL": "https://github.com/slorber.png",
+                "key": "slorber"
+              }
+            ],
+            "frontMatter": {
+              "slug": "mdx-blog-post",
+              "title": "MDX Blog Post",
+              "authors": [
+                "slorber"
+              ],
+              "tags": [
+                "docusaurus"
+              ]
+            },
+            "prevItem": {
+              "title": "Welcome",
+              "permalink": "/blog/welcome"
+            },
+            "nextItem": {
+              "title": "Long Blog Post",
+              "permalink": "/blog/long-blog-post"
+            }
+          },
+          "content": "Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).\n\n:::tip\n\nUse the power of React to create interactive blog posts.\n\n```js\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n```\n\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n\n:::"
+        },
+        {
+          "id": "long-blog-post",
+          "metadata": {
+            "permalink": "/blog/long-blog-post",
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-29-long-blog-post.md",
+            "source": "@site/blog/2019-05-29-long-blog-post.md",
+            "title": "Long Blog Post",
+            "description": "This is the summary of a very long blog post,",
+            "date": "2019-05-29T00:00:00.000Z",
+            "formattedDate": "May 29, 2019",
+            "tags": [
+              {
+                "label": "hello",
+                "permalink": "/blog/tags/hello"
+              },
+              {
+                "label": "docusaurus",
+                "permalink": "/blog/tags/docusaurus"
+              }
+            ],
+            "readingTime": 2.05,
+            "hasTruncateMarker": true,
+            "authors": [
+              {
+                "name": "Endilie Yacop Sucipto",
+                "title": "Maintainer of Docusaurus",
+                "url": "https://github.com/endiliey",
+                "imageURL": "https://github.com/endiliey.png",
+                "key": "endi"
+              }
+            ],
+            "frontMatter": {
+              "slug": "long-blog-post",
+              "title": "Long Blog Post",
+              "authors": "endi",
+              "tags": [
+                "hello",
+                "docusaurus"
+              ]
+            },
+            "prevItem": {
+              "title": "MDX Blog Post",
+              "permalink": "/blog/mdx-blog-post"
+            },
+            "nextItem": {
+              "title": "First Blog Post",
+              "permalink": "/blog/first-blog-post"
+            }
+          },
+          "content": "This is the summary of a very long blog post,\n\nUse a `<!--` `truncate` `-->` comment to limit blog post size in the list view.\n\n<!--truncate-->\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
+        },
+        {
+          "id": "first-blog-post",
+          "metadata": {
+            "permalink": "/blog/first-blog-post",
+            "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2019-05-28-first-blog-post.md",
+            "source": "@site/blog/2019-05-28-first-blog-post.md",
+            "title": "First Blog Post",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
+            "date": "2019-05-28T00:00:00.000Z",
+            "formattedDate": "May 28, 2019",
+            "tags": [
+              {
+                "label": "hola",
+                "permalink": "/blog/tags/hola"
+              },
+              {
+                "label": "docusaurus",
+                "permalink": "/blog/tags/docusaurus"
+              }
+            ],
+            "readingTime": 0.12,
+            "hasTruncateMarker": false,
+            "authors": [
+              {
+                "name": "Gao Wei",
+                "title": "Docusaurus Core Team",
+                "url": "https://github.com/wgao19",
+                "image_url": "https://github.com/wgao19.png",
+                "imageURL": "https://github.com/wgao19.png"
+              }
+            ],
+            "frontMatter": {
+              "slug": "first-blog-post",
+              "title": "First Blog Post",
+              "authors": {
+                "name": "Gao Wei",
+                "title": "Docusaurus Core Team",
+                "url": "https://github.com/wgao19",
+                "image_url": "https://github.com/wgao19.png",
+                "imageURL": "https://github.com/wgao19.png"
+              },
+              "tags": [
+                "hola",
+                "docusaurus"
+              ]
+            },
+            "prevItem": {
+              "title": "Long Blog Post",
+              "permalink": "/blog/long-blog-post"
+            }
+          },
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
+        }
+      ],
+      "blogListPaginated": [
+        {
+          "items": [
+            "welcome",
+            "mdx-blog-post",
+            "long-blog-post",
+            "first-blog-post"
+          ],
+          "metadata": {
+            "permalink": "/blog",
+            "page": 1,
+            "postsPerPage": 10,
+            "totalPages": 1,
+            "totalCount": 4,
+            "blogDescription": "Blog",
+            "blogTitle": "Blog"
+          }
+        }
+      ],
+      "blogTags": {
+        "/blog/tags/facebook": {
+          "label": "facebook",
+          "items": [
+            "welcome"
+          ],
+          "permalink": "/blog/tags/facebook",
+          "pages": [
+            {
+              "items": [
+                "welcome"
+              ],
+              "metadata": {
+                "permalink": "/blog/tags/facebook",
+                "page": 1,
+                "postsPerPage": 10,
+                "totalPages": 1,
+                "totalCount": 1,
+                "blogDescription": "Blog",
+                "blogTitle": "Blog"
+              }
+            }
+          ]
+        },
+        "/blog/tags/hello": {
+          "label": "hello",
+          "items": [
+            "welcome",
+            "long-blog-post"
+          ],
+          "permalink": "/blog/tags/hello",
+          "pages": [
+            {
+              "items": [
+                "welcome",
+                "long-blog-post"
+              ],
+              "metadata": {
+                "permalink": "/blog/tags/hello",
+                "page": 1,
+                "postsPerPage": 10,
+                "totalPages": 1,
+                "totalCount": 2,
+                "blogDescription": "Blog",
+                "blogTitle": "Blog"
+              }
+            }
+          ]
+        },
+        "/blog/tags/docusaurus": {
+          "label": "docusaurus",
+          "items": [
+            "welcome",
+            "mdx-blog-post",
+            "long-blog-post",
+            "first-blog-post"
+          ],
+          "permalink": "/blog/tags/docusaurus",
+          "pages": [
+            {
+              "items": [
+                "welcome",
+                "mdx-blog-post",
+                "long-blog-post",
+                "first-blog-post"
+              ],
+              "metadata": {
+                "permalink": "/blog/tags/docusaurus",
+                "page": 1,
+                "postsPerPage": 10,
+                "totalPages": 1,
+                "totalCount": 4,
+                "blogDescription": "Blog",
+                "blogTitle": "Blog"
+              }
+            }
+          ]
+        },
+        "/blog/tags/hola": {
+          "label": "hola",
+          "items": [
+            "first-blog-post"
+          ],
+          "permalink": "/blog/tags/hola",
+          "pages": [
+            {
+              "items": [
+                "first-blog-post"
+              ],
+              "metadata": {
+                "permalink": "/blog/tags/hola",
+                "page": 1,
+                "postsPerPage": 10,
+                "totalPages": 1,
+                "totalCount": 1,
+                "blogDescription": "Blog",
+                "blogTitle": "Blog"
+              }
+            }
+          ]
+        }
+      },
+      "blogTagsListPath": "/blog/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        }
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-plugin-local-resolve": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

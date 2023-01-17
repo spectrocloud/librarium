@@ -1,0 +1,97 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "introduction/introduction",
+          "docs": [
+            {
+              "id": "clusters/index",
+              "path": "/docs/clusters/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clusters/public-cloud/aws/add-aws-accounts",
+              "path": "/docs/clusters/public-cloud/aws/add-aws-accounts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clusters/public-cloud/aws/architecture",
+              "path": "/docs/clusters/public-cloud/aws/architecture",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clusters/public-cloud/aws/index",
+              "path": "/docs/clusters/public-cloud/aws/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clusters/public-cloud/index",
+              "path": "/docs/clusters/public-cloud/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "introduction/introduction",
+              "path": "/docs/introduction",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "introduction/palette-modes",
+              "path": "/docs/introduction/palette-modes",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/introduction",
+                "label": "Introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    },
+    "api": {
+      "path": "/api",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/api",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "index",
+              "path": "/api/",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "v1/auth",
+              "path": "/api/v1/auth",
+              "sidebar": "defaultSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "defaultSidebar": {
+              "link": {
+                "path": "/api/",
+                "label": "index"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

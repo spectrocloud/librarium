@@ -1,0 +1,26 @@
+{
+  "unversionedId": "clusters/public-cloud/aws/add-aws-accounts",
+  "id": "clusters/public-cloud/aws/add-aws-accounts",
+  "title": "Register and Manage AWS Accounts",
+  "description": "Palette supports integration with AWS Cloud Accounts. This also includes support for AWS GovCloud (US) accounts. This section explains how to create an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.",
+  "source": "@site/docs/clusters/public-cloud/aws/add-aws-accounts.md",
+  "sourceDirName": "clusters/public-cloud/aws",
+  "slug": "/clusters/public-cloud/aws/add-aws-accounts",
+  "permalink": "/docs/clusters/public-cloud/aws/add-aws-accounts",
+  "draft": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clusters/public-cloud/aws/add-aws-accounts.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Register and Manage AWS Accounts",
+    "metaTitle": "Add an AWS Account to Palette",
+    "metaDescription": "Learn how to add an AWS account to Palette.",
+    "hideToC": false,
+    "fullWidth": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture",
+    "permalink": "/docs/clusters/public-cloud/aws/architecture"
+  }
+}

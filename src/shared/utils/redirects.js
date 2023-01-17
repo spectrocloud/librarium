@@ -126,6 +126,12 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/knowledgebase/how-to/reverse-proxy-dashboard`,
+    toPath: `/clusters/cluster-management/reverse-proxy-dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }
 ];
 
 module.exports = redirects;

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "index",
+  "id": "index",
+  "title": "Introduction",
+  "description": "Spectro Cloud Palette platform capabilities are exposed via REST APIs, providing a subset of features that comply with open application programming interface (API) standards.",
+  "source": "@site/api/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/api/",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Introduction",
+    "metaTitle": "Introduction",
+    "metaDescription": "Palette API Introduction",
+    "icon": "graph",
+    "hideToC": false,
+    "fullWidth": false,
+    "hiddenFromNav": false,
+    "hideToCSidebar": false
+  },
+  "sidebar": "defaultSidebar",
+  "next": {
+    "title": "Authentication",
+    "permalink": "/api/v1/auth"
+  }
+}
