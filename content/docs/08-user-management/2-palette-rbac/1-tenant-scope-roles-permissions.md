@@ -79,6 +79,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 | **role**           | √          | √          | √       | √        | √          |            |             |            |             |
 | **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
 | **team**           | √          | √          | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 | **user**           | √          | √          | √       | √        | √          |            |             |            |             |
 | **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
 
@@ -159,6 +160,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 | **privateGateway** | √          | √       | √          | √        | √          |            |             |            |             |
 | **project**        | √          | √       | √          | √        | √          |            |             |            |             |
 | **sshKey**         | √          | √       | √          | √        | √          |            |             |            |             |
+| **tag**            |            |         |            |          | √          |            |             |            |             |
 | **workspace**      | √          | √       | √          | √        | √          |            |             | √          | √           |
 
 
@@ -181,7 +183,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 | **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 <br />
 <br />
 <br />
