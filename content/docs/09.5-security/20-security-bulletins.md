@@ -25,7 +25,7 @@ Our security advisories follow the [CVSS standards](https://www.first.org/cvss/v
 
 # Security Bulletins
 
-## 1/17/2023 - Root Access through FTP Server - 7.3 CVSS
+## Januray 17, 2023 - Root Access through FTP Server - 7.3 CVSS
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non tempus velit. Nullam eget ultricies lacus, vitae mollis ipsum. Vivamus sodales vitae lectus ac placerat. Praesent cursus euismod mauris vitae fermentum. Donec eu semper erat. Nunc volutpat interdum ex et varius. Praesent gravida purus vitae nunc suscipit bibendum at sit amet lacus. Nam egestas venenatis tellus, quis molestie ligula pharetra ut. Ut imperdiet neque condimentum, mattis augue a, rhoncus tellus. Donec lacinia sem a faucibus imperdiet. Sed nec vulputate velit.
 <br />
