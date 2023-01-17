@@ -1,0 +1,29 @@
+{
+  "unversionedId": "introduction/introduction",
+  "id": "introduction/introduction",
+  "title": "What is Palette?",
+  "description": "Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center or the cloud.",
+  "source": "@site/docs/introduction/index.md",
+  "sourceDirName": "introduction",
+  "slug": "/introduction",
+  "permalink": "/docs/introduction",
+  "draft": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/introduction/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "What is Palette?",
+    "metaTitle": "What is Palette?",
+    "metaDescription": "Learn what Spectro Cloud's Palette platform is, and how it reduce the complexities your encounter today with Kubernetes.",
+    "sidebar_label": "Introduction",
+    "slug": "/introduction",
+    "id": "introduction",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "App Mode and Cluster Mode",
+    "permalink": "/docs/introduction/palette-modes"
+  }
+}

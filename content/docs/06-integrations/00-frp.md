@@ -16,8 +16,17 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Proxy
-Spectro Proxy is a fast and straightforward reverse proxy that lets you forward a port of your local server behind a network address translation (NAT) or firewall to a public server. The proxy server pack is available as an add on pack for authentication. Users can attach this layer to the cluster profile while profile creation. This installs the FRP client in the workload clusters and configures it with a FRP server. Spectro Cloud provides hosts FRP server and by default the pack is configrued to connect to this server. Spectro Cloud detects the presence of this pack in the cluster and automatically updates the Kubeconfig file to use the FRP server as the endpoint. 
+Spectro Proxy is a reverse proxy that enables you to forward a port of your server behind a network address translation (NAT) or firewall to a public server. The proxy server pack is available as an addon pack.
 
+Users can attach this pack to a [cluster profile](/cluster-profiles). This pack installs the Spectro Proxy client in the workload clusters and configures the cluster to point to a manged proxy server, also called the forward reverse proxy (FRP). We provide host clusters with a FRP and by default the Spectro Proxy pack is configured to connect to the managed FRP. We detect the presence of this pack in the cluster and automatically updates the kubeconfig file to use the managed proxy server server as the endpoint. 
+<br />
+
+
+<InfoBox>
+
+
+This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide. 
+</InfoBox>
 
 ## Versions Supported
 
@@ -53,7 +62,49 @@ The Kubernetes dashboard integration supports the followwing parameters.
 
 ## Usage
 
-To enable the 
+The setup of this pack varies depending on the Kubernetes flavor selected. 
+If you are not using Edge then select the Palette eXtended Kubernetes tab.
+<br /> 
+
+<Tabs>
+<Tabs.TabPane tab="Palette eXtended Kubernetes" key="PXK">
+
+
+To use this pack you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. To learn more about cluster profile creation, check out [Create Cluster Profile](/cluster-profiles/task-define-profile) guide. You can use the default values provided as the pack is inteded to work out of the box.  
+
+Some manged Kuberneted platforms require minor customization of the Kubernetes pack configuration in the cluster profile.
+If using AWS EKS, add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under `apiServer` parameter section. 
+
+```yaml
+    certSANs:
+    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+
+The following is an example configuration:
+
+![frp-cert-san-example](frp-certsan.png)
+
+
+After you have successfuly deployed a cluster you can 
+
+
+<br />
+
+
+<InfoBox>
+
+Set the parameter `k8sDashboardIntegration.enabled` to true if you intended to expose the Kubernetes dashboard. 
+Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
+
+</InfoBox>
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Palette eXtended Kubernetes Edge" key="PXKE">
+    # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Tabs.TabPane>
+</Tabs>
+
+
 
 </Tabs.TabPane>
 
@@ -71,15 +122,8 @@ To enable the
 
 **Important Note:**
 
-If the user goes for clusters other than EKS, add the following extra cert SAN values to the Kubernetes pack under apiServer while creating the cluster. 
 
-```json
- certSANs:
- - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-Example:
 
-![frp-cert-san-example](frp-certsan.png)
 
 
 # Terraform

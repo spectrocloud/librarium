@@ -1,0 +1,246 @@
+{
+  "/__docusaurus/debug-f29": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/__docusaurus/debug/config-193": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/__docusaurus/debug/content-975": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-0db": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/__docusaurus/debug/metadata-caa": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/__docusaurus/debug/registry-a2b": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/__docusaurus/debug/routes-a02": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugbcc-a09"
+    }
+  },
+  "/blog-69d": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      },
+      {
+        "content": "content---blog-871-381"
+      },
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/archive-808": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/first-blog-post-8b3": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-first-blog-poste-27-4a1"
+  },
+  "/blog/long-blog-post-d58": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-long-blog-post-736-bc7"
+  },
+  "/blog/mdx-blog-post-935": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-mdx-blog-post-593-37b"
+  },
+  "/blog/tags-2a2": {
+    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "tags": "tags---blog-tagsa-70-da2"
+  },
+  "/blog/tags/docusaurus-aee": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blogf-4-f-cd7"
+      },
+      {
+        "content": "content---blog-871-381"
+      },
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "tag": "tag---blog-tags-docusaurusa-80-728",
+    "listMetadata": "listMetadata---blog-tags-docusaurus-608-c09"
+  },
+  "/blog/tags/facebook-8a9": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      }
+    ],
+    "tag": "tag---blog-tags-facebook-031-c52",
+    "listMetadata": "listMetadata---blog-tags-facebook-096-d31"
+  },
+  "/blog/tags/hello-0dd": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-766-e3c"
+      },
+      {
+        "content": "content---blog-871-381"
+      }
+    ],
+    "tag": "tag---blog-tags-hello-30-a-bed",
+    "listMetadata": "listMetadata---blog-tags-hello-664-70a"
+  },
+  "/blog/tags/hola-376": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-925-e00"
+      }
+    ],
+    "tag": "tag---blog-tags-holae-16-18a",
+    "listMetadata": "listMetadata---blog-tags-hola-4-c-9-a24"
+  },
+  "/blog/welcome-387": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-2-d-1-7d0"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-welcomed-9-f-ffb"
+  },
+  "/markdown-page-4a7": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---markdown-page-10-e-7ee"
+    },
+    "content": "content---markdown-page-393-028"
+  },
+  "/api-d71": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---apib-83-40b"
+    },
+    "versionMetadata": "versionMetadata---api-654-e35"
+  },
+  "/api/-560": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---api-073-9da"
+  },
+  "/api/v1/auth-047": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---api-v-1-auth-146-aab"
+  },
+  "/docs-4be": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-8-c-9-3bd"
+    },
+    "versionMetadata": "versionMetadata---docs-935-398"
+  },
+  "/docs/clusters/-301": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clusters-6-ab-0de"
+  },
+  "/docs/clusters/public-cloud/-d10": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clusters-public-cloud-99-e-50d"
+  },
+  "/docs/clusters/public-cloud/aws/-6f0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clusters-public-cloud-aws-90-b-506"
+  },
+  "/docs/clusters/public-cloud/aws/add-aws-accounts-d01": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clusters-public-cloud-aws-add-aws-accounts-0-dd-924"
+  },
+  "/docs/clusters/public-cloud/aws/architecture-b48": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-clusters-public-cloud-aws-architecture-5-b-0-af9"
+  },
+  "/docs/introduction-1d7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-introduction-1-cd-1ed"
+  },
+  "/docs/introduction/palette-modes-fac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-introduction-palette-modes-890-9cf"
+  },
+  "/-13a": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---markdown-page-10-e-7ee"
+    },
+    "config": "config---5-e-9-4f3"
+  }
+}
