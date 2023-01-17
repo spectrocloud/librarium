@@ -9,8 +9,7 @@ fullWidth: false
 
 # Overview
 
-The following are security advisories for Palette and other related Spectro Cloud related resources. We strongly recommend you address these security advisories as quickly as possible to mitigate abuse by a malicious actor.
-
+The following are security advisories for Palette and other related Spectro Cloud related resources.
 
 Our security advisories follow the [CVSS standards](https://www.first.org/cvss/v3.1/specification-document#Qualitative-Severity-Rating-Scale).
 
