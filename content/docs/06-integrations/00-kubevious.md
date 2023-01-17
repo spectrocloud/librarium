@@ -3,7 +3,7 @@ title: 'Kubevious'
 metaTitle: 'Kubevious'
 metaDescription: 'Kubevious Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image/png'
@@ -30,7 +30,7 @@ Kubevious integration provides a graphical interface that renders easy to unders
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.8.x" key="0.8.x">
 
-* **0.8.15** 
+* **0.8.15**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.5.x" key="0.5.x">

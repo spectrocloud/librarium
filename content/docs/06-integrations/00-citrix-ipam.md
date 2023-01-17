@@ -3,7 +3,7 @@ title: 'Citrix IPAM'
 metaTitle: 'Citrix IPAM'
 metaDescription: 'Citrix IPAM Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['load balancers']
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png'
 ---
@@ -24,7 +24,7 @@ The integration helps with IP address management and provides load balancing cap
 <Tabs>
 <Tabs.TabPane tab="1.7.x" key="1.7.x">
 
-* **1.7.6** 
+* **1.7.6**
 
 </Tabs.TabPane>
 </Tabs>

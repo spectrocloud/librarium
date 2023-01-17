@@ -3,7 +3,7 @@ title: 'ExternalDNS'
 metaTitle: 'ExternalDNS'
 metaDescription: 'ExternalDNS pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['load balancers']
 logoUrl: 'https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image/png'
@@ -30,12 +30,12 @@ Providers have to be set up for this pack to get deployed and work seamlessly. F
 
 <Tabs.TabPane tab="0.12.x" key="0.12.x">
 
-* **0.12.2** 
+* **0.12.2**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.7.x" key="0.7.x">
 
-* **0.7.2** 
+* **0.7.2**
 
 </Tabs.TabPane>
 

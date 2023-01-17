@@ -3,7 +3,7 @@ title: 'Kubernetes Dashboard'
 metaTitle: 'Kubernetes Dashboard'
 metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
@@ -53,13 +53,13 @@ Palette supports provisioning a [reverse proxy dashboard](/knowledgebase/how-to/
 
 <Tabs.TabPane tab="2.1.x" key="2.1.x">
 
-* **2.1.0** 
+* **2.1.0**
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="2.0.x" key="02.0.x">
 
-* **2.0.1** 
+* **2.0.1**
 
 </Tabs.TabPane>
 

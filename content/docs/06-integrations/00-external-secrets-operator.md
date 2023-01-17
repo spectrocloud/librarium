@@ -3,7 +3,7 @@ title: 'External Secrets Operator'
 metaTitle: 'external-secrets-operator'
 metaDescription: 'external-secrets-operator pack in Palette'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['authentication']
 logoUrl: 'https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image/png'
 ---
@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # External Secrets Operator
 
-External Secrets Operator (ESO) is a Kubernetes operator that integrates external secret management 
+External Secrets Operator (ESO) is a Kubernetes operator that integrates external secret management
 systems like AWS Secrets Manager, HashiCorp Vault, Google Secrets Manager, or Azure Key Vault. The operator reads information from external APIs and automatically injects the values into a Kubernetes Secret.
 
 You can use the External-Secrets-Operator Add-on pack as an authenticator in Palette.
@@ -106,8 +106,3 @@ data:
 [Amazon IAM-Policy-Examples-ASM-Secrets](https://docs.aws.amazon.com/mediaconnect/latest/ug/iam-policy-examples-asm-secrets.html)
 
 [External Secrets](https://github.com/external-secrets/external-secrets)
-
-
-
-
-

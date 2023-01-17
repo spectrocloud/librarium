@@ -3,7 +3,7 @@ title: 'Portworx'
 metaTitle: 'Portworx Integration with Spectro Cloud'
 metaDescription: 'Portworx storage integration for on-prem installations'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
@@ -40,17 +40,17 @@ import Tooltip from "shared/components/ui/Tooltip";
 <Tabs.TabPane tab="2.9.x" key="2.9.x">
 
 
-* **2.9.0** 
+* **2.9.0**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="2.8.x" key="2.8.x">
 
-* **2.8.0** 
+* **2.8.0**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
-* **2.6.1** 
+* **2.6.1**
 
 </Tabs.TabPane>
 </Tabs>
@@ -60,14 +60,14 @@ import Tooltip from "shared/components/ui/Tooltip";
 For deploying Portworx for Kubernetes, make sure to configure the properties in the pack:
 
 
-* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
+* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
 
 
 * Ensure you are using a supported Kubernetes version.
 
 
 * Identify and set up the storageType.
- 
+
 
 <br />
 
@@ -93,7 +93,7 @@ The default installation of Portworx will deploy the following components in the
 ## Notable Parameters
 
 ### Manifests - Portworx:
-    
+
 ```yaml
 
 manifests:
@@ -145,7 +145,7 @@ manifests:
     # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
     # Example, imageRegistry: "harbor.company.com/portworx"
     imageRegistry: ""
-    
+
 ```
 # Integrating to an External etcd
 
@@ -221,9 +221,9 @@ vsphere-cloud-controller-manager:
 
 ## Use Certs Secured KVDB Endpoints
 
-```yaml 
+```yaml
 
-# External KVDB Related Configuration        
+# External KVDB Related Configuration
  externalKvdb:
   # List of External KVDB endpoints to use with Portworx. Used only when useExternalKvdb is true
   endpoints:
@@ -306,7 +306,7 @@ vsphere-cloud-controller-manager:
   useExternalKvdb: true
 vsphere-cloud-controller-manager:
   k8sVersion: '{{.spectro.system.kubernetes.version}}'
-  
+
 ```
 
 </Tabs.TabPane>
@@ -387,7 +387,7 @@ type: Opaque
 data:
   VSPHERE_USER: "b64 encoded admin username"
   VSPHERE_PASSWORD: "b64 encoded admin password"
-```  
+```
 and this secret can be referenced in the Portworx pack values as shown below:
 
 <br />
@@ -397,7 +397,7 @@ manifests:
   portworx:
     vsphereConfig:
       userCredsSecret: "px-vsphere-secret"
-``` 
+```
 
 Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in a Portworx deployment failure.
 
@@ -406,7 +406,7 @@ Ensure to follow the correct indentation style; otherwise, certificates will not
 
 
 ## AWS Environment
-Palette provisions Portworx in an AWS environment. The following are the packs supported: 
+Palette provisions Portworx in an AWS environment. The following are the packs supported:
 <br />
 
 ### Packs Supported
