@@ -52,7 +52,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Praesen
 - [FTP Vulnerabilities](https://spectrocloud.com)
 
 
-## 11/27/2023 - Exposed Service Usernames - 2.5 CVSS
+## November 12, 2023 - Exposed Service Usernames - 2.5 CVSS
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non tempus velit. Nullam eget ultricies lacus, vitae mollis ipsum. Vivamus sodales vitae lectus ac placerat. Praesent cursus euismod mauris vitae fermentum. Donec eu semper erat. Nunc volutpat interdum ex et varius. Praesent gravida purus vitae nunc suscipit bibendum at sit amet lacus. Nam egestas venenatis tellus, quis molestie ligula pharetra ut. Ut imperdiet neque condimentum, mattis augue a, rhoncus tellus. Donec lacinia sem a faucibus imperdiet. Sed nec vulputate velit.
 <br />
