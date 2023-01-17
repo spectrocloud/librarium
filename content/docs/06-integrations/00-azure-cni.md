@@ -3,7 +3,7 @@ title: 'Azure CNI'
 metaTitle: 'Azure CNI'
 metaDescription: 'Azure CNI network pack for Palette AKS Clusters'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['network']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7943741181181823079533cd363884a28aa0651715ea43408bdc77a5c51?type=image/png'
 ---
@@ -17,9 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Azure CNI
 
-Palette supports Azure Container Network Interface (CNI) networking for Azure Kubernetes Service (AKS) clusters. Azure CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
+Palette supports Azure Container Network Interface (CNI) networking for Azure Kubernetes Service (AKS) clusters. Azure CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility.
 
-To allocate unique IP addresses to individual pods, advanced forethought needs to be put in. As per the maximum pods supported by a node, [IP addresses need to be reserved](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster) in advance. The default [maximum number](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per node varies between kubenet and Azure CNI networking and based on the method of cluster deployment. 
+To allocate unique IP addresses to individual pods, advanced forethought needs to be put in. As per the maximum pods supported by a node, [IP addresses need to be reserved](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster) in advance. The default [maximum number](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per node varies between kubenet and Azure CNI networking and based on the method of cluster deployment.
 
 
 ## Versions Supported
@@ -78,7 +78,7 @@ pack:
 |Logging|Rules added or deleted in IP Tables are logged on every host under `/var/log/azure-npm.log`|For more information, see [Calico component logs](https://projectcalico.docs.tigera.io/maintenance/troubleshoot/component-logs)|
 
 <WarningBox>
-Make sure to use Azure CNI with the Windows operating system as the 
+Make sure to use Azure CNI with the Windows operating system as the
 kubenet is not available for the Windows environment.
 </WarningBox>
 
@@ -88,6 +88,3 @@ kubenet is not available for the Windows environment.
 ## References
 * [Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
 * [Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)
-
-
-

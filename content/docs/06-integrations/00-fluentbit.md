@@ -3,7 +3,7 @@ title: 'Fluentbit'
 metaTitle: 'Fluentbit'
 metaDescription: 'Fluentbit Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['logging']
 logoUrl: 'https://registry.spectrocloud.com/v1/fluentbit/blobs/sha256:012fbab20e3427b6c1f6a73d2ea0b4cc43cf60991774c4800ddf3e23c4b64544?type=image/png'
 ---

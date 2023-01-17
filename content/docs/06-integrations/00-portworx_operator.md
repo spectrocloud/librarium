@@ -3,7 +3,7 @@ title: 'Portworx /w Operator'
 metaTitle: 'Portworx storage CSI (Essentials/PAYG/Enterprise)'
 metaDescription: 'Portworx storage CSI for all use cases'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
@@ -36,9 +36,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 ## Prerequisites
 
 For deploying Portworx with Operator for Kubernetes, make sure to configure the properties in the pack:
-<br /> 
+<br />
 
-* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).  
+* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
 
 * Ensure you use a supported Kubernetes version (1.19 or above).
 
@@ -583,7 +583,7 @@ These are the three types of Presets that can be selected and modified. The pack
 
 <Tabs.TabPane tab="Use External Kvdb over SSL" key="Use External Kvdb over SSL">
 
-```yaml 
+```yaml
     storageCluster:
       spec:
         kvdb:
