@@ -28,7 +28,7 @@ Users can attach this pack to a [cluster profile](/cluster-profiles). This pack 
 This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide. 
 </InfoBox>
 
-## Versions Supported
+# Versions Supported
 
 <Tabs>
 
@@ -62,30 +62,78 @@ The Kubernetes dashboard integration supports the followwing parameters.
 
 ## Usage
 
-The setup of this pack varies depending on the Kubernetes flavor selected. 
-If you are not using Edge then select the Palette eXtended Kubernetes tab.
-<br /> 
+To use this pack you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. To learn more about cluster profile creation, check out [Create Cluster Profile](/cluster-profiles/task-define-profile) guide. 
 
-<Tabs>
-<Tabs.TabPane tab="Palette eXtended Kubernetes" key="PXK">
-
-
-To use this pack you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. To learn more about cluster profile creation, check out [Create Cluster Profile](/cluster-profiles/task-define-profile) guide. You can use the default values provided as the pack is inteded to work out of the box.  
-
-Some manged Kuberneted platforms require minor customization of the Kubernetes pack configuration in the cluster profile.
-If using AWS EKS, add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under `apiServer` parameter section. 
+Use the default values provided in the pack.
+You will also have to add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under `apiServer` parameter section. The exception to this step is for AWS EKS, as the certificate SAN are automatically added through Palette.
 
 ```yaml
     certSANs:
     - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-The following is an example configuration:
+The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
 
 ![frp-cert-san-example](frp-certsan.png)
 
 
-After you have successfuly deployed a cluster you can 
+<br />
+
+
+<InfoBox>
+
+Set the parameter `k8sDashboardIntegration.enabled` to true if you intended to expose the Kubernetes dashboard. 
+Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
+
+</InfoBox>
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.1.x" key="1.1.x">
+
+## Prerequisites
+
+- A Spectro Cloud Host Cluster.
+- Port 443 exposed outbound communication
+
+
+## Parameters
+
+The following parameters are supported for the Spectro Proxy.
+
+| Parameter                | Description                                            | Default                                     |
+|-------------------------|--------------------------------------------------------|---------------------------------------------|
+| namespace               | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
+| server                  | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
+| clusterUid              | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
+| subdomain               | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
+
+
+The Kubernetes dashboard integration supports the followwing parameters.
+
+| Parameter       | Description                                 | Default |
+|-----------------|---------------------------------------------|---------|
+| enabled         |  Enable the dashboard.                      | `false`   |
+| useInsecurePort | Use unsecure port (HTTP) for communication. | `false`   |
+
+
+## Usage
+
+To use this pack you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. To learn more about cluster profile creation, check out [Create Cluster Profile](/cluster-profiles/task-define-profile) guide. 
+
+Use the default values provided in the pack.
+You will also have to add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under `apiServer` parameter section. The exception to this step is for AWS EKS, as the certificate SAN are automatically added through Palette.
+
+```yaml
+    certSANs:
+    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+
+The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
+
+![frp-cert-san-example](frp-certsan.png)
 
 
 <br />
@@ -99,32 +147,55 @@ Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-pr
 </InfoBox>
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Palette eXtended Kubernetes Edge" key="PXKE">
-    # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Tabs.TabPane>
-</Tabs>
-
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="1.1.x" key="1.1.x">
-
-**1.1.0**
-
-</Tabs.TabPane>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-**1.0.x**
+## Prerequisites
+
+- A Spectro Cloud Host Cluster.
+- Port 443 exposed outbound communication
+
+
+## Parameters
+
+The following parameters are supported for the Spectro Proxy.
+
+| Parameter                | Description                                            | Default                                     |
+|-------------------------|--------------------------------------------------------|---------------------------------------------|
+| namespace               | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
+| server                  | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
+| clusterUid              | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
+| subdomain               | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
+
+
+## Usage
+
+To use this pack you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. To learn more about cluster profile creation, check out [Create Cluster Profile](/cluster-profiles/task-define-profile) guide. 
+
+Use the default values provided in the pack.
+You will also have to add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under `apiServer` parameter section. The exception to this step is for AWS EKS, as the certificate SAN are automatically added through Palette.
+
+```yaml
+    certSANs:
+    - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+
+The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
+
+![frp-cert-san-example](frp-certsan.png)
+
+
+<br />
+
+
+<InfoBox>
+
+Set the parameter `k8sDashboardIntegration.enabled` to true if you intended to expose the Kubernetes dashboard. 
+Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
+
+</InfoBox>
 
 </Tabs.TabPane>
 </Tabs>
-
-**Important Note:**
-
-
-
-
 
 # Terraform
 
@@ -138,6 +209,8 @@ data "spectrocloud_pack" "spectro-proxy" {
 ```
 
 # References
+
+- [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard)
 
 - [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
 
