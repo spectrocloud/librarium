@@ -3,7 +3,7 @@ title: 'AWS-EFS'
 metaTitle: 'AWS EFS Integration with Palette'
 metaDescription: 'AWS EFS storage add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png'
 
@@ -20,7 +20,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Amazon Elastic File System (Amazon EFS) is a scalable file storage that allows for automatic data encryption at rest and in transit. You can access information from an AWS EFS volume, within a specific region, no matter which availability zone. The cluster can be distributed across availability zones instead of having it in one location and replicating it across multiple times.
 
-Palette handles setting up the AWS EFS as a volume with ease when adding the PersistentVolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node. 
+Palette handles setting up the AWS EFS as a volume with ease when adding the PersistentVolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node.
 
 ## Usage
 
@@ -100,7 +100,7 @@ There are two ways to add AWS EFS to Palette:
 </Tabs>
 
 ## Notable Parameters
-While adding the AWS EFS layer, the following parameters can be configured: 
+While adding the AWS EFS layer, the following parameters can be configured:
 
 | Name             | Supported Values | Default Value         | Description                                                                                                                                                                                                                              |
 | ---------------- | ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -130,7 +130,7 @@ The `kubectl describes pvc` ${PVC_NAME} command output is as follows:
 ```yaml
 
  `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
- 
+
 
 Name:          efs
 
@@ -160,7 +160,7 @@ Events:
 | Type    | Reason             | Age                | From                        | Message                  |
 | ------- | ------------------ | ------------------ | --------------------------- | ------------------------ |
 | Warning | ProvisioningFailed | 43s (x12 over 11m) | persistentvolume-controller | no volume plugin matched |
-Mounted By:  <none> 
+Mounted By:  <none>
 
 ```
 
@@ -184,6 +184,3 @@ Example of an IAM Policy:
 To learn more info about Storage Classes see following link:
 
 - https://kubernetes.io/docs/concepts/storage/storage-classes/
-
-
-

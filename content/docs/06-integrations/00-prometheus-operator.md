@@ -3,7 +3,7 @@ title: 'Prometheus Operator'
 metaTitle: 'Prometheus Operator'
 metaDescription: 'Prometheus Operator Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
@@ -61,7 +61,7 @@ The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io
 </Tabs.TabPane>
 <Tabs.TabPane tab="12.3.x" key="12.3.x">
 
-* **12.3.0** 
+* **12.3.0**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="9.7.x" key="9.7.x">
@@ -142,7 +142,7 @@ For Alertmanager to work, the alerting configuration file should be set while de
 5. Create the Secret using the Alertmanager config prepared above.
 
    ```
-  kubectl create secret generic alertmanager-secret -n monitoring --from-file=./alertmanager.yaml  
+  kubectl create secret generic alertmanager-secret -n monitoring --from-file=./alertmanager.yaml
    ```
 
 6. Alertmanager pod will recover from the crash in the next reconciliation.
@@ -161,11 +161,11 @@ Due to security reasons, controller-manager, kube-schedule, and etcd run in the 
       scheduler:
         extraArgs:
           ...
-          bind-address: "0.0.0.0"  
+          bind-address: "0.0.0.0"
       etcd:
         local:
           extraArgs:
-            listen-metrics-urls: "http://0.0.0.0:2381"    
+            listen-metrics-urls: "http://0.0.0.0:2381"
 ```
 
 ## Ingress
