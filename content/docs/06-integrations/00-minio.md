@@ -41,14 +41,10 @@ MinIO provides the following templates:
 
 - Helm Chart
 - Cluster role and cluster role binding
-- Console templates for deployment, ingress, service, user interface,
+- Console templates for deployment, ingress, service, user interface
 - Tenants
 - Deployment
-<<<<<<< HEAD:content/docs/06-integrations/00-minio.md
-- Service account service.  
-=======
-- Service account and operator service.
->>>>>>> 19969563947a022d4a8d0d36f246ce48735de69f:content/docs/06-integrations/00-minio-operator.md
+- Service account service  
 
 # References
 
