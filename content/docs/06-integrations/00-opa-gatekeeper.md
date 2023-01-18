@@ -3,7 +3,7 @@ title: 'OpenPolicyAgent'
 metaTitle: 'OpenPolicyAgent'
 metaDescription: 'OpenPolicyAgent security pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['security']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image/png" alt="OpenPolicyAgent logo'
 ---
@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Open Policy Agent
 
-Palette users can leverage the **Open Policy Agent (OPA) Gatekeeper** to strengthen the security administration of Kubernetes environment. The major motivation behind the deployment is admission customization via configurations without code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints. Palette supports **Gatekeeper v3.0**. 
+Palette users can leverage the **Open Policy Agent (OPA) Gatekeeper** to strengthen the security administration of Kubernetes environment. The major motivation behind the deployment is admission customization via configurations without code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints. Palette supports **Gatekeeper v3.0**.
 
 The major features of OPA are:
 
@@ -30,7 +30,7 @@ The major features of OPA are:
     * Services must all have globally unique selectors.
   * **Constraint Properties**
     * AND-ed together
-    * Schema validation 
+    * Schema validation
     * Selection semantics
 * **Audit**: The periodical evaluation of resources against constraints.
 * **Data Replication**: Constraints to be compared against other objects in the cluster.

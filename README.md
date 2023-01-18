@@ -177,6 +177,24 @@ To add a redirect to an existing documentation page you must add an entry to the
   },
 ```
 
+#### Multi Object Selector
+
+The Packs integration page and the Service Listings page use a component to display the various offerings. 
+Packs intergations use the `<Packs />` component, whereas the Service Tiers from App Mode use the `<AppTiers />` component.
+
+To add a Pack to the list complete the following actions:
+
+- Add a new markdown page for the Pack.
+- In the frontmatter set the type to the following value: `type: "integration"`.
+- Populate the page with content.
+
+
+To add a Service to the Service List complete the following actions:
+
+- Add a new markdown page for the App Mode Service.
+- In the frontmatter set the type to the following value: `type: "appTier"`.
+- Populate the page with content.
+
 
 #### Images or other assets
 

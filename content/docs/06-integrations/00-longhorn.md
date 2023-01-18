@@ -3,7 +3,7 @@ title: 'Longhorn'
 metaTitle: 'Longhorn Integration with Palette'
 metaDescription: 'Longhorn pack in Palette'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ["storage"]
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-longhorn/blobs/sha256:8257bd6697941139cea8ace907e25b3859cb8de48f965a5b6011d518cad0a2db?type=image/png'
 ---
@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices.
 
-Longhorn creates a dedicated storage controller for each block device volume and replicates the volume across multiple nodes. 
+Longhorn creates a dedicated storage controller for each block device volume and replicates the volume across multiple nodes.
 
 # Prerequisites
 
