@@ -8,8 +8,10 @@ fullWidth: true
 hideToCSidebar: true
 ---
 
-import Packs from "shared/components/common/Integrations/Packs"
 import {Content} from "shared/layouts/Default";
+import Tabs from "shared/components/ui/Tabs";
+import Packs from "shared/components/common/Integrations/Packs"
+import AppTiers from "shared/components/common/Integrations/AppTiers"
 
 <Content>
 
@@ -18,7 +20,22 @@ import {Content} from "shared/layouts/Default";
 
   # Layers
   Kubernetes, as the official document [says](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#what-kubernetes-is-not), is "not a traditional, all-inclusive PaaS system". As such, it requires a lot of [add-ons](https://kubernetes.io/docs/concepts/overview/components/#addons) tailored for specific uses. ([A full list of add-ons is available here](https://kubernetes.io/docs/concepts/cluster-administration/addons/)). The specific uses (or the functionalities) that the add-ons provide are called "Layers" in the Spectro Cloud universe. For example, authentication is a layer that has the options of Dex and Permission Manager. Monitoring is another layer with options of Kubernetes Dashboard, Prometheus Grafana, and a whole lot more. To learn more about individual integrations, use the search bar below to find a specific option. Alternatively, use the filter buttons to see the available options.
+  <br/>
 
-  <Packs />
+<Tabs>
+
+<Tabs.TabPane tab="Packs" key="Packs">
+
+<Packs />
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="App Tiers" key="App Tiers">
+
+<AppTiers />
+
+</Tabs.TabPane>
+
+</Tabs>
 
 </Content>
