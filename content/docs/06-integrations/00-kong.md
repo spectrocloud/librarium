@@ -3,7 +3,7 @@ title: 'Kong'
 metaTitle: 'Kong'
 metaDescription: 'Kong Ingress pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['ingress']
 logoUrl: 'https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85ccad4c515e51542f74aa9acb851d5b03ecb0e7b3435eb51ecf56?type=image/png'
 ---
