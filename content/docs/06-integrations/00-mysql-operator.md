@@ -3,7 +3,7 @@ title: 'MySQL Kubernetes Operator'
 metaTitle: 'MySQL Kubernetes Operator'
 metaDescription: 'MySQL Kubernetes Operator Storage pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['storage']
 logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/100px-MySQL_logo.svg.png'

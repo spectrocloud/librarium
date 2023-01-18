@@ -3,7 +3,7 @@ title: 'vSphere-csi'
 metaTitle: 'vSphere CSI Integration with Spectro Cloud'
 metaDescription: 'vSphere CSI storage add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-vsphere-volume/blobs/sha256:2cd106b353cb492d4647a1562fe59db6a1aeb792333900fe4e15237f899298b5?type=image/png'
 ---
@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # vSphere Storage Interface (CSI)
 
-The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used on various Kubernetes platforms by service providers, including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready. 
+The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used on various Kubernetes platforms by service providers, including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready.
 
 
 ## vSphere CSI Driver Components
@@ -44,18 +44,18 @@ The vSphere CSI driver includes the following components:
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
 * **2.6.0**
- 
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="2.5.x" key="2.5.x">
 
 * **2.5.2**
- 
+
 </Tabs.TabPane>
 <Tabs.TabPane tab="2.3.x" key="2.3.x">
 
 * **2.3.0**
- 
+
 </Tabs.TabPane>
 </Tabs>
 

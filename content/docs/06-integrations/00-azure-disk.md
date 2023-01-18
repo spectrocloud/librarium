@@ -3,7 +3,7 @@ title: 'Azure-Disk'
 metaTitle: 'Azure Disk Integration with Spectro Cloud'
 metaDescription: 'Azure Disk storage add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7943741181181823079533cd363884a28aa0651715ea43408bdc77a5c51?type=image/png'
 ---
@@ -31,7 +31,7 @@ Azure Disk storage is designed to be used with Azure virtual machines for the te
 </Tabs.TabPane>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-* **1.0.0** 
+* **1.0.0**
 
 </Tabs.TabPane>
 </Tabs>

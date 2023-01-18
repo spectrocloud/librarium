@@ -3,8 +3,8 @@ title: 'Multus CNI'
 metaTitle: 'Multus CNI'
 metaDescription: 'Choosing Multus CNI within the Palette console'
 hiddenFromNav: true
-isIntegration: true
-category: ['network']
+type: "integration"
+category: ['networking']
 logoUrl: 'https://registry.spectrocloud.com/v1/cni-multus/blobs/sha256:3727499ea41784a17c818b7269c27918b8664766c40d1b1f3cd90c34d5154676?type=image/png'
 ---
 
@@ -60,4 +60,3 @@ The Multus Container Network Interface (CNI) plugin enables multiple, network in
 
 - [Mutltus Configuration](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/configuration.md)
 <br />
-

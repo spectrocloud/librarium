@@ -3,7 +3,7 @@ title: 'MinIO'
 metaTitle: 'MinIO'
 metaDescription: 'MinIO Distributed Object Storage pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['storage']
 logoUrl: 'https://registry.stage.spectrocloud.com/v1/minio/blobs/sha256:0bff8821b4c8b12210974519fa3b12c8af56ace08766cb744d3d2e6217af0116?type=image/png'
@@ -41,10 +41,14 @@ MinIO provides the following templates:
 
 - Helm Chart
 - Cluster role and cluster role binding
-- Console templates for deployment, ingress, service, user interface, 
+- Console templates for deployment, ingress, service, user interface,
 - Tenants
 - Deployment
+<<<<<<< HEAD:content/docs/06-integrations/00-minio.md
 - Service account service.  
+=======
+- Service account and operator service.
+>>>>>>> 19969563947a022d4a8d0d36f246ce48735de69f:content/docs/06-integrations/00-minio-operator.md
 
 # References
 
