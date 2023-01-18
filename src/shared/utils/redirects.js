@@ -126,6 +126,12 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/integrations/minio-operator`,
+    toPath: `/integrations/minio`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }
 ];
 
 module.exports = redirects;
