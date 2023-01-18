@@ -6,7 +6,7 @@ hiddenFromNav: true
 isIntegration: true
 hideToC: false
 category: ['storage']
-logoUrl: 'https://registry.spectrocloud.com/v1/palette-upgrader/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
+logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/100px-MySQL_logo.svg.png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
