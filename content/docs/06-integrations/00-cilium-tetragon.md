@@ -3,7 +3,7 @@ title: 'Cilium-Tetragon'
 metaTitle: 'cilium-Tetragon'
 metaDescription: 'Cilium Tetragon monitoring pack for Spectro Cloud Palette'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['monitoring']
 logoUrl: 'https://soak.stage.spectrocloud.com/assets/monitoring_layer.3b14cf5b.svg'
 ---
@@ -20,7 +20,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Palette supports Cilium Tetragon as an add-on pack for monitoring services. Refer to the [create cluster profile](/cluster-profiles/task-define-profile#overview) page for more information on how to use an add-on pack.
 
-<br /> 
+<br />
 
 ## Versions Supported
 

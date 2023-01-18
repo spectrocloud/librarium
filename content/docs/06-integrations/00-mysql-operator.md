@@ -3,7 +3,7 @@ title: 'MySQL Kubernetes Operator'
 metaTitle: 'MySQL Kubernetes Operator'
 metaDescription: 'MySQL Kubernetes Operator Storage pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/palette-upgrader/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'

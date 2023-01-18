@@ -5,13 +5,12 @@ import Link from "shared/components/Link";
 
 import Search from "./Search";
 import CategorySelector from "./CategorySelector";
-import { graphql, useStaticQuery } from "gatsby";
 
 const Wrapper = styled.div`
   padding: 15px 0;
 `;
 
-const IntegrationsWrapper = styled.div`
+const TechnologiesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
@@ -56,48 +55,24 @@ const Title = styled.div`
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ["node.fields.title"],
+  keys: ["fields.title"],
 };
 
-export default function Integrations() {
-  const data = useStaticQuery(graphql`
-    query {
-      integrations: allMdx(filter: { fields: { isIntegration: { eq: true } } }) {
-        edges {
-          node {
-            fields {
-              id
-              slug
-              title
-              icon
-              index
-              hiddenFromNav
-              category
-              isIntegration
-              isDocsPage
-              logoUrl
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const edges = data.integrations.edges;
+export default function Technologies({ data }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchValue, setSearchValue] = useState("");
 
   let categories = useMemo(() => {
-    return edges.reduce((accumulator, integration) => {
-      accumulator.add(...(integration.node.fields.category || []));
+    return data.reduce((accumulator, technology) => {
+      accumulator.add(...(technology.fields.category || []));
       return accumulator;
     }, new Set(["all"]));
-  }, [edges]);
+  }, [data]);
 
-  let integrations = useMemo(() => {
-    let integrations = [...edges].sort((pack1, pack2) => {
-      const category1 = pack1.node.fields.category[0];
-      const category2 = pack2.node.fields.category[0];
+  let technologies = useMemo(() => {
+    let technologies = [...data].sort((pack1, pack2) => {
+      const category1 = pack1.fields.category[0];
+      const category2 = pack2.fields.category[0];
 
       if (category1 < category2) {
         return -1;
@@ -111,17 +86,17 @@ export default function Integrations() {
     });
 
     if (searchValue) {
-      const fuse = new Fuse(integrations, searchOptions);
-      integrations = fuse.search(searchValue).map(({ item }) => item);
+      const fuse = new Fuse(technologies, searchOptions);
+      technologies = fuse.search(searchValue).map(({ item }) => item);
     }
 
     if (selectedCategory !== "all") {
-      integrations =
-        integrations.filter(({ node }) => node.fields.category.includes(selectedCategory)) || [];
+      technologies =
+        technologies.filter(({ fields }) => fields.category.includes(selectedCategory)) || [];
     }
 
-    return integrations;
-  }, [edges, searchValue, selectedCategory]);
+    return technologies;
+  }, [data, searchValue, selectedCategory]);
 
   return (
     <Wrapper>
@@ -131,9 +106,9 @@ export default function Integrations() {
         selected={selectedCategory}
       />
       <Search onSearch={setSearchValue} />
-      <IntegrationsWrapper>
-        {integrations.map(({ node }) => {
-          const { title, slug, logoUrl } = node.fields;
+      <TechnologiesWrapper>
+        {technologies.map(({ fields }) => {
+          const { title, slug, logoUrl } = fields;
           return (
             <Link key={title} to={slug}>
               <Card>
@@ -145,7 +120,7 @@ export default function Integrations() {
             </Link>
           );
         })}
-      </IntegrationsWrapper>
+      </TechnologiesWrapper>
     </Wrapper>
   );
 }

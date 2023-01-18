@@ -3,7 +3,7 @@ title: 'Ubuntu-K3s'
 metaTitle: 'Ubuntu Lightweight Kubernetes K3s'
 metaDescription: 'Choosing K3s with Ubuntu within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png'
 ---
@@ -21,7 +21,7 @@ K3s is a purpose-built container orchestrator for running Kubernetes on bare-met
 
 <br />
 
-## Ubuntu K3s 
+## Ubuntu K3s
 <br />
 <Tabs>
 <Tabs.TabPane tab="Ubuntu-K3s-1.22.x" key="Ubuntu-K3s-1.22.x">
@@ -71,4 +71,3 @@ pack:
 # References
 
 [Rancher](https://rancher.com/docs/k3s/latest/en/)
-
