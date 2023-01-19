@@ -96,7 +96,7 @@ Palette eXtended Kubernetes (PXK) is a customized version of the open-source Clo
 PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins.
-Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI.  Additional complexity and overhead are required from you to enable different interface. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.  
+Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interface. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.  
 
 There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
 
