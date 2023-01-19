@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. The dashboard allows users to manage the cluster, applications, and the ability to do some troubleshooting. The Kubernetes dashboard is by default not enabled when deploying Kubernetes clusters through Palette. 
 
-You can enable the Kubernetes dashboard without OIDC integration or with OIDC. Palette by default supports the Kubernetes dashboard without the usage of OIDC. Users will be required to have a Palette user account to access the Kubernetes dashboard. 
+You can enable the Kubernetes dashboard without OpenID Connect (OIDC) integration or with OIDC. Palette by default supports the Kubernetes dashboard without the usage of OIDC. Users will be required to have a Palette user account to access the Kubernetes dashboard. 
 
 To enable the Kubernetes the dashboard in a host cluster, follow the next set of steps.
 <br />
@@ -166,9 +166,97 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 
 <Tabs.TabPane tab="With OIDC" key="oidc">
 
-lalalalala
+Click on the tab that represents the access level you set for the host cluster.
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Private Cluster API Access" key="private-oidc"> 
+
+## Prerequisite
+
+* [OIDC configured in Palette](/user-management/saml-sso)
+
+* Users are configured with the proper role binding:
+    * [Cluster Role Binding](/clusters/cluster-management/cluster-rbac)
+    * [Workspace Role Binding](/workspace/workload-features#configureclusterrolebindings)
+
+* [Kubernetes Dashboard Pack](/integrations/kubernetes-dashboard) v2.6.1+ added to a Cluster Profile.
+
+* [Spectro Proxy](/integrations/frp) v1.2.0+ added to a Cluster Profile.
+
+* [Kubectl](https://kubernetes.io/docs/reference/kubectl/) v1.23.0+ installed.
+
+* Access to a local terminal.
+
+## Enablement 
+
+1. Log in to Palette and switch to **Cluster Mode**
+2. Navigate to the left **Main Menu** and click on **Profiles**
+3. Select the cluster profile containing the Kubernetes Dashboard pack and the Spectro Proxy pack. If you don't have a cluster profile, create a cluster profile. Use the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide if you need guidance on how to create a cluster profile. 
+4. Ensure the cluster profile includes both the [Kubernetes Dashboard pack](/integrations/kubernetes-dashboard) and the [Spectro Proxy](/integrations/frp) pack.
+5. Click on the Spectro Proxy pack.
+6. Update the manifest YAML by setting the parameter `k8sDashboardIntegration.enabled` to `true`.
+7. Navigat to the Kubernetes Dashboard pack.
+8. Update the manifest YAML by setting the parameter `k8s-dashboard.serviceType`. Ensure the value `ClusterIP` is set.
+9. The Kubernetes dashboard will by default require login credentials to access the dashboard. You can set the parameter `k8s-dashboard.skipLogin` to `false` if you want to disable this behavior.
+10. Navigate to the Kubernetes pack and update the manifest YAML. Start with the `oidcIdentityProvider` section and its parameters. The values required for the following parameters can be found in the [Palette SSO](/user-management/saml-sso/) page. 
+
+  | Parameter                    | Description                                                                                          |
+  |------------------------------|------------------------------------------------------------------------------------------------------|
+  | `identityProviderConfigName` | The name of the OIDC provider configuration                                                          |
+  | `issuerUrl`                  | The URL of the OpenID identity provider                                                              |
+  | `clientId`                   | The ID for the client application that makes authentication requests to the OpenID identity provider |
+  | `usernameClaim`              | The JSON Web Token (JWT) attribute value claim to use as the username. Example: email                |
+  | `usernamePrefix`             | The prefix that is prepended to username claims to prevent clashes with existing names               |
+  | `groupsClaim`                | The JWT claim that the provider uses to return your groups.                                          |
+  | `groupsPrefix`               | The prefix that is prepended to group claims to prevent clashes with existing names                  |
+  | `requiredClaims`             | The key value pairs that describe required claims in the identity token                              |
+
+
+11. Update the `clientConfig` section of the YAML manifest.
+
+  | Parameter                    | Description                                                                                          |
+  |------------------------------|------------------------------------------------------------------------------------------------------|
+  | `oidc-issuer-url`| The URL of the OpenID identity provider                                                                   |
+  | `oidc-client-id` | The client id value for the client application of the identity provider                                                       |
+  | `oidc-client-secret`| The secret value for the client application of the OpenID identity provider |
+  | `oidc-extra-scope`  | Specify OIDC scopes                  |
+
+  Add the following values but ensure you replace `oidc-client-secret` value:
+  ```yaml
+  clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: <REPLACE ME>
+  oidc-extra-scope: profile,email
+  ```
+
+10. Save your changes.
+11. Deploy a host cluster using the cluster profile that contains the proper configurations you made. 
+
+
+## Validate
+
+To validate you have successfuly enabled the Kubernetes dashboard use the following steps.
+
+1. Log in to Palette and switch to **Cluster Mode**
+2. Navigate to the left **Main Menu** and click on **Clusters**
+3. Click on the cluster you deployed with the cluster profile containing the Kubernetes dashboard configuration.
+4. In the cluser details page, click on the **>_ Connect** button to right of the **Kubernetes Dashboard** element.
+5. A new tab will open up in your browser where you can access the Kubernetes dashboard. 
+6. Log in to your indentity provider to access the Kubernetes dashboard.
+
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Public Cluster API Access" key="public-oidc"> 
+lalala
 </Tabs.TabPane>
 
+</Tabs>
+
+</Tabs.TabPane>
 </Tabs>
 
  
