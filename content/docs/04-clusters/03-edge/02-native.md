@@ -63,10 +63,10 @@ Following are some of the architectural highlights of the Palette-provisioned Ed
 * Outgoing internet connectivity either direct or via proxy.
 
 
-* Whitelist the sites and repositories mentioned in this(https://docs.spectrocloud.com/clusters#proxywhitelists) document.
+* Whitelist the sites and repositories mentioned in the [proxy whitelist](https://docs.spectrocloud.com/clusters#proxywhitelists) document.
 
 
-* For bare metal edge hosts, a bootable USB drive or PXE setup to boot devices using the Palette Edge Distribution Installer image. 
+* For bare metal edge hosts, a bootable USB drive or [Palette eXtended Kubernetes Edge PXE](/glossary-all#paletteextendedkubernetesedge(pxk-e)) setup to boot devices using the Palette Edge Distribution Installer image. 
 
 # Palette Edge Distribution
 
@@ -76,7 +76,7 @@ At the edge locations, Palette provides the following distributions for installa
 |----|---|----------|----|----|
 |Palette Optimized K3S |openSUSE,Ubuntu  |K3S |Calico, Flannel|Rook Ceph|
 |Palette Optimized RKE2|openSUSE,Ubuntu  |RKE2|Calico|Rook Ceph|
-|Palette eXtended Kubernetes Edge (PXK-E)|openSUSE,Ubuntu|CNCF|Calico|Rook Ceph|
+|[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE,Ubuntu|CNCF|Calico|Rook Ceph|
 
 # Edge Deployment Lifecycle
 
