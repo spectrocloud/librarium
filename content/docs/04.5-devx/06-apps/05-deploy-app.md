@@ -138,6 +138,88 @@ You now have deployed your first app profile to Palette. Your first application 
 
 ## Deploy Multiple Applications 
 
+Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**.  Next, click on the button **New Virtual Cluster**
+
+This time, go ahead and create a cluster with the following details. Select beehive for the cluster group, name cluster-2,  and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information. 
+
+It will take a few minutes for the new virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
+
+### Postgres
+
+Click on the **New App Profile** button to create your second app profile. Give the app profile the name `hello-universe-complete` and add the tag `scenario-2`. Click on **Next**. This application profile will contain three different applications, and you will create a service configuration for each. The three layers or tiers will together make up the entire application deployment.  The order you create each layer plays an important role as it dictates the deployment order. For this scenario, you will deploy the database, the API, and the UI. Start by creating the first layer by selecting the database service Postgres. 
+
+
+In the next screen, assign the following values to the Postgres database.
+
+- Name: `postgres-db`
+- Username: `pguser`
+- Database Name: `counter`
+- Database Volume Size: `2`
+- Version: `14`
+
+![Postgres service creation page](devx_apps_deploy-apps_postgres-service-create.png)
+
+Take notice of the **Output Variables** section. The Postgres service exposes several environment variables to help other applications connect with the database. In the next section, you will use these environment variables and other system environment variables that Palette exposes for each service. You can learn more about environment variables by reviewing the app profile [environment variables](/devx/app-profile/app-profile-macros) documentation. 
+
+Next, navigate to the top left side of the wizard screen and click on the **Actions** button  **+**. Go ahead and select the **Container Deployment**.
+
+### API
+
+The API is available as a container image. To deploy the API successfully, you need to provide the API server with information about the database, such as hostname, database user, database name, and password. The required information can be retrieved using Palette's system environment variables and the environment variables the database service exposes.
+
+Go ahead and provide the container service with the following information:
+
+- Container Name: `api`
+- Registry: Public
+- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.6`
+- Network Access: Private
+- Ports: `3000`
+
+Assign the following environment variables to the API service:
+
+| Parameter        | Value                                                                                                                                                                                                                                                                                                                                                            |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DB_NAME`        | `counter`                                                                                                                                                                                                                                                                                                                                                    |
+| `DB_HOST`        | `{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}.{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC_NAMESPACE}}.svc.cluster.local`                                                                                                                                                                                             |
+| `DB_PASSWORD`    | `{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}`                                                                                                                                                                                                                                                                                              |
+| `DB_INIT`        | `true`                                                                                                                                                                                                                                                                                                                                                       |
+| `DB_USER`        | `{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}`                                                                                                                                                                                                                                                                                               |
+| `DB_ENCRYPTION`  | `require`                                                                                                                                                                                                                                                                                                                                                      |
+| `AUTHORIZATION`  | `true`                                                                                                                                                                                                                                                                                                                                                       |
+
+
+
+You can learn more about each environment variable's purpose by reviewing the API server's [documentation](https://github.com/spectrocloud/hello-universe-api#environment-variables). One variable that you should understand in greater detail is the `DB_HOST.` The value of this environment variable is constructed using two variables the Postgres service exposed, followed by the value `svc.cluster.local`. The combined value is the DNS value of the Postgres service container.
+
+ A virtual cluster is a Kubernetes environment, and because it’s a Kubernetes environment, you can use the [Kubernetes DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) record created for services and pods. You will have another opportunity to practice this concept when you deploy the UI. 
+
+Once you have filled out all the required information, navigate to the top left side of the wizard screen and click on the **Actions** button  **+**. Go ahead and select the **Container Deployment** to add the final service layer, the UI.
+
+### UI
+
+This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container.  The second task is to insert an authentication token in all requests to the API. The API server configured enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+
+
+![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
+
+Go ahead and provide the UI container with the following information.
+- Container Name: `ui`
+- Registry: Public
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.8-proxy`
+- Network Access: Public
+- Ports: `8080`, `3000`
+
+Assign the following environment variables to the UI service:
+
+| Parameter | Value                                                                                                                                                                                              |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SVC_URI` | ` http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}.{{.spectro.app.$appDeploymentName.api.SVC_NAMESPACE}}.svc.cluster.local:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}` |
+| `API_URI` | ???                                                                                                                                                                                                |
+| `TOKEN`   | `931A3B02-8DCC-543F-A1B2-69423D1A0B94`                                                                                                                                                             |
+
+The `SVC_URI` is the API service's Kubernetes DNS value. The hostname is composed of the following pattern `<svc name>.<service namespace>.svc.cluster.local:<service port>`. The `API_URI` is the address of the application load balancer that will be deployed, exposing the ports of the UI service. The `TOKEN` is the authorization token that the reverse proxy will inject inside the UI container for all API requests. Without this token, all API requests will get rejected. If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). 
+
+Click on the **Review** button at the bottom of the screen to finalize the app profile. Click on **Deploy New App** in the following screen to deploy the new app profile to cluster-2.
 
 
 
