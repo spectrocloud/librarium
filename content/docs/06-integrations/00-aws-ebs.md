@@ -3,7 +3,7 @@ title: 'AWS-EBS'
 metaTitle: 'AWS EBS Integration with Spectro Cloud'
 metaDescription: 'AWS EBS storage add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
 ---
@@ -89,7 +89,7 @@ The following permissions needs to be attached to the AWS cloud account:
 | kmsKeyId (optional) | The full Amazon Resource Name of the key to use when encrypting the volume. | -- | If you don't provide the full Amazon Resource Name but **encrypted** is true, AWS [generates a key](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs). |
 
 
-You can view the full parameter list [here](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters). 
+You can view the full parameter list [here](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters).
 
 
 Storage classes that Palette creates are named "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
@@ -105,4 +105,3 @@ kubectl get storageclass
 
 
 [AWS EBS Storage Class Details](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs)
-

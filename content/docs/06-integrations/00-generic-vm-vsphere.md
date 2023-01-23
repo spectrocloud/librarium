@@ -3,7 +3,7 @@ title: 'generic-vm-vsphere'
 metaTitle: 'Generic Virtual Machine vSphere'
 metaDescription: 'Choosing vSphere Generic Virtual Machine within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image/png'
 ---
@@ -49,8 +49,8 @@ If multiple instances of this pack has to be deployed on the cluster for differe
 <br />
 
 ```yaml
-spectrocloud.com/display-name: vm-app-1 
-releaseNameOverride: 
+spectrocloud.com/display-name: vm-app-1
+releaseNameOverride:
 ```
 <br />
 <br />
@@ -209,9 +209,9 @@ The extraVMHclConfig command can be used to provide an extra configuration in th
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval. 
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
 
-**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.  
+**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.
 
 <br />
 
@@ -225,7 +225,7 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 <br />
 
-## Using preVMInitCmd and postVMInitCmd 
+## Using preVMInitCmd and postVMInitCmd
 
 The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
@@ -327,6 +327,3 @@ files:
 ```
 
 <br />
-
-
-
