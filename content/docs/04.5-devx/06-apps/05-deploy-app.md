@@ -197,7 +197,7 @@ Once you have filled out all the required information, navigate to the top left 
 
 ### UI
 
-This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container.  The second task is to insert an authentication token in all requests to the API. The API server configured enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container.  The second task is to insert an authentication token in all requests to the API. The API server configuration you provided earlier enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
 
 
 ![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
