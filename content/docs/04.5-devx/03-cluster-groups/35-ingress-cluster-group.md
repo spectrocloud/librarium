@@ -22,7 +22,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
 # Prerequisites
 
-- At least one infrastructure or cloud-based cluster you’ve created at the tenant level.
+- At least one infrastructure or cloud-based cluster you’ve created in Tenant scope.
 - The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated. <br /><br />
 
     ```yml
