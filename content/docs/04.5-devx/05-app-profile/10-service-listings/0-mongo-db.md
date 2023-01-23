@@ -1,8 +1,10 @@
 ---
-title: "MongoDB Service"
+title: "MongoDB"
 metaTitle: "Palette Dev Engine MongoDB Service"
 metaDescription: "Palette Dev Engine MongoDB Service"
 hideToC: false
+type: "appTier"
+category: ['databases']
 fullWidth: false
 ---
 
