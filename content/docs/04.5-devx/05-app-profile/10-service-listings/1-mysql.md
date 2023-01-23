@@ -1,8 +1,10 @@
 ---
-title: "MySQL Service"
+title: "MySQL"
 metaTitle: "Palette Dev Engine MySQL Service"
 metaDescription: "Palette Dev Engine MongoDB Service"
 hideToC: false
+type: "appTier"
+category: ['databases']
 fullWidth: false
 ---
 
