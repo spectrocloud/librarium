@@ -3,7 +3,7 @@ title: 'Argo CD'
 metaTitle: 'Argo CD'
 metaDescription: 'Argo CD for Spectro Cloud Palette'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/argo-cd/blobs/sha256:647cd3df6fec421e6580589ea7229762d8e828c77036f835f14f4c15c2a44c4c?type=image/png'
 ---

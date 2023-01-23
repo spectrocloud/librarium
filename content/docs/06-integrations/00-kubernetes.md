@@ -3,7 +3,7 @@ title: "Kubernetes"
 metaTitle: "Kubernetes with Spectro Cloud"
 metaDescription: "Kubernetes pack in Spectro Cloud"
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ["kubernetes"]
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
 ---
@@ -31,7 +31,7 @@ Versions supported in the latest [release](/release-notes/) are highlighted.
 </InfoBox>
 
 <Tabs>
- 
+
 <Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
 
 - **1.19.16**
