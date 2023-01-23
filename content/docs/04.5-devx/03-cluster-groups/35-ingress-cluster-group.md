@@ -64,10 +64,8 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 4. For each host cluster with ingress deployed, follow these steps to open a web shell, identify the External-IP of the LoadBalancer Service, and copy the record you will need to create a canonical Name (CNAME) Domain Name System (DNS) record:
 
     a. From the **Main Menu**, select a cluster. The cluster **Overview** tab displays. 
-    <br />
 
     b. In the **Details** section beneath **Metrics**, click the **Connect** button next to the Kubernetes config file to open a web shell. 
-    <br />
     
     c. Invoke the following command to display the External-IP of the ```ingress-nginx-host-cluster``` LoadBalancer Service: <br /><br />
 
@@ -77,27 +75,22 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
     d. Copy the record to your clipboard or to a text file. You will use the External-IP address to create a CNAME DNS record.
     <br />
-    
+
     e. Close the web shell.
     <br />
 
 5. Use your DNS provider to create a wildcard CNAME record that maps to the External-IP for the NGINX Ingress Controller. Paste the External-IP you copied from the web shell to create the CNAME record.
 <br />
-
 <InfoBox>
     The CNAME record is also known as the host cluster DNS pattern.
-</InfoBox>
-    
-    <br />
-
+</InfoBox> 
+<br />
 6. Copy the CNAME record to your clipboard.
 <br />
 
 7. Ensure you are in Palette's Cluster Mode, under the Tenant Admin scope, and select **Cluster Groups** in the **Main Menu**, then select the Cluster Group that requires ingress.<br /><br />
-    a. From the **Host Clusters** tab, select **Settings > Clusters**.<br />
-    
-    b. Choose **Ingress** as the **Cluster endpoint type**. <br />
-
+    a. From the **Host Clusters** tab, select **Settings > Clusters**.   
+    b. Choose **Ingress** as the **Cluster endpoint type**. 
     c. Paste the name of the wildcard CNAME record into the **Host DNS** field.
 
 <InfoBox>
@@ -114,7 +107,8 @@ To validate that ingress is functioning as expected, do the following:
 ```
 kubectl get namespaces
 ```
-This should display a list of namespaces as shown in the example:
+This should display a list of namespaces as shown in the example: 
+<br />
 
 ``` 
 NAME                               STATUS   AGE
