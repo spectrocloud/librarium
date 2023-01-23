@@ -1,7 +1,7 @@
 ---
-title: "MongoDB Service"
-metaTitle: "Palette Dev Engine MongoDB Service"
-metaDescription: "Palette Dev Engine MongoDB Service"
+title: "PostgreSQL Service"
+metaTitle: "Palette Dev Engine PostgreSQL Service"
+metaDescription: "Palette Dev Engine PostgreSQL Service"
 hideToC: false
 fullWidth: false
 ---
@@ -11,9 +11,18 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Mongo DB
+# PostgreSQL
 
-MongoDB is a developer data platform that quickly builds applications with optimal performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition, this multi-cloud database service provides you with resilience, data privacy, and security.
+Palette supports PostgreSQL database service, a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. PostgreSQL uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+
+<br />
+
+## Palette Postgres Requirements
+
+The following are requirements for using Palette Postgres:
+
+
+* Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts if used.
 
 # Prerequisite
 
@@ -29,8 +38,8 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
 
-|         **Parameter**   | **Description**  |
-|-------------------------|-----------------|
+|         **Parameter**     | **Description**  |
+|---------------------------|-----------------|
 |Application Profile Name | A custom name for the App Profile|
 |Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
 |Description (optional)   | Description of the App Profile. | 
@@ -40,12 +49,17 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 4. From the available services start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services.
 
 
-5. Click on **Mongo DB** from the DB services and start the configuration.
+5. Click on **PostgreSQL** from the DB services and start the configuration.
   
 
 6. Provide the following information to the wizard:
-  * **Name:** The DB name. You can have the default Palette generated name or create a custom name. 
-  * **Username:** The user name for DB access control
+
+  * **Name:** The database *service name*. You can have the default Palette generated name or create a custom name.
+
+
+  * **Username:** The user name for DB access control. 
+
+
   * **Password:** Security password for the DB service.
 
 <InfoBox>
@@ -62,30 +76,35 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
   * **Version:**Select the version from the **Version** drop-down. The following are the Palette supported MongoDB versions:
 
-    * 4.4.14
-    * 5.0.10
+    * 14
+   
 
-6. **Output Variables**: The output variables of this tier that may be used in higher tiers, typically for connection purposes are:
+6. **Output Variables**: The output variables of this service layer that may be used in higher service layers, typically for connection purposes are:
+
+**Note:**
+The database service name must be passed on to the output variables for database connectivity to other app services.
+
 
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}
+{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.PASSWORD}}
+{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI}}
+{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}
+{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}
 ```
 
 |**Output Variable**|**Description**|
 |---------------|-----------|
 |Username|Username for database access control|
 |Password|Password for database access control|
-|Mongo URI|Represents the Uniform Resource Identifier for connecting to mongodb instance from Apps|
-|Mongo URI SRV|Represents the DNS seed list connection format. The SRV indicates to the client that the hostname that follows corresponds to a DNS SRV record|
+|POSTGRESMSTR_SVC|Provides the Postgres service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity|
+|POSTGRESMSTR_SVC_PORT|Represents the port on which the database service is listening to|
+
 
 # Validation
 
@@ -96,9 +115,9 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
-|Green|Successfully Deployed|
-|Blue |Under Deployment|
-|Red  |Error State|
+|Green| Successfully Deployed|
+|Blue | Under Deployment|
+|Red  | Error State|
 
 
 

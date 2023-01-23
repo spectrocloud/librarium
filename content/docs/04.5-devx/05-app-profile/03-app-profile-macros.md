@@ -1,5 +1,5 @@
 ---
-title: "App Profile Macros"
+title: "Environment Variables"
 metaTitle: "Palette Dev Engine App Profile Macros"
 metaDescription: "Explore Palette Dev Engine App Profile Macros"
 hideToC: false
@@ -13,9 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# App Profile Macros
+# Environment Variables
 
-Pack macros are the variables defined in the App Profile and are only resolved at the cluster deployment time. The app profile variables can be:
+Pack environment variables are the variables defined in the App Profile and are only resolved at the cluster deployment time. The app profile variables can be:
 
 * directly given by the developers while modelling the application profiles.
 
@@ -76,7 +76,7 @@ The variables are generated once the tier gets deployed. Output variables can be
 
 <br />
 
-### Important Links to Refer Palette Macros
+### Important Links to Refer Palette Environment Variables
 
 * [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
 

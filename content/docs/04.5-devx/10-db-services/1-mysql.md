@@ -1,7 +1,7 @@
 ---
 title: "MySQL Service"
 metaTitle: "Palette Dev Engine MySQL Service"
-metaDescription: "Palette Dev Engine MySQL Service"
+metaDescription: "Palette Dev Engine MongoDB Service"
 hideToC: false
 fullWidth: false
 ---
@@ -12,6 +12,18 @@ import InfoBox from 'shared/components/InfoBox';
 
 
 # MySQL
+
+MySQL is a relational database management system based on the Structured Query Language. This popular open-source database under the GNU license, helps to access and manage the records with the following properties:
+
+<br />
+
+* Csreates a database for storing and manipulating data, defining the relationship of each table.
+
+
+* Clients can make requests by typing specific SQL statements on MySQL.
+
+
+* The server application will respond with the requested information and appear on the client’s side.
 
 
 # Prerequisite
@@ -27,12 +39,12 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
 
-|         Parameter           | Description  |
+|    **Parameter**            | **Description** |
 |-----------------------------|-----------------|
-|Application Profile Name | A custom name for the App Profile|
-|Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
-|Description (optional)   | Description of the App Profile. | 
-|Tag (optional)           | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+|Application Profile Name     | A custom name for the App Profile|
+|Version (optional)           | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**|
+|Description (optional)       | Description of the App Profile | 
+|Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments|
  
 
 4. From the available services start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services.
@@ -77,6 +89,12 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 {{.spectro.app.$appDeploymentName.mysql-1.MYSQLMSTR_NS}}
 ```
 
+|**Output Variable**|**Description**|
+|---------------|-----------|
+|Root Password|The password for default MySQL user's access control|
+|MYSQLMSTR_SVC|Represents the DNS seed list connection format. The SRV indicates to the client that the hostname that follows corresponds to a DNS SRV record|
+|MYSQLMSTR_SVC_PORT|Represents the port on which the database service is listening to|
+|MYSQLMSTR_NS|Represents the namespaces to which MySQL database is launched|
 
 # Validation
 

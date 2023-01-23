@@ -1,7 +1,7 @@
 ---
-title: "MongoDB Service"
-metaTitle: "Palette Dev Engine MongoDB Service"
-metaDescription: "Palette Dev Engine MongoDB Service"
+title: "Redis Database Service"
+metaTitle: "Palette Dev Engine Redis Database Service"
+metaDescription: "Palette Dev Engine Redis Database Service"
 hideToC: false
 fullWidth: false
 ---
@@ -11,13 +11,13 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Mongo DB
+# Redis DB
 
-MongoDB is a developer data platform that quickly builds applications with optimal performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition, this multi-cloud database service provides you with resilience, data privacy, and security.
+[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a database service. Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence capabilities. In addition, it provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
 # Prerequisite
 
-A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
+A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 # Add DB Service to your App Profile
 
@@ -29,8 +29,8 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
 
-|         **Parameter**   | **Description**  |
-|-------------------------|-----------------|
+|         Parameter           | Description  |
+|-----------------------------|-----------------|
 |Application Profile Name | A custom name for the App Profile|
 |Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
 |Description (optional)   | Description of the App Profile. | 
@@ -45,7 +45,6 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 6. Provide the following information to the wizard:
   * **Name:** The DB name. You can have the default Palette generated name or create a custom name. 
-  * **Username:** The user name for DB access control
   * **Password:** Security password for the DB service.
 
 <InfoBox>
@@ -60,32 +59,33 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
-  * **Version:**Select the version from the **Version** drop-down. The following are the Palette supported MongoDB versions:
-
-    * 4.4.14
-    * 5.0.10
-
 6. **Output Variables**: The output variables of this tier that may be used in higher tiers, typically for connection purposes are:
 
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}
+{{.spectro.app.$appDeploymentName.redis-1.USERNAME}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.PASSWORD}}
+{{.spectro.app.$appDeploymentName.redis-1.PASSWORD}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI}}
+{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_SVC}}
 ```
 ```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}
+{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_SVC_PORT}}
 ```
+```
+{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_NS}}
+```
+
 
 |**Output Variable**|**Description**|
 |---------------|-----------|
 |Username|Username for database access control|
 |Password|Password for database access control|
-|Mongo URI|Represents the Uniform Resource Identifier for connecting to mongodb instance from Apps|
-|Mongo URI SRV|Represents the DNS seed list connection format. The SRV indicates to the client that the hostname that follows corresponds to a DNS SRV record|
+|REDISMSTR_SVC|Provides the Redis service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity|
+|REDISMSTR_SVC_PORT|Represents the port on which the database service is listening to|
+|REDISMSTR_SVC_NAMESPACE|Represents the namespaces to which Redis database is launched|
+
 
 # Validation
 
@@ -96,9 +96,9 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
-|Green|Successfully Deployed|
-|Blue |Under Deployment|
-|Red  |Error State|
+|Green| Successfully Deployed|
+|Blue | Under Deployment|
+|Red  | Error State|
 
 
 
