@@ -32,15 +32,15 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
     Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. Palette's NGINX add-on profile also reroutes incoming requests through port 443 to use the cloud Load Balancer. 
 
-- If you are not using Palette's NGINX add-on profile, you can add the following to the profile you're using: <br /><br />
+- If you are not using Palette's NGINX add-on profile, you can add the following to the profile you're using to reroute incoming requests from port 6443 to port 443. 
+
+    This will terminate TLS for your Apps at the cloud Load Balancer while still allowing you to connect to the API servers of your Virtual Clusters. Alternatively, you must use Cert Manager to issue certificates for App Ingress within the cluster.<br /><br />
 
     ```
     tcp:   
     6443: "nginx/nginx-ingress-controller:443"  
     # 8080: "default/example-tcp-svc:9000"
     ```
-
-    This will terminate TLS for your Apps at the cloud Load Balancer while still allowing you to connect to the API servers of your Virtual Clusters. Alternatively, you must use Cert Manager to issue certificates for App Ingress within the cluster.
 
 
 # Set Up Ingress
