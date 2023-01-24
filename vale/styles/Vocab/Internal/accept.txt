@@ -51,3 +51,5 @@ autoscaling
 Tencent
 serverless
 vCenter
+Konvoy
+Kairos
