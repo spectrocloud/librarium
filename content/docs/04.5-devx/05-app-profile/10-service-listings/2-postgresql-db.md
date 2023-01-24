@@ -20,7 +20,7 @@ Palette supports PostgreSQL database service, a powerful open-source object-rela
 
 <br />
 
-## Palette Postgres Requirements
+## Palette Specific Postgres Requirement
 
 The following are requirements for using Palette Postgres:
 
@@ -65,15 +65,16 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
   * **Password:** Security password for the DB service.
 
-<InfoBox>
 You can use the default system-generated password. If the default password is used, it can be retrieved from the MongoDB secrets using the following command:
+
+<br />
 
 ```
 kubectl get secrets -A
 ```
+<br />
 
 For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
-</InfoBox>
 
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
@@ -84,8 +85,9 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 6. **Output Variables**: The output variables of this service layer that may be used in higher service layers, typically for connection purposes are:
 
-**Note:**
-The database service name must be passed on to the output variables for database connectivity to other app services.
+  * The database service name must be passed on to the output variables for database connectivity to other app services. 
+
+  * Set `sslMode` to `require` to [establish database connectivity](https://www.postgresql.org/docs/current/libpq-ssl.html).
 
 
 ```

@@ -40,6 +40,30 @@ env:
      value: "{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}"
 ```
 
+<br />
+
+* For [Postgres](https://www.postgresql.org/docs/current/libpq-ssl.html) if you want to establish connectivity, set `sslMode` to `require`. 
+
+
+* To get the Postgres database user secret use the following kubectl command:
+
+
+<br />
+
+```
+kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+```
+Where, 
+
+  * app-name: represents the custom app name.
+  * service-name: represents the custom service name.
+  * user-name: represents the custom username for database access.
+
+<br />
+
+
+* All other databases when deployed with Palette are defaulting to no encryption requirement.
+
 
 
 
