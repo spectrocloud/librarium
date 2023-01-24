@@ -16,22 +16,20 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Deploy an Application using Palette Dev Engine
 
-Kubernetes is a popular container orchestration system that helps organizations manage and scale their containerized applications. It offers a range of features and tools that allow you to deploy, scale, and manage containerized applications consistently and reliably. Despite its complex architecture and learning curve, Kubernetes offers significant benefits for organizations willing to invest in learning and using this technology.
-
 Palette’s mission is to reduce the challenges you, as a user, face when interacting with Kubernetes. Whether you are a system administrator or an application developer, Kubernetes can introduce overhead that slows down the development process. One of Palette’s core components, *Dev Engine*, focuses on reducing the application development time by enabling builders to deploy applications to Kubernetes with minimal friction. 
 
-In this tutorial, you will learn how to deploy a single application and multiple applications to Kubernetes through Palette’s Dev Engine experience. You will learn about *App Mode*, *App Profiles*, and *Palette Virtual Clusters* and understand how they enable you to deploy applications to Kubernetes quickly with minimal overhead. 
+This tutorial will teach you how to deploy single and multiple applications to Kubernetes through Palette’s Dev Engine experience. You will learn about *App Mode*, *App Profiles*, and *Palette Virtual Clusters* and understand how they enable you to deploy applications to Kubernetes quickly with minimal overhead. 
 
 # Prerequisites
 
 To complete this tutorial, you will need the following items.
 
-A Spectro Cloud account
-Basic knowledge about Kubernetes and containers.
+- A Spectro Cloud account
+- Basic knowledge about containers.
 
- If you select the Terraform workflow, you will need the following software installed.
+<!-- If you select the Terraform workflow, you will need the following software installed.
 Terraform v1.3.6 or greater
-Git v2.30.0 or greater
+Git v2.30.0 or greater -->
 
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
@@ -42,7 +40,7 @@ The tutorial includes two scenarios, and for each scenario, you will deploy a se
 
 ![Architecutre diagram depicting two virtual clusters](devx_apps_deploy-apps_architecture-diagram.png)
 
-The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the documentation for [App Mode and Cluster Mode](/introduction/palette-modes). 
+The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out [App Mode and Cluster Mode](/introduction/palette-modes documentation
 
 # Deploy The Environment
 
@@ -51,7 +49,7 @@ The following steps will guide you through deploying the two scenarios. You will
 
 ## Deploy a Single Application 
 
-From Palette, you will deploy two Palette Virtual Clusters. Palette Virtual Clusters will be referred to as virtual clusters for the rest of the tutorial. Each virtual cluster will be hosted on a host cluster group managed by Spectro Cloud, called beehive. You can deploy up to two virtual clusters in the beehive group for free. Each scenario’s virtual cluster will sit on the beehive host cluster group.
+From Palette, you will deploy two Palette Virtual Clusters. Palette Virtual Clusters will be referred to as virtual clusters for the rest of the tutorial. Each virtual cluster will be hosted on a host cluster group managed by us, Spectro Cloud, called *beehive*. You can deploy up to two virtual clusters in the beehive group for free. Each scenario’s virtual cluster will sit on the beehive host cluster group.
 
 <br />
 
@@ -74,7 +72,7 @@ You can complete this tutorial by using the Palette console, simulating a manual
 
 Start by log in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
 
-![Image with an  arrow pointing to the user drop down menu](devx_apps_deploy-apps_toggle-app-mode.png)
+![Image with an  arrow pointing to the user drop-down Menu](devx_apps_deploy-apps_toggle-app-mode.png)
 
 
 From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**.  Next, click on the button **New Virtual Cluster**
@@ -82,6 +80,8 @@ From the app mode landing page, navigate to the left **Main Menu** and click on 
 ![View of the virtual cluster list](devx_apps_deploy-apps_virtual-cluster-list.png)
 
 In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms of CPU, memory, and storage. Select beehive for the cluster group, name the cluster cluster-1,  and allocate 4 CPU, 4 GiB memory, and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+
+Palette’s Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of  4 CPU, 4 GiB memory, and 2 GiB storage.  When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage.  Check out the [Palette Dev Engine and Quotas](/devx/resource-quota) documentation to learn more about limits. 
 
 It will take a few minutes for the virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
 
@@ -93,7 +93,7 @@ App Profiles are templates that contain all the configurations and settings requ
 
 Click on the **New App Profile** button to get started with creating your first app profile. Give the app profile the name `hello-universe-ui` and add the tag `scenario-1`. Click on **Next**. The following screen is the service type selection page. You have the option to deploy applications through containers, Helm, or Manifests. You can also consume services such as databases and more. Click on **Container Deployment**.
 
-Name the container `ui`, select a public registry, and provide the following image URL `ghcr.io/spectrocloud/hello-universe:1.0.7`. Change the network access to **Public** and add the port `8080`
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.8`. Change the network access to **Public** and add the port `8080`
 
 ![App Profile container creation page with details](devx_apps_deploy-apps_app-profile-creation.png)
 
@@ -102,7 +102,7 @@ Click on **Review** once you have filled out the provided information. On the ne
 
 It’s time to deploy your app profile containing your application to a virtual cluster.  Go ahead and name the application “single-scenario.” For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the hello-universe-ui profile and click on **Confirm** to continue.
 
-Next, click the radio button **Deploy in An Existing Palette Virtual Cluster**. Select the cluster-1 you created earlier and click on **Create App** to deploy the app profile onto the virtual cluster.
+Next, click the radio button **Deploy in An Existing Palette Virtual Cluster**. Select **cluster-1** and click on **Create App** to deploy the app profile onto the virtual cluster.
 
 <br />
 
@@ -112,7 +112,7 @@ If no clusters are available, then **cluster-1** is not yet available. Wait a fe
 
 </WarningBox>
 
-The app profile deployment takes a few moments to finish. You can review the application's progress by navigating to the left **Main Menu** and clicking on Virtual Clusters. Click on cluster-1 to view its details page.  You can review cluster information, log events, access a remote shell session in the cluster, and more from the cluster details page.
+The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left **Main Menu** and clicking on **Virtual Clusters**. Click on **cluster-1** to view its details page. You can review cluster information, log events, access a remote shell session in the cluster, and more from the cluster details page.
 
 ![Cluster details view displaying exposed services](devx_apps_deploy-apps_cluster-details-view.png)
 
@@ -132,15 +132,13 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change. 
 
-You now have deployed your first app profile to Palette. Your first application is a single container application with no dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate better a common application architecture encountered in a production environment.
-
-
+You have now deployed your first app profile to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
 
 ## Deploy Multiple Applications 
 
 Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**.  Next, click on the button **New Virtual Cluster**
 
-Go ahead and create a cluster with the following details. Select beehive for the cluster group, name **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information. 
+Go ahead and create a cluster with the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information. 
 
 It will take a few minutes for the new virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
 
@@ -161,7 +159,7 @@ In the next screen, assign the following values to the Postgres database.
 
 Take notice of the **Output Variables** section. The Postgres service exposes several environment variables to help other applications connect with the database. In the next section, you will use these environment variables and other system environment variables that Palette exposes for each service. You can learn more about environment variables by reviewing the app profile [environment variables](/devx/app-profile/app-profile-macros) documentation. 
 
-Next, navigate to the top left side of the wizard screen and click on the **Actions** button  **+**. Go ahead and select the **Container Deployment**.
+Next, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Go ahead and select **Container Deployment**. 
 
 ### API
 
@@ -197,7 +195,7 @@ Once you have filled out all the required information, navigate to the top left 
 
 ### UI
 
-This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container.  The second task is to insert an authentication token in all requests to the API. The API server configuration you provided earlier enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
 
 
 ![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
@@ -236,7 +234,7 @@ If cluster-2 is unavailable. Wait a few more moments and return to the above ste
 ![App deployment cluster-2](devx_app_deploy-apps_cluster-2-deploy-app.png)
 
 
-The app profile deployment takes a few moments to finish. You can review the application's progress by navigating to the left **Main Menu** and clicking on Virtual Clusters. Click on **cluster-2** to view its details page.  
+The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left **Main Menu** and clicking on Virtual Clusters. Click on **cluster-2** to view its details page.  
 
 
 
@@ -254,14 +252,11 @@ Click on the UI’s service URL for port 8080 to access the Hello Universe appli
 ![View of the self-hosted version of Hello Universe](devx_apps_deploy-app_self-hosted-hello-universe.png)
 
 
-The global counter is no longer available; instead, you have a counter that starts at zero counts. Each time you click on the center image, the counter is incremented and stored in the Postgres database. Also, keep in mind that the reverse proxy is injecting the Bearer token value in each request sent to the API. 
-
-
-
+The global counter is no longer available; instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that the reverse proxy injects the Bearer token value in each request sent to the API. 
 
 ## Clean-up
 
-To remove all resources created in this tutorial, begin by navigating to the left **Main Menu** and click on the **Apps** link. For each application, click on the **three dots** to expand the options and menu and click on the **Delete** button. Repeat this process for each application.
+To remove all resources created in this tutorial, begin by navigating to the left **Main Menu** and click on the **Apps** link. For each application, click on the **three-dots Menu** to expand the options menu and click on the **Delete** button. Repeat this process for each application.
 
 ![Apps view with an arrow pointing towards the delete button](devx_apps_deploy-apps_delete-apps-view.png)
 
@@ -288,4 +283,14 @@ Click on **cluster-1** to access its details page. Click on **Settings** from th
 </Tabs>
 
 
-# Wrap-up
+# Wrap-Up
+
+In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files. To learn more about Palette Dev Engine and its capabilities.
+
+<br />
+
+- [Palette Modes](/introduction/palette-modes)
+- [App Profiles](/devx/app-profile)
+- [App Services]()
+- [Palette Virtual Clusters](/devx/palette-virtual-clusters) 
+- [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)
