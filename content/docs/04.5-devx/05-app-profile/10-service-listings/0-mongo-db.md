@@ -6,6 +6,7 @@ hideToC: false
 type: "appTier"
 category: ['databases']
 fullWidth: false
+logoUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEA…h0jF2Y4jj12mfO3T4V+L/AVKOmYf9wEmnAAAAAElFTkSuQmCC"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
