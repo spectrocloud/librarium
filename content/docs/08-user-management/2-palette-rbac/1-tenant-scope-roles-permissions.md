@@ -237,10 +237,102 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 | ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
 | **apiKey** | √          | √          | √       | √        | √          |            |             |            |             |
 | **audit**  |            |            | √       | √        |            |            |             |            |             |
-| **user**   | √          | √          | √       | √        | √          |            |             |            |             |
+| **user**   | √          | √          | √       | √        | √          |            |             |            |             
 
+
+<br />
+
+
+# Tenants Cluster Group
+----------------------------
+
+|Role Names   | Description  |
+|---|---|
+|Tenants Cluster Group Admin |The Tenants Cluster Group Administrator role allows the user to create and manage cluster groups within the tenant, covered under all operations related to cluster groups|
+|Tenants Cluster Group Editor|The Tenants Cluster Group Editor role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group|
+|Tenants Cluster Group Viewer|Tenants Cluster Group Viewer has a read only access to all the cluster group resources|
+
+The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
+
+<br />
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Tenants Cluster Group Admin" key="Tenant Admin">
+
+<br />
+
+## Tenants Cluster Group Admin
+
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>resourceKeys</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cluster**        |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**   | √          | √          | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 
 
 <br />
 <br />
 <br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Tenants Cluster Group Editor" key="Tenants Cluster Group Editor Role">
+
+
+## Tenants Cluster Group Editor
+
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>resourceKeys</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cluster**        |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**   |            |            | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
+
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Tenants Cluster Group Viewer" key="Tenant Project Viewer">
+
+<br />
+
+## Tenants Cluster Group Viewer
+
+<br / >
+<table>
+    <tr>
+        <td width="400"><b>resourceKeys</b></td>
+        <td><b>Operations</b></td>
+    </tr>
+</table>
+<hr />
+
+|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **cluster**        |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
+
+
+</Tabs.TabPane>
+</Tabs>
+
+<br />
+
+
