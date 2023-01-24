@@ -40,7 +40,7 @@ The tutorial includes two scenarios, and for each scenario, you will deploy a se
 
 ![Architecutre diagram depicting two virtual clusters](devx_apps_deploy-apps_architecture-diagram.png)
 
-The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out [App Mode and Cluster Mode](/introduction/palette-modes documentation
+The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out [App Mode and Cluster Mode](/introduction/palette-modes documentation)
 
 # Deploy The Environment
 
