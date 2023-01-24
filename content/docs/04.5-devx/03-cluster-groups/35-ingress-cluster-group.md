@@ -18,32 +18,33 @@ Cluster Groups may have a cluster endpoint type of either Load Balancer or Ingre
 
 Using **Ingress** as the cluster endpoint type is a more cost effective way to access your Kubernetes workloads than using type **Load Balancer**, which requires a new cloud Load Balancer to be provisioned for each virtual cluster.
 
-When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy an Ingress Controller add-on profile, such as NGINX, on each host cluster in the Cluster Group. The Ingress Controller provides the necessary routing functionality for external traffic to reach the Kubernetes API server of each virtual cluster, as well as any apps each virtual cluster contains. 
+When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) add-on profile, such as NGINX, on each host cluster in the Cluster Group. The Ingress Controller provides the necessary routing functionality for external traffic to reach the Kubernetes API server of each virtual cluster, as well as any apps each virtual cluster contains. 
 
 # Prerequisites
 
 - At least one infrastructure or cloud-based cluster you’ve created in Tenant scope.
-- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated. <br /><br />
+- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. <br />
+
+    Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. If you are using a different ingress controller, you must enable SSL passthrough as shown in the example: <br /><br />
 
     ```yml
     extraArgs:        
   enable-ssl-passthrough: true
-    ```
+    ```  
 
-    Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. Palette's NGINX add-on profile also reroutes incoming requests through port 443 to use the cloud Load Balancer. 
-
-- If you are not using Palette's NGINX add-on profile, you can add the following to the profile you're using to reroute incoming requests from port 6443 to port 443. 
-
-    This will terminate TLS for your Apps at the cloud Load Balancer while still allowing you to connect to the API servers of your Virtual Clusters. Alternatively, you must use Cert Manager to issue certificates for App Ingress within the cluster.<br /><br />
+ - Palette's ```ingress-nginx-host-cluster``` add-on profile automatically reroutes inbound requests on port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
+ 
+ If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /><br /> The following example shows how port rerouting is achieved for the NGINX Ingress Controller. You would add a similar line for Transmission Control Protocol (TCP) to the profile of the add-on you are using.<br /><br />
 
     ```
     tcp:   
     6443: "nginx/nginx-ingress-controller:443"  
-    # 8080: "default/example-tcp-svc:9000"
     ```
 
-
 # Set Up Ingress
+
+The following steps describe how to enable an Ingress Controller for a Cluster Group. You will use the `ingress-nginx-host-cluster` add-on profile, but you may choose another ingress controller.
+<br />
 
 1. Log in to Palette as **Tenant Admin**.
 <br />
@@ -88,9 +89,9 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 6. Copy the CNAME record to your clipboard.
 <br />
 
-7. Ensure you are in Palette's Cluster Mode, under the Tenant Admin scope, and select **Cluster Groups** in the **Main Menu**, then select the Cluster Group that requires ingress.<br /><br />
+7. Ensure you are in Palette's Cluster Mode, under the Tenant Admin scope. From the **Main Menu**, select **Cluster Groups**, then select the Cluster Group that requires ingress.<br />
     a. From the **Host Clusters** tab, select **Settings > Clusters**.   
-    b. Choose **Ingress** as the **Cluster endpoint type**. 
+    b. Choose **Ingress** as the **Cluster endpoint type**.<br /> 
     c. Paste the name of the wildcard CNAME record into the **Host DNS** field.
 
 <InfoBox>
@@ -101,7 +102,9 @@ If you haven’t yet created a Cluster Group, you can configure each host cluste
 
 To validate that ingress is functioning as expected, do the following: 
 
-1. Switch to App Mode and deploy a new virtual cluster.
+1. From the **User Menu**, switch to App Mode and deploy a new virtual cluster. <br />
+    To learn how to deploy a virtual cluster, check out the [Add Virtual Clusters to a Host Cluster](https://docs.spectrocloud.com/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster) guide.
+
 2. Use a web shell and type the following command to verify you can connect to the newly deployed virtual cluster:
 
 ```
