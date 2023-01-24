@@ -6,6 +6,7 @@ hideToC: false
 type: "appTier"
 category: ['databases']
 fullWidth: false
+logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
