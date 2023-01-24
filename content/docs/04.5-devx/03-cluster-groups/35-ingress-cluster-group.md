@@ -23,22 +23,15 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 # Prerequisites
 
 - At least one infrastructure or cloud-based cluster you’ve created in Tenant scope.
-- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. <br />
-
-    Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. If you are using a different ingress controller, you must enable SSL passthrough as shown in the example: <br /><br />
-
-    ```yml
-    extraArgs:        
-  enable-ssl-passthrough: true
-    ```  
+- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. 
 
  - Palette's ```ingress-nginx-host-cluster``` add-on profile automatically reroutes inbound requests on port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
  
- If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /><br /> The following example shows how port rerouting is achieved for the NGINX Ingress Controller. You would add a similar line for Transmission Control Protocol (TCP) to the profile of the add-on you are using.<br /><br />
+ If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /><br /> The following example shows how port rerouting is achieved for the NGINX Ingress Controller. You would add equivalent Transmission Control Protocol (TCP) service configuration to the profile of the add-on you are using. <br /><br />
 
     ```
     tcp:   
-    6443: "nginx/nginx-ingress-controller:443"  
+      6443: "nginx/nginx-ingress-controller:443"  
     ```
 
 # Set Up Ingress
