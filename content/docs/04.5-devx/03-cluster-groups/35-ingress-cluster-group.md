@@ -22,14 +22,24 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
 # Prerequisites
 
-- At least one infrastructure or cloud-based cluster you’ve created in Tenant scope.
-- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. 
+- At least one infrastructure or cloud-based cluster you’ve created.
+- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. The following example shows how SSL-passthrough is enabled for the NGINX Ingress Controller. You would add an equivalent configuration to the profile of the add-on you are using. <br /><br />
+
+   ```
+    # -- Additional command line arguments to pass to nginx-ingress-controller
+    extraArgs:   
+      enable-ssl-passthrough: true  
+    ```
+    <br />
 
  - Palette's ```ingress-nginx-host-cluster``` add-on profile automatically reroutes inbound requests on port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
  
- If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /><br /> The following example shows how port rerouting is achieved for the NGINX Ingress Controller. You would add equivalent Transmission Control Protocol (TCP) service configuration to the profile of the add-on you are using. <br /><br />
+ If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /> 
+ 
+ The following example shows how port rerouting is achieved for the NGINX Ingress Controller. You would add equivalent Transmission Control Protocol (TCP) service configuration to the profile of the add-on you are using. <br /><br />
 
     ```
+    # -- TCP service key-value pairs
     tcp:   
       6443: "nginx/nginx-ingress-controller:443"  
     ```
@@ -50,12 +60,12 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
-3. Add the ```ingress-nginx-host-cluster``` add-on profile to each host cluster. <br />
+3. Either add the ```ingress-nginx-host-cluster``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](devx/cluster-groups/ingress-cluster-group#prerequisites) section. <br />
     a. From the **Main Menu**, choose **Clusters** and select a cluster.<br />
     b. In the **Profile** tab, click **Add add-on profile (+)** and select ```ingress-nginx-host-cluster```. <br />
     c. Confirm and save your changes.
 <br />
-4. For each host cluster with ingress deployed, follow these steps to open a web shell, identify the External-IP of the LoadBalancer Service, and copy the record you will need to create a canonical Name (CNAME) Domain Name System (DNS) record:
+4. For each host cluster with an ingress controller add-on profile deployed, follow these steps to open a web shell, identify the External-IP of the LoadBalancer Service, and copy the record you will need to create a canonical Name (CNAME) Domain Name System (DNS) record:
 
     a. From the **Main Menu**, select a cluster. The cluster **Overview** tab displays. 
 
