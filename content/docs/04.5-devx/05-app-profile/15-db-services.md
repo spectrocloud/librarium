@@ -17,16 +17,16 @@ Palette Dev Engine facilitates database service setup, operation, and scaling wi
 
 Palette Dev Engine supports the following database services:
 
-* [MongoDB]()
+* MongoDB
 
 
-* [MySQL]()
+* MySQL
 
 
-* [PostgreSQL]()
+* PostgreSQL
 
 
-* [Redis]()
+* Redis
 
 ## DB Deployment 
 
@@ -49,6 +49,8 @@ will generate an update notification on all the apps created from the app profil
 Each Database service has a set of output variables. These output variables are used to establish Database connectivity with other service layers of the app profile.
 
 **Note:** The DB service connectivity follows a fixed hierarchy in Palette. The DB connectivity is established for higher-level services using the output variable. Higher-level refers to the service added to the app profile after adding the DB service. 
+
+
 
 <br />
 
