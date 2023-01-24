@@ -7,6 +7,7 @@ type: "appTier"
 category: ['databases']
 hiddenFromNav: false
 fullWidth: false
+logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M2p1W4t8H70OKpRY2breg&usqp=CAU"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
