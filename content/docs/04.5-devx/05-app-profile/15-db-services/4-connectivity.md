@@ -11,16 +11,16 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Database Connectivity
+# Service Connectivity
 
-Database Connectivity is the process of establishing communication between the database service and the app services. Connectivity is required to send commands and receive answers as result sets from the database. Palette database services establish the connectivity by distributing underlying driver or provider with connection strings, defined as output variables corresponding to individual database services.
+Connectivity is the process of establishing communication between the database service and the app services. Connectivity is required to send commands and receive answers as result sets from the database. Palette database services establish the connectivity by distributing underlying driver or provider with connection strings, defined as output variables corresponding to individual database services.
 
 The primary considerations in this regard are:
 
 * Each database service comes with service-specific output variables. These output variables in the form of macros are passed to lower-layer app services to establish connectivity.
 
 
-* While adding services to the App Profile, consider downward compatibility, where the DB service needs to be at the topmost layer (the first layer to be added to the app profile). This is because the variables used in services follow a usage hierarchy where variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. However, variable values cannot pass from the top service layers downwards.
+* While adding services to the app profile, consider upward compatibility, where the DB service needs to be at the bottom-most layer (the first layer to be added to the app profile). This is because the variables used in services follow a usage hierarchy where variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. However, variable values cannot pass from the top service layers downwards.
 
 
 * Pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement.
@@ -42,6 +42,9 @@ env:
 
 <br />
 
+
+## Postgres Connectivity
+
 * For [Postgres](https://www.postgresql.org/docs/current/libpq-ssl.html) if you want to establish connectivity, set `sslMode` to `require`. 
 
 
@@ -62,7 +65,6 @@ Where,
 <br />
 
 
-* All other databases when deployed with Palette are defaulting to no encryption requirement.
 
 
 

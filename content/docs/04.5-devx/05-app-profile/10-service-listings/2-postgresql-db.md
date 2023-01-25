@@ -25,7 +25,7 @@ Palette supports PostgreSQL database service, a powerful open-source object-rela
 The following are requirements for using Palette Postgres:
 
 
-* Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts if used.
+* Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
 # Prerequisite
 
@@ -39,7 +39,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
+3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |         **Parameter**     | **Description**  |
 |---------------------------|-----------------|
@@ -65,7 +65,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
   * **Password:** Security password for the DB service.
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the MongoDB secrets using the following command:
+You can use the default system-generated password. If the default password is used, it can be retrieved from the PostgreSQL secrets using the following command:
 
 <br />
 
@@ -78,7 +78,7 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
-  * **Version:**Select the version from the **Version** drop-down. The following are the Palette supported MongoDB versions:
+  * **Version:**Select the version from the **Version** drop-down. The following are the Palette supported PostgreSQL versions:
 
     * 14
    

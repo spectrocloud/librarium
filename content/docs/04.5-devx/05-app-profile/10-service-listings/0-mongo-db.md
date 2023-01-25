@@ -6,7 +6,7 @@ hideToC: false
 type: "appTier"
 category: ['databases']
 fullWidth: false
-logoUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgA…b1p8f/U1Lms9ROM+TrbjVP2A5mILziRmdAAAAAElFTkSuQmCC"
+logoUrl: "https://newrelic.com/sites/default/files/styles/800w/public/2021-10/mongo_logo.jpg?itok=Z1PabBZB"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -30,7 +30,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
+3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |         **Parameter**   | **Description**  |
 |-------------------------|-----------------|
