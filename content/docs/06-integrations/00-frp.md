@@ -324,9 +324,15 @@ Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-pr
 The Spectro Proxy pack can be referenced through Terraform with a data resource.
 
 ```tf
-data "spectrocloud_pack" "spectro-proxy" {
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "spectro-proxy" {
   name    = "spectro-proxy"
   version = "1.2.0"
+  type = "operator-instance"
+  registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
 
