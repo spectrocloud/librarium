@@ -31,7 +31,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
+3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
@@ -44,7 +44,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 4. From the available services start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services.
 
 
-5. Click on **Mongo DB** from the DB services and start the configuration.
+5. Click on **Redis DB** from the DB services and start the configuration.
   
 
 6. Provide the following information to the wizard:
@@ -52,7 +52,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   * **Password:** Security password for the DB service.
 
 <InfoBox>
-You can use the default system-generated password. If the default password is used, it can be retrieved from the MongoDB secrets using the following command:
+You can use the default system-generated password. If the default password is used, it can be retrieved from the Redis DB secrets using the following command:
 
 ```
 kubectl get secrets -A

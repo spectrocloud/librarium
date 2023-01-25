@@ -14,21 +14,25 @@ import AppTiers from "shared/components/common/Integrations/AppTiers"
 <Content>
 
 
-Palette Dev Engine App Profile services are the set of services that can be put together for App Deployment. 
+Palette Dev Engine App Profile services are the set of services that can be put together for App Deployment. The key services available are:
 
-The basic services available are:
+**Container Deployment**: Containers are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload.
 
-**Container Deployment**: Containers are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to Container Deployment.
 
-**Helm**: Palette provides out-of-box Helm registries and allows you to add registries. For more information, visit Palette Helm Registry.
+**Helm**: Palette leverages Helm registries for out-of-box app deployment.
 
-**Manifest**: You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require creation of Secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
+
+**Manifest**: You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. 
+
 
 **Messaging System Services**: The Messaging System services available for client-server data exchange and monitoring.
 
+
 **Object Storage Services**: Object storage, also known as object-based storage, is a strategy that manages and manipulates data storage as distinct units, called objects.
 
+
 **Database Services**: The backend storage services for Palette Dev Engine apps. We support multiple database services.
+
 
   <AppTiers />
 

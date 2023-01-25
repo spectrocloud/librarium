@@ -20,7 +20,7 @@ MySQL is a relational database management system based on the Structured Query L
 
 <br />
 
-* Csreates a database for storing and manipulating data, defining the relationship of each table.
+* Creates a database for storing and manipulating data, defining the relationship of each table.
 
 
 * Clients can make requests by typing specific SQL statements on MySQL.
@@ -40,7 +40,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information for your App Profile and click **Next**.
+3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |    **Parameter**            | **Description** |
 |-----------------------------|-----------------|
@@ -62,7 +62,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 <InfoBox>
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the MongoDB secrets using the following command:
+You can use the default system-generated password. If the default password is used, it can be retrieved from the MySQL secrets using the following command:
 
 ```
 kubectl get secrets -A
@@ -73,7 +73,7 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
   * Database Volume Size (GiB): Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
-  * Select the version from the **Version** drop-down. The following are the Palette supported MongoDB versions:
+  * Select the version from the **Version** drop-down. The following are the Palette supported MySQL versions:
 
     * 5.7
 
