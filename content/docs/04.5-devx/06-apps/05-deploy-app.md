@@ -28,8 +28,11 @@ To complete this tutorial, you will need the following items.
 - Basic knowledge about containers.
 
 <!-- If you select the Terraform workflow, you will need the following software installed.
-Terraform v1.3.6 or greater
-Git v2.30.0 or greater -->
+- Terraform v1.3.6 or greater
+- Git v2.30.0 or greater 
+- A Spectro Cloud API key. To learn how to create an API key
+
+-->
 
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
