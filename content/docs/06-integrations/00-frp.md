@@ -16,20 +16,20 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Proxy
-Spectro Proxy is a pack that enables the usage of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to a Palette-managed Kubernetes cluster's API in private networks or Kubernetes clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP).
+Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP).
 
-The reverse proxy comprises two components, a server, and a client. The reverse proxy server is publicly available and managed by us. The client runs inside your Palette-managed Kubernetes cluster and connects to the reverse proxy server. When you add the Spectro Proxy pack to a cluster profile, a couple of things happen.
+The reverse proxy has a server component and a client component. The reverse proxy server is publicly available and managed by Spectro Cloud. The client runs inside your Palette-managed Kubernetes cluster and connects to the reverse proxy server. When you add the Spectro Proxy pack to a cluster profile, a couple of things happen:
 
 <br />
 
-- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the Kubernetes cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse. Keep in mind that if this pack is added as a day-2 operation that you woul have to re-download the kubeconfig file to pick up the new configuration changes.
+- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy. Be aware that if this pack is added as a day-2 operation that you will have to re-download the kubeconfig file to pick up the new configuration changes.
 
     ```yaml
     apiVersion: v1
     clusters
     - cluster:
     certificate-authority-dataLSOtLa....
-    server: https: //cluster-11111111111111.proxy.stage.spectrocloud.com:443
+    server: https://cluster-11111111111111.proxy.stage.spectrocloud.com:443
     name: vsphere-proxy
     contexts:
     - context:
@@ -37,10 +37,10 @@ The reverse proxy comprises two components, a server, and a client. The reverse 
 
     ```
 
-- Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy will forward the request to the intended client, which is the Kubernetes cluster's API server. The Kubernetes cluster's API server will authenticate the request and reply with the proper response.
+- Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy forwards the request to the intended client, which is the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.
 
 
-Users can attach this pack to a [cluster profile](/cluster-profiles). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
+You can attach this pack to a [cluster profile](/cluster-profiles). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
 
 <br />
 
@@ -59,7 +59,7 @@ This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/
 
 ## Prerequisites
 
-- Outbound internet connectivity for port `443` is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
 ## Parameters
@@ -84,16 +84,16 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack during the cluster profile creation. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
 <br />
 
 
-- **Pure**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but completely managed by Palette. Google GKE, and Tencent TKE fall under this category. 
+- **Pure**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely managed by Palette. Google GKE and Tencent TKE fall in this category. 
 
-- **Non-pure**: A non-IaaS cluster whose control plane is managed by a third party or will be managed by a third party. Azure AKS and AWS EKS fall under this category as both Palette and the cloud provider partially manage the clusters. Clusters that are imported into Palette are also included in this category.
+- **Non-pure**: A non-IaaS cluster whose control plane is managed by a third party or will be managed by a third party. Azure AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters imported into Palette are also included in this category.
 
 
 <Tabs>
@@ -134,7 +134,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 
 <InfoBox>
 
-Set the parameter `k8sDashboardIntegration.enabled` to true if you intended to expose the Kubernetes dashboard. 
+Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard. 
 Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
 
 </InfoBox>
