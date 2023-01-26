@@ -48,6 +48,9 @@ You can attach this pack to a [cluster profile](/cluster-profiles). The pack ins
 
 
 This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard) guide. 
+
+<br />
+
 </InfoBox>
 
 
@@ -156,9 +159,7 @@ Be aware that if this pack is added as a day-2 operation, meaning not during the
 
 Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
 
-</Tabs.TabPane>
-
-</Tabs>
+<br />
 
 <InfoBox>
 
@@ -166,6 +167,12 @@ Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to exp
 Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
 
 </InfoBox>
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
 
 
 </Tabs.TabPane>
@@ -267,9 +274,7 @@ Be aware that if this pack is added as a day-2 operation, meaning not during the
 
 Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
 
-</Tabs.TabPane>
-
-</Tabs>
+<br />
 
 <InfoBox>
 
@@ -277,6 +282,12 @@ Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to exp
 Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
 
 </InfoBox>
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
 
 
 </Tabs.TabPane>
@@ -370,9 +381,7 @@ Be aware that if this pack is added as a day-2 operation, meaning not during the
 
 Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
 
-</Tabs.TabPane>
-
-</Tabs>
+<br />
 
 <InfoBox>
 
@@ -380,6 +389,10 @@ Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to exp
 Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
 
 </InfoBox>
+
+</Tabs.TabPane>
+
+</Tabs>
 
 
 </Tabs.TabPane>
