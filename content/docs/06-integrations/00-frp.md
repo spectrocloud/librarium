@@ -181,7 +181,7 @@ Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-pr
 
 ## Prerequisites
 
-- Outbound internet connectivity for port `443` is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy. 
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy. 
 
 
 ## Parameters
@@ -295,7 +295,7 @@ Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-pr
 
 ## Prerequisites
 
-- Outbound internet connectivity for port `443` is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
 ## Parameters
