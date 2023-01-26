@@ -22,7 +22,7 @@ The reverse proxy comprises two components, a server, and a client. The reverse 
 
 <br />
 
-- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the Kubernetes cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse.
+- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the Kubernetes cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse. Keep in mind that if this pack is added as a day-2 operation that you woul have to re-download the kubeconfig file to pick up the new configuration changes.
 
     ```yaml
     apiVersion: v1
@@ -112,7 +112,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](frp-certsan.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `apiServer` parameter section.
+For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 ```yaml
     tls-san:
       - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
