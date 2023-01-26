@@ -8,6 +8,6 @@ set -e
 set -u
 
 source prow/functions.sh
-
+echo "Release Build script triggered by Prow."
 build_release_docs
 sync_s3
