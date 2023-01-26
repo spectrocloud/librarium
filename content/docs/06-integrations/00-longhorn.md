@@ -22,7 +22,7 @@ Longhorn creates a dedicated storage controller for each block device volume and
 
 # Prerequisites
 
-- Kubernetes cluster is at least version 1.22 and not higher than 1.24.
+- Kubernetes cluster is 1.25 or higher.
 
 # Version Supported
 

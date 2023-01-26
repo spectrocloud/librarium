@@ -43,7 +43,9 @@ Azure supports VXLAN encapsulation type.
 
 <Tabs.TabPane tab="3.24.x" key="3.24.x">
 
-* ** 3.24.0**
+* **3.24.5**
+* **3.24.1**
+* **3.24.0**
 
 </Tabs.TabPane>
 

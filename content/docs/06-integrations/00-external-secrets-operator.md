@@ -35,6 +35,7 @@ Starting from Palette version 3.1, Palette no longer supports upgrades to Kubern
 
 <Tabs.TabPane tab="0.6.x" key="0.6.x">
 
+* **0.7.1**
 * **0.6.0**
 
 </Tabs.TabPane>

@@ -9,20 +9,38 @@ logoUrl: 'https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85cca
 ---
 
 import WarningBox from 'shared/components/WarningBox';
+import Tabs from 'shared/components/ui/Tabs';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
 
 # Kong Ingress Controller
 
-Kong integration is an [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
+The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. Kong can also configure your edge router or additional frontends to help handle incoming requests.
 
 ## Version Supported
 
-* Kong 1.4.x
-	* 1.4
+<Tabs>
+
+<Tabs.TabPane tab="2.13.x" key="2.13.x">
+
+* **2.13.1**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.4.x" key="1.4.x">
+
+* **1.4.0**
+
+</Tabs.TabPane>
+
+</Tabs>
 
 ## Components
 
-The integration will add Kong Ingress Controller which will expose a service of type LoadBalancer
+The integration adds the Kong Ingress Controller, which exposes a service of type LoadBalancer.
 
 ## References
 
+[Kong Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) <br />
 https://github.com/Kong/kubernetes-ingress-controller

@@ -43,3 +43,7 @@ sync-vale:
 
 check-writing: 
 	vale $(CHANGED_FILE) 
+
+fix-server:
+	@echo "fixing server"
+	rm -rfv node_modules && rm -rfv .cache/ && npm ci

@@ -34,6 +34,7 @@ Palette supports provisioning a [reverse proxy dashboard](/knowledgebase/how-to/
 
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
+* **2.7.0**
 * **2.6.1**
 * **2.6.0**
 
