@@ -25,11 +25,12 @@ Follow steps below to enable and deploy a virtual cluster.
 
 # Prerequisites
 
-- A Spectro Cloud account.
+-  A Spectro Cloud account.
 
 - A configured [Cluster](/clusters).
 
-- Attach any required policies in your cloud account that must be added to your virtual cluster deployment. Refer to [Add Node-Level Policies in your Cloud Account](#add-node-level-policies-in-your-cloud-account).
+- Attach any required policies in your cloud account that must be added to your virtual cluster deployment. 
+  - For AWS, refer to the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation.
 
 <InfoBox>
 
@@ -45,8 +46,9 @@ To add node-level policies:
 
 1. In **Cluster Mode**, switch to the **Tenant Admin**  project.
 2. Select **Tenant Settings** in the **Main Menu**. 
-3. Click **Cloud Accounts** and ensure `Add IAM policies` is enabled for your cloud account. If an account does not already exist, you must add one. 
+3. Click **Cloud Accounts** and ensure **Add IAM policies** is enabled for your cloud account. If an account does not already exist, you must add one. 
 4. You can specify any additional policies to include in virtual clusters deployed with this cloud account.
+    - For AWS, add the **AmazonEBSCSIDriver** policy so that the virtual clusters can access the underlying host cluster's storage. Check out the [Palette required IAM policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation to learn more about additional IAM policies.
 5. Confirm your changes.
 
 # Enable Virtual Clusters on a Host Cluster
