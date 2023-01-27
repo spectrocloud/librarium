@@ -31,7 +31,7 @@ To create an App Profile:
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. In **App Mode**, select **App Profiles** in the **Main Menu**, and click the **New App Profile** button. 
+2. In App Mode, select **App Profiles** from the **Main Menu**, and click the **New App Profile** button. 
 
 
 3. Provide the following basic information for your App Profile and click **Next**.
@@ -51,7 +51,7 @@ To create an App Profile:
 5. Provide configuration information for the service.
 
 
-6. You can add more services to the App Profile as needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
+6. You can add more services to the App Profile as needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
 
 7. When you've provided the required configuration information for services, click **Review**. Your App Profile is now created and can be deployed.  
