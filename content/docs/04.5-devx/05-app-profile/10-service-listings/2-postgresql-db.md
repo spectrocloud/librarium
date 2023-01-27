@@ -16,51 +16,52 @@ import InfoBox from 'shared/components/InfoBox';
 
 # PostgreSQL
 
-Palette supports PostgreSQL database service, a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. PostgreSQL uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+Palette supports [PostgreSQL](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 
 <br />
 
-## Palette Specific Postgres Requirement
+## Palette Postgres Requirement
 
 The following are requirements for using Palette Postgres:
 
-
 * Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
+
+
+* Clients must set `sslMode=require` or greater as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
 # Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
-# Add DB Service to your App Profile
+# Add Postgres to App Profile
 
-1. Log in to [Palette](console.spectrocloud.com)
+You can use the following steps to learn how to add Postgres to your app profile.
+
+1. Log in to [Palette](console.spectrocloud.com).
 
 
-2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
+2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
-|         **Parameter**     | **Description**  |
-|---------------------------|-----------------|
-|Application Profile Name | A custom name for the App Profile|
+|         **Parameter**   | **Description**  |
+|-------------------------|-----------------|
+|Application Profile Name | A custom name for the App Profile.|
 |Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
 |Description (optional)   | Description of the App Profile. | 
-|Tag (optional)           | Tags on a cluster group are propagated to the cloud/datacenter environments.|
- 
-
-4. From the available services start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services.
+|Tag (optional)           | Assign tags to the app profile.|
 
 
-5. Click on **PostgreSQL** from the DB services and start the configuration.
+4. Select **PostgrSQL** from the database services and start the configuration.
   
 
-6. Provide the following information to the wizard:
+5. Provide the following information to the wizard:
 
-  * **Name:** The database *service name*. You can have the default Palette generated name or create a custom name.
+  * **Name:** The database service name. You can use the auto-generated name or create a custom name.
 
 
-  * **Username:** The user name for DB access control. 
+  * **Username:** The user name for database access control. 
 
 
   * **Password:** Security password for the DB service.
@@ -76,14 +77,14 @@ kubectl get secrets -A
 
 For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
 
-  * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
+  * **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters. 
 
-  * **Version:**Select the version from the **Version** drop-down. The following are the Palette supported PostgreSQL versions:
+  * **Version: **Select the version from the **Version** **drop-down Menu**. The following are the Palette supported PostgreSQL versions:
 
     * 14
    
 
-6. **Output Variables**: The output variables of this service layer that may be used in higher service layers, typically for connection purposes are:
+6. **Output Variables**:  **Output Variables**: The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
 
   * The database service name must be passed on to the output variables for database connectivity to other app services. 
 
@@ -105,15 +106,15 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 |**Output Variable**|**Description**|
 |---------------|-----------|
-|Username|Username for database access control|
-|Password|Password for database access control|
-|POSTGRESMSTR_SVC|Provides the Postgres service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity|
-|POSTGRESMSTR_SVC_PORT|Represents the port on which the database service is listening to|
+|Username|Username for database access control.|
+|Password|Password for database access control.|
+|POSTGRESMSTR_SVC|Provides the Postgres service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity.|
+|POSTGRESMSTR_SVC_PORT|Represents the port on which the database service is listening on.|
 
 
 # Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
+* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
 
 
 * Validate the services from the App page after app deployment. First, navigate to the **App** page, where all your apps are listed. Then, click the **App Name** to see the service layers. The color code in the app profile box shows the status of the service deployment.
