@@ -13,17 +13,18 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Service Connectivity
 
-Connectivity is the process of establishing communication between the database service and the app services. Connectivity is required to send commands and receive answers as result sets from the database. Palette database services establish the connectivity by distributing underlying driver or provider with connection strings, defined as output variables corresponding to individual database services.
-
+Connectivity is the process of establishing communication between the database service and clients. Connectivity is required to send SQL queries from clients to the database. Palette database services expose output variables that contain the required connectivity information such as the hostname, database user, user password, and database port. You can use these output variables to connect your application to the database.
 The primary considerations in this regard are:
 
-* Each database service comes with service-specific output variables. These output variables in the form of macros are passed to lower-layer app services to establish connectivity.
+The primary considerations are:
+
+* When adding services to the app profile, consider the order of service layers. Services must be added after the database service layer for other services that require connectivity with the database. In other words, the database service should be at the app profile's bottom-most layer.
 
 
-* While adding services to the app profile, consider upward compatibility, where the DB service needs to be at the bottom-most layer (the first layer to be added to the app profile). This is because the variables used in services follow a usage hierarchy where variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. However, variable values cannot pass from the top service layers downwards.
+* The order of the service layers is important because the output variables used in services follow a usage hierarchy. The output variables for a service are only available if the service comes after the service that exposes the output variable. Output Variables from the first services you add, which become the first layer in the app profile stack, can be consumed by other services after it. However, output variables cannot be passed downwards from the top service layers.
 
 
-* Pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement.
+* You can pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement. You can also consume the output variables as environment variables in container services.
 
 
 **Example:**
