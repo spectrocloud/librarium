@@ -31,6 +31,7 @@ Follow steps below to enable and deploy a virtual cluster.
 
 - Attach any required policies in your cloud account that must be added to your virtual cluster deployment. 
   - For AWS, refer to the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation.
+  - For Azure, no additional policies are required.
 
 <InfoBox>
 
