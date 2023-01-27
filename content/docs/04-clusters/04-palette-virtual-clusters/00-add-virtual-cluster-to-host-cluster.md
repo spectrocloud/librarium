@@ -25,7 +25,7 @@ Follow steps below to enable and deploy a virtual cluster.
 
 # Prerequisites
 
--  A Spectro Cloud account.
+- A Spectro Cloud account.
 
 - A configured [Cluster](/clusters).
 
