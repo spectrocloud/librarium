@@ -33,8 +33,8 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 |Role Names   | Description  |
 |---|---|
-|Tenant Admin  |The Tenant Administrator role allows the user to create projects and manage projects within the tenant, covered under all operations related to projects|
-|Tenant Viewer| Tenant Viewer has a read only access to all the project resources|
+|Tenant Admin  |Allows the user to create projects and manage projects within the tenant, covered under all operations related to projects|
+|Tenant Viewer| Provides a read only access to all the project resources|
 |Tenant Project Admin|The role with complete access to an existing project|
 
 The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
@@ -248,9 +248,9 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 |Role Names   | Description  |
 |---|---|
-|Tenants Cluster Group Admin |The Tenants Cluster Group Administrator role allows the user to create and manage cluster groups within the tenant, covered under all operations related to cluster groups|
-|Tenants Cluster Group Editor|The Tenants Cluster Group Editor role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group|
-|Tenants Cluster Group Viewer|Tenants Cluster Group Viewer has a read only access to all the cluster group resources|
+|Tenants Cluster Group Admin |Allows the user to create and manage cluster groups within the tenant, covered under all operations related to cluster groups|
+|Tenants Cluster Group Editor|The role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group|
+|Tenants Cluster Group Viewer|Provides a read only access to all the cluster group resources|
 
 The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
 
