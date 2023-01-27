@@ -404,7 +404,7 @@ Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-pr
 Troubleshooting scenarios related to the Spectro Proxy.
 <br />
 
-### x509 Unknow Authority Error
+### x509 Unknown Authority Error
 
 If you encounter an x509 unknown authority error when deploying a cluster with the Spectro Proxy.
 
