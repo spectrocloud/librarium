@@ -1,5 +1,5 @@
 ---
-title: "Redis Database"
+title: "Redis"
 metaTitle: "Palette Dev Engine Redis Database Service"
 metaDescription: "Palette Dev Engine Redis Database Service"
 hideToC: false
@@ -17,7 +17,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Redis DB
 
-[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a database service. Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence capabilities. In addition, it provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
+[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction, transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
 # Prerequisite
 
@@ -31,28 +31,25 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
 
 
-3. Select **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
-|Application Profile Name | A custom name for the App Profile|
-|Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
-|Description (optional)   | Description of the App Profile. | 
-|Tag (optional)           | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+|Application Profile Name | A custom name for the app profile.|
+|Version (optional)       | The default value is 1.0.0. You can create multiple versions of an app profile using the format **`major.minor.patch`**.
+|Description (optional)   | Description of the app profile. | 
+|Tag (optional)           |  Assign tags to the app profile.|
  
 
-4. From the available services start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services.
-
-
-5. Click on **Redis DB** from the DB services and start the configuration.
+4. Click on **Redis DB** from the DB services and start the configuration.
   
 
-6. Provide the following information to the wizard:
-  * **Name:** The DB name. You can have the default Palette generated name or create a custom name. 
-  * **Password:** Security password for the DB service.
+5. Provide the following information to the wizard:
+  * **Name:** The database name. You can have the default Palette generated name or create a custom name. 
+  * **Password:** Security password for the database service.
 
 <InfoBox>
-You can use the default system-generated password. If the default password is used, it can be retrieved from the Redis DB secrets using the following command:
+You can use the default system-generated password. If you use the default password, you can retrieve it from the Redis DB secrets using the following command:
 
 ```
 kubectl get secrets -A
@@ -93,7 +90,7 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 # Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
+* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
 
 
 * Validate the services from the App page after app deployment. First, navigate to the **App** page, where all your apps are listed. Then, click the **App Name** to see the service layers. The color code in the app profile box shows the status of the service deployment.
