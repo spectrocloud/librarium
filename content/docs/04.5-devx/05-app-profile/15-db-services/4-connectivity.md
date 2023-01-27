@@ -1,5 +1,5 @@
 ---
-title: "Database Connectivity"
+title: "Service Connectivity"
 metaTitle: "Palette Dev Engine Database Connectivity"
 metaDescription: "Palette Dev Engine Database Connectivity"
 hideToC: false
