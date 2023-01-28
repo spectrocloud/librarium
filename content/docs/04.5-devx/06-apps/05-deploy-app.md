@@ -68,6 +68,679 @@ You can complete this tutorial by using the Palette console, simulating a manual
 <Tabs>
 
 
+<Tabs.TabPane tab="Terraform" key="terraform">
+
+
+##  Terraform
+
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are; the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
+
+<br />
+
+<InfoBox>
+
+As you go through the Terraform workflow, be aware that high-level concepts from Palette will not be discussed in-depth to optimize the reader experience and focus more on the Terraform concepts that apply to Palette. To better understand the mentioned  Palette concepts, review the UI workflow where the concepts are explained in greater detail.
+
+</InfoBox>
+
+
+Open up a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+
+```shell
+git@github.com:spectrocloud/tutorials.git
+```
+
+Change directory to the tutorial folder.
+
+```shell
+cd tutorials/
+```
+
+Checkout the following git tag.
+
+```shell
+Git checkout v1.0.0
+```
+
+Change directory to the tutorial code.
+
+```shell
+cd hello-universe-tf/
+```
+
+Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
+
+### API Key
+
+To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
+
+![Image that points to the user drop-down Menu and points to the API key link](devx_apps_deploy-app_create-api-key.png)
+
+Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
+
+
+### Initialize Terraform
+
+The tutorial folder contains several Terraform files that you should review and explore. Each file is named after the respective type of Palette resource it supports. Use the following list to gain a high-level overview of the files.
+
+<br />
+
+- **provider.tf** - the provider configuration and version of the provider. 
+- **inputs.tf** - contains all the Terraform variables and the default values used in the tutorial.
+- **outputs.tf** - contains the output variables that are used to expose information.
+- **data.tf** - all the data resources that are used to dynamically retrieve data from Palette.
+- **virtual-clusters.tf** - the code for the virtual clusters that will be deployed in Palette.
+- **application-profiles.tf** - contains the configurations that makeup all the app profiles.
+- **application.tf** - the configuration that creates a Spectro Cloud app and deploys the app into a virtual cluster.
+
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Go ahead and export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
+
+```shell
+export SPECTROCLOUD_APIKEY=tKpsmBhv8lFBP0jvMZuBhmppaIQyOH06
+```
+
+Next, initialize the Terraform provider by issuing the following command.
+
+```shell
+terraform init
+```
+
+```
+Initializing the backend...
+
+Initializing provider plugins...
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+The `init` command downloads all the required plugins and providers specified in **provider.tf** file. In the provider configuration, the scope or context of Palette is set. The provider is configured for the `Default` project but, you can change this value to point to any other project space you may have in Palette.
+
+<br />
+
+```tf
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.11.0"
+      source  = "spectrocloud/spectrocloud"
+    }
+  }
+}
+
+provider "spectrocloud" {
+  // API key set though the environment variable SPECTROCLOUD_API_KEY
+  project_name = "Default"
+}
+```
+
+To deploy the first scenario, a single application container, you must first create a configuration for the virtual cluster. Look at the virtual cluster resources in **virtual-clusters.tf**, and check out the "cluster-1" resource. The resource specifies the cluster name, the cluster group id, the resource limits, and the tags that will apply to the cluster.
+
+<br />
+
+```tf
+resource "spectrocloud_virtual_cluster" "cluster-1" {
+  name              = var.scenario-one-cluster-name
+  cluster_group_uid = data.spectrocloud_cluster_group.beehive.id
+
+  resources {
+    max_cpu           = 4
+    max_mem_in_mb     = 4096
+    min_cpu           = 0
+    min_mem_in_mb     = 0
+    max_storage_in_gb = "2"
+    min_storage_in_gb = "0"
+  }
+
+  tags = concat(var.tags, ["scenario-1"])
+
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
+}
+
+```
+
+The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all users of Palette. This resource will create a new virtual cluster that is hosted in the cluster group, beehive.
+
+<br />
+
+```tf
+data "spectrocloud_cluster_group" "beehive" {
+  name    = var.cluster-group-name
+  context = "system"
+}
+```
+
+Next, take a look at the the **application-profiles.tf** file. The resource `spectrocloud_application_profile.hello-universe-ui` is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on the five following key points.
+
+<br />
+
+1. The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.
+
+
+2. The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource `data.spectrocloud_pack_simple.container_pack` is specified.
+
+
+3. A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource `data.spectrocloud_registry.public_registry` is specified to avoid hardcoding values.
+
+
+4. The attribute `source_app_tier` is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource `data.spectrocloud_pack_simple.container_pack` is used.
+
+
+5. The `values` attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings) or you can alternatively specify these values as a stringified JSON object.
+
+
+<PointsOfInterest
+  points={[
+    {
+      x: 105,
+      y: 160,
+      label: 1,
+      description: "The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.",
+    },
+    {
+      x: 720,
+      y: 230,
+      label: 2,
+      description: "The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource data.spectrocloud_pack_simple.container_pack is specified",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 720,
+      y: 265,
+      label: 3,
+      description: "A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource data.spectrocloud_registry.container_registry is specified to avoid hardcoding values",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 720,
+      y: 295,
+      label: 4,
+      description: "The attribute source_app_tier is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource data.spectrocloud_pack_simple.container_pack is used.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 290,
+      y: 332,
+      label: 5,
+      description: "The values attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the Terraform Heredoc strings or you can alternatively specify these values as a stringified JSON object.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+```tf
+resource "spectrocloud_application_profile" "hello-universe-ui" {
+  name        = "hello-universe-ui"
+  description = "Hello Universe as a single UI instance"
+  version     = "1.0.0"
+  pack {
+    name            = "ui"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.public_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        pack:
+          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+        postReadinessHooks:
+          outputParameters:
+            - name: CONTAINER_NAMESPACE
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.namespace
+            - name: CONTAINER_SVC
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_PORT
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: spec.ports[0].port
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.single-container-image}
+            access: public
+            ports:
+              - "8080"
+            serviceType: LoadBalancer
+    EOT
+  }
+  tags = concat(var.tags, ["scenario-1"])
+}
+```
+
+</PointsOfInterest>
+
+
+A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to review the API payload. Review the payload's `values` attribute to find all of the service’s properties. You may copy the entire string and pass it to the resource `spectrocloud_application_profile` as an inout for the `values` attribute.
+
+
+![UI's ability to display the API object](devx_apps_deploy-apps_ui-api-display.png)
+
+
+The last Terraform resource to review before deploying the application is located in the **application.tf** file. The resource `spectrocloud_application.hello-universe-ui` is what creates the *App*. In Palette, an app combines a virtual cluster and an app profile. When you deploy an app profile into a virtual cluster, you create an app. This resource points to the app profile `spectrocloud_application_profile.hello-universe-ui` and the cluster resource `spectrocloud_virtual_cluster.cluster-1`. The two resources are required to create an app.
+
+<br />
+
+
+<PointsOfInterest
+  points={[
+    {
+      x: 810,
+      y: 90,
+      label: 1,
+      description: "The id of the application profile that will be created with the resource spectrocloud_application_profile.hello-universe-ui.",
+    },
+    {
+      x: 590,
+      y: 230,
+      label: 2,
+      description: "The id of the virtual cluster that will be created with the resource spectrocloud_virtual_cluster.cluster-1.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+
+```tf
+resource "spectrocloud_application" "scenario-1" {
+  name                    = "single-scenario"
+  application_profile_uid = spectrocloud_application_profile.hello-universe-ui.id
+
+  config {
+    cluster_name      = spectrocloud_virtual_cluster.cluster-1.name
+    cluster_uid = spectrocloud_virtual_cluster.cluster-1.id
+  }
+  tags = concat(var.tags, ["scenario-1"])
+}
+```
+
+</PointsOfInterest>
+
+You can preview the resources Terraform will create by issuing the following command.
+
+```shell
+terraform plan
+```
+
+```
+// Output condensed for readability
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + beehive-cluster-id                         = "635669ba4583891d109fe6c0"
+  + hello-universie-ui-app-profile-id          = (known after apply)
+  + hello-universie-ui-app-profile-registry-id = "5eecc89d0b150045ae661cef"
+  + single-scenario-app-url                    = "Visit the following URL to access the application: http://google.com"
+
+```
+
+The out displays the resources Terraform will create in an actual implementation. If you review the output, you will find the three resources discussed in greated details previously.
+
+Go ahead and deploy the application by using the `apply` command.
+
+```shell
+terraform apply -auto-approve
+```
+
+```
+// Output condensed for readability
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+```
+
+Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, click on **Apps**. Click on the **scenario-1** row, which will take you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
+
+
+![scenario-1 overview page with an arrow pointing to the URL](devx_app_deploy-apps_scenario-1-overview.png)
+
+<br />
+
+<WarningBox>
+
+  
+It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
+
+
+![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
+
+
+You have deployed your first app profile to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The following scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
+
+  
+## Deploy Multiple Applications
+
+
+The second scenario contains two additional microservices, an API, and a Postgres database. The second scenario uses a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+
+
+![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
+
+To deploy the second scenario, you will again deploy the same three resource types previously discussed but another instance of them.
+
+- `spectrocloud_virtual_cluster` - `cluster-2` - this resource will create the second virtual cluster. 
+
+
+- `spectrocloud_application_profile` - `hello-universe-complete` - the application profile that will contain the three different services, database, API, and UI
+
+
+- `spectrocloud_application` - `scenario-2` - the application that will be deployed into cluster-2 that use the `spectrocloud_application_profile.hello-universe-complete` app profile.
+
+
+You can review all the resources for the second scenario in the respective Terraform files. You can find the second scenario code after the comment block in all of the files that have resources specific to the second scenario.
+
+```tf
+##########################################
+# Scenario 2: Multiple Applications
+##########################################
+```
+
+
+From a Terraform perspective, there are no significant differences in the authoring experience. The critical difference in the second scenario lies in the application profile resource `spectrocloud_application_profile.hello-universe-complete`. The virtual cluster you will deploy in the second scenario, cluster-2,  is much larger than cluster-1.
+
+You can add multiple services to an app profile, but you must add a `pack {}` block for each service in the `spectrocloud_application_profile` resource. Take a close look at the `spectrocloud_application_profile.hello-universe-complete` resource below.
+
+<br />
+
+```
+resource "spectrocloud_application_profile" "hello-universe-complete" {
+  count       = var.enable-second-scenario == true ? 1 : 0
+  name        = "hello-universe-complete"
+  description = "Hello Universe as a three-tier application"
+  version     = "1.0.0"
+  pack {
+    name            = "postgres-db"
+    type            = data.spectrocloud_pack_simple.postgres_service.type
+    source_app_tier = data.spectrocloud_pack_simple.postgres_service.id
+    properties = {
+      "dbUserName"         = var.database-user
+      "databaseName"       = var.database-name
+      "databaseVolumeSize" = "8"
+      "version"            = var.database-version
+    }
+  }
+  pack {
+    name            = "api"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.public_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        pack:
+          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+        postReadinessHooks:
+          outputParameters:
+            - name: CONTAINER_NAMESPACE
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.namespace
+            - name: CONTAINER_SVC
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_PORT
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: spec.ports[0].port
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.multiple_container_images["api"]}
+            access: private
+            ports:
+              - "3000"
+            env:
+              - name: "DB_HOST"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+              - name: "DB_USER"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
+              - name: "DB_PASSWORD"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
+              - name: "DB_NAME"
+                value: "${var.database-name}"
+              - name: "DB_INIT"
+                value: "true"
+              - name: "DB_ENCRYPTION"
+                value: "${var.database-ssl-mode}"
+              - name: "AUTHORIZATION"
+                value: "true"
+    EOT
+  }
+  pack {
+    name            = "ui"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.public_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        pack:
+          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+        postReadinessHooks:
+          outputParameters:
+            - name: CONTAINER_NAMESPACE
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.namespace
+            - name: CONTAINER_SVC
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_PORT
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: spec.ports[0].port
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.multiple_container_images["ui"]}
+            access: public
+            ports:
+              - "8080"
+              - "3000"
+            env:
+              - name: "API_URI"
+                value: "?????"
+              - name: "SVC_URI"
+                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}"
+              - name: "TOKEN"
+                value: "${var.token}"
+            serviceType: LoadBalancer
+    EOT   
+  }
+  tags = concat(var.tags, ["scenario-2"])
+}
+```
+
+Each service has its own `pack {}` and a set of unique properties and values. 
+
+The database service block uses a different data resource, `data.spectrocloud_pack_simple.postgres_service`,  to find the Postgres service. If you review the data resource, you will find a different type, `operator-instance`. The Postgres service uses a Postgres [operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage the database inside the virtual cluster. 
+
+<br />
+
+```
+data "spectrocloud_pack_simple" "postgres_service" {
+  name         = "postgresql-operator"
+  type         = "operator-instance"
+  version      = "1.8.2"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+Inside the `pack {}` block, the database services uses the `properties` attribute instead of the `values` attribute. The `properties` values provided are the same properties you must fill out when creating the database service through the UI workflow.
+
+<br />
+
+```
+ pack {
+    name            = "postgres-db"
+    type            = data.spectrocloud_pack_simple.postgres_service.type
+    source_app_tier = data.spectrocloud_pack_simple.postgres_service.id
+    properties = {
+      "dbUserName"         = var.database-user
+      "databaseName"       = var.database-name
+      "databaseVolumeSize" = "8"
+      "version"            = var.database-version
+    }
+  }
+```
+
+If you go further up the app profile stack, you will find the `pack {}` object for the API. A good part of the content provided to the `values` attribute will be removed in the following code snippet to improve readability. Take a closer look at the `env` block inside the `containerService` section. The API server requires a set of environment variables to start properly, such as the database hostname, user, password, and more. The Postgres service lower in the app profile stack exposes output variables you can use to provide information to other services higher up in the app profile stack. 
+
+The `env` section uses the output variables exposed by the Postgres service. Other environment variables specified will be populated during Terraform runtime because they reference Terraform variables. Palette will populate the environment variables referencing a Palette output variable at runtime inside the virtual cluster.
+
+<br />
+
+```
+  pack {
+    name            = "api"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.public_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        # ....
+        # ....
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.multiple_container_images["api"]}
+            access: private
+            ports:
+              - "3000"
+            env:
+              - name: "DB_HOST"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+              - name: "DB_USER"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
+              - name: "DB_PASSWORD"
+                value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
+              - name: "DB_NAME"
+                value: "${var.database-name}"
+              - name: "DB_INIT"
+                value: "true"
+              - name: "DB_ENCRYPTION"
+                value: "${var.database-ssl-mode}"
+              - name: "AUTHORIZATION"
+                value: "true"
+    EOT
+  }
+```
+
+The last `pack {}` block in the app profile resource `spectrocloud_application_profile.hello-universe-complete` is for the UI. Like the API service, environment variables are used to initialize UI and the reverse proxy. The UI service requires the URL of the API service and the URL of the public-facing load balancer. Palette output variables are used to populate these two environment variables. A Terraform variable will populate the authentication token required for all API requests.
+
+<br />
+
+```
+pack {
+    name            = "ui"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.public_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        # ....
+        # ....
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.multiple_container_images["ui"]}
+            access: public
+            ports:
+              - "8080"
+              - "3000"
+            env:
+              - name: "API_URI"
+                value: "?????"
+              - name: "SVC_URI"
+                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}"
+              - name: "TOKEN"
+                value: "${var.token}"
+            serviceType: LoadBalancer
+    EOT   
+  }``
+
+```
+
+
+
+<InfoBox>
+
+All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables.
+You will use output variables frequently when creating app profiles in the future. You can learn more about output variables by reviewing the [output variables](/devx/app-profile/app-profile-macros) documentation  
+
+</InfoBox>
+
+
+
+</Tabs.TabPane>
+
+
 <Tabs.TabPane tab="UI Workflow" key="UI">
 
   
@@ -448,383 +1121,6 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
   
   
   
-
-</Tabs.TabPane>
-
-
-<Tabs.TabPane tab="Terraform" key="terraform">
-
-
-##  Terraform
-
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are; the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
-
-<br />
-
-<InfoBox>
-
-As you go through the Terraform workflow, be aware that high-level concepts from Palette will not be discussed in-depth to optimize the reader experience and focus more on the Terraform concepts that apply to Palette. To better understand the mentioned  Palette concepts, review the UI workflow where the concepts are explained in greater detail.
-
-</InfoBox>
-
-
-Open up a terminal window to begin the tutorial and download the tutorial code from GitHub. 
-
-```shell
-git@github.com:spectrocloud/tutorials.git
-```
-
-Change directory to the tutorial folder.
-
-```shell
-cd tutorials/
-```
-
-Checkout the following git tag.
-
-```shell
-Git checkout v1.0.0
-```
-
-Change directory to the tutorial code.
-
-```shell
-cd hello-universe-tf/
-```
-
-Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
-
-### API Key
-
-To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
-
-![Image that points to the user drop-down Menu and points to the API key link](devx_apps_deploy-app_create-api-key.png)
-
-Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
-
-
-### Initialize Terraform
-
-The tutorial folder contains several Terraform files that you should review and explore. Each file is named after the respective type of Palette resource it supports. Use the following list to gain a high-level overview of the files.
-
-<br />
-
-- **provider.tf** - the provider configuration and version of the provider. 
-- **inputs.tf** - contains all the Terraform variables and the default values used in the tutorial.
-- **outputs.tf** - contains the output variables that are used to expose information.
-- **data.tf** - all the data resources that are used to dynamically retrieve data from Palette.
-- **virtual-clusters.tf** - the code for the virtual clusters that will be deployed in Palette.
-- **application-profiles.tf** - contains the configurations that makeup all the app profiles.
-- **application.tf** - the configuration that creates a Spectro Cloud app and deploys the app into a virtual cluster.
-
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Go ahead and export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
-
-```shell
-export SPECTROCLOUD_APIKEY=tKpsmBhv8lFBP0jvMZuBhmppaIQyOH06
-```
-
-Next, initialize the Terraform provider by issuing the following command.
-
-```shell
-terraform init
-```
-
-```
-Initializing the backend...
-
-Initializing provider plugins...
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-```
-
-The `init` command downloads all the required plugins and providers specified in **provider.tf** file. In the provider configuration, the scope or context of Palette is set. The provider is configured for the `Default` project but, you can change this value to point to any other project space you may have in Palette.
-
-<br />
-
-```tf
-terraform {
-  required_providers {
-    spectrocloud = {
-      version = ">= 0.11.0"
-      source  = "spectrocloud/spectrocloud"
-    }
-  }
-}
-
-provider "spectrocloud" {
-  // API key set though the environment variable SPECTROCLOUD_API_KEY
-  project_name = "Default"
-}
-```
-
-To deploy the first scenario, a single application container, you must first create a configuration for the virtual cluster. Look at the virtual cluster resources in **virtual-clusters.tf**, and check out the "cluster-1" resource. The resource specifies the cluster name, the cluster group id, the resource limits, and the tags that will apply to the cluster.
-
-<br />
-
-```tf
-resource "spectrocloud_virtual_cluster" "cluster-1" {
-  name              = var.scenario-one-cluster-name
-  cluster_group_uid = data.spectrocloud_cluster_group.beehive.id
-
-  resources {
-    max_cpu           = 4
-    max_mem_in_mb     = 4096
-    min_cpu           = 0
-    min_mem_in_mb     = 0
-    max_storage_in_gb = "2"
-    min_storage_in_gb = "0"
-  }
-
-  tags = concat(var.tags, ["scenario-1"])
-
-  timeouts {
-    create = "15m"
-    delete = "15m"
-  }
-}
-
-```
-
-The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all users of Palette. This resource will create a new virtual cluster that is hosted in the cluster group, beehive.
-
-<br />
-
-```tf
-data "spectrocloud_cluster_group" "beehive" {
-  name    = var.cluster-group-name
-  context = "system"
-}
-```
-
-Next, take a look at the the **application-profiles.tf** file. The resource `spectrocloud_application_profile.hello-universe-ui` is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on the five following key points.
-
-<br />
-
-1. The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.
-
-
-2. The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource `data.spectrocloud_pack_simple.container_pack` is specified.
-
-
-3. A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource `data.spectrocloud_registry.container_registry` is specified to avoid hardcoding values.
-
-
-4. The attribute `source_app_tier` is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource `data.spectrocloud_pack_simple.container_pack` is used.
-
-
-5. The `values` attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings) or you can alternatively specify these values as a stringified JSON object.
-
-
-<PointsOfInterest
-  points={[
-    {
-      x: 105,
-      y: 160,
-      label: 1,
-      description: "The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.",
-    },
-    {
-      x: 720,
-      y: 230,
-      label: 2,
-      description: "The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource data.spectrocloud_pack_simple.container_pack is specified",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 720,
-      y: 265,
-      label: 3,
-      description: "A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource data.spectrocloud_registry.container_registry is specified to avoid hardcoding values",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 720,
-      y: 295,
-      label: 4,
-      description: "The attribute source_app_tier is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource data.spectrocloud_pack_simple.container_pack is used.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 290,
-      y: 332,
-      label: 5,
-      description: "The values attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the Terraform Heredoc strings or you can alternatively specify these values as a stringified JSON object.",
-      tooltipPlacement: "rightTop",
-    },
-  ]}
->
-
-```tf
-resource "spectrocloud_application_profile" "hello-universe-ui" {
-  name        = "hello-universe-ui"
-  description = "Hello Universe as a single UI instance"
-  version     = "1.0.0"
-  pack {
-    name            = "ui"
-    type            = data.spectrocloud_pack_simple.container_pack.type
-    registry_uid    = data.spectrocloud_registry.container_registry.id
-    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
-    values          = <<-EOT
-        pack:
-          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
-        postReadinessHooks:
-          outputParameters:
-            - name: CONTAINER_NAMESPACE
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: metadata.namespace
-            - name: CONTAINER_SVC
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
-            - name: CONTAINER_SVC_PORT
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: spec.ports[0].port
-        containerService:
-            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
-            registryUrl: ""
-            image: ${var.single-container-image}
-            access: public
-            ports:
-              - "8080"
-            serviceType: LoadBalancer
-    EOT
-  }
-  tags = concat(var.tags, ["scenario-1"])
-}
-```
-
-</PointsOfInterest>
-
-
-A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to review the API payload. Review the payload's `values` attribute to find all of the service’s properties. You may copy the entire string and pass it to the resource `spectrocloud_application_profile` as an inout for the `values` attribute.
-
-
-![UI's ability to display the API object](devx_apps_deploy-apps_ui-api-display.png)
-
-
-The last Terraform resource to review before deploying the application is located in the **application.tf** file. The resource `spectrocloud_application.hello-universe-ui` is what creates the *App*. In Palette, an app combines a virtual cluster and an app profile. When you deploy an app profile into a virtual cluster, you create an app. This resource points to the app profile `spectrocloud_application_profile.hello-universe-ui` and the cluster resource `spectrocloud_virtual_cluster.cluster-1`. The two resources are required to create an app.
-
-<br />
-
-
-<PointsOfInterest
-  points={[
-    {
-      x: 810,
-      y: 90,
-      label: 1,
-      description: "The id of the application profile that will be created with the resource spectrocloud_application_profile.hello-universe-ui.",
-    },
-    {
-      x: 590,
-      y: 230,
-      label: 2,
-      description: "The id of the virtual cluster that will be created with the resource spectrocloud_virtual_cluster.cluster-1.",
-      tooltipPlacement: "rightTop",
-    },
-  ]}
->
-
-
-```tf
-resource "spectrocloud_application" "scenario-1" {
-  name                    = "single-scenario"
-  application_profile_uid = spectrocloud_application_profile.hello-universe-ui.id
-
-  config {
-    cluster_name      = spectrocloud_virtual_cluster.cluster-1.name
-    cluster_uid = spectrocloud_virtual_cluster.cluster-1.id
-  }
-  tags = concat(var.tags, ["scenario-1"])
-}
-```
-
-</PointsOfInterest>
-
-You can preview the resources Terraform will create by issuing the following command.
-
-```shell
-terraform plan
-```
-
-```
-// Output condensed for readability
-Plan: 3 to add, 0 to change, 0 to destroy.
-
-Changes to Outputs:
-  + beehive-cluster-id                         = "635669ba4583891d109fe6c0"
-  + hello-universie-ui-app-profile-id          = (known after apply)
-  + hello-universie-ui-app-profile-registry-id = "5eecc89d0b150045ae661cef"
-  + single-scenario-app-url                    = "Visit the following URL to access the application: http://google.com"
-
-```
-
-The out displays the resources Terraform will create in an actual implementation. If you review the output, you will find the three resources discussed in greated details previously.
-
-Go ahead and deploy the application by using the `apply` command.
-
-```shell
-terraform apply -auto-approve
-```
-
-```
-// Output condensed for readability
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-```
-
-Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, click on **Apps**. Click on the **scenario-1** row, which will take you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
-
-
-![scenario-1 overview page with an arrow pointing to the URL](devx_app_deploy-apps_scenario-1-overview.png)
-
-<br />
-
-<WarningBox>
-
-  
-It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
-
-</WarningBox>
-
-Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
-
-
-![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
-
-
-You have deployed your first application to Palette through Terraform. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
-
-  
-## Deploy Multiple Applications
 
 </Tabs.TabPane>
 
