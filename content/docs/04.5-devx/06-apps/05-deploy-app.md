@@ -49,9 +49,6 @@ The top layer is Palette, which is the product platform. Palette can be used in 
 
 The following steps will guide you through deploying the two scenarios. You will start with the single application scenario to build up your knowledge before deploying the multiple applications scenario.
 
-
-## Deploy a Single Application 
-
 From Palette, you will deploy two Palette Virtual Clusters. Palette Virtual Clusters will be referred to as virtual clusters for the rest of the tutorial. Each virtual cluster will be hosted on a host cluster group managed by us, Spectro Cloud, called *beehive*. You can deploy up to two virtual clusters in the beehive group for free. Each scenario’s virtual cluster will sit on the beehive host cluster group.
 
 <br />
@@ -69,6 +66,390 @@ You can complete this tutorial by using the Palette console, simulating a manual
 
 
 <Tabs>
+
+
+<Tabs.TabPane tab="UI Workflow" key="UI">
+
+  
+
+## UI Workflow.
+
+  
+
+Start by log in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
+
+  
+
+![Image with an arrow pointing to the user drop-down Menu](devx_apps_deploy-apps_toggle-app-mode.png)
+
+  
+  
+
+From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the button **New Virtual Cluster**
+
+  
+
+![View of the virtual cluster list](devx_apps_deploy-apps_virtual-cluster-list.png)
+
+  
+
+In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms of CPU, memory, and storage. Select beehive for the cluster group, name the cluster cluster-1, and allocate 4 CPU, 4 GiB memory, and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+
+  
+
+Palette’s Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/resource-quota) documentation to learn more about limits.
+
+  
+
+It will take a few minutes for the virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
+
+  
+  
+
+![The App Profile page with arrows guiding](devx_apps_deploy-apps_app-profiles.png)
+
+  
+  
+
+App Profiles are templates that contain all the configurations and settings required to deploy applications to virtual clusters. App Profiles provide a way to drive consistency across virtual clusters as you can re-use app profiles and deploy them to different virtual clusters. You can think of app profiles as declarative templates that inform the Kubernetes cluster of the desired application or set of applications.
+
+  
+
+Click on the **New App Profile** button to get started with creating your first app profile. Give the app profile the name `hello-universe-ui` and add the tag `scenario-1`. Click on **Next**. The following screen is the service type selection page. You have the option to deploy applications through containers, Helm, or Manifests. You can also consume services such as databases and more. Click on **Container Deployment**.
+
+  
+
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.8`. Change the network access to **Public** and add the port `8080`
+
+  
+
+![App Profile container creation page with details](devx_apps_deploy-apps_app-profile-creation.png)
+
+  
+  
+
+Click on **Review** once you have filled out the provided information. On the next page, click on the **Deploy New App** button.
+
+  
+
+It’s time to deploy your app profile containing your application to a virtual cluster. Go ahead and name the application “single-scenario.” For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the hello-universe-ui profile and click on **Confirm** to continue.
+
+  
+
+Next, click the radio button **Deploy in An Existing Palette Virtual Cluster**. Select **cluster-1** and click on **Create App** to deploy the app profile onto the virtual cluster.
+
+  
+
+<br />
+
+  
+
+<WarningBox>
+
+  
+
+If no clusters are available, then **cluster-1** is not yet available. Wait a few more moments and return to the above steps. You can refresh the page, but you must fill out all the required input fields.
+
+  
+
+</WarningBox>
+
+  
+
+The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left **Main Menu** and clicking on **Virtual Clusters**. Click on **cluster-1** to view its details page. You can review cluster information, log events, access a remote shell session in the cluster, and more from the cluster details page.
+
+  
+
+![Cluster details view displaying exposed services](devx_apps_deploy-apps_cluster-details-view.png)
+
+  
+
+When the application is deployed and ready for use, the **Services** row on the details page will automatically be updated by Palette with the app's public-facing URL. Click on the **:8080** link to view the application.
+
+  
+
+<br />
+
+  
+  
+
+<WarningBox>
+
+  
+  
+
+It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+  
+  
+
+![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
+
+  
+
+Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
+
+  
+
+You have deployed your first application to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
+
+  
+
+## Deploy Multiple Applications
+
+  
+
+Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the button **New Virtual Cluster**
+
+  
+
+Go ahead and create a cluster with the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+
+  
+
+It will take a few minutes for the new virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
+
+  
+
+### Postgres
+
+  
+
+Click on the **New App Profile** button to create your second app profile. Give the app profile the name `hello-universe-complete` and add the tag `scenario-2`. Click on **Next**. This application profile will contain three different applications, and you will create a service configuration for each. The three layers or tiers will together make up the entire application deployment. The order you create each layer plays an important role as it dictates the deployment order. For this scenario, you will deploy the database, the API, and the UI. Start by creating the first layer by selecting the database service Postgres.
+
+  
+  
+
+In the next screen, assign the following values to the Postgres database.
+
+  
+
+- Name: `postgres-db`
+
+- Username: `pguser`
+
+- Database Name: `counter`
+
+- Database Volume Size: `2`
+
+- Version: `14`
+
+  
+
+![Postgres service creation page](devx_apps_deploy-apps_postgres-service-create.png)
+
+  
+
+Take notice of the **Output Variables** section. The Postgres service exposes several environment variables to help other applications connect with the database. In the next section, you will use these environment variables and other system environment variables that Palette exposes for each service. You can learn more about environment variables by reviewing the app profile [environment variables](/devx/app-profile/app-profile-macros) documentation.
+
+  
+
+Next, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Go ahead and select **Container Deployment**.
+
+  
+
+### API
+
+  
+
+The API is available as a container image. To deploy the API successfully, you need to provide the API server with information about the database, such as hostname, database user, database name, and password. The required information can be retrieved using Palette's system environment variables and the environment variables the database service exposes.
+
+  
+
+Go ahead and provide the container service with the following information:
+
+  
+
+- Container Name: `api`
+
+- Registry: Public
+
+- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.6`
+
+- Network Access: Private
+
+- Ports: `3000`
+
+  
+
+Assign the following environment variables to the API service:
+
+  
+
+| Parameter | Value |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DB_NAME` | `counter` |
+| `DB_HOST` | `{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}` |
+| `DB_PASSWORD` | `{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}` |
+| `DB_INIT` | `true` |
+| `DB_USER` | `{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}` |
+| `DB_ENCRYPTION` | `require` |
+| `AUTHORIZATION` | `true` |
+
+  
+  
+  
+
+You can learn more about each environment variable's purpose by reviewing the API server's [documentation](https://github.com/spectrocloud/hello-universe-api#environment-variables). One variable that you should understand in greater detail is the `DB_HOST.` The value of this environment variable is constructed using two variables the Postgres service exposed, followed by the value `svc.cluster.local`. The combined value is the DNS value of the Postgres service container.
+
+  
+
+A virtual cluster is a Kubernetes environment, and because it’s a Kubernetes environment, you can use the [Kubernetes DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) record created for services and pods. You will have another opportunity to practice this concept when you deploy the UI.
+
+  
+
+Once you have filled out all the required information, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Go ahead and select the **Container Deployment** to add the final service layer, the UI.
+
+  
+
+### UI
+
+  
+
+This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+
+  
+  
+
+![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
+
+  
+
+Go ahead and provide the UI container with the following information.
+
+- Container Name: `ui`
+
+- Registry: Public
+
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.8-proxy`
+
+- Network Access: Public
+
+- Ports: `8080`, `3000`
+
+  
+
+Assign the following environment variables to the UI service:
+
+  
+
+| Parameter | Value |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SVC_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}` |
+| `API_URI` | `{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}` |
+| `TOKEN` | `931A3B02-8DCC-543F-A1B2-69423D1A0B94` |
+
+  
+
+If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). The `SVC_URI` is the API service's Kubernetes DNS value. The hostname is composed of the following pattern `<svc name>.<service namespace>.svc.cluster.local:<service port>`. The `API_URI` is the address of the application load balancer that will be deployed, exposing the ports of the UI service. The `TOKEN` is the authorization token that the reverse proxy will inject inside the UI container for all API requests. Without this token, all API requests will get rejected.
+
+  
+  
+
+Click on the **Review** button at the bottom of the screen to finalize the app profile. Click on **Deploy New App** in the following screen to deploy the new app profile to cluster-2.
+
+  
+
+Name the app “multiple-app-scenario,” select the app profile **hello-universe-complete**, pick version **1.0.0** and toggle the radio button **Deploy In An Existing Palette Virtual Cluster**. Select **cluster-2** and click on **Create App**
+
+  
+
+<br />
+
+  
+
+<WarningBox>
+
+  
+
+If cluster-2 is unavailable. Wait a few more moments and return to the above steps. You can refresh the page but must fill out all the required input fields.
+
+</WarningBox>
+
+  
+  
+  
+
+![App deployment cluster-2](devx_app_deploy-apps_cluster-2-deploy-app.png)
+
+  
+  
+
+The app profile deployment takes a few moments to finish. You can review the application's deployment progress by navigating to the left **Main Menu** and clicking on Virtual Clusters. Click on **cluster-2** to view its details page.
+
+  
+  
+  
+  
+
+The app profile deployment takes a few moments to finish. You can review the application's progress by navigating to the left **Main Menu** and clicking on Virtual Clusters. Click on cluster-2 to view its details page.
+
+  
+
+Once the app profile is successfully deployed, the cluster details page will expose the public-facing URLs of the services.
+
+  
+
+![Cluster 2's details page](devx_apps_deploy-apps_cluster-2-details-page.png)
+
+  
+
+Click on the UI’s service URL for port 8080 to access the Hello Universe application in a three-tier configuration.
+
+  
+  
+  
+
+![View of the self-hosted version of Hello Universe](devx_apps_deploy-app_self-hosted-hello-universe.png)
+
+  
+  
+
+The global counter is no longer available; instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that the reverse proxy injects the Bearer token value in each request sent to the API.
+
+  
+
+## Clean-up
+
+  
+
+To remove all resources created in this tutorial, begin by navigating to the left **Main Menu** and click on the **Apps** link. For each application, click on the **three-dots Menu** to expand the options menu and click on the **Delete** button. Repeat this process for each application.
+
+  
+
+![Apps view with an arrow pointing towards the delete button](devx_apps_deploy-apps_delete-apps-view.png)
+
+  
+
+Next, in the left **Main Menu**, click on the **Cluster** link to access the clusters page.
+
+Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
+
+  
+
+![Delete a cluster view with arrow](devx_apps_deploy-apps_delete-cluster-view.png)
+
+  
+
+<InfoBox>
+
+  
+
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for **Force Delete**. To trigger a force delete, navigate to the respective cluster’s details page and click on **Settings**. Click on the **Force Delete Cluster** to delete the cluster.
+
+  
+
+</InfoBox>
+
+  
+  
+  
+  
+  
+
+</Tabs.TabPane>
 
 
 <Tabs.TabPane tab="Terraform" key="terraform">
@@ -148,6 +529,22 @@ Next, initialize the Terraform provider by issuing the following command.
 terraform init
 ```
 
+```
+Initializing the backend...
+
+Initializing provider plugins...
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
 The `init` command downloads all the required plugins and providers specified in **provider.tf** file. In the provider configuration, the scope or context of Palette is set. The provider is configured for the `Default` project but, you can change this value to point to any other project space you may have in Palette.
 
 <br />
@@ -196,7 +593,7 @@ resource "spectrocloud_virtual_cluster" "cluster-1" {
 
 ```
 
-The cluster group id is retrieve from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrive information about the specified cluster group, which is the *beehive* cluster group made available for all users of Palette. The virtual cluster this resource will create will be hosted on beehive.
+The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all users of Palette. This resource will create a new virtual cluster that is hosted in the cluster group, beehive.
 
 <br />
 
@@ -207,9 +604,227 @@ data "spectrocloud_cluster_group" "beehive" {
 }
 ```
 
+Next, take a look at the the **application-profiles.tf** file. The resource `spectrocloud_application_profile.hello-universe-ui` is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on the five following key points.
+
+<br />
+
+1. The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.
 
 
+2. The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource `data.spectrocloud_pack_simple.container_pack` is specified.
 
+
+3. A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource `data.spectrocloud_registry.container_registry` is specified to avoid hardcoding values.
+
+
+4. The attribute `source_app_tier` is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource `data.spectrocloud_pack_simple.container_pack` is used.
+
+
+5. The `values` attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings) or you can alternatively specify these values as a stringified JSON object.
+
+
+<PointsOfInterest
+  points={[
+    {
+      x: 105,
+      y: 160,
+      label: 1,
+      description: "The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.",
+    },
+    {
+      x: 720,
+      y: 230,
+      label: 2,
+      description: "The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource data.spectrocloud_pack_simple.container_pack is specified",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 720,
+      y: 265,
+      label: 3,
+      description: "A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource data.spectrocloud_registry.container_registry is specified to avoid hardcoding values",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 720,
+      y: 295,
+      label: 4,
+      description: "The attribute source_app_tier is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource data.spectrocloud_pack_simple.container_pack is used.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 290,
+      y: 332,
+      label: 5,
+      description: "The values attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the Terraform Heredoc strings or you can alternatively specify these values as a stringified JSON object.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+```tf
+resource "spectrocloud_application_profile" "hello-universe-ui" {
+  name        = "hello-universe-ui"
+  description = "Hello Universe as a single UI instance"
+  version     = "1.0.0"
+  pack {
+    name            = "ui"
+    type            = data.spectrocloud_pack_simple.container_pack.type
+    registry_uid    = data.spectrocloud_registry.container_registry.id
+    source_app_tier = data.spectrocloud_pack_simple.container_pack.id
+    values          = <<-EOT
+        pack:
+          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+        postReadinessHooks:
+          outputParameters:
+            - name: CONTAINER_NAMESPACE
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.namespace
+            - name: CONTAINER_SVC
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_PORT
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: spec.ports[0].port
+        containerService:
+            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+            registryUrl: ""
+            image: ${var.single-container-image}
+            access: public
+            ports:
+              - "8080"
+            serviceType: LoadBalancer
+    EOT
+  }
+  tags = concat(var.tags, ["scenario-1"])
+}
+```
+
+</PointsOfInterest>
+
+
+A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to review the API payload. Review the payload's `values` attribute to find all of the service’s properties. You may copy the entire string and pass it to the resource `spectrocloud_application_profile` as an inout for the `values` attribute.
+
+
+![UI's ability to display the API object](devx_apps_deploy-apps_ui-api-display.png)
+
+
+The last Terraform resource to review before deploying the application is located in the **application.tf** file. The resource `spectrocloud_application.hello-universe-ui` is what creates the *App*. In Palette, an app combines a virtual cluster and an app profile. When you deploy an app profile into a virtual cluster, you create an app. This resource points to the app profile `spectrocloud_application_profile.hello-universe-ui` and the cluster resource `spectrocloud_virtual_cluster.cluster-1`. The two resources are required to create an app.
+
+<br />
+
+
+<PointsOfInterest
+  points={[
+    {
+      x: 810,
+      y: 90,
+      label: 1,
+      description: "The id of the application profile that will be created with the resource spectrocloud_application_profile.hello-universe-ui.",
+    },
+    {
+      x: 590,
+      y: 230,
+      label: 2,
+      description: "The id of the virtual cluster that will be created with the resource spectrocloud_virtual_cluster.cluster-1.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+
+```tf
+resource "spectrocloud_application" "scenario-1" {
+  name                    = "single-scenario"
+  application_profile_uid = spectrocloud_application_profile.hello-universe-ui.id
+
+  config {
+    cluster_name      = spectrocloud_virtual_cluster.cluster-1.name
+    cluster_uid = spectrocloud_virtual_cluster.cluster-1.id
+  }
+  tags = concat(var.tags, ["scenario-1"])
+}
+```
+
+</PointsOfInterest>
+
+You can preview the resources Terraform will create by issuing the following command.
+
+```shell
+terraform plan
+```
+
+```
+// Output condensed for readability
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + beehive-cluster-id                         = "635669ba4583891d109fe6c0"
+  + hello-universie-ui-app-profile-id          = (known after apply)
+  + hello-universie-ui-app-profile-registry-id = "5eecc89d0b150045ae661cef"
+  + single-scenario-app-url                    = "Visit the following URL to access the application: http://google.com"
+
+```
+
+The out displays the resources Terraform will create in an actual implementation. If you review the output, you will find the three resources discussed in greated details previously.
+
+Go ahead and deploy the application by using the `apply` command.
+
+```shell
+terraform apply -auto-approve
+```
+
+```
+// Output condensed for readability
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+```
+
+Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, click on **Apps**. Click on the **scenario-1** row, which will take you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
+
+
+![scenario-1 overview page with an arrow pointing to the URL](devx_app_deploy-apps_scenario-1-overview.png)
+
+<br />
+
+<WarningBox>
+
+  
+It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
+
+
+![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
+
+
+You have deployed your first application to Palette through Terraform. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The next scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
+
+  
+## Deploy Multiple Applications
 
 </Tabs.TabPane>
 
@@ -219,7 +834,6 @@ data "spectrocloud_cluster_group" "beehive" {
 # Wrap-Up
 
 In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files. To learn more about Palette Dev Engine and its capabilities.
-
 <br />
 
 - [Palette Modes](/introduction/palette-modes)
