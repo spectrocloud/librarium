@@ -252,7 +252,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 |Tenants Cluster Group Editor|The role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group|
 |Tenants Cluster Group Viewer|Provides a read only access to all the cluster group resources|
 
-The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
+The table lists role resourceKeys and operations that are predefined under the Global Tenant Scope:
 
 <br />
 <br />
@@ -263,7 +263,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 <br />
 
-## Tenants Cluster Group Admin
+## Tenant Cluster Group Admin
 
 <br / >
 <table>
@@ -289,7 +289,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 <Tabs.TabPane tab="Tenants Cluster Group Editor" key="Tenants Cluster Group Editor Role">
 
 
-## Tenants Cluster Group Editor
+## Tenant Cluster Group Editor
 
 <br / >
 <table>
@@ -313,7 +313,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 
 <br />
 
-## Tenants Cluster Group Viewer
+## Tenant Cluster Group Viewer
 
 <br / >
 <table>
