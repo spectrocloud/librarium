@@ -3,7 +3,7 @@ title: 'Ubuntu'
 metaTitle: 'Ubuntu Operating System'
 metaDescription: 'Choosing Ubuntu as an Operating System within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['operating system']
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image/png'
 ---
@@ -14,7 +14,7 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Ubuntu Operating System
 
-Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms. 
+Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms.
 
 Palette supports the following Ubuntu versions to run clusters at scale.
 <br />
@@ -83,7 +83,7 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 </Tabs>
 
 
-## Customize Your Image File 
+## Customize Your Image File
 
 Spectro Golden images include most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute the list of commands before or after `kubeadm init`/`join` is executed.
 
@@ -143,7 +143,7 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 ## Modifying the Presets
 
 
-1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile. 
+1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile.
 
 
 2. Give the new Pack a **Name**, **Version number**, **Description**, **Type**, and **Tags** and click the **Next** button.
@@ -154,11 +154,11 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 4. Edit the Packs with the following parameters:
     -  **Pack Type** - *OS*
-  
+
     -  **Registry** - *Public Repo*
-  
+
     -  **Pack Name** - *Ubuntu*
-  
+
     -  **Pack Version** - *LTS_ _18.4.x or LTS-HWE__18.04 or LTS_ _20.4.x*
 
 

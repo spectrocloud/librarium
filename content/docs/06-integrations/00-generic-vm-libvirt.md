@@ -3,7 +3,7 @@ title: 'generic-vm-libvirt'
 metaTitle: 'Generic Virtual Machines Libvirt'
 metaDescription: 'Choosing Libvirt Generic Virtual Machine within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png'
 ---
@@ -49,8 +49,8 @@ If multiple instances of this pack have to be deployed on the cluster for differ
 
 
 ```yaml
-spectrocloud.com/display-name: vm-app-1 
-releaseNameOverride: 
+spectrocloud.com/display-name: vm-app-1
+releaseNameOverride:
 ```
 <br />
 
@@ -182,7 +182,7 @@ The Generic-VM-Libvirt pack supports various hooks, while deploying VM applicati
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval. 
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
 
 If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
 
@@ -198,7 +198,7 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 <br />
 
-## Using preVMInitCmd and postVMInitCmd 
+## Using preVMInitCmd and postVMInitCmd
 
 The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
@@ -310,4 +310,3 @@ envs:
 
 <br />
 <br />
-

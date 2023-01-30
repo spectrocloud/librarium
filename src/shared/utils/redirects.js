@@ -12,8 +12,8 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
+    fromPath: `/clusters/nested-clusters`,
+    toPath: `/clusters/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
   },
@@ -126,6 +126,18 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/integrations/minio-operator`,
+    toPath: `/integrations/minio`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/how-to/reverse-proxy-dashboard`,
+    toPath: `/clusters/cluster-management/kubernetes-dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }
 ];
 
 module.exports = redirects;

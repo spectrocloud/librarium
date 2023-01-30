@@ -3,7 +3,7 @@ title: 'MetalLB'
 metaTitle: 'MetalLB'
 metaDescription: 'MetalLB Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['load balancers']
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab856a03d5b821062dcd1da624256e8f1e2ede404d88cb088d3adb945?type=image/png'
 ---
@@ -24,8 +24,8 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 * The address set in pack values goes into a configMap **`config`** in **`metallb-system`** namespace. This configMap is used by the MetalLB controller and speakers as volume mounts.
 
 * Any changes to the address will get updated in the configMap. Our users may confirm this with this command:
-		
-		kubectl describe cm config -n metallb-system. 
+
+		kubectl describe cm config -n metallb-system.
 
 * However, the controller and speaker pods are already running with a previous copy of the configMap and these deployments are not aware of the new changes made to configMap. To ensure the address change are reflected, we need to restart the controller and speaker pods so that they will fetch the new configMap and start assigning new addresses correctly.
 
@@ -52,7 +52,7 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 <Tabs.TabPane tab="0.9.x" key="0.9.x">
 
-* **0.9.5** 
+* **0.9.5**
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.8.x" key="0.8.x">

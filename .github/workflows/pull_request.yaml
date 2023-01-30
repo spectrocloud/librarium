@@ -1,11 +1,28 @@
 name: style_check
 on: [pull_request]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+    # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
+    # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
+    # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
+      - run: exit 0
+
   vale:
     name: Writing Checks
+    needs: [run-ci]
     runs-on: ubuntu-latest
-
+    if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3

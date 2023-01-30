@@ -3,7 +3,7 @@ title: 'MicroK8s'
 metaTitle: 'MicroK8s Integration with Palette'
 metaDescription: 'MicroK8s pack in Palette'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ["kubernetes"]
 logoUrl: 'https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:b971b64f62e2e67b0a166316f96e6f4211aacea6e28459bb89275e8882ade985?type=image/png'
 ---
@@ -23,9 +23,9 @@ MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubern
 - One of the following Ubuntu environments to run commands:
     - 22.04 LTS
     - 20.04 LTS
-    - 18.04 LTS 
+    - 18.04 LTS
     - 16.04 LTS
-    
+
     Or another operating system that supports snapd.
 
 
@@ -37,7 +37,7 @@ MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubern
 If your environment doesn't meet these requirements, there are alternative ways to install MicroK8s, including additional OS support and an offline deployment.
 
 </InfoBox>
-    
+
 
 ## Versions Supported
 
@@ -56,9 +56,9 @@ If your environment doesn't meet these requirements, there are alternative ways 
 </Tabs.TabPane>
 </Tabs>
 
-MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s you can specify a channel made up of two components: 
+MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s you can specify a channel made up of two components:
 
-- **Track**: denotes the upstream Kubernetes version.  
+- **Track**: denotes the upstream Kubernetes version.
 - **Risk level**: indicates the maturity level of the release, such as stable and edge.
 
 MicroK8s comes with its own packaged version of the ``kubectl`` command for operating Kubernetes. This avoids interfering with any version that may already be on the host machine. You can run it in a terminal like this:
@@ -68,22 +68,22 @@ MicroK8s comes with its own packaged version of the ``kubectl`` command for oper
 microk8s kubectl
 ```
 
-If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows operating system. 
+If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows operating system.
 
 <br />
- 
+
 <WarningBox>
 
 ### Caveat for MicroK8s with AWS EBS pack
 
-When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from: 
+When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from:
 
 ```yaml
     node:
       env: []
       kubeletPath: /var/lib/kubelet
 ```
-to the below yaml content:  
+to the below yaml content:
 
 ```yaml
     node:

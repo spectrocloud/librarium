@@ -50,3 +50,6 @@ IaaS
 autoscaling
 Tencent
 serverless
+vCenter
+Konvoy
+Kairos
