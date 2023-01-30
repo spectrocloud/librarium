@@ -1,6 +1,6 @@
 ---
-title: "PDE Variables"
-metaTitle: "Palette Dev Engine App Profile Macros"
+title: "Output Variables"
+metaTitle: "Palette Dev Engine Output Variables"
 metaDescription: "Explore Palette Dev Engine App Profile Macros"
 hideToC: false
 fullWidth: false
@@ -13,9 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Palette Dev Engine Variables
+# Output Variables
 
-Palette Dev Engine variables are defined in the App Profile and are only resolved at cluster deployment time. The app profile variables can be:
+Palette Dev Engine ouput variables are defined in the App Profile and are only resolved at cluster deployment time. The app profile variables can be:
 
 * directly given by the developers while modelling the application profiles.
 

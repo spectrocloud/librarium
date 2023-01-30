@@ -87,7 +87,7 @@ These Messaging System services are available for client-server data exchange an
 
 ## Object Storage Services
 
-**MinIO** is available as a distributed object storage system.
+- **MinIO** is available as a distributed object storage system.
 <br />
 
 

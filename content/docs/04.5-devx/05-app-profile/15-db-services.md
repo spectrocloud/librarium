@@ -45,7 +45,26 @@ will generate an update notification on all the apps created from the app profil
 
 ## Output Variables
 
-Each database service has a set of output variables. These output variables are used to establish service connectivity with other service layers of the app profile.
+Each database service has a set of exposed output variables. These output variables can be used to establish service connectivity with other service layers of the app profile by consuming the information.
+
+The following code snippet is an example of the output variables exposed by the MongoDB service. Check out the [service listings](/devx/app-profile/service-listings) page to learn more about each service.
+
+<br />
+
+
+```
+env:
+   - name: USER_NAME
+     value: "{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}"
+   - name: PASSWORD
+     value: "{{.spectro.app.$appDeploymentName.mongodb-1.PASSWORD}}"
+   - name: MONGO_URI
+     value: "{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI}}"
+   - name: MONGO_URI_SRV
+     value: "{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}"
+```
+
+<br />
 
 <InfoBox>
 The service connectivity follows a fixed hierarchy in Palette. The connectivity is established for higher-level services using the output variable. Higher-level refers to the service added to the app profile after adding the database service. 
@@ -54,3 +73,7 @@ The service connectivity follows a fixed hierarchy in Palette. The connectivity 
 
 <br />
 
+
+## Connect to a DB Service
+
+Applications and clients can connect to a Palette database service by using the information exposed in the output variables. Check out the [Service Connectivity](devx/app-profile/db-services/connectivity) documentation to learn more about connecting to a database service.
