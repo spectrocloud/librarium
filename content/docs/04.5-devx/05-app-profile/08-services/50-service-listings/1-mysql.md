@@ -25,11 +25,20 @@ import InfoBox from 'shared/components/InfoBox';
 
 * Clients can retrieve and manipulate data by creating SQL queries and submitting them to the MySQL instance.
 
-# Prerequisite
+
+# Add MySQL to App Profile
+
+Use the following steps to add MySQL to an app profile.
+
+<br />
+
+## Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-# Add MySQL to App Profile
+<br />
+
+## Enablement
 
 1. Log in to [Palette](console.spectrocloud.com).
 
@@ -93,7 +102,7 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |MYSQLMSTR_SVC_PORT|Represents the port on which the database service is listening to.|
 |MYSQLMSTR_NS|Represents the namespaces to which MySQL database is launched.|
 
-# Validation
+## Validation
 
 * To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
 

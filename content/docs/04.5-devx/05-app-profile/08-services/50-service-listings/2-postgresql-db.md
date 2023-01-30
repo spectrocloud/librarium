@@ -1,7 +1,7 @@
 ---
-title: "PostgreSQL"
-metaTitle: "Palette Dev Engine PostgreSQL Service"
-metaDescription: "Palette Dev Engine PostgreSQL Service"
+title: "Postgres"
+metaTitle: "Palette Dev Engine Postgres Service"
+metaDescription: "Palette Dev Engine Postgres Service"
 hideToC: false
 type: "appTier"
 category: ['databases']
@@ -14,9 +14,9 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# PostgreSQL
+# Postgre
 
-Palette supports [PostgreSQL](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 
 <br />
 
@@ -26,18 +26,21 @@ The following are requirements for using Palette Postgres:
 
 * Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
-* The name format does not support the special character hyphen(-).
-  
-  Example: `name-1` is not supported. 
+
+* The user name format does not support the special character hyphen(-). Example: `name-1` is not supported. 
 
 
 * Clients must set `sslMode=require` or greater as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
-# Prerequisite
+
+# Add Postgres to an App Profile
+
+
+## Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
-# Add Postgres to App Profile
+## Enablement
 
 You can use the following steps to learn how to add Postgres to your app profile.
 
@@ -57,7 +60,7 @@ You can use the following steps to learn how to add Postgres to your app profile
 |Tag (optional)           | Assign tags to the app profile.|
 
 
-4. Select **PostgrSQL** from the database services and start the configuration.
+4. Select **Postgres** from the database services and start the configuration.
   
 
 5. Provide the following information to the wizard:
@@ -70,27 +73,13 @@ You can use the following steps to learn how to add Postgres to your app profile
 
   * **Password:** Security password for the DB service.
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the PostgreSQL secrets.
+<InfoBox>
 
-<br />
 
-To get the Postgres database user secret use the following kubectl command:
+You can use the default system-generated password. If the default password is used, it can be retrieved from the Postgres secret that is created for the password. Review the [Database Password](/devx/app-profile/services/service-listings/postgresql-db/#database-password) section for guidance.
 
-<br />
+</InfoBox>
 
-```
-kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
-```
-Where, 
-
-  * app-name: represents the custom app name.
-  * service-name: represents the custom service name.
-  * user-name: represents the custom username for database access.
-
-<br />
-<br />
-
-For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
 
   * **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters. 
 
@@ -101,34 +90,15 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 6. **Output Variables**:  **Output Variables**: The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
 
-  * The database service name must be passed on to the output variables for database connectivity to other app services. 
-
-  
-  * For [Postgres](https://www.postgresql.org/docs/current/libpq-ssl.html) if you want to establish connectivity, set `sslMode` to `require`. 
-
-
-```
-{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}
-```
-```
-{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}
-```
-```
-{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}
-```
-```
-{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}
-```
-
-|**Output Variable**|**Description**|
-|---------------|-----------|
-|Username|Username for database access control.|
-|Password|Password for database access control.|
-|POSTGRESMSTR_SVC|Provides the Postgres service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity.|
-|POSTGRESMSTR_SVC_PORT|Represents the port on which the database service is listening on.|
+| Parameter              | Output Variable                                                                     | Description                                     |
+|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| Database Username      | `{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}`              | The database user name.                         |
+| Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Service Hostname       | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
+| Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
 
 
-# Validation
+## Validation
 
 * To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
 
@@ -143,7 +113,29 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
 
 
+# Database Password
+
+You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
+
+```
+kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
+-n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+```
+
+Replace the values with the respective names.
+
+  * app-name: represents the name of the  app name provided during the Palette App cretion process.
+  * service-name: The name of the service layer in the app profile.
+  * user-name: The name of the database user.
 
 
+Example: 
 
+```
+kubectl get secret app-corde-postgres-db-pguser-other-credentials \
+-n app-corde-postgres-db-ns -o jsonpath='{.data.password}' | base64 --decode
+```
 
+```
+$ OZ6793EvjFo%
+```
