@@ -31,11 +31,11 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 # App Deployment
 --------------------------------
 
-|Role Names   | Description  |
+|Role Name   | Description  |
 |---|---|
-|App Deployment Admin |The App Deployment Admin role is a closure of all the App operations. It is an administrative privilege for the App resources |
-|App Deployment Editor|The App Deployment Editor role can perform edit operations related to an App, but the user cannot create or delete an app|
-|App Deployment Viewer|The App Deployment Viewer will be able to view all the App resources, but not privileged to make modifications|
+|App Deployment Admin |Provides administrative privilege to perform all the App operations on App resources. |
+|App Deployment Editor|Allows the user to perform edit operations on an App but not to create or delete an App.|
+|App Deployment Viewer|Allows the user to view all the App resources but not to make modifications.|
 
 <br />
 <br />
@@ -151,9 +151,9 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 |Role Names   | Description  |
 |---|---|
-|App Profile Admin |The App Profile Admin role is a closure of all the app profile operations. It is an administrative privilege for the app profile resources |
-|App Profile Editor|The App Profile Editor role can perform edit operations related to an app profile, but the user cannot create or delete an app profile|
-|App Profile Viewer|The App Profile Viewer will be able to view all the app profile resources, but not privileged to make modifications|
+|App Profile Admin |Provides administrative privilege to perform all the App operations on App profile resources. |
+|App Profile Editor|Allows the user to perform edit operations on App profiles but not to create or delete an App profile.|
+|App Profile Viewer|Allows the user to view all the App profile resources but not to modify them.|
 
 <br />
 <br />
@@ -723,9 +723,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 |Role Names   | Description  |
 |---|---|
-|Virtual Cluster Admin |The Virtual Cluster Admin role is a closure of all the virtual cluster operations. It is an administrative privilege for the App resources |
-|Virtual Cluster Editor|The Virtual Cluster Editor role can perform edit operations related to a virtual cluster, but the user  is not able to create or delete a virtual cluster|
-|Virtual Cluster Viewer|The Virtual Cluster Viewer will be able to view all the virtual cluster resources, but not privileged to make modifications|
+|Virtual Cluster Admin |Provides administrative privilege to perform all virtual cluster operations on App resources.|
+|Virtual Cluster Editor|Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster.|
+|Virtual Cluster Viewer|Allows the user to view all the virtual cluster resources but not to modify them.|
 
 <br />
 <br />
