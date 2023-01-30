@@ -13,3 +13,5 @@ Pre-requisite
 pre-requisite
 Hence
 hence
+VSphere
+VMWare

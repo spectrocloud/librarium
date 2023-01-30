@@ -23,7 +23,7 @@ Palette provisions and orchestrates Palette Virtual Clusters and makes it easy t
 
 Palette also supports Day 2 operations such as upgrades, backup/restore and more, to keep Palette Virtual Clusters secure, compliant, and up to date. Additionally, it provides visibility into the workloads running inside your Palette Virtual Clusters and its associated costs.
 
-To get started, refer to [Add Virtual Clusters to a Host Cluster](/clusters/add-virtual-cluster-to-host-cluster).
+To get started, refer to [Add Virtual Clusters to a Host Cluster](/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster).
 
 
 <br />

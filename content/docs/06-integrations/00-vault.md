@@ -3,7 +3,7 @@ title: 'Vault'
 metaTitle: 'Vault Integration with Spectro Cloud'
 metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['security']
 logoUrl: 'https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png'
@@ -33,12 +33,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 <Tabs.TabPane tab="0.20.x" key="0.20.x">
 
 * **0.20.1**
- 
+
 </Tabs.TabPane>
 <Tabs.TabPane tab="0.11.x" key="0.11.x">
 
 * **0.11.0**
- 
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="0.9.x" key="0.9.x">
@@ -51,12 +51,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 <Tabs.TabPane tab="0.6.x" key="0.6.x">
 
 * **0.6.0**
- 
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="0.3.x" key="0.3.x">
 
-* **0.3.1** 
+* **0.3.1**
 
 </Tabs.TabPane>
 </Tabs>

@@ -3,7 +3,7 @@ title: 'Nginx'
 metaTitle: 'Nginx'
 metaDescription: 'Nginx Ingress pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['ingress']
 logoUrl: 'https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image/png'
 ---
@@ -66,7 +66,7 @@ Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable 
 
 <Tabs.TabPane tab="0.26.x" key="0.26.x">
 
-* **0.26.1** 
+* **0.26.1**
 
 </Tabs.TabPane>
 
@@ -90,8 +90,8 @@ Integration creates the following components:
 
 NGINX Ingress controller provides an option to set a default SSL certificate to be used for requests that do not match any of the configured server names. The default certificate will also be used for ingress tls: sections that do not have a secretName option.
 Below steps will come in handy to set the default certificate.
- 
-1. Create a secret with key and certificate 
+
+1. Create a secret with key and certificate
     ```bash
     kubectl -n kube-system create secret tls ingress-tls --cert server.crt --key server.key
     ```
@@ -105,7 +105,7 @@ Below steps will come in handy to set the default certificate.
           ...
           extraArgs:
             default-ssl-certificate: "kube-system/ingress-tls"
-    ```  
+    ```
 
 ## Troubleshooting
 

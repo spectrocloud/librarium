@@ -3,7 +3,7 @@ title: 'kube-bench'
 metaTitle: 'kube-bench'
 metaDescription: 'kube-bench security pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['security']
 logoUrl: https://registry-addon.spectrocloud.com/v1/kube-bench/blobs/sha256:28c233e5ad884d5356a183c37f323263eb4acca860c28b326ecd99094b500c31?type=image/png
 ---
@@ -37,5 +37,3 @@ kube-bench runs against a series of checks specified in a `controls` YAML file. 
 ## References
 
 https://github.com/aquasecurity/kube-bench/blob/main/docs/running.md#running-kube-bench
-
-
