@@ -22,7 +22,7 @@ Palette supports deployment and managing Kubernetes clusters in an Azure account
 
 The following video demonstrates the integration of Azure Cloud with the Palette console.
 
-`video: title: "Azure-cloud-account": /cloud-accounts/azure.mp4`
+`video: title: "Azure-cloud-account": ./azure.mp4`
 
 
 This guide will provide steps for how you can integrate your Azure account with Palette.
