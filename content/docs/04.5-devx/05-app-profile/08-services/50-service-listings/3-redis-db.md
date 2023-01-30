@@ -15,15 +15,23 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Redis DB
+# Redis
 
 [Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction, transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
-# Prerequisite
+# Add Redis to an App Profile
+
+Use the following steps to add Redis to an app profile.
+
+<br />
+
+## Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-# Add DB Service to your App Profile
+<br />
+
+## Enablement
 
 1. Log in to [Palette](console.spectrocloud.com)
 
@@ -88,7 +96,7 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |REDISMSTR_SVC_NAMESPACE|Represents the namespaces to which Redis database is launched|
 
 
-# Validation
+## Validation
 
 * To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
 

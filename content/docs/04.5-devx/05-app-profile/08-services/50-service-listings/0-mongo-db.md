@@ -18,11 +18,19 @@ import InfoBox from 'shared/components/InfoBox';
 
 [MongoDB](https://www.mongodb.com/) is a developer data platform that quickly builds applications with optimal performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition, this multi-cloud database service provides you with resilience, data privacy, and security.
 
-# Prerequisite
+# Add MongoDB to an App Profile
+
+Use the following steps to add MongoDB to an app profile.
+
+<br />
+
+## Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-# Add MongoDB to App Profile
+<br />
+
+## Enablement
 
 You can use the following steps to learn how to add MongoDB to your app profile.
 
@@ -88,7 +96,7 @@ If you use a custom password, use the [base 64 encoder](https://www.base64encode
 |Mongo URI|Represents the Uniform Resource Identifier for connecting to mongodb instance from applications and clients.|
 |Mongo URI SRV|Represents the DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record.|
 
-# Validation
+## Validation
 
 * To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
 
