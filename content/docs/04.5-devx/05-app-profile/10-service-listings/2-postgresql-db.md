@@ -26,6 +26,10 @@ The following are requirements for using Palette Postgres:
 
 * Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
+* The name format does not support the special character hyphen(-).
+  
+  Example: `name-1` is not supported. 
+
 
 * Clients must set `sslMode=require` or greater as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
