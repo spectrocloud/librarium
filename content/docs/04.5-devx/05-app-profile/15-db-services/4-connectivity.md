@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 # Service Connectivity
 
 Connectivity is the process of establishing communication between the database service and clients. Connectivity is required to send SQL queries from clients to the database. Palette database services expose output variables that contain the required connectivity information such as the hostname, database user, user password, and database port. You can use these output variables to connect your application to the database.
-The primary considerations in this regard are:
+
 
 The primary considerations are:
 
@@ -26,23 +26,6 @@ The primary considerations are:
 
 * You can pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement. You can also consume the output variables as environment variables in container services.
 
-
-The following code snippet is an example of the output variables exposed by the MongoDB service. Check out the [service listings](/devx/app-profile/service-listings) page to learn more about each service.
-
-<br />
-
-
-```
-env:
-   - name: USER_NAME
-     value: "{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}"
-   - name: PASSWORD
-     value: "{{.spectro.app.$appDeploymentName.mongodb-1.PASSWORD}}"
-   - name: MONGO_URI
-     value: "{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI}}"
-   - name: MONGO_URI_SRV
-     value: "{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}"
-```
 
 <br />
 
