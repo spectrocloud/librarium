@@ -1,5 +1,5 @@
 ---
-title: "Environment Variables"
+title: "PDE Variables"
 metaTitle: "Palette Dev Engine App Profile Macros"
 metaDescription: "Explore Palette Dev Engine App Profile Macros"
 hideToC: false
@@ -13,9 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Environment Variables
+# Palette Dev Engine Variables
 
-Pack environment variables are the variables defined in the App Profile and are only resolved at cluster deployment time. The app profile variables can be:
+Palette Dev Engine variables are defined in the App Profile and are only resolved at cluster deployment time. The app profile variables can be:
 
 * directly given by the developers while modelling the application profiles.
 
