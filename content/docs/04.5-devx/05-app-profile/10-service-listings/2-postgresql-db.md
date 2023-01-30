@@ -70,13 +70,24 @@ You can use the following steps to learn how to add Postgres to your app profile
 
   * **Password:** Security password for the DB service.
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the PostgreSQL secrets using the following command:
+You can use the default system-generated password. If the default password is used, it can be retrieved from the PostgreSQL secrets.
+
+<br />
+
+To get the Postgres database user secret use the following kubectl command:
 
 <br />
 
 ```
-kubectl get secrets -A
+kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
 ```
+Where, 
+
+  * app-name: represents the custom app name.
+  * service-name: represents the custom service name.
+  * user-name: represents the custom username for database access.
+
+<br />
 <br />
 
 For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
@@ -92,7 +103,8 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 
   * The database service name must be passed on to the output variables for database connectivity to other app services. 
 
-  * Set `sslMode` to `require` to [establish database connectivity](https://www.postgresql.org/docs/current/libpq-ssl.html).
+  
+  * For [Postgres](https://www.postgresql.org/docs/current/libpq-ssl.html) if you want to establish connectivity, set `sslMode` to `require`. 
 
 
 ```
