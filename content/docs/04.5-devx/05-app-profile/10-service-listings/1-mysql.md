@@ -59,7 +59,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 You can use the default system-generated password. If the default password is used, it can be retrieved from the MySQL secrets using the following command:
 
 ```
-kubectl get secrets -A
+kubectl get secret <app-name>-<service-name>-user -n <app name>-<service namem>-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
 ```
 
 For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
