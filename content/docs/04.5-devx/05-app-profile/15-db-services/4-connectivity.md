@@ -27,7 +27,10 @@ The primary considerations are:
 * You can pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement. You can also consume the output variables as environment variables in container services.
 
 
-**Example:**
+The following code snippet is an example of the output variables exposed by the MongoDB service. Check out the [service listings](/devx/app-profile/service-listings) page to learn more about each service.
+
+<br />
+
 
 ```
 env:
