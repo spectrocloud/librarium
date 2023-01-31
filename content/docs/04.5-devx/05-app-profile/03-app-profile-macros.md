@@ -15,68 +15,65 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Output Variables
 
-Palette Dev Engine ouput variables are defined in the App Profile and are only resolved at cluster deployment time. The app profile variables can be:
+Palette Dev Engine output variables are defined in the App Profile and are only resolved at cluster deployment time. The output variables have the following properties:
 
-* directly given by the developers while modelling the application profiles.
+* May be referenced by specifying them during app profile creation.
 
-* resolved during the app instatiation.
+* Output variables are inherited from the lower tiers of the app profile.
 
-* inherited from the lower tiers of the App Profile.
-
-The variables are of two types:
-
-* [The Input Variables](/devx/app-profile#inputparameters)
-
-* [The Output Variables](/devx/app-profile#outputparameters)
-<br />
-
-## Input Variables
-
-User-provided values that will be consumed by the current tier. It can even use output variables from below tier. This parameter resolves to a value of the variable defined in App Profile tier parameters.yaml file.
-
-```
-{{.spectro.system.[VARIABLE_NAME]}}
-```
-|**Supported Variables**|  Description|
-|-----------------------|-------------|
-|appprofile.name|Name of the app profile|
-|appprofile.uid|Unique id of the app profile|
-|appdeployment.name|Name of the deployment|
-|appdeployment.uid|Unique id of the deployment|
-|appdeployment.tiername| Resolves to a string value in the format `<deployment name>-<tier name>`|
-
-<br />
-
-The parameter which will be generated once the tier gets deployed. It can be consumed by the above tiers. It refers to the tier output variables of the top tiers. Refer the format and example below:
-
-<br />
-
-```
-{{.spectro.system.apptier.<tierInput_Variable_Name>}}
-```
-
-**Example**
-{{.spectro.system.apptier.NAMESPACE}}: 
+* Each service type exposes a set of unique output variables. 
 
 
-## Output Variables
 
-The variables are generated once the tier gets deployed. Output variables can be consumed by the higher tiers in the App Profile.
+The variables are generated once the server layer or tier gets deployed. Output variables can be consumed by the higher tier layers in the app profile. 
+
+Check out the [Services Connectivity](/devx/app-profile/services/connectivity) page to learn how to use output variables for establishing network connectivity between services.
 
 
 <br /> 
 
 
 ```
-{{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}} 
+{{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}}
 ```
 
-**Example**
-{{.spectro.app.$appDepName-mongodb.PASSWORD}}: 
+<!-- # System Output Variables
 
-<br />
+The following output variables are globally available for all services.
 
-### Resources
+| Output Variable | Description |
+| --- | --- |
+| spectro.macro.cloudanix.partnerIdentifier | |
+| spectro.system.user.name | |
+| spectro.system.user.uid | |
+| spectro.system.user.email | |
+| spectro.system.tenant.uid | |
+| spectro.system.project.uid | |
+| spectro.system.project.name | |
+| spectro.system.cluster.uid | |
+| spectro.system.cluster.name | |
+| spectro.system.kubernetes.version | |
+| spectro.system.reverseproxy.server | |
+| spectro.system.reverseproxy.port | |
+| spectro.system.reverseproxy.vhostport | |
+| spectro.system.reverseproxy.protocol | |
+| spectro.system.cloud.type | |
+| spectro.system.cloud.region | |
+| spectro.system.cloud.image.id | |
+| spectro.system.apptier.name | |
+| spectro.system.apptier.uid | |
+| spectro.system.appprofile.name | |
+| spectro.system.appprofile.uid | |
+| spectro.system.appdeployment.uid | |
+| spectro.system.appdeployment.name | |
+| spectro.system.appdeployment.tiername | |
+| spectro.system.appdeployment.ingress.host | |
+| spectro.app.$appDeploymentName.#tierName.#tierOutputParam | |
+| spectro.system.apptier.#tierInputParam | | -->
+
+
+
+# Resources
 
 * [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
 
