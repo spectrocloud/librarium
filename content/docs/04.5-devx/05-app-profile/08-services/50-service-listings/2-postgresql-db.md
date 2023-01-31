@@ -87,16 +87,7 @@ You can use the default system-generated password. If the default password is us
 
     * 14
    
-
-6. **Output Variables**:  **Output Variables**: The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
-
-| Parameter              | Output Variable                                                                     | Description                                     |
-|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
-| Database Username      | `{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}`              | The database user name.                         |
-| Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}`              | The password of the created database user name. |
-| Service Hostname       | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
-| Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
-
+6. Click on **Save Changes**.
 
 ## Validation
 
@@ -113,13 +104,25 @@ You can use the default system-generated password. If the default password is us
 
 
 
+# Output Variables
+
+The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
+
+| Parameter              | Output Variable                                                                     | Description                                     |
+|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| Database Username      | `{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}`              | The database user name.                         |
+| Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Service Hostname       | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
+| Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
+
+
 # Database Password
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
 
 ```
 kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
--n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
@@ -139,6 +142,6 @@ Example:
 
 ```
 kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
--n app-tarfful-postgresql-3-ns -o jsonpath='{.data.password}' | base64 --decode
+ -n app-tarfful-postgresql-3-ns -o jsonpath='{.data.password}' | base64 --decode
 zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```
