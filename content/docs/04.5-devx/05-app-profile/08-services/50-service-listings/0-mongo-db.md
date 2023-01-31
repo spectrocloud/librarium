@@ -56,46 +56,12 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 5. Provide the following information to the wizard:
   * **Name:** The DB name. You can have the default Palette generated name or create a custom name. 
   * **Username:** The user name for database access control
-  * **Password:** The password for the username.
+  * **Password:** The password for the username
+  * **Database Volume Size:** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.  
 
-<InfoBox>
-You can use the default system-generated password. If you use the default password, you can retrieve it from the MongoDB secrets using the following command:
+  * **Version:** Select the version from the **Version** drop-down. 
 
-```
-kubectl get secrets -A
-```
-
-If you use a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add it to the basic information wizard.
-</InfoBox>
-
-  * **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.  
-
-  * **Version: **Select the version from the **Version** drop-down. The following are the Palette supported MongoDB versions:
-
-    * 4.4.14
-    * 5.0.10
-
-6. **Output Variables**: The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes.
-```
-{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}
-```
-```
-{{.spectro.app.$appDeploymentName.mongodb-1.PASSWORD}}
-```
-```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI}}
-```
-```
-{{.spectro.app.$appDeploymentName.mongodb-1.MONGO_URI_SRV}}
-```
-
-|**Output Variable**|**Description**|
-|---------------|-----------|
-|Username|Username for database access control.|
-|Password|Password for database access control.|
-|Mongo URI|Represents the Uniform Resource Identifier for connecting to mongodb instance from applications and clients.|
-|Mongo URI SRV|Represents the DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record.|
-
+6. Click on **Save Changes**.
 ## Validation
 
 * To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
@@ -111,16 +77,26 @@ If you use a custom password, use the [base 64 encoder](https://www.base64encode
 |Red  |Error State|
 
 
+# Output Variables
+
+The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes.
+
+| Parameter              | Output Variable                                                                     | Description                                     |
+|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| Database Username      | `{{.spectro.app.$appDeploymentName.<service-name>.USERNAME}}`              | The database user name.                         |
+| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Connection String       | `{{.spectro.app.$appDeploymentName.<service-name>.MONGO_URI}}`      | The MongoDB connection string that contains the Kubernetes service hostname of the database. The connection string is prefixed with `mongodb://`
+| DNS Seed           | `{{.spectro.app.$appDeploymentName.<service-name>.MONGO_URI_SRV}}` | Represents the MongoDB DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record. Contains the prefix `mongodb+srv` |
+
+
 # Database Password
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the MongoDB database user, use the following command format. 
 
 ```
 kubectl get secret <app-name>-<service-name>-<user-name> \
--n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
 ```
-
-kubectl get secret app-tarfful-mongodb-1-myuser -n app-tarfful-mongodb-1-ns -o jsonpath='{.data.password}'
 
 Replace the values with the respective names.
 
@@ -139,7 +115,7 @@ Example:
 
 ```
 kubectl get secret app-tarfful-mongodb-1-myuser  \
--n app-tarfful-mongodb-1-ns -o jsonpath='{.data.password}' | base64 --decode
+ -n app-tarfful-mongodb-1-ns -o jsonpath='{.data.password}' | base64 --decode
 .Hr1}%DrA2MFf
 ```
 

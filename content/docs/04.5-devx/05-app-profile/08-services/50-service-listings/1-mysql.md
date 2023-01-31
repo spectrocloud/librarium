@@ -63,44 +63,11 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   * **Name:** The database name. You can use the auto generated name or create a custom name.
   * **Root Password:** The root password for the database service.
 
-<InfoBox>
-
-You can use the default system-generated password. If the default password is used, it can be retrieved from the MySQL secrets using the following command:
-
-```
-kubectl get secret <app-name>-<service-name>-user -n <app name>-<service namem>-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
-```
-
-For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
-</InfoBox>
-
   * Database Volume Size (GiB): Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
 
-  * Select the version from the **Version** drop-down. The following are the Palette supported MySQL versions:
+  * Select the version from the **Version** drop-down.
 
-    * 5.7
-
-6. Output Variables: The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
-
-```
-{{.spectro.app.$appDeploymentName.mysql-1.ROOT_PASSWORD}}
-```
-```
-{{.spectro.app.$appDeploymentName.mysql-1.MYSQLMSTR_SVC}}
-```
-```
-{{.spectro.app.$appDeploymentName.mysql-1.MYSQLMSTR_SVC_PORT}}
-```
-```
-{{.spectro.app.$appDeploymentName.mysql-1.MYSQLMSTR_NS}}
-```
-
-|**Output Variable**|**Description**|
-|---------------|-----------|
-|Root Password|The root password for the  MySQL instance|
-|MYSQLMSTR_SVC|Represents the DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record.|
-|MYSQLMSTR_SVC_PORT|Represents the port on which the database service is listening to.|
-|MYSQLMSTR_NS|Represents the namespaces to which MySQL database is launched.|
+6. Click on **Save Changes**.
 
 ## Validation
 
@@ -114,6 +81,19 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |Green| Successfully Deployed|
 |Blue | Under Deployment|
 |Red  | Error State|
+
+
+# Output Variables
+
+The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
+
+| Parameter              | Output Variable                                                                     | Description                                     |
+|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| Database Root Password | `{{.spectro.app.$appDeploymentName.<service-name>.ROOT_PASSWORD}}`              | The root password of the MySQL database. |
+| Service Hostname       | `{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
+| Service Port           | `{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
+| Namespace           | `{{.spectro.app.$appDeploymentName.<service-name>.MYSQLMSTR_SVC_NAMESPACE}}` | The Kubernetes namespace the MySQL database is deployed to.              |
+
 
 
 # Database Password

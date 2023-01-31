@@ -53,49 +53,11 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   
 
 5. Provide the following information to the wizard:
-  * **Name:** The database name. You can have the default Palette generated name or create a custom name. 
-  * **Password:** Security password for the database service.
-
-<InfoBox>
-You can use the default system-generated password. If you use the default password, you can retrieve it from the Redis DB secrets using the following command:
-
-```
-kubectl get secrets -A
-```
-
-For using a custom password, use the [base 64 encoder](https://www.base64encode.org/) to generate an encoded password and add to the basic information wizard. 
-</InfoBox>
-
+  * **Name:** The database name.
+  * **Password:** The password for the database service.
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
-6. **Output Variables**: The output variables of this tier that may be used in higher tiers, typically for connection purposes are:
-
-```
-{{.spectro.app.$appDeploymentName.redis-1.USERNAME}}
-```
-```
-{{.spectro.app.$appDeploymentName.redis-1.PASSWORD}}
-```
-```
-{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_SVC}}
-```
-```
-{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_SVC_PORT}}
-```
-```
-{{.spectro.app.$appDeploymentName.redis-1.REDISMSTR_NS}}
-```
-
-
-|**Output Variable**|**Description**|
-|---------------|-----------|
-|Username|Username for database access control|
-|Password|Password for database access control|
-|REDISMSTR_SVC|Provides the Redis service fully qualified domain name (FQDN) which can be consumed by App Services for database connectivity|
-|REDISMSTR_SVC_PORT|Represents the port on which the database service is listening to|
-|REDISMSTR_SVC_NAMESPACE|Represents the namespaces to which Redis database is launched|
-
-
+6. Click on **Save Changes**.
 ## Validation
 
 * To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
@@ -110,6 +72,21 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |Red  | Error State|
 
 
+# Output Variables
+
+The exposed output variables. Use these variables when connecting higher-level services with the database:
+
+
+
+| Parameter              | Output Variable                                                                     | Description                                     |
+|------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
+| Database Username      | `{{.spectro.app.$appDeploymentName.<service-name>.USERNAME}}`              | The database user name.                         |
+| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Service Hostname       | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
+| Service Port           | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_SVC_PORT}}` | The exposed port for the database service.              |
+| Namespace           | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_NS}}` | The Kubernetes namespace the Redis database is deployed to.              |
+
+
 # Database Password
 
 You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format. 
@@ -118,8 +95,6 @@ You can get the database secret by reading the content of the Kubernetes secret 
 kubectl get secret <app-name>-<service-name>-redis-auth \
  -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
 ```
-
-kubectl get secret  app-tarfful-redis-4-redis-auth -n app-tarfful-redis-4-ns -o jsonpath='{.data}'
 
 Replace the values with the respective names.
 
