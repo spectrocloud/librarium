@@ -280,6 +280,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | **privateGateway** | √          | √          | √       | √        | √          |            |             |            |             |
 | **project**        |            |            | √       | √        | √          |            |             |            |             |
 | **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 | **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
 
 </Tabs.TabPane>
@@ -315,6 +316,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | **privateGateway** |            |            | √       | √        | √          |            |             |            |             |
 | **project**        |            |            | √       | √        | √          |            |             |            |             |
 | **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 | **workspace**      |            |            | √       | √        | √          |            |             | √          | √           |
 
 <br />
@@ -396,6 +398,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 
 <br />
 
@@ -420,6 +423,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **clusterProfile** |            |            | √       | √        | √          |            | √           |            |             |
 | **macro**          |            |            | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 
 <br />
 
@@ -497,6 +501,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
 | **privateGateway** | √          | √          |         |          |            |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 | **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
 
 <br />
@@ -531,6 +536,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **macro**          |            |            | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
 | **privateGateway** |            |            | √       | √        |            |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
 | **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
 
 <br />
