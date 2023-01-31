@@ -43,7 +43,7 @@ The following output variables are globally available for all services.
 
 | Output Variable | Description |
 | --- | --- |
-| spectro.system.user.name | The user name of the logged in user. |
+| `spectro.system.user.name` | The user name of the logged in user. |
 | spectro.system.user.uid | The id of the logged in user.|
 | spectro.system.user.email | The email address of the logged in user. |
 | spectro.system.tenant.uid | The id of the current tenant or organization. |
