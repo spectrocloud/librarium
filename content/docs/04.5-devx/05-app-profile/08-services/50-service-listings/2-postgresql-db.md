@@ -124,7 +124,7 @@ kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app name provided during the Palette App cretion process.
+  * app-name: represents the name of the  app name provided during the Palette App creation process.
   * service-name: The name of the service layer in the app profile.
   * user-name: The name of the database user.
 
@@ -137,5 +137,5 @@ kubectl get secret app-corde-postgres-db-pguser-other-credentials \
 ```
 
 ```
-$ OZ6793EvjFo%
+OZ6793EvjFo%
 ```
