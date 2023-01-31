@@ -42,7 +42,7 @@ To create an App Profile:
 |Application Profile Name | A custom name for the App Profile|
 |Version (optional) | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
 |Description (optional)   | Description of the App Profile. | 
-|Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+|Tag (optional)               | Assign tags to the app profile.|
 
 
 4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
