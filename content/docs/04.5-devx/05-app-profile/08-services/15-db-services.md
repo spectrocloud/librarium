@@ -1,5 +1,5 @@
 ---
-title: "Database Services"
+title: "Databases"
 metaTitle: "Palette Dev Engine Database Services"
 metaDescription: "Explore Palette Dev Engine Database Services"
 icon: ""
@@ -28,7 +28,7 @@ Palette Dev Engine supports the following database services:
 
 * [Redis](/devx/app-profile/services/service-listings/redis-db)
 
-## DB Deployment 
+## Databse Deployment 
 
 Palette leverages several Kubernetes built-in workload resources such as Deployment, ReplicaSet, DaemondSet, StatefulSet, etc. To take advantage of the persistence of the data storage, Palette deploys database services as [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). 
 
