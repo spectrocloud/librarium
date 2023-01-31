@@ -8,7 +8,21 @@ fullWidth: false
 ---
 # Overview
 
-Palette supports two types of user authentication methods that can be used when interacting with Palette REST APIs for automation purposes:
+Palette supports three types of user authentication methods. 
+
+* [User Interface (UI)](/user-management/user-authentication/#au-authentication) authentication
+
+* [API Key](/user-management/user-authentication/#api-key)
+
+* [Authorization Token](/user-management/user-authentication/#authorization-token)
+
+The API key and the authorization tooken method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
+
+
+# UI Authentication
+
+
+
 
 # API Key
 
