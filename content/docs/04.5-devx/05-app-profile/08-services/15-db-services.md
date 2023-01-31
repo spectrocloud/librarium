@@ -76,4 +76,4 @@ The service connectivity follows a fixed hierarchy in Palette. The connectivity 
 
 ## Connect to a DB Service
 
-Applications and clients can connect to a Palette database service by using the information exposed in the output variables. Check out the [Service Connectivity](devx/app-profile/db-services/connectivity) documentation to learn more about connecting to a database service.
+Applications and clients can connect to a Palette database service by using the information exposed in the output variables. Check out the [Service Connectivity](/devx/app-profile/services/connectivity) documentation to learn more about connecting to a database service.
