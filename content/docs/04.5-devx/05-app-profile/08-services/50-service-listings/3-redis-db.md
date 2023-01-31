@@ -110,7 +110,34 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |Red  | Error State|
 
 
+# Database Password
 
+You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format. 
+
+```
+kubectl get secret <app-name>-<service-name>-redis-auth \
+ -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+```
+
+kubectl get secret  app-tarfful-redis-4-redis-auth -n app-tarfful-redis-4-ns -o jsonpath='{.data}'
+
+Replace the values with the respective names.
+
+  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * service-name: The name of the service layer in the app profile.
+
+Example: 
+
+- App Name: `app-tarfful`
+
+- Service Name: `redis-4`
+
+
+```
+kubectl get secret  app-tarfful-redis-4-redis-auth \
+ -n app-tarfful-redis-4-ns -o jsonpath='{.data.password}' | base64 --decode
+ .Hr1}%DrA2MFf
+```
 
 
 

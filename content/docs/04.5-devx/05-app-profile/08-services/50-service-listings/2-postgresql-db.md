@@ -115,7 +115,7 @@ You can use the default system-generated password. If the default password is us
 
 # Database Password
 
-You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
+You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
 
 ```
 kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
@@ -131,11 +131,14 @@ Replace the values with the respective names.
 
 Example: 
 
-```
-kubectl get secret app-corde-postgres-db-pguser-other-credentials \
--n app-corde-postgres-db-ns -o jsonpath='{.data.password}' | base64 --decode
-```
+- App Name: `app-tarfful`
+
+- Service Name: `postgresql-3`
+
+- Database User: `pguser`
 
 ```
-OZ6793EvjFo%
+kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
+-n app-tarfful-postgresql-3-ns -o jsonpath='{.data.password}' | base64 --decode
+zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```

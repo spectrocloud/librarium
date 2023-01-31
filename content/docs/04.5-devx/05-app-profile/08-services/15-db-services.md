@@ -17,16 +17,16 @@ Palette Dev Engine facilitates database service setup, operation, and scaling wi
 
 Palette Dev Engine supports the following database services:
 
-* [MongoDB](/devx/app-profile/service-listings/mongo-db)
+* [MongoDB](/devx/app-profile/services/service-listings/mongo-db)
 
 
-* [MySQL](/devx/app-profile/service-listings/mysql)
+* [MySQL](/devx/app-profile/services/service-listings/mysql)
 
 
-* [PostgreSQL](/devx/app-profile/service-listings/postgresql-db)
+* [Postgres](/devx/app-profile/services/service-listings/postgresql-db)
 
 
-* [Redis](/devx/app-profile/service-listings/redis-db)
+* [Redis](/devx/app-profile/services/service-listings/redis-db)
 
 ## DB Deployment 
 

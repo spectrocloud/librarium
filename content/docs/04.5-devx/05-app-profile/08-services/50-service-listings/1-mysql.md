@@ -116,7 +116,29 @@ For using a custom password, use the [base 64 encoder](https://www.base64encode.
 |Red  | Error State|
 
 
+# Database Password
+
+You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format. 
+
+```
+kubectl get secret <app-name>-<service-name>-user \
+ -n <app name>-<service name>-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+```
+
+Replace the values with the respective names.
+
+  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * service-name: The name of the service layer in the app profile.
+
+Example: 
+
+- App Name: `app-tarfful`
+
+- Service Name: `mysql-2`
 
 
-
-
+```
+kubectl get secret app-tarfful-mysql-2-user \
+ -n app-tarfful-mysql-2-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+,U31nQ@T2tN4uM
+```
