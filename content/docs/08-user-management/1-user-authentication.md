@@ -7,7 +7,6 @@ hideToC: false
 fullWidth: false
 ---
 
-
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
@@ -65,7 +64,7 @@ Palette API can also use API Keys to authenticate requests. This is the method o
 ## Creating an API key as a tenant admin
 
 * Login to Palette using credential with admin role.
-* Go to Tenant Settings and select `API Keys`.
+* Go to Tenant Settings and select **API Keys**.
 * Click on “Add New API Key” to create a new API key. The following information is required for creating a new API Key:
   * API Key Name: The tenant/user-specified custom name for the key.
   * Description: An optional description about the key.
@@ -81,7 +80,7 @@ Palette API can also use API Keys to authenticate requests. This is the method o
 ### Manage API Keys as a tenant admin
 
 * Log in to Palette using credential with admin role.
-* Go to Tenant Settings and select `API Keys`.
+* Go to Tenant Settings and select **API Keys**.
 * Detailed status of the keys can be observed from the API overview page. In addition to the key's name, description, and expiration date, the overview page displays the API keys, the user to which each key is assigned, and the status of the key.
 * To view all the keys assigned to a particular user, select the user's name at **User Name** on top of the page, below the **Manage API Keys**.
 * Each API has a settings menu, click on the **three-dot Menu**, to view the following options:
@@ -89,7 +88,7 @@ Palette API can also use API Keys to authenticate requests. This is the method o
     * API Key name
     * Description(optional)
     * Expiration Date
-  * Revoke: Change the status of the key from ‘active’ to ‘inactive’.
+  * Revoke: Change the status of the key from **active** to **inactive**.
   * Re-activate: Change the status of the key from ‘inactive’ to ‘active’ as long as expiration date has not passed.
   * Delete: Delete the key.
 
@@ -119,7 +118,7 @@ Palette API can also use API Keys to authenticate requests. This is the method o
     * API Key name
     * Description(optional)
     * Expiration Date
-  * Revoke: Change the status of the key from ‘active’ to ‘inactive’.
+  * Revoke: Change the status of the key from **active** to **inactive**.
   * Re-activate: Change the status of the key from ‘inactive’ to ‘active’ as long as expiration date has not passed.
   * Delete: Delete the key.
 
