@@ -24,16 +24,17 @@ Palette supports three types of user authentication methods.
 
 * [Authorization Token](/user-management/user-authentication/#authorization-token)
 
-The API key and the authorization tooken method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
+The API key and the authorization token method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
 
 
 # UI Authentication
-
-You can log into Palette by visiting the Palette console at [http://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a Palette Enterprise instance, then you should use the URL provided by your Palette system administrator, such as `example-company.console.spectrocloud.com.` 
-
+<!-- vale off -->
+You can log into Palette by visiting the Palette at [http://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a Palette Enterprise instance, then you should use the URL provided by your Palette system 
+administrator, such as `example-company.console.spectrocloud.com.` 
+<!-- vale on -->
 ## Account Sign Up
 
-You can sign up for a Palette SaaS account by visiting the [Palette console](https://console.spectrocloud.com) or an Enterprise Palette account under your organization by using your organization's custom Palette URL.
+You can sign up for a Palette SaaS account by visiting [Palette](https://console.spectrocloud.com) or an Enterprise Palette account under your organization by using your organization's custom Palette URL.
 
 When you create an account, you can create a username and password or create the account through a third-party identity provider, GitHub, Google, or other OIDC providers that are enabled for your organization. For Palette SaaS, GitHub and Google are automatically enabled for SSO integration.
 
@@ -79,11 +80,11 @@ Palette API can also use API Keys to authenticate requests. This is the method o
 
 ### Manage API Keys as a tenant admin
 
-* Login to Palette using credential with admin role.
+* Log in to Palette using credential with admin role.
 * Go to Tenant Settings and select `API Keys`.
-* Detailed status of the keys can be observed from the Palette dashboard. In addition to the key's name, description, and expiration date, the Palette console displays the API keys, the user to which each key is assigned, and the status of the key.
-* To view all the keys assigned to a particular user, select the user's name at “User Name” on top of the page, below the “Manage API Keys”.
-* For each key from the Kabab menu, we can:
+* Detailed status of the keys can be observed from the API overview page. In addition to the key's name, description, and expiration date, the overview page displays the API keys, the user to which each key is assigned, and the status of the key.
+* To view all the keys assigned to a particular user, select the user's name at **User Name** on top of the page, below the **Manage API Keys**.
+* Each API has a settings menu, click on the **three-dot Menu**, to view the following options:
   * Edit: The following information can be edited from the menu,
     * API Key name
     * Description(optional)
@@ -94,9 +95,9 @@ Palette API can also use API Keys to authenticate requests. This is the method o
 
 ## Creating an API key for the logged-in user
 
-* Login to Palette
-* Select `API Keys` from user menu.
-* Click on “Add New API Key” to create a new API key. The following information is required for creating a new API Key:
+* Log in to Palette
+* Select **API Keys** from **User Menu**.
+* Click on **Add New API Key** to create a new API key. The following information is required for creating a new API Key:
   * API Key Name: The tenant/user-specified custom name for the key.
   * Description: An optional description about the key.
   * Expiration Date: Set an expiry date for the key from the options available. The expiration date can be further customized after the key creation. The various options available for the expiration dates are:
@@ -105,15 +106,15 @@ Palette API can also use API Keys to authenticate requests. This is the method o
     * 60 days
     * 90 days
     * Custom: Select a custom expiry date from the calendar.
-* Confirm the information to complete the wizard. The created key will be assigned to the logged-in user.
+* Confirm the information to complete the wizard.
 
 ### Manage API Keys for the logged-in user
 
-* Login to Palette
-* Select `API Keys` from user menu.
-* Detailed status of the key can be observed from the Palette dashboard. In addition to the key's name, description, and expiration date, the Palette console displays the API keys belonging to the user, and the status of the keys.
-* To view all the keys assigned to a particular user, select the user's name at “User Name” on top of the page, below the “Manage API Keys”.
-* For each key from the Kabab menu, we can:
+* Log in to Palette
+* Select **API Keys** from the **User Menu**.
+* Detailed status of the key can be observed from the API overview page. In addition to the key's name, description, and expiration date, the overview page displays the API keys belonging to the user, and the status of the keys.
+* To view all the keys assigned to a particular user, select the user's name at **User Name** on top of the page, below the “Manage API Keys”.
+* Each API has a settings menu, click on the **three-dot Menu**, to view the following options:
   * Edit: The following information can be edited from the menu,
     * API Key name
     * Description(optional)
@@ -122,9 +123,9 @@ Palette API can also use API Keys to authenticate requests. This is the method o
   * Re-activate: Change the status of the key from ‘inactive’ to ‘active’ as long as expiration date has not passed.
   * Delete: Delete the key.
 
-## Using your API key
+## API Key Usage
 
-User can copy their API key from the Palette dashboard and use it for making REST API calls in one of the following ways:
+You copy your API key from the Palette dashboard and use it for making REST API calls in one of the following ways:
 
 * Query Parameter - Pass the key as a query parameter`ApiKey=<apiKey>`. Example:
   `v1/spectroclusters?ApiKey=QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl`
