@@ -1,5 +1,5 @@
 ---
-title: 'Reverse Proxy Dashboard'
+title: 'Kubernetes Dashboard'
 metaTitle: 'Kubernetes Dashboard with Spectro Proxy'
 metaDescription: 'Kubernetes Dashboard with Spectro Proxy'
 hiddenFromNav: false
@@ -95,7 +95,6 @@ clientConfig:
   oidc-client-secret: client-secret-value
   oidc-extra-scope: profile,email
 ```
-
 
 
 
