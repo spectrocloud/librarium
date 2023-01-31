@@ -37,41 +37,51 @@ Check out the [Services Connectivity](/devx/app-profile/services/connectivity) p
 {{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}}
 ```
 
-<!-- # System Output Variables
+# System Output Variables
 
 The following output variables are globally available for all services.
 
 | Output Variable | Description |
 | --- | --- |
-| spectro.macro.cloudanix.partnerIdentifier | |
-| spectro.system.user.name | |
-| spectro.system.user.uid | |
-| spectro.system.user.email | |
-| spectro.system.tenant.uid | |
-| spectro.system.project.uid | |
-| spectro.system.project.name | |
-| spectro.system.cluster.uid | |
-| spectro.system.cluster.name | |
-| spectro.system.kubernetes.version | |
-| spectro.system.reverseproxy.server | |
-| spectro.system.reverseproxy.port | |
-| spectro.system.reverseproxy.vhostport | |
-| spectro.system.reverseproxy.protocol | |
-| spectro.system.cloud.type | |
-| spectro.system.cloud.region | |
-| spectro.system.cloud.image.id | |
-| spectro.system.apptier.name | |
-| spectro.system.apptier.uid | |
-| spectro.system.appprofile.name | |
-| spectro.system.appprofile.uid | |
-| spectro.system.appdeployment.uid | |
-| spectro.system.appdeployment.name | |
-| spectro.system.appdeployment.tiername | |
-| spectro.system.appdeployment.ingress.host | |
-| spectro.app.$appDeploymentName.#tierName.#tierOutputParam | |
-| spectro.system.apptier.#tierInputParam | | -->
+| spectro.system.user.name | The user name of the logged in user. |
+| spectro.system.user.uid | The id of the logged in user.|
+| spectro.system.user.email | The email address of the logged in user. |
+| spectro.system.tenant.uid | The id of the current tenant or organization. |
+| spectro.system.project.uid | The id of the current project. |
+| spectro.system.project.name | The name of the current project. |
+| spectro.system.cluster.uid |  The id of the current cluster. |
+| spectro.system.cluster.name | The name of the current cluster. |
+| spectro.system.kubernetes.version | The current version of Kubernetes. |
+| spectro.system.reverseproxy.server | The hostname of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
+| spectro.system.reverseproxy.port | The port of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
+| spectro.system.reverseproxy.vhostport | ??? |
+| spectro.system.reverseproxy.protocol | The protocol used for the Spectro Cloud reverse proxy. |
+| spectro.system.cloud.type | The type of cloud environment of where the cluster is deployed to, such as EKS, AKS, GKE, etc. |
+| spectro.system.cloud.region |  The cloud provider region of where the cluster is deployed in.|
+| spectro.system.apptier.name | The name of the app tier or service layer from the context of the app profile. |
+| spectro.system.apptier.uid | The id of the app tier or service layer. |
+| spectro.system.appprofile.name | The name of the app profile. |
+| spectro.system.appprofile.uid |  The  id of the app profile. |
+| spectro.system.appdeployment.uid | The id of the app deployment.  |
+| spectro.system.appdeployment.name | The name of the app deployment. |
+| spectro.system.appdeployment.tiername | The name of the app tier or service layer from the context of the app deployment. |
+| spectro.system.appdeployment.ingress.host | The ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated. |
 
+# Container Service Output Variables
 
+The container service type exposes the following output variables. Replace **[service-name]** with the respective name of the service layer.
+
+| Output Variable | Description |
+| --- | --- |
+| .spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE | The Kubernetes namespace of the deployed container.  |
+|.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC  | The Kubernetes DNS hostname of the service. |
+|.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT  | The exposed port of the service. |
+| spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME| The Kubernetes DNS hostname of the load balancer. This value is available if the service is the access set to **Public**. |
+|spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP| The public URL of the load balancer. This value is available if the service is the access set to **Public**.|
+
+# Database Service Output Variables
+
+Each database service exposes a set of output variables. Review each database service for more details. You can find information about each database service by checking out the [Available Services](/devx/app-profile/services/service-listings) resource.
 
 # Resources
 
