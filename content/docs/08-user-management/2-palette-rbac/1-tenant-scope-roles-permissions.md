@@ -27,7 +27,7 @@ Below is the list of Roles and Permissions that already predefined for the Globa
 
 <InfoBox>
 
-All users have the ability to view tags assigned to a resource.
+All users can view tags assigned to a resource. In technical terms, all users inherit the permission `tag.get` by default.
 
 </InfoBox>
 
