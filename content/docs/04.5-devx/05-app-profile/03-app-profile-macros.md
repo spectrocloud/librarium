@@ -54,7 +54,7 @@ The following output variables are globally available for all services.
 | `spectro.system.kubernetes.version` | The current version of Kubernetes. |
 | `spectro.system.reverseproxy.server` | The hostname of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
 | `spectro.system.reverseproxy.port` | The port of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
-| `spectro.system.reverseproxy.vhostport` | ??? |
+| `spectro.system.reverseproxy.vhostport` | The port of the virtual host that is hosting the reverse proxy. |
 | `spectro.system.reverseproxy.protocol` | The protocol used for the Spectro Cloud reverse proxy. |
 | `spectro.system.cloud.type` | The type of cloud environment of where the cluster is deployed to, such as EKS, AKS, GKE, etc. |
 | `spectro.system.cloud.region` |  The cloud provider region of where the cluster is deployed in.|
