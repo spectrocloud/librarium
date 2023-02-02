@@ -48,9 +48,7 @@ Palette handles setting up the AWS EFS as a volume with ease when adding the Per
 
 ## Parameters
 
-When you add the AWS EFS pack, the following parameters can be configured:
-
-While adding the AWS EFS pack, the following parameters can be configured:
+The table lists commonly used parameters you can configure when adding this pack.
 
 | Parameter       | Description                                            | Default                                     |
 |-----------------|-------------------------|------------------------------|
@@ -75,6 +73,7 @@ There are two ways to add AWS EFS to Palette:
 
 ### Policy Information
 
+You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.
 
 ```yaml
 {
@@ -171,7 +170,7 @@ Mounted By:  <none>
 
 - Create the Identity and Access Management (IAM) role that allows the driver to manage AWS EFS access points. The [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/) blog provides information on `EFSCSIControllerIAMPolicy`.
 
-- Have a filesystem created and available before you provision AWS EFS to Palette.
+- An AWS EFS file system is available.  Check out the guide [Create your Amazon EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) if you need additional guidance.
 
 - Create your EKS cluster using static provisioning. Static provisioning requires you to create a virtual private cloud (VPC), subnets, route tables, internet gateway and NAT gateways in the AWS console.
 
@@ -186,7 +185,7 @@ Mounted By:  <none>
 
 ## Parameters
 
-While adding the AWS EFS pack, the following parameters can be configured:
+The table lists commonly used parameters you can configure when adding this pack.
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
@@ -257,7 +256,8 @@ kubectl get storageclass
 
 ### PersistentVolumeClaim
 
-The example shows the command output for `kubectl describes pvc` ${PVC_NAME}:
+A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC by using the `kubectl describes pvc` ${PVC_NAME}` command, as the following example output shows.
+
 
 ```yaml
 
@@ -345,7 +345,7 @@ The following list provides more specific details to help you troubleshoot issue
   kubectl describe sa efs-csi-controller-sa -namespace kube-system
   ```
   
-  You shoud see this annotation:
+  You should see this annotation:
 
   ```bash
   eks\.amazonaws\.com/role-arn"="arn:aws:iam::111122223333:role/AmazonEKS_EFS_CSI_Driver_Policy
