@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kong Ingress Controller
 
-The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. Kong can also configure your edge router or additional frontends to help handle incoming requests.
+The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. You can use the Kong as an application load balancer for your application.
 
 ## Version Supported
 
@@ -38,7 +38,7 @@ The Kong integration is an Ingress Controller for Kubernetes that configures ing
 
 ## Components
 
-The integration adds the Kong Ingress Controller, which exposes a service of type LoadBalancer.
+The integration adds the Kong Ingress Controller, which exposes a Kubernetes service of type LoadBalancer.
 
 ## References
 
