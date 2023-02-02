@@ -54,6 +54,8 @@ Longhorn provides these features:
 - Backup to secondary storage (NFSv4 or S3-compatible object storage) built on change block detection.
 - Recurring snapshot and backup.
 
+For more information, check out Longhorn guide on [How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="1.3.x" key="1.3.x">
@@ -85,6 +87,8 @@ Longhorn provides these features:
 - Incremental snapshots of block storage.
 - Backup to secondary storage (NFSv4 or S3-compatible object storage) built on change block detection.
 - Recurring snapshot and backup.
+
+For more information, check out Longhorn guide on [How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
 
 </Tabs.TabPane>
 </Tabs>

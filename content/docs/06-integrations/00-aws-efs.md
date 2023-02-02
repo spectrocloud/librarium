@@ -30,8 +30,7 @@ Palette handles setting up the AWS EFS as a volume with ease when adding the Per
 
 ## Prerequisites
 
-- Create the Identity and Access Management (IAM) role that allows the driver to manage AWS EFS access points. See the [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/) blog for information on `EFSCSIControllerIAMPolicy`.
-
+- Create the Identity and Access Management (IAM) role that allows the driver to manage AWS EFS access points. The [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/) blog provides information on `EFSCSIControllerIAMPolicy`.
 
 - An AWS EFS file system is available. Check out the guide [Create your Amazon EFS file system](https://docs.aws.amazon.com/efs/latest/ug/gs-step-two-create-efs-resources.html) if you need additional guidance.
 
@@ -51,10 +50,10 @@ Palette handles setting up the AWS EFS as a volume with ease when adding the Per
 The table lists commonly used parameters you can configure when adding this pack.
 
 | Parameter       | Description                                            | Default                                     |
-|-----------------|-------------------------|------------------------------|
+|-----------------|-----------------------|------------------------------|
 | storageClassName        | AWS Volume type to be used. | spectro-storage-class |
 | isDefaultClass          | Toggle for Default class.    | true |
-| fileSystemId            | The file system under which access points are created. Create the file system prior to this setup. This is a mandatory field and needs to be set to a pre-created AWS EFS volume. Other values can be at the default setting.   | See the description at left.         |
+| fileSystemId            | The file system under which access points are created. Create the file system prior to this setup. This is a required field and needs to be set to a pre-created AWS EFS volume. Other values can use the default setting.   | Set this to an AWS EFS volume you have already created.         |
 | provisioningMode        | Type of volume provisioned by AWS EFS. For now, this is the only access point supported. | efs-ap |
 | directoryPerms          | Directory permissions for Access Point root directory creation. | 700  |
 | gidRangeStart           | Starting range of the Portable Operating System Interface (POSIX) group Id to be applied for access point root directory creation (optional). | 1000   |
@@ -73,7 +72,7 @@ There are two ways to add AWS EFS to Palette:
 
 ### Policy Information
 
-You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.
+You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.<br /><br />
 
 ```yaml
 {
@@ -115,6 +114,7 @@ You must create a policy that allows you to use EFS from your IAM account. You c
 ### Storage Class
 
 Palette creates storage classes named *spectro-storage-class*. You can view a list of storage classes using this kubectl command:
+<br />
 
 ```bash
 kubectl get storageclass
@@ -122,7 +122,8 @@ kubectl get storageclass
 
 ### PersistentVolumeClaim
 
-The example shows the command output for `kubectl describes pvc` ${PVC_NAME}:
+A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC, as shown in the following output, when you use the `kubectl describes pvc` ${PVC_NAME} command.
+<br />
 
 ```yaml
 
@@ -191,7 +192,7 @@ The table lists commonly used parameters you can configure when adding this pack
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
 | storageClassName        | AWS Volume type to be used. | spectro-storage-class |
 | isDefaultClass          | Toggle for Default class.    | true |
-| fileSystemId            | The file system under which access points are created. Create the file system prior to this setup. This is a mandatory field and needs to be set to a pre-created AWS EFS volume. Other values can be at the default setting.   | See the description at left.      |
+| fileSystemId            | The file system under which access points are created. Create the file system prior to this setup. This is a required field and needs to be set to a pre-created AWS EFS volume. Other values can use the default setting.   | Set this to an AWS EFS volume you have already created.      |
 | provisioningMode        | Type of volume provisioned by AWS EFS. For now, this is the only access point supported. | efs-ap |
 | directoryPerms          | Directory permissions for Access Point root directory creation. | 700  |
 | gidRangeStart           | Starting range of the Portable Operating System Interface (POSIX) group Id to be applied for access point root directory creation (optional). | 1000   |
@@ -208,6 +209,8 @@ There are two ways to add AWS EFS to Palette:
 
 
 ### Policy Information
+
+You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.<br /><br />
 
 ```yaml
 {
@@ -250,6 +253,8 @@ There are two ways to add AWS EFS to Palette:
 
 Palette creates storage classes named *spectro-storage-class*. You can view a list of storage classes using this kubectl command:
 
+<br />
+
 ```bash
 kubectl get storageclass
 ```
@@ -257,7 +262,7 @@ kubectl get storageclass
 ### PersistentVolumeClaim
 
 A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC by using the `kubectl describes pvc` ${PVC_NAME}` command, as the following example output shows.
-
+<br />
 
 ```yaml
 
@@ -323,14 +328,16 @@ The following list provides more specific details to help you troubleshoot issue
 
 - **Subdirectories:** If you're mounting the pod to a subdirectory, verify the subdirectory is created in your EFS file system. When you add sub paths in persistent volumes, the EFS CSI driver doesn't create the subdirectory path in the EFS file system as part of the mount operation. Subdirectories must be present before you start the mount operation. 
 
-- **DNS server:** Confirm the cluster's Virtual Private Cloud (VPC) uses the Amazon DNS server. To verify the DNS server, log in to the worker node and issue the following command, replacing ```region``` with your AWS Region: <br />
+- **DNS server:** Confirm the cluster's Virtual Private Cloud (VPC) uses the Amazon DNS server. To verify the DNS server, log in to the worker node and issue the following command, replacing ```region``` with your AWS Region: 
+
+  <br />
 
   ```bash 
   nslookup fs-4fxxxxxx.efs.region.amazonaws.com <amazon provided DNS IP>
   <amazon provided DNS IP = VPC network(10.0.0.0) range plus two>
   ```
 
-- **Permissions:** Verify you have "iam" mount options in the persistent volume definition when using a restrictive file system policy. In some cases, the EFS file system policy is configured to restrict mount permissions to specific IAM roles. In this case, the EFS mount helper in the EFS CSI driver requires the ```-o iam``` mount option during the mount operation. Include the **spec.mountOptions** property:<br />
+- **Permissions:** Verify you have "iam" mount options in the persistent volume definition when using a restrictive file system policy. In some cases, the EFS file system policy is configured to restrict mount permissions to specific IAM roles. In this case, the EFS mount helper in the EFS CSI driver requires the ```-o iam``` mount option during the mount operation. Include the **spec.mountOptions** property:<br /><br />
 
   ```bash
   spec:
@@ -339,7 +346,7 @@ The following list provides more specific details to help you troubleshoot issue
   ```
 - **IAM role:** Verify the Amazon EFS CSI driver controller service account associates with the correct IAM role and the IAM role has the required permissions.
 
-  Run the following command:
+  Run the following command: <br />
 
   ```bash
   kubectl describe sa efs-csi-controller-sa -namespace kube-system
