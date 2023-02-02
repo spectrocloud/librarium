@@ -25,23 +25,31 @@ The Palette agent is responsible for the following actions.
 
 - Establish a network communication channel with the Palette management plane. 
 
+
 - Receive agent upgrade instructions and apply the upgrade.
+
 
 - Download and update related to local Pack registries.
 
+
 - Deploy and manage a cluster's entire lifecycle and all its components, such as the host operation system (OS), Kubernetes platform, and applications that may be VM-based or container-based.
+
 
 - Apply and enforce cluster policies such as patching and backup schedules.
 
+
 - Cluster management actions associated with day two activities, such as SSL certificate rotations, cluster backup, restoring a cluster from a backup, compliance scans, and more.
+
 
 - Gather cluster health stats and heartbeats and report the cluster status to the Palette management plane.
 
-- Enable local APIs to support other Palette components, such as the CLI and the local WebUI
+
+- Enable local APIs to support other Palette components, such as the CLI and the local WebUI.
+
 
 The communication between the agent and the Palette management plane keeps the two components in sync. You can upgrade the agent to match the Palette version for complete control and consistency with the current management plane.
 
-
+![A diagram of the Palette agent and its responsibilities](architecture_agent-archicture-palette_agent_lifecycle.png)
 # Agent Communication Channels
 
 The agent and the management plane have three communication channels.
