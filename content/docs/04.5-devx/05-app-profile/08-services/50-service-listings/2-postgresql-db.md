@@ -24,13 +24,13 @@ Palette supports [Postgres](https://www.postgresql.org/) as a database service. 
 
 The following are requirements for using Palette Postgres:
 
-* Do not use the Postgres user names, `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
+* Do not use the Postgres user names `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
 
-* The user name format does not support the special character hyphen(-). Example: `name-1` is not supported. 
+* The user name format does not support the special character hyphen(-). For example, `name-1` is not supported. 
 
 
-* Clients must set `sslMode=require` or greater as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
+* Clients must set `sslMode=require` or greater, as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
 
 # Add Postgres to an App Profile
@@ -56,7 +56,7 @@ You can use the following steps to learn how to add Postgres to your app profile
 |-------------------------|-----------------|
 |Application Profile Name | A custom name for the App Profile.|
 |Version (optional)       | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
-|Description (optional)   | Description of the App Profile. | 
+|Description (optional)   | Description of the app profile. | 
 |Tag (optional)           | Assign tags to the app profile.|
 
 
@@ -83,18 +83,18 @@ You can use the default system-generated password. If the default password is us
 
   * **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters. 
 
-  * **Version: **Select the version from the **Version** **drop-down Menu**. The following are the Palette supported PostgreSQL versions:
+  * **Version: **Select the version from the **Version** **drop-down Menu**. Palette supports the following PostgreSQL versions:
 
     * 14
    
-6. Click on **Save Changes**.
+6. Save your changes.
 
 ## Validation
 
-* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
 
 
-* Validate the services from the App page after app deployment. First, navigate to the **App** page, where all your apps are listed. Then, click the **App Name** to see the service layers. The color code in the app profile box shows the status of the service deployment.
+* Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -111,7 +111,7 @@ The exposed output variables of this service layer that may be used in other ser
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
 | Database Username      | `{{.spectro.app.$appDeploymentName.database-<service-name>.USERNAME}}`              | The database user name.                         |
-| Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.PASSWORD}}`              | The password of the database user name. |
 | Service Hostname       | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
 | Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
 
@@ -127,7 +127,7 @@ kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
   * user-name: The name of the database user.
 

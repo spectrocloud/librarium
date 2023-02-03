@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 App Profiles are templates created with pre-configured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. 
 
-You create App Profiles to meet specific types of workloads on your Palette [Virtual Clusters](/devx/palette-virtual-clusters). You can use containers, Helm Charts, custom manifest, containers, and other out-of-the-box such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](/devx/app-profile/services) documentation to learn more about the available services.  
+You create App Profiles to meet specific types of workloads on your Palette [Virtual Clusters](/devx/palette-virtual-clusters). You can use containers, Helm Charts, custom manifest, containers, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](/devx/app-profile/services) documentation to learn more about the available services.  
 
 You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/service-listings).
 
