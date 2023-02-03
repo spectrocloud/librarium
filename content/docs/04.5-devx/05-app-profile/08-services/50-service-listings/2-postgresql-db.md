@@ -83,9 +83,7 @@ You can use the default system-generated password. If the default password is us
 
   * **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters. 
 
-  * **Version: **Select the version from the **Version** **drop-down Menu**. Palette supports the following PostgreSQL versions:
-
-    * 14
+  * **Version: **Select the version from the **Version** **drop-down Menu**.
    
 6. Save your changes.
 
