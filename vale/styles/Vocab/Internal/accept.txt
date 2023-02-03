@@ -51,5 +51,15 @@ autoscaling
 Tencent
 serverless
 vCenter
+Palette Dev Engine
+Dev
+Postgres
+hostname
+Hostname
+enablement
+Enablement
+Namespace
+namespace
+Lua
 Konvoy
 Kairos
