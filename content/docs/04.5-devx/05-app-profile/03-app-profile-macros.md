@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Output Variables
 
-Palette Dev Engine output variables are defined in the App Profile and are only resolved at cluster deployment time. The output variables have the following properties:
+Palette Dev Engine output variables are defined in the [app profile](/glossary-all#appprofile) and are only resolved at cluster deployment time. The output variables have the following properties:
 
 * May be referenced by specifying them during app profile creation.
 
