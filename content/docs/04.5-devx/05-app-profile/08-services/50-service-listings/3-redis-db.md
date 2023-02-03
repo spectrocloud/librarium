@@ -49,7 +49,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 |Tag (optional)           |  Assign tags to the app profile.|
  
 
-4. Select the **Redis DB** DB service and start the configuration.
+4. Select the **Redis DB** service and start the configuration.
   
 
 5. Provide the following information to the wizard:
