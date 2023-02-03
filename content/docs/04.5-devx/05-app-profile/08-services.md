@@ -8,7 +8,7 @@ fullWidth: false
 
 # Services
 
-Palette offers you different types of services to help you model all the dependencies and resources required for deploying an application. You can choose from several different service types in Palette.
+Palette offers you different types of services to help you model all the dependencies and resources required to deploy an application. You can choose from several different service types in Palette.
 
 <br />
 
@@ -19,7 +19,7 @@ Palette offers you different types of services to help you model all the depende
 
 ## Helm
 
-Palette provides out-of-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry).
+Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry).
 
 
 ## Manifest 
@@ -31,7 +31,7 @@ You can construct App Profile layers using raw manifests to provision Kubernetes
 Palette also offers a set of common services or resources that application authors frequently use to expand or add capabilities to an application. These services are managed by Palette and help reduce the burden of maintaining and deploying resources required by your application.
 
 <!-- <InfoBox>
-We encourage you to securely distribute credentials using secrets. You can achieve this by constructing manifests to consume parameters that use references. You can also add a manifest to create your Kubernetes secrets using macros to inject the values. In the App layer, set the environment variables using a Secret reference.
+We encourage you to securely distribute credentials using secrets. You can achieve this by constructing manifests to consume parameters that use references. You can also add a manifest to create your Kubernetes secrets using macros to inject the values. In the app layer, set the environment variables using a Secret reference.
 
 **Example**
 
@@ -77,13 +77,13 @@ spec:
 
 ## Messaging System Services
 
-A messaging system service is a platform that enables the exchange of messages between users. It allows people to send and receive messages in real-time, using different devices and communication channels.
+A messaging system service is a platform that enables the exchange of messages between users. It allows people to send and receive messages in real time using different devices and communication channels.
 
 <br />
 
 ## Object Storage Services
 
-Object storage is a data storage solution for unlimited, unstructured data like images, videos, and backups. It's managed as objects, not files or blocks, and is scalable and durable.
+Object storage is a data storage solution for unlimited, unstructured data like images, videos, and backups. Uploaded data is managed as objects, not files or blocks, and is scalable and durable.
 
 <br />
 
