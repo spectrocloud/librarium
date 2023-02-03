@@ -30,51 +30,6 @@ You can construct App Profile layers using raw manifests to provision Kubernetes
 
 Palette also offers a set of common services or resources that application authors frequently use to expand or add capabilities to an application. These services are managed by Palette and help reduce the burden of maintaining and deploying resources required by your application.
 
-<!-- <InfoBox>
-We encourage you to securely distribute credentials using secrets. You can achieve this by constructing manifests to consume parameters that use references. You can also add a manifest to create your Kubernetes secrets using macros to inject the values. In the app layer, set the environment variables using a Secret reference.
-
-**Example**
-
-```
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysecret
-  namespace: {{.spectro.system.apptier.NAMESPACE}}
-data:
-  
-  namespace: "{{.spectro.system.apptier.NAMESPACE}}" # Resolves to a value of the variable defined in App Profile tier parameters.yaml file.
-
-  password: "{{.spectro.app.$appDepName-mongodb.PASSWORD}}" # To refer the tier output variables of the top tiers.
-	
-```
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myweb
-  namespace: mywebnamespace
-  ...
-spec:
-  template:
-  ...
-      containers:
-        - env:
-            - name: PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysecret
-                  key: password
-```
-
-</InfoBox> -->
-
-<br />
-
-<!-- <WarningBox>
-    When adding services to App Profiles using manifest files, specify a namespace name to which the resource belongs.
-</WarningBox>  -->
-
 ## Messaging System Services
 
 A messaging system service is a platform that enables the exchange of messages between users. It allows people to send and receive messages in real time using different devices and communication channels.
@@ -97,12 +52,3 @@ A database stores structured data electronically for fast search and retrieval. 
 ## Available Services
 
 Check out the available service offerings in Palette by visiting the [Service Listings](/devx/app-profile/service-listings) resource.
-
-
-
-<!-- <InfoBox>
-
-  Variables used in services follow a usage hierarchy. Variable values from the first services you add, which become the first layer in the App Profile stack, can pass to services you add next, which appear higher in the stack. Variable values _cannot_ pass from the top service layers down.
-
-  To view the available output variables from lower layers in the stack, type ```{{.spectro.}}``` in a text editor.
-</InfoBox> -->

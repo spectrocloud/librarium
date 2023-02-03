@@ -30,7 +30,7 @@ The following are requirements for using Palette Postgres:
 * The user name format does not support the special character hyphen(-). For example, `name-1` is not supported. 
 
 
-* Clients must set `sslMode=require` or greater, as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
+* Clients must set `sslMode=require` or a stricter setting, as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
 
 # Add Postgres to an App Profile
