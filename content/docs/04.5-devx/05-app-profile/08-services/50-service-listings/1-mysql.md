@@ -43,10 +43,10 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 1. Log in to [Palette](console.spectrocloud.com).
 
 
-2. On the right side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
+2. On the right side of the window, click on the **User Menu**, then select **Switch to App Mode**.
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
 
 |    **Parameter**            | **Description** |
 |-----------------------------|-----------------|
@@ -60,21 +60,21 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   
 
 5. Provide the following information to the wizard:
-  * **Name:** The database name. You can use the auto generated name or create a custom name.
+  * **Name:** The database name. You can use the auto-generated name or create a custom name.
   * **Root Password:** The root password for the database service.
 
   * Database Volume Size (GiB): Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
 
-  * Select the version from the **Version** drop-down.
+  * Select the version from the **Version** drop-down menu.
 
 6. Click on **Save Changes**.
 
 ## Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
+* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to display the service layers.
 
 
-* * To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+* * To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -85,7 +85,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 # Output Variables
 
-The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
+The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
 
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -107,7 +107,7 @@ kubectl get secret <app-name>-<service-name>-user \
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * app-name: represents the name of the  app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
 Example: 
