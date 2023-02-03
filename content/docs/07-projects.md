@@ -28,7 +28,7 @@ The usage of the active worker nodes' CPU **Cores** is grouped across all projec
 
 ## Project Card
 
-Every **Project Card** displays the cluster's state. The cluster information is grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on several conditions such as memory and CPU utilizaiton, disk pressure, and network availability.
+Every **Project Card** displays the cluster's state. The cluster information is grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on several conditions such as memory and CPU utilization, disk pressure, and network availability.
 
 
 # Create a Project
@@ -45,7 +45,7 @@ You can associate users and teams with a project. Check out the [Project Associa
 
 ## Prerequisites
 
-* Tenant Admin access
+* Tenant admin access
 
 ## Enablement
 
@@ -55,7 +55,7 @@ You can associate users and teams with a project. Check out the [Project Associa
 1. Navigate to **Tenant Admin** > **Projects** and click on the **Create Project** button to trigger the project creation wizard.
 
 
-1. Fill out the the following fields: **Name**, **Description**, and **Tags** to create a Project.
+1. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
 
 ## Validation
 
@@ -73,7 +73,7 @@ You can remove projects by following the steps below.
 
 ## Prerequisites
 
-* Tenant Admin access
+* Tenant admin access
 
 * No active clusters in the project. 
 
