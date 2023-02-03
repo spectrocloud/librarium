@@ -23,7 +23,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 # Prerequisites
 
 - At least one infrastructure or cloud-based cluster you’ve created.
-- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```ingress-nginx-host-cluster``` add-on profile with SSL passthrough already enabled. The following example shows how SSL-passthrough is enabled for the NGINX Ingress Controller. You would add an equivalent configuration to the profile of the add-on you are using. <br /><br />
+- The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```nginx-ingress``` add-on profile with SSL passthrough already enabled. The following example shows how SSL-passthrough is enabled for the NGINX Ingress Controller. You would add an equivalent configuration to the profile of the add-on you are using. <br /><br />
 
    ```
     # -- Additional command line arguments to pass to nginx-ingress-controller
@@ -32,7 +32,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
     ```
     <br />
 
- - Palette's ```ingress-nginx-host-cluster``` add-on profile automatically reroutes inbound requests on port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
+ - Palette's ```nginx-ingress``` add-on profile automatically reroutes inbound requests on port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
  
  If you are using an ingress controller other than the NGINX Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /> 
  
@@ -46,7 +46,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
 # Set Up Ingress
 
-The following steps describe how to enable an Ingress Controller for a Cluster Group. You will use the `ingress-nginx-host-cluster` add-on profile, but you may choose another ingress controller.
+The following steps describe how to enable an Ingress Controller for a Cluster Group. You will use the `nginx-ingress` add-on profile, but you may choose another ingress controller.
 <br />
 
 1. Log in to Palette as **Tenant Admin**.
@@ -60,9 +60,9 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
-3. Either add the ```ingress-nginx-host-cluster``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](devx/cluster-groups/ingress-cluster-group#prerequisites) section. <br />
+3. Either add the ```nginx-ingress``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](devx/cluster-groups/ingress-cluster-group#prerequisites) section. <br />
     a. From the **Main Menu**, choose **Clusters** and select a cluster.<br />
-    b. In the **Profile** tab, click **Add add-on profile (+)** and select ```ingress-nginx-host-cluster```. <br />
+    b. In the **Profile** tab, click **Add add-on profile (+)** and select ```nginx-ingress```. <br />
     c. Confirm and save your changes.
 <br />
 4. For each host cluster with an ingress controller add-on profile deployed, follow these steps to open a web shell, identify the External-IP of the LoadBalancer Service, and copy the record you will need to create a canonical Name (CNAME) Domain Name System (DNS) record:
@@ -71,7 +71,7 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
 
     b. In the **Details** section beneath **Metrics**, click the **Connect** button next to the Kubernetes config file to open a web shell. 
     
-    c. Invoke the following command to display the External-IP of the ```ingress-nginx-host-cluster``` LoadBalancer Service: <br /><br />
+    c. Invoke the following command to display the External-IP of the ```nginx-ingress``` LoadBalancer Service: <br /><br />
 
     ```
     kubectl -n nginx get service nginx-ingress-controller
