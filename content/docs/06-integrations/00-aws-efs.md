@@ -72,7 +72,7 @@ There are two ways to add AWS EFS to Palette:
 
 ### Policy Information
 
-You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.<br /><br />
+You must create a policy that allows you to use EFS from your IAM account. You can use the following JSON to create the policy.<br /><br />
 
 ```yaml
 {
@@ -122,13 +122,14 @@ kubectl get storageclass
 
 ### PersistentVolumeClaim
 
-A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC, as shown in the following output, when you use the `kubectl describes pvc` ${PVC_NAME} command.
+A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC, as shown in the following output, when you use the `kubectl describe pvc` command.
 <br />
 
+```bash
+kubectl describe pvc my-efs-volume
+```
+
 ```yaml
-
- `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
-
 
 Name:          efs
 
@@ -210,7 +211,7 @@ There are two ways to add AWS EFS to Palette:
 
 ### Policy Information
 
-You must create a policy that allows you to use EFS from your IAM account. You can copy the following JSON to create the policy.<br /><br />
+You must create a policy that allows you to use EFS from your IAM account. You can use the following JSON to create the policy.<br /><br />
 
 ```yaml
 {
@@ -261,13 +262,14 @@ kubectl get storageclass
 
 ### PersistentVolumeClaim
 
-A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC by using the `kubectl describes pvc` ${PVC_NAME}` command, as the following example output shows.
+A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC by using the `kubectl describe pvc` command, as the following example output shows.
 <br />
 
+```bash
+kubectl describe pvc my-efs-volume
+```
+
 ```yaml
-
- `$ PVC_NAME=efs; kubectl describe pvc ${PVC_NAME}`
-
 
 Name:          efs
 
