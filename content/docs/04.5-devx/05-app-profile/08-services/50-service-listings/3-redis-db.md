@@ -36,7 +36,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 1. Log in to [Palette](console.spectrocloud.com)
 
 
-2. On the right hand-side of the window, click on the **User Menu**. Once the user menu is expanded, click on **Switch to App Mode**.
+2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.
 
 
 3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
@@ -49,7 +49,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 |Tag (optional)           |  Assign tags to the app profile.|
  
 
-4. Click on **Redis DB** from the DB services and start the configuration.
+4. Select the **Redis DB** DB service and start the configuration.
   
 
 5. Provide the following information to the wizard:
@@ -57,13 +57,13 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   * **Password:** The password for the database service.
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
-6. Click on **Save Changes**.
+6. Save your changes.
 ## Validation
 
-* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
+* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
 
 
-* Validate the services from the App page after app deployment. First, navigate to the **App** page, where all your apps are listed. Then, click the **App Name** to see the service layers. The color code in the app profile box shows the status of the service deployment.
+* Validate the services from the Apps page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -81,7 +81,7 @@ The exposed output variables. Use these variables when connecting higher-level s
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
 | Database Username      | `{{.spectro.app.$appDeploymentName.<service-name>.USERNAME}}`              | The database user name.                         |
-| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the database user name. |
 | Service Hostname       | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
 | Service Port           | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_SVC_PORT}}` | The exposed port for the database service.              |
 | Namespace           | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_NS}}` | The Kubernetes namespace the Redis database is deployed to.              |
@@ -98,7 +98,7 @@ kubectl get secret <app-name>-<service-name>-redis-auth \
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
 Example: 
