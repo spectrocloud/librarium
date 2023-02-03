@@ -20,10 +20,6 @@ It's important to consider the order of service layers. Using the previous examp
 
 The order of the service layers is important because the output variables used in services follow a usage hierarchy. The output variables for a service are only available if the service comes after the service that exposes the output variable. Output variables from the first services you add, which become the first layer in the app profile stack, can be consumed by other services after it. However, output variables cannot be passed downwards from the top service layers.
 
-
-<!-- * You can pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement. You can also consume the output variables as environment variables in container services. -->
-
-
 <br />
 
 ## Connectivity Example
