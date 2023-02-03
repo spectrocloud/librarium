@@ -436,7 +436,7 @@ data "spectrocloud_pack_simple" "spectro-proxy" {
 
 # References
 
-- [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard)
+- [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard)
 
 - [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
 
