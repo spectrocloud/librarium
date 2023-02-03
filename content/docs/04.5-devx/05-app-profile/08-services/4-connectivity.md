@@ -14,11 +14,11 @@ import InfoBox from 'shared/components/InfoBox';
 # Service Connectivity
 
 
-Using the exposed output variables, you can connect different service layers or tiers. For example, assume you have one application and database defined in an app profile. You can connect the two using the exposed output variable containing the Kubernetes service hostname.
+Using the exposed output variables, you can connect different service layers. For example, assume you have one application and database defined in an app profile. You can connect the two using the exposed output variable containing the Kubernetes service hostname.
 
 It's important to consider the order of service layers. Using the previous example, you must add the application after the database service layer to use the output variables of the database service. In other words, the database service should be at the app profile's bottom-most layer.
 
-The order of the service layers is important because the output variables used in services follow a usage hierarchy. The output variables for a service are only available if the service comes after the service that exposes the output variable. Output Variables from the first services you add, which become the first layer in the app profile stack, can be consumed by other services after it. However, output variables cannot be passed downwards from the top service layers.
+The order of the service layers is important because the output variables used in services follow a usage hierarchy. The output variables for a service are only available if the service comes after the service that exposes the output variable. Output variables from the first services you add, which become the first layer in the app profile stack, can be consumed by other services after it. However, output variables cannot be passed downwards from the top service layers.
 
 
 <!-- * You can pass the output variables to the different service layers as YAML values. The value can be passed on as arguments, secrets, as part of the manifest, or any YAML parameter per the user's requirement. You can also consume the output variables as environment variables in container services. -->

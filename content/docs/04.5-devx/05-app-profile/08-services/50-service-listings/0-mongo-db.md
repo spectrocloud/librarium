@@ -54,20 +54,20 @@ You can use the following steps to learn how to add MongoDB to your app profile.
   
 
 5. Provide the following information to the wizard:
-  * **Name:** The DB name. You can have the default Palette generated name or create a custom name. 
-  * **Username:** The user name for database access control
-  * **Password:** The password for the username
+  * **Name:** The DB name. You can use the default Palette-generated name or create a custom name. 
+  * **Username:** The user name for database access control.
+  * **Password:** The password for the username.
   * **Database Volume Size:** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.  
 
   * **Version:** Select the version from the **Version** drop-down. 
 
-6. Click on **Save Changes**.
+6. Click **Save Changes**.
 ## Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
+* To validate your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
 
 
-* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click on the app profile you wish to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MongoDB is an available service layer.
+* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MongoDB is an available service layer.
 
 
 |**Color Code**| **Description**|
@@ -84,7 +84,7 @@ The exposed output variables of this service layer that may be used in other ser
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
 | Database Username      | `{{.spectro.app.$appDeploymentName.<service-name>.USERNAME}}`              | The database user name.                         |
-| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the created database user name. |
+| Database User Password | `{{.spectro.app.$appDeploymentName.<service-name>.PASSWORD}}`              | The password of the database user name. |
 | Connection String       | `{{.spectro.app.$appDeploymentName.<service-name>.MONGO_URI}}`      | The MongoDB connection string that contains the Kubernetes service hostname of the database. The connection string is prefixed with `mongodb://`
 | DNS Seed           | `{{.spectro.app.$appDeploymentName.<service-name>.MONGO_URI_SRV}}` | Represents the MongoDB DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record. Contains the prefix `mongodb+srv` |
 
@@ -100,7 +100,7 @@ kubectl get secret <app-name>-<service-name>-<user-name> \
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app name provided during the Palette App creation process.
+  * app-name: represents the name of the  app provided during the Palette app creation process.
   * service-name: The name of the service layer in the app profile.
   * user-name: The name of the database user.
 
