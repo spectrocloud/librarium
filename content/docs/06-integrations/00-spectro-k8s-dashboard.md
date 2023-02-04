@@ -75,7 +75,7 @@ Changing these default settings may require some additional configuration.
 
 The default setting is **Private**. If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
 
-However, if you change **Access** to **Public** and your cluster is in a private cloud, you have to manually add and configure the Spectro Proxy pack to your cluster profile. For more information, refer to the [Spectro Proxy](https://docs.spectrocloud.com/integrations/frp) guide.
+However, if you change **Access** to **Public** and your cluster is in a private cloud, you have to manually add and configure the Spectro Proxy pack to your cluster profile. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 <br /> 
 
 ### Identity Provider 
