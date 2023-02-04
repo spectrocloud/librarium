@@ -1,7 +1,7 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
 metaTitle: 'Spectro Cloud's Integrated Kubernetes Dashboard'
-metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Spectro Cloud reduces the complexity of standing up the Kubernetes dashboard for a cluster. '
+metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Palette reduces the complexity of standing up the Kubernetes dashboard for a cluster. '
 hiddenFromNav: true
 type: "integration"
 hideToC: false
@@ -17,9 +17,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Kubernetes Dashboard
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters. It is similar to [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) in that it allow users to manage and troubleshoot applications running in the cluster and manage the cluster itself. However, Spectro Kubernetes Dashboard doesn’t require configuration. It’s easy to enable and it integrates seamlessly with Spectro Proxy.
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard. It integrates seamlessly with Spectro Proxy.  
 
-When you attach this pack to a cluster profile, it automatically adds the Spectro Proxy pack with the Kubernetes dashboard already enabled and using secure ports. Additionally, when used with the default settings, there is nothing to configure.
+When you attach this pack to a cluster profile, the Spectro Proxy pack is added automatically and the Kubernetes Dashboard is pre-enabled using secure ports. When used with the default settings, there is nothing to configure.
 <br />
 
 <WarningBox>
@@ -80,11 +80,15 @@ However, if you change **Access** to **Public** and your cluster is in a private
 
 ### Identity Provider 
 
-The default setting is **Palette**. If you change this setting to **Inherit from Tenant**, you must configure OpenID Connect (OIDC) authentication. You can configure OIDC two ways:
+The default setting is **Palette**. This makes Palette the Identify Provider (IDP), so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
+
+If you change this setting to **Inherit from Tenant**, you must configure OpenID Connect (OIDC) authentication. You can configure OIDC two ways:
 
 - In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party Identity Provider details.  
 
 - In **Tenant Settings > SSO**, if you choose **None** or **SAML**, you must configure OIDC manually in the Kubernetes pack. 
+
+For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
 
 ### Enable OIDC Authentication
 
