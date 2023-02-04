@@ -13,7 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
  # Overview
 
-Palette provides a way to run compliance, security, and conformance scan on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. It also detects potential vulnerabilities by performing penetration tests. Palette supports three types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run over time. In addition, Palette keeps a history of previous scans for comparison purposes. The following types of scans are supported:
+Palette provides a way to run compliance, security, conformance, and SBOM scans on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. They also detect potential vulnerabilities by performing penetration tests.
+
+Palette supports four types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run over time. In addition, Palette keeps a history of previous scans for comparison purposes. Each scan type is explained in detail in the sections to below.
 
 # Configuration Security
 
@@ -37,41 +39,85 @@ The scan summary of total passed and failed tests are displayed while the test i
 
 ![conformance.png](conformance.png)
 
+# SBOM: Dependencies & Vulnerabilities
+
+## What is an SBOM?
+A Software Bill of Materials (SBOM) is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps in managing security and compliance risks associated with those components.
+
+An SBOM provides metadata about each component such as version, origin, license, and more, enabling organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
+
+## Configuring an SBOM scan
+All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup storage location, and click “Confirm”.
+
+Palette will identify every unique container image within your chosen scope and not only generate an SBOM for that image, but also run the SBOM through a vulnerability scanner that will flag CVEs. Palette leverages two open source tools from Anchore for this purpose: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
+
+<br />
+
+#### SBOM scan formats
+* [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json)
+  * A standardized format for representing Software Bill of Materials that is widely used by organizations and governments. It has been around longer than any other SBOM format.
+* [CycloneDX](https://cyclonedx.org/specification/overview/)
+  * An open-source XML format that provides a standard representation of software components and their metadata.
+* GitHub's [dependency submission format](https://docs.github.com/en/rest/dependency-graph/dependency-submission?apiVersion=2022-11-28)
+  * Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
+* Syft JSON
+  * Syft's custom SBOM format. Contains the most complete metadata out of the four options.
+
+<WarningBox>
+SBOM scans using the <b>github-json</b> format will not produce dependency and vulnerability summaries. They will produce SBOMs and nothing else.
+</WarningBox>
+
+#### SBOM scan scopes
+* Cluster
+  * Scan **all** images in your K8s cluster
+* Namespace
+  * Scan all images in a particular **Namespace**
+* Label Selector
+  * Scan all images used by all of the Pods matching a **label selector** within a particular Namespace
+* Pod
+  * Scan all images used by a single **Pod**
+
+## Viewing SBOM scan results
+You can click into a completed scan to view a scan report containing additional detail for every image that was scanned. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name, as each image may be in use by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
+
+Each image details page within the scan report provides a list of dependencies and vulnerabilities. These tables are condensed highlights of the metadata contained in the SBOM that was generated for a particular image. Each dependency’s version and type is displayed, but additional metadata will be included in the SBOM. Exactly what additional metadata is included will depend on the selected SBOM format.
+
+For each vulnerability, you can view the name, severity level, vulnerability code, installed or impacted version, and the fix version (if a fix is available). Any CVEs documented in the [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail page for that particular vulnerability.
+
+If a [backup storage location](/clusters/cluster-management/backup-restore) was provided, the full SBOMs are uploaded to your backup storage location and can subsequently be downloaded with the click of a button or using the Palette API.
+
+If a backup storage location was not provided, Palette will still preserve all of the dependencies and vulnerabilities that were identified, but the raw SBOMs will not be available for download. All the results and metadata pictured in the screenshots above is included even without a backup storage location configured.
+
 # Scan Options
 
-Following options are available for running cluster scans:
+The following options are available for running cluster scans:
    
-## On Demand 
-
-Cluster scan of any type can be started by navigating to the scans tab of a cluster on the UI. The scan shows up as 'initiated' and transitions to 'Completed' when the scan is complete.
+## On Demand
+A cluster scan of any type can be started by navigating to the scans tab of a cluster on the UI. The scan shows up as 'initiated' and transitions to 'Completed' when the scan is complete.
 
 |__On Demand Scan__|
 |------------------|
 |Select the cluster to scan -> Scan(top panel) -> Run Scan|
 
-
-
 ## Scheduled
-
 A schedule can be set for each type of scan at the time of deploying the cluster initially. The schedule can also be (re)set at a later point.
 
 |__During Cluster Deployment__|
 |-----------------------------|
 |Add New Cluster -> Cluster Policies -> Scan Policies -> Enable and schedule desired scans|
 
-
 |__Running Cluster__|
 |----------------------|
 |Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice|
 
-
 ### Schedule Options Available
 
-* Custom your compliance scan for an exact month, day, hour, and minute of user choice
-* Every week on Sunday at midnight
-* Every two weeks at midnight
-* Every month on the 1st at midnight
-* Every two months on the 1st at midnight
+* Schedule your compliance scan for an exact month, day, hour, and minute
+* E.g.:
+  * Every week on Sunday at midnight
+  * Every two weeks at midnight
+  * Every month on the 1st at midnight
+  * Every two months on the 1st at midnight
 
 <InfoBox>
     This operation can be performed on all cluster types across all clouds
