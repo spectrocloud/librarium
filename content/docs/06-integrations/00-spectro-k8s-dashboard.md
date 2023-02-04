@@ -27,10 +27,8 @@ Default settings for the dashboard provide best practices for your clusters. Cha
 </WarningBox>
 
 # Versions Supported
-
-<Tabs>
-
-<Tabs.TabPane tab="2.6.x" key="2.6.x">
+<br />
+**2.6.x**
 
 ## Prerequisites
 
@@ -123,8 +121,6 @@ clientConfig:
   oidc-extra-scope: profile,email
 ```
 
-</Tabs.TabPane>
-</Tabs>
 
 # Terraform
 
