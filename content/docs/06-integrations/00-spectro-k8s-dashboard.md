@@ -1,7 +1,7 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
 metaTitle: 'Spectro Cloud's Integrated Kubernetes Dashboard'
-metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
+metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Spectro Cloud reduces the complexity of standing up the Kubernetes dashboard for a cluster. '
 hiddenFromNav: true
 type: "integration"
 hideToC: false
