@@ -1,6 +1,6 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
-metaTitle: 'Spectro Kubernetes Dashboard'
+metaTitle: 'Spectro Cloud's Integrated Kubernetes Dashboard'
 metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
