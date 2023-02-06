@@ -1,12 +1,12 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
-metaTitle: 'Spectro Cloud's Integrated Kubernetes Dashboard'
-metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Palette reduces the complexity of standing up the Kubernetes dashboard for a cluster. '
+metaTitle: "Spectro Cloud's Integrated Kubernetes Dashboard"
+metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Palette reduces the complexity of standing up the Kubernetes dashboard for a cluster'
 hiddenFromNav: true
 type: "integration"
-hideToC: false
-category: ['Spectro Integrations', 'monitoring']
+category: ['integrations','monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
+---
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -20,15 +20,23 @@ import Tooltip from "shared/components/ui/Tooltip";
 Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard. It integrates seamlessly with Spectro Proxy.  
 
 When you attach this pack to a cluster profile, the Spectro Proxy pack is added automatically and the Kubernetes Dashboard is pre-enabled using secure ports. When used with the default settings, there is nothing to configure.
+
 <br />
 
 <WarningBox>
+
 Default settings for the dashboard provide best practices for your clusters. Changing the default settings can introduce security issues by exposing your clusters. We recommend using the defaults.
+
 </WarningBox>
+
+<br />
+
+
 
 # Versions Supported
 
 <br />
+
 **2.6.x**
 
 ## Prerequisites
@@ -75,6 +83,7 @@ Changing these default settings may require some additional configuration.
 The default setting is **Private**. If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
 
 However, if you change **Access** to **Public** and your cluster is in a private cloud, you have to manually add and configure the Spectro Proxy pack to your cluster profile. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
 <br /> 
 
 ### Identity Provider 
