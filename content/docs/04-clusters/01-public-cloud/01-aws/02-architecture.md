@@ -92,12 +92,12 @@ By default, worker pools are configured to use on-demand instances. However, to 
 You can assign tags to clusters deployed to AWS. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the [Resource Filters](/clusters/cluster-management/cluster-tag-filter/create-add-filter) documentation page to learn more about using tags to restrict resource access. 
 
 The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value-pair format: `department: finance`.
-In addition to the custom tags provided by you, Palette provisioned AWS resources will receive the following default tags.
+In addition to the custom tags provided by you, Palette-provisioned AWS resources will receive the following default tags.
 
 | Key                                                        | Value         | Description                                                                    |
 |------------------------------------------------------------|---------------|--------------------------------------------------------------------------------|
 | `Name`                                                       | [clusterName-resource] | The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example: `mycluste2r-vpc` |
-| `kubernetes.io/cluster/[clusterName] `                       | owned         | This tag is only applicable to cluster nodes. Used for Palette internal purposes to help manage the lifecyle of the cluster. |
+| `kubernetes.io/cluster/[clusterName] `                       | owned         | This tag only applies to cluster nodes. Used for Palette internal purposes to help manage the lifecyle of the cluster. |
 | `sigs.k8s.io/cluster-api-provider-aws/cluster/[clusterName]` | owned         | Used for Palette internal purposes to help manage the lifecyle of the cluster. |
 | `sigs.k8s.io/cluster-api-provider-aws/role`                  | common        | Used for Palette internal purposes to help manage the lifecyle of the cluster. |
 | `spectro__ownerUid`                                          | [uniqueId]    | The Palette tenant's id. Example: `1356fc37ab1aac03a5d66b4c` |
