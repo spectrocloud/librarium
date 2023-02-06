@@ -27,6 +27,7 @@ Default settings for the dashboard provide best practices for your clusters. Cha
 </WarningBox>
 
 # Versions Supported
+
 <br />
 **2.6.x**
 
