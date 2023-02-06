@@ -12,11 +12,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Projects
 
-A **Project** helps you organize the cluster resources in a logical grouping. The resources which are created within a project are scoped to that project and not available to other projects. You can also assign users and teams with specific roles to specific projects.
+A **Project** helps you organize the cluster resources in a logical grouping. The resources that are created within a project are scoped to that project and not available to other projects. You can also assign users and teams with specific roles to specific projects.
 
 # Project Dashboard
 
-The **Tenant Admin** > **Projects** page displays the projects-related dashboard cards, capturing the usage and metrics about the projects.
+The **Tenant Admin** > **Projects** page displays the project-related dashboard cards that capture the usage and metrics about projects.
 
 ## Monthly kilo-Core hours Usage
 
@@ -24,11 +24,11 @@ The **Monthly Usage** card shows the Daily Cluster Usage in kilo-Core hours (kCh
 
 ## Cores per Project Usage
 
-The usage of the active worker nodes' CPU **Cores** is grouped across all projects and shown at an hourly interval, by default. You can change the interval value to days or months.
+By default, the active worker node usage of CPU **Cores** is grouped across all projects and shown as an hourly interval. You can change the interval value to days or months.
 
 ## Project Card
 
-Every **Project Card** displays the cluster's state. The cluster information is grouped by its health and error states. Cluster health is derived based on the cluster nodes' health. The health of each node is determined based on several conditions such as memory and CPU utilization, disk pressure, and network availability.
+Every **Project Card** displays the cluster's state. The cluster information is grouped by its health and error states. Cluster health is derived from the health of the cluster nodes. The health of each node is determined based on several conditions such as memory and CPU utilization, disk pressure, and network availability.
 
 
 # Create a Project
@@ -49,17 +49,17 @@ You can associate users and teams with a project. Check out the [Project Associa
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-1. Navigate to **Tenant Admin** > **Projects** and click on the **Create Project** button to trigger the project creation wizard.
+1. Navigate to **Tenant Admin** > **Projects** and click the **Create Project** button.
 
 
 1. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
 
 ## Validation
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 1. Navigate to **Tenant Admin** > **Projects** 
 
@@ -69,21 +69,21 @@ Your newly created project is listed along with other existing projects.
 # Delete a Project
 
 
-You can remove projects by following the steps below.
+You can remove projects by following these steps.
 
 ## Prerequisites
 
-* Tenant admin access
+* Tenant admin access.
 
 * No active clusters in the project. 
 
 ## Remove Project
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Switch to the **Tenant Admin** scope.
+2. Switch to **Tenant Admin** scope.
 
-3. Navigate to the left **Main Menu** and select **Projects**
+3. Navigate to the left **Main Menu** and select **Projects**.
 
 4. Locate the project card for the project you want to remove.
 
@@ -101,8 +101,8 @@ You can force delete projects as long as there are no active clusters. All resou
 
 ## Validation
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Navigate to **Tenant Admin** > **Projects** 
+1. Navigate to **Tenant Admin** > **Projects** .
 
 The project you deleted is no longer displayed and available for interaction.
