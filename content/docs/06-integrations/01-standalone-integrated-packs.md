@@ -16,7 +16,7 @@ import AppTiers from "shared/components/common/Integrations/AppTiers"
 
 Palette provides many add-on packs that are stand-alone and do not have dependencies. For more complex configurations, Palette has introduced integrated packs, which have dependencies that are handled internally, giving users convenience over configuration. Integrated packs are available in cluster profiles.
 
-Say you want to add the Kubernetes Dashboard to your cluster profile. Typically, this would require manually adding a dependency proxy pack to enable the use of a reverse proxy with a Kubernetes cluster. It also requires configuring third-party authentication through OIDC.
+Say you want to add the Kubernetes dashboard to your cluster profile. Typically, this would require manually adding a dependency proxy pack to enable the use of a reverse proxy with a Kubernetes cluster. It also requires configuring third-party authentication through OIDC.
 
 Palette’s integrated version of the Kubernetes dashboard pack, called Spectro Kubernetes Dashboard, has pre-set defaults and does not require configuration. However, integrated packs offer the flexibility to change defaults if needed. Changing the defaults in an integrated pack would require some configuration. 
 
