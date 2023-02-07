@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers.
+Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers. 
 
 # Prerequisite
 
@@ -23,7 +23,7 @@ The following describes the overall process to install a Private Cloud Gateway (
 
 1. You obtain a pairing code in Palette that you will provide when you run the installer.
 
-2. You run a configuration script using a docker image. The script creates a Private Cloud Gateway (PCG) configuration file that the installer uses.
+2. You run a configuration script using a docker image. The script creates a Private Cloud Gateway (PCG) configuration file that the installer will use.
 
 3. You run the installer using the open-source Kind tool. 
 
@@ -41,31 +41,15 @@ The following describes the overall process to install a Private Cloud Gateway (
 
 5. The installer installs one machine (non-HA) or three machines (HA) from your MAAS cluster to build a new cluster that will host the PCG.
 
+The Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local installer facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet.
+
 # Resources
 
 
 
 
 
-Following are some architectural highlights of bare-metal Kubernetes clusters, deployed by Palette, using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
-1. Palette developed and released an open sourced CNCF Cluster API contribution supporting Canonical's MAAS interface (https://github.com/spectrocloud/cluster-api-provider-maas).
-
-
-2. The new contribution to the open source Kubernetes ecosystem addresses the need for organizations to easily deploy, run and manage Kubernetes clusters directly on top of bare metal servers, increasing performance and minimizing cost and operational effort.
-
-
-3. Palette provides cloud-like experience to deploying clusters on bare metal servers.
-
-
-4. In order to facilitate communication between the Palette management platform and the bare metal machines as well as MAAS controller installed in the private data center, a Private Cloud Gateway needs to be set up within the environment.
-
-
-
-5. Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or data center environments. The Palette PCG, once installed registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
-
-
-![maas_cluster_architecture.png](maas_cluster_architecture.png)
 
 # Prerequisites
 
