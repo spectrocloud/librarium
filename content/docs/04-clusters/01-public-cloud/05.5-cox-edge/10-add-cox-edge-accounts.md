@@ -87,11 +87,11 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 
     - API Key: Provide the API key you generated earlier.
 
-    - Organzation Id: Add the organization id you copied down earlier from the Cox Edge organization overview page.
+    - Organization Id: Add the organization id you copied down earlier from the Cox Edge organization overview page.
 
     - Environment: This is an optional field but you can provide the environment you wish to target if you have one.
 
-    - Service: Provide the service code you copied from the Cox Edge **Edge Compute** overview page.
+    - Service: Provide the service code you copied from the Cox Edge portal's **Edge Compute** overview page.
 
 17. Click on **Validate** to confirm you have access to the Cox Edge account.
 
