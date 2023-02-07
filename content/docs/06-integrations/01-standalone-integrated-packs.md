@@ -1,6 +1,6 @@
 ---
 title: "Stand-alone and Integrated Packs"
-metaTitle: "AStand-alone and Integrated Packs"
+metaTitle: "Stand-alone and Integrated Packs"
 metaDescription: "Learn about Palette Stand-Alone Packs and Integrated Packs."
 icon: ""
 hideToC: false
