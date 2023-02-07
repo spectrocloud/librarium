@@ -259,7 +259,6 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 </Tabs.TabPane> 
 
-
 </Tabs>
 
 
