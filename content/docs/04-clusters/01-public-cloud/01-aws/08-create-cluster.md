@@ -87,7 +87,7 @@ Use the following steps to provision a new AWS cluster:
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Network**: Select the virtual network from dropdown menu.
-    ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
+    ||**Control plane subnet**: Select the control plane network from the dropdown menu.
     ||**Worker Network**: Select the worker network from the dropdown menu. |
     
 
