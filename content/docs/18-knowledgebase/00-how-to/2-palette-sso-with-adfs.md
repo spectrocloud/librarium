@@ -66,11 +66,12 @@ If you need to be able to your AD FS service from outside your corporate network
 
 
 7. The redirect URI is required for SSO to work with Palette. However, if you also want to use the same AD FS server for OIDC authentication into your Kubernetes clusters then add the following additional redirect URIs to the list as well:
+
 | URL | Type of Access |
 | --- | --- |
-| http://localhost:8000 | Using kubectl with the kube-login plugin from a workstation |
-| https://console.spectrocloud.com/v1/shelly | Using the web-based kubectl console |
-| https://<fqdn-of-k8s-dashboard>/oauth/callback | Using OIDC authentication into Kubernetes Dashboard |
+| `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation |
+| `https://console.spectrocloud.com/v1/shelly` | Using the web-based kubectl console |
+| `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard |
 
 8. When you have completed entering redirect URLs, click **Next**. On the next page of the wizard, select **Generate a shared secret** and click **Copy to clipboard** to copy the secret value and save it somewhere. You will need to enter this value into the Palette SSO configuration later:
 
@@ -160,17 +161,18 @@ You can select the items on the left from the list. You will need to type the it
 23. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription. 
 
 Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the following information.
+
 | Parameter         | Value                                                             |
 |-------------------|--------------------------------------------------------------------|
 | Issuer URL        | Your AD FS issuer URL, typically this is your AD FS name plus /adfs|
-| Client ID         | the client identifier that you noted down in the beginning of the previous step |
-| Client Secret     | the shared secret that you generated in the previous step |
+| Client ID         | the client identifier that you noted down step **4** |
+| Client Secret     | the shared secret that you generated in step **8** |
 | Default Teams     | leave empty if you don't want users without any groups claims to be assigned to a default group. If you do, enter the desired default group name here. If you use this option, be careful with how much access you give to that group. |
-| Scopes            | set this to openid and allatclaims |
-| Email             | leave at the default of email |
-| First Name        | leave at the default of given_name |
-| Last Name         | leave at the default of family_name |
-| Spectro Team      | leave at the default of groups |
+| Scopes            | set this to `openid` and `allatclaims` |
+| Email             | leave at the default of `email` |
+| First Name        | leave at the default of `given_name` |
+| Last Name         | leave at the default of `family_name` |
+| Spectro Team      | leave at the default of `groups` |
 
 ![Enable Palette OIDC SSO](palette-sso-with-adfs-images/20-configure_palette_oidc.png)
 
