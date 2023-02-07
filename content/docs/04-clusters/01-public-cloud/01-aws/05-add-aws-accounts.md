@@ -29,7 +29,7 @@ Palette supports integration with AWS Cloud Accounts. This also includes support
 
 <Tabs.TabPane tab="Using the Access Credentials Method" key="Using the Access Credentials Method">
 
-To add an AWS cloud account using static access credentials follow the steps below:
+To add an AWS cloud account using static access credentials follow these steps:
 
 ## Prerequisites
 
@@ -193,7 +193,7 @@ Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/gov
 
 ## Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
 
 </Tabs.TabPane>
 
