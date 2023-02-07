@@ -30,6 +30,10 @@ To add a Cox Edge account to Palette, use the following instructions.
 
 # Enablement
 
+You can use the steps below or the interactive guide to help you add a Cox Edge account to Palette. Click on the first image link to navigate the destination site with the tutorial on the right-hand side.
+
+<iframe src="https://scribehow.com/embed/Cox_Edge_Account_Creation__xkGjLKR_SCqwnVWSvlIxaQ?skipIntro=true&removeLogo=true" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
 1. Log in to the [Cox Edge](https://portal.coxedge.com/login) portal.
 
 
@@ -59,20 +63,23 @@ To add a Cox Edge account to Palette, use the following instructions.
 
 10. Copy the edge services code located at the top of the page.
 
-<InfoBox>
 
-You can create a new compute environment either now from the **Edge Compute** overview page or later, but keep in mind that a compute environment is required for deploying a cluster. Check out the [Create and Manage Cox IaaS Cluster](/clusters/public-cloud/cox-edge/create-cox-cluster) to learn how to create a Cox Edge environment.
-
-</InfoBox>
+11. Next, click on **+ Add Environment** to create a compute environment. A compute environment is required when adding a Cox Edge account to Palette.
 
 
-11. Next, open up another browser tab and log into [Palette](https://console.spectrocloud.com) as a Tenant admin.
+12. Provide a name and description, select **Next**.
 
 
-12. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add Cox Edge Account**.
+13. Add members to the compute environment. You can also add members at a latter point. Apply the changes.
 
 
-13. Fill out the all of the input fields.
+14. Next, open up another browser tab and log in to [Palette](https://console.spectrocloud.com) as a Tenant admin.
+
+
+15. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add Cox Edge Account**.
+
+
+16. Fill out the all of the input fields.
 
     - Account Name: Assign a name to the Cox Edge account.
 
@@ -86,10 +93,20 @@ You can create a new compute environment either now from the **Edge Compute** ov
 
     - Service: Provide the service code you copied from the Cox Edge **Edge Compute** overview page.
 
-14. Click on **Validate** to confirm you have access to the Cox Edge account.
+17. Click on **Validate** to confirm you have access to the Cox Edge account.
 
-15. Select **Confirm** to add the Cox Edge account to Palette.
+18. Select **Confirm** to add the Cox Edge account to Palette.
 
 
 # Validation
 
+1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant admin.
+
+
+2. Navigate to the left **Main Menu** and select **Tenant Settings**, and ensure you are in the **Cloud Accounts** page.
+
+
+3. Your Cox Edge account is now listed with all the other infrastructure provider accounts.
+
+
+4. You can also deploy a cluster to Cox Edge to validate everything is working. Use the [Create and Manage Cox IaaS Cluster](/clusters/public-cloud/cox-edge/create-cox-cluster) guide to create and deploy a cluster to Cox Edge.
