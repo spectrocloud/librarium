@@ -101,7 +101,7 @@ Click **Next** when done. On the next screen, select a suitable policy for who c
 ![Select Access Control Policy](palette-sso-with-adfs-images/10-select_policy.png)
 
 
-On the next screen, by default only the **openid** scope is ticked. However, to only include the user's groups in the OIDC claim, you need to also enable the **allatclaims** scope. If your AD FS server does not yet have an **allatclaims** scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click OK to add it. Ensure both scopes are enabled and then click **Next**:
+On the next screen, by default only the **openid** scope is ticked. However, to include the user's groups in the OIDC claim, you need to also enable the **allatclaims** scope. If your AD FS server does not yet have an **allatclaims** scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click OK to add it. Ensure both scopes are enabled and then click **Next**:
 
 ![Enable Permitted Scopes](palette-sso-with-adfs-images/11-enable_scopes.png)
 
@@ -223,7 +223,7 @@ Click on the **Sign in** button to log in via SSO.
 ![User SSO Login](palette-sso-with-adfs-images/26-palette_login.png)
 
 
-If this is the first time you are login in with SSO, you will be redirected to the Microsoft AD FS login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
+If this is the first time you are logging in with SSO, you will be redirected to the Microsoft AD FS login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
 Make sure you log in as a user that is a member of the `SpectroTeam - Admins` group in Active Directory. Once authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
 
