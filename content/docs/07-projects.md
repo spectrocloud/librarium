@@ -16,19 +16,15 @@ A **Project** helps you organize the cluster resources in a logical grouping. Th
 
 # Project Dashboard
 
-The **Tenant Admin** > **Projects** page displays the project-related dashboard cards that capture the usage and metrics about projects.
+The **Tenant Admin** > **Projects** page displays the project-related dashboard cards for all projects in the tenant. 
 
-## Monthly kilo-Core hours Usage
-
-The **Monthly Usage** card shows the Daily Cluster Usage in kilo-Core hours (kCh) for a month across all the projects.  The kilo-Core hours is an aggregate measure of how many core hours the worker nodes consume, while under management, across all your deployments. The metering of the kilo-Core hours for the node is done in increments of seconds. The monthly usage card also shows project-wide kilo-Core hours. Based on the plan type, the kilo-Core hours' subscription information will be shown. A tenant starts with a Trial plan and can upgrade to a Monthly On-Demand plan or an Annual Subscription plan.
-
-## Cores per Project Usage
-
-By default, the active worker node usage of CPU **Cores** is grouped across all projects and shown as an hourly interval. You can change the interval value to days or months.
 
 ## Project Card
 
-Every **Project Card** displays the cluster's state. The cluster information is grouped by its health and error states. Cluster health is derived from the health of the cluster nodes. The health of each node is determined based on several conditions such as memory and CPU utilization, disk pressure, and network availability.
+The **Project card** shows the status and relevant details of a cluster, grouping information about healthy, unhealthy, and errored clusters. It calculates cluster health by evaluating the health of each node, taking into account factors such as memory and CPU utilization, disk pressure, and network availability. Additionally, it displays the number of clusters imported and those provisioned by Palette.
+### Cores per Project Usage
+
+By default, the active worker node usage of CPU **Cores** is grouped across all projects and shown as an hourly interval. You can change the interval value to days or months.
 
 
 # Create a Project
@@ -52,16 +48,17 @@ You can associate users and teams with a project. Check out the [Project Associa
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-1. Navigate to **Tenant Admin** > **Projects** and click the **Create Project** button.
+2. Navigate to **Tenant Admin** > **Projects** and click the **Create Project** button.
 
 
-1. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
+3. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
 
 ## Validation
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Navigate to **Tenant Admin** > **Projects** 
+
+2. Navigate to **Tenant Admin** > **Projects** 
 
 Your newly created project is listed along with other existing projects.
 
@@ -81,20 +78,25 @@ You can remove projects by following these steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
 2. Switch to **Tenant Admin** scope.
+
 
 3. Navigate to the left **Main Menu** and select **Projects**.
 
+
 4. Locate the project card for the project you want to remove.
+
 
 5. Click on the **three-dot Menu** and select **Delete**.
 
-6. A pop-up box will ask you to confirm the action. Click on **Yes, delete project**.
+
+6. A pop-up box will ask you to confirm the action. Confirm the deletion.
 
 
 <WarningBox>
 
-You can force delete projects as long as there are no active clusters. All resources that belong to the project will be deleted.
+You can delete projects with force as long as there are no active clusters. Force deleting will eliminate all resources linked to the project, such as app profiles, cluster profiles, workspaces, audit logs, and custom project settings. However, if a project has active clusters, you must remove them first before deleting the project.
 
 </WarningBox>
 
@@ -103,6 +105,7 @@ You can force delete projects as long as there are no active clusters. All resou
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Navigate to **Tenant Admin** > **Projects** .
+
+2. Navigate to **Tenant Admin** > **Projects** .
 
 The project you deleted is no longer displayed and available for interaction.
