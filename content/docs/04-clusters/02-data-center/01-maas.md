@@ -1,7 +1,7 @@
 ---
 title: "MAAS"
-metaTitle: "Creating new clusters on Spectro Cloud"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
+metaTitle: "Configure MAAS and create MAAS clusters in Palette"
+metaDescription: "Learn how to configure MAAS and create MAAS clusters in Palette"
 hideToC: false
 fullWidth: false
 ---
@@ -12,6 +12,40 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
+
+Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers.
+
+# Prerequisite
+
+- MAAS installed, set up, and available in your environment.
+
+The following describes the overall process to install a Private Cloud Gateway (PCG) to manage a MAAS bare metal cloud. Detailed steps to get you started are provided in Install and Manage a MAAS Private Cloud Gateway.
+
+1. You obtain a pairing code in Palette that you will provide when you run the installer.
+
+2. You run a configuration script using a docker image. The script creates a Private Cloud Gateway (PCG) configuration file that the installer uses.
+
+3. You run the installer using the open-source Kind tool. 
+
+4. The installer uses the configuration file to build a cluster that will host the PCG.
+
+    The installer needs access to your Palette account and one machine from your MAAS cluster if you do not want High Availability (HA), or three machines from your MAAS cluster if you want HA.
+
+    The machines in your MAAS must have internet access and be in a ready state.
+
+    <InfoBox>
+
+    For production environments, we recommend setting up three nodes. If you initially set up the gateway with one node, you can resize to three nodes at a later time. 
+
+    </InfoBox>
+
+5. The installer installs one machine (non-HA) or three machines (HA) from your MAAS cluster to build a new cluster that will host the PCG.
+
+# Resources
+
+
+
+
 
 Following are some architectural highlights of bare-metal Kubernetes clusters, deployed by Palette, using Canonical's MAAS (an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units):
 
