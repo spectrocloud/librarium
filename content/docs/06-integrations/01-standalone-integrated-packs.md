@@ -21,7 +21,9 @@ Say you want to add the Kubernetes dashboard to your cluster profile. Typically,
 Palette’s integrated version of the Kubernetes dashboard pack, called Spectro Kubernetes Dashboard, has pre-set defaults and does not require configuration. However, integrated packs offer the flexibility to change defaults if needed. Changing the defaults in an integrated pack would require some configuration. 
 
 <WarningBox>
-Default settings provide best practices for your clusters. Changing the default settings can introduce security issues by exposing your clusters. We recommend using the defaults.
+
+We recommend using the Pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
+
 </WarningBox>
 
 <br />
