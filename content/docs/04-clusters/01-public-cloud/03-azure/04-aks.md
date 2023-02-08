@@ -144,7 +144,7 @@ The following steps need to be performed to provision a new cluster:
 <WarningBox>
 
 If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and the cluster option 
-**Static Placement** is enabled, the network informations from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
+**Static Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
 
 </WarningBox>
 
