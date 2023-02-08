@@ -29,15 +29,13 @@ Default settings for the dashboard provide best practices for your clusters. Cha
 
 </WarningBox>
 
-<br />
-
-
 
 # Versions Supported
 
-<br />
 
 **2.6.x**
+
+<br />
 
 ## Prerequisites
 
@@ -73,7 +71,7 @@ These settings are also included in the manifest as `access` and `identityProvid
 
 ## Usage
 
-To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. The Spectro Kubernetes Dashboard pack has default settings for **Access** and **Identity Provider**. These settings automatically install the latest version of the Spectro Proxy pack when the cluster is created.
+To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. The Spectro Kubernetes Dashboard pack has default settings for **Access** and **Identity Provider**. These settings automatically install the latest version of the Spectro Proxy pack when you create the cluster.
 
 Changing these default settings may require some additional configuration.
 <br /> 
@@ -90,47 +88,101 @@ However, if you change **Access** to **Public** and your cluster is in a private
 
 The default setting is **Palette**. This makes Palette the Identify Provider (IDP), so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
 
-If you change this setting to **Inherit from Tenant**, you must configure OpenID Connect (OIDC) authentication. You can configure OIDC two ways:
+If you change this setting to **Inherit from Organization**, you must configure OpenID Connect (OIDC) authentication. You can configure OIDC two ways:
 
-- In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party Identity Provider details.  
+- In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details.  
 
 - In **Tenant Settings > SSO**, if you choose **None** or **SAML**, you must configure OIDC manually in the Kubernetes pack. 
 
 For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+<br />
 
 ### Enable OIDC Authentication
 
-To enable OIDC authentication manually, copy the configuration shown in the example to the Kubernetes Pack and provide your third-party Identity Provider details.
-<br />
-
-```
-## OIDC related config
-  oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'     # The name of the OIDC provider configuration
-    issuerUrl: 'issuer-url'       # The URL of the OpenID identity provider
-    clientId: 'user-client-id-from-Palette'           # The ID for the client application that makes authentication requests to the OpenID identity provider
-    usernameClaim: "email"                     # The JSON Web Token (JWT) claim to use as the username
-    usernamePrefix: "-"                        # The prefix that is prepended to username claims to prevent clashes with existing names
-    groupsClaim: "groups"                      # The JWT claim that the provider uses to return your groups
-    groupsPrefix: ""                          # The prefix that is prepended to group claims to prevent clashes with existing names
-    requiredClaims:                            # The key value pairs that describe required claims in the identity token
-```
+The basic method to enable OIDC authentication can be used for all cloud services except Amazon EKS and Azure AKS. 
 
 <br />
 
+<Tabs>
 
-To add OIDC-based authentication flags in kubeconfig, uncomment the lines as shown in the example.
+<Tabs.TabPane tab="Other Clouds" key="Other Clouds">
+
+Follow these steps to enable OIDC authentication for your cloud provider.
+
+1. Copy the oidc configuration lines shown in the example to the ``extraArgs`` section of the Kubernetes pack and enter your provider details in quotes.
+
+  ```
+  kubeadmconfig:
+    apiServer:
+      extraArgs:
+      oidc-issuer-url: "provider URL"
+      oidc-client-id: "client-id"
+      oidc-groups-claim: "groups"
+      oidc-username-claim: "email"
+  ```
+
+2. Uncomment the lines in the following example and enter your provider details in quotes.
+
+  ```
+    clientConfig:
+      oidc-issuer-url: "provider URL"
+      oidc-client-id: "client-id"
+      oidc-client-secret: client-secret-value
+      oidc-extra-scope: profile,email,openid
+    ```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="AWS EKS" key="AWS EKS">
+
+To enable RBAC OIDC authentication manually for EKS clusters, you can update the Kubernetes Pack kubeconfig by following these steps: 
+
 <br />
 
-```
-## Client configuration to add OIDC based authentication flags in kubeconfig
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: client-secret-value
-  oidc-extra-scope: profile,email
-```
+1. Copy lines shown in the example to the Kubernetes Pack configuration file and provide your third-party IDP details.
+<br />
 
+  ```
+  ## OIDC related config
+    oidcIdentityProvider:
+      identityProviderConfigName: 'Spectro-docs'     # The name of the OIDC provider configuration
+      issuerUrl: 'issuer-url'       # The URL of the OpenID identity provider
+      clientId: 'user-client-id-from-Palette'           # The ID for the client application that makes authentication requests to the OpenID identity provider
+      usernameClaim: "email"                     # The JSON Web Token (JWT) claim to use as the username
+      usernamePrefix: "-"                        # The prefix that is prepended to username claims to prevent clashes with existing names
+      groupsClaim: "groups"                      # The JWT claim that the provider uses to return your groups
+      groupsPrefix: ""                          # The prefix that is prepended to group claims to prevent clashes with existing names
+      requiredClaims:                            # The key value pairs that describe required claims in the identity token
+  ```
+
+<br />
+
+
+2. Uncomment the following lines in the Kubernetes pack configuration file to add OIDC-based authentication flags:
+<br />
+
+  ```
+  ## Client configuration to add OIDC based authentication flags in kubeconfig
+  clientConfig:
+    oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+    oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+    oidc-client-secret: client-secret-value
+    oidc-extra-scope: profile,email
+  ```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Azure AKS" key="Azure AKS">
+
+To enable RBAC OIDC authentication manually for EKS clusters, you do the following: 
+
+- In Palette, you update the Kubernetes Pack configuration file with OIDC configuration. 
+
+- Configure Azure Active Directory (Azure AD). The Microsoft guide explains how to [configure Azure AD](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.micro[…]icrosoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json&tabs=portal). 
+
+</Tabs.TabPane>
+
+</Tabs>
 
 # Terraform
 
