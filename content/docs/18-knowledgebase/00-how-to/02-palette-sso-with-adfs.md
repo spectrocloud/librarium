@@ -242,7 +242,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
 29. Click the **X** next to **Team Details** in the top left corner to exit this screen.
 
-You have now successfully configured Palette SSO based on OIDC with Microsoft AD FS!
+You have now successfully configured Palette SSO based on OIDC with Microsoft AD FS.
 
 
 # Validation
