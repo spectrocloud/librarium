@@ -133,13 +133,19 @@ The following steps need to be performed to provision a new cluster:
     | **Subscription**   | Select the subscription which is to be used to access Azure Services.                        |
     | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
-    | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                      |
+    | **SSH Key**        | Public key* to configure remote SSH access to the nodes.                                      |
     | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Resource Group**: The logical container for grouping related Azure resources.
     || **Virtual Network**: Select the virtual network from dropdown menu.
     || **Control plane Subnet**: Select the control plane network from the dropdown menu.
     || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
+
+<InfoBox>
+
+* Azure currently supports SSH protocol 2 (SSH-2) RSA public-private key pairs with a minimum length of 2048 bits. Other key formats such as ED25519 and ECDSA are not supported.
+
+</InfoBox>
 
 <InfoBox>
 

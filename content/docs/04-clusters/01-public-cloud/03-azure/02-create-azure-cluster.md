@@ -84,12 +84,18 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
 | **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases. |
 | **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases.|
-| **SSH Key** | Public key to configure remote SSH access to the nodes.|
+| **SSH Key** | Public key* to configure remote SSH access to the nodes.|
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 |**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
 |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
-   
+
+<InfoBox>
+
+* Azure currently supports SSH protocol 2 (SSH-2) RSA public-private key pairs with a minimum length of 2048 bits. Other key formats such as ED25519 and ECDSA are not supported.
+
+</InfoBox>
+
 
 #### Static Placement Table
 
