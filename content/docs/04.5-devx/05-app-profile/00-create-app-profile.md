@@ -30,7 +30,9 @@ To create an App Profile:
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In **App Mode**, select **App Profiles** in the **Main Menu**, and click the **New App Profile** button. 
+
+2. In App Mode, select **App Profiles** from the **Main Menu**, and click the **New App Profile** button. 
+
 
 3. Provide the following basic information for your App Profile and click **Next**.
 
@@ -40,17 +42,19 @@ To create an App Profile:
 |Application Profile Name | A custom name for the App Profile|
 |Version (optional) | The default value is 1.0.0. You can create multiple versions of an App Profile using the format **`major.minor.patch`**.
 |Description (optional)   | Description of the App Profile. | 
-|Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+|Tag (optional)               | Assign tags to the app profile.|
+
 
 4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
 
+
 5. Provide configuration information for the service.
 
-6. You can add more services to the App Profile as needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
-7. When you've provided the required configuration information for services, click **Review**. 
+6. You can add more services to the App Profile as needed. To do this, click the **Actions** button next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the App Profile stack in the order shown in this pane.
 
-Your App Profile is now created and can be deployed.  
+
+7. When you've provided the required configuration information for services, click **Review**. Your App Profile is now created and can be deployed.  
 
 # Validation
 

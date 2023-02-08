@@ -45,14 +45,13 @@ BODY:
 
 ```json
 {
-  {
-  "metadata":
-    "name": "string"
-  },
-  "spec": {
-    "expiry": "date-time",
-    "userUid": "string"
-  }
+   "metadata":{
+      "name":"string"
+   },
+   "spec":{
+      "expiry":"date-time",
+      "userUid":"string"
+   }
 }
 ```
 
@@ -131,19 +130,19 @@ BODY:
           "tag": "string",
           "uid": "string",
           "values": "string"
-        }
+        },
         {
           "name": "string",
           "tag": "string",
           "uid": "string",
           "values": "string"
-        }
+        },
         {
           "name": "string",
           "tag": "string",
           "uid": "string",
           "values": "string"
-        }
+        },
         {
           "name": "string",
           "tag": "string",
