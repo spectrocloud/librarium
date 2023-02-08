@@ -133,7 +133,7 @@ The following steps need to be performed to provision a new cluster:
     | **Subscription**   | Select the subscription which is to be used to access Azure Services.                        |
     | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
-    | **SSH Key**        | Public key* to configure remote SSH access to the nodes.                                      |
+    | **SSH Key**        | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                     |
     | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Resource Group**: The logical container for grouping related Azure resources.
     || **Virtual Network**: Select the virtual network from dropdown menu.
@@ -141,36 +141,28 @@ The following steps need to be performed to provision a new cluster:
     || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 
-<InfoBox>
+<WarningBox>
 
-* Azure currently supports SSH protocol 2 (SSH-2) RSA public-private key pairs with a minimum length of 2048 bits. Other key formats such as ED25519 and ECDSA are not supported.
+If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and the cluster option 
+**Static Placement** is enabled, the network informations from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
 
-</InfoBox>
-
-<InfoBox>
-
-If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
-**Static Placement** the network informations from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}> <br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}> <br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
-
-</InfoBox>
+</WarningBox>
 
 7. Click **Next** to configure the node pools.
 
 
 <br />
 
-<InfoBox>
+The [maximum number](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per node in an AKS cluster is 250. If you don't specify maxPods when creating new node pools, then the default value of 30 is applied. You can edit this value from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
 
-The [maximum number of pods per node in an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) is 250. If you don't specify maxPods when creating new node pools, you receive a default value of 30. This value can be edited from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
+<br />
 
 ```
 managedMachinePool:
   maxPodPerNode: 30
-
- #NOTE: The recommended minimum value set for maxPodPerNode is 30, setting value less than the recommended one can result in palette system pods in pending state.
 ```
 
-</InfoBox>
+
 
 # Node Pools
 
