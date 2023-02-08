@@ -21,6 +21,8 @@ Palette supports integration with Canonical MAAS to give a cloud-like experience
 
 The following describes the overall process to install a Private Cloud Gateway (PCG) to manage a MAAS bare metal cloud. Detailed steps to get you started are provided in Install and Manage a MAAS Private Cloud Gateway.
 
+<br />
+
 1. You obtain a pairing code in Palette that you will provide when you run the installer.
 
 2. You run a configuration script using a docker image. The script creates a Private Cloud Gateway (PCG) configuration file that the installer will use.
@@ -32,6 +34,7 @@ The following describes the overall process to install a Private Cloud Gateway (
     The installer needs access to your Palette account and one machine from your MAAS cluster if you do not want High Availability (HA), or three machines from your MAAS cluster if you want HA.
 
     The machines in your MAAS must have internet access and be in a ready state.
+    <br />
 
     <InfoBox>
 
@@ -39,9 +42,9 @@ The following describes the overall process to install a Private Cloud Gateway (
 
     </InfoBox>
 
-5. The installer installs one machine (non-HA) or three machines (HA) from your MAAS cluster to build a new cluster that will host the PCG.
+5. The installer installs one machine (for non-HA) or three machines (for HA) from your MAAS cluster to build a new cluster that will host the PCG.
 
-The Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local installer facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet.
+The PCG you install in a MAAS cloud using a local installer facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet.
 
 # Resources
 
@@ -51,144 +54,13 @@ The Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local i
 
 
 
-# Prerequisites
-
-The following prerequisites must be met before deploying a bare-metal Kubernetes cluster using MAAS:
-
-1. You must enable API communication and retrieve the API key. The [key], [secret], [consumer_key] tokens are the three elements that compose the API key (API key = '[consumer_key]:[key]:[secret]').
 
 
-2. You should have an Infrastructure cluster profile created in the Palette UI for MAAS.
 
 
-3. You should install a Private Cloud Gateway for MAAS as described in the "**Installing Private Cloud Gateway - MAAS**" section below. Installing the Private Cloud Gateway will automatically register a cloud account for MAAS in Palette. You can register your additional MAAS cloud accounts in Palette as described in the "**Creating a MAAS Cloud account**" section below.
 
 
-4. Egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required)
-    * Outgoing internet connection on port 443 to api.spectrocloud.com
 
-
-5. DNS to resolve public internet names (e.g.: api.spectrocloud.com).
-
-
-6. A computer with a docker daemon installed and connectivity to both the Palette Management console and the MAAS identity endpoint. 
-
-
-7. Sufficient IPs for application workload services (e.g.: Load Balancer services).
-
-
-8. Per workload cluster IP requirements:
-
-    * One (1) per cluster node
-    * One (1) Kubernetes control-plane VIP
-
-# Installing Private Cloud Gateway - MAAS
-
-`video: title: "maas-pcg-creation": /pcg-creation-video/maas.mp4`
-
-The following system requirements should be met in order to install a private cloud gateway for MAAS:
-
-* Private cloud gateway IP requirements:
-    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
-    * 1 IP for Kubernetes control-plane
-
-Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MAAS identity endpoint. 
-
-## Generate pairing code
-
-1.  Navigate to the Private Cloud Gateway page in the Palette UI under **My Organization** > **Admin Settings** > **Private Cloud Gateways** > **Add New Private Cloud Gateway** > **MAAS** > **Add MAAS Account**. 
-
-
-2. Copy the pairing code displayed on the page. This will be used in subsequent steps.
-
-## Generate gateway config
-
-1. Invoke the gateway installer in interactive mode, from any system that has a docker daemon installed with connectivity, to the Palette Management console and the MAAS identity endpoint. 
-
-
-2. To generate the gateway configuration file, follow the instructions below to provide the Palette Management, MAAS cloud account, environment, and placement information when prompted by the installer.
-
-
-```bash
-docker run -it --rm \
- --net=host \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v /tmp:/opt/spectrocloud \
- gcr.io/spectro-images-public/release/spectro-installer:1.0.11 \
- -o true
-```
-
-#### Enter the Palette Management Information:
-
-Copy and past the instructions above to your terminal with docker. Upon execution, provide the following:
-
-|**Parameter**       | **Description**|
-    |:-----------------------------|---------------|
-    |**Install Type**| Choose either Private Cloud Gateway or Self Hosted Enterprise Cluster. <br />You may change your selection with the up or down keys.|
-    |**Cloud Type**| MAAS.|
-    | **Name** | Input the name you wish to use for your Private Cloud Gateway.|
-    |**Endpoint** |Enter the Palette Palette Console endpoint,  <br /> e.g. https://customername.console.spectrocloud.com|
-    |**Username** |Enter your Palette Username - Sign in email address <br />e.g. user1@company.com.|
-    |**Password** |Enter your Palette Password - Sign in password.|
-    |**Private Cloud Gateway** |Enter the Private Cloud Gateway pairing code generated from the <br /> Palette Palette UI. For more info, please see the <br /> **Generate gateway config** section of this document.|
-    
-#### Enter the Environment Configuration:
-
-
-|**Parameter**| **Description**|
-|:-------------|----------------|
-|**HTTPS Proxy (--https_proxy)**| Leave blank unless an HTTPS Proxy is used.
-||This setting will be propagated to all the <br /> nodes launched in the proxy network.  <br /> e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT|
-| **HTTP Proxy(--http_proxy)**| leave blank unless an HTTP Proxy is used.
-||This setting will be propagated to all the nodes launched in the proxy network.  <br />e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT|
-| **No Proxy(--no_proxy)**| Default is blank.
-||A comma-separated list of local network CIDRs, hostnames,<br /> domain names that should be excluded from proxying. <br />This setting will be propagated to all the nodes to bypass the proxy server. <br /> e.g., maas.company.com,10.10.0.0/16|
-| **Pod CIDR (--pod_cidr)**|The CIDR pool is used to assign IP addresses <br />to pods in the cluster. This setting will be used to assign IP addresses <br /> to pods in Kubernetes clusters. The pod IP addresses <br />should be unique and should not overlap with any <br />Virtual Machine IPs in the environment.|
-| **Service IP Range (--svc_ip_range)**|The IP address that will be assigned to services created on Kubernetes.<br /> This setting will be used to assign IP addresses to services in Kubernetes clusters. <br /> The service IP addresses should be unique and not <br /> overlap with any virtual machine IPs in the environment.|
-
-#### Enter the MAAS Account Information:
-|**Parameter**| **Description**|
-|-------------|----------------|
-| **API Endpoint** | MAAS API endpoint. Domain or IP address. <br /> e.g. http://10.11.12.13:5240/MAAS|
-| **API Key** |Generate an API key from the MAAS UI and paste when prompted. <br /> This key is used for authentication.|
-
-
-#### Enter MAAS Machine configuration for the Private Cloud Gateway:
-
-* Select the availability zone
-* Choose the domain
-* Choose the Resource Pool
-* Number of nodes: Choose between 1 and 3
-
-After this step, a new gateway configuration file is generated and its location is displayed on the console.
-e.g.: Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml
-
-## Copy configuration file to known location:
-
-Copy the pcg.yaml file to a known location for easy access and updates.
-
-
-```bash
-cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
-```
-
-
-## Deploy Private Cloud Gateway
-
-Invoke the gateway installer in silent mode providing the gateway config file as input to deploy the gateway.
-
-```bash
-docker run -it --rm \
- --net=host \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v /tmp:/opt/spectrocloud \
- gcr.io/spectro-images-public/release/spectro-installer:1.0.11 \
- -s true \
- -c //opt/spectrocloud/pcg.yaml
-```
-
-Available bare metal machines in your MAAS environment will be selected, and a private cloud gateway will be installed on those machine(s). If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 ## Upgrading a MAAS Cloud Gateway
 
