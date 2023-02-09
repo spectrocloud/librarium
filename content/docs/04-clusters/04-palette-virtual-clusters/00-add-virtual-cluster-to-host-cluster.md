@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 <WarningBox>
 
-As of Palette 3.2, this feature is deprecated. Use [Cluster Group](/clusters/cluster-groups) moving forward and enable the virtual cluster capability on the cluster group. Virtual cluster support can be enabled during the cluster group creation process or updated through the cluster group settings. 
+As of Palette 3.2, this feature is deprecated. Use [Cluster Groups](/clusters/cluster-groups) moving forward and enable the virtual cluster capability on the cluster group. Virtual cluster support can be enabled during the cluster group creation process or updated through the cluster group settings. 
 
 
 </WarningBox>

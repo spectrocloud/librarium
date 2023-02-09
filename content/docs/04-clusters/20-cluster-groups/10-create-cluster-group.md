@@ -77,13 +77,39 @@ Use the instructions below to create a cluster group.
 
 #### Palette Virtual Cluster Configuration
 
-The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for further customization. To enable virtual clusters for OpenShift, review the OpenShit [instructions below](#enable-virtual-cluster-for-openshift).
+The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
+
+<br />
 
 |**Palette Virtual Cluster Resource ** | **Default**   |**Minimum Limit**|
 |------------------------------|-------------------|-----------------|
 |CPU (per request)             | 6                 | 4               |
 | Memory (per request)         | 8 GiB             | 4 GiB           |
 | Storage (per request)        | 10 GiB            | 2 GiB           |
+
+
+<WarningBox>
+
+A virtual cluster requires a minimum of 4 CPUs, 4 GiB Memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
+
+```yaml
+vcluster
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+      ephemeral-storage: 1Gi
+    requests:
+      cpu: 200m
+      memory: 256Mi
+      ephemeral-storage: 128Mi
+```
+
+Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of  CPUs, 4 GiB Memory, and 2 Gib of storage.
+
+</WarningBox>
+
+To enable virtual clusters for OpenShift, review the OpenShit [instructions below](#enable-virtual-cluster-for-openshift). 
 
 
 7. Select **Next** to complete the cluster group creation process.
