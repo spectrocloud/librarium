@@ -46,10 +46,20 @@ A Software Bill of Materials (SBOM) is a comprehensive list of the components, l
 
 An SBOM provides metadata about each component such as version, origin, license, and more, enabling organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
 
+![sbom_scan.png](sbom_scan.png)
+
 ## Configuring an SBOM scan
-All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup storage location, and click “Confirm”.
+All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup location, and click “Confirm”.
 
 Palette will identify every unique container image within your chosen scope and not only generate an SBOM for that image, but also run the SBOM through a vulnerability scanner that will flag CVEs. Palette leverages two open source tools from Anchore for this purpose: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
+
+If a [backup location](/clusters/cluster-management/backup-restore) is provided, the SBOM for each image will be uploaded to your backup location and can subsequently be downloaded with the click of a button or using the Palette API. If a backup location is not provided, Palette will still preserve all of the dependencies and vulnerabilities that were identified, but the raw SBOMs will not be available for download. All the results and metadata pictured in the screenshots below will be included even without a backup location configured, except when using the **github-json** format, in which case a backup location must be provided.
+
+<br />
+
+<WarningBox>
+A Backup Location is <b>mandatory</b> when configuring an SBOM scan using the <b>github-json</b> format.
+</WarningBox>
 
 <br />
 
@@ -62,10 +72,6 @@ Palette will identify every unique container image within your chosen scope and 
   * Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
 * Syft JSON
   * Syft's custom SBOM format. Contains the most complete metadata out of the four options.
-
-<WarningBox>
-SBOM scans using the <b>github-json</b> format will not produce dependency and vulnerability summaries. They will produce SBOMs and nothing else.
-</WarningBox>
 
 #### SBOM scan scopes
 * Cluster
@@ -80,13 +86,15 @@ SBOM scans using the <b>github-json</b> format will not produce dependency and v
 ## Viewing SBOM scan results
 You can click into a completed scan to view a scan report containing additional detail for every image that was scanned. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name, as each image may be in use by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
 
+![sbom_results.png](sbom_results.png)
+
 Each image details page within the scan report provides a list of dependencies and vulnerabilities. These tables are condensed highlights of the metadata contained in the SBOM that was generated for a particular image. Each dependency’s version and type is displayed, but additional metadata will be included in the SBOM. Exactly what additional metadata is included will depend on the selected SBOM format.
+
+![sbom_dependencies.png](sbom_dependencies.png)
 
 For each vulnerability, you can view the name, severity level, vulnerability code, installed or impacted version, and the fix version (if a fix is available). Any CVEs documented in the [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail page for that particular vulnerability.
 
-If a [backup storage location](/clusters/cluster-management/backup-restore) was provided, the full SBOMs are uploaded to your backup storage location and can subsequently be downloaded with the click of a button or using the Palette API.
-
-If a backup storage location was not provided, Palette will still preserve all of the dependencies and vulnerabilities that were identified, but the raw SBOMs will not be available for download. All the results and metadata pictured in the screenshots above is included even without a backup storage location configured.
+![sbom_vulnerabilities.png](sbom_vulnerabilities.png)
 
 # Scan Options
 
