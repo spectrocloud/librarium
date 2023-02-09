@@ -105,11 +105,11 @@ The basic method to enable OIDC authentication can be used for all cloud service
 
 <Tabs>
 
-<Tabs.TabPane tab="Other Clouds" key="Other Clouds">
+<Tabs.TabPane tab="Basic OIDC Setup" key="Other Clouds">
 
-Follow these steps to enable OIDC authentication for your cloud provider.
+OIDC authentication can be enabled for most cloud providers using the following configuration. 
 
-1. Copy the oidc configuration lines shown in the example to the ``extraArgs`` section of the Kubernetes pack and enter your provider details in quotes.
+1. Copy the oidc configuration lines in the example to the ``extraArgs`` section of the Kubernetes pack manifest and enter your provider details in quotes.
 
   ```
   kubeadmconfig:
@@ -121,7 +121,7 @@ Follow these steps to enable OIDC authentication for your cloud provider.
       oidc-username-claim: "email"
   ```
 
-2. Uncomment the lines in the following example and enter your provider details in quotes.
+2. In the ``clientConfig`` section of Kubernetes pack manifest, uncomment the oidc configuration lines and enter your provider details in quotes. Enter the same provider URL and client-id in both sections of the manifest.
 
   ```
     clientConfig:
@@ -130,6 +130,9 @@ Follow these steps to enable OIDC authentication for your cloud provider.
       oidc-client-secret: client-secret-value
       oidc-extra-scope: profile,email,openid
     ```
+
+<br />
+
 
 </Tabs.TabPane>
 
