@@ -42,7 +42,7 @@ Use the steps below to download the application log files. The download bundle i
 * Access to view the application and its logs.
 
 
-## Dowload Logs
+## Download Logs
 
 1. Log in to [Palette](https://console.spectrocloud.com)
 

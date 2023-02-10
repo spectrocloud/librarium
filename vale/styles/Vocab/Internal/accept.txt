@@ -53,6 +53,7 @@ serverless
 vCenter
 Palette Dev Engine
 Dev
+dev
 Postgres
 hostname
 Hostname
