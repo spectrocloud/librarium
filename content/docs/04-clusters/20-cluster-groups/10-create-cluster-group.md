@@ -43,7 +43,7 @@ Use the instructions below to create a cluster group.
   |-------------------------------|-----------------|
   |Group Name                 | A name for the cluster group.|
   |Description (optional)   | Description of the group, if any. | 
-  |Tag (optional)               | Assign tags to the clsuter group.|
+  |Tag (optional)               | Assign tags to the cluster group.|
 
 
 3. Select **Next** to continue.
@@ -90,7 +90,7 @@ The configuration applied to all virtual clusters launched into the host cluster
 
 <WarningBox>
 
-A virtual cluster requires a minimum of 4 CPUs, 4 GiB Memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
+A virtual cluster requires a minimum of 4 CPU, 4 GiB Memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
 
 ```yaml
 vcluster
@@ -105,7 +105,7 @@ vcluster
       ephemeral-storage: 128Mi
 ```
 
-Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of  CPUs, 4 GiB Memory, and 2 Gib of storage.
+Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of  CPU, 4 GiB Memory, and 2 Gib of storage.
 
 </WarningBox>
 
@@ -124,12 +124,12 @@ To review your cluster group, navigate to the left **Main Menu** and select **Cl
 
 # Manage your Cluster Group
 
-Once the cluster group is created, the day two operations can be performed from the clouster group's **Settings** options. To access a cluster group's settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to review or modify the settings. Click on the **Settings** button.
+Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings** options. To access a cluster group's settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to review or modify the settings. Click on the **Settings** button.
 
 
 ## Add a Host Cluster to the Group
 
-You can add additional host clusters to a cluster group. Navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to add additional host clusers. Click on the **+ Add Host Cluster**. Select the desired host clusters and verify the oversubscription and cluster endpoint type settings.
+You can add additional host clusters to a cluster group. Navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to add additional host clusters. Click on the **+ Add Host Cluster**. Select the desired host clusters and verify the oversubscription and cluster endpoint type settings.
 
 ## Delete your Cluster Group
 
