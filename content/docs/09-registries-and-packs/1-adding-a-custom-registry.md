@@ -13,7 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add Custom Registries
 
-Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console. Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry. Pack contents are periodically synchronized with the Palette console.
+Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console.
+Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry.
+Pack contents are periodically synchronized with the Palette console.
 
 # Prerequisites
 
@@ -93,16 +95,16 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 
 5. Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container.
 
-
-6. Pack contents in a pack registry can be stored locally on the host or an external file system. An external file system is recommended so that the pack contents can be easily mounted on another pack registry instance in the event of restarts and failures. Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
-
+6. Pack contents in a pack registry can be stored locally on the host or an external file system.
+An external file system is recommended so that the pack contents can be mounted on another pack
+registry instance in the event of restarts and failures.
+Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
     ```bash
         docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0
     ```
-
 
 8. Create the Docker container using the docker `run` command:
 
@@ -129,8 +131,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 
   <WarningBox>
       Spectro Cloud CLI registry login command fails with the error message in the case of self-signed certificates created using an IP address, rather than a hostname. <br /> <br /> "x509: cannot validate certificate for <em>ip_address</em>, because it doesn't contain any IP SANs" <br /> <br /> Either the certificate must be recreated to include an IP SAN, or you must use a DNS name as the Common Name, rather than an IP address.
-    </WarningBox>
-
+  </WarningBox>
 
   <WarningBox>
     Spectro Cloud CLI registry login command fails with the error message in case of self-signed certificates or if the certificate is invalid. <br /> <br /> "x509: certificate signed by unknown authority" <br /> <br />  The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
@@ -153,15 +154,13 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 
 <br />
 
-
 <InfoBox>
-
 Spectro Cloud CLI is required to use the insecure option `-i ( --insecure )` in the registry login command if the pack registry is installed in the HTTP mode.
 </InfoBox>
-
 <br />
 
-9. Expose the container host's port publicly to allow the Palette console to interact with the pack registry. This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
+9. Expose the container host's port publicly to allow the console to interact with the pack registry.
+   This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 
 
 10. Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
@@ -182,7 +181,7 @@ Spectro Cloud CLI is required to use the insecure option `-i ( --insecure )` in 
 
 # Configure a Custom Pack Registry on the Palette Console
 
-Once the deployment of the pack registry server is complete, configure it with the Palette console as follows:
+Once the deployment of the pack registry server is complete, configure it with the console as follows:
 
 1. As a Tenant Administrator, navigate to **Admin Settings** > **Registries** > **Pack Registries**.
 
@@ -192,8 +191,21 @@ Once the deployment of the pack registry server is complete, configure it with t
 
 3. Click on **Confirm** once the details are filled.
 
+# Upload the CA Certificate to Palette
 
-Upon successful registration, users can build and deploy custom packs on to the custom pack registry and use these packs in their cluster profiles.
+In order to establish a trusted secure connection between Palette and your registry
+you will need to upload your certificate to the console.
+
+1. Click on **Tenant Settings** > **Certificates** > **Add A New Certificate**
+
+   Provide the content of your CA Cert (that will be the content of `tls.crt` if
+   you followed this tutorial.
+
+   After you saved the content of the certificate, it will take a few minutes for your
+   custom packs to appear in the available packs list.
+
+Upon successful registration, users can build and deploy custom packs on to the custom pack registry and
+use these packs in their cluster profiles.
 
 **Note:**
 
