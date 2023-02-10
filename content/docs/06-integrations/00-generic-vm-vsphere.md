@@ -25,7 +25,7 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 <Tabs>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-* **1.0.3**
+* **1.0.4**
 * **1.0.0**
 
 </Tabs.TabPane>
