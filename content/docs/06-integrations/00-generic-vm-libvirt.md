@@ -23,7 +23,7 @@ Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtu
 <Tabs>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-* **1.0.1**
+* **1.0.2**
 * **1.0.0**
 
 </Tabs.TabPane>
@@ -72,8 +72,14 @@ pack:
 
 charts:
   generic-vm-libvirt:
+    providers:
+      source: "dmacvicar/libvirt"
+      version: "0.6.14"  
     name: vm-app-1
     image: https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.img
+    
+    # uncomment the below line and comment the above line if the image is present within the host. 
+    # image="/opt/spectrocloud/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
     hardware:
       cpu: 2
       memory: 6 #in GB
