@@ -74,13 +74,27 @@ pack:
 
 charts:
   generic-vm-vsphere:
+    providers:
+     source: "hashicorp/vsphere"
+     version: "2.2.0"  
     name: vm-app-1
     hardware:
       cpu: 2
       memory: 6 #in GB
       dataDisks:
         - size: 20 #in GB
-        - size: 25 #in GB
+        - size: 25 #in GB 
+    
+
+    # To use an image from a remote url please uncomment the below lines and comment out the vmTemplate section.        
+    # ovaTemplate:
+    #   remote_ovf_url: "https://192.168.100.12:8443/artifactory/generic-eis-all/ehl-guest/sles-154-cloud-kube-v1.21.10-20220718141926-014.ova"
+    #   name: system-cluster-ova
+    #   network: 
+    #   - name: "VM Network"
+    #     value: "VLAN-909"  
+    #   disk:  
+    #     size: 40
     vmTemplate: "spectro-templates/ubuntu-focal-20.04-cloudimg-20220207"
     guestId: "ubuntu64Guest" #ubuntu64Guest for ubuntu, sles15_64Guest for sles etc
     scsiType: "lsilogic"
