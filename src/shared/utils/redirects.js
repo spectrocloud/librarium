@@ -126,6 +126,18 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/integrations/minio-operator`,
+    toPath: `/integrations/minio`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/how-to/reverse-proxy-dashboard`,
+    toPath: `/clusters/cluster-management/kubernetes-dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }
 ];
 
 module.exports = redirects;
