@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This section covers the behaviors pertaining to available deployment environments for Palette Virtual Clusters and the resource quotas users and virtual clusters are subject to.
+This section covers the available deployment environments for Palette Virtual Clusters and the resource quotas users and virtual clusters are subject to.
 
 # Available Environments
 
@@ -99,6 +99,9 @@ Each cluster group defines a maximum set of resource limits for the CPU, Memory,
 
 Before deciding if the virtual cluster creation request can be accepted, the system evaluates to request to verify the user making the request has enough resource quotas remaining as a tenant developer.
 
+
+![Order of flow when it comes to evaluating cluster requests](045-devx_resource-quota_evaluation-process.png)
+
 To better understand this concept, use the following examples.
 
 * Tenant Developer User Quotas:
@@ -114,29 +117,58 @@ To better understand this concept, use the following examples.
     * Storage (per requests): 12 GiB
 
 
-* User A' Resource Utilization
-    * 1 Virtual Cluster
+* User A' Current Resource Utilization
+    * 1 Virtual Cluster in dev-special
     * 8 CPU
     * 12 GiB Memory
     * 20 GiB Memory
 
 
-* User B' Resource Utilization
-    * 4 Virtual Cluster
+* User B' Current Resource Utilization
+    * 4 Virtual Cluster in dev-special
     * 16 CPU
     * 32 GiB Memory
     * 60 GiB Memory
 
 
 #### Scenario 1
+
 User A is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
 * 8 CPU
 * 12 GiB Memory
 * 20 GiB Memory
 
-**Result**: Approved
+**Request**: ✅
 
-**Explanation**: From a tenant user quota, user A has the following remanining resources - two virtual clusters, 12 CPU, 20 GiB Memory, and 40 GiB of storage. From a cluster group perspective, user A is within the resource limits of the dev-special cluster group.
+**Explanation**: From a tenant user quota perspective, user A has the following remanining resources - two virtual clusters, 12 CPU, 20 GiB Memory, and 40 GiB of storage. From a cluster group perspective, user A is within the resource limits of the dev-special cluster group.
+
+<br />
+
+#### Scenario 2
+
+User B is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
+* 4 CPU
+* 8 GiB Memory
+* 4 GiB Memory
+
+**Request**: ❌
+
+**Explanation**: User B has exceeded the tenant user quota limits of four clusters. From a cluster group perspective, the virtual cluster request falls within the approved limits.
+
+<br />
+
+#### Scenario 3
+
+User B is creating a request to deploy a virtual cluster to the beehive cluster group. The virtual cluster is requesting the following resources:
+* 4 CPU
+* 8 GiB Memory
+* 4 GiB Memory
+
+**Request**: ✅
+ 
+**Explanation**: The request is accepted by the system because its targeting the beehive cluster group and not a cluster group managed by the tenant. From a cluster group perspetive the resources requested fall within the allowed resource ranges allowed by the beehive cluster group.
+
+
 
 
 <!-- ## Manage Developer Quota
