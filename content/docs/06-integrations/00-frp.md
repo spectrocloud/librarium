@@ -51,4 +51,4 @@ If the user goes for clusters other than EKS, add the following extra cert SAN v
 ```
 Example:
 
-![frp-cert-san-example](frp-certsan.png)
+![frp-cert-san-example](/frp-certsan.png)

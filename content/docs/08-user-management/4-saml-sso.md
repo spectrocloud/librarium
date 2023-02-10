@@ -237,7 +237,7 @@ To set up a SAML-based SSO, perform the following steps:<p></p><br />
 
 <center>
 
-![reply_callback](saml-azure-images/saml-azure-reply-url.png "#width=600px")
+![reply_callback](/saml-azure-images/saml-azure-reply-url.png "#width=600px")
 </center>
 <p></p><br />
 
@@ -481,7 +481,7 @@ From within Microsoft Azure AD, log in and find the Azure Active Directory servi
 
 2. **Enterprise applications** - You will use Azure AD Enterprise registrations to configure SAML SSO with Spectro Cloud Palette. <p></p><br />
 
-![enterprise-app-registration](oidc-azure-images/enterprise-app-registration.png)
+![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.png)
 <p></p>
 
 ## Integrating OIDC SSO for authenticating access to Kubernetes clusters using Microsoft Azure Active Directory
@@ -502,7 +502,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
     - **oidc-issuer-url** -  "Issuer's URL"<p></p><br />
     - **oidc-client-id** - "Client ID"<p></p><br />
 
-       ![kubeadminconfig](oidc-azure-images//kubeadmconfig.png)
+       ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
 
 <p></p><br />
 
@@ -513,7 +513,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
     - **oidc-client-secret** - The secret provided by Azure AD.<p></p><br />
     - **oidc-extra-scope** - The scope tags.<p></p><br />
 
-![oidc](oidc-azure-images//client-config.png)
+![oidc](/oidc-azure-images/client-config.png)
 <p></p><br />
 
 ## Binding the Cluster Admin Role AD to Cluster Admin via RBAC
@@ -636,7 +636,7 @@ charts:
 
 **name**: "AZURE AD GROUP ID NAME"
 
-![oidc](oidc-azure-images//client-config.png)
+![oidc](/oidc-azure-images/client-config.png)
 
 ## Results
 
