@@ -32,7 +32,7 @@ Default settings for the dashboard provide best practices for your clusters. Cha
 
 # Versions Supported
 
-**2.6.x**
+**2.7.x**
 
 <br />
 
