@@ -102,7 +102,7 @@ The following points needs to be taken care while creating the Tags:
 
 
 
-## Privileges 
+## Privileges
 
 
 The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
@@ -137,10 +137,8 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Privileges Under the Spectro Role 
+## Privileges Under the Spectro Role
 
-
-<br />
 
 <Tabs>
 
@@ -178,7 +176,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
   #### Host Privileges
   - Local Operations
-    * Reconfigure virtual machine 
+    * Reconfigure virtual machine
 
 </Tabs.TabPane>
 
@@ -213,13 +211,13 @@ The root-level role privileges are applied to root object and Datacenter objects
 
   #### Profile Driven Storage
   - Profile-driven storage view
- 
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Storage views" key="Storage views">
 
   #### Storage Views Privileges
-  - View  
+  - View
 
 </Tabs.TabPane>
 
