@@ -24,15 +24,15 @@ Upon login, the dashboard shows the views available for a non-admin user. At the
 
 #### Non-admin User view
 
-Upon login, the dashboard shows the views available for a non-admin user. 
+Upon login, the dashboard shows the views available for a non-admin user.
 
-1. The <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">Project</a> helps to organize the cluster resources in a logical grouping method.</Tooltip> button which helps to organize the cluster resources in a logical grouping. From the dropdown, we can shift between the projects. 
+1. The <Tooltip trigger={<u>Projects</u>}> A <a href="/projects">Project</a> helps to organize the cluster resources in a logical grouping method.</Tooltip> button which helps to organize the cluster resources in a logical grouping. From the dropdown, we can shift between the projects.
 
 
 2. The left panel contains the <Tooltip trigger={<u>Project Overview</u>}><a href="/projects">Project Overview</a> gives an overview of the resource and cost consumption of the selected project.</Tooltip> (2) which gives an overview of the resource and cost consumption of the selected project.
- 
 
-3. <Tooltip trigger={<u>Cluster Profiles</u>}><a href="/cluster-profiles">Cluster Profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> of the Default Project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Palette that are instantiated from Cluster Profiles.</Tooltip> 
+
+3. <Tooltip trigger={<u>Cluster Profiles</u>}><a href="/cluster-profiles">Cluster Profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> of the Default Project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="/clusters">clusters</a> in Palette that are instantiated from Cluster Profiles.</Tooltip>
 
 
 
@@ -40,16 +40,16 @@ Upon login, the dashboard shows the views available for a non-admin user.
 
 
 
-5. <Tooltip trigger={<u>Audit logs</u>}><a href="/audit-logs/">Audit Logs </a> shows the log of activities with timeline.</Tooltip> shows the log of activities with timeline. 
+5. <Tooltip trigger={<u>Audit logs</u>}><a href="/audit-logs/">Audit Logs </a> shows the log of activities with timeline.</Tooltip> shows the log of activities with timeline.
 
- 
+
 
 6. The **Settings** section (7) of the Default dashboard relates to the Cloud Account settings, Backup Location settings, and Alerts. This is an important distinction from the settings under the Admin Dashboard. It also allows the user to upload SSH keys for safekeeping. These key(s) can be recalled when deploying a cluster.
 
 
 
 
- ![project-dashboard](project-dashboard.png)
+ ![project-dashboard](/project-dashboard.png)
 
 
 
@@ -72,8 +72,4 @@ The menu within the Tenant Admin Dashboard contains the Projects button. This is
 
 
 
-![admin-dashboard](admin-dashboard.png)
-
-
-
-
+![admin-dashboard](/admin-dashboard.png)

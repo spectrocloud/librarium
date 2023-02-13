@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Deploy an Azure Cluster
 
-You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters. 
+You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
 
 Azure clusters can be created under the following scopes:
 
@@ -54,7 +54,7 @@ The following steps need to be performed to provision a new Azure cluster:
 2. In the cluster page click **+ Add New Cluster** button and select **create new cluster**.
 
 
-3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information 
+3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information
 
 
 4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
@@ -108,7 +108,7 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Parameter**            | **Description**|
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Private DNS Zone**   | Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
-| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|   
+| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|
 
 ##### IP Allocation Method Table
 
@@ -116,12 +116,12 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Dynamic**              | Use Dynamic Host Configuration Protocol (DHCP) to dynamically allocates IP addresses from the available Virtual Network IP CIDR range.|
 | **Static**               | You can specify a static IP address from the available Virtual Network IP range.|
-  
+
 When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
 
 <br />
 
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. 
+7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page.
 
 <InfoBox>
 
@@ -131,7 +131,7 @@ You can add new worker pools to customize certain worker nodes to run specialize
 
 <br />
 
-    
+
 8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
 
@@ -145,7 +145,7 @@ The cluster details page of the cluster contains the status and details of the d
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 # Deleting an Azure IaaS Cluster
 
-The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps.
 
 
 1. Ensure you are in the correct project scope.
@@ -175,7 +175,7 @@ To force delete a cluster follow the same steps outlined in [Deleting an Azure I
 <br />
 
 <WarningBox>
- 
+
 
 A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
 - VNet
@@ -185,7 +185,7 @@ A force delete can result in resources Palette provisioned to be missed in the r
 - VHD
 - Virtual Network NAT
 
-Failure in removing provisioned resources can result in unexpected costs.   
+Failure in removing provisioned resources can result in unexpected costs.
 
 </WarningBox>
 
@@ -200,7 +200,3 @@ To validate the Azure cluster creation and deletion status
 
 
 4. Click on the check box **Deleted only** to view all the clusters deleted in last 72 hours.
-
-
-
-
