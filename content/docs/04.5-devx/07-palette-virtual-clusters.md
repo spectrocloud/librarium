@@ -33,7 +33,7 @@ To create your new Palette Virtual Cluster complete the following actions.
 2. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
    * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
    * Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
-   * Provide the resource limit in terms of CPU, memory, and storage. 
+   * Provide the resource limit in terms of CPU, memory, and storage.
 
  <br />
 
@@ -67,14 +67,14 @@ Palette users can track the available resources within a Cluster Group while lau
 
 ### Example Scenario
 
-The example screenshot below illustrates the following scenario. The Cluster Group selected in the example has a virtual cluster already running on it. The info box displays the recommended minimum CPU and memory allocated to the new virtual cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. Users can use this information to plan resource utilization per available resources. 
+The example screenshot below illustrates the following scenario. The Cluster Group selected in the example has a virtual cluster already running on it. The info box displays the recommended minimum CPU and memory allocated to the new virtual cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster Group. Users can use this information to plan resource utilization per available resources.
 
-![color-tracking.png](color-tracking.png) 
+![color-tracking.png](/color-tracking.png)
 
 
 ## Palette Virtual Cluster Pause and Resume
 
-Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to optimize resource utilization by pausing the virtual clusters not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters. 
+Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to optimize resource utilization by pausing the virtual clusters not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters.
 
 <br />
 
@@ -95,7 +95,7 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * New Apps cannot be deployed on a virtual cluster in the paused state.
 
 
-* Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console. 
+* Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console.
 
 
 [Click here to know How to Pause and Release your Palette Virtual Cluster](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
