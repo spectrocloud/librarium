@@ -31,7 +31,7 @@ The following are some architectural highlights of the Amazon Web Services (AWS)
 
 - The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across all the control plane nodes.
 
-![A diagram of AWS architecture](clusters_aws_architecture_aws_cluster_architecture.png)
+![A diagram of AWS architecture](/clusters_aws_architecture_aws_cluster_architecture.png)
 
 
 # AWS EKS Architecture
@@ -46,7 +46,7 @@ Palette also supports deploying and managing AWS Elastic Kubernetes Service (EKS
 
 - Spot instance support
 
- ![eks_cluster_architecture.png](clusters_aws_create-and-manage-aws-eks-cluster_architecture.png)
+ ![eks_cluster_architecture.png](/clusters_aws_create-and-manage-aws-eks-cluster_architecture.png)
 
 
 ## Disable OIDC Associate Provider
@@ -58,7 +58,7 @@ You can disable the OIDC associate provider if the service provider restricts th
 
 ```yaml
   disableAssociateOIDCProvider: true
-```  
+```
 
 # AWS Instance Type and Pod Capacity
 Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You should also calculate the number of pods scheduled per node for an instance type. Improperly sized nodes can cause cluster creation to fail due to resource unavailability.
@@ -66,7 +66,7 @@ Choose the instance type and the number of instances to be launched by calculati
 The following section describes calculating the pod capacity for AWS instance types. This calculation will help you select the proper instance type and the number of desired workers in a worker pool. We recommend for most workloads choosing an instance that can support at least 30 pods.
 
 ## Formula for Pod Calculation
-Number of pods = N * (M-1) + 2 
+Number of pods = N * (M-1) + 2
 
 Where:
 * **N** is the number of Elastic Network Interfaces (ENI) of the instance type (Maximum network interfaces).
@@ -74,7 +74,7 @@ Where:
 * Values for **N** and **M** for each instance type can be referred from [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
 
 ## Example Calculation:
-* For instance type = t3.medium 
+* For instance type = t3.medium
 * For values of N = 3, and M = 6 (values derived from AWS [document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) )
 * N * (M-1) + 2 = 3(6-1)+2 =17 pods/instances
 * In this example, at least two (2) t3.medium instances are needed to reach the minimum of 30 pods threshold.
@@ -85,7 +85,6 @@ When setting the desired size of the worker pool, make the choice as per pod req
 ## Spot Instances
 
 By default, worker pools are configured to use on-demand instances. However, to take advantage of discounted spot instance pricing you can specify spot instances when creating a cluster. The **On-Spot** option can be selected in the node configuration page during cluster creation. This option allows you to specify a maximum bid price for the nodes as a percentage of the on-demand price. Palette tracks the current price for spot instances and launches nodes, when the spot price falls in the specified range.
-
 
 # Tags
 
