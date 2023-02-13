@@ -22,22 +22,11 @@ This section talks about how we can configure the Kubernetes Dashboard exposed t
 
 * [Kubernetes Dashboard Pack](/integrations/kubernetes-dashboard) to be part of the Cluster Profile.
 
-* To expose the dashboard, use [Spectro-Proxy Pack (1.1.0)](/integrations/frp). If the Kubernetes Dashboard is not using a load balancer. Make the following changes to the Spectro-Proxy pack.
+* [OIDC authentication enabled](/clusters/cluster-management/kubernetes-dashboard) for the cluster.
+
+* [Spectro-Proxy Pack 1.2.0 or greater.](/integrations/frp)
  
 <br />
-
-```
-
-/ We enabled the k8sDashboard by making the enabled flag at line 4 to true.
-k8sDashboardIntegration:
-      enabled: true
-      useInsecurePort: false
-
-```
-<br />
-
-* OIDC authentication enabled for the cluster.
-
 
 # Quick Workflow:
 
@@ -96,7 +85,6 @@ clientConfig:
   oidc-client-secret: client-secret-value
   oidc-extra-scope: profile,email
 ```
-
 
 
 
