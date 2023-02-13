@@ -98,7 +98,7 @@ const plugins = [
         {
           resolve: `gatsby-remark-relative-images`,
           options: {
-            staticFolderName: "./assets/docs/",
+            staticFolderName: "./assets/docs/images/",
           },
         },
         {

@@ -198,13 +198,13 @@ To add a Service to the Service List complete the following actions:
 
 #### Images or other assets
 
-You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
+All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
 
 ```md
-![alt text](clusterprofiles.png "cluster profiles example")
+![alt text](/clusterprofiles.png "cluster profiles example")
 ```
 
-The same rules apply though. You can reference it from a different section using urls relative to the root directory
+You can add a directory to to the images folder.
 
 ```md
 ![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
@@ -214,7 +214,7 @@ The same rules apply though. You can reference it from a different section using
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#width=120px")
+![alt text](/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component
