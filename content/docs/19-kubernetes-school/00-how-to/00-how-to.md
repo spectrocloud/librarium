@@ -16,8 +16,6 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # How To
 
-Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette. <p></p><br />
+Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.
 
-
-<br />
 <br />

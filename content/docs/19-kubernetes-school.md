@@ -20,7 +20,4 @@ Welcome to the Spectro Cloud Kubernetes School. You will find core Kubernetes tu
 
 If you have a topic in mind you would like to see, use the Feedback app on the lower-right-hand corner.
 
-
-<br />
-<br />
 <br />
