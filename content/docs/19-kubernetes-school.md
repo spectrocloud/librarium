@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Welcome to the Spectro Cloud Knowledge Portal
 
-Welcome to the Spectro Cloud Kubernetes School! You will find core Kubernetes tutorials, how-tos, and frequently asked questions. 
+Welcome to the Spectro Cloud Kubernetes School. You will find core Kubernetes tutorials, how-tos, and frequently asked questions. 
 
 If you have a topic in mind you would like to see, use the Feedback app on the lower-right-hand corner.
 
