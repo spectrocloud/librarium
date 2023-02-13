@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 # Add Custom Registries
 
 Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console.
-Once installed, the Spectro Cloud CLI tool can be used to manage the contents of the pack registry.
+Once the registry servier is installed, use the Spectro Cloud CLI tool to manage the contents of the pack registry.
 Pack contents are periodically synchronized with the Palette console.
 
 # Prerequisites
@@ -30,9 +30,11 @@ Pack contents are periodically synchronized with the Palette console.
 
 * Firewall ports 443/80 are required to be opened on the machine to allow traffic from the Palette console and Spectro CLI tool.
 
-<InfoBox>
-Please ensure that the ports 443/80 are exclusively allocated to the registry server and are not in use on any other servers.
-</InfoBox>
+* [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signed-certificates) section for more guidance.
+
+<WarningBox>
+Please ensure that the ports 443 and 80 are exclusively allocated to the registry server and are not in use by other processes.
+</WarningBox>
 
 # Deploying a Pack Registry Server
 
@@ -63,37 +65,7 @@ Palette provides a Docker image for the pack registry server. The following step
     mkdir -p /root/certs
     ```
 
-<InfoBox>
-
-**Self-Signed Certificates**
-
-For self-signed certificates, use the following command to generate certificates.
-
-  ```bash
-  openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
-    -x509 -days 1825 -out tls.crt
-  ```
-
-Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
-
-  ```text
-  Country Name (2 letter code) [XX]:
-  State or Province Name (full name) []:
-  Locality Name (eg, city) [Default City]:
-  Organization Name (eg, company) [Default Company Ltd]:
-  Organizational Unit Name (eg, section) []:
-  Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
-  Email Address []:
-  
-  Example:
-  REGISTRY_HOST_DNS - registry.com
-  ```
-
-</InfoBox>
-
-
-5. Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container.
+5. Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container. 
 
 6. Pack contents in a pack registry can be stored locally on the host or an external file system.
 An external file system is recommended so that the pack contents can be mounted on another pack
@@ -129,13 +101,14 @@ Create a directory or mount an external volume to the desired storage location. 
     
 <br />
 
-  <WarningBox>
-      Spectro Cloud CLI registry login command fails with the error message in the case of self-signed certificates created using an IP address, rather than a hostname. <br /> <br /> "x509: cannot validate certificate for <em>ip_address</em>, because it doesn't contain any IP SANs" <br /> <br /> Either the certificate must be recreated to include an IP SAN, or you must use a DNS name as the Common Name, rather than an IP address.
-  </WarningBox>
+  #### Common Issues 
 
-  <WarningBox>
-    Spectro Cloud CLI registry login command fails with the error message in case of self-signed certificates or if the certificate is invalid. <br /> <br /> "x509: certificate signed by unknown authority" <br /> <br />  The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
-  </WarningBox>
+  * Spectro Cloud CLI registry login command fails with the error message in the case of self-signed certificates created using an IP address, rather than a hostname. `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. Either the certificate must be recreated to include an IP SAN, or you must use a DNS name as the Common Name, rather than an IP address.
+
+
+
+  * Spectro Cloud CLI registry login command fails with the error message in case of self-signed certificates or if the certificate is invalid. `x509: certificate signed by unknown authority`. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
+
 
   *    **HTTP mode** (*not recommended*)
         ```bash
@@ -210,3 +183,36 @@ use these packs in their cluster profiles.
 **Note:**
 
 To know more about the use of Spectro CLI to push packs to a custom registry and sync it to Palette [click here..](/registries-and-packs/spectro-cli-reference/?cliCommands=cli_push#push)
+
+
+
+# Self-Signed Certificates
+
+For self-signed certificates, use the following command to generate certificates.
+
+<br />
+
+  ```bash
+  openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout tls.key \
+    -x509 -days 1825 -out tls.crt
+  ```
+
+Provide the appropriate values while ensuring that the Common Name matches the registry hostname.
+
+<br />
+
+  ```text
+  Country Name (2 letter code) [XX]:
+  State or Province Name (full name) []:
+  Locality Name (eg, city) [Default City]:
+  Organization Name (eg, company) [Default Company Ltd]:
+  Organizational Unit Name (eg, section) []:
+  Common Name (eg, your name or your server's hostname) []:[REGISTRY_HOST_DNS]
+  Email Address []:
+  
+  Example:
+  REGISTRY_HOST_DNS - registry.com
+  ```
+
+  <br />
