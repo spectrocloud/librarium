@@ -1,6 +1,6 @@
 ---
 title: "Cluster Groups"
-metaTitle: "Palette Devx for Enterprise Developer"
+metaTitle: "Palette Devx for Enterprise Developers"
 metaDescription: "Explore Palette Devx as Free Developer"
 hideToC: false
 icon: "object-group"
@@ -19,7 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 A *Cluster Group* is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [*App Mode*](/introduction/palette-modes#whatisappmode?). 
 
-You can create a cluster group under the Palette [System Scope](/devx/cluster-groups#systemscope). Or, you can create a cluster group at the [project](/projects) scope.
+You can create a cluster group under the Palette [System Scope](/devx/cluster-groups#systemscope). Alternatively, you can create a cluster group at the [project](/projects) scope.
 
 By default, Palette exposes a managed cluster group called *beehive* that is available for users in app mode. This cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern side of the U.S. 
 
@@ -37,10 +37,10 @@ Cluster groups support two network endpoints: load balancer and ingress. All hos
 
 Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide.
 
-# Resouces
+# Resources
 
 - [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group)
 
-- [Setup Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group)
+- [Set up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group)
 
 <br />

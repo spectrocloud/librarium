@@ -1,7 +1,7 @@
 ---
 title: "Logs"
 metaTitle: "Palette Dev Engine App Logs"
-metaDescription: "Palette Dev Engine expose the ability to download applications logs."
+metaDescription: "Download Palette application logs."
 hideToC: false
 fullWidth: false
 ---
@@ -18,21 +18,21 @@ Palette Dev Engine (PDE) provides access to application configuration and status
 
 | File                      | Description                                                                                                                 |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| **cloudconfig.yaml**      | The configuration file of the cluster. Contains the Kubernetes specifications of the cluster.                               |
-| **manifest.yaml**         | The generated manifest file that contains the Pack details.                                                                 |
-| **spec_description.yaml** | A file that contains meta data about the cluster and application. Status probes and their status are captured in this file. |
+| **cloudconfig.yaml**      | The cluster configuration file, which contains Kubernetes specifications for the cluster.                               |
+| **manifest.yaml**         | The generated manifest file, which contains pack details.                                                                 |
+| **spec_description.yaml** | A file that contains metadata about clusters and applications. This file captures status probes and their results. |
 
 
 <InfoBox>
 
-You can download cluster log files by visiting the cluster's overview page and selecting **Settings** > **Download Logs**. Select the log files you want to review.
+To download cluster logs, navigate to the cluster's **Overview** page and select **Settings** > **Download Logs**. Select the log files you want to review.
 
 </InfoBox>
 
 
 # Download Application Logs
 
-Use the steps below to download the application log files. The download bundle is a zip file containing all the log files.
+Use the steps below to download application logs. The download bundle is a zip file containing all the log files.
 
 
 ## Prerequisites
@@ -44,10 +44,10 @@ Use the steps below to download the application log files. The download bundle i
 
 ## Download Logs
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Navigate to the **User Menu** and select **Switch to App Mode**. If you are already in app mode view, move to the next step.
+2. If you are not already in App Mode, navigate to the **User Menu** and select **Switch to App Mode**.
 
 
 3. On the left **Main Menu**, select **Apps**.
@@ -56,18 +56,18 @@ Use the steps below to download the application log files. The download bundle i
 4. Select you application.
 
 
-5. Click on the **Actions** drop-down Menu. 
+5. Click the **Actions** drop-down menu. 
 
 
 6. Select **Download Logs**. 
 
 
-7. A message will pop up with the download link.
+7. A message displays with the download link.
 
 
-8. Click on the download link and review the files.
+8. Click the download link and review the files.
 
 
 ## Validation
 
-To review the downloaded files, inspect your downloads folder on your device. Search for a zip file with the following file format: `[clusterNameHere]-logs-[currentTimeStamp]`.
+To review the logs, locate a zip file with file name format `[clusterNameHere]-logs-[currentTimeStamp]` in the downloads folder on your device.

@@ -31,10 +31,10 @@ Use the instructions below to create a cluster group.
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Navigate to the left **Main Menu** and select **Cluster Groups**
+2. Navigate to the left **Main Menu** and select **Cluster Groups**.
 
 
-2. Click on **+New Cluster Groups** to create a new cluster group and provide the following information to the creation wizard.
+2. Click **+New Cluster Groups** to create a new cluster group and provide the following information to the creation wizard.
 
 
    * **Basic Information: **
@@ -50,16 +50,16 @@ Use the instructions below to create a cluster group.
 
 
 
-4. Use the drop-down Menu **Select clusters** to add available host clusters. 
+4. Use the **Select clusters** drop-down menu to add available host clusters. 
  
 <InfoBox>
 
- Be aware that only host clusters created under the current scope are available. Host clusters created under the current project or at the tenant scope are eligible to be added. Host clusters created in another project scope do not qualify for selection.
+ Only host clusters created under the current scope are available to add to a cluster group. You can add host clusters created under the current project or at the tenant scope. You cannot add host clusters that were created in another project scope.
 
 
 </InfoBox>
 
-5. Click on **Next** once you have added all the host clusters you wish to include.
+5. Click **Next** once you have added all the host clusters you wish to include.
 
 
 6. Review the configuration options for **Host Clusters Config** and **Virtual Clusters Config**.
@@ -72,7 +72,7 @@ Use the instructions below to create a cluster group.
 |--------------------------------------|-------------------------------------------|
 |Oversubscription (%):                 | The allowed oversubscription for cluster in terms of resources. Default is 120%.|
 |Cluster endpoint type:                | Load balancer or Ingress.|
-|Host DNS:                             | If the cluster endpoint selected is Ingress, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](/clusters/cluster-groups/ingress-cluster-group) for additional guidance.|
+|Host DNS:                             | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](/clusters/cluster-groups/ingress-cluster-group) for additional guidance.|
 
 
 #### Palette Virtual Cluster Configuration
@@ -90,7 +90,7 @@ The configuration applied to all virtual clusters launched into the host cluster
 
 <WarningBox>
 
-A virtual cluster requires a minimum of 4 CPU, 4 GiB Memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
+A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
 
 ```yaml
 vcluster
@@ -105,17 +105,17 @@ vcluster
       ephemeral-storage: 128Mi
 ```
 
-Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of  CPU, 4 GiB Memory, and 2 Gib of storage.
+Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of 4 CPU, 4 GiB of memory, and 2 Gib of storage.
 
 </WarningBox>
 
 To enable virtual clusters for OpenShift, review the OpenShit [instructions below](#enable-virtual-cluster-for-openshift). 
 
 
-7. Select **Next** to complete the cluster group creation process.
+7. Click **Next** to complete the cluster group creation process.
 
 
-8. Click on **Finish Configuration**.
+8. Click **Finish Configuration**.
 
 ## Validation
 
@@ -124,7 +124,7 @@ To review your cluster group, navigate to the left **Main Menu** and select **Cl
 
 # Manage your Cluster Group
 
-Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings** options. To access a cluster group's settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to review or modify the settings. Click on the **Settings** button.
+Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings** options. To access cluster group settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select a cluster group, and click the **Settings** button.
 
 
 ## Add a Host Cluster to the Group
@@ -147,7 +147,7 @@ To deploy a virtual cluster on OpenShift:
 2. Select **Settings** in the **Cluster Group Settings** pane.
 
 
-3. In the **Advanced Config** file, locate the section SecurityContext section.
+3. In the **Advanced Config** file, locate the securityContext section.
 
 
 4. Comment out these lines: 
@@ -165,7 +165,7 @@ To deploy a virtual cluster on OpenShift:
     * ``capabilities.drop: [all]``
     * ``runAsNonRoot: true``
 
-The following example displays required OpenShift configuration.
+The following example shows the required configuration for OpenShift.
 
 **Example**
 
