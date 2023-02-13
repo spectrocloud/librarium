@@ -17,20 +17,33 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes Dashboard
 
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself.
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself. 
 
-<br />
+The Kubernetes Dashboard pack requires the Spectro Proxy pack in order to expose the dashboard.
+<br /> 
 
 <InfoBox>
 
-Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-management/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp)  pack to enable this capability.
+Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-management/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability.
 
 
 </InfoBox>
 
+An integrated version of this pack is available, Spectro Kubernetes Dashboard, which requires no additional configuration or add-on packs when used with the default settings. To learn more about the integrated pack, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard). 
+
+<br />
+
+
+
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="2.7.x" key="2.7.x">
+
+* **2.7.0**
+
+</Tabs.TabPane>
 
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
@@ -65,7 +78,7 @@ Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-mana
 
 </Tabs>
 
-## Notable parameters
+## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
@@ -76,6 +89,13 @@ Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-mana
 | k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
 | k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
 | k8s-dashboard.skipLogin | True, False | False | Flag to skip authentications in the Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+
+<InfoBox>
+
+When using the Kubernetes Dashboard pack with version 2.7.0 of the Kubernetes Dashboard, there is no **Connect** button to access your Kubernetes configuration file.
+
+</InfoBox>
+
 
 ## Accessing the dashboard
 
@@ -135,5 +155,5 @@ With these configuration changes, you can access Kubernetes Dashboard service on
 
 ## References
 
-https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-https://github.com/kubernetes/dashboard/tree/master/docs
+[Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+[Open Source Kubernetes Dashboard Documentation](https://github.com/kubernetes/dashboard/tree/master/docs)

@@ -25,7 +25,7 @@ When you attach this pack to a cluster profile, the Spectro Proxy pack is added 
 
 <WarningBox>
 
-Default settings for the dashboard provide best practices for your clusters. Changing the default settings can introduce security issues by exposing your clusters. We recommend using the defaults.
+We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
 
 </WarningBox>
 
@@ -75,7 +75,7 @@ To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster
 Changing these default settings may require some additional configuration.
 <br /> 
 
-### Access
+#### Access
 
 The default setting is **Private**. If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
 
@@ -83,21 +83,21 @@ However, if you change **Access** to **Public** and your cluster is in a private
 
 <br /> 
 
-### Identity Provider 
+#### Identity Provider 
 
 The default setting is **Palette**.
 
 <br />
 
-- **Palette**: No configuration is required. This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
+- **Palette**: No configuration is needed. This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
 
-- **Inherit from Organization**: This setting requires you to configure OIDC authentication in Tenant Settings. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide. 
+- **Inherit from Organization**: This setting requires you to configure OpenID Connect (OIDC) in Tenant Settings. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide. 
 
-- **None**: For all cloud services except Azure AKS, this setting requires you to configure OpenID Connect (OIDC) authentication. Azure AKS clusters require authentication through Active Directory (AD).
+- **None**: This setting requires you to configure OIDC manually in the Kubernetes pack.
 
-### Enable OIDC or Active Directory Authentication
+### Manually Configure OIDC
 
-You only need to manually enable authentication for this pack if you change the **Identify Provider** setting to **None**. The basic method to enable OIDC authentication can be used for all cloud services except Amazon EKS and Azure AKS. 
+You only need to configure OIDC manually if you change the **Identify Provider** setting to **None**. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
 
 <br />
 
@@ -106,11 +106,11 @@ You only need to manually enable authentication for this pack if you change the 
 <Tabs.TabPane tab="Basic OIDC Setup" key="Other Clouds">
 
 
-To enable RBAC OIDC authentication manually for clusters managed by most cloud providers, follow these steps: 
+To configure OIDC manually for clusters managed by most cloud providers, follow these steps: 
 
 <br />
 
-1. Copy ``oidc-`` configuration lines in the example and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your provider details in quotes. <br /><br />
+1. Copy ``oidc-`` configuration lines in the example and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your third-party provider details in quotes. <br /><br />
 
   ```
   kubeadmconfig:
@@ -122,7 +122,7 @@ To enable RBAC OIDC authentication manually for clusters managed by most cloud p
       oidc-username-claim: "email"
   ```
 
-2. Under the ``clientConfig`` parameter section of Kubernetes pack, uncomment the ``oidc-`` configuration lines, and enter your provider details in quotes. Enter the same provider URL and client-id in the ``extraArgs`` and ``clientConfig`` parameter sections. <br /><br />
+2. Under the ``clientConfig`` parameter section of Kubernetes pack, uncomment the ``oidc-`` configuration lines, and enter your provider details in quotes. The provider URL and client-id must be the same in the ``extraArgs`` and ``clientConfig`` parameter sections. <br /><br />
 
   ```
     clientConfig:
@@ -139,11 +139,11 @@ To enable RBAC OIDC authentication manually for clusters managed by most cloud p
 
 <Tabs.TabPane tab="AWS EKS" key="AWS EKS">
 
-To enable RBAC OIDC authentication manually for EKS clusters, follow these steps: 
+To enable OIDC manually for EKS clusters, follow these steps: 
 
 <br />
 
-1. In the Kubernetes pack, uncomment the lines in the ``oidcIdentityProvider`` parameter section, and enter your third-party IDP details.
+1. In the Kubernetes pack, uncomment the lines in the ``oidcIdentityProvider`` parameter section of the Kubernetes pack, and enter your third-party provider details.
 <br />
 
   ```
@@ -173,61 +173,6 @@ To enable RBAC OIDC authentication manually for EKS clusters, follow these steps
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Azure AKS" key="Azure AKS">
- 
-
-Kubernetes RBAC is enabled by default during AKS cluster creation. Follow these steps to link users and Roles to Azure AD. 
-
-<br />
-
-1. In the Azure console, verify Kubernetes RBAC is enabled for your cluster. If RBAC wasn't enabled when you originally deployed your cluster, you'll need to delete and re-create your cluster.
-<br />
-
-2. In the Azure console, create groups and users in Azure AD, then create Roles and RoleBindings for the users.
-<br />
-
-3. In Palette, create a cluster profile using the Spectro RBAC add-on pack available under Authentication packs in the Public Repo. Check out [Creating Cluster Profiles](/cluster-profiles/task-define-profile) to learn about cluster profiles.
-<br />
-
-4. Add information in the Spectro RBAC pack for users and groups and their Roles and RoleBindings based on the same information in Azure AD: <br /><br /> 
-
-  ```
-  clusterRoleBindings:
-      - role: admin
-        name: special-override-name
-        subjects:
-        - {type: User, name: user5}
-        - {type: Group, name: group5}
-      - role: view
-        subjects:
-        - {type: User, name: user6}
-        - {type: Group, name: group6}
-        - {type: ServiceAccount, name: group6, namespace: foo}
-      namespaces:
-      - namespace: team1
-        createNamespace: true
-        roleBindings:
-      - role: admin
-        name: special-override-name-role
-        kind: ClusterRole
-        subjects:
-        - {type: User, name: user3}
-        - {type: Group, name: group3}
-      - role: view
-        kind: ClusterRole
-        subjects:
-        - {type: User, name: user4}
-        - {type: Group, name: group4}
-  ```
-<br /> 
-
-
-5. To get the user-specific kubeconfig file, run the following command:
-
-  ``az aks get-credentials --resource-group <resource-group> --name <cluster-name>``
-
-</Tabs.TabPane>
-
 </Tabs>
 
 # Terraform
@@ -249,7 +194,7 @@ data "spectrocloud_pack_simple" "k8s-dashboard" {
 
 # References
 
-Microsoft Access Control Using Kubernetes RBAC (https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.micro[…]icrosoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json&tabs=portal)
+[Microsoft Access Control Using Kubernetes RBAC](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.micro[…]icrosoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json&tabs=portal)
 
 [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
 
