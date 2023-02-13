@@ -13,6 +13,8 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+# February 17, 2023 - Release 3.2.0
+
 
 
 # December 28, 2022 - Release 3.1.0
