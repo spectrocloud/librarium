@@ -31,7 +31,7 @@ Palette Dev Engine users have access to a Palette-managed cluster group named *b
 
 Palette administrators can remove the beehive cluster for all downstream users by setting the tenant developer setting **Hide system-level cluster groups from tenant users** to **true**. When this setting value is **true**, the beehive cluster is not displayed in the cluster group drop-down menu when deploying Palette virtual clusters.
 
-![The deployment path for a user](045-devx_resource-quota_is-beehive-enabled.png)
+![The deployment path for a user](/045-devx_resource-quota_is-beehive-enabled.png)
 
 You can change tenant developer settings by switching to the tenant scope and navigating from the left **Main Menu** to **Tenant Settings > Developers Settings**. Toggle the **Hide system-level cluster groups from tenant users** button.
 
@@ -109,7 +109,7 @@ Palette evaluates each virtual cluster creation request to verify the requesting
 
 The following diagram displays the evaluation process Palette uses to determine the status of a virtual cluster creation request.
 
-![Order of flow when it comes to evaluating cluster requests](045-devx_resource-quota_evaluation-process.png)
+![Order of flow when it comes to evaluating cluster requests](/045-devx_resource-quota_evaluation-process.png)
 
 To better understand this concept, use the following examples.
 
@@ -130,14 +130,14 @@ To better understand this concept, use the following examples.
     * 1 virtual Cluster in dev-special
     * 8 CPU
     * 12 GiB Memory
-    * 20 GiB Memory
+    * 20 GiB of Storage
 
 
 * User B's Current Resource Utilization
     * 4 Virtual Cluster in dev-special
     * 16 CPU
     * 32 GiB Memory
-    * 60 GiB Memory
+    * 60 GiB of Storage
 
 
 #### Scenario 1
@@ -171,42 +171,12 @@ User B is creating a request to deploy a virtual cluster to the dev-special clus
 User B is creating a request to deploy a virtual cluster to the beehive cluster group. The virtual cluster is requesting the following resources:
 * 4 CPU
 * 8 GiB Memory
-* 4 GiB Memory
+* 4 GiB Storage
 
 **Request**: ✅
  
 **Explanation**: The request is accepted because it targets the beehive cluster group and not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved limits of the beehive cluster group.
 
-
-
-
-<!-- ## Manage Developer Quota
-
-To create your cluster groups, you must manage the developer quota in Palette by hiding the system-level cluster groups as follows:
-
-1. Log in to [Palette](https://console.spectrocloud.com/). 
-
-2. In **Cluster Mode**, select **Tenant Admin** from the drop-down menu 
-
-3. Click **Tenant Settings** in the Main Menu and select **Developer Settings**. 
-
-4. In **Manage Developer Settings**, toggle the `Hide system-level cluster groups from tenant users` option to *on*.
-
-5. Set desired values for *User Quotas*. The table lists the default values.
-
-|**Resource Requirement for two Palette Virtual Clusters**|**Default Quota**|**Minimum Value**|
-|--------|-------------|-------------|
-|CPU|12|4|
-|Memory| 16 GiB|4 GiB|
-|Storage| 20 GiB|2 GiB|
-
-If limits defined for cluster groups are lower than the default quota shown in the table, the size of the respective resource (CPU, memory, or storage) will update automatically to the lower limit. You can verify cluster group limits on the **Cluster Group Settings** page. 
-
-Palette offers a default ephemeral-storage of 1 GiB for virtual clusters launched on the Beehive cluster group.
-
- You can track the status of the resource quota from **Overview** in the **Main Menu** of Palette Dev Engine console.
-
-To summarize quota allocation, each user in a tenant may create up to two virtual clusters with a cumulative CPU/memory/storage quota across all their virtual clusters. Each virtual cluster may consume up to 2.5 vCPU and 2.5 GiB memory from the allocated quota. -->
 
 <br />
 
