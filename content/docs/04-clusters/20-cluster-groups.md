@@ -23,7 +23,7 @@ You can create a cluster group under the Palette [System Scope](/devx/cluster-gr
 
 By default, Palette exposes a managed cluster group called *beehive* that is available for users in app mode. This cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern side of the U.S. 
 
-You can create a cluster group that is made up of various host clusters and different types. You could create a cluster group by similar cloud providers, Kubernetes versions, or by location. You have the flexibility to define the grouping criteria. The following image displays a cluster group comprised of various host clusters deployed in a public cloud, private cloud, and edge environment.
+You can create a cluster group that is made up of various types of host clusters. You could create a cluster group by similar cloud providers, Kubernetes versions, or by location. You have the flexibility to define the grouping criteria. The following image displays a cluster group comprised of various host clusters deployed in a public cloud, private cloud, and edge environment.
 
 <br />
 
@@ -33,7 +33,7 @@ Cluster groups support two network endpoints: load balancer and ingress. All hos
 
 </WarningBox>
 
-![An example cluster group made up of various clusters](clusters_cluster-groups_index-page.png)
+![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.png)
 
 Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide.
 
