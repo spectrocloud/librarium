@@ -13,9 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add Custom Registries
 
-Setting up a custom pack registry involves the installation of a registry server and configuring it with the Palette console.
-Once the registry servier is installed, use the Spectro Cloud CLI tool to manage the contents of the pack registry.
-Pack contents are periodically synchronized with the Palette console.
+Setting up a custom pack registry involves the installation of a registry server and configuring it with Palette.
+Once the registry server is installed, use the Spectro Cloud CLI tool to manage the contents of the pack registry.
+Pack contents are periodically synchronized with Palette.
 
 # Prerequisites
 
