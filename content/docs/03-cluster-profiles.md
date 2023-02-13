@@ -18,7 +18,7 @@ A Cluster Profile can contain an environment-specific configuration and can be c
 
 You may also build Special Purpose Profiles to deploy Workload Clusters for use cases such as AI/ML or High Performance Computing (HPC). Cluster Profiles can be created to be of the type Core Infra, Add-on, or Full.
 
-![Cluster Profile Types](cluster_profiles.png)
+![Cluster Profile Types](/cluster_profiles.png)
 
 Cluster creation requires an Infrastructure or Full Cluster Profile to be selected, and optionally, one or more Add-on profile(s).  The same Add-on Layer category may exist in more than one of the Add-on profiles. The Profile would then read, for example: OS, Kubernetes, Networking, Storage, Monitoring, Ingress.
 
@@ -34,7 +34,7 @@ Cluster Profile Layers are built using content packages which contain integratio
 # Core Infrastructure Cluster Profile
 A **Core Infrastructure Cluster Profile** is constructed using the four Core Infrastructure layers: the OS, Kubernetes, the networking, and the storage layers. These profiles are environment specific and are constructed using cloud-specific layers.
 
-![Core Infra Profile - Azure](03-cluster-profiles/cluster_profile_azure.png)
+![Core Infra Profile - Azure](/03-cluster-profiles/cluster_profile_azure.png)
 
 # Add-On Cluster Profile
 An **Add-on Cluster Profile** consists of various integrations and can be constructed using layers such as:
@@ -48,12 +48,12 @@ An **Add-on Cluster Profile** consists of various integrations and can be constr
 - Load balancer
 - Helm Charts
 
-![Add-On Profile](03-cluster-profiles/addon_profile.png)
+![Add-On Profile](/03-cluster-profiles/addon_profile.png)
 
 # Full Cluster Profile
 A **Full Cluster Profile** consists of the Core Infrastructure layers and as many additional Add-on layers as required. The Core Infrastructure layers are cloud specific.
 
-![Full Cluster Profile](03-cluster-profiles/full_profile.png)
+![Full Cluster Profile](/03-cluster-profiles/full_profile.png)
 
 The next sections provide the details of creating and managing Cluster Profiles.
 
