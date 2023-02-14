@@ -19,21 +19,23 @@ Palette’s Edge Native solution provides a way for Spectro Cloud’s Palette Ed
 
 At the site, Palette provides a plug-n-play experience to the operator. First, appliances are bootstrapped with an initial installer image connecting to the management console to retrieve desired settings from the associated cluster profile. Then, the appropriate Palette Edge Distribution is downloaded, installed, and configured to provision the edge appliance and operationalize the site.
 
+To get started with Palette Edge Native, use the following instructions.
+
 # Prerequisites
 
 * One or more bare metal or virtual devices on X86 architecture to serve as edge hosts for the site.
 
 
 * Minimum hardware requirements for the edge devices:
-   * RAM: 4GB (minimum)
+   * Memory: 4 Gb
    * CPU: 2
-   * Disk: 50Gb
+   * Storage: 50Gb
 
 
 * Outgoing internet connectivity either direct or via proxy.
 
 
-* Whitelist the sites and repositories mentioned in the [proxy whitelist](https://docs.spectrocloud.com/clusters#proxywhitelists) document.
+* Whitelist the sites and repositories mentioned in the [proxy whitelist](/clusters#proxywhitelists) document.
 
 
 * For bare metal edge hosts, a bootable USB drive or [Palette eXtended Kubernetes Edge PXE](/glossary-all#paletteextendedkubernetesedge(pxk-e)) setup to boot devices using the Palette Edge Distribution Installer image.
