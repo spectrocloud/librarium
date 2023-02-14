@@ -11,7 +11,7 @@ There are two local development paths available; Docker based, and non-Docker ba
 
 ## Prerequisites
 
-To contribute, we recommende having the following software installed locally on your workstation.
+To contribute, we recommend having the following software installed locally on your workstation.
 
 - Text Editor
 - [Docker](https://docs.docker.com/desktop/)
