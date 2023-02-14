@@ -74,6 +74,7 @@ To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster
 
 - Amazon Web Services (AWS)
 - Amazon Elastic Kubernetes Service (EKS)
+- Azure
 - Canonical Metal as a Service (MAAS) 
 - Google Cloud Platform (GCP)
 - OpenStack
