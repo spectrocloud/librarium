@@ -1,5 +1,5 @@
 ---
-title: "Edge Native"
+title: "Register and Manage Edge Native Clusters"
 metaTitle: "Edge Native"
 metaDescription: "Learn about Edge Native and how to deploy an edge device with Palette."
 hideToC: false
@@ -15,39 +15,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette’s edge native solution provides a way for Spectro Cloud’s Palette Edge Distribution, a security-hardened, immutable operating system with embedded Kubernetes components, to be installed at edge sites on typically small form factor devices. Thousands of such sites can be provisioned and centrally managed from Palette’s management console, making it easy to upgrade and configure sites in bulk. Cluster profiles with specifications of the desired infrastructure settings (OS type and version; K8s type and version; CNI), as well as desired applications such as Point of Sales, etc., are used as a blueprint for provisioning edge sites.
+Palette’s Edge Native solution provides a way for Spectro Cloud’s Palette Edge Distribution, a security-hardened, immutable operating system with embedded Kubernetes components, to be installed at edge sites on typically small form factor devices. Thousands of such sites can be provisioned and centrally managed from Palette’s management console, reducing the overhead and complexity required to upgrade and configure sites in bulk. [Cluster profiles](/cluster-profiles) with specifications of the desired infrastructure settings (OS type and version; K8s type and version; CNI), as well as desired applications such as Point of Sales, etc., are used as a blueprint for provisioning edge sites.
 
 At the site, Palette provides a plug-n-play experience to the operator. First, appliances are bootstrapped with an initial installer image connecting to the management console to retrieve desired settings from the associated cluster profile. Then, the appropriate Palette Edge Distribution is downloaded, installed, and configured to provision the edge appliance and operationalize the site.
-
-
-# Palette Edge Native Architecture
-
-![native-edge.png](/native-edge.png)
-
-Following are some of the architectural highlights of the Palette-provisioned Edge Native clusters:
-
-* Kubernetes natively installed onto the host.
-
-
-* Support of Bare metal and virtualized edge devices.
-
-
-* Customizable site properties such as network proxies, certificates, etc.
-
-
-* Configure Kubernetes API servers with VIP or Dynamic DNS
-
-
-* Supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
-
-
-* OS images are derived from immutable container-based OS images provided by [Kairos](http://kairos.io).
-
-
-* Installation is bootstrapped using a relatively small distribution-agnostic installer image. The appropriate version/flavor of OS-K8s is derived based on cluster profile settings associated with the edge site and dynamically downloaded and installed.
-
-
-* Customization of Palette Edge Distribution supported for cases such as adding OS packages, device drivers etc.
 
 # Prerequisites
 
