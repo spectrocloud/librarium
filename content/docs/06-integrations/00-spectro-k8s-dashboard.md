@@ -70,7 +70,17 @@ These settings are also included in the manifest as `access` and `identityProvid
 
 ## Usage
 
-To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. The Spectro Kubernetes Dashboard pack has default settings for **Access** and **Identity Provider**. These settings automatically install the latest version of the Spectro Proxy pack when you create the cluster profile.
+To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. This integrated pack supports the following clouds:
+
+- Amazon Web Services (AWS)
+- Amazon Elastic Kubernetes Service (EKS)
+- Canonical Metal as a Service (MAAS) 
+- Google Cloud Platform (GCP)
+- OpenStack
+- VMware vSphere
+
+
+The Spectro Kubernetes Dashboard pack has default settings for **Access** and **Identity Provider**. These settings automatically install the latest version of the Spectro Proxy pack when you create the cluster profile.
 
 Changing these default settings may require some additional configuration.
 <br /> 
