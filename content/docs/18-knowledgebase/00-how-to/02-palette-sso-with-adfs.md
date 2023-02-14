@@ -78,12 +78,12 @@ If you need to be able to your AD FS service from outside your corporate network
 
 <br />
 
-7. The redirect URI is required for SSO to work with Palette. However, if you want to use the same AD FS server for OIDC authentication into your Kubernetes clusters then add the following additional redirect URIs to the list:
+7. The redirect URI is required for SSO to work with Palette. However, you probably will want to add some additional redirect URIs to the list. The first is the logout URL, which is the same as the Callback URL you just pasted, only with `callback` at the end replaced by `logout`. The other URLs in the table below are useful when you want to use AD FS for OIDC authentication into your Kubernetes clusters.
 
 | URL | Type of Access |
 | --- | --- |
 | `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation |
-| `https://console.spectrocloud.com/v1/shelly` | Using the web-based kubectl console |
+| `https://console.spectrocloud.com/v1/shelly/oidc/callback` | Using the web-based kubectl console |
 | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard |
 
 8. When you have completed entering redirect URLs, click **Next**. On the next page of the wizard, select **Generate a shared secret** and click **Copy to clipboard** to copy the secret value and save it somewhere. You will need to enter this value into the Palette SSO configuration later:
