@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Kubernetes Dashboard
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard. It integrates seamlessly with Spectro Proxy and uses default settings for access control and Identify Provider (IDP).   
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard. It integrates seamlessly with [Spectro Proxy](/integrations/frp) and uses default settings for access control and Identity Provider (IDP).   
 
 When you attach this pack to a cluster profile, the Spectro Proxy pack is added automatically and the Kubernetes Dashboard is pre-enabled using secure ports. When used with the default settings, there is nothing to configure.
 
@@ -66,7 +66,7 @@ These settings are also included in the manifest as `access` and `identityProvid
 | serviceType | The service type for the dashboard. Supported values are ClusterIP, LoadBalancer, and NodePort. | `ClusterIP` |
 | skipLogin | Enables or disables the skip login option on the dashboard. | `false` |
 | enableInsecureLogin | Enables non-Secure Sockets Layer (SSL) login. Dashboard login is always restricted to HTTP(S) + localhost or HTTPS and external domain. | `false` |
-| ingress:enabled | Ingress configuration to access the ClusterIP, loadBalancer, or nodePort. | `false` |
+| ingress.enabled | Ingress configuration to access the ClusterIP, loadBalancer, or nodePort. | `false` |
 
 ## Usage
 
@@ -121,7 +121,7 @@ To configure OIDC manually for clusters managed by most cloud providers, follow 
 
 <br />
 
-1. Copy ``oidc-`` configuration lines in the example and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your third-party provider details in quotes. <br /><br />
+1. Copy ``oidc-`` configuration lines in the following code snippet and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your third-party provider details in quotes. <br /><br />
 
   ```
   kubeadmconfig:
@@ -159,14 +159,14 @@ To enable OIDC manually for EKS clusters, follow these steps:
 
   ```
     oidcIdentityProvider:
-      identityProviderConfigName: 'Spectro-docs'     # The name of the OIDC provider configuration
-      issuerUrl: 'issuer-url'       # The URL of the OpenID identity provider
-      clientId: 'user-client-id-from-Palette'           # The ID for the client application that makes authentication requests to the OpenID identity provider
-      usernameClaim: "email"                     # The JSON Web Token (JWT) claim to use as the username
-      usernamePrefix: "-"                        # The prefix that is prepended to username claims to prevent clashes with existing names
-      groupsClaim: "groups"                      # The JWT claim that the provider uses to return your groups
-      groupsPrefix: ""                          # The prefix that is prepended to group claims to prevent clashes with existing names
-      requiredClaims:                            # The key value pairs that describe required claims in the identity token
+      identityProviderConfigName: 'Spectro-docs'
+      issuerUrl: 'issuer-url'
+      clientId: 'user-client-id-from-Palette'
+      usernameClaim: "email"
+      usernamePrefix: "-"
+      groupsClaim: "groups"
+      groupsPrefix: ""
+      requiredClaims:
   ```
 
 <br />

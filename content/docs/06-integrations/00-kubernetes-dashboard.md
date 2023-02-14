@@ -90,11 +90,11 @@ An integrated version of this pack is available, Spectro Kubernetes Dashboard, w
 | k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
 | k8s-dashboard.skipLogin | True, False | False | Flag to skip authentications in the Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<InfoBox>
+<WarningBox>
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we encourage you to use the Spectro Kubernetes Dashboard integrated pack. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard integrated pack. 
 
-</InfoBox>
+</WarningBox>
 
 
 ## Accessing the dashboard
