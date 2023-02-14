@@ -32,10 +32,7 @@ Use the following steps to resize a virtual cluster.
 
 3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.
 
-4. Click **Cluster Size** and specify new resource allocations for your virtual cluster.
-
-    The size you specify can be greater than the Cluster Group allocation.
-    <br />
+4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify can be greater than the Cluster Group allocation.
 
 5. Save your changes.
 
