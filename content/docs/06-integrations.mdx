@@ -1,7 +1,7 @@
 ---
-title: "Pack Integrations"
-metaTitle: "Layers and Pack Integrations"
-metaDescription: "A brief look into the concepts of layers and packs within Spectro Cloud. Also lists the available integrations."
+title: "Packs List"
+metaTitle: "Packs List"
+metaDescription: "Learn about packs that Palette offers and choose from Pallette packs."
 icon: "teams"
 hideToC: true
 fullWidth: true
@@ -15,13 +15,13 @@ import AppTiers from "shared/components/common/Integrations/AppTiers"
 
 <Content>
 
-  # Integrations
-  Integrations are the additional entities that are used to ensure and/or improve on the functionality of Kubernetes. Integrations are better understood as the options that are available for the various "layers" of the Spectro Cloud SaaS.
+# Overview
+Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs and add-on packs to extend Kubernetes functionality. Each pack you add to a cluster profile is considered a layer in the profile.  
 
-  # Layers
-  Kubernetes, as the official document [says](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#what-kubernetes-is-not), is "not a traditional, all-inclusive PaaS system". As such, it requires a lot of [add-ons](https://kubernetes.io/docs/concepts/overview/components/#addons) tailored for specific uses. ([A full list of add-ons is available here](https://kubernetes.io/docs/concepts/cluster-administration/addons/)). The specific uses (or the functionalities) that the add-ons provide are called "Layers" in the Spectro Cloud universe. For example, authentication is a layer that has the options of Dex and Permission Manager. Monitoring is another layer with options of Kubernetes Dashboard, Prometheus Grafana, and a whole lot more. To learn more about individual integrations, use the search bar below to find a specific option. Alternatively, use the filter buttons to see the available options.
-  <br/>
+When you create a cluster profile, you choose the type of pack you want to add: **Full**, **Infrastructure**, or **Add-on**. **Full** refers to the combination of **Infrastructure** and **Add-on** packs. 
 
-  
+When you choose **Infrastructure** or **Add-on**, Palette presents only packs that provide functionality for the selected pack type. When you choose **Full**, Palette presents all the packs so you can build your cluster profile from the base layer up. To learn more about cluster profiles, check out the [Cluster Profiles](/cluster-profiles) guide.     
+
+To learn more about individual packs, use the search bar below to find a specific option. Alternatively, use the filter buttons to display available options. 
 <Packs />
 </Content>

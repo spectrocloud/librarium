@@ -25,7 +25,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 3. The Palette-supported TKE architecture is represented diagrammatically as below:
 
-![tencent-diagram.png](tencent-diagram.png)
+![tencent-diagram.png](/tencent-diagram.png)
 
 # Prerequisites
 
@@ -38,16 +38,16 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 * Create the **Virtual Private Network** and **Subnet** to the region where the workload cluster needs to be deployed.
 
 
-* The [**NAT Gateway**](https://intl.cloud.tencent.com/document/product/457/38369) is to be created to support IP address translation and to enable Internet access to resources in Tencent Cloud. 
+* The [**NAT Gateway**](https://intl.cloud.tencent.com/document/product/457/38369) is to be created to support IP address translation and to enable Internet access to resources in Tencent Cloud.
 
 
 * A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
 
 
-* Create a security group for network security isolation and add Inbound traffic rule that allows the TCP/HTTPS protocol for port 443 from all IPv6 and IPv4 sources through this security group. 
+* Create a security group for network security isolation and add Inbound traffic rule that allows the TCP/HTTPS protocol for port 443 from all IPv6 and IPv4 sources through this security group.
 
 
-# Tencent Cloud Account Permissions 
+# Tencent Cloud Account Permissions
 
 **Last Update**: April 26, 2022
 
@@ -162,22 +162,22 @@ Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin
     | **Optional Description**| Add a description, if any about the cloud account.
     | **Secret ID**| The Secret ID of the Tencent cloud account.
     | **Secret Key**| The secret key of the Tencent cloud account.|
-    
+
 
 3. Click the **Validate** button to validate credentials.
 
 
-4. Click **Confirm** button to complete the cloud account create wizard. 
+4. Click **Confirm** button to complete the cloud account create wizard.
 
 
-**Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic information by clicking the **+** next to **Cloud Account**. 
+**Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic information by clicking the **+** next to **Cloud Account**.
 
 # Deploy a Tencent Cluster
 
 The following steps need to be performed to provision a new TKS cluster:
 
 1. Provide the basic cluster information such as:
-   * **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data center environments. 
+   * **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data center environments.
    * Select the desired [Tencent cloud account](/clusters/public-cloud/tke#createatencentcloudaccount). The Tencent credentials must be pre-configured in the Project/Tenant Admin settings.
 
 
@@ -229,15 +229,15 @@ persistence:
 
     |**Parameter** | **Description**|
     |--------------|----------------|
-    |  **Cloud Account**| Select the desired cloud account. 
+    |  **Cloud Account**| Select the desired cloud account.
     | **Tencent Cloud Accounts** | The Tencent credentials need to be pre-configured in the **Project**/**Tenant Admin** settings.
     ||**Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**. |
     | **Region** | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.
     | **SSH Key Pair Name**| Choose the desired SSH keypair. You must preconfigure SSH key pairs on TKS for the desired regions. The selected key is inserted into the provisioned VMs.
     | **VPCID**|The ID of the Virtual Private Cloud (VPC) that the stack is to be launched into. The VPC must be in the specified region. All cluster instances will be launched into this VPC. |
     |**Cluster Endpoint Access**| Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.|
-    |**Public Security Group**|A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. | 
-    
+    |**Public Security Group**|A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
+
 <InfoBox>
 Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in the near future.
 </InfoBox>
@@ -249,7 +249,7 @@ Palette encourages its uses to go with the Public Cluster endpoint access as of 
 
 
 7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
-    
+
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
 
@@ -285,15 +285,11 @@ In Tenant Admin and Project Admin scope, Palette allows you to force the deletio
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
+      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 
 <WarningBox>
-If any resources remain in the cloud, you should clean them up before initiating a forced delete. 
+If any resources remain in the cloud, you should clean them up before initiating a forced delete.
 </WarningBox>
-
-
-
-
