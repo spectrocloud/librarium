@@ -78,7 +78,7 @@ If you need to be able to your AD FS service from outside your corporate network
 
 <br />
 
-7. The redirect URI is required for SSO to work with Palette. However, you probably will want to add some additional redirect URIs to the list. The first is the logout URL, which is the same as the Callback URL you just pasted, only with `callback` at the end replaced by `logout`. The other URLs in the table below are useful when you want to use AD FS for OIDC authentication into your Kubernetes clusters.
+7. The redirect URI is required for SSO to work with Palette. You can also add additional redirect URIs. In the following list, the second item is the logout URL, which is the same as the callback URL you pasted in earlier, only with `callback` at the end replaced by `logout`. The other URLs in the table below are useful when you want to use AD FS for OIDC authentication into your Kubernetes clusters.
 
 | URL | Type of Access |
 | --- | --- |
