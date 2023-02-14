@@ -19,17 +19,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself. 
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack in order to expose the dashboard.
+The Kubernetes Dashboard pack you can use to access the dashboard requires the Spectro Proxy pack to expose the dashboard.
 <br /> 
 
 <InfoBox>
 
-Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-management/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability.
-
+Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-management/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability. 
 
 </InfoBox>
 
-An integrated version of this pack is available, Spectro Kubernetes Dashboard, which requires no additional configuration or add-on packs when used with the default settings. To learn more about the integrated pack, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard). 
+An integrated version of this pack is available, Spectro Kubernetes Dashboard, which requires no additional configuration or add-on packs when used with the default settings. To learn more about the integrated pack, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
 
 <br />
 
@@ -93,7 +92,7 @@ An integrated version of this pack is available, Spectro Kubernetes Dashboard, w
 
 <InfoBox>
 
-When using the Kubernetes Dashboard pack with version 2.7.0 of the Kubernetes Dashboard, there is no **Connect** button to access your Kubernetes configuration file.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we encourage you to use the Spectro Kubernetes Dashboard integrated pack. 
 
 </InfoBox>
 
@@ -108,15 +107,15 @@ When connected to the cluster remotely, run the following command to establish a
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
-To access Kubernetes Dashboard, go to the below URL in a browser of your choice `https://localhost:8080`
+To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
 
-From the Dashboard login page, run the below command from the Terminal window to get the bearer token:
+From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
-The output of the above command will look as below, where the token value is in the last line:
+The following example shows the command output with the token value.
 
 ```yaml
 Name:         kubernetes-dashboard-token-h4lnf
@@ -136,23 +135,24 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 
 * **LoadBalancer service type**
 
-Use the Load Balancer service IP & Port to connect to the Dashboard
+Use the Load Balancer service IP & Port to connect to the Dashboard.
 
 # Ingress
 
-Follow below steps to configure Ingress on Kubernetes Dashboard
+The following steps guide you to configure ingress in the Kubernetes Dashboard pack.
 
-1. Change serviceType from "LoadBalancer" to "ClusterIP" (line #17)
-2. Ingress (line #23)
-   * Enable Ingress: Change enabled from "false" to "true"
-   * Set Ingress rules like annotations, path, hosts, etc.
+1. Ensure the ``serviceType`` parameter is set to "ClusterIP".
+2. To enable ingress, set the `enabled` parameter to "true".
+3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-With these configuration changes, you can access Kubernetes Dashboard service on the Ingress Controller LoadBalancer hostname / IP
+This allows you to access the Kubernetes Dashboard in hostname or ip format using the ip address that the Ingress Controller exposes. 
+
+Typically you would point a DNS CNAME record to the ingress controller ip. Talk to your system administrator to learn more about which hostname to use. 
 
 ## Troubleshooting
 
-* If the Dashboard is not accessible, check the dashboard pod for errors and ensure the Dashboard service is in the 'Running' state.
-* When the namespace is customized while deploying Dashboard replace the namespace values in the above commands.
+* If the Dashboard is not accessible, check the dashboard pod for errors and ensure the Dashboard service is in the "Running" state.
+* When the namespace is customized while deploying Dashboard replace the namespace values in the commands shown above.
 
 ## References
 
