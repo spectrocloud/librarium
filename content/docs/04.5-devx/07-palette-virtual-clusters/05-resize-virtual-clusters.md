@@ -35,12 +35,13 @@ Use the following steps to resize a virtual cluster.
 4. Click **Cluster Size** and specify new resource allocations for your virtual cluster.
 
     The size you specify can be greater than the Cluster Group allocation.
+    <br />
 
 5. Save your changes.
 
 # Validation
 
-
+To verify your changes, click **Virtual Clusters** in the **Main Menu** and select the resized cluster. The virtual cluster Overview page displays the new **Allocated Quota** for the cluster.
 
 
 
