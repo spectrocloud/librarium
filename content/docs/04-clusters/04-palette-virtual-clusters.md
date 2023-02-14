@@ -1,7 +1,7 @@
 ---
-title: "Palette Virtual Clusters (Beta)"
-metaTitle: "Creating Palette virtual clusters on Palette"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
+title: "Palette Virtual Clusters"
+metaTitle: "Create Palette virtual clusters"
+metaDescription: "Create virtual clusters in Palette"
 icon: "nodes"
 hideToC: false
 fullWidth: false

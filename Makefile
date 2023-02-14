@@ -54,3 +54,7 @@ sync-vale: ## Install Vale plugins
 
 check-writing: ## Run Vale lint checks
 	vale $(CHANGED_FILE) 
+
+fix-server:
+	@echo "fixing server"
+	rm -rfv node_modules && rm -rfv .cache/ && npm ci

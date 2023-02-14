@@ -137,6 +137,18 @@ const redirects = [
     toPath: `/clusters/cluster-management/kubernetes-dashboard`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups`,
+    toPath: `/clusters/cluster-groups`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups/ingress-cluster-group`,
+    toPath: `/clusters/cluster-groups/ingress-cluster-group`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

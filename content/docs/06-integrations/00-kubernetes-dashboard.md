@@ -1,12 +1,12 @@
 ---
-title: 'Kubernetes Dashboard'
-metaTitle: 'Kubernetes Dashboard'
-metaDescription: 'Kubernetes Dashboard Monitoring pack in Spectro Cloud'
+title: "Kubernetes Dashboard"
+metaTitle: "Kubernetes Dashboard"
+metaDescription: "Kubernetes Dashboard Monitoring pack in Spectro Cloud"
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['monitoring']
-logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
+category: ["monitoring"]
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -32,8 +32,13 @@ Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-mana
 
 <Tabs>
 
+<Tabs.TabPane tab="2.7.x" key="2.7.x">
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
+* **2.7.0**
 * **2.6.1**
 * **2.6.0**
 
