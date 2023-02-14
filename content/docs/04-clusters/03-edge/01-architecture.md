@@ -32,13 +32,12 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 * Edge supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
 
 
-* OS images are derived from immutable container-based OS images provided by the open-source project, [Kairos](http://kairos.io).
+* Operating system (OS) images are derived from immutable container-based OS images provided by the open-source project, [Kairos](http://kairos.io).
 
 
 * The installation is bootstrapped using a relatively small distribution-agnostic installer image named *Stylus*. The appropriate version or flavor of the operating system Kubernetes combination is derived from the cluster profile settings, associated with the edge site, and dynamically downloaded and installed.
 
 
-<!-- * Customization of Palette Edge Distribution supported for cases such as adding OS packages, device drivers etc. -->
-
+* Palette Edge Distribution supports use cases that require customization of OS packages, device drivers, etc.
 
 ![native-edge.png](/native-edge.png)
