@@ -40,20 +40,13 @@ Edge Clusters are still in active development and subject to changes. Review the
 
 <br />
 
-# Palette Edge Solutions
+# Edge Native
 
-Palette Edge Platform provides two solutions for edge, designed to support large and small edge sites:
+Designed for sites typically with one or more small form factor appliances such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette Edge Distribution based on the desired version of an operating system and Kubernetes is installed natively onto the devices. Palette manages the installation and all the day-two activities, such as scaling, upgrades, reconfiguration, etc.
 
+Palette's Edge native solution is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade
 
-<br />
-
-### Edge Native
-
-Designed for sites that typically have one or more small form factor appliances such as intel NUC. An instance of Palette Edge Distribution based on the desired version of OS and K8s is installed natively onto the devices. Palette Management Console manages the day-1 installation as well as all the day-2 activities, such as scaling, upgrades, reconfiguration, etc.
-
-Palette's edge native solution is built on top of the open source project Kairos(kairos.io) which provides tamper-proof immutable operating system wil zero down-time rolling upgrades. 
-
-### Virtualized Edge
+<!-- ### Virtualized Edge
 
 Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
@@ -65,7 +58,7 @@ Palette recommends Virtualized Edge deployment only when the user has a single e
 
 [Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
 
-</WarningBox>
+</WarningBox> -->
 
 
 <br />
