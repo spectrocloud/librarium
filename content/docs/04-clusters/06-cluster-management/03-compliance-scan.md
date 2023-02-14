@@ -19,25 +19,25 @@ Palette supports four types of scans. Each scan generates reports with details s
 
 # Configuration Security
 
-This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source tool called KubeBench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the master or worker results if required. 
+This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source tool called KubeBench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the master or worker results if required.
 
-All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run, and it is suggested to be tested manually. 
+All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run, and it is suggested to be tested manually.
 
-![kcs.png](kcs.png)
+![kcs.png](/kcs.png)
 
 # Penetration Testing
 
-Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Palette leverages an open-source tool called KubeHunter from Aqua Security to perform this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or external report if required. 
+Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Palette leverages an open-source tool called KubeHunter from Aqua Security to perform this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or external report if required.
 
-![kpt.png](kpt.png)
+![kpt.png](/kpt.png)
 
 # Conformance Testing
 
-Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that they are conformant to the CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.  Automatically select a subset of relevant tests for execution based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service). Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to resources. For accurate assessment of conformance for distribution of Kubernetes, set up a cluster with at least two worker nodes. These tests are not destructive. However, they do launch several workloads in test namespaces as part of the tests. As a result, the consumption of cluster resources during the test run duration increases and may impact other workloads running on the cluster. 
+Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that they are conformant to the CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.  Automatically select a subset of relevant tests for execution based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service). Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to resources. For accurate assessment of conformance for distribution of Kubernetes, set up a cluster with at least two worker nodes. These tests are not destructive. However, they do launch several workloads in test namespaces as part of the tests. As a result, the consumption of cluster resources during the test run duration increases and may impact other workloads running on the cluster.
 
-The scan summary of total passed and failed tests are displayed while the test is in progress. In addition, a complete overview of the tests that were run is displayed after the completion of the report. 
+The scan summary of total passed and failed tests are displayed while the test is in progress. In addition, a complete overview of the tests that were run is displayed after the completion of the report.
 
-![conformance.png](conformance.png)
+![conformance.png](/conformance.png)
 
 # SBOM: Dependencies & Vulnerabilities
 
@@ -46,7 +46,7 @@ A Software Bill of Materials (SBOM) is a comprehensive list of the components, l
 
 An SBOM provides metadata about each component such as version, origin, license, and more, enabling organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
 
-![sbom_scan.png](sbom_scan.png)
+![sbom_scan.png](/sbom_scan.png)
 
 ## Configuring an SBOM scan
 All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup location, and click “Confirm”.
@@ -86,15 +86,15 @@ A Backup Location is <b>mandatory</b> when configuring an SBOM scan using the <b
 ## Viewing SBOM scan results
 You can click into a completed scan to view a scan report containing additional detail for every image that was scanned. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name, as each image may be in use by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
 
-![sbom_results.png](sbom_results.png)
+![sbom_results.png](/sbom_results.png)
 
 Each image details page within the scan report provides a list of dependencies and vulnerabilities. These tables are condensed highlights of the metadata contained in the SBOM that was generated for a particular image. Each dependency’s version and type is displayed, but additional metadata will be included in the SBOM. Exactly what additional metadata is included will depend on the selected SBOM format.
 
-![sbom_dependencies.png](sbom_dependencies.png)
+![sbom_dependencies.png](/sbom_dependencies.png)
 
 For each vulnerability, you can view the name, severity level, vulnerability code, installed or impacted version, and the fix version (if a fix is available). Any CVEs documented in the [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail page for that particular vulnerability.
 
-![sbom_vulnerabilities.png](sbom_vulnerabilities.png)
+![sbom_vulnerabilities.png](/sbom_vulnerabilities.png)
 
 # Scan Options
 

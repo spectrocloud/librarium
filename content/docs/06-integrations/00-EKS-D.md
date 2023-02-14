@@ -30,9 +30,9 @@ Spectro Cloud leverages EKS-D services to customers as a platform of their choic
 We have made the usage of EKS-D easy by incorporating it as integration within the Spectro Cloud pack. At the click of a button, EKS-D is brought to use while creating a Spectro Cloud-specific cluster profile.
 Once the cluster profile is created, users can deploy EKS-D based Kubernetes clusters through the Spectro Cloud console.
 
-![eksd-cluster-profile](eksd-cluster-profile.png)
+![eksd-cluster-profile](/eksd-cluster-profile.png)
 
-![eksd-cluster](eksd-cluster.png)
+![eksd-cluster](/eksd-cluster.png)
 
 ## Why EKS-D with Spectro Cloud
 
