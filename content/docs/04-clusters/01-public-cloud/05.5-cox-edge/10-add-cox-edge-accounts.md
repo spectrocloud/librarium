@@ -28,11 +28,24 @@ To add a Cox Edge account to Palette, use the following instructions.
 
 - Tenant admin access in Palette.
 
+- Your Cox Edge organization id. Ask your system administrator for this value or use the API endpoint `api/v2/organizations` to retrive the organization id.
+
+```
+curl --silent  "https://portal.coxedge.com/api/v2/organizations" \
+   -H "MC-Api-Key: YourAPIkeyHere" | jq '.data[] | {id}'
+```
+
+```
+{
+  "id": "268ce256-15ef-465f-bc0f-952fac3e7c1e"
+}
+```
+
 # Enablement
 
 You can use the steps below or the interactive guide to help you add a Cox Edge account to Palette. Click on the first image link to navigate the destination site with the tutorial on the right-hand side.
 
-<iframe src="https://scribehow.com/embed/Cox_Edge_Account_Creation__xkGjLKR_SCqwnVWSvlIxaQ?skipIntro=true&removeLogo=true" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+<iframe src="https://scribehow.com/embed/Add_Cox_Edge_Account_to_Palette__kgxQ9zckTo2aIM587hmdYw?removeLogo=true" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 1. Log in to the [Cox Edge](https://portal.coxedge.com/login) portal.
 
@@ -52,34 +65,25 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 6. Go ahead and copy the API endpoint URL. The API endpoint is located above the table listing all your API keys.
 
 
-7. Next, expand the drop-down **User Menu** and click on your organization name.
+7. Click on the **four-tile Home** button at the top and select **Edge Compute**.
 
 
-8. Copy the organization id value.
+8. Next, click on the environment drop-down menu and select **Add Environment** to create a compute environment. A compute environment is required when adding a Cox Edge account to Palette. If you already have a compute environment available, skip to step 11.
 
 
-9. Navigate to the left **Main Menu** and select **Edge Compute**.
+9. Provide a name and description, select **Next**.
 
 
-10. Copy the edge services code located at the top of the page.
+10. Add members to the compute environment. You can also add members at a latter point. Apply the changes.
 
 
-11. Next, click on **+ Add Environment** to create a compute environment. A compute environment is required when adding a Cox Edge account to Palette.
+11. Next, open up another browser tab and log in to [Palette](https://console.spectrocloud.com) as a Tenant admin.
 
 
-12. Provide a name and description, select **Next**.
+12. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add Cox Edge Account**.
 
 
-13. Add members to the compute environment. You can also add members at a latter point. Apply the changes.
-
-
-14. Next, open up another browser tab and log in to [Palette](https://console.spectrocloud.com) as a Tenant admin.
-
-
-15. Go to **Tenant Settings** > **Cloud Accounts** and click **+Add Cox Edge Account**.
-
-
-16. Fill out the all of the input fields.
+13. Fill out the all of the input fields.
 
     - Account Name: Assign a name to the Cox Edge account.
 
@@ -87,15 +91,16 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 
     - API Key: Provide the API key you generated earlier.
 
-    - Organization Id: Add the organization id you copied down earlier from the Cox Edge organization overview page.
+    - Organization Id: Ask your system administrator for this value or use the Cox Edge API to retrive the organization id.
 
     - Environment: This is an optional field but you can provide the environment you wish to target if you have one.
 
-    - Service: Provide the service code you copied from the Cox Edge portal's **Edge Compute** overview page.
+    - Service: Use the value `edge-services`.
 
-17. Click on **Validate** to confirm you have access to the Cox Edge account.
+14. Click on **Validate** to confirm you have access to the Cox Edge account.
 
-18. Select **Confirm** to add the Cox Edge account to Palette.
+
+15. Select **Confirm** to add the Cox Edge account to Palette.
 
 
 # Validation
