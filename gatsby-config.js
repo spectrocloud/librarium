@@ -76,6 +76,7 @@ const plugins = [
     options: {
       plugins: [
         `gatsby-remark-video`,
+        `gatsby-remark-relative-images`,
         `gatsby-remark-images`,
         `gatsby-remark-images-medium-zoom`,
         "gatsby-remark-image-attributes",
@@ -92,6 +93,12 @@ const plugins = [
             playsinline: true,
             controls: true,
             loop: false,
+          },
+        },
+        {
+          resolve: `gatsby-remark-relative-images`,
+          options: {
+            staticFolderName: "./assets/docs/images/",
           },
         },
         {

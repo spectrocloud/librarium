@@ -31,7 +31,7 @@ Following are some architectural highlights of bare-metal Kubernetes clusters, d
 5. Private Cloud Gateway(PCG) is Palette's on-prem component to enable support for isolated private cloud or data center environments. The Palette PCG, once installed registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
-![maas_cluster_architecture.png](maas_cluster_architecture.png)
+![maas_cluster_architecture.png](/maas_cluster_architecture.png)
 
 # Prerequisites
 
@@ -54,7 +54,7 @@ The following prerequisites must be met before deploying a bare-metal Kubernetes
 5. DNS to resolve public internet names (e.g.: api.spectrocloud.com).
 
 
-6. A computer with a docker daemon installed and connectivity to both the Palette Management console and the MAAS identity endpoint. 
+6. A computer with a docker daemon installed and connectivity to both the Palette Management console and the MAAS identity endpoint.
 
 
 7. Sufficient IPs for application workload services (e.g.: Load Balancer services).
@@ -75,18 +75,18 @@ The following system requirements should be met in order to install a private cl
     * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
     * 1 IP for Kubernetes control-plane
 
-Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MAAS identity endpoint. 
+Palette provides an installer in the form of a docker container temporarily deployed on your laptop, workstation or jump-box. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as MAAS identity endpoint.
 
 ## Generate pairing code
 
-1.  Navigate to the Private Cloud Gateway page in the Palette UI under **My Organization** > **Admin Settings** > **Private Cloud Gateways** > **Add New Private Cloud Gateway** > **MAAS** > **Add MAAS Account**. 
+1.  Navigate to the Private Cloud Gateway page in the Palette UI under **My Organization** > **Admin Settings** > **Private Cloud Gateways** > **Add New Private Cloud Gateway** > **MAAS** > **Add MAAS Account**.
 
 
 2. Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
 ## Generate gateway config
 
-1. Invoke the gateway installer in interactive mode, from any system that has a docker daemon installed with connectivity, to the Palette Management console and the MAAS identity endpoint. 
+1. Invoke the gateway installer in interactive mode, from any system that has a docker daemon installed with connectivity, to the Palette Management console and the MAAS identity endpoint.
 
 
 2. To generate the gateway configuration file, follow the instructions below to provide the Palette Management, MAAS cloud account, environment, and placement information when prompted by the installer.
@@ -114,7 +114,7 @@ Copy and past the instructions above to your terminal with docker. Upon executio
     |**Username** |Enter your Palette Username - Sign in email address <br />e.g. user1@company.com.|
     |**Password** |Enter your Palette Password - Sign in password.|
     |**Private Cloud Gateway** |Enter the Private Cloud Gateway pairing code generated from the <br /> Palette Palette UI. For more info, please see the <br /> **Generate gateway config** section of this document.|
-    
+
 #### Enter the Environment Configuration:
 
 
@@ -212,7 +212,7 @@ A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 
 A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired.
 
-1. To create a MAAS cloud account, proceed to project settings and select **Create Cloud Account** under MAAS. 
+1. To create a MAAS cloud account, proceed to project settings and select **Create Cloud Account** under MAAS.
 
 2. Fill the following values in the cloud account creation wizard.
 
@@ -222,7 +222,7 @@ A default cloud account is automatically created when the private cloud gateway 
     |   **Private cloud gateway**|    Reference to a running cloud gateway |
     |  **API Endpoint** |  API Endpoint of the gateway   |
     | **API Key**| API token |
-    
+
 3. Validate the above MAAS credentials to create your MAAS cloud account.
 
 # Deploying a bare metal cluster using MAAS
@@ -247,7 +247,7 @@ The following steps need to be performed to provision a new MAAS cluster:
     |**Cloud Account** | Select the desired cloud account.
     MAAS cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
     |**Domain**|
-    
+
 
 5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
 
@@ -258,7 +258,7 @@ The following steps need to be performed to provision a new MAAS cluster:
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
 |**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload. 
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
 |**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
@@ -309,7 +309,7 @@ Delete action is only available for clusters that are fully provisioned. For clu
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 ## To force delete a cluster:
 
@@ -318,11 +318,10 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
+      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion. 
+If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion.
 </WarningBox>
-
