@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 GiB Storage. The size you specify can be greater than the Cluster Group allocation. 
+You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 GiB Storage. The size you specify cannot be greater than the system-level quota and the tenant user quota. 
 
 # Prerequisite
 
@@ -34,7 +34,8 @@ Use the following steps to resize a virtual cluster.
 2. In App Mode, click **Virtual Clusters** in the **Main Menu**.
 <br />
 
-3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.<br />
+3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.
+<br />
 
 4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota and the tenant user quota. To learn more about resource quotas, refer to the [resource quota](/devx/resource-quota) documentation.
 <br />
