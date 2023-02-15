@@ -79,7 +79,7 @@ A backup location is required when configuring an SBOM scan using the github-jso
 
 * Syft JSON:  Syft's custom SBOM format. This format contains the most metadata compared to the other formats.
 
-#### SBOM scan scopes
+#### SBOM Scan Scopes
 * Cluster: Scans all the images in your Kubernetes cluster.
 
 
