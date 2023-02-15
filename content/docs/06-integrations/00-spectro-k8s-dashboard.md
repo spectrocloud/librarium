@@ -84,7 +84,7 @@ Spectro Kubernetes Dashboard has the following default settings for **Access** a
 
 #### Access
 
-The default setting is **Private**. When Access is set to Private, the latest version of the Spectro Proxy pack is included with Spectro Kubernetes Dashboard when you create your cluster profile.
+The default setting is **Private**. When **Access** is set to **Private**, the latest version of the Spectro Proxy pack is included with Spectro Kubernetes Dashboard when you create your cluster profile.
 
 If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
 
