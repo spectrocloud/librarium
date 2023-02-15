@@ -68,14 +68,16 @@ A backup location is required when configuring an SBOM scan using the github-jso
 <br />
 
 #### SBOM Scan Format
-* [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json)
-  * A standardized format for representing Software Bill of Materials that is widely used by organizations and governments. It has been around longer than any other SBOM format.
-* [CycloneDX](https://cyclonedx.org/specification/overview/)
-  * An open-source XML format that provides a standard representation of software components and their metadata.
-* GitHub's [dependency submission format](https://docs.github.com/en/rest/dependency-graph/dependency-submission?apiVersion=2022-11-28)
-  * Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
-* Syft JSON
-  * Syft's custom SBOM format. Contains the most complete metadata out of the four options.
+* [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standardized format for representing SBOM that is widely used by organizations and governments. This report format has been around longer than any other SBOM format.
+
+
+* [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML format that provides a standard representation of software components and their metadata.
+
+
+* GitHub's [dependency submission format](https://docs.github.com/en/rest/dependency-graph/dependency-submission?apiVersion=2022-11-28): Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
+
+
+* Syft JSON:  Syft's custom SBOM format. This format contains the most metadata compared to the other formats.
 
 #### SBOM scan scopes
 * Cluster: Scans all the images in your Kubernetes cluster.
