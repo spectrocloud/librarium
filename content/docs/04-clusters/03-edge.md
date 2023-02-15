@@ -16,17 +16,17 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as grocery stores and restaurants, unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, and reconfiguration.
 
-Edge computing brings computing and data storage closer to the source, reducing the latency issues resulting from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil & gas, cruise ships, healthcare, and 5G telcos typically have use cases that require content data and processing to be closer to the applications. 
+Edge computing brings computing and data storage closer to the source, reducing the latency issues resulting from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil & gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to the applications. 
 
 Following are the highlights of the comprehensive Palette Edge Solution:
 
 * Centralized Full Stack Management
 * Low touch, plug-n-play setup
-* Immutable update for K8s and OS with zero downtime
+* Immutable update for Kubernetes and operating system (OS) with zero downtime
 * Distro agnostic Kubernetes and OS
 * Secured remote troubleshooting
 * Scalable from tens to thousands of locations
-* Support for Pre-Provisioned and At-the-Edge registration 
+* Support for pre-provisioned and on-site device registration 
 
 
 <br />
@@ -68,6 +68,8 @@ Palette recommends Virtualized Edge deployment only when the user has a single e
 - [Edge Native Architecture](/clusters/edge/architecture)
 
 - [Deployment Lifecycle](/clusters/edge/edge-native-lifecycle)
+
+- [Create an Installer Image](/clusters/edge/installer-image)
 
 - [Register and Manage Edge Native Clusters](/clusters/edge/native)
 

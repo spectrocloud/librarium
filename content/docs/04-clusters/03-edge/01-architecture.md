@@ -48,7 +48,7 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 Palette provides the following distributions for edge installations.
 
-|Name|OS |K8s Distro|CNIs|CSIs|
+|Name|OS |Kubernetes Distro|CNIs|CSIs|
 |----|---|----------|----|----|
 |Palette Optimized K3S |openSUSE,Ubuntu  |K3S |Calico, Flannel|Rook Ceph|
 |Palette Optimized RKE2|openSUSE,Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
