@@ -67,7 +67,7 @@ A backup location is required when configuring an SBOM scan using the github-jso
 
 <br />
 
-#### SBOM scan formats
+#### SBOM Scan Format
 * [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json)
   * A standardized format for representing Software Bill of Materials that is widely used by organizations and governments. It has been around longer than any other SBOM format.
 * [CycloneDX](https://cyclonedx.org/specification/overview/)
