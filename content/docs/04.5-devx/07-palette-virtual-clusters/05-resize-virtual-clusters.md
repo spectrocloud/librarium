@@ -37,7 +37,7 @@ Use the following steps to resize a virtual cluster.
 3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.
 <br />
 
-4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota and the tenant user quota. To learn more about resource quotas, refer to the [resource quota](/devx/resource-quota) documentation.
+4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota for a cluster group like Beehive and the user quota for tenant-level cluster groups. To learn more about resource quotas, refer to the [resource quota](/devx/resource-quota) documentation.
 <br />
 
 5. Save your changes.
