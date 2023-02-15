@@ -28,7 +28,7 @@ Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-mana
 
 </InfoBox>
 
-An preconfigured version of this pack is available, Spectro Kubernetes Dashboard, which requires no configuration when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
+An version of this pack is available, Spectro Kubernetes Dashboard, which requires no configuration when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
 
 <br />
 
