@@ -51,7 +51,7 @@ The SBOM provides metadata about each component such as version, origin, license
 ## Configure an SBOM Scan
 To initiate an SBOM scan, navigate to **Clusters** and select the cluster to scan. On the **Cluster Overview** page, click the **Scans** tab, and expand the **Software Bill of Materials (SBOM)** drop-down menu. Select **Configure Scan** and choose the desired SBOM format, scan scope, and an optional backup location. Confirm your changes.
 
-Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Paletee also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
+Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Palette also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
 Suppose you specify a [backup location](/clusters/cluster-management/backup-restore). In that case, the SBOM for each image will be uploaded to your backup location, and you can subsequently download the SBOMs with the click of a button or using the Palette API. 
 
