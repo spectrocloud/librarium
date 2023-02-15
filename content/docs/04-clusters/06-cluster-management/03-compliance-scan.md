@@ -110,7 +110,7 @@ A cluster scan of any type can be started by navigating to the **Scans** tab of 
 |Select the cluster to scan -> Scan(top panel) -> Run Scan|
 
 ## Scheduled
-A schedule can be set for each type of scan at the time of deploying the cluster initially. The schedule can also be (re)set at a later point.
+You can set a schedule for each scan type when you deploy the cluster, and you can change the schedule at a later time.
 
 |__During Cluster Deployment__|
 |-----------------------------|
