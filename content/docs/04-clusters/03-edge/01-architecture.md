@@ -41,3 +41,15 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 * Palette Edge Distribution supports use cases that require customization of OS packages, device drivers, etc.
 
 ![native-edge.png](/native-edge.png)
+
+
+
+# Palette Edge Distribution
+
+Palette provides the following distributions for edge installations.
+
+|Name|OS |K8s Distro|CNIs|CSIs|
+|----|---|----------|----|----|
+|Palette Optimized K3S |openSUSE,Ubuntu  |K3S |Calico, Flannel|Rook Ceph|
+|Palette Optimized RKE2|openSUSE,Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
+|[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE,Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
