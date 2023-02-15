@@ -119,7 +119,7 @@ You can set a schedule for each scan type when you deploy the cluster, and you c
 
 |__Running Cluster__|
 |----------------------|
-|Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice|
+|Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice.|
 
 ### Schedule Options Available
 
