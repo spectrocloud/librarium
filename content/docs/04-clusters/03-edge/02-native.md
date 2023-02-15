@@ -148,7 +148,7 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
 
-7. Register the device. Registration involves adding your edge hosts to Palette and defining a cluster with those edge hosts. Once the registration is complete in Palette, the edge host agent comes out of the wait cycle and proceeds to install the cluster. Registration can be performed using one of the following methods.
+7. Register the device. Registration involves adding your edge hosts to Palette and defining a cluster that uses the edge devices to make up a node pool. Once the registration is complete in Palette, the edge host agent comes out of the wait cycle and proceeds to install the cluster. Registration can be performed using one of the following methods.
 
 
 <Tabs identifier="registration">
@@ -176,13 +176,13 @@ To create a registration token, use the following steps.
 2. Switch to the tenant scope.
 
 
-3. Navigate to left **Main Menu** and select **Settings**.
+3. Navigate to the left **Main Menu** and select **Settings**.
 
 
-4. Next, click on **Registration Tokens** in the tenant settings menu.
+4. Select **Registration Tokens** in the tenant settings menu.
 
 
-5. Select **Add New Registration Token**.
+5. Click on **Add New Registration Token**.
 
 
 6. Fill out the input fields and **Confirm** your changes. 
