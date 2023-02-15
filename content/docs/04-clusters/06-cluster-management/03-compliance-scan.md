@@ -42,18 +42,18 @@ The scan summary of total passed and failed tests are displayed while the test i
 # SBOM: Dependencies & Vulnerabilities
 
 ## What is an SBOM?
-An SBOM is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps in managing security and compliance risks associated with those components.
+An SBOM is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps to manage security and compliance risks associated with those components.
 
-The SBOM provides metadata about each component, such as version, origin, license, and more. Reviewing the SBOM enables organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
+The SBOM provides metadata about each component such as version, origin, license, and more. Reviewing the SBOM enables organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
 
 ![sbom_scan.png](/sbom_scan.png)
 
 ## Configure an SBOM Scan
-All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup location, and click “Confirm”.
+To initiate an SBOM scan, navigate to **Clusters** and select the cluster to scan. On the **Cluster Overview** page, click the **Scans** tab, and expand the **Software Bill of Materials (SBOM)** drop-down menu. Select **Configure Scan** and choose the desired SBOM format, scan scope, and an optional backup location. Confirm your changes.
 
-Palette will identify every unique container image within your chosen scope and generate an SBOM for that image, but also run the SBOM through a vulnerability scanner that will flag CVEs. Palette leverages two open-source tools from Anchore for this purpose: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
+Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Paletee also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
-Suppose a [backup location](/clusters/cluster-management/backup-restore) is provided. In that case, the SBOM for each image will be uploaded to your backup location and can subsequently be downloaded with the click of a button or using the Palette API. 
+Suppose you specify a [backup location](/clusters/cluster-management/backup-restore). In that case, the SBOM for each image will be uploaded to your backup location, and you can subsequently download the SBOMs with the click of a button or using the Palette API. 
 
 If a backup location is not provided, Palette will preserve all of the identified dependencies and vulnerabilities, but the raw SBOMs will not be available for download. The report results are available for review regardless of their backup location setting.
 
@@ -68,34 +68,31 @@ A backup location is required when configuring an SBOM scan using the github-jso
 <br />
 
 #### SBOM Scan Format
-* [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standardized format for representing SBOM that is widely used by organizations and governments. This report format has been around longer than any other SBOM format.
+* [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standard SBOM format widely used by organizations and governments. The SPDX format has been around longer than any other SBOM format.
 
-
-* [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML format that provides a standard representation of software components and their metadata.
-
+* [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML-based SBOM format that provides a standard representation of software components and their metadata.
 
 * GitHub's [dependency submission format](https://docs.github.com/en/rest/dependency-graph/dependency-submission?apiVersion=2022-11-28): Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
 
-
-* Syft JSON:  Syft's custom SBOM format. This format contains the most metadata compared to the other formats.
+* Syft JSON: Syft's custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM formats.
 
 #### SBOM Scan Scopes
 * Cluster: Scans all the images in your Kubernetes cluster.
 
-
 * Namespace: Scans all images in a particular Kubernetes namespace.
 
-
-* Label Selector: Scans all images used by all of the Pods matching a label selector within a particular Kubernetes namespace.
+* Label Selector: Scans all images used by all the Pods matching a label selector within a particular Kubernetes namespace.
 
 * Pod: Scans all images used by a single Pod.
 
 ## Review SBOM Results
-To review a completed scan, expand the **Software Bill of Materials (SBOM)** row. The expanded row displays the completed report containing detailed information about every scanned image. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name. Each image may be used by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
+To review a completed scan, expand the **Software Bill of Materials (SBOM)** row. The expanded row displays the completed report containing detailed information about every scanned image. The context column indicates every unique use of each image, broken out by container name, namespace, and pod name. Each image may be used by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
 
 ![sbom_results.png](/sbom_results.png)
 
-Each image details page within the scan report provides a list of dependencies and vulnerabilities. These tables are condensed highlights of the metadata contained in the SBOM that was generated for a particular image. Each dependency’s version and type is displayed, but additional metadata will be included in the SBOM. Exactly what additional metadata is included will depend on the selected SBOM format.
+Each identified image has its own detailed results page containing dependency and vulnerability reports. To review an image's result page, select the **>** button. Regardless of the selected SBOM format, each dependency’s name, version, and type is displayed, and each vulnerability's name, severity, code, impacted version, and fixed version is displayed.
+
+Additional metadata will be included in the SBOM. Exactly what additional metadata is included depends on the selected SBOM format.
 
 ![sbom_dependencies.png](/sbom_dependencies.png)
 
@@ -112,7 +109,7 @@ A cluster scan of any type can be started by navigating to the **Scans** tab of 
 
 |__On Demand Scan__|
 |------------------|
-|Select the cluster to scan -> Scan(top panel) -> Run Scan|
+|Select the cluster to scan -> Scan(top panel) -> Run Scan.|
 
 ## Scheduled
 You can set a schedule for each scan type when you deploy the cluster, and you can change the schedule at a later time.
@@ -132,12 +129,7 @@ Schedule your compliance scan for month, day, hour, or minute. For example:
 * Every two weeks at midnight.
 * Every month on the first day of the month at midnight.
 * Every two months on the first day of the month at midnight
-* E.g.:
-  * Every week on Sunday at midnight
-  * Every two weeks at midnight
-  * Every month on the 1st at midnight
-  * Every two months on the 1st at midnight
 
 <InfoBox>
-    This operation can be performed on all cluster types across all clouds
+    This operation can be performed on all cluster types across all clouds.
 </InfoBox>
