@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
  # Overview
 
-Palette provides a way to run compliance, security, conformance, and SBOM scans on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. They also detect potential vulnerabilities by performing penetration tests.
+Palette provides a way to run compliance, security, conformance, and software bill of materials (SBOM) scans on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. The scans also detect potential vulnerabilities by performing penetration tests.
 
 Palette supports four types of scans. Each scan generates reports with details specific to the type of scan. Multiple scans of each type can be run over time. In addition, Palette keeps a history of previous scans for comparison purposes. Each scan type is explained in detail in the sections to below.
 
