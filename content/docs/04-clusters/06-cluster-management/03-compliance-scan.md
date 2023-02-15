@@ -42,7 +42,7 @@ The scan summary of total passed and failed tests are displayed while the test i
 # SBOM: Dependencies & Vulnerabilities
 
 ## What is an SBOM?
-A Software Bill of Materials (SBOM) is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps in managing security and compliance risks associated with those components.
+An SBOM is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps in managing security and compliance risks associated with those components.
 
 An SBOM provides metadata about each component such as version, origin, license, and more, enabling organizations to track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data Security Standard (PCI DSS).
 
