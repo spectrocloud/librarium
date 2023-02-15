@@ -123,7 +123,11 @@ You can set a schedule for each scan type when you deploy the cluster, and you c
 
 ### Schedule Options Available
 
-* Schedule your compliance scan for an exact month, day, hour, and minute
+Schedule your compliance scan for month, day, hour, or minute. For example: 
+* Every week on Sunday at midnight.
+* Every two weeks at midnight.
+* Every month on the first day of the month at midnight.
+* Every two months on the first day of the month at midnight
 * E.g.:
   * Every week on Sunday at midnight
   * Every two weeks at midnight
