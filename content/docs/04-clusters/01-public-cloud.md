@@ -14,7 +14,7 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Public Cloud Clusters 
 
-Palette supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various public cloud environments. Palette supports provisioning new clusters on public clouds using the cloud provider's infrastructure by provisioning new VMs for control plane and worker pools and through their managed Kubernetes services such as EKS, AKS, GKE, TKE, and more. 
+Palette supports provisioning new workload clusters on public clouds using cloud providers' infrastructure. It achieves this by provisioning new virtual machines (VMs) for the control plane and worker pools and uses their managed Kubernetes services such as EKS, AKS, GKE, TKE, and more. 
 
 Workload clusters are instantiated from cloud specific [_Cluster Profiles_](/cluster-profiles) templates that are created with pre-configured layers and components required for cluster deployments. You can use one of the cluster profiles provided out-of-the-box or create a new one.
 
