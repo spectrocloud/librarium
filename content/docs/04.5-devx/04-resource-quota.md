@@ -90,7 +90,7 @@ The global user quotas that a Palette administrator has defined in the tenant de
 
 * Storage
 
-For example, assume the following tenant developer user quotas for four virtual clusters are defined as 20 CPU, 32 GiB of memory, and 60 GiB of storage. With these settings, all users could deploy four virtual clusters, each virtual cluster with a maximum size of 4 CPU, 8Gib of memory, and 15 GiB of storage.
+For example, assume the following tenant developer user quotas for four virtual clusters are defined as 20 CPU, 32 GiB of memory, and 60 GiB of storage. With these settings, all users could deploy four virtual clusters, each virtual cluster with a maximum size allowed by the cluster group limits.
 
 Users can also deploy a single virtual cluster that consumes 20 CPU, 32 GiB of memory, and 60 GiB of storage. In the latter example, the user cannot deploy additional clusters because CPU, memory, and storage resources are exhausted.
 
