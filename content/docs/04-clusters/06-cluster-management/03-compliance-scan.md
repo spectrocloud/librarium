@@ -76,14 +76,15 @@ A backup location is required when configuring an SBOM scan using the github-jso
   * Syft's custom SBOM format. Contains the most complete metadata out of the four options.
 
 #### SBOM scan scopes
-* Cluster
-  * Scan **all** images in your K8s cluster
-* Namespace
-  * Scan all images in a particular **Namespace**
-* Label Selector
-  * Scan all images used by all of the Pods matching a **label selector** within a particular Namespace
-* Pod
-  * Scan all images used by a single **Pod**
+* Cluster: Scans all the images in your Kubernetes cluster.
+
+
+* Namespace: Scans all images in a particular Kubernetes namespace.
+
+
+* Label Selector: Scans all images used by all of the Pods matching a label selector within a particular Kubernetes namespace.
+
+* Pod: Scans all images used by a single Pod.
 
 ## Review SBOM Results
 You can click into a completed scan to view a scan report containing additional detail for every image that was scanned. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name, as each image may be in use by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
