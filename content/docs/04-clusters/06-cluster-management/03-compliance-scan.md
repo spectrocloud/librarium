@@ -94,7 +94,7 @@ Each image details page within the scan report provides a list of dependencies a
 
 ![sbom_dependencies.png](/sbom_dependencies.png)
 
-For each vulnerability, you can view the name, severity level, vulnerability code, installed or impacted version, and the fix version (if a fix is available). Any CVEs documented in the [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail page for that particular vulnerability.
+For each identified vulnerability, you can view the name, severity level, vulnerability code, installed or impacted version, and the fix version (if a fix is available). Any CVEs documented in the [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail page for that particular vulnerability.
 
 ![sbom_vulnerabilities.png](/sbom_vulnerabilities.png)
 
