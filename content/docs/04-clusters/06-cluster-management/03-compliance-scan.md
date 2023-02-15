@@ -87,7 +87,7 @@ A backup location is required when configuring an SBOM scan using the github-jso
 * Pod: Scans all images used by a single Pod.
 
 ## Review SBOM Results
-You can click into a completed scan to view a scan report containing additional detail for every image that was scanned. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name, as each image may be in use by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
+To review a completed scan, expand the **Software Bill of Materials (SBOM)** row. The expanded row displays the completed report containing detailed information about every scanned image. The context column indicates every unique usage of each image, broken out by container name, namespace, and pod name. Each image may be used by various containers within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can be viewed in greater detail by clicking on any row in the scan report.
 
 ![sbom_results.png](/sbom_results.png)
 
