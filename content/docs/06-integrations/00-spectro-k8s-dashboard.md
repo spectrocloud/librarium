@@ -1,10 +1,10 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
-metaTitle: "Spectro Cloud's Integrated Kubernetes Dashboard"
-metaDescription: 'The Integrated Kubernetes Dashboard Monitoring pack in Palette reduces the complexity of standing up the Kubernetes dashboard for a cluster'
+metaTitle: "Spectro Cloud's Preconfigured Kubernetes Dashboard"
+metaDescription: 'The Preconfigured Kubernetes Dashboard Monitoring pack in Palette reduces the complexity of standing up the Kubernetes dashboard for a cluster'
 hiddenFromNav: true
-type: "integration"
-category: ['integrations','monitoring']
+type: "monitoring"
+category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png'
 ---
 
@@ -17,9 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Kubernetes Dashboard
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard. It integrates seamlessly with [Spectro Proxy](/integrations/frp) and uses default settings for access control and Identity Provider (IDP).   
-
-When you attach this pack to a cluster profile, the Spectro Proxy pack is added automatically and the Kubernetes Dashboard is pre-enabled using secure ports. When used with the default settings, there is nothing to configure.
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes [Spectro Proxy](/integrations/frp). When used with the default settings for access control and Identity Provider (IDP), there is nothing to configure.
 
 <br />
 
@@ -70,25 +68,25 @@ These settings are also included in the manifest as `access` and `identityProvid
 
 ## Usage
 
-To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. This integrated pack supports the following clouds:
+To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. Spectro Kubernetes Dashboard supports the following clouds:
 
 - Amazon Web Services (AWS)
 - Amazon Elastic Kubernetes Service (EKS)
-- Azure
 - Canonical Metal as a Service (MAAS) 
 - Google Cloud Platform (GCP)
+- Microsoft Azure
 - OpenStack
 - VMware vSphere
 
 
-The Spectro Kubernetes Dashboard pack has default settings for **Access** and **Identity Provider**. These settings automatically install the latest version of the Spectro Proxy pack when you create the cluster profile.
-
-Changing these default settings may require some additional configuration.
+Spectro Kubernetes Dashboard has the following default settings for **Access** and **Identity Provider**. Changing these default settings may require some additional configuration.
 <br /> 
 
 #### Access
 
-The default setting is **Private**. If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
+The default setting is **Private**. When Access is set to Private, the latest version of the Spectro Proxy pack is included with Spectro Kubernetes Dashboard when you create your cluster profile.
+
+If you change the setting to **Public** and your cluster is in a public cloud, there is no additional configuration.  
 
 However, if you change **Access** to **Public** and your cluster is in a private cloud, you have to manually add and configure the Spectro Proxy pack to your cluster profile. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
@@ -108,13 +106,13 @@ The default setting is **Palette**.
 
 ### Manually Configure OIDC
 
-You only need to configure OIDC manually if you change the **Identify Provider** setting to **None**. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
+You only need to configure OIDC manually if you change the **Identity Provider** setting to **None**. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
 
 <br />
 
 <Tabs>
 
-<Tabs.TabPane tab="Basic OIDC Setup" key="Other Clouds">
+<Tabs.TabPane tab="Basic OIDC Setup" key="Basic OIDC Setup">
 
 
 To configure OIDC manually for clusters managed by most cloud providers, follow these steps: 
