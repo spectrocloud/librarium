@@ -24,21 +24,27 @@ You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 
 
 # Resize Virtual Clusters
 
+
 Use the following steps to resize a virtual cluster.
+<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
+<br />
 
 2. In App Mode, click **Virtual Clusters** in the **Main Menu**.
+<br />
 
-3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.
+3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.<br />
 
-4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify can be greater than the Cluster Group allocation.
+4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota and the tenant user quota. To learn more about resource quotas, refer to the [resource quota](/devx/resource-quota) documentation.
+<br />
 
 5. Save your changes.
 
+
 # Validation
 
-To verify your changes, click **Virtual Clusters** in the **Main Menu** and select the resized cluster. The virtual cluster Overview page displays the new **Allocated Quota** for the cluster.
+To verify your changes, click **Virtual Clusters** in the left **Main Menu** and select the resized cluster. The virtual cluster Overview page displays the new **Allocated Quota** for the cluster.
 
 
 
