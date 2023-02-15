@@ -51,7 +51,7 @@ The SBOM provides metadata about each component, such as version, origin, licens
 ## Configure an SBOM Scan
 All you have to do is click “Configure Scan”, select your desired SBOM format, scan scope, and an optional backup location, and click “Confirm”.
 
-Palette will identify every unique container image within your chosen scope and not only generate an SBOM for that image, but also run the SBOM through a vulnerability scanner that will flag CVEs. Palette leverages two open source tools from Anchore for this purpose: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
+Palette will identify every unique container image within your chosen scope and generate an SBOM for that image, but also run the SBOM through a vulnerability scanner that will flag CVEs. Palette leverages two open-source tools from Anchore for this purpose: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
 If a [backup location](/clusters/cluster-management/backup-restore) is provided, the SBOM for each image will be uploaded to your backup location and can subsequently be downloaded with the click of a button or using the Palette API. If a backup location is not provided, Palette will still preserve all of the dependencies and vulnerabilities that were identified, but the raw SBOMs will not be available for download. All the results and metadata pictured in the screenshots below will be included even without a backup location configured, except when using the **github-json** format, in which case a backup location must be provided.
 
