@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette’s Edge Native solution provides a way for Spectro Cloud’s Palette Edge Distribution, a security-hardened, immutable operating system with embedded Kubernetes components, to be installed at edge sites on typically small form factor devices. Thousands of such sites can be provisioned and centrally managed from Palette’s management console, reducing the overhead and complexity required to upgrade and configure sites in bulk. [Cluster profiles](/cluster-profiles) with specifications of the desired infrastructure settings (OS type and version; K8s type and version; CNI), as well as desired applications such as Point of Sales, etc., are used as a blueprint for provisioning edge sites.
+Palette’s Edge Native solution provides a way for Spectro Cloud’s Palette Edge Distribution, a security-hardened, immutable operating system with embedded Kubernetes components, to be installed at edge sites on typically small form factor devices. Thousands of such sites can be provisioned and centrally managed from Palette’s management console, reducing the overhead and complexity required to upgrade and configure sites in bulk. [Cluster profiles](/cluster-profiles) with specifications of the desired infrastructure settings (OS type and version; Kubernetes type and version; CNI), as well as desired applications such as Point of Sales, etc., are used as a blueprint for provisioning edge sites.
 
 At the site, Palette provides a plug-n-play experience to the operator. First, appliances are bootstrapped with an initial installer image connecting to the management console to retrieve desired settings from the associated cluster profile. Then, the appropriate Palette Edge Distribution is downloaded, installed, and configured to provision the edge appliance and operationalize the site.
 
@@ -75,30 +75,29 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section.
 
-<br />
 
-```yaml
-stylus:
-  site:
-    paletteEndpoint: api.spectrocloud.com
-    registrationURL: https://edge-registration.vercel.app 
-    projectUid: yourProjectIdHere
-    edgeHostToken: yourEdgeRegistrationTokenHere
-    tags:
-      myTag: myValue
-      myOtherTag: myOtherValue
-   reboot: false
+  ```yaml
+    stylus:
+      site:
+        paletteEndpoint: api.spectrocloud.com
+        registrationURL: https://edge-registration.vercel.app 
+        projectUid: yourProjectIdHere
+        edgeHostToken: yourEdgeRegistrationTokenHere
+        tags:
+          myTag: myValue
+          myOtherTag: myOtherValue
+      reboot: false
 
-stages:
-  initramfs:
-    - users:
-        palette:
-          groups:
-            - sudo
-          passwd: palette
-install:
-  poweroff: true
-```
+    stages:
+      initramfs:
+        - users:
+            palette:
+              groups:
+                - sudo
+              passwd: palette
+    install:
+      poweroff: true
+  ```
 
 
 #### Site
@@ -132,7 +131,7 @@ install:
 
 
 
-5. Create the installer image. Select the target environment appropriate for your device. Review the steps for creating an [install image](#create-install-image). You can choose between [bare metal](#staging-environment?environment=bare-metal#bare-metal) or [VMware](#staging-environment?environment=vmware#vmware). 
+5. Create the installer image. Select the target environment appropriate for your device. Review the steps for creating an [install image](/clusters/edge/installer-image). You can choose between [bare metal](/clusters/edge/installer-image) or [VMware](/clusters/edge/installer-image). 
 
 
 
@@ -145,7 +144,7 @@ install:
 |network: httpProxy|proxy is specified it will be used for http and https traffic|No|
 |network: nameserver|configures the default nameserver for the system|No|
 |network: gateway|required if static network type is configured, this is the default gateway for all outbound traffic|Conditional - required  if network type is static|
-|network: ipAddress|required if static network type is configured, this is the ip address the default interface will be configured|Conditional - required  if network type is static|
+|network: ipAddress|required if static network type is configured, this is the IP address the default interface will be configured|Conditional - required  if network type is static|
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
 
@@ -279,7 +278,7 @@ The tag value `name` allows you to set a readable name for the edge host. If pro
 8. Click on the **Clusters** tab and select **+ Add New Cluster**.
 
 
-9. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, we recommend adding an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette Management Console to access the cluster remotely.
+9. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette Management Console to access the cluster remotely.
 
 
 10. Configure cluster properties such as Virtual IP address (VIP) for the edge site, inject SSH keys, etc.
@@ -323,150 +322,3 @@ The deletion of an Edge Native cluster results in the removal of all instances a
 6. Type in the name of the cluster and click on **OK**
 
 The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters. The delete operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are removed. After the delete process, the edge hosts are available for deployment to a new cluster.
-
-
-
-# Create Install Image
-
-<Tabs identifier="environment">
-
-<Tabs.TabPane tab="Bare Metal" key="bare-metal">
-
-## Bare Metal
-
-For bare metal edge hosts, creating the palette edge installer variant involves generating an installer image which is derived by customizing the default Palette Edge Installer. Site-specific settings described above are baked into this image. The customization is performed by using the Palette Edge Installer Container.
-
-The following are steps to customize *site settings* and build an *installer image*:
-
-<br />
-
-1. Checkout the following [Git Repo](https://github.com/spectrocloud/pxke-samples) on your local machine or server where you intend to invoke the customization procedure.
-
-   ```
-     git clone https://github.com/spectrocloud/pxke-samples
-   ```
-
-2. A file called .installer.env.template serves as a template file for  settings that can be customized. Make a copy of this file to .installer.env.
-
-   ```
-     cp .installer.env.template .installer.env
-   ```
-
-3. Update contents of this file to customize:
-   * Installer name
-
-   * Base Palette installer version
-   * Location of the Docker registry where the installation container image should be uploaded to (optional)
-   * Location of the user data.yaml file where the customized installer settings are stored
-
-      -  Name of the ISO image to be generated - (Optional - defaults to pxe-installer if not specified)
-
-         ```shell
-         ISO_IMAGE="pxe-installer-custom"
-         ```
-
-      -  The version of the Palette Edge installer agent - (Optional) Defaults to the latest release)
-
-         ```shell
-         INSTALLER_VERSION="latest"
-         ```
-
-      - Target Docker image for the installer to generate
-
-         ```shell
-         IMAGE_NAME="gcr.io/my-repo/palette-edge-installer"
-         ```
-
-      - Path to user the data file  (Optional - Defaults to "user-data" in the current directory. Change the value below and uncomment the line if the file is different).
-
-         ```shell
-         USER_DATA_FILE="my-user-data.yaml”
-         ```
-
-
-4. The default user-data file is named `user-data` in the home directory. Create the file or file named as specified in USER_DATA_FILE in the `.installer.env`
-
-	**Example:**  “my-user-data.yaml” above. The user data settings are as described in the [site settings](/clusters/edge/native#staging) section above.
-
-
-5. Build the custom ISO - A custom ISO should be built with the name specified in the settings and the user data file baked inside the ISO.
-
-```shell
-./build-installer.sh
-```
-
-
-6. Mount this Palette Edge Installer ISO using a [bootable USB drive](http://tbd), [PXE server](http://tbd), or any other means to the bare metal appliances' primary drive (USB or CDROM). The installer will be flashed to the edge host hard disk, and the host will be shut down. The bare-metal edge host appliance is ready to be shipped to the edge location.
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="VMware Environment" key="vmware">
-
-## VMware
-
-
-We will create an OVA file from the base Palette Edge Installer ISO for VMware environments by injecting customized settings (user data) via a secondary drive. Following are the detailed steps to generate the Palette Edge Installer variant in  OVA format.
-
-1. Prepare cloud-init ISO with org settings. The steps to do this can vary from platform to platform. The instructions below describe the procedure to build the cloud-init ISO on macOS.
-
-
-2. Create a YAML file called ‘user-data’  with the contents from the template in the [Site Settings section](/clusters/edge/native#staging). Customize various properties as necessary.
-
-
-3. Create an empty meta-data file:
-
-```
- touch meta-data
-```
-
-4. Create a cloud init iso using the following command:
-
-```
-mkisofs -output ci.iso -volid cidata -joliet -rock user-data meta-data
-```
-
-You may need cdrtools to interact with other devices.
-
-```
-brew install cdrtools
-```
-
-This will generate an ISO file called ci.iso in the current directory.
-
-<br />
-
-1. Upload the ci.iso file generated in the previous step to a datastore in vSphere using the vCenter console.
-
-
-2. Download the default Palette Edge Installer image (ISO) from the clusters/edge hosts page on the Palette Management Console.
-
-
-3. Upload this ISO to a datastore in vSphere using the vCenter console.
-
-
-4. Create a new VM using the vCenter console. Add 2 CD drives to this VM and select the Palette Edge installer for one of them and the ci.iso 4. file for the other.
-
-
-5. Select other settings, such as Network, Datastore, Folder, etc., as appropriate for your environment, if.
-
-
-6. Power on the VM.
-
-
-7. Monitor the VM console for log messages. The installer and user data will be copied to the hard disk, and the VM will shut down.
-
-
-8. Power off the VM
-
-
-9. Edit VM settings and delete the two CD drives previously attached.
-
-
-10. Export VM as an OVF template.
-
-
-The OVA file is ready to ship to various edge locations for installation.
-
-</Tabs.TabPane>
-
-</Tabs>
