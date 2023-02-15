@@ -58,7 +58,9 @@ If a [backup location](/clusters/cluster-management/backup-restore) is provided,
 <br />
 
 <WarningBox>
-A Backup Location is <b>mandatory</b> when configuring an SBOM scan using the <b>github-json</b> format.
+
+A backup location is required when configuring an SBOM scan using the github-json format.
+
 </WarningBox>
 
 <br />
