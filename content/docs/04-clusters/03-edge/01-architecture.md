@@ -53,3 +53,35 @@ Palette provides the following distributions for edge installations.
 |Palette Optimized K3S |openSUSE,Ubuntu  |K3S |Calico, Flannel|Rook Ceph|
 |Palette Optimized RKE2|openSUSE,Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
 |[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE,Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
+
+
+# Kubernetes Defaults
+
+The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication. The following items are disabled by default.
+
+* Traefik
+
+* SERVICE-lb
+
+* local-path provisioner
+
+* Flannel
+
+**Example Scenario:**
+
+For the Palette Optimized k3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
+
+The component metric server is disabled to avoid duplication of the metrics server, since the Palette agent already installs the metrics-server by default.
+
+```
+cluster:
+ config:
+   # disable the built in cni
+   flannel-backend: none
+   no-flannel: true
+   disable-network-policy: true
+   Disable:
+     - metrics-server
+```
+
+<br />
