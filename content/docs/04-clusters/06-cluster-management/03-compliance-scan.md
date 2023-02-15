@@ -103,7 +103,7 @@ For each identified vulnerability, you can view the name, severity level, vulner
 The following options are available for running cluster scans:
    
 ## On Demand
-A cluster scan of any type can be started by navigating to the scans tab of a cluster on the UI. The scan shows up as 'initiated' and transitions to 'Completed' when the scan is complete.
+A cluster scan of any type can be started by navigating to the **Scans** tab of a cluster in Palette. Scan progress displays as 'Initiated' and transitions to 'Completed' when the scan is complete.
 
 |__On Demand Scan__|
 |------------------|
