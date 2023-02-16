@@ -69,7 +69,7 @@ The Kubernetes Packs for Edge Native deployments disable a few items by default 
 
 **Example Scenario:**
 
-For the Palette Optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
+For the Palette optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
 
 The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
 
