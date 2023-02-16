@@ -56,7 +56,7 @@ This page lists the version details of various Palette components with respect t
 
 # On-Premises Installer Version
 
-|Palette Release|On-Premises Installer Version|
+|Palette Release|On-Prem Installer Version|
 |--|---|
 |3.2|2.4.0|
 |3.1|2.4.0|
@@ -173,7 +173,7 @@ This page lists the version details of various Palette components with respect t
 
 - [Packs List](/integrations#integrations)
 
-- [Downloads](/spectro-downloads#palettedynamicartifacts).
+- [Downloads](/spectro-downloads#palettedynamicartifacts)
 
 
 
