@@ -93,7 +93,7 @@ The version information is part of the API URI like `v1alpha1`, `v1`. Future API
 
 # Scope
 
-Palette supports applications to operate under [**Tenant** and **Project**](/user-management/palette-rbac#accessmodes) scope. The resources can be logically grouped as projects and the API requests. These resources within a project should carry the ProjectUid in the context. The project scope can be specified in the API request as an HTTP header with the key as `ProjectUid` and value as the &lt;Project Uid&gt; The `ProjectUid` needs to be specified for a request to be applied under the project scope.
+Palette logically groups resources under either a [**Tenant** or **Project**](/user-management/palette-rbac#accessmodes) scope. API requests targeting resources belonging to a project should provide the scope. The project scope can be specified in the API request as an HTTP header using the key `ProjectUid` and &lt;Project Uid&gt; as the value. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
 
 **Example**:
 
