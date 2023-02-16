@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 GiB Storage. The size you specify cannot be greater than the system-level quota and the tenant user quota. 
+You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 GiB Storage to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups. 
 
 # Prerequisite
 
