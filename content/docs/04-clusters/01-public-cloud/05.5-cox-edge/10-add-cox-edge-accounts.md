@@ -28,7 +28,7 @@ To add a Cox Edge account to Palette, use the following instructions.
 
 - Tenant admin access in Palette.
 
-- Your Cox Edge organization id. Ask your system administrator for this value or use the API endpoint `api/v2/organizations` to retrive the organization id.
+- Your Cox Edge organization id. Ask your system administrator for this value or use the API endpoint `api/v2/organizations` to retrieve the organization id.
 
 ```
 curl --silent  "https://portal.coxedge.com/api/v2/organizations" \
