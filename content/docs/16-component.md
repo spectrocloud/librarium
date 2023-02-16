@@ -80,7 +80,9 @@ This page lists the version details of various Palette components with respect t
 |2.5|2.0.1|
 |2.3|2.0.1|
 
-# vSphere PCG Image Version
+# Private Cloud Gateways (PCG) Images
+
+## vSphere PCG Image Version
 
 |Palette Release|vSphere PCG Version|
 |--|---|
@@ -94,7 +96,7 @@ This page lists the version details of various Palette components with respect t
 |2.3|1.1.9|
 ------
 
-# MAAS PCG Image Version
+## MAAS PCG Image Version
 
 |Palette Release|MAAS PCG Version|
 |--|---|
@@ -108,7 +110,7 @@ This page lists the version details of various Palette components with respect t
 |2.3|1.0.9|
 ---------
 
-# OpenStack PCG Image Version
+## OpenStack PCG Image Version
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
