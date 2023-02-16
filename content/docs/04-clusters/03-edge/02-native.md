@@ -17,7 +17,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Palette’s Edge Native solution provides a way for Spectro Cloud’s Palette Edge Distribution, a security-hardened, immutable operating system with embedded Kubernetes components, to be installed at edge sites on typically small form factor devices. Thousands of such sites can be provisioned and centrally managed from Palette’s management console, reducing the overhead and complexity required to upgrade and configure sites in bulk. [Cluster profiles](/cluster-profiles) with specifications of the desired infrastructure settings (OS type and version; Kubernetes type and version; CNI), as well as desired applications such as Point of Sales, etc., are used as a blueprint for provisioning edge sites.
 
-At the site, Palette provides a plug-n-play experience to the operator. First, appliances are bootstrapped with an initial installer image connecting to the management console to retrieve desired settings from the associated cluster profile. Then, the appropriate Palette Edge Distribution is downloaded, installed, and configured to provision the edge appliance and operationalize the site.
+At the site, Palette provides a plug-n-play experience to the operator. First, edge hosts are bootstrapped with an initial installer image connecting to the management console to retrieve desired settings from the associated cluster profile. Then, the appropriate Palette Edge Distribution is downloaded, installed, and configured to provision the edge host and operationalize the site.
 
 To get started with Palette Edge Native, use the following instructions.
 
@@ -105,7 +105,7 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |Parameter| Description| Required|
 |------------------|------------|----------|
 |paletteEndPoint   |Palette Management Server endpoint.|Yes|
-|name|Unique Identifier for the device. This should be globally unique across in  the Palette Management System. If not provided, the id is generated using the serial number of the appliance.|No|
+|name|Unique Identifier for the device. This should be globally unique across in  the Palette Management System. If not provided, the id is generated using the serial number of the edge host.|No|
 |registrationURL| End point to the restoration app that can be used for QR code based automated registration. |No|
 |projectUid| The id of the project that will use this Edge device. |No|
 |edgeHostToken| The tenant registration token. Registration tokens allow you to install an Edge device automatically without using the registration URL. |No|
