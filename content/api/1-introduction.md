@@ -93,11 +93,16 @@ The version information is part of the API URI like `v1alpha1`, `v1`. Future API
 
 # Scope
 
-Palette logically groups resources under either a [**Tenant** or **Project**](/user-management/palette-rbac#accessmodes) scope. API requests targeting resources belonging to a project should provide the scope. The project scope can be specified in the API request as an HTTP header using the key `ProjectUid` and &lt;Project Uid&gt; as the value. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
+Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging to a project, the project scope should be specified. To specify the project scope, use the HTTP header key `ProjectUid` with the value `<Project Uid>` in the API request. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
 
 **Example**:
 
-While creating a cloud account under a specific project, the request should have the `ProjectUid in the http header.` If the request is submitted without the `ProjectUid` by default, it will be considered a Tenant Scope request.
+```shell
+curl --location --request \
+GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
+--header 'Accept: application/json' \
+--header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'
+```
 
 
 # Pagination
