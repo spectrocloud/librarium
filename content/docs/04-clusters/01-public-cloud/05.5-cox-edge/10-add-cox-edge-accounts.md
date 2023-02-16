@@ -91,7 +91,7 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 
     - API Key: Provide the API key you generated earlier.
 
-    - Organization Id: Ask your system administrator for this value or use the Cox Edge API to retrive the organization id.
+    - Organization Id: Ask your system administrator for this value or use the Cox Edge API to retrieve the organization id.
 
     - Environment: This optional field allows you to enter name of the environment you wish to target if you have one.
 
