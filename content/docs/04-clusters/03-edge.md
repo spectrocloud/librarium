@@ -14,14 +14,18 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as grocery stores and restaurants, unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, and reconfiguration.
+Edge Clusters are Kubernetes clusters that are set up on appliances installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These edge appliances can be bare metal machines or virtual machines and are managed by operators at the remote sites. Palette provisions workload clusters on such edge appliances from its SaaS-based management console. In addition to provisioning clusters, Palette also provides end-to-end cluster management through operations such as scaling, upgrades, and reconfiguration.
 
-Edge computing brings computing and data storage closer to the source, reducing the latency issues resulting from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil & gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to the applications. 
 
-Following are the highlights of the comprehensive Palette Edge Solution:
+Edge computing brings computing and data storage closer to the source, reducing latency issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications. 
+
+
+The following are some highlights of the comprehensive Palette Edge Solution:
+
 
 * Centralized Full Stack Management
-* Low touch, plug-n-play setup
+* Low touch, plug-and-play setup
+
 * Immutable update for Kubernetes and operating system (OS) with zero downtime
 * Distro agnostic Kubernetes and OS
 * Secured remote troubleshooting
@@ -42,9 +46,11 @@ Edge Clusters are still in active development and subject to changes. Review the
 
 # Edge Native
 
-Designed for sites typically with one or more small form factor appliances such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette Edge Distribution based on the desired version of an operating system and Kubernetes is installed natively onto the devices. Palette manages the installation and all the day-two activities, such as scaling, upgrades, reconfiguration, etc.
+Palette's Edge native solution is designed for sites that typically have one or more small form factor appliances, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette Edge Distribution based on the desired version of an operating system and Kubernetes is installed natively onto these devices. Palette manages the installation and all the day-two activities, such as scaling, upgrades, and reconfiguration.
 
-Palette's Edge native solution is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade
+
+Edge native is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
+
 
 <!-- ### Virtualized Edge
 

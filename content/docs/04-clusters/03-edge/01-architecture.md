@@ -17,28 +17,28 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 <br />
 
-* Kubernetes is natively installed onto the host.
+* Kubernetes is natively installed on the host.
 
 
 * Support for bare metal and virtualized edge devices.
 
 
-* Customizable site properties such as network proxies, certificates, etc.
+* Customizable site properties such as network proxies and certificates.
 
 
-* Configure the Kubernetes API servers to work with virtual IP address (VIP) or Dynamic DNS.
+* Configurable Kubernetes API servers to work with virtual IP address (VIP) or Dynamic DNS.
 
 
 * Edge supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
 
 
-* Operating system (OS) images are derived from immutable container-based OS images provided by the open-source project, [Kairos](http://kairos.io).
+* Operating system (OS) images are derived from immutable container-based OS images provided by the [Kairos](http://kairos.io) open-source project.
 
 
-* The installation is bootstrapped using a relatively small distribution-agnostic installer image named *Stylus*. The appropriate version or flavor of the operating system Kubernetes combination is derived from the cluster profile settings, associated with the edge site, and dynamically downloaded and installed.
+* The installation is bootstrapped using a relatively small distribution-agnostic *Stylus* installer image. The operating system and Kubernetes version are derived from cluster profile settings associated with the edge site and dynamically downloaded and installed.
 
 
-* Palette Edge Distribution supports use cases that require customization of OS packages, device drivers, etc.
+* Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
 
 ![native-edge.png](/native-edge.png)
 
@@ -50,9 +50,9 @@ Palette provides the following distributions for edge installations.
 
 |Name|OS |Kubernetes Distro|CNIs|CSIs|
 |----|---|----------|----|----|
-|Palette Optimized K3S |openSUSE,Ubuntu  |K3S |Calico, Flannel|Rook Ceph|
-|Palette Optimized RKE2|openSUSE,Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
-|[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE,Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
+|Palette Optimized K3s |openSUSE, Ubuntu  |K3s |Calico, Flannel|Rook Ceph|
+|Palette Optimized RKE2|openSUSE, Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
+|[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE, Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
 
 
 # Kubernetes Defaults
@@ -69,9 +69,9 @@ The Kubernetes Packs for Edge Native deployments disable a few items by default 
 
 **Example Scenario:**
 
-For the Palette Optimized k3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
+For the Palette Optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
 
-The component metric server is disabled to avoid duplication of the metrics server, since the Palette agent already installs the metrics-server by default.
+The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
 
 ```
 cluster:
