@@ -77,19 +77,25 @@ The API returns standard HTTP response codes:
 | 500 | Operational error. For 500 error code, the server responds with an explicit error code and an error message. |
 
 # Palette API Lifecycle
-Palette API will remain backward compatible indefinitely until deprecation. To keep up with the API lifecycle, we expose the state or phase the API is in—*Production*, *Sunsetting* or *Deprecated*. 
+The Palette API will remain backward compatible until it's deprecated, and we will keep you informed of its lifecycle phases, which are *Production*, *Sunset*, and *Deprecated*.
 ### Production
-While in the Production stage, the Palette and Terraform APIs will work as intended and expected. 
-### Sunsetting
-As the API moves toward retirement, whether being replaced or no longer being supported, a notice is included in the documentation with the intent and a cut-off date. A notice is shared within three months to the date of deprecation as a countdown till the end date along with the recommendation of what API to use instead.
+The Palette APIs are designed to work as intended and expected.
+### Sunset
+As the API approaches retirement, whether because it is being replaced or will no longer be supported, we include a notice in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, we share a notice that counts down to the end date and recommends the API to use instead.
 ### Deprecated
-When an API is no longer supported nor recommended to use, we indicate its state and include a tag as deprecated. The API documentation will continue to be available as a subsection of deprecated APIs.
+We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to indicate its state. The API documentation will remain available as a subsection of deprecated APIs..
 
-**Note**: This API lifecycle also applies to external-facing tools such as Terraform and will be managed, accordingly.
+<br />
+
+<InfoBox>
+
+The API lifecycle also applies to external-facing tools such as Terraform, and they will be managed accordingly.
+
+</InfoBox>
 
 # Versioning
 
-The version information is part of the API URI like `v1alpha1`, `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will undergo changes like adding new attributes or query parameters with backward compatibility of earlier schema. While advancing to the next version, ample notice to migrate to the new API will be provided.
+The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backward compatibility with earlier schema. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
 
 # Scope
 
@@ -107,4 +113,4 @@ GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3
 
 # Pagination
 
-The resources list APIs are limited to 50 items and pagination has to be performed to retrieve the complete resources list. The list API response contains `listMeta` with the `continue` token. The pagination can be performed based on the presence of the `continue` token value, and the subsequent request can be performed with the `continue` token as query parameter to paginate the rest of the resource items.
+The resources list APIs are limited to 50 items, and therefore pagination is required to retrieve the complete resources list. The list API response includes listMeta with the continue token. To perform pagination, check the presence of the continue token value in the API response. For subsequent requests, use the continue token as a query parameter to paginate the remaining resource items.
