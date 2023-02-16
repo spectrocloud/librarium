@@ -122,6 +122,17 @@ This page lists the version details of various Palette components with respect t
 |2.3|1.0.9|
 -------
 
+
+# Stylus Edge Installer Image Version
+
+|Palette Release|Stylus Version|
+|--|---|
+|3.2|2.1.0|
+|3.1|2.0.7|
+|3.0|2.0.6|
+-------
+
+
 # Kubernetes Versions
 
 - Kubernetes: Refer to the Kubernetes [pack documentation](/integrations/kubernetes).
