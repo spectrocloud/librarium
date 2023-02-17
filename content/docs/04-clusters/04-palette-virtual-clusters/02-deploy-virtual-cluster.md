@@ -20,7 +20,7 @@ You can deploy Palette Virtual Clusters to a [cluster group](/clusters/cluster-g
 - You can operate with admin-level privileges while ensuring strong isolation.
 - Virtual clusters reduce operational overhead and improve resource utilization.
 
-Follow steps below to enable and deploy a virtual cluster.
+Use the followings steps to deploy a virtual cluster.
 
 # Prerequisites
 
