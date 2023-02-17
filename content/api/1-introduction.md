@@ -52,7 +52,7 @@ All requests are in the `JSON` format. In general, the request payload has three
 * *Status* contains the status information of the resource. The API does not support creating or modifying the status section. 
 
 <InfoBox>
-Certain update request schemas have restricted spec resource definitions and certain fields like uid, creation timestamp are not allowed to be modified post creation.
+Certain update request schemas have restricted spec resource definitions, and specific fields like uid and creation timestamp cannot be modified post-creation.
 </InfoBox>
 
 | HTTP Method | Documentation |
@@ -78,7 +78,7 @@ The API returns standard HTTP response codes:
 | 500 | Operational error. For 500 error code, the server responds with an explicit error code and an error message. |
 
 # Palette API Lifecycle
-Palette APIs maintain backwards compatibility until deprecation. There are three phases in the lifecycle of the APIs, which are *Production*, *Sunset*, and *Deprecated*. Spectro Cloud will inform users when APIs transition through this lifecycle.
+Palette APIs maintain backward compatibility until deprecation. The three API phases in the lifecycle are *Production*, *Sunset*, and *Deprecated*. Spectro Cloud will inform users when APIs transition through this lifecycle.
 ### Production
 The Palette APIs are designed to work as intended and expected.
 ### Sunset
@@ -96,7 +96,7 @@ The API lifecycle also applies to external-facing tools such as Terraform.
 
 # Versioning
 
-The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version, leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backwards compatibility with earlier schemas. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
+The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version, leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backward compatibility with earlier schemas. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
 
 # Scope
 
