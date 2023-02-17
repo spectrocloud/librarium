@@ -38,7 +38,7 @@ Palette supports two types of user authentication methods:
   
 ### Using the API Key
 
-Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette's APIs without requiring user credentials such as username and password. The API key must be present in individual API requests in order to authenticate and authorize the request. The API Key is passed as part of the HTTP request header and in the following format:
+Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests in order to authenticate and authorize the request. The API Key is passed as part of the HTTP request header and in the following format:
   * Key: ApiKey
   * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
 
@@ -82,7 +82,7 @@ Palette APIs maintain backwards compatibility until deprecation. There are three
 ### Production
 The Palette APIs are designed to work as intended and expected.
 ### Sunset
-As the API approaches deprecation, whether because it is being replaced or will no longer be supported, a notice will be provided in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, a notice will be shared that counts down to the end date and recommends the API to use instead.
+As the API approaches deprecation because it is being replaced or will no longer be supported, a notice will be provided in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, a notice will be shared that counts down to the end date and recommends the API to use instead.
 ### Deprecated
 We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to indicate its state. The API documentation will remain available as a subsection of deprecated APIs.
 
