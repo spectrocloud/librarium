@@ -1,7 +1,7 @@
 ---
 title: "Set Up Disk Backup for Virtual Clusters"
 metaTitle: "Set Up Disk Backup for Virtual Clusters"
-metaDescription: "Learn how to configure disk and volume back up for virtual clusters in a cluster group."
+metaDescription: "Learn how to configure disk and volume backup for virtual clusters in a cluster group."
 hideToC: false
 fullWidth: false
 ---
@@ -14,7 +14,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette [Virtual Clusters](/clusters/palette-virtual-clusters) are a capability that cluster groups support and that you can enable when creating a cluster group. The virtual cluster settings in a cluster group, by default, disable disk backups. You can back up all the volumes within a virtual cluster using the following steps. 
+Palette [Virtual Clusters](/clusters/palette-virtual-clusters) are a capability that cluster groups support and that you can enable when creating a cluster group. By default, the virtual cluster settings in a cluster group disable disk backups. You can back up all the volumes within a virtual cluster using the following steps. 
 
 # Prerequisites
 
@@ -40,10 +40,10 @@ You can also enable virtual cluster disk backup during the cluster group creatio
 2. Navigate to the left **Main Menu** and select **Cluster Groups**.
 
 
-3. Select the cluster group you want to enable virtual cluster disk backup.
+3. Select a cluster group to enable virtual cluster disk backup.
 
 
-4. Click on **Settings**.
+4. Click **Settings** and expand the **Settings** Menu.
 
 
 5. Expand the **Settings** Menu. 
@@ -84,13 +84,13 @@ All virtual clusters deployed in this cluster group will now include disk storag
 
 You can validate the disk backups are occurring by deploying a virtual cluster and taking a backup. 
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Deploy a virtual cluster in your cluster group that has the disk backup settings enabled. Refer to the [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) guide to learn how to deploy Palette Virtual clusters.
 
 
-3. Create a back up of your virtual cluster and include all disks. Use the guide [Create a Cluster Backup](/clusters/cluster-management/backup-restore#createaclusterbackup) for additional guidance.
+3. Create a backup of your virtual cluster and include all disks. Use the [Create a Cluster Backup](/clusters/cluster-management/backup-restore#createaclusterbackup) guide for additional guidance.
 
 
 4. Access the backup location's blob storage and review the backup files.

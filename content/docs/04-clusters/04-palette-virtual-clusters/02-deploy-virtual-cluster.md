@@ -62,7 +62,7 @@ To add node-level policies:
 
 # Deploy a Virtual Cluster
 
-Follow these steps to deploy a virtual clusters to a cluster group:
+Follow these steps to deploy a virtual cluster to a cluster group:
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -70,10 +70,10 @@ Follow these steps to deploy a virtual clusters to a cluster group:
 2. Select **Virtual Clusters** from the left **Main Menu**. 
 
 
-3. Click on the **+New Virtual Cluster**.
+3. Click the **+New Virtual Cluster**.
 
 
-4. Select your cluster group from the **Select cluster group** drop-down Menu, and provide a name to the virtual cluster.
+4. Select your cluster group from the **Select cluster group drop-down Menu**, and type a name for the virtual cluster.
 
 
 5. Assign the CPU, Memory, and Storage size for the cluster.

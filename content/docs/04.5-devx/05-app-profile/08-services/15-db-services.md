@@ -43,7 +43,7 @@ You must allocate storage to the database service based on the available storage
 <WarningBox>
 
 
-Cluster groups are, by default, configured not to back up the disk storage. This default behavior affects database services because a backup would not include the storage disk. Refer to the [Set Up Disk Backup for Virtual Clusters](/clusters/cluster-groups/cluster-group-backups) to enable disk backup for virtual clusters.
+By default, cluster groups are configured not to back up the disk storage. This default behavior affects database services because a backup would not include the storage disk. To learn more, refer to [Set Up Disk Backup for Virtual Clusters](/clusters/cluster-groups/cluster-group-backups).
 
 </WarningBox>
 
