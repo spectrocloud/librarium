@@ -23,6 +23,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 * Support for the cloud provider, [Cox Edge](/clusters/public-cloud/cox-edge/), is now available in Palette.
 
+* Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
 * Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](/integrations/spectro-k8s-dashboard). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 * Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
 * Additional filtering options are available to apply to clusters. Users can filter by region and country with pre-populated values based on cluster information and by ‘Unknown’ state.
@@ -59,22 +60,22 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 ## Packs
 * OS packs:
   * Ubuntu 22.04 on AWS, Azure, GCP, VMWare, MaaS, Openstack 
-  * Tencent TKE 1.0.0 on VMware
 * K8s packs:
   * Support for K8s 1.26.1
   * Support for K8s 1.25.6
   * Support for K8s 1.24.10
   * Support for K8s 1.23.16
+  * Support for Tencent TKE 1.0.0 on VMware
 * CNI Packs:
   * Calico CNI 3.24.5
   * Cilium CNI 1.12.6
-  * Antrea CNI 1.9.0
+  * Antrea CNI for VMware 1.9.0
 * CSI Packs:
   * EFS CSI 1.4.9
   * Azure Disk CSI 1.25.0
   * GCE Persistent Disk CSI 1.8.2
   * Rook-Ceph CSI 1.10.0
-* Addon Packs:
+* Add-on Packs:
   * Kong Ingress 2.13.1
   * K8S Dashboard 2.7.0
   * External DNS 0.13.1
@@ -85,8 +86,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
   * Nginx Ingress 1.5.1 
   * AWS Application Load Balancer 2.4.6
   * Prometheus Operator 44.3.0
-  * Bring Your Own OS (BYOS) pack 1.1.0 <br />
-    Enterprise users can customize the OS image to launch in a cluster.
+  * Bring Your Own OS (BYOS) pack 1.1.0
 
 <br />
 
