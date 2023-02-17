@@ -141,7 +141,7 @@ You can validate your cluster is up and running by reviewing the cluster details
 
 # Delete an AWS IaaS Cluster
 
-The deletion of an AWS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+The deletion of an AWS cluster results in removing all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
 
 
 1. Ensure you are in the correct project scope.
