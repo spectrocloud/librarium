@@ -25,7 +25,7 @@ Antrea leverages Open vSwitch to implement pod networking and security features.
 
 **1.9.x**
 
-** Prerequisites
+## Prerequisites
 
 - Enable the ``NodeIPAMController`` parameter in the Kubernetes cluster.
 - When deploying a cluster using kubeadm, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
