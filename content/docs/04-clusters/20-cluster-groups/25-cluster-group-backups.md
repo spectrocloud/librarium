@@ -46,10 +46,7 @@ You can also enable virtual cluster disk backup during the cluster group creatio
 4. Click **Settings** and expand the **Settings** Menu.
 
 
-5. Expand the **Settings** Menu. 
-
-
-6. To enable disk backup you need to change the following configurations in the **Advanced Config** section.
+5. To enable disk backup you need to change the following configurations in the **Advanced Config** section.
 
     - Set `syncer.extraArgs.rewrite-host-paths` to `true`
     ```yaml
