@@ -1,0 +1,78 @@
+---
+title: "Set Up Disk Backup for Virtual Clusters"
+metaTitle: "Set Up Disk Backup for Virtual Clusters"
+metaDescription: "Learn how to configure disk and volume back up for virtual clusters in a cluster group."
+hideToC: false
+fullWidth: false
+---
+
+import Tabs from 'shared/components/ui/Tabs';
+import InfoBox from 'shared/components/InfoBox';
+import WarningBox from 'shared/components/WarningBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
+
+# Overview
+
+Palette [Virtual Clusters](/clusters/palette-virtual-clusters) are a capability that cluster groups support and that you can enable when creating a cluster group. The virtual cluster settings in a cluster group, by default, disable disk backups. You can back up all the volumes within a virtual cluster using the following steps. 
+
+# Prerequisites
+
+* A blob storage location. Refer to the [cluster backup and restore](/clusters/cluster-management/backup-restore#clusterbackupandrestore) document for supported blob storage.
+
+* Cluster group modification [permissions](/user-management/palette-rbac).
+
+* A cluster group. Review the [create a cluster group](/clusters/cluster-groups/create-cluster-group) for additional guidance.
+
+
+<InfoBox>
+
+You can also enable virtual cluster disk backup during the cluster group creation process.
+
+</InfoBox>
+
+
+# Enable Backup for Virtual Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Cluster Groups**.
+
+
+3. Select the cluster group you want to enable virtual cluster volume backup.
+
+
+4. Click on **Settings**.
+
+
+5. Expand the **Settings** Menu. 
+
+
+6. To enable disk backup you need to change the following configrations in the **Advanced Config** section.
+
+    - Set `syncer.extraArgs.rewrite-host-paths` to `true`
+    ```yaml
+    syncer:
+    extraArgs:
+        - --rewrite-host-paths=true
+    ```
+    - Set `hostpathMapper.enabled` to `true`
+    ```yaml
+    hostpathMapper:
+        enabled: true
+    ```
+    - Set `podSecurityStandard` to `privileged`
+    ```yaml
+    isolation:
+    podSecurityStandard: privileged
+    ```
+
+7. Save your changes.
+
+
+
+# Validation
+
+
+You can validate the disk backups are occuring by 
