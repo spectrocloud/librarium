@@ -44,36 +44,34 @@ For general scenario, a user can connect to the cluster directly as below:
 
 ## Cluster Access with OIDC Authentication Enabled
 
-The cluster access with OIDC authentication enables the clients to verify the end user's identity before establishing cluster connectivity. The user needs to establish an OIDC-based authentication to the cluster through an Identity provider of their choice. To establish cluster access with OIDC authentication, follow the steps below:
+Cluster access with OIDC authentication enables the clients to verify the end user's identity before establishing cluster connectivity. The user needs to establish an OIDC-based authentication to the cluster through an identity provider of their choice. To establish cluster access with OIDC authentication, follow the steps below:
 
 <br/>
 
-**Note:** For OIDC based cluster access a callback/redirect url configuration need to be provided to the Identity Provider.
-  
-  Example `https://console.spectrocloud.com/v1/shelly/`
+1. Connfigure the OIDC provider callback or redirect url to use the following URL: `https://console.spectrocloud.com/v1/shelly/oidc/callback`
 
-1. Launch a cluster from the ‘Project Administrator’ Console and enable cluster OIDC.
+
+2. Launch a cluster from the **Project** scope and enable cluster OIDC.
 
 	**Note:** To enable OIDC, the user can use the Spectro RBAC Add-on or the Kubernetes YAML file.
 
 
-2. Go the the `Cluster Details` page. 
+3. Go the the **Cluster Details** page. 
 
 
-3. Click the `Connect` button at the `Kubernetes Config File.`
+4. Click the **Connect** button by the **Kubernetes Config File**
 
 
-4. Wait for the terminal to be launched.
-
+5. Wait for the terminal to be launched.
 
  
-5. Once the terminal is launched, give a kubectl command to obtain the console endpoint.
+6. Once the terminal is launched, give a kubectl command to obtain the console endpoint.
 
 
-6. Copy the endpoint on the terminal, open a browser window, and provide your OIDC credentials.
+7. Copy the endpoint on the terminal, open a browser window, and provide your OIDC credentials.
 
 
-7. After successful login to the page, get back to the terminal and start communicating to the cluster using the `kubectl` commands.
+8. After successful login to the page, get back to the terminal and start communicating to the cluster using the `kubectl` commands.
 
 ## Cluster Access with Spectro Proxy  
   
