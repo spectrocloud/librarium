@@ -72,6 +72,7 @@ Palette Terraform Supports:
 
 |Module|Provider Version|Module Example|
 |----- |------|------------------------|
+|0.5.0 |0.11.0|
 |0.4.1 |0.10.7|
 |0.4.1 |0.10.5|
 |0.4.1 |0.10.2|
