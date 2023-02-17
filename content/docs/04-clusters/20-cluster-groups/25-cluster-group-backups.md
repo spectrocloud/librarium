@@ -18,7 +18,7 @@ Palette [Virtual Clusters](/clusters/palette-virtual-clusters) are a capability 
 
 # Prerequisites
 
-* A blob storage location. Refer to the [cluster backup and restore](/clusters/cluster-management/backup-restore#clusterbackupandrestore) document for supported blob storage.
+* A project or tenant backup location. Refer to the [cluster backup and restore](/clusters/cluster-management/backup-restore#clusterbackupandrestore) document to learn how to confiure a backup location.
 
 * Cluster group modification [permissions](/user-management/palette-rbac).
 
@@ -68,11 +68,29 @@ You can also enable virtual cluster disk backup during the cluster group creatio
     podSecurityStandard: privileged
     ```
 
+<WarningBox>
+
+Setting the `podSecurityStandard` to `privileged` can introduce privilege escalations. We recommend you discuss this with your security system administrator.
+
+</WarningBox>
+
 7. Save your changes.
 
 
+All virtual clusters deployed in this cluster group will now include disk storage during backup operations.
 
 # Validation
 
 
-You can validate the disk backups are occuring by 
+You can validate the disk backups are occuring by deploying a virtual cluster and taking a backup. 
+
+1. Log in to [Palette](https://console.spectrocloud.com)
+
+
+2. Deploy a virtual cluster in your cluster group that has the disk backup settings enabled. Refer to the [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) guide to learn how to deploy Palette Virtual clusters.
+
+
+3. Create a back up of your virtual cluster. Use the guide [Create a Cluster Backup](/clusters/cluster-management/backup-restore#createaclusterbackup) for additional guidance.
+
+
+4. Access the backup location's blob storage and review the backup files.
