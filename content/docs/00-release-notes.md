@@ -15,6 +15,81 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # February 17, 2023 - Release 3.2.0
 
+Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
+
+## Palette
+
+### Features:
+
+* Support for the cloud provider, [Cox Edge](/clusters/public-cloud/cox-edge/), is now available in Palette.
+
+* Palette now provides a streamlined experience for users when installing Kubernetes dashboard. When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
+* Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
+* Additional filtering options are available to apply to clusters. Users can filter by region and country with pre-populated values based on cluster information and by ‘Unknown’ state.
+* Palette now provides a way to search and filter private cloud gateways (PCGs) by resource tag. 
+* Palette provides the ability to schedule OS patching for enterprise clusters and PCGs. OS patching applies to clusters that have a masterpool with multiple nodes.
+* Palette provides a **tag.update** permission that can be assigned to user roles that allows modifying resource tags. 
+* Palette introduces a Software Bill of Materials [(SBOM) scan](/clusters/cluster-management/compliance-scan/#sbom:dependencies&vulnerabilities) capability that can be invoked manually or scheduled to run on tenant clusters. Multiple output formats are available.
+* Palette offers two new app services: CockroachDB and HashiCorp Vault.
+* Palette provides access to configuration and status [logs for each application](/devx/apps/logs/). 
+* Palette now allows you to revise the order of layers as you create an app profile.
+* Virtual clusters now support the ability to back up all disk volumes within the cluster.
+
+### Enhancements:
+
+* Cluster groups that were previously supported only at the tenant scope are now supported at the project scope.
+
+* Palette has improved the launch time for virtual clusters.
+* [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
+* Virtual clusters now display a progress status during the creation phase.
+
+### Deprecations
+
+* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward.
+
+## Edge
+
+### Features:
+
+* Palette provides the ability to automatically register edge hosts for a specific project when a host authentication token is specified in **Tenant Settings > Registration Tokens**. 
+
+* Bring Your Own OS (BYOS) support.
+
+## Packs
+* OS packs:
+  * Ubuntu 22.04 on AWS, Azure, GCP, VMWare, MaaS, Openstack 
+  * Tencent TKE 1.0.0 on VMware
+* K8s packs:
+  * Support for K8s 1.26.1
+  * Support for K8s 1.25.6
+  * Support for K8s 1.24.10
+  * Support for K8s 1.23.16
+* CNI Packs:
+  * Calico CNI 3.24.5
+  * Cilium CNI 1.12.6
+  * Antrea CNI 1.9.0
+* CSI Packs:
+  * EFS CSI 1.4.9
+  * Azure Disk CSI 1.25.0
+  * GCE Persistent Disk CSI 1.8.2
+  * Rook-Ceph CSI 1.10.0
+* Addon Packs:
+  * Kong Ingress 2.13.1
+  * K8S Dashboard 2.7.0
+  * External DNS 0.13.1
+  * Open Policy Agent 3.11.0
+  * Reloader 0.0.129
+  * External 0.7.1
+  * Vault 0.23.0
+  * Nginx Ingress 1.5.1 
+  * AWS Application Load Balancer 2.4.6
+  * Prometheus Operator 44.3.0
+  * Bring Your Own OS (BYOS) pack 1.1.0 <br />
+    Enterprise users can customize the OS image to launch in a cluster. https://spectrocloud.atlassian.net/browse/PCP-816.
+
+<br />
+
+
 
 
 # December 28, 2022 - Release 3.1.0
