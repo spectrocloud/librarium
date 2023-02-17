@@ -42,3 +42,6 @@ Two virtual cluster accessibility options are supported:<p></p><br />
 <br />
 
 
+## Resources
+
+- [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster)

@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 <WarningBox>
 
-As of Palette 3.2, this feature is deprecated. Use [Cluster Groups](/clusters/cluster-groups) to deploy Palette Virtual clusters. 
+As of Palette 3.2, this feature is deprecated. Use the [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) guide to learn how to deploy Palette Virtual clusters. 
 
 
 </WarningBox>
