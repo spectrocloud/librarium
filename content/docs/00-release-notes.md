@@ -21,14 +21,14 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ### Features:
 
-* Support for the cloud provider, [Cox Edge](/clusters/public-cloud/cox-edge/), is now available in Palette.
+* Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
 
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
 * Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](/integrations/spectro-k8s-dashboard). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 * Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
 * Additional filtering options are available to apply to clusters. Users can filter by region and country with pre-populated values based on cluster information and by ‘Unknown’ state.
 * Palette now provides a way to search and filter private cloud gateways (PCGs) by resource tag. 
-* Palette provides the ability to schedule OS patching for enterprise clusters and PCGs. OS patching applies to clusters that have a masterpool with multiple nodes.
+* Palette provides the ability to schedule OS patching for enterprise clusters and PCGs. OS patching applies to clusters that have a master pool with multiple nodes.
 * Palette provides a **tag.update** permission that can be assigned to user roles that allows modifying resource tags. 
 * Palette introduces a Software Bill of Materials [(SBOM) scan](/clusters/cluster-management/compliance-scan/#sbom:dependencies&vulnerabilities) capability that can be invoked manually or scheduled to run on tenant clusters. Multiple output formats are available.
 * Palette offers two new app services: CockroachDB and HashiCorp Vault.
