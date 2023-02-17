@@ -41,6 +41,8 @@ Learn how to create a cluster group by reviewing the [Create and Manage Cluster 
 
 - [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group)
 
+- [Set Up Disk Backup for Virtual Clusters](/clusters/cluster-groups/cluster-group-backups)
+
 - [Set up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group)
 
 <br />
