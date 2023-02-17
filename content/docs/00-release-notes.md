@@ -34,7 +34,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Palette offers two new app services: CockroachDB and HashiCorp Vault.
 * Palette provides access to configuration and status [logs for each application](/devx/apps/logs/). 
 * Palette now allows you to revise the order of layers as you create an app profile.
-* Virtual clusters now support the ability to back up all disk volumes within the cluster.
+* Virtual clusters now support the ability to [back up all disk volumes](/clusters/cluster-groups/cluster-group-backups) within the cluster.
 * A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
 
 ### Enhancements:
