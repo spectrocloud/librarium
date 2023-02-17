@@ -5,7 +5,7 @@ metaDescription: 'Antrea CNI network pack for Palette Kubernetes Clusters'
 hiddenFromNav: true
 type: "integration"
 category: ['network']
-logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7943741181181823079533cd363884a28aa0651715ea43408bdc77a5c51?type=image/png'
+logoUrl: 'https://registry.spectrocloud.com/v1/palette-upgrader/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
