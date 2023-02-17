@@ -48,10 +48,12 @@ Check out the [Deployment Lifecycle](/clusters/edge/edge-native-lifecycle) to be
 * Outgoing internet connectivity either direct or via proxy.
 
 
-* Whitelist the sites and repositories mentioned in the [proxy whitelist](/clusters#proxywhitelists) document.
+* Whitelist the sites and repositories listed in the [proxy whitelist](/clusters#proxywhitelists) guide.
 
 
-* For bare metal edge hosts, a bootable USB drive or [Palette eXtended Kubernetes Edge](/glossary-all#paletteextendedkubernetesedge(pxk-e)) preboot execution environment (PXE) setup to boot devices using the Palette Edge Distribution Installer image.
+
+* To install the Palette Edge Distribution Installer image on bare metal edge hosts, use a bootable USB drive or [Palette eXtended Kubernetes Edge](/glossary-all#paletteextendedkubernetesedge(pxk-e)) preboot execution environment (PXE) that is set up to boot devices.
+
 
 <InfoBox>
 
@@ -64,13 +66,17 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Navigate to left **Main Menu** and select **Profiles**.
+2. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-3. Create a cluster profile of the type **infrastructure** or **full** with **Edge Native** as the cloud type by providing the following layers. To learn more about creating a cluster profile, refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) documentation.
-   - Optionally, consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities as desired. If remote access to the cluster is desired, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
 
-   -  Optionally, add additional Helm or OCI registries and include applications hosted in those registries into add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+3. Create a cluster profile of type **infrastructure** or **full** with **Edge Native** as the cloud type by providing the following layers. To learn more about creating a cluster profile, refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) document.
+
+   - Optionally, consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If remote access to the cluster is desired, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
+
+
+   -  Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+
 
 
 4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section.
@@ -106,7 +112,8 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |------------------|------------|----------|
 |paletteEndPoint   |Palette Management Server endpoint.|Yes|
 |name|Unique Identifier for the device. This should be globally unique across in  the Palette Management System. If not provided, the id is generated using the serial number of the edge host.|No|
-|registrationURL| End point to the restoration app that can be used for QR code based automated registration. |No|
+|registrationURL| Endpoint to the restoration app that can be used for QR code-based automated registration. |No|
+
 |projectUid| The id of the project that will use this Edge device. |No|
 |edgeHostToken| The tenant registration token. Registration tokens allow you to install an Edge device automatically without using the registration URL. |No|
 |tags| Assign any tags you wish to apply to the node. |No|
@@ -115,7 +122,8 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 |Parameter| Description| Required|
 |------------------|------------|----------|
-|reboot   |Reboot the node after the install is complete. Default value is true. |No|
+|reboot   |Reboot the node after installation is complete. Default value is true. |No|
+
 
 #### Stages
 |Parameter| Description| Required|
@@ -126,7 +134,8 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 |Parameter| Description| Required|
 |------------------|------------|----------|
-|poweroff|Power off the node after the install is complete. Takes precedence over the reboot parameter. Default value is false.| No |
+|poweroff|Power off the node after installation is complete. This parameter takes precedence over the reboot parameter. Default value is false.| No |
+
 
 
 
@@ -135,15 +144,20 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 
 
-6. Install the image onto the device. Installation procedures vary depending on the environment. During installation, site-specific properties may need to be supplied to the edge hosts. The properties available for site customization are described in the table below.
+6. Install the image onto the device. Installation procedures vary depending on the environment. During installation, you may need to supply site-specific properties to the edge hosts. The properties available for site customization are described in the following table.
+
 
 
 |Site Setting Name|Description|Mandatory|
 |-----------------|-----------|---------|
-|network: type|network type may either be `dhcp` or `static`|Yes|
-|network: httpProxy|proxy is specified it will be used for http and https traffic|No|
-|network: nameserver|configures the default nameserver for the system|No|
-|network: gateway|required if static network type is configured, this is the default gateway for all outbound traffic|Conditional - required  if network type is static|
+|network: type|Network type may be `dhcp` or `static`.|Yes|
+
+|network: httpProxy|Proxy is specified and is used for http and https traffic.|No|
+
+|network: nameserver|Configures the default Nameserver for the system.|No|
+
+|network: gateway|Required if static network type is configured. This is the default gateway for all outbound traffic.|Conditional is required if the network type is static.|
+
 |network: ipAddress|required if static network type is configured, this is the IP address the default interface will be configured|Conditional - required  if network type is static|
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
@@ -179,10 +193,12 @@ To create a registration token, use the following steps.
 3. Navigate to the left **Main Menu** and select **Settings**.
 
 
-4. Select **Registration Tokens** in the tenant settings menu.
+4. Select **Registration Tokens** in the **Tenant Settings Menu**.
 
 
-5. Click on **Add New Registration Token**.
+
+5. Click **Add New Registration Token**.
+
 
 
 6. Fill out the input fields and **Confirm** your changes. 
@@ -198,7 +214,8 @@ Use the generated token value in the configuration YAML file you will provide to
 
 ### Automate Using QR Code
 
-You can provide a QR case-based automated registration to simplify the process. A QR code is displayed on the edge host UI upon boot up if enabled during the installation phase. Site operators can scan this QR code to visit the registration page. This web page pre-populates the edge host’s unique ID in the web app and provides a list of edge sites that they can associate with this edge host. Site operators can select a site and submit it. The web application automatically creates the edge host entry in Palette and defines a cluster with that edge host. This results in the Palette edge host agent coming out of the wait cycle and proceeding to install the cluster end to end. Using this flow, edge hosts can also be added to existing clusters to scale the cluster into a multi-node cluster.
+You can provide a QR case-based automated registration to simplify the process. A QR code is displayed on the edge host UI upon boot up if enabled during the installation phase. Site operators can scan the QR code to visit the registration page. This web page pre-populates the edge host’s unique ID in the web app and provides a list of edge sites they can associate with this edge host. Site operators can select a site and submit it. The web application automatically creates the edge host entry in Palette and defines a cluster with that edge host. This causes the Palette edge host agent to come out of the wait cycle and proceed with cluster installation. Using this flow, edge hosts can also be added to existing clusters to scale the cluster into a multi-node cluster.
+
 
 Palette provides a sample serverless application (Palette Edge Registration App) built and deployed using the [Vercel](https://vercel.com/) platform. This application needs to be cloned and customized.
 
@@ -216,7 +233,8 @@ The following steps are required to facilitate this flow:
 4. Map infrastructure and add-on cluster profiles to be used with each site.
 
 
-5. Provide site-specific Virtual IP Addresses of DNS mapping to be used for the Kubernetes API server for each side.
+5. Provide site-specific Virtual IP (VIP) addresses of DNS mapping to be used for the Kubernetes API server for each side.
+
 
 
 6. Compile and test the code locally.
@@ -225,10 +243,12 @@ The following steps are required to facilitate this flow:
 7. Create GitHub pull request towards your main branch to automatically trigger the Netlify build process and deploy the app.
 
 
-8. The link to this app deployment needs to be entered as `registrationURL` during the staging phase.
+8. Enter the link to this app deployment as `registrationURL` during the staging phase.
 
 
-Specific details about the files to be changed and instructions on how to build and test the application locally are provided in the readme file present in the GitHub repository.
+
+Specific details about the files to be changed and instructions on how to build and test the application locally are provided in the readme file in the GitHub repository.
+
 
 </Tabs.TabPane>
 
@@ -236,7 +256,10 @@ Specific details about the files to be changed and instructions on how to build 
 
 ### Register through Palette Management Console UI
 
-You need to note down the unique edge host id displayed on the device console when the edge host is booted up. Unless you customized the name parameter of the configuration YAML, the id is generated using the serial number of the edge host. To register the device through Palette, use the following instructions.
+Take note of the unique edge host id displayed on the device console when the edge host boots up. Unless you customized the name parameter of the configuration YAML, the host id is generated using the serial number of the edge host. You will need the host id to register the device in Palette, so you may want to copy it. 
+
+The following steps guide you in registering the device.
+
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -247,10 +270,12 @@ You need to note down the unique edge host id displayed on the device console wh
 3. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-4.  Click on the **Edge Hosts** tab and select **Add Edge Hosts****.
+4.  In the **Edge Hosts** tab, click **Add Edge Hosts****.
 
 
-5. Enter the Edge Host id and press the enter key. 
+
+5. Enter the Edge Host id that you copied when the edge host booted up. 
+
 
 
 6. You can provide one or more tags in the form of `tagName:value`. 
@@ -261,7 +286,8 @@ You need to note down the unique edge host id displayed on the device console wh
 <InfoBox>
 
 
-The tag value `name` allows you to set a readable name for the edge host. If provided, this readable name is displayed across the Palette Management Console.
+The tag value `name` allows you to set a readable name for the edge host. If provided, this readable name is displayed in the Palette console.
+
 
 
 </InfoBox>
@@ -275,50 +301,62 @@ The tag value `name` allows you to set a readable name for the edge host. If pro
 
 ### Create Cluster
 
-8. Click on the **Clusters** tab and select **+ Add New Cluster**.
+8. Click the **Clusters** tab and select **+ Add New Cluster**.
 
 
-9. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette Management Console to access the cluster remotely.
+
+9. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette console to access the cluster remotely.
 
 
-10. Configure cluster properties such as Virtual IP address (VIP) for the edge site, inject SSH keys, etc.
+
+10. Configure cluster properties such as Virtual IP address (VIP) for the edge site and inject SSH keys.
 
 
-11. Configure node pools by adding your edge hosts to the master or worker pools. Successfully registered edge devices will be available in the drop-down menu.
+
+11. Configure node pools by adding your edge hosts to the master or worker pools. Successfully registered edge devices are displayed in the *drop-down Menu*.
+
 
 
 12. Review and save the cluster configuration.
 
 
-After creating the cluster, the Palette Edge Host agent will start the installation by constantly polling the management console for information. You can track the progress of the installation in the Palette Management Console. The cluster overview page shows a summary of the progress, while the events tab displays detailed orchestration logs.
+After creating the cluster, the Palette Edge Host agent will start the installation by constantly polling Palette for information. You can track installation progress in Palette. The cluster overview page shows a summary of the progress. The *Events* tab displays detailed orchestration logs.
+
 
 
 ## Validation 
 
 
-You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
+You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Select the cluster to review its details page. Ensure the **Cluster Status** field displays **Running**.
+
 
 
 # Delete an Edge Native Cluster
 
-The deletion of an Edge Native cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+Deleting an Edge Native cluster removes all instances and associated resources created for the cluster. Use the following steps to delete a cluster. 
+
 
 
 1. Ensure you are in the correct project scope.
 
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
+2. Navigate to the left **Main Menu** and click **Clusters**
+
 
 
 3. Click on the cluster that you want to remove.
 
 
-4. Click on the **Settings** drop-down menu.
+4. Click the **Settings drop-down Menu**.
 
 
-5. Click on **Delete Cluster**
+
+5. Click **Delete Cluster**.
 
 
-6. Type in the name of the cluster and click on **OK**
 
-The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters. The delete operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are removed. After the delete process, the edge hosts are available for deployment to a new cluster.
+6. Type the name of the cluster and click **OK**
+
+
+The cluster status is updated to **Deleting** while cluster resources are being deleted. When all resources are successfully deleted, the cluster status is updated to **Deleted** and the cluster is removed from the list. The delete operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are removed. After the delete process, the edge hosts are available for deployment to a new cluster.
+
