@@ -23,7 +23,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 * Support for the cloud provider, [Cox Edge](/clusters/public-cloud/cox-edge/), is now available in Palette.
 
-* Palette now provides a streamlined experience for users when installing Kubernetes dashboard. When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
+* Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](/integrations/spectro-k8s-dashboard). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 * Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
 * Additional filtering options are available to apply to clusters. Users can filter by region and country with pre-populated values based on cluster information and by ‘Unknown’ state.
 * Palette now provides a way to search and filter private cloud gateways (PCGs) by resource tag. 
@@ -34,14 +34,15 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Palette provides access to configuration and status [logs for each application](/devx/apps/logs/). 
 * Palette now allows you to revise the order of layers as you create an app profile.
 * Virtual clusters now support the ability to back up all disk volumes within the cluster.
+* A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
 
 ### Enhancements:
 
 * Cluster groups that were previously supported only at the tenant scope are now supported at the project scope.
-
 * Palette has improved the launch time for virtual clusters.
 * [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
+* The App profile container service layer contains additional [output variables](/devx/app-profile/app-profile-macros#containerserviceoutputvariables) to help services connect. Refer to the [service connectivity](/devx/app-profile/services/connectivity) document for additional guidance.
 
 ### Deprecations
 
@@ -85,7 +86,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
   * AWS Application Load Balancer 2.4.6
   * Prometheus Operator 44.3.0
   * Bring Your Own OS (BYOS) pack 1.1.0 <br />
-    Enterprise users can customize the OS image to launch in a cluster. https://spectrocloud.atlassian.net/browse/PCP-816.
+    Enterprise users can customize the OS image to launch in a cluster.
 
 <br />
 
