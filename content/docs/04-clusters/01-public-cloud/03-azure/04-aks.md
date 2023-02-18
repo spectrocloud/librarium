@@ -70,7 +70,7 @@ Palette **also** enables the provisioning of private AKS clusters via a private 
 
 </InfoBox>
 
-# Creating an Azure Cloud Account
+# Create an Azure Cloud Account
 
 `video: title: "Azure-cloud-account": azure.mp4`
 
@@ -99,7 +99,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-# Deploying an AKS Cluster
+# Deploy an AKS Cluster
 
 <br />
 
@@ -179,7 +179,7 @@ A complete AKS cluster contains the following:
 
 <br />
 
-## Creating and Removing Node Pools
+## Create and Remove Node Pools
 
 During cluster creation, you will default to a single pool.
 
@@ -195,7 +195,7 @@ During cluster creation, you will default to a single pool.
 
 <br />
 
-## Creating a System Node Pool
+## Create a System Node Pool
 
 1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled **System Node Pool**.
 <br />
@@ -224,7 +224,7 @@ Identifying a Node Pool as a System Pool will deactivate taints, and the operati
 7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create the next node.
 
 
-## Configuring Node Pools
+## Configure Node Pools
 
 In all types of node pools, configure the following.
 
@@ -273,7 +273,7 @@ A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes
 <br />
 
 
-# Deleting an AKS Cluster
+# Delete an AKS Cluster
 
 The deletion of an AKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AKS cluster:
 
@@ -309,7 +309,7 @@ If there are any cloud resources still on the cloud, you should clean up those r
 </WarningBox>
 
 
-# Configuring an Azure Active Directory
+# Configure an Azure Active Directory
 
 
 The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin *kubeconfig* file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to manually create  the user's *kubeconfig* file to enable AAD completely. The following are the steps to create the custom user *kubeconfig* file:
