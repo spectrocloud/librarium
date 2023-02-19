@@ -98,7 +98,7 @@ Palette’s Dev Engine allows you to deploy up to two virtual clusters into the 
 
   
 
-It will take a few minutes for the virtual cluster to deploy. In the meantime, go ahead and navigate to the left **Main Menu** and click on **App Profiles**.
+It will take a few minutes for the virtual cluster to deploy. In the meantime, navigate to the left **Main Menu** and click on **App Profiles**.
 
   
   
@@ -129,7 +129,7 @@ Click on **Review** once you have filled out the provided information. On the ne
 
   
 
-It’s time to deploy your application to a virtual cluster. Go ahead and name the application “single-scenario.” For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the **hello-universe-ui profile** and click on **Confirm**.
+It’s time to deploy your application to a virtual cluster. Name the application "single-scenario." For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the **hello-universe-ui profile** and click on **Confirm**.
 
   
 
@@ -198,11 +198,11 @@ You have deployed your first application to Palette. Your first application is a
 
   
 
-Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the **New Virtual Cluster** button.
+Create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the **New Virtual Cluster** button.
 
   
 
-Go ahead and create a cluster with the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+Add the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
 
   
 
@@ -255,7 +255,7 @@ The API is available as a container image. To deploy the API successfully, you n
 
   
 
-Go ahead and provide the container service with the following information:
+Provide the container service with the following information:
 
   
 
@@ -297,7 +297,7 @@ A virtual cluster is a Kubernetes environment, and because it’s a Kubernetes e
 
   
 
-Once you have filled out all the required information, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Go ahead and select the **Container Deployment** to add the final service layer, the UI.
+Once you have filled out all the required information, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Select the **Container Deployment** to add the final service layer, the UI.
 
   
 
@@ -410,7 +410,7 @@ To remove all resources created in this tutorial, begin by navigating to the lef
 
 Next, in the left **Main Menu**, click on the **Cluster** link to access the clusters page.
 
-Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to enter the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
+Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to enter the cluster name to confirm the delete action. Type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
 
   
 
@@ -493,7 +493,7 @@ The tutorial folder contains several Terraform files that you should review and 
 - **application-profiles.tf** - contains the configurations that make up all the app profiles.
 - **application.tf** - the configuration that creates a Spectro Cloud app and deploys the app into a virtual cluster.
 
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Go ahead and export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
 
 ```shell
 export SPECTROCLOUD_APIKEY=tKpsmBhv8lFBP0jvMZuBhmppaIQyOH06
