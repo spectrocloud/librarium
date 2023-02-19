@@ -39,7 +39,7 @@ There are no expenses associated with this tutorial as everything falls under th
 
 The tutorial includes two scenarios, and for each scenario, you will deploy a separate Kubernetes environment. The following diagram illustrates the different layers that will power the tutorial environment.
 
-![Architecutre diagram depicting two virtual clusters](devx_apps_deploy-apps_architecture-diagram.png)
+![Architecutre diagram depicting two virtual clusters](/tutorials/deploy-app/devx_apps_deploy-apps_architecture-diagram.png)
 
 The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the [App Mode and Cluster Mode](/introduction/palette-modes) documentation.
 
@@ -77,7 +77,7 @@ Start by log in to Palette. From the landing page, click on the user **drop-down
 
   
 
-![Image with an arrow pointing to the user drop-down Menu](devx_apps_deploy-apps_toggle-app-mode.png)
+![Image with an arrow pointing to the user drop-down Menu](/tutorials/deploy-app/devx_apps_deploy-apps_toggle-app-mode.png)
 
   
   
@@ -86,7 +86,7 @@ From the app mode landing page, navigate to the left **Main Menu** and click on 
 
   
 
-![View of the virtual cluster list](devx_apps_deploy-apps_virtual-cluster-list.png)
+![View of the virtual cluster list](/tutorials/deploy-app/devx_apps_deploy-apps_virtual-cluster-list.png)
 
   
 
@@ -103,7 +103,7 @@ It will take a few minutes for the virtual cluster to deploy. In the meantime, g
   
   
 
-![The App Profile page with arrows guiding](devx_apps_deploy-apps_app-profiles.png)
+![The App Profile page with arrows guiding](/tutorials/deploy-app/devx_apps_deploy-apps_app-profiles.png)
 
   
   
@@ -120,7 +120,7 @@ Name the container `ui`, select a public registry, and provide the image URL `gh
 
   
 
-![App Profile container creation page with details](devx_apps_deploy-apps_app-profile-creation.png)
+![App Profile container creation page with details](/tutorials/deploy-app/devx_apps_deploy-apps_app-profile-creation.png)
 
   
   
@@ -157,7 +157,7 @@ The app profile deployment takes a few moments to finish. You can review the app
 
   
 
-![Cluster details view displaying exposed services](devx_apps_deploy-apps_cluster-details-view.png)
+![Cluster details view displaying exposed services](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-details-view.png)
 
   
 
@@ -182,7 +182,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
   
   
 
-![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
+![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.png)
 
   
 
@@ -235,7 +235,7 @@ In the next screen, assign the following values to the Postgres database.
 
   
 
-![Postgres service creation page](devx_apps_deploy-apps_postgres-service-create.png)
+![Postgres service creation page](/tutorials/deploy-app/devx_apps_deploy-apps_postgres-service-create.png)
 
   
 
@@ -310,7 +310,7 @@ This time you will use a different container image for the UI that contains a re
   
   
 
-![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the reverse proxy architecture](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
 
   
 
@@ -366,7 +366,7 @@ If cluster-2 is not displayed. Wait a few more moments and return to the above s
   
   
 
-![App deployment cluster-2](devx_app_deploy-apps_cluster-2-deploy-app.png)
+![App deployment cluster-2](/tutorials/deploy-app/devx_app_deploy-apps_cluster-2-deploy-app.png)
 
   
   
@@ -377,7 +377,7 @@ Once the app is successfully deployed, the cluster details page will expose the 
 
   
 
-![Cluster 2's details page](devx_apps_deploy-apps_cluster-2-details-page.png)
+![Cluster 2's details page](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-2-details-page.png)
 
   
 
@@ -387,7 +387,7 @@ Click on the UI’s service URL for port **8080** to access the Hello Universe a
   
   
 
-![View of the self-hosted version of Hello Universe](devx_apps_deploy-app_self-hosted-hello-universe.png)
+![View of the self-hosted version of Hello Universe](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.png)
 
   
   
@@ -404,7 +404,7 @@ To remove all resources created in this tutorial, begin by navigating to the lef
 
   
 
-![Apps view with an arrow pointing towards the delete button](devx_apps_deploy-apps_delete-apps-view.png)
+![Apps view with an arrow pointing towards the delete button](/tutorials/deploy-app/devx_apps_deploy-apps_delete-apps-view.png)
 
   
 
@@ -414,7 +414,7 @@ Click on **cluster-1** to access its details page. Click on **Settings** from th
 
   
 
-![Delete a cluster view with arrow](devx_apps_deploy-apps_delete-cluster-view.png)
+![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.png)
 
   
 
@@ -474,7 +474,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
 
-![Image that points to the user drop-down Menu and points to the API key link](devx_apps_deploy-app_create-api-key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.png)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
 
@@ -703,7 +703,7 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
 A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to review the API payload. Review the payload's `values` attribute to find all of the service’s properties. You may copy the entire string and pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
 
 
-![UI's ability to display the API object](devx_apps_deploy-apps_ui-api-display.png)
+![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.png)
 
 
 The last Terraform resource to review before deploying the application is located in the **application.tf** file. The resource `spectrocloud_application.hello-universe-ui` is what creates the *App*. In Palette, an app combines a virtual cluster and an app profile. When you deploy an app profile into a virtual cluster, you create an app. This resource points to the app profile `spectrocloud_application_profile.hello-universe-ui` and the cluster resource `spectrocloud_virtual_cluster.cluster-1`. The two resources are required to create an app.
@@ -773,7 +773,7 @@ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, select **Apps**. Click on the **scenario-1** row, which will take you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
 
 
-![scenario-1 overview page with an arrow pointing to the URL](devx_app_deploy-apps_scenario-1-overview.png)
+![scenario-1 overview page with an arrow pointing to the URL](/tutorials/deploy-app/devx_app_deploy-apps_scenario-1-overview.png)
 
 <br />
 
@@ -787,7 +787,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image change.
 
 
-![Hello Universe landing page displaying global clicks](devx_apps_deploy-apps_hello-universe.png)
+![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.png)
 
 
 You have deployed your first app profile to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The following scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
@@ -799,7 +799,7 @@ You have deployed your first app profile to Palette. Your first application is a
 The second scenario contains two additional microservices, an API, and a Postgres database. The second scenario uses a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
 
 
-![A diagram of the reverse proxy architecture](devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the reverse proxy architecture](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
 
 To deploy the second scenario, you will again deploy the same three resource types previously discussed but another instance of them.
 
@@ -1117,7 +1117,7 @@ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, click on **Apps**. Select the **scenario-2** row. Once you are on the scenario-2 overview page, click on the exposed URL for the service. A hyperlink for port 8080 and port 3000 is available.
 
-![A view of the scenario-2 overview page](devx_apps_deploy-_scenario-2-overview.png)
+![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy-_scenario-2-overview.png)
 
 Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
@@ -1130,7 +1130,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 </WarningBox>
 
-![View of the self-hosted hello universe app](devx_apps_deploy-app_self-hosted-hello-universe.png)
+![View of the self-hosted hello universe app](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.png)
 
 The global counter is no longer available; instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that the reverse proxy injects the Bearer token value in each request sent to the API.
 
