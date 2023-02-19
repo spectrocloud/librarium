@@ -15,9 +15,7 @@ concurrency:
 jobs:
   image-optimizer:
     name: Image Optimization
-    needs: [run-ci]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
