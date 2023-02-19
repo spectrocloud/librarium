@@ -73,7 +73,7 @@ You can complete this tutorial by using the Palette console, simulating a manual
 
   
 
-Start by log in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
+Start by logging in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
 
   
 
@@ -198,7 +198,7 @@ You have deployed your first application to Palette. Your first application is a
 
   
 
-Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the button **New Virtual Cluster**
+Go ahead and create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the **New Virtual Cluster** button.
 
   
 
@@ -214,7 +214,7 @@ It will take a few minutes for the new virtual cluster to deploy. In the meantim
 
   
 
-Click on the **New App Profile** button to create your second app profile. Give the app profile the name `hello-universe-complete` and add the tag `scenario-2`. Click on **Next**. This application profile will contain three different applications, and you will create a service configuration for each. The three layers or tiers will together make up the entire application deployment. The order you create each layer plays an important role as it dictates the deployment order. For this scenario, you will deploy the database, the API, and the UI. Start by creating the first layer by selecting the database service Postgres.
+Click on the **New App Profile** button to create your second app profile. Give the app profile the name `hello-universe-complete` and add the tag `scenario-2`. Click on **Next**. This application profile will contain three different applications, and you will create a service configuration for each. The three layers or tiers will together make up the entire application deployment. The order in which you create each layer plays an important role, as it dictates the deployment order. For this scenario, you will deploy the database, the API, and the UI. Start by creating the first layer by selecting the database service Postgres.
 
   
   
@@ -239,7 +239,7 @@ In the next screen, assign the following values to the Postgres database.
 
   
 
-Take notice of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](/devx/app-profile/app-profile-macros) documentation.
+Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](/devx/app-profile/app-profile-macros) documentation.
 
   
 
@@ -314,7 +314,7 @@ This time you will use a different container image for the UI that contains a re
 
   
 
-Go ahead and provide the UI container with the following information.
+Provide the UI container with the following information.
 
 - Container Name: `ui`
 
@@ -358,7 +358,7 @@ Name the app “multiple-app-scenario,” select the app profile **hello-univers
 
   
 
-If cluster-2 is not displayed. Wait a few more moments and return to the above steps. You can refresh the page but must fill out all the required input fields.
+If cluster-2 is not displayed. Wait a few more moments and return to the above steps. You can refresh the page but you must fill out all the required input fields.
 
 </WarningBox>
 
@@ -410,7 +410,7 @@ To remove all resources created in this tutorial, begin by navigating to the lef
 
 Next, in the left **Main Menu**, click on the **Cluster** link to access the clusters page.
 
-Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
+Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to enter the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
 
   
 
@@ -439,12 +439,12 @@ The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectroclo
 
 <InfoBox>
 
-As you go through the Terraform workflow, be aware that high-level concepts from Palette will not be discussed in-depth to optimize the reader experience and focus more on the Terraform concepts that apply to Palette. To better understand the mentioned  Palette concepts, review the UI workflow where the concepts are explained in greater detail.
+As you go through the Terraform workflow, be aware that high-level concepts from Palette will not be discussed in-depth to optimize the reader experience and focus more on the Terraform concepts that apply to Palette. To better understand the mentioned Palette concepts, review the UI workflow where the concepts are explained in greater detail.
 
 </InfoBox>
 
 
-Open up a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
 
 ```shell
 git@github.com:spectrocloud/tutorials.git
@@ -456,7 +456,7 @@ Change directory to the tutorial folder.
 cd tutorials/
 ```
 
-Checkout the following git tag.
+Check out the following git tag.
 
 ```shell
 git checkout v1.0.0
@@ -490,7 +490,7 @@ The tutorial folder contains several Terraform files that you should review and 
 - **outputs.tf** - contains the output variables that are used to expose information.
 - **data.tf** - all the data resources that are used to dynamically retrieve data from Palette.
 - **virtual-clusters.tf** - the code for the virtual clusters that will be deployed in Palette.
-- **application-profiles.tf** - contains the configurations that makeup all the app profiles.
+- **application-profiles.tf** - contains the configurations that make up all the app profiles.
 - **application.tf** - the configuration that creates a Spectro Cloud app and deploys the app into a virtual cluster.
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Go ahead and export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
@@ -568,7 +568,7 @@ resource "spectrocloud_virtual_cluster" "cluster-1" {
 
 ```
 
-The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all users of Palette. This resource will create a new virtual cluster that is hosted in the cluster group, beehive.
+The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all Palette users. This resource will create a new virtual cluster that is hosted in the cluster group, beehive.
 
 <br />
 
@@ -579,14 +579,14 @@ data "spectrocloud_cluster_group" "beehive" {
 }
 ```
 
-Next, take a look at the the **application-profiles.tf** file. The resource `spectrocloud_application_profile.hello-universe-ui` is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on the five following key points.
+Next, take a look at the the **application-profiles.tf** file. The resource `spectrocloud_application_profile.hello-universe-ui` is the resource responsible for creating the app profile for the first scenario. There are several points of interest in this resource that you should be familiar with. Focus on these five key points:
 
 <br />
 
 1. The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.
 
 
-2. The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource `data.spectrocloud_pack_simple.container_pack` is specified.
+2. The type of app layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource `data.spectrocloud_pack_simple.container_pack` is specified.
 
 
 3. A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource `data.spectrocloud_registry.public_registry` is specified to avoid hardcoding values.
@@ -595,7 +595,7 @@ Next, take a look at the the **application-profiles.tf** file. The resource `spe
 4. The attribute `source_app_tier` is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource `data.spectrocloud_pack_simple.container_pack` is used.
 
 
-5. The `values` attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings) or you can alternatively specify these values as a stringified JSON object.
+5. The `values` attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings), or you can specify these values as a stringified JSON object.
 
 
 <PointsOfInterest
@@ -700,7 +700,7 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
 </PointsOfInterest>
 
 
-A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to review the API payload. Review the payload's `values` attribute to find all of the service’s properties. You may copy the entire string and pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
+A tip for gathering the required values to provide the `values` attribute is to visit the Palette console and create the app profile through the UI. During the app profile creation process, click on the API button to display the API payload. Review the payload's `values` attribute to find all of the properties of the service. You can copy the entire string and pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
 
 
 ![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.png)
@@ -770,7 +770,7 @@ terraform apply -auto-approve
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 ```
 
-Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, select **Apps**. Click on the **scenario-1** row, which will take you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
+Log in to [Palette](https://console.spectrocloud.com), navigate to the left **Main Menu**, and select **Apps**. Click on the **scenario-1** row, which takes you to the application’s overview page. Once you are on the scenario-1 overview page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
 
 
 ![scenario-1 overview page with an arrow pointing to the URL](/tutorials/deploy-app/devx_app_deploy-apps_scenario-1-overview.png)
@@ -809,7 +809,7 @@ To deploy the second scenario, you will again deploy the same three resource typ
 - `spectrocloud_application_profile` - `hello-universe-complete` - the application profile that will contain the three different services, database, API, and UI
 
 
-- `spectrocloud_application` - `scenario-2` - the application that will be deployed into cluster-2 that use the `spectrocloud_application_profile.hello-universe-complete` app profile.
+- `spectrocloud_application` - `scenario-2` - the application that will be deployed into cluster-2 that uses the `spectrocloud_application_profile.hello-universe-complete` app profile.
 
 
 You can review all the resources for the second scenario in the respective Terraform files. You can find the second scenario code after the comment block in all of the files that have resources specific to the second scenario.
@@ -974,7 +974,7 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
 
 Each service has its own `pack {}` and a set of unique properties and values. 
 
-The database service block uses a different data resource, `data.spectrocloud_pack_simple.postgres_service`,  to find the Postgres service. If you review the data resource, you will find a different type, `operator-instance`. The Postgres service uses a Postgres [operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage the database inside the virtual cluster. 
+The database service block uses a different data resource, `data.spectrocloud_pack_simple.postgres_service`, to find the Postgres service. If you review the data resource, you will find a different type, `operator-instance`. The Postgres service uses a Postgres [operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage the database inside the virtual cluster. 
 
 <br />
 
@@ -1090,7 +1090,7 @@ You will use output variables frequently when creating app profiles in the futur
 </InfoBox>
 
 
-Open up the file **inputs.tf** and change the `variable enable-second-scenario"` and set its default value to `true`.
+Open the **inputs.tf** file and set the `variable enable-second-scenario"` default value to `true`.
 
 <br />
 
@@ -1102,7 +1102,7 @@ variable "enable-second-scenario" {
 }
 ```
 
-Next, issue the command `terraform apply` to deploy the second scenario. Take notice how the `-var` flag is included with the token value in the command. 
+Next, issue the command `terraform apply` to deploy the second scenario. Notice how the `-var` flag is included with the token value in the command. 
 
 <br />
 
@@ -1169,7 +1169,7 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files.
 
-To learn more about Palette Dev Engine and its capabilities check out the reference resource below.
+To learn more about Palette Dev Engine and its capabilities, check out the reference resource below.
 <br />
 
 - [Palette Modes](/introduction/palette-modes)
