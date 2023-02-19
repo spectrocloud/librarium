@@ -19,6 +19,7 @@ jobs:
       - run: exit 0
 
   vale:
+    # Image Optimizer docs: https://github.com/calibreapp/image-actions
     name: Writing Checks
     needs: [run-ci]
     runs-on: ubuntu-latest
