@@ -226,9 +226,9 @@ To provision all resources with Terraform, execute the following commands:<p></p
 
   Terraform automatically downloads all used providers and its dependencies.
 
-  ![terraform](/tf-tutorial-images/tf-finished-installing.png "Terraform Initialized")
+  ![terraform](/tutorials/tf-tutorial-images/tf-finished-installing.png "Terraform Initialized")
 
-  ![tf-initializing](/tf-tutorial-images/tf-initializing.png "Terraform Initializing")
+  ![tf-initializing](/tutorials/tf-tutorial-images/tf-initializing.png "Terraform Initializing")
 
 2. Apply the Terraform code to provision resources. We provide an environment variables file.<p></p><br />
 
@@ -241,33 +241,33 @@ To provision all resources with Terraform, execute the following commands:<p></p
    * **Change** - An existing resource will be updated, one or more attributes will be modified.<p></p><br />
    * **Destroy** - A resource will be deleted.<p></p><br />
 
-  ![tf-apply](/tf-tutorial-images/tf-apply.png "Applying the code ")<p></p><br />
+  ![tf-apply](/tutorials/tf-tutorial-images/tf-apply.png "Applying the code ")<p></p><br />
 
 1. Type _yes_ to confirm the provisioning plan. Provisioning all resources might take several minutes.
 
-  ![tf-provision-plan](/tf-tutorial-images/tf-provision-plan.png "Terraform Provisioning")<p></p><br />
+  ![tf-provision-plan](/tutorials/tf-tutorial-images/tf-provision-plan.png "Terraform Provisioning")<p></p><br />
 
 2. Once completed, log in to Palette to view the newly created cluster.<p></p><br />
 
-  ![provisioned-cluster](/tf-tutorial-images/tf-provisioned-cluster.png "Sampled of Provisioned Cluster")<p></p><br />
+  ![provisioned-cluster](/tutorials/tf-tutorial-images/tf-provisioned-cluster.png "Sampled of Provisioned Cluster")<p></p><br />
 
 3. Update the Terraform code to provision an add-on to install Kubeflow on your cluster.<p></p><br />
 
-  ![tf-newly-created](/tf-tutorial-images/newly-created-cluster.png "Newly Created Terraform")<p></p><br />
+  ![tf-newly-created](/tutorials/tf-tutorial-images/newly-created-cluster.png "Newly Created Terraform")<p></p><br />
 
 ### Modify the Cluster
 
 1. Run the _terraform apply_ command again to detect the change in the desired infrastructure state.<p></p><br />
 
-  ![tf-apply](/tf-tutorial-images/tf-apply.png "Terraform Apply")<p></p><br />
+  ![tf-apply](/tutorials/tf-tutorial-images/tf-apply.png "Terraform Apply")<p></p><br />
 
 2. Type _yes_ to create the add-on. Terraform will only create missing resources.<p></p><br />
 
-  ![create-missing-resources](/tf-tutorial-images/tf-create-missing-resources.png "Create Missing Resources")<p></p><br />
+  ![create-missing-resources](/tutorials/tf-tutorial-images/tf-create-missing-resources.png "Create Missing Resources")<p></p><br />
 
 3. Verify that Kubeflow is successfully added to the cluster on Palette.<p></p><br />
 
-  ![tf-kubeflow](/tf-tutorial-images/tf-kubeflow.png "Terraform Kubeflow")<p></p><br />
+  ![tf-kubeflow](/tutorials/tf-tutorial-images/tf-kubeflow.png "Terraform Kubeflow")<p></p><br />
 
 ### Clean Your Lab
 
@@ -277,11 +277,11 @@ Finally, you can easily tear down all resources and quickly clean up your lab. T
 
 1. Type _yes_ to confirm that you want to destroy all resources.<p></p><br />
 
-  ![destroy-complete](/tf-tutorial-images/tf-destroy-complete.png "Destroy Completed")<p></p><br />
+  ![destroy-complete](/tutorials/tf-tutorial-images/tf-destroy-complete.png "Destroy Completed")<p></p><br />
 
 2. Once confirmed, Terraform destroys all resources present in the state file.<p></p><br />
 
-  ![tf-destroy-complete](/tf-tutorial-images/tf-destroy.png "Terraform Destroy Complete")<p></p><br />
+  ![tf-destroy-complete](/tutorials/tf-tutorial-images/tf-destroy.png "Terraform Destroy Complete")<p></p><br />
 
 3.  Your resources in Palette are cleared.<p></p><br />
 
