@@ -1,8 +1,15 @@
-name: style_check
-on: [pull_request]
+name: image_optimizer
+# Image Optimizer docs: https://github.com/calibreapp/image-actions
+on:
+  pull_request:
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: image-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -18,9 +25,9 @@ jobs:
     # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
       - run: exit 0
 
-  vale:
-    # Image Optimizer docs: https://github.com/calibreapp/image-actions
-    name: Writing Checks
+
+  image-optimizer:
+    name: Image Optimization
     needs: [run-ci]
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
@@ -28,13 +35,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Vale Check
-        uses: errata-ai/vale-action@reviewdog
+      - name: Compress Images
+        uses: calibreapp/image-actions@main
         with:
-          # files: '${{ steps.get_changed_files.outputs.all }}'
-          filter_mode: added
-          reporter: github-pr-review
-          vale_flags: --glob=*.{md} --minAlertLevel=error
-          fail_on_error: false
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          ignorePaths: 'node_modules/**,build'
