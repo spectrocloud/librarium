@@ -26,7 +26,7 @@ jobs:
 
   image-optimizer:
     name: Image Optimization
-    needs: [run-ci]
+    # needs: [run-ci]
     runs-on: ubuntu-latest
     # if: ${{ !github.event.pull_request.draft }}
     steps:
