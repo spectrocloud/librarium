@@ -116,7 +116,7 @@ Click on the **New App Profile** button to get started with creating your first 
 
   
 
-Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.8`. Change the network access to **Public** and add the port `8080`
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.9`. Change the network access to **Public** and add the port `8080`
 
   
 
@@ -320,7 +320,7 @@ Provide the UI container with the following information.
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe:1.0.8-proxy`
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.9-proxy`
 
 - Network Access: Public
 
