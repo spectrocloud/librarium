@@ -137,6 +137,12 @@ const redirects = [
     toPath: `/clusters/cluster-management/kubernetes-dashboard`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/cluster-management/.ssh`,
+    toPath: `/clusters/cluster-management/ssh-keys`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
