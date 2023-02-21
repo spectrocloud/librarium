@@ -39,7 +39,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ### Enhancements:
 
-* Cluster groups that were previously supported only at the tenant scope are now supported at the project scope.
+* [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
 * [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
