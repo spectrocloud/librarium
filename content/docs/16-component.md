@@ -74,6 +74,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|vSphere PCG Version|
 |--|---|
+|3.2|1.2.0|
+|3.1|1.2.0|
 |3.0|1.2.0|
 |2.8|1.2.0|
 |2.7|1.2.0|
@@ -86,6 +88,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|MAAS PCG Version|
 |--|---|
+|3.2|1.0.12|
+|3.1|1.0.11|
 |3.0|1.0.11|
 |2.8|1.0.11|
 |2.7|1.0.11|
@@ -98,6 +102,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
+|3.2|1.0.12|
+|3.1|1.0.11|
 |3.0|1.0.11|
 |2.8|1.0.11|
 |2.7|1.0.11|
