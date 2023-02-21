@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Antrea CNI
 
-Palette supports Antrea controller network interface (CNI) networking for Kubernetes clusters. Antrea  CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
+Palette supports Antrea controller network interface (CNI) for Kubernetes clusters. Antrea  CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
 
 Antrea leverages Open vSwitch to implement pod networking and security features. Open vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
@@ -27,7 +27,7 @@ Antrea leverages Open vSwitch to implement pod networking and security features.
 
 ## Prerequisites
 
-- Enable the ``NodeIPAMController`` parameter in the Kubernetes cluster.
+- Enable the ``enableNodeIPAM`` controller parameter in the Kubernetes cluster.
 - When deploying a cluster using kubeadm, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
 
     ``--pod-network-cidr=10.244.0.0/16``
@@ -42,15 +42,28 @@ Antrea leverages Open vSwitch to implement pod networking and security features.
 
 ## Parameters
 
-The Antrea CNI pack supports the following parameters. 
+The Antrea CNI pack supports the following parameters.
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| enableNodeIPAM | This enables the integrated NodeIPAM controller parameter within the Antrea controller. Default: `false`. | Y |
+| clusterCIDRs | CIDR ranges for pods in the cluster. | N |
+| NodeIPAM | The feature toggle for ``antrea-controller``. Default: `false`. If you use CIDR ranges, set this to ``true``.  | N |
+| ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
+
 
 ## Usage
 
 Kubernetes network policies are supported by default.
 
-Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes Cloud Provider. Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
-Using Antrea’s built-in external IP management for Services of type LoadBalancer
-Leveraging MetalLB.
+Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes Cloud Provider. 
+
+Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
+- Using Antrea’s built-in external IP management for Services of type LoadBalancer.
+
+
+- Leveraging MetalLB.
+
 For detailed information, refer to Antrea’s [Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer) documentation. 
 
 # Troubleshooting
@@ -80,6 +93,7 @@ data "spectrocloud_pack_simple" "antrea" {
 - [Antrea Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer)
 - [MetalLB](https://metallb.universe.tf)
 - [Antrea](https://antrea.io/)
+- [Antrea IPAM Capabilities](https://antrea.io/docs/v1.6.1/docs/antrea-ipam/)
 
 <br />
 
