@@ -36,7 +36,16 @@ StatefulSet lets you run one or more related pods that track the state. The data
 
 ## Storage
 
-You must allocate storage to the database service based on the available storage within the Virtual Cluster.
+You must allocate storage to the database service based on the available storage within the Virtual Cluster. 
+
+<br />
+
+<WarningBox>
+
+
+By default, cluster groups are configured not to back up the disk storage. This default behavior affects database services because a backup would not include the storage disk. To learn more, refer to [Enable Disk Backup on Virtual Clusters](/clusters/cluster-groups/cluster-group-backups).
+
+</WarningBox>
 
 ## Version Update
 
