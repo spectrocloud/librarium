@@ -87,6 +87,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
   * AWS Application Load Balancer 2.4.6
   * Prometheus Operator 44.3.0
   * Bring Your Own OS (BYOS) pack 1.1.0
+  * Spectro Proxy 1.2.0
 
 <br />
 
