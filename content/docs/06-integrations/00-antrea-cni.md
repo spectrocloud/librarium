@@ -57,7 +57,7 @@ The Antrea CNI pack supports the following parameters.
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
 
-## Usage
+# Usage
 
 Kubernetes network policies are supported by default.
 
