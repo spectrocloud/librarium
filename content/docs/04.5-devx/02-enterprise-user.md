@@ -1,7 +1,7 @@
 ---
-title: "Enterprise Developers"
-metaTitle: "Palette DevX for Enterprise Users"
-metaDescription: "Explore Palette DevX as Free Users"
+title: "Use Cases"
+metaTitle: "PDE Use Cases"
+metaDescription: "Explore Palette DevX use cases."
 hideToC: false
 fullWidth: false
 ---
@@ -16,41 +16,57 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-As an enterprise developer the product experience can be explored from the Tenant Scope of DevOps as well as from the Palette Dev Engine persona. 
+You can use the Palette Develop Experience (PDE) to serve two common use cases: enterprise developers and individual application authors who want to deploy a containerized application without worrying about infrastructure overhead. 
 
-# Tenant Scope - DevOps Persona
+Refer to the [Enterprise Users](#enterprise-users) section to learn more about enabling PDE for a large set of downstream users. If you are an individual application author, check out the [Individual Application Author](#application-authors) section to get started.
 
-From the Tenant scope the enterprise user can:
+# Enterprise Users
 
-* [Create the Cluster Group](/devx/cluster-groups)
-
-
-* [Allocate User Quota](/devx/resource-quota)
+To enable PDE for downstream users, start by reviewing the following resources.
 
 
-# Palette Dev Engine Persona
-
- * [Create App Profile](/devx/app-profile)
-
- * [Create App](/devx/apps)
-
- * [Create Palette Virtual Clusters](/devx/palette-virtual-clusters)
-
- * [Create Custom Registries](/devx/registries)
+1. Understand the difference between [Cluster Mode and App Mode](/introduction/palette-modes).
 
 
-<InfoBox>
-
-Palette Developer Engine provides the following additional capabilities for developers who want to explore our product in depth:
-
-1. Create your application profiles and deploy your applications.
+2. Create and Manage the [Cluster Group](/clusters/cluster-groups).
 
 
-2. Switching between the App Mode and Cluster Mode exploring all the Palette [capabilities](/getting-started) starting from cloud account creation, cluster creation, cluster day two operations, etc.
+3. Allocate [User Quota](/devx/resource-quota).
 
 
-3. Host the Palette Virtual Clusters on your enterprise host cluster groups (host clusters deployed on developer datacenter/environments).
+The next set of references are not required but good for Palette administrators to be aware of.
 
-</InfoBox>
+- [Enable Disk Backup on Virtual Clusters](/clusters/cluster-groups/cluster-group-backups).
+
+- [Set Up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group).
+
+- [Pause and Resume Palette Virtual Clusters](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
+
+- [Resize Palette Virtual Clusters](/devx/palette-virtual-clusters/resize-virtual-clusters).
+
+
+# Application Authors
+
+Use PDE and deploy your containerized applications to Palette. Palette offers a free-tier offering of PDE that you can use to get started. Create your application profiles and deploy your applications to Palette in no time.
+
+
+Use the following resource to get started with PDE today.
+
+* Learn about [Palette's Free Tier Offering](/getting-started/palette-freemium).
+
+* [Quick Start with Palette App Mode](/devx#quickstartwithpaletteappmode).
+
+* Learn about [App Mode versus Cluster Mode](/introduction/palette-modes).
+
+* Familiarize yourself with [App Profiles](/devx/app-profile).
+
+* Review the supported [out-of-the-box-services](/devx/app-profile/services/service-listings).
+
+<br />
+
+
+
+
+
 
 

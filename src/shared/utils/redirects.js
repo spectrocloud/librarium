@@ -149,7 +149,15 @@ const redirects = [
     toPath: `/clusters/cluster-groups/ingress-cluster-group`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/devx/dev-land-explore`,
+    toPath: `/devx`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
 module.exports = redirects;
+
+
