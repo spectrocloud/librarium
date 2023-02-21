@@ -25,7 +25,7 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
 **1.9.x**
 
-## Prerequisites
+# Prerequisites
 
 - Enable the ``enableNodeIPAM`` integrated NodeIPAM controller within the Antrea controller.
 - When deploying a cluster using kubeadm, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
