@@ -48,8 +48,11 @@ The Antrea CNI pack supports the following parameters.
 
 | Parameter | Description | Required (Y/N) |
 |-----------|-------------|---------|
-| enableNodeIPAM | This enables the integrated NodeIPAM controller within the Antrea controller. The default is `false`. | Y |
-| clusterCIDRs | CIDR ranges for pods in the cluster. | N |
+| nodeIPAM:enable | This enables the integrated NodeIPAM controller within the Antrea controller. The default is `false`. | Y |
+| clusterCIDRs | CIDR ranges for pods in the cluster. The CIDRs could be either IPv4 or IPv6. You can specify up to one CIDR for each IP family. | N |
+| serviceCIDRv6 | IPv6 CIDR ranges reserved for Services. | N |
+| nodeCIDRMaskSizeIPv4 | Mask size for IPv4 Node CIDR in IPv4 or dual-stack cluster. | N |
+| nodeCIDRMaskSizeIPv6 | Mask size for IPv6 Node CIDR in IPv6 or dual-stack cluster. | N |
 | NodeIPAM | The feature toggle for ``antrea-controller``. The default is `false`. If you use CIDR ranges, set this to ``true``.  | N |
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
