@@ -52,6 +52,23 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
 6. Select a cluster profile that is compatible with Cox Edge. If you need guidance creating a cluster profile, check out the [Creating Cluster Profiles](/cluster-profiles/task-define-profile) guide.
 
+<WarningBox>
+
+If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](/integrations/longhorn) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
+
+<br />
+
+
+```yaml
+charts:
+  longhorn:
+    defaultSettings:
+    kubernetesClusterAutoscalerEnabled: true
+```
+
+
+</WarningBox>
+
 
 7. Review the cluster profile and all of its manifest files. Click **Next** to continue.
 
