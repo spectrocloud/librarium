@@ -27,10 +27,12 @@ Antrea leverages Open vSwitch to implement pod networking and security features.
 
 ## Prerequisites
 
-- Enable the ``enableNodeIPAM`` controller parameter in the Kubernetes cluster.
+- Enable the ``enableNodeIPAM`` integrated NodeIPAM controller within the Antrea controller.
 - When deploying a cluster using kubeadm, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
 
     ``--pod-network-cidr=10.244.0.0/16``
+
+    <br />
 
     <WarningBox>
 
@@ -46,9 +48,9 @@ The Antrea CNI pack supports the following parameters.
 
 | Parameter | Description | Required (Y/N) |
 |-----------|-------------|---------|
-| enableNodeIPAM | This enables the integrated NodeIPAM controller parameter within the Antrea controller. Default: `false`. | Y |
+| enableNodeIPAM | This enables the integrated NodeIPAM controller within the Antrea controller. The default is `false`. | Y |
 | clusterCIDRs | CIDR ranges for pods in the cluster. | N |
-| NodeIPAM | The feature toggle for ``antrea-controller``. Default: `false`. If you use CIDR ranges, set this to ``true``.  | N |
+| NodeIPAM | The feature toggle for ``antrea-controller``. The default is `false`. If you use CIDR ranges, set this to ``true``.  | N |
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
 
