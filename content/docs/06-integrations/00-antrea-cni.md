@@ -61,7 +61,7 @@ The Antrea CNI pack supports the following parameters.
 
 Kubernetes network policies are supported by default.
 
-Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes Cloud Provider. 
+Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes cloud provider. 
 
 Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
 - Using Antrea’s built-in external IP management for Services of type LoadBalancer.
