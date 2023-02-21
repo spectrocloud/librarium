@@ -42,7 +42,7 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
 - The Open vSwitch kernel module must be present on every Kubernetes node.
 
-## Parameters
+# Parameters
 
 The Antrea CNI pack supports the following parameters.
 
