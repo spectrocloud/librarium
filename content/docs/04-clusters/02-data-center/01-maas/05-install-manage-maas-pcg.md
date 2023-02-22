@@ -53,9 +53,10 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
     The installer must connect to the MAAS machines. This is commonly done by ensuring the DNS server delegates the MAAS domain to the MAAS controlplane. To connect, the installer uses the FQDN ``machine-hostname.maas``. A common way to enable this is to ensure that the DNS server delegates the MAAS domain to the MAAS controlplane.
 
-    `[video-how to deploy a MAAS PCG]`
 
 # Install the Gateway
+
+`video: title: "maas-pcg-creation": /pcg-creation-video/maas.mp4`
 
 Follow these steps to install the PCG. 
 
