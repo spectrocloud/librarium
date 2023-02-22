@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The following are some architectural highlights of bare-metal Kubernetes clusters that Palette deploys using Canonical's MAAS.  Canonical MAAS is an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units.
 
-- Palette supports the usage of MAAS with Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF) Cluster API that supports Canonical MAAS: https://github.com/spectrocloud/cluster-api-provider-maas.
+- Palette supports the use of MAAS with Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF) Cluster API that supports Canonical MAAS: https://github.com/spectrocloud/cluster-api-provider-maas.
 
 - Palette provides a cloud-like experience for deploying clusters on bare metal servers. The result is increased performance at minimal cost and operational effort.
 

@@ -19,7 +19,12 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 - At least one preconfigured MAAS cloud account with credentials.
 
-To create a new MAAS cluster:
+# Enablement
+
+`video: title: "maas-cluster-creation": ./cluster-creation-videos/maas.mp4`
+
+
+To deploy a new MAAS cluster:
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 

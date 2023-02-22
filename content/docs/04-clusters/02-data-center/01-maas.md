@@ -17,15 +17,17 @@ Palette supports integration with Canonical MAAS to give a cloud-like experience
 
 # Prerequisite
 
-- MAAS installed, set up, and available in your environment.
+- Canonical MAAS installed, set up, and available in your environment.
 
-The following describes the overall process to install a Private Cloud Gateway (PCG) to manage a MAAS bare metal cloud. Detailed steps to get you started are provided in Install and Manage a MAAS Private Cloud Gateway.
+The following steps outline the overall process to install a Private Cloud Gateway (PCG), which is used to manage a MAAS bare metal cloud. The PCG facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet. 
+
+For detailed steps to install the MAAS PCG, refer to [Install and Manage a MAAS Gateway](??).
 
 <br />
 
 1. You obtain a pairing code in Palette that you will provide when you run the installer.
 
-2. You run a configuration script using a docker image. The script creates a Private Cloud Gateway (PCG) configuration file that the installer will use.
+2. You run a configuration script using a docker image. The script creates a PCG configuration file that the installer will use.
 
 3. You run the installer using the open-source Kind tool. 
 
@@ -38,13 +40,13 @@ The following describes the overall process to install a Private Cloud Gateway (
 
     <InfoBox>
 
-    For production environments, we recommend setting up three nodes. If you initially set up the gateway with one node, you can resize to three nodes at a later time. 
+    For production environments, we recommend setting up three nodes. If you initially set up the gateway with one node, you can resize it to three nodes at a later time. 
 
     </InfoBox>
 
 5. The installer installs one machine (for non-HA) or three machines (for HA) from your MAAS cluster to build a new cluster that will host the PCG.
 
-The PCG you install in a MAAS cloud using a local installer facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet.
+
 
 # Resources
 
@@ -61,7 +63,7 @@ The PCG you install in a MAAS cloud using a local installer facilitates communic
 
 
 
-
+DELETE from here to end.
 
 # Deploying a bare metal cluster using MAAS
 

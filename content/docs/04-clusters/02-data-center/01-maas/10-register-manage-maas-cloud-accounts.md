@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-When you install the private cloud gateway (PCG), a default MAAS cloud account is automatically created. You can use this cloud account to create tenant clusters and create additional cloud accounts if desired. 
+When you install the private cloud gateway (PCG), a default MAAS cloud account is automatically created. You can use this cloud account to create tenant clusters and to create additional cloud accounts if desired. 
 
 # Prerequisites
 
