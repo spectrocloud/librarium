@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# February 17, 2023 - Release 3.2.0
+# February 22, 2023 - Release 3.2.0
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
 
@@ -39,7 +39,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ### Enhancements:
 
-* Cluster groups that were previously supported only at the tenant scope are now supported at the project scope.
+* [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
 * [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
@@ -48,7 +48,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ### Deprecations
 
-* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward.
+* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward. Cluster groups are also now supported at the [project](/projects) scope.
 
 ## Edge
 

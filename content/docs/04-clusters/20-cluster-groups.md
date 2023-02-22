@@ -19,7 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 A *Cluster Group* is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [*App Mode*](/introduction/palette-modes#whatisappmode?). 
 
-You can create a cluster group under the Palette [System Scope](/devx/cluster-groups#systemscope). Alternatively, you can create a cluster group at the [project](/projects) scope.
+You can create a cluster group under the Palette [tenant](/glossary-all#tenant) scope. Alternatively, you can create a cluster group at the [project](/projects) scope.
 
 By default, Palette exposes a managed cluster group called *beehive* that is available for users in app mode. This cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern side of the U.S. 
 
