@@ -63,7 +63,7 @@ If you want to use the Kubernetes cluster autoscaler feature and you are using [
 charts:
   longhorn:
     defaultSettings:
-    kubernetesClusterAutoscalerEnabled: true
+      kubernetesClusterAutoscalerEnabled: true
 ```
 
 
