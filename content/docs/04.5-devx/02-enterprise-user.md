@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-You can use the Palette Develop Experience (PDE) to serve two common use cases: enterprise developers and individual application authors who want to deploy a containerized application without worrying about infrastructure overhead. 
+You can use the Palette Developer Experience (PDE) to serve two common use cases: enterprise developers and individual application authors who want to deploy a containerized application without worrying about infrastructure overhead. 
 
 Refer to the [Enterprise Users](#enterprise-users) section to learn more about enabling PDE for a large set of downstream users. If you are an individual application author, check out the [Individual Application Author](#application-authors) section to get started.
 
@@ -47,7 +47,7 @@ The next set of references are not required but good for Palette administrators 
 
 # Application Authors
 
-Use PDE and deploy your containerized applications to Palette. Palette offers a free-tier offering of PDE that you can use to get started. Create your application profiles and deploy your applications to Palette in no time.
+Use PDE to deploy your containerized applications to Palette. Leverage Palette's free-tier offering of PDE to get started. Create your application profiles and deploy your applications to Palette in no time.
 
 
 Use the following resource to get started with PDE today.
