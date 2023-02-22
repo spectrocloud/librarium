@@ -31,8 +31,8 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
 # Prerequisites
 
-- Enable the ``NodeIPAM:enable`` integrated NodeIPAM controller within the Antrea controller.
-- When deploying a cluser using Palette, use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest.
+- Enable the integrated NodeIPAM controller in the Antrea manifest: ``NodeIPAM:enable``.
+- When deploying a cluster using Palette, use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest. The CIDER IP specified with ``podCIDR`` always takes precedence.
 
     When deploying a cluster using kubeadm to use Antrea CIDRs, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
 
@@ -64,8 +64,8 @@ The Antrea CNI pack supports the following parameters.
 
 | Parameter | Description | Required (Y/N) |
 |-----------|-------------|---------|
-| nodeIPAM:enable | This enables the integrated NodeIPAM controller within the Antrea controller. The default is `false`. | Y |
-| clusterCIDRs | CIDR ranges for pods in the cluster. The CIDRs could be either IPv4 or IPv6. You can specify up to one CIDR for each IP family. | N |
+| nodeIPAM:enable | Enables the integrated NodeIPAM controller within the Antrea manifest. The default is `false`. | Y |
+| clusterCIDRs | CIDR ranges for pods in the cluster. The CIDRs can be either IPv4 or IPv6. You can specify up to one CIDR for each IP family. | N |
 | serviceCIDRv6 | IPv6 CIDR ranges reserved for Services. | N |
 | nodeCIDRMaskSizeIPv4 | Mask size for IPv4 Node CIDR in IPv4 or dual-stack cluster. | N |
 | nodeCIDRMaskSizeIPv6 | Mask size for IPv6 Node CIDR in IPv6 or dual-stack cluster. | N |
@@ -81,6 +81,7 @@ Kubernetes network policies are supported by default.
 Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes cloud provider. 
 
 Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
+
 - Using Antrea’s built-in external IP management for Services of type LoadBalancer.
 
 - Leveraging MetalLB.
@@ -93,7 +94,7 @@ To learn more about using MetalLB, review [Using MetalLB with Antrea](https://an
 
 # Troubleshooting
 
-If routing problems occur or some hosts cannot communicate outside their subnet, this can indicate overlapping  IP addresses. 
+If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses. 
 
 Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the ``podCIDR`` parameter. The CIDER IP specified with the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
 
@@ -125,6 +126,7 @@ data "spectrocloud_pack_simple" "antrea" {
 - [MetalLB](https://metallb.universe.tf)
 - [Antrea](https://antrea.io/)
 - [Antrea IPAM Capabilities](https://antrea.io/docs/v1.6.1/docs/antrea-ipam/)
+- [Using MetalLB with Antrea](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer/#using-metallb-with-antrea)
 
 <br />
 
