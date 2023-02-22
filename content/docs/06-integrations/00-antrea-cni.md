@@ -21,14 +21,22 @@ Palette supports Antrea controller network interface (CNI) for Kubernetes cluste
 
 Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod networking and security features. Open vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
+<br />
+
 # Supported Versions
 
 **1.9.x**
 
+<br />
+
 # Prerequisites
 
-- Enable the ``enableNodeIPAM`` integrated NodeIPAM controller within the Antrea controller.
-- When deploying a cluster using kubeadm, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
+- Enable the ``NodeIPAM:enable`` integrated NodeIPAM controller within the Antrea controller.
+- When deploying a cluser using Palette, use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest.
+
+    When deploying a cluster using kubeadm to use Antrea CIDRs, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
+
+    <br />
 
     ``--pod-network-cidr=10.244.0.0/16``
 
@@ -36,11 +44,19 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     <WarningBox>
 
+    The CIDER IP specified in Palette with the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest always takes precedence. 
+    
+    If you want to use Antrea CIDRs, you need to remove values for ``podCIDR`` in the Kubernetes manifest and for ``serviceCIDR`` in the Antrea CNI manifest.  
+    
     To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` with ``--pod-network-cidr <cidr>`` or as a replacement in your network plugin's YAML.
 
     </WarningBox>
 
+    <br />
+
 - The Open vSwitch kernel module must be present on every Kubernetes node.
+
+<br />
 
 # Parameters
 
@@ -56,6 +72,7 @@ The Antrea CNI pack supports the following parameters.
 | NodeIPAM | The feature toggle for ``antrea-controller``. The default is `false`. If you use CIDR ranges, set this to ``true``.  | N |
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
+<br />
 
 # Usage
 
@@ -66,15 +83,23 @@ Antrea supports LoadBalancer services. Typically, implementing LoadBalancer serv
 Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
 - Using Antrea’s built-in external IP management for Services of type LoadBalancer.
 
-
 - Leveraging MetalLB.
 
 For detailed information, refer to Antrea’s [Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer) documentation. 
 
+To learn more about using MetalLB, review [Using MetalLB with Antrea](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer/#using-metallb-with-antrea). 
+
+<br />
+
 # Troubleshooting
 
-Ensure you have provided a non-overlapping IP address for your pod network  in the Kubernetes pack. 
+If routing problems occur or some hosts cannot communicate outside their subnet, this can indicate overlapping  IP addresses. 
 
+Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the ``podCIDR`` parameter. The CIDER IP specified with the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
+
+If you are using Antrea CIDRs and used the ``kubeadm init`` command with the ``--pod-network-cidr <cidr>`` attribute, ensure that you provided a non-overlapping IP address for your pod network in the Antrea CNI manifest.
+
+<br />
 
 # Terraform 
 
@@ -92,6 +117,7 @@ data "spectrocloud_pack_simple" "antrea" {
  registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
+
 
 # References
 
