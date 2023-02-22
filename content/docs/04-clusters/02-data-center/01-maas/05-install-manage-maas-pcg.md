@@ -172,3 +172,55 @@ If you need assisstance, you can send a message to our slack channel with questi
 Once installed, the gateway registers itself with Palette's SaaS portal. To verify the gateway is registered, go to **Tenant Settings > Private Cloud Gateways** and verify the gateway is listed in the **Manage Private Cloud Gateways** table. 
 
 When you install the gateway, a default MAAS cloud account is automatically created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
+
+
+# Upgrade and Manage the MAAS Cloud Gateway
+
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases upgrades when required, and informs you with an upgrade notification on the gateway.
+
+Review the changes in the upgrade notification, and apply the upgrade when you are ready. 
+
+Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway upgrade is complete.
+
+
+# Delete the MAAS Private Gateway
+
+Follow these steps to delete a MAAS gateway.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. 
+
+2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
+
+3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.
+
+    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any.
+
+4. If there are running clusters, delete them and retry deleting the gateway instance.
+
+
+# Resize the MAAS Gateway
+
+You can set up a PCG as a single-node or three-node cluster. You can set up a PCG initially with one node and resize it to three nodes at a later time.
+
+<InfoBox>
+
+For production environments, we recommend setting up three nodes.
+
+</InfoBox>
+
+Follow these steps to resize a single-node gateway.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
+
+3. Click the **three-dot Menu** for the gateway instance you want to resize and choose **Set number of nodes**.
+
+4. Change the number of nodes to 3.
+
+    Two new nodes are created, and the gateway upgrades to a three-node cluster.
+
+
+# Next Steps
+
+Now that you have a MAAS cloud account, you can use it to create tenant clusters. You can create additional cloud accounts if desired. Check out [Register and Manage MAAS Cloud Account]() guide to learn more.
