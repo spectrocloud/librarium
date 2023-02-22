@@ -62,58 +62,6 @@ The PCG you install in a MAAS cloud using a local installer facilitates communic
 
 
 
-## Upgrading a MAAS Cloud Gateway
-
-Palette maintains the Operating System (OS) image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
-
-Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is upgraded and are processed as soon as the gateway upgrade is complete.
-
-## Deleting a MAAS cloud gateway
-The following steps need to be performed to delete a cloud gateway:
-
-1. As a Tenant Administrator, navigate to the Private Cloud Gateway page under settings.
-
-
-2. Invoke the 'Delete' action on the cloud gateway instance that needs to be deleted.
-
-
-3. The system performs a validation to ensure that, there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
-
-
-4. Delete the gateway.
-
-
-## Resizing a MAAS gateway
-
-A Cloud gateway can be set up as a 1-node or a 3-node cluster. For production environments, it is recommended that 3 nodes are set up. A cloud gateway can be initially set up with 1 node and resized to 3 nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
-
-1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under settings.
-
-
-2. Invoke the resize action for the relevant cloud gateway instance.
-
-
-3. Update the size from **1** to **3**.
-
-
-4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a 3-node cluster.
-
-# Creating a MAAS Cloud Account
-
-A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired.
-
-1. To create a MAAS cloud account, proceed to project settings and select **Create Cloud Account** under MAAS. 
-
-2. Fill the following values in the cloud account creation wizard.
-
-    |**Property**|**Description** |
-    |:---------------|:-----------------------|
-    | **Account Name** |  Custom name for the cloud account   |
-    |   **Private cloud gateway**|    Reference to a running cloud gateway |
-    |  **API Endpoint** |  API Endpoint of the gateway   |
-    | **API Key**| API token |
-    
-3. Validate the above MAAS credentials to create your MAAS cloud account.
 
 # Deploying a bare metal cluster using MAAS
 
