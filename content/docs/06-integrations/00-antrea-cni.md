@@ -44,9 +44,9 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     <WarningBox>
 
-    The CIDER IP specified in Palette with the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest always takes precedence. 
+    The CIDER IP specified in Palette with the ``podCIDR`` parameter always takes precedence. 
     
-    If you want to use Antrea CIDRs, you need to remove values for ``podCIDR`` in the Kubernetes manifest and for ``serviceCIDR`` in the Antrea CNI manifest.  
+    If you want to use Antrea CIDRs, you need to remove values for ``podCIDR`` in the Kubernetes manifest and any specified with ``serviceCIDR`` in the Antrea CNI manifest.  
     
     To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` with ``--pod-network-cidr <cidr>`` or as a replacement in your network plugin's YAML.
 
@@ -56,7 +56,6 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
 - The Open vSwitch kernel module must be present on every Kubernetes node.
 
-<br />
 
 # Parameters
 
@@ -64,7 +63,7 @@ The Antrea CNI pack supports the following parameters.
 
 | Parameter | Description | Required (Y/N) |
 |-----------|-------------|---------|
-| nodeIPAM:enable | Enables the integrated NodeIPAM controller within the Antrea manifest. The default is `false`. | Y |
+| nodeIPAM:enable | Enables the integrated NodeIPAM controller in the Antrea manifest. The default is `false`. | Y |
 | clusterCIDRs | CIDR ranges for pods in the cluster. The CIDRs can be either IPv4 or IPv6. You can specify up to one CIDR for each IP family. | N |
 | serviceCIDRv6 | IPv6 CIDR ranges reserved for Services. | N |
 | nodeCIDRMaskSizeIPv4 | Mask size for IPv4 Node CIDR in IPv4 or dual-stack cluster. | N |
@@ -72,7 +71,6 @@ The Antrea CNI pack supports the following parameters.
 | NodeIPAM | The feature toggle for ``antrea-controller``. The default is `false`. If you use CIDR ranges, set this to ``true``.  | N |
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
-<br />
 
 # Usage
 
@@ -81,6 +79,8 @@ Kubernetes network policies are supported by default.
 Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes cloud provider. 
 
 Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
+
+<br />
 
 - Using Antrea’s built-in external IP management for Services of type LoadBalancer.
 
@@ -98,7 +98,10 @@ If routing problems occur or some hosts cannot communicate outside their subnet,
 
 Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the ``podCIDR`` parameter. The CIDER IP specified with the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
 
-If you are using Antrea CIDRs and used the ``kubeadm init`` command with the ``--pod-network-cidr <cidr>`` attribute, ensure that you provided a non-overlapping IP address for your pod network in the Antrea CNI manifest.
+If you are using Antrea CIDRs and used the ``kubeadm init`` command with the ``--pod-network-cidr <cidr>`` attribute, ensure that you have done the following: 
+
+- Removed any value for ``podCIDR`` in the Kubernetes manifest. 
+- Provided a non-overlapping IP address for your pod network.
 
 <br />
 
