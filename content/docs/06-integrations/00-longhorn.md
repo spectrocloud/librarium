@@ -27,11 +27,11 @@ Longhorn creates a dedicated storage controller for each block device volume and
 <Tabs.TabPane tab="1.4.x" key="1.4.x">
 
 
-# Prerequisites
+## Prerequisites
 
 - Kubernetes cluster is 1.21 or higher.
 
-# Parameters
+## Parameters
 
 The table lists commonly used parameters you can configure when adding this pack.
 
@@ -45,7 +45,7 @@ The table lists commonly used parameters you can configure when adding this pack
 | migratable              | The ability to transfer data to another data storage systems | `false`   |
 | recurringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
 
-# Usage
+## Usage
 
 Longhorn provides these features:
 
@@ -61,11 +61,11 @@ For more information, check out Longhorn guide on [How to Create Volumes](https:
 <Tabs.TabPane tab="1.3.x" key="1.3.x">
 
 
-# Prerequisites
+## Prerequisites
 
 - Kubernetes cluster is at least version 1.22 and not higher than 1.24.
 
-# Parameters
+## Parameters
 
 The table lists commonly used parameters you can configure when adding this pack.
 
@@ -79,7 +79,7 @@ The table lists commonly used parameters you can configure when adding this pack
 | migratable              | The ability to transfer data to another data storage systems | `false`   |
 | recurringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
 
-# Usage
+## Usage
 
 Longhorn provides these features:
 

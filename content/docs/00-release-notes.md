@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# February 17, 2023 - Release 3.2.0
+# February 22, 2023 - Release 3.2.0
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
 
@@ -39,15 +39,16 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ### Enhancements:
 
-* Cluster groups that were previously supported only at the tenant scope are now supported at the project scope.
+* [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
 * [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
 * The App profile container service layer contains additional [output variables](/devx/app-profile/app-profile-macros#containerserviceoutputvariables) to help services connect. Refer to the [service connectivity](/devx/app-profile/services/connectivity) document for additional guidance.
+* We optimized the Spectro Cloud Postman [collection](/api/postman-collection) to circumvent a nested levels [bug](https://github.com/postmanlabs/postman-app-support/issues/10928) in Postman.
 
 ### Deprecations
 
-* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward.
+* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward. Cluster groups are also now supported at the [project](/projects) scope.
 
 ## Edge
 
@@ -87,6 +88,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
   * AWS Application Load Balancer 2.4.6
   * Prometheus Operator 44.3.0
   * Bring Your Own OS (BYOS) pack 1.1.0
+  * Spectro Proxy 1.2.0
 
 <br />
 
