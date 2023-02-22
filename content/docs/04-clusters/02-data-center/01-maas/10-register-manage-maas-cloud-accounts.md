@@ -32,6 +32,21 @@ Follow these steps to create additional MAAS cloud accounts.
 
 4. Enter values for properties listed in the table.
 
+| Property | Description |
+|-----------|-------------|
+| Account Name | Custom name for the cloud name. |
+| Private Cloud Gateway | Select the MAAS cloud gateway from the **drop-down Menu**. |
+| API Endpoint | API Endpoint of the gateway. |
+| API Key | API token. |
+
+
+# Validation
+
+You can validate your MAAS cloud account is created by reviewing the Manage Cloud Accounts page. Ensure your account is listed under **MAAS**. 
+
+# Next Steps
+
+Now that you have a MAAS cloud account in Palette, you can start deploying Kubernetes clusters to your MAAS account. To learn how to deploy Kubernetes clusters to MAAS, check out the Create and Manage MAAS Cluster guide.
 
 
 
