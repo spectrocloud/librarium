@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Antrea CNI
 
-Palette supports Antrea controller network interface (CNI) for Kubernetes clusters. Antrea CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
+Palette supports Antrea controller network interface (CNI) for VMware Kubernetes clusters. Antrea CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
 
 Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod networking and security features. Open vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
