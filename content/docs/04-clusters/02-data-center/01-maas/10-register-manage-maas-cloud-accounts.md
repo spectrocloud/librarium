@@ -48,5 +48,9 @@ You can validate your MAAS cloud account is created by reviewing the Manage Clou
 
 Now that you have a MAAS cloud account in Palette, you can start deploying Kubernetes clusters to your MAAS account. To learn how to deploy Kubernetes clusters to MAAS, check out the Create and Manage MAAS Cluster guide.
 
+<br />
+
+<br />
+
 
 

@@ -228,3 +228,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 # Next Steps
 
 Now that you have a MAAS cloud account, you can use it to create tenant clusters. You can also create additional cloud accounts if desired. Check out [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more.
+
+<br />
+
+<br />
