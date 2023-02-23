@@ -195,8 +195,8 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "k8s-dashboard" {
  name    = "spectro-k8s-dashboard"
- version = "2.6.0"
- type = "spectro"
+ version = "2.7.0"
+ type = "helm"
  registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
