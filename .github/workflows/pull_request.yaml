@@ -19,6 +19,7 @@ jobs:
       - run: exit 0
 
   vale:
+    # Image Optimizer docs: https://github.com/calibreapp/image-actions
     name: Writing Checks
     needs: [run-ci]
     runs-on: ubuntu-latest
@@ -26,12 +27,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
-      # - name: Get Changed Files
-      #   id: get_changed_files
-      #   uses: lots0logs/gh-action-get-changed-files@2.1.4
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Vale Check
         uses: errata-ai/vale-action@reviewdog

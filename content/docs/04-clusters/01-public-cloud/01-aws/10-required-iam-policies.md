@@ -238,9 +238,11 @@ The following four policies include all the required permissions for provisionin
             "Effect": "Allow",
             "Action": [
                 "iam:ListOpenIDConnectProviders",
+                "iam:GetOpenIDConnectProvider",
                 "iam:CreateOpenIDConnectProvider",
                 "iam:AddClientIDToOpenIDConnectProvider",
                 "iam:UpdateOpenIDConnectProviderThumbprint",
+                "iam:TagOpenIDConnectProvider",
                 "iam:DeleteOpenIDConnectProvider"
             ],
             "Resource": [
