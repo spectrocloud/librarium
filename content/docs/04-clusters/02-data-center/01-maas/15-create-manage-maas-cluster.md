@@ -126,7 +126,7 @@ A force delete can result in resources Palette provisioned to be missed in the r
 - EBS Volumes
 - NAT Gateway
 
-Failure to renive provisioned resources can result in unexpected costs.
+Failure to remove provisioned resources can result in unexpected costs.
 </InfoBox>
 
 # Next Steps
@@ -134,10 +134,6 @@ Failure to renive provisioned resources can result in unexpected costs.
 Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the Manage Clusters documentation to learn more about day two responsibilities.
 
 
-<InfoBox> Any wording here to keep? 
-You can only delete clusters that are fully provisioned. If a cluster that you want to delete is still in the process of being provisioned, you can select it and choose Abort in the Settings drop-down menu. This will stop provisioning and delete all resources.
-Confirm the deletion.
-The Clusters page displays status as Deleting while cluster resources are being deleted. When all resources associated with the cluster are successfully deleted, the cluster status changes to Deleted and the cluster is removed from the list.
 
 <br />
 

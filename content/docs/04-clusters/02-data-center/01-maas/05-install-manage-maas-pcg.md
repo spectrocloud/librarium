@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-The Private Cloud Gateway (PCG) enables support for isolated private cloud or data center environments. You can set up the cloud gateway as a single-node or three-node cluster. 
+The Private Cloud Gateway (PCG) enables support for isolated private cloud or data center environments. You can set up the cloud gateway as a single-node or three-node cluster based on your requirements for high availability (HA).  
 <br />
 
 <InfoBox>
@@ -23,16 +23,22 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a docker container that is temporarily deployed on your laptop, workstation or jump-box. You can run the installer on any system that has a docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
+Palette provides an installer in the form of a docker container that is temporarily deployed on your laptop, workstation or jump box. You can run the installer on any system that has a docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
 
 # Prerequisites
 
+- Canonical MAAS installed, set up, and available in your environment.
+
+
 - A linux computer with a docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system.
 
-- One IP address for a Kubernetes control-plane.
+
+- One IP address for a Kubernetes control plane.
+
 
 - One IP address for a single-node gateway or three IP addresses for a three-node gateway.
+
 
 - Sufficient IPs for application workload services, such as Load Balancer services.
 
@@ -44,14 +50,21 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
 - Minimum capacity requirements as follows:
 
+    <br />
+
     - One node (no HA): 4 vCPU, 8 GiB Memory, 60 GiB Storage.
+   
     - Three nodes (HA): 6 vCPU, 12 GiB Memory, 90 GiB Storage.<br /><br />
 
-- An active MAAS API key in the format  ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``.
+- An active MAAS API key in the following format:
 
-- The DNS server that the installer will use must be able to resolve the public internet names of the machines that MAAS manages because the installer must connect to the machines.  
+  ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``
 
-    The installer must connect to the MAAS machines. This is commonly done by ensuring the DNS server delegates the MAAS domain to the MAAS controlplane. To connect, the installer uses the FQDN ``machine-hostname.maas``. A common way to enable this is to ensure that the DNS server delegates the MAAS domain to the MAAS controlplane.
+  <br />
+
+- The DNS server that the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them.  
+
+    This is commonly done by ensuring the DNS server delegates the MAAS domain to the MAAS control plane. To connect, the installer uses the FQDN ``machine-hostname.maas``. A common way to enable this is to ensure the DNS server delegates the MAAS domain to the MAAS control plane.
 
 
 # Install the Gateway
