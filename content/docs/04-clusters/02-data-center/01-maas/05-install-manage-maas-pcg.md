@@ -66,6 +66,34 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
     This is commonly done by ensuring the DNS server delegates the MAAS domain to the MAAS control plane. To connect, the installer uses the FQDN ``machine-hostname.maas``. A common way to enable this is to ensure the DNS server delegates the MAAS domain to the MAAS control plane.
 
+# Understand the Gateway Installation Process
+
+The following steps outline the overall process to install the PCG. For detailed steps, refer to [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg).
+
+<br />
+
+1. You obtain a pairing code in Palette that you will provide when you run the installer.
+
+
+2. You run a configuration script using a docker image. 
+
+
+3. The script creates a PCG configuration file.
+
+
+4. You run the installer using the open-source Kind tool. 
+
+
+5. The installer uses the configuration file to build a cluster that will host the PCG.
+
+    The installer needs access to your Palette account and one machine (no HA) or three machines (HA) from your MAAS cluster.
+
+    The MAAS machines must have internet access and be in a ready state.
+    <br />
+
+6. The installer installs one machine or three machines from your MAAS cluster to build a new cluster that will host the PCG.
+
+
 
 # Install the Gateway
 
