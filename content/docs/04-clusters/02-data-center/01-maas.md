@@ -21,7 +21,7 @@ Palette supports integration with Canonical MAAS to give a cloud-like experience
 
 The following steps outline the overall process to install a Private Cloud Gateway (PCG), which is used to manage a MAAS bare metal cloud. The PCG facilitates communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet. 
 
-For detailed steps to install the MAAS PCG, refer to [Install and Manage a MAAS Gateway](??).
+For detailed steps to install the MAAS PCG, refer to [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg).
 
 <br />
 
@@ -50,10 +50,10 @@ For detailed steps to install the MAAS PCG, refer to [Install and Manage a MAAS 
 
 # Resources
 
-- [MAAS Bare-Metal Architecture](??)
-- [Install and Manage MAAS Gateway](??)
-- [Register and Manage MAAS Cloud Accounts](??)
-- [Create and Manage MAAS Cluster](??)
+- [MAAS Bare-Metal Architecture](/clusters/data-center/maas/architecture)
+- [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg)
+- [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts)
+- [Create and Manage MAAS Cluster](/clusters/data-center/maas/create-manage-maas-cluster)
 
 
 <br />
