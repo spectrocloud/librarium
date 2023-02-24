@@ -22,7 +22,6 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 ### Features:
 
 * Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
-
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
 * Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](/integrations/spectro-k8s-dashboard). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 * Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
