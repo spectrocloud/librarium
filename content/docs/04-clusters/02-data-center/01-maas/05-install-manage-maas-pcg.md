@@ -68,30 +68,25 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
 # Understand the Gateway Installation Process
 
-The following steps outline the overall process to install the PCG. For detailed steps, refer to [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg).
+The following steps outline the overall process to install the PCG. For detailed steps, refer to [Install the Gateway](/clusters/data-center/maas/install-manage-maas-pcg#installthegateway) below.
 
 <br />
 
-1. You obtain a pairing code in Palette that you will provide when you run the installer.
+1. You obtain a pairing code in Palette that you will use later.
 
 
-2. You run a configuration script using a docker image. 
+2. Then you run a configuration script using a docker image. 
 
 
 3. The script creates a PCG configuration file.
 
 
-4. You run the installer using the open-source Kind tool. 
+4. Next, you run the installer using the open-source Kind tool and provide the pairing code you obtained in step **1**. The installer uses the configuration file from script output in step **3**.
 
-
-5. The installer uses the configuration file to build a cluster that will host the PCG.
-
-    The installer needs access to your Palette account and one machine (no HA) or three machines (HA) from your MAAS cluster.
-
-    The MAAS machines must have internet access and be in a ready state.
+    The installer needs access to your Palette account and to one or three machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
     <br />
 
-6. The installer installs one machine or three machines from your MAAS cluster to build a new cluster that will host the PCG.
+5. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
 
 
 
@@ -99,19 +94,22 @@ The following steps outline the overall process to install the PCG. For detailed
 
 `video: title: "maas-pcg-creation": /pcg-creation-video/maas.mp4`
 
-Follow these steps to install the PCG. 
+The following steps will guide you to install the PCG. 
+<br />
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. From the **User Menu**, select Cluster Mode and choose **Tenant Admin**.
 
-3. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateway** below the table.
+2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateway**.
 
-4. Select **MAAS**. Private Gateway installation instructions are displayed.
 
-5. Copy the pairing code displayed on the instructions page. You will input this code when you run the installer.
+3. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
-6. Copy the following commands to your terminal to invoke the installer.
+
+4. Copy the pairing code displayed in the Instructions section of the page and paste it in a text file. You will input this code when you run the installer. 
+
+
+5. Copy the following code snippet to your terminal to invoke the installer.
     <br />
 
     ```bash
@@ -123,28 +121,21 @@ Follow these steps to install the PCG.
     -o true
     ```
 
-7. When prompted, enter information listed in each of the following tables. The installer will generate the gateway configuration file. 
+6. When prompted, enter the pairing code and information listed in each of the following tables. The installer will generate the gateway configuration file. 
     <br />
 
-    <WarningBox>
-
-    When specifying the MAAS endpoint, be sure not to add a trailing / .
-
-    </WarningBox>
-
-    <br />
 
 #### Palette Information:
 
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
 |**Install Type**| Choose **Private Cloud Gateway** or **Self Hosted Enterprise Cluster**. <br />You can change your selection with the up or down keys.|
-|**Cloud Type**| MAAS.|
+|**Cloud Type**| Choose MAAS.|
 |**Name** | Enter a custom name for the PCG.|
 |**Endpoint** |Enter the Palette endpoint. Example: https://customername.console.spectrocloud.com. |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
-|**Private Cloud Gateway** |Enter the PCG pairing code you copied from the instructions page in step **5**. |
+|**Private Cloud Gateway** |Enter the PCG pairing code you copied from the instructions page in step **4**. |
 
 <br />
 
@@ -153,21 +144,27 @@ Follow these steps to install the PCG.
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: https://USERNAME:PASSWORD@PROXYIP:PROXYPORT.|
-| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: http://USERNAME:PASSWORD@PROXYIP:PROXYPORT.|
-| **No Proxy(--no_proxy)**| The default is blank. A comma-separated list of local network classless inter-domain routing (CIDR) addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example: maas.company.com,10.10.0.0/16.|
-| **Pod CIDR (--pod_cidr)**|The CIDR pool used to assign IP addresses to pods in the cluster. This setting will be used to assign IP addresses to pods in Kubernetes clusters. The pod IP addresses should be unique and should not overlap with any virtual machine IPs in the environment.|
-| **Service IP Range (--svc_ip_range)**|The IP address range that will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.|
+|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network classless inter-domain routing (CIDR) addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example: ``maas.company.com,10.10.0.0/16``.|
+| **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the cluster. The pod IP addresses should be unique and should not overlap with any virtual machine IPs in the environment.|
+| **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.|
 
 <br />
 
 
 #### MAAS Account Information:
 
+<WarningBox>
+
+When specifying the MAAS endpoint, be sure not to add a trailing / .
+
+</WarningBox>
+
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **API Endpoint** | The MAAS API endpoint. This can be a domain or IP address. Example: http://10.11.12.13:5240/MAAS.|
-| **API Key** |Generate an API key from MAAS and enter it when prompted. This key will be used for authentication.|
+| **API Endpoint** |Enter the MAAS API endpoint without a trailing /. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
+| **API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
 
@@ -180,14 +177,19 @@ When the installer prompts you, select the following:
 - Resource Pool
 - One node (no HA) or three nodes (HA)
 
-The installer generates a gateway configuration file and its location is displayed on the console.
+The installer generates a ``pcg.yaml`` configuration file and displays the file location on the console.
 For example: <br />
 
-``Config created:/opt/spectrocloud//User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml``
+``Config created:/opt/spectrocloud//User-defined-MaaS-Gateway-Name-20210805155034/pcg.yaml``
 
 <br />
 
-8. Copy the ``pcg.yaml`` file from ``/tmp/install-user-defined-MaaS-Gateway_Name/pcg.yaml`` to ``/tmp``.
+7. Copy the ``pcg.yaml`` file out of ``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml`` and into ``/tmp``.
+
+``` bash
+cp /tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml /tmp
+```
+<br />
 
 <WarningBox>
 
@@ -195,7 +197,9 @@ After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gat
 
 </WarningBox>
 
-9. To deploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
+<br />
+
+8. To deploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
 <br />
 
     ```bash
@@ -209,7 +213,7 @@ After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gat
     ```
 The installer selects available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
-If you need assisstance, you can send a message to our slack channel with questions: #support-sustaining.
+If you need assisstance, you can send a message to our **#support-sustaining** slack channel with questions.
 
 
 # Validation
@@ -219,26 +223,30 @@ Once installed, the gateway registers itself with Palette's SaaS portal. To veri
 When you install the gateway, a default MAAS cloud account is automatically created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
 
-# Upgrade and Manage the MAAS Cloud Gateway
+# Upgrade and Manage the MAAS Gateway
 
-Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases upgrades when required, and informs you with an upgrade notification on the gateway.
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be upgraded to resolve security or functionality issues. Palette releases upgrades when required, and informs you with an upgrade notification on the gateway.
 
 Review the changes in the upgrade notification, and apply the upgrade when you are ready. 
 
 Upgrading the cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway upgrade is complete.
 
 
-# Delete the MAAS Private Gateway
+# Delete the MAAS Gateway
 
 Follow these steps to delete a MAAS gateway.
+<br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. 
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
 
 2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
 
+
 3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.
 
-    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any.
+    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any. 
+    <br />
 
 4. If there are running clusters, delete them and retry deleting the gateway instance.
 
@@ -247,19 +255,28 @@ Follow these steps to delete a MAAS gateway.
 
 You can set up a PCG as a single-node (no HA) or three-node (HA) cluster. You can set up a PCG initially with one node and resize it to three nodes at a later time.
 
+<br >
+
 <InfoBox>
 
 For production environments, we recommend setting up three nodes.
 
 </InfoBox>
 
+<br />
+
 Follow these steps to resize a single-node gateway to three nodes.
+
+<br >
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+
 2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
 
+
 3. Click the **three-dot Menu** for the gateway instance you want to resize and choose **Set number of nodes**.
+
 
 4. Change the number of nodes to 3.
 
