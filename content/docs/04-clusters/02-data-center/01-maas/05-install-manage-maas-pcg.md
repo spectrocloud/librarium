@@ -92,8 +92,6 @@ The following steps outline the overall process to install the PCG. For detailed
 
 # Install the Gateway
 
-`video: title: "maas-pcg-creation": /pcg-creation-video/maas.mp4`
-
 The following steps will guide you to install the PCG. 
 <br />
 
@@ -117,7 +115,7 @@ The following steps will guide you to install the PCG.
     --net=host \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:1.0.11 \
+    gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
     -o true
     ```
 
@@ -125,7 +123,7 @@ The following steps will guide you to install the PCG.
     <br />
 
 
-#### Palette Information
+#### Palette Parameters
 
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
@@ -157,7 +155,7 @@ The following steps will guide you to install the PCG.
 
 <WarningBox>
 
-When specifying the MAAS endpoint, be sure not to add a trailing / .
+When specifying the MAAS endpoint, do not add a trailing `/` as it can result in DNS resolution errors.
 
 </WarningBox>
 
@@ -168,23 +166,22 @@ When specifying the MAAS endpoint, be sure not to add a trailing / .
 
 <br />
 
-#### MAAS server configuration
+7. When the installer prompts you, select the following to configure the MAAS server:
 
-When the installer prompts you, select the following:
+    - Availability Zone
+    - Domain
+    - Resource Pool
+    - One node (no HA) or three nodes (HA)
 
-- Availability Zone
-- Domain
-- Resource Pool
-- One node (no HA) or three nodes (HA)
+    <br />
 
-The installer generates a ``pcg.yaml`` configuration file and displays the file location on the console.
-For example: <br />
+    The installer generates a ``pcg.yaml`` configuration file and displays the file location on the console. For example: <br />
 
 ``Config created:/opt/spectrocloud//User-defined-MaaS-Gateway-Name-20210805155034/pcg.yaml``
 
 <br />
 
-7. Copy the ``pcg.yaml`` file out of ``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml`` and into ``/tmp``.
+8. Copy the ``pcg.yaml`` file out of ``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml`` and into ``/tmp``.
 
 ``` bash
 cp /tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml /tmp
@@ -199,7 +196,7 @@ After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gat
 
 <br />
 
-8. To deploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
+9. To deploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
 <br />
 
     ```bash
@@ -207,7 +204,7 @@ After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gat
     --net=host \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:1.0.11 \
+    gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
     -s true \
     -c //opt/spectrocloud/pcg.yaml
     ```

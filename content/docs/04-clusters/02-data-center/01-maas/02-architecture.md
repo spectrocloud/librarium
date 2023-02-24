@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # MAAS Bare-Metal Kubernetes Architecture
 
-The following are some architectural highlights of bare-metal Kubernetes clusters that Palette deploys using Canonical MAAS.  Canonical MAAS is an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units.
+The following are some architectural highlights of bare-metal Kubernetes clusters that Palette deploys using Canonical MAAS. Canonical MAAS is an open-source tool that lets you discover, commission, deploy, and dynamically reconfigure a large network of individual units.
 <br />
 
 - Palette supports the use of MAAS with Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF) [Cluster API](https://github.com/spectrocloud/cluster-api-provider-maas).
