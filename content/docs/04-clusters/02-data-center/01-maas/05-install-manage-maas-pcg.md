@@ -125,7 +125,7 @@ The following steps will guide you to install the PCG.
     <br />
 
 
-#### Palette Information:
+#### Palette Information
 
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
@@ -139,7 +139,7 @@ The following steps will guide you to install the PCG.
 
 <br />
 
-#### Environment Configuration:
+#### Environment Configuration
 
 
 |**Parameter**| **Description**|
@@ -153,7 +153,7 @@ The following steps will guide you to install the PCG.
 <br />
 
 
-#### MAAS Account Information:
+#### MAAS Account Information
 
 <WarningBox>
 
@@ -168,7 +168,7 @@ When specifying the MAAS endpoint, be sure not to add a trailing / .
 
 <br />
 
-#### MAAS server configuration:
+#### MAAS server configuration
 
 When the installer prompts you, select the following:
 
@@ -220,7 +220,7 @@ If you need assisstance, you can send a message to our **#support-sustaining** s
 
 Once installed, the gateway registers itself with Palette's SaaS portal. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
-When you install the gateway, a default MAAS cloud account is automatically created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
+When you install the gateway, an account is auto-created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
 
 # Upgrade and Manage the MAAS Gateway
