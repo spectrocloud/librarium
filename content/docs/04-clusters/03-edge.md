@@ -17,7 +17,8 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 Edge Clusters are Kubernetes clusters that are set up on edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These edge hosts can be bare metal machines or virtual machines and are managed by operators at the remote sites. Palette provisions workload clusters on such edge hosts from the SaaS-based management console. In addition to provisioning clusters, Palette also provides end-to-end cluster management through operations such as scaling, upgrades, and reconfiguration.
 
 
-Edge computing brings computing and data storage closer to the source, reducing latency issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications. 
+Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications. 
+
 
 
 The following are some highlights of the comprehensive Palette Edge Solution:
