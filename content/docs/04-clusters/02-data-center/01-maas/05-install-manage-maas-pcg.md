@@ -218,7 +218,7 @@ If you need assisstance, you can send a message to our **#support-sustaining** s
 
 # Validation
 
-Once installed, the gateway registers itself with Palette's SaaS portal. To verify the gateway is registered, go to **Tenant Settings > Private Cloud Gateways** and verify the gateway is listed in the **Manage Private Cloud Gateways** table. 
+Once installed, the gateway registers itself with Palette's SaaS portal. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
 When you install the gateway, a default MAAS cloud account is automatically created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
@@ -255,7 +255,7 @@ Follow these steps to delete a MAAS gateway.
 
 You can set up a PCG as a single-node (no HA) or three-node (HA) cluster. You can set up a PCG initially with one node and resize it to three nodes at a later time.
 
-<br >
+<br />
 
 <InfoBox>
 
@@ -263,11 +263,11 @@ For production environments, we recommend setting up three nodes.
 
 </InfoBox>
 
-<br />
+
 
 Follow these steps to resize a single-node gateway to three nodes.
 
-<br >
+<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -280,12 +280,16 @@ Follow these steps to resize a single-node gateway to three nodes.
 
 4. Change the number of nodes to 3.
 
-    Two new nodes are created in the cluster.
+    Two new nodes will be created in the cluster.
 
 
 # Next Steps
 
-Now that you have a MAAS cloud account, you can use it to create tenant clusters. You can also create additional cloud accounts if desired. Check out [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more.
+You can now create tenant clusters in the default cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
+
+You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-mass-cloud-accounts).
+
+
 
 <br />
 

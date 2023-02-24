@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-When you install the private cloud gateway (PCG), a default MAAS cloud account is automatically created. You can use this cloud account to create tenant clusters and to create additional cloud accounts if desired. 
+When you install the Private Cloud Gateway (PCG), a default MAAS cloud account is automatically created. You can use this default account to create tenant clusters and, if desired, you can create additional accounts. 
 
 # Prerequisites
 
@@ -24,29 +24,35 @@ When you install the private cloud gateway (PCG), a default MAAS cloud account i
 
 Follow these steps to create additional MAAS cloud accounts.
 
+<br />
+
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. 
+
 
 2. Navigate to the **Main** menu and select **Tenant Settings > Cloud Accounts**.
 
-3. Locate **MAAS** in the Manage Cloud Accounts list and click **Add MAAS Account**. You may have to scroll.
 
-4. Enter values for properties listed in the table.
+3. Locate **MAAS** on the Manage Private Cloud Accounts page and click **Add MAAS Account**.
+
+
+4. Enter values for properties listed in the following table.
+
 
 | Property | Description |
 |-----------|-------------|
 | Account Name | Custom name for the cloud name. |
-| Private Cloud Gateway | Select the MAAS cloud gateway from the **drop-down Menu**. |
-| API Endpoint | API Endpoint of the gateway. |
+| Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
+| API Endpoint | API Endpoint of the gateway without a trailing / .|
 | API Key | API token. |
 
 
 # Validation
 
-You can validate your MAAS cloud account is created by reviewing the Manage Cloud Accounts page. Ensure your account is listed under **MAAS**. 
+You can validate your MAAS cloud account is created by reviewing the Manage Private Cloud Accounts page. Ensure your account is listed under **MAAS**. 
 
 # Next Steps
 
-Now that you have a MAAS cloud account in Palette, you can start deploying Kubernetes clusters to your MAAS account. To learn how to deploy Kubernetes clusters to MAAS, check out the Create and Manage MAAS Cluster guide.
+Try deploying Kubernetes clusters to one or of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/register-manage-maas-cloud-accounts) for guidance.
 
 <br />
 

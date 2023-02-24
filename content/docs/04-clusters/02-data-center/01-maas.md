@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers. Palette achieves this using its Private Cloud Gateway (PCG) component to facilitate communication with and manage a MAAS bare metal cloud. This is necessary because the MAAS control plane is typically not exposed directly to the internet. 
+Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers. Palette achieves this using its Private Cloud Gateway (PCG) application to facilitate communication with and manage a MAAS bare metal cloud. This is necessary because the MAAS control plane is typically not exposed directly to the internet. 
 
 <br />
 
