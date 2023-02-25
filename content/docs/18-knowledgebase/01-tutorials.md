@@ -20,6 +20,7 @@ Learn what's possible with Spectro Cloud Palette. These quick instructions intro
 
 [Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial) <p></p>
 [Practice for your CKS Exam with Palette](/knowledgebase/tutorials/cks-tutorial)<p></p>
+[Deploy a Kubernetes Cluster with Palette](/knowledgebase/tutorials/deploy-k8s-cluster)<p></p>
 
 <br />
 
