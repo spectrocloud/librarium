@@ -36,7 +36,7 @@ To deploy a new MAAS cluster:
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to the **Main** menu and click **Clusters**. Then click the **Add New Cluster** button.
+2. Navigate to the **Main Menu** and click **Clusters**. Then click the **Add New Cluster** button.
 
 
 3. Click **Deploy New Cluster** on the Create a New Cluster page.
