@@ -75,7 +75,7 @@ The following steps outline the overall process to install the PCG. For detailed
 1. You obtain a pairing code in Palette that you will use later.
 
 
-2. Then you run a configuration script using a docker image. 
+2. Use the Docker image to start the installation. 
 
 
 3. The script creates a PCG configuration file.
