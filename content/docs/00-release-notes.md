@@ -59,7 +59,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ## Packs
 * OS packs:
-  * Ubuntu 22.04 on AWS, Azure, GCP, VMWare, MaaS, Openstack 
+  * Ubuntu 22.04 on AWS, Azure, GCP
 * K8s packs:
   * Support for K8s 1.26.1
   * Support for K8s 1.25.6
