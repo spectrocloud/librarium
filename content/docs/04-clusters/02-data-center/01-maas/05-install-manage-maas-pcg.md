@@ -104,7 +104,7 @@ The following steps will guide you to install the PCG.
 3. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
 
-4. Copy the pairing code displayed in the Instructions section of the page and paste it in a text file. You will input this code when you run the installer. 
+4. Copy the pairing code displayed in the instructions section of the page and paste it in a text file. You will input this code when you use the installer. 
 
 
 5. Copy the following code snippet to your terminal to invoke the installer.
