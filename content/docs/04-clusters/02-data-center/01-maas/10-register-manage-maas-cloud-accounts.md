@@ -42,7 +42,7 @@ Follow these steps to create additional MAAS cloud accounts.
 |-----------|-------------|
 | Account Name | Custom name for the cloud name. |
 | Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
-| API Endpoint | API Endpoint of the gateway without a trailing / .|
+| API Endpoint | API Endpoint of the gateway without a trailing `/` .|
 | API Key | API token. |
 
 
