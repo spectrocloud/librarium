@@ -48,7 +48,7 @@ To deploy a new MAAS cluster:
 5. Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
 
 
-6. Select your cloud account from the drop-down menu and click **Next**.
+6. Select your cloud account from the **drop-down Menu** and click **Next**.
 
 
 7. Select the cluster profile for your MAAS cluster. 
