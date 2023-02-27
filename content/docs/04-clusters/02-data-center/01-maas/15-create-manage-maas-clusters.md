@@ -133,7 +133,7 @@ Follow these steps to delete a MAAS cluster.
 
 4. Click the **Settings drop-down Menu**, and choose **Delete**.
 
-The cluster status is updated to Deleting while cluster resources are being deleted. When all resources are successfully deleted, the cluster status is updated to Deleted and the cluster is removed from the list. The delete operation returns the edge hosts to the Ready state. All the artifacts related to the Kubernetes distribution are removed.
+The cluster status is updated to Deleting while cluster resources are being deleted. When all resources are successfully deleted, the cluster status is updated to Deleted and the cluster is removed from the list. The delete operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are removed.
 
 
 ## Force Delete a Cluster
