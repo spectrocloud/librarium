@@ -276,7 +276,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 
 4. Change the number of nodes to 3.
 
-    Two new nodes will be created in the cluster.
+Two new nodes will be created in the cluster.
 
 
 # Next Steps
