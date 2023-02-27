@@ -32,7 +32,10 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 # Prerequisites
 
 - Enable the integrated NodeIPAM controller in the Antrea manifest: ``NodeIPAM:enable``.
-- When deploying a cluster using Palette:<br />
+<br />
+
+- When deploying a cluster using Palette:
+    <br />
 
     - Use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest. The CIDR IP specified in the Kubernetes manifest always takes precedence.
     - Leave the ``serviceCIDR`` parameter blank in the ``nodeIPAM`` section of the Antrea pack.
@@ -45,19 +48,19 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     ``--pod-network-cidr=10.244.0.0/16``
 
-    <br />
+<br />
 
-       <WarningBox>
+<WarningBox>
 
-    The CIDR IP specified in Palette with the ``podCIDR`` parameter always takes precedence. 
+The CIDR IP specified in Palette with the ``podCIDR`` parameter always takes precedence. 
     
-    If you wish to use Antrea CIDRs, you need to remove any value for ``podCIDR`` in the Kubernetes manifest. 
+If you wish to use Antrea CIDRs, you need to remove any value for ``podCIDR`` in the Kubernetes manifest. 
     
-    To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` or as a replacement in your network plugin's YAML.
+To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` or as a replacement in your network plugin's YAML.
 
-    </WarningBox>
+</WarningBox>
 
-    <br />
+<br />
 
 - The Open vSwitch kernel module must be present on every Kubernetes node.
 
