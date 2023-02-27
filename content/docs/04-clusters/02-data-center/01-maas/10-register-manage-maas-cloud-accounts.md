@@ -52,7 +52,7 @@ You can validate your MAAS cloud account is created by reviewing the Manage Priv
 
 # Next Steps
 
-Try deploying Kubernetes clusters to one or of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/register-manage-maas-cloud-accounts) for guidance.
+Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/register-manage-maas-cloud-accounts) for guidance.
 
 <br />
 
