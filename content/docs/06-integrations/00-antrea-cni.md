@@ -107,7 +107,7 @@ If routing problems occur or some hosts cannot communicate outside their subnet,
 
 Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the ``podCIDR`` parameter. The CIDER IP specified with the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
 
-If you are using Antrea CIDRs and used the ``kubeadm init`` command with the ``--pod-network-cidr <cidr>`` attribute, ensure that you have done the following: 
+If you wish to use Antrea CIDRs and have deployed a cluster using Palette, ensure that you have done the following:  
 
 - Removed any value for ``podCIDR`` in the Kubernetes manifest. 
 - Provided a non-overlapping IP address for your pod network.
