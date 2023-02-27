@@ -113,10 +113,9 @@ The following steps will guide you to install the PCG.
     ```bash
     docker run -it --rm \
     --net=host \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
-    -o true
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume /tmp:/opt/spectrocloud \
+    gcr.io/spectro-images-public/release/spectro-installer:1.0.12
     ```
 
 6. When prompted, enter the pairing code and information listed in each of the following tables. The installer will generate the gateway configuration file. 
