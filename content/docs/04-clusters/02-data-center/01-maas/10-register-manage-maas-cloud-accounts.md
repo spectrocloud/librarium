@@ -32,7 +32,7 @@ Follow these steps to create additional MAAS cloud accounts.
 2. Navigate to the **Main Menu** and select **Tenant Settings > Cloud Accounts**.
 
 
-3. Locate **MAAS** on the Manage Private Cloud Accounts page and click **Add MAAS Account**.
+3. Locate **MAAS** on the **Cloud Accounts** page and click **Add MAAS Account**.
 
 
 4. Enter values for properties listed in the following table.
