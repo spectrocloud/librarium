@@ -29,7 +29,7 @@ Follow these steps to create additional MAAS cloud accounts.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin. 
 
 
-2. Navigate to the **Main** menu and select **Tenant Settings > Cloud Accounts**.
+2. Navigate to the **Main Menu** and select **Tenant Settings > Cloud Accounts**.
 
 
 3. Locate **MAAS** on the Manage Private Cloud Accounts page and click **Add MAAS Account**.
