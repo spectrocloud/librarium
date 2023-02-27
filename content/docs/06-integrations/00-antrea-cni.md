@@ -32,9 +32,14 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 # Prerequisites
 
 - Enable the integrated NodeIPAM controller in the Antrea manifest: ``NodeIPAM:enable``.
-- When deploying a cluster using Palette, use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest. The CIDER IP specified with ``podCIDR`` always takes precedence.
+- When deploying a cluster using Palette:<br />
 
-    When deploying a cluster using kubeadm to use Antrea CIDRs, specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
+    - Use the ``podCIDR`` parameter in the Pack section of the Kubernetes manifest. The CIDR IP specified in the Kubernetes manifest always takes precedence.
+    - Leave the ``serviceCIDR`` parameter blank in the ``nodeIPAM`` section of the Antrea pack.
+
+    <br />
+
+- When deploying a cluster using ``kubeadm init`` to use Antrea CIDRs, you would specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the classless inter-domain routing (CIDR). For example: 
 
     <br />
 
@@ -42,13 +47,13 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     <br />
 
-    <WarningBox>
+       <WarningBox>
 
-    The CIDER IP specified in Palette with the ``podCIDR`` parameter always takes precedence. 
+    The CIDR IP specified in Palette with the ``podCIDR`` parameter always takes precedence. 
     
-    If you want to use Antrea CIDRs, you need to remove values for ``podCIDR`` in the Kubernetes manifest and any specified with ``serviceCIDR`` in the Antrea CNI manifest.  
+    If you wish to use Antrea CIDRs, you need to remove any value for ``podCIDR`` in the Kubernetes manifest. 
     
-    To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` with ``--pod-network-cidr <cidr>`` or as a replacement in your network plugin's YAML.
+    To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using ``kubeadm init`` or as a replacement in your network plugin's YAML.
 
     </WarningBox>
 
@@ -65,6 +70,7 @@ The Antrea CNI pack supports the following parameters.
 |-----------|-------------|---------|
 | nodeIPAM:enable | Enables the integrated NodeIPAM controller in the Antrea manifest. The default is `false`. | Y |
 | clusterCIDRs | CIDR ranges for pods in the cluster. The CIDRs can be either IPv4 or IPv6. You can specify up to one CIDR for each IP family. | N |
+| serviceCIDR | IPv4 CIDR ranges reserved for Services. | N |
 | serviceCIDRv6 | IPv6 CIDR ranges reserved for Services. | N |
 | nodeCIDRMaskSizeIPv4 | Mask size for IPv4 Node CIDR in IPv4 or dual-stack cluster. | N |
 | nodeCIDRMaskSizeIPv6 | Mask size for IPv6 Node CIDR in IPv6 or dual-stack cluster. | N |
@@ -94,7 +100,7 @@ To learn more about using MetalLB, review [Using MetalLB with Antrea](https://an
 
 # Troubleshooting
 
-If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses. 
+If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses or conflicting CIDR IPs. 
 
 Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the ``podCIDR`` parameter. The CIDER IP specified with the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
 
