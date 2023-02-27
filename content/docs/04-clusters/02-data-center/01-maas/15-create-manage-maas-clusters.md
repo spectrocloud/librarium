@@ -60,7 +60,7 @@ To deploy a new MAAS cluster:
 9. Select a MAAS Cloud account and provide placement information.
 
 
-10. Select a domain from the **Domain drop-down menu** and click **Next**. 
+10. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
 11. Configure the master and worker node pools. Enter values for properties listed in the following tables.
