@@ -77,17 +77,10 @@ The following steps outline the overall process to install the PCG. For detailed
 
 2. Use the Docker image to start the installation. 
 
-
-3. The script creates a PCG configuration file.
-
-
-4. Next, you run the installer using the open-source Kind tool and provide the pairing code you obtained in step **1**. The installer uses the configuration file from script output in step **3**.
-
     The installer needs access to your Palette account and to one or three machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
     <br />
 
-5. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
-
+3. The installer installs to the MAAS machines and uses the configuration file to build a new cluster to host the PCG application. 
 
 
 # Install the Gateway
@@ -172,41 +165,7 @@ When specifying the MAAS endpoint, do not add a trailing `/` as it can result in
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
-    <br />
 
-    The installer generates a ``pcg.yaml`` configuration file and displays the file location on the console. For example: <br />
-
-``Config created:/opt/spectrocloud//User-defined-MaaS-Gateway-Name-20210805155034/pcg.yaml``
-
-<br />
-
-8. Copy the ``pcg.yaml`` file out of ``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml`` and into ``/tmp``.
-
-``` bash
-cp /tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml /tmp
-```
-<br />
-
-<WarningBox>
-
-After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gateway_Name/pcg.yaml`` as it contains your Spectro Cloud credential.
-
-</WarningBox>
-
-<br />
-
-9. To deploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
-<br />
-
-    ```bash
-    docker run -it --rm \
-    --net=host \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
-    -s true \
-    -c //opt/spectrocloud/pcg.yaml
-    ```
 The installer selects available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 If you need assisstance, you can send a message to our **#support-sustaining** slack channel with questions.
@@ -236,7 +195,7 @@ Follow these steps to delete a MAAS gateway.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
+2. Navigate to the **Main menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
 3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.

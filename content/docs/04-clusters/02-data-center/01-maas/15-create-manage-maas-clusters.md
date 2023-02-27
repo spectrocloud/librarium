@@ -26,9 +26,6 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 # Enablement
 
-`video: title: "maas-cluster-creation": ./cluster-creation-videos/maas.mp4`
-
-
 To deploy a new MAAS cluster:
 
 <br />
