@@ -214,7 +214,7 @@ If you need assisstance, you can send a message to our **#support-sustaining** s
 
 # Validation
 
-Once installed, the gateway registers itself with Palette's SaaS portal. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
+Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
 When you install the gateway, an account is auto-created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
