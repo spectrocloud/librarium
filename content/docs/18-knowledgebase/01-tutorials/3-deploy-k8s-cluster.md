@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Deploy a Kubernetes Cluster with Palette
 
-Palette's purpose is to allow you to creating and managing a Kubernetes host cluster to the public cloud providers with minimal effort. Palette makes possibile for software engineers, application developers, or system administrators that want to deploy a containerized application, to interact with Kubernetes clusters with ease.
+Palette allows you to create and manage a Kubernetes host cluster in all major public cloud providers with minimal effort. Palette makes possible for software engineers, application developers, or system administrators that want to deploy a containerized application to interact with Kubernetes clusters with ease.
 
 The *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repetitible way on the main cloud providers.
 
