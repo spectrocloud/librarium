@@ -23,7 +23,7 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any system that has a docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
 
 # Prerequisites
@@ -31,7 +31,7 @@ Palette provides an installer in the form of a docker container that is temporar
 - Canonical MAAS installed, set up, and available in your environment.
 
 
-- A linux computer with a docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system.
+- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system.
 
 
 - One IP address for a Kubernetes control plane.
@@ -189,7 +189,7 @@ cp /tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml /tmp
 
 <WarningBox>
 
-After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gateway_Name/pcg.yaml`` because it contains your Spectro Cloud credential.
+After you copy ``pcg.yaml``, delete it from ``/tmp/install-user-defined-MaaS-Gateway_Name/pcg.yaml`` as it contains your Spectro Cloud credential.
 
 </WarningBox>
 
