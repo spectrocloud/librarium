@@ -98,7 +98,7 @@ The following steps will guide you to install the PCG.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateway**.
+2. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateway**.
 
 
 3. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
