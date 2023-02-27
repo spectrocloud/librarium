@@ -160,7 +160,7 @@ When specifying the MAAS endpoint, do not add a trailing `/` as it can result in
 
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **API Endpoint** |Enter the MAAS API endpoint without a trailing /. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
+| **API Endpoint** |Enter the MAAS API endpoint without a trailing `/`. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
 | **API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
