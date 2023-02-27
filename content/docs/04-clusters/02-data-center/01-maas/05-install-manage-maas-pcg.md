@@ -268,7 +268,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to the **Main** menu and select **Tenant Settings > Private Cloud Gateways**.
+2. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
 3. Click the **three-dot Menu** for the gateway instance you want to resize and choose **Set number of nodes**.
