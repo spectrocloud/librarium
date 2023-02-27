@@ -179,7 +179,7 @@ stylus:
     paletteEndpoint: api.spectrocloud.com
     registrationURL: https://edge-registration-app.vercel.app/
     projectUid: 63ec28d16b39cf0000d4732e
-    edgeHostToken: a4P5DzeJfeo6Un0X81dUyxaq491y05GL
+    edgeHostToken: yourEdgeRegistrationTokenHere
 ```
 
 To create a registration token, use the following steps.
