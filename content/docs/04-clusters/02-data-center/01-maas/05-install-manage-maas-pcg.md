@@ -56,7 +56,7 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
    
     - Three nodes (HA): 6 vCPU, 12 GiB Memory, 90 GiB Storage.<br /><br />
 
-- An active MAAS API key in the following format:
+- An active [MAAS API](https://maas.io/docs/api-authentication-reference) key in the following format:
 
   ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``
 
