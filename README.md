@@ -458,3 +458,19 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 ### Rejected Words
 
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
+
+
+# Release
+
+To create a new release, use the following steps:
+
+1. Create a release branch. Use the following naming pattern `release-X-X`
+2. Create a commit using the following commit message `fix: updating documentation for release-X-X`. Replace x-x with the upcoming release number.
+3. Push up the commit and create a new pull request (PR).
+4. Merge PRs related to the upcoming release into the `release-X-X` branch.
+5. Merge the release branch.
+
+The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
+
+> **Warning**
+> Do not use `fix` or other semantic-release key words in regular commit messages. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.

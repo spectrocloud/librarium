@@ -258,9 +258,9 @@ The following details are required to configure a backup location in Azure:
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
 
-## Create a Cluster Backup
+# Create a Cluster Backup
 
-Backups can be scheduled or initiated in an on-demand basis during cluster creation as well as can be scheduled for a running cluster. The following information is required for configuring a cluster backup:
+Backups can be scheduled or initiated on demand during cluster creation. Backups can also be scheduled for a running cluster. The following information is required to configure a cluster backup:
 
 1. **Backup Prefix / Backup Name**:
   * For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
