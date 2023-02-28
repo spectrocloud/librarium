@@ -5,7 +5,7 @@ metaDescription: 'Antrea CNI network pack for Palette Kubernetes Clusters'
 hiddenFromNav: true
 type: "integration"
 category: ['network']
-logoUrl: 'https://registry.spectrocloud.com/v1/palette-upgrader/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
+logoUrl: 'https://registry.stage.spectrocloud.com/v1/antrea/…e73a77c4efbc49f375c19c73f8e2ec4148?type=image/png'
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -38,17 +38,13 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     <br />
 
-- When deploying a cluster using ``kubeadm init`` to use Antrea CIDRs, you would do the following: 
-
-    - Specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the CIDR. For example: 
+- When deploying a cluster using ``kubeadm init`` to use Antrea CIDRs, you would specify the ``--pod-network-cidr <cidr>`` option and provide the IP address with the CIDR. For example: 
 
     <br />
 
     ``--pod-network-cidr=10.244.0.0/16``
 
-    <br />
-
-    - Remove any values for the ``podCIDR`` and ``serviceCIDR`` parameters in the Kubernetes manifest. 
+    <br /> 
 
 <WarningBox>
 
