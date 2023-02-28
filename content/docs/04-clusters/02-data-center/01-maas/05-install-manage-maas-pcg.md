@@ -26,7 +26,7 @@ For production environments, we recommend using three nodes. If you initially se
 Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
 
-# Prerequisites
+## Prerequisites
 
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
@@ -70,9 +70,9 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
     As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane.
 
-    ***IMAGE goes here.***
+    ***IMAGE goes here - WIP***
 
-# Understand the Gateway Installation Process
+## Understand the Gateway Installation Process
 
 The following steps outline the overall process to install the PCG. For detailed steps, refer to [Install the Gateway](/clusters/data-center/maas/install-manage-maas-pcg#installthegateway) below.
 
@@ -177,23 +177,23 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 The installer selects available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
-If you need assisstance, you can send a message to our **#support-sustaining** slack channel with questions.
+If you need assisstance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 
-# Validation
+## Validation
 
 Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
 When you install the gateway, an account is auto-created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
 
-# Upgrade and Manage the MAAS Gateway
+# Update and Manage the MAAS Gateway
 
-Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be upgraded to resolve security or functionality issues. Palette releases upgrades when required, and informs you with an upgrade notification on the gateway.
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification on the gateway.
 
-Review the changes in the upgrade notification, and apply the upgrade when you are ready. 
+Review the changes in the update notification, and apply the update when you are ready. 
 
-Upgrading the cloud gateway does not result in any downtime for the tenant clusters. During the upgrade process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway upgrade is complete.
+Updating the cloud gateway does not result in any downtime for the tenant clusters. During the update process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway update is complete.
 
 
 # Delete the MAAS Gateway
@@ -254,7 +254,7 @@ You can now create tenant clusters in the default cloud account.  To get started
 You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-mass-cloud-accounts).
 
 
-# References 
+## References 
 
  - [Install MAAS](https://maas.io/)
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
