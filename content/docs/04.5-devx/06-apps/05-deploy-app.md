@@ -263,7 +263,7 @@ Provide the container service with the following information:
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.6`
+- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.7`
 
 - Network Access: Private
 
@@ -335,7 +335,7 @@ Assign the following environment variables to the UI service:
 | Parameter | Value |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `SVC_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}` |
-| `API_URI` | `"http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}"` |
+| `API_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}` |
 | `TOKEN` | `931A3B02-8DCC-543F-A1B2-69423D1A0B94` |
 
   
