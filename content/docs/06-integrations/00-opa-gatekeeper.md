@@ -41,7 +41,8 @@ The major features of OPA are:
 
 <Tabs.TabPane tab="3.9.x" key="3.9.x">
 
-**3.9.0**
+* **3.11.0**
+* **3.9.0**
 
 </Tabs.TabPane>
 

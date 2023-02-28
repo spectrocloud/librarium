@@ -85,7 +85,7 @@ Overall health is computed based on the following factors:
 
   Palette provides health check information for your workload clusters. This information is a value add to the cluster monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you in troubleshooting.
 
-![Cluster_Health_Heart_Beat](doc_cluster_clusters-cluster-heart-beat.png)
+![Cluster_Health_Heart_Beat](/doc_cluster_clusters-cluster-heart-beat.png)
 
 * **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the management console. Any node condition indicating a problem with the node, results in an unhealthy status for the cluster.
 
@@ -110,7 +110,7 @@ Palette continuously monitors cluster resources and reports the usage for the cl
 
 * **Memory Requests** - Total memory requested across all pods.
 
-![Cluster Update Details](04-clusters/cluster_usage_metrics.png)
+![Cluster Update Details](/cluster_usage_metrics.png)
 
 Additionally, usage metrics for individual nodes and node conditions are accessible from the Node Details page.
 
@@ -118,7 +118,7 @@ Additionally, usage metrics for individual nodes and node conditions are accessi
 
 Palette enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include the applications and services deployed through Palette and the ones deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
-![Cluster Update Details](04-clusters/cluster_services.png "#width=500px")
+![Cluster Update Details](/cluster_services.png "#width=500px")
 
 # Troubleshooting
 
@@ -140,7 +140,7 @@ Examples include:
 
 The active condition indicates what task Palette orchestration system is trying to perform. If a task fails, the condition is marked as *failed*, with relevant error messages. Reconciliation, however, continues behind the scenes, and continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning issues.
 
-![Cluster Update Details](04-clusters/cluster_conditions.png "#width=400px")
+![Cluster Update Details](/cluster_conditions.png "#width=400px")
 
 For example, failure to create a Virtual Machine in AWS due to the exceeded vCPU limit will cause this error to be shown to the end-users. Then, they can choose to bring down some workloads in the AWS cloud to free up space. The next time a VM creation task is attempted, it will succeed, and the condition will be marked as a success.
 
@@ -173,11 +173,11 @@ Palette will perform a rolling upgrade on the nodes for any fundamental changes 
 
 Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview** > **Upgrade details**.
 
-![upgrade-details1.png](upgrade-details1.png)
+![upgrade-details1.png](/upgrade-details1.png)
 
 Besides actions taken by the user, Palette also performs a rolling upgrade if the cluster nodes' health degrades. Palette keeps track of the nodes machine's health and will relaunch the node when the machine health check fails.
 
-![upgrade-details2.png](upgrade-details2.png)
+![upgrade-details2.png](/upgrade-details2.png)
 
 The following are some sample scenarios where the node health is considered as degraded:
 
