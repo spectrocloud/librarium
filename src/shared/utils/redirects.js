@@ -18,7 +18,7 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/sandbox-clusters/`,
+    fromPath: `/clusters/sandbox-clusters`,
     toPath: `/clusters/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
@@ -135,6 +135,24 @@ const redirects = [
   {
     fromPath: `/knowledgebase/how-to/reverse-proxy-dashboard`,
     toPath: `/clusters/cluster-management/kubernetes-dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups`,
+    toPath: `/clusters/cluster-groups`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups/ingress-cluster-group`,
+    toPath: `/clusters/cluster-groups/ingress-cluster-group`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/dev-land-explore`,
+    toPath: `/devx`,
     redirectInBrowser: true,
     isPermanent: true,
   },

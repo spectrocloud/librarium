@@ -30,6 +30,7 @@ Providers have to be set up for this pack to get deployed and work seamlessly. F
 
 <Tabs.TabPane tab="0.12.x" key="0.12.x">
 
+* **0.13.1**
 * **0.12.2**
 
 </Tabs.TabPane>

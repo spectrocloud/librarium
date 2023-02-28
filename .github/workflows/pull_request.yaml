@@ -31,7 +31,6 @@ jobs:
       - name: Vale Check
         uses: errata-ai/vale-action@reviewdog
         with:
-          # files: '${{ steps.get_changed_files.outputs.all }}'
           filter_mode: added
           reporter: github-pr-review
           vale_flags: --glob=*.{md} --minAlertLevel=error
