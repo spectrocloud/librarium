@@ -114,7 +114,7 @@ You can validate your cluster is available by reviewing the cluster details page
 
 # Delete a MAAS Cluster
 
-When you delete a MAAS cluster, all virtual machines and associated storage disks that were created for the cluster are removed. 
+When you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed. 
 
 Follow these steps to delete a MAAS cluster.
 
