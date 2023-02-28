@@ -28,10 +28,10 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 # Prerequisites
 
-- Canonical MAAS installed, set up, and available in your environment.
+- Canonical [MAAS installed](https://maas.io/), set up, and available in your environment.
 
 
-- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system.
+- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have testing the gateway installation using Ubuntu 20.04.
 
 
 - One IP address for a Kubernetes control plane.
@@ -52,19 +52,25 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
     <br />
 
-    - One node (no HA): 4 vCPU, 8 GiB Memory, 60 GiB Storage.
+    - One node (no HA): 4 CPU, 8 GiB Memory, 60 GiB Storage.
    
-    - Three nodes (HA): 6 vCPU, 12 GiB Memory, 90 GiB Storage.<br /><br />
+    - Three nodes (HA): 6 CPU, 12 GiB Memory, 90 GiB Storage.<br /><br />
 
 - An active [MAAS API](https://maas.io/docs/api-authentication-reference) key in the following format:
 
   ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``
 
+  You can obtain a [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key) from MAAS.
+
   <br />
 
-- The DNS server that the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them.  
+- The DNS server the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***maas***. 
 
-    This is commonly done by ensuring the DNS server delegates the MAAS domain to the MAAS control plane. To connect, the installer uses the FQDN ``machine-hostname.maas``. A common way to enable this is to ensure the DNS server delegates the MAAS domain to the MAAS control plane.
+    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the FQDN ``machine-hostname.maas``. 
+
+    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane.
+
+    ***IMAGE goes here.***
 
 # Understand the Gateway Installation Process
 
@@ -77,7 +83,7 @@ The following steps outline the overall process to install the PCG. For detailed
 
 2. Use the Docker image to start the installation. 
 
-    The installer needs access to your Palette account and to one or three machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
+    The installer needs access to your Palette account and to one (no HA) or three (HA) machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
     <br />
 
 3. The installer installs to the MAAS machines and uses the configuration file to build a new cluster to host the PCG application. 
@@ -89,6 +95,15 @@ The following steps will guide you to install the PCG.
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. If you have Single or Social Sign-On (SSO) enabled, you will need to disable it. 
+
+<WarningBox>
+
+The installer does not work with SSO or Social sign on, as they require a password.
+
+</WarningBox>
 
 
 2. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateway**.
@@ -145,15 +160,9 @@ The following steps will guide you to install the PCG.
 
 #### MAAS Account Information
 
-<WarningBox>
-
-When specifying the MAAS endpoint, do not add a trailing `/` as it can result in DNS resolution errors.
-
-</WarningBox>
-
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **API Endpoint** |Enter the MAAS API endpoint without a trailing `/`. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
+| **API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
 | **API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
@@ -245,6 +254,10 @@ You can now create tenant clusters in the default cloud account.  To get started
 You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-mass-cloud-accounts).
 
 
+# References 
+
+ - [Install MAAS](https://maas.io/)
+ - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
 
 <br />
 

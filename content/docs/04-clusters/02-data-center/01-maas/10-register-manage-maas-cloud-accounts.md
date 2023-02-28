@@ -17,7 +17,7 @@ When you install the Private Cloud Gateway (PCG), an account is auto-created. Yo
 
 # Prerequisites
 
-- An installed PCG.
+- An installed PCG. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance. 
 
 
 # Create a MAAS cloud account
@@ -48,7 +48,7 @@ Follow these steps to create additional MAAS cloud accounts.
 
 # Validation
 
-You can validate your MAAS cloud account is created by reviewing the Manage Private Cloud Accounts page. Ensure your account is listed under **MAAS**. 
+You can validate your MAAS cloud account is created by reviewing the **Cloud Accounts** page. Ensure your account is listed under **MAAS**. 
 
 # Next Steps
 
