@@ -141,7 +141,7 @@ If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becom
 <br />
 
 <WarningBox>
-A force delete can result in Palette-provisioned resources to be missed in the removal process. Verify there are no remaining resources. Failure to remove provisioned resources can result in unexpected costs.
+A force delete can result in Palette-provisioned resources being missed during the removal process. Verify there are no remaining resources. Failure to remove provisioned resources can result in unexpected costs.
 </WarningBox>
 
 # Next Steps
