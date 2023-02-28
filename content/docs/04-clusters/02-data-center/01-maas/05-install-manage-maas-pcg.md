@@ -70,7 +70,8 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
     As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane.
 
-    ***IMAGE goes here - WIP***
+
+![clusters_maas_maas-dns-setup.png](/clusters_maas_maas-dns-setup.png)
 
 ## Understand the Gateway Installation Process
 
