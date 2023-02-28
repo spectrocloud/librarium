@@ -74,14 +74,14 @@ PCG is Palette's on-prem component to enable support for isolated private cloud 
 
 |Version|URL|Info|
 |---|---|--|
-|1.0.11|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.11|May 28 2021|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|Feb 22 2023|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL|Info|
 |---|---|--|
-|1.0.11|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.11|May 28 2021|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|Feb 22 2023|
 -------
 
 
