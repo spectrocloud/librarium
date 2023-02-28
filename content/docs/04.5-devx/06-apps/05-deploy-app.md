@@ -65,7 +65,7 @@ You can complete this tutorial by using the Palette console, simulating a manual
 
 <Tabs>
 
-<Tabs.TabPane tab="UI Workflow" key="UI">
+<Tabs.TabPane tab="UI" key="UI">
 
   
 
@@ -90,7 +90,7 @@ From the app mode landing page, navigate to the left **Main Menu** and click on 
 
   
 
-In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms of CPU, memory, and storage. Select beehive for the cluster group, name the cluster cluster-1, and allocate 4 CPU, 4 GiB memory, and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms of CPU, memory, and storage. Select beehive for the cluster group, name the cluster `cluster-1`, and allocate 4 CPU, 4 GiB memory, and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
 
   
 
@@ -129,7 +129,7 @@ Click on **Review** once you have filled out the provided information. On the ne
 
   
 
-It’s time to deploy your application to a virtual cluster. Name the application "single-scenario." For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the **hello-universe-ui profile** and click on **Confirm**.
+It’s time to deploy your application to a virtual cluster. Name the application `single-scenario`. For the **App profile** input field, click on the button to the right of the input field to get a list of all your available app profiles. Select the **hello-universe-ui profile** and click on **Confirm**.
 
   
 
