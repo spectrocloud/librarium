@@ -23,8 +23,16 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
+
+<Warningbox>
+
+The installer does not currently work on MacOS. 
+
+</Warningbox>
+
+<br />
 
 ## Prerequisites
 
@@ -32,7 +40,6 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 
 - A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have testing the gateway installation using Ubuntu 20.04.
-
 
 - One IP address for a Kubernetes control plane.
 
