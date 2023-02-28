@@ -25,7 +25,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 - A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
 
-# Enablement
+# Deploy a MAAS cluster
 
 To deploy a new MAAS cluster:
 
