@@ -28,7 +28,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 # Prerequisites
 
-- Canonical [MAAS installed](https://maas.io/), set up, and available in your environment.
+- Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
 - A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have testing the gateway installation using Ubuntu 20.04.
