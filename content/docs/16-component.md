@@ -1,7 +1,7 @@
 ---
-title: "Components Compatibility Matrix"
+title: "Compatibility Matrix"
 metaTitle: "Palette Components Compatibility Matrix"
-metaDescription: "Version details of Palette Components Compatibility Matrix"
+metaDescription: "Learn wha Palette components are compatible with what versions."
 icon: "audits"
 hideToC: false
 fullWidth: false
@@ -39,6 +39,13 @@ This page lists the version details of various Palette components with respect t
 |              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
 |Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
+
+
+# Stylus CLI Versions
+
+|Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
+|---|-------|---|--|
+|Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
 
  #  Palette Docker Image Version
 
