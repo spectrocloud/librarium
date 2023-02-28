@@ -66,7 +66,7 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
 - The DNS server the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***maas***. 
 
-    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the FQDN ``machine-hostname.maas``. 
+    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
 
     As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane.
 
@@ -179,6 +179,7 @@ The installer selects available bare metal machines in your MAAS environment on 
 
 If you need assisstance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
+<br />
 
 ## Validation
 
@@ -186,6 +187,7 @@ Once installed, the gateway registers itself with Palette. To verify the gateway
 
 When you install the gateway, an account is auto-created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
+<br />
 
 # Update and Manage the MAAS Gateway
 
@@ -195,6 +197,7 @@ Review the changes in the update notification, and apply the update when you are
 
 Updating the cloud gateway does not result in any downtime for the tenant clusters. During the update process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway update is complete.
 
+<br />
 
 # Delete the MAAS Gateway
 
@@ -214,6 +217,7 @@ Follow these steps to delete a MAAS gateway.
 
 4. If there are running clusters, delete them and retry deleting the gateway instance.
 
+<br />
 
 # Resize the MAAS Gateway
 
@@ -246,6 +250,8 @@ Follow these steps to resize a single-node gateway to three nodes.
 
 Two new nodes will be created in the cluster.
 
+<br /
+>
 
 # Next Steps
 
@@ -254,7 +260,9 @@ You can now create tenant clusters in the default cloud account.  To get started
 You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-mass-cloud-accounts).
 
 
-## References 
+<br />
+
+# References 
 
  - [Install MAAS](https://maas.io/)
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
