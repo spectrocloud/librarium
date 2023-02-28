@@ -1,7 +1,7 @@
 ---
 title: "Compatibility Matrix"
 metaTitle: "Palette Components Compatibility Matrix"
-metaDescription: "Learn wha Palette components are compatible with what versions."
+metaDescription: "Learn what Palette components are compatible with what versions."
 icon: "audits"
 hideToC: false
 fullWidth: false
