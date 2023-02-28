@@ -9,7 +9,7 @@ on:
       - '**.webp'
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: image-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -39,4 +39,3 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           ignorePaths: 'node_modules/**,build'
-
