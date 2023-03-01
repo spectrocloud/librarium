@@ -43,8 +43,8 @@ The installer does not currently work on MacOS.
 - A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04 on x86-64.
 
 
-- Private cloud gateway IP requirements:
-
+- Private cloud gateway IP requirements: <br /><br /> 
+    
     - One IP address for a single-node gateway or three IP addresses for a three-node gateway.
     - One IP address for a Kubernetes control plane.
 
