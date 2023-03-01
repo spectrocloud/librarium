@@ -1192,7 +1192,7 @@ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**, click on **Apps**. Select the **scenario-2** row. Once you are on the scenario-2 overview page, click on the exposed URL for the service. A hyperlink for port 8080 and port 3000 is available.
 
-![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy-_scenario-2-overview.png)
+![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy_scenario-2-overview.png)
 
 Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
