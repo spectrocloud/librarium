@@ -69,7 +69,7 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
   ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``
 
-  You can obtain a [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key) from MAAS.
+  You can obtain a [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key) from either the MAAS CLI or the UI.
 
   <br />
 
@@ -77,7 +77,7 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
     The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
 
-    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane.
+    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane. Alternatively, configure the installer host to use the MAAS control plane as its DNS server. Ensure that **every** DNS server configured on the installer host can resolve the MAAS domain.
 
 
 ![MAAS DNS setup](/clusters_maas_maas-dns-setup.png)
@@ -91,12 +91,12 @@ The following steps outline the overall process to install the PCG. For detailed
 1. You obtain a pairing code in Palette that you will use later.
 
 
-2. Use the Docker image to start the installation. 
+2. Use the Docker image to start the installation on the installer host. 
 
     The installer needs access to your Palette account and to one (no HA) or three (HA) machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
     <br />
 
-3. The installer installs to the MAAS machines and uses the configuration file to build a new cluster to host the PCG application. 
+3. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
 
 
 # Install the Gateway
@@ -107,11 +107,11 @@ The following steps will guide you to install the PCG.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. If you have Single or Social Sign-On (SSO) enabled, you will need to disable it. 
+2. If you have Single or Social Sign-On (SSO) enabled, you will need to disable it temporarily. 
 
 <WarningBox>
 
-The installer does not work with SSO or Social sign on, as they require a password.
+The installer does not work with SSO or Social sign on, as they require a password. After the PCG is configured and functioning, SSO can be re-enabled.
 
 </WarningBox>
 
@@ -144,13 +144,13 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
-|**Install Type**| Choose **Private Cloud Gateway** or **Self Hosted Enterprise Cluster**. <br />You can change your selection with the up or down keys.|
+|**Install Type**| Choose **Private Cloud Gateway**. <br />You can change your selection with the up or down keys.|
 |**Cloud Type**| Choose MAAS.|
 |**Name** | Enter a custom name for the PCG.|
-|**Endpoint** |Enter the Palette endpoint. Example: https://customername.console.spectrocloud.com. |
+|**Endpoint** |Enter the Palette endpoint. Example for Palette SaaS portal: ``https://console.spectrocloud.com`` Example for a self-hosted environment: ``https://customername.console.spectrocloud.com`` |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
-|**Private Cloud Gateway** |Enter the PCG pairing code you copied from the instructions page in step **4**. |
+|**Private Cloud Gateway** |Enter the PCG pairing code you noted from the instructions page in step **4**. |
 
 <br />
 
@@ -159,10 +159,10 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-| **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example: ``maas.company.com,10.10.0.0/16``.|
-| **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the cluster. The pod IP addresses should be unique and should not overlap with any virtual machine IPs in the environment.|
+|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server.  Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
+| **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the cluster. The pod IP addresses should be unique and should not overlap with any machine IPs in the environment.|
 | **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.|
 
 <br />
@@ -185,7 +185,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
     - One node (no HA) or three nodes (HA)
 
 
-The installer selects available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+The installer requests available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
 
 If you need assisstance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -195,7 +195,7 @@ If you need assisstance, please visit our [Customer Support](https://spectroclou
 
 Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
-When you install the gateway, an account is auto-created. To verify the account creation, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
+When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
 <br />
 
@@ -265,7 +265,7 @@ Two new nodes will be created in the cluster.
 
 # Next Steps
 
-You can now create tenant clusters in the default cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
+You can now create tenant clusters in the auto-created cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
 
 You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-mass-cloud-accounts).
 

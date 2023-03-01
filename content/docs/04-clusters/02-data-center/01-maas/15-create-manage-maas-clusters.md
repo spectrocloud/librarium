@@ -55,7 +55,7 @@ To deploy a new MAAS cluster:
 8. Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with values defined in the cluster profile.
 
 
-9. Select a MAAS Cloud account and provide placement information.
+9. Select a MAAS cloud account and provide placement information.
 
 
 10. Select a domain from the **Domain drop-down Menu** and click **Next**. 
