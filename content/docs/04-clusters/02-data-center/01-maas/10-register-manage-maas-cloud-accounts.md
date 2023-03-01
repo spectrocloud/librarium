@@ -42,7 +42,7 @@ Follow these steps to create additional MAAS cloud accounts.
 |-----------|-------------|
 | Account Name | Custom name for the cloud name. |
 | Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
-| API Endpoint | API Endpoint of the gateway without a trailing `/` .|
+| API Endpoint | API Endpoint of the gateway.|
 | API Key | The MAAS API key. |
 
 
@@ -52,7 +52,7 @@ You can validate your MAAS cloud account is created by reviewing the **Cloud Acc
 
 # Next Steps
 
-Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/register-manage-maas-cloud-accounts) for guidance.
+Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters) for guidance.
 
 <br />
 

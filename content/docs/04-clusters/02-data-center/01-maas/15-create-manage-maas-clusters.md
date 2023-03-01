@@ -61,7 +61,7 @@ To deploy a new MAAS cluster:
 10. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-11. Configure the master and worker node pools. Enter values for properties listed in the following tables.
+11. Configure the master and worker node pools. Enter the values for properties listed in the following tables.
 
 <br />
 
@@ -98,15 +98,16 @@ To deploy a new MAAS cluster:
 
 12. You can configure the following cluster management features now if needed, or you can do it later:
 
-- Manage Machines
-- Scan Policies
-- Backup Policies
-- Review settings and deploy the cluster. 
+    - Manage Machines
+    - Scan Policies
+    - Backup Policies
+    - Review settings and deploy the cluster. 
+
 
 13. Review settings and deploy the cluster. 
 
 
-# Validation
+## Validation
 
 You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page lists all available clusters Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
@@ -136,7 +137,7 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 ## Force Delete a Cluster
 
-If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope. To force delete a cluster follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
+If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
 
 <br />
 
@@ -146,7 +147,7 @@ A force delete can result in Palette-provisioned resources being missed during t
 
 # Next Steps
 
-Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about Day-2 responsibilities.
+Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about Day-2 responsibilities.
 
 
 

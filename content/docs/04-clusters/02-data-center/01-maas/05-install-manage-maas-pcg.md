@@ -23,23 +23,25 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
-
-
-<Warningbox>
-
-The installer does not currently work on MacOS. 
-
-</Warningbox>
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
 <br />
+
+
+<WarningBox>
+
+The installer does not currently work on MacOS.
+
+</WarningBox>
+
 
 ## Prerequisites
 
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have testing the gateway installation using Ubuntu 20.04.
+- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04.
+
 
 - One IP address for a Kubernetes control plane.
 
@@ -51,7 +53,7 @@ The installer does not currently work on MacOS.
 
 <WarningBox>
 
-By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod classless inter-domain routing (CIDR) range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
 
 </WarningBox>
 
@@ -71,7 +73,7 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod CI
 
   <br />
 
-- The DNS server the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***maas***. 
+- The DNS server that the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***maas***. 
 
     The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
 
@@ -114,16 +116,16 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 </WarningBox>
 
 
-2. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateway**.
+3. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateway**.
 
 
-3. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
+4. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
 
-4. Copy the pairing code displayed in the instructions section of the page and paste it in a text file. You will input this code when you use the installer. 
+5. Copy the pairing code displayed in the instructions section of the page and paste it in a text file. You will input this code when you use the installer. 
 
 
-5. Copy the following code snippet to your terminal to invoke the installer.
+6. Copy the following code snippet to your terminal to invoke the installer.
     <br />
 
     ```bash
@@ -134,7 +136,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
     gcr.io/spectro-images-public/release/spectro-installer:1.0.12
     ```
 
-6. When prompted, enter the pairing code and information listed in each of the following tables. The installer will generate the gateway configuration file. 
+7. When prompted, enter the pairing code and information listed in each of the following tables. The installer will generate the gateway configuration file. 
     <br />
 
 
@@ -159,7 +161,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 |:-------------|----------------|
 |**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
 | **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all the nodes launched in the proxy network. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-| **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network classless inter-domain routing (CIDR) addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example: ``maas.company.com,10.10.0.0/16``.|
+| **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example: ``maas.company.com,10.10.0.0/16``.|
 | **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the cluster. The pod IP addresses should be unique and should not overlap with any virtual machine IPs in the environment.|
 | **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.|
 
@@ -175,7 +177,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 <br />
 
-7. When the installer prompts you, select the following to configure the MAAS server:
+8. When the installer prompts you, select the following to configure the MAAS server:
 
     - Availability Zone
     - Domain
