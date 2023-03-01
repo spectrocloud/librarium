@@ -23,7 +23,7 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux x86-64 system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
 <br />
 
