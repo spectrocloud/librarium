@@ -291,6 +291,14 @@ Assign the following environment variables to the API service:
 
 You can learn more about each environment variable's purpose by reviewing the API server's [documentation](https://github.com/spectrocloud/hello-universe-api#environment-variables). One variable that you should understand in greater detail is the `DB_HOST.` The value of this environment variable is constructed using the output variables the Postgres service exposed. The `{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}` variable contains the Kubernetes DNS value of the Postgres service container.
 
+<br />
+
+<InfoBox>
+
+To learn more about connecting different service layers, refer to the [Service Connectivity](/devx/app-profile/services/connectivity) resource.
+
+</InfoBox>
+
   
 
 A virtual cluster is a Kubernetes environment, and because it’s a Kubernetes environment, you can use the [Kubernetes DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) record created for each service and pod. You will have another opportunity to practice this concept when you deploy the UI.
@@ -340,12 +348,14 @@ Assign the following environment variables to the UI service:
 
 If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). The `API_URI` contains the address of the application load balancer that will be deployed for the API service. 
 
+The output variable `{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}` is used to retrieve the loadbalancer URL value.
+
 
 Click on the **Review** button at the bottom of the screen to finalize the app profile. Click on **Deploy New App** in the following screen to deploy the new app profile to cluster-2.
 
   
 
-Name the app “multiple-app-scenario,” select the app profile **hello-universe-complete**, pick version **1.0.0** and toggle the radio button **Deploy In An Existing Palette Virtual Cluster**. Select **cluster-2** and click on **Create App**
+Name the app `multiple-app-scenario`, select the app profile **hello-universe-complete**, pick version **1.0.0** and toggle the radio button **Deploy In An Existing Palette Virtual Cluster**. Select **cluster-2** and click on **Create App**
  
 
 <br />
@@ -870,64 +880,86 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
     registry_uid    = data.spectrocloud_registry.public_registry.id
     source_app_tier = data.spectrocloud_pack_simple.container_pack.id
     values          = <<-EOT
-        pack:
-          namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-          releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
-        postReadinessHooks:
-          outputParameters:
-            - name: CONTAINER_NAMESPACE
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: metadata.namespace
-            - name: CONTAINER_SVC
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
-            - name: CONTAINER_SVC_PORT
-              type: lookupSecret
-              spec:
-                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
-                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
-                ownerReference:
-                  apiVersion: v1
-                  kind: Service
-                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: spec.ports[0].port
-        containerService:
-            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
-            registryUrl: ""
-            image: ${var.multiple_container_images["api"]}
-            access: public
-            ports:
-              - "3000"
-            env:
-              - name: "DB_HOST"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
-              - name: "DB_USER"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
-              - name: "DB_PASSWORD"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
-              - name: "DB_NAME"
-                value: "${var.database-name}"
-              - name: "DB_INIT"
-                value: "true"
-              - name: "DB_ENCRYPTION"
-                value: "${var.database-ssl-mode}"
-              - name: "AUTHORIZATION"
-                value: "true"
-            serviceType: LoadBalancer
+pack:
+  namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+  releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+postReadinessHooks:
+  outputParameters:
+  - name: CONTAINER_NAMESPACE
+    type: lookupSecret
+    spec:
+      namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+      secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+      ownerReference:
+        apiVersion: v1
+        kind: Service
+        name: "{{.spectro.system.appdeployment.tiername}}-svc"
+      keyToCheck: metadata.namespace
+  - name: CONTAINER_SVC
+    type: lookupSecret
+    spec:
+      namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+      secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+      ownerReference:
+        apiVersion: v1
+        kind: Service
+        name: "{{.spectro.system.appdeployment.tiername}}-svc"
+      keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+  - name: CONTAINER_SVC_EXTERNALHOSTNAME
+    type: lookupSecret
+    spec:
+      namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+      secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+      ownerReference:
+        apiVersion: v1
+        kind: Service
+        name: "{{.spectro.system.appdeployment.tiername}}-svc"
+      keyToCheck: status.loadBalancer.ingress[0].hostname
+      conditional: true
+  - name: CONTAINER_SVC_EXTERNALIP
+    type: lookupSecret
+    spec:
+      namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+      secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+      ownerReference:
+        apiVersion: v1
+        kind: Service
+        name: "{{.spectro.system.appdeployment.tiername}}-svc"
+      keyToCheck: status.loadBalancer.ingress[0].ip
+      conditional: true
+  - name: CONTAINER_SVC_PORT
+    type: lookupSecret
+    spec:
+      namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+      secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+      ownerReference:
+        apiVersion: v1
+        kind: Service
+        name: "{{.spectro.system.appdeployment.tiername}}-svc"
+      keyToCheck: spec.ports[0].port
+containerService:
+  serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+  registryUrl: ""
+  image: ${var.multiple_container_images["api"]}
+  access: public
+  ports:
+    - "3000"
+  serviceType: LoadBalancer
+  env:
+    - name: DB_HOST
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+    - name: DB_USER
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
+    - name: DB_PASSWORD
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
+    - name: DB_NAME
+      value: counter
+    - name: DB_INIT
+      value: "true"
+    - name: DB_ENCRYPTION
+      value: "${var.database-ssl-mode}"
+    - name: AUTHORIZATION
+      value: "true"
     EOT
   }
   pack {
@@ -994,18 +1026,18 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
                 keyToCheck: spec.ports[0].port
         containerService:
-            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
-            registryUrl: ""
-            image: ${var.multiple_container_images["ui"]}
-            access: public
-            ports:
-              - "8080"
-            env:
-              - name: "API_URI"
-                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
-              - name: "TOKEN"
-                value: "${var.token}"
-            serviceType: LoadBalancer
+          serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+          registryUrl: ""
+          image: ${var.multiple_container_images["ui"]}
+          access: public
+          ports:
+            - "8080"
+          env:
+            - name: "API_URI"
+              value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
+            - name: "TOKEN"
+              value: "${var.token}"
+          serviceType: LoadBalancer
     EOT   
   }
   tags = concat(var.tags, ["scenario-2"])
@@ -1052,37 +1084,42 @@ The `env` section uses the output variables exposed by the Postgres service. Oth
 <br />
 
 ```
-  pack {
+pack {
     name            = "api"
     type            = data.spectrocloud_pack_simple.container_pack.type
     registry_uid    = data.spectrocloud_registry.public_registry.id
     source_app_tier = data.spectrocloud_pack_simple.container_pack.id
     values          = <<-EOT
-        # ....
-        # ....
-        containerService:
-            serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
-            registryUrl: ""
-            image: ${var.multiple_container_images["api"]}
-            access: public
-            ports:
-              - "3000"
-            env:
-              - name: "DB_HOST"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
-              - name: "DB_USER"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
-              - name: "DB_PASSWORD"
-                value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
-              - name: "DB_NAME"
-                value: "${var.database-name}"
-              - name: "DB_INIT"
-                value: "true"
-              - name: "DB_ENCRYPTION"
-                value: "${var.database-ssl-mode}"
-              - name: "AUTHORIZATION"
-                value: "true"
-            serviceType: LoadBalancer
+pack:
+  namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+  releaseNameOverride: "{{.spectro.system.appdeployment.tiername}}"
+postReadinessHooks:
+  outputParameters:
+  #....
+  #...
+containerService:
+  serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
+  registryUrl: ""
+  image: ${var.multiple_container_images["api"]}
+  access: public
+  ports:
+    - "3000"
+  serviceType: LoadBalancer
+  env:
+    - name: DB_HOST
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
+    - name: DB_USER
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.USERNAME}}"
+    - name: DB_PASSWORD
+      value: "{{.spectro.app.$appDeploymentName.postgres-db.PASSWORD}}"
+    - name: DB_NAME
+      value: counter
+    - name: DB_INIT
+      value: "true"
+    - name: DB_ENCRYPTION
+      value: "${var.database-ssl-mode}"
+    - name: AUTHORIZATION
+      value: "true"
     EOT
   }
 ```
@@ -1107,7 +1144,6 @@ pack {
             access: public
             ports:
               - "8080"
-              - "3000"
             env:
               - name: "API_URI"
                 value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
