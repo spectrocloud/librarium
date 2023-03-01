@@ -88,7 +88,7 @@ To deploy a new MAAS cluster:
 |-----------|-------------|
 | Name | A descriptive name for the node pool. |
 | Size | Number of VMs to be provisioned for the node pool.|
-| Rolling Update | Rolling update has two available options. Review the Update Parameter list below for more details. ?? |
+| Rolling Update | Rolling update has two available options. Review the Update Parameter list below for more details.|
 | [Labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
 | Instance type | The compute instance type to be used for all nodes in the node pool. |
@@ -142,7 +142,9 @@ If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becom
 <br />
 
 <WarningBox>
-A force delete can result in Palette-provisioned resources being missed during the removal process. Verify there are no remaining resources. Failure to remove provisioned resources can result in unexpected costs.
+
+A force delete can result in Palette-provisioned resources being missed during the removal process. Verify that any MAAS machines associated with the cluster have been released. Failure to remove provisioned resources can result in unexpected costs.
+
 </WarningBox>
 
 # Next Steps

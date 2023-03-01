@@ -43,10 +43,10 @@ The installer does not currently work on MacOS.
 - A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04 on x86-64.
 
 
-- One IP address for a Kubernetes control plane.
+- Private cloud gateway IP requirements:
 
-
-- One IP address for a single-node gateway or three IP addresses for a three-node gateway.
+    - One IP address for a single-node gateway or three IP addresses for a three-node gateway.
+    - One IP address for a Kubernetes control plane.
 
 
 - Sufficient IPs for application workload services, such as Load Balancer services.
@@ -57,13 +57,13 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
 </WarningBox>
 
-- Minimum capacity requirements as follows:
+- Each node in the PCG cluster requires a machine from MAAS in a ready state, and with the following resources:
 
     <br />
 
-    - One node (no HA): 4 CPU, 8 GiB Memory, 60 GiB Storage.
-   
-    - Three nodes (HA): 6 CPU, 12 GiB Memory, 90 GiB Storage.<br /><br />
+    - 4 CPUs
+    - 4096 MiB memory
+    - 60 GiB storage<br /><br />
 
 - An active [MAAS API](https://maas.io/docs/api-authentication-reference) key in the following format:
 
@@ -147,7 +147,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 |**Install Type**| Choose **Private Cloud Gateway**. <br />You can change your selection with the up or down keys.|
 |**Cloud Type**| Choose MAAS.|
 |**Name** | Enter a custom name for the PCG.|
-|**Endpoint** |Enter the Palette endpoint. Example for Palette SaaS portal: ``https://console.spectrocloud.com`` Example for a self-hosted environment: ``https://customername.console.spectrocloud.com`` |
+|**Endpoint** |Enter the Palette endpoint. Example for Palette SaaS portal: ``https://console.spectrocloud.com``. Example for a self-hosted environment: ``https://customername.console.spectrocloud.com``. |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
 |**Private Cloud Gateway** |Enter the PCG pairing code you noted from the instructions page in step **4**. |
@@ -260,8 +260,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 
 Two new nodes will be created in the cluster.
 
-<br /
->
+<br />
 
 # Next Steps
 
