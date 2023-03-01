@@ -40,7 +40,7 @@ The installer does not currently work on MacOS.
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04.
+- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04 on x86-64.
 
 
 - One IP address for a Kubernetes control plane.
