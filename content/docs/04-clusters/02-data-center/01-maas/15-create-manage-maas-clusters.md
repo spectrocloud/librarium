@@ -86,14 +86,23 @@ To deploy a new MAAS cluster:
 
 | Property | Description |
 |-----------|-------------|
-| Name | A descriptive name for the node pool. |
-| Size | Number of VMs to be provisioned for the node pool.|
-| Rolling Update | Rolling update has two available options. Review the Update Parameter list below for more details.|
-| [Labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
+| Node pool name | A descriptive name for the node pool. |
+| Number of nodes in the pool | Number of VMs to be provisioned for the node pool.|
+| Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
+| Rolling update | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options below for more details.|
 | Instance type | The compute instance type to be used for all nodes in the node pool. |
-| Availability Zones | These are multiple, isolated locations within a Region. When you choose one or more availability zones, Palette provides fault tolerance to guard against hardware failures and network failures by provisioning nodes across availability zones if multiple zones are selected. |
-| Disk Size | Specify the required storage size. |
+| Managed disk | Select a disk and specify the required storage size. |
+| Availability zones | These are multiple, isolated locations within a Region. When you choose one or more availability zones, Palette provides fault tolerance to guard against hardware failures and network failures by provisioning nodes across availability zones if multiple zones are selected. |
+
+
+#### Rolling Update Options for Node Pools
+
+| Property | Description |
+|-----------|-------------|
+| Expand First | Palette launches a new node first, then shuts down the old node before providing updates. |
+| Contract First | Palette shuts down the old node first, then launches a new node before providing updates.|
+
 
 
 12. You can configure the following cluster management features now if needed, or you can do it later:
