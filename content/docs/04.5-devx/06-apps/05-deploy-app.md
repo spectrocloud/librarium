@@ -116,7 +116,7 @@ Click on the **New App Profile** button to get started with creating your first 
 
   
 
-Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.9`. Change the network access to **Public** and add the port `8080`
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.10`. Change the network access to **Public** and add the port `8080`
 
   
 
@@ -202,7 +202,7 @@ Create another virtual cluster for the multi-application scenario. From the app 
 
   
 
-Add the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 8 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
+Add the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and allocate 8 CPU, 12 GiB memory, and 12 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
 
   
 
@@ -263,9 +263,9 @@ Provide the container service with the following information:
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.7`
+- Image: `ghcr.io/spectrocloud/hello-universe-api:1.0.8`
 
-- Network Access: Private
+- Network Access: Public
 
 - Ports: `3000`
 
@@ -305,8 +305,7 @@ Once you have filled out all the required information, navigate to the top left 
 
   
 
-This time you will use a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
-
+This time the UI will point to the API server that is managed by you. The API server has authentication enabled, so to ensure all API requests are accepted you will provide the UI with the anonymous token.
   
   
 
@@ -320,11 +319,11 @@ Provide the UI container with the following information.
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe:1.0.9-proxy`
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.10`
 
 - Network Access: Public
 
-- Ports: `8080`, `3000`
+- Ports: `8080`
 
   
 
@@ -334,13 +333,12 @@ Assign the following environment variables to the UI service:
 
 | Parameter | Value |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `SVC_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}` |
-| `API_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}` |
+| `API_URI` | `http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000` |
 | `TOKEN` | `931A3B02-8DCC-543F-A1B2-69423D1A0B94` |
 
   
 
-If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). The `SVC_URI` is the API service's Kubernetes DNS value. The hostname is composed of the following pattern `<svc name>.<service namespace>.svc.cluster.local:<service port>`. The `API_URI` is the address of the application load balancer that will be deployed, exposing the ports of the UI service. The `TOKEN` is the authorization token that the reverse proxy will inject inside the UI container for all API requests. Without this token, all API requests are rejected.
+If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). The `API_URI` contains the address of the application load balancer that will be deployed for the API service. 
 
 
 Click on the **Review** button at the bottom of the screen to finalize the app profile. Click on **Deploy New App** in the following screen to deploy the new app profile to cluster-2.
@@ -431,7 +429,7 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 <Tabs.TabPane tab="Terraform" key="terraform">
 
 
-##  Terraform
+##  Terraform Workflow
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are; the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
 
@@ -496,7 +494,7 @@ The tutorial folder contains several Terraform files that you should review and 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
 
 ```shell
-export SPECTROCLOUD_APIKEY=tKpsmBhv8lFBP0jvMZuBhmppaIQyOH06
+export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
 
 Next, initialize the Terraform provider by issuing the following command.
@@ -529,7 +527,7 @@ The `init` command downloads all the required plugins and providers specified in
 terraform {
   required_providers {
     spectrocloud = {
-      version = ">= 0.11.0"
+      version = ">= 0.11.1"
       source  = "spectrocloud/spectrocloud"
     }
   }
@@ -673,6 +671,28 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
                 keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_EXTERNALHOSTNAME
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: status.loadBalancer.ingress[0].hostname
+                conditional: true
+            - name: CONTAINER_SVC_EXTERNALIP
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: status.loadBalancer.ingress[0].ip
+                conditional: true
             - name: CONTAINER_SVC_PORT
               type: lookupSecret
               spec:
@@ -796,10 +816,10 @@ You have deployed your first app profile to Palette. Your first application is a
 ## Deploy Multiple Applications
 
 
-The second scenario contains two additional microservices, an API, and a Postgres database. The second scenario uses a different container image for the UI that contains a reverse proxy. The reverse proxy is responsible for two important tasks. The first task is to route requests to the API inside the UI container instead of using your browser. The reason behind this behavior is to access the API server that is not publicly exposed. The reverse proxy will pick up the API request and forward it to the API container. The second task is to insert an authentication token in all requests to the API. The API server configuration you provided enabled authentication, so a Bearer token is required for all requests. The following diagram illustrates the network connectivity path and behavior discussed.
+The second scenario contains two additional microservices, an API, and a Postgres database. This time, instead of using a the global API for storing clicks, you will instead deploy your own API server and Postgres database. The following diagram illustrates the network connectivity path and behavior discussed.
 
 
-![A diagram of the reverse proxy architecture](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the three-tier architecture where the loadbalancer forwards all requests to the UI container OR the API container](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
 
 To deploy the second scenario, you will again deploy the same three resource types previously discussed but another instance of them.
 
@@ -889,7 +909,7 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
             serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
             registryUrl: ""
             image: ${var.multiple_container_images["api"]}
-            access: private
+            access: public
             ports:
               - "3000"
             env:
@@ -907,6 +927,7 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
                 value: "${var.database-ssl-mode}"
               - name: "AUTHORIZATION"
                 value: "true"
+            serviceType: LoadBalancer
     EOT
   }
   pack {
@@ -940,6 +961,28 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
                 keyToCheck: metadata.annotations["spectrocloud.com/service-fqdn"]
+            - name: CONTAINER_SVC_EXTERNALHOSTNAME
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: status.loadBalancer.ingress[0].hostname
+                conditional: true
+            - name: CONTAINER_SVC_EXTERNALIP
+              type: lookupSecret
+              spec:
+                namespace: "{{.spectro.system.appdeployment.tiername}}-ns"
+                secretName: "{{.spectro.system.appdeployment.tiername}}-custom-secret"
+                ownerReference:
+                  apiVersion: v1
+                  kind: Service
+                  name: "{{.spectro.system.appdeployment.tiername}}-svc"
+                keyToCheck: status.loadBalancer.ingress[0].ip
+                conditional: true
             - name: CONTAINER_SVC_PORT
               type: lookupSecret
               spec:
@@ -957,12 +1000,9 @@ resource "spectrocloud_application_profile" "hello-universe-complete" {
             access: public
             ports:
               - "8080"
-              - "3000"
             env:
               - name: "API_URI"
-                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}"
-              - name: "SVC_URI"
-                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}"
+                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
               - name: "TOKEN"
                 value: "${var.token}"
             serviceType: LoadBalancer
@@ -1024,7 +1064,7 @@ The `env` section uses the output variables exposed by the Postgres service. Oth
             serviceName: "{{.spectro.system.appdeployment.tiername}}-svc"
             registryUrl: ""
             image: ${var.multiple_container_images["api"]}
-            access: private
+            access: public
             ports:
               - "3000"
             env:
@@ -1042,6 +1082,7 @@ The `env` section uses the output variables exposed by the Postgres service. Oth
                 value: "${var.database-ssl-mode}"
               - name: "AUTHORIZATION"
                 value: "true"
+            serviceType: LoadBalancer
     EOT
   }
 ```
@@ -1069,9 +1110,7 @@ pack {
               - "3000"
             env:
               - name: "API_URI"
-                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALIP}}"
-              - name: "SVC_URI"
-                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}:{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_PORT}}"
+                value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
               - name: "TOKEN"
                 value: "${var.token}"
             serviceType: LoadBalancer
@@ -1132,7 +1171,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 ![View of the self-hosted hello universe app](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.png)
 
-The global counter is no longer available; instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that the reverse proxy injects the Bearer token value in each request sent to the API.
+The global counter is no longer available; instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata.
 
 
 ## Clean-up
