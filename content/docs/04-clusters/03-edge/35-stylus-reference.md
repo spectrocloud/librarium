@@ -64,7 +64,7 @@ Network settings specific to the network interface of the edge host. You can con
 | --- | --- |
 | `NetworkInterface.IPAddress` | The assigned IP address to the network interface. | 
 | `NetworkInterface.Mask` | The network mask for the assigned IP address. | 
-| `NetworkInterface.Type` | How the IP address is assigned. Allowed values are `dhcp` or `static` | 
+| `NetworkInterface.Type` | How the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. | 
 | `NetworkInterface.Gateway` | The network gatway IP address. |
 | `NetworkInterface.Nameserver` | The IP address of the DNS nameserver this interface should route requests to.| 
 
@@ -84,58 +84,30 @@ Network settings specific to the network interface of the edge host. You can con
 
 # Example Configuration
 
-The following is an example of a user-data that is customizing the edge host installation process.
+The following is an example of a user-data that is used to customize the edge host installation process.
 
 ```yaml
-#cloud-config
 stylus:
   site:
-    # host for hubble api to register device.
     paletteEndpoint: api.spectrocloud.com
-
-    # newly added field to use for auto registration
-    edgeHostToken: aUAxxxxxxxxx0ChYCrO
-    
-    # projectUid <Optional :need to provide if token is not generated using project id>
+    edgeHostToken: 02c3aabf-0f48-3a66-8b96-c4047c1984aa
     projectUid: 12345677788
-    # tags which will be assigned to devices as labels
     tags:
-      key1: value1
-      key2: value2
-      key3: value3
+      env: east
+      terraform_managed: true
+      os: ubuntu
     
-    # name of the device, this may also be referred to as the edge id or edge host id.  If no edge host name is specified
-    # one will be generated from the device serial number.  If stylus cannot the device serial number a random id will
-    # be used instead. In the case of hardware that does not have a serial number is highly recommended to specify the
-    # device name as a random name is not deterministic and may lead to a device being registered twice under different 
-    # names.
-    name: edge-randomid
-    # An optional url which will be used to combine with the edge name from above to generate a QR code on the screen  for
-    # ease of creation of devices and cluster on PaletteUI via an application e.g vercel.app .
-    # QR code will appear only of the device is not registered on Palette
-    registrationURL: https://edge-registration-app.vercel.app/
-    
-    # Optional 
+    name: edge-59d3f182-35fe-4e10-b0a0-d7f761f1a142
     network:
-      # configures http_proxy
       httpProxy: http://proxy.example.com
-      # configures https_proxy
       httpsProxy: https://proxy.example.com
-      # configures no_proxy
       noProxy: 10.10.128.10,10.0.0.0/8    
-
-      # Optional: configures the global  nameserver for the system.
       nameserver: 1.1.1.1
-      # configure interface specific info. If omitted all interfaces will default to dhcp
       interfaces:
            enp0s3:
-               # type of network dhcp or static
                type: static
-               # Ip address including the mask bits
                ipAddress: 10.0.10.25/24
-               # Gateway for the static ip.
                gateway: 10.0.10.1
-               # interface specific nameserver
                nameserver: 10.10.128.8
            enp0s4:
                type: dhcp 
