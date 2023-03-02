@@ -404,7 +404,7 @@ The global counter is no longer available. Instead, you have a counter that star
 
   
 
-## Clean-up
+## Cleanup
 
   
 
