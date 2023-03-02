@@ -26,14 +26,6 @@ The default values assume you are installing the edge host in an environment wit
 
 You can provide Stylus with additional configuration values by using a user-data file. The following table contains all the supported user-data parameters the Stylus installer accepts.
 
-<br />
-
-<InfoBox>
-
-On startup, Stylus loads its configuration from the cloud-init user-data and [meta-data](https://cloudinit.readthedocs.io/en/stable/explanation/instancedata.html) configuration, if provided. Any configuration present in the user-data and meta-data can be modified through the REST API. The modified configuration obtained through the REST API will take precedence over the configuration present in the cloud-init user-data and meta-data.
-
-</InfoBox>
-
 ## General Parameters
 
 | Parameter | Description | 
