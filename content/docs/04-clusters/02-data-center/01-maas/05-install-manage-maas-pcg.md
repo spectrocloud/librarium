@@ -78,10 +78,10 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
     The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
 
-    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane. Alternatively, configure the installer host to use the MAAS control plane as its DNS server. Ensure that **every** DNS server configured on the installer host can resolve the MAAS domain.
+    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane. Alternatively, configure the installer host to use the MAAS control plane as its DNS server. Ensure that **every** DNS server configured on the installer host can resolve the .maas domain.
 
 
-![MAAS DNS setup](/clusters_maas_maas-dns-setup.png)
+![Image with arrow pointing from .maas domain to MAAS network that contains installer computer and DNS server](/clusters_maas_maas-dns-setup.png)
 
 ## Understand the Gateway Installation Process
 
