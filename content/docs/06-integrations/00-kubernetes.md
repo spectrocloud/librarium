@@ -96,36 +96,94 @@ Only Kubernetes versions 1.19 and above are supported.
 
 ## Parameters
 
-| Parameter | Description | Default |
+| Parameter | Description | Required (Y/N) |
 |-----------|-------------|---------|
-| namespace | The Kubernetes namespace to install the dashboard. | `kubernetes-dashboard` |
-| ClusterRole | The ClusterRole to assign to the Kubernetes Dashboard. | `read-only` |
-| certDuration | Self-signed certificate duration in hours. | 8760h (365d) |
-| certRenewal | Self-signed certificate renewal in hours | 720h (30d) |
-| enableInsecureLogin | RBAC ensures secure login. | `false` |
-| serviceType | The service type for the dashboard. Supported values are ClusterIP, LoadBalancer, and NodePort. | `ClusterIP` |
-| skipLogin | Enables or disables the skip login option on the dashboard. | `false` |
-| enableInsecureLogin | Enables non-Secure Sockets Layer (SSL) login. Dashboard login is always restricted to HTTP(S) + localhost or HTTPS and external domain. | `false` |
-| ingress.enabled | Ingress configuration to access the ClusterIP, loadBalancer, or nodePort. | `false` |
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | list required one? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
+
+- Major versions are assessed based on the extent of changes.
+- Minor versions are provided within 8 weeks of release.
+- Patch versions are provided within 4 weeks of release.
+ 
+
+#### Example Kubeadm config
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "cipher_suite_here"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+  postKubeadmCommands:
+    'echo "List of post kubeadm commands to be executed"'
+```
 
 
 
-| Name                                      | Supported values | Default value                                                                                           | Description                                                                                                                       |
-| ----------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| pack.k8sHardening                         | True, False      | True                                                                                                    | Flag to decide if Kubernetes hardening should be applied.                                                                         |
-|                                           |                  |                                                                                                         | When set to True, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. |
-|                                           |                  |                                                                                                         | When set to True, additional flags configured in kubeadmconfig will be honored and will be set to the corresponding components.   |
-| pack.podCIDR                              | `192.168.0.0/16` | CIDR range for the pod networking. This should match the networking layer property `calicoNetworkCIDR`. | CIDR range for Pods in cluster                                                                                                    |
-| pack.serviceClusterIpRange                | `10.96.0.0/12`   | CIDR range for the services. This should not overlap with any IP ranges assigned to nodes for pods.     | CIDR range for Services in the Cluster                                                                                            |
-| kubeadmconfig.apiServer.extraArgs         |                  |                                                                                                         | List of additional apiServer flags to be set                                                                                      |
-| kubeadmconfig.apiServer.extraVolumes      |                  |                                                                                                         | List of additional volumes to be mounted on apiServer                                                                             |
-| kubeadmconfig.controllerManager.extraArgs |                  |                                                                                                         | List of additional ControllerManager flags to be set                                                                              |
-| kubeadmconfig.scheduler.extraArgs         |                  |                                                                                                         | List of additional Kube Scheduler flags to be set                                                                                 |
-| kubeadmconfig.files                       |                  |                                                                                                         | List of additional files to be copied over to the nodes                                                                           |
-| kubeadmconfig.preKubeadmCommands          |                  |                                                                                                         | List of additional commands to be executed **before** kubeadm commands are run                                                    |
-| kubeadmconfig.postKubeadmCommands         |                  |                                                                                                         | List of additional commands to be executed **after** kubeadm commands are run                                                     |
 
-## Example Kubeadm config
+original file below
 
 ```yaml
 kubeadmconfig:
@@ -162,3 +220,34 @@ kubeadmconfig:
   postKubeadmCommands:
     - 'echo "Executing postKubeadmCmds"'
 ```
+
+# Troubleshooting
+
+If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses or conflicting CIDR IPs.
+
+Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the podCIDR parameter. The CIDR IP specified with the podCIDR parameter in the Kubernetes manifest always takes precedence.
+
+- Ensure the ``podCIDR`` value does not overlap with any hosts or with the service network. 
+
+- Ensure the ``serviceClusterIpRange``value does not overlap with the any IP ranges assigned to nodes for pods.
+
+
+# Terraform
+
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.1"
+  type = "operator-instance"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+
+# Resources
+
+- [Kubernetes](https://kubernetes.io/)
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
+
