@@ -57,7 +57,7 @@ You can read more about Kairos and cloud-init by reviewing the [Kairo's cloud-in
 
 # Where to Apply Cloud-Init Stages?
 
-You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages. To help guide you, use the following statements to help guide your decision making process. 
+You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages. Use the following statements to help guide you your decision making process. 
 <br />
 
 
