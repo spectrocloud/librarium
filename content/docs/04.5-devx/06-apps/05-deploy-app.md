@@ -1210,7 +1210,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata.
 
 
-## Clean-up
+## Cleanup
 
 To remove all resources created in this tutorial, issue the `terraform destroy` command.
 
