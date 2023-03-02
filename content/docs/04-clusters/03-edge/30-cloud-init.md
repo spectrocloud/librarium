@@ -57,9 +57,14 @@ You can read more about Kairos and cloud-init by reviewing the [Kairo's cloud-in
 
 # Where to apply Cloud-Init Stages?
 
-You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages.
+You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages. To help guide you, use the following statements to help guide your decision making process. 
+<br />
 
-If you want to apply specific configurations to a specific site, then use the user-data option of Stylus to provide site settings to that specific site. If you have common configurations across a fleet of edge devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
+
+* If you need to apply a set of configurations to a specific site, then use the Stylus user-data and its cloud-init stages to provide site settings to that specific site. 
+
+
+* If you have common configurations across a fleet of edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
 
 # Example Use Cases
 
