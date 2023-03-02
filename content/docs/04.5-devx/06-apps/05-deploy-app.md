@@ -3,8 +3,8 @@ title: "Deploy an Application using Palette Dev Engine"
 metaTitle: "Deploy an Application using Palette Dev Engine"
 metaDescription: "Learn how to deploy applications to a Kubernetes cluster without the traditional overhead accompanied by Kubernetes. Palette’s App Mode reduces the deployment time and complexity when deploying applications to Kubernetes. Learn how to get started with Palette’s App Mode in this tutorial. Get started with the free tier of Palette App Mode"
 icon: ""
-category: ["app mode"]
-hideToC: true
+category: ["tutorial"]
+hideToC: false
 fullWidth: false
 ---
 
@@ -346,9 +346,9 @@ Assign the following environment variables to the UI service:
 
   
 
-If you want to explore the UI's environment variables in greater detail, you can review the UI's [documentation](https://github.com/spectrocloud/hello-universe). The `API_URI` contains the address of the application load balancer that will be deployed for the API service. 
+If you want to explore the UI service's environment variables in greater detail, you can review the UI [documentation](https://github.com/spectrocloud/hello-universe). The `API_URI` contains the address of the application load balancer that will be deployed for the API service. 
 
-The output variable `{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}` is used to retrieve the loadbalancer URL value.
+The output variable `{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}` is used to retrieve the load balancer URL value.
 
 
 Click on the **Review** button at the bottom of the screen to finalize the app profile. Click on **Deploy New App** in the following screen to deploy the new app profile to cluster-2.
@@ -690,7 +690,7 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
                   apiVersion: v1
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: status.loadBalancer.ingress[0].hostname
+                keyToCheck: status.load balancer.ingress[0].hostname
                 conditional: true
             - name: CONTAINER_SVC_EXTERNALIP
               type: lookupSecret
@@ -701,7 +701,7 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
                   apiVersion: v1
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: status.loadBalancer.ingress[0].ip
+                keyToCheck: status.load balancer.ingress[0].ip
                 conditional: true
             - name: CONTAINER_SVC_PORT
               type: lookupSecret
@@ -720,7 +720,7 @@ resource "spectrocloud_application_profile" "hello-universe-ui" {
             access: public
             ports:
               - "8080"
-            serviceType: LoadBalancer
+            serviceType: load balancer
     EOT
   }
   tags = concat(var.tags, ["scenario-1"])
@@ -829,7 +829,7 @@ You have deployed your first app profile to Palette. Your first application is a
 The second scenario contains two additional microservices, an API, and a Postgres database. This time, instead of using a the global API for storing clicks, you will instead deploy your own API server and Postgres database. The following diagram illustrates the network connectivity path and behavior discussed.
 
 
-![A diagram of the three-tier architecture where the loadbalancer forwards all requests to the UI container OR the API container](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the three-tier architecture where the load balancer forwards all requests to the UI container OR the API container](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
 
 To deploy the second scenario, you will again deploy the same three resource types previously discussed but another instance of them.
 
@@ -914,7 +914,7 @@ postReadinessHooks:
         apiVersion: v1
         kind: Service
         name: "{{.spectro.system.appdeployment.tiername}}-svc"
-      keyToCheck: status.loadBalancer.ingress[0].hostname
+      keyToCheck: status.load balancer.ingress[0].hostname
       conditional: true
   - name: CONTAINER_SVC_EXTERNALIP
     type: lookupSecret
@@ -925,7 +925,7 @@ postReadinessHooks:
         apiVersion: v1
         kind: Service
         name: "{{.spectro.system.appdeployment.tiername}}-svc"
-      keyToCheck: status.loadBalancer.ingress[0].ip
+      keyToCheck: status.load balancer.ingress[0].ip
       conditional: true
   - name: CONTAINER_SVC_PORT
     type: lookupSecret
@@ -944,7 +944,7 @@ containerService:
   access: public
   ports:
     - "3000"
-  serviceType: LoadBalancer
+  serviceType: load balancer
   env:
     - name: DB_HOST
       value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
@@ -1002,7 +1002,7 @@ containerService:
                   apiVersion: v1
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: status.loadBalancer.ingress[0].hostname
+                keyToCheck: status.load balancer.ingress[0].hostname
                 conditional: true
             - name: CONTAINER_SVC_EXTERNALIP
               type: lookupSecret
@@ -1013,7 +1013,7 @@ containerService:
                   apiVersion: v1
                   kind: Service
                   name: "{{.spectro.system.appdeployment.tiername}}-svc"
-                keyToCheck: status.loadBalancer.ingress[0].ip
+                keyToCheck: status.load balancer.ingress[0].ip
                 conditional: true
             - name: CONTAINER_SVC_PORT
               type: lookupSecret
@@ -1037,7 +1037,7 @@ containerService:
               value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
             - name: "TOKEN"
               value: "${var.token}"
-          serviceType: LoadBalancer
+          serviceType: load balancer
     EOT   
   }
   tags = concat(var.tags, ["scenario-2"])
@@ -1104,7 +1104,7 @@ containerService:
   access: public
   ports:
     - "3000"
-  serviceType: LoadBalancer
+  serviceType: load balancer
   env:
     - name: DB_HOST
       value: "{{.spectro.app.$appDeploymentName.postgres-db.POSTGRESMSTR_SVC}}"
@@ -1149,7 +1149,7 @@ pack {
                 value: "http://{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC_EXTERNALHOSTNAME}}:3000"
               - name: "TOKEN"
                 value: "${var.token}"
-            serviceType: LoadBalancer
+            serviceType: load balancer
     EOT   
   }
 
@@ -1160,7 +1160,7 @@ pack {
 <InfoBox>
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables.
-You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by refering to the [Service Connectivity](/devx/app-profile/services/connectivity) documentation.  
+You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by referring to the [Service Connectivity](/devx/app-profile/services/connectivity) documentation.  
 
 </InfoBox>
 
