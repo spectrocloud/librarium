@@ -18,7 +18,7 @@ The Edge installation process supports the ability for you to customize the devi
 ![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
 
 
-# Cloud-init Stages
+# Cloud-Init Stages
 
 The installation process supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before locking down the image. 
 
@@ -55,7 +55,7 @@ You can read more about Kairos and cloud-init by reviewing the [Kairo's cloud-in
  </InfoBox>
 
 
-# Where to apply Cloud-Init Stages?
+# Where to Apply Cloud-Init Stages?
 
 You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages. To help guide you, use the following statements to help guide your decision making process. 
 <br />

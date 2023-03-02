@@ -26,6 +26,14 @@ The default values assume you are installing the edge host in an environment wit
 
 You can provide Stylus with additional configuration values by using a user-data file. The following table contains all the supported user-data parameters the Stylus installer accepts.
 
+<br />
+
+<InfoBox>
+
+On startup, Stylus loads its configuration from the cloud-init user-data and [meta-data](https://cloudinit.readthedocs.io/en/stable/explanation/instancedata.html) configuration, if provided. Any configuration present in the user-data and meta-data can be modified through the REST API. The modified configuration obtained through the REST API will take precedence over the configuration present in the cloud-init user-data and meta-data.
+
+</InfoBox>
+
 ## General Parameters
 
 | Parameter | Description | 
@@ -80,3 +88,74 @@ Network settings specific to the network interface of the edge host. You can con
 | `SiteStatus.Configured` | Indicates if the site is associated with a cluster |
 | `SiteStatus.Connected` | Indicates if the site is able to connect and authenticate with Hubble | 
 | `SiteStatus.Paired` | Indicates if the site has paired with a host device in Hubble |  -->
+
+
+# Example Configuration
+
+The following is an example of a user-data that is customizing the edge host installation process.
+
+```yaml
+#cloud-config
+stylus:
+  site:
+    # host for hubble api to register device.
+    paletteEndpoint: api.spectrocloud.com
+
+    # newly added field to use for auto registration
+    edgeHostToken: aUAxxxxxxxxx0ChYCrO
+    
+    # projectUid <Optional :need to provide if token is not generated using project id>
+    projectUid: 12345677788
+    # tags which will be assigned to devices as labels
+    tags:
+      key1: value1
+      key2: value2
+      key3: value3
+    
+    # name of the device, this may also be referred to as the edge id or edge host id.  If no edge host name is specified
+    # one will be generated from the device serial number.  If stylus cannot the device serial number a random id will
+    # be used instead. In the case of hardware that does not have a serial number is highly recommended to specify the
+    # device name as a random name is not deterministic and may lead to a device being registered twice under different 
+    # names.
+    name: edge-randomid
+    # An optional url which will be used to combine with the edge name from above to generate a QR code on the screen  for
+    # ease of creation of devices and cluster on PaletteUI via an application e.g vercel.app .
+    # QR code will appear only of the device is not registered on Palette
+    registrationURL: https://edge-registration-app.vercel.app/
+    
+    # Optional 
+    network:
+      # configures http_proxy
+      httpProxy: http://proxy.example.com
+      # configures https_proxy
+      httpsProxy: https://proxy.example.com
+      # configures no_proxy
+      noProxy: 10.10.128.10,10.0.0.0/8    
+
+      # Optional: configures the global  nameserver for the system.
+      nameserver: 1.1.1.1
+      # configure interface specific info. If omitted all interfaces will default to dhcp
+      interfaces:
+           enp0s3:
+               # type of network dhcp or static
+               type: static
+               # Ip address including the mask bits
+               ipAddress: 10.0.10.25/24
+               # Gateway for the static ip.
+               gateway: 10.0.10.1
+               # interface specific nameserver
+               nameserver: 10.10.128.8
+           enp0s4:
+               type: dhcp 
+    caCerts:
+      - |
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
+      - |
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
+```
