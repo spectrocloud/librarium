@@ -16,92 +16,99 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-This pack defines the properties that will be used by Spectro Cloud to bring up the Kubernetes cluster. Most of the Kubernetes hardening standards recommended by the Center for Internet Security is enabled by default.
-
-<WarningBox>
-Info: Only Kubernetes versions 1.19 and above is supported
-</WarningBox>
-
-## Supported Kubernetes versions
+The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default.
 
 <InfoBox>
 
-Versions supported in the latest [release](/release-notes/) are highlighted.
+Only Kubernetes versions 1.19 and above are supported.
 
 </InfoBox>
 
+
+## Versions Supported
+
+
 <Tabs>
 
-<Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
-
-- **1.19.16**
-- **1.19.15**
-- **1.19.14**
-- **1.19.13**
-- **1.19.12**
-- **1.19.11**
-- **1.19.10**
-- **1.19.9**
-- **1.19.8**
-- **1.19.7**
-- **1.19.6**
-- **1.19.5**
-- **1.19.4**
-- **1.19.3**
+<Tabs.TabPane tab="1.26.x" key="k8s_v1.26">
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="1.20.x" key="k8s_v1.20">
 
-- **1.20.12**
-- **1.20.11**
-- **1.20.10**
-- **1.20.9**
-- **1.20.8**
-- **1.20.7**
-- **1.20.6**
-- **1.20.5**
-- **1.20.4**
-- **1.20.2**
-- **1.20.1**
-- **1.20.0**
+
+<Tabs.TabPane tab="1.25.x" key="k8s_v1.25">
+
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
 
-- **1.21.10**
-- **1.21.6**
-- **1.21.5**
-- **1.21.4**
-- **1.21.3**
-- **1.21.2**
-- **1.21.1**
-- **1.21.0**
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
-
-- **1.22.11**
-- **1.22.7**
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
-
-- **1.23.4**
-
-</Tabs.TabPane>
 
 <Tabs.TabPane tab="1.24.x" key="k8s_v1.24">
 
-- **1.24.4**
 
 </Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
+
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
+
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
+
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="1.20.x" key="k8s_v1.20">
+
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
+
+
+
+</Tabs.TabPane>
+
+
+
+
+
+
+
+
 </Tabs>
 
-## Notable parameters
+# Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| namespace | The Kubernetes namespace to install the dashboard. | `kubernetes-dashboard` |
+| ClusterRole | The ClusterRole to assign to the Kubernetes Dashboard. | `read-only` |
+| certDuration | Self-signed certificate duration in hours. | 8760h (365d) |
+| certRenewal | Self-signed certificate renewal in hours | 720h (30d) |
+| enableInsecureLogin | RBAC ensures secure login. | `false` |
+| serviceType | The service type for the dashboard. Supported values are ClusterIP, LoadBalancer, and NodePort. | `ClusterIP` |
+| skipLogin | Enables or disables the skip login option on the dashboard. | `false` |
+| enableInsecureLogin | Enables non-Secure Sockets Layer (SSL) login. Dashboard login is always restricted to HTTP(S) + localhost or HTTPS and external domain. | `false` |
+| ingress.enabled | Ingress configuration to access the ClusterIP, loadBalancer, or nodePort. | `false` |
+
+
 
 | Name                                      | Supported values | Default value                                                                                           | Description                                                                                                                       |
 | ----------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
