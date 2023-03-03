@@ -120,7 +120,7 @@ If you have already installed the PCG and are experiencing issues that you want 
 <Tabs.TabPane tab="Install PCG" key="install_pcg"> 
 
 
-# Install the Gateway
+## Install the Gateway
 
 The following steps will guide you to install the PCG. 
 <br />
@@ -207,7 +207,15 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
-``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml``
+``/opt/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml``
+
+<br />
+
+<InfoBox>
+
+Due to the Docker volume mount, when you see ``/opt/spectrocloud`` in the installer logs, it actually refers to ``/tmp`` on the machine running the installer.
+
+</InfoBox>
 
 The installer then requests available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the installer. Refer to the **Edit PCG Config** tab above.
 
@@ -226,7 +234,7 @@ When you install the gateway, a cloud account is auto-created. To verify the clo
 <Tabs.TabPane tab="Edit PCG Config" key="edit_pcg_config">
 
 
-# Edit PCG Configuration File
+## Edit PCG Configuration File
 
 Use the following steps if you want to edit the PCG configuration file directly.
 
