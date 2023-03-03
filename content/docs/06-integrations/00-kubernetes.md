@@ -16,14 +16,26 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default.
+The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports these cloud types: 
 
-<InfoBox>
+<br />
 
-Only Kubernetes versions 1.19 and above are supported.
+- Amazon Web Services (AWS)
+- Microsoft Azure
+- VMware vSphere
+- Google Cloud Provider (GCP)
+- Openstack
+- MAAS
 
-</InfoBox>
+Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
 
+- Major versions are assessed based on the extent of changes.
+- Minor versions are provided within eight weeks of a new Kubernetes release.
+- Patch versions are provided within four weeks of a new Kubernetes release.
+
+In the period of time following a Kubernetes release, the Kubernetes pack undergoes rigorous vulnerability scans and penetration testing. 
+
+<br />
 
 ## Versions Supported
 
@@ -32,66 +44,7 @@ Only Kubernetes versions 1.19 and above are supported.
 
 <Tabs.TabPane tab="1.26.x" key="k8s_v1.26">
 
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="1.25.x" key="k8s_v1.25">
-
-
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="1.24.x" key="k8s_v1.24">
-
-
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
-
-
-</Tabs.TabPane>
-
-
-<Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
-
-
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
-
-
-</Tabs.TabPane>
-
-
-<Tabs.TabPane tab="1.20.x" key="k8s_v1.20">
-
-
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
-
-
-
-</Tabs.TabPane>
-
-
-
-
-
-
-
-
-</Tabs>
-
-# Prerequisites
+## Prerequisites
 
 
 ## Parameters
@@ -101,7 +54,7 @@ Only Kubernetes versions 1.19 and above are supported.
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | list required one? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -113,12 +66,13 @@ Only Kubernetes versions 1.19 and above are supported.
 
 ## Usage
 
-Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
+Kubernetes 1.26.x allows you to create a ***PersistentVolumeClaim*** from a ***VolumeSnapshot*** across namespaces. Previously, both objects had to be in the same namespace.
 
-- Major versions are assessed based on the extent of changes.
-- Minor versions are provided within 8 weeks of release.
-- Patch versions are provided within 4 weeks of release.
- 
+Kubernetes 1.26 introduces a ``.spec.schedulingGates`` field to Pod's API, to indicate whether the Pod is allowed to be scheduled or not.
+
+For details, refer to [Kubernetes v1.26](https://kubernetes.io/blog/2022/12/09/kubernetes-v1-26-release/)
+
+<br />
 
 #### Example Kubeadm config
 
@@ -181,9 +135,221 @@ kubeadmconfig:
 ```
 
 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.25.x" key="k8s_v1.25">
+
+## Prerequisites
 
 
-original file below
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.24.x" key="k8s_v1.24">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.21.x" key="k8s_v1.21">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.20.x" key="k8s_v1.20">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.19.x" key="k8s_v1.19">
+
+## Prerequisites
+
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
 
 ```yaml
 kubeadmconfig:
@@ -221,6 +387,11 @@ kubeadmconfig:
     - 'echo "Executing postKubeadmCmds"'
 ```
 
+</Tabs.TabPane>
+
+</Tabs>
+
+
 # Troubleshooting
 
 If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses or conflicting CIDR IPs.
@@ -234,6 +405,7 @@ Ensure you have provided a non-overlapping IP address for your pod network in Pa
 
 # Terraform
 
+```
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -244,6 +416,7 @@ data "spectrocloud_pack_simple" "k8s" {
   type = "operator-instance"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
+```
 
 # Resources
 
