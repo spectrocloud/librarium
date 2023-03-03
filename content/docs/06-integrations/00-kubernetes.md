@@ -88,18 +88,6 @@ kubeadmconfig:
       secure-port: "6443"
       anonymous-auth: "true"
       profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
-      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "cipher_suite_here"
     extraVolumes:
       - name: audit-policy
         hostPath: /etc/kubernetes/audit-policy.yaml
@@ -112,26 +100,22 @@ kubeadmconfig:
       terminated-pod-gc-threshold: "25"
       pod-eviction-timeout: "1m0s"
       use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
   scheduler:
     extraArgs:
       profiling: "false"
   kubeletExtraArgs:
     read-only-port : "0"
     event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
     protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
   files:
     - path: hardening/audit-policy.yaml
       targetPath: /etc/kubernetes/audit-policy.yaml
       targetOwner: "root:root"
       targetPermissions: "0600"
   preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    - 'echo "Executing preKubeadmCmds"'
   postKubeadmCommands:
-    'echo "List of post kubeadm commands to be executed"'
+    - 'echo "Executing postKubeadmCmds"'
 ```
 
 
@@ -140,6 +124,14 @@ kubeadmconfig:
 <Tabs.TabPane tab="1.25.x" key="k8s_v1.25">
 
 ## Prerequisites
+
+- Kubernetes version 1.21 Operating Systems:
+
+| Operating System | Kubernetes Version|
+|-----------|-------------|
+| Centos 7.7 |  |
+| Ubuntu 22.04 | 1.25.4, 1.25.6, 1.26.1 |
+| Ubuntu 20.04 | |
 
 
 ## Parameters
@@ -164,7 +156,46 @@ kubeadmconfig:
 
 #### Example Kubeadm config
 
-
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    protect-kernel-defaults: "true"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "Executing preKubeadmCmds"'
+  postKubeadmCommands:
+    - 'echo "Executing postKubeadmCmds"'
+```
 
 
 
@@ -197,7 +228,46 @@ kubeadmconfig:
 
 #### Example Kubeadm config
 
-
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    protect-kernel-defaults: "true"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "Executing preKubeadmCmds"'
+  postKubeadmCommands:
+    - 'echo "Executing postKubeadmCmds"'
+```
 
 </Tabs.TabPane>
 
@@ -258,6 +328,48 @@ kubeadmconfig:
 
 #### Example Kubeadm config
 
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      insecure-port: "0"
+      profiling: "false"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "Executing preKubeadmCmds"'
+  postKubeadmCommands:
+    - 'echo "Executing postKubeadmCmds"'
+```
 
 
 
@@ -267,6 +379,18 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB RAM.
+
+- Operating System (OS) dependencies as listed in the table.
+
+
+| Operating System | Kubernetes Version|
+|-----------|-------------|
+| Centos 7.7 | 1.21.0 to 1.21.8 |
+| Ubuntu 22.04 |  |
+| Ubuntu 20.04 | 1.21.14, 1.21.10 |
+
+
 
 ## Parameters
 
@@ -289,6 +413,49 @@ kubeadmconfig:
 
 
 #### Example Kubeadm config
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      insecure-port: "0"
+      profiling: "false"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "Executing preKubeadmCmds""'
+  postKubeadmCommands:
+    - 'echo "Executing postKubeadmCmds"'
+```
 
 </Tabs.TabPane>
 
@@ -297,6 +464,8 @@ kubeadmconfig:
 ## Prerequisites
 
 
+
+
 ## Parameters
 
 | Parameter | Description | Required (Y/N) |
@@ -319,7 +488,48 @@ kubeadmconfig:
 
 #### Example Kubeadm config
 
-
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      insecure-port: "0"
+      profiling: "false"
+    extraVolumes:
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "Executing preKubeadmCmds"'
+  postKubeadmCommands:
+    - 'echo "Executing postKubeadmCmds"'
+```
 
 
 </Tabs.TabPane>
