@@ -467,13 +467,13 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.0.0
+git checkout v1.0.1
 ```
 
 Change directory to the tutorial code.
 
 ```shell
-cd hello-universe-tf/
+cd terraform/hello-universe-tf/
 ```
 
 Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
