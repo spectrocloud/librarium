@@ -23,7 +23,7 @@ For production environments, we recommend using three nodes. If you initially se
 </InfoBox>
 
 
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation or jump box. You can use the installer on any linux x86-64 system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any linux x86-64 system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
 <br />
 
@@ -68,13 +68,13 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
 - An active [MAAS API](https://maas.io/docs/api-authentication-reference) key in the following format:
 
-  ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]'``
+  ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]``
 
   You can obtain a [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key) from either the MAAS CLI or the UI.
 
   <br />
 
-- The DNS server that the installer will use must be able to resolve the public internet names of the machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***maas***. 
+- The DNS server that the installer will use must be able to resolve the public internet names of machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***.maas***. 
 
     The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
 
@@ -83,21 +83,41 @@ By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod cl
 
 ![Image with arrow pointing from .maas domain to MAAS network that contains installer computer and DNS server](/clusters_maas_maas-dns-setup.png)
 
+
 ## Understand the Gateway Installation Process
 
-The following steps outline the overall process to install the PCG. For detailed steps, refer to [Install the Gateway](/clusters/data-center/maas/install-manage-maas-pcg#installthegateway) below.
+The following steps outline the overall process to install the PCG. 
+
+For detailed steps, refer to the **Install PCG** tab below, which describes a single-step installation that creates the PCG configuration file and installs the PCG.
+
+If you have already installed the PCG and are experiencing issues that you want to fix by editing the PCG configuration file directly, refer to the **Edit PCG Config** tab.
 
 <br />
 
 1. You obtain a pairing code in Palette that you will use later.
 
 
-2. Use the Docker image to start the installation on the installer host. 
+2. Use the Docker image to start the installation on the installer host.
+
+
+3. The installer prompts you for information, including the pairing code you obtained in step **1**. 
+
+
+4. The installer generates the PCG configuration file from information you provide in step **3**.
+
+    <br />
 
     The installer needs access to your Palette account and to one (no HA) or three (HA) machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
     <br />
 
-3. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
+5. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
+
+<br />
+
+
+<Tabs>
+
+<Tabs.TabPane tab="Install PCG" key="install_pcg"> 
 
 
 # Install the Gateway
@@ -123,10 +143,10 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 4. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
 
-5. Copy the pairing code displayed in the instructions section of the page and paste it in a text file. You will input this code when you use the installer. 
+5. Note the pairing code displayed in the Instructions section of the page. You will input this code when you use the installer. 
 
 
-6. Copy the following code snippet to your terminal to invoke the installer.
+6. To invoke the installer, copy the following code snippet to your terminal.
     <br />
 
     ```bash
@@ -148,10 +168,10 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 |**Install Type**| Choose **Private Cloud Gateway**. <br />You can change your selection with the up or down keys.|
 |**Cloud Type**| Choose MAAS.|
 |**Name** | Enter a custom name for the PCG.|
-|**Endpoint** |Enter the Palette endpoint. Example for Palette SaaS portal: ``https://console.spectrocloud.com``. Example for a self-hosted environment: ``https://customername.console.spectrocloud.com``. |
+|**Endpoint** |Enter the Palette endpoint. Example for the Palette SaaS portal: ``https://console.spectrocloud.com``. Example for a self-hosted environment: ``https://customername.console.spectrocloud.com``. |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
-|**Private Cloud Gateway** |Enter the PCG pairing code you noted from the instructions page in step **4**. |
+|**Private Cloud Gateway** |Enter the PCG pairing code you noted from the instructions page in step **5**. |
 
 <br />
 
@@ -173,7 +193,7 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS.``|
+| **API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
 | **API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
@@ -185,8 +205,11 @@ The installer does not work with SSO or Social sign on, as they require a passwo
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
+When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
-The installer requests available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml``
+
+The installer then requests available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the installer. Refer to the **Edit PCG Config** tab above.
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -197,6 +220,71 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
 When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Edit PCG Config" key="edit_pcg_config">
+
+
+# Edit PCG Configuration File
+
+Use the following steps if you want to edit the PCG configuration file directly.
+
+<br />
+
+1. Copy the ``pcg.yaml`` file out of ``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml`` and into ``/tmp`` as follows.
+
+
+```bash
+cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
+```
+
+
+2. Make the necessary changes to the configuration file.
+
+
+3. Before you redeploy the gateway, do the following: 
+
+    <br />
+
+    - Ensure the pairing code in the configuration file is the same as the pairing code displayed in the Private Gateway installation instructions in Palette. To verify the pairing code, click the **Create Private Cloud Gateway** button and select **MAAS**. Note the pairing code and verify it is the same code in the configuration file. 
+
+    <br />
+
+    - If the codes do not match, modify the code in the configuration file so it matches the code displayed in Palette.
+
+<br />
+
+<WarningBox>
+
+Issues can occur with the PCG installation if the pairing code in Palette changes during the time it takes to modify the configuration file. Ensure pairing codes in Palette and the configuration file match before you redeploy the gateway.  
+
+If you stop the installation or it fails due to mismatched pairing codes, the gateway might display as **Pending (unnamed)** on the **Private Cloud Gateways** page. If this happens, delete the gateway and ensure pairing codes in Palette and the configuration file match before redeploying the gateway.
+
+</WarningBox>
+
+<br />
+
+4. To redeploy the gateway, copy the following code snippet to your terminal and provide the gateway configuration file as input.
+
+
+```bash
+docker run -it –rm \
+–net-host \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /tmp:/opt/spectrocloud \
+gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
+-s true \
+-c /opt/spectrocloud/pcg.yaml
+```
+
+The installer requests available bare metal machines in your MAAS environment on which to install the gateway.
+
+If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+</Tabs.TabPane>
+
+</Tabs>
 
 <br />
 
