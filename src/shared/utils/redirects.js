@@ -161,6 +161,18 @@ const redirects = [
     toPath: `/clusters/cluster-management/ssh-keys`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/installer-image`,
+    toPath: `/clusters/edge/install/installer-image`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/native`,
+    toPath: `/clusters/edge/deployment/native`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

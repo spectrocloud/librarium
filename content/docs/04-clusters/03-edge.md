@@ -76,8 +76,8 @@ Palette recommends Virtualized Edge deployment only when the user has a single e
 
 - [Deployment Lifecycle](/clusters/edge/edge-native-lifecycle)
 
-- [Create an Installer Image](/clusters/edge/installer-image)
+- [Create an Installer Image](/clusters/edge/install-deployment/installer-image)
 
-- [Register and Manage Edge Native Clusters](/clusters/edge/native)
+- [Register and Manage Edge Native Clusters](/clusters/edge/deployment/native)
 
 <br />

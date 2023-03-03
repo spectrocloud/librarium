@@ -134,6 +134,8 @@ This page lists the version details of various Palette components with respect t
 
 # Stylus Edge Installer Image Version
 
+The CLIs are compressed and require the usage `upx`
+
 |Palette Release|Stylus Version|
 |--|---|
 |3.2|2.1.0|

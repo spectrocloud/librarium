@@ -79,7 +79,16 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 
 
-4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section.
+4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section. 
+
+<InfoBox>
+
+To learn more about cloud-init stages and how they can be used to customize the installation process, check out the [Cloud Init Stages](/clusters/edge/cloud-init) resource. You should also review the [Edge Install Configuration](/clusters/edge/stylus-reference) resource to review all user-data parameters.
+
+
+</InfoBox>
+
+<br />
 
 
   ```yaml
@@ -113,7 +122,6 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |paletteEndPoint   |Palette Management Server endpoint.|Yes|
 |name|Unique Identifier for the device. This should be globally unique across in  the Palette Management System. If not provided, the id is generated using the serial number of the edge host.|No|
 |registrationURL| Endpoint to the restoration app that can be used for QR code-based automated registration. |No|
-
 |projectUid| The id of the project that will use this Edge device. |No|
 |edgeHostToken| The tenant registration token. Registration tokens allow you to install an Edge device automatically without using the registration URL. |No|
 |tags| Assign any tags you wish to apply to the node. |No|

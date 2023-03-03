@@ -72,6 +72,8 @@ Network settings specific to the network interface of the edge host. You can con
 
 The following is an example of a user-data that is used to customize the edge host installation process.
 
+<br />
+
 ```yaml
 stylus:
   site:
