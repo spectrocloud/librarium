@@ -16,20 +16,20 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Get Started with Palette and Terraform
 
-This tutorial is based on the Terraform source code. It assumes that you have working knowledge of Terraform and have some understanding how clusters work within Palette.
+This tutorial is based on the Terraform source code. It assumes that you have working knowledge of Terraform and have some understanding about how clusters work within Palette.
 
 By the time you complete this tutorial, you will have done the following:
 
-1. Deploy a cluster via Spectro Cloud Terraform provider on Amazon Elastic Kubernetes Service (EKS) with an infrastructure profile. <p></p><br />
-2. Modify a cluster profile to include add-ons and deploy. <p></p><br />
-3. Clean up by destroying the cluster. <p></p><br />
+1. Deployed a cluster via the Spectro Cloud Terraform provider on Amazon Elastic Kubernetes Service (EKS) with an infrastructure profile. <p></p><br />
+2. Modified a Cluster Profile to include add-ons and deploy. <p></p><br />
+3. Cleaned up by destroying the cluster. <p></p><br />
 
 # Tutorial Objectives
 1. Use Terraform to create a Cluster Profile. <p></p><br />
-1. Use Terraform to build and destroy a Cluster in Palette.
+1. Use Terraform to build and destroy a cluster in Palette.
 
 # Prerequisites
-To create a cluster on Palette, the following information is required:<p></p><br />
+To create a cluster with Palette, the following information is required:<p></p><br />
 - [AWS account](https://aws.amazon.com/free) and [credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) (Access key ID, secret key) <p></p><br />
 - [Spectro API Key](/user-management/user-authentication#creatinganapikeyasatenantadmin) (can be retrieved on Palette: Administration/Tenant Settings/API Keys) <p></p><br />
 - Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) ≥ 1.0.x <p></p><br />
@@ -100,7 +100,7 @@ provider "spectrocloud"   {
   aws_ssh_key_name        = "To fill"
   ```
 
-  In the example above, we define in the `dev.tfvars` file variables for a development environment. It contains credentials and cluster specifications such as number of worker nodes and instance type, and so on.
+  In the example above, we define variables in the `dev.tfvars` file for a development environment. It contains credentials and cluster specifications such as number of worker nodes and instance type.
 
   **Note**: A key pair must be created in the desired AWS region.<p></p><br />
 
@@ -108,7 +108,7 @@ provider "spectrocloud"   {
 
   In the `main.tf` file, three submodules are called to create resources on Palette:<p></p><br />
 
-  * **Cloud Accoun**t: It creates and configures the AWS account on Palette using access key id and secret key, it's required for next steps. <p></p><br />
+  * **Cloud Account**: Creates and configures the AWS account on Palette using access key id and secret key, and is required for the next steps. <p></p><br />
 
   ```terraform
   resource "spectrocloud_cloudaccount_aws" "aws-1" {
@@ -128,11 +128,11 @@ provider "spectrocloud"   {
   ```
 <br />
 
-  * **Cluster Profile**: It encapsulates the Kubernetes cluster configuration.
+  * **Cluster Profile**: Defines the Kubernetes cluster configuration.
 
-  Palette uses packs to define layers like OS, CNI plugins, K8s version and storage interface. These packs are retrieved as data sources on Terraform.
+  Palette uses packs to define layers like OS, CNI plugins, K8s version and storage interfaces. These packs are retrieved as data sources by Terraform.
 
-  A Cluster Profile is defined by a set of packs. In the example below, the type is _cluster_, because it's a configuration of a Kubernetes cluster. <p></p><br />
+  A Cluster Profile is defined by a set of packs. In the example below, the type is _cluster_, because it defines a Kubernetes cluster. <p></p><br />
 
   ```terraform
   data "spectrocloud_pack" "amazon-linux-eks" {
@@ -187,7 +187,7 @@ provider "spectrocloud"   {
   ```
 <p></p><br />
 
-  * **Add-on Packs** - On the other hand, a Cluster Profile of type _add-on_ is used to template application configurations, such as Kubeflow. See this example below.
+  * **Add-on Packs** - A Cluster Profile of type _add-on_ is used to template application configurations, such as Kubeflow. See the example below.
 
     <br />
 
@@ -213,7 +213,7 @@ provider "spectrocloud"   {
 
 # Building the Infrastructure
 
-All dependencies between the three submodules are managed in the `main.tf` file automatically by Terraform. It creates a Cloud Account first, then the Cluster Profile, and finally, the Cluster.<p></p><br />
+All dependencies between the three submodules are managed in the `main.tf` file automatically by Terraform. It creates a Cloud Account first, then the Cluster Profile, and finally, a cluster.<p></p><br />
 
 ### Deploy the Cluster
 To provision all resources with Terraform, execute the following commands:<p></p><br />
@@ -230,13 +230,13 @@ To provision all resources with Terraform, execute the following commands:<p></p
 
   ![tf-initializing](/tutorials/tf-tutorial-images/tf-initializing.png "Terraform Initializing")
 
-2. Apply the Terraform code to provision resources. We provide an environment variables file.<p></p><br />
+2. Apply the Terraform code to provision resources. We provide an environment variable file.<p></p><br />
 
   ```
   terraform apply -var-file tfvars/dev.tfvars
   ```
 
-  Terraform will describe the desired resources state. There are three types of provisioning:<p></p><br />
+  Terraform will describe the desired resource state. There are three types of provisioning:<p></p><br />
    * **Add** - A new resource will be created.<p></p><br />
    * **Change** - An existing resource will be updated, one or more attributes will be modified.<p></p><br />
    * **Destroy** - A resource will be deleted.<p></p><br />
@@ -289,4 +289,4 @@ Finally, you can easily tear down all resources and quickly clean up your lab. T
 
 With this quick introduction, you deployed a cluster via the Spectro Cloud Terraform provider on Amazon Elastic Kubernetes. You also modified the cluster and added some packs. Go ahead and try adding and removing other packs.
 
-Don't forget to clean you lab when you're done!
+Don't forget to clean up your lab when you're done!
