@@ -44,11 +44,11 @@ This page lists the version details of various Palette components with respect t
 # Edge Installer CLI Versions
 
 The CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
-The following command unpacks the dowloan binary and assigns the executable bit to the binary.
+The following command unpacks the download binary and assigns the executable bit to the binary. 
 <br />
 
 ```shell
-upx -d ./spectro-cli-linux-amd64 && chmod +x spectro-cli-darwin-amd64
+upx -d ./spectro-cli-linux-amd64 && chmod +x ./spectro-cli-darwin-amd64 && ./spectro-cli-linux-amd64 
 ```
 
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
