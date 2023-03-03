@@ -43,6 +43,14 @@ This page lists the version details of various Palette components with respect t
 
 # Edge Installer CLI Versions
 
+The CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
+The following command unpacks the dowloan binary and assigns the executable bit to the binary.
+<br />
+
+```shell
+upx -d ./spectro-cli-linux-amd64 && chmod +x spectro-cli-darwin-amd64
+```
+
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
 |---|-------|---|--|
 |Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
@@ -132,9 +140,7 @@ This page lists the version details of various Palette components with respect t
 -------
 
 
-# Stylus Edge Installer Image Version
-
-The CLIs are compressed and require the usage `upx`
+# Edge Installer Image Version
 
 |Palette Release|Stylus Version|
 |--|---|
