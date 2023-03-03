@@ -1,7 +1,7 @@
 ---
-title: "Stylus Configuration"
-metaTitle: "Stylus Configuration"
-metaDescription: "Review the available Stylus configuration options."
+title: "Edge Installer Configuration"
+metaTitle: "Edge Installer Configuration"
+metaDescription: "Review the available Edge Installer configuration options."
 hideToC: false
 fullWidth: false
 ---
@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The Stylus installer is configured with a set of default values. 
+The Edge Installer is configured with a set of default values. 
 
 | Parameter | Default |
 | --- | --- |
@@ -22,9 +22,9 @@ The Stylus installer is configured with a set of default values.
 | `Prefix`| `edge`|
 | `PaletteEndpoint`| `api.console.spectrocloud.com`|
 
-The default values assume you are installing the edge host in an environment without a network proxy, do not require remote access to the edge host, and are using Palette SaaS. If you have requirements different from the default values, you must provide Stylus with additional information. 
+The default values assume you are installing the edge host in an environment without a network proxy, do not require remote access to the edge host, and are using Palette SaaS. If you have requirements different from the default values, you must provide the Edge Installer with additional information. 
 
-You can provide Stylus with additional configuration values by using a user-data file. The following table contains all the supported user-data parameters the Stylus installer accepts.
+You can provide the installer with additional configuration values by using a user-data file. The following table contains all the supported user-data parameters the installer accepts.
 
 ## General Parameters
 
@@ -67,20 +67,6 @@ Network settings specific to the network interface of the edge host. You can con
 | `NetworkInterface.Type` | How the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. | 
 | `NetworkInterface.Gateway` | The network gatway IP address. |
 | `NetworkInterface.Nameserver` | The IP address of the DNS nameserver this interface should route requests to.| 
-
-
-<!-- ## Site Status Parameters
-
-| Parameter | Description |
-| --- | --- |
-| `SiteStatus.PaletteEndpoint` | Hubble host | 
-| `SiteStatus.Name` | Name | |
-| `SiteStatus.RegistrationURL` | The URL opeartosedge hosts shoulApp host | 
-| `SiteStatus.AgentVersion` | Agent version |
-| `SiteStatus.Configured` | Indicates if the site is associated with a cluster |
-| `SiteStatus.Connected` | Indicates if the site is able to connect and authenticate with Hubble | 
-| `SiteStatus.Paired` | Indicates if the site has paired with a host device in Hubble |  -->
-
 
 # Example Configuration
 

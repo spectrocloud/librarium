@@ -41,7 +41,7 @@ This page lists the version details of various Palette components with respect t
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
 
-# Stylus CLI Versions
+# Edge Installer CLI Versions
 
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
 |---|-------|---|--|

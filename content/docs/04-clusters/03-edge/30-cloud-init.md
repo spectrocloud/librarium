@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The Edge installation process supports the ability for you to customize the device installation through the usage of cloud-init stages. You can customize the installation during the device install with Stylus and at the operating system (OS) layer by customizing the OS pack. Once Stylus has completed the device installation process, the OS stages take effect during the boot-up process. 
+The Edge installation process supports the ability for you to customize the device installation through the usage of cloud-init stages. You can customize the installation during the device install with Edge Installer and at the operating system (OS) layer by customizing the OS pack. Once Stylus has completed the device installation process, the OS stages take effect during the boot-up process. 
 
 ![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
 
@@ -57,11 +57,11 @@ You can read more about Kairos and cloud-init by reviewing the [Kairo's cloud-in
 
 # Where to Apply Cloud-Init Stages?
 
-You may ask yourself where to use cloud-init stages, as both the Stylus installer and the OS pack support the usage of cloud-init stages. Use the following statements to help guide you your decision making process. 
+You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of cloud-init stages. Use the following statements to help guide you your decision making process. 
 <br />
 
 
-* If you need to apply a set of configurations to a specific site, then use the Stylus user-data and its cloud-init stages to provide site settings to that specific site. 
+* If you need to apply a set of configurations to a specific site, then use the Edge Installer user-data and its cloud-init stages to provide site settings to that specific site. 
 
 
 * If you have common configurations across a fleet of edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
@@ -84,7 +84,7 @@ You can use countless combinations of Stylus and OS cloud-init stages to achieve
 
 ## Stylus User-Data Stages
 
-Use the Stylus user-data to apply specific site configurations to the edge host. 
+Use the Edge Installer user-data to apply specific site configurations to the edge host. 
 
 
 <br />
@@ -186,7 +186,7 @@ stages:
 
 #### Complete Example
 
-This is a Stylus user-data configuration that configures the user `kairos`, and prepares the edge host by providing network settings and adding SSL certificates.
+This is an Endge Installer user-data configuration that configures the user `kairos`, and prepares the edge host by providing network settings and adding SSL certificates.
 
 <br />
 
