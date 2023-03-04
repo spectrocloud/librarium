@@ -25,27 +25,7 @@ This tutorial will teach you how to deploy a cluster with Palette . Yu will lear
 <br />
 <br />
 
-<Tabs>
-
-<Tabs.TabPane tab="UI Workflow" key="UI">
-
-## UI Workflow
-
-## Prerequisites
-
-To complete this tutorial, you will need the following items.
-
-- A Spectro Cloud account. You can [sign up to Palette](https://console.spectrocloud.com/auth/signup) 
-- Basic knowledge about containers.
-- Create a Cloud account ([AWS, Azure, GCP ](#providers))
-- Basic knowledge of the main public cloud platforms
-
-There are no expenses associated with this tutorial as everything shouldn’t exceed the free tier threshold of the cloud providers.
-
-In case, you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
-
-
-## Architecture
+# Architecture 
 
 In this tutorial the creation of a Kubernetes infrastructure is totally transparent and hidden because Palette manages it completely. In fact, Palette will save you all the effort to create the overall infrastructure, allowing to deploy a production-ready infrastructure with few clicks, and to deploy the application.
 
@@ -64,6 +44,31 @@ This is the application architecture you will deploy with this tutorial:
 <br />
 <br />
 
+# Deploy the Cluster and the Application
+
+<Tabs>
+<Tabs.TabPane tab="UI Workflow" key="ui-cluster">
+
+## UI Workflow
+
+Palette supports to create and manage clusters directly from the dashboard, to provide n easy to use way to manage deploys to multiple cloud providers.
+
+<br />
+
+
+## Prerequisites
+
+To complete this tutorial, you will need the following items.
+
+- A Spectro Cloud account. You can [sign up to Palette](https://console.spectrocloud.com/auth/signup) 
+- Basic knowledge about containers.
+- Create a Cloud account ([AWS, Azure, GCP ](#providers))
+- Basic knowledge of the main public cloud platforms
+
+In case, you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
+
+<br />
+
 
 ## Deploy the Environment
 
@@ -74,11 +79,9 @@ From Palette, you will create the cluster and deploy the application. Each clust
 <div id="providers"></div>
 <br />
 <br />
-<br />
 
 <Tabs>
-
-<Tabs.TabPane tab="AWS" key="aws">
+<Tabs.TabPane tab="AWS" key="aws-ui">
 
 ## Create AWS Account
 
@@ -265,7 +268,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Azure" key="azure">
+<Tabs.TabPane tab="Azure" key="azure-ui">
 
 ## Create Azure Account
 
@@ -292,7 +295,7 @@ todo ...
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="GCP" key="gcp">
+<Tabs.TabPane tab="GCP" key="gcp-ui">
 
 ## Create GCP Account
 
@@ -458,79 +461,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 </Tabs.TabPane>
 </Tabs>
-</Tabs.TabPane>
 
-<Tabs.TabPane tab="Terraform" key="terraform">
-
-##  Terraform
-
-Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide consistent CLI workflow support to multiple cloud services.
-
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
-
-If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
-
-
-## Prerequisites
-
-To complete this tutorial, you will need the following items.
-
-- A Spectro Cloud account
-- Basic knowledge about containers.
-- Terraform v1.3.6 or greater
-- Git v2.30.0 or greater 
-- A Spectro Cloud API key. To learn how to create an API key
-
-There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
-
-
-## Architecture 
-
-In this tutorial the creation of a Kubernetes infrastructure is totally transparent and hidden because Palette manages it completely. In fact, Palette will save you all the effort to create the overall infrastructure, allowing to deploy a production-ready infrastructure with few clicks, and to deploy the application.
-
-This is a semplified architecture overview that shows the infrastructure Palette creates for you into the cloud provider you prefer.
-
-![Infrastructure architecture](deploy-k8s-cluster/architecture_infrastructure.png)
-
-<br />
-
-Palette also makes very easy to deploy an application on Kubernetes because it offer all the support to deploy the application from the yaml templates, with no needs to execute commands towards the cluster.
-
-This is the application architecture you will deploy with this tutorial:
-
-![Application architecture](deploy-k8s-cluster/architecture_application.png)
-
-<br />
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="AWS" key="aws">
-
-aws todo...
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Azure" key="azure">
-
-aws todo...
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="GCP" key="gcp">
-
-aws todo...
-
-</Tabs.TabPane>
-
-</Tabs>
-
-
-</Tabs.TabPane>
-
-</Tabs>
-
-<br />
 
 ## Deploy The Application
 
@@ -622,10 +553,78 @@ Click on **Confirm updates** to finalize the modification of the profile and app
 
 <br />
 
+</Tabs.TabPane>
 
-## Validation
+<Tabs.TabPane tab="Terraform" key="terraform-cluster">
 
-Click on **Workloads** on the top of the page:
+##  Terraform
+
+Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide consistent CLI workflow support to multiple cloud services.
+
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
+
+If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
+
+<br />
+
+## Prerequisites
+
+To complete this tutorial, you will need the following items.
+
+- A Spectro Cloud account
+- Basic knowledge about containers.
+- Terraform v1.3.6 or greater
+- Git v2.30.0 or greater 
+- A Spectro Cloud API key. [To learn how to create an API key](https://docs.spectrocloud.com/user-management/user-authentication/#apikey)
+
+<br />
+
+## Deploy the Environment
+
+The following steps will guide you through deploying the cluster infrastructure. You will start with the definition of the cluster profile, then you will create the cluster and launch the provision of the cluster.
+
+With Terraform, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, i.e. AWS, Azure, GCP, and managed through Palette.
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="aws-terraform">
+
+- Configuration File
+- Deploy The Cluster: 
+  - terraform init
+  - terraform validate
+  - terraform plan
+  - terraform apply
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Azure" key="azure-terraform">
+
+azure todo...
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="GCP" key="gcp-terraform">
+
+aws todo...
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
+<br />
+
+
+# Validation
+
+Open the Palette dashboard and click on **Workloads** on the top of the page:
 
 ![Workloads](deploy-k8s-cluster/workloads.png)
 
@@ -634,7 +633,7 @@ This tab opens an overview of the Kubernetes components. From there you can chec
 - select the **Deployment** tab and check for the *hello-universe-deployment* deployment
 - select the **Pods** tab and check for two pods with name *hello-universe-xxxxxx*
 
-Next to the pods name check the pods *ready* information
+Next to the pods name, check the pods *ready* information
 
 Access the application: click on Service button ...
 
@@ -642,7 +641,26 @@ Access the application: click on Service button ...
 <br />
 
 
-## Clean-up
+# Clean-up
+
+<Tabs>
+<Tabs.TabPane tab="UI Workflow" key="ui-clean">
+
+## UI Workflow
+
+todo...
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Terraform" key="terraform-clean">
+
+## Terraform
+
+todo...
+
+</Tabs.TabPane>
+</Tabs>
+
 
 To remove all resources created in this tutorial, begin by navigating to the left **Main Menu** and click on the **Apps** link. For each application, click on the **three-dots Menu** to expand the options menu and click on the **Delete** button. Repeat this process for each application.
 
@@ -664,7 +682,7 @@ Click on **cluster-1** to access its details page. Click on **Settings** from th
 <br />
 
 
-## Next Steps
+# Next Steps
 
 In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files. To learn more about Palette Dev Engine and its capabilities.
 <br />
