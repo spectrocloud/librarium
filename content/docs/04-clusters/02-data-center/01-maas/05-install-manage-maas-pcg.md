@@ -30,7 +30,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 <WarningBox>
 
-The installer does not currently work on running on Apple Silicon..
+The installer does not currently work on running on Apple Silicon.
 
 </WarningBox>
 
@@ -45,8 +45,8 @@ The installer does not currently work on running on Apple Silicon..
 
 - Private cloud gateway IP requirements: <br /><br /> 
     
-    - One IP address available in the MaaS subnet for the PCG for a single-node gateway, or three available IP addresses for a three-node gateway.
-
+    - For a single-node gateway, one IP address available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
+    <br />
 
     - One IP address available in the MaaS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
 
@@ -69,22 +69,28 @@ By default, the MAAS Kubernetes pac uses a pod classless inter-domain routing (C
 
 <WarningBox>
 
-We recommend 100 GiB of storage for PCG nodes, as PCG nodes run out of 60 GoB of storage with prolonged use.
+We recommend 100 GiB of storage for PCG nodes, as nodes can run out of 60 GoB of storage with prolonged use.
 
 </WarningBox>
     
 
-- An active [MAAS API](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
+- An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
 
   ``APn53wz232ZwBMxDp5:MHZIbUp3e4DJTjZEKg:mdEv33WAG536MhNC8mIywNLtjcDTnFAQ``
 
-  For details on how to add an API key for a user, refer to [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
+ For details, refer to the MAAS document on [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
 
   <br />
 
 - The DNS server that the PCG installer will use, must be able to resolve the DNS names of machines that MAAS deploys so it can connect to them. The default setup is to use the MAAS server as the DNS server for any bare metal servers that it deploys. The default MAAS DNS zone is ``.maas``. You can use ``.maas`` or you can use the MAAS web console to create a new DNS zone. When you deploy the PCG and clusters, you can select the desired DNS zone in which DNS name records should be created.
 
-    In the MAAS subnets configuration, you can specify which DNS servers that servers in the MAAS subnet should use. If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
+    In the MAAS subnets configuration, you can specify which DNS servers that servers in the MAAS subnet should use. 
+    
+<WarningBox> 
+
+If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
+
+</WarningBox>
 
     The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) of the server. If you used ``.maas`` as the default DNS zone, the FQDN would be ``machine-hostname.maas``. 
 
@@ -179,7 +185,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 |**Cloud Type**| Choose MAAS.|
 |**Name** | Enter a custom name for the PCG. Example: ``maas-pcg-1``.|
 |**Endpoint** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-|**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
+|**Username** |Enter your Palette username. This is your sign-in email address. Example: ``user1@company.com``. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
 |**Private Cloud Gateway** |Enter the pairing code you noted from the instructions page in step **5**. |
 
@@ -233,13 +239,13 @@ The installer then requests available bare metal machines in your MAAS environme
 
 If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the installer. Refer to the **Edit PCG Config** tab above.
 
-If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) site.
+If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 <br />
 
 ## Validation
 
-Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
+Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways** and ensure the gateway is listed on the **Manage Private Cloud Gateways** page. 
 
 When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
@@ -386,6 +392,7 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 
  - [Install MAAS](https://maas.io/)
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
+ - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
 
 <br />
 

@@ -55,10 +55,10 @@ To deploy a new MAAS cluster:
 8. Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with values defined in the cluster profile.
 
 
-10. Select a domain from the **Domain drop-down Menu** and click **Next**. 
+9. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-11. Configure the master and worker node pools. Enter the values for properties listed in the following tables.
+10. Configure the master and worker node pools. Enter the values for properties listed in the following tables.
 
 <br />
 
@@ -88,9 +88,9 @@ To deploy a new MAAS cluster:
 | Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
 | Rolling update | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options below for more details.|
-| Cloud Configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| Cloud configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
 | Resource pool | The MAAS resource pool from which to select available servers for deployment. |
-| Availability zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
+| Availability Zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 
 #### Rolling Update Options for Node Pools
@@ -102,7 +102,7 @@ To deploy a new MAAS cluster:
 
 
 
-12. You can configure the following cluster management features now if needed, or you can do it later:
+11. You can configure the following cluster management features now if needed, or you can do it later:
 
     - Manage Machines
     - Schedule Scans
@@ -111,12 +111,12 @@ To deploy a new MAAS cluster:
     - Location 
 
 
-13. Review settings and deploy the cluster. 
+12. Review settings and deploy the cluster. 
 
 
 ## Validation
 
-You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page lists all available clusters Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
+You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page lists all available clusters that Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
 
