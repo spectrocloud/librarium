@@ -46,16 +46,13 @@ To deploy a new MAAS cluster:
 5. Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
 
 
-6. Select your cloud account from the **drop-down Menu** and click **Next**.
+6. Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
 
 
 7. Select the cluster profile for your MAAS cluster. 
 
 
 8. Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with values defined in the cluster profile.
-
-
-9. Select a MAAS cloud account and provide placement information.
 
 
 10. Select a domain from the **Domain drop-down Menu** and click **Next**. 
@@ -70,14 +67,14 @@ To deploy a new MAAS cluster:
 
 | Property | Description |
 |-----------|-------------|
-| Name | A descriptive name for the node pool. |
-| Size | Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
+| Node pool name | A descriptive name for the node pool. |
+| Number of nodes in the pool | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
 | Allow worker capability | Select this option to allow workloads to be provisioned on master nodes. |
-| [Labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
+| Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
-| Instance type | The compute instance type to be used for all nodes in the node pool. |
-| Availability Zones | These are multiple, isolated locations within a Region. When you choose one or more availability zones, Palette provides fault tolerance to guard against hardware failures and network failures by provisioning nodes across availability zones if multiple zones are selected. |
-| Disk Size | Specify the required storage size. |
+| Cloud Configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| Resource pool | The MAAS resource pool from which to select available servers deployment.  |
+| Availability Zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 <br />
 
@@ -87,13 +84,13 @@ To deploy a new MAAS cluster:
 | Property | Description |
 |-----------|-------------|
 | Node pool name | A descriptive name for the node pool. |
-| Number of nodes in the pool | Number of VMs to be provisioned for the node pool.|
+| Number of nodes in the pool | Number of nodes to be provisioned for the node pool.|
 | Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
 | Rolling update | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options below for more details.|
-| Instance type | The compute instance type to be used for all nodes in the node pool. |
-| Managed disk | Select a disk and specify the required storage size. |
-| Availability zones | These are multiple, isolated locations within a Region. When you choose one or more availability zones, Palette provides fault tolerance to guard against hardware failures and network failures by provisioning nodes across availability zones if multiple zones are selected. |
+| Cloud Configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| Resource pool | The MAAS resource pool from which to select available servers for deployment. |
+| Availability zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 
 #### Rolling Update Options for Node Pools
@@ -108,9 +105,10 @@ To deploy a new MAAS cluster:
 12. You can configure the following cluster management features now if needed, or you can do it later:
 
     - Manage Machines
-    - Scan Policies
-    - Backup Policies
-    - Review settings and deploy the cluster. 
+    - Schedule Scans
+    - Schedule Backups
+    - Role-based access control (RBAC)
+    - Location 
 
 
 13. Review settings and deploy the cluster. 

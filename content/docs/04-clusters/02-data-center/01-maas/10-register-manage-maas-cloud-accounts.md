@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-When you install the Private Cloud Gateway (PCG), a cloud account is auto-created. You can use this cloud account to create tenant clusters and, if desired, you can create additional cloud accounts. 
+When you install the Private Cloud Gateway (PCG), a cloud account is auto-created in every project in Palette. You can use this cloud account to create clusters at either the tenant or the project level. If desired, you can create additional cloud accounts that reference a specific PCG. 
 
 # Prerequisites
 

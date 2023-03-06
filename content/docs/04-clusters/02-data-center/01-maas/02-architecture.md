@@ -22,7 +22,7 @@ The following are some architectural highlights of bare-metal Kubernetes cluster
 - Palette provides a cloud-like experience for deploying clusters on bare metal servers. The result is increased performance at minimal cost and operational effort.
 
 
-- A Private Cloud Gateway (PCG) that you install into a MAAS cloud using a local installer will facilitate communication between Palette and MAAS. This is necessary because the MAAS control plane is typically not exposed directly to the internet. 
+- A Private Cloud Gateway (PCG) that you install into a MAAS cloud using a local installer will facilitate communication between Palette and MAAS. This is necessary because Palette needs to communicate with a specific MAAS server. However, MAAS environments are typically in a private network without a central endpoint. The PCG provides this endpoint and also wraps the MAAS environment into a cloud account that you can target for cluster deployment in Palette.  
 
 
 - When the PCG is installed, it registers itself with a Palette instance and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.

@@ -30,7 +30,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 <WarningBox>
 
-The installer does not currently work on MacOS.
+The installer does not currently work on running on Apple Silicon..
 
 </WarningBox>
 
@@ -45,40 +45,50 @@ The installer does not currently work on MacOS.
 
 - Private cloud gateway IP requirements: <br /><br /> 
     
-    - One IP address for a single-node gateway or three IP addresses for a three-node gateway.
-    - One IP address for a Kubernetes control plane.
+    - One IP address available in the MaaS subnet for the PCG for a single-node gateway, or three available IP addresses for a three-node gateway.
 
 
-- Sufficient IPs for application workload services, such as Load Balancer services.
+    - One IP address available in the MaaS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
+
+
+- Sufficient available IPs within the configured MaaS subnets.
 
 <WarningBox>
 
-By default, the MAAS Kubernetes pack uses 192.168.0.0/16. Ensure that the Pod classless inter-domain routing (CIDR) range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pac uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
 
 </WarningBox>
 
-- Each node in the PCG cluster requires a machine from MAAS in a ready state, and with the following resources:
+- Each node in the PCG cluster requires a machine from MAAS in a ready state with the following resources:
 
     <br />
 
     - 4 CPUs
-    - 4096 MiB memory
+    - 8192 MiB memory 
     - 60 GiB storage
+
+<WarningBox>
+
+We recommend 100 GiB of storage for PCG nodes, as PCG nodes run out of 60 GoB of storage with prolonged use.
+
+</WarningBox>
     
 
-- An active [MAAS API](https://maas.io/docs/api-authentication-reference) key in the following format:
+- An active [MAAS API](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
 
-  ``[consumer_key], [key], and [secret] tokens: API key = '[consumer_key]:[key]:[secret]``
+  ``APn53wz232ZwBMxDp5:MHZIbUp3e4DJTjZEKg:mdEv33WAG536MhNC8mIywNLtjcDTnFAQ``
 
-  You can obtain a [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key) from either the MAAS CLI or the UI.
+  For details on how to add an API key for a user, refer to [MAAS API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
 
   <br />
 
-- The DNS server that the installer will use must be able to resolve the public internet names of machines that MAAS manages so it can connect to them. MAAS provides a DNS server, and the default zone that it manages is ***.maas***. 
+- The DNS server that the PCG installer will use, must be able to resolve the DNS names of machines that MAAS deploys so it can connect to them. The default setup is to use the MAAS server as the DNS server for any bare metal servers that it deploys. The default MAAS DNS zone is ``.maas``. You can use ``.maas`` or you can use the MAAS web console to create a new DNS zone. When you deploy the PCG and clusters, you can select the desired DNS zone in which DNS name records should be created.
 
-    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) ``machine-hostname.maas``. 
+    In the MAAS subnets configuration, you can specify which DNS servers that servers in the MAAS subnet should use. If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
 
-    As shown in the diagram, a common way to enable this is to ensure the DNS server used by the installer delegates the MAAS domain to the MAAS control plane. Alternatively, configure the installer host to use the MAAS control plane as its DNS server. Ensure that **every** DNS server configured on the installer host can resolve the .maas domain.
+    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) of the server. If you used ``.maas`` as the default DNS zone, the FQDN would be ``machine-hostname.maas``. 
+
+    The diagram shows an example of using an external DNS server for servers that MAAS deploys in addition to a DNS delegation. This ensures all servers in the network can resolve the DNS names of servers deployed by MAAS. Note that it is not required for the DNS records to be accessible from the internet.
 
 
 ![Image with arrow pointing from .maas domain to MAAS network that contains installer computer and DNS server](/clusters_maas_maas-dns-setup.png)
@@ -128,11 +138,11 @@ The following steps will guide you to install the PCG.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. If you have Single or Social Sign-On (SSO) enabled, you will need to disable it temporarily. 
+2. If you have Single or Social Sign-On (SSO) enabled, you will need to use or create a local non-SSO tenant admin account in Palette and use the credentials for that account in step **7**.
 
 <WarningBox>
 
-The installer does not work with SSO or Social sign on, as they require a password. After the PCG is configured and functioning, SSO can be re-enabled.
+The installer does not work with SSO or Social sign on credentials. You must use a username and password from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
 
 </WarningBox>
 
@@ -167,11 +177,11 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 |:-----------------------------|---------------|
 |**Install Type**| Choose **Private Cloud Gateway**. <br />You can change your selection with the up or down keys.|
 |**Cloud Type**| Choose MAAS.|
-|**Name** | Enter a custom name for the PCG.|
-|**Endpoint** |Enter the Palette endpoint. Example for the Palette SaaS portal: ``https://console.spectrocloud.com``. Example for a self-hosted environment: ``https://customername.console.spectrocloud.com``. |
+|**Name** | Enter a custom name for the PCG. Example: ``maas-pcg-1``.|
+|**Endpoint** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: user1@company.com. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
-|**Private Cloud Gateway** |Enter the PCG pairing code you noted from the instructions page in step **5**. |
+|**Private Cloud Gateway** |Enter the pairing code you noted from the instructions page in step **5**. |
 
 <br />
 
@@ -198,16 +208,18 @@ The installer does not work with SSO or Social sign on, as they require a passwo
 
 <br />
 
-8. When the installer prompts you, select the following to configure the MAAS server:
+8. When the installer prompts you, select the appropriate option for each of the following items to define which machines should be selected on the MAAS server for deployment as a PCG:
 
     - Availability Zone
     - Domain
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
+9. Ensure that the MAAS server has one or more machines in the Ready state for the chosen Availability Zone and Resource Pool combination.
+
 When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
-``/opt/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml``
+``/tmp/install-user-defined-MaaS-Gateway_Name-20210805155034/pcg.yaml``
 
 <br />
 
@@ -217,15 +229,17 @@ Due to the Docker volume mount, when you see ``/opt/spectrocloud`` in the instal
 
 </InfoBox>
 
-The installer then requests available bare metal machines in your MAAS environment on which to install the gateway. If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the installer. Refer to the **Edit PCG Config** tab above.
+The installer then requests available bare metal machines in your MAAS environment on which to install the gateway. The ``password`` and ``API key`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, copy the code snippet in step **6** to rerun the installer.
 
-If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+If the deployment fails due to misconfiguration, update the gateway configuration file and rerun the installer. Refer to the **Edit PCG Config** tab above.
+
+If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) site.
 
 <br />
 
 ## Validation
 
-Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways > MAAS** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
+Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways** and verify the gateway is listed on the Manage Private Cloud Gateways page. 
 
 When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
@@ -298,7 +312,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 # Update and Manage the MAAS Gateway
 
-Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification on the gateway.
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the gateway in the **Manage Cloud Gateways** page.
 
 Review the changes in the update notification, and apply the update when you are ready. 
 
