@@ -21,7 +21,7 @@ Prometheus is built around a time-series database that stores metrics data. It u
 
 Prometheus can be used to monitor a wide range of systems and services, including servers, containers, databases, and applications. It can be deployed in a variety of environments, including on-premises, cloud, and hybrid setups.
 
-The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/integrations/prometheus-operator). Review the usage section for more details.
+The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/integrations/prometheus-operator). Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 
 # Versions Supported
