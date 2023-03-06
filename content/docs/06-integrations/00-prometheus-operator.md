@@ -22,7 +22,7 @@ Prometheus is an open-source monitoring system that is designed to collect and a
 
 The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts, and scaling Prometheus instances based on demand. The Operator uses Kubernetes' custom resources to define and manage Prometheus instances and related resources, such as ServiceMonitors, which enable Prometheus to discover and monitor services running in the cluster.
 
-You can use the Prometheus Operator to create a monitoring stack that other host clusters point to and forward metrics to. 
+You can use the Prometheus Operator to create a monitoring stack that other host clusters point to and forward metrics to. Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 <br />
 
@@ -66,6 +66,10 @@ Review the usage section below to learn more about each preset option.
 <br />
 
 ## Usage
+
+Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+
+<br />
 
 #### Email Alerts
 
@@ -596,6 +600,8 @@ data "spectrocloud_pack_simple" "pack-info" {
 ```
 
 # References
+
+- [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
 
 - [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
 
