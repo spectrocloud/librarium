@@ -70,9 +70,9 @@ To deploy a new MAAS cluster:
 | Node pool name | A descriptive name for the node pool. |
 | Number of nodes in the pool | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
 | Allow worker capability | Select this option to allow workloads to be provisioned on master nodes. |
-| Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
+| Additional [labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
-| Cloud Configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| Cloud configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
 | Resource pool | The MAAS resource pool from which to select available servers deployment.  |
 | Availability Zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
@@ -85,7 +85,7 @@ To deploy a new MAAS cluster:
 |-----------|-------------|
 | Node pool name | A descriptive name for the node pool. |
 | Number of nodes in the pool | Number of nodes to be provisioned for the node pool.|
-| Additional [Labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
+| Additional [labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
 | [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
 | Rolling update | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options below for more details.|
 | Cloud configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
@@ -104,9 +104,9 @@ To deploy a new MAAS cluster:
 
 11. You can configure the following cluster management features now if needed, or you can do it later:
 
-    - Manage Machines
-    - Schedule Scans
-    - Schedule Backups
+    - Manage machines
+    - Schedule scans
+    - Schedule backups
     - Role-based access control (RBAC)
     - Location 
 

@@ -92,9 +92,11 @@ If you configure a different DNS server than the MAAS DNS server, you must be su
 
 </WarningBox>
 
-    The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) of the server. If you used ``.maas`` as the default DNS zone, the FQDN would be ``machine-hostname.maas``. 
+<br />
 
-    The diagram shows an example of using an external DNS server for servers that MAAS deploys in addition to a DNS delegation. This ensures all servers in the network can resolve the DNS names of servers deployed by MAAS. Note that it is not required for the DNS records to be accessible from the internet.
+The installer first requests machines from MAAS and then must connect to them. To connect, the installer attempts to use the fully qualified domain name (FQDN) of the server. If you used ``.maas`` as the default DNS zone, the FQDN would be ``machine-hostname.maas``. 
+
+The diagram shows an example of using an external DNS server for servers that MAAS deploys in addition to a DNS delegation. This ensures all servers in the network can resolve the DNS names of servers deployed by MAAS. Note that it is not required for the DNS records to be accessible from the internet.
 
 
 ![Image with arrow pointing from .maas domain to MAAS network that contains installer computer and DNS server](/clusters_maas_maas-dns-setup.png)
@@ -275,7 +277,7 @@ cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
 
     <br />
 
-    - Ensure the pairing code in the configuration file is the same as the pairing code displayed in the Private Gateway installation instructions in Palette. To verify the pairing code, click the **Create Private Cloud Gateway** button and select **MAAS**. Note the pairing code and verify it is the same code in the configuration file. 
+    - Ensure the pairing code in the configuration file is the same as the pairing code displayed in the installation instructions in Palette. To verify the pairing code, click the **Create Private Cloud Gateway** button and select **MAAS**. Note the pairing code and verify it is the same code in the configuration file. 
 
     <br />
 
