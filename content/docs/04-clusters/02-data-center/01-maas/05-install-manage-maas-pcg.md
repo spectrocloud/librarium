@@ -30,7 +30,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 <WarningBox>
 
-The installer does not currently work on running on Apple Silicon.
+The installer does not currently work on MacOS running on Apple Silicon.
 
 </WarningBox>
 
@@ -55,7 +55,7 @@ The installer does not currently work on running on Apple Silicon.
 
 <WarningBox>
 
-By default, the MAAS Kubernetes pac uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
 
 </WarningBox>
 
@@ -84,7 +84,7 @@ We recommend 100 GiB of storage for PCG nodes, as nodes can run out of 60 GoB of
 
 - The DNS server that the PCG installer will use, must be able to resolve the DNS names of machines that MAAS deploys so it can connect to them. The default setup is to use the MAAS server as the DNS server for any bare metal servers that it deploys. The default MAAS DNS zone is ``.maas``. You can use ``.maas`` or you can use the MAAS web console to create a new DNS zone. When you deploy the PCG and clusters, you can select the desired DNS zone in which DNS name records should be created.
 
-    In the MAAS subnets configuration, you can specify which DNS servers that servers in the MAAS subnet should use. 
+    In the MAAS subnets configuration, you can specify which DNS servers those servers in the MAAS subnet should use. 
     
 <WarningBox> 
 
@@ -189,7 +189,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 |**Endpoint** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
 |**Username** |Enter your Palette username. This is your sign-in email address. Example: ``user1@company.com``. |
 |**Password** |Enter your Palette Password. This is your sign-in password.|
-|**Private Cloud Gateway** |Enter the pairing code you noted from the instructions page in step **5**. |
+|**Pairing Code** |Enter the pairing code you noted from the instructions page in step **5**. |
 
 <br />
 
