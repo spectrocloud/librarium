@@ -41,7 +41,10 @@ The Prometheus Operator pack will install an insecure Prometheus server. Refer t
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
-We recommend you create a monitoring stack with a minimum of 4 CPU, 8 GB Memory, and 10 GB of storage. As more agents are deployed keep the following rule of thumb in mind. Add  0.1 CPU,  250 MiB Memory and 5GB of Storage for every Prometheus agent that sends metrics to the monitoring stack.
+
+- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB of Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size - 8 CPU, 16 GB Memory, and 20 GB of Storage. As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack, 0.1 CPU,  250 MiB Memory, and 1 GB storage.
+Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+
 
 ## Enablement
 
