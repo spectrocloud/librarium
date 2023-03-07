@@ -30,10 +30,13 @@ The following sections describe these capabilities in detail:
 * [Cluster Health Alerts](/clusters/cluster-management/health-alerts) - Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive an email when health status of their cluster changes.
 
 
+* [Cluster Monitoring](/clusters/cluster-management/monitoring/deploy-monitor-stack) - Monitor your cluster resources by collecting and reviewing metrics. 
+
+
 * [Compliance Scans](/clusters/cluster-management/compliance-scan) - Perform continuous compliance checks to ensure your clusters are secure, conformant, and compliant.
 
 
-* [OS Patching](/clusters/cluster-management/os-patching) - Automatically apply the most recent security patches to cluster nodes to stay up to date with latest OS patches.
+* [OS Patching](/clusters/cluster-management/os-patching) - Automatically apply the most recent security patches to cluster nodes to stay up to date with the latest OS patches.
 
 
 * [Backup and Restore](/clusters/cluster-management/backup-restore) - Backup your cluster configurations as well as any persistent volumes used by your applications regularly. Choose critical namespaces you would like to back up. Restore as required to new or existing clusters.
@@ -52,7 +55,6 @@ The following sections describe these capabilities in detail:
 
 
 * [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring) - Packs associated with the cluster you are monitoring are displayed with information on the status and the installation progress of the Add-on Packs. The pack statuses appear as gray indicating as an initial onboarding and before deployment status, green representing a successful installation, blue as processing the installation, and red as a failed install and requires attention.
-
 
 * [Web based kubectl](/clusters/cluster-management/palette-webctl#overview) - Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters.
 
