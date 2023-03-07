@@ -16,16 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports these cloud types: 
-
-<br />
-
-- Amazon Web Services (AWS)
-- Microsoft Azure
-- VMware vSphere
-- Google Cloud Provider (GCP)
-- Openstack
-- MAAS
+The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
 
 Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
 
@@ -46,6 +37,17 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
+
+| Operating System | Kubernetes Version|
+|-----------|-------------|
+| Centos 7.7 | ...1.21.0 to 1.21.8 |
+| Ubuntu 22.04 | ...1.22.12 and higher |
+| Ubuntu 20.04 | ...1.21.14 to 1.24.3 |
+| Ubuntu 18.04 | ...1.19.0 to 1.21.8 |
 
 ## Parameters
 
@@ -379,7 +381,7 @@ kubeadmconfig:
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB RAM.
+- A minimum of 4 CPU and 4GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -387,9 +389,9 @@ kubeadmconfig:
 | Operating System | Kubernetes Version|
 |-----------|-------------|
 | Centos 7.7 | 1.21.0 to 1.21.8 |
-| Ubuntu 22.04 | 1.26.1, 1.25.4, 1.25.6, 1.24.3, 1.24.10, 1.23.4, 1.23.9, 1.23.16, 1.22.12 |
-| Ubuntu 20.04 | 1.24.3, 1.24.10, 1.23.4, 1.23.9, 1.23.16, 1.22.7, 1.22.12, 1.21.10, 1.21.14 |
-| Ubuntu 18.04 | 1.19.0 |
+| Ubuntu 22.04 | 1.22.12 and higher |
+| Ubuntu 20.04 | 1.21.14 to 1.24.3 |
+| Ubuntu 18.04 | 1.19.0 to 1.21.8 |
 
 
 
