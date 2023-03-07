@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Manage Clusters
 
-Palette supports several day 2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
+Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, and up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
 
 The following sections describe these capabilities in detail:
 
@@ -27,13 +27,13 @@ The following sections describe these capabilities in detail:
 * [Updates](/clusters/cluster-management/cluster-updates) - Add/remove add-ons; Upgrade versions of the core packs (Kubernetes, CSI, CNI); Upgrade versions of add-on layers (Monitoring, Security, etc.)
 
 
-* [Cluster Health Alerts](/clusters/cluster-management/health-alerts) - Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive an email when health status of their cluster changes.
+* [Cluster Health Alerts](/clusters/cluster-management/health-alerts) - Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive an email when the health status of their cluster changes.
 
 
 * [Cluster Monitoring](/clusters/cluster-management/monitoring/deploy-monitor-stack) - Monitor your cluster resources by collecting and reviewing metrics. 
 
 
-* [Compliance Scans](/clusters/cluster-management/compliance-scan) - Perform continuous compliance checks to ensure your clusters are secure, conformant, and compliant.
+* [Compliance Scans](/clusters/cluster-management/compliance-scan) - Perform continuous compliance checks to ensure your clusters are secure, and compliant.
 
 
 * [OS Patching](/clusters/cluster-management/os-patching) - Automatically apply the most recent security patches to cluster nodes to stay up to date with the latest OS patches.
@@ -42,13 +42,13 @@ The following sections describe these capabilities in detail:
 * [Backup and Restore](/clusters/cluster-management/backup-restore) - Backup your cluster configurations as well as any persistent volumes used by your applications regularly. Choose critical namespaces you would like to back up. Restore as required to new or existing clusters.
 
 
-* [Cost Visibility](/clusters/cluster-management/cloud-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration. Get additional insights into per namespace cost (Usage Cost) calculated based on the amount of resources consumed within the namespace.
+* [Cost Visibility](/clusters/cluster-management/cloud-cost) - Get visibility into the estimated cloud cost for the cluster based on cluster node configuration. Get additional insights into per namespace cost (Usage Cost) calculated based on the number of resources consumed within the namespace.
 
 
 * [Workload Visibility](/clusters/cluster-management/workloads) - Palette provides visibility into the resources running inside workload clusters. These resources are displayed on the cluster details page.
 
 
-* [Node Labels and Taints](/clusters/cluster-management/taints) - You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the recommended approaches such as, nodeSelector, node affinity, etc. all use label selectors to facilitate the selection. Taints allow a node to repel a set of pods for appropriate pod allocation to node pools.
+* [Node Labels and Taints](/clusters/cluster-management/taints) - You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the recommended approaches such as nodeSelector, node affinity, etc. all use label selectors to facilitate the selection. Taints allow a node to repel a set of pods for appropriate pod allocation to node pools.
 
 
 * [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespaced resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette also can define new namespaces for the cluster and manage (remove, assign quota, assign role bindings, etc.) them.
