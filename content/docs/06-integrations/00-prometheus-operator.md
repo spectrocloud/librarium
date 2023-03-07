@@ -62,8 +62,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
-![A view of the pack's preset drawer expanded with radion buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+Additional parameters you should be aware of can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
 
@@ -153,12 +153,12 @@ Check out the [Prometheus Remote Write](https://prometheus.io/docs/practices/rem
 
 The Prometheus Operator pack installs the following dependencies: 
 
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
 * and the service monitors to scrape internal Kubernetes components.
 
 
@@ -266,12 +266,12 @@ You can specify a different object storage to store the Thanos Ruler event data.
 
 The Prometheus Operator pack installs the following dependencies: 
 
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
 * and the service monitors to scrape internal Kubernetes components.
 
 </Tabs.TabPane>
@@ -300,7 +300,7 @@ charts:
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
 Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
-![A view of the pack's preset drawer expanded with radion buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
 
@@ -378,12 +378,12 @@ You can specify a different object storage to store the Thanos Ruler event data.
 
 The Prometheus Operator pack installs the following dependencies: 
 
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
 * and the service monitors to scrape internal Kubernetes components.
 
 
@@ -483,12 +483,12 @@ charts:
 
 The Prometheus Operator pack installs the following dependencies: 
 
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
 * and the service monitors to scrape internal Kubernetes components.
 
 
@@ -566,12 +566,12 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 The Prometheus Operator pack installs the following dependencies: 
 
-* [prometheus-operator](https://github.com/coreos/prometheus-operator)
-* [prometheus](https://prometheus.io/)
-* [alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
-* [grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
 * and the service monitors to scrape internal Kubernetes components.
 
 </Tabs.TabPane>

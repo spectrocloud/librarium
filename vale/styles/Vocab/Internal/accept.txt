@@ -82,3 +82,9 @@ Vercel
 preboot
 operationalize
 passthrough
+htpasswd
+config
+kubeconfig
+addon
+Thanos
+HTTPS
