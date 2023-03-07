@@ -27,6 +27,6 @@ The following are some architectural highlights of bare-metal Kubernetes cluster
 
 - When the PCG is installed, it registers itself with a Palette instance and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-![maas_cluster_architecture.png](/maas_cluster_architecture.png)
+![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.png)
 
 
