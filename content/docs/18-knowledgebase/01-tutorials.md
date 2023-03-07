@@ -15,11 +15,10 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Tutorials
 
-Learn what's possible with Spectro Cloud Palette. These quick instructions introduce the basics to provisioning clusters, workspaces, and more with Spectro Cloud Palette.<p></p><br />
+Learn what's possible with Spectro Cloud Palette. Use these tutorials to help expand your knowledge and become proficient with Palette.
 
 
-[Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial) <p></p>
-[Practice for your CKS Exam with Palette](/knowledgebase/tutorials/cks-tutorial)<p></p>
+[Dev Engine](/knowledgebase/tutorials/dev-engine)
 
 <br />
 
