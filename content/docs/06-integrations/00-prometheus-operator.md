@@ -41,6 +41,10 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
 
 * Kubernetes v1.16 or greater.
 
+
+* The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB of Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size - 8 CPU, 16 GB Memory, and 20 GB of Storage. As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack, 0.1 CPU,  250 MiB Memory, and 1 GB storage.
+Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+
 ## Parameters
 
 The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn) documentation for details.
