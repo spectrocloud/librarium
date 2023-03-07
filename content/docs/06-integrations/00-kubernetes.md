@@ -42,7 +42,7 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 - Operating System (OS) dependencies as listed in the table.
 
 
-| Operating System | Kubernetes Version|
+| Operating System | Kubernetes 1.26.x |
 |-----------|-------------|
 | Centos 7.7 | x |
 | Ubuntu 22.04 | 1.26.1 |
@@ -133,7 +133,7 @@ kubeadmconfig:
 - Operating System (OS) dependencies as listed in the table.
 
 
-| Operating System | Kubernetes Version|
+| Operating System | Kubernetes 1.25.x |
 |-----------|-------------|
 | Centos 7.7 | x |
 | Ubuntu 22.04 | 1.25.4 and higher |
@@ -218,7 +218,7 @@ kubeadmconfig:
 - Operating System (OS) dependencies as listed in the table.
 
 
-| Operating System | Kubernetes Version|
+| Operating System | Kubernetes 1.24.x |
 |-----------|-------------|
 | Centos 7.7 | x |
 | Ubuntu 22.04 | x |
@@ -299,7 +299,7 @@ kubeadmconfig:
 - Operating System (OS) dependencies as listed in the table.
 
 
-| Operating System | Kubernetes Version|
+| Operating System | Kubernetes 1.23.x |
 |-----------|-------------|
 | Centos 7.7 | x |
 | Ubuntu 22.04 | x |
@@ -335,7 +335,12 @@ kubeadmconfig:
 
 ## Prerequisites
 
-
+| Operating System | Kubernetes 1.22.x |
+|-----------|-------------|
+| Centos 7.7 | x |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | 1.22.7 and higher|
+| Ubuntu 18.04 | x |
 
 ## Parameters
 
@@ -415,11 +420,11 @@ kubeadmconfig:
 - Operating System (OS) dependencies as listed in the table.
 
 
-| Operating System | Kubernetes Version|
+| Operating System | Kubernetes 1.21.x|
 |-----------|-------------|
 | Centos 7.7 | 1.21.0 to 1.21.8 |
-| Ubuntu 22.04 | 1.22.12 and higher |
-| Ubuntu 20.04 | 1.21.14 to 1.24.3 |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | 1.21.10 and 1.21.14 |
 | Ubuntu 18.04 | 1.21.0 to 1.21.8 |
 
 
