@@ -128,13 +128,18 @@ kubeadmconfig:
 
 ## Prerequisites
 
-- Kubernetes version 1.21 Operating Systems:
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
 
 | Operating System | Kubernetes Version|
 |-----------|-------------|
-| Centos 7.7 |  |
-| Ubuntu 22.04 | 1.25.4, 1.25.6, 1.26.1 |
-| Ubuntu 20.04 | |
+| Centos 7.7 | x |
+| Ubuntu 22.04 | 1.25.4 and higher |
+| Ubuntu 20.04 | x |
+| Ubuntu 18.04 | x |
+
 
 
 ## Parameters
@@ -208,6 +213,17 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
+
+| Operating System | Kubernetes Version|
+|-----------|-------------|
+| Centos 7.7 | x |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | 1.24.3 and higher |
+| Ubuntu 18.04 | x |
 
 ## Parameters
 
@@ -278,6 +294,17 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
+
+| Operating System | Kubernetes Version|
+|-----------|-------------|
+| Centos 7.7 | x |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | 1.23.4 and higher |
+| Ubuntu 18.04 | x |
 
 ## Parameters
 
@@ -307,6 +334,7 @@ kubeadmconfig:
 <Tabs.TabPane tab="1.22.x" key="k8s_v1.22">
 
 ## Prerequisites
+
 
 
 ## Parameters
