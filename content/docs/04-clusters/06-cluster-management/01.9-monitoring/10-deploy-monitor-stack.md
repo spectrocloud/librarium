@@ -41,6 +41,8 @@ The Prometheus Operator pack will install an insecure Prometheus server. Refer t
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
+We recommend you create a monitoring stack with a minimum of 4 CPU, 8 GB Memory, and 10 GB of storage. As more agents are deployed keep the following rule of thumb in mind. Add  0.1 CPU,  250 MiB Memory and 5GB of Storage for every Prometheus agent that sends metrics to the monitoring stack.
+
 ## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
