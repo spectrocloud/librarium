@@ -57,7 +57,7 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -149,7 +149,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -232,7 +232,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -313,7 +313,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -335,6 +335,10 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
 | Operating System | Kubernetes 1.22.x |
 |-----------|-------------|
 | Centos 7.7 | x |
@@ -349,7 +353,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -436,7 +440,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -500,7 +504,16 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
 
+- Operating System (OS) dependencies as listed in the table.
+
+| Operating System | Kubernetes 1.20.x|
+|-----------|-------------|
+| Centos 7.7 | 1.20.0 and higher |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | x |
+| Ubuntu 18.04 | 1.20.0 and higher |
 
 
 ## Parameters
@@ -510,7 +523,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
@@ -575,6 +588,16 @@ kubeadmconfig:
 
 ## Prerequisites
 
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
+| Operating System | Kubernetes 1.19.x|
+|-----------|-------------|
+| Centos 7.7 | 1.19.0 and higher  |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | x |
+| Ubuntu 18.04 | 1.19.0 and higher |
 
 ## Parameters
 
@@ -583,7 +606,7 @@ kubeadmconfig:
 | pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
 | pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
 | pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags to be set. | any required ones to list? |
+| kubeadmconfig.apiServer.extraArgs | List of additional apiServer flags you can set. | N |
 | kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
 | kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
 | kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
