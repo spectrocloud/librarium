@@ -44,10 +44,11 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 
 | Operating System | Kubernetes Version|
 |-----------|-------------|
-| Centos 7.7 |  |
-| Ubuntu 22.04 |  |
-| Ubuntu 20.04 | 1.26.1 |
-| Ubuntu 18.04 |  |
+| Centos 7.7 | x |
+| Ubuntu 22.04 | 1.26.1 |
+| Ubuntu 20.04 | x |
+| Ubuntu 18.04 | x |
+
 
 ## Parameters
 
@@ -391,7 +392,7 @@ kubeadmconfig:
 | Centos 7.7 | 1.21.0 to 1.21.8 |
 | Ubuntu 22.04 | 1.22.12 and higher |
 | Ubuntu 20.04 | 1.21.14 to 1.24.3 |
-| Ubuntu 18.04 | 1.19.0 to 1.21.8 |
+| Ubuntu 18.04 | 1.21.0 to 1.21.8 |
 
 
 
