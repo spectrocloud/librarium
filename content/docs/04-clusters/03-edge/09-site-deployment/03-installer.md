@@ -11,10 +11,15 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
+# Overview
+
+Spectro Cloud provides an OpenSUSE based edge installer in the form of an ISO out-of-the-box. You can use this installer as it is and just provide your user-data ISO for installation. However you are required to build a custom installer in the following situations:
+
+-
 
 # Create an Install Image
 
-Palette supports two installation methods for edge devices: bare metal or VMware. Choose the preferred installation method and follow the related instructions set to get started. 
+Palette supports two installation methods for edge devices: bare metal or VMware. Choose the preferred installation method and follow the related instructions set to get started.
 
 <br />
 
@@ -26,20 +31,15 @@ Palette supports two installation methods for edge devices: bare metal or VMware
 
 For bare metal edge hosts, creating the Palette edge installer variant involves generating an optical installer image (ISO) which is derived by customizing the default Palette Edge Installer. Site-specific settings, such as the configuration file are included in this image. Customization is performed using the Palette Edge Installer container.
 
-
 ## Prerequisites
 
-* [git](https://git-scm.com/downloads) 2.32.2+ or greater.
+- [git](https://git-scm.com/downloads) 2.32.2+ or greater.
 
+- [Docker](https://www.docker.com/products/docker-desktop/) or similar container build tool.
 
-* [Docker](https://www.docker.com/products/docker-desktop/) or similar container build tool.
-
-
-* A bootable device, such as a USB drive, or a PXE server.
-
+- A bootable device, such as a USB drive, or a PXE server.
 
 ## Create ISO Image
-
 
 1. Download the following git [repository](https://github.com/spectrocloud/pxke-samples).
 
@@ -56,35 +56,33 @@ For bare metal edge hosts, creating the Palette edge installer variant involves 
 3. Create a configuration file titled **user-data.yaml**, and add the configuration settings for the edge device. Review the **readme** file for a sample configuration.
 You can find additional guidance in the [Register and Manage Edge Native Cluster](/clusters/edge/deployment/native#setupdevice) guide.
 
-
 4. Update contents of the file **.installer.env** to customize the following attributes:
 
 <br />
 
-  -  Name of the ISO image to be generated - (Optional - this defaults to pxe-installer if not specified)
+- Name of the ISO image to be generated - (Optional - this defaults to pxe-installer if not specified)
 
         ```shell
         ISO_IMAGE="pxe-installer-custom"
         ```
 
-  -  The version of the Palette Edge Installer agent. Review the [list](/component#stylusedgeinstallerimageversion) of available Edge Installer versions.
+- The version of the Palette Edge Installer agent. Review the [list](/component#stylusedgeinstallerimageversion) of available Edge Installer versions.
 
         ```shell
         INSTALLER_VERSION="2.0.7"
         ```
 
-  - Target Docker image for the installer to generate - (Optional)
+- Target Docker image for the installer to generate - (Optional)
 
       ```shell
       IMAGE_NAME="gcr.io/my-repo/palette-edge-installer"
       ```
 
-  - Path to the configuration file that contains site settings.
+- Path to the configuration file that contains site settings.
 
       ```shell
       USER_DATA_FILE="user-data.yaml”
       ```
-
 
 5. Build the custom ISO. The creation process will take a few minutes depending on your system capabilities.
 
@@ -92,7 +90,7 @@ You can find additional guidance in the [Register and Manage Edge Native Cluster
   ./build-installer.sh
   ```
 
-  Output: 
+  Output:
     ```text
     ./build-installer.sh
     + source .installer.env
@@ -116,11 +114,9 @@ You can find additional guidance in the [Register and Manage Edge Native Cluster
     ISO image produced: 161394 sectors
     Written to medium : 161424 sectors at LBA 48
     Writing to '/cOS/p6os-custom.iso' completed successfully
-    ```
-
+```
 
 6. Locate the ISO file in the root directory. Using a bootable USB drive, PXE server, or other means, mount the ISO to the primary drive of the bare metal appliance. The installer flashes to the edge host's hard disk, and the host will shut down. The bare metal edge host appliance is ready to be shipped to the edge location.
-
 
 <InfoBox>
 
@@ -128,13 +124,11 @@ You can use several software tools to create a bootable USB drive, such as [bale
 
 </InfoBox>
 
-
 To deploy the device and register it with Palette, refer to the [Register and Manage Edge Native Clusters](/clusters/edge/deployment/native) guide.
-
 
 ## Validation
 
-You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process. 
+You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 
 </Tabs.TabPane>
 
@@ -142,29 +136,25 @@ You can validate that the ISO image is not corrupted by attempting to flash a bo
 
 ## VMware
 
-Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer ISO for VMware environments by injecting customized settings (user data) through a secondary drive. 
+Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer ISO for VMware environments by injecting customized settings (user data) through a secondary drive.
 
 ## Prerequisites
 
-* mkisofs, or genisoimage, or similar ISO management software.
+- mkisofs, or genisoimage, or similar ISO management software.
 
+- cdrtools or [wodim](https://cygwin.com/packages/summary/wodim.html) for Windows
 
-* cdrtools or [wodim](https://cygwin.com/packages/summary/wodim.html) for Windows
-
-
-* Access to vSphere.
+- Access to vSphere.
 
 ## Create OVA Image
 
-
-1. Create a file called **user-data**. 
+1. Create a file called **user-data**.
 
   ```shell
   touch user-data
   ```
 
 2. Use the content from the template in the [Set up Device section](/clusters/edge/deployment/native#setupdevice) to add your site configuration. Make the necessary changes for your environment.
-
 
 2. Create an empty **meta-data** file:
 
@@ -175,54 +165,42 @@ Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer
 3. Create a cloud init ISO using the following command.
 
   MacOS/Linux:
+
   ```
   mkisofs -output ci.iso -volid cidata -joliet -rock user-data meta-data
   ```
 
   Windows:
+
   ```
   genisoimage -output ci.iso -volid cidata -joliet -rock user-data meta-data
   ```
-This generates an ISO file called ci.iso in the current directory.
 
+This generates an ISO file called ci.iso in the current directory.
 
 4. Upload the **ci.iso** file generated in the previous step to a datastore in vSphere using the vCenter console.
 
-
 5. Log in to [Palette](https://console.spectrocloud.com).
 
-
-6. Navigate to the left **Main Menu** and select **Clusters**. 
-
+6. Navigate to the left **Main Menu** and select **Clusters**.
 
 7. Click on the **Edge Hosts** tab. In the **Edge Hosts** tab, click **Download Palette Edge Installer**. This downloads the default Palette Edge Installer image (ISO).
 
-
 8. Upload Palette Edge Installer ISO to a datastore in vSphere using the vCenter console.
-
-
 
 9. Create a new VM using the vCenter console. Add two CD drives to this VM and select the Palette Edge installer ISO for one of them and the **ci.iso** file for the other.
 
-
 10. Select other settings, such as Network, Datastore, or Folder as appropriate for your environment.
-
-
 
 11. Power on the VM and monitor the VM console for log messages. The installer and user data will be copied to the hard disk, and the VM will shut down.
 
-
 13. Power off the VM.
-
 
 14. Edit the VM settings and delete the two CD drives that were previously attached.
 
-
 15. Export the VM as an OVF template.
 
-
 The OVA file is ready to ship to various edge locations for installation.
-
 
 ## Validation
 
@@ -230,16 +208,13 @@ You can validate the OVA file by using the [ovftool](https://developer.vmware.co
 
 1. Open a terminal window.
 
-
 2. Run the following command. Replace the path with the path to your OVA file.
 
   ```
   ovftool path/to/ova/file.ova
   ```
 
-
 3. Wait for the tool to validate the OVA file. If there are any errors or warnings, they will be displayed in the terminal.
-
 
 </Tabs.TabPane>
 
