@@ -161,7 +161,7 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 
 3. Fill out the following details:
   * Namespace: Select the namespace.
-  * Role Type: The type of role. You specify either a role or cluster role.
+  * Role Type: The type of role. You can specify either a role or a cluster role.
   * Role Name: Define a custom role name to identify the cluster role
   * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
@@ -169,7 +169,7 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 
 <InfoBox>
 
-A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding.
+In Kubernetes, a RoleBinding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
 
 </InfoBox>
 
