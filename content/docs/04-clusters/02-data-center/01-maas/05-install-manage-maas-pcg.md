@@ -48,10 +48,10 @@ The installer does not currently work on MacOS running on Apple Silicon.
     - For a single-node gateway, one IP address available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
     <br />
 
-    - One IP address available in the MaaS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
+    - One IP address available in the MAAS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
 
 
-- Sufficient available IPs within the configured MaaS subnets.
+- Sufficient available IPs within the configured MAAS subnets.
 
 <WarningBox>
 
