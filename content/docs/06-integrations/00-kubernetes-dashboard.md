@@ -28,7 +28,7 @@ Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-mana
 
 </InfoBox>
 
-An version of this pack is available, Spectro Kubernetes Dashboard, which requires no configuration when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
+A user-friendly version of this pack is available, Spectro Kubernetes Dashboard, which requires minimal configurations when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
 
 <br />
 
@@ -135,7 +135,7 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklR
 
 * **LoadBalancer Service Type**
 
-Use the LoadBalancer service ip and port to connect to the Dashboard.
+Use the LoadBalancer service IP and port to connect to the Dashboard.
 
 # Ingress
 
@@ -145,9 +145,9 @@ The following steps guide you to configure ingress in the Kubernetes Dashboard p
 2. To enable ingress, set the `enabled` parameter to "true".
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or ip format using the ip address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
 
-Typically you would point a DNS CNAME record to the ingress controller ip. Talk to your system administrator to learn more about which hostname to use. 
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use. 
 
 ## Troubleshooting
 
