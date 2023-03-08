@@ -38,6 +38,9 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
+
+- User needs to be added to the Cluster RBAC separately to get access to the cluster Objects. Refer https://docs.spectrocloud.com/clusters/cluster-management/cluster-rbac#configureclusterrolebindings to set the Cluster level RBAC permissions **
+
 ## Parameters
 
 The Spectro Kubernetes Dashboard supports the following parameters. 
@@ -98,13 +101,11 @@ The default setting is **Palette**.
 
 <br />
 
-- **Palette**: No configuration is needed. This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
+- **Palette**: This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources can log into the Kubernetes dashboard.
 
 - **Inherit from Organization**: This setting requires you to configure OpenID Connect (OIDC) in Tenant Settings. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide. 
 
 - **None**: This setting requires you to configure OIDC manually in the Kubernetes pack.
-
-**Note: User needs to be added to the Cluster RBAC seperately in order to get access to the cluster Objects. Refer https://docs.spectrocloud.com/clusters/cluster-management/cluster-rbac#configureclusterrolebindings to set the Cluster level RBAC permissions **
 
 ### Manually Configure OIDC
 
