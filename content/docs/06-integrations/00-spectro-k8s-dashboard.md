@@ -104,6 +104,8 @@ The default setting is **Palette**.
 
 - **None**: This setting requires you to configure OIDC manually in the Kubernetes pack.
 
+**Note: User needs to be added to the Cluster RBAC seperately in order to get access to the cluster Objects. Refer https://docs.spectrocloud.com/clusters/cluster-management/cluster-rbac#configureclusterrolebindings to set the Cluster level RBAC permissions **
+
 ### Manually Configure OIDC
 
 You only need to configure OIDC manually if you change the **Identity Provider** setting to **None**. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
