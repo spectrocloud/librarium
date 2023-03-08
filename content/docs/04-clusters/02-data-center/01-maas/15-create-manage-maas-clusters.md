@@ -58,48 +58,7 @@ To deploy a new MAAS cluster:
 9. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-10. Configure the master and worker node pools. Enter the values for properties listed in the following tables.
-
-<br />
-
-
-#### Master Node Pool
-
-| Property | Description |
-|-----------|-------------|
-| Node pool name | A descriptive name for the node pool. |
-| Number of nodes in the pool | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
-| Allow worker capability | Select this option to allow workloads to be provisioned on master nodes. |
-| Additional [labels](/clusters/cluster-management/taints#overviewonlabels) | Labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
-| [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
-| Cloud configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
-| Resource pool | The MAAS resource pool from which to select available servers deployment.  |
-| Availability Zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
-
-<br />
-
-
-#### Worker Node Pool
-
-| Property | Description |
-|-----------|-------------|
-| Node pool name | A descriptive name for the node pool. |
-| Number of nodes in the pool | Number of nodes to be provisioned for the node pool.|
-| Additional [labels](/clusters/cluster-management/taints#overviewonlabels) | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. |
-| [Taints](/clusters/cluster-management/taints#overviewontaints) | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. |
-| Rolling update | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options below for more details.|
-| Cloud configuration | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
-| Resource pool | The MAAS resource pool from which to select available servers for deployment. |
-| Availability Zones | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
-
-
-#### Rolling Update Options for Node Pools
-
-| Property | Description |
-|-----------|-------------|
-| Expand First | Palette launches a new node first, then shuts down the old node before providing updates. |
-| Contract First | Palette shuts down the old node first, then launches a new node before providing updates.|
-
+10. Configure the master and worker node pools. Review the [Node Pool management](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) page to learn more.
 
 
 11. You can configure the following cluster management features now if needed, or you can do it later:
@@ -118,7 +77,7 @@ To deploy a new MAAS cluster:
 
 You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page lists all available clusters that Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
-
+<br />
 
 # Delete a MAAS Cluster
 
@@ -141,6 +100,7 @@ Follow these steps to delete a MAAS cluster.
 
 The cluster status is updated to **Deleting** while cluster resources are being deleted. When all resources are successfully deleted, the cluster status is updated to **Deleted** and the cluster is removed from the list. The delete operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are removed.
 
+<br />
 
 ## Force Delete a Cluster
 
