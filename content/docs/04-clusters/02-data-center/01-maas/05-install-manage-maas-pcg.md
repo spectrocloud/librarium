@@ -376,11 +376,7 @@ Two new nodes will be created in the cluster.
 
 ## Validation
 
-You can validate your your PCG has been resized by reviewing the **Private Cloud Gateways** page. Select your gateway to display the **Gateway Overview** page and ensure the number of nodes shows **3**.
-
-OR??
-
-You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Click the **three-dot Menu** for the gateway instance you resized and choose **Set number of nodes**. Ensure the **Number of Nodes** radio button for **3** nodes is enabled.
+You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
 
 <br />
 
