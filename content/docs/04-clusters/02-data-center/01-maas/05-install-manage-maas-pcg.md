@@ -14,16 +14,8 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 # Overview 
 
 The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. You can set up the cloud gateway as a single-node or three-node cluster based on your requirements for high availability (HA).  
-<br />
 
-<InfoBox>
-
-For production environments, we recommend using three nodes. If you initially set up the gateway with one node, you can resize it at a later time. 
-
-</InfoBox>
-
-
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any linux x86-64 system that has a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
+Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
 <br />
 
@@ -40,7 +32,7 @@ The installer does not currently work on MacOS running on Apple Silicon.
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- A linux computer with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on a linux system. We have tested the gateway installation using Ubuntu 20.04 on x86-64.
+- A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
 - Private cloud gateway IP requirements: <br /><br /> 
@@ -67,12 +59,8 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
     - 8192 MiB memory 
     - 60 GiB storage
 
-<WarningBox>
+    For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
 
-We recommend 100 GiB of storage for PCG nodes, as nodes can run out of 60 GoB of storage with prolonged use.
-
-</WarningBox>
-    
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
 
@@ -223,7 +211,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
-9. Ensure that the MAAS server has one or more machines in the Ready state for the chosen Availability Zone and Resource Pool combination.
+9. Ensure the MAAS server has one or more machines in the **Ready** state for the chosen Availability Zone and Resource Pool combination.
 
 When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
@@ -233,7 +221,7 @@ When you have entered all the configuration values, the installer saves the gate
 
 <InfoBox>
 
-Due to the Docker volume mount, when you see ``/opt/spectrocloud`` in the installer logs, it actually refers to ``/tmp`` on the machine running the installer.
+The ``/opt/spectrocloud`` folder is volume mapped to the ``/tmp`` folder on the host machine.
 
 </InfoBox>
 
@@ -360,7 +348,13 @@ For production environments, we recommend setting up three nodes.
 
 </InfoBox>
 
+## Prerequisites
 
+- Each PCG node requires the following: 
+
+    - 4 CPUs
+    - 8192 MiB memory
+    - 60 GiB storage
 
 Follow these steps to resize a single-node gateway to three nodes.
 
@@ -378,6 +372,15 @@ Follow these steps to resize a single-node gateway to three nodes.
 4. Change the number of nodes to 3.
 
 Two new nodes will be created in the cluster.
+
+
+## Validation
+
+You can validate your your PCG has been resized by reviewing the **Private Cloud Gateways** page. Select your gateway to display the **Gateway Overview** page and ensure the number of nodes shows **3**.
+
+OR??
+
+You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Click the **three-dot Menu** for the gateway instance you resized and choose **Set number of nodes**. Ensure the **Number of Nodes** radio button for **3** nodes is enabled.
 
 <br />
 
