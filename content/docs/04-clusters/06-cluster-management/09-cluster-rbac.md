@@ -136,6 +136,13 @@ Select the tab for your specific role scope to learn how to create the appropria
   * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
 
+
+<InfoBox>
+
+In Kubernetes, a RoleBinding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
+
+</InfoBox>
+
 4. Click on **Confirm** to save your changes.
 
 A ClusterRoleBinding will be created in your host cluster. Keep in mind that you can assign multiple subjects to a ClusterRoleBinding.
