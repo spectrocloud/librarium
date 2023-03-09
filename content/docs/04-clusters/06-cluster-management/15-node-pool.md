@@ -54,10 +54,10 @@ You can create a new node pool for an active cluster. To create a new node pool 
 | **Node pool name** | A descriptive name for the node pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
 | **Allow worker capability** | Select this option to allow workloads to be provisioned on master nodes. |
-| **Additional labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
+| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Cloud configuration** | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
-| **Resource pool** | The MAAS resource pool from which to select available servers deployment.  |
+| **Resource Pool** | The MAAS resource pool from which to select available servers deployment.  |
 | **Availability Zones** | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 
@@ -67,14 +67,14 @@ You can create a new node pool for an active cluster. To create a new node pool 
 |-----------|-------------|
 | **Node pool name** | A descriptive name for the node pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool.|
-| **Additional labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
+| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Rolling update** | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options in the table below for more details.|
 | **Cloud configuration** | Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
 | **Resource pool** | The MAAS resource pool from which to select available servers for deployment. |
 | **Availability Zones** | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
  
-**Note**: Currently we do not support autoscalar for Azure Clusters.
+**Note**: Currently we do not support Autoscaler for Azure clusters.
 
 <br />
 
