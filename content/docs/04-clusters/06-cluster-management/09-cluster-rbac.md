@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 [*RoleBindings*](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) and *ClusterRoleBindings* are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources. Palette provides you the ability to specify bindings to configure granular RBAC rules.
 
-You can configure namespaces and RBAC from within a cluster or from a [Palette Workspace](/workspace) that contains a collection of homogenous clusters that need to be managed as a group. If a host cluster is part of a Palette workspace, then all roleBindings must occur at the namespace level. 
+You can configure namespaces and RBAC from within a cluster or from a [Palette Workspace](/workspace) that contains a collection of like clusters that need to be managed as a group. If a host cluster is part of a Palette workspace, then all roleBindings must occur at the namespace level. 
 
 As you review RBAC support, use the following definitions: 
 
