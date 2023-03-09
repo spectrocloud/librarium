@@ -58,7 +58,21 @@ To deploy a new MAAS cluster:
 9. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-10. Configure the master and worker node pools. Review the [Node Pool management](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) page to learn more.
+10. Configure the master and worker node pools. Fill in the input fields. The following input fields apply to MAAS master and worker node configuration. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page.
+
+#### Master Pool configuration
+
+- **Cloud configuration**: Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
+
+
+- **Resource Pool**: The MAAS resource pool from which to select available servers deployment.
+
+#### Worker Pool configuration
+
+- **Cloud configuration**: Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
+
+
+- **Resource pool**: The MAAS resource pool from which to select available servers for deployment.
 
 
 11. You can configure the following cluster management features now if needed, or you can do it later:
