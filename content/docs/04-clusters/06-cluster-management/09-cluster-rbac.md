@@ -77,7 +77,7 @@ As you review RBAC support, use the following definitions:
 There are many reasons why you may want to create roles and assign permissions to different users or groups. Below are a few common scenarios.
 
 * Use Role and a RoleBinding to scope security to a single Kubernetes namespace.
-* Use Role and a RoleBinding to scope security to several Kubernetes namespace.
+* Use Role and a RoleBinding to scope security to several Kubernetes namespaces.
 * Use ClusterRole and ClusterRoleBinding to scope security to all namespaces.
 
 
@@ -95,22 +95,38 @@ Use the steps below to create a roleBinding or ClusterRoleBinding for your host 
 
 <br />
 
+# Palette Roles and Kubernetes Roles
+
+Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, etc.
+
+The Kubernetes roles are used to control the actions users are allowed to do inside the cluster. For example, a user in Palette could have the *Cluster Profile Viewer* role, which grants them the ability to view cluster profiles for a specific project. In all the clusters in this project, the user could be assigned a role binding to a custom role that grants them administrative access in all the clusters.
+
+In summary, using Palette roles allows you to control what actions users can do in Palette. Use Kubernetes roles to control users' actions inside a host cluster.
+
+<br />
+
+<WarningBox>
+
+Palette roles do not automatically map to a Kubernetes role. You must create a role binding for a specific user or group of users.
+
+</WarningBox>
+
 # Create Role Bindings
 
 ## Prerequisites
 
-To create a roleBinding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
+To create a role binding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
 
 ## Enablement
 
-You can create roleBindings during the cluster creation process or after the host cluster is deployed. 
+You can create role bindings during the cluster creation process or after the host cluster is deployed. 
 
 For a new cluster, you can modify the cluster settings at the end of the cluster creation process. RBAC is one of the cluster settings you can modify. Select **RBAC** from the left **Settings Menu**. 
 
 
 ![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.png)
 
-To create or modify a roleBindings for an active cluster. Navigate to the cluster details page and click on **Settings**. Select **RBAC** from the left **Settings Menu**. 
+To create or modify a role binding for an active cluster. Navigate to the cluster details page and click on **Settings**. Select **RBAC** from the left **Settings Menu**. 
 
 ![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.png)
 
@@ -195,13 +211,13 @@ A role binding will be created in the listed namespaces. Keep in mind that you c
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-3. Select the cluster you created the roleBinding in to view its details page.
+3. Select the cluster you created the role binding in to view its details page.
 
 
 4. Download the **kubeconfig** file for the cluster or use the web shell to access the host cluster.
 
 
-5. Use the following commands to review details about the role and to ensure the roleBinding was succesfull.  
+5. Use the following commands to review details about the role and to ensure the role binding was successful.  
 
 
 #### Cluster Role:
@@ -250,9 +266,9 @@ kubeadmconfig:
     oidc-extra-scope: profile,email,openid
 ```
 
-Next, you can create a roleBinding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
 
-Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a roleBinding for the `dev-east-2` group. 
+Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
 ![A subject of the type group is assigned as the subject in a roleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
 
