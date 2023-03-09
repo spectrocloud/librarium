@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports Single Sign-On (SSO) with a variety of identity provider (IDP). Palette supports the following protocols for authentication and authorization.
+Palette supports Single Sign-On (SSO) with a variety of identity provider (IDP). You can enable SSO in Palette by using the following protocols for authentication and authorization.
 
 
 - Security Assertion Markup Language (SAML) - SAML is a standalone protocol that requires a centralized identity provider (IDP) to manage user identities and credentials. SAML supports SSO and is commonly used for enterprise applications.
