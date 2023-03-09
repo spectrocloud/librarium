@@ -56,7 +56,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 | **Allow worker capability** | Select this option to allow workloads to be provisioned on master nodes. |
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
-| **Availability Zones** | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
+| **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 
 ### Worker Node Pool
@@ -68,7 +68,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Rolling update** | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options in the table below for more details.|
-| **Availability Zones** | The MAAS Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
+| **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
  
 **Note**: Currently Palette does not support Autoscaler for Azure clusters.
 
