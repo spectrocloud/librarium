@@ -130,35 +130,9 @@ You only need to configure OIDC manually if you change the **Identity Provider**
 
 <Tabs.TabPane tab="Basic OIDC Setup" key="Basic OIDC Setup">
 
-
-To configure OIDC manually for clusters managed by most cloud providers, follow these steps: 
-
 <br />
 
-1. Copy ``oidc-`` configuration lines in the following code snippet and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your third-party provider details in quotes. <br /><br />
-
-  ```
-  kubeadmconfig:
-    apiServer:
-      extraArgs:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-  ```
-
-2. Under the ``clientConfig`` parameter section of Kubernetes pack, uncomment the ``oidc-`` configuration lines, and enter your provider details in quotes. The provider URL and client-id must be the same in the ``extraArgs`` and ``clientConfig`` parameter sections. <br /><br />
-
-  ```
-    clientConfig:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-client-secret: client-secret-value
-      oidc-extra-scope: profile,email,openid
-    ```
-
-<br />
-
+Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 </Tabs.TabPane>
 
