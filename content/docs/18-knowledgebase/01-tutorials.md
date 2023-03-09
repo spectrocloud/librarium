@@ -15,10 +15,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Tutorials
 
-Learn what's possible with Spectro Cloud Palette. Use these tutorials to help expand your knowledge and become proficient with Palette.
+Learn what's possible with Spectro Cloud Palette. Use these tutorials to help expand your knowledge and become proficient with Palette. Choose a topic to review the tutorials available.
 
 
 [Dev Engine](/knowledgebase/tutorials/dev-engine)
+
+
 
 <br />
 

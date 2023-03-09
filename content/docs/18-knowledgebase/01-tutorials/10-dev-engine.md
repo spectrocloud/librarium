@@ -5,6 +5,7 @@ metaDescription: ""
 icon: ""
 hideToC: false
 fullWidth: false
+hiddenFromNav: false
 ---
 
 # Apps

@@ -6,7 +6,7 @@ icon: ""
 hideToC: false
 fullWidth: false
 hideToCSidebar: false
-hiddenFromNav: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
