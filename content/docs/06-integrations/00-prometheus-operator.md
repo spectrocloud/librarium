@@ -190,7 +190,7 @@ charts:
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
 Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
-![A view of the pack's preset drawer expanded with radion buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
 
@@ -301,7 +301,7 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+Additional parameters you should be aware of can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
 ![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
@@ -414,8 +414,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
-![A view of the pack's preset drawer expanded with radion buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+Additional parameters you should be aware of can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
 
