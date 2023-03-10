@@ -11,7 +11,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The steps below will teach you how to create a Prometheus agent cluster addon profile. Creating an addon profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this addon profile when deploying a new host cluster, but you can also add the addon profile to an existing cluster to send metrics to the monitoring stack.
+The steps below will teach you how to create a Prometheus agent cluster add-on profile. Creating an add-on profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this add-on profile when deploying a new host cluster, but you can also apply the add-on profile to an existing cluster to send metrics to the monitoring stack.
 
 # Prerequisites
 
@@ -21,7 +21,7 @@ The steps below will teach you how to create a Prometheus agent cluster addon pr
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
-# Create Addon Profile and Deploy Cluster
+# Create Add-on Profile and Deploy Cluster
 
 <Tabs>
 
@@ -36,7 +36,7 @@ The steps below will teach you how to create a Prometheus agent cluster addon pr
 3. Click on **Add Cluster Profile** to create a new cluster profile.
 
 
-4. Provide the cluster profile a name and select the type **Addon**. Click on **Next**.
+4. Provide the cluster profile a name and select the type **Add-on**. Click on **Next**.
 
 
 5. In the following screen, select **Add New Pack**.
@@ -95,10 +95,10 @@ charts:
 14. Pick a cluster profile for your cluster. Click on **Next**.
 
 
-15. The following screens will display all the layers of your cluster profile. You need to add your addon profile to this cluster profile. Click on the **+** button above all the cluster profile layers. A side drawer will appear.
+15. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
 
 
-16. Select the addon profile you created earlier. By selecting the addon profile, you will ensure the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+16. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
 
 
 17. Complete the remainder of the cluster creation process.
@@ -118,7 +118,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 3. Click on **Add Cluster Profile** to create a new cluster profile.
 
 
-4. Provide the cluster profile a name and select the type **Addon**. Click on **Next**.
+4. Provide the cluster profile a name and select the type **Add-on**. Click on **Next**.
 
 
 5. In the following screen, select **Add New Pack**.
@@ -131,7 +131,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
     - **Pack Version**: 19.0.X or newer.
 
 
-7. Review the YAML configuration on the right. Navigate down the file until you find the parameter `url` in the `remoteWrite` section. The `remoteWrite.url` is exposed by the monitoring stack. The Prometheus server URL can be found by reviewing the details of the monitoring stack. Use the URL exposed by the Prometheus service. 
+7. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `url` in the `remoteWrite` section. The `remoteWrite.url` is exposed by the monitoring stack. You can find the Prometheus server URL by reviewing the details of the monitoring stack. Use the URL exposed by the Prometheus service. 
 
     The following image displays the cluster details page of a monitoring stack. Use the URL exposed for port 9090 to populate the `remoteWrite.url` parameter.
 
@@ -141,7 +141,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 
 <WarningBox>
 
-The Prometheus server URL must be in the format of `http://HOST:PORT/api/v1/write`. 
+The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
 Example: `http://example.custom.myCompany.com:9090/api/v1/write`
 
 </WarningBox>
@@ -154,7 +154,7 @@ Example: `http://example.custom.myCompany.com:9090/api/v1/write`
           - url: "http://example.custom.myCompany.com:9090/api/v1/write"
   ```
 
-8. Add the `basic_auth` parameters provided below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created for authenticating with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack#deployamonitoringstack) with authentication guide, then the username is `agent`.
+8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack#deployamonitoringstack) with authentication guide, then the username is `agent`.
 
 <br />
 
@@ -170,7 +170,7 @@ charts:
             password: <PASSWORD>
 ```
 
-8. Confirm your changes by selecting **Confirm & Create**.
+8. Confirm your changes.
 
 
 9. Click on **Next** to review the cluster profile. Save the cluster profile.
@@ -191,15 +191,15 @@ charts:
 14. Pick a cluster profile for your cluster. Click on **Next**.
 
 
-15. The following screens will display all the layers of your cluster profile. You need to add your addon profile to this cluster profile. Click on the **+** button above all the cluster profile layers. A side drawer will appear.
+15. The following screens will display all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
 
 
-16. Select the addon profile you created earlier. By selecting the addon profile, you will ensure the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+16. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
 
 
 17. Complete the remainder of the cluster creation process.
 
-After the cluster deployment process, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
+When you deploy the cluster deployment, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
 
 
 </Tabs.TabPane>
@@ -219,7 +219,7 @@ To validate that the Prometheus agent is successfully installed and sending metr
 3. Select the monitoring stack cluster to review the details page.
 
 
-4. Ensure the cluster is in the status **Running**.
+4. Ensure the cluster is in the **Running** state.
 
 
 5. Click on the exposed service URL for the service **prometheus-operator-kube-prometheus-stack-grafana**. 
@@ -242,4 +242,4 @@ Use the other dashboard created by Platte to learn more about your environment.
 
 # Next Steps
 
-Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. You should also check out the [Grafana tutorials](https://grafana.com/tutorials/) to learn how to create dashboards tailored to your environment.
+Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To  learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).
