@@ -103,7 +103,7 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 10. Next, click on the **Presets** button to expand the options drawer.
 
 
-11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. There are several options you can enable to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
+11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
 
 
 12. Click on **Next** to review the cluster profile and save it.
@@ -181,7 +181,7 @@ When you deploy the cluster, a host cluster with Prometheus will be installed an
 14. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
 
-15. Confirm your changes by selecting **Confirm & Create**. There are several options you can enable to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
+15. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
 
 
 16. Click on **Next** to review the cluster profile and save it.
