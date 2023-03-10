@@ -82,3 +82,8 @@ Vercel
 preboot
 operationalize
 passthrough
+ClusterRole
+ClusterRoleBindings
+RoleBindings
+RoleBinding
+kubeconfig
