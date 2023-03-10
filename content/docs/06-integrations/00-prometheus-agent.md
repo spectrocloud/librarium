@@ -93,7 +93,7 @@ Palette exposes a set of Grafana dashboards by default. You can find the Spectro
 
 The following dashboards are available by default:
 
-- Kubernetes/System/API Server: A view of the resources and status of the Kubernetes cluster that is hosting the Prometheus server.
+- Kubernetes/System/API Server: A view of the resources and status of the Kubernetes cluster hosting the Prometheus server.
 
 
 - Kubernetes/Views/Global: An aggregate view of all the resources used by Kubernetes clusters.
