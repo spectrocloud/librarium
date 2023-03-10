@@ -19,6 +19,14 @@ The network ports for Palette in SaaS mode and on-prem are listed below.
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
+<br />
+
+#### Saas and Edge Hosts
+
+
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
+
+
 The following ports must be reachable from a network perspective for Palette to operate properly.
 
 ## Management Platform
