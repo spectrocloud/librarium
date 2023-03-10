@@ -51,4 +51,4 @@ A database stores structured data electronically for fast search and retrieval. 
 
 ## Available Services
 
-Check out the available service offerings in Palette by visiting the [Service Listings](/devx/app-profile/service-listings) resource.
+Check out the available service offerings in Palette by visiting the [Service Listings](/devx/app-profile/services/service-listings/) resource.
