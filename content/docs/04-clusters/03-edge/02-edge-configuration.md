@@ -13,6 +13,16 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
+
+
+
+The Edge installation can be summarized at a high level  
+
+Use the following diagram to help you understand the Edge installation order of operations.
+
+![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
+
+
 The Edge installation process accepts two types of configurations that you can use to customize the installation:
 
 # Edge OS Configuration
@@ -26,15 +36,6 @@ To make effective use of the Edge Installer, we recommend you review the Edge [i
 # Edge Installer Configuration
 
 The Edge installation process expects certain installation properties which can be supplied in multiple stages. Common instalaltion configuration that applies for all your sites can be supplied during manufacturing or staging phase. Additional site specific configuration can be augmented by the site operator at the site during site installation. The configuration provided in various stages is merged together to create the final configuration for the edge host.
-
-
-# Install Order of Operations
-
-The Edge installation can be summarized at a high level  
-
-Use the following diagram to help you understand the Edge installation order of operations.
-
-![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
 
 # Resources
 
