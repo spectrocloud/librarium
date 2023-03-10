@@ -115,7 +115,6 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |paletteEndPoint   |Palette Management Server endpoint.|Yes|
 |name|Unique Identifier for the device. This should be globally unique across in  the Palette Management System. If not provided, the id is generated using the serial number of the edge host.|No|
 |registrationURL| Endpoint to the restoration app that can be used for QR code-based automated registration. |No|
-
 |projectUid| The id of the project that will use this Edge device. |No|
 |edgeHostToken| The tenant registration token. Registration tokens allow you to install an Edge device automatically without using the registration URL. |No|
 |tags| Assign any tags you wish to apply to the node. |No|
@@ -155,13 +154,9 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |Site Setting Name|Description|Mandatory|
 |-----------------|-----------|---------|
 |network: type|Network type may be `dhcp` or `static`.|Yes|
-
 |network: httpProxy|Proxy is specified and is used for http and https traffic.|No|
-
 |network: nameserver|Configures the default Nameserver for the system.|No|
-
 |network: gateway|Required if static network type is configured. This is the default gateway for all outbound traffic.|Conditional is required if the network type is static.|
-
 |network: ipAddress|required if static network type is configured, this is the IP address the default interface will be configured|Conditional - required  if network type is static|
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
