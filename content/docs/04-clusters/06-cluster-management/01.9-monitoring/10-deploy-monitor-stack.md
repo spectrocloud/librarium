@@ -71,7 +71,7 @@ Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometh
 6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting core infrastructure for the profile, click **Confirm**.
 
 
-7. In the following screen, select **Add New Pack**.
+7. In the next screen that displays, select **Add New Pack**.
 
 
 8. Use the following information to find the Prometheus Operator pack.
@@ -286,4 +286,4 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 # Next Steps
 
-Now that you have a monitoring stack deployed and available in your environment start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to get started.
+Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to get started.

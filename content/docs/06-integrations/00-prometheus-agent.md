@@ -19,7 +19,7 @@ Prometheus is an open-source monitoring and alerting system that is designed to 
 
 Prometheus is built around a time-series database that stores metrics data. It uses a flexible querying language called PromQL to extract and process metrics data. Prometheus also has a powerful alerting system that can be used to send notifications when specific conditions are met.
 
-Prometheus can be used to monitor a wide range of systems and services, including servers, containers, databases, and applications. It can be deployed in a variety of environments, including on-premises, cloud, and hybrid setups.
+Prometheus can be used to monitor a wide range of systems and services, including servers, containers, databases, and applications. It can be deployed in a variety of environments, including on-prem, cloud, and hybrid setups.
 
 The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/integrations/prometheus-operator). Check out the guides [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) and [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
@@ -36,7 +36,7 @@ The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/i
 
 The Prometheus agent supports all the parameters exposed by the Prometheus Helm Chart. Refer to the [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus#configuration) documentation for details.
 
-From a Palette perspective, there is one required parameter you must provide a value:
+From a Palette perspective, you must provide a value for the `remoteWrite.url` parameter shown in the following example.
 
 <br />
 
@@ -48,7 +48,7 @@ charts:
         - url: ""  
 ```
 
-The `remoteWrite.url` is exposed by the [Prometheus Operator pack](/integrations/prometheus-operator) when installed in a cluster. The Prometheus server URL can be found by reviewing the details of the host cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
+The `remoteWrite.url` is exposed by the [Prometheus Operator pack](/integrations/prometheus-operator) when installed in a cluster. You can find the Prometheus server URL by reviewing the details of the host cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
 
 The following image displays a host cluster with the Prometheus Operator pack installed. Use the URL exposed for port 9090 to populate the `remoteWrite.url` parameter.
 
@@ -58,7 +58,7 @@ The following image displays a host cluster with the Prometheus Operator pack in
 
 <WarningBox>
 
-The Prometheus server URL must be in the format of `http://HOST:PORT/api/v1/write`. 
+The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
 Example: `http://a2c938972938b4f0daee5f56edbd40af-1690032247.us-east-1.elb.amazonaws.com:9090/api/v1/write`
 
 </WarningBox>
@@ -81,7 +81,7 @@ charts:
 
 # Usage
 
-The Prometheus agent pack works out of the box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an addon pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
+The Prometheus agent pack works out of the box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
 
 
 Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the details of the host cluster hosting the Prometheus server. Use the URL exposed by the **prometheus-operator-kube-prometheus-stack-grafana** service.
