@@ -36,7 +36,7 @@ As you review RBAC support, use the following definitions:
     verbs: ["get", "watch", "list"]
   ```
 
-- **Cluster Role** An entity that is assigned a set of access permissions scoped to the cluster and all of its Kubernetes namespace. ClusterRoles do not have a namespace assigned.
+- **Cluster Role** An entity that is assigned a set of access permissions scoped to the cluster and all of its Kubernetes namespaces. ClusterRoles do not have a namespace assigned.
 
    <br />
 
@@ -90,14 +90,14 @@ Palette does not provide a way for roles to be configured natively through its p
 </WarningBox>
 
 
-Use the steps below to create a roleBinding or ClusterRoleBinding for your host clusters.
+Use the steps below to create a RoleBinding or ClusterRoleBinding for your host clusters.
 
 
 <br />
 
 # Palette Roles and Kubernetes Roles
 
-Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, etc.
+Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
 
 The Kubernetes roles are used to control the actions users are allowed to do inside the cluster. For example, a user in Palette could have the *Cluster Profile Viewer* role, which grants them the ability to view cluster profiles for a specific project. In all the clusters in this project, the user could be assigned a role binding to a custom role that grants them administrative access in all the clusters.
 
@@ -133,8 +133,8 @@ To create or modify a role binding for an active cluster. Navigate to the cluste
 
 The RBAC settings view contains two tabs:
 
-* **Cluster** Use this tab to create a ClusterRoleBinds.
-* **Namespaces** Use this tab to create a RoleBinding within Kubernetes namespaces.
+* **Cluster**: Use this tab to create a ClusterRoleBinds.
+* **Namespaces**: Use this tab to create a RoleBinding within Kubernetes namespaces.
 
 Select the tab for your specific role scope to learn how to create the appropriate binding.
 
@@ -144,11 +144,11 @@ Select the tab for your specific role scope to learn how to create the appropria
 1. From the cluster settings view, select the **RBAC** tab.
 
 
-2. Click on **Add New Binding**
+2. Click on **Add New Binding**.
 
 
 3. Fill out the following details:
-  * Role Name: Define a custom role name to identify the cluster role
+  * Role Name: Define a custom role name to identify the cluster role.
   * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
 
@@ -170,22 +170,22 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 1. From the cluster settings view, select the **RBAC** tab.
 
 
-2. Click on **Add New Binding**
+2. Click on **Add New Binding**.
 
 
-3. Add the namespace name or provide a regular expression to automatically apply the following settings to other namespaces in the future. Ex: `/^web-app/`. Click on **Add To List**.
+3. Add the namespace name or provide a regular expression to automatically apply the following settings to other namespaces in the future. Example: `/^web-app/`. Click on **Add To List**.
 
 
 4.  Allocate resources to the selected namespace. You can allocate the maximum CPU and Memory the role is allowed to consume from the listed namespaces.
 
 
-5. Click on **Add New Binding**
+5. Click on **Add New Binding**.
 
 
-3. Fill out the following details:
+6. Fill out the following details:
   * Namespace: Select the namespace.
   * Role Type: The type of role. You can specify either a role or a cluster role.
-  * Role Name: Define a custom role name to identify the cluster role
+  * Role Name: Define a custom role name to identify the cluster role.
   * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
 
@@ -237,7 +237,7 @@ kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
 # Use RBAC With OIDC
 
 
-This section explains how RBAC can be used with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters. Azure AKS and AWS EKS require different configurations. 
+This section explains how to use RBAC with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters. Azure AKS and AWS EKS require different configurations. 
 
 Add the following parameters to your Kubernetes pack when creating a cluster profile.
 
