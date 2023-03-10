@@ -88,3 +88,9 @@ kubeconfig
 addon
 Thanos
 HTTPS
+HTTP
+ClusterRole
+ClusterRoleBindings
+RoleBindings
+RoleBinding
+kubeconfig
