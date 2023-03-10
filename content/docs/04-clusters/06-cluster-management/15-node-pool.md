@@ -76,6 +76,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
  
 **Note**: Currently Palette does not support Autoscaler for Azure clusters.
 
+<br />
 
 7. Click on **Confirm** to create the new node pool.
 
