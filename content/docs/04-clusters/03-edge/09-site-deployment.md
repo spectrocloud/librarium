@@ -40,28 +40,31 @@ The deployment of an Edge host contains different options intended to help you i
 
 8. [Create Cluster Definition](/clusters/edge/site-deployment/cluster-deployment)
 
+
+<InfoBox>
+
+In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](/clusters/edge/edge-native-lifecycle) resource, highlighting the various roles involved.
+
+</InfoBox>
+
 # Supported Configurations
 
 Palette offers complete flexibility in deploying clusters at edge sites, with various aspects you can customize. The table below describes these aspects, along with the available options.
 
 | **Parameter**  | **Choices** |
 |-|-|
-| Cluster Mode |  Connected - Site has intenet connectivity and installation is initiated via Palette Management Console<br/> Air-Gapped - Site does not have internet connecttivity. Installation is initiated via Palette CLI tool|
-| OS | Ubuntu<br/>OpenSUSE<br/>Bring your own OS(BYOOS) |
-| K8s Flavor | Palette eXtended K8s for Edge (PXK-E)<br/>Palette Optimized K3s<br/>Palette Optimized RKE2 |
-| K8s Version |1.24.x<br/>1.25.x<br/>1.26.x etc. |
-| FIPS Mode |True - [Describe what FIPS is]<br/>False |
-| Edge Host Registration Mode | Manual - Unique edge host ID manually entered into Palette Management Console <br/>Auto - Edge hosts automaticlally register with Palette Management Console based on registration token supplied part of edge host configuration<br/>QR Code - Advanced setup required. Location to an exernal registration application provided in edge host configuration. Simplifies edge host registration |
-| Edge Host Type - Installer Format | Bare Metal - ISO<br/>Virtual Machine (VMware) - OVA<br/>Virtual Machine (AWS) - AMI |
+| Cluster Mode |  - Connected - The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped - The site does not have internet connectivity. Installation is initiated via the Palette CLI.|
+| OS | - Ubuntu<br/>- OpenSUSE<br/>- Bring your own OS(BYOOS) |
+| K8s Flavor | - Palette eXtended K8s for Edge (PXK-E)<br/>- Palette Optimized K3s<br/>- Palette Optimized RKE2 |
+| K8s Version |- 1.24.x<br/>- 1.25.x<br/>- 1.26.x etc. |
+| FIPS Mode |- True - Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False |
+| Edge Host Registration Mode | - Manual - A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto - Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code - Scan a QR code that takes the user to a web application that registers the Edge host with Palette. This is an advanced setup and simplifies the Edge host registration |
+| Edge Host Type - Installer Format | - Bare Metal - ISO<br/>- Virtual Machine (VMware) - OVA<br/>- Virtual Machine (AWS) - AMI |
 
-Detailed insallation instructions are provided in the following sections. Installation nuances pertaining to specific environments and scenarios based on options described above, will be highlighted through out these sections as applicable.
 
 <br />
 
-<InfoBox>
-In a lab environment, all these steps may be performed by a single user, however in a real world scenario typically these steps will be performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](/clusters/edge/edge-native-lifecycle) resource which highlights various roles involved.
 
-</InfoBox>
 
 <InfoBox>
 
