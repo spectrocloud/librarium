@@ -48,7 +48,7 @@ charts:
         - url: ""  
 ```
 
-The `remoteWrite.url` is exposed by the [Prometheus Operator pack](/integrations/prometheus-operator) when installed in a cluster. You can find the Prometheus server URL by reviewing the details of the host cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
+The `remoteWrite.url` is exposed by the [Prometheus Operator pack](/integrations/prometheus-operator) when installed in a cluster. You can find the Prometheus server URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
 
 The following image displays a host cluster with the Prometheus Operator pack installed. Use the URL exposed for port 9090 to populate the `remoteWrite.url` parameter.
 
@@ -81,10 +81,10 @@ charts:
 
 # Usage
 
-The Prometheus agent pack works out of the box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
+The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
 
 
-Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the details of the host cluster hosting the Prometheus server. Use the URL exposed by the **prometheus-operator-kube-prometheus-stack-grafana** service.
+Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the **prometheus-operator-kube-prometheus-stack-grafana** service.
 
 ![The URL of the service prometheus-operator-kube-prometheus-stack-grafana](/integrations_prometheus-agent_cluster-detail-view-grafana.png)
 
