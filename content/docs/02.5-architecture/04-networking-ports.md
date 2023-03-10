@@ -19,21 +19,22 @@ The network ports for Palette in SaaS mode and on-prem are listed below.
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
+The following ports must be reachable from a network perspective for Palette to operate properly.
+
 ## Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
-|HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
-|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |IN        |Agent running inside connecting to Management Platform|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to Management Platform|
+|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
+|NATS (tcp/4222) |INBOUND        |Agent running inside connecting to Management Platform|
 
 ## Workload Cluster
 
+
 |Port            |Direction | Purpose|
 |:---------------|:---------|:--------------|
-|HTTPS (tcp/6443)|IN        |Kubernetes API Server|
-|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |OUT       |Registry (packs, integrations), Pack containers, Application Updates|
+|NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
 
 # On-Prem Network Communications and Ports
 
@@ -42,16 +43,17 @@ The following diagram maps the network connections between the Palette component
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
 
 
+The following ports must be reachable from a network perspective for Palette to operate properly.
 
 ## Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
-|HTTPS (tcp/443) |IN        |Browser/API access to Management Platform|
-|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |IN        |Message Bus for workload clusters|
-|HTTPS (tcp/443) |OUT       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
-|HTTPS (tcp/6443)|OUT       |Workload K8s cluster API Server|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to Management Platform|
+|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
+|NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
 
 
 ## Workload Cluster
@@ -59,7 +61,5 @@ The following diagram maps the network connections between the Palette component
 
 |Port |Direction | Purpose|
 |:---------------|:---------|:--------------|
-|HTTPS (tcp/6443)|IN        |Kubernetes API Server|
-|SSH (tcp/22)    |IN        |Troubleshooting via SSH (optional) |
-|NATS (tcp/4222) |OUT       |Agent communication via Message Bus |
-|HTTPS (tcp/443) |OUT       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+|NATS (tcp/4222) |OUTBOUND       |Agent communication via Message Bus |
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
