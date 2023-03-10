@@ -17,17 +17,20 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Manage Clusters
 
-Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to keep your clusters secure, compliant, and up-to-date, and perform ongoing management operations like backup/restore. Additionally, you can have visibility into the workloads running inside your cluster and cluster costs. 
+Palette supports several Day-2 operations to manage the end-to-end lifecycle of Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to perform ongoing management operations like backup/restore and to keep your clusters secure, compliant, and up to date. Additionally, Palette gives you visibility into the workloads running inside your cluster and cluster costs. 
+
 
 The following sections describe these capabilities in detail:
 
 * [Reconfigure](/clusters/cluster-management/reconfigure) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type for public clouds). Add additional fault domains such as availability zones to a node pool.
 
 
-* [Updates](/clusters/cluster-management/cluster-updates) - Add/remove add-ons; Upgrade versions of the core packs (Kubernetes, CSI, CNI); Upgrade versions of add-on layers (Monitoring, Security, etc.)
+* [Updates](/clusters/cluster-management/cluster-updates) - Upgrade core packs (OS, Kubernetes, CSI, CNI) and add-on layers, such as Monitoring and Security.
 
 
-* [Cluster Health Alerts](/clusters/cluster-management/health-alerts) - Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive an email when the health status of their cluster changes.
+
+* [Cluster Health Alerts](/clusters/cluster-management/health-alerts) - Palette monitors the health of all workload clusters and raises an alert when the cluster goes to an unhealthy state. Besides displaying the alert on the UI console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up email alerts to receive an email when the health status of their cluster changes.
+
 
 
 * [Cluster Monitoring](/clusters/cluster-management/monitoring/deploy-monitor-stack) - Monitor your cluster resources by collecting and reviewing metrics. 
