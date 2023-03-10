@@ -98,7 +98,7 @@ However, if you change **Access** to **Public** and your cluster is in a private
 
 #### Identity Provider 
 
-All IDP options below require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started the Kubernetes Dashboard and an IDP.
+All IDP options below require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
 
 * You can create a custom role by using a manifest file in your cluster profile and specifying the creation of a Role or ClusterRole. You can also specify the roleBinding in the same manifest file. 
 
