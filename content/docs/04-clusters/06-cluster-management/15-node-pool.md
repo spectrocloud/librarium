@@ -57,29 +57,24 @@ You can create a new node pool for an active cluster. To create a new node pool 
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
+| **Disk Size** | Give the required storage size. |
 
 
 ### Worker Node Pool
 
 | Property | Description |
 |-----------|-------------|
-| **Node pool name** | A descriptive name for the node pool. |
-| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool.|
+| **Node pool name** | A descriptive name for the worker pool. |
+| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. |
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
-| **Rolling update** | There are two available options: **Expand First** and **Contract First**. Review descriptions of these options in the table below for more details.|
+| **Rolling update** |  Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones. |
+| **Instance Option** | AWS options for compute capacity. **On Demand** gives you full control over the instance lifecycle without long-term commitment. **Spot** allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed. |
+| **Instance Type** |The compute size. |
 | **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
+| **Disk Size** | Give the required storage size. |
  
 **Note**: Currently Palette does not support Autoscaler for Azure clusters.
-
-<br />
-
-#### Rolling Update Options for Node Pools
-
-| Property | Description |
-|-----------|-------------|
-| **Expand First** | Palette launches a new node first, then shuts down the old node before providing updates. |
-| **Contract First** | Palette shuts down the old node first, then launches a new node before providing updates.|
 
 
 7. Click on **Confirm** to create the new node pool.

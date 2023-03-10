@@ -61,7 +61,7 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 </InfoBox>
 
-## Setup Device
+## Set up Device
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -72,10 +72,11 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 3. Create a cluster profile of type **infrastructure** or **full** with **Edge Native** as the cloud type by providing the following layers. To learn more about creating a cluster profile, refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) document.
 
-   - Optionally, consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If remote access to the cluster is desired, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
+    - Optionally, consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If remote access to the cluster is desired, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
 
+    <br />
 
-   -  Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+    - Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
 
 
@@ -105,6 +106,7 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
       poweroff: true
   ```
 
+<br />
 
 #### Site
 
@@ -118,14 +120,16 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |edgeHostToken| The tenant registration token. Registration tokens allow you to install an Edge device automatically without using the registration URL. |No|
 |tags| Assign any tags you wish to apply to the node. |No|
 
+<br />
+
 #### Reboot
 
 |Parameter| Description| Required|
 |------------------|------------|----------|
 |reboot   |Reboot the node after installation is complete. Default value is true. |No|
 
-
 #### Stages
+
 |Parameter| Description| Required|
 |------------------|------------|----------|
 |Stages:initramfs|Create OS users, add them to groups, or add additional files/folders using this setting. Example below| No|
@@ -161,6 +165,7 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 |network: ipAddress|required if static network type is configured, this is the IP address the default interface will be configured|Conditional - required  if network type is static|
 |network: mask|required if a static network type is configured, defines the prefix length for addressable network.|Conditional - required  if network type is static|
 
+<br />
 
 7. Register the device. Registration involves adding your edge hosts to Palette and defining a cluster that uses the edge devices to make up a node pool. Once the registration is complete in Palette, the edge host agent comes out of the wait cycle and proceeds to install the cluster. Registration can be performed using one of the following methods.
 
@@ -183,6 +188,8 @@ stylus:
 ```
 
 To create a registration token, use the following steps.
+
+<br />
 
 1. Log into [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -221,6 +228,8 @@ Palette provides a sample serverless application (Palette Edge Registration App)
 
 The following steps are required to facilitate this flow:
 
+<br />
+
 1.  Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to access the GitHub repository that hosts the code for this application and set up automated deployments into the Vercel platform.
 
 
@@ -234,7 +243,6 @@ The following steps are required to facilitate this flow:
 
 
 5. Provide site-specific Virtual IP (VIP) addresses of DNS mapping to be used for the Kubernetes API server for each side.
-
 
 
 6. Compile and test the code locally.
@@ -260,6 +268,7 @@ Take note of the unique edge host id displayed on the device console when the ed
 
 The following steps guide you in registering the device.
 
+<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -270,7 +279,7 @@ The following steps guide you in registering the device.
 3. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-4.  In the **Edge Hosts** tab, click **Add Edge Hosts****.
+4. In the **Edge Hosts** tab, click **Add Edge Hosts****.
 
 
 
@@ -301,26 +310,27 @@ The tag value `name` allows you to set a readable name for the edge host. If pro
 
 ### Create Cluster
 
-8. Click the **Clusters** tab and select **+ Add New Cluster**.
+
+1. Click the **Clusters** tab and select **+ Add New Cluster**.
 
 
 
-9. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette console to access the cluster remotely.
+2. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette console to access the cluster remotely.
 
 
 
-10. Configure cluster properties such as Virtual IP address (VIP) for the edge site and inject SSH keys.
+3. Configure cluster properties such as Virtual IP address (VIP) for the edge site and inject SSH keys.
 
 
 
-11. Configure node pools by adding your edge hosts to the master or worker pools. Successfully registered edge devices are displayed in the *drop-down Menu*.
+4. Configure node pools by adding your edge hosts to the master or worker pools. Successfully registered edge devices are displayed in the **drop-down Menu**.
 
 
 
-12. Review and save the cluster configuration.
+5. Review and save the cluster configuration.
 
 
-After creating the cluster, the Palette Edge Host agent will start the installation by constantly polling Palette for information. You can track installation progress in Palette. The cluster overview page shows a summary of the progress. The *Events* tab displays detailed orchestration logs.
+After creating the cluster, the Palette Edge Host agent will start the installation by constantly polling Palette for information. You can track installation progress in Palette. The cluster overview page shows a summary of the progress. The **Events** tab displays detailed orchestration logs.
 
 
 

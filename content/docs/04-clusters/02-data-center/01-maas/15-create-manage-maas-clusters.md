@@ -58,21 +58,23 @@ To deploy a new MAAS cluster:
 9. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-10. Configure the master and worker node pools. Fill in the input fields. The following input fields apply to MAAS master and worker node configuration. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page.
+10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page. Click **Next** when you are done.
 
-#### Master Pool configuration
+    <br />
 
-- **Cloud configuration**: Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
+    #### Master Pool configuration
 
+    - Cloud configuration:
 
-- **Resource Pool**: The MAAS resource pool from which to select available servers deployment.
+        - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
 
-#### Worker Pool configuration
+    <br />
 
-- **Cloud configuration**: Set the Resource Pool and Availability Zone in MAAS to select available servers from for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
+    #### Worker Pool configuration
 
+    - Cloud configuration:
 
-- **Resource pool**: The MAAS resource pool from which to select available servers for deployment.
+        - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
 
 
 11. You can configure the following cluster management features now if needed, or you can do it later:

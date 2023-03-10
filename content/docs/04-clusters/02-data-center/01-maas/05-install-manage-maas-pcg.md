@@ -55,9 +55,9 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
 
     <br />
 
-    - 4 CPUs
-    - 8192 MiB memory 
-    - 60 GiB storage
+    - CPU: 4
+    - Memory: 8192 MiB 
+    - Storage: 60 GiB
 
     For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
 
