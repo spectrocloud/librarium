@@ -4,6 +4,7 @@ metaTitle: "Palette Edge Deployment"
 metaDescription: "Learn how to deploy Palette Edge."
 hideToC: false
 fullWidth: false
+hiddenFromNav: true
 ---
 
 # Overview

@@ -4,6 +4,7 @@ metaTitle: "Edge Native"
 metaDescription: "Learn about Edge Native and how to deploy an edge device with Palette."
 hideToC: false
 fullWidth: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';

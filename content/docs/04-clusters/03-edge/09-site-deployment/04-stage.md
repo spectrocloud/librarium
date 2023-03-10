@@ -1,5 +1,5 @@
 ---
-title: "Prepare edge hosts for installation"
+title: "Prepare Edge Hosts for Installation"
 metaTitle: "Stage common user-data and prepare edge host for installation"
 metaDescription: "Learn how to prepare edge hosts for installation before shipping them out to site for site installation"
 hideToC: false

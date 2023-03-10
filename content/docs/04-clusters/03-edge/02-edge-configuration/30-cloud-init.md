@@ -11,13 +11,6 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-# Overview
-
-The Edge installation process supports the ability for you to customize the device installation through the usage of cloud-init stages. You can customize the installation during the device install with Edge Installer and at the operating system (OS) layer by customizing the OS pack. Once Stylus has completed the device installation process, the OS stages take effect during the boot-up process. 
-
-![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
-
-
 # Cloud-Init Stages
 
 The installation process supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before locking down the image. 
@@ -64,7 +57,7 @@ You may ask yourself where to use cloud-init stages, as both the Edge Installer 
 * If you need to apply a set of configurations to a specific site, then use the Edge Installer user-data and its cloud-init stages to provide site settings to that specific site. 
 
 
-* If you have common configurations across a fleet of edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
+* If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
 
 # Example Use Cases
 
