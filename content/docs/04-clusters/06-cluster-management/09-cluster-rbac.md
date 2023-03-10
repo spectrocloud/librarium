@@ -51,7 +51,7 @@ As you review RBAC support, use the following definitions:
     verbs: ["get", "watch", "list"]
   ```
 
-- **RoleBinding** associates a subject with a role. A subject can be a user, a group, or a [*ServiceAccount*](https://kubernetes.io/docs/concepts/security/service-accounts/). A RoleBinding is used to grant permissions to a subject. Role and RoleBinding are used to scope a subject to a specific Kubernetes namespace.
+- **RoleBinding** associates a subject with a role. A subject can be a user, a group, or a [*ServiceAccount*](https://kubernetes.io/docs/concepts/security/service-accounts/). Role binding is used to grant permissions to a subject. Role and RoleBinding are used to scope a subject to a specific Kubernetes namespace.
 
   <br />
 
@@ -133,10 +133,10 @@ To create or modify a role binding for an active cluster. Navigate to the cluste
 
 The RBAC settings view contains two tabs:
 
-* **Cluster**: Use this tab to create a ClusterRoleBinds.
+* **Cluster**: Use this tab to create a ClusterRoleBinding.
 * **Namespaces**: Use this tab to create a RoleBinding within Kubernetes namespaces.
 
-Select the tab for your specific role scope to learn how to create the appropriate binding.
+Select the tab for your specific role scope to learn how to create the appropriate role binding.
 
 <Tabs>
 <Tabs.TabPane tab="Assign a Cluster Role" key="clusterRoleBinding">
@@ -155,7 +155,7 @@ Select the tab for your specific role scope to learn how to create the appropria
 
 <InfoBox>
 
-In Kubernetes, a RoleBinding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
+In Kubernetes, a role binding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
 
 </InfoBox>
 
@@ -192,12 +192,12 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 
 <InfoBox>
 
-In Kubernetes, a RoleBinding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
+In Kubernetes, a role binding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
 
 </InfoBox>
 
 
-A role binding will be created in the listed namespaces. Keep in mind that you can assign multiple subjects to a roleBinding or clusterRoleBinding.
+A role binding will be created in the listed namespaces. Keep in mind that you can assign multiple subjects to a RoleBinding or ClusterRoleBinding.
 
 </Tabs.TabPane>
 
@@ -270,7 +270,7 @@ Next, you can create a role binding that uses individual users as the subject or
 
 Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
-![A subject of the type group is assigned as the subject in a roleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
 
 
 In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
