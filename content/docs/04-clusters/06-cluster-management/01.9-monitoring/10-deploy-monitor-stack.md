@@ -1,7 +1,7 @@
 ---
 title: 'Deploy Monitoring Stack'
 metaTitle: 'Deploy Monitoring Stack'
-metaDescription: 'Learn how to setup deploy a monitoring stack in your Palette environment.'
+metaDescription: 'Learn how to deploy a monitoring stack in your Palette environment.'
 hiddenFromNav: false
 ---
 
@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 The monitoring stack you will deploy uses the open-source tool, [Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements. The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment. 
 
-The monitoring stack uses a server-client architecture. The monitoring stack uses the [Prometheus Operator](/integrations/prometheus-operator) pack to deploy all the dependencies the Prometheus server requires. The server will expose an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) pack installed and configured.
+The monitoring stack uses a server-client architecture. The monitoring stack uses the [Prometheus Operator](/integrations/prometheus-operator) pack to deploy all the dependencies the Prometheus server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) pack installed and configured.
 
 Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to the monitoring stack.
 
@@ -29,7 +29,7 @@ We recommend you avoid installing applications in your monitoring stack. The mon
 
 The steps below will deploy a new host cluster with the Prometheus Operator pack. You can add the Prometheus Operator pack to an existing cluster if you already have a host cluster deployed in your environment.
 
-The Prometheus Operator pack will install an insecure Prometheus server by default. Use the With Authentication tab for guidance on how to enable authentication.
+The Prometheus Operator pack will install an unsecure Prometheus server by default. Use the **With Authentication** tab for guidance on how to enable authentication.
 
 
 
@@ -38,7 +38,7 @@ The Prometheus Operator pack will install an insecure Prometheus server by defau
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
 
-- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB of Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size - 8 CPU, 16 GB Memory, and 20 GB of Storage. As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack, 0.1 CPU,  250 MiB Memory, and 1 GB storage.
+- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size - 8 CPU, 16 GB Memory, and 20 GB Storage. As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack, 0.1 CPU,  250 MiB Memory, and 1 GB Storage.
 Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
 
 
@@ -68,7 +68,7 @@ Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometh
 5. Select the infrastructure provider and continue.
 
 
-6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection until you get to the end and you are presented with the **Confirm** button. Confirm your changes to continue.
+6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting core infrastructure for the profile, click **Confirm**.
 
 
 7. In the following screen, select **Add New Pack**.
@@ -82,16 +82,16 @@ Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometh
 
 
 
-9. Review the YAML configuration on the right. Navigate down the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
+9. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
 
 10. Next, click on the **Presets** button to expand the options drawer.
 
 
-11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes by selecting **Confirm & Create**. There are several options you can enable to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
+11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. There are several options you can enable to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
 
 
-12. Click on **Next** to review the cluster profile. Save the cluster profile.
+12. Click on **Next** to review the cluster profile and save it.
 
 
 13. Navigate to the left **Main Menu** and select **Clusters**.
@@ -103,12 +103,12 @@ Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometh
 15. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-16. Go ahead and assign a name to the host cluster and select the registered account you wish to deploy the host cluster. Click on **Next**.
+16. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster to. Click on **Next**.
 
 
 17. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
-After the cluster deployment process, you will have a host cluster with Prometheus installed and ready to receive information from Prometheus agents.
+When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
 
 
 </Tabs.TabPane>
@@ -130,10 +130,10 @@ After the cluster deployment process, you will have a host cluster with Promethe
 5. Select the infrastructure provider and continue.
 
 
-6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection until you get to the end and you are presented with the **Confirm** button. Confirm your changes to continue.
+6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting core infrastructure for the profile, click **Confirm**.
 
 
-7. In the following screen, select **Add New Pack**.
+7. In the next screen that displays, select **Add New Pack**.
 
 
 8. Use the following information to add the NGINX ingress controller pack.
@@ -161,13 +161,13 @@ After the cluster deployment process, you will have a host cluster with Promethe
 13. Scroll down the presets option menu and enable **Remote Monitoring**. 
 
 
-14. Review the YAML configuration. Navigate down the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
+14. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
 
 15. Confirm your changes by selecting **Confirm & Create**. There are several options you can enable to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
 
 
-16. Click on **Next** to review the cluster profile. Save the cluster profile.
+16. Click on **Next** to review the cluster profile and save it.
 
 
 17. Navigate to the left **Main Menu** and select **Clusters**.
@@ -179,7 +179,7 @@ After the cluster deployment process, you will have a host cluster with Promethe
 21. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-22. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster. Click on **Next**.
+22. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster to. Click on **Next**.
 
 
 23. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
@@ -243,7 +243,7 @@ After the cluster deployment process, you will have a host cluster with Promethe
       - example.custom.myCompany.com
   ```
 
-31. Confirm your updates and on the following page click on **Save Changes**.
+31. Confirm your updates on the next screen that displays.
 
 
 32. From the left **Main Menu**, select **Clusters** and access the monitoring stack host cluster.
@@ -262,7 +262,7 @@ After the cluster deployment process, you will have a host cluster with Promethe
 
 # Validation
 
-To validate that the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
+To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -273,7 +273,7 @@ To validate that the monitoring stack is successfully deployed and ready to rece
 3. Select the monitoring stack cluster to review the details page.
 
 
-4. Ensure the cluster is in the status **Running**.
+4. Ensure the cluster is in **Running** state.
 
 
 5. Click on the exposed service URL for the service **prometheus-operator-kube-prometheus-stack-grafana**.
