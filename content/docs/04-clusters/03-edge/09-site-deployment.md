@@ -74,16 +74,25 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 # Resources
 
-- [Model Cluster Profile]
+-  [Model Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
-- [Prepare Edge Configuration as User Data]
 
-- [Build Installer]
+- [Prepare Edge Configuration as User Data](/clusters/edge/site-deployment/prepare-edge-configuration)
 
-- [Site Edge Host Installation]
 
-- [Edge Host Registration]
+- [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle)
 
-- [Cluster Deployment]
 
-- [Cluster Management]
+- [Create an Installer Image](/clusters/edge/site-deployment/installer)
+
+
+- [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+
+
+- [Perform Site Install](/clusters/edge/site-deployment/site-installation)
+
+
+- [Register Edge Host](/clusters/edge/site-deployment/edge-host-registration)
+
+
+- [Create Cluster Definition](/clusters/edge/site-deployment/cluster-deployment)

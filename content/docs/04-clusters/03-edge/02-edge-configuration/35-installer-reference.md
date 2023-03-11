@@ -32,7 +32,7 @@ You can provide the installer with additional configuration values by using a us
 
 # General Parameters
 
-The `stylus.site` blocks accepts the following parameters.
+The `stylus.site` blocks accept the following parameters.
 
 | Parameter | Description | 
 | --- | --- |

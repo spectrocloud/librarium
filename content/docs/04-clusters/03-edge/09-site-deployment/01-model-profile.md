@@ -13,42 +13,104 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-CLuster profiles encapsulate the desried specifications for clusters. The K8s flavor, version, the CNI to use etc. are specified in an Edge Native Infrastructure profile. As with any other environment in Palette, additional add-on cluster proifies can be created to define specifications for integraratoins or applications that need to be deployed on the cluster.
+[Cluster profiles](/cluster-profiles) contain the desired specifications the Kubernetes cluster  Edge host makes up. The cluster profile defines the following components. 
+
+- Kubernetes flavor and version
+
+- Operating system (OS) 
+
+- Container network interface (CNI)
+
+- Container storage interface (CSI)  
+
+You define these components in an Edge Native Infrastructure profile. As with any other environment in Palette, you can define additional add-on cluster profiles. You can use add-on profiles to define integrations or applications that must be included when Palette deploys the cluster.
 
 <br/>
 
 # Profile Scope
 
-Profile may be defined in the tenant scope (requires tenant admin acceess) or the project scope. The choice depends on how you would like to organize your edge deployments. If all of your edge deployments are going to be organized within a single project, then you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the profile in the tenant scope. Profiles defined in the tenant scope can be shared amongst all the projects in that tenant.
+You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
 
-# Create edge native cluster profile
+# Create Edge Native Cluster Profile
+
+Use the following steps to create a cluster profile for Edge hosts.
+
+# Prerequisites
+
+No prerequisites.
+
+# Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Choose the desired project or 'Tenant Admin' on the top left to switch to the desired scope.
 
-![scope-switcher.png](/scope-switcher.png)
+2. Choose the desired scope, project or **Tenant Admin**.
+
+![Select the scope, either project or tenant admin](/clusters_site_deployment_mode-profile_scope-selector.png)
+
+<br />
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
-4. Invoke the cluster profile creation wizard by clicking on  'Add new Profile' button. Provide basic information for the profile such as name, description and version.
 
-5. In the next step select 'Edge Native' as the cloud type.
+4. Click the **Add new Profile** button. 
 
-6. In the profile layers screen, for the OS layer, choose the desired OS type &  OS version. The Bring Your Own OS (BYOOS) option can be chosen for advanced scenarios and it requires additional setup. You can optionallly provide additional cloud-init configruation in the OS pack values for setting up Edge Host Users, installing additional OS packages, installing certificates etc. Following is an example of such configuration.
 
-7. For the Kubernetes layer choose the desired K8s Flavor & K8s Version.
+5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on **Next**.
 
-8. For the CNI layer choose the desired CNI Type & CNI Version.
 
-9. Review and save your cluster profile.
 
-10. Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If remote access to the cluster is desired, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
+6. Select **Edge Native** as the cloud type and click on **Next**.
 
-11. Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+
+
+7. In the profile layers screen, for the OS layer, choose the desired OS type and  OS version. Click on **Next layer**.
 
 <InfoBox>
 
-To learn more about cloud-init stages and how they can be used to customize the installation process, check out the [Cloud Init Stages](/clusters/edge/cloud-init) resource. You should also review the [Edge Install Configuration](/clusters/edge/stylus-reference) resource to review all user-data parameters.
+The *Bring Your Own OS* (BYOOS) option can be chosen for advanced scenarios but it requires additional setup. You can also provide additional cloud-init configurations in the OS pack's YAML values for setting up Edge host users, installing additional OS packages, installing certificates and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
 
 </InfoBox>
+
+8. Choose the desired Kubernetes distribution and version. Click on **Next layer**.
+
+
+9. Choose the desired CNI type and version. Click on **Next layer**.
+
+
+10. Review and save your cluster profile. 
+
+
+You now have a cluster profile you can use for deploying Edge hosts.
+
+
+Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If you need remote access to the cluster, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
+
+Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+
+
+# Validation
+
+You validate you create a cluster profile for Edge hosts by using the following steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Choose the desired scope, project or **Tenant Admin**.
+
+
+3. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+
+4. Use the **drop-down Menu Cloud Types** and select **Edge Native**. 
+
+
+5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
+
+
+# Next Steps
+
+Your next step in the deployment lifecycle is to prepare the Edge Installer user-data. Use the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) guide to continue.
+
+<br />
