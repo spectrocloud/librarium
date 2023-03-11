@@ -43,8 +43,22 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
 * Kubernetes v1.16 or greater.
 
 
-* The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB of Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size - 8 CPU, 16 GB Memory, and 20 GB of Storage. As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack, 0.1 CPU,  250 MiB Memory, and 1 GB storage.
-Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+* The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
+
+  Recommended size:
+  - 8 CPU 
+  - 16 GB Memory
+  - 20 GB Storage. 
+ 
+ 
+  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:
+
+  Each added agent:
+    - 0.1 CPU
+    - 250 MiB Memory
+    - 1 GB Storage.
+
+  Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
 
 ## Parameters
 
@@ -152,7 +166,7 @@ By default, Thanos Ruler event data is saved in object storage specified for Tha
 You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
 
 
-The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine tune settings for your environment.
+The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine-tune settings for your environment.
 
 Refer to the [Prometheus Remote Write](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
 
