@@ -20,7 +20,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Prometheus is an open-source monitoring system that is designed to collect and analyze metrics from various sources, such as applications, servers, and networks. It is widely used in the DevOps world to monitor the health and performance of applications and infrastructure. Prometheus stores metrics in a time-series database and provides a query language for analyzing the data. It also includes a powerful alerting system that can notify operators when thresholds are breached.
 
-The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts and scaling Prometheus instances based on demand. The Operator uses Kubernetes' custom resources to define and manage Prometheus instances and related resources, such as ServiceMonitors, which enable Prometheus to discover and monitor services running in the cluster.
+The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts and scaling Prometheus instances based on demand. The Operator uses Kubernetes custom resources to define and manage Prometheus instances and related resources, such as ServiceMonitors, which enable Prometheus to discover and monitor services running in the cluster.
+
 
 You can use the Prometheus Operator to create a monitoring stack that other host clusters point to and forward metrics to. Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
@@ -62,7 +63,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware of can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
+
 ![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
@@ -106,7 +108,8 @@ Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/
 
 You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
 
-By default, a service with a load balancer, exposing port 80 is created unless the ingress option is enabled. 
+If you do not enable the ingress option, then by default a service with a load balancer will be created that exposes port 80. 
+
 
 Toggle the **Enable** button to enable the use of Ingress.
 
@@ -115,7 +118,8 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods by enabling data to be stored in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without needing to worry about running out of local storage space.
+[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without the risk of using up local storage space.
+
 
 Toggle the **Enable** button to enable the use of Thanos.
 
@@ -138,15 +142,18 @@ charts:
 
 #### Thanos Ruler Object Store
 
-You can specify a different object storage to store the Thanos Ruler event data.  Defaults to the object storage specified for Thanos. Refer to the [Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different object storage for event data.  Refer to the [Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+
 
 <br />
 
 #### Remote Monitoring
 
-You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose the *prometheus-operator-prometheus* service's port 9090. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
 
-The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine-tune settings for your environment.
+
+The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine tune settings for your environment.
+
 Refer to the [Prometheus Remote Write](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
 
 To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
@@ -189,7 +196,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
+
 ![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
@@ -227,7 +235,8 @@ Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/
 
 You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
 
-By default, a service with a load balancer, exposing port 80 is created unless the ingress option is enabled. 
+If you do not enable the ingress option, by default a service with a load balancer will be created that exposes port 80.
+
 
 Toggle the **Enable** button to enable the use of Ingress.
 
@@ -236,7 +245,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods by enabling data to be stored in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without needing to worry about running out of local storage space.
+[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without the risk of using up local storage space.
 
 Toggle the **Enable** button to enable the use of Thanos.
 
@@ -339,7 +348,8 @@ Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/
 
 You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
 
-By default, a service with a load balancer, exposing port 80 is created unless the ingress option is enabled. 
+If you do not enable the ingress option, then by default a service with a load balancer will be created that exposes port 80.
+
 
 Toggle the **Enable** button to enable the use of Ingress.
 
@@ -348,7 +358,8 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods by enabling data to be stored in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without needing to worry about running out of local storage space.
+[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without the risk of using up local storage space.
+
 
 Toggle the **Enable** button to enable the use of Thanos.
 
@@ -414,7 +425,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware of can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
+
 ![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
@@ -452,7 +464,8 @@ Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/
 
 You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
 
-By default, a service with a load balancer, exposing port 80 is created unless the ingress option is enabled. 
+If you do not enable the ingress option, then by default a service with a load balancer will be created that exposes port 80.
+
 
 Toggle the **Enable** button to enable the use of Ingress.
 
@@ -461,7 +474,8 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods by enabling data to be stored in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without needing to worry about running out of local storage space.
+[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without the risk of using up local storage space.
+
 
 Toggle the **Enable** button to enable the use of Thanos.
 
@@ -520,7 +534,8 @@ charts:
 
 Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
 
-Additional parameters you should be aware can be found by expanding the **Presets** view of the pack. You can modify the preset settings during the profile creation process or the cluster deployment process when reviewing the cluster profile.
+Additional parameters you should be aware can be found by expanding the **Presets** options. You can modify the preset settings when you create the profile creation or when you deploy the cluster and review the cluster profile.
+
 ![A view of the pack's preset drawer expanded with radion buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
 
 Review the usage section below to learn more about each preset option.
@@ -558,7 +573,8 @@ Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/
 
 You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
 
-By default, a service with a load balancer, exposing port 80 is created unless the ingress option is enabled. 
+If you do not enable the ingress option, then by default a service with a load balancer will be created that exposes port 80.
+
 
 Toggle the **Enable** button to enable the use of Ingress.
 
