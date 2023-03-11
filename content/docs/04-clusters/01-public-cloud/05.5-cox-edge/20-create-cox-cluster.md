@@ -80,18 +80,20 @@ charts:
     - Environment:  The Cox Edge environment to deploy the compute resources.
     - Update worker pools in parallel: Enable this checkbox if you wish to update worker pool nodes in parallel.
 
-9. Fill out the input fields for both the **master-pool** and the **worker-pool**.  Click **Next** when you are done.
-    #### Master Pool configuration:
-    - Allow worker capability: Enable this checkbox to allow the control plane node to handle workloads.
-    - Additional Labels: Add Kubernetes values to the cluster.
-    - Taints: Toggle on to enable taint. If enabled, you will have the option to specify the taint label.
-    - Cloud Configuration: 
-        - Deployment Name: The name to assign the Cox Edge deployment.
-        - PoP: The Cox Edge location to target.
-        - Instance Type: The compute size.
-        - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
+9. Configure the master and worker node pools. The following input fields apply to Cox Edge master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page.  Click **Next** when you are done.
+
+  <br />
+
+  #### Master Pool configuration:
     
-    <br />
+    - Cloud Configuration:
+
+      - Deployment Name: The name to assign the Cox Edge deployment.
+      - PoP: The Cox Edge location to target.
+      - Instance Type: The compute size.
+      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
+    
+  <br />
 
     <WarningBox>
 
@@ -99,17 +101,13 @@ charts:
 
     </WarningBox>
 
-      #### Worker Pool configuration:
-      - Node pool name: The name of the worker node pool.
-      - Enable Autoscaler: Enable this option to automatically scale the size of the node pool. Set a minimum and maximum pool size.
-      - Rolling update: Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones.
-      - Additional Labels: Add Kubernetes values to the cluster.
-      - Taints: Toggle on to enable taint. If enabled, you will have the option to specify the taint label.
-      - Cloud Configuration: 
-        - Deployment Name: The name to assign the Cox Edge deployment.
-        - PoP: The Cox Edge location to target.
-        - Instance Type: The compute size.
-        - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
+  #### Worker Pool configuration:
+
+    - Cloud Configuration: 
+      - Deployment Name: The name to assign the Cox Edge deployment.
+      - PoP: The Cox Edge location to target.
+      - Instance Type: The compute size.
+      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
 
 
 10. The settings page is where you can configure patching schedule, security scans, backup settings, set up role-based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click **Validate**.
