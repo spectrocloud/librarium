@@ -48,22 +48,75 @@ Review the [Install Configuration](/clusters/edge/edge-configuration/installer-r
 
 # Multiple User-Data Usecase
 
-You can also use an additional user-data file to customize the installation once the device is on the physical site. You can use the additional user-data to override configurations from the previous user-data flashed into the device or to inject new configuration settings. Using user-data at the physical site is a common pattern for organizations that need to change setting once the Edge host is powered on at the physical location.
+If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site deployment flow would look like the following.
 
-To use an additional user-data, create a bootable device, such as a USB stick that contains the user-data in the form of an ISO image. The Edge Installer will consume the additional user-data during the installation process.
+![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.png)
+
+Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary user-data to support this use case.
+
+Use the additional user-data to override configurations from the previous user-data flashed into the device or to inject new configuration settings. Using a secondary user-data at the physical site is a common pattern for organizations that need to change setting once the Edge host is powered on at the physical location.
+
+To use an additional user-data, create a bootable device, such as a USB stick, that contains the user-data in the form of an ISO image. The Edge Installer will consume the additional user-data during the installation process.
+
+![The flow of an install process with an additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
 
 
-## Build User Data ISO
+# Build User Data ISO
 
-In order to supply user-data as input during install, we will build an ISO file from our user-data so that it can be trasferred onto a portable device such as a USB drive.
+Use the following steps to create an ISO file containing the additional user-data. You will load the newly created ISO to a bootable device, such as a USB stick.
 
-Run the following command to generate user-data ISO
+## Prerequisites
 
-(MacOS or Linux Machine):
+- A bootable device, such as a USB drive, or a PXE server.
 
-```
-touch meta-data
-mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
-```
+- mkisofs, or genisoimage, or similar ISO management software.
 
-This command will generate the site-user-data.iso file. Tasnfer this over the a USB drive.
+- cdrtools or wodim for Windows
+
+
+## Create ISO
+
+1. Create a file called **user-data** that contains the additional configurations you want to override or inject. 
+  ```shell
+  touch user-data
+  ```
+
+2. Create an empty **meta-data** file:
+  ```shell
+  touch meta-data
+  ```
+
+3. Create an ISO using the following command.
+
+  MacOS/Linux:
+  ```shell
+  mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+  ```
+
+  Windows:
+  ```shell
+  genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+  ```
+
+  This generates an ISO file called site-user-data.iso in the current directory.
+
+
+Copy the ISO to a bootable device such as a USB stick. Load the USB stick to the Edge host before powering it on once it arrives at the physical site. The Edge Installer will apply the new user-data during the installation process.
+
+<br />
+
+<InfoBox>
+
+You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as [Fog](https://fogproject.org/download) or [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+
+</InfoBox>
+
+
+## Validation
+
+You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process. 
+
+
+# Next Steps
+
+Go ahead and continue to the [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) step. The content bundle contains all the packages and artifacts required for Edge host installation.
