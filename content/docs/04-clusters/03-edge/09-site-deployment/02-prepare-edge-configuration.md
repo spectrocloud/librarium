@@ -13,14 +13,17 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-As previously described, edge configuration consisting of OS configuration as well as installtion configuration can be supplied during the installation process. This configruation can be combined together and provided as user-data.
+The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the installation process. You can provide the customized configuration to the Edge Installer as a user-data file. 
+
+You can also use the operating system (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
 
 # Prepare User Data
 
-User Data is preapred by creating a YAML file consisting of OS and Installation config. Create an file called user-data as specfied below. Update the cloud-init stages and installation configuration to suit your needs.
+The user-data is prepared by creating a YAML file consisting of OS and Installation config. Create a file called **user-data**. Copy the sample configuration below into the **user-data** file. Update the cloud-init stages and installation configuration to suit your needs.
+
+<br />
 
 ```yaml
-
   stylus:
     site:
       paletteEndpoint: your-tenant.palette.endpoint
@@ -36,9 +39,21 @@ User Data is preapred by creating a YAML file consisting of OS and Installation 
     poweroff: true
 ```
 
-If you will be customizing your installer, then you have the option of embedding the user-data into your custom installer. If that is the case, the next step is not required.
+<InfoBox>
 
-# Build User Data ISO
+Review the [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters.
+
+</InfoBox>
+
+
+# Multiple User-Data Usecase
+
+You can also use an additional user-data file to customize the installation once the device is on the physical site. You can use the additional user-data to override configurations from the previous user-data flashed into the device or to inject new configuration settings. Using user-data at the physical site is a common pattern for organizations that need to change setting once the Edge host is powered on at the physical location.
+
+To use an additional user-data, create a bootable device, such as a USB stick that contains the user-data in the form of an ISO image. The Edge Installer will consume the additional user-data during the installation process.
+
+
+## Build User Data ISO
 
 In order to supply user-data as input during install, we will build an ISO file from our user-data so that it can be trasferred onto a portable device such as a USB drive.
 
