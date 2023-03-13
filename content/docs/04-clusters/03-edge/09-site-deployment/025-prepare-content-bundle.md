@@ -22,7 +22,7 @@ The following table lists the various installation scenarios. Use the table to i
 | Detached Air gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by the Palette Management System.|Mandatory|
 | Connected Cluster |  You are deploying Edge clusters in an environment with internet connectivity, and the Palette Management System manages the clusters. You may build a content bundle for bandwidth optimization, but it is not required.|Optional|
 | Managed Air Gapped Cluster |  You are deploying Edge clusters in an environment that is without internet access. However, you have an air-gapped version of the Palette Management system installed in the environment, which will manage your Edge clusters.|Mandatory|
-| Cluster with Custom OS |  You are deploying Edge clusters in any environment using a customized Minimal Installation Environment for Containers (MIEC). In this scenario, you will need to build the core package consisting minimally of the customized MIEC. You may need to build the full Core Package if the  scenarios listed above apply. |Mandatory|
+| Cluster with Custom OS |  You are deploying Edge clusters to an environment using a customized Minimal Installation Environment for Containers(MIEC). In this scenario, you must build the core bundle containing the MIEC.  |Mandatory|
 
 <!-- You are deploying Edge clusters to an environment using customized Minimal Installation Environment for Containers(MIEC). In this scenario, you must build the core bundle that also contains minimalized of the customized MIEC. If the above scenarios apply, you may need to build the complete Core Package. -->
 
