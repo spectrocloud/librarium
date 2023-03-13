@@ -34,8 +34,14 @@ The following ports must be reachable from a network perspective for Palette to 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
+
+
+<InfoBox>
+
+You can expose inbound port 22 for SSH if you would like to remote access your cluster nodes. This is completely optional and not required for Palette to operate properly.
+
+</InfoBox>
 
 ## Workload Cluster
 
@@ -60,10 +66,15 @@ The following ports must be reachable from a network perspective for Palette to 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
 |HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
 |HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
+
+<InfoBox>
+
+You can expose inbound port 22 for SSH if you would like to remote access your cluster nodes. This is completely optional and not required for Palette to operate properly.
+
+</InfoBox>
 
 
 ## Workload Cluster
