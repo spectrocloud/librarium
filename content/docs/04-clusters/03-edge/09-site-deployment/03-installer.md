@@ -1,6 +1,6 @@
 ---
-title: "Create an Installer Image"
-metaTitle: "Create an Edge Installer Image"
+title: "Create Installer Image"
+metaTitle: "Create Edge Installer Image"
 metaDescription: "Learn how to create an installer image for Edge devices."
 hideToC: false
 fullWidth: false

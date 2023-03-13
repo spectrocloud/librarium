@@ -48,7 +48,9 @@ The following command unpacks the download binary and assigns the executable bit
 <br />
 
 ```shell
-upx -d ./spectro-cli-linux-amd64 && chmod +x ./spectro-cli-darwin-amd64 && ./spectro-cli-linux-amd64 
+upx -d ./spectro-cli-linux-amd64 && \
+chmod +x ./spectro-cli-darwin-amd64 && \
+./spectro-cli-linux-amd64 
 ```
 
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
