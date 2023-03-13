@@ -137,4 +137,4 @@ You can validate that the ISO image is not corrupted by attempting to flash a bo
 
 # Next Steps
 
-Your next step is to [Create an Installer Image](//clusters/edge/site-deployment/installer) step. The Edge Installer image is what you will load into the Edge host before shipping it out to the destination site.
+Your next step is to [Create an Installer Image](/clusters/edge/site-deployment/installer) step. The Edge Installer image is what you will load into the Edge host before shipping it out to the destination site.
