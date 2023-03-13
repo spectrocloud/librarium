@@ -38,6 +38,10 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
+
+- Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more. 
+
+
 ## Parameters
 
 The Spectro Kubernetes Dashboard supports the following parameters. 
@@ -94,11 +98,23 @@ However, if you change **Access** to **Public** and your cluster is in a private
 
 #### Identity Provider 
 
+All IDP options below require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
+
+* You can create a custom role by using a manifest file in your cluster profile and specifying the creation of a Role or ClusterRole. You can also specify the roleBinding in the same manifest file. 
+
+
+* Alternatively, you can use the [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) that are available and create a roleBinding for a set of users or groups. As an example, you could assign yourself or another user a roleBinding to the role `view` or `cluster-admin`. By assigning yourself or your users one of the default Kubernetes roles, you will be able to view resources in the Kubernetes Dashboard. Use the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.  
+
+![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png)
+
+### Selecting Identity Provider 
+
 The default setting is **Palette**.
 
 <br />
 
-- **Palette**: No configuration is needed. This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard.
+- **Palette**: This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources can log into the Kubernetes dashboard.
+
 
 - **Inherit from Organization**: This setting requires you to configure OpenID Connect (OIDC) in Tenant Settings. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide. 
 
@@ -114,35 +130,9 @@ You only need to configure OIDC manually if you change the **Identity Provider**
 
 <Tabs.TabPane tab="Basic OIDC Setup" key="Basic OIDC Setup">
 
-
-To configure OIDC manually for clusters managed by most cloud providers, follow these steps: 
-
 <br />
 
-1. Copy ``oidc-`` configuration lines in the following code snippet and add them to the Kubernetes pack under the ``extraArgs`` parameter section. Enter your third-party provider details in quotes. <br /><br />
-
-  ```
-  kubeadmconfig:
-    apiServer:
-      extraArgs:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-  ```
-
-2. Under the ``clientConfig`` parameter section of Kubernetes pack, uncomment the ``oidc-`` configuration lines, and enter your provider details in quotes. The provider URL and client-id must be the same in the ``extraArgs`` and ``clientConfig`` parameter sections. <br /><br />
-
-  ```
-    clientConfig:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-client-secret: client-secret-value
-      oidc-extra-scope: profile,email,openid
-    ```
-
-<br />
-
+Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 </Tabs.TabPane>
 
