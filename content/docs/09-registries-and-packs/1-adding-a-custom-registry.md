@@ -96,7 +96,7 @@ Create a directory or mount an external volume to the desired storage location. 
             -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
             -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-            spectro-registry:3.1.0
+            gcr.io/spectro-images-public/release/spectro-registry:3.1.0
           ```
     
 <br />
