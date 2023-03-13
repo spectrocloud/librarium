@@ -13,16 +13,18 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-A content bundle can be built to package all the artifacts required for installation. This is mandatory in certain scenarios and optional (however optimial) in some other scenarios.
+You can create a content bundle that contains all the required packages and artifacts the Edge host need for a successful installation. You only need to create a content bundle for some installation scenarios.
 
-The following table lists various scenarios which require you to build your own content bundle.
+The following table lists the various installation scenarios. Use the table to identify if you need to create a content bundle.
 
 | **Scenario**  | **Description** | **Content Bundle** |
-|-|-|
-| Detached Air gapped Cluster |  You are deploying edge clusters in a completely air gapped environment with no internet access. The clusters are not managed by a Palette Management System|Mandatory|
-| Connected Cluster |  You are deploying edge clusters in an environment that has connectivity to the internet and the clusters are managed by the Palette Management System. You may choose to build and pre-load the core package for bandwidth optimization purposes, but it is optional|Optional|
-| Managed Air Gapped Cluster |  You are deploying edge clusters in an environment that has no connectivity to the internet. However you have an air gapped version of Palette Management system installed in the environment, which will manage your edge clusters|Mandatory|
-| Cluster with Custom OS |  You are deploying edge clusters in any environment using a customized MIEC. In this scenario, you will need to build the core package consisting minimally of the customized MIEC. You may need to build the full Core Package if the  scenarios listed above apply. |Mandatory|
+|-|-|-|
+| Detached Air gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by the Palette Management System.|Mandatory|
+| Connected Cluster |  You are deploying Edge clusters in an environment with internet connectivity, and the Palette Management System manages the clusters. You may build a content bundle for bandwidth optimization, but it is not required.|Optional|
+| Managed Air Gapped Cluster |  You are deploying Edge clusters in an environment that is without internet access. However, you have an air-gapped version of the Palette Management system installed in the environment, which will manage your Edge clusters.|Mandatory|
+| Cluster with Custom OS |  You are deploying Edge clusters in any environment using a customized Minimal Installation Environment for Containers (MIEC). In this scenario, you will need to build the core package consisting minimally of the customized MIEC. You may need to build the full Core Package if the  scenarios listed above apply. |Mandatory|
+
+<!-- You are deploying Edge clusters to an environment using customized Minimal Installation Environment for Containers(MIEC). In this scenario, you must build the core bundle that also contains minimalized of the customized MIEC. If the above scenarios apply, you may need to build the complete Core Package. -->
 
 # Prepare Content Bundle
 
