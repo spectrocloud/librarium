@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # SaaS Network Communications and Ports
 
-The network ports for Palette in SaaS mode and on-prem are listed below.
+The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
@@ -55,12 +55,10 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 
 # Self-Hosted Network Communications and Ports
 
-The following diagram maps the network connections between the Palette components and deployed Kubernetes clusters.
+The following ports must be reachable from a network perspective for Palette Sefl-Hosted to function correctly.
+
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
-
-
-The following ports must be reachable from a network perspective for Palette to operate properly.
 
 ## Management Platform
 
