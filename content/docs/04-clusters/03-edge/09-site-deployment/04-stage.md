@@ -13,7 +13,16 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-In this phase, edge host devices are prepared for installation. Your edge host installer, common edge host configuration and content bundles are copied over the hard drive of the edge hosts. Edge hosts can be shipped to the sites for isntallation after this setp
+In this step, you will prepare the Edge host for installation. You will copy the following items to the storage device of the Edge host.
+- The Edge host installer image 
+
+
+- The Edge Installer user-data 
+
+
+- Content bundles 
+
+You can ship your Edge hosts after you complete this step. Use the following steps to prepare your Edge host for installation.
 
 <br />
 
