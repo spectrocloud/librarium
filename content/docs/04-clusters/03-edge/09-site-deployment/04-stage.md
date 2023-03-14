@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 # Overview
 
 In this step, you will prepare the Edge host for installation. You will copy the following items to the storage device of the Edge host.
-- The Edge host installer image 
+- The Edge Installer image 
 
 
 - The Edge Installer user-data 
@@ -26,21 +26,35 @@ You can ship your Edge hosts after you complete this step. Use the following ste
 
 <br />
 
+# Prepare Edge Host
+
+Pick the environment for your Edge host to get started.
+
+<br />
+
 <Tabs identifier="environment">
 
 <Tabs.TabPane tab="Bare Metal" key="bare-metal">
 
 ## Prerequisites
 
-- USB disk containing the installer ISO
+- A Bare Metal appliance with USB drives.
 
-- Optional USB disk consisting of user-data ISO. Typically if you are using a customized installer, you won't need this, since the user-data would be embedded in the installer.
 
-- Optional USB disk consisting of content bundle ISO. Typically if you are using a customized installer, you won't need this, since the content bundle would be embedded in the installer.
+- The ability to modify the boot order settings to boot from a USB drive.
 
-- A Bare Metal appliance with sufficeint USB drives
 
-- Boot order settings to boot from USB drive
+- A USB disk containing the installer ISO
+
+
+The following items are optional and not required but may apply to your use case:
+
+- USB disk that contains a user-data ISO. This is applicable in multiple user-data scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
+
+
+- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Create Installer Image](/clusters/edge/site-deployment/stage).
+
+
 
 ## Installer Hand off
 
