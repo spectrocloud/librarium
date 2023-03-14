@@ -16,9 +16,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
+The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. It is considered a core infrastructure pack.  Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
 
 Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
+
+<br />
 
 - Major versions are assessed based on the extent of changes.
 - Minor versions are provided within eight weeks of a new Kubernetes release.
@@ -38,6 +40,7 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
+
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -67,11 +70,26 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 | kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
 
 
-## Usage
+## Usage 
 
-Kubernetes 1.26.x allows you to create a ***PersistentVolumeClaim*** from a ***VolumeSnapshot*** across namespaces. Previously, both objects had to be in the same namespace.
+The following are a few of the main features that Kubernetes 1.26x introduces:
 
-Kubernetes 1.26 introduces a ``.spec.schedulingGates`` field to Pod's API, to indicate whether the Pod is allowed to be scheduled or not.
+<br />
+
+- This release of Kubernetes is the first that is exclusively published in the new ``registry.k8s.io`` container image registry. No container images tags for v1.26 will be published in the now legacy ``k8s.gcr.io`` image registry.
+
+
+- Allows you to create a ***PersistentVolumeClaim*** from a ***VolumeSnapshot*** across namespaces. Previously, both objects had to be in the same namespace.
+
+
+- Introduces better control over scheduling behavior with the addition of a ``.spec.schedulingGates`` field to the Pods API. This field indicates whether a pod is allowed to be scheduled or not.
+
+
+- Support for kubelet credential provider plugins to dynamically fetch credentials for any container image registry.
+
+
+- Added CPU Manager to kubelet for better workload placement.
+
 
 For details, refer to [Kubernetes v1.26](https://kubernetes.io/blog/2022/12/09/kubernetes-v1-26-release/)
 
@@ -129,6 +147,7 @@ kubeadmconfig:
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
+
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -215,6 +234,7 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -296,6 +316,7 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -336,6 +357,7 @@ kubeadmconfig:
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
+
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -420,6 +442,7 @@ kubeadmconfig:
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
+
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -506,6 +529,7 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
 - Operating System (OS) dependencies as listed in the table.
 
 | Operating System | Kubernetes 1.20.x|
@@ -590,6 +614,7 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
 - Operating System (OS) dependencies as listed in the table.
 
 | Operating System | Kubernetes 1.19.x|
@@ -668,7 +693,10 @@ If routing problems occur or some hosts cannot communicate outside their subnet,
 
 Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the podCIDR parameter. The CIDR IP specified with the podCIDR parameter in the Kubernetes manifest always takes precedence.
 
+<br />
+
 - Ensure the ``podCIDR`` value does not overlap with any hosts or with the service network. 
+
 
 - Ensure the ``serviceClusterIpRange``value does not overlap with the any IP ranges assigned to nodes for pods.
 
