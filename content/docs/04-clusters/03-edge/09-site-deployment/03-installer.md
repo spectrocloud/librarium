@@ -13,7 +13,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installer that is available in the form of an ISO. You can use this installer as is and provide your user-data through a bootable device when deploying the device at the physical site. However, some scenarios require you to build a custom installer image. Review the following scenarios to identify if you need to create a custom Edge Installer image.
+We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installer that is available in the form of an ISO. You can use this installer as is and provide your user-data through a bootable device when deploying the device at the physical site. 
+
+However, some scenarios require you to build a custom installer image. Review the following scenarios to identify if you need to create a custom Edge Installer image.
 
 - You created a content bundle that you want to include with the installation.
 
@@ -26,9 +28,11 @@ We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installe
 
 - You are using VMware and need to provide an OVA file.
 
+Use the default Edge Installer image if you don't need to create a custom installer. Use the steps in the [Download Edge Installer Image](/clusters/edge/site-deployment/installer#downloadedgeinstallerimage) section.
+
 # Create an Install Image
 
-Palette supports two installation methods for edge devices: bare metal or VMware. Choose the preferred installation method and follow the related instructions set to get started.
+Palette supports two installation methods for Edge hosts: bare metal or VMware. Choose the preferred installation method and follow the related instructions set to get started.
 
 <br />
 
@@ -242,6 +246,35 @@ You can validate the OVA file by using the [ovftool](https://developer.vmware.co
 
 </Tabs>
 
+
+# Download Edge Installer Image
+
+To use the default OpenSUSE based Edge Installer ISO image, use the following steps.
+
+## Prerequisites
+
+- A Palette account.
+
+
+## Download Image
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Click on the **Edge Hosts** tab.
+
+
+4. Click on the **Download Palette Edge Installer** button to download the Edge Installer ISO.
+
+## Validation
+
+Verify that the Edge Installer ISO has been downloaded without any issues. You may now use it for the staging steps or as a base image to [create a custom content bundle](/clusters/edge/site-deployment/prepare-content-bundle).
+
+
 # Next Steps
 
 The next phase of the deployment lifecycle is to prepare the Edge host for the installation. You can think of the next step as the staging phase. Use the [Prepare the Edge Host for Installation](/clusters/edge/site-deployment/stage) guide to get started on the next step.
+

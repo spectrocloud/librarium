@@ -28,7 +28,7 @@ You can ship your Edge hosts after you complete this step. Use the following ste
 
 # Prepare Edge Host
 
-Pick the environment for your Edge host to get started.
+Pick the target environment for your Edge host.
 
 <br />
 
@@ -37,6 +37,8 @@ Pick the environment for your Edge host to get started.
 <Tabs.TabPane tab="Bare Metal" key="bare-metal">
 
 ## Prerequisites
+
+- Edge Installer ISO file. Check out the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create an Edge Installer image or use the default Edge Installer image.
 
 - A Bare Metal appliance with USB drives.
 
@@ -49,24 +51,45 @@ Pick the environment for your Edge host to get started.
 
 The following items are optional and not required but may apply to your use case:
 
-- USB disk that contains a user-data ISO. This is applicable in multiple user-data scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
+- USB disk that contains a user-data ISO. This is applicable in [multiple user-data](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser-datausecase) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
 - USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Create Installer Image](/clusters/edge/site-deployment/stage).
 
 
 
-## Installer Hand off
+## Installer Handoff
 
-1. Insert the installer USB drive and optionally your user-data and content USB disks into USB drives of your edge host and power on.
+1. Insert the USB drive containing the Edge Installer ISO and potentially your user-data.
 
-2. Wait for contents to be copied over to the hard drive and edge hosts to be powered off.
 
-3. Remove the USB disks and ship your edge host devices to the site for installation
+2. If you created a content bundle and created and loaded it to a USB disk, then go ahead and also insert that USB drive. 
+
+
+3. Power on the Edge host.
+
+
+4. Wait for the Edge Installer to complete copying content to the hard drive. The Edge host will reboot by default upon completion unless you specify a different option in the Edge Installer configuration user-data.
+
+5. Repeat steps one through four for all Edge hosts.
+
+
+6. Remove the USB disks and ship your Edge host devices to the site for installation.
+
+
+## Validation
+
+You can validate the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="VMware" key="vmware">
+
+## Prerequisites
+
+- Edge Installer ISO file
+
+- vCenter environment with sufficeint resources and priviledges to upload files to a datasotre and create VMs
 
 ## OVF Template
 
@@ -74,11 +97,7 @@ For the VMware environment, we will create a VMDK from the installer ISO and upl
 
 Please note, that if you are generating an OVF template, and you want to preload a content bundle, then you will need to create a custom installer ISO.
 
-## Prerequisites
 
-- Installer ISO file
-
-- vCenter environment with sufficeint resources and priviledges to upload files to a datasotre and create VMs
 
 ## Instructions
 

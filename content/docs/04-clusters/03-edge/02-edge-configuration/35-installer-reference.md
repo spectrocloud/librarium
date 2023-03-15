@@ -117,7 +117,6 @@ stylus:
         *****************************
         ------END CERTIFICATE------
 ```
-
 # Additional Configurations
 
 The Edge Installer will honor other Kairos parameters, such as `install`, and `options`. To learn more about Kairos parameters, refer to the [Kairos configuration](https://kairos.io/docs/reference/configuration/) page.
