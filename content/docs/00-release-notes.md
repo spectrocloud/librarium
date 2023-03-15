@@ -13,6 +13,38 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+# March 17, 2023 - Release 3.3.0
+
+This release contains several security fixes and new features for Edge. The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
+
+## Palette
+
+### Enhancements:
+
+* Users can now download all the clusters listed when applying a filter to the clusters list. 
+
+## Edge
+
+### Features:
+
+* Edge now supports the ability to load images from an external OCI registry.
+* The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
+* Users can create a custom Edge Installer that contains content bundles, operating systems, and user-data.
+* Support for creating an Edge Installer ISO based on Virtual Machine Disks (VMDK) is now available.
+* Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices resulting in the same UUID due to identical device identifiers.
+
+## Packs
+
+* CNI Packs:
+  * Calico CNI 3.25.0
+* CSI Packs:
+  * EBS CSI 1.16.0
+  * Vsphere CSI 2.7.0
+* Add-on Packs:
+  * Flux v2 2.6.0
+  * Prometheus Operator 45.4.0
+  * MetalLB 0.13.9
+
 # February 28, 2023 - Release 3.2.0
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
