@@ -32,7 +32,7 @@ Cluster profiles can be built to launch clusters for specific use cases. Cluster
 
 ## Production Cluster Profile
 
-![Production Profile](./production.png)
+![Production Profile](/production.png)
 
 * All layers are pinned to specific versions
 * Automatic upgrades are disabled
