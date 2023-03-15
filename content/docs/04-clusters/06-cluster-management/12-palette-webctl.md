@@ -72,7 +72,7 @@ You can now issue kubectl commands against your host cluster.
 
 # Validation
 
-You can validate you have access to your cluster by attempting to issue kubectl commands against your host cluster. 
+Verify you have access to your host cluster by issuing kubectl commands against it. 
 
 
 
