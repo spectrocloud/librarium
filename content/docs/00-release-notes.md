@@ -29,9 +29,9 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can create a custom Edge Installer that contains content bundles, operating systems, and user-data.
+* Users can create a custom Edge Installer that contains content bundles, operating systems, and user data.
 * Support for creating an Edge Installer ISO based on Virtual Machine Disks (VMDK) is now available.
-* Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices resulting in the same UUID due to identical device identifiers.
+* Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 * The Palette agent is now able to automatically upgrade to newer versions.
 
 ## Packs
@@ -40,7 +40,7 @@ This release contains several security fixes and new features for Edge. The Edge
   * Calico CNI 3.25.0
 * CSI Packs:
   * EBS CSI 1.16.0
-  * Vsphere CSI 2.7.0
+  * vSphere CSI 2.7.0
 * Add-on Packs:
   * Flux v2 2.6.0
   * Prometheus Operator 45.4.0
