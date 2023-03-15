@@ -71,27 +71,22 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 
 
 ## Usage 
-
-The following are a few of the main features that Kubernetes 1.26x introduces:
+  
+The Kubeadm configuration file is where you can do the following:
 
 <br />
 
-- This release of Kubernetes is the first that is exclusively published in the new ``registry.k8s.io`` container image registry. No container images tags for v1.26 will be published in the now legacy ``k8s.gcr.io`` image registry.
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with the any IP ranges assigned to nodes for pods.
+
+<br />
+
+- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP).
+
+- Add a certificate for the Spectro Proxy pack. 
 
 
-- Allows you to create a ***PersistentVolumeClaim*** from a ***VolumeSnapshot*** across namespaces. Previously, both objects had to be in the same namespace.
-
-
-- Introduces better control over scheduling behavior with the addition of a ``.spec.schedulingGates`` field to the Pods API. This field indicates whether a pod is allowed to be scheduled or not.
-
-
-- Support for kubelet credential provider plugins to dynamically fetch credentials for any container image registry.
-
-
-- Added CPU Manager to kubelet for better workload placement.
-
-
-Check out [Kubernetes v1.26](https://kubernetes.io/blog/2022/12/09/kubernetes-v1-26-release/) for more information.
 
 <br />
 
@@ -311,12 +306,55 @@ kubeadmconfig:
 </Tabs.TabPane>
 
 
+<Tabs.TabPane tab="1.23.x" key="k8s_v1.23">
+
+## Prerequisites
+
+- A minimum of 4 CPU and 4GB Memory.
+
+
+- Operating System (OS) dependencies as listed in the table.
+
+
+| Operating System | Kubernetes 1.23.x |
+|-----------|-------------|
+| Centos 7.7 | x |
+| Ubuntu 22.04 | x |
+| Ubuntu 20.04 | 1.23.4 and higher |
+| Ubuntu 18.04 | x |
+
+## Parameters
+
+| Parameter | Description | Required (Y/N) |
+|-----------|-------------|---------|
+| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
+| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
+| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
+| kubeadmconfig.apiServer.extraArgs | A list of additional apiServer flags you can set. | N |
+| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
+| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
+| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
+| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
+| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
+| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
+| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+
+
+## Usage
+
+
+#### Example Kubeadm config
+
+
+</Tabs.TabPane>
+
+
 
 <Tabs.TabPane tab="Deprecated" key="deprecated">
 
 <WarningBox>
 
-All versions less than v1.23.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+All versions less than v1.22.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
 </WarningBox>
 
