@@ -41,6 +41,14 @@ Use the following steps to complete the Edge host installation.
 
 <br />
 
+<InfoBox>
+
+The community resource, [Painting with Palette](https://www.paintingwithpalette.com/tutorials/) has a great Edge Native tutorial. 
+
+</InfoBox>
+
+<br />
+
 <Tabs identifier="environment">
 
 <Tabs.TabPane tab="Bare Metal" key="bare-metal">
@@ -74,7 +82,7 @@ Use the following steps to complete the Edge host installation.
     </InfoBox>
 
 
-4. The last step is to create a cluster definition if you don't have a host cluster for the Edge host to become a member of. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation.
+4. The last step is to create a cluster definition if you don't have a host cluster for the Edge host to become a member of. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
 
 
 <!-- 4. Log in to [Palette](https://console.spectrocloud.com).
@@ -108,7 +116,7 @@ Use the following steps to complete the Edge host installation.
 
 14. Review the settings summary and click on **Finish Configuration** to deploy the cluster. -->
 
-Once the cluster is defined, the installation process will continue. The Palette agent in the Edge host will start downloading all the required artifacts and reboot itself. 
+Once the cluster is defined, the installation process will continue. The Palette agent in the Edge host will start downloading all the required artifacts and reboot Edge host. 
 
 After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile. 
 
@@ -128,24 +136,77 @@ Any content bundles you provided are extracted and loaded into the container run
 
 4. Review the **Cluster Status**. If the deployment was successful, the cluster status should be **Running**, which indicates a healthy cluster.
 
-You can also use `kubectl` to issue commands against the cluster. Check out the [Access Cluster with CLI](https://docs.spectrocloud.com/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
+You can also use `kubectl` to issue commands against the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
 
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="VMware" key="vmware">
 
-At the site, we will be recieve an OVF template which has undergone install-hand off. Perform the following steps to proceed with installation at the site in your VMware environment.
+Use the following steps to complete the Edge host installation in a VMware environment.
 
-1. Navigate to VMs and Templates. Right-Click on the desired folder and selecth the option to Deploy VM(s) from this OVF template .
+## Prerequisites
 
-2. Provide the location of the OVF template and start deployment
+- Access to Palette and the ability to register an Edge host.
 
-3. Proceed through the installation steps and deploy the VM(s)
+- Access to network information about the physical site, specifically the network virtual IP address (VIP).
 
-The VMs will start up into the registration phase and wait for registration and cluster definition to be performed in the Palette Management Console. Once those steps are complete on the Palette Management Console, the VM(s) will reboot.
+- Physical access to the Edge host.
 
-In this phase, the system boots into the OS defined in the cluster profile and cluster configuration begins. K8s components are initialized and configured based on the specifications in the cluster profile. If content bundles were provided (via USB or embedded in a custom installer), they are extracted and loaded into the container runtime process.
+- An Edge Installer OVF template. Check out the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) for guidance on how to create an Edge Installer OVF template.
+
+## Site Install
+
+Perform the following steps to proceed with the installation at the site in your VMware environment.
+
+1. Log in to vCenter Server by Using the vSphere Client.
+
+
+2. Navigate to **VMs and Templates** and right-click on the desired folder and select the option to **Deploy VM(s) from this OVF template**.
+
+
+3. Specify the location of the OVF template and start the deployment.
+
+
+4. Proceed through the installation steps and deploy the virtual machine.
+
+
+5. The VM will start up in the registration phase and wait for you to register the Edge host with Palette. If you provided the Edge Installer user-data with an `EdgeHostToken` then the Edge host will automatically register with Palette. Otherwise, the Edge host will wait until you manually register the device in Palette. Go ahead and register the Edge host with Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for additional guidance.
+
+    <br />
+
+    <InfoBox>
+
+    Once the Edge host is registered, Palette will wait for you to create a host cluster and assign the  Edge host to the cluster.
+
+    </InfoBox> 
+
+
+6. The last step is to create a cluster definition if you don't have a host cluster for the Edge host to become a member of. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
+
+
+
+Once the cluster is defined, the installation process will continue. The Palette agent in the Edge host will start downloading all the required artifacts and reboot the Edge host. 
+
+After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile. 
+
+Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
+
+
+## Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the host cluster you created to view its details page.
+
+
+4. Review the **Cluster Status**. If the deployment was successful, the cluster status should be **Running**, which indicates a healthy cluster.
+
+You can also use `kubectl` to issue commands against the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
 
 </Tabs.TabPane>
 

@@ -110,10 +110,13 @@ If you generate an OVF template and want to preload a content bundle, you must c
 
 ## Installer Handoff
 
-1. Prepare a build server by launching an Ubuntu 20+ VM in your VMware environment.
+1. Log in to vCenter Server by Using the vSphere Client.
 
 
-2. Issue the following commands to prepare your server for VMDK creation.
+2. Prepare a build server by launching an Ubuntu 20+ VM in your VMware environment.
+
+
+3. Issue the following commands to prepare your server for VMDK creation.
 
   ```shell
   apt update
@@ -136,7 +139,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
   apt install x11-apps
   ```
 
-3. You can add additional packages for content creation, compression and preparing your workspace.
+4. You can add additional packages for content creation, compression and preparing your workspace.
 
   ```shell
   curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
@@ -151,7 +154,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
   apt install zstd govc
   ```
 
-4. Build the VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to virtual machines. Issue the following commands on your build server.
+5. Build the VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to virtual machines. Issue the following commands on your build server.
 
   ```shell
   cd ~/workspace/stylus-image-builder/
@@ -174,7 +177,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
     A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer name. Ensure the VMDK file retains the `.vmdk` extension.
 
 
-5. Transfer the VMDK to a datastore in your VMware environment. Review the commands below and ensure you replace the placeholders with the respective values from your environment.
+6. Transfer the VMDK to a datastore in your VMware environment. Review the commands below and ensure you replace the placeholders with the respective values from your environment.
 
   ```shell
   export GOVC_URL=https://[IP address OR the DNS of vCenter] 
@@ -190,38 +193,43 @@ If you generate an OVF template and want to preload a content bundle, you must c
   export GOVC_INSECURE=1
   ```
 
-6. Create a VM from the VMDK by login into your vCenter console in the UI.
+7. Create a VM from the VMDK by login into your vCenter console in the UI.
 
 
-7. Navigate to the **Dataceter/Folder**, under the **VMs and Templates** section.
+8. Navigate to the **Dataceter/Folder**, under the **VMs and Templates** section.
 
 
-8. Start the **New Virtual** machine deployment wizard.
+9. Start the **New Virtual** machine deployment wizard.
 
 
-9. Choose a cluster from where you can access the datastore used for storing the VMDK. Choose the Datastore where VMDK is stored.
-
-
-
-10. Select **Ubuntu Linux (64)** as your guest OS version. This is required even though you will be launching an RHEL based clusters
+10. Choose a cluster from where you can access the datastore used for storing the VMDK. Choose the Datastore where VMDK is stored.
 
 
 
-11. Select the Hardware settings.
+11. Select **Ubuntu Linux (64)** as your guest OS version. This is required even though you will be launching an RHEL based clusters
 
 
-12. Delete the hard drive displayed by default. Add a new device of the type **Existing Hard Disk**. For this device select the option **Datastore ISO file**. 
+
+12. Select the Hardware settings.
 
 
-13. Navigate to the datastore folder with the uncompressed VMDK and select the VMDK.
+
+13. Delete the hard drive displayed by default. Add a new device of the type **Existing Hard Disk**. For this device select the option **Datastore ISO file**. 
 
 
-14. Finish the creation wizard and save your Virtual machine.
+
+14. Navigate to the datastore folder with the uncompressed VMDK and select the VMDK.
 
 
-15. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template** and **Convert to Template**.
 
-16. Navigate to **VMs and Templates** and right-click on the newly created VM Template. Select **Export to OVF Template**.
+15. Finish the creation wizard and save your Virtual machine.
+
+
+16. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template** and **Convert to Template**.
+
+
+
+17. Navigate to **VMs and Templates** and right-click on the newly created VM Template. Select **Export to OVF Template**.
 
 
 

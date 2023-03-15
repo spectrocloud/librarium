@@ -34,12 +34,6 @@ The deployment of an Edge host contains different options intended to help you i
 
 6. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
-<!-- 
-7. [Register Edge Host](/clusters/edge/site-deployment/edge-host-registration)
-
-
-8. [Create Cluster Definition](/clusters/edge/site-deployment/cluster-deployment) -->
-
 
 <InfoBox>
 
