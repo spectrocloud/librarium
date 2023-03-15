@@ -15,13 +15,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # SaaS Network Communications and Ports
 
-The network ports for Palette in SaaS mode and on-prem are listed below.
+The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
 <br />
 
-#### SaaS and Edge Hosts
+#### SaaS Managed
 
 
 ![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
@@ -34,8 +34,8 @@ The following ports must be reachable from a network perspective for Palette to 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
+
 
 ## Workload Cluster
 
@@ -46,21 +46,25 @@ The following ports must be reachable from a network perspective for Palette to 
 |NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
 |NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
 
-# On-Prem Network Communications and Ports
+<InfoBox>
 
-The following diagram maps the network connections between the Palette components and deployed Kubernetes clusters.
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+
+</InfoBox>
+
+
+# Self-Hosted Network Communications and Ports
+
+The following ports must be reachable from a network perspective for Palette Sefl-Hosted to function correctly.
+
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
-
-
-The following ports must be reachable from a network perspective for Palette to operate properly.
 
 ## Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|SSH (tcp/22)    |INBOUND        |Troubleshooting via SSH (optional) |
 |NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
 |HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
 |HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
@@ -74,3 +78,9 @@ The following ports must be reachable from a network perspective for Palette to 
 |HTTPS (tcp/443) |OUTBOUND | API access to management platform|
 |NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus |
 |HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+
+<InfoBox>
+
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+
+</InfoBox>
