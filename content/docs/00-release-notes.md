@@ -32,7 +32,7 @@ This release contains several security fixes and new features for Edge. The Edge
 * Users can create a custom Edge Installer that contains content bundles, operating systems, and user data.
 * Support for creating an Edge Installer ISO based on Virtual Machine Disks (VMDK) is now available.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
-* The Palette agent is now able to automatically upgrade to newer versions.
+* The Palette Edge Host agent can now upgrade to newer versions automatically.
 
 ## Packs
 
