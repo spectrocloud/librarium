@@ -84,7 +84,7 @@ The following is an example of a user-data that is used to customize the edge ho
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: 02c3aabf-0f48-3a66-8b96-c4047c1984aa
+    edgeHostToken: yourEdgeRegistrationTokenHere
     projectUid: 12345677788
     tags:
       env: east

@@ -1,6 +1,6 @@
 ---
 title: "Prepare Edge Hosts for Installation"
-metaTitle: "Stage common user-data and prepare edge host for installation"
+metaTitle: "Stage common user data and prepare edge host for installation"
 metaDescription: "Learn how to prepare edge hosts for installation before shipping them out to site for site installation"
 hideToC: false
 fullWidth: false
@@ -18,7 +18,7 @@ In this step, you will prepare the Edge host for installation. You will copy the
 - The Edge Installer image.
 
 
-- The Edge Installer user-data. 
+- The Edge Installer user data. 
 
 
 - Content bundles.
@@ -52,7 +52,7 @@ Pick the target environment for your Edge host.
 
 The following items are optional and not required but may apply to your use case:
 
-- USB disk that contains a user-data ISO. This is applicable in [multiple user-data](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser-datausecase) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
+- USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser datausecase) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
 - USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Create Installer Image](/clusters/edge/site-deployment/stage).
@@ -61,7 +61,7 @@ The following items are optional and not required but may apply to your use case
 
 ## Installer Handoff
 
-1. Insert the USB drive containing the Edge Installer ISO and potentially your user-data.
+1. Insert the USB drive containing the Edge Installer ISO and potentially your user data.
 
 
 2. If you created a content bundle and loaded it to a USB disk, then insert the content bundle USB drive.
@@ -70,7 +70,7 @@ The following items are optional and not required but may apply to your use case
 3. Power on the Edge host.
 
 
-4. Wait for the Edge Installer to complete copying content to the hard drive. The Edge host will reboot by default upon completion unless you specify a different option in the Edge Installer configuration user-data.
+4. Wait for the Edge Installer to complete copying content to the hard drive. The Edge host will reboot by default upon completion unless you specify a different option in the Edge Installer configuration user data.
 
 5. Repeat steps one through four for all Edge hosts.
 

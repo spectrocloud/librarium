@@ -111,6 +111,6 @@ You validate you create a cluster profile for Edge hosts by using the following 
 
 # Next Steps
 
-Your next step in the deployment lifecycle is to prepare the Edge Installer user-data. Use the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) guide to continue.
+Your next step in the deployment lifecycle is to prepare the Edge Installer user data. Use the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) guide to continue.
 
 <br />

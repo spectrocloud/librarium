@@ -13,14 +13,14 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installer that is available in the form of an ISO. You can use this installer as is and provide your user-data through a bootable device when deploying the device at the physical site. 
+We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installer that is available in the form of an ISO. You can use this installer as is and provide your user data through a bootable device when deploying the device at the physical site. 
 
 However, some scenarios require you to build a custom installer image. Review the following scenarios to identify if you need to create a custom Edge Installer image.
 
 - You created a content bundle that you want to include with the installation.
 
 
-- You need to apply multiple user-data configurations. Review the [Multiple User-Data Usecase](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser-datausecase) resource to learn more.
+- You need to apply multiple user data configurations. Review the [Multiple user data Usecase](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser datausecase) resource to learn more.
 
 
 - You are using a custom operating system (OS).
@@ -67,7 +67,7 @@ For bare metal Edge hosts, creating the Palette edge installer variant involves 
     cp .installer.env.template .installer.env
    ```
 
-3. Create an Edge Install configuration file titled **user-data.yaml**, and add the configuration settings for the Edge host. Refer to the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) for guidance on how to create a user-data file.
+3. Create an Edge Install configuration file titled **user data.yaml**, and add the configuration settings for the Edge host. Refer to the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) for guidance on how to create a user data file.
 
 
 4. Update the content of the file **.installer.env** to customize the following attributes:
@@ -93,7 +93,7 @@ For bare metal Edge hosts, creating the Palette edge installer variant involves 
 - Path to the configuration file that contains site settings.
 
   ```shell
-  USER_DATA_FILE="user-data.yaml”
+  USER_DATA_FILE="user data.yaml”
   ```
 
 5. Build the custom ISO. The creation process will take a few minutes depending on your system capabilities.
@@ -111,11 +111,11 @@ For bare metal Edge hosts, creating the Palette edge installer variant involves 
     + BASE_IMAGE=gcr.io/spectro-dev-public/stylus-installer:v3.2.0
     + IMAGE_NAME=gcr.io/spectro-dev-public/stylus-custom
     + IMAGE=gcr.io/spectro-dev-public/stylus-custom:v3.2.0
-    + USER_DATA_FILE=user-data
+    + USER_DATA_FILE=user data
     + BUILD_PLATFORM=linux/amd64
     + echo 'Building custom gcr.io/spectro-dev-public/stylus-custom:v3.2.0 from gcr.io/spectro-dev-public/stylus-installer:v3.2.0'
     Building custom gcr.io/spectro-dev-public/stylus-custom:v3.2.0 from gcr.io/spectro-dev-public/stylus-installer:v3.2.0
-    + '[' -f user-data ']'
+    + '[' -f user data ']'
     + docker build --build-arg BASE_IMAGE=gcr.io/spectro-dev-public/stylus-installer:v3.2.0 -t gcr.io/spectro-dev-public/stylus-custom:v3.2.0 --platform linux/amd64 -f images/Dockerfile.installer ./
     [+] Building 7.9s (7/7) FINISHED
     => [internal] load build definition from Dockerfile.installer                                                                                                     0.0s
@@ -160,10 +160,10 @@ Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer
 
 ## Create OVA Image
 
-1. Create an Edge Install configuration file. Name the file **user-data**. Refer to the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) for guidance on how to create a user-data file.
+1. Create an Edge Install configuration file. Name the file **user data**. Refer to the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) for guidance on how to create a user data file.
 
   ```shell
-  touch user-data
+  touch user data
   ```
 
 2. Use the content from the template in the [Set up Device section](/clusters/edge/deployment/native#setupdevice) to add your site configuration. Make the necessary changes for your environment.
@@ -180,13 +180,13 @@ Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer
   MacOS/Linux:
 
   ```shell
-  mkisofs -output ci.iso -volid cidata -joliet -rock user-data meta-data
+  mkisofs -output ci.iso -volid cidata -joliet -rock user data meta-data
   ```
 
   Windows:
 
   ```shell
-  genisoimage -output ci.iso -volid cidata -joliet -rock user-data meta-data
+  genisoimage -output ci.iso -volid cidata -joliet -rock user data meta-data
   ```
 
   This generates an ISO file called **ci.iso** in the current directory.
@@ -224,7 +224,7 @@ Create an Open Virtual Appliance (OVA) file from the base Palette Edge Installer
 15. Export the VM as an OVF template.
 
 
-The export step will generate an OVA file. You will use this OVA file to load the Edge hosts will all the required dependencies, such as the Edge Installer, user-data, and any content bundles you have.
+The export step will generate an OVA file. You will use this OVA file to load the Edge hosts will all the required dependencies, such as the Edge Installer, user data, and any content bundles you have.
 
 ## Validation
 
