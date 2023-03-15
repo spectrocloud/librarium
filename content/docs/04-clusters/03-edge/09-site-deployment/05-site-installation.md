@@ -13,36 +13,64 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Site installation is performed by booting your edge host into the Palette Edge Installer.The installation procedure will vary based on your environment and edge host type.
+You perform a  site installation by powering on the Edge host. The Edge Installer will start and begin the installation process, which may vary depending on your environment and Edge host type.  
 
-# Edge Host Installation Phases
+# Installation Phases
 
-Installtion on the edge hosts, consists of the followig 3 phases. The install hand-off phase described below, is typically performed in the preparation step.
+The Edge host installation is made up of the following three phases.
 
-- Phase 1 - Install Hand-off: Installer is copied over from a portable storage device to the hard disk
-- Phase 2 - Registration: Edge host waits for registration with Palette Management Console and cluster definition
-- Phase 3 - Cluster Provisioning: Edge host boots into the desired provider OS and proceeds with cluster deployment.
+| Phase| Description|
+| ---| ---|
+| Install Handoff | The Edge Installer is copied over from a portable storage device to the Edhe host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more.|
+| Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.|
+|Cluster Provisioning | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.|
 
-At the site, we are provided an edge host which has already undergone install hand off. The edge host boots directly into the registration phase.
+Ideally, all Edge hosts have completed the *Install Handoff* phase when they arrive at the installation site.
 
 # Site User Data
 
-To provide additional site specific installer configruation, create a user-data yaml file and generate an ISO file by running the following command:
-
-```
-touch meta-data
-mkisofs -output $USER_DATA_ISO_NAME -volid cidata -joliet -rock user-data meta-data
-```
-
-Transfer your site user-data ISO file to a USB drive to be used during installation.
+You can provide a site-specific Edge Installer configuration user-data if you need to apply new values or override default values from the Edge Installer user-data that was created in the Installer Handoff phase. 
+Follow the steps outlined in the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) resource to create a site-specific user-data. 
 
 # Installation
+
+Use the following steps to complete the Edge host installation.
+
+<br />
 
 <Tabs identifier="environment">
 
 <Tabs.TabPane tab="Bare Metal" key="bare-metal">
 
-Insert the site USB disk containing your user-data ISO , into the  edge host will boot into the registration mode where it will connect to the Palette Management Console that was specified in the user-data. If auto-registration was setup, the node will automatically registed with Palette Management Console, otherwise it will wait for edge host information to manually entered in the Palette Management Console through the Edge Host Management UI.  One registered, the system will wait for a cluster to be defined in the Palette Management Console. Once the cluster is defined, installation will proceeed, with the host agent downloading required artifacts and rebooting itself.
+1. If you have a site-specific user-data ISO, then insert the USB stick into the Edge host.
+
+
+2. Power on the Edge host. The Edge host will boot into registration mode where it will connect with the Palette endpoint that was specified in the user-data.
+
+
+3. If you provided the Edge Installer user-data with an `EdgeHostToken` then the Edge host will automatically register with Palette. Otherwise, the Edge host will wait until you manually register the device in Palette. Go ahead and register the Edge host with Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/edge-host-registration) for additional guidance.
+
+    <br />
+
+    <InfoBox>
+
+    Once the Edge host is registered, the Palette will wait for you to create a host cluster and assign the  Edge host to the cluster.
+
+    </InfoBox>
+
+4. Log in to [Palette](https://console.spectrocloud.com).
+
+
+5. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+6. Click on **Add New Cluster**.
+
+
+7.
+
+
+4. . Once the cluster is defined, installation will proceeed, with the host agent downloading required artifacts and rebooting itself.
 
 In this phase, the system boots into the OS defined in the cluster profile and cluster configuration begins. K8s components are initialized and configured based on the specifications in the cluster profile. If content bundles were provided (via USB or embedded in a custom installer), they are extracted and loaded into the container runtime process.
 
