@@ -15,6 +15,69 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
+You can access your Kubernetes cluster by using the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Palette automatically generates a **kubeconfig** file for your cluster that you can download and use to connect with your host cluster.
+
+
+# Access Cluster with CLI
+
+Use the following steps to connect to your host cluster with the kubectl CLI.
+
+# Prerequisites
+
+- Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional guidance.
+
+
+- A host cluster that is either publicly accessible OR a private host cluster that has the [Spectro Proxy](/integrations/frp) installed.
+
+
+<WarningBox>
+
+If you are using [OIDC](/clusters/cluster-management/cluster-rbac#userbacwithoidc) with your host cluster, you will need the kubelogin plugin. Refer to the kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) for installation guidance.
+
+</WarningBox>
+
+
+# Set up Kubectl
+
+1. Log in to [Palette](https://spectrocloud.com).
+
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+
+3. Select the host cluster you want to access.
+
+
+4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
+
+
+5. Click on the kubeconfig link to download the file.
+
+![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.png)
+
+<br />
+
+6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
+  
+  Example:
+  ```shell
+  export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
+  ```
+
+
+You can now issue kubectl commands against your host cluster.
+
+
+# Validation
+
+You can validate you have access to your cluster by attempting to issue kubectl commands against your host cluster. 
+
+
+
+<!-- # Overview
+
 Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters. This enables our users to deploy applications, inspect and manage cluster resources, and view logs using the Palette terminal without an external terminal. 
 
 # Usage Scenarios
@@ -139,4 +202,4 @@ For AWS clusters, the CLI can be configured using the below command and authenti
 
 
 
-
+ -->
