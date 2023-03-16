@@ -74,25 +74,25 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
   
 The Kubeadm configuration file is where you can do the following:
 
-<br />
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with the any IP ranges assigned to nodes for pods.
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
 
-- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP).
+- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack.
+- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
-The Kubeadm config has been updated to include improved hardening. 
+The Kubeadm config has been updated with improved hardening. 
+
+<br />
 
 #### Example Kubeadm configuration file 
 
-<br />
 
 ```yaml
 pack:
@@ -232,17 +232,19 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with the any IP ranges assigned to nodes for pods.
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
 
-- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP).
+- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack.
+- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
 A pod security policy has been removed from the Kubeadm config.
+
+<br />
 
 #### Example Kubeadm config
 
@@ -362,7 +364,6 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
-
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -398,18 +399,19 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with the any IP ranges assigned to nodes for pods.
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
 
-- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP).
+- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack.
+- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
 Changes in the Kubeadm config from the previous version is the addition of a pod security policy and the removal of an unsecure port.  
 
+<br />
 
 #### Example Kubeadm config
 
@@ -528,10 +530,26 @@ kubeadmconfig:
 
 ## Usage
 
+The Kubeadm configuration file is where you can do the following:
+
+<br />
+
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
+
+
+- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+
+
+- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+
 #### Configuration Changes
 
 Changes in the Kubeadm config from the previous Kubernetes version is ??. 
 
+<br />
 
 #### Example Kubeadm config
 
