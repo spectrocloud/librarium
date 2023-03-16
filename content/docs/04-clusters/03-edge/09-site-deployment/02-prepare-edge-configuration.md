@@ -39,6 +39,10 @@ The user data is prepared by creating a YAML file consisting of OS and Installat
     poweroff: true
 ```
 
+Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide to determine which registration method best fits you and your organization.
+
+<br />
+
 <InfoBox>
 
 Review the [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters.

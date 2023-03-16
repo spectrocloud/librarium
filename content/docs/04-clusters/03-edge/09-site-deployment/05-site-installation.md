@@ -71,7 +71,7 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 2. Power on the Edge host. The Edge host will boot into registration mode where it will connect with the Palette endpoint that was specified in the user data.
 
 
-3. If you provided the Edge Installer user data with an `EdgeHostToken` then the Edge host will automatically register with Palette. Otherwise, the Edge host will wait until you manually register the device in Palette. Go ahead and register the Edge host with Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for additional guidance.
+3. The Edge host will remain in a wait mode until you register the device in Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about each registration method. 
 
     <br />
 

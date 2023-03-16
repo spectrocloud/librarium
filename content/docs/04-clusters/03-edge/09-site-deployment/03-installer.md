@@ -20,7 +20,7 @@ However, some scenarios require you to build a custom installer image. Review th
 - You created a content bundle that you want to include with the installation.
 
 
-- You need to apply multiple user data configurations. Review the [Multiple user data Usecase](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser datausecase) resource to learn more.
+- You need to apply multiple user data configurations. Review the [Multiple User Data Usecase](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuserdatausecase) resource to learn more.
 
 
 - You are using a custom operating system (OS).
