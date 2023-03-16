@@ -4,6 +4,7 @@ metaTitle: "Advanced Edge Installation Scenarios"
 metaDescription: "Learn about advanced insallation scenarios such as airgapped, secure boot, etc."
 hideToC: false
 fullWidth: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
