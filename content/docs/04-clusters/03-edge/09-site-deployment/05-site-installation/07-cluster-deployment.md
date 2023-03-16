@@ -62,19 +62,6 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the *Events* tab to review detailed logs.
 
-
-<!-- 1. Click the **Clusters** tab and select **+ Add New Cluster**.
-
-2. Select **Edge Native** as the environment and choose the cluster profile created during the modeling phase. Add additional add-ons to deploy applications inside the cluster. If you need remote access, use an add-on layer with the [Spectro Proxy](/integrations/frp) pack. This establishes a route through the Palette console to access the cluster remotely.
-
-3. Configure cluster properties such as Virtual IP address (VIP) for the edge site and inject SSH keys.
-
-4. Configure node pools by adding your edge hosts to the master or worker pools. Successfully registered edge devices are displayed in the *drop-down Menu*.
-
-5. Review and save the cluster configuration.
-
-After creating the cluster, the Palette Edge Host agent will start the installation process. You can track installation progress in Palette Management Console. The cluster overview page shows a summary of the progress. The *Events* tab displays detailed orchestration logs. -->
-
 ## Validation
 
 1. Log in to [Palette](https://console.spectrocloud.com).
