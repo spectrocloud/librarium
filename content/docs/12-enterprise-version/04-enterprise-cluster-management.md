@@ -15,7 +15,7 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Overview
 
-Palette supports several day 2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette On-Premises Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore and cluster migration across Public Cloud Gateway (PCGs).
+Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette On-Premises Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore and cluster migration across Private Cloud Gateway (PCGs).
 
 <br />
 <br />
