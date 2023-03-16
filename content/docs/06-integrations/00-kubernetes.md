@@ -407,7 +407,7 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-Changes in the Kubeadm config from the previous version is the addition of a pod security policy and the removal of an unsecure port.  
+The Kubeadm configuration is changed to include a pod security policy, and an unsecure port is removed.  
 
 <br />
 
@@ -544,7 +544,7 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-Changes in the Kubeadm config from the previous Kubernetes version is ??. 
+There are no changes to the Kubeadm configuration.
 
 <br />
 
