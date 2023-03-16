@@ -16,6 +16,7 @@ A **Cluster Profile** comprises preconfigured layers, each of which is called a 
 
 - **Core** packs - These packs model the core layers to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these core packs for updates. 
 
+
 - **Add-On** packs - These packs model the infrastructure integrations and applications that exist on top of the core packs. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
 
 Both the core and add-on packs described above are customizable, and you can define new custom add-on packs as well. The use case for defining new custom add-on packs is to have desired consistent governance across your profile deployments. 
