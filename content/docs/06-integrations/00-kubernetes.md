@@ -41,7 +41,6 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 
 - A minimum of 4 CPU and 4GB Memory.
 
-
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -75,7 +74,7 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 The Kubeadm configuration file is where you can do the following:
 
 
-- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
@@ -83,7 +82,7 @@ The Kubeadm configuration file is where you can do the following:
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
@@ -194,7 +193,6 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
-
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -230,7 +228,7 @@ The Kubeadm configuration file is where you can do the following:
 
 <br />
 
-- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
@@ -238,7 +236,7 @@ The Kubeadm configuration file is where you can do the following:
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
@@ -397,7 +395,7 @@ The Kubeadm configuration file is where you can do the following:
 
 <br />
 
-- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
@@ -405,7 +403,7 @@ The Kubeadm configuration file is where you can do the following:
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
@@ -500,7 +498,6 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
-
 - Operating System (OS) dependencies as listed in the table.
 
 
@@ -534,7 +531,7 @@ The Kubeadm configuration file is where you can do the following:
 
 <br />
 
-- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the Kubeadm configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods.
 
@@ -542,7 +539,7 @@ The Kubeadm configuration file is where you can do the following:
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack if you are connecting to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 
 #### Configuration Changes
