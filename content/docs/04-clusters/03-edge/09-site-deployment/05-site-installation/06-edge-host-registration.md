@@ -22,9 +22,17 @@ To use an Edge host with a host cluster, you must first register it with Palette
 | QR Code |  Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry.| High |
 
 
+# Registration Method
+
 Select the registration method that best fits your organizational needs and review the steps of the option to get started.
 
-# Auto Registration
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Auto Registration" key="auto-registration">
+
+## Auto Registration
 
 You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. The default project, if any selected for the registration token determines the exact project within your tenant that the Edge host is registered under. You can override the default project by providing a project id in the user data.
 
@@ -40,7 +48,7 @@ stylus:
 
 ## Prerequisites
 
-- Teant admin access
+- Tenant admin access.
 
 ## Create Registration Token
 
@@ -84,16 +92,174 @@ Your next step is to decide how you want to provide the registration token. You 
 3. Select the **Edge Hosts** tab.
 
 
-Your Edge host will automatically register with Palette and display in the list.
+Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
-# Manual Registration
 
-In this mode, the edge host needs to be registered manually by providing the host's unique identifier. Navigate to the clusers page and click on the 'Edge Hosts' tab. Create 'Add New' option to bring up the edge host addition screen. Provide the unique ID and optinally one or more tags as name, value pairs.
 
-The unique ID for the edge host can be auto-generated from the serial number. Alternately, it can be provided in the user data or generated using a specialized macro.
+</Tabs.TabPane>
 
-# QR Code Registration
 
+<Tabs.TabPane tab="Manual Registration" key="manual-registration">
+
+## Manual Registration
+
+In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. Use the following steps to manually register an Edge host in Palette.
+
+## Prerequisites
+
+- Tenant admin access
+
+
+- Access to the Edge host's unique identifier. You can get the Edge host's unique identifier or machine ID from the console output as the Edge host powers on. The Edge host unique identifier has the prefix `edge-` by default.
+    
+    Example Output:
+    ```shell
+    tіме="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
+    t¡me="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
+    time="2022-11-03T11:30:102" level=info Msg="reset cached site name from unid, new: edge-9e8e3342bafa9eb6d45f81c1f6714ea2" MachineD: edge-9eBe3342bafaeb6d45f81c1fb714ea2
+    tіме="2022-11-03T11:30:192" level=info Msg="MachineIP: 10.239.10.145"
+    ```
+
+    <InfoBox>
+
+     You can also specify an Edge host's unique identifier in the user data by using the `stylus.site.Name` parameter. Refer to the [Installer Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about available configuration parameters.
+
+    </InfoBox>
+
+## Register Edge Host in Palette
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the **Edge Hosts** tab.
+
+
+4. Click on **Add Edge Hosts**.
+
+
+5. In the input box **Edge Host IDs**. Paste in the Edge host's unique identifier.
+
+
+6. Specify any tags or pairing keys if you desire.
+
+
+7. Confirm your changes to register the Edge host.
+
+## Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the **Edge Hosts** tab.
+
+
+Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
+
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="QR Code" key="qr-code">
+
+## QR Code Registration
+
+You can provide a QR case-based automated registration to simplify the registration process. Upon boot up, a QR code is displayed on the Edge host's console if enabled during the installation phase. 
+
+Site operators scan the QR code to visit the registration page. This web page pre-populates the Edge host's unique ID in the web app and provides a list of edge sites they can associate with this edge host. 
+
+Site operators can select a site and submit a registration request. The web application automatically creates the Edge host entry in Palette and defines a cluster with that Edge host. This workflow also supports adding Edge hosts to an existing host cluster.
+
+## Prerequisites
+
+- Access to the Spectro Cloud GitHub repository that hosts the Palette Edge Registration App. Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
+
+
+- Sufficient permissions to enable third-party integrations with a GitHub repository.
+
+
+- A [Vercel](https://vercel.com/) account or a similar serverless website hosting service.
+
+
+- Experience deploying and maintaining web applications to serverless website hosting services.
+
+
+- git v2.39.0 or greater.
+
+## Enable Palette Edge Registration App
+
+
+We provide you with a sample serverless application, the Palette Edge Registration App. The Palette Edge Registration App is built on Next.js and deployed using the Vercel platform. 
+
+Use the following steps to enable this workflow.
+
+<br />
+
+
+1. Clone the repository.
+
+
+2. Configure Vercel or your hosting provider to [automatically deploy](https://vercel.com/docs/concepts/deployments/git) pull requests against the main branch. 
+
+
+3. Update the sample site provided with your site names and locations. Make the required changes in the **pages/index.js** file. Additional details about the files to be changed and instructions on how to build and test the application locally are provided in the **readme** file.
+
+
+4. Map the infrastructure and add-on cluster profiles to be used with each site. Refer to the [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile) to learn more about Edge Native cluster profiles.
+
+
+5. Specify site-specific Virtual IP (VIP) addresses or DNS values for each site. 
+
+
+6. Compile and test the code locally.
+
+
+7. Create GitHub pull request towards your main branch to automatically trigger the build process and deploy the app.
+
+
+8. Provide the URL of the deployed app to the Edge Installer user data. Use the parameter `stylus.site.registrationURL`.
+
+    <br />
+
+    ```yaml
+    stylus:
+      site:
+        paletteEndpoint: api.spectrocloud.com
+        registrationURL: https://edge-registration-url.vercel.app 
+    ```
+
+9. Your next step is to decide how you want to provide the registration URL value. You can include the registration URL in the user data added to the device before shipping. Or you can create a user data ISO and have the registration URL in the secondary user data. Check out the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) to learn more about creating secondary user data.
+
+
+10. Power on the Edge host device and scan the QR code presented.
+
+
+11. Fill out the required information in the web application and submit the registration request.
+
+## Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the **Edge Hosts** tab.
+
+
+Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
+
+
+
+
+</Tabs.TabPane>
+
+</Tabs>
 
 # Next Steps
 
