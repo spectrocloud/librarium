@@ -12,11 +12,18 @@ import WarningBox from 'shared/components/WarningBox';
 # Packs
 
 
-A Pack is a collection of files such as Manifests, Helm charts, Ansible roles, Configuration files, etc. It is the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons.  Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment.
+A **Cluster Profile** comprises preconfigured layers, each of which is called a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorised into two types:
+
+- **Core** packs - These packs model the core layers to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these core packs for updates. 
+
+- **Add-On** packs - These packs model the infrastructure integrations and applications that exist on top of the core packs. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
+
+Both the core and add-on packs described above are customizable, and you can define new custom add-on packs as well. The use case for defining new custom add-on packs is to have desired consistent governance across your profile deployments. 
+  
 
 ## Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. The following is a typical structure of a pack:
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. Each Pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, etc. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical structure of a pack:
 
 
 | **Pack Name** |**Requirement** | **Pack Directory Name** |
