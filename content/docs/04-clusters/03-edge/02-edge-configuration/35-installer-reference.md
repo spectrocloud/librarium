@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The Edge Installer user-data accepts a parameter named `stylus`. In addition to the `stylus` parameter, the user-data also supports the usage of cloud-init stages and other Kairos-supported parameters. The `stylus.site` parameter is how you primarily configure the Edge host but you can also use cloud-init stages to help you customize the installation. Refer to the [General Parameters](/clusters/edge/edge-configuration/installer-reference) to gain an overview of all the parameters supported in the `stylus.site` parameter block. 
+The Edge Installer user data accepts a parameter named `stylus`. In addition to the `stylus` parameter, the user data also supports the usage of cloud-init stages and other Kairos-supported parameters. The `stylus.site` parameter is how you primarily configure the Edge host but you can also use cloud-init stages to help you customize the installation. Refer to the [General Parameters](/clusters/edge/edge-configuration/installer-reference) to gain an overview of all the parameters supported in the `stylus.site` parameter block. 
 
 # Defaults
 
@@ -28,7 +28,7 @@ The Edge Installer is configured with a set of default values.
 
 The default values assume you are installing the Edge host in an environment without a network proxy, do not require remote access to the edge host, and are using Palette SaaS. If you have requirements different from the default values, you must provide the Edge Installer with additional information. 
 
-You can provide the installer with additional configuration values by using a user-data file. The following table contains all the supported user-data parameters the installer accepts.
+You can provide the installer with additional configuration values by using a user data file. The following table contains all the supported user data parameters the installer accepts.
 
 # General Parameters
 
@@ -76,7 +76,7 @@ Network settings specific to the network interface of the edge host. You can con
 
 # Example Configuration
 
-The following is an example of a user-data that is used to customize the edge host installation process.
+The following is an example of a user data that is used to customize the edge host installation process.
 
 <br />
 

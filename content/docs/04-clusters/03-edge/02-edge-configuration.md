@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
 
-The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the ability to specify a user-data configuration file. You can use this user-data configuration file to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in your environment.
+The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the ability to specify a user data configuration file. You can use this user data configuration file to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in your environment.
 
 To better understand the Edge installation process, review the order of operations.
 
@@ -30,10 +30,10 @@ To better understand the Edge installation process, review the order of operatio
 2. Edge Installer gets copied to disk.
 
 
-3. Device powers off or reboots based on the user-data configuration.
+3. Device powers off or reboots based on the user data configuration.
 
 
-4. Upon boot up or reboot, cloud-init stages specified in the Edge Installer user-data take effect.
+4. Upon boot up or reboot, cloud-init stages specified in the Edge Installer user data take effect.
 
 
 5. Edge Host Registers with Palette.
@@ -60,13 +60,13 @@ To better understand the Edge installation process, review the order of operatio
 ![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
 
 
-The Edge installation process accepts two types of configurations that you can use to customize the installation. Edge Installer Configuration, and Edge OS Configuration. 
+The Edge installation process accepts two types of configurations that you can use to customize the installation. Edge Installer Configuration, and Edge OS Configuration.
 
 
 
 # Edge Installer Configuration
 
-The Edge installation process expects you to specify installation parameters. You can supply the install parameters in multiple stages. You can provide common installation configurations for all your sites during the manufacturing or staging phases. 
+The Edge installation process expects you to specify installation parameters. You can supply the install parameters in multiple stages. You can provide common installation configurations for all your sites during the manufacturing or staging phases.
 
 You can also specify additional location-specific configurations at the site during the installation. The install configurations provided in various stages are merged to create the edge host's final configuration.
 
