@@ -29,14 +29,17 @@ Palette provides a rich collection of out-of-the-box packs for various integrati
 
 | **Pack Name** |**Requirement** | **Description** |
 |-|-|-|
-| `pack.json` | mandatory| This file contains the pack metadata.|
-| `values.yaml`| mandatory| This file contains the pack configuration, params exposed from the underlying charts, <br /> and templated params from ansible-roles.|
+| `pack.json` | mandatory| Pack metadata.|
+| `values.yaml`| mandatory| Pack configuration, params exposed from the underlying charts, <br /> and templated params from ansible-roles|
+|`README.md`|The pack description|
 | `logo.png`| optional| pack logo|
-| `manifests/`| optional| This directory contains the manifest files.|
-| `ansible-roles`| optional| ansible-roles used to install the pack|
-| `charts/`| optional| This directory contains the Helm charts to be deployed for the pack. <br>Note that each chart, in turn, also has a values.yaml file and can have nested charts.|
+| `manifests/`| optional| Directory containing the manifest files|
+| `ansible-roles`| optional| Ansible roles used to install the pack|
+| `charts/`| optional| Directory containing the Helm charts to be deployed for the pack. <br>A pack can support multiple charts underneath. Note that each chart, in turn, also has a `values.yaml` file and can have nested charts.|
+
 
 ![Pack structure](/pack_structure.png)
+
 
 # Registries
 
