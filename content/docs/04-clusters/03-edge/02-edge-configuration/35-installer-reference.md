@@ -14,7 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The Edge Installer user data accepts a parameter named `stylus`. In addition to the `stylus` parameter, the user data also supports the usage of cloud-init stages and other Kairos-supported parameters. The `stylus.site` parameter is how you primarily configure the Edge host but you can also use cloud-init stages to help you customize the installation. Refer to the [General Parameters](/clusters/edge/edge-configuration/installer-reference) to gain an overview of all the parameters supported in the `stylus.site` parameter block. 
+The Edge Installer user data accepts a parameter named `stylus`. In addition to the `stylus` parameter, the user data configuration file also supports the use of cloud-init stages and other Kairos-supported parameters. The `stylus.site` parameter is how you primarily configure the Edge host, but you can also use cloud-init stages to customize the installation. Refer to the [General Parameters](/clusters/edge/edge-configuration/installer-reference#generalparameters) for a list of all the parameters supported in the `stylus.site` parameter block. 
 
 # Defaults
 
