@@ -66,7 +66,7 @@ Use the additional user data to override configurations from the previous user d
 
 To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of an ISO image. The Edge Installer will consume the additional user data during the installation process.
 
-![The flow of an install process with an additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
+![The flow of an install process with an additional customization occuring at the physical site. The additonal customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
 
 
 # Build User Data ISO

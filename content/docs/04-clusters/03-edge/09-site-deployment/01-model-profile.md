@@ -51,7 +51,7 @@ No prerequisites.
 
 2. Choose the desired scope, project or **Tenant Admin**.
 
-![Select the scope, either project or tenant admin](/clusters_site_deployment_mode-profile_scope-selector.png)
+![Select the scope by using the drop-down Menu.  Either project or tenant admin are the displayed values in the screenshot.](/clusters_site_deployment_mode-profile_scope-selector.png)
 
 <br />
 
