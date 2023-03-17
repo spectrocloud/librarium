@@ -22,11 +22,12 @@ Cloudanix Dashboard also provides an Interactive interface to present the mappin
 
 Users can initiate workflows (Jira integration), target specific workloads (exclude container, pod or node while performing an anti-pattern) right from the Cloudanix Dashboard itself.
 
-This helm chart installs 3 Cloudanix services to enable container security capabilities. The services are listed below:
+This helm chart installs 4 Cloudanix services to enable container security capabilities. The services are listed below:
 
 - inventory-service
 - threat-service
 - config-cron
+- misconfig-cron
 
 ## Versions Supported
 
@@ -43,7 +44,7 @@ Cloudanix helm chart supports the following versions with Palette.
 
 ## Prerequisites
 
-- Minumum CPU Cores: 1
-- Minimum Memory Required: 25 MiB
+- Minumum CPU Cores: 0.5
+- Minimum Memory Required: 256 MiB
 - The minimum Kubernetes version supported is 1.19
 - Kernel version 4.5 or higher
