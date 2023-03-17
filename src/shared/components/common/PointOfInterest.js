@@ -70,7 +70,7 @@ const Circle = styled.div`
 
 const PointsWrapper = styled.div.attrs(({ offset }) => ({
   style: {
-    transform: `translateY(-${offset}px)`,
+    transform: `translate(-${offset.x}px, -${offset.y}px)`,
   },
 }))`
   position: absolute;
@@ -108,12 +108,13 @@ function Point({ description, tooltipPlacement = "right", x, y, label }) {
 }
 
 function PointsOfInterest({ points = [], children }) {
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
   return (
     <Wrapper
       ref={wrapRef}
       onScroll={(ev) => {
-        setOffset(ev.target.scrollTop);
+        setOffset({ x: ev.target.scrollLeft, y: ev.target.scrollTop });
       }}
     >
       <PointsWrapper offset={offset}>
