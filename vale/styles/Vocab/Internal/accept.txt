@@ -94,3 +94,6 @@ ClusterRoleBindings
 RoleBindings
 RoleBinding
 kubeconfig
+datastore
+uxp
+wodim

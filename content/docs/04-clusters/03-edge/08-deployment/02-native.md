@@ -4,6 +4,7 @@ metaTitle: "Edge Native"
 metaDescription: "Learn about Edge Native and how to deploy an edge device with Palette."
 hideToC: false
 fullWidth: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -80,7 +81,16 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 
 
-4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section.
+4. Create a configuration file for the Edge device. The configuration file is composed of three sections; `site`, `reboot`, `stages`, and `install`. Review the following parameters to better understand each section. 
+
+<InfoBox>
+
+To learn more about cloud-init stages and how they can be used to customize the installation process, check out the [Cloud Init Stages](/clusters/edge/cloud-init) resource. You should also review the [Edge Install Configuration](/clusters/edge/stylus-reference) resource to review all user-data parameters.
+
+
+</InfoBox>
+
+<br />
 
 
   ```yaml

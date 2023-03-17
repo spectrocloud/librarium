@@ -43,7 +43,17 @@ This page lists the version details of various Palette components with respect t
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
 
-# Stylus CLI Versions
+# Edge Installer CLI Versions
+
+The CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
+The following command unpacks the download binary and assigns the executable bit to the binary. 
+<br />
+
+```shell
+upx -d ./spectro-cli-linux-amd64 && \
+chmod +x ./spectro-cli-darwin-amd64 && \
+./spectro-cli-linux-amd64 
+```
 
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
 |---|-------|---|--|
@@ -139,7 +149,7 @@ This page lists the version details of various Palette components with respect t
 -------
 
 
-# Stylus Edge Installer Image Version
+# Edge Installer Image Version
 
 |Palette Release|Stylus Version|
 |--|---|

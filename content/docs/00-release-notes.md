@@ -202,7 +202,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deployment/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
 **Features**
 
@@ -228,7 +228,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/public-cloud/aks#deployinganakscluster) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for [Edge Native](/clusters/edge/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](/clusters/edge/deployment/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
   * Native Edge clusters
