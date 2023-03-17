@@ -129,6 +129,8 @@ Perform the following steps to proceed with the installation at the site in your
 
 <br / >
 
+<br / >
+
 1. Log in to vCenter Server using the vSphere Client.
 
 
