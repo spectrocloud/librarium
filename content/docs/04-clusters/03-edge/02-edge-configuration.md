@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 
 
-The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the ability to specify a user data configuration file. You can use this user data configuration file to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in your environment.
+The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the ability to specify a user data configuration file. You can use this configuration file to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in your environment.
 
 To better understand the Edge installation process, review the order of operations.
 
@@ -33,7 +33,7 @@ To better understand the Edge installation process, review the order of operatio
 3. Device powers off or reboots based on the user data configuration.
 
 
-4. Upon boot up or reboot, cloud-init stages specified in the Edge Installer user data take effect.
+4. Upon boot up or reboot, cloud-init stages that are specified in the Edge Installer configuration file take effect.
 
 
 5. Edge Host Registers with Palette.
@@ -42,10 +42,10 @@ To better understand the Edge installation process, review the order of operatio
 6. Device pairs with Palette.
 
 
-7. Edge Installer identifies cloud-init stages specified in the OS pack.
+7. Edge Installer identifies cloud-init stages as specified in the OS pack.
 
 
-8. Operating System (OS) is installed on device.
+8. Operating System (OS) is installed on the device.
 
 
 9. Device reboots.
@@ -60,7 +60,7 @@ To better understand the Edge installation process, review the order of operatio
 ![The boot order sequence, listing 9 steps that flow in a sequential order ](/clusters_edge_cloud-init_boot-order-squence.png)
 
 
-The Edge installation process accepts two types of configurations that you can use to customize the installation. Edge Installer Configuration, and Edge OS Configuration.
+The Edge installation process accepts two types of configurations that you can use to customize the installation: Edge Installer Configuration and Edge OS Configuration.
 
 
 
@@ -72,7 +72,7 @@ You can also specify additional location-specific configurations at the site dur
 
 # Edge OS Configuration
 
-The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at the operating system (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS stages take effect during the boot-up process.
+The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS stages take effect during the boot-up process.
 
 <br />
 

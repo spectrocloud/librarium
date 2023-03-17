@@ -43,16 +43,16 @@ In a lab environment, you must perform all the steps. In a non-learning environm
 
 # Supported Configurations
 
-Palette offers complete flexibility in deploying clusters at edge sites, with various aspects you can customize. The table below describes these aspects, along with the available options.
+Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The table below describes these aspects and the available options.
 
 | **Parameter**  | **Choices** |
 |-|-|
-| Cluster Mode |  - Connected - The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped - The site does not have internet connectivity. Installation is initiated via the Palette CLI.|
-| OS | - Ubuntu<br/>- OpenSUSE<br/>- Bring your own OS(BYOOS) |
+| Cluster Mode |  - Connected: The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped: The site does not have internet connectivity. Installation is initiated via the Palette CLI.|
+| OS | - Ubuntu<br/>- OpenSUSE<br/>- Bring your own OS (BYOOS) |
 | K8s Flavor | - Palette eXtended K8s for Edge (PXK-E)<br/>- Palette Optimized K3s<br/>- Palette Optimized RKE2 |
-| K8s Version |- 1.24.x<br/>- 1.25.x<br/>- 1.26.x etc. |
-| FIPS Mode |- True - Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False |
-| Edge Host Registration Mode | - Manual - A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto - Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code - Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
+| K8s Version |- 1.24.x<br/>- 1.25.x<br/>- 1.26.x |
+| FIPS Mode |- True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False |
+| Edge Host Registration Mode | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
 | Edge Host Type - Installer Format | - Bare Metal - ISO<br/>- Virtual Machine (VMware) - OVA<br/>- Virtual Machine (AWS) - AMI |
 
 

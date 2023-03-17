@@ -13,15 +13,15 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-You can create a content bundle that contains all the required packages and artifacts the Edge host need for a successful installation. You only need to create a content bundle for some installation scenarios.
+You can create a content bundle that contains all the required packages and artifacts the Edge host needs for a successful installation. You only need to create a content bundle for some installation scenarios.
 
-The following table lists the various installation scenarios. Use the table to identify if you need to create a content bundle.
+The following table lists the various installation scenarios that require a content bundle. Use the table to identify if you need to create a content bundle.
 
 | **Scenario**  | **Description** | **Content Bundle** |
 |-|-|-|
-| Detached Air gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by the Palette Management System.|Mandatory|
-| Connected Cluster |  You are deploying Edge clusters in an environment with internet connectivity, and the Palette Management System manages the clusters. You may build a content bundle for bandwidth optimization, but it is not required.|Optional|
-| Managed Air Gapped Cluster |  You are deploying Edge clusters in an environment that is without internet access. However, you have an air-gapped version of the Palette Management system installed in the environment, which will manage your Edge clusters.|Mandatory|
+| Detached Air gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by Palette.|Mandatory|
+| Connected Cluster |  You are deploying Edge clusters in an environment with internet connectivity, and Palette manages the clusters. You may build a content bundle for bandwidth optimization, but it is not required.|Optional|
+| Managed Air Gapped Cluster |  You are deploying Edge clusters in an environment that is without internet access. However, you have an air-gapped version of the Palette installed in the environment, which will manage your Edge clusters.|Mandatory|
 | Cluster with Custom OS |  You are deploying Edge Clusters with a custom operating system.   |Mandatory|
 
 
@@ -62,13 +62,13 @@ Use the following steps to create a content bundle for the Edge Installer.
 
 
 5. Select the project you want to deploy the Edge host to and copy down the **Project ID**. 
-You can find the project id at the top right-hand side corner of the landing page, below the **User drop-down Menu**.
+You can find the project id at the top right side corner of the landing page below the **User drop-down Menu**.
 
 
 6. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-7. Use the **drop-down Menu Cloud Types** and select **Edge Native**. 
+7. Use the **Cloud Types drop-down Menu** and select **Edge Native**. 
 
 
 8. Click on the cluster profile you want to include in the content bundle.

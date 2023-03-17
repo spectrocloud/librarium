@@ -38,7 +38,8 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 <WarningBox>
 
-Edge clusters are still in active development and are subject to changes. Review the Palette [release notes](/release-notes) for updates and changes.
+Edge is still in active development and is subject to change. Review the Palette [release notes](/release-notes) for updates and changes.
+
 
 </WarningBox>
 

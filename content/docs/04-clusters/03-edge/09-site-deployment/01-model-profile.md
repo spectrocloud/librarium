@@ -68,7 +68,7 @@ No prerequisites.
 
 <InfoBox>
 
-The *Bring Your Own OS* (BYOOS) option can be chosen for advanced scenarios but it requires additional setup. You can also provide additional cloud-init configurations in the OS pack's YAML values for setting up Edge host users, installing additional OS packages, installing certificates and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
+The *Bring Your Own OS* (BYOOS) option can be chosen for advanced scenarios, but it requires additional setup. You can also provide additional cloud-init configurations in the OS pack's YAML values for setting up Edge host users, installing additional OS packages, installing certificates and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
 
 </InfoBox>
 
@@ -91,7 +91,7 @@ Optionally, add additional Helm or OCI registries and include applications hoste
 
 # Validation
 
-You validate you create a cluster profile for Edge hosts by using the following steps.
+Verify you created a cluster profile for Edge hosts by using the following steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -103,7 +103,7 @@ You validate you create a cluster profile for Edge hosts by using the following 
 
 
 
-4. Use the **drop-down Menu Cloud Types** and select **Edge Native**. 
+4. Use the **Cloud Types drop-down Menu** and select **Edge Native**. 
 
 
 5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.

@@ -17,6 +17,7 @@ We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installe
 
 However, some scenarios require you to build a custom installer image. Review the following scenarios to identify if you need to create a custom Edge Installer image.
 
+<br />
 - You created a content bundle that you want to include with the installation.
 
 
@@ -72,7 +73,7 @@ For bare metal Edge hosts, creating the Palette edge installer variant involves 
 
 4. Update the content of the file **.installer.env** to customize the following attributes:
 
-- Name of the ISO image to be generated - (Optional - this defaults to pxe-installer if not specified)
+- Name of the ISO image to be generated - (Optional - this defaults to pxe-installer if not specified).
 
   ```shell
   ISO_IMAGE="pxe-installer-custom"
@@ -84,7 +85,7 @@ For bare metal Edge hosts, creating the Palette edge installer variant involves 
   INSTALLER_VERSION="3.2.0"
   ```
 
-- Target Docker image for the installer to generate - (Optional)
+- Target Docker image for the installer to generate - (Optional).
 
   ```shell
   IMAGE_NAME="gcr.io/my-repo/palette-edge-installer"

@@ -102,7 +102,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
 - Edge Installer ISO file. Check out the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create an Edge Installer image or use the default Edge Installer image.
 
 
-- vCenter environment with sufficient resources and access privileges to complete the following actions.
+- vCenter environment with sufficient resources and access privileges to complete the following actions:
   - Upload files to a datastore. 
   - Ability to create VMs.
 
@@ -139,7 +139,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
   apt install x11-apps
   ```
 
-4. You can add additional packages for content creation, compression and preparing your workspace.
+4. You can add additional packages for content creation, compression, and preparing your workspace.
 
   ```shell
   curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
@@ -193,7 +193,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
   export GOVC_INSECURE=1
   ```
 
-7. Create a VM from the VMDK by login into your vCenter console in the UI.
+7. Create a VM from the VMDK by logging into your vCenter console in the UI.
 
 
 8. Navigate to the **Dataceter/Folder**, under the **VMs and Templates** section.
@@ -202,7 +202,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
 9. Start the **New Virtual** machine deployment wizard.
 
 
-10. Choose a cluster from where you can access the datastore used for storing the VMDK. Choose the Datastore where VMDK is stored.
+10. Choose a cluster that has access to the datastore used for storing the VMDK. Choose the Datastore where VMDK is stored.
 
 
 
@@ -222,7 +222,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
 
 
 
-15. Finish the creation wizard and save your Virtual machine.
+15. Finish the creation wizard and save your virtual machine.
 
 
 16. Navigate to **VMs and Templates** and right-click on the newly created VM. Select **Template** and **Convert to Template**.

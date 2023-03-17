@@ -13,26 +13,26 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-You perform a  site installation by powering on the Edge host. The Edge Installer will start and begin the installation process, which may vary depending on your environment and Edge host type.  
+You perform a site installation by powering on the Edge host. The Edge Installer will start and begin the installation process, which may vary depending on your environment and Edge host type.  
 
 # Installation Phases
 
-The Edge host installation is made up of the following three phases.
+The Edge host installation has three phases, as described in the table.
 
 | Phase| Description|
 | ---| ---|
-| Install Handoff | The Edge Installer is copied over from a portable storage device to the Edhe host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more.|
+| Install Handoff | The Edge Installer is copied over from a portable storage device to the Edge host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more.|
 | Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.|
 |Cluster Provisioning | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.|
 
 
-The *Registration* phase has a unique set of instructions. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance. The same applies to the *Cluster Provisioning* phase. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource.
+The *Registration* phase has a unique set of instructions. Refer to [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance. The same applies to the *Cluster Provisioning* phase. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource.
 
 Ideally, all Edge hosts have completed the *Install Handoff* phase when they arrive at the installation site. 
 
 # Site User Data
 
-You can provide a site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data that was created in the Installer Handoff phase. 
+You can provide a site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data that was created in the *Installer Handoff* phase. 
 Follow the steps outlined in the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) resource to create a site-specific user data. 
 
 # Installation
@@ -58,7 +58,7 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 
 - Access to Palette and the ability to register an Edge host.
 
-- Access to network information about the physical site, specifically the network virtual IP address (VIP).
+- Access to network information about the physical site, specifically the network Virtual IP Address (VIP).
 
 - Physical access to the Edge host.
 
@@ -82,13 +82,13 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
     </InfoBox>
 
 
-4. The last step is to create a cluster definition if you don't have a host cluster for the Edge host to become a member of. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
+4. The last step is to create a cluster definition if you don't have a host cluster that the Edge host can join. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
 
-Once the cluster is defined, the installation process will continue. The Palette Edge Host agent will start downloading all the required artifacts and reboot Edge host. 
+When the cluster is created, the installation process will continue. The Palette Edge Host agent will download all required artifacts and reboot the Edge host. 
 
 After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile. 
 
-Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
+Any content bundles you provided are extracted and loaded into the container runtime process. Refer to [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
 
 ## Validation
@@ -117,7 +117,7 @@ Use the following steps to complete the Edge host installation in a VMware envir
 
 - Access to Palette and the ability to register an Edge host.
 
-- Access to network information about the physical site, specifically the network virtual IP address (VIP).
+- Access to network information about the physical site, specifically the network Virtual IP (VIP) address .
 
 - Physical access to the Edge host.
 
@@ -127,10 +127,12 @@ Use the following steps to complete the Edge host installation in a VMware envir
 
 Perform the following steps to proceed with the installation at the site in your VMware environment.
 
-1. Log in to vCenter Server by Using the vSphere Client.
+<br / >
+
+1. Log in to vCenter Server using the vSphere Client.
 
 
-2. Navigate to **VMs and Templates** and right-click on the desired folder and select the option to **Deploy VM(s) from this OVF template**.
+2. Navigate to **VMs and Templates** and right-click on the desired folder, then select the option **Deploy VM(s) from this OVF template**.
 
 
 3. Specify the location of the OVF template and start the deployment.
@@ -150,11 +152,11 @@ Perform the following steps to proceed with the installation at the site in your
     </InfoBox> 
 
 
-6. The last step is to create a cluster definition if you don't have a host cluster for the Edge host to become a member of. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
+6. The last step is to create a cluster if you don't have a host cluster that the Edge host can join. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation. 
 
 
 
-Once the cluster is defined, the installation process will continue. The Palette Edge Host agent will start downloading all the required artifacts and reboot the Edge host. 
+Once the cluster is created, the installation process will continue. The Palette Edge Host agent will download all required artifacts and reboot the Edge host. 
 
 After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile. 
 
@@ -183,6 +185,6 @@ You can also use `kubectl` to issue commands against the cluster. Check out the 
 
 # Next Steps
 
-Your Edge host is now registered with Palette and is part of a host cluster. You can repeat the steps from [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage) to [Perform Site Install](/clusters/edge/site-deployment/site-installation) on any additional Edge host you want to add to the host cluster. The next step is for you to become more familiar with Day-2 responsibilities. Check out the [Manage Clusters](/clusters/cluster-management) to learn more about Day-2 responsibilities. 
+Your Edge host is now registered with Palette and is part of a host cluster. You can repeat the steps from [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage) and [Perform Site Install](/clusters/edge/site-deployment/site-installation) for any additional Edge host you want to add to the host cluster. The next step is for you to become more familiar with Day-2 responsibilities. Check out the [Manage Clusters](/clusters/cluster-management) guide to learn more about Day-2 responsibilities. 
 
 
