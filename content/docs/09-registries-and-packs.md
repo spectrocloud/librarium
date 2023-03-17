@@ -19,22 +19,24 @@ A **Cluster Profile** comprises preconfigured layers, each of which is called a 
 
 - **Add-On** packs - These packs model the infrastructure integrations and applications that exist on top of the core packs. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
 
-Both the core and add-on packs described above are customizable, and you can define new custom add-on packs as well. The use case for defining new custom add-on packs is to have desired consistent governance across your profile deployments. 
+Both the core and add-on packs described above are configurable, and you can define new add-on custom packs from scratch as well. The use case for defining new add-on packs is to have desired consistent governance across your profile deployments. 
   
 
-## Structure
+## Pack Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. Each Pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, etc. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical structure of a pack:
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing pack (core or add-on) or to define a new add-on custom pack from scratch, it is essential to understand the pack structure. Each Pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, etc. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical structure of a pack:
 
 
-| **Pack Name** |**Requirement** | **Pack Directory Name** |
+| **Pack Name** |**Requirement** | **Description** |
 |-|-|-|
-| pack.json | mandatory| pack config|
-| values.yaml| mandatory| pack params + values.yaml from charts <br /> + templated params from ansible-roles + all config from manifests|
-| logo.png| optional| pack logo|
-| manifests| optional| manifest files for the pack|
-| ansible-roles| optional| ansible-roles used to install the pack|
-| charts| optional| charts to be deployed for the pack|
+| `pack.json` | mandatory| This file contains the pack metadata.|
+| `values.yaml`| mandatory| This file contains the pack configuration, params exposed from the underlying charts, <br /> and templated params from ansible-roles.|
+| `logo.png`| optional| pack logo|
+| `manifests/`| optional| This directory contains the manifest files.|
+| `ansible-roles`| optional| ansible-roles used to install the pack|
+| `charts/`| optional| This directory contains the Helm charts to be deployed for the pack. <br>Note that each chart, in turn, also has a values.yaml file and can have nested charts.|
+
+![Pack structure](/pack_structure.png)
 
 # Registries
 
