@@ -128,7 +128,7 @@ When you deploy the cluster, a host cluster with Prometheus will be installed an
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="With Authentication" key="with-auth">
+<Tabs.TabPane tab="With Authentication & Encryption" key="with-auth">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
