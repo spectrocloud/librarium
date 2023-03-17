@@ -44,3 +44,7 @@ management. It is a data import service for Kubernetes designed with KubeVirt in
 Feature gates are a set of key-value pairs that toggle Kubernetes features. Some KubeVirt functionalities are disabled by default and must be enabled via feature gates. For example live migration and the use of HostDisk for virtual machine disk images are disabled. Enabling KubeVirt feature gates can be done by altering an existing KubeVirt custom resource and specifying the list of features to enable.
 
 This can be done directly in the add-on pack.
+
+# Remote Access to Cluster
+
+You will need to configure the Spectro Proxy for remote access to the cluster.
