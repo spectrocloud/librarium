@@ -259,7 +259,7 @@ Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/update_cluster.png)
+![Update the cluster](deploy-k8s-cluster/deploy_app/aws_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -453,7 +453,7 @@ Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/update_cluster.png)
+![Update the cluster](deploy-k8s-cluster/deploy_app/gcp_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -463,14 +463,14 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 </Tabs>
 
 
-## Deploy The Application
+## Deploy the Application
 
 The following steps will guide you through deploying the application on the cluster. You will start with the modification of the cluster profile with the addition of the manifest, then the configuration of the manifest, and the deploy of the application.
 The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
 
 <br />
 
-### Add The Manifest
+### Add the Manifest
 
 Return to the *Profiles* tabs on the left panel and open the profile related to the cluster deployed.
 
@@ -483,7 +483,7 @@ Select *Add Manifest* at the top of the page and insert the data:
 <br />
 
 
-### Customise The Manifest
+### Customise the Manifest
 
 From the *editor* icon next to the manifest you can switch between the text editor and the overview of the profile stack.
 
@@ -563,7 +563,7 @@ Palette supports the open-source Infrastructure as Code (IaC) software tool, [Te
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
 
-If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
+If you need to become more familiar with Terraform, check out the [Terraform explanation from HashiCorp](https://developer.hashicorp.com/terraform/intro). 
 
 <br />
 
@@ -574,7 +574,6 @@ To complete this tutorial, you will need the following items.
 - A Spectro Cloud account
 - Basic knowledge about containers.
 - Terraform v1.3.6 or greater
-- Git v2.30.0 or greater 
 - A Spectro Cloud API key. [To learn how to create an API key](https://docs.spectrocloud.com/user-management/user-authentication/#apikey)
 
 <br />
@@ -590,37 +589,546 @@ With Terraform, you will create the cluster and deploy the application. Each clu
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-terraform">
 
-- Configuration File
-- Deploy The Cluster: 
-  - terraform init
-  - terraform validate
-  - terraform plan
-  - terraform apply
+## Configure the Cluster Profile
 
+### Providers
 
-</Tabs.TabPane>
+Create the file *provider.tf* and insert the content:
+```terraform
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.11.1"
+      source  = "spectrocloud/spectrocloud"
+    }
+  }
+}
+provider "spectrocloud" {
+  project_name = "Default"
+  api_key      = var.spectrocloud_api_key
+}
+```
 
-<Tabs.TabPane tab="Azure" key="azure-terraform">
-
-azure todo...
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="GCP" key="gcp-terraform">
-
-aws todo...
-
-</Tabs.TabPane>
-
-</Tabs>
-
-
-</Tabs.TabPane>
-
-</Tabs>
+This file will connect to Palette through the Palette's *api_key*.
 
 <br />
 
+
+### Variables
+
+Create the file *variables.tf* and insert the content:
+
+```terraform
+variable "spectrocloud_api_key" {}
+```
+
+Create the file *terraform.tfvars* and insert the content of the variable:
+
+```terraform
+spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
+
+<br />
+
+
+### Cluster Profile
+
+The *cluster profile file* contains the packs that create the profile.
+
+Create the file *cluster_profile.tf* and insert:
+
+```terraform
+resource "spectrocloud_cluster_profile" "profile" {
+  name  = "tf-aws-profile"
+  tags  = ["aws", "tutorial"]
+  cloud = "aws"
+  type  = "cluster"
+
+  pack {
+    name   = data.spectrocloud_pack.ubuntu.name
+    tag    = data.spectrocloud_pack.ubuntu.version
+    uid    = data.spectrocloud_pack.ubuntu.id
+    values = data.spectrocloud_pack.ubuntu.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.k8s.name
+    tag    = data.spectrocloud_pack.k8s.version
+    uid    = data.spectrocloud_pack.k8s.id
+    values = data.spectrocloud_pack.k8s.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.cni.name
+    tag    = data.spectrocloud_pack.cni.version
+    uid    = data.spectrocloud_pack.cni.id
+    values = data.spectrocloud_pack.cni.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.csi.name
+    tag    = data.spectrocloud_pack.csi.version
+    uid    = data.spectrocloud_pack.csi.id
+    values = data.spectrocloud_pack.csi.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.proxy.name
+    tag    = data.spectrocloud_pack.proxy.version
+    uid    = data.spectrocloud_pack.proxy.id
+    values = data.spectrocloud_pack.proxy.values
+  }
+}
+```
+
+## Configure the Cluster
+
+### Variables
+
+Edit the file *variables.tf* and insert the list of variables:
+
+```terraform
+variable "spectrocloud_api_key" {}
+variable "cluster_profile" {}
+variable "region" {}
+variable "aws_ssh_key_name" {}
+variable "aws-cloud-account-name" {
+    type = string
+    description = "The name of your AWS account as assigned in Palette"
+}
+variable "master_nodes" {
+    type = object({
+        count           = string
+        instance_type   = string
+        disk_size_gb    = string
+        availability_zones = list(string)
+    })
+    description = "Master nodes configuration."
+}
+variable "worker_nodes" {
+    type = object({
+        count           = string
+        instance_type   = string
+        disk_size_gb    = string
+        availability_zones = list(string)
+    })
+    description = "Worker nodes configuration."
+}
+```
+
+Then, edit also the file *terraform.tfvars* and append the content of the variables:
+```terraform
+spectrocloud_api_key    = "j54AsdjnSP2YU9jJF1K5dVYeURWzO4qd"
+aws_ssh_key_name        = "palette-key"
+aws-cloud-account-name  = "aws-palette"
+cluster_profile         = "tf-aws-profile"
+region                  = "us-east-1"
+master_nodes = {
+    count           = "1"
+    instance_type   = "m5.large"
+    disk_size_gb    = "50"
+    availability_zones = ["us-east-1a"]
+}
+worker_nodes = {
+    count           = "1"
+    instance_type   = "m5.large"
+    disk_size_gb    = "50"
+    availability_zones = ["us-east-1a"]
+} 
+```
+
+### Cluster Profile
+
+Create the *cluster.tf* file and insert the cluster resource:
+
+```terraform
+data "spectrocloud_cloudaccount_aws" "account" {
+  name = var.aws-cloud-account-name
+}
+
+data "spectrocloud_cluster_profile" "profile" {
+  name = var.cluster_profile
+}
+
+resource "spectrocloud_cluster_aws" "cluster" {
+  name             = aws-cluster"
+  tags             = ["aws", "tutorial"]
+  cloud_account_id = data.spectrocloud_cloudaccount_aws.account.id
+
+  cloud_config {
+    region        = var.region
+    ssh_key_name  = var.aws_ssh_key_name
+  }
+
+  cluster_profile {
+    id = data.spectrocloud_cluster_profile.profile.id
+  }
+
+  machine_pool {
+    control_plane           = true
+    control_plane_as_worker = true
+    name                    = "master-pool"
+    count                   = var.master_nodes.count
+    instance_type           = var.master_nodes.instance_type
+    disk_size_gb            = var.master_nodes.disk_size_gb
+    azs                     = var.master_nodes.availability_zones
+  }
+
+  machine_pool {
+    name          = "worker-basic"
+    count         = var.worker_nodes.count
+    instance_type = var.worker_nodes.instance_type
+    disk_size_gb  = var.worker_nodes.disk_size_gb
+    azs           = var.worker_nodes.availability_zones
+  }
+}
+```
+
+
+## Create the Profile and the Cluster
+
+To create the cluster profile on Palette and the cluster on the cloud provider use the Terraform commands to apply the information present into the configuration files.
+
+Open the terminal and enter into the folder where you have the Terraform configuration files
+
+```bash
+$ cd terraform-project
+```
+
+Initialize the working directory containing Terraform configuration files
+```bash
+$ terraform init
+```
+
+Validate the configuration files in the directory
+```bash
+$ terraform validate 
+```
+
+Create the execution plan with the preview changes your configuration will create on the infrastructure and output them in a file to save it
+```bash
+$ terraform plan -out tutorial.tfplan
+```
+
+Revise the components you are about to apply to the cloud provider
+```bash
+$ terraform show tutorial.tfplan
+```
+
+Finally, apply the modifications there are in the plan to execute them and create the infrastructure
+```bash
+$ terraform apply tutorial.tfplan
+```
+
+
+## Validation
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
+![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
+
+
+To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
+
+![Update the cluster](deploy-k8s-cluster/deploy_app/aws_create_cluster.png)
+
+Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+<br />
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="azure-terraform">
+
+## Configure the Cluster Profile
+
+### Providers
+
+Create the file *provider.tf* and insert the list of variables:
+```terraform
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.11.1"
+      source  = "spectrocloud/spectrocloud"
+    }
+  }
+}
+provider "spectrocloud" {
+  project_name = "Default"
+  api_key      = var.spectrocloud_api_key
+}
+```
+
+This file will connect to Palette through the Palette's *api_key*.
+
+<br />
+
+
+### Variables
+
+Create the file *variables.tf* and insert the content:
+
+```terraform
+variable "spectrocloud_api_key" {}
+```
+
+Create the file *terraform.tfvars* and insert the content of the variable:
+
+```terraform
+spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
+
+<br />
+
+
+### Cluster Profile
+
+The *cluster profile file* contains the packs that create the profile.
+
+Create the file *cluster_profile.tf* and insert:
+
+```terraform
+resource "spectrocloud_cluster_profile" "profile" {
+  name  = "tf-azure-profile"
+  tags  = ["ms-azure", "tutorial"]
+  cloud = "azure"
+  type  = "cluster"
+
+  pack {
+    name   = data.spectrocloud_pack.ubuntu.name
+    tag    = data.spectrocloud_pack.ubuntu.version
+    uid    = data.spectrocloud_pack.ubuntu.id
+    values = data.spectrocloud_pack.ubuntu.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.k8s.name
+    tag    = data.spectrocloud_pack.k8s.version
+    uid    = data.spectrocloud_pack.k8s.id
+    values = data.spectrocloud_pack.k8s.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.cni.name
+    tag    = data.spectrocloud_pack.cni.version
+    uid    = data.spectrocloud_pack.cni.id
+    values = data.spectrocloud_pack.cni.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.csi.name
+    tag    = data.spectrocloud_pack.csi.version
+    uid    = data.spectrocloud_pack.csi.id
+    values = data.spectrocloud_pack.csi.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.proxy.name
+    tag    = data.spectrocloud_pack.proxy.version
+    uid    = data.spectrocloud_pack.proxy.id
+    values = data.spectrocloud_pack.proxy.values
+  }
+}
+```
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="gcp-terraform">
+
+## Configure the Cluster Profile
+
+### Providers
+
+Create the file *provider.tf* and insert the list of variables:
+```terraform
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.11.1"
+      source  = "spectrocloud/spectrocloud"
+    }
+  }
+}
+provider "spectrocloud" {
+  project_name = "Default"
+  api_key      = var.spectrocloud_api_key
+}
+```
+
+This file will connect to Palette through the Palette's *api_key*.
+
+<br />
+
+
+### Variables
+
+Create the file *variables.tf* and insert the content:
+
+```terraform
+variable "spectrocloud_api_key" {}
+```
+
+Create the file *terraform.tfvars* and insert the content of the variable:
+
+```terraform
+spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
+
+<br />
+
+
+### Cluster Profile
+
+The *cluster profile file* contains the packs that create the profile.
+
+Create the file *cluster_profile.tf* and insert:
+
+```terraform
+resource "spectrocloud_cluster_profile" "profile" {
+  name  = "tf-gcp-profile"
+  tags  = ["gcp", "tutorial"]
+  cloud = "gcp"
+  type  = "cluster"
+
+  pack {
+    name   = data.spectrocloud_pack.ubuntu.name
+    tag    = data.spectrocloud_pack.ubuntu.version
+    uid    = data.spectrocloud_pack.ubuntu.id
+    values = data.spectrocloud_pack.ubuntu.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.k8s.name
+    tag    = data.spectrocloud_pack.k8s.version
+    uid    = data.spectrocloud_pack.k8s.id
+    values = data.spectrocloud_pack.k8s.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.cni.name
+    tag    = data.spectrocloud_pack.cni.version
+    uid    = data.spectrocloud_pack.cni.id
+    values = data.spectrocloud_pack.cni.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.csi.name
+    tag    = data.spectrocloud_pack.csi.version
+    uid    = data.spectrocloud_pack.csi.id
+    values = data.spectrocloud_pack.csi.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.proxy.name
+    tag    = data.spectrocloud_pack.proxy.version
+    uid    = data.spectrocloud_pack.proxy.id
+    values = data.spectrocloud_pack.proxy.values
+  }
+}
+```
+
+<br />
+
+</Tabs.TabPane>
+</Tabs>
+
+
+<br />
+<br />
+
+
+## Deploy the Application
+
+The following steps will guide you through deploying the application on the cluster. You will start with the modification of the cluster profile with the addition of the manifest, then the configuration of the manifest, and the deploy of the application.
+The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
+
+<br />
+
+
+### Add the Manifest
+
+Open the file *cluster_profile.tf* and add the manifest pack inside the profile definition:
+
+```terraform
+resource "spectrocloud_cluster_profile" "profile" {
+  ...
+
+  pack {
+    name = "hello-universe"
+    type = "manifest"
+    tag  = "1.0.0"
+    manifest {
+      name    = "hello-universe"
+      content = file("manifest.yaml")
+    }
+  }
+}
+```
+
+This new manifest pack contains the configurations of the application through the file *manifest.yaml*. So, create the file *manifest.yaml* with the content:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-universe-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: hello-universe
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-universe-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-universe
+  template:
+    metadata:
+      labels:
+        app: hello-universe
+    spec:
+      containers:
+      - name: hello-universe
+        image: ghcr.io/spectrocloud/hello-universe:1.0.10
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+```
+
+<br />
+
+Create the execution plan with the additional modifications to the already existant configuration:
+```bash
+$ terraform plan
+```
+
+Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
+```bash
+$ terraform apply
+```
+
+</Tabs.TabPane>
+</Tabs>
+
+<br />
 
 # Validation
 
@@ -643,12 +1151,22 @@ Access the application: click on Service button ...
 
 # Clean-up
 
+It is a good practice to clean up the cluster used for the tutorial, by removing every resource created on the cloud provider, to avoid unexpected cloud charges.
+
+<br />
+
 <Tabs>
 <Tabs.TabPane tab="UI Workflow" key="ui-clean">
 
 ## UI Workflow
 
-todo...
+To remove all resources created in this tutorial, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. Click on the cluster you want to delete to access its details page.
+
+Click on **Settings**, at the top-right corner of the page, from the details page to expand the settings menu and select **Delete Cluster** to delete the cluster.
+
+![Destroy-cluster](destroy-cluster.png)
+
+You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for all the cluster you want to delete.
 
 </Tabs.TabPane>
 
@@ -656,29 +1174,21 @@ todo...
 
 ## Terraform
 
-todo...
+To destroy resources with Terraform, use the destroy command.
+
+If you want to check the resources you will delete, you can first run: 
+```terraform
+terraform plan -destroy
+```
+
+Then delete the components running the destroy command:
+```terraform
+$ terraform destroy
+```
 
 </Tabs.TabPane>
 </Tabs>
 
-
-To remove all resources created in this tutorial, begin by navigating to the left **Main Menu** and click on the **Apps** link. For each application, click on the **three-dots Menu** to expand the options menu and click on the **Delete** button. Repeat this process for each application.
-
-  
-
-![Apps view with an arrow pointing towards the delete button](devx_apps_deploy-apps_delete-apps-view.png)
-
-  
-
-Next, in the left **Main Menu**, click on the **Cluster** link to access the clusters page.
-
-Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
-
-  
-
-![Delete a cluster view with arrow](devx_apps_deploy-apps_delete-cluster-view.png)
-
-  
 <br />
 
 
