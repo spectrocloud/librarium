@@ -15,7 +15,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette’s virtualization feature includes the following components that are required to run and manage Virtual Machines (VMs) in your Kubernetes host cluster. The Spectro VM Dashboard profile and its dependencies are consolidated in a single pack for your convenience. 
+Palette's Virtual Machine (VM) Management solution consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster into the Spectro VM Dashboard single pack.
+
+ ... includes the following components that are required to run and manage Virtual Machines (VMs) in your Kubernetes host cluster. The Spectro VM Dashboard pack dependencies are consolidated in a single pack for your convenience. 
+
+Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users. 
 
 <br />
 
@@ -31,6 +35,10 @@ Palette’s virtualization feature includes the following components that are re
 
 - **KubeVirt CDI**: An add-on pack for Kubernetes that provides persistent storage
 management. It is a data import service for Kubernetes designed with KubeVirt in mind which  to improve improves the workflow for of managing KubeVirt and its storage. It provides for example facilities for enabling Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
+
+Palette uses KubeVirt to manage virtual machines in Kubernetes clusters. KubeVirt enables virtual machine workloads to run on top of Kubernetes in a Kubernetes-native way. 
+
+KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources.
 
 
 - **Volume Snapshot Controller**: many storage systems provide the ability to create a "snapshot" of a persistent volume. A snapshot represents a point-in-time copy of a volume. A snapshot can be used either to provision a new volume (pre-populated with the snapshot data) or to restore the existing volume to a previous state (represented by the snapshot). The volume snapshot controller is responsible for watching the VolumeSnapshot CRD objects and manages the creation and deletion lifecycle of snapshots.
@@ -48,3 +56,11 @@ This can be done directly in the add-on pack.
 # Remote Access to Cluster
 
 You will need to configure the Spectro Proxy for remote access to the cluster.
+
+
+
+
+
+
+MOVE TO CREATE VM:
+and can import virtual machines from their VMware vSphere environment into Palette.
