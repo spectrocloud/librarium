@@ -170,7 +170,19 @@ const redirects = [
   },
   {
     fromPath: `/clusters/edge/native`,
-    toPath: `/clusters/edge/deployment/native`,
+    toPath: `/clusters/edge/site-deployment`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/installer-image`,
+    toPath: `/clusters/edge/site-deployment/installer`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/native`,
+    toPath: `/clusters/edge/site-deployment/installer`,
     redirectInBrowser: true,
     isPermanent: true,
   }

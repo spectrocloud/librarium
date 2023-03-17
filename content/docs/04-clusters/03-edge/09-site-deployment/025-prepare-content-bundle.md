@@ -19,7 +19,7 @@ The following table lists the various installation scenarios that require a cont
 
 | **Scenario**  | **Description** | **Content Bundle** |
 |-|-|-|
-| Detached Air gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by Palette.|Mandatory|
+| Detached Air Gapped Cluster |  You are deploying Edge clusters in a completely air-gapped environment without internet access. The clusters are not managed by Palette.|Mandatory|
 | Connected Cluster |  You are deploying Edge clusters in an environment with internet connectivity, and Palette manages the clusters. You may build a content bundle for bandwidth optimization, but it is not required.|Optional|
 | Managed Air Gapped Cluster |  You are deploying Edge clusters in an environment that is without internet access. However, you have an air-gapped version of the Palette installed in the environment, which will manage your Edge clusters.|Mandatory|
 | Cluster with Custom OS |  You are deploying Edge Clusters with a custom operating system.   |Mandatory|

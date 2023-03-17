@@ -52,7 +52,9 @@ Pick the target environment for your Edge host.
 
 The following items are optional and not required but may apply to your use case:
 
-- USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser datausecase) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
+<br />
+
+- USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/site-deployment/prepare-edge-configuration#multipleuser) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
 - USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Create Installer Image](/clusters/edge/site-deployment/stage).
@@ -93,7 +95,7 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 <InfoBox>
 
 
-If you generate an OVF template and want to preload a content bundle, you must create a custom installer ISO. Refer to the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create a custom installer image.
+If you generate an OVF template and want to pre-load a content bundle, you must create a custom installer ISO. Refer to the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create a custom installer image.
 
 </InfoBox>
 
@@ -202,7 +204,7 @@ If you generate an OVF template and want to preload a content bundle, you must c
 9. Start the **New Virtual** machine deployment wizard.
 
 
-10. Choose a cluster that has access to the datastore used for storing the VMDK. Choose the Datastore where VMDK is stored.
+10. Choose a cluster that has access to the datastore used for storing the VMDK. Choose the datastore where VMDK is stored.
 
 
 
