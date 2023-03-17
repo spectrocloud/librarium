@@ -64,7 +64,7 @@ The following sections describe these capabilities in detail:
 * [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring) - Palette displays the status and installation progress of add-on packs associated with the cluster you are monitoring. Pack status appears gray during initial onboarding and before deployment, blue when the pack is in the process of being installed, and green to indicate successful installation. Red indicates a failed installation and requires attention.
 
 
-* [Web based kubectl](/clusters/cluster-management/palette-webctl#overview) - Palette leverages Kubectl through a built-in command line interface so you can communicate with workload clusters.
+* [Kubectl](/clusters/cluster-management/palette-webctl#overview) - Learn how to use `kubectl` to interact with your host clusters.
 
 
 

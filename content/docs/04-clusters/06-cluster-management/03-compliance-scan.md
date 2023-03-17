@@ -59,20 +59,10 @@ If a backup location is not provided, Palette will preserve all of the identifie
 
 <br />
 
-<WarningBox>
-
-A backup location is required when configuring an SBOM scan using the github-json format.
-
-</WarningBox>
-
-<br />
-
 #### SBOM Scan Format
 * [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standard SBOM format widely used by organizations and governments. The SPDX format has been around longer than any other SBOM format.
 
 * [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML-based SBOM format that provides a standard representation of software components and their metadata.
-
-* GitHub's [dependency submission format](https://docs.github.com/en/rest/dependency-graph/dependency-submission?apiVersion=2022-11-28): Can be used to power a [dependency review workflow](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review).
 
 * Syft JSON: Syft's custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM formats.
 
