@@ -15,11 +15,16 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 [Cluster profiles](/cluster-profiles) contain the desired specifications the Kubernetes cluster  Edge host makes up. The cluster profile defines the following components. 
 
+<br />
+
 - Kubernetes flavor and version
+
 
 - Operating system (OS) 
 
+
 - Container network interface (CNI)
+
 
 - Container storage interface (CSI)  
 

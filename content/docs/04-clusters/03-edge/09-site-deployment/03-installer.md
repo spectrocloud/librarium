@@ -234,9 +234,11 @@ You can validate the OVA file by using the [ovftool](https://developer.vmware.co
 1. Open a terminal window.
 
 
-2. Run the following command. Replace the path with the path to your OVA file.
+2. Issue the following command. Replace the path with the path to your OVA file.
 
-  ```
+  <br />
+
+  ```shell
   ovftool path/to/ova/file.ova
   ```
 

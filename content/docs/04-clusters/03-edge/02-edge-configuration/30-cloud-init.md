@@ -167,6 +167,8 @@ tages:
 
 #### Install Tooling
 
+This is an example of installing third-party software or tooling.
+
 <br />
 
 ```yaml
@@ -261,6 +263,9 @@ stages:
 
 
 #### Update Network Settings
+
+The network settings will get updated when the `network` stage takes effect.
+
 <br />
 
 ```yaml

@@ -15,7 +15,16 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the installation process. You can provide the customized configuration to the Edge Installer as a user data file. 
 
-You can also use the operating system (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
+<br />
+
+
+<InfoBox>
+
+Review the Edge [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters you can use in the configuration user data.
+
+</InfoBox>
+
+You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
 
 # Prepare User Data
 
@@ -43,11 +52,6 @@ Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation
 
 <br />
 
-<InfoBox>
-
-Review the [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters.
-
-</InfoBox>
 
 
 # Multiple User Data Use Case
