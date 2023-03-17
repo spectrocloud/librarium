@@ -26,19 +26,18 @@ Administrators can configure out-of-the-box add-on packs, cluster profiles, and 
 - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster, which Palette manages.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. You will need to configure the Spectro Proxy for remote access to the cluster.
 
  <br />
 
 - **KubeVirt**: A VM management add-on pack for Kubernetes clusters that allows you to create VMs. KubeVirt is an open-source project that allows you to create virtual machines within a Kubernetes cluster.
 
 
-- **KubeVirt CDI**: An add-on pack for Kubernetes that provides persistent storage
-management. It is a data import service for Kubernetes designed with KubeVirt in mind which  to improve improves the workflow for of managing KubeVirt and its storage. It provides for example facilities for enabling Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
-
-Palette uses KubeVirt to manage virtual machines in Kubernetes clusters. KubeVirt enables virtual machine workloads to run on top of Kubernetes in a Kubernetes-native way. 
-
-KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources.
+- **KubeVirt CDI**:  An add-on pack for Kubernetes that provides persistent storage. It is a data import service for Kubernetes designed to improve improves the workflow for managing KubeVirt and its storage. It enables Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
+<br />
+<br />
+KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources. 
+management. 
 
 
 - **Volume Snapshot Controller**: many storage systems provide the ability to create a "snapshot" of a persistent volume. A snapshot represents a point-in-time copy of a volume. A snapshot can be used either to provision a new volume (pre-populated with the snapshot data) or to restore the existing volume to a previous state (represented by the snapshot). The volume snapshot controller is responsible for watching the VolumeSnapshot CRD objects and manages the creation and deletion lifecycle of snapshots.
@@ -47,15 +46,20 @@ KubeVirt extends Kubernetes with additional virtualization resource types using 
 - **Multus CNI**: a CNI plugin that enables multiple network interfaces to attach to pods within Kubernetes.
 
 
-# Feature Gates
+# KubeVirt Feature Gates
 
-Feature gates are a set of key-value pairs that toggle Kubernetes features. Some KubeVirt functionalities are disabled by default and must be enabled via feature gates. For example live migration and the use of HostDisk for virtual machine disk images are disabled. Enabling KubeVirt feature gates can be done by altering an existing KubeVirt custom resource and specifying the list of features to enable.
+KubeVirt has a set of features that are not enabled by default. The features are protected by a Kubernetes concept called feature gates, which are key-value pairs that describe Kubernetes features.
 
-This can be done directly in the add-on pack.
+For example live migration and the use of HostDisk for virtual machine disk images are disabled. 
 
-# Remote Access to Cluster
+Feature gates can be enabled directly in the Spectro VM Dashboard pack by editing the `kubevirt.kubevirtResource.additionalFeatureGates` parameter in the kubevirt manifest.
 
-You will need to configure the Spectro Proxy for remote access to the cluster.
+Palette VM Management enables these feature gates by default:
+
+- LiveMigration
+- Snapshot
+- HotplugVolumes
+- DataVolumes
 
 
 
