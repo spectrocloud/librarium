@@ -15,20 +15,15 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette's Virtual Machine (VM) Management solution consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster into the Spectro VM Dashboard single pack.
-
- ... includes the following components that are required to run and manage Virtual Machines (VMs) in your Kubernetes host cluster. The Spectro VM Dashboard pack dependencies are consolidated in a single pack for your convenience. 
-
-Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users. 
+Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are:
 
 <br />
 
 - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster, which Palette manages.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. You will need to configure the Spectro Proxy for remote access to the cluster.
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. You will need to configure the Spectro Proxy for remote access to the cluster. For information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
- <br />
 
 - **KubeVirt**: A VM management add-on pack for Kubernetes clusters that allows you to create VMs. KubeVirt is an open-source project that allows you to create virtual machines within a Kubernetes cluster.
 
@@ -46,13 +41,23 @@ management.
 - **Multus CNI**: a CNI plugin that enables multiple network interfaces to attach to pods within Kubernetes.
 
 
+Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
+
+When you receive the Palette log-in URL and credentials, you need to do the following:
+
+<br />
+
+1. [Add a custom registry](/registries-and-packs/adding-a-custom-registry#addcustomregistries).
+2. [Deploy a pack registry server](/registries-and-packs/adding-a-custom-registry#deployingapackregistryserver). Palette provides a Docker image for the server. 
+3. [Configure the custom pack registry in Palette](/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole).
+4. [Upload your CA Certificate to Palette](/registries-and-packs/adding-a-custom-registry#uploadthecacertificatetopalette).
+
+
 # KubeVirt Feature Gates
 
-KubeVirt has a set of features that are not enabled by default. The features are protected by a Kubernetes concept called feature gates, which are key-value pairs that describe Kubernetes features.
+KubeVirt has a set of features that are not enabled by default. The features are protected by a Kubernetes concept called feature gates, which are key-value pairs that describe Kubernetes features. For example, live migration and the use of HostDisk for virtual machine disk images are disabled. 
 
-For example live migration and the use of HostDisk for virtual machine disk images are disabled. 
-
-Feature gates can be enabled directly in the Spectro VM Dashboard pack by editing the `kubevirt.kubevirtResource.additionalFeatureGates` parameter in the kubevirt manifest.
+Feature gates can be enabled directly in the Spectro VM Dashboard pack by editing the `kubevirt.kubevirtResource.additionalFeatureGates` parameter in the kubevirt manifest.  To learn more, check out the Kubernetes [Feature Gates](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) documentation.
 
 Palette VM Management enables these feature gates by default:
 
@@ -62,6 +67,11 @@ Palette VM Management enables these feature gates by default:
 - DataVolumes
 
 
+
+
+
+
+ 
 
 
 
