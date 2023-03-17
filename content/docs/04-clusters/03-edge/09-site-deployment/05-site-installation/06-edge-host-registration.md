@@ -13,18 +13,18 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-To use an Edge host with a host cluster, you must first register it with Palette. You have three options for how to go about registering the Edge host with Palette.
+To use an Edge host with a host cluster, you must first register it with Palette. You have three options to register the Edge host with Palette.
 
 | Method | Description | Set up Effort |
 |---|---|---|
 | Auto Registration | Edge hosts can automatically register with Palette by using a *Registration Token*. This method requires you to specify the registration token in the user data.  | Low |
-| Manual Registration | A unique Edge host ID is manually entered into the Palette Management Console. | Low |
+| Manual Registration | You can manually enter a unique Edge host ID into Palette. | Low |
 | QR Code |  Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry.| High |
 
 
 # Registration Method
 
-Select the registration method that best fits your organizational needs and review the steps of the option to get started.
+Select the registration method that best fits your organizational needs and review the steps to get started.
 
 <br />
 
@@ -34,7 +34,7 @@ Select the registration method that best fits your organizational needs and revi
 
 ## Auto Registration
 
-You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. The default project, if any selected for the registration token determines the exact project within your tenant that the Edge host is registered under. You can override the default project by providing a project id in the user data.
+You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. If a default project was selected for the registration token, that is the project the Edge host will be registered under. You can override the default project by providing a project ID in the user data.
 
 
 <br />
@@ -110,7 +110,7 @@ In this mode, you must manually register the Edge host in Palette by providing t
 - Tenant admin access
 
 
-- Access to the Edge host's unique identifier. You can get the Edge host's unique identifier or machine ID from the console output as the Edge host powers on. The Edge host unique identifier has the prefix `edge-` by default.
+- Access to the Edge host's unique identifier. You can get the unique identifier or machine ID from the console output as the Edge host powers on. The Edge host unique identifier has the default prefix `edge-`.
     
     Example Output:
     ```shell
@@ -126,7 +126,7 @@ In this mode, you must manually register the Edge host in Palette by providing t
 
     </InfoBox>
 
-## Register Edge Host in Palette
+## Register the Edge Host in Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -140,7 +140,7 @@ In this mode, you must manually register the Edge host in Palette by providing t
 4. Click on **Add Edge Hosts**.
 
 
-5. In the input box **Edge Host IDs**. Paste in the Edge host's unique identifier.
+5. Paste the Edge host's unique identifier in the **Edge Host IDs** input box.
 
 
 6. Specify any tags or pairing keys if you desire.
@@ -207,7 +207,7 @@ Use the following steps to enable this workflow.
 2. Configure Vercel or your hosting provider to [automatically deploy](https://vercel.com/docs/concepts/deployments/git) pull requests against the main branch. 
 
 
-3. Update the sample site provided with your site names and locations. Make the required changes in the **pages/index.js** file. Additional details about the files to be changed and instructions on how to build and test the application locally are provided in the **readme** file.
+3. Update the sample site provided with your site names and locations. Make the required changes in the **pages/index.js** file. The **readme** file provides additional details about the files to be changed and instructions on how to build and test the application locally.
 
 
 4. Map the infrastructure and add-on cluster profiles to be used with each site. Refer to the [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile) to learn more about Edge Native cluster profiles.
@@ -222,7 +222,7 @@ Use the following steps to enable this workflow.
 7. Create GitHub pull request towards your main branch to automatically trigger the build process and deploy the app.
 
 
-8. Provide the URL of the deployed app to the Edge Installer user data. Use the parameter `stylus.site.registrationURL`.
+8. Provide the URL of the deployed app to the Edge Installer user data. Use the `stylus.site.registrationURL` parameter.
 
     <br />
 
@@ -236,7 +236,7 @@ Use the following steps to enable this workflow.
 9. Your next step is to decide how you want to provide the registration URL value. You can include the registration URL in the user data added to the device before shipping. Or you can create a user data ISO and have the registration URL in the secondary user data. Check out the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) to learn more about creating secondary user data.
 
 
-10. Power on the Edge host device and scan the QR code presented.
+10. Power on the Edge host device and scan the QR code.
 
 
 11. Fill out the required information in the web application and submit the registration request.
@@ -263,4 +263,4 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 # Next Steps
 
-The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster. Check out the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the last step of the installation process.
+The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster. Check out the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) guide to complete the last step of the installation process.
