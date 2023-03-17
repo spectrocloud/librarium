@@ -15,32 +15,35 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# Palette Dynamic Artifacts
+# Overview
 
 
-# On-Prem Artifacts
+Use the following resources to support your on-prem and SaaS operations when using Palette. 
 
-Spectro Cloud Palette allows its deployment to be done in-house within the customer’s enterprise IT infrastructure. As of now, we support customers’ on-prem VMware vSphere. Therefore, the palette artifacts for the On-Prem installation are included in this section.
+
+# On-Prem
+
+You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
 
 ## On-Prem Installer 
 
-The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA given below:
+This is the Palette installer for a self-host flavor of Palette. Refer to the [On-Premise Installation](/enterprise-version) to learn more.
 
-|Version|URL|Valid From|Info|
-|--|---|--|--|
-|2.4.0|hubble-installer-240.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8 Gb RAM, 100 GB HDD, OpenSSL Fix, Add Spectro Cert|
+|Version|URL|
+|--|---|
+|2.5.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-250.ova)|
 ------
 
 
 ## Air Gapped Installation
 
-We support the installation of our management platform on VMware environments that have no direct or indirect connectivity to the outside world. The following artifacts and binaries are typically downloaded for the installation and subsequent tenant cluster deployment.
+You can install Palette in a VMware environments that has no direct or indirect internet connectivit. Use the following resources to support an air gapped environment..
 
 ## Latest Air Gapped OVA
 
-|Version|URL|Valid From|Info|
-|---|---|--|--|
-|2.1.0|spectro-airgap-v2.1.0.ova|Nov 4, 2022| Ubuntu 20, 2 vCPU, 4 Gb RAM, 120 GB HDD|
+|Version|URL|
+|---|---|
+|2.2.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/spectro-airgap-v2.2.0.ova)|
 ------
 
 ## Air Gapped Binaries
