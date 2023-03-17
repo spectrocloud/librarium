@@ -45,6 +45,7 @@ This release contains several security fixes and new features for Edge. The Edge
   * Flux v2 2.6.0
   * Prometheus Operator 45.4.0
   * MetalLB 0.13.9
+  * Spectro Proxy 1.3.0
 
 # February 28, 2023 - Release 3.2.0
 
