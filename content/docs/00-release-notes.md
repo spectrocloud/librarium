@@ -280,7 +280,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
   * Image template support
 
 **Enhancements**
-* Palette upgrades the vSphere Public Cloud Gateways and On-Prem cluster specifications to newer versions:
+* Palette upgrades the vSphere Private Cloud Gateways and On-Prem cluster specifications to newer versions:
 
    * K8s version has been upgraded from 1.21 to 1.22.12 [ the latest version in 1.22 ]
    
@@ -358,7 +358,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 **Enhancements:**
 
 * Palette [Azure CNI Pack](/integrations/azure-cni#azurecni) ensures advanced traffic flow control using Calico Policies for AKS clusters.
-* Palette supports the [migration of Public Cloud Gateway (PCG)](/enterprise-version/enterprise-cluster-management#palettepcgmigration) traffic from unhealthy to healthy PCG without compromising service availability. 
+* Palette supports the [migration of Private Cloud Gateway (PCG)](/enterprise-version/enterprise-cluster-management#palettepcgmigration) traffic from unhealthy to healthy PCG without compromising service availability. 
 * Palette Workspace upgraded with
   * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
   * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.

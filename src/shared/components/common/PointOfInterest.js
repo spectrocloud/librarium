@@ -20,6 +20,7 @@ const pulse = keyframes`
 
 const Wrapper = styled.div`
   position: relative;
+  overflow: hidden;
 
   .ant-tooltip {
     z-index: 1;
@@ -67,6 +68,17 @@ const Circle = styled.div`
     `}
 `;
 
+const PointsWrapper = styled.div.attrs(({ offset }) => ({
+  style: {
+    transform: `translateY(-${offset}px)`,
+  },
+}))`
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+`;
+
 const wrapRef = React.createRef();
 
 function Point({ description, tooltipPlacement = "right", x, y, label }) {
@@ -96,11 +108,19 @@ function Point({ description, tooltipPlacement = "right", x, y, label }) {
 }
 
 function PointsOfInterest({ points = [], children }) {
+  const [offset, setOffset] = useState(0);
   return (
-    <Wrapper ref={wrapRef}>
-      {points.map((point, index) => (
-        <Point {...point} index={index} key={index} />
-      ))}
+    <Wrapper
+      ref={wrapRef}
+      onScroll={(ev) => {
+        setOffset(ev.target.scrollTop);
+      }}
+    >
+      <PointsWrapper offset={offset}>
+        {points.map((point, index) => (
+          <Point {...point} index={index} key={index} />
+        ))}
+      </PointsWrapper>
       {children}
     </Wrapper>
   );
