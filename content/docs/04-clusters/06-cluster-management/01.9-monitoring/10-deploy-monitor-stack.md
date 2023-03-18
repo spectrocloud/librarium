@@ -221,7 +221,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 7. In the next screen that displays, select **Add New Pack**.
 
 
-8. Use the following information to add the NGINX ingress controller pack.
+8. Use the following information to add the Nginx ingress controller pack.
     - Pack Type: Ingress
     - Registry: Public Repo
     - Pack Name: Nginx
@@ -239,14 +239,6 @@ In this guide, the following domains are used to expose the monitoring stack:
         extraArgs: 
           enable-ssl-passthrough: true
   ```
-
-  ```yaml
-  charts:
-    ingress-nginx:
-      tcp:
-        6443: "nginx/nginx-ingress-controller:443"
-  ```
-
 
 10. Click on **Confirm & Create**.
 
@@ -279,7 +271,7 @@ In this guide, the following domains are used to expose the monitoring stack:
         adminPassword: "YourPassword"
   ```
 
-16. Next, update the `prometheus.service.type` parameter to `NodePort`.
+16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
   <br />
 
@@ -288,7 +280,7 @@ In this guide, the following domains are used to expose the monitoring stack:
       kube-prometheus-stack:
         prometheus:
           service:
-            type: NodePort
+            type: ClusterIP
   ```
 
 17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
@@ -398,7 +390,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   </WarningBox>
 
 
-35. Create a CNAME record for each of the following services and add the load balancer hostname to the CNAME's record value. Use the table below to identify what domain to map each load balancer hostname.
+35. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the CNAME's record value. Use the table below to identify what domain to map each load balancer hostname.
 
   | Service | Domain| CNAME Value Example |
   |---|---|---|
@@ -435,12 +427,12 @@ In this guide, the following domains are used to expose the monitoring stack:
   <br />
 
 
-38. Next, update the load balancer's listeners to forward requests from port 443 to the respective target port on the monitoring stack. The following table will map the service's load balancer listener with the respective configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
+38. Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the monitoring stack. The following table will map the service's load balancer listener with the respective configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
 
-  | Inbound Loadbalancer Port | Domain |  Monitoring Stack Port | Service |
+  | Inbound Load Balancer Port | Domain |  Monitoring Stack Port | Service |
   |---|---|---|---|
   |443| `monitoring.example.com` | Use the same instance port the original entry for port 80 is using. | `prometheus-operator-kube-prometheus-stack-grafana` |
-  |443| `metrics.example.com`| 30090| `nginx-ingress-controller` |
+  |443| `metrics.example.com`| Use the same instance port the original entry for port 80 is using.| `nginx-ingress-controller` |
 
 
 39. Wait for the DNS changes to propagate. This could take between one to five minutes.

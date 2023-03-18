@@ -94,3 +94,5 @@ ClusterRoleBindings
 RoleBindings
 RoleBinding
 kubeconfig
+Nginx
+Repo
