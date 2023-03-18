@@ -169,7 +169,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 
   - Ability to create and update DNS record names.
 
-  -  Two custom domain names. One domain for the Grafana dashboard, and another for host clusters to forward metrics to the monitoring stack.
+  -  Two custom domain names. One domain is for the Grafana dashboard, and another is for host clusters to forward metrics to the monitoring stack.
 
   - Ability to create a public certificate for each domain.
 
@@ -443,7 +443,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   |443| `metrics.example.com`| 30090| `nginx-ingress-controller` |
 
 
-39. Wait for the DNS changes to propagate. This could take something between one to five minutes.
+39. Wait for the DNS changes to propagate. This could take between one to five minutes.
 
 
 Your monitoring stack is now enabled with authentication and network encryption. 
