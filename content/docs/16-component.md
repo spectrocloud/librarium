@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This page lists the version details of various Palette components with respect to Palette releases. 
+This page lists the version details of various Palette components amd their respective Palette releases. 
 
 # Palette CLI Versions
 

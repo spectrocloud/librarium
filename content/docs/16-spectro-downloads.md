@@ -31,22 +31,23 @@ This is the Palette installer for a self-host flavor of Palette. Refer to the [O
 
 |Version|URL|
 |--|---|
+|2.6.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-260.ova)|
 |2.5.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-250.ova)|
 ------
 
 
-## Air Gapped Installation
+## Air-Gapped Installation
 
-You can install Palette in a VMware environments that has no direct or indirect internet connectivit. Use the following resources to support an air gapped environment..
+You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
 
-## Latest Air Gapped OVA
+## Latest Air-Gapped OVA
 
 |Version|URL|
 |---|---|
 |2.2.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/spectro-airgap-v2.2.0.ova)|
 ------
 
-## Air Gapped Binaries
+## Air-Gapped Binaries
 
 Download and execute the version-specific binary
 
@@ -63,28 +64,28 @@ chmod 755 ./airgap-v${VERSION}.bin
 # SAAS - Private Cloud Gateway(PCG)
 
 
-PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables the installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
-
+Palette support on-prem environments through the Private Cloud Gateway (PCG) component. PCG provides support for isolated private cloud or data center environments. When installed on-prem, PCG registers itself with Palette, allowing for secure communication between the SaaS portal and the private cloud environment. The gateway also enables end-to-end lifecycle management of Kubernetes clusters in private cloud environments directly from the SaaS portal. 
 
 ## vSphere PCG Image
 
-|Version|URL|Date|Info|
-|---|---|--|--|
-|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|Nov 29 2022|K8s 1.23.9, 4 vCPU, 8 Gb RAM, 100 GB HDD, OpenSSL Fix, Add Spectro Cert
+|Version|URL|
+|---|---|
+|1.6.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-160.ova|
+|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|
 ------
 
 ## MAAS PCG Image
 
-|Version|URL|Info|
-|---|---|--|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|Feb 22 2023|
+|Version|URL|
+|---|---|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL|Info|
-|---|---|--|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|Feb 22 2023|
+|---|---|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 -------
 
 
