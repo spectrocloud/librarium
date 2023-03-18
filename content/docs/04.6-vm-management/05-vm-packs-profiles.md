@@ -22,7 +22,7 @@ Palette's Virtual Machine (VM) Management solution provides a single Spectro VM 
 - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster, which Palette manages.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. You will need to configure the Spectro Proxy for remote access to the cluster. For information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more.
 
 
 - **KubeVirt**: A VM management add-on pack for Kubernetes clusters that allows you to create VMs. KubeVirt is an open-source project that allows you to create virtual machines within a Kubernetes cluster.
