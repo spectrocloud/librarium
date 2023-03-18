@@ -177,7 +177,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
 
-- [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) or similar basic auth password file generator tool. Only needed when enabling authentication.
+- [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) or similar basic auth password file generator tool.
 
 
 - The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
