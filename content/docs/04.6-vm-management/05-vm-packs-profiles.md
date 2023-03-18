@@ -19,52 +19,45 @@ Palette's Virtual Machine (VM) Management solution provides a single Spectro VM 
 
 <br />
 
-- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster, which Palette manages.
+- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster.
 
 
 - **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more.
 
 
-- **KubeVirt**: A VM management add-on pack for Kubernetes clusters that allows you to create VMs. KubeVirt is an open-source project that allows you to create virtual machines within a Kubernetes cluster.
+- **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt.
 
 
-- **KubeVirt CDI**:  An add-on pack for Kubernetes that provides persistent storage. It is a data import service for Kubernetes designed to improve improves the workflow for managing KubeVirt and its storage. It enables Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
+- **KubeVirt CDI**:  An add-on pack that provides persistent storage for Kubernetes clusters. It enables Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
 <br />
 <br />
-KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources. 
-management. 
+KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources.  
 
 
-- **Volume Snapshot Controller**: many storage systems provide the ability to create a "snapshot" of a persistent volume. A snapshot represents a point-in-time copy of a volume. A snapshot can be used either to provision a new volume (pre-populated with the snapshot data) or to restore the existing volume to a previous state (represented by the snapshot). The volume snapshot controller is responsible for watching the VolumeSnapshot CRD objects and manages the creation and deletion lifecycle of snapshots.
+- **VolumeSnapshot Controller**: A Kubernetes plug-in that watches VolumeSnapshot CRD objects and manages the creation and deletion of volume snapshots. A snapshot represents a point-in-time copy of a volume. You can use a snapshot to provision a new volume. That is, you can pre-populate a volume with the snapshot data. Or you can restore an existing volume to the previous state using a snapshot.
 
 
-- **Multus CNI**: a CNI plugin that enables multiple network interfaces to attach to pods within Kubernetes.
+- **Multus CNI**: a CNI plugin that enables multiple network interfaces to attach to Kubernetes pods.
 
 
 Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
 
-When you receive the Palette log-in URL and credentials, you need to do the following:
+When you receive the endpoint URL for that stores the Spectro VM Dashboard pack, you will need to register the pack in your environment. 
+
+you need to do the following:
 
 <br />
 
-1. [Add a custom registry](/registries-and-packs/adding-a-custom-registry#addcustomregistries).
-2. [Deploy a pack registry server](/registries-and-packs/adding-a-custom-registry#deployingapackregistryserver). Palette provides a Docker image for the server. 
-3. [Configure the custom pack registry in Palette](/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole).
-4. [Upload your CA Certificate to Palette](/registries-and-packs/adding-a-custom-registry#uploadthecacertificatetopalette).
+1. Register the pack in your environment. To learn how, refer to [Configure the custom pack registry in Palette](/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole).
+2. Create a cluster profile. Navigate to your tenant admin environment, 
 
 
-# KubeVirt Feature Gates
+<br />
 
-KubeVirt has a set of features that are not enabled by default. The features are protected by a Kubernetes concept called feature gates, which are key-value pairs that describe Kubernetes features. For example, live migration and the use of HostDisk for virtual machine disk images are disabled. 
+<br />
 
-Feature gates can be enabled directly in the Spectro VM Dashboard pack by editing the `kubevirt.kubevirtResource.additionalFeatureGates` parameter in the kubevirt manifest.  To learn more, check out the Kubernetes [Feature Gates](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) documentation.
 
-Palette VM Management enables these feature gates by default:
 
-- LiveMigration
-- Snapshot
-- HotplugVolumes
-- DataVolumes
 
 
 
