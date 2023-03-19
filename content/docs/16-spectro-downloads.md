@@ -70,15 +70,8 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 # Edge CLIs
 
-The Edge Installer CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
-The following command unpacks the download binary and assigns the executable bit to the binary. 
-<br />
+The following Edge CLIs and Edge Installer images are available to help you deploy an Edge host. Check out the [Edge](/clusters/edge) page to learn more about deploying an Edge Host
 
-```shell
-upx -d ./spectro-cli-linux-amd64 && \
-chmod +x ./spectro-cli-darwin-amd64 && \
-./spectro-cli-linux-amd64 
-```
 
 ## Edge Installer CLI
 
