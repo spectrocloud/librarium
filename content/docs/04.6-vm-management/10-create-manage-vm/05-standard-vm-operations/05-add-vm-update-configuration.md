@@ -1,8 +1,8 @@
 ---
-title: "Update the VM Configuration"
-metaTitle: "Update VM Configuration"
+title: "Add VM and Update the Configuration"
+metaTitle: "Add VM and Update the Configuration"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---
@@ -12,11 +12,38 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-* Overview
+# Overview
 
-You can update the virtual machine configuration to change the number of Virtual CPUs (vCPUs), amount ot memory, number of disks, network ports and more.
+Add a new Virtual Machine (VM) and update the VMs configuration to change the number of Virtual CPUs (vCPUs), memory, number of disks, network ports and more.
 
-KubeVirt allows hotplugging additional storage into a running virtual machines. Both block and file system volume types are supported.
+# Prerequisites
+
+- Configured Spectro VM Dashboard applied to your MAAS cluster.
+
+# Enablement
+
+1. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.
+
+
+2. Select one of the templates that displays.
+
+
+3. You can enable the checkbox to start the VM automatically after creation if desired.
+
+
+4. Click the **Next** button to display the YAML button. 
+
+
+5. Review the YAML file and click the **Next** button when you are done. Tool tips display when you hover over lines in the file.
+
+
+6. Click **Create Virtual Machine**. The VM shows **??** status while it is being created.
+
+
+## UPpate the Configuration
+
+
+KubeVirt allows hotplugging additional storage into a running virtual machine. Both block and file system volume types are supported.
 
 To add a disk, navigate to the **Disks** tab in the virtual machine page and click the **Add disk** button.
 

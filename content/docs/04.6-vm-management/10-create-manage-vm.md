@@ -14,28 +14,37 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-With Palette’s VM Management feature, virtual machines can run and be managed alongside containerized applications.
+With Palette’s VM Management feature, you can run and manage Virtual Machines (VMs) managed alongside containerized applications.
 
-Within the new Virtual Machine in cluster enabled for VM Management, organizations can onboard, deploy, manage, and scale VMs.
-
-Multiple solutions are available to create new VMs:
-
-
-- Deploy a VM from a pre-existing template (template either provided by Spectro Cloud or created by your organization)
-
-
-- Create an empty VM and install the operating system using a standard mechanism (PXE, ISO, etc.)
-
-
-- Clone an existing VM (link to the relevant section)
+You can create a new VM three ways:
 
 <br />
 
-Although no additional components are required within virtual machines, the Guest Agent (GA) is an optional component that can run inside of VMs and which provides additional runtime information about the running operating system (such as but not limited to, guest info, interfaces info, etc.).
+- Deploy a VM from template. Palette provides templates, or your organization may provide templates.
 
-Additionally, Virtio is a virtualization standard for network and disk device drivers where just the guest's device driver "knows" it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to get high performance network and disk operations, and gives most of the performance benefits of paravirtualization.
 
-Note: We recommend installing ‘qemu-guest-agent’ to improve manageability of virtual machines, and Virtio drivers to ensure you can use the paravirtualized hardware properly.
+- Create an empty VM and install the operating system using a standard method, such as a Preboot Execution Environment (PXE) or optical disk image (ISO).
+
+
+- Clone an existing VM. Refer to the [Create a VM Template](/vm-management/create-manage-vm/create-vm-template) guide.
+
+
+
+Although no additional components are required in virtual machines, the Guest Agent (GA) is an optional component that can run inside a virtual machine and provide additional runtime information. 
+
+Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
+
+<br />
+
+<InfoBox>
+
+We recommend installing ‘qemu-guest-agent’ to improve manageability of virtual machines, and Virtio drivers to ensure you can use the paravirtualized hardware properly.
+
+</InfoBox>
+
+<br />
+
+<br />
 
 
 
