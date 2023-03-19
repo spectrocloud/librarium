@@ -50,7 +50,7 @@ Staging
     stylus:
     site:
         paletteEndpoint: api.spectrocloud.com
-        edgeHostToken: aUAxxxxxxxxx0ChYCrO
+        edgeHostToken: <yourRegistrationToken>
         tags:
         city: chicago
         building: building-1
@@ -75,14 +75,18 @@ Site
         zip-code: 95135
 ```
 
-## Connected Sites (no proxy, certs) - Combined
+## Connected Sites - Single User Data
+
+This example configuration is for a *connected site*. Therefore there is no need to specify a network proxy or network certificates.
+In this scenario, only a single Edge Installer configuration user data is used for the entire deployment process.
+
+<br />
 
 ```yaml
-    #cloud-config
     stylus:
     site:
         paletteEndpoint: api.spectrocloud.com
-        edgeHostToken: aUAxxxxxxxxx0ChYCrO
+        edgeHostToken: <yourRegistrationToken>
         projectName: edge-sites
         tags:
         city: chicago
@@ -99,14 +103,14 @@ Site
     poweroff: true
 ```
 
-## Connected via proxy & certs; Static IP
+## Apply Proxy & Certificate Settings 
 
 ```yaml
     #cloud-config
     stylus:
     site:
         paletteEndpoint: api.spectrocloud.com
-        edgeHostToken: aUAxxxxxxxxx0ChYCrO
+        edgeHostToken: <yourRegistrationToken>
         projectName: edge-sites
         tags:
         city: chicago
@@ -153,7 +157,7 @@ Site
             ------END CERTIFICATE-----
 ```
 
-## Loading Content from external registry
+## Load Content From External Registry
 
 ```yaml
     install:
@@ -162,7 +166,7 @@ stylus:
   registryCredentials:
     domain: 10.10.254.254:8000/spectro-images
     username: ubuntu
-    password: welcome2Spectr0!
+    password: <yourPassword>
     insecure: true
   site:
     debug: true

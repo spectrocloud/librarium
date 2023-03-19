@@ -15,77 +15,16 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 You perform a site installation by powering on the Edge host. The Edge Installer will start and begin the installation process, which may vary depending on your environment and Edge host type.  
 
-# Installation Phases
 
-The Edge host installation has three phases, as described in the table.
 
-| Phase| Description|
-| ---| ---|
-| Install Handoff | The Edge Installer is copied over from a portable storage device to the Edge host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more.|
-| Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.|
-|Cluster Provisioning | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.|
+The Edge host site installation has three stages, as described in the table.
 
-The *Registration* phase has a unique set of instructions. Refer to [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance. The same applies to the *Cluster Provisioning* phase. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource.
+| Phase| Description| Required |
+| ---| ---| --- |
+| Apply Site User Data |  As described in the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase), you can apply a secondary Edge Installer configuration user date to apply additonal settings or override global values. This is optional but may be required for certain use cases. Refer to the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more. | No |
+| Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete. The *Registration* phase has a unique set of instructions. Refer to [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance.| Yes|
+|Cluster Provisioning | The Edge host boots into the specified provider Operating System and proceeds with the cluster deployment. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource | Yes |
 
-Ideally, all Edge hosts have completed the *Install Handoff* phase when they arrive at the installation site.
-
-# Site User Data
-
-You can provide a site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data that was created in the *Installer Handoff* phase.
-
-Use the following steps to create an ISO file containing the additional user data. You will load the newly created ISO to a bootable device, such as a USB stick.
-
-## Prerequisites
-
-- A bootable device, such as a USB drive, or a PXE server.
-
-- mkisofs, or genisoimage, or similar ISO management software.
-
-- cdrtools or wodim for Windows.
-
-## Create ISO
-
-1. Create a file called **user-data** that contains the additional configurations you want to override or inject.
-
-  ```shell
-  touch user data
-  ```
-
-2. Create an empty **meta-data** file:
-
-  ```shell
-  touch meta-data
-  ```
-
-3. Create an ISO using the following command.
-
-  MacOS/Linux:
-
-  ```shell
-  mkisofs -output site-user data.iso -volid cidata -joliet -rock user data meta-data
-  ```
-
-  Windows:
-
-  ```shell
-  genisoimage -output site-user data.iso -volid cidata -joliet -rock user data meta-data
-  ```
-
-  This generates an ISO file called site-user data.iso in the current directory.
-
-Copy the ISO to a bootable device, such as a USB stick. Load the USB stick to the Edge host before powering it on once it arrives at the physical site. The Edge Installer will apply the new user data during the installation process.
-
-<br />
-
-<InfoBox>
-
-You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as [Fog](https://fogproject.org/download) or [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
-
-</InfoBox>
-
-## Validation
-
-You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 
 # Installation
 

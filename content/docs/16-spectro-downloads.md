@@ -87,16 +87,16 @@ CLI Version| Operating System |
 v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64) <br />   [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) |
 
 
-## Edge Install Docker Image
+## Edge Install Images
 
 
-|Version|Docker Image|
-|---------------------------|----------------------------------------|
-|3.3.0     | `gcr.io/spectro-images-public/release/spectro-registry:3.3.0`|
+|Version|Docker Image| Optical Disk Image (ISO) |
+|---|---|--|
+|3.3.0     | `gcr.io/spectro-images-public/release/spectro-registry:3.3.0`| [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
 
 
 ## Edge Content CLI
 
-CLI Version| Operating System |  
+CLI Version| Operating System |
 -------|---|--|
 v3.3.0 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-content) |

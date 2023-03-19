@@ -13,7 +13,23 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-The deployment of an Edge host contains different options intended to help you install the Edge host in a manner that works best for your environment. Review the following guides in sequential order to successfully deploy an Edge host.
+
+The Edge host deployment process consists of four phases described in the following table.
+
+| Phase| Description|
+| ---| ---|
+| Model Cluster Profile | The process of creating a [cluster profile](/cluster-profiles) for the host cluster that will be made up of Edge hosts. |
+| Install Handoff | The Edge Installer is copied over from a portable storage device to the Edge host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more.|
+| Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.|
+|Cluster Provisioning | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.|
+
+<!-- The *Registration* phase has a unique set of instructions. Refer to [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance. The same applies to the *Cluster Provisioning* phase. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource. -->
+
+
+
+<!-- Ideally, all Edge hosts have completed the *Install Handoff* phase when they arrive at the installation site. -->
+
+Review the following guides in sequential order to successfully deploy an Edge host.
 
 <br />
 
@@ -59,6 +75,6 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 
 - [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
-- [Register Edge Host](/clusters/edge/site-deployment/edge-host-registration)
+- [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration)
 
-- [Create Cluster Definition](/clusters/edge/site-deployment/cluster-deployment)
+- [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment)
