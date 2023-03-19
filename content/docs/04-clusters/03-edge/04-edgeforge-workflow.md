@@ -1,7 +1,7 @@
 ---
-title: "Palette EdgeForge Workflow"
+title: "EdgeForge Workflow"
 metaTitle: "Edge Artifact Builder Workflow"
-metaDescription: "Learn about building your own edge artifacts customized to your specific needs"
+metaDescription: "Learn how to build your own Edge artifacts customized to your specific needs."
 hideToC: false
 fullWidth: false
 ---
