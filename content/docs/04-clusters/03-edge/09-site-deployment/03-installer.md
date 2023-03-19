@@ -18,7 +18,7 @@ We provide you with an [OpenSUSE](https://www.opensuse.org/) based Edge Installe
 However, some scenarios require you to build a custom installer image. Review the following scenarios to identify if you need to create a custom Edge Installer image.
 
 <br />
-<br />
+
 - You created a content bundle that you want to include with the installation.
 
 
