@@ -2,7 +2,7 @@
 title: "Clone a VM"
 metaTitle: "Clone a VM"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

@@ -35,5 +35,5 @@ Enable the VM Dashboard on your MAAS cluster by applying the profile with the Sp
 	
 The cluster status displays as **Upgrading** on the cluster overview page. Updating can take 10-20 minutes depending on your environment. You can track events from the **Events** tab.
 
-When the cluster is finished upgrading, its status displays as **Running** and the **Virtual Machines** tab appears at the top of the page. 
+When the cluster is finished upgrading, its status displays as **Running** and a new tab labeled **Virtual Machines** appears on the Clusters page. 
 	

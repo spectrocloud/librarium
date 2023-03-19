@@ -18,5 +18,12 @@ import InfoBox from 'shared/components/InfoBox';
 The Spectro VM Dashboard supports standard power operations for virtual machines: **Start**, **Stop**, **Pause**, **Restart**. 
  
 
-From the **Virtual Machines** tab, access standard operations clicking the **three-dot Menu** when you select a VM in the list or from the **Actions** menu in tabs   -- GO BACK AND CHECK THIS. 
+Access standard VM operations two ways:
+
+- From the **Virtual Machines** tab, click the **three-dot Menu** in the row of the VM you want to perform actions on.
+
+
+- Select a VM and click the **Actions drop-down Menu**.
+
+ 
 
