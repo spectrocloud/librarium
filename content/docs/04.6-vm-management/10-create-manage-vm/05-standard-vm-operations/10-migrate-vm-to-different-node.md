@@ -1,5 +1,5 @@
 ---
-title: "Migrate a VM to a Different Node"
+title: "Migrate VM to a Different Node"
 metaTitle: "Migrate VM to a Different Node"
 metaDescription: "Learn how to"
 icon: " "

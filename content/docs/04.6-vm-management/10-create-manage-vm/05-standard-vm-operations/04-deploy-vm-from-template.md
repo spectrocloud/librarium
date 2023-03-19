@@ -1,6 +1,6 @@
 ---
-title: "Deploy a VM From a Template"
-metaTitle: "Deploy a VM From a Template"
+title: "Deploy VM From a Template"
+metaTitle: "Deploy VM From a Template"
 metaDescription: "Learn how to"
 icon: " "
 hideToC: false
@@ -33,7 +33,7 @@ These steps will guide you to deploy a virtual machine from an out-of-the-box VM
 3. Select the appropriate namespace from the **drop-down Menu**.
 
 
-4. From the Virtual Machines tab that appears when the Spectro VM Dashboard is enabled, click New Virtual Machine.
+4. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.**
 
 
 5. Click the **New Virtual Machine** button. Available templates are displayed based on supported operating systems (OS).
