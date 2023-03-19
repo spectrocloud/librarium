@@ -68,3 +68,35 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 -------
 
 
+# Edge CLIs
+
+The Edge Installer CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
+The following command unpacks the download binary and assigns the executable bit to the binary. 
+<br />
+
+```shell
+upx -d ./spectro-cli-linux-amd64 && \
+chmod +x ./spectro-cli-darwin-amd64 && \
+./spectro-cli-linux-amd64 
+```
+
+## Edge Installer
+
+CLI Version| Operating System |  
+-------|---|--|
+v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64) <br />   [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) |
+
+
+## Edge Install Docker Image
+
+
+|Version|Docker Image|
+|---------------------------|----------------------------------------|
+|3.3.0     | `gcr.io/spectro-images-public/release/spectro-registry:3.3.0`|
+
+
+## Edge Content CLI
+
+CLI Version| Operating System |  
+-------|---|--|
+v3.3.0 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-content) |
