@@ -2,7 +2,7 @@
 title: "Take a VM Snapshot"
 metaTitle: "Take a Snapshot of the VM"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---
@@ -13,28 +13,32 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-A snapshot is a copy of the virtual machine's disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. Snapshots should not be considered as a backup. Running a virtual machine on a snapshot for extended periods of time can cause instability and data loss.
+A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. Snapshots should not be considered used as a backup method, as running a VM on a snapshot for extended periods of time can cause instability and data loss.
 
-Snapshotting a virtualMachine is supported for online and offline VMs. When snapshotting a running VM, the controller will check for qemu guest agent in the VM. If the agent exists it will freeze the VM filesystems before taking the snapshot and unfreeze after the snapshot (for crash consistency).
+You can take a snapshot of a VM that is online (**Running** state) or offline (**Stopped**). When you take a snapshot of a running VM, the controller checks for the QEMU guest agent in the VM. If the guest agent is present, the controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This provides for crash consistency.
 
-We recommend taking online snapshots with the guest agent for a better snapshot, if not present a best effort snapshot will be taken.
+For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the guest agent is not installed, a best effort snapshot will be taken.
 
-Note: To check whether the vm has a ‘qemu-guest-agent’ running, check for 'AgentConnected' in the VM status.
+<br />
 
-There will be an indication in the vmSnapshot status if the snapshot was taken online and with or without guest agent participation.
+<InfoBox>
 
-Note: online snapshot with hotplugged disks is supported, only persistent hotplugged disks will be included in the snapshot.
+To check whether the VM has the ``qemu-guest-agent`` running, look for ``AgentConnected`` in **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will show if the snapshot was taken online and with or without guest agent participation.
 
-Only disks with a snapshot-supported storage class defined are included in snapshots. If none eligible disk is found, the snapshot action will not be possible.
+</InfoBox>
 
-Snapshots are available from the Snapshots tab when displaying a VM.
+<br />
 
-You can check the vmSnapshot phase in the vmSnapshot status. It can be one of the following: 
+You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the snapshot action is not possible.
 
-- InProgress
-- Succeeded 
-- Failed
+Snapshots are available from the **Snapshots** tab when you display a VM.
 
-Note: the vmSnapshot has a default deadline of 5 minutes. If the vmSnapshot has not succeessfully completed before the deadline, it will be marked as Failed. The VM will be unfrozen and the created snapshot content will be cleaned up if necessary. The vmSnapshot object will remain in Failed state until deleted by the user. If required, the default 5 minutes deadline can be tweaked to be more relevant to a specific workload.Clone VM
-Cloning a virtual machine creates a virtual machine that is a copy of the original. The new virtual machine is configured with the same virtual hardware, installed software, and other properties that were configured for the original virtual machine.
+You can view the snapshot phase for a VM from the **Snapshots** tab. The ``vmSnapshot Status`` shows the following statuses: **InProgress**, **Succeeded**, or **Failed**. 
+
+The default time for a snapshot is five minutes. If the snapshot has not succeessfully completed within that time, it's status will display **Failed**. The VM will be unfrozen and the snapshot content will be cleaned up if necessary. The snapshot will remain in Failed state until you delete it. You can change the default snapshot time to meet your workload requirements.
+
+
+
+
+
 

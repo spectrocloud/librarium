@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 # Overview
 
 
-A VM clone is a copy of a virtual machine.A VM clone is a copy of a virtual machine performed at a specific time with the same configuration settings and identifiers.  The existing virtual machine is known as the parent, while the new VM is called the clone. After the cloning operation, the clone VM runs as a separate virtual machine.
+A VM clone is a copy of a virtual machine. A VM clone is a copy of a virtual machine performed at a specific time with the same configuration settings and identifiers.  The existing virtual machine is known as the parent, while the new VM is called the clone. After the cloning operation, the clone VM runs as a separate virtual machine.
 
 Cloning is a fast and simple way to create a new virtual machine that shares properties with an existing one and is useful a variety of scenarios:
 
