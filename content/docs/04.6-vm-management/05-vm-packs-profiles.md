@@ -15,7 +15,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are:
+Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are are described below. 
+
+When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard Pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
 
 <br />
 
