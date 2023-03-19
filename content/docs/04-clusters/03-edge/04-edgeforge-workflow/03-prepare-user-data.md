@@ -72,7 +72,7 @@ Site
     site:
         projectName: edge-sites
         tags:
-        zip-code: 95135
+            zip-code: 95135
 ```
 
 ## Connected Sites - Single User Data
@@ -89,16 +89,16 @@ In this scenario, only a single Edge Installer configuration user data is used f
         edgeHostToken: <yourRegistrationToken>
         projectName: edge-sites
         tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
+          city: chicago
+          building: building-1
+          zip-code: 95135
     stages:
     initramfs:
-        - users:
-            kairos:
-            groups:
-                - sudo
-            passwd: kairos
+      - users:
+          kairos:
+          groups:
+              - sudo
+          passwd: kairos
     install:
     poweroff: true
 ```
@@ -113,9 +113,9 @@ In this scenario, only a single Edge Installer configuration user data is used f
         edgeHostToken: <yourRegistrationToken>
         projectName: edge-sites
         tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
+          city: chicago
+          building: building-1
+          zip-code: 95135
     stages:
     initramfs:
         - users:
@@ -160,8 +160,6 @@ In this scenario, only a single Edge Installer configuration user data is used f
 ## Load Content From External Registry
 
 ```yaml
-    install:
-  poweroff: false
 stylus:
   registryCredentials:
     domain: 10.10.254.254:8000/spectro-images
@@ -185,4 +183,6 @@ stages:
           groups:
             - sudo
           passwd: kairos
+install:
+  poweroff: false
 ```
