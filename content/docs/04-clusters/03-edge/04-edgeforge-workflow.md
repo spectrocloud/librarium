@@ -1,7 +1,7 @@
 ---
-title: "Enterprise Onboarding"
-metaTitle: "Enterprise Onboarding Workflow"
-metaDescription: "Learn about building enterprise edge artifacts for Palette Edge"
+title: "Palette EdgeForge Workflow"
+metaTitle: "Edge Artifact Builder Workflow"
+metaDescription: "Learn about building your own edge artifacts customized to your specific needs"
 hideToC: false
 fullWidth: false
 ---
@@ -15,37 +15,45 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Deployment of edge native clusters via Spectro Cloud's Palette platform requires the following artifacts:-
 
-# Edge Installer ISO
+<br />
+
+#### Edge Installer ISO
 
 An ISO file that bootstraps installation. It contains a Palette's edge host agent and metadata to perform the initial installation of the cluster.
 
-# Edge Host Container Image
+<br />
+
+#### Edge Host Container Image
 
 A container image that contains Palette's edge host agents to provide day-2 management and ongoing suppoprt during cluster runtime.
 
-# Edge Provider Container Images
+<br />
+
+#### Edge Provider Container Images
 
 Kairos based container images for each support OS and K8s combination. These images are donwloaded during the installation time by the edge installer and converted to disk images for system to boot into.
 
+<br />
+
 Palette provides these artifacts out-of-the-box. The Edge Installer ISO is available to download from Palette's UI. All the container images are hosted in Palette's container registries and downlaoded during installation. These can be used to initially try out installation initially.
 
-However, in a typical enterprise scenario, you most prbably would need to customize these artifacts to suit your specific needs or perform some sort of optimization.
+However, in a typical real world scenario, you most prbably would need to customize these artifacts to suit your specific needs or perform some sort of optimization.
 
-# Enterprise Scenarios
+# Deployment Scenarios
 
-* Addditional Packages
+- Addditional Packages
 You might need to install additional OS packages for your specific needs, such as a NVIDIA driver, or a network package that is essential for your hardware to able to entablish an outgoing connection. These would need to be installed in the Edge Installer as well as in the Edge Provider Images.
 
-* Installer OS Restriction
+- Installer OS Restriction
 Palette's out of the box installer is OpenSUSE based. If you want to install an Ubutnu or an RHEL based edge cluster, you may not want to start off with an OpenSUSE based installer.
 
-* Optimize Bandwidth
+- Optimize Bandwidth
 In your edge environments, you maybe have internet connectivity, but potentially limited bandwith. An optomization you might want to perform is embedd edge artifacts such as provider container images, etc into the installer.
 
-* Bootstrap Install Configuration
+- Bootstrap Install Configuration
 Your install configuration (user-data) can be baked into the isntaller to optimize the workflow. This would eliminate the need for user-data to be separately built and shipped as USB drives.
 
-* Bring your own OS
+- Bring your own OS
 Palette provides Ubuntu 20, Ubuntu 22 and OpenSUSE images out of the box. However, you may need to build the system using your own OS such as RHEL.
 
 # Palette Edge Content Builder
@@ -54,18 +62,18 @@ Palette provides a CLI tools called Palette Edge Content Builder, to generate cr
 
 # Palette Edge Image Builder
 
-Palette provides a CLI tools called Palette Edge Image Builder, to generate your own edge artifacts. You can use this to address the concerns listed above and have your own customized artifacts. This gives you complete control to deploy and manage your edge clusters in a manner that best stuis your enterprise needs.
+Palette provides a CLI tools called Palette Edge Image Builder, to generate your own edge artifacts. You can use this to address the concerns listed above and have your own customized artifacts. This gives you complete control to deploy and manage your edge clusters in a manner that best stuis your needs.
 
 <br />
 
 # Resources
 
-The following sections describe the step-by-step procedure for building customized enterprise edge artifacts. You will need access to a container registry to deploy your edge artifacts.
+The following sections describe the step-by-step procedure for building customized edge artifacts. You will need access to a container registry to deploy your edge artifacts.
 
-* [Build Your Own OS (Optional)](/clusters/edge/enterprise-onboarding/build-kairos-os)
+- [Build Your Own OS (Optional)](/clusters/edge/edgeforge-workflow/build-kairos-os)
 
-* [Build Content Bundle (Optional)](/clusters/edge/enterprise-onboarding/build-content-bundle)
+- [Build Content Bundle (Optional)](/clusters/edge/edgeforge-workflow/build-content-bundle)
 
-* [Prepare User Data](/clusters/edge/enterprise-onboarding/prepare-user-data)
+- [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data)
 
-* [Build Images](/clusters/edge/site-deployment/build-images)
+- [Build Images](/clusters/edge/edgeforge-workflow/build-images)

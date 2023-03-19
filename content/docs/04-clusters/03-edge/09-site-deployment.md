@@ -19,15 +19,9 @@ The deployment of an Edge host contains different options intended to help you i
 
 1. [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
-2. [Prepare Site User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration)
+2. [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
 
-3. [Prepare Content Bundle ISO](/clusters/edge/site-deployment/prepare-content-bundle)
-
-4. [Create an Installer Image](/clusters/edge/site-deployment/installer)
-
-5. [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
-
-6. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
+3. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
 <InfoBox>
 
@@ -60,12 +54,6 @@ The community resource, Painting with Palette has a great Edge Native [tutorial]
 # Resources
 
 - [Model Cluster Profile](/clusters/edge/site-deployment/model-profile)
-
-- [Prepare Edge Configuration as User Data](/clusters/edge/site-deployment/prepare-edge-configuration)
-
-- [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle)
-
-- [Create an Installer Image](/clusters/edge/site-deployment/installer)
 
 - [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
 

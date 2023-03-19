@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette provides a tool called Palette Edge Installer CLI for building your enterprise edge artifacts.
+Palette provides a tool called Palette Edge Installer CLI for building your edge artifacts.
 
 # Pre-requisites
 
@@ -168,7 +168,7 @@ Before you generate the build, you can make changes to customize your build for 
 
 4. Build Images
 
-Run the following command to build your enterprise edge images.
+Run the following command to build your edge images.
 
 ```
 ./build.sh

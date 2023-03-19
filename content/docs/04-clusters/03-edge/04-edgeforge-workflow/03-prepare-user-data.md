@@ -35,11 +35,13 @@ To use additional user data, create a bootable device, such as a USB stick, that
 
 ![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
 
-When building enterprise installer, you can choose to embedd the user-data into the installer itself, to eliminate having to provide it via a USB drive. Typically at this step, you are preparing Staging User data, that uniformly applies to all your edge sites. Site specific User data that includes properties such as site proxy, site certs, etc. is typically not included in the installer. However, you needs may vary based on use cases. For initial test, as an example, you might be biulding user-data that includes general as well as site specific properties.
+When building your own installer, you can choose to embedd the user-data into the installer itself, to eliminate having to provide it via a USB drive. Typically at this step, you are preparing Staging User data, that uniformly applies to all your edge sites. Site specific User data that includes properties such as site proxy, site certs, etc. is typically not included in the installer. However, you needs may vary based on use cases. For initial test, as an example, you might be biulding user-data that includes general as well as site specific properties.
+
+# User Data Samples
 
 User Data is prepared as YAML files. Following are a few samples for various scenarios.
 
-# Connected Sites (no proxy, certs) - Staging and Site
+## Connected Sites (no proxy, certs) - Staging and Site
 
 Staging
 
@@ -73,7 +75,7 @@ Site
         zip-code: 95135
 ```
 
-# Connected Sites (no proxy, certs) - Combined
+## Connected Sites (no proxy, certs) - Combined
 
 ```yaml
     #cloud-config
@@ -97,7 +99,7 @@ Site
     poweroff: true
 ```
 
-# Connected via proxy & certs; Static IP
+## Connected via proxy & certs; Static IP
 
 ```yaml
     #cloud-config
@@ -149,4 +151,34 @@ Site
             *****************************
             *****************************
             ------END CERTIFICATE-----
+```
+
+## Loading Content from external registry
+
+```yaml
+    install:
+  poweroff: false
+stylus:
+  registryCredentials:
+    domain: 10.10.254.254:8000/spectro-images
+    username: ubuntu
+    password: welcome2Spectr0!
+    insecure: true
+  site:
+    debug: true
+    insecureSkipVerify: false
+    paletteEndpoint: api.console.spectrocloud.com
+    name: edge-appliance-1
+    caCerts:
+      - |
+        -----BEGIN CERTIFICATE-----
+        
+        -----END CERTIFICATE-----
+stages:
+  initramfs:
+    - users:
+        kairos:
+          groups:
+            - sudo
+          passwd: kairos
 ```

@@ -13,13 +13,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-To build a system using your own operating system requires you create a Karios based image out of your wraw OS image. Please note that this step is *not* required if all you are looking to do is build enterprise edge artifacts from one of Palette's supported OS (Ubuntu20, Ubuntu22, OpenSUSE).
+To build a system using your own operating system requires you create a Karios based image out of your raw OS image. Please note that this step is *not* required if all you are looking to do is build enterprise edge artifacts from one of Palette's supported OS (Ubuntu20, Ubuntu22, OpenSUSE).
 
 The sections below describe the procedure to build a Kairos based RHEL image as an example. You can modify these as requird for your own operating system. For more infromation on builing your own kairos based OS, refer to ...
 
 # Pre-requisites
 
-- Ubuntu based linux machine for building various artifacts
+- A linux machine (phycial or VM) for building various artifacts
 - RHEL Subscription to be able to download the RHEL UBI image for building edge provider image
 - Access to a container registry with permissions to push container images
 

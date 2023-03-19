@@ -105,8 +105,7 @@ You can find the project id at the top right side corner of the landing page bel
     INFO[0214] ISO file created successfull
     ```
 
-The result is a content bundle that you can use to customize your installation environment.  
-If you are not customizing your Edge Installer you can transfer the ISO file to a USB drive.
+The result is a content bundle that you can use to preload into your installer. Alternately, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of edge host installation.
 
 # Validation
 
