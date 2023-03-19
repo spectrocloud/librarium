@@ -2,7 +2,7 @@
 title: "Spectro VM Dashboard"
 metaTitle: "Spectro VM Dashboard"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

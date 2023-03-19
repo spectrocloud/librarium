@@ -2,7 +2,7 @@
 title: "Standard VM Operations"
 metaTitle: "Standard VM Operations"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

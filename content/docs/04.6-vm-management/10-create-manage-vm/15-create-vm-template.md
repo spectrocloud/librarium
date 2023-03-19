@@ -2,7 +2,7 @@
 title: "Create a VM Template"
 metaTitle: "Create a VM Template"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

@@ -2,7 +2,7 @@
 title: "Create Spectro VM Dashboard Profile"
 metaTitle: "Create Spectro VM Dashboard Profile"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

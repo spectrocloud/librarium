@@ -2,7 +2,7 @@
 title: "Packs and Profiles"
 metaTitle: "Packs and Profiles"
 metaDescription: "Learn how to "
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

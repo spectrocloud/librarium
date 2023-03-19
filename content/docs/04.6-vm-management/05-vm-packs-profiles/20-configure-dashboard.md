@@ -2,7 +2,7 @@
 title: "Configure the Dashboard"
 metaTitle: "Configure the Dashboard"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: true
 fullWidth: false
 ---

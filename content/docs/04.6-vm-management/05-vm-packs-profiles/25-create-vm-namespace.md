@@ -2,7 +2,7 @@
 title: "Create a Namespace for VMs"
 metaTitle: "Create a Namespace for VMs"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---

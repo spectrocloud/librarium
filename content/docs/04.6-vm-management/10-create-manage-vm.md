@@ -2,7 +2,7 @@
 title: "Create and Manage VMs"
 metaTitle: "Create and Manage VMs"
 metaDescription: "Learn how to"
-icon: "users"
+icon: " "
 hideToC: false
 fullWidth: false
 ---
