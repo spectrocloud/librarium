@@ -40,27 +40,6 @@ This is the Palette installer for a self-host flavor of Palette. Refer to the [O
 
 You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
 
-## Latest Air-Gapped OVA
-
-|Version|URL|
-|---|---|
-|2.2.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/spectro-airgap-v2.2.0.ova)|
-------
-
-## Air-Gapped Binaries
-
-Download and execute the version-specific binary
-
-<br />
-
-
-```shell
-export VERSION=1.14.3
-curl --user spectro:PASSWORD  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
-chmod 755 ./airgap-v${VERSION}.bin
-./airgap-v${VERSION}.bin
-```
-
 # SAAS - Private Cloud Gateway(PCG)
 
 

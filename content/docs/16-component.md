@@ -15,14 +15,14 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This page lists the version details of various Palette components amd their respective Palette releases. 
+This page lists the version details of various Palette components and their respective Palette releases. 
 
 # Palette CLI Versions
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
-|Release 3.3.0 |Download for CLI v3.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.3.0/osx/spectro)|
-|              |Download for CLI v3.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.3.0/linux/spectro)|
+|Release 3.3.0 |Download for CLI v3.3.0 [OSX](https://software.spectrocloud.com/spectro-registry/v3.3.0/cli/osx/spectro)|
+|              |Download for CLI v3.3.0 [Linux](https://software.spectrocloud.com/spectro-registry/v3.3.0/cli/linux/spectro)|
 |Release 3.2.0 |Download for CLI v3.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.2.0/osx/spectro)|
 |              |Download for CLI v3.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.2.0/linux/spectro)|
 |Release 3.1.0 |Download for CLI v3.1.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro)|
@@ -60,7 +60,7 @@ chmod +x ./spectro-cli-darwin-amd64 && \
 |Release 3.3.0 |v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/stylus-v3.3.0-amd64.iso) |
 |Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
 
- #  Palette Docker Image Version
+
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
 |---------------------------|----------------------------------------|
@@ -79,7 +79,7 @@ chmod +x ./spectro-cli-darwin-amd64 && \
 
 |Palette Release|On-Prem Installer Version|
 |--|---|
-|3.3|2.4.0|
+|3.3|2.6.0|
 |3.2|2.4.0|
 |3.1|2.4.0|
 |3.0|2.1.0|
@@ -93,8 +93,8 @@ chmod +x ./spectro-cli-darwin-amd64 && \
 
 |Palette Release|Air Gapped Version|
 |--|---|
-|3.3|2.2.0|
-|3.2|2.0.1|
+|3.3|2.6.0|
+|3.2|2.4.0|
 |3.1|2.0.1|
 |3.0|2.0.1|
 |2.8|2.0.1|
