@@ -24,9 +24,10 @@ Palette provides a tool called Palette Edge Installer CLI for building your edge
 
 1. Download Palette Edge Installer CLI
 
-```
-wget S3 Link to CLI
-chmod +x ....
+```shell
+VERSION=3.3.0
+wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-installer
+chmod +x palette-edge-installer
 ```
 
 2. Review options

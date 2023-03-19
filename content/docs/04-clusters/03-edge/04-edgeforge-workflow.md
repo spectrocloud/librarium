@@ -13,31 +13,53 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Deployment of edge native clusters via Spectro Cloud's Palette platform requires the following artifacts:-
+EdgeForge is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment. 
+
+EdgeForce contains three critical components.
 
 <br />
 
-#### Edge Installer ISO
+* Edge Installer ISO.
 
-An ISO file that bootstraps installation. It contains a Palette's edge host agent and metadata to perform the initial installation of the cluster.
+
+* Edge Host Container Image.
+
+
+* Edge Provider Container Images.
+
+
+
+Each component plays a critical role in the [lifecycle](/clusters/edge/edge-native-lifecycle) of an Edge deployment. Review the following sections to learn more about each component.
+
+
+
+## Edge Installer ISO
+
+An ISO file that bootstraps the installation process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The default Edge Install ISO download URL is in the [Downloads](/spectro-downloads#edgeinstallimages) resource.
 
 <br />
 
-#### Edge Host Container Image
+## Edge Host Container Image
 
-A container image that contains Palette's edge host agents to provide day-2 management and ongoing suppoprt during cluster runtime.
-
-<br />
-
-#### Edge Provider Container Images
-
-Kairos based container images for each support OS and K8s combination. These images are donwloaded during the installation time by the edge installer and converted to disk images for system to boot into.
+The Edge Host Container Image contains the Palette Edge host agent. The Edge host agent is responsible for Day-2 operations and management of the Edge host. The Edge host agent will also provide ongoing support during cluster runtime.
 
 <br />
 
-Palette provides these artifacts out-of-the-box. The Edge Installer ISO is available to download from Palette's UI. All the container images are hosted in Palette's container registries and downlaoded during installation. These can be used to initially try out installation initially.
+## Edge Provider Container Images
 
-However, in a typical real world scenario, you most prbably would need to customize these artifacts to suit your specific needs or perform some sort of optimization.
+Kairos-based container images for each supported Operating System (OS) and Kubernetes combination. These container images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
+
+Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's container registries and downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process.
+However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) optimization.
+
+
+<br />
+
+<InfoBox>
+
+You can specify a custom registry for the Edge Installer to use during installation by using the user data parameter `registryCredentials`. Refer to the [Installer Configuration](/clusters/edge/edge-configuration/installer-reference#externalregistry) reference resource for more details.
+
+</InfoBox>
 
 # Deployment Scenarios
 

@@ -63,13 +63,13 @@ You can specify the mode the Edge Installer should prepare the installation for.
 
 | Parameter | Description | 
 | --- | --- |
-| `installationMode` | Allowed values are `airgap` or `connected`. Default value is `connected`. |
+| `installationMode` | Allowed values are `connected`. Default value is `connected`. |
 
 <br />
 
 ```yaml
 stylus:
-  installationMode: "airgap"
+  installationMode: "connected"
 ```
 
 

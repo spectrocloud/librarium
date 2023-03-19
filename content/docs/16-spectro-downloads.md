@@ -80,14 +80,14 @@ chmod +x ./spectro-cli-darwin-amd64 && \
 ./spectro-cli-linux-amd64 
 ```
 
-## Edge Installer
+## Edge Installer CLI
 
 CLI Version| Operating System |  
 -------|---|--|
-v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64) <br />   [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) |
+v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-installer) |
 
 
-## Edge Install Images
+## Edge Installer Image
 
 
 |Version|Docker Image| Optical Disk Image (ISO) |

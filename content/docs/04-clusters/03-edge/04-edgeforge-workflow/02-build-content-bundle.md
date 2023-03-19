@@ -26,20 +26,16 @@ Please note, that currently, although the content bundles contain helm charts an
 
 # Create Content Bundle
 
-1. Download Palette Edge Content CLI
+1. Download Palette Edge Content CLI.
+    <br />
 
     ```shell
-    wget S3 Link to CLI
-    chmod +x ....
+    VERSION=3.3.0
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-content
+    chmod +x palette-edge-content
     ```
 
-2. Assign the executable bit to the CLI.
-
-    ```shell
-    chmod +x ./spectro-cli-<YourOS>-<yourArchitecture>
-    ```
-
-3. Log in to Palette.
+2. Log in to Palette.
 
 4. Select the project you want to deploy the Edge host to and copy down the **Project ID**.
 You can find the project id at the top right side corner of the landing page below the **User drop-down Menu**.
