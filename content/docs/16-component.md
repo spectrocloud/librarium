@@ -15,12 +15,14 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This page lists the version details of various Palette components with respect to Palette releases. 
+This page lists the version details of various Palette components amd their respective Palette releases. 
 
 # Palette CLI Versions
 
 |Palette Release|Recommended CLI Version|
 |---|-------|
+|Release 3.3.0 |Download for CLI v3.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.3.0/osx/spectro)|
+|              |Download for CLI v3.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.3.0/linux/spectro)|
 |Release 3.2.0 |Download for CLI v3.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.2.0/osx/spectro)|
 |              |Download for CLI v3.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.2.0/linux/spectro)|
 |Release 3.1.0 |Download for CLI v3.1.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro)|
@@ -41,16 +43,28 @@ This page lists the version details of various Palette components with respect t
 |              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
 
 
-# Stylus CLI Versions
+# Edge Installer CLI Versions
+
+The CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
+The following command unpacks the download binary and assigns the executable bit to the binary. 
+<br />
+
+```shell
+upx -d ./spectro-cli-linux-amd64 && \
+chmod +x ./spectro-cli-darwin-amd64 && \
+./spectro-cli-linux-amd64 
+```
 
 |Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
 |---|-------|---|--|
+|Release 3.3.0 |v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/stylus-v3.3.0-amd64.iso) |
 |Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
 
  #  Palette Docker Image Version
 
 |Palette Release|Spectro Cloud Pack Registry Docker Image|
 |---------------------------|----------------------------------------|
+|Release 3.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0`</p> |
 |Release 3.2.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.2.0`</p> |
 |Release 3.1.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0`</p> |
 |Release 3.0.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.0.0`</p> |
@@ -65,6 +79,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|On-Prem Installer Version|
 |--|---|
+|3.3|2.4.0|
 |3.2|2.4.0|
 |3.1|2.4.0|
 |3.0|2.1.0|
@@ -78,6 +93,7 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|Air Gapped Version|
 |--|---|
+|3.3|2.2.0|
 |3.2|2.0.1|
 |3.1|2.0.1|
 |3.0|2.0.1|
@@ -93,7 +109,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|3.2|1.2.0|
+|3.3|1.5.0|
+|3.2|1.4.0|
 |3.1|1.2.0|
 |3.0|1.2.0|
 |2.8|1.2.0|
@@ -132,10 +149,11 @@ This page lists the version details of various Palette components with respect t
 -------
 
 
-# Stylus Edge Installer Image Version
+# Edge Installer Image Version
 
 |Palette Release|Stylus Version|
 |--|---|
+|3.3|2.2.23|
 |3.2|2.1.0|
 |3.1|2.0.7|
 |3.0|2.0.6|
