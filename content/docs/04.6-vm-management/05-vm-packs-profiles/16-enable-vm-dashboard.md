@@ -21,7 +21,8 @@ Enable the VM Dashboard on your MAAS cluster by applying the profile with the Sp
 
 - A cluster profile with the Spectro VM Dashboard add-on configured.
 
-- Roles?
+
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 # Enablement
 

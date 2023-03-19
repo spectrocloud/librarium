@@ -28,13 +28,23 @@ TABLE
 
 Note: those out-of-the-box roles are merely provided as an example, other roles can be created based on the permissions granularity offered by Palette. Palette provides the ability to specify bindings to configure granular Role-Based Access Control (RBAC) rules.
 
+<br />
+
 <WarningBox>
 
 You must configure role binding before any user, including you as administrator, can access the VM Management functionality in Palette.
 
 </WarningBox>
 
+<br />
 
 You can configure namespaces and RBAC from within a cluster or from a Palette Workspace that contains a cluster group. In a cluster group all roleBindings must occur at the namespace level. For details, review the [Cluster RBAC](/clusters/cluster-management/cluster-rbac/) and [workspace RBAC](/workspace/#rolebasedaccesscontrol(rbac)) guides.  
 
 Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role binding. Check out [Regex for Namespaces](/workspace/workload-features) to learn more.
+
+
+<br />
+
+<br />
+
+
