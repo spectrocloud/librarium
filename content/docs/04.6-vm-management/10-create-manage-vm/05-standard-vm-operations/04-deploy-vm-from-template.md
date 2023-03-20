@@ -69,9 +69,7 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 
 <WarningBox>
 
-VMs do not self heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. 
-
-Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
+VMs do not self heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
 
 </WarningBox>
 
