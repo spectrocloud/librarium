@@ -18,13 +18,13 @@ You can deploy a VM using Palette's out-of-the-box templates or templates that y
 
 # Prerequisites
 
-- Configured Spectro VM Dashboard applied to your MAAS cluster.
+- Configured Spectro VM Dashboard applied to your cluster.
 
 # Enablement
 
 These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-box VM template.
 
-1. From the left **Main Menu**, click **Clusters** and select the MAAS cluster you used to enable the Spectro VM Dashboard.
+1. From the left **Main Menu**, click **Clusters** and select the cluster you used to enable the Spectro VM Dashboard.
 
 
 2. Click the **Virtual Machines** tab.
@@ -33,7 +33,7 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 3. Select the appropriate namespace from the **drop-down Menu**.
 
 
-4. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.**
+4. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.
 
 
 5. Click the **New Virtual Machine** button. Available templates are displayed based on supported operating systems (OS).
