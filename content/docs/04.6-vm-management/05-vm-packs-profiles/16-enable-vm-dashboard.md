@@ -22,7 +22,30 @@ Enable the VM Dashboard on your MAAS cluster by applying the profile with the Sp
 - A cluster profile with the Spectro VM Dashboard add-on configured.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Two defined cluster role bindings for every user: ``spectro-list-namespaces``and ``spectro-list-vmtemplates``.
+
+
+- Additional cluster roles, based on the user's persona, must be associated with the user by specifying a cluster role binding or a namespace-restricted role binding:
+
+    <br />
+
+    - ``spectro-vm-admin``
+
+    - ``spectro-vm-power-user``
+
+    - ``spectro-vm-user``
+
+    - ``spectro-vm-viewer``
+
+    Alternatively, you can use standard Kubernetes roles ``cluster-admin``, ``admin``, ``edit``, and ``view`` instead of defining bindings based on ``spectro-vm-*`` roles.
+
+
+- Assigned permissions to access Palette clusters. 
+
+
+Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for role creation guidance and to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+
+
 
 # Enablement
 
@@ -38,3 +61,7 @@ The cluster status displays as **Upgrading** on the cluster overview page. Updat
 
 When the cluster is finished upgrading, its status displays as **Running** and a new tab labeled **Virtual Machines** appears on the Clusters page. 
 	
+
+# Resources
+
+- [VM User Roles and Permissions](/vm-management/vm-roles-permissions)

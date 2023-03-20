@@ -14,37 +14,42 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette RBAC has several built-in roles that can be assigned to users and teams. Role assignments are the way you control access to Palette resources.
+You must configure roles and role binding before any user, including you as administrator, can access the VM Management functionality in Palette. There are two sets of roles: Cluster Roles and Palette Roles, along with the required bindings configuration.
 
-The Global Tenant Scope holds all the tenant resources of Palette. The list of Role types within the Tenant Scope are as follows:
-
-Palette provides four out-of-the-box roles to give permissions for VM Management:
+Palette provides the following four out-of-the-box Cluster roles for VM Management. The table also lists the corresponding Palette roles. 
 
 <br />
 
-TABLE
+| Cluster Role  | Description | Restrictions | Palette Role |
+|-----------|-------------|-----------|-----------|
+| spectro-vm-admin | Has admin privileges to manage the Kubernetes cluster, VMs, and templates.| None | - Cluster Admin or Editor<br/>- Cluster Profile Admin or Editor<br />- VM Admin
+| spectro-vm-power-user | Can perform most VM operations, but does not handle infrastructure aspects. | - Cannot manage or administer the Kubernetes cluster.<br />- Cannot manage or update VM templates. | - Cluster Viewer<br />- VM Power User |
+| spectro-vm-user | Primarily uses VMs created by others. | - Cannot launch new VMs or clone existing ones.<br />- Cannot resize or delete.<br />- Cannot migrate VMs from one node to another. | - Cluster Viewer<br />- VM User 
+| spectro-vm-viewer | A view-only role. | Cannot perform any of the operations offered to the above users.| - Cluster Viewer<br />- VM Viewer
 
-<br />
-
-Note: those out-of-the-box roles are merely provided as an example, other roles can be created based on the permissions granularity offered by Palette. Palette provides the ability to specify bindings to configure granular Role-Based Access Control (RBAC) rules.
 
 <br />
 
 <WarningBox>
 
-You must configure role binding before any user, including you as administrator, can access the VM Management functionality in Palette.
+These roles are currently only relevant to access VM Management APIs. To access the Virtual Machines console, users must have permissions to access Palette clusters. These permissions can be granted through the pre-defined Cluster Admin/Editor/Viewer roles.
 
 </WarningBox>
 
 <br />
 
-You can configure namespaces and RBAC from within a cluster or from a Palette Workspace that contains a cluster group. In a cluster group all roleBindings must occur at the namespace level. For details, review the [Cluster RBAC](/clusters/cluster-management/cluster-rbac/) and [workspace RBAC](/workspace/#rolebasedaccesscontrol(rbac)) guides.  
+You can create additional roles based on the permissions granularity that Palette offers. Palette provides the ability to specify bindings to configure granular Role-Based Access Control (RBAC) rules.
+
+<br />
+
+
+You can configure namespaces and RBAC from within a cluster or from a Palette workspace that contains a cluster group. In a cluster group all roleBindings must occur at the namespace level. For details, review the [Cluster RBAC](/clusters/cluster-management/cluster-rbac/) and [workspace RBAC](/workspace/#rolebasedaccesscontrol(rbac)) guides.  
 
 Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role binding. Check out [Regex for Namespaces](/workspace/workload-features) to learn more.
 
 
-<br />
 
-<br />
+
+
 
 
