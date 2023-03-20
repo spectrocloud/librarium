@@ -54,7 +54,7 @@ When you click on a VM in the list, the following tabs display, which are specif
 - **Console**: Allows you to access and interact with the VM through its console. If you are not using a template, you can configure the VM using the console.
 
 
-- **Network Interfaces**: Allows you to add and manage network interfaces. By default, the Pod Networking interface is a masquerade type interface. You can change this to be a Bridge or other type interface.
+- **Network Interfaces**: Allows you to add and manage network interfaces. By default, the Pod Networking interface is a masquerade type interface, or in simple terms, it's a one-to-many IP address translation. You can change this to be a Bridge or other type interface.
 
 
 - **Disks**: Allows you to add and manage disks. You can update the disk size, specify type (`Disk`, `CD-ROM`, or `LUN`), and specify the interface (`virtuo`, `sata`, or `scsi`).  By default, `spectro-storage-class` is applied to the disk.
