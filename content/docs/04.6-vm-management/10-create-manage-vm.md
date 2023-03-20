@@ -28,9 +28,9 @@ You can create a new VM three ways:
 
 - Clone an existing VM. Refer to the [Create a VM Template](/vm-management/create-manage-vm/create-vm-template) guide.
 
+Administrators can also import virtual machines from their VMware vSphere environment into Palette.
 
-
-Although no additional components are required in virtual machines, the Guest Agent (GA) is an optional component that can run inside a virtual machine and provide additional runtime information. 
+Although no additional components are required in VMs, the QEMU Guest Agent is an optional component that runs inside a VM and provide additional runtime information. 
 
 Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
 

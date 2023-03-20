@@ -15,16 +15,16 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are are described below. 
+Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are are described below. Two essential components of the VM Management solution are the Spectro VM Dashboard pack and Spectro Proxy pack.
 
 When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard Pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
 
 <br />
 
-- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster.
+- **Spectro VM Dashboard**: An integration add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more.
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. This pack is automatically added when you use the default dashboard configuration.
 
 
 - **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt.
@@ -39,7 +39,7 @@ KubeVirt extends Kubernetes with additional virtualization resource types using 
 - **VolumeSnapshot Controller**: A Kubernetes plug-in that watches VolumeSnapshot CRD objects and manages the creation and deletion of volume snapshots. A snapshot represents a point-in-time copy of a volume. You can use a snapshot to provision a new volume. That is, you can pre-populate a volume with the snapshot data. Or you can restore an existing volume to the previous state using a snapshot.
 
 
-- **Multus CNI**: a CNI plugin that enables multiple network interfaces to attach to Kubernetes pods.
+- **Multus CNI**: A CNI plugin that enables multiple network interfaces to attach to Kubernetes pods.
 
 
 Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
@@ -60,16 +60,3 @@ you need to do the following:
 
 
 
-
-
-
-
-
-
- 
-
-
-
-
-MOVE TO CREATE VM:
-and can import virtual machines from their VMware vSphere environment into Palette.
