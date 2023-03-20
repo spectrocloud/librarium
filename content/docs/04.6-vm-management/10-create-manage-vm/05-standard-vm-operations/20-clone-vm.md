@@ -28,7 +28,7 @@ Cloning is a quick way to create a new virtual machine that shares the same prop
 
 # Prerequisites
 
-- A parent VM from which to clone.
+There are no requirements.
 
 # Enablement
 

@@ -18,7 +18,7 @@ Although Palette provides out-of-the box templates, we recommend that you create
 
 # Prerequisites
 
-- Valid YAML that defines your VM template(s).
+- Valid YAML that defines your VM template.
 
 # Enablement
 
