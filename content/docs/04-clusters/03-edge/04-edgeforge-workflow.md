@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-EdgeForge is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment. 
+*EdgeForge* is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment. 
 
 EdgeForce contains three critical components.
 
