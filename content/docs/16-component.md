@@ -109,7 +109,7 @@ chmod +x ./spectro-cli-darwin-amd64 && \
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|3.3|1.5.0|
+|3.3|1.6.0|
 |3.2|1.4.0|
 |3.1|1.2.0|
 |3.0|1.2.0|
