@@ -13,62 +13,84 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-To build a system using your own operating system requires you create a Karios based image out of your raw OS image. Please note that this step is *not* required if all you are looking to do is build enterprise edge artifacts from one of Palette's supported OS (Ubuntu20, Ubuntu22, OpenSUSE).
+Edge supports using a different Operating System (OS)  for your Edge host runtime. Building a system using your OS requires creating a Karios-based image from your raw OS image.
 
-The sections below describe the procedure to build a Kairos based RHEL image as an example. You can modify these as requird for your own operating system. For more infromation on builing your own kairos based OS, refer to ...
+<br />
 
-# Pre-requisites
+<InfoBox>
 
-- A linux machine (phycial or VM) for building various artifacts
-- RHEL Subscription to be able to download the RHEL UBI image for building edge provider image
-- Access to a container registry with permissions to push container images
+The instructions in this guide are optional if all you want to do is build an Edge artifact from one of Palette's out-of-the-box supported OS.
+
+</InfoBox>
+
+As an example, the following steps will guide you through the procedure to build a Kairos-based RHEL image. You can alter the steps as needed for your operating system. 
+# Prerequisites
+
+- Linux Machine (Physical or VM) with an AMD64 architecture.
+
+
+- Access to a container registry with permission to push container images.
+
+
+<WarningBox>
+
+Some OS require credentials to download the source image, such as Red Hat Enterprise Linux (RHEL). An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) for building the Edge provider image. Ensure you have the credentials necessary to download the OS source image.
+
+
+</WarningBox>
+
 
 # Steps
 
-1. Prepare Build Server
+1. Issue the following commands to prepare your server. You can also add more packages to the `apt install` command if needed.
+  <br />
 
-Run the following commands to prepare your server for VMDK creation.
+  ```shell
+  mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt update -y
+  sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin git-all -y
+  ```
 
-```
-# Install Docker
-mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+2. Create a workspace and download the builder code.
 
-apt update
-apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  <br />
 
-Additional package installation for content creation, compression and preparing your workspace
+  ```shell
+  mkdir -p ~/workspace/
+  cd workspace/
+  git clone https://github.com/spectrocloud/pxke-samples
+  ```
 
-#Create workspace & download builder code
-mkdir -p ~/workspace/
-cd workspace/
+3. Build Karios Image. In this step, you will create a Kairos-based core image from an RHEL 8 base OS. Core images form the basis for Kubernetes provider images used for host cluster provisioning. Review the contents of the Dockerfile to understand the various steps involved in this process. You must supply credentials to your RHEL subscription to successfully build the image.
 
-#Clone repositories
-git clone https://github.com/spectrocloud/pxke-samples
+  <br />
 
-```
+  ```shell
+  cd pxke-samples/core-images
+  docker build \
+  --tag [your image repository]/rhel8-kairos:1.0 \
+  --build-arg USERNAME=[rhel subscription username]\
+  --build-arg PASSWORD=[rhel subscription password] \
+  --file Dockerfile.rhel8 .
+  ```
 
-2. Build Karios Image
+4. Upload the image to your container registry.
 
-In this step we will build a Kairos based core image from a RHEL 8 base operating system. Core images form the basis for k8s provider images used for cluster provisioning. The build is performed using containers. We will use a docker file called Dockerfile.rhel8 in this example. Please review the contents of this file to understand the various steps involved in this process. You will need to supply credentials to your RHEL subscription to the build command.
+  <br />
 
-```
-cd pxke-samples/core-images
+  ```shell
+  docker push [your image repository]/rhel8-kairos:1.0
+  ```
 
-docker build \
--t [your image repository]/rhel8-kairos:1.0 \
---build-arg USERNAME=[rhel subscription username]\
---build-arg PASSWORD=[rhel subscription password] \
--f Dockerfile.rhel8 .
-```
+Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) and become part of your Edge artifact.
 
-2. Upload to your registry
+# Next Steps
 
-```
-docker push [your image repository]/rhel8-kairos:1.0
-``
 
-This image will be used in the 'Build Images' step as the based for rest of your enterprise edge artifacts.
+Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bunlde](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
+
+<br />
