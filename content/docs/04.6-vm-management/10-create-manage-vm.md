@@ -14,33 +14,33 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-With Palette’s VM Management feature, you can run and manage Virtual Machines (VMs) managed alongside containerized applications.
+With Palette’s VM Management feature, you can run and manage Virtual Machines (VMs) alongside containerized applications.
 
 You can create a new VM three ways:
 
 <br />
 
-- Deploy a VM from template. Palette provides templates, or your organization may provide templates.
+- Deploy a VM from template. Palette provides out-of-the-box templates, or your organization may provide templates.
 
 
-- Create an empty VM and install the operating system using a standard method, such as a Preboot Execution Environment (PXE) or optical disk image (ISO).
+- Create an empty VM and install the Operating System (OS) using a standard method, such as a Preboot Execution Environment (PXE) or optical disk image (ISO).
 
 
 - Clone an existing VM. Refer to the [Create a VM Template](/vm-management/create-manage-vm/create-vm-template) guide.
 
 Administrators can also import virtual machines from their VMware vSphere environment into Palette.
 
-Although no additional components are required in VMs, the QEMU Guest Agent is an optional component that runs inside a VM and provide additional runtime information. 
+Although no additional components are required in VMs, the QEMU Guest Agent is an optional component that runs inside a VM and provides additional runtime information. 
 
 Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
 
 <br />
 
-<InfoBox>
+<WarningBox>
 
-We recommend installing ‘qemu-guest-agent’ to improve manageability of virtual machines, and Virtio drivers to ensure you can use the paravirtualized hardware properly.
+We recommend installing ``qemu-guest-agent`` to improve manageability of virtual machines. We also recommend installing Virtio drivers to ensure you can use the paravirtualized hardware properly.
 
-</InfoBox>
+</WarningBox>
 
 <br />
 

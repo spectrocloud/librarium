@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Enable the VM Dashboard on your MAAS cluster by applying the profile with the Spectro VM Dashboard add-on pack to it. 
+Apply the profile with the Spectro VM Dashboard integration pack to your MAAS cluster to enable the VM Dashboard. 
 
 
 # Prerequisites
@@ -43,10 +43,6 @@ Enable the VM Dashboard on your MAAS cluster by applying the profile with the Sp
 - Assigned permissions to access Palette clusters. 
 
 
-Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for role creation guidance and to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
-
-
-
 # Enablement
 
 1. From the left **Main Menu**, click **Clusters** and select your MAAS cluster. 
@@ -55,11 +51,21 @@ Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#creat
 2. Go to the **Profiles** tab and click **+** next to **Addon Layers**, then select the profile you created.
 
 
-3. Click **Confirm** to update the cluster.
+3. Add role bindings from the **Settings** menu. Click **RBAC**. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+
+
+4. Click **Confirm** to update the cluster.
 	
 The cluster status displays as **Upgrading** on the cluster overview page. Updating can take 10-20 minutes depending on your environment. You can track events from the **Events** tab.
 
+
+# Validation
+
 When the cluster is finished upgrading, its status displays as **Running** and a new tab labeled **Virtual Machines** appears on the Clusters page. 
+
+# Next Steps
+
+Now you are ready to deploy a VM. Refer to [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template) for guidance.
 	
 
 # Resources

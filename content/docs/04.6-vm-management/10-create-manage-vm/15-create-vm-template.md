@@ -14,16 +14,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
+Although Palette provides out-of-the box templates, we recommend that you create and manage your own templates.
 
 # Prerequisites
 
 - Valid YAML that defines a VM.
 
-Although Palette provides some generic out-of-the box templates, we recommend that you create and manage your own templates.
-
 # Enablement
 
-Create templates by adding a YAML file as a manifest in an add-on profile. 
+Create templates by adding a YAML file as a manifest in an add-on profile.
+
+<br />
 
 1. From the left **Main Menu** click **Profiles** and click the **Add Cluster Profile** button.
 
@@ -113,4 +114,8 @@ spec:
 
 # Validation
 
-Navigate to the left **Main Menu** and click **Profiles**. You newly added manifest is listed and can be added to your MAAS cluster. 
+Navigate to the left **Main Menu**, click **Profiles**, and verify your newly added manifest is listed. 
+
+# Next Steps
+
+Try applying the template to your MAAS cluster, or you can add the template to your VM by upding the VM configuration. 

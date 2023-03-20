@@ -56,6 +56,8 @@ The default setting for **Access** is **Proxied**, which automatically adds the 
 
 The default setting for **Identity Provider** is Palette. All IDP options require you to map a set of users or groups to a Kubernetes RBAC role.
 
+<br />
+
 <WarningBox>
 
 We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
@@ -74,8 +76,8 @@ IDP options are as follows:
 
 # Validation
 
-COME BACK TO THIS
+You can validate the profile is created by navigating to **Profiles** from the left **Main Menu**. The newly created profile will be listed.
 
 # Next Steps
 
-Now apply the profile to your MAAS cluster. 
+You can now apply the profile to your MAAS cluster. 

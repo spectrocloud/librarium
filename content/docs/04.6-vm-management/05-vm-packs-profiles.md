@@ -15,9 +15,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are are described below. Two essential components of the VM Management solution are the Spectro VM Dashboard pack and Spectro Proxy pack.
+Palette's Virtual Machine (VM) Management solution provides a single Spectro VM Dashboard pack that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are described below. Two essential components of the VM Management solution are the **Spectro VM Dashboard** pack and **Spectro Proxy** pack.
 
-When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard Pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
+When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
 
 <br />
 
@@ -46,12 +46,7 @@ Administrators can configure out-of-the-box add-on packs, cluster profiles, and 
 
 When you receive the endpoint URL for that stores the Spectro VM Dashboard pack, you will need to register the pack in your environment. 
 
-you need to do the following:
 
-<br />
-
-1. Register the pack in your environment. To learn how, refer to [Configure the custom pack registry in Palette](/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole).
-2. Create a cluster profile. Navigate to your tenant admin environment, 
 
 
 <br />

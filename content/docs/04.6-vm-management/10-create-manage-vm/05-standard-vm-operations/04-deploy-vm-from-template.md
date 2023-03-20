@@ -22,7 +22,7 @@ You can deploy a VM using Palette's out-of-the-box templates or templates that y
 
 # Enablement
 
-These steps will guide you to deploy a virtual machine from an out-of-the-box VM template.
+These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-box VM template.
 
 1. From the left **Main Menu**, click **Clusters** and select the MAAS cluster you used to enable the Spectro VM Dashboard.
 
@@ -69,7 +69,7 @@ These steps will guide you to deploy a virtual machine from an out-of-the-box VM
 
 <WarningBox>
 
-Virtual machines do not self heal on their own. If a virtual machine is running on a node that fails, the virtual machine is re-scheduled to a different node. 
+VMs do not self heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. 
 
 Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
 
@@ -83,11 +83,11 @@ On the **Virtual Machines** tab that displays after you click **Create Virtual M
 
 # Next Steps
 
-Click the **Console** tab in the virtual machine, and validate that the operating system is running and configured correctly. 
+Click the **Console** tab in the VM, and validate the operating system is running and configured correctly. 
 
-Go ahead and install your applications. If the Guest Agent was not installed as part of the VM deployment, you can install the Guest Agent now. The Guest Agent displays additional details in the **Virtual Machines > Details** tab. 
+Try installing your applications. If the Guest Agent was not installed as part of the VM deployment, you can install the Guest Agent now. The Guest Agent displays additional details in the **Virtual Machines > Details** tab. 
 
-You can update the configuration. 
+You can also update the VM configuration from the VM console if desired. 
 
 <br />
 
