@@ -20,7 +20,7 @@ Cloning is a quick way to create a new virtual machine that shares the same prop
 
 <br />
 
-- Software testing - developers can clone a running VM to test new changes to their code. 
+- Software testing - developers can clone an active VM to test new changes to their code. 
 
 
 - Forensics - security administators can clone an infected machine and connect it to an air-gaped network to investigate the source of the infection while the parent VM can be destroyed or remediated.
