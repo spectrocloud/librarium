@@ -18,11 +18,11 @@ Although Palette provides out-of-the box templates, we recommend that you create
 
 # Prerequisites
 
-- Valid YAML that defines a VM.
+- Valid YAML that defines your VM template(s).
 
 # Enablement
 
-Create templates by adding a YAML file as a manifest in an add-on profile.
+Create a template by adding a YAML file as a manifest in an add-on profile.
 
 <br />
 
@@ -118,4 +118,4 @@ Navigate to the left **Main Menu**, click **Profiles**, and verify your newly ad
 
 # Next Steps
 
-Try applying the template to your MAAS cluster, or you can add the template to your VM by upding the VM configuration. 
+Try applying the template to your cluster. 
