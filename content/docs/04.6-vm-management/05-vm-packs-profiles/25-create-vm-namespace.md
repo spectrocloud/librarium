@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-At the top of the VM dashboard, a drop-down menu allows you to select the relevant namespace.
+At the top of the VM dashboard, a **drop-down Menu** allows you to select the relevant namespace.
 
 Although it is fine to run VMs from the default namespace, we recommend that you create at least one namespace that is dedicated to VMs. 
 
