@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. Snapshots should not be considered used as a backup method, as running a VM on a snapshot for extended periods of time can cause instability and data loss.
+A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. Snapshots should not be used as a backup method, as running a VM on a snapshot for extended periods of time can cause instability and data loss.
 
 You can take a snapshot of a VM that is online (**Running** state) or offline (**Stopped** state). When you take a snapshot of a running VM, the controller checks for the QEMU guest agent in the VM. If the guest agent is present, the controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This provides for crash consistency.
 
