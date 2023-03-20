@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Live migration is a process in which a running virtual machine (VM) moves to another cluster node while the guest workload continues to run. During live migration, the VM remains accessible.
 
-Successful live migrations rely on appropriately configured storage and networking and must be enabled as a feature gate. You enable live migration in the ``feature-gates`` field of the kubevirt configuration file in the Spectro VM Dashboard pack.
+Successful live migrations rely on appropriately configured storage and networking and must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` field of the kubevirt configuration file in the Spectro VM Dashboard pack. Refer to [] 
 
 Consider the following when migrating a VM node:
 

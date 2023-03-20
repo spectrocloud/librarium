@@ -46,7 +46,7 @@ Similar to adding disks to a virtual machine, you can add additional network int
 
 By default, virtual machines use the native networking already configured in the pod. Typically, this means using the bridge option and your virtual machine has the same IP address as the pod. This approach makes interoperability possible. The VM can integrate with different cases like sidecar containers and pod masquerading. When using pod masquerading, you choose a CIDR for which VMs are not assigned a private IP, and instead use Network Address Translation (NAT) behind the pod IP.
 
-Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have created a ``NetworkAttachmentDefinition`` CRD. For more information, refer to the [Multus CNI](/integrations/multus-cni) guide.
+Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have created a default ``NetworkAttachmentDefinition`` CRD. For more information, refer to the [Multus CNI](/integrations/multus-cni) guide.
 
 To interact with networking, navigate to the **Network Interfaces** tab on the virtual machine page and click the **Add network interface** button.
 

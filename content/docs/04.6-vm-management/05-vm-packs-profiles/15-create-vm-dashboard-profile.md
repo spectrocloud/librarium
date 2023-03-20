@@ -30,7 +30,7 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 * Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
-* Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+* Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
 # Enablement
 
