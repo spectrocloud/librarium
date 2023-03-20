@@ -107,6 +107,9 @@ To start with Edge, review the [architecture](/clusters/edge/architecture) and t
 - [Install Configuration](/clusters/edge/edge-configuration)
 
 
+- [EdgeForge Workflow](/clusters/edge/edgeforge-workflow)
+
+
 - [Site Deployment](/clusters/edge/site-deployment)
 
 <br />

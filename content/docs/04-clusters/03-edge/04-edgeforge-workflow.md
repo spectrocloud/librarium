@@ -98,12 +98,12 @@ The Edge Installer supports various unique deployment scenarios. You can customi
 
 <br />
 
-- **Addditional Packages**:
+- **Additional Packages**:
 You may need to install additional OS packages for your specific needs, such as an NVIDIA driver or a network package essential for your hardware to establish an outgoing network connection. These additional OS packages would need to be added to the Edge Installer and the Edge Provider images.
 
 
 - **Installer OS Restriction**:
-Palette's out-of-the-box Edge Istaller is based on the OpenSUSE OS. If you want to install an Ubuntu or an RHEL-based Edge cluster, you may need an Edge Installer based on another OS.
+Palette's out-of-the-box Edge Installer is based on the OpenSUSE OS. If you want to install an Ubuntu or an RHEL-based Edge cluster, you may need an Edge Installer based on another OS.
 
 
 - **Optimize Bandwidth**:
@@ -114,7 +114,7 @@ In your Edge environments, you may have internet connectivity but limited bandwi
 You can embed the Edge Install configuration user data into the Edge Installer. This removes the need to create separate user data uploaded as an ISO through a USB drive. Check out the [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data) guide to learn more about user data and when to use multiple user data files.
 
 
-- **Bring Your Own OS (BYOOS)** :
+- **Bring Your Own OS (BYOOS)**:
 Palette provides the following runtime OS out-of-the-box for all Edge Hosts. For environments that require a different runtime OS, you can specify another OS through the BYOOS option. Follow the instructions in the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn more about BYOOS.
 
 # Build a Custom Edge Artifact
