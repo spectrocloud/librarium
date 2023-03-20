@@ -14,12 +14,12 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Apply the profile with the Spectro VM Dashboard integration pack to your MAAS cluster to enable the VM Dashboard. 
+Apply the profile with the Spectro VM Dashboard integration pack to your cluster to enable the VM Dashboard. 
 
 
 # Prerequisites
 
-- A cluster profile with the Spectro VM Dashboard add-on configured.
+- A cluster profile with the Spectro VM Dashboard integration add-on configured.
 
 
 - Two defined cluster role bindings for every user: ``spectro-list-namespaces``and ``spectro-list-vmtemplates``.
@@ -45,7 +45,7 @@ Apply the profile with the Spectro VM Dashboard integration pack to your MAAS cl
 
 # Enablement
 
-1. From the left **Main Menu**, click **Clusters** and select your MAAS cluster. 
+1. From the left **Main Menu**, click **Clusters** and select your cluster. 
 
 
 2. Go to the **Profiles** tab and click **+** next to **Addon Layers**, then select the profile you created.
@@ -56,12 +56,12 @@ Apply the profile with the Spectro VM Dashboard integration pack to your MAAS cl
 
 4. Click **Confirm** to update the cluster.
 	
-The cluster status displays as **Upgrading** on the cluster overview page. Updating can take 10-20 minutes depending on your environment. You can track events from the **Events** tab.
+The cluster status displays as **Upgrading** on the cluster overview page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
 # Validation
 
-When the cluster is finished upgrading, its status displays as **Running** and a new tab labeled **Virtual Machines** appears on the Clusters page. 
+When the cluster is finished upgrading, its status displays as **Running** and a new tab labeled **Virtual Machines** appears on the Cluster's page. 
 
 # Next Steps
 
