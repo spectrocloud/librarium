@@ -24,7 +24,7 @@ When you receive credentials and a URL from Spectro Cloud, register the Spectro 
 - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. This pack is automatically added when you use the default dashboard configuration.
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
 
 
 - **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt.
