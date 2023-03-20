@@ -65,7 +65,7 @@ When the cluster is finished upgrading, its status displays as **Running** and a
 
 # Next Steps
 
-Now you are ready to deploy a VM. Refer to [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template) for guidance.
+Now you are ready to deploy a VM. Go ahead and review the [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template) guide to get started with the deployment process.
 	
 
 # Resources
