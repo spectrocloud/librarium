@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Content bundles are archives of all the required container images. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. Cluster Profiles are the primary source for building these content bundles.
+Content bundles are archives of all the required container images. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. [Cluster Profiles](/cluster-profiles) are the primary source for building these content bundles.
 
 <br />
 
@@ -49,7 +49,7 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
     chmod +x palette-edge-content
     ```
 
-2. Log in to Palette.
+2. Log in to [Palette](https://console.spectrocloud.com).
 
 
 3. Select the project you want to deploy the Edge host to and copy down the **Project ID**.
