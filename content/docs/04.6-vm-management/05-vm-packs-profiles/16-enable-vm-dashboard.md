@@ -19,7 +19,7 @@ Apply the profile with the Spectro VM Dashboard integration pack to your cluster
 
 # Prerequisites
 
-- A cluster profile with the Spectro VM Dashboard integration add-on configured.
+- A cluster profile with the Spectro VM Dashboard integration add-on configured. Check out the [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile) guide to learn more.
 
 
 - Two defined cluster role bindings for every user: ``spectro-list-namespaces``and ``spectro-list-vmtemplates``.
