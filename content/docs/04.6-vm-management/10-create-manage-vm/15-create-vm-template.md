@@ -64,7 +64,7 @@ metadata:
 spec:
   description: This is Fedora 36 image
   displayName: Fedora 36
-  icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fedora_logo.svg/534px-Fedora_logo.svg.png?20091128031656"
+  icon: "https://s3.amazonaws.com/manifests.spectrocloud.com/logos/fedora.png"
   running: false
   template:
     spec:
