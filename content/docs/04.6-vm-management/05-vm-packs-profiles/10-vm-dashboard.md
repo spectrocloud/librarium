@@ -18,7 +18,7 @@ The Spectro VM Dashboard offers a web console accessible from the **Virtual Mach
 
 When the dashboard is enabled, the default view displays a list of the Virtual Machines (VMs) deployed in the selected namespace. The first time you see this view, it will appear blank. As you add VMs, they will be listed on the page. You can filter on VM status and search for VMs by their name or label.
 
-At the top of the Spectro VM Dashboard, the **Name drop-down Menu** allows you to select a namespace. Although you can run virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs.
+At the top of the Spectro VM Dashboard, the **Name drop-down Menu** allows you to select a namespace. Although you can deploy virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs.
 
 <WarningBox>
 
