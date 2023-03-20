@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Palette provides a tool called Palette Edge Installer CLI for building your edge artifacts.
 
-# Pre-requisites
+# Prerequisites
 
 - Linux Machine (Physical or VM)
 - Access to a container registry with permissions to push container images
