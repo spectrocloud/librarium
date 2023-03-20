@@ -16,7 +16,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 At the top of the VM dashboard, a drop-down menu allows you to select the relevant namespace.
 
-Although it is fine to run VMs from the default namespace, we recommend that you create at least one namespace that is dedicated to VMs. These are some benefits of deploying VMs in different namespaces:
+Although it is fine to run VMs from the default namespace, we recommend that you create at least one namespace that is dedicated to VMs. 
+
+Benefits of deploying VMs in different namespaces are:
 
 - Namespaces provide a way to isolate groups of resources within a single cluster.
 
@@ -34,9 +36,8 @@ Although it is fine to run VMs from the default namespace, we recommend that you
 
 # Prerequisites
 
-- A registered Custom Registry to store the Spectro VM Dashboard.
+- A registered Custom Registry to store the Spectro VM Dashboard pack.
 
-- Any others ??
 
 # Enablement
 
