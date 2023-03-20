@@ -57,7 +57,7 @@ When you click on a VM in the list, the following tabs display, which are specif
 - **Network Interfaces**: Allows you to add and manage network interfaces. By default, the Pod Networking interface is a masquerade type interface, or in simple terms, it's a one-to-many IP address translation. You can change this to be a Bridge or other type interface.
 
 
-- **Disks**: Allows you to add and manage disks. You can update the disk size, specify type (`Disk`, `CD-ROM`, or `LUN`), and specify the interface (`virtuo`, `sata`, or `scsi`).  By default, `spectro-storage-class` is applied to the disk.
+- **Disks**: Allows you to add and manage disks. You can update the disk size, specify type `Disk`, `CD-ROM`, or `LUN`, and specify the interface `virtuo`, `sata`, or `scsi`.  By default, `spectro-storage-class` is applied to the disk.
 
 
 - **Snapshots**: Allows you to take a new snapshot and manage existing ones. 
