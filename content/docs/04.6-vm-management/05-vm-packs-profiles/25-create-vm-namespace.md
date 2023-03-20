@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 At the top of the VM dashboard, a **drop-down Menu** allows you to select the relevant namespace.
 
-Although it is fine to run VMs from the default namespace, we recommend that you create at least one namespace that is dedicated to VMs. 
+Although it is fine to deploy VMs from the default namespace, we recommend that you create at least one namespace that is dedicated to VMs. 
 
 Benefits of deploying VMs in different namespaces are:
 
