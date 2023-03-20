@@ -45,16 +45,19 @@ Apply the profile with the Spectro VM Dashboard integration pack to your cluster
 
 # Enablement
 
-1. From the left **Main Menu**, click **Clusters** and select your cluster. 
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Go to the **Profiles** tab and click **+** next to **Addon Layers**, then select the profile you created.
+2. From the left **Main Menu**, click **Clusters** and select your cluster. 
 
 
-3. Add role bindings from the **Settings** menu. Click **RBAC**. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+3. Go to the **Profiles** tab and click **+** next to **Addon Layers**, then select the profile you created.
 
 
-4. Click **Confirm** to update the cluster.
+4. Add role bindings from the **Settings** menu. Click **RBAC**. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance on creating a role binding. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+
+
+5. Click **Confirm** to update the cluster.
 	
 The cluster status displays as **Upgrading** on the cluster overview page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
 

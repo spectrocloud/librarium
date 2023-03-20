@@ -18,49 +18,57 @@ The Spectro VM Dashboard is a web-based UI for virtual machines that is using se
 
 Create a cluster profile with the **Spectro VM Dashboard** add-on and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears.
 
+<br />
+
 <WarningBox>
 
 We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
 </WarningBox>
 
+
 # Prerequisites
 
 * Registered Spectro VM Dashboard pack registry.
 
+
 * Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+
 
 * Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
 # Enablement
 
-1. In your tenant environment, select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Enter basic information for the profile: name, version if desired, and optional description.
+2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
 
 
-3. Select type **Add-on**, and click **Next**.
+3. Enter basic information for the profile: name, version if desired, and optional description.
 
 
-4. In the next screen that displays, click **Add New Pack**.
+4. Select type **Add-on**, and click **Next**.
 
 
-5. Choose pack type **System App**. 
+5. In the next screen that displays, click **Add New Pack**.
 
 
-6. From the **Registry drop-down Menu**, select the registry you added.
+6. Choose pack type **System App**. 
 
 
-7. From the **Pack Name drop-down Menu**, select **Spectro VM Dashboard**.
+7. From the **Registry drop-down Menu**, select the registry you added.
 
 
-8. Select the pack version. 
+8. From the **Pack Name drop-down Menu**, select **Spectro VM Dashboard**.
 
-    The dashboard’s Access and Identity Provider (IDP) configuration displays.
+
+9. Select the pack version. 
+
+    A configuration panel displays Access and Identity Provider (IDP) parameters with pre-defined default settings.
     <br /> 
 
-9. Configure the dashboard.
+10. Configure the dashboard.
 
 ## Configure the Dashboard
 
@@ -92,4 +100,4 @@ You can validate the profile is created by navigating to **Profiles** from the l
 
 # Next Steps
 
-You can now apply the profile to your cluster. 
+You can now apply the profile to your cluster. The [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard) guides you in applying the profile so you can access the dashboard.

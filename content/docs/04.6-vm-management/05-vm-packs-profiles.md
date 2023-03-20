@@ -17,11 +17,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette's Virtual Machine (VM) Management solution is provided as a single pack experience that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are described below. Two essential components of the VM Management solution are the **Spectro VM Dashboard** pack and **Spectro Proxy** pack.
 
-When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
-
 <br />
 
-- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
+- **Spectro VM Dashboard**: An add-on pack that enables access to a web console in so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Management is enabled. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
 
 
 - **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
@@ -44,7 +42,14 @@ KubeVirt extends Kubernetes with additional virtualization resource types using 
 
 Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
 
-When you receive the endpoint URL for that stores the Spectro VM Dashboard pack, you will need to register the pack in your environment. 
+# Next Steps
+
+When you receive credentials and a URL from Spectro Cloud, register the Spectro VM Dashboard pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
+
+
+<br />
+
+<br />
 
 <br />
 
