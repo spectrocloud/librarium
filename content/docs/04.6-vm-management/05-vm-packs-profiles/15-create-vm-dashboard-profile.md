@@ -14,11 +14,23 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Create a cluster profile with the Spectro VM Dashboard add-on and apply it to your MAAS cluster. When the cluster updates, a **Virtual Machines** tab appears.
+The Spectro VM Dashboard is a web-based UI for virtual machines that is using secure ports and conveniently includes Spectro Proxy. When used with the default settings for access control and Identity Provider (IDP), there is nothing to configure.
+
+Create a cluster profile with the **Spectro VM Dashboard** add-on and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears.
+
+<WarningBox>
+
+We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+
+</WarningBox>
 
 # Prerequisites
 
-- Registered Spectro VM Dashboard pack.
+* Registered Spectro VM Dashboard pack registry.
+
+* Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+
+* Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
 # Enablement
 
@@ -80,4 +92,4 @@ You can validate the profile is created by navigating to **Profiles** from the l
 
 # Next Steps
 
-You can now apply the profile to your MAAS cluster. 
+You can now apply the profile to your cluster. 
