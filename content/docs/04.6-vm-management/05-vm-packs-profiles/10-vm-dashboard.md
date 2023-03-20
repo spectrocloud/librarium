@@ -45,7 +45,7 @@ When you click on a VM in the list, the following tabs display, which are specif
 - **Details**: Provides additonal VM details such as labels associated with the VM, pod information, scheduling and resource requirements, and CPU and memory. If the QEMU Guest Agent is not installed, *Not Available* displays in place of details that would otherwise be available to you.
 
 
-- **YAML**: From here you can change the VM configuration.
+- **YAML**: From here you can view and change the VM configuration.
 
 
 - **Events**: Displays streaming events in the VM. Any standard operations you perform on the VM are captured here.  
