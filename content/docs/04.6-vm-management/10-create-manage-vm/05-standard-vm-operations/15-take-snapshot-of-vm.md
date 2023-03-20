@@ -23,7 +23,7 @@ For optimal snapshots, we recommend taking snapshots of online VMs that have the
 
 <InfoBox>
 
-To check whether the VM has the ``qemu-guest-agent`` running, look for ``AgentConnected`` in **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will show if the snapshot was taken online and with or without guest agent participation.
+To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentConnected`` in **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will display if the snapshot was taken online and with or without guest agent participation.
 
 </InfoBox>
 
