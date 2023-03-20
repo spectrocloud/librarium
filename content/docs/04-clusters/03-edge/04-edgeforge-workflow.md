@@ -31,6 +31,8 @@ EdgeForce contains three critical components.
 
 Each component plays a critical role in the [lifecycle](/clusters/edge/edge-native-lifecycle) of an Edge deployment. Review the following sections to learn more about each component.
 
+![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
+
 
 
 ## Edge Installer ISO
