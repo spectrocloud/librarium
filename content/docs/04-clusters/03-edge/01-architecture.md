@@ -40,8 +40,20 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 * Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
 
-![native-edge.png](/native-edge.png)
+![Architecture diagram of Edge](/native-edge.png "#title=An architecture diagram of Palette and all of the components.")
 
+
+# Minimum Device Requirements
+
+The following minimum device requirements must be met to deploy an Edge host successfully.
+
+* 4 Gb of Memory.
+
+
+* 50 Gb of Storage.
+
+
+* 2nd generation of Trusted Platform Module (TPM)- TPM 2.0.
 
 
 # Palette Edge Distribution
@@ -53,6 +65,23 @@ Palette provides the following distributions for edge installations.
 |Palette Optimized K3s |openSUSE, Ubuntu  |K3s |Calico, Flannel|Rook Ceph|
 |Palette Optimized RKE2|openSUSE, Ubuntu  |RKE2|Calico, Flannel|Rook Ceph|
 |[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE, Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
+
+
+# Supported Configurations
+
+Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The table below describes these aspects and the available options.
+
+| **Parameter**  | **Choices** |
+|-|-|
+| Cluster Mode |  - Connected: The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped: The site does not have internet connectivity. Installation is initiated via the Palette CLI.|
+| OS | - Ubuntu<br/>- OpenSUSE<br/>- Bring your own OS (BYOOS) |
+| K8s Flavor | - Palette eXtended K8s for Edge (PXK-E)<br/>- Palette Optimized K3s<br/>- Palette Optimized RKE2 |
+| K8s Version |- 1.24.x<br/>- 1.25.x<br/>- 1.26.x |
+| FIPS Mode |- True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False |
+| Edge Host Registration Mode | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
+| Edge Host Type - Installer Format | - Bare Metal - ISO<br/>- Virtual Machine (VMware) - OVA<br/>- Virtual Machine (AWS) - AMI |
+
+<br />
 
 
 # Kubernetes Defaults
