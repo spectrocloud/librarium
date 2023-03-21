@@ -19,7 +19,7 @@ Use the following steps to create an ISO file containing the additional user dat
 
 ## Prerequisites
 
-- A bootable device, such as a USB drive, or a PXE server.
+- A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
 
 - `mkisofs`, or `genisoimage`, or similar ISO management software.
 
@@ -60,7 +60,7 @@ Use the following steps to create an ISO file containing the additional user dat
   This generates an ISO file called site-user data.iso in the current directory.
   <br />
 
-4. Copy the ISO to a bootable device, such as a USB stick. 
+4. Copy the ISO to a bootable device such as a USB drive. 
    
    <br />
 
@@ -71,7 +71,7 @@ Use the following steps to create an ISO file containing the additional user dat
    </InfoBox>
 
 
-5. Load the USB stick to the Edge host before powering it on once it arrives at the physical site. The Edge Installer will apply the new user data during the installation process.
+5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge Installer will apply the new user data during the installation process.
 
 <br />
 

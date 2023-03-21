@@ -119,4 +119,4 @@ The result is a content bundle that you can use to preload into your installer. 
 
 # Validation
 
-You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
+You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.

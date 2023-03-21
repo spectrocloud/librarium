@@ -72,7 +72,7 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 
 When the cluster is created, the installation process will continue. The Palette Edge Host agent will download all required artifacts and reboot the Edge host.
 
-After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile.
+When the Edge host finishes rebooting, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile.
 
 Any content bundles you provided are extracted and loaded into the container runtime process. Refer to [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
@@ -132,7 +132,7 @@ Perform the following steps to proceed with the installation at the site in your
 
 6. The last step is to create a cluster if you don't have a host cluster that the Edge host can join. Follow the steps in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) to complete the site installation.
 
-Once the cluster is created, the installation process will continue. The Palette Edge Host agent will download all required artifacts and reboot the Edge host.
+When the cluster is created, the installation process continues. The Palette Edge Host agent will download all required artifacts and reboot the Edge host.
 
 After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile.
 
