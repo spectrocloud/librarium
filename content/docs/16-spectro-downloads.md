@@ -68,3 +68,28 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 -------
 
 
+# Edge CLIs
+
+The following Edge CLIs and Edge Installer images are available to help you deploy an Edge host. Check out the [Edge](/clusters/edge) page to learn more about deploying an Edge Host
+
+
+## Edge Installer CLI
+
+CLI Version| Operating System |  
+-------|---|--|
+v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-installer) |
+
+
+## Edge Installer Image
+
+
+|Version|Docker Image| Optical Disk Image (ISO) |
+|---|---|--|
+|3.3.0     | `gcr.io/spectro-images-public/release/spectro-registry:3.3.0`| [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
+
+
+## Edge Content CLI
+
+CLI Version| Operating System |
+-------|---|--|
+v3.3.0 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-content) |
