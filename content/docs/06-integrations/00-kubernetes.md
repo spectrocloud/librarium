@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes"
 metaTitle: "Kubernetes in Palette"
-metaDescription: "Kubernetes pack in Palette"
+metaDescription: "Kubernetes pack that deploys containers in Palette."
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
@@ -45,30 +45,29 @@ A minor Kubernetes version will be deprecated in Palette when the Kubernetes com
 
 - Operating System (OS) dependencies as listed in the table.
 
-
-| Operating System | Kubernetes 1.26.x |
-|-----------|-------------|
-| Centos 7.7 | x |
-| Ubuntu 22.04 | 1.26.1 |
-| Ubuntu 20.04 | x |
-| Ubuntu 18.04 | x |
+| OS Distribution | OS Version | Supports Kubernetes 1.26.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ❌                         |
+| Ubuntu        | 22.04      | ✅                         |
+| Ubuntu        | 20.04      | ❌                         |
+| Ubuntu        | 18.04      | ❌                         |
 
 
 ## Parameters
 
-| Parameter | Description | Required (Y/N) |
-|-----------|-------------|---------|
-| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
-| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
-| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | A list of additional apiServer flags you can set. | N |
-| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
-| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
-| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
-| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
-| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
-| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
-| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+| Parameter | Description |
+|-----------|-------------|
+| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
 
 ## Usage 
@@ -197,32 +196,29 @@ kubeadmconfig:
 
 - Operating System (OS) dependencies as listed in the table.
 
-
-| Operating System | Kubernetes 1.25.x |
-|-----------|-------------|
-| Centos 7.7 | x |
-| Ubuntu 22.04 | 1.25.4 and higher |
-| Ubuntu 20.04 | x |
-| Ubuntu 18.04 | x |
-
+| OS Distribution | OS Version | Supports Kubernetes 1.25.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ❌                         |
+| Ubuntu        | 22.04      | ✅                         |
+| Ubuntu        | 20.04      | ❌                         |
+| Ubuntu        | 18.04      | ❌                         |
 
 
 ## Parameters
 
-| Parameter | Description | Required (Y/N) |
-|-----------|-------------|---------|
-| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
-| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
-| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | A list of additional apiServer flags you can set. | N |
-| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
-| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
-| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
-| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
-| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
-| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
-| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
-
+| Parameter | Description |
+|-----------|-------------|
+| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
 ## Usage
   
@@ -366,29 +362,29 @@ kubeadmconfig:
 
 - Operating System (OS) dependencies as listed in the table.
 
+| OS Distribution | OS Version | Supports Kubernetes 1.24.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ❌                         |
+| Ubuntu        | 22.04      | ❌                         |
+| Ubuntu        | 20.04      | ✅                         |
+| Ubuntu        | 18.04      | ❌                         |
 
-| Operating System | Kubernetes 1.24.x |
-|-----------|-------------|
-| Centos 7.7 | x |
-| Ubuntu 22.04 | x |
-| Ubuntu 20.04 | 1.24.3 and higher |
-| Ubuntu 18.04 | x |
 
 ## Parameters
 
-| Parameter | Description | Required (Y/N) |
-|-----------|-------------|---------|
-| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
-| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
-| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | A list of additional apiServer flags you can set. | N |
-| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
-| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
-| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
-| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
-| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
-| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
-| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+| Parameter | Description |
+|-----------|-------------|
+| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
 
 ## Usage
@@ -409,7 +405,7 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-The Kubeadm configuration is changed to include a pod security policy, and an unsecure port is removed.  
+The Kubeadm configuration is changed to include a pod security policy, and an unsecured port is removed.  
 
 <br />
 
@@ -502,29 +498,29 @@ kubeadmconfig:
 
 - Operating System (OS) dependencies as listed in the table.
 
+| OS Distribution | OS Version | Supports Kubernetes 1.23.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ❌                         |
+| Ubuntu        | 22.04      | ❌                         |
+| Ubuntu        | 20.04      | ✅                         |
+| Ubuntu        | 18.04      | ❌
 
-| Operating System | Kubernetes 1.23.x |
-|-----------|-------------|
-| Centos 7.7 | x |
-| Ubuntu 22.04 | x |
-| Ubuntu 20.04 | 1.23.4 and higher |
-| Ubuntu 18.04 | x |
 
 ## Parameters
 
-| Parameter | Description | Required (Y/N) |
-|-----------|-------------|---------|
-| pack:k8sHardening  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components. | Y |
-| pack:podCIDR | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`  | Y |
-| pack:serviceClusterIpRange | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12` | Y |
-| kubeadmconfig.apiServer.extraArgs | A list of additional apiServer flags you can set. | N |
-| kubeadmconfig.apiServer.extraVolumes | A list of additional volumes to mount on apiServer. | N |
-| kubeadmconfig.controllerManager.extraArgs | A list of additional ControllerManager flags to set. | N |
-| kubeadmconfig.scheduler.extraArgs | A list of additional Kube scheduler flags to set. | N |
-| kubeadmconfig.kubeletExtraArgs | A list of kubelet arguments to set and copy to the nodes. | N |
-| kubeadmconfig.files | A list of additional files to copy to the nodes. | N |
-| kubeadmconfig.preKubeadmCommands | A list of additional commands to invoke **before** running kubeadm commands. | N |
-| kubeadmconfig.postKubeadmCommands | A list of additional commands to invoke **after** running kubeadm commands. | N |
+| Parameter | Description |
+|-----------|-------------|
+| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
 
 ## Usage
@@ -649,7 +645,7 @@ All versions less than v1.22.x are considered deprecated. Upgrade to a newer ver
 
 # Terraform
 
-```
+``` hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
