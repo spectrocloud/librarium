@@ -65,7 +65,7 @@ A minor Kubernetes version will be deprecated in Palette when the Kubernetes com
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
@@ -216,7 +216,7 @@ kubeadmconfig:
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
@@ -382,7 +382,7 @@ kubeadmconfig:
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
@@ -518,7 +518,7 @@ kubeadmconfig:
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. | N |
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
 
