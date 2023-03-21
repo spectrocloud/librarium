@@ -120,6 +120,7 @@ spec:
 
 1. Navigate to the left **Main Menu** and click **Profiles**. 
 
+
 2. Verify your newly added manifest is listed. 
 
 # Next Steps

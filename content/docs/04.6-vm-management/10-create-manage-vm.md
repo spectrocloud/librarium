@@ -51,6 +51,7 @@ We recommend installing ``qemu-guest-agent`` to improve manageability of virtual
 
 - [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
 
+
 - [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
 
 

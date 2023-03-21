@@ -53,18 +53,9 @@ You can access standard VM operations in two ways:
 
 - [Clone a VM](vm-management/create-manage-vm/standard-vm-operations/clone-vm)
 
-# Resources
-
-- [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
 
 
-- [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration)
 
+<br />
 
-- [Migrate VM to a Different Node](/vm-management/create-manage-vm/standard-vm-operations/migrate-vm-to-different-node)
-
-
-- [Take a VM Snapshot](/vm-management/create-manage-vm/standard-vm-operations/take-snapshot-of-vm)
-
-
-- [Clone a VM](/vm-management/create-manage-vm/standard-vm-operations/clone-vm)
+<br />

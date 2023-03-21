@@ -62,6 +62,7 @@ Snapshots should not be used as a backup method, as running a VM on a snapshot f
 
 1. From the **Snapshots** tab, verify the ``vmSnapshot Status`` parameter displays **Succeeded**.
 
+
 2. If the snapshot status displays as **Failed**, delete the snapshot and take a new one. You may need to change the default snapshot time in the VM configuration. 
 
 
