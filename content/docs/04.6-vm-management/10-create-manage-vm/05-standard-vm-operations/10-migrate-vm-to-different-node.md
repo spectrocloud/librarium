@@ -72,7 +72,7 @@ The default network interface type is a Bridge interface.
 4. Click the **Details** tab.
 
 
-5. Verify the name and IP address of the new node changed.
+5. Verify the name and IP address of the new node is changed.
 
 
 
