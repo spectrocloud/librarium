@@ -60,7 +60,20 @@ The default network interface type is a Bridge interface.
 
 # Validation
 
-Click **Virtual Machines > Details**. 
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
+
+
+3. Navigate to  the **Virtual Machines** tab, and click the VM that you migrated. 
+
+
+4. Click the **Details** tab.
+
+
+5. Verify the name and IP address of the new node changed.
+
 
 
 
