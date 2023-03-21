@@ -1,7 +1,7 @@
 ---
 title: "Standard VM Operations"
 metaTitle: "Standard VM Operations"
-metaDescription: "Learn how to"
+metaDescription: "Learn about standard VM operations that can be performed using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false

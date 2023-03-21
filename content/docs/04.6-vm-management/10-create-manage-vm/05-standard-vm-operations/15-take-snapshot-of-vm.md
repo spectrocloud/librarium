@@ -1,7 +1,7 @@
 ---
 title: "Take a VM Snapshot"
 metaTitle: "Take a Snapshot of the VM"
-metaDescription: "Learn how to"
+metaDescription: "Learn how to snapshot a VM using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -50,6 +50,7 @@ The **Snapshots** tab displays the ``vmSnapshot Status`` parameter with snapshot
 
 The default time for a snapshot is five minutes. If the snapshot has not successfully completed within that time, it's status will display as **Failed**. The VM will be unfrozen and the snapshot content will be cleaned up if necessary. The snapshot will remain in **Failed** state until you delete it. You can change the default snapshot time to meet your workload requirements.
 
+<br />
 
 <WarningBox>
 

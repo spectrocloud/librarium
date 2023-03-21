@@ -1,7 +1,7 @@
 ---
 title: "Create a VM Template"
 metaTitle: "Create a VM Template"
-metaDescription: "Learn how to"
+metaDescription: "Learn how to create a VM template using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false

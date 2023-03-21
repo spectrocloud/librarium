@@ -1,7 +1,7 @@
 ---
 title: "Update VM Configuration"
 metaTitle: "Update VM Configuration"
-metaDescription: "Learn how to"
+metaDescription: "Learn about updates you can make to a VM configuration using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false

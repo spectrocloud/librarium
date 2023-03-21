@@ -1,7 +1,7 @@
 ---
 title: "Packs and Profiles"
 metaTitle: "Packs and Profiles"
-metaDescription: "Learn how to "
+metaDescription: "Learn about components of the Spectro VM Dashboard integrated pack"
 icon: " "
 hideToC: false
 fullWidth: false

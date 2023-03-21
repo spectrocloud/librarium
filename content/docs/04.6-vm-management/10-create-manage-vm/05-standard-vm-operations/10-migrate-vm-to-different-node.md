@@ -1,7 +1,7 @@
 ---
 title: "Migrate VM to a Different Node"
 metaTitle: "Migrate VM to a Different Node"
-metaDescription: "Learn how to"
+metaDescription: "Learn how to migrate a VM from node to node using Palette."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -52,7 +52,7 @@ The default network interface type is a Bridge interface.
 2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
 
 
-3. Click the **Virutal Machines** tab.
+3. Click the **Virtual Machines** tab.
 
 
 4. From the **three-dotMenu** or the **Actions drop-down Menu** for a selected VM, click **Migrate Node to Node**.
@@ -60,7 +60,7 @@ The default network interface type is a Bridge interface.
 
 # Validation
 
-
+Click **Virtual Machines > Details**. 
 
 
 

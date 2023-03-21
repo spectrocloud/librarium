@@ -1,7 +1,7 @@
 ---
 title: "Create and Manage VMs"
 metaTitle: "Create and Manage VMs"
-metaDescription: "Learn how to"
+metaDescription: "Learn methods to create VMs using Palette's Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -59,9 +59,11 @@ We recommend installing ``qemu-guest-agent`` to improve manageability of virtual
 
 <br />
 
-<br />>
+<br />
 
 
+<br />
 
+<br />
 
 
