@@ -148,22 +148,19 @@ Choose the workflow that fits your needs.
   ![The output directory content in a tree diagram](/clusters_edge-forge-workflow_build-images_edge-cli-output.png)
 
 
-5. Navigate to the output directory and review the file **.VERSIONS.env**. Set the variable `PUSH_BUILD` to `tru`e so that the Edge Provider images and the Edge Installer image get pushed to your image registry. The alternative is to manually push all the images after the image creation process completes.
+5. Navigate to the output directory and review the file **.VERSIONS.env**. Set the variable `PUSH_BUILD` to `true` so that the Edge provider images and the Edge Installer image get pushed to your image registry. The alternative is to manually push all the images after the image creation process completes.
 
 
 
 6. Before you start the build script, you can make changes to customize your build. Review the use cases below to learn more about customization options.
 
-- To modify or control the Kubernetes versions and flavors. You can update the `.versions.env` file. Alternatively, in the next step, you can specify the versions and flavors as arguments to the build command.
+  | Use case | Description |
+  | --- | --- |
+  | Modifying/controlling Kubernetes versions and flavors | You can update the .versions.env file or specify the versions and flavors as arguments to the build command. |
+  | Adding custom packages to target OS images | Edit the respective images' **Dockerfile** to add the install commands using `apt-get` or `zypper`. |
+  | Adding custom files or directories into Kubernetes provider container images | Add the custom files or directories in the **overlay/files/** folder. The files directory is copied directly under the */* folder in the target image. |
+  | Adding custom content to Edge Install installer ISO | Place the custom content in the **overlay/files-iso** directory. To embed a content bundle, place it under the **overlay/files-iso/opt/spectrocloud/content** folder. This limits the scope to only the Edge Install installer ISO. |
 
-
-- You can add custom packages to target OS images using `apt-get` or `zypper`. Edit the respective images' **Dockerfile** to add the install commands.
-
-
-- Add custom files or directories into the Kubernetes provider container images. Add the custom files or directories in the  **overlay/files/** folder. The files directory is copied directly under `/` in the target image.
-
-
-- If you need to add custom content and limit the scope to only the Edge Install installer ISO. Place the custom content in the **overlay/files-iso** directory. To embed a content bundle, place it under the **overlay/files-iso/opt/spectrocloud/content** folder.
 
 7. Navigate to your output directory and issue the following command to build your Edge images. This command will take a few minutes to complete.
 
@@ -187,8 +184,12 @@ Choose the workflow that fits your needs.
 
 <br />
 
-8. Locate the ISO file in the output directory. Using a bootable USB drive, PXE server, or other means, mount the ISO to the primary drive of the bare metal appliance. The installer flashes to the edge host's hard disk, and the host will shut down. The bare metal edge host appliance is ready to be shipped to the edge location.
+8. Locate your ISO file in the output directory. The ISO file's default name is  **spectro-edge-installer.iso** but it may be different if you used the `--iso-name` CLI flag.
 
+
+Using a bootable USB drive, PXE server, or other means, mount the ISO to the primary drive of the Edge host. The installer flashes to the Edge host's hard disk, and the host will shut down. The Edge host is now ready to be shipped to the edge location.
+
+<br />
 
 <InfoBox>
 
@@ -199,7 +200,13 @@ You can use several software tools to create a bootable USB drive, such as [bale
 
 # Validation
 
-You can validate that the ISO image is not corrupted and is valid by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
+1. In the build server, validate the output directory containing the ISO file.
+
+
+2. You can validate that the ISO image is not corrupted and is valid by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
+
+
+3. You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
 
 # Next Steps
