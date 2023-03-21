@@ -31,7 +31,7 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
 3. Navigate to **Virtual Machines > Disks** tabs and click the **Add disk** button.
@@ -76,7 +76,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
 3. Navigate to **Virtual Machines > Network Interfaces** and click the **Add network interface** button.

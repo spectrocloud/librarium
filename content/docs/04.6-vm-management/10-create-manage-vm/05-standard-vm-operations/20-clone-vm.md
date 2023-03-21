@@ -35,7 +35,7 @@ There are no requirements.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
 3. From the **three-dot Menu** or the **Actions drop-down Menu** when you select the VM, power off the parent VM and click **Clone**. If you forget to power it off, the parent VM will automatically be powered off while cloning is in progress.

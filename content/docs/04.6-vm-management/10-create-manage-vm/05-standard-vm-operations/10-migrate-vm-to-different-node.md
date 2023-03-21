@@ -49,7 +49,7 @@ The default network interface type is a Bridge interface.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
 3. Click the **Virtual Machines** tab.
