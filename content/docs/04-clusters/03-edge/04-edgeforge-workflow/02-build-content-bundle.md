@@ -36,7 +36,7 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
 - An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile) guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.
 
 
-- Content tags in your profiles highlighting the exact location of container images to be downloaded
+- Content tags in your profiles highlight the exact location of container images to be downloaded.
 
 # Create Content Bundle
 

@@ -22,7 +22,7 @@ EdgeForce contains three critical components.
 * Edge Installer ISO.
 
 
-* Edge Host Container Image.
+* Edge Host Agent Container Image.
 
 
 * Edge Provider Container Images.
@@ -41,9 +41,9 @@ An ISO file that bootstraps the installation process. The ISO image contains the
 
 <br />
 
-## Edge Host Container Image
+## Edge Host Agent Container Image
 
-The Edge Host Container Image contains the Palette Edge host agent. The Edge host agent is responsible for Day-2 operations and management of the Edge host. The Edge host agent will also provide ongoing support during cluster runtime.
+The Edge host agent container image contains the Palette Edge host agent. The agent is responsible for Day-2 operations and management of the Edge host. The Edge host agent will also provide ongoing support during cluster runtime.
 
 <br />
 

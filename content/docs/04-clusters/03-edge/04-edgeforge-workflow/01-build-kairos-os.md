@@ -29,7 +29,7 @@ As an example, the following steps will guide you through the procedure to build
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
 
-- Access to a container registry with permission to push container images.
+- Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
 
 
 <WarningBox>
