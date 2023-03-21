@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes"
-metaTitle: "Kubernetes with Spectro Cloud"
-metaDescription: "Kubernetes pack in Spectro Cloud"
+metaTitle: "Kubernetes in Palette"
+metaDescription: "Kubernetes pack in Palette"
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. It is considered a core infrastructure pack.  Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
+The Kubernetes pack defines the properties that Spectro Cloud uses to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
 
 Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
 
@@ -27,6 +27,8 @@ Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a co
 - Patch versions are provided within four weeks of a new Kubernetes release.
 
 In the period of time following a Kubernetes release, the Kubernetes pack undergoes rigorous vulnerability scans and penetration testing. 
+
+A minor Kubernetes version will be deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). The deprecated version will remain in that state for three months and will be disabled after a quarter and deleted from Palette in the following quarter.
 
 <br />
 
@@ -663,6 +665,7 @@ data "spectrocloud_pack_simple" "k8s" {
 # Resources
 
 - [Kubernetes](https://kubernetes.io/)
+
 
 - [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
 
