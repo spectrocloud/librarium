@@ -1,7 +1,7 @@
 ---
 title: "Standard VM Operations"
 metaTitle: "Standard VM Operations"
-metaDescription: "Learn how to"
+metaDescription: "Learn about standard VM operations that can be performed using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -37,6 +37,21 @@ You can access standard VM operations in two ways:
 - Select a VM and click the **Actions drop-down Menu**.
 
  
+# Resources
+
+- [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+
+
+- [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration)
+
+
+- [Migrate VM to a Different Node](vm-management/create-manage-vm/standard-vm-operations/migrate-vm-to-different-node)
+
+
+- [Take a VM Snapshot](/vm-management/create-manage-vm/standard-vm-operations/take-snapshot-of-vm)
+
+
+- [Clone a VM](vm-management/create-manage-vm/standard-vm-operations/clone-vm)
 
 # Resources
 

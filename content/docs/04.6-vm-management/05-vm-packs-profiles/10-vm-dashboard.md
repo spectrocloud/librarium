@@ -1,7 +1,7 @@
 ---
 title: "Spectro VM Dashboard"
 metaTitle: "Spectro VM Dashboard"
-metaDescription: "Learn how to"
+metaDescription: "Learn about the Spectro VM Dashboard web interface to manage VMs."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -41,10 +41,10 @@ When you click on a VM in the list, the following tabs display, which are specif
 
 <br />
 
-- **Overview**: The **Overview** tab has general information about the VM such as its IP address, operating system, creation date and time zone, running status, active users, whether the guest agent is installed or not, quantity of Network Interface Cards (NIC) and disks, and any recent events. 
+- **Overview**: This tab has general information about the VM, such as its IP address, operating system, creation date and time zone, running status, active users, whether the guest agent is installed or not, the quantity of Network Interface Cards (NIC) and disks, and any recent events. 
 
 
-- **Details**: Provides additonal VM details such as labels associated with the VM, pod information, scheduling and resource requirements, and CPU and memory. If the QEMU Guest Agent is not installed, **Not Available** displays in place of details that would otherwise be available to you.
+- **Details**: Provides additional VM details such as labels associated with the VM, pod information, scheduling and resource requirements, and CPU and memory. If the QEMU Guest Agent is not installed, **Not Available** displays in place of details that would otherwise be available to you.
 
 
 - **YAML**: From here you can view and change the VM configuration.

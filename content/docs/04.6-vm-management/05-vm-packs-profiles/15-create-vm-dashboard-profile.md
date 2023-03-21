@@ -1,7 +1,7 @@
 ---
 title: "Create Spectro VM Dashboard Profile"
 metaTitle: "Create Spectro VM Dashboard Profile"
-metaDescription: "Learn how to"
+metaDescription: "Learn how to create a Palette profile for the Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false

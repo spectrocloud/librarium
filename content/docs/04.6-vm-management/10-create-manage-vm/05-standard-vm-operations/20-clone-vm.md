@@ -1,7 +1,7 @@
 ---
 title: "Clone a VM"
 metaTitle: "Clone a VM"
-metaDescription: "Learn how to"
+metaDescription: "Learn how to clone a VM from a template using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -32,21 +32,24 @@ There are no requirements.
 
 # Enablement
 
-1. From the **three-dot Menu** or the **Actions drop-down Menu** when you select the VM, power off the parent VM. If you forget to power it off, the parent VM will automatically be powered off while cloning is in progress.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the **three-dot Menu** or the **Actions drop-down Menu** when you select the VM, click **Clone**.
+2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
-3. Give the clone a name, give an optional description, and select a namespace.  
+3. From the **three-dot Menu** or the **Actions drop-down Menu** when you select the VM, power off the parent VM and click **Clone**. If you forget to power it off, the parent VM will automatically be powered off while cloning is in progress.
 
 
-4. Optionally, you can enable the checkbox to start the cloned VM automatically when cloning is complete.
+4. Give the clone a name, give an optional description, and select a namespace.  
+
+
+6. Optionally, you can enable the checkbox to start the cloned VM automatically when cloning is complete.
 
 
 # Validation
 
-On the **Virtual Machines** tab, you should see the cloned VM listed with **Running** status. 
+From the **Virtual Machines** tab, verify the cloned VM is listed and displays **Running** status.  
 
 
 
