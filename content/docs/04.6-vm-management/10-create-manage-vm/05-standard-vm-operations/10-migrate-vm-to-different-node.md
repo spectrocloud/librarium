@@ -37,16 +37,28 @@ Consider the following when migrating a VM node:
 - A VM’s pod network cannot use a bridge interface. Disable the bridge interface on the pod network.
 
 
-<WarningBox>
+<InfoBox>
 
-The default network interface type is a bridge interface.
+The default network interface type is a Bridge interface.
 
-</WarningBox>
+</InfoBox>
 
 
 # Enablement
 
-1. From the **three-dotMenu** or the **Actions drop-down Menu** for a selected VM, click **Migrate Node to Node**.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. From the left **Main Menu**, click **Clusters** and click on your MAAS cluster. 
+
+
+3. Click the **Virutal Machines** tab.
+
+
+4. From the **three-dotMenu** or the **Actions drop-down Menu** for a selected VM, click **Migrate Node to Node**.
+
+
+
 
 
 

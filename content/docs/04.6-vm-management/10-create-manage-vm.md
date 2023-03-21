@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 With Palette’s VM Management feature, you can run and manage Virtual Machines (VMs) alongside containerized applications.
 
-You can create a new VM three ways:
+You can create a new VM three different ways:
 
 <br />
 
@@ -47,6 +47,19 @@ We recommend installing ``qemu-guest-agent`` to improve manageability of virtual
 <br />
 
 
+# Resources
+
+- [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
+
+- [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
+
+
+<br />
+
+
+<br />
+
+<br />>
 
 
 

@@ -26,29 +26,33 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 <br />
 
-1. From the left **Main Menu** click **Profiles** and click the **Add Cluster Profile** button.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Give the profile a name, select type **Add-on**, and click **Next**.
+2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button. 
 
 
-3. On the Profile Layers page, click **Add Manifest**. 
+3. Give the profile a name, select type **Add-on**, and click **Next**.
 
 
-4. Give the layer a name, and click **Edit manifest** and enter a name for the first template. Click the checkmark icon.
+4. On the Profile Layers page, click **Add Manifest**. 
 
 
-5. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for multiple templates in the same add-on profile. They will display as layers in the profile.
+5. Give the layer a name, and click **Edit manifest** and enter a name for the first template. Click the checkmark icon.
 
 
-6. Click **Confirm and Create**, then click **Next**.
+6. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for multiple templates in the same add-on profile. They will display as layers in the profile.
 
 
-7. Click **Finish Configuration**. 
+7. Click **Confirm and Create**, then click **Next**.
 
 
+8. Click **Finish Configuration**. 
+
+<br />
 
 #### Example YAML for a VM template
+
 
 ```yaml
 apiVersion: spectrocloud.com/v1
@@ -114,8 +118,10 @@ spec:
 
 # Validation
 
-Navigate to the left **Main Menu**, click **Profiles**, and verify your newly added manifest is listed. 
+1. Navigate to the left **Main Menu** and click **Profiles**. 
+
+2. Verify your newly added manifest is listed. 
 
 # Next Steps
 
-Try applying the template to your cluster. 
+Try applying the template to your cluster. Review [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard) to apply a profile to your cluster. 

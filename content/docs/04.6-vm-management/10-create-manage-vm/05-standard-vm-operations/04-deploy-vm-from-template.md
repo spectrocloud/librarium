@@ -18,28 +18,35 @@ You can deploy a VM using Palette's out-of-the-box templates or templates that y
 
 # Prerequisites
 
-- Configured Spectro VM Dashboard applied to your cluster.
+- Configured Spectro VM Dashboard applied to your cluster. 
+
+    Review [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile) to configure the dashboard. To learn how to access the dashboard, refer to [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard).
 
 # Enablement
 
 These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-box VM template.
 
-1. From the left **Main Menu**, click **Clusters** and select the cluster you used to enable the Spectro VM Dashboard.
+<br />
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Click the **Virtual Machines** tab.
+2. From the left **Main Menu**, click **Clusters** and select the cluster you used to enable the Spectro VM Dashboard.
 
 
-3. Select the appropriate namespace from the **drop-down Menu**.
+3. Click the **Virtual Machines** tab.
 
 
-4. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.
+4. Select the appropriate namespace from the **drop-down Menu**.
 
 
-5. Click the **New Virtual Machine** button. Available templates are displayed based on supported operating systems (OS).
+5. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.
 
 
-6. You can deploy from a template or create an empty VM as follows: 
+6. Click the **New Virtual Machine** button. Available templates are displayed based on supported Operating Systems (OS).
+
+
+7. You can deploy from a template or create an empty VM as follows: 
 
     <br />
 
@@ -49,23 +56,25 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 
     <br />
 
-7. Give the VM a name and specify memory and CPUs.
+8. Give the VM a name and specify memory and CPUs.
 
 
-6. Optionally, you can enable the checkbox to start the VM automatically after creation.
+9. Optionally, you can enable the checkbox to start the VM automatically after creation.
 
 
-7. Click the **Next** button, which display the YAML file. Tool tip help is available when you hover over lines in the file. 
+10. Click the **Next** button, which display the YAML file. Tool tip help is available when you hover over lines in the file. 
 
 
-8. Review the YAML file and click the **Next** button when you are done. 
+11. Review the YAML file and click the **Next** button when you are done. 
 
 
-9. Click **Create Virtual Machine**.
+12. Click **Create Virtual Machine**.
 
     <br />
 
-    VM status will display as **Starting** for several minutes while the required resources are built and the image is pulled from the registry. If you did not enable the checkbox to start the VM automatically, VM status displays as **Stopped** until the VM is fully deployed. 
+VM status will display as **Starting** for several minutes while the required resources are built and the image is pulled from the registry. If you did not enable the checkbox to start the VM automatically, VM status displays as **Stopped** until the VM is fully deployed. 
+
+<br />
 
 <WarningBox>
 
@@ -76,16 +85,16 @@ VMs do not self heal. If a VM is running on a node that fails, the VM is re-sche
 
 # Validation
 
-On the **Virtual Machines** tab that displays after you click **Create Virtual Machines**, you should see the new VM listed with **Running** status. 
+1. From the **Virtual Machines** tab, verify VM status switches to **Running**, which indicates the VM is fully deployed.
+
+2. Click the **Console** tab in the VM, and validate the operating system is running and configured correctly. 
 
 
 # Next Steps
 
-Click the **Console** tab in the VM, and validate the operating system is running and configured correctly. 
-
 Try installing your applications. If the Guest Agent was not installed as part of the VM deployment, you can install the Guest Agent now. The Guest Agent displays additional details in the **Virtual Machines > Details** tab. 
 
-You can also update the VM configuration from the VM console if desired. 
+You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you can make in the [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration) guide.
 
 <br />
 
