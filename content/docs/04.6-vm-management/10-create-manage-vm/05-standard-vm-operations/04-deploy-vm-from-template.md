@@ -55,7 +55,7 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 6. Optionally, you can enable the checkbox to start the VM automatically after creation.
 
 
-7. Click the **Next** button, which display the YAML file. Tool tip help is available when you hover over lines in the file. 
+7. Click the **Next** button, which displays the YAML file. Tooltip help is available when you hover over lines in the file. 
 
 
 8. Review the YAML file and click the **Next** button when you are done. 
@@ -69,14 +69,26 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 
 <WarningBox>
 
-VMs do not self heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
+VMs do not self-heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
 
 </WarningBox>
 
 
 # Validation
 
-On the **Virtual Machines** tab that displays after you click **Create Virtual Machines**, you should see the new VM listed with **Running** status. 
+1. Log in to [Palette](https://console.spectroloud.com)
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the host cluster that contains your VMs to view its details page.
+
+
+4. Click on the **Virtual Machines** tab. 
+
+
+5. Review the list of VMs and ensure the new VM is displayed and has the status **Running**. 
 
 
 # Next Steps
