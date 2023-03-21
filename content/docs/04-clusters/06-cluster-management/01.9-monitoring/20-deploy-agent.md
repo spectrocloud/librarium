@@ -107,7 +107,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="With Authentication" key="with-auth-agent">
+<Tabs.TabPane tab="With Authentication and Encryption" key="with-auth-agent">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -142,7 +142,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 <WarningBox>
 
 The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
-Example: `http://example.custom.myCompany.com:9090/api/v1/write`
+Example: `https://metrics.example.com:9090/api/v1/write`
 
 </WarningBox>
 
@@ -151,7 +151,7 @@ Example: `http://example.custom.myCompany.com:9090/api/v1/write`
     prometheus:
       server:
         remoteWrite:
-          - url: "http://example.custom.myCompany.com:9090/api/v1/write"
+          - url: "https://metrics.example.com:9090/api/v1/write"
   ```
 
 8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack#deployamonitoringstack) with authentication guide, then the username is `agent`.
@@ -163,7 +163,7 @@ charts:
   prometheus:
     server:
       remoteWrite:
-        - url: "http://example.custom.myCompany.com:9090/api/v1/write"
+        - url: "http://metrics.example.com:9090/api/v1/write"
           remote_timeout: "5s"
           basic_auth:
             username: "<USERNAME>"
@@ -237,7 +237,7 @@ To validate that the Prometheus agent is successfully installed and sending metr
 9. Use the **cluster** filter and review the list of available clusters. Select your newly deployed cluster to review its metrics.
 
 
-Use the other dashboard created by Platte to learn more about your environment.
+Use the other dashboard created by Palette to learn more about your environment.
 
 
 # Next Steps
