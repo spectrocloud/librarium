@@ -93,7 +93,8 @@ Palette recommends Virtualized Edge deployment only when the user has a single e
 
 # Get Started With Edge
 
-To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components the deployment process. Next, check out the [Site Deployment](/clusters/edge/site-deployment) steps to understand what it takes to deploy an Edge host.
+
+To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the EdgeForge workflow to configure the installation process to match your environment and organizational needs. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
 
 
 # Resources
@@ -105,6 +106,9 @@ To start with Edge, review the [architecture](/clusters/edge/architecture) and t
 
 
 - [Install Configuration](/clusters/edge/edge-configuration)
+
+
+- [EdgeForge Workflow](/clusters/edge/edgeforge-workflow)
 
 
 - [Site Deployment](/clusters/edge/site-deployment)

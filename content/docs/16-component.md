@@ -15,65 +15,39 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This page lists the version details of various Palette components and their respective Palette releases. 
+This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](/spectro-downloads) resource to access the download URLs.
 
 # Palette CLI Versions
 
-|Palette Release|Recommended CLI Version|
-|---|-------|
-|Release 3.3.0 |Download for CLI v3.3.0 [OSX](https://software.spectrocloud.com/spectro-registry/v3.3.0/cli/osx/spectro)|
-|              |Download for CLI v3.3.0 [Linux](https://software.spectrocloud.com/spectro-registry/v3.3.0/cli/linux/spectro)|
-|Release 3.2.0 |Download for CLI v3.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.2.0/osx/spectro)|
-|              |Download for CLI v3.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.2.0/linux/spectro)|
-|Release 3.1.0 |Download for CLI v3.1.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro)|
-|              |Download for CLI v3.1.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.1.0/linux/spectro)|
-|Release 3.0.0 |Download for CLI v3.0.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro)|
-|              |Download for CLI v3.0.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro)|
-|Release 2.8.0 |Download for CLI v2.8.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.8.0/osx/spectro)|
-|              |Download for CLI v2.8.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.8.0/linux/spectro)|
-|Release 2.7.0 |Download for CLI v2.7.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.7.0/osx/spectro)|
-|              |Download for CLI v2.7.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.7.0/linux/spectro)|
-|Release 2.6.0 |Download for CLI v2.6.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro)|
-|              |Download for CLI v2.6.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro)|
-|Release 2.5.0 |Download for CLI v2.5.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
-|              |Download for CLI v2.5.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
-|Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
-|              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
-|Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
-|              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
-
+|Palette Release| Recommended CLI Version|
+|---------------------------|----|
+|Release 3.3.0     |3.3.0 |
+|Release 3.2.0     |3.2.0 |
+|Release 3.1.0     |3.1.0 |
+|Release 3.0.0     |3.0.0 |
+|Release 2.8.0     |2.8.0 |
+|Release 2.7.0     |2.7.0 |
+|Release 2.6.0     |2.6.0 |
 
 # Edge Installer CLI Versions
 
-The CLIs are compressed and require the usage [Ultimate Packer for eXecutables (UPX)](https://upx.github.io/).
-The following command unpacks the download binary and assigns the executable bit to the binary. 
+|Palette Release|CLI Version| 
+|---|-------|
+|Release 3.3.0 |v3.3.0 |
+|Release 3.2.0 |v3.2.0 | 
+
+
 <br />
 
-```shell
-upx -d ./spectro-cli-linux-amd64 && \
-chmod +x ./spectro-cli-darwin-amd64 && \
-./spectro-cli-linux-amd64 
-```
-
-|Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
-|---|-------|---|--|
-|Release 3.3.0 |v3.3.0 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.3.0/spectro-cli-linux-amd64) | [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
-|Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
-
-
-
-|Palette Release|Spectro Cloud Pack Registry Docker Image|
-|---------------------------|----------------------------------------|
-|Release 3.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0`</p> |
-|Release 3.2.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.2.0`</p> |
-|Release 3.1.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0`</p> |
-|Release 3.0.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.0.0`</p> |
-|Release 2.8.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.8.0`</p> |
-|Release 2.7.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.7.0`</p> |
-|Release 2.6.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.6.0`</p> |
-|Release 2.5.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.5.0`</p> |
-|Release 2.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0`</p> |
-|Release 2.2.0 |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0`</p> | 
+|Palette Release| Docker Image Version|
+|---------------------------|----|
+|Release 3.3.0     | 3.3.0 |
+|Release 3.2.0     |3.2.0 |
+|Release 3.1.0     |3.1.0 |
+|Release 3.0.0     |3.0.0 |
+|Release 2.8.0     |2.8.0 |
+|Release 2.7.0     |2.7.0 |
+|Release 2.6.0     |2.6.0 |
 
 # On-Premises Installer Version
 
