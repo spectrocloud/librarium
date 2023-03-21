@@ -43,6 +43,18 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 ![Architecture diagram of Edge](/native-edge.png "#title=An architecture diagram of Palette and all of the components.")
 
 
+# Minimum Device Requirements
+
+The following minimum device requirements must be met to deploy an Edge host successfully.
+
+* 4 Gb of Memory.
+
+
+* 50 Gb of Storage.
+
+
+* 2nd generation of Trusted Platform Module (TPM)- TPM 2.0.
+
 
 # Palette Edge Distribution
 

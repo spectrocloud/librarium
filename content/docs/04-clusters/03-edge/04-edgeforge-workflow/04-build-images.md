@@ -41,7 +41,7 @@ Use the following steps to create an Edge artifact for your Edge host.
 - Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
 
 
-# Create Image
+# Create Artifact
 
 Choose the workflow that fits your needs.
 

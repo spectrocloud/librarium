@@ -40,7 +40,7 @@ Some OS require credentials to download the source image, such as Red Hat Enterp
 </WarningBox>
 
 
-# Steps
+# Build Image
 
 1. Issue the following commands to prepare your server. You can also add more packages to the `apt install` command if needed.
   <br />
