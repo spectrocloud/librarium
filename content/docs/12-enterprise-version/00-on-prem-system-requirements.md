@@ -4,7 +4,7 @@ metaTitle: "On-premise System Requirements"
 metaDescription: "An overview of On-premise System Requirements"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -85,8 +85,6 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 **Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
-<InfoBox>
-
 ### Naming conventions for vSphere Region and Zone Tags
 The following points needs to be taken care while creating the Tags:
 * A valid tag must consist of alphanumeric characters
@@ -98,7 +96,7 @@ The following points needs to be taken care while creating the Tags:
 * my_value
 * 12345
 
-</InfoBox>
+
 
 
 
@@ -341,7 +339,7 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 
 
 ##  Proxy Requirements
-*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic.
+*  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
 
 *   Connectivity to the following domains and ports should be allowed:

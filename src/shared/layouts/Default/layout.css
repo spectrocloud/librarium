@@ -41,3 +41,7 @@ button {
 a:hover {
   color: #206cd1;
 }
+
+.gatsby-resp-image-image {
+  box-shadow: none !important;
+}

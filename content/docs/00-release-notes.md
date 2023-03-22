@@ -13,6 +13,39 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+# March 19, 2023 - Release 3.3.0
+
+This release contains several security fixes and new features for Edge. The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
+
+## Palette
+
+### Enhancements:
+
+* Users can now download all the clusters listed when applying a filter to the clusters list. 
+
+## Edge
+
+### Features:
+
+* Edge now supports the ability to load images from an external OCI registry.
+* The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
+* Users can now create custom Edge Installer images to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
+* Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
+
+## Packs
+
+* CNI Packs:
+  * Calico CNI 3.25.0
+* CSI Packs:
+  * EBS CSI 1.16.0
+  * vSphere CSI 2.7.0
+* Add-on Packs:
+  * Flux v2 2.6.0
+  * Prometheus Operator 45.4.0
+  * MetalLB 0.13.9
+  * Spectro Proxy 1.3.0
+
 # February 28, 2023 - Release 3.2.0
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
@@ -169,7 +202,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deployment/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
 **Features**
 
@@ -195,7 +228,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/native
 
 * Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/public-cloud/aks#deployinganakscluster) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for [Edge Native](/clusters/edge/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](/clusters/edge/deployment/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
 * The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
   * Native Edge clusters
@@ -247,7 +280,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
   * Image template support
 
 **Enhancements**
-* Palette upgrades the vSphere Public Cloud Gateways and On-Prem cluster specifications to newer versions:
+* Palette upgrades the vSphere Private Cloud Gateways and On-Prem cluster specifications to newer versions:
 
    * K8s version has been upgraded from 1.21 to 1.22.12 [ the latest version in 1.22 ]
    
@@ -325,7 +358,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 **Enhancements:**
 
 * Palette [Azure CNI Pack](/integrations/azure-cni#azurecni) ensures advanced traffic flow control using Calico Policies for AKS clusters.
-* Palette supports the [migration of Public Cloud Gateway (PCG)](/enterprise-version/enterprise-cluster-management#palettepcgmigration) traffic from unhealthy to healthy PCG without compromising service availability. 
+* Palette supports the [migration of Private Cloud Gateway (PCG)](/enterprise-version/enterprise-cluster-management#palettepcgmigration) traffic from unhealthy to healthy PCG without compromising service availability. 
 * Palette Workspace upgraded with
   * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
   * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.

@@ -29,3 +29,7 @@ The following pages provide detailed instructions for setting up new workload cl
 * [Bare Metal using Canonical's Metal-as-a-Service (MAAS)](/clusters/data-center/maas)
 * [OpenStack](/clusters/data-center/openstack)
 * [VMWare](/clusters/data-center/vmware)
+
+<br />
+
+<br />
