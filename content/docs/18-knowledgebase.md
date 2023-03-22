@@ -14,15 +14,19 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Welcome to the Spectro Cloud Knowledge Portal
+# Overview
 
-Welcome to the Spectro Cloud Knowledge Base Portal!  Let's get started with Spectro Cloud Palette.  Use this portal to find tutorials, how-tos, and frequently asked questions. 
-
-If you have a topic in mind you would like to see, use the **Feedback** app on the lower-right-hand corner.
-
-
-
+The Knowledge base is a collection of how-tos and tutorials. Use the topic to help you find content related to the topic.
 
 <br />
+
+
+- [How-To](/knowledgebase/how-to)
+
+
+
+- [Tutorials](/knowledgebase/tutorials)
+
+
 <br />
 <br />
