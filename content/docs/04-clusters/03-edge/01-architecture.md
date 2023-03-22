@@ -53,7 +53,7 @@ The following minimum device requirements must be met to deploy an Edge host suc
 * 50 Gb of Storage.
 
 
-* 2nd generation of Trusted Platform Module (TPM)- TPM 2.0.
+If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
 
 # Palette Edge Distribution
