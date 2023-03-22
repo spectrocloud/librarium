@@ -25,7 +25,7 @@ Following are some highlights of OpenStack clusters provisioned by Palette:
 3. Private Cloud Gateway(PCG) is Palette's on-premesis component to enable support for isolated private cloud or data center environments. Palette Gateway, once installed on-premesis registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
-![openstack_cluster_architecture.png](openstack_cluster_architecture.png)
+![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
 
 # Prerequisites
 
@@ -73,7 +73,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Cinder Service" key="Cinder Service">
 
 
-### Cinder Service 
+### Cinder Service
 
 **Last Update**: June 28, 2021
 
@@ -154,7 +154,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Neutron Service" key="Neutron Service">
 
 
-### Neutron Service 
+### Neutron Service
 
 **Last Update**: June 28, 2021
 
@@ -233,7 +233,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Glance Service" key="Glance Service">
 
 
-### Glance Service 
+### Glance Service
 
 **Last Update**: June 28, 2021
 
@@ -255,7 +255,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 <Tabs.TabPane tab="Nova Compute Service" key="Nova Compute Service">
 
 
-### Nova Compute Service 
+### Nova Compute Service
 
 **Last Update**: June 28, 2021
 
@@ -361,7 +361,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # Installing Private Cloud Gateway - OpenStack
 
- ![openstack-pcg-creation](/pcg-creation-video/openstack.mp4)
+ `video: title: "openstack-pcg-creation": /pcg-creation-video/openstack.mp4`
 
 The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
@@ -408,7 +408,7 @@ docker run -it --rm \
     |**No Proxy(--no_proxy)** |A comma-separated list of local network CIDRs, hostnames,<br /> domain  names that should be excluded from proxying. <br />This setting will be  propagated to all the nodes to bypass the proxy server.<br /> e.g., maas.company.com,10.10.0.0/16|
     |**Pod CIDR (--pod_cidr)**|The CIDR pool is used to assign IP addresses to pods in the cluster.<br /> This setting will be used to assign IP <br />addresses to pods in Kubernetes clusters. <br /> The pod IP addresses should be unique and<br /> should notoverlap with any <br /> Virtual Machine IPs in the environment.|
     |**Service IP Range (--svc_ip_range)**|The IP address that will be assigned to <br />services created on Kubernetes. This setting will be used<br />to assign IP addresses to services in Kubernetes clusters.<br /> The service IP addresses should be unique and not <br /> overlap with any virtual machine IPs in the environment.|
-    
+
 #### Enter OpenStack Account Information:
 
 |**Parameter**                            | **Description**|
@@ -514,7 +514,7 @@ A cloud gateway can be set up as a 1-node or a 3-node cluster. For production en
 
 A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
 
-1. To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack. 
+1. To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack.
 
 
 2. Fill the following values to the cloud account creation wizard.
@@ -530,11 +530,11 @@ A default cloud account is automatically created when the private cloud gateway 
     |  **Parent Region** | OpenStack Region to be used |
     | **Default Domain**  | Default OpenStack domain    |
     |  **Default Project** |  Default OpenStack project  |
-    
+
 
 # Deploying an OpenStack Cluster
 
- ![openstack-cluster-creation](./cluster-creation-videos/openstack.mp4)
+`video: title: "openstack-cluster-creation": ./cluster-creation-videos/openstack.mp4`
 
 The following steps need to be performed to provision a new OpenStack cluster:
 
@@ -561,20 +561,38 @@ The following steps need to be performed to provision a new OpenStack cluster:
             * If the user choice of placement is NOT Static then:
                 * Subnet CIDR
                 * DNS Name Server
-        
-5. Configure the master and worker node pools. A master and a worker node pool are configured by default.
 
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-    | **Name** | A descriptive name for the node pool
-    | **Size** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, 5, etc.
-    | **Allow worker capability (master pool)** | To workloads to be provisioned on master nodes.
-    | **Availability zones**
-    | **Flavor** | VM instance type
-    | **Disk** | Storage disk size in GB to be attached to the node.
-    | **Rolling Updates**| Make your selection of Rolling Update of nodes. There are two choices of Rolling Update:
-        || **Expand First**: Launches the new node and then shut down the old node
-        || **Contract First**: Shut down the old node first and then launches the new node|
+5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
+
+### Master Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
+|**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Give the required storage size|
+
+### Worker Pool
+
+|**Parameter**     | **Description**|
+|------------------|---------------|
+|**Name**          |A descriptive name for the node pool.|
+|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
+||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
+|**Size**          |Number of VMs to be provisioned for the node pool.|
+|**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
+|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
+|**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
+|**Disk Size**|Provide the required storage size
+
+
 
 6. Configure the cluster policies/features.
     * Manage Machines
@@ -610,7 +628,7 @@ Delete action is only available for clusters that are fully provisioned. For clu
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 ## To force delete a cluster:
 
@@ -619,12 +637,10 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
+      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion. 
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
 </WarningBox>
-
-

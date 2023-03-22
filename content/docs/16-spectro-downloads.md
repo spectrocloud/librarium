@@ -15,69 +15,81 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 
-# Palette Dynamic Artifacts
+# Overview
 
 
-# On-Prem Artifacts
+Use the following resources to support your on-prem and SaaS operations when using Palette. 
 
-Spectro Cloud Palette allows its deployment to be done in-house within the customer’s enterprise IT infrastructure. As of now, we support customers’ on-prem VMware vSphere. Therefore, the palette artifacts for the On-Prem installation are included in this section.
+
+# On-Prem
+
+You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
 
 ## On-Prem Installer 
 
-The Palette Quickstart and Enterprise Mode on-prem installations are highly available installations of the Spectro Cloud platform. Installation of these modes involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. As a prerequisite, download the platform installer OVA given below:
+This is the Palette installer for a self-host flavor of Palette. Refer to the [On-Premise Installation](/enterprise-version) to learn more.
 
-|Version|URL|Info|
-|--|---|--|
-|2.1.0|hubble-installer-210.ova|Jun 1 2022 (Cert Manager change to 1.8)|
+|Version|URL|
+|--|---|
+|2.6.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-260.ova)|
+|2.5.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-250.ova)|
 ------
 
 
-## Air Gapped Installation
+## Air-Gapped Installation
 
-We support the installation of our management platform on VMware environments that have no direct or indirect connectivity to the outside world. The following artifacts and binaries are typically downloaded for the installation and subsequent tenant cluster deployment.
-
-## Latest Air Gapped OVA
-
-|Version|URL|Info|
-|---|---|--|
-|2.0.1|airgap-v1.14.27.ova|Sep 21, 2021|
-------
-
-## Air Gapped Binaries
-Download and execute the version-specific binary
-
-```json
-export VERSION=1.14.3
-curl --user spectro:PASSWORD  https://scar.console.spectrocloud.com/airgap/packs/airgap-v${VERSION}.bin -o airgap-v${VERSION}.bin
-chmod 755 ./airgap-v${VERSION}.bin
-./airgap-v${VERSION}.bin
-```
+You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
 
 # SAAS - Private Cloud Gateway(PCG)
 
 
-PCG is Palette's on-prem component to enable support for isolated private cloud or datacenter environments. Spectro Cloud Gateway, once installed on-prem, registers itself with Spectro Cloud's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. In addition, the gateway enables the installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from our SaaS portal. Currently, PCG installation is required for the following platforms:
-
+Palette supports on-prem environments through the Private Cloud Gateway (PCG) component. PCG provides support for isolated private cloud or data center environments. When installed on-prem, PCG registers itself with Palette, allowing for secure communication between the SaaS portal and the private cloud environment. The gateway also enables end-to-end lifecycle management of Kubernetes clusters in private cloud environments directly from the SaaS portal. 
 
 ## vSphere PCG Image
 
-|Version|URL|Info|
-|---|---|--|
-|1.2.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-120.ova|May 29 2022|
+|Version|URL|
+|---|---|
+|1.6.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-160.ova|
+|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|
 ------
 
 ## MAAS PCG Image
 
-|Version|URL|Info|
-|---|---|--|
-|1.0.11|gcr.io/spectro-images-public/release/spectro-installer:v1.0.11|May 28 2022|
+|Version|URL|
+|---|---|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL|Info|
-|---|---|--|
-|1.0.11|gcr.io/spectro-images-public/release/spectro-installer:v1.0.11|May 28 2022|
+|---|---|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 -------
 
 
+# Edge CLIs
+
+The following Edge CLIs and Edge Installer images are available to help you deploy an Edge host. Check out the [Edge](/clusters/edge) page to learn more about deploying an Edge Host
+
+
+## Edge Installer CLI
+
+CLI Version| Operating System |  
+-------|---|--|
+v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-installer) |
+
+
+## Edge Installer Image
+
+
+|Version|Docker Image| Optical Disk Image (ISO) |
+|---|---|--|
+|3.3.0     | `gcr.io/spectro-images-public/release/spectro-registry:3.3.0`| [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
+
+
+## Edge Content CLI
+
+CLI Version| Operating System |
+-------|---|--|
+v3.3.0 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-content) |

@@ -1,5 +1,5 @@
 ---
-title: "Edge (Beta)"
+title: "Edge"
 metaTitle: "Creating new clusters on Spectro Cloud"
 metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
 hideToC: false
@@ -14,74 +14,103 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge Clusters are Kubernetes clusters set up on appliances installed in isolated locations such as grocery stores and restaurants, unlike a data center or cloud environment. These appliances can be bare metal machines or virtual machines and are managed by operators at these remote sites. Palette provides the provisioning of workload clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette also provides end-to-end management of these clusters through operations such as scaling, upgrades, and reconfiguration.
+Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines and are managed by operators at remote sites. 
+
+Palette provisions workload clusters on Edge hosts from the Palette management console. Palette also provides end-to-end cluster management through scaling, upgrades, and reconfiguration operations.
+
+
+Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications. 
+
+
+
+The following are some highlights of the comprehensive Palette Edge Solution:
 
 <br />
 
-# Edge Terminology
+* Centralized Full Stack Management
 
-## Private Cloud Gateway-Edge (PCG-E)
 
-Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with the Palette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
+* Low touch, plug-and-play setup
 
-## PaletteOS (P6OS)
 
-PaletteOS is a real-time operating system provisioned by Palette. It is embedded with a base Operating System such as Ubuntu, K3OS, etc., and one of the Kubernetes distributions such as CNCF (Cloud Native Computing Foundation), K3s (a Lightweight Kubernetes Distribution), or RKE (Rancher Kubernetes Engine). Palette builds several of these based on the most desired versions of the base operating system and Kubernetes distribution.
+* Immutable update for Kubernetes and operating system (OS) with zero downtime
 
-**Examples**: (Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own.
 
-## Palette Upgrade Controller
+* Distro agnostic Kubernetes and OS
 
-A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.
 
-## Site Configuration Text User Interface (TUI)
+* Secured remote troubleshooting
 
-TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
 
-## Palette Edge Manager (Local API)
+* Scalable from tens to thousands of locations
 
-A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge Manager can be used to upload cluster configurations.
+
+* Support for pre-provisioned and on-site device registration 
+
 
 <br />
 
-# Edge Appliances
+<WarningBox>
 
-Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
+Edge is still in active development and is subject to change. Review the Palette [release notes](/release-notes) for updates and changes.
 
-  | **Appliance Type**              | **Environment**                           |
-  | :------------------------------ | :---------------------------------------- |
-  | Native Edge Deployment          | Bare Metal Machines or Virtual Appliances |
-  | Bare Metal Machine              | Virtualized                               |
-  | KVM-based virtual machines      | Virtualized                               |
 
-**Note:** Palette Edge Manager & TUI would be embedded in P6OS.
+</WarningBox>
+
+
+<br />
+
+# Edge Native
+
+Palette's Edge native solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing, along with the operating system and Kubernetes, is installed in the device.
+
+Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
 
 <br />
 
 <InfoBox>
 
-Palette currently supports x86-based Edge devices. ARM-based support will be added subsequently.
+Edge native is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
 
 </InfoBox>
 
-<br />
+<!-- ### Virtualized Edge
 
-# Cluster Types
-
-Palette supports the following two configurations for Edge clusters:
+Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
 
 <br />
 
-### Virtualized Edge
+<WarningBox>
 
-Kubernetes nodes for master and worker pools are launched as Kernel-based Virtual Machines (KVM-based) in the virtualized mode. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
+Palette recommends Virtualized Edge deployment only when the user has a single edge appliance and needs HA virtualized Kubernetes Cluster.
 
-![virtualized-edge.png](virtualized-edge.png)
+[Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
 
-### Native Edge
+</WarningBox> -->
 
-The Palette extends the native containerized application orchestration capabilities to host Native Edge Deployment. The Native Edge solution runs natively on bare metal machines or virtual appliances.
 
-The users can choose the machine or appliance based on their intended use case. It is built upon the real-time P6OS with embedded Kubernetes Distro, a stable base Operating System, and Palette's edge agent. In addition, Palette provides several versions of P6OS with different combinations of base Operating System and Kubernetes distributions.
+<br />
+
+# Get Started With Edge
+
+
+To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the EdgeForge workflow to configure the installation process to match your environment and organizational needs. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
+
+
+# Resources
+
+- [Edge Native Architecture](/clusters/edge/architecture)
+
+
+- [Deployment Lifecycle](/clusters/edge/edge-native-lifecycle)
+
+
+- [Install Configuration](/clusters/edge/edge-configuration)
+
+
+- [EdgeForge Workflow](/clusters/edge/edgeforge-workflow)
+
+
+- [Site Deployment](/clusters/edge/site-deployment)
 
 <br />

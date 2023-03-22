@@ -4,7 +4,7 @@ metaTitle: "On-premise System Requirements"
 metaDescription: "An overview of On-premise System Requirements"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -12,7 +12,6 @@ import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
-
 
 
 # System Requirements
@@ -25,13 +24,48 @@ The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-p
 | **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
 
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
-## vSphere Environment Prerequisites
 
-### General Requirements
-   - vCenter version : 6.7 and above
-  
+<br />
 
-   - NTP configured on all ESXi Hosts
+## Prerequisites
+
+The following are prerequisites for deploying a Kubernetes cluster in VMware:
+* vCenter version 6.7U3 or above is recommended.
+
+
+* Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to use high-availability control planes. Network Time Protocol (NTP) must be configured on each ESXi host.
+
+
+* You need an active vCenter account with all the permissions listed below in the VMware Cloud Account Permissions section.
+
+
+* Install a Private Cloud Gateway for VMware as described in the Creating a VMware Cloud Gateway section. Installing the Private Cloud Gateway automatically registers a cloud account for VMware in Palette. You can register additional VMware cloud accounts in Palette as described in the Creating a VMware Cloud account section.
+
+
+* Subnet with egress access to the internet (direct or via proxy):
+  * For proxy: HTTP_PROXY, HTTPS_PROXY (both are required).
+  * Outgoing internet connection on port 443 to api.spectrocloud.com.
+
+
+* The Private cloud gateway IP requirements are:
+  * One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
+  * One (1) Kubernetes control-plane VIP.
+  * One (1) Kubernetes control-plane extra.
+
+
+* Assign IPs for application workload services (e.g., Load Balancer services).
+
+
+* A DNS to resolve public internet names (e.g., api.spectrocloud.com).
+
+
+* Shared Storage between vSphere hosts.
+
+
+* A cluster profile created in Palette for VMware.
+
+
+* Zone Tagging: A dynamic storage allocation for persistent storage.
 
 
 ### Zone Tagging
@@ -51,22 +85,71 @@ The sections below describe the standard requirements and highlight specific req
 **Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
-### Permissions
+### Naming conventions for vSphere Region and Zone Tags
+The following points needs to be taken care while creating the Tags:
+* A valid tag must consist of alphanumeric characters
+* The tag must start and end with an alphanumeric characters
+* The regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
 
-The following permissions are required for the account used to install the platform:
+**Example Tags:**
+* MyValue
+* my_value
+* 12345
+
+
+
+
+
+## Privileges
+
+
+The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
 
 <br />
 <br />
 
-### vSphere Object
+<InfoBox>
+
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+
+</InfoBox>
+
+## Privileges Under Root-Level Role
 
 <br />
+
+The root-level role privileges are applied to root object and Datacenter objects only.
+
+|**vSphere Object**|**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable|
+|**Datastore**|Browse datastore
+|**Host**|Configuration
+||* Storage partition configuration
+|**vSphere** **Tagging**|Create vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Sessions**|Validate session|
+|**Profile-driven storage**|Profile-driven storage view|
+|**Storage views**|View|
+
+<br />
+
+## Privileges Under the Spectro Role
+
 
 <Tabs>
 
+<Tabs.TabPane tab="Cns" key="Cns">
+
+#### Cns Privileges
+  - Searchable
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="Datastore" key="Datastore">
 
-  #### Datastore Privileges
+#### Datastore Privileges
   - Allocate Space
   - Browse Datastore
   - Low level file operations
@@ -84,6 +167,14 @@ The following permissions are required for the account used to install the platf
   - Delete folder
   - Move folder
   - Rename folder
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Host" key="Host">
+
+  #### Host Privileges
+  - Local Operations
+    * Reconfigure virtual machine
 
 </Tabs.TabPane>
 
@@ -114,10 +205,17 @@ The following permissions are required for the account used to install the platf
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="Profile Driven Storage" key="Profile Driven Storager">
+
+  #### Profile Driven Storage
+  - Profile-driven storage view
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="Storage views" key="Storage views">
 
   #### Storage Views Privileges
-  - View  
+  - View
 
 </Tabs.TabPane>
 
@@ -206,6 +304,15 @@ The following permissions are required for the account used to install the platf
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="vSAN" key="vSAN">
+
+  #### vSAN
+
+  - Cluster
+    * ShallowRekey
+
+</Tabs.TabPane>
+
 </Tabs>
 
 
@@ -227,12 +334,12 @@ The following permissions are required for the account used to install the platf
 
 
 <InfoBox>
- Make sure that your data center CIDR IP address does not overlap Kubernetes PodCIDR range. Kubernetes PodCIDR range settings can be changed during installation.
+Ensure your data center CIDR IP address does not overlap with the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
 </InfoBox>
 
 
 ##  Proxy Requirements
-*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic.
+*  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
 
 *   Connectivity to the following domains and ports should be allowed:
@@ -272,7 +379,7 @@ The size of the Tenant Cluster, in terms of the number of nodes or size of the n
 
 | **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
 | ---------------------- | ------------------------------------------- | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
-| **Small**              | 4                                           | 1000          | 4        | 8 GB       | 60 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
+| **Small**              | 4                                           | 1000          | 4        | 8 GB       | 80 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
 | **Medium(Default)**    | 8                                           | 3000          | 8        | 16 GB      | 120 GB      | 60 GB, 2 CPU, 4 GB Mem | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
 | **Large**              | 12                                          | 5000          | 12       | 32 GB      | 150 GB      | 80 GB, 2 CPU, 6 GB Mem | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
 

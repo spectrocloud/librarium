@@ -13,197 +13,264 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespaced resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette also can define new namespaces for the cluster and manage (remove, assign quota, assign role bindings, etc.) them.
+[*RoleBindings*](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) and *ClusterRoleBindings* are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources. Palette provides you the ability to specify bindings to configure granular RBAC rules.
 
-Users can configure namespaces and RBAC directly from within a cluster or from a workspace that contains a collection of homogenous clusters that need to be managed as a group.
+You can configure namespaces and RBAC from within a cluster or from a [Palette Workspace](/workspace) that contains a collection of like clusters that need to be managed as a group. If a host cluster is part of a Palette workspace, then all roleBindings must occur at the namespace level. 
 
-<InfoBox>
-Please note that namespace management and RBAC can only be performed from within a cluster, as long as the cluster is not part of any workspace. Once a cluster is made part of a workspace, these actions can only be performed from the workspace.
-</InfoBox>
+As you review RBAC support, use the following definitions: 
 
-**Role** sets access permissions within a namespace. During Role creation, the namespace it belongs to needs to be specified.
+- **Role** An entity that is assigned a set of access permissions within a namespace. Roles require the assignment of a Kubernetes namespace.
 
-**Cluster Role** is a non-namespaced resource that sets permissions of the cluster-scoped resources.
+  <br />
 
-<InfoBox>
-Palette does not provide a way for roles to be configured natively through its platform. However, you may choose to create roles using a manifest layer in the cluster profile. RBAC management only allows you to specify bindings.
-</InfoBox>
+ 
+  ```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    namespace: default
+    name: pod-reader
+  rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+  ```
 
-**RoleBinding** is binding or associating a Role with a Subject. RoleBinding is used for granting permission to a Subject. In addition, RoleBinding holds a list of subjects (users, groups, or service accounts) and references the role being granted. Role and RoleBinding are used in namespaced scoped.
+- **Cluster Role** An entity that is assigned a set of access permissions scoped to the cluster and all of its Kubernetes namespaces. ClusterRoles do not have a namespace assigned.
 
-**ClusterRoleBinding** binds or associates a ClusterRole with a Subject (users, groups, or service accounts). ClusterRole and ClusterRoleBinding function similar Role and RoleBinding with a broader scope. ClusterRoleBinding grants access cluster-wide as well as multiple namespaces.
+   <br />
 
-# New clusters
+  ```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: secret-reader
+  rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "watch", "list"]
+  ```
 
-While configuring the cluster (Cluster Settings) during the cluster creation, the user can select RBAC from the left menu. There are two available options for setting up RBAC:
+- **RoleBinding** associates a subject with a role. A subject can be a user, a group, or a [*ServiceAccount*](https://kubernetes.io/docs/concepts/security/service-accounts/). Role binding is used to grant permissions to a subject. Role and RoleBinding are used to scope a subject to a specific Kubernetes namespace.
 
-* **Cluster** to create a RoleBinding with cluster-wide scope (ClusterRoleBinding).
-* **Namespaces** to create a RoleBinding within namespaces scope (RoleBinding).
-Palette users can choose role creation based on their resource requirements.
+  <br />
 
-## Configure cluster role bindings
+  ```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: read-pods
+    namespace: default
+  subjects:
+  - kind: User
+    name: jane
+    apiGroup: rbac.authorization.k8s.io
+  roleRef:
+    kind: Role 
+    name: pod-reader 
+    apiGroup: rbac.authorization.k8s.io
+  ```
 
-* Select Cluster Settings -> RBAC -> Cluster
-* Click on “Add new binding” to open the “Add Cluster Role Binding” wizard. Fill in the following details:
-  * Role Name: Define a custom role name to identify the cluster role
-  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or a team can perform. There are three types of subjects:
-    * Subject Type:
-      * Users: These are global and meant for humans or processes living outside the cluster.
-      * Groups: Set of users.
-      * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
+- **ClusterRoleBinding** associates a subject with a ClusterRole. A subject can be a user, a group, or a [*ServiceAccount*](https://kubernetes.io/docs/concepts/security/service-accounts/). A ClusterRoleBinding is used to grant permissions to a subject. ClusterRole and ClusterRoleBinding are used to scope a subject's access to the cluster which includes all the Kubernetes namespaces inside the cluster.
+
+
+There are many reasons why you may want to create roles and assign permissions to different users or groups. Below are a few common scenarios.
+
+* Use Role and a RoleBinding to scope security to a single Kubernetes namespace.
+* Use Role and a RoleBinding to scope security to several Kubernetes namespaces.
+* Use ClusterRole and ClusterRoleBinding to scope security to all namespaces.
+
+
+<br />
+
+<WarningBox>
+
+Palette does not provide a way for roles to be configured natively through its platform. You can create roles by using a manifest layer in the cluster profile. RBAC management only allows you to specify role bindings. 
+
+</WarningBox>
+
+
+Use the steps below to create a RoleBinding or ClusterRoleBinding for your host clusters.
+
+
+<br />
+
+# Palette Roles and Kubernetes Roles
+
+Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
+
+The Kubernetes roles are used to control the actions users are allowed to do inside the cluster. For example, a user in Palette could have the *Cluster Profile Viewer* role, which grants them the ability to view cluster profiles for a specific project. In all the clusters in this project, the user could be assigned a role binding to a custom role that grants them administrative access in all the clusters.
+
+In summary, using Palette roles allows you to control what actions users can do in Palette. Use Kubernetes roles to control users' actions inside a host cluster.
+
+<br />
+
+<WarningBox>
+
+Palette roles do not automatically map to a Kubernetes role. You must create a role binding for a specific user or group of users.
+
+</WarningBox>
+
+# Create Role Bindings
+
+## Prerequisites
+
+To create a role binding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
+
+## Enablement
+
+You can create role bindings during the cluster creation process or after the host cluster is deployed. 
+
+For a new cluster, you can modify the cluster settings at the end of the cluster creation process. RBAC is one of the cluster settings you can modify. Select **RBAC** from the left **Settings Menu**. 
+
+
+![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.png)
+
+To create or modify a role binding for an active cluster. Navigate to the cluster details page and click on **Settings**. Select **RBAC** from the left **Settings Menu**. 
+
+![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.png)
+
+
+The RBAC settings view contains two tabs:
+
+* **Cluster**: Use this tab to create a ClusterRoleBinding.
+* **Namespaces**: Use this tab to create a RoleBinding within Kubernetes namespaces.
+
+Select the tab for your specific role scope to learn how to create the appropriate role binding.
+
+<Tabs>
+<Tabs.TabPane tab="Assign a Cluster Role" key="clusterRoleBinding">
+
+1. From the cluster settings view, select the **RBAC** tab.
+
+
+2. Click on **Add New Binding**.
+
+
+3. Fill out the following details:
+  * Role Name: Define a custom role name to identify the cluster role.
+  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
-A single RoleBinding can have multiple subjects.
-“Confirm” the information to complete the creation of the ClusterRoleBinding.
 
-## Configure role bindings
-
-Users can now allocate CPU and Memory quotas for each namespace at the cluster level.
-
-* Select Cluster Settings -> RBAC -> Namespace.
-* Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”.
-* Allocate resources to the created namespace (CPU and Memory).
-* Click on “Add new binding” to open the “Add ClusterRoleBinding” wizard. Fill in the following details:
-  * Namespace: Select the namespace from the drop-down (the list will display the namespaces created during the previous step.
-  * Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
 
 <InfoBox>
-A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding.
+
+In Kubernetes, a role binding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
+
 </InfoBox>
 
-* Role Name: Define a custom role name to identify the cluster role
-* Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or group can perform. There are three types of subjects:
-  * Subject Type:
-    * Users: These are global, and meant for humans or processes living outside the cluster.
-    * Groups: Set of users.
-    * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
+4. Click on **Confirm** to save your changes.
+
+A ClusterRoleBinding will be created in your host cluster. Keep in mind that you can assign multiple subjects to a ClusterRoleBinding.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Assigne a Namespace Role" key="roleBinding">
+
+1. From the cluster settings view, select the **RBAC** tab.
+
+
+2. Click on **Add New Binding**.
+
+
+3. Add the namespace name or provide a regular expression to automatically apply the following settings to other namespaces in the future. Example: `/^web-app/`. Click on **Add To List**.
+
+
+4.  Allocate resources to the selected namespace. You can allocate the maximum CPU and Memory the role is allowed to consume from the listed namespaces.
+
+
+5. Click on **Add New Binding**.
+
+
+6. Fill out the following details:
+  * Namespace: Select the namespace.
+  * Role Type: The type of role. You can specify either a role or a cluster role.
+  * Role Name: Define a custom role name to identify the cluster role.
+  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
-A single RoleBinding can have multiple subjects. “Confirm” the information to complete the creation of the RoleBinding.
-
-# Running Clusters
-
-You can manage namespaces and RBAC for a running cluster by invoking the RBAC management page as follows:
-Clusters -> select the cluster -> Settings -> Cluster Settings -> select RBAC from left menu.
-
-Configure settings as described above.
-
-# Use Cases
-
-* Use Role and a RoleBinding to scope security to a single namespace.
-* Use ClusterRole and RoleBinding to scope security to several or all namespaces.
-* Use ClusterRole and ClusterRoleBinding to scope security to all namespaces OR cluster-scoped resources.
-
-# Use RBAC-OIDC in your Public Cloud 
 
 
-This section explains the RBAC OIDC configuration to be done for all the public cloud except [Azure-AKS](/clusters/public-cloud/aks/#configureazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters.
+<InfoBox>
 
-The following content needs to be added into the kubernetes pack values while creating the Cluster Profile.
+In Kubernetes, a role binding connects a user or group with a set of permissions called a Role. The Role can be in the same namespace as the RoleBinding. If you want to give a role access to all the namespaces in your cluster, use a ClusterRoleBinding.
 
-```yaml
-extraArgs:
-  oidc-issuer-url: "provider URL"
-  oidc-client-id: "client-id"
-  oidc-groups-claim: "groups"
-  oidc-username-claim: "email"
+</InfoBox>
+
+
+A role binding will be created in the listed namespaces. Keep in mind that you can assign multiple subjects to a RoleBinding or ClusterRoleBinding.
+
+</Tabs.TabPane>
+
+</Tabs>
+
+## Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the cluster you created the role binding in to view its details page.
+
+
+4. Download the **kubeconfig** file for the cluster or use the web shell to access the host cluster.
+
+
+5. Use the following commands to review details about the role and to ensure the role binding was successful.  
+
+
+#### Cluster Role:
+
+```shell
+kubectl get clusterrole <yourRoleNameHere> --output yaml
 ```
-## Following Content is required to get the client configuration related to OIDC details in kubeconfig downloaded from Pallet UI.
 
-```yaml
-clientConfig:
-  oidc-issuer-url: "<OIDC-ISSUER-URL>"
-  oidc-client-id: "<OIDC-CLIENT-ID>"
-  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-  oidc-extra-scope: profile,email,openid
+
+#### Role
+
+```shell
+kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
 ```
-## Example
+
+
+# Use RBAC With OIDC
+
+
+This section explains how to use RBAC with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters. Azure AKS and AWS EKS require different configurations. 
+
+Add the following parameters to your Kubernetes pack when creating a cluster profile.
+
+<br />
 
 ```yaml
-pack:
-  k8sHardening: True
-  #CIDR Range for Pods in cluster
-  # Note : This must not overlap with any of the host or service network
-  podCIDR: "192.168.0.0/16"
-  #CIDR notation IP range from which to assign service cluster IPs
-  # Note : This must not overlap with any IP ranges assigned to nodes for pods.
-  serviceClusterIpRange: "10.96.0.0/12"
-
-# KubeAdm customization for kubernetes hardening. Below config will be ignored if k8s Hardening property above is disabled
 kubeadmconfig:
   apiServer:
     extraArgs:
-      oidc-issuer-url: "<OIDC-ISSUER-URL>"
-      oidc-client-id: "<OIDC-CLIENT-ID>"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-      # Note : secure-port flag is used during kubeadm init. Do not change this flag on a running cluster
-      secure-port: "6443"
-      anonymous-auth: "true"
-      insecure-port: "0"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurityPolicy"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-      - name: audit-policy
-        hostPath: /etc/kubernetes/audit-policy.yaml
-        mountPath: /etc/kubernetes/audit-policy.yaml
-        readOnly: true
-        pathType: File
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port : "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/privileged-psp.yaml
-      targetPath: /etc/kubernetes/hardening/privileged-psp.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-  preKubeadmCommands:
-    # For enabling 'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-  postKubeadmCommands:
-    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
-    # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
-    - 'export KUBECONFIG=/etc/kubernetes/admin.conf && [ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f /etc/kubernetes/hardening/privileged-psp.yaml > /dev/null ); do echo "Failed to apply PodSecurityPolicies, will retry in 5s" ; sleep 5 ; done ; } || echo "Skipping PodSecurityPolicy for worker nodes"'
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+The `clientConfig` parameter is required to properly use the OIDC IDP. 
 
-# Client configuration to add OIDC based authentication flags in kubeconfig
-clientConfig:
-  oidc-issuer-url: "<OIDC-ISSUER-URL>"
-  oidc-client-id: "<OIDC-CLIENT-ID>"
-  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-  oidc-extra-scope: profile,email,openid
+<br />
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
 ```
 
+Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+
+
+In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.

@@ -3,8 +3,8 @@ title: 'generic-vm-vsphere'
 metaTitle: 'Generic Virtual Machine vSphere'
 metaDescription: 'Choosing vSphere Generic Virtual Machine within the Palette console'
 hiddenFromNav: true
-isIntegration: true
-category: ['system apps']
+type: "integration"
+category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image/png'
 ---
 
@@ -25,7 +25,8 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 <Tabs>
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-**generic-vm-vsphere** **1.0.0**
+* **1.0.4**
+* **1.0.0**
 
 </Tabs.TabPane>
 </Tabs>
@@ -48,8 +49,8 @@ If multiple instances of this pack has to be deployed on the cluster for differe
 <br />
 
 ```yaml
-spectrocloud.com/display-name: vm-app-1 
-releaseNameOverride: 
+spectrocloud.com/display-name: vm-app-1
+releaseNameOverride:
 ```
 <br />
 <br />
@@ -73,13 +74,27 @@ pack:
 
 charts:
   generic-vm-vsphere:
+    providers:
+     source: "hashicorp/vsphere"
+     version: "2.2.0"  
     name: vm-app-1
     hardware:
       cpu: 2
       memory: 6 #in GB
       dataDisks:
         - size: 20 #in GB
-        - size: 25 #in GB
+        - size: 25 #in GB 
+    
+
+    # To use an image from a remote url please uncomment the below lines and comment out the vmTemplate section.        
+    # ovaTemplate:
+    #   remote_ovf_url: "https://192.168.100.12:8443/artifactory/generic-eis-all/ehl-guest/sles-154-cloud-kube-v1.21.10-20220718141926-014.ova"
+    #   name: system-cluster-ova
+    #   network: 
+    #   - name: "VM Network"
+    #     value: "VLAN-909"  
+    #   disk:  
+    #     size: 40
     vmTemplate: "spectro-templates/ubuntu-focal-20.04-cloudimg-20220207"
     guestId: "ubuntu64Guest" #ubuntu64Guest for ubuntu, sles15_64Guest for sles etc
     scsiType: "lsilogic"
@@ -208,9 +223,9 @@ The extraVMHclConfig command can be used to provide an extra configuration in th
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval. 
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
 
-**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.  
+**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.
 
 <br />
 
@@ -224,7 +239,7 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 <br />
 
-## Using preVMInitCmd and postVMInitCmd 
+## Using preVMInitCmd and postVMInitCmd
 
 The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
@@ -326,6 +341,3 @@ files:
 ```
 
 <br />
-
-
-

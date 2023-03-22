@@ -24,7 +24,7 @@ The following are some highlights of Google Cloud Platform (GCP) clusters provis
 3. API server endpoint is exposed through a Global Load Balancer. Applications running with the cluster use a Regional Load Balancer to expose the load-balancer services.
 
 
-![gcp_cluster_architecture.png](gcp_cluster_architecture.png)
+![gcp_cluster_architecture.png](/gcp_cluster_architecture.png)
 
 # Prerequisites
 
@@ -40,8 +40,8 @@ The following are required for deploying a workload cluster on GCP:
 
 
 4. Palette creates compute, network, and storage resources on GCP during the provisioning of Kubernetes clusters. Therefore, Sufficient capacity in the desired GCP region should exist for the creation of the cluster.
-  
-# GCP Cloud Account Permissions 
+
+# GCP Cloud Account Permissions
 
 **Last Update**: December 13, 2020
 
@@ -159,16 +159,16 @@ Retrieve the JSON credential file for your service account. For detailed instruc
 
 # Creating a GCP Cloud Account
 
- ![gcp-cluster-creation](cloud-accounts/google.mp4)
+`video: title: "gcp-cluster-creation": cloud-accounts/google.mp4`
 
-1. To create a GCP cloud account, provide a name for the account and enter the JSON credentials for your service account either by pasting into the space provided or uploading from your JSON credential file. 
+1. To create a GCP cloud account, provide a name for the account and enter the JSON credentials for your service account either by pasting into the space provided or uploading from your JSON credential file.
 
 
-2. Then, Validate and Save your account. 
+2. Then, Validate and Save your account.
 
 # Deploying a GCP Cluster
 
- ![gcp-cluster-creation](./cluster-creation-videos/google-cloud.mp4)
+`video: title: "gcp-cluster-creation": ./cluster-creation-videos/google-cloud.mp4`
 
 Performed the steps below to provision a new GCP cluster:
 
@@ -185,7 +185,7 @@ Performed the steps below to provision a new GCP cluster:
 
   |**Parameter**| **Description**|
   |-------------|---------------|
-  | **Cloud Account** | Select the desired cloud account. GCP cloud accounts with GCP credentials need to be preconfigured in project settings.
+  | **Cloud Account** | Select the desired cloud account. GCP cloud accounts with GCP credentials need to be pre-configured in project settings.
   | **Project** | The project to which the cluster belongs.
   | **Region** | Choose the desired GCP region where you would like the clusters to be provisioned.
   | **SSH Key Pair Name** | Choose the desired SSH Key|pair. It is the Public key to configure remote SSH access to the nodes.
@@ -197,25 +197,17 @@ Performed the steps below to provision a new GCP cluster:
 5. Make the choice of updating the worker pool in parallel.
 
 
-6. Configure the master and worker node pools. A master and a worker node pool are configured by default.
-
-    |**Parameter**| **Description**|
-    |---------|---------------|   
-    |**Name** |A descriptive name for the node pool.|
-    |**Size** | Number of VMs to be provisioned for the node pool. <br /> For the master pool, this number can be 1, 3, or 5.|
-    |**Allow worker capability (master pool)**  |Select this option for allowing workloads <br /> to be provisioned on master nodes.|
-    |**Instance type**|Select the instance type to be used <br /> for all nodes in the node pool.|
-    |**Rolling Update**|There are two choices of Rolling Update.|
-    |**Expand First**|Launches the new node and then shut down the old node.|
-    |**Contract First**|Shut down the old node first and then launches the new node.|
-    |**Availability Zones**|Choose one or more availability zones. Palette provides fault <br /> tolerance to guard against failures like hardware failures, network failures, etc. by provisioning nodes <br /> across availability zones if multiple <br /> zones are selected.|
-    |**Disk size** |Set the desired disk size.|
-    * Configure the worker pool as per requirements or copy the master pool configuration.
-    * Users can configure the cluster policies as per need. These could be scheduled after cluster creation also.
+6. Configure the master and worker node pools. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
 
 
-7. Review the settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
-    
+8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+
+
+9. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
+
+
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+
 # Deleting a GCP Cluster
 
 The deletion of a GCP cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a GCP cluster:
@@ -234,7 +226,7 @@ The Cluster Status is updated to **Deleting** while cluster resources are being 
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope. 
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 ## To force delete a cluster:
 
@@ -243,13 +235,12 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown. 
-    
+      - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion. 
+If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion.
 </WarningBox>
-
