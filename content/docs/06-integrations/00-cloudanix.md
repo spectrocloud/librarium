@@ -25,7 +25,7 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 * The command that initiated or created the thread
 * The user who initiated the threat, and much more.
 
-Users can initiate Jira workflows and target specific workloads, excluding containers, pods, or nodes, right from the Cloudanix Dashboard. This Helm Chart installs three Cloudanix services to enable container security capabilities. The services are listed below:
+Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs three Cloudanix services to enable container security capabilities:
 <br />
 
 * inventory-service
