@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Pack configurations typically contains changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
+Pack configurations typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
 
 <br />
 
