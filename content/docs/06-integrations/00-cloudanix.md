@@ -35,7 +35,7 @@ Users can initiate Jira workflows and target specific workloads, excluding conta
 # Prerequisites
 
 * Minumum CPU Cores: 1
-* Minimum Memory Required: 25 MiB
+* Memory: 25 MiB
 * Kubernetes 1.15.x and higher
 * Kernel version 4.5 or higher
 
