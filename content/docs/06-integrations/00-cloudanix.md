@@ -1,7 +1,7 @@
 ---
 title: 'Cloudanix'
 metaTitle: 'cloudanix'
-metaDescription: 'Cloudanix container security helm chart for Spectro Cloud Palette'
+metaDescription: 'The Cloudanix security pack provides a dashboard that displays threats and unusual behavior in Kubernetes containers in Palette'.
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
@@ -16,35 +16,27 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-Cloudanix container security detects threats and anomalous behaviors in kubernetes clusters. The threats and anomalies can be visualized in Cloudanix Dashboard, in real-time.
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. 
+Example Threats and Unusual behavior:
+- Write below binary directory
+- SSH into a container
+- Modifying shell configuration files
+- An attempt to read sensitive files like user/password/authentication information
 
 Cloudanix Dashboard also provides an Interactive interface to present the mapping of the threats to Workloads (container, pod, node, etc), associated events for the Threat, raw command executed, which user has initiated the threat, and much more.
 
-Users can initiate workflows (Jira integration), target specific workloads (exclude container, pod or node while performing an anti-pattern) right from the Cloudanix Dashboard itself.
+Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs four Cloudanix services to enable container security capabilities.
 
 This helm chart installs 4 Cloudanix services to enable container security capabilities. The services are listed below:
 
-- inventory-service
-- threat-service
-- config-cron
-- misconfig-cron
-
-## Versions Supported
-
-Cloudanix helm chart supports the following versions with Palette.
-
-<br />
-
-<Tabs>
-<Tabs.TabPane tab="1.0.0" key="1.0.0">
-
-* **1.0.0**
-
-<br />
+- **inventory-service**
+- **threat-service**
+- **config-cron**
+- **misconfig-cron**
 
 ## Prerequisites
 
-- Minumum CPU Cores: 0.5
-- Minimum Memory Required: 256 MiB
-- The minimum Kubernetes version supported is 1.19
-- Kernel version 4.5 or higher
+- CPUs: 0.5
+- Memory: 256 MiB
+- Kubernetes 1.19 and higher
+- Kernel version 4.5 and higher
