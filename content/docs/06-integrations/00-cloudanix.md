@@ -20,7 +20,7 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 <br />
 
 * Threats and anomalies.
-* Mapping the threats to workloads in containers, pods, nodes, etc.
+* A mapping of threats to affected containers, pods, and nodes.
 * Associated events for the threats
 * The command that initiated or created the thread
 * The user who initiated the threat, and much more.
