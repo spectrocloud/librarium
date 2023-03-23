@@ -19,7 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. The Cloudanix dashboard displays the following information in real time:
 <br />
 
-* Threats and anomalies in real-time
+* Threats and anomalies.
 * Mapping the threats to workloads in containers, pods, nodes, etc.
 * Associated events for the threats
 * The command that initiated or created the thread
