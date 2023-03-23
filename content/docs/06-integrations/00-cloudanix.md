@@ -17,53 +17,83 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. The Cloudanix dashboard displays the following information in real time:
-<br/>
-
-* Threats and anomalies.
-* A mapping of threats to affected containers, pods, and nodes.
-* Events associated with the threat.
-* The command that caused the threat to occur.
-* The user who initiated the activity that caused the threat.
-
-Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs three Cloudanix services to enable container security capabilities:
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Some examples of Cloudanix detection capabilities are:
 
 <br/>
 
-* inventory-service
-* threat-service
-* config-cron
+- Writes below a binary directory.
+- SSH into a container. 
+- Modifying shell configuration files.
+- Attempts to read sensitive files, such as user, password, and authentication information.
+- Crypto mining detection.
 
-# Prerequisites
+The Cloudanix dashboard also provides an interactive interface that displays the mapping of threat events to container, pod, and node workloads, the command that a user invoked, the user who initiated the activity that caused the threat, and more.
 
-* CPUs: 1
-* Memory: 25 MiB
-* Kubernetes 1.15.x and higher
-* Kernel version 4.5 or higher
+Users can start Jira workflows and target specific workloads from the Cloudanix Dashboard. 
 
-## Versions Supported
-
-Cloudanix Helm Chart supports the following versions with Palette.
-
-<br/>
+# Versions Supported
 
 <Tabs>
 
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
+## Prerequisites
 
-abcdefg
+- CPUs: 0.5
+- Memory: 256 MiB
+- Kubernetes 1.19.x and higher
+- Kernel version 4.5 and higher
+
+## Usage
+
+This Helm Chart installs four Cloudanix services to enable container security capabilities:
+
+<br/>
+
+- **inventory-service**
+- **threat-service**
+- **config-cron**
+- **misconfig-cron**
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="0.0.x" key="0.0.x">
 
-;lakdjf
+## Prerequisites
+
+- CPUs: 0.5
+- Memory: 256 MiB
+- Kubernetes 1.19.x and higher
+- Kernel version 4.5 and higher
+
+## Usage
+
+This Helm Chart installs four Cloudanix services to enable container security capabilities:
+
+<br/>
+
+- **inventory-service**
+- **threat-service**
+- **config-cron**
+- **misconfig-cron**
 
 </Tabs.TabPane>
 
 </Tabs>
 
+# Terraform
+
+
+# References
+
 <br/>
+
+<br />
+
+<br/>
+
+<br />
+
+
 
 
