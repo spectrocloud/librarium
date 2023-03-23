@@ -16,11 +16,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters.
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. 
+Example Threats and Unusual behavior:
+- Write below binary directory
+- SSH into a container
+- Modifying shell configuration files
+- An attempt to read sensitive files like user/password/authentication information
 
 Cloudanix Dashboard also provides an Interactive interface to present the mapping of the threats to Workloads (container, pod, node, etc), associated events for the Threat, raw command executed, which user has initiated the threat, and much more.
 
-Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs three Cloudanix services to enable container security capabilities.
+Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs four Cloudanix services to enable container security capabilities.
 
 This helm chart installs 4 Cloudanix services to enable container security capabilities. The services are listed below:
 
