@@ -29,7 +29,7 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 
 The Cloudanix dashboard also provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used, plus much more.
 
-Users can start Jira workflows and target specific workloads from the Cloudanix Dashboard. 
+Users can start Jira workflows and target specific workloads from the Cloudanix dashboard. 
 
 # Versions Supported
 
