@@ -34,14 +34,17 @@ A minor Kubernetes version will be deprecated in Palette when the Kubernetes com
 
 <WarningBox>
 
-When updating to a new Kubernetes version, these rules apply:
+When updating to a new pack version, these rules apply:
 
 <br />
 
 - You cannot copy the pack configuration from one version to another.
 
 
-- Updating to a newer Kubernetes version must be done incrementally, one minor version at a time. 
+- Updating to a newer version must be done incrementally, one minor version at a time.
+
+
+- Select a specific target version instead of a group that ends in ``.x``
 
 </WarningBox>
 
