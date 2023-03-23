@@ -23,11 +23,11 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 
 - Writes below a binary directory.
 - SSH into a container. 
-- Modifying shell configuration files.
-- Attempts to read sensitive files, such as user, password, and authentication information.
+- Modifications to shell configuration files.
+- Attempts to read sensitive files that contain credential information.
 - Crypto mining detection.
 
-The Cloudanix dashboard also provides an interactive interface that displays the mapping of threat events to container, pod, and node workloads, the command that a user invoked, the user who initiated the activity that caused the threat, and more.
+The Cloudanix dashboard also provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used, plus much more.
 
 Users can start Jira workflows and target specific workloads from the Cloudanix Dashboard. 
 
@@ -50,10 +50,10 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 <br/>
 
-- **inventory-service**
-- **threat-service**
 - **config-cron**
 - **misconfig-cron**
+- **inventory-service**
+- **threat-service**
 
 </Tabs.TabPane>
 
@@ -72,10 +72,10 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 <br/>
 
-- **inventory-service**
-- **threat-service**
 - **config-cron**
 - **misconfig-cron**
+- **inventory-service**
+- **threat-service**
 
 </Tabs.TabPane>
 
@@ -85,6 +85,8 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 
 # References
+
+[Cloudanix](https://docs.cloudanix.com/introduction)
 
 <br/>
 
