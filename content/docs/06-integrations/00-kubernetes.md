@@ -32,7 +32,21 @@ A minor Kubernetes version will be deprecated in Palette when the Kubernetes com
 
 <br />
 
-## Versions Supported
+<WarningBox>
+
+When updating to a new Kubernetes version, these rules apply:
+
+<br />
+
+- You cannot copy the pack configuration from one version to another.
+
+
+- Updating to a newer Kubernetes version must be done incrementally, one minor version at a time. 
+
+</WarningBox>
+
+
+# Versions Supported
 
 
 <Tabs>
@@ -183,6 +197,7 @@ kubeadmconfig:
   #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
   #oidc-extra-scope: profile,email
 ```
+
 
 </Tabs.TabPane>
 
