@@ -49,15 +49,13 @@ Cloudanix Helm Chart supports the following versions with Palette.
 
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-* **1.0.0**
+# Usage
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="0.0.x" key="0.0.x">
 
-* **0.0.5**
-* **0.0.4**
-* **0.0.3**
+# Usage
 
 </Tabs.TabPane>
 </Tabs>
