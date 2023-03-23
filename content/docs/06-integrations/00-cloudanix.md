@@ -44,6 +44,10 @@ Users can start Jira workflows and target specific workloads from the Cloudanix 
 - Kubernetes 1.19.x and higher
 - Kernel version 4.5 and higher
 
+## Parameters
+
+There are no parameters to configure in this Helm Chart.
+
 ## Usage
 
 This Helm Chart installs four Cloudanix services to enable container security capabilities:
@@ -65,6 +69,10 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 - Memory: 256 MiB
 - Kubernetes 1.19.x and higher
 - Kernel version 4.5 and higher
+
+## Parameters
+
+There are no parameters to configure in this Helm Chart.
 
 ## Usage
 
