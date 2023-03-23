@@ -79,7 +79,7 @@ To create a registration token, use the following steps.
 7. Save the **Token** value.
 
 
-Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) to learn more about creating secondary user data.
+Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Perform Site Install](/clusters/edge/site-deployment/site-installation/site-user-data/) to learn more about creating site specific user data.
 
 ## Validation
 
@@ -233,7 +233,7 @@ Use the following steps to enable this workflow.
         registrationURL: https://edge-registration-url.vercel.app 
     ```
 
-9. Your next step is to decide how you want to provide the registration URL value. You can include the registration URL in the user data added to the device before shipping. Or you can create a user data ISO and have the registration URL in the secondary user data. Check out the [Build User Data ISO](/clusters/edge/site-deployment/prepare-edge-configuration#builduserdataiso) to learn more about creating secondary user data.
+9. Your next step is to decide how you want to provide the registration URL value. You can include the registration URL in the user data added to the device before shipping. Or you can create a user data ISO and have the registration URL in the secondary user data. Check out the [Perform Site Install](/clusters/edge/site-deployment/site-installation/site-user-data/) to learn more about creating site specific user data.
 
 
 10. Power on the Edge host device and scan the QR code.
