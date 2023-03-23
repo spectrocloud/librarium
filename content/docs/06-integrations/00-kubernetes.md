@@ -32,21 +32,12 @@ A minor Kubernetes version will be deprecated in Palette when the Kubernetes com
 
 <br />
 
-<WarningBox>
+<InfoBox>
 
-When updating to a new pack version, these rules apply:
-
-<br />
-
-- You cannot copy the pack configuration from one version to another.
+For important guidelines on updating packs, review the [Update Packs](/integrations/update-packs/update-packs) guide.
 
 
-- Updating to a newer version must be done incrementally, one minor version at a time.
-
-
-- Select a specific target version instead of a group that ends in ``.x``
-
-</WarningBox>
+</InfoBox>
 
 
 # Versions Supported

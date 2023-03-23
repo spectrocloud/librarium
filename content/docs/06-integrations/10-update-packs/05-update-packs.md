@@ -129,4 +129,42 @@ Follow these steps to update a pack.
 
 # Validation
 
-When you confirm your updates, Palette displays the profile stack. You can validate your changes by reviewing the layer in the stack that you updated to ensure the new pack version appears. If there is a configuration issue, click on the pack layer and review its configuration to fix any issues. 
+ 
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. From the left **Main Menu**, select **Profiles**.
+
+
+3. Click the profile you updated. Palette displays the profile stack.
+
+
+4. Check that the updated layer displays the new pack version.
+
+    <br />
+    
+    Palette indicates any misconfigurations with a dot displayed on the problematic layer in the stack and a message letting you know there is an issue.   
+
+
+5. Click on the pack layer and review its configuration. Apply fixes and confirm your updates. 
+
+
+6. Repeat the process until Palette indicates the configuration works.
+
+
+# Next Steps
+
+Try applying the profile to a cluster. For more information about cluster profiles, review the [Update Cluster Profiles](/cluster-profiles/task-update-profile.) guide.
+
+
+
+
+<br />
+
+<br />
+
+
+<br />
+
+<br />
