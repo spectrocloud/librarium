@@ -1,7 +1,7 @@
 ---
 title: 'Cloudanix'
 metaTitle: 'cloudanix'
-metaDescription: 'Cloudanix container security helm chart for Spectro Cloud Palette'
+metaDescription: 'The Cloudanix security pack provides a dashboard that displays threats and unusual behavior in Kubernetes containers in Palette'. 
 hiddenFromNav: true
 isIntegration: true
 category: ['security']
