@@ -83,6 +83,18 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 # Terraform
 
+``` hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "cloudanix" {
+  name    = "cloudanix"
+  version = "0.0.6"
+  type = "operator-instance"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
 
 # References
 
