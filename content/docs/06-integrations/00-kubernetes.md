@@ -30,6 +30,18 @@ In the period of time following a Kubernetes release, the Kubernetes pack underg
 
 A minor Kubernetes version will be deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). The deprecated version will remain in that state for three months and will be disabled after a quarter and deleted from Palette in the following quarter.
 
+Below are the stages of deprecation:
+
+<br />
+
+- **Deprecate**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
+
+
+- **Delete**: When a pack is disabled, you will no longer be allowed to create new cluster profiles that using the pack. Palette displays a message informing you to cut over to the newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the deprecated pack.
+
+
+- **Delete**: When a pack is deleted, you will not be able to create new cluster profiles using the pack or launch new clusters using the existing profiles that contain the pack.  Palette displays a message informing you to cut over to the newer version of the pack. There is no disruption to existing cluster workloads and will continue to be functional.
+
 <br />
 
 <InfoBox>
@@ -66,8 +78,8 @@ For important guidelines on updating packs, review the [Update Packs](/integrati
 | Parameter | Description |
 |-----------|-------------|
 | ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -82,10 +94,11 @@ For important guidelines on updating packs, review the [Update Packs](/integrati
   
 The Kubeadm configuration file is where you can do the following:
 
+<br />
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
@@ -218,8 +231,8 @@ kubeadmconfig:
 | Parameter | Description |
 |-----------|-------------|
 | ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -237,7 +250,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).  
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).  
 
 
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
@@ -384,8 +397,8 @@ kubeadmconfig:
 | Parameter | Description |
 |-----------|-------------|
 | ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -404,7 +417,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
@@ -520,8 +533,8 @@ kubeadmconfig:
 | Parameter | Description |
 |-----------|-------------|
 | ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property ``calicoNetworkCIDR``. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes for pods. Default: `10.96.0.0/12`|
+| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -540,7 +553,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes for pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
 - Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
