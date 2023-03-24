@@ -75,7 +75,7 @@ Follow these steps to update a pack.
 
         <br />
         
-        Red-highlighting also indicates something may have been removed in the new configuration, as they are no longer valid in the new profile. If you need them, you should copy them to the new version. Similarly, copy any settings from the current configuration.
+        Red-highlighting also indicates something may have been removed in the new configuration, as they are no longer valid. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
     
     <br />
     
@@ -92,7 +92,7 @@ Follow these steps to update a pack.
 
     <br />
 
-    - Contrasting shades of red and green highlight in the same line indicates differences occur in only part of the line.
+    - **Contrasting shades** of red and green highlight in the same line indicates differences occur in only part of the line.
 
     <br />
 
