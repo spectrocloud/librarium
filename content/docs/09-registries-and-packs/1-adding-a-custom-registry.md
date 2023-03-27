@@ -38,7 +38,10 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 # Deploying a Pack Registry Server
 
-Palette provides a Docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
+The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
+For more advanced configuration and deployment with self-signed certificates see [advanced configuration.](/registries-and-packs/advanced-configuration)
+Palette provides a Docker image for the pack registry server.
+The following steps need to be performed to deploy the pack registry server using this docker image:
 
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
