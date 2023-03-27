@@ -43,7 +43,7 @@ docker-start: docker-image ## Start a local development container
 
 verify-url-links: ## Check for broken URLs in production
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --format csv >> link_report.csv
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --format csv >> link_report.csv
 
 verify-url-links-local: build ## Check for broken URLs locally
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"

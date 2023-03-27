@@ -92,7 +92,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve -p 9000",
     "clean": "gatsby clean",
-    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --format csv >> link_report.csv",
+    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --retry --retry-errors-count 3 --format csv >> link_report.csv",
     "test-links": "start-server-and-test serve http://localhost:9000 linkinator",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
