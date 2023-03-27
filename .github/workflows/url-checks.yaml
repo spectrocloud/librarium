@@ -2,6 +2,11 @@ on:
   push:
     branches-ignore: [ main ]
 
+
+concurrency:
+  group: url-${{ github.ref }}
+  cancel-in-progress: true
+
 name: Broken URL check
 jobs:
   markdown-link-check:
@@ -25,7 +30,7 @@ jobs:
       - name: Post Comment
         run: |
           cd scripts
-          ./post_comment.sh
+          ./pr-comments.sh
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
