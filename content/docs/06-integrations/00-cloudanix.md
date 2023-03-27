@@ -21,7 +21,7 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 
 <br/>
 
-- Writes below a binary directory.
+- Detecting files added or modified in sensitive directories.
 - SSH into a container. 
 - Modifications to shell configuration files.
 - Attempts to read sensitive files that contain credential information.
