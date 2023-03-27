@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Pack configurations typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
+Cluster profiles are composed of one or more pack layers. Packs can be out-of-the-box configurations, helm charts, or manifests and typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
 
 <br />
 
