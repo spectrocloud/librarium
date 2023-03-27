@@ -24,7 +24,7 @@ jobs:
   
       - name: Post Comment
         run: |
-          chmod +x scripts/post_comment.sh && cd scripts
+          cd scripts
           ./post_comment.sh
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
