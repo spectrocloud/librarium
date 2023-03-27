@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge supports using a different Operating System (OS)  for your Edge host runtime. Building a system using your OS requires creating a Karios-based image from your raw OS image.
+Edge supports using a different Operating System (OS)  for your Edge host runtime. Building a system using your OS requires creating a Kairos-based image from your raw OS image.
 
 <br />
 
