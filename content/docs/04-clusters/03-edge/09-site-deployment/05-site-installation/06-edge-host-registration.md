@@ -79,7 +79,7 @@ To create a registration token, use the following steps.
 7. Save the **Token** value.
 
 
-Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Perform Site Install](/clusters/edge/site-deployment/site-installation/site-user-data/) to learn more about creating site specific user data.
+Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data/) resource to learn more about creating site-specific user data.
 
 ## Validation
 

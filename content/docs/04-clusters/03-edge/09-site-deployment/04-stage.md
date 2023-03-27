@@ -57,7 +57,7 @@ The following items are optional and not required but may apply to your use case
 - USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/edgeforge-workflow/prepare-user-data) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
-- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow/build-images/).
+- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide.
 
 
 
@@ -101,7 +101,7 @@ If you generate an OVF template and want to pre-load a content bundle, you must 
 
 ## Prerequisites
 
-- Edge Installer ISO file. Check out the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow/build-images/) to learn how to create an Edge Installer image or use the default Edge Installer image.
+- Edge Installer ISO file. Check out the [build images](/clusters/edge/edgeforge-workflow/build-images/) guide to learn how to create an Edge Installer image or use the default Edge Installer image.
 
 
 - vCenter environment with sufficient resources and access privileges to complete the following actions:
