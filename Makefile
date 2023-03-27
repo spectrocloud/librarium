@@ -43,7 +43,17 @@ docker-start: docker-image ## Start a local development container
 
 verify-url-links: ## Check for broken URLs in production
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --format csv >> link_report.csv
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format csv > temp_report.csv && sleep 2
+	grep -E '^[^,]*,[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' temp_report.csv > link_report.csv && rm temp_report.csv
+
+
+verify-url-links-ci: ## Check for broken URLs in production
+	rm link_report.json || echo "No report exists. Proceeding to scan step"
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
+	jq '.links[] | select(.status > 200)' temp_report.json | tee link_report.json
+	rm temp_report.json
+	mv link_report.json scripts/
+
 
 verify-url-links-local: build ## Check for broken URLs locally
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"

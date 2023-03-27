@@ -1,16 +1,33 @@
-on: [pull_request]
+on:
+  push:
+    branches-ignore: [ main ]
 
 name: Broken URL check
 jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
-      with:
-        use-quiet-mode: 'yes'
-        use-verbose-mode: 'yes'
-        check-modified-files-only: 'no'
-        config-file: 'mlc_config.json'
-        folder-path: 'content/docs/'
-        base-branch: 'master'
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: URL Checker
+        run: make verify-url-links-ci
+  
+      - name: Post Comment
+        run: |
+          chmod +x scripts/post_comment.sh && cd scripts
+          ./post_comment.sh
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          GITHUB_EVENT_PATH: ${{github.event.GITHUB_EVENT_PATH }}
