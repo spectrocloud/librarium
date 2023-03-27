@@ -46,7 +46,20 @@ Additionally, you can start Jira workflows and target specific workloads from th
 
 ## Parameters
 
-There are no parameters to configure in this Helm Chart.
+The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
+
+| Name | Description |
+| --- | --- |
+| ``userEmail`` | The email address of the user who created the cluster and cluster profile. |
+| ``partnerIdentifier`` | A Cloudanix unique identifier for Spectro Cloud. |
+| ``organizationId`` | The organization tenant ID in Palette. |
+| ``userName`` | Palette user name. |
+| ``accountName`` | Palette cloud account name. |
+| ``accountType`` | Cloud account type, such as AWS or GCP, Azure, or others. |
+| ``accountId`` | The user's cloud account ID. |
+| ``clusterName`` | The name of the cluster. |
+| ``clusterIdentifier`` | The cluster's unique identifier. |
+| ``clusterDomain`` | The Palette cloud account type such as AWS, GCP, Azure, or others. |
 
 ## Usage
 
@@ -58,6 +71,8 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 - **misconfig-cron**
 - **inventory-service**
 - **threat-service**
+
+From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
 
 </Tabs.TabPane>
 
@@ -72,7 +87,7 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 ## Parameters
 
-The Cloudanix pack has the following parameters. following There are no parameters to configure in this Helm Chart.
+The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
 
 | Name | Description |
 | --- | --- |
@@ -82,10 +97,10 @@ The Cloudanix pack has the following parameters. following There are no paramete
 | ``userName`` | Palette user name. |
 | ``accountName`` | Palette cloud account name. |
 | ``accountType`` | Cloud account type, such as AWS or GCP, Azure, or others. |
-| ``accountId`` | The cloud account user ID. |
+| ``accountId`` | The user's cloud account ID. |
 | ``clusterName`` | The name of the cluster. |
-| ``clusterIdentifier`` | A unique identifier for cluster. |
-| ``clusterDomain`` | The Palette cloud account type, such as AWS, GCP, Azure, or others. |
+| ``clusterIdentifier`` | The cluster's unique identifier. |
+| ``clusterDomain`` | The Palette cloud account type such as AWS, GCP, Azure, or others. |
 
 ## Usage
 
