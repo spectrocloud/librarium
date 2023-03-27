@@ -16,23 +16,24 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. 
-Example Threats and Unusual behavior:
-- Write below binary directory
-- SSH into a container
-- Modifying shell configuration files
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Some examples of Cloudanix detection capabilities are:
+
+- Write below binary directory, if an attempt was made to write to any file below a set of binary directories.
+- SSH into a container, if an attempt was made to SSH into a container.
+- Modifying shell configuration files, detect an attempt to modify shell configuration file.
 - An attempt to read sensitive files like user/password/authentication information
+- Detecting Cryptocurrency mining, monitors network traffic to identify and alert on any unauthorized cryptocurrency mining activity.
 
-Cloudanix Dashboard also provides an Interactive interface to present the mapping of the threats to Workloads (container, pod, node, etc), associated events for the Threat, raw command executed, which user has initiated the threat, and much more.
+The Cloudanix dashboard also provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used, plus much more.
 
-Users can start Jira workflows and target specific workloads, excluding containers, pods, or nodes, from the Cloudanix Dashboard. The Cloudanix Helm Chart installs four Cloudanix services to enable container security capabilities.
+Users can start Jira workflows and target specific workloads from the Cloudanix dashboard.
 
-This helm chart installs 4 Cloudanix services to enable container security capabilities. The services are listed below:
+This helm chart installs 4 Cloudanix services to enable container security capabilities:
 
-- **inventory-service**
-- **threat-service**
-- **config-cron**
-- **misconfig-cron**
+- **inventory-service** : Inventory service watches for any new Kubernetes resources and displays them in Cloudanix dashboard.
+- **threat-service** : Threat service exports threat events that are visible on the Cloudanix dashboard along with the affected Kubernetes resources.
+- **config-cron** : Config Cron is a job meant to run periodically to maintain the configuration of Cloudanix services (viz. inventory-service and threat-service) running in a Kubernetes cluster.
+- **misconfig-cron** : Captures Kubernetes misconfiguration and displays them in Cloudanix dashboard.
 
 ## Prerequisites
 
@@ -40,3 +41,42 @@ This helm chart installs 4 Cloudanix services to enable container security capab
 - Memory: 256 MiB
 - Kubernetes 1.19 and higher
 - Kernel version 4.5 and higher
+
+## Parameters
+
+| Name | Description |
+| --- | --- |
+| userEmail | The system user email used for creating the cluster profile and cluster (eg. xyz@gmail.com) |
+| partnerIdentifier | A Cloudanix unique identifier for the partner |
+| organizationId | The organization tenant Id in the palette |
+| userName | The palette system user name |
+| accountName | The palette system cloud account name |
+| accountType | The cloud account type (eg. AWS,GCP,Azure) |
+| accountId | The cloud account uid |
+| clusterName | The name of the cluster |
+| clusterIdentifier | A unique identifier for cluster |
+| clusterDomain | The palette cloud account type (eg. AWS,GCP,Azure) |
+
+## Usage
+
+- Login to Cloudanix Console.
+- Select the Workloads page.
+- Select Risks tab where you can see all the failed threat rules.
+
+# Terraform
+
+``` hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack_simple" "cloudanix" {
+  name    = "cloudanix"
+  version = "0.0.6"
+  type = "operator-instance"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+# References
+
+[Cloudanix](https://docs.cloudanix.com/introduction)
