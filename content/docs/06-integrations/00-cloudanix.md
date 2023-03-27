@@ -33,7 +33,7 @@ This helm chart installs 4 Cloudanix services to enable container security capab
 - **inventory-service** : Inventory service watches for any new Kubernetes resources and displays them in Cloudanix dashboard.
 - **threat-service** : Threat service exports threat events that are visible on the Cloudanix dashboard along with the affected Kubernetes resources.
 - **config-cron** : Config Cron is a job meant to run periodically to maintain the configuration of Cloudanix services (viz. inventory-service and threat-service) running in a Kubernetes cluster.
-- **misconfig-cron** : Captures Kubernetes misconfiguration. 
+- **misconfig-cron** : Captures Kubernetes misconfiguration and displays them in Cloudanix dashboard.
 
 ## Prerequisites
 
