@@ -1,4 +1,10 @@
 {
+    "replacementPatterns": [
+        {
+          "pattern": "^/",
+          "replacement": "localhost:8080/"
+        }
+      ],
     "httpHeaders": [
       {
         "urls": ["https://github.com/", "https://guides.github.com/", "https://help.github.com/", "https://docs.github.com/"],
