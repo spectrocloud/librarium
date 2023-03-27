@@ -5,6 +5,16 @@
           "replacement": "https://docs.spectrocloud.com/"
         }
       ],
+      "ignorePatterns": [
+        {
+          "pattern": "*.png"
+        },{
+            "pattern": "*.jpg"
+        },
+        {
+            "pattern": "*.gif"
+        }
+      ],
     "httpHeaders": [
       {
         "urls": ["https://github.com/", "https://guides.github.com/", "https://help.github.com/", "https://docs.github.com/"],
