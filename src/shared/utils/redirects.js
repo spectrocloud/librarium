@@ -185,6 +185,17 @@ const redirects = [
     toPath: `/clusters/edge/site-deployment/installer`,
     redirectInBrowser: true,
     isPermanent: true,
+  },{
+    fromPath: `/knowledgebase/tutorials/terraform-tutorial`,
+    toPath: `/terraform`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/cks-tutorial`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
