@@ -2,7 +2,7 @@
     "replacementPatterns": [
         {
           "pattern": "^/",
-          "replacement": "localhost:8080/"
+          "replacement": "https://docs.spectrocloud.com/"
         }
       ],
     "httpHeaders": [
