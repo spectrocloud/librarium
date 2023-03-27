@@ -29,7 +29,7 @@ The Cloudanix pack is an add-on security pack that provides a dashboard to help 
 
 The Cloudanix dashboard also provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used, plus much more.
 
-Users can start Jira workflows and target specific workloads from the Cloudanix dashboard. 
+Additionally, you can start Jira workflows and target specific workloads from the Cloudanix dashboard. 
 
 # Versions Supported
 
@@ -72,7 +72,20 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 ## Parameters
 
-There are no parameters to configure in this Helm Chart.
+The Cloudanix pack has the following parameters. following There are no parameters to configure in this Helm Chart.
+
+| Name | Description |
+| --- | --- |
+| ``userEmail`` | The email address of the user who created the cluster and cluster profile. |
+| ``partnerIdentifier`` | A Cloudanix unique identifier for Spectro Cloud. |
+| ``organizationId`` | The organization tenant ID in Palette. |
+| ``userName`` | Palette user name. |
+| ``accountName`` | Palette cloud account name. |
+| ``accountType`` | Cloud account type, such as AWS or GCP, Azure, or others. |
+| ``accountId`` | The cloud account user ID. |
+| ``clusterName`` | The name of the cluster. |
+| ``clusterIdentifier`` | A unique identifier for cluster. |
+| ``clusterDomain`` | The Palette cloud account type, such as AWS, GCP, Azure, or others. |
 
 ## Usage
 
@@ -84,6 +97,8 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 - **misconfig-cron**
 - **inventory-service**
 - **threat-service**
+
+From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
 
 </Tabs.TabPane>
 
