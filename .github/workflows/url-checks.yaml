@@ -14,4 +14,3 @@ jobs:
         config-file: 'mlc_config.json'
         folder-path: 'content/docs/'
         base-branch: 'master'
-        file-extension: '.md, .mdx'
