@@ -55,7 +55,7 @@ The Cloudanix pack has the following parameters, which are auto-filled based on 
 | ``organizationId`` | The organization tenant ID in Palette. |
 | ``userName`` | Palette user name. |
 | ``accountName`` | Palette cloud account name. |
-| ``accountType`` | Cloud account type, such as AWS or GCP, Azure, or others. |
+| ``accountType`` | Cloud account type such as AWS or GCP, Azure, or others. |
 | ``accountId`` | The user's cloud account ID. |
 | ``clusterName`` | The name of the cluster. |
 | ``clusterIdentifier`` | The cluster's unique identifier. |
@@ -96,7 +96,7 @@ The Cloudanix pack has the following parameters, which are auto-filled based on 
 | ``organizationId`` | The organization tenant ID in Palette. |
 | ``userName`` | Palette user name. |
 | ``accountName`` | Palette cloud account name. |
-| ``accountType`` | Cloud account type, such as AWS or GCP, Azure, or others. |
+| ``accountType`` | Cloud account type such as AWS or GCP, Azure, or others. |
 | ``accountId`` | The user's cloud account ID. |
 | ``clusterName`` | The name of the cluster. |
 | ``clusterIdentifier`` | The cluster's unique identifier. |
