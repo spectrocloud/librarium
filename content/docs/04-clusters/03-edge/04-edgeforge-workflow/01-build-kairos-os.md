@@ -91,6 +91,6 @@ Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/
 # Next Steps
 
 
-Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bunlde](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
+Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
 
 <br />
