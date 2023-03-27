@@ -67,10 +67,12 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 <br/>
 
-- **config-cron**
-- **misconfig-cron**
-- **inventory-service**
-- **threat-service**
+- **config-cron**: A job that runs periodically in a Kubernetes cluster to maintain the configuration of Cloudanix inventory and threat services.
+- **misconfig-cron**: A job that captures Kubernetes misconfigurations and displays them on the Cloudanix dashboard.
+- **inventory-service**: An inventory service that detects any new Kubernetes resources and displays them on the Cloudanix dashboard.
+- **threat-service**: A threat service that exports threat events and affected Kubernetes resources which are visible on the Cloudanix dashboard.
+
+
 
 From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
 
@@ -108,10 +110,10 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 <br/>
 
-- **config-cron**
-- **misconfig-cron**
-- **inventory-service**
-- **threat-service**
+- **config-cron**: A job that runs periodically in a Kubernetes cluster to maintain the configuration of Cloudanix inventory and threat services.
+- **misconfig-cron**: A job that captures Kubernetes misconfigurations and displays them on the Cloudanix dashboard.
+- **inventory-service**: An inventory service that detects any new Kubernetes resources and displays them on the Cloudanix dashboard.
+- **threat-service**: A threat service that exports threat events and affected Kubernetes resources which are visible on the Cloudanix dashboard.
 
 From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
 
