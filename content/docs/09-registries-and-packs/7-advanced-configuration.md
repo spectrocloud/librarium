@@ -71,6 +71,32 @@ The server is started with the command `registy serve /etc/spectro/config.yml`.
 You can override this configuration by overriding specific values via environment
 variables or you can pass your own configuration file.
 
+For example you can run the docker container image with the following environment
+variables to override the basic auth realm and logging level:
+
+```bash
+docker run -d \
+    -p 443:5000 \
+    ...
+    -e REGISTRY_LOG_LEVEL=debug \
+    -e REGISTRY_AUTH=htpasswd \
+    -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
+    ...
+    gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+```
+
+Alternatively, you can run the image mounting a directory with a new configuration
+file and pointing the server command to it:
+
+```
+docker run -d \
+    -p 443:5000 \
+    ...
+    -v $(pwd)/myconfig.yml:/etc/myconfig.yml
+    ...
+    gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+    /registry serve /etc/myconfig.yml
+```
 ## Storage Backend
 
 ## Authentication
