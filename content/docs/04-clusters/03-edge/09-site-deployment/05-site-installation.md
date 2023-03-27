@@ -56,7 +56,9 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 
 1. If you have a site-specific user data ISO, then insert the USB stick into the Edge host.
 
+
 2. Power on the Edge host. The Edge host will boot into registration mode where it will connect with the Palette endpoint that was specified in the user data.
+
 
 3. The Edge host will remain in a wait mode until you register the device in Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about each registration method.
 
@@ -80,9 +82,12 @@ Any content bundles you provided are extracted and loaded into the container run
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
+
 3. Select the host cluster you created to view its details page.
+
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
@@ -108,17 +113,19 @@ Use the following steps to complete the Edge host installation in a VMware envir
 
 Perform the following steps to proceed with the installation at the site in your VMware environment.
 
-<br / >
-
-<br / >
+<br />
 
 1. Log in to vCenter Server using the vSphere Client.
 
+
 2. Navigate to **VMs and Templates** and right-click on the desired folder, then select the option **Deploy VM(s) from this OVF template**.
+
 
 3. Specify the location of the OVF template and start the deployment.
 
+
 4. Proceed through the installation steps and deploy the virtual machine.
+
 
 5. The VM will start up in the registration phase and wait for you to register the Edge host with Palette. If you provided the Edge Installer user data with an `EdgeHostToken` then the Edge host will automatically register with Palette. Otherwise, the Edge host will wait until you manually register the device in Palette. Go ahead and register the Edge host with Palette. Review the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for additional guidance.
 
@@ -142,9 +149,12 @@ Any content bundles you provided are extracted and loaded into the container run
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
+
 3. Select the host cluster you created to view its details page.
+
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
