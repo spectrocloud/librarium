@@ -131,7 +131,7 @@ data "spectrocloud_registry" "public_registry" {
 data "spectrocloud_pack_simple" "cloudanix" {
   name    = "cloudanix"
   version = "0.0.6"
-  type = "operator-instance"
+  type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
