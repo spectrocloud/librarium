@@ -17,15 +17,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags. However, you cannot update the environment associated with the profile, such as ??
 
-## Prerequisites
+# Prerequisites
 
 There are no prerequisites.
 
+
+# Modify Basic Profile Information
+
+The following steps will guide you in updating basic profile information.
+
 ## Enablement
-
-The following steps will guide you in updating profiles.
-
-## Modify Basic Profile Information
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -38,14 +39,17 @@ The following steps will guide you in updating profiles.
 
 4. Click the **Settings drop-down Menu** and choose **Edit Info**. 
 
+    <br />
+    
+    You can modify the name, version, description, and tags. Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
 
-  You can change the name, version, description, and tags as required. Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create using the updated profile.
+  <br />
 
 
 5. Save your changes.
 
 
-## Update a Pack Layer
+## Validation
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -53,23 +57,50 @@ The following steps will guide you in updating profiles.
 2. From the left **Main Menu**, select **Profiles**.
 
 
-3. Click the profile you want to update. Palette displays the profile stack.
+3. Click the profile you updated. Palette displays the profile details and profile stack.
+
+
+4. Check that profile details displays your changes.
+
+
+
+# Update a Pack Layer
+
+The following steps will guide you in making updates to a layer in the profile.
+
+## Enablement
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. From the left **Main Menu**, select **Profiles**.
+
+
+3. Click the profile you want to update. Palette displays the profile details and profile stack
 
 
 4. Click the layer to update. Palette displays the profile stack. To add a pack layer, select one of the following options:
 
-  - Add New Pack
-  - Import from cluster
-  - Add Manifest
+  <br />
+
+    - **Add New Pack**
+    - **Import from cluster**
+    - **Add Manifest**
 
 
 5. You can do the following:
 
-  - Choose a new pack to add or import one from another cluster. Or you can edit pack settings in the YAML file.
+  - Choose a new pack to add, or import one from another cluster. 
+
+
+
+  - Edit pack settings in the YAML file.
+
 
   - Add, edit, or remove a manifest.
 
-  - Remove non-core pack layers from the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
+
+  - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
 
   <br /> 
 
@@ -80,13 +111,39 @@ The following steps will guide you in updating profiles.
   </InfoBox>
 
   <br />
+  
+  
+  - Delete the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
+
+  
 
 6. Confirm your updates.
 
 Clusters that use the updated profile are notified of the changes. You can update clusters to use the latest profile definition at any time.
 
 
-## Update the Pack Version
+## Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. From the left **Main Menu**, select **Profiles**.
+
+
+3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page.
+
+
+3. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
+
+
+4. Check that layers are added to or removed from the stack.  
+
+
+5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+
+
+
+# Update the Pack Version
 
 Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
 
@@ -98,7 +155,7 @@ When updating to a new pack version, these rules apply:
 
 <br />
 
-- You should not copy the pack configuration from one version to another, as the newer version often contains an adjusted configuration that is tailored to the version. Instead, you should integrate your changes manually in the new version.
+- You should not copy the pack configuration from one version to another, as the newer version often contains an adjusted configuration that is tailored to that version. Instead, you should integrate your changes manually in the new version.
 
 
 - Updating to a newer Kubernetes version must be done incrementally, one minor version at a time.
@@ -110,6 +167,8 @@ We do not recommend downgrading packs to the previous version.
 </WarningBox>
 
 <br />
+
+## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -126,11 +185,11 @@ We do not recommend downgrading packs to the previous version.
 5. In the **Edit Pack** page, select a specific target version, not a group that ends in ``.x``. Palette displays the difference between the current version at left and the new version at right. The target version is displayed in the header.
     
   Differences between the displayed configurations are as follows:
-
+  
   <br />
-    
-    -  **Red highlighting**:  indicates text that is not present in the new configuration. 
-    
+  
+  -  **Red highlighting**:  indicates text that is not present in the new configuration.
+
         <br />
         
         Red highlighting indicates lines you may have added in the current configuration. You can use the arrow icon that displays between the two configurations to transfer the lines to the new version.
@@ -138,12 +197,13 @@ We do not recommend downgrading packs to the previous version.
         <br />
 
         <br />
-        
+          
+          
         Red-highlighting also indicates something may have been removed in the new configuration, as they are no longer valid. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
+
+        
     
-    <br />
-    
-    - **Green highlighting**:  indicates additions in the new configuration that are not present in the current version.
+  - **Green highlighting**:  indicates additions in the new configuration that are not present in the current version.
     
     <br />
 
@@ -220,3 +280,13 @@ We do not recommend downgrading packs to the previous version.
 # Next Steps
 
 Try applying the profile to a cluster. For more information about cluster profiles, review the [Update Cluster Profiles](/cluster-profiles/task-update-profile.) guide.
+
+
+
+<br />
+
+
+<br />
+
+
+<br />
