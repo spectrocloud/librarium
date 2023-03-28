@@ -77,7 +77,6 @@ For important guidelines on updating pack versions, review [Update the Pack Vers
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
 | ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
@@ -231,7 +230,6 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
 | ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
@@ -398,7 +396,6 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
 | ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
@@ -535,7 +532,6 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:k8sHardening``  | Flag to decide if Kubernetes hardening should be applied. Default: ``True``. When set to ``True``, additional flags configured in `kubeadmconfig` will be honored and will be set to the corresponding components.|
 | ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
