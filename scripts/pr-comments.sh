@@ -49,6 +49,8 @@ for link in $(echo "${json}" | jq -r '.links[] | @base64'); do
     COMMENT="${COMMENT}\n\n:link: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent: ${parent}\n---"
 done
 
+echo "Comment: $COMMENT"
+
 echo "Posting comment to pull request #$PR_NUMBER"
 
 # Post comment to pull request using GitHub API
