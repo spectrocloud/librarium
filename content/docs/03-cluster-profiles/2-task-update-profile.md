@@ -90,17 +90,13 @@ The following steps will guide you in making updates to a layer in the profile.
 
 5. You can do the following:
 
-  - Choose a new pack to add, or import one from another cluster. 
+    - Choose a new pack to add, or import one from another cluster. 
+    
+    - Edit pack settings in the YAML file.
 
+    - Add, edit, or remove a manifest.
 
-
-  - Edit pack settings in the YAML file.
-
-
-  - Add, edit, or remove a manifest.
-
-
-  - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
+    - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
 
   <br /> 
 
@@ -109,11 +105,9 @@ The following steps will guide you in making updates to a layer in the profile.
   Operating System (OS) Kubernetes, Networking, and Storage are considered core layers and cannot be removed.
 
   </InfoBox>
-
-  <br />
   
   
-  - Delete the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
+    - Delete the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
 
   
 

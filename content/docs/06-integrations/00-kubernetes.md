@@ -46,7 +46,7 @@ Below are the stages of deprecation:
 
 <InfoBox>
 
-For important guidelines on updating packs, review the [Update Packs](/integrations/update-packs/update-packs) guide.
+For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
 
 
 </InfoBox>
