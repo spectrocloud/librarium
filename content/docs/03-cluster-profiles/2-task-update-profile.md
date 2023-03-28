@@ -94,14 +94,14 @@ Packs typically contain changes between versions, such as the addition or remova
 
 <WarningBox>
 
-When updating to a new Kubernetes version, these rules apply:
+When updating to a new pack version, these rules apply:
 
 <br />
 
-- You cannot copy the pack configuration from one version to another.
+- You should not copy the pack configuration from one version to another, as the newer version often contains an adjusted configuration that is tailored to the version. Instead, you should integrate your changes manually in the new version.
 
 
-- Updating to a newer version must be done incrementally, one minor version at a time.
+- Updating to a newer Kubernetes version must be done incrementally, one minor version at a time.
 
 
 - Select a specific target version instead of a group that ends in ``.x``
@@ -172,11 +172,11 @@ We do not recommend downgrading packs to the previous version.
 
     <br />
 
-    - If there are any lines you added, such as OIDC, use the arrow to transfer the lines to the new version.
+    - If there are any lines you added, use the arrow to transfer the lines to the new version.
 
     <br />
     
-    - If there are lines you did not add that are highlighted, they may have been removed in the new version, and you should be copy them over.
+    - If there are lines you did not add that are red highlighted, they have been removed in the new version, and you should **not** copy them over.
 
 
 7. Check for changed settings in the new configuration and copy settings from the current configuration to the new version.
