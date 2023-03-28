@@ -23,6 +23,8 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 # Prerequisites
 
 - At least one infrastructure or cloud-based cluster you’ve created.
+
+
 - The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the ```nginx-ingress``` add-on profile with SSL passthrough already enabled. The following example shows how SSL-passthrough is enabled for the NGINX Ingress Controller. You would add an equivalent configuration to the profile of the add-on you are using. <br /><br />
 
    ```
@@ -60,7 +62,7 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
-3. Either add the ```nginx-ingress``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](devx/cluster-groups/ingress-cluster-group#prerequisites) section. <br />
+3. Either add the ```nginx-ingress``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](/devx/cluster-groups/ingress-cluster-group#prerequisites) section. <br />
     a. From the **Main Menu**, choose **Clusters** and select a cluster.<br />
     b. In the **Profile** tab, click **Add add-on profile (+)** and select ```nginx-ingress```. <br />
     c. Confirm and save your changes.
@@ -134,7 +136,7 @@ If an error message displays, it indicates something is wrong with the configura
 
 # Resources
 
-[Cluster Groups](https://docs.spectrocloud.com/devx/cluster-groups)
+[Cluster Groups](/devx/cluster-groups)
 
 
 

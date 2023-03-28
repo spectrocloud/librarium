@@ -33,7 +33,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 ## Enablement
 
-1. Log in to [Palette](console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.

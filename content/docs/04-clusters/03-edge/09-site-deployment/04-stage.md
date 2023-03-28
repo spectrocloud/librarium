@@ -23,6 +23,12 @@ In this step, you will prepare the Edge host for installation. You will copy the
 
 - Content bundles.
 
+<InfoBox>
+
+If you need to create any of the items mentioned above, review the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn how to create your own Edge artifacts.
+
+</InfoBox>
+
 You can ship your Edge hosts after you complete this step. Use the following steps to prepare your Edge host for installation.
 
 <br />
