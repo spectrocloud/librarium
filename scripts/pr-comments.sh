@@ -12,10 +12,20 @@ BRANCH_NAME=$(basename "$GITHUB_REF")
 PR_NUMBER=$(curl -s -H "Authorization: token $ACCESS_TOKEN" \
 "https://api.github.com/repos/$OWNER/$REPO/pulls?head=$BRANCH_NAME" | jq -r '.[0].number')
 
+# Check if PR number was found
+if [[ -z "$PR_NUMBER" ]]; then
+  echo "Error: Could not find pull request number for branch '$BRANCH_NAME'"
+  exit 1
+fi
+
 echo "Pull request number: $PR_NUMBER"
 
+
 # Read JSON file contents into a variable
-JSON_CONTENT=$(cat link_report.json)
+JSON_CONTENT=$(jq '.' link_report.json)
+
+echo "JSON content:"
+echo "$JSON_CONTENT"
 
 # Format comment with JSON content
 COMMENT="```
@@ -36,4 +46,3 @@ if [[ "$RESPONSE" == *"message"* ]]; then
   exit 1
 fi
 
-echo "Comment posted successfully"
