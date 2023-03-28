@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags. However, you cannot update the environment associated with the profile, such as ??
+You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags. However, you cannot update the environment associated with the profile.
 
 # Prerequisites
 
@@ -127,13 +127,13 @@ Clusters that use the updated profile are notified of the changes. You can updat
 3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page.
 
 
-3. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
+4. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
 
 
-4. Check that layers are added to or removed from the stack.  
+5. Check that layers are added to or removed from the stack.  
 
 
-5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+6. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
 
 
 
@@ -193,7 +193,7 @@ We do not recommend downgrading packs to the previous version.
         <br />
           
           
-        Red-highlighting also indicates something may have been removed in the new configuration, as they are no longer valid. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
+        These lines may also have been removed because they are no longer valid in the new configuration. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
 
         
     
@@ -236,10 +236,10 @@ We do not recommend downgrading packs to the previous version.
 7. Check for changed settings in the new configuration and copy settings from the current configuration to the new version.
 
 
-8. Review new sections in the new configuration. Go ahead and adopt them, as they are typically needed to support the new version.
+8. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new version.
 
 
-9. Check for changes in the same line that have a different value. If it is not a customization you made, you should go ahead and adopt the new value, as it is known to be compatible with the new version.
+9. Check for changes in the same line that have a different value. If it is not a customization you made, you should adopt the new value, as it is known to be compatible with the new version.
 
 
 10. Confirm your updates.
@@ -271,11 +271,6 @@ We do not recommend downgrading packs to the previous version.
 6. Repeat the process until Palette indicates the configuration works.
 
 
-# Next Steps
-
-Try applying the profile to a cluster. For more information about cluster profiles, review the [Update Cluster Profiles](/cluster-profiles/task-update-profile.) guide.
-
-
 
 <br />
 
@@ -284,3 +279,8 @@ Try applying the profile to a cluster. For more information about cluster profil
 
 
 <br />
+
+
+
+<br />
+
