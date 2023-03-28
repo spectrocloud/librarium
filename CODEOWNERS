@@ -1,12 +1,12 @@
 # Docs & Tutorials
-content/ @docs-education
+content/ docs-education
 # Images
-assets/docs/images/ @docs-education
+assets/docs/images/ docs-education
 # Writing Checks
-vale/  @docs-education
+vale/  docs-education
 # CI/CD Related
-.github/ @docs-education
+.github/ docs-education
 
 
 # Catch All Rule
-* @docs-education
+* docs-education
