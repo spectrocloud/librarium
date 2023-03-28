@@ -15,7 +15,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITLEAKS_CONFIG: config.toml
     steps:
-
       - name: run-bulwark-gitleaks-scan
         shell: sh
         env:
