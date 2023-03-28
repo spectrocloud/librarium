@@ -26,8 +26,8 @@ Users can set up a custom pack registry using a Docker image provided by Spectro
 
 Palette Dev Engine supports the following types of custom registries:
 
-* [Helm Registry](/devx/registries/helm-registry#palettehelmregistry): Visit here for more information on Palette Helm Registry
-* [OCI Registry](/devx/registries/oci-registry#setupociregistry): Visit here for more information on Palette OCI Registry
+* [Helm Registry](/registries-and-packs/helm-charts): Visit here for more information on Palette Helm Registry
+* [OCI Registry](/registries-and-packs/oci-registry): Visit here for more information on Palette OCI Registry
 
 
 

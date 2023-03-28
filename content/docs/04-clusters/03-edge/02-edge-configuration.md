@@ -87,4 +87,4 @@ To effectively use the Edge Installer, we recommend you review the Edge [install
 
 - [Edge OS Configuration: Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init)
 
-- [Edge Install Configuration](/clusters/edge/edge-configuration/stylus-reference)
+- [Edge Install Configuration](/clusters/edge/edge-configuration/installer-reference)

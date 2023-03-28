@@ -39,7 +39,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 ## Video Demonstration
 
-`video: title: "azure-cluster-creation": ../cluster-creation-videos/azure.mp4`
+`video: title: "azure-cluster-creation": azure.mp4`
 
 ## Deploy an Azure Cluster with Palette
 
