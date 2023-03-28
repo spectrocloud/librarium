@@ -13,6 +13,33 @@ const APIS = {
   v1,
 };
 
+function fillInApiObj(index, arr, operations, obj) {
+  let elem = arr[index];
+  if (index === arr.length - 1) {
+    obj[elem] = obj[elem] || {};
+    obj[elem]["operations"] = operations;
+    return;
+  }
+  if (!obj[elem]) {
+    obj[elem] = {
+      status: false,
+    };
+  }
+  fillInApiObj(index + 1, arr, operations, obj[elem]);
+}
+
+function formatApi(endPoints) {
+  let apiObj = {};
+  for (var index = 0; index < endPoints.length; index++) {
+    let endPoint = endPoints[index].path;
+    let operations = endPoints[index].operations;
+    let arr = endPoint.split("/");
+    arr.shift();
+    fillInApiObj(0, arr, operations, apiObj);
+  }
+  return apiObj;
+}
+
 export default function MDXLayout({ data = {} }) {
   const {
     allMdx,
@@ -25,6 +52,38 @@ export default function MDXLayout({ data = {} }) {
   const menu = useMemo(() => {
     return DocsLayout.calculateMenuTree(allMdx.edges, { base: "/api", trailingSlash: true });
   }, [allMdx.edges]);
+
+  const api = APIS[mdx?.fields?.version || "v1"];
+
+  const apiEndpoints = Object.keys(api.paths).map((path) => {
+    return {
+      path,
+      operations: Object.keys(api.paths[path])
+        .filter((method) => method !== "parameters")
+        .map((method) => {
+          const apiMethod = api.paths[path][method];
+          const parameters = apiMethod?.parameters;
+          return {
+            method,
+            ...apiMethod,
+            parameters: parameters?.filter((parameter) => parameter.name !== "body") || [],
+            pathParameters: api.paths[path]?.parameters || [],
+          };
+        }),
+    };
+  });
+
+  const apiObj = formatApi(apiEndpoints);
+
+  if (Array.isArray(mdx.frontmatter?.paths)) {
+    let urlPathName = mdx.frontmatter?.paths[0];
+    if (urlPathName) {
+      urlPathName = urlPathName.split("/");
+      urlPathName = urlPathName[urlPathName.length - 1];
+      if (apiObj.v1[urlPathName]) apiObj.v1[urlPathName].status = true;
+      else console.log(urlPathName, "urlPathName");
+    }
+  }
 
   function renderAPIDoc() {
     // TODO refactor this function
@@ -101,13 +160,11 @@ export default function MDXLayout({ data = {} }) {
 
     const endpoints = Object.keys(api.paths)
       .filter((path) => paths.some((entry) => path.startsWith(entry)))
-      .filter((path) => !path.split("/").includes("internal"))
       .map((path) => {
         return {
           path,
           operations: Object.keys(api.paths[path])
             .filter((method) => method !== "parameters")
-            .filter((method) => !method?.tags?.some((tag) => ["private", "system"].includes(tag)))
             .map((method) => {
               const apiMethod = api.paths[path][method];
               const parameters = apiMethod?.parameters;
@@ -157,7 +214,7 @@ export default function MDXLayout({ data = {} }) {
           fill="#3575CF"
         />
       }
-      extraMenu={<ApiSidebar allMdx={allMdx} />}
+      extraMenu={<ApiSidebar allMdx={allMdx} data={apiObj.v1} count={-1} />}
     >
       <GenericSeoSchema />
       <DocsLayout
