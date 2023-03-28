@@ -43,7 +43,7 @@ for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
     status=$(echo "${link}" | base64 --decode | jq -r '.status')
     state=$(echo "${link}" | base64 --decode | jq -r '.state')
     parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
-    COMMENT="${COMMENT}\n\n:link: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent: ${parent}\n---"
+    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n---"
 done
 
 if [[ "${DEBUG}" == "true" ]]; then
