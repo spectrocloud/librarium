@@ -20,7 +20,7 @@ This workflow demonstrates how to use Spectro Cloud API. You can use the API to 
 
 The API is a RESTful API that uses JSON for serialization and supports HTTP Basic Authentication and token authentication. The API is available at `https://api.spectrocloud.com`.
 
-Use the folllowing examples to familiarize yourself with the API.
+Use the following examples to familiarize yourself with the API.
 
 <br />
 
@@ -28,10 +28,19 @@ Use the folllowing examples to familiarize yourself with the API.
 
 * You must have a Spectro Cloud account. If you do not have an account, you can create one at [https://console.spectrocloud.com](https://console.spectrocloud.com).
 
+
 * An Authentication header with a token value or an API Key with an ApiKey value. 
-Learn more about [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) in Palette documentation.
+Learn more about authentication credentials by reviewing the [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) resource.
+
 
 * You must have a Spectro Cloud cluster. You can create a cluster from the Spectro Cloud console.
+
+
+* The respective language runtime and package manager installed on your machine. 
+
+
+
+* [jq](https://stedolan.github.io/jq/download/) - A command-line JSON processor.
 
 ## Configure Scope and Authentication
 
@@ -46,11 +55,11 @@ export API_KEY="Your API Key"
 <br />
 
 ```shell
-export PROJECT_UID="Your Project UID"
+export PROJECT_ID="Your Project UID"
 ```
 
 
-## List Cluster Nodes and Node Status
+# List Cluster Nodes and Node Status
 
 You can use the following endpoint to retrieve the list of nodes in a cluster and their status.
 
@@ -201,7 +210,7 @@ else:
 
 <Tabs.TabPane tab="Rust" key="node-status-rust">
 
-```js
+```
 use std::env;
 use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, APIKEY};
 
@@ -245,3 +254,255 @@ async fn main() -> Result<(), reqwest::Error> {
 
 
 </Tabs>
+
+##  Retrieve the Cluster Cloud Config Identifier
+
+The cloud config identifier is a unique identifier for the cloud config that is used to provision the cluster. 
+The values are found in the `spec.cloudConfigRef` field of the cluster object. You can use the following code snippet to retrieve the cluster cloud config identifier `uid` and `kind`. 
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="curl" key="config-identifier-curl">
+
+```shell
+curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+--header 'Accept: application/json' \
+--header "ApiKey: $API_KEY" \
+| jq -r '.spec.cloudConfigRef | "\(.kind) \(.uid)"'
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="JavaScript" key="config-identifier-js">
+
+```js
+// Get API key, project ID, and cluster ID from environment variables
+const apiKey = process.env.API_KEY;
+const projectID = process.env.PROJECT_ID;
+const clusterID = process.env.CLUSTER_ID;
+
+// Build the request URL
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+
+// Define headers for the request
+const headers = new Headers({
+  "Accept": "application/json",
+  "ApiKey": apiKey
+});
+
+// Define an async function to send the HTTP request
+async function fetchData() {
+  try {
+    // Send the HTTP request using the fetch() method
+    const response = await fetch(url, {
+      method: "GET",
+      headers: headers
+    });
+
+    // Parse the response as JSON
+    const data = await response.json();
+
+    // Extract the required values from the response
+    const cloudConfigRef = data.spec.cloudConfigRef;
+    const kind = cloudConfigRef.kind;
+    const uid = cloudConfigRef.uid;
+
+    // Print the values
+    console.log(`kind: ${kind}`);
+    console.log(`uid: ${uid}`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Call the async function to send the HTTP request
+fetchData();
+```
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Go" key="config-identifier-go">
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+)
+
+type Response struct {
+	Spec struct {
+		CloudConfigRef struct {
+			Kind string `json:"kind"`
+			Uid  string `json:"uid"`
+		} `json:"cloudConfigRef"`
+	} `json:"spec"`
+}
+
+func main() {
+	// Get API key, project ID and cluster ID from environment variables
+	apiKey := os.Getenv("API_KEY")
+	projectID := os.Getenv("PROJECT_ID")
+	clusterID := os.Getenv("CLUSTER_ID")
+
+	// Create a new HTTP request
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID), nil)
+	if err != nil {
+		fmt.Println("Error creating HTTP request:", err)
+		return
+	}
+
+	// Add headers to the request
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("ApiKey", apiKey)
+
+	// Send the HTTP request
+	client := http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending HTTP request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	// Read the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Error reading HTTP response:", err)
+		return
+	}
+
+	// Unmarshal the JSON response into a Response struct
+	var response Response
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		fmt.Println("Error unmarshaling JSON response:", err)
+		return
+	}
+
+	// Print the cloudConfigRef kind and uid
+	fmt.Printf("Kind: %s\nUid: %s\n", response.Spec.CloudConfigRef.Kind, response.Spec.CloudConfigRef.Uid)
+}
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Python" key="config-identifier-python">
+
+```python
+import os
+import requests
+
+# Get API key, project ID, and cluster ID from environment variables
+api_key = os.environ.get("API_KEY")
+project_id = os.environ.get("PROJECT_ID")
+cluster_id = os.environ.get("CLUSTER_ID")
+
+# Build the request URL
+url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
+
+# Define headers for the request
+headers = {
+  "Accept": "application/json",
+  "ApiKey": api_key
+}
+
+# Send the HTTP request using the requests library
+response = requests.get(url, headers=headers)
+
+# Check the response status code
+if response.status_code == 200:
+  # Parse the response JSON and extract the values
+  response_json = response.json()
+  kind = response_json['spec']['cloudConfigRef']['kind']
+  uid = response_json['spec']['cloudConfigRef']['uid']
+
+  # Print the extracted values
+  print(f"Kind: {kind}")
+  print(f"UID: {uid}")
+else:
+  # Print the error message if the request failed
+  print("Request failed with status code:", response.status_code)
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Rust" key="config-identifier-rust">
+
+```
+use std::env;
+use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, APIKEY};
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
+
+#[derive(Debug, Deserialize, Serialize)]
+struct SpectroCluster {
+    metadata: Value,
+    spec: SpectroClusterSpec,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct SpectroClusterSpec {
+    cloud_config_ref: CloudConfigRef,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct CloudConfigRef {
+    kind: String,
+    uid: String,
+}
+
+#[tokio::main]
+async fn main() -> Result<(), reqwest::Error> {
+    // Set API key, project ID, and cluster ID as environment variables
+    let api_key = env::var("API_KEY").unwrap();
+    let project_id = env::var("PROJECT_ID").unwrap();
+    let cluster_id = env::var("CLUSTER_ID").unwrap();
+
+    // Build the request URL
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}", cluster_id, project_id);
+
+    // Define headers for the request
+    let mut headers = HeaderMap::new();
+    headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
+    headers.insert(APIKEY, HeaderValue::from_str(&api_key).unwrap());
+
+    // Send the HTTP request using the reqwest crate
+    let response = reqwest::Client::new()
+        .get(&url)
+        .headers(headers)
+        .send()
+        .await?;
+
+    // Check the response status code
+    if response.status().is_success() {
+        // Deserialize the response data to a SpectroCluster struct
+        let cluster: SpectroCluster = response.json().await?;
+
+        // Extract spec.cloudConfigRef.kind and spec.cloudConfigRef.uid
+        let kind = cluster.spec.cloud_config_ref.kind;
+        let uid = cluster.spec.cloud_config_ref.uid;
+        println!("kind: {}", kind);
+        println!("uid: {}", uid);
+    } else {
+        // Print the error message if the request failed
+        println!("Request failed with status code: {}", response.status());
+    }
+
+    Ok(())
+}
+```
+
+</Tabs.TabPane>
+
+
+</Tabs>
+
+
+
+
