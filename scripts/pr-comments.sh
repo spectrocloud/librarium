@@ -5,6 +5,11 @@ ACCESS_TOKEN=$ACCESS_TOKEN
 OWNER=$OWNER
 REPO=$REPO
 
+# Define emoji for each object
+EMOJI1=":sparkles:"
+EMOJI2=":loudspeaker:"
+EMOJI3=":rocket:"
+
 # Get the branch name
 BRANCH_NAME=$(basename "$GITHUB_REF")
 
@@ -20,7 +25,6 @@ fi
 
 echo "Pull request number: $PR_NUMBER"
 
-
 # Read JSON file contents into a variable
 JSON_CONTENT=$(jq '.' link_report.json)
 
@@ -28,9 +32,18 @@ echo "JSON content:"
 echo "$JSON_CONTENT"
 
 # Format comment with JSON content
-COMMENT="```
-$JSON_CONTENT
-```"
+COMMENT=""
+
+# Loop through each object and add its contents to the comment
+for object in $(echo "$JSON_CONTENT" | jq -c '.[]'); do
+  COMMENT="$COMMENT\n$EMOJI1 Object:\n"
+  fields=$(echo "$object" | jq -r 'keys[]')
+  for field in $fields; do
+    value=$(echo "$object" | jq -r ".$field")
+    COMMENT="$COMMENT$EMOJI2 $field: $value\n"
+  done
+  COMMENT="$COMMENT$EMOJI3\n"
+done
 
 echo "Posting comment to pull request #$PR_NUMBER"
 
@@ -45,4 +58,3 @@ if [[ "$RESPONSE" == *"message"* ]]; then
   echo "$RESPONSE"
   exit 1
 fi
-
