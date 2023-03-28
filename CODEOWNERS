@@ -1,0 +1,4 @@
+content/ @spectrocloud/docs-education
+assets/docs/images/ @spectrocloud/docs-education
+vale/  @spectrocloud/docs-education
+.github/ @spectrocloud/docs-education
