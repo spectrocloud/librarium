@@ -5,8 +5,8 @@ PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
 # Set variables for GitHub API
 ACCESS_TOKEN=$ACCESS_TOKEN
-OWNER=$OWNER
-REPO=$REPO
+OWNER=spectrocloud
+REPO=librarium
 
 # Read JSON file contents into a variable
 JSON_CONTENT=$(cat link_report.json)
@@ -15,6 +15,8 @@ JSON_CONTENT=$(cat link_report.json)
 COMMENT="```
 $JSON_CONTENT
 ```"
+
+echo "Posting comment to pull request #$PR_NUMBER"
 
 # Post comment to pull request using GitHub API
 curl -X POST \
