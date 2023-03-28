@@ -41,14 +41,12 @@ echo "$JSON_CONTENT"
 COMMENT=""
 
 # Loop through each object and add its contents to the comment
-for object in $(echo "$JSON_CONTENT" | jq -c '.[]'); do
-  COMMENT="$COMMENT\n$EMOJI1 Object:\n"
-  fields=$(echo "$object" | jq -r 'keys[]')
-  for field in $fields; do
-    value=$(echo "$object" | jq -r ".$field")
-    COMMENT="$COMMENT$EMOJI2 $field: $value\n"
-  done
-  COMMENT="$COMMENT$EMOJI3\n"
+for link in $(echo "${json}" | jq -r '.links[] | @base64'); do
+    url=$(echo "${link}" | base64 --decode | jq -r '.url')
+    status=$(echo "${link}" | base64 --decode | jq -r '.status')
+    state=$(echo "${link}" | base64 --decode | jq -r '.state')
+    parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
+    COMMENT="${links}\n\n${url}\nStatus: ${status}\nState: ${state}\nParent: ${parent}"
 done
 
 echo "Posting comment to pull request #$PR_NUMBER"
