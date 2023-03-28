@@ -1,13 +1,12 @@
 # Docs & Tutorials
-content/ @spectrocloud/docs-education
+content/ @docs-education
 # Images
-assets/docs/images/ @spectrocloud/docs-education
+assets/docs/images/ @docs-education
 # Writing Checks
-vale/  @spectrocloud/docs-education
+vale/  @docs-education
 # CI/CD Related
-.github/ @spectrocloud/docs-education
+.github/ @docs-education
 
 
 # Catch All Rule
-
-* @spectrocloud/docs-education
+* @docs-education
