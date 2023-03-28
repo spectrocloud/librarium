@@ -128,7 +128,7 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 <br />
 
 
-## Create New Cluster
+## Create a New Cluster
 
 You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
 
@@ -156,36 +156,11 @@ In the basic information section, you insert the general information about the c
 
 ### Cluster profile
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
-Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+From the Cluster profile section, you can select the profile you want to deploy on AWS.
 
-Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click to **Add Cluster Profile** at the top right side.
+![palette cluster profiles](deploy-k8s-cluster/aws/clusters_cluster_profile.png)
 
-Follow the procedure to create a new profile.
-
-In **Basic Information**, insert the name of the profile such as *gcp-profile*, a brief  description of the profile, the type as *Full*, and tags as *gcp". You can leave version empty since the version defaults to 1.0.0.
-
-**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Google Cloud*.
-
-**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
-Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
-
-The infrastrucutre packs and their *Pack Values* configuration used in this tutorial are the following:
-- **Operating System (OS)** pack type -> *ubuntu-gcp LTS__20.4.x*
-- **Kubernetes** pack type -> *Kubernetes 1.21.x*
-- **Network** pack type -> *cni-calico 3.24.x* (Calico)
-- **Storage** pack type -> *csi-gcp 1.0.x* (Google Compute Engine persistent disk Container Storage Interface - GCE CSI)
-
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later on.
-Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
-
-
-The **Review** section gives an overview of the cluster profile configuration created.
-
-![aws cluster profile overview page](deploy-k8s-cluster/gcp/profile_review.png)
-
-After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
+On the right side there is a list of available and suitable profile you can choose for the deployment on the selected cloud provider.
 
 <br />
 
@@ -194,7 +169,7 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 
 The parameters section resumes the list of infrastructure layers and the list of add-on components.
 
-![palette clusters basic information](deploy-k8s-cluster/aws/clusters_parameters.png)
+![palette clusters parameters](deploy-k8s-cluster/aws/clusters_parameters.png)
 
 For each component, there is a manifest with the deploy configurations.
 
@@ -278,26 +253,178 @@ When you create an account, we recommend to create another user to execute every
 
 <br />
 
-Azure Active Directory -> create the application
-Subscriptions -> Create subscription
-Resource groups -> Create resource group withn the subscription
-SSH keys -> Generate SSH Key Pair
+When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
+To create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
 
+To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
+
+![create a subscription](deploy-k8s-cluster/azure/azure_subscription.png)
+
+Select *Add -> Add role assignment* and follow the next steps with the following information:
+- **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
+- **Role** -> Select **Contributor**
+- **Members** -> Click on **Select Members** and select your application name to add it
+
+<br />
+
+Let's now generate an SSH Key. To generate a SSH Key you also need to:
+- [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
+- [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
+
+Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to generate one. 
+
+<br />
 
 ## Create Cluster Profile
 
-todo ...
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
+Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+
+Start by log in to Palette and open the **Profiles** tab on the left panel. 
+You can see the list of available default profiles. For now, we create our own profile, so click to **Add Cluster Profile** at the top right side.
+
+Follow the procedure to create a new profile.
+
+In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief  description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
+
+**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
+
+**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
+Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
+
+The infrastrucutre packs and their *Pack Values* configuration used in this tutorial are the following:
+- **Operating System (OS)** pack type -> *ubuntu-azure LTS__20.4.x*
+- **Kubernetes** pack type -> *Kubernetes 1.21.x*
+- **Network** pack type -> *cni-calico-azure 3.24.x* (Calico)
+- **Storage** pack type -> *csi-azure 1.20.x* (Container Storage Interface - CSI)
+
+We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later on.
+Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
+
+The **Review** section gives an overview of the cluster profile configuration created.
+
+![azure cluster profile overview page](deploy-k8s-cluster/azure/profile_review.png)
+
+After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
 
 <br />
 
 
-## Create New Cluster
+## Create a New Cluster
 
-todo ...
+You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
+
+From the clusters page, you can select **Add New Cluster**
+
+![palette clusters overview page](deploy-k8s-cluster/new_cluster.png)
+
+and **Deploy New Cluster** from the pop-up menu.
+
+Choose the cloud provider at your choice, Azure in this case, and **Start Azure Configuration**
+
+This starts the procedure to create configure the cluster on Azure, whose steps are the following.
 
 <br />
 
+
+### Basic information
+
+In the basic information section, you insert the general information about the cluster, such as the Cluster name, Description, Tags, the Cloud account.
+
+![palette clusters basic information](deploy-k8s-cluster/azure/clusters_basic_info.png)
+
+<br />
+
+
+### Cluster profile
+ 
+From the Cluster profile section, you can select the profile you want to deploy on azure.
+
+![palette clusters basic information](deploy-k8s-cluster/azure/clusters_cluster_profile.png)
+
+On the right side there is a list of available and suitable profile you can choose for the deployment on the selected cloud provider.
+
+<br />
+
+
+### Parameters
+
+The parameters section resumes the list of infrastructure layers and the list of add-on components.
+
+![palette clusters basic information](deploy-k8s-cluster/azure/clusters_parameters.png)
+
+For each component, there is a manifest with the deploy configurations.
+
+The default manifest is already suitable for production environment since it already includes a working configuration and the most of the hardening standards recommended for production environments.
+Despite that, you can edit the default manifest, customizing the deploy configuration.
+
+<br />
+
+
+### Cluster config
+
+The cluster config section allows to select multiple parameters to deploy of the cluster.
+
+![palette cluster configuration](deploy-k8s-cluster/azure/clusters_cluster_config.png)
+
+For the scope of this tutorial we insert only the mandatory ones:
+- the *Subscription* associated to your Azure account
+- the *Region* where to deploy among the ones provided by the cloud provider
+- the *Resource Group* 
+- the Palette *SSH Key* to use.
+
+To create a SSH Key on the Palette Console, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
+Click on *Add New SSH Key* and insert the name of the key and the content of the public key. Then confirm it.
+
+![spectro cloud key pair creation](deploy-k8s-cluster/sp_ssh_key_create.png)
+
+<br />
+
+
+### Nodes config
+
+The node config section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
+
+You can find the list and the explaination of all the paramerters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
+
+Among the multiple configuration you can set, be sure to consider:
+- *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
+- *Allow worker capability* to allow the master node also to accept workloads.
+- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
+- *Availability zones* to use within the Region seleted in the *Cluster config* section.
+
+![palette clusters nodes configuration](deploy-k8s-cluster/azure/clusters_nodes_config.png)
+
+<br />
+
+
+### Settings
+
+In the Settings section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), enable virtual clusters.
+
+For the purpose of this tutorial, you can use the default settings configuration.
+
+<br />
+
+
+### Review
+
+The review section resumes the cluster configuration as you have configured it in the previous steps.
+
+![azure creation of a new cluster overview page](deploy-k8s-cluster/azure/clusters_review.png)
+
+Take a look of the overall se tup and press *Finish Configuration* to deploy it.
+
+<br />
+
+Now select the **Clusters** page from the left panel and check the created cluster.
+
+![Update the cluster](deploy-k8s-cluster/deploy_app/azure_create_cluster.png)
+
+Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+<br />
 
 </Tabs.TabPane>
 
@@ -345,7 +472,7 @@ For this tutorial, we use Ubuntu as OS, Calico as networking component, Amazon E
 <br />
 
 
-## Create New Cluster
+## Create a New Cluster
 
 You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
 
@@ -373,7 +500,7 @@ In the basic information section, you insert the general information about the c
 
 ### Cluster profile
 
-From the Cluster profile section, you can select the profile you want to deploy on AWS.
+From the Cluster profile section, you can select the profile you want to deploy on GCP.
 
 ![palette clusters basic information](deploy-k8s-cluster/gcp/clusters_cluster_profile.png)
 
@@ -414,7 +541,7 @@ a
 On Palette Console, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
 Click on *Add New SSH Key* and insert the name of the key and the content of the public key. Then confirm it.
 
-![spectro cloud key pair creation](deploy-k8s-cluster/gcp/sp_ssh_key_create.png)
+![spectro cloud key pair creation](deploy-k8s-cluster/sp_ssh_key_create.png)
 
 <br />
 
@@ -430,8 +557,6 @@ Among the multiple configuration you can set, be sure to consider:
 - *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region seleted in the *Cluster config* section.
-- *Instance Option* to choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes. 
-  - (in case of spot instance) *Maximum spot bid price* to set the bid price threshold to get instances. For this tutorial, you can select spot instance to minimize cost but make sure you check the *Allow worker capability* flag.
 
 ![palette clusters nodes configuration](deploy-k8s-cluster/gcp/clusters_nodes_config.png)
 
@@ -459,7 +584,7 @@ Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/gcp_create_cluster.png)
+![Update the cluster](deploy-k8s-cluster/gcp/gcp_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -839,7 +964,7 @@ Click on the profile to see the details of the stacks that compose the profile:
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/aws_create_cluster.png)
+![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -1016,11 +1141,11 @@ Edit the file *variables.tf* and insert the list of variables:
 
 ```terraform
 variable "spectrocloud_api_key" {}
-variable "cluster_profile" {}
-variable "region" {}
 variable "subscription_id" {}
 variable "resource_group" {}
+variable "region" {}
 variable "cluster_ssh_public_key" {}
+variable "cluster_profile" {}
 
 variable "azure-cloud-account-name" {
     type = string
@@ -1053,28 +1178,28 @@ variable "worker_nodes" {
 
 Then, edit also the file *terraform.tfvars* and append the content of the variables:
 ```terraform
-spectrocloud_api_key    = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-azure-cloud-account-name  = "azure-palette"
-cluster_profile         = "tf-azure-profile"
-region                  = "East US"
-subscription_id         = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-resource_group          = "palette_rg"
-cluster_ssh_public_key  = "xxxxxxxxxxx"
+spectrocloud_api_key     = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+azure-cloud-account-name = "azure-palette"
+subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+resource_group           = "palette_rg"
+cluster_profile          = "tf-azure-profile"
+region                   = "eastus"
+cluster_ssh_public_key   = "key"
 
 master_nodes = {
-    count            = "1"
-    instance_type    = "Standard_D2_v3"
-    disk_size_gb     = "50"
-    availability_zones = []
-    is_system_node_pool = false
+    count                = "1"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
 }
 
 worker_nodes = {
-    count            = "1"
-    instance_type    = "Standard_D2_v3"
-    disk_size_gb     = "50"
-    availability_zones = []
-    is_system_node_pool = false
+    count                = "2"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
 }
 ```
 
@@ -1093,7 +1218,7 @@ data "spectrocloud_cluster_profile" "profile" {
 
 resource "spectrocloud_cluster_azure" "cluster" {
   name             = "azure-cluster"
-  tags             = ["azure", "tutorial"]
+  tags             = ["ms-azure", "tutorial"]
   cloud_account_id = data.spectrocloud_cloudaccount_azure.account.id
 
   cloud_config {
@@ -1163,7 +1288,7 @@ Click on the profile to see the details of the stacks that compose the profile:
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/azure_create_cluster.png)
+![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -1364,15 +1489,16 @@ Open the Palette dashboard and click on **Workloads** on the top of the page:
 
 ![Workloads](deploy-k8s-cluster/workloads.png)
 
-This tab opens an overview of the Kubernetes components. From there you can check if the application components have been created successfully:
+The tab opens an overview of the Kubernetes components. From there you can check if the application components have been created successfully:
 - select the **Namespace** tab and check for a namespace called *cluster-xxxxxx*
 - select the **Deployment** tab and check for the *hello-universe-deployment* deployment
 - select the **Pods** tab and check for two pods with name *hello-universe-xxxxxx*
 
-Next to the pods name, check the pods *ready* information
+Next to the pods name, check the pods *ready* information to see if the application is fully deployed.
 
-Access the application: click on Service button ...
+To access the application, select the **Overview** tab at the top pf the page and click on the link next to the **Services** label. It will open a new tab on the browser that prompts the application.
 
+![Deployed application](deploy-k8s-cluster/app.png)
 
 <br />
 
@@ -1404,18 +1530,34 @@ You will be asked to type in the cluster name to confirm the delete action. Go a
 
 To destroy resources with Terraform, use the destroy command.
 
+First enter into the folder where you have the Terraform configuration
+```bash
+$ mkdir terraform-project
+$ cd terraform-project
+```
+
 If you want to check the resources you will delete, you can first run: 
 ```terraform
 terraform plan -destroy
 ```
 
-Then delete the components running the destroy command:
+Then delete the components by running the destroy command:
 ```terraform
 $ terraform destroy
 ```
 
 </Tabs.TabPane>
 </Tabs>
+
+<br />
+
+To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
+![Deleting cluster](deploy-k8s-cluster/deleting_cluster.png)
+
+<br />
+
+Click on the cluster to see the details of the components Palette is deleting
+![deleting cluster details](deploy-k8s-cluster/deleting_cluster_details.png)
 
 <br />
 
