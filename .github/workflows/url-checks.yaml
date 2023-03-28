@@ -27,15 +27,6 @@ jobs:
       - name: Run jq
         uses: sergeysova/jq-action@v2
 
-      - name: Get pull request number
-        run: |
-          if [ -n "${GITHUB_HEAD_REF}" ] && [ -n "${GITHUB_BASE_REF}" ]; then
-            echo "This job is running as part of a pull request (#${{ github.event.pull_request.number }})"
-          else
-            echo "This job is not running as part of a pull request"
-          fi
-
-
       - name: URL Checker
         run: make verify-url-links-ci
   

@@ -11,7 +11,7 @@ if [ -z "$PR_NUMBER" ]; then
   branch_name=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
 
   # Use the GitHub API to retrieve information about the pull request
-  pull_request=$(curl -s -H "Authorization: Bearer $ACCESS_TOKEN" "https://api.github.com/repos/$OWNER/$REPO/pulls?head=$GITHUB_REPOSITORY:$branch_name")
+  pull_request=$(curl -s -H "Authorization: Bearer $ACCESS_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$OWNER/$REPO/pulls?head=$GITHUB_REPOSITORY:$branch_name")
 
   # Extract the pull request number from the API response
   PR_NUMBER=$(echo $pull_request | jq -r '.[0].number')
@@ -30,10 +30,15 @@ $JSON_CONTENT
 ```"
 
   # Post comment to pull request using GitHub API
-  curl -X POST \
+  curl_response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
   -H "Authorization: token $ACCESS_TOKEN" \
   -d "{\"body\":\"$COMMENT\"}" \
-  "https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments"
+  "https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments")
+
+  if [ "$curl_response" != "201" ]; then
+    echo "Error posting comment to pull request"
+    exit 1
+  fi
 else
   echo "No pull request number available"
 fi
