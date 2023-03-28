@@ -27,6 +27,10 @@ jobs:
       - name: Run jq
         uses: sergeysova/jq-action@v2
 
+      - name: Get pull request number
+        run: |
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+
 
       - name: URL Checker
         run: make verify-url-links-ci
@@ -34,8 +38,6 @@ jobs:
       - name: Post Comment
         run: |
           cd scripts
-          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "Pull request number: $PR_NUMBER" 
           ./pr-comments.sh
         env:
           ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
