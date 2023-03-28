@@ -24,12 +24,17 @@ jobs:
         with:
           node-version: 18
 
+      - name: Run jq
+        uses: sergeysova/jq-action@v2
+
+
       - name: URL Checker
         run: make verify-url-links-ci
   
       - name: Post Comment
         run: |
           cd scripts
+          jq '.' link_report.json
           ./pr-comments.sh
         env:
           ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
