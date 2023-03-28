@@ -36,7 +36,7 @@ if [[ -z "$JSON_CONTENT" ]]; then
 fi
 
 # Format comment with JSON content
-COMMENT="**Broken Links in Production Report** \n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n"
+COMMENT=":loudspeaker: Broken Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n"
 
 # Loop through the "links" array and concatenate each item into the COMMENT variable
 for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
