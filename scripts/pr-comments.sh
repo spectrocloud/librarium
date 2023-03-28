@@ -52,9 +52,7 @@ done
 echo "Posting comment to pull request #$PR_NUMBER"
 
 # Post comment to pull request using GitHub API
-RESPONSE=$(curl -s -H "Authorization: token $ACCESS_TOKEN" \
--d "{\"body\":\"$COMMENT\"}" \
-"https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments")
+RESPONSE=$(curl -sSL -H "Authorization: token ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d "{\"body\":\"${COMMENT}\"}" -X POST "${GITHUB_API_URL}/repos/${OWNER}/${REPO}/issues/${PR_NUMBER}/comments")
 
 # Check if the response contains an error message
 if [[ "$RESPONSE" == *"message"* ]]; then
