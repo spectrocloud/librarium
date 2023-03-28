@@ -1,44 +1,39 @@
 #!/bin/bash
 
-# Obtain pull request number from environment variable if available
-if [ -n "$GITHUB_EVENT_PATH" ]; then
-  PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-fi
+# Set variables for GitHub API
+ACCESS_TOKEN=$ACCESS_TOKEN
+OWNER=$OWNER
+REPO=$REPO
 
-# If pull request number is not available, retrieve it from the GitHub API
-if [ -z "$PR_NUMBER" ]; then
-  # Get the branch name from the GITHUB_REF environment variable
-  branch_name=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
+# Get the branch name
+BRANCH_NAME=$(basename "$GITHUB_REF")
 
-  # Use the GitHub API to retrieve information about the pull request
-  pull_request=$(curl -s -H "Authorization: Bearer $ACCESS_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$OWNER/$REPO/pulls?head=$GITHUB_REPOSITORY:$branch_name")
+# Get the pull request number for the branch
+PR_NUMBER=$(curl -s -H "Authorization: token $ACCESS_TOKEN" \
+"https://api.github.com/repos/$OWNER/$REPO/pulls?head=$BRANCH_NAME" | jq -r '.[0].number')
 
-  # Extract the pull request number from the API response
-  PR_NUMBER=$(echo $pull_request | jq -r '.[0].number')
-fi
+echo "Pull request number: $PR_NUMBER"
 
-# Print the pull request number if it is not null
-if [ ! -z "$PR_NUMBER" ]; then
-  echo "Posting comment to pull request #$PR_NUMBER"
+# Read JSON file contents into a variable
+JSON_CONTENT=$(cat link_report.json)
 
-  # Read JSON file contents into a variable
-  JSON_CONTENT=$(cat link_report.json)
-
-  # Format comment with JSON content
-  COMMENT="```
+# Format comment with JSON content
+COMMENT="```
 $JSON_CONTENT
 ```"
 
-  # Post comment to pull request using GitHub API
-  curl_response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-  -H "Authorization: token $ACCESS_TOKEN" \
-  -d "{\"body\":\"$COMMENT\"}" \
-  "https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments")
+echo "Posting comment to pull request #$PR_NUMBER"
 
-  if [ "$curl_response" != "201" ]; then
-    echo "Error posting comment to pull request"
-    exit 1
-  fi
-else
-  echo "No pull request number available"
+# Post comment to pull request using GitHub API
+RESPONSE=$(curl -s -H "Authorization: token $ACCESS_TOKEN" \
+-d "{\"body\":\"$COMMENT\"}" \
+"https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments")
+
+# Check if the response contains an error message
+if [[ "$RESPONSE" == *"message"* ]]; then
+  echo "Error posting comment to pull request"
+  echo "$RESPONSE"
+  exit 1
 fi
+
+echo "Comment posted successfully"
