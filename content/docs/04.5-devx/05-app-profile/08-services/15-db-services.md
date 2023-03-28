@@ -56,7 +56,7 @@ will generate an update notification on all the apps created from the app profil
 
 Each database service has a set of exposed output variables. These output variables can be used to establish service connectivity with other service layers of the app profile by consuming the information.
 
-The following code snippet is an example of the output variables exposed by the MongoDB service. Check out the [service listings](/devx/app-profile/service-listings) page to learn more about each service.
+The following code snippet is an example of the output variables exposed by the MongoDB service. Check out the [service listings](/devx/app-profile/services/service-listings/) page to learn more about each service.
 
 <br />
 

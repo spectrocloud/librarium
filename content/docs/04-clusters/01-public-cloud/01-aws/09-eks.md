@@ -100,7 +100,7 @@ Use the following steps to provision a new AWS EKS cluster:
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](/clusters/public-cloud/aws/architecture#awsinstancetypeandpodcapacity) documentation for help in determining the proper instance type and size. |
     |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
     |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
-    |**Instance Type** | Select the AWS [instance type](/clusters/public-cloud/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
+    |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
     
   * Cloud Configuration settings:
 
