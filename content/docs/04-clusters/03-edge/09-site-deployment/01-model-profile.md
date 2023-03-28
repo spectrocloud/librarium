@@ -29,7 +29,7 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 <br/>
 
-# Profile Scope
+## Profile Scope
 
 You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
 
@@ -45,6 +45,7 @@ No prerequisites.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
 2. Choose the desired scope, project or **Tenant Admin**.
 
 ![Select the scope by using the drop-down Menu.  Either project or tenant admin are the displayed values in the screenshot.](/clusters_site_deployment_mode-profile_scope-selector.png)
@@ -53,27 +54,30 @@ No prerequisites.
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
+
 4. Click the **Add new Profile** button.
+
 
 5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on **Next**.
 
+
 6. Select **Edge Native** as the cloud type and click on **Next**.
+
 
 7. In the profile layers screen, for the OS layer, choose the desired OS type and  OS version. Click on **Next layer**.
 
 <InfoBox>
 
-Choose the *Bring Your Own OS* (BYOOS) option can be chosen if you are building your own enterprise edge artifacts. Provide the location of your provider image as the system provider uri.  You can also provide additional cloud-init configurations in the OS pack's YAML values for setting up Edge host users, installing additional OS packages, installing certificates and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
+You can select the *Bring Your Own OS (BYOOS)* if you build your enterprise Edge artifacts. Specify the registry hosting your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack's YAML values to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
 
 </InfoBox>
 
-<InfoBox>
-If you choose BYOOS as your OS layer, K8s flavor you chosse for the K8s layer should match the flavor used for your enterprise provider image. If these are different, deployments will fail in the final step during configuration of Kubernetes. Also, in this scenario, the version specified for the K8s layer is not propagated to the edge site. The version from your enterprise provider image take precendence.
-</InfoBox>
 
 8. Choose the desired Kubernetes distribution and version. Click on **Next layer**.
 
+
 9. Choose the desired CNI type and version. Click on **Next layer**.
+
 
 10. Review and save your cluster profile.
 
@@ -99,6 +103,6 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 # Next Steps
 
-Your next step in the deployment lifecycle is to prepare the Edge Installer user data. Use the [Prepare User Data](/clusters/edge/site-deployment/prepare-edge-configuration) guide to continue.
+Your next step in the deployment lifecycle is to prepare the Edge host for the installation. Use the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) guide to continue.
 
 <br />

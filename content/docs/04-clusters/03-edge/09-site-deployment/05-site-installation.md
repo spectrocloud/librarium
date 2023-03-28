@@ -76,7 +76,7 @@ When the cluster is created, the installation process will continue. The Palette
 
 When the Edge host finishes rebooting, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile.
 
-Any content bundles you provided are extracted and loaded into the container runtime process. Refer to [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
+Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
 ## Validation
 
@@ -143,7 +143,7 @@ When the cluster is created, the installation process continues. The Palette Edg
 
 After the reboot, the *Cluster Provisioning* phase begins. In this phase, the system boots into the OS defined in the cluster profile, and cluster configuration begins. Kubernetes components are initialized and configured based on the specifications in the cluster profile.
 
-Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [Prepare Content Bundle](/clusters/edge/site-deployment/prepare-content-bundle) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
+Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
 ## Validation
 
