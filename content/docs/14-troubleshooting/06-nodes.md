@@ -9,13 +9,13 @@ fullWidth: false
 
 # Nodes & Clusters
 
-This page is covers common debugging scenarios for nodes and clusters post deployment.
+This page covers common debugging scenarios for nodes and clusters post-deployment.
 
 # Nodes
 
 ## Scenario - Repaved Nodes
 
-Palette performs a rolling upgrade on the nodes when a chang is detected in the kubeadm config. Below are some of the actions including but not limited to that will cause the kubeadm configuration to change and result in the nodes getting an upgrade:
+Palette performs a rolling upgrade on the nodes when a change is detected in the `kubeadm` config. Below are some of the actions including but not limited to that will cause the `kubeadm` configuration to change and result in the nodes getting an upgrade:
 * OS layer changes
 * Kubernetes layer changes
 * Kubernetes version upgrade
