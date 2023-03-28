@@ -36,7 +36,7 @@ if [[ -z "$JSON_CONTENT" ]]; then
 fi
 
 # Format comment with JSON content
-COMMENT="# Broken Links in Production Report"
+COMMENT="**Broken Links in Production Report** \n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n"
 
 # Loop through the "links" array and concatenate each item into the COMMENT variable
 for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
@@ -44,7 +44,7 @@ for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
     status=$(echo "${link}" | base64 --decode | jq -r '.status')
     state=$(echo "${link}" | base64 --decode | jq -r '.state')
     parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
-    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n---"
+    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}  \n:traffic_light: Status: ${status}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n---"
 done
 
 # Post the comment to the Slack webhook
