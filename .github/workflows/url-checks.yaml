@@ -32,7 +32,7 @@ jobs:
           cd scripts
           ./pr-comments.sh
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
           GITHUB_EVENT_PATH: ${{github.event.GITHUB_EVENT_PATH }}
