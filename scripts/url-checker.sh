@@ -52,11 +52,11 @@ for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
       ((BROKEN_LINK_COUNT++))
     fi
 
-    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
+    COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
 done
 
 # Add broken link count to the comment
-COMMENT="${COMMENT}\n\n Total count of broken URLs: ${BROKEN_LINK_COUNT}"
+COMMENT="${COMMENT}\n\n Total count of broken URLs: ${BROKEN_LINK_COUNT}\n\n Source: :github: - librarium"
 
 # Post the comment to the Slack webhook
 curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"${COMMENT}\"}" $SLACK_WEBHOOK_URL
