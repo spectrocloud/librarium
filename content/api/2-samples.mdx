@@ -1,0 +1,247 @@
+---
+title: "Sample Workflow"
+metaTitle: "Sample Workflow"
+metaDescription: "Spectro Cloud API Sample Workflow"
+icon: ""
+hideToC: true
+fullWidth: false
+hiddenFromNav: false
+hideToCSidebar: true
+---
+import {Intro, IntroButtons} from "shared/components"
+import InfoBox from "shared/components/InfoBox"
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+
+
+# Overview
+
+This workflow demonstrates how to use Spectro Cloud API. You can use the API to automate the provisioning of Kubernetes clusters and applications on Spectro Cloud. 
+
+The API is a RESTful API that uses JSON for serialization and supports HTTP Basic Authentication and token authentication. The API is available at `https://api.spectrocloud.com`.
+
+Use the folllowing examples to familiarize yourself with the API.
+
+<br />
+
+## Prerequisites
+
+* You must have a Spectro Cloud account. If you do not have an account, you can create one at [https://console.spectrocloud.com](https://console.spectrocloud.com).
+
+* An Authentication header with a token value or an API Key with an ApiKey value. 
+Learn more about [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) in Palette documentation.
+
+* You must have a Spectro Cloud cluster. You can create a cluster from the Spectro Cloud console.
+
+## Configure Scope and Authentication
+
+In the following examples, the following variables are used to interact with the Palette API. The values for these variables are specific to your environment.
+The project ID is the UID of the project in which you want to create the cluster. You can find the project ID in the Palette dashboard, top right-hand corner.
+
+<br />
+
+```shell
+export API_KEY="Your API Key"
+```
+<br />
+
+```shell
+export PROJECT_UID="Your Project UID"
+```
+
+
+## List Cluster Nodes and Node Status
+
+You can use the following endpoint to retrieve the list of nodes in a cluster and their status.
+
+**ClusterId**: `Your Cluster ID`
+
+**Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{uid}`
+
+<br />
+
+
+<Tabs>
+
+<Tabs.TabPane tab="curl" key="node-status-curl">
+
+```shell
+curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+--header 'Accept: application/json' \
+--header "ApiKey: $API_KEY"
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="JavaScript" key="node-status-js">
+
+
+```js
+// Get API key, project ID, and cluster ID from environment variables
+const apiKey = process.env.API_KEY;
+const projectID = process.env.PROJECT_ID;
+const clusterID = process.env.CLUSTER_ID;
+
+// Build the request URL
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+
+// Define headers for the request
+const headers = new Headers({
+  "Accept": "application/json",
+  "ApiKey": apiKey
+});
+
+// Define an async function to send the HTTP request
+async function fetchData() {
+  try {
+    // Send the HTTP request using the fetch() method
+    const response = await fetch(url, {
+      method: "GET",
+      headers: headers
+    });
+    const data = await response.json();
+    console.log("Response data:", data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Call the async function to send the HTTP request
+fetchData();
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Go" key="node-status-go">
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io/ioutil"
+	"os"
+)
+
+func main() {
+	// Get API key, project ID and cluster ID from environment variables
+	apiKey := os.Getenv("API_KEY")
+	projectID := os.Getenv("PROJECT_ID")
+	clusterID := os.Getenv("CLUSTER_ID")
+
+	// Create a new HTTP request
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID), nil)
+	if err != nil {
+		fmt.Println("Error creating HTTP request:", err)
+		return
+	}
+
+	// Add headers to the request
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("ApiKey", apiKey)
+
+	// Send the HTTP request
+	client := http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending HTTP request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	// Read the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Error reading HTTP response:", err)
+		return
+	}
+
+	// Print the response body
+	fmt.Println(string(body))
+}
+
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Python" key="node-status-python">
+
+```python
+import os
+import requests
+
+# Get API key, project ID, and cluster ID from environment variables
+api_key = os.environ.get("API_KEY")
+project_id = os.environ.get("PROJECT_ID")
+cluster_id = os.environ.get("CLUSTER_ID")
+
+# Build the request URL
+url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
+
+# Define headers for the request
+headers = {
+  "Accept": "application/json",
+  "ApiKey": api_key
+}
+
+# Send the HTTP request using the requests library
+response = requests.get(url, headers=headers)
+
+# Check the response status code
+if response.status_code == 200:
+  # Print the response data (JSON format)
+  print("Response data:", response.json())
+else:
+  # Print the error message if the request failed
+  print("Request failed with status code:", response.status_code)
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Rust" key="node-status-rust">
+
+```js
+use std::env;
+use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, APIKEY};
+
+#[tokio::main]
+async fn main() -> Result<(), reqwest::Error> {
+    // Set API key, project ID, and cluster ID as environment variables
+    let api_key = env::var("API_KEY").unwrap();
+    let project_id = env::var("PROJECT_ID").unwrap();
+    let cluster_id = env::var("CLUSTER_ID").unwrap();
+
+    // Build the request URL
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}", cluster_id, project_id);
+
+    // Define headers for the request
+    let mut headers = HeaderMap::new();
+    headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
+    headers.insert(APIKEY, HeaderValue::from_str(&api_key).unwrap());
+
+    // Send the HTTP request using the reqwest crate
+    let response = reqwest::Client::new()
+        .get(&url)
+        .headers(headers)
+        .send()
+        .await?;
+
+    // Check the response status code
+    if response.status().is_success() {
+        // Print the response data (JSON format)
+        let body = response.text().await?;
+        println!("Response data: {}", body);
+    } else {
+        // Print the error message if the request failed
+        println!("Request failed with status code: {}", response.status());
+    }
+
+    Ok(())
+}
+```
+
+</Tabs.TabPane>
+
+
+</Tabs>
