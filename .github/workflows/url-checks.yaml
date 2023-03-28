@@ -1,11 +1,8 @@
-# on:
-#   schedule:
-#     # Every Monday at 6 am
-#     - cron: '0 6 * * 1'
-  
 on:
-  push:
-    branches-ignore: [ main ]
+  schedule:
+    # Every Monday at 6 am
+    - cron: '0 6 * * 1'
+  
   
 concurrency:
   group: url-${{ github.ref }}
