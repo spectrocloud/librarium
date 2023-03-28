@@ -41,7 +41,7 @@ fi
 COMMENT="# Broken Links in Production Report"
 
 # Loop through the "links" array and concatenate each item into the COMMENT variable
-for link in $(echo "${json}" | jq -r '.links[] | @base64'); do
+for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
     url=$(echo "${link}" | base64 --decode | jq -r '.url')
     status=$(echo "${link}" | base64 --decode | jq -r '.status')
     state=$(echo "${link}" | base64 --decode | jq -r '.state')
