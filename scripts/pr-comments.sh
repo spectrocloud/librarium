@@ -34,9 +34,6 @@ if [[ -z "$JSON_CONTENT" ]]; then
   exit 0
 fi
 
-# echo "JSON content:"
-# echo "$JSON_CONTENT"
-
 # Format comment with JSON content
 COMMENT="# Broken Links in Production Report"
 
@@ -48,6 +45,17 @@ for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
     parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
     COMMENT="${COMMENT}\n\n:link: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent: ${parent}\n---"
 done
+
+if [[ "${DEBUG}" == "true" ]]; then
+    echo "GitHub API URL: ${GITHUB_API_URL}"
+    echo "Pull Request Number: ${PR_NUMBER}"
+    echo "Repository Owner: ${REPO_OWNER}"
+    echo "Repository Name: ${REPO_NAME}"
+    echo "JSON content:"
+    echo "$json"
+    echo "COMMENT content:"
+    echo "$COMMENT"
+fi
 
 echo "Comment: $COMMENT"
 

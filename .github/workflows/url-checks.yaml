@@ -35,6 +35,6 @@ jobs:
           cd scripts
           ./pr-comments.sh
         env:
-          ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
