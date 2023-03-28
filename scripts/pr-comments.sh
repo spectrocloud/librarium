@@ -2,6 +2,7 @@
 
 # Obtain pull request number from environment variable
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+echo "Pull request number: $PR_NUMBER"
 
 # Set variables for GitHub API
 ACCESS_TOKEN=$ACCESS_TOKEN
