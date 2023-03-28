@@ -26,7 +26,13 @@ fi
 echo "Pull request number: $PR_NUMBER"
 
 # Read JSON file contents into a variable
-JSON_CONTENT=$(jq '.' link_report.json)
+JSON_CONTENT=$(jq '.' "link_report.json")
+
+# Check if JSON file is empty
+if [[ -z "$JSON_CONTENT" ]]; then
+  echo "No broken links found"
+  exit 0
+fi
 
 echo "JSON content:"
 echo "$JSON_CONTENT"
