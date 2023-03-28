@@ -40,4 +40,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.CARDENAS_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
-          GITHUB_EVENT_PATH: ${{github.event.GITHUB_EVENT_PATH}}
+          GITHUB_EVENT_PATH: ${{github.event.github_event_path}}
