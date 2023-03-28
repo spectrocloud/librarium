@@ -50,7 +50,7 @@ verify-url-links: ## Check for broken URLs in production
 verify-url-links-ci: ## Check for broken URLs in production
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
 	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
-	jq '.links[] | select(.status > 200)' temp_report.json | tee link_report.json
+	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
 	rm temp_report.json
 	mv link_report.json scripts/
 

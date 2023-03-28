@@ -6,9 +6,9 @@ OWNER=$OWNER
 REPO=$REPO
 
 # Define emoji for each object
-EMOJI1=":sparkles:"
-EMOJI2=":loudspeaker:"
-EMOJI3=":rocket:"
+EMOJI1=":loudspeaker:"
+EMOJI2=":robot:"
+EMOJI3=":news:"
 
 # Get the branch name
 BRANCH_NAME=$(basename "$GITHUB_REF")
