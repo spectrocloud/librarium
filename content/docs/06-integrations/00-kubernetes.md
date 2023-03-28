@@ -37,10 +37,10 @@ Below are the stages of deprecation:
 - **Deprecate**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
 
 
-- **Delete**: When a pack is disabled, you will no longer be allowed to create new cluster profiles that using the pack. Palette displays a message informing you to cut over to the newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the deprecated pack.
+- **Disable**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to cut over to the newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the deprecated pack.
 
 
-- **Delete**: When a pack is deleted, you will not be able to create new cluster profiles using the pack or launch new clusters using the existing profiles that contain the pack.  Palette displays a message informing you to cut over to the newer version of the pack. There is no disruption to existing cluster workloads and will continue to be functional.
+- **Delete**: When a pack is deleted, you will not be able to create new cluster profiles using the pack or launch new clusters using the existing profiles that contain the pack. Palette displays a message informing you to cut over to the newer version of the pack. There is no disruption to existing cluster workloads and will continue to be functional.
 
 <br />
 
@@ -112,7 +112,7 @@ The Kubeadm config has been updated with improved hardening.
 
 <br />
 
-#### Example Kubeadm configuration file 
+#### Example Kubeadm Configuration File 
 
 
 ```yaml
@@ -264,7 +264,7 @@ The Kubeadm config is updated with hardening improvements, as a pod security pol
 
 <br />
 
-#### Example Kubeadm config
+#### Example Kubeadm Configuration File 
 
 ```yaml
 pack:
@@ -431,7 +431,7 @@ The Kubeadm configuration is changed to include a pod security policy, and an un
 
 <br />
 
-#### Example Kubeadm config
+#### Example Kubeadm Configuration File 
 
 ```yaml
 pack:
@@ -568,7 +568,7 @@ There are no changes to the Kubeadm configuration.
 
 <br />
 
-#### Example Kubeadm config
+#### Example Kubeadm Configuration File 
 
 ```yaml
 pack:
@@ -667,7 +667,7 @@ All versions less than v1.22.x are considered deprecated. Upgrade to a newer ver
 
 # Terraform
 
-``` hcl
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -675,7 +675,7 @@ data "spectrocloud_registry" "public_registry" {
 data "spectrocloud_pack_simple" "k8s" {
   name    = "kubernetes"
   version = "1.26.1"
-  type = "operator-instance"
+  type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
