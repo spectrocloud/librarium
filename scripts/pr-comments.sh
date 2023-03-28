@@ -26,7 +26,7 @@ fi
 echo "Pull request number: $PR_NUMBER"
 
 # Read JSON file contents into a variable
-JSON_CONTENT=$(jq '.' "link_report.json")
+JSON_CONTENT=$(cat link_report.json)
 
 # Check if JSON file is empty
 if [[ -z "$JSON_CONTENT" ]]; then
@@ -34,19 +34,19 @@ if [[ -z "$JSON_CONTENT" ]]; then
   exit 0
 fi
 
-echo "JSON content:"
-echo "$JSON_CONTENT"
+# echo "JSON content:"
+# echo "$JSON_CONTENT"
 
 # Format comment with JSON content
-COMMENT=""
+COMMENT="# Broken Links in Production Report"
 
-# Loop through each object and add its contents to the comment
+# Loop through the "links" array and concatenate each item into the COMMENT variable
 for link in $(echo "${json}" | jq -r '.links[] | @base64'); do
     url=$(echo "${link}" | base64 --decode | jq -r '.url')
     status=$(echo "${link}" | base64 --decode | jq -r '.status')
     state=$(echo "${link}" | base64 --decode | jq -r '.state')
     parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
-    COMMENT="${links}\n\n${url}\nStatus: ${status}\nState: ${state}\nParent: ${parent}"
+    COMMENT="${COMMENT}\n\n:link: [${url}](${url})  \n:traffic_light: Status: ${status}  \n:bookmark_tabs: State: ${state}  \n:arrow_up: Parent: ${parent}\n---"
 done
 
 echo "Posting comment to pull request #$PR_NUMBER"
