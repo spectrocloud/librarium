@@ -35,17 +35,28 @@ if [[ -z "$JSON_CONTENT" ]]; then
   exit 0
 fi
 
+# Initialize counter for broken links
+BROKEN_LINK_COUNT=0
+
 # Format comment with JSON content
 COMMENT=":loudspeaker: Broken Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n"
 
 # Loop through the "links" array and concatenate each item into the COMMENT variable
 for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
     url=$(echo "${link}" | base64 --decode | jq -r '.url')
-    status=$(echo "${link}" | base64 --decode | jq -r '.status')
     state=$(echo "${link}" | base64 --decode | jq -r '.state')
     parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
-    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}  \n:traffic_light: Status: ${status}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n---"
+
+    # Increment counter for broken links if status is not "200"
+    if [[ "$status" != "200" ]]; then
+      ((BROKEN_LINK_COUNT++))
+    fi
+
+    COMMENT="${COMMENT}\n\n:link: Broken URL: [${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
 done
+
+# Add broken link count to the comment
+COMMENT="${COMMENT}\n\n Total count of broken URLs: ${BROKEN_LINK_COUNT}"
 
 # Post the comment to the Slack webhook
 curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"${COMMENT}\"}" $SLACK_WEBHOOK_URL
