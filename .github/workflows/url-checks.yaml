@@ -1,12 +1,11 @@
 on:
   push:
     branches-ignore: [ main ]
-
-
+  
 concurrency:
   group: url-${{ github.ref }}
   cancel-in-progress: true
-
+  
 name: Broken URL check
 jobs:
   markdown-link-check:
@@ -24,9 +23,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Run jq
-        uses: sergeysova/jq-action@v2
-
       - name: URL Checker
         run: make verify-url-links-ci
   
@@ -38,3 +34,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
