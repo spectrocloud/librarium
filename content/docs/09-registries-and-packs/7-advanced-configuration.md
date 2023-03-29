@@ -99,6 +99,37 @@ docker run -d \
 ```
 ## Storage Backend
 
+The pax registry can store data on a file system through a mounted
+volume or it can use S3 storage (AWS or similar).
+
+The following shows a file system backend:
+
+```
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /tmp/registry//data/.spectro-server
+```
+
+S3 Storage needs to know how to connect to S3:
+
+```
+storage:
+  cache:
+    blobdescriptor: inmemory
+  s3:
+    region: us-east-1
+    bucket: my-bucket
+    rootdirectory: /registry
+    encrypt: true|false
+    secure: false|true
+    accesskey: SAMPLEACCESSKEY
+    secretkey: SUPERSECRET
+    host: OPTIONAL_MINIO_HOST_IF_USING
+    port: OPTIONAL_MINIO_PORT_IF_USING
+```
+
 ## Authentication
 
 ## TLS
