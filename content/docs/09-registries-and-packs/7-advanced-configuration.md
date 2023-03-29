@@ -209,9 +209,3 @@ http:
     clientcas: /path/to/file/with one or more/CA certificates encoded as PEM
     minimumtls: minimum tls version to use
 ```
-
-## Logging
-
-## Alerting
-
-
