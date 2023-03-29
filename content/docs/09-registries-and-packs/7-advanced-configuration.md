@@ -158,7 +158,7 @@ For serving content on all interfaces on port 5000:
 http:
     addr: :5000
 ```
-Alternatively one can bing to a single IP and different port:
+Alternatively one can bind to a single IP and different port:
 
 ```
 http:
