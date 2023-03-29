@@ -348,7 +348,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 
 **Features:**
 * Spectro Cloud Palette has enhanced the import cluster functionality with ["minimal permission"](/clusters/brownfield-clusters#importingabrownfieldcluster) mode and the "full permission" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
-* Palette now supports [Windows worker nodes](/clusters/public-cloud/aks) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
+* Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
 * Palette leverages the Container Storage Interface (CSI) and Container Network Interface (CNI) layers using Helm Chart  in addition to manifest-based deployment.
