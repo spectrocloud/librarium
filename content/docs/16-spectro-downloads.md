@@ -49,8 +49,8 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|URL|
 |---|---|
-|1.6.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-160.ova|
-|1.4.0|https://vmwaregoldenimage.s3.amazonaws.com/gateway-installer-140.ova|
+|1.6.0|https://software.spectrocloud.com/pcg/installer/v1.6.0/gateway-installer-v1.6.0.ova|
+|1.4.0|https://software.spectrocloud.com/pcg/installer/v1.4.0/gateway-installer-v1.4.0.ova|
 ------
 
 ## MAAS PCG Image
