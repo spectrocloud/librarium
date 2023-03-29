@@ -78,7 +78,7 @@ Create a directory or mount an external volume to the desired storage location. 
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
     ```bash
-        docker pull gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+        docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
     ```
 
 8. Create the Docker container using the docker `run` command:
@@ -99,7 +99,7 @@ Create a directory or mount an external volume to the desired storage location. 
             -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
             -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-            gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+            gcr.io/spectro-images-public/release/spectro-registry:3.3.0
           ```
     
 <br />
@@ -125,7 +125,7 @@ Create a directory or mount an external volume to the desired storage location. 
                 -e  REGISTRY_AUTH=htpasswd \
                 -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
                 -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-                spectro-registry:3.2.0
+                spectro-registry:3.3.0
         ```
 
 <br />
