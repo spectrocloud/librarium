@@ -83,7 +83,7 @@ Choose the workflow that fits your needs.
     | `--push-image-repository`  | Repository for generated container images.                                                         |
     | `--content-path`           | Optional location of the content bundle if preloading content.                                     |
     | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
-    | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artificat.          |
+    | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
   <br />
 
