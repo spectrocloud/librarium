@@ -14,7 +14,6 @@ const ApiButton = styled.button`
   background: transparent;
   border: none;
   text-align: left;
-  text-transform: capitalize;
   flex-grow: 1;
 
   :hover {
