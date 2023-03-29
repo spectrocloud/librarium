@@ -25,6 +25,21 @@ Use the following resources to support your on-prem and SaaS operations when usi
 
 You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
 
+
+## Self-Hosted Palette Installer 
+
+To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+
+- Your full name
+- Organization name (if applicable)
+- Email address
+- Phone number (optional)
+- A brief description of your intended use for the Palette Self-host installer image.
+
+Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image. 
+
+If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
+
 ## Air-Gapped Installation
 
 You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
