@@ -86,12 +86,12 @@ You can find the project id at the top right side corner of the landing page bel
     <br />
 
     ```shell
-   ./palette-edge-content build --api-key <API_KEY> \
-    --project-id <PROJECT_ID> \ 
-    --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
-    --palette-endpoint <Palette API Endpoint> \
-    --outfile <bundle-name>.tar \
-    --iso
+    ./palette-edge-content build --api-key <API_KEY> \
+     --project-id <PROJECT_ID> \ 
+     --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
+     --palette-endpoint <Palette API Endpoint> \
+     --outfile <bundle-name>.tar \
+     --iso
     ```
 
     ```shell
