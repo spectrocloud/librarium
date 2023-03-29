@@ -65,6 +65,19 @@ Some of the endpoints require a cluster ID.
 export CLUSTER_ID="Your Cluster ID"
 ```
 
+<InfoBox>
+
+If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+
+</InfoBox>
+
+
+# Deploy a Cluster
+
+You can use the following endpoint to deploy a cluster. The provider value represents the cloud provider on which you want to deploy the cluster, such as public cloud or on-prem.
+
+**Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{provider}`
+
 
 # Cluster Nodes and Node Status
 
