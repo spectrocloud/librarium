@@ -25,17 +25,6 @@ Use the following resources to support your on-prem and SaaS operations when usi
 
 You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
 
-## On-Prem Installer 
-
-This is the Palette installer for a self-host flavor of Palette. Refer to the [On-Premise Installation](/enterprise-version) to learn more.
-
-|Version|URL|
-|--|---|
-|2.6.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-260.ova)|
-|2.5.0|[Link](https://vmwaregoldenimage-console.s3.amazonaws.com/hubble-installer-250.ova)|
-------
-
-
 ## Air-Gapped Installation
 
 You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
