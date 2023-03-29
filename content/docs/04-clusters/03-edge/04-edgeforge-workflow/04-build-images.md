@@ -83,28 +83,29 @@ Choose the workflow that fits your needs.
     | `--push-image-repository`  | Repository for generated container images.                                                         |
     | `--content-path`           | Optional location of the content bundle if preloading content.                                     |
     | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
+    | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artificat.          |
 
   <br />
 
   ```shell
-  ./palette-edge-installer generate --os-flavor [pick-os] \
-  --k8s-flavor [pick-k8s] \
-  --output [output directory] \
-  --push-image-repository [your registry path] \
-  --content-path [path to content bundle, if applicable] \
-  --cache-provider-images  
+   ./palette-edge-installer generate --os-flavor [pick-os] \
+   --k8s-flavor [pick-k8s] \
+   --output [output directory] \
+   --push-image-repository [your registry path] \
+   --content-path [path to content bundle, if applicable] \
+   --cache-provider-images  
   ```
 
   In this example, an `OpenSuse` + `k3s` image using the upstream Kairos `opensuse-leap` images is selected. The scaffolding image will also get published to a target repo `gcr.io/my-registry` and will include a content bundle. The `generate` command would look similar to the following.
 
   Example:
   ```shell
-  ./palette-edge-installer generate --os-flavor opensuse-leap \
-  --k8s-flavor k3s \
-  --output opensuse-k3s \
-  --push-image-repository gcr.io/my-registry \
-  --content-path /temp/bundles/content-c59a5a88/spectro-content-c59a5a88.zst \
-  --cache-provider-images  
+   ./palette-edge-installer generate --os-flavor opensuse-leap \
+   --k8s-flavor k3s \
+   --output opensuse-k3s \
+   --push-image-repository gcr.io/my-registry \
+   --content-path /temp/bundles/content-c59a5a88/spectro-content-c59a5a88.zst \
+   --cache-provider-images  
   ```
   Output:
   ```shell
@@ -133,11 +134,11 @@ Choose the workflow that fits your needs.
   Example:
 
   ```shell
-  ./palette-edge-installer generate \
-  --base-image-uri quay.io/kairos/core-rockylinux:v1.5.0 \
-  --k8s-flavor k3s \ 
-  --output rockylinux-k3s \
-  --push-image-repository gcr.io/my-registry
+   ./palette-edge-installer generate \
+   --base-image-uri quay.io/kairos/core-rockylinux:v1.5.0 \
+   --k8s-flavor k3s \ 
+   --output rockylinux-k3s \
+   --push-image-repository gcr.io/my-registry
   ```
 
 
