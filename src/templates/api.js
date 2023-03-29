@@ -14,7 +14,7 @@ const APIS = {
 };
 
 function fillInApiObj(index, arr, operations, obj) {
-  let elem = arr[index];
+  const elem = arr[index];
   if (index === arr.length - 1) {
     obj[elem] = obj[elem] || {};
     obj[elem]["operations"] = operations;
@@ -29,8 +29,8 @@ function fillInApiObj(index, arr, operations, obj) {
 }
 
 function formatApi(endPoints) {
-  let apiObj = {};
-  for (var index = 0; index < endPoints.length; index++) {
+  const apiObj = {};
+  for (let index = 0; index < endPoints.length; index++) {
     let endPoint = endPoints[index].path;
     let operations = endPoints[index].operations;
     let arr = endPoint.split("/");
@@ -78,10 +78,9 @@ export default function MDXLayout({ data = {} }) {
   if (Array.isArray(mdx.frontmatter?.paths)) {
     let urlPathName = mdx.frontmatter?.paths[0];
     if (urlPathName) {
-      urlPathName = urlPathName.split("/");
-      urlPathName = urlPathName[urlPathName.length - 1];
-      if (apiObj.v1[urlPathName]) apiObj.v1[urlPathName].status = true;
-      else console.log(urlPathName, "urlPathName");
+      const pathName = urlPathName.split("/");
+      const lastUrlPathname = pathName[pathName.length - 1];
+      if (apiObj.v1[lastUrlPathname]) apiObj.v1[lastUrlPathname].status = true;
     }
   }
 
@@ -214,7 +213,7 @@ export default function MDXLayout({ data = {} }) {
           fill="#3575CF"
         />
       }
-      extraMenu={<ApiSidebar allMdx={allMdx} data={apiObj.v1} count={-1} />}
+      extraMenu={<ApiSidebar allMdx={allMdx} branches={apiObj.v1} initialCount={-1} />}
     >
       <GenericSeoSchema />
       <DocsLayout

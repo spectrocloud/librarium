@@ -15,7 +15,7 @@ const ApiButton = styled.button`
   border: none;
   text-align: left;
   text-transform: capitalize;
-  width: 100%;
+  flex-grow: 1;
 
   :hover {
     color: rgb(32, 108, 209);
@@ -60,53 +60,58 @@ function ApiSidebarArray({ operations, count }) {
     );
   }
 
-  return <div style={{ paddingLeft: count * 20 }}>{operations.map(renderOperation)}</div>;
+  return (
+    <div style={{ marginLeft: count * 20, display: "flex", flexDirection: "column" }}>
+      {operations.map(renderOperation)}
+    </div>
+  );
 }
 
-export default function ApiSidebarTree(props) {
+export default function ApiSidebarTree({ branches, initialCount }) {
   const { pathname, hash } = useLocation();
 
-  let arr =
-    Object.keys(props.data).map((item) => {
-      return props.data[item].status;
+  let branchesStatus =
+    Object.keys(branches).map((item) => {
+      return branches[item].status;
     }) || [];
-  const [shouldExpand, setShouldExpand] = useState(arr);
+  const [expandedItems, setExpandedItems] = useState(branchesStatus);
 
-  if (!Object.keys(props.data).length) {
+  if (!Object.keys(branches).length) {
     return null;
   }
 
-  let count = props.count + 1;
+  let count = initialCount + 1;
 
   return (
     <div>
-      {Object.keys(props.data).map((item, index) => {
-        const isActive = `${pathname}` === `/api/v1/${item}/${hash}`;
+      {Object.keys(branches).map((item, index) => {
+        const isActive = `${pathname}/` === `/api/v1/${item}/${hash}`;
 
-        if (item === "status") {
+        if (item === "status" || item === "title") {
           return null;
         }
         if (item === "operations") {
-          return (
-            <ApiSidebarArray operations={props.data[item]} count={count} isActive={isActive} />
-          );
+          return <ApiSidebarArray operations={branches[item]} count={count} isActive={isActive} />;
         }
         return (
-          <div key={index} style={{ paddingLeft: 20 * count }}>
+          <div key={index} style={{ display: "flex", flexDirection: "column" }}>
             <ApiButton
+              style={{ marginLeft: 20 * count }}
               isActive={isActive}
               onClick={() => {
                 if (count === 0 && !pathname.includes(item)) {
                   navigate(`/api/v1/${item}`);
                 }
-                let arr = JSON.parse(JSON.stringify(shouldExpand));
-                arr[index] = !shouldExpand[index];
-                setShouldExpand(arr);
+                let arr = [...expandedItems];
+                arr[index] = !expandedItems[index];
+                setExpandedItems(arr);
               }}
             >
-              <span>{item}</span>
+              <span>{branches[item]?.title || item}</span>
             </ApiButton>
-            {shouldExpand[index] ? <ApiSidebarTree data={props.data[item]} count={count} /> : null}
+            {expandedItems[index] ? (
+              <ApiSidebarTree branches={branches[item]} initialCount={count} />
+            ) : null}
           </div>
         );
       })}
