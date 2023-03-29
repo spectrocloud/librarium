@@ -130,11 +130,85 @@ storage:
     port: OPTIONAL_MINIO_PORT_IF_USING
 ```
 
+Ephemeral storage for testing purposes is also available:
+```
+storage: inmemory
+```
+
 ## Authentication
 
-## TLS
+Basic HTTP Auth is supported:
+
+```
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /auth/htpasswd-basic
+```
 
 ## HTTP
+
+The following options are available for modifying HTTP transport:
+
+### Server and Port
+
+For serving content on all interfaces on port 5000:
+
+```
+http:
+    addr: :5000
+```
+Alternatively one can bing to a single IP and different port:
+
+```
+http:
+    addr: 192.168.122.77:25000
+```
+### HTTP Headers
+
+The following headers are the default, and can be overriden:
+```
+http:
+  headers:
+    X-Content-Type-Options: [ nosniff ]
+    Strict-Transport-Security: [ max-age=63072000; includeSubdomains; preload ]
+    Content-Security-Policy: [ img-src 'self'; script-src 'self';  style-src 'self ]
+    X-Frame-Options: [ DENY ]
+    X-XSS-Protection: [ 1; mode=block ]
+    Referrer-Policy: [ same-origin ]
+
+### TLS
+
+TLS can be configured using [letsencrypt](https://letsencrypt.org) or custom TLS certificates:
+
+For letsencrypt, your registry has to have a public IP address accessible for HTTP based
+validation by letsencrypt services.
+
+```
+http:
+  addr: :5000
+  tls:
+    letsencrypt:
+      cachefile: le-cache
+      email: oz@spectrocloud.com
+      hosts:
+      - pax-registry.spectrocloud.com
+```
+
+Note, letsencrypt limits the amount of free certificates issued per domain per amount of time.
+It is therefore, recommended to mount a volume where the certificates are permanently stored.
+This option is `cachefile` which is actually a directory, despite the name.
+
+Custom certificates can be specified with:
+
+```
+http:
+  tls:
+    certificate: /path/to/x509/certificate/file
+    key: /pat/to/x509/key/file/which contains/private key/for x509 certificate above
+    clientcas: /path/to/file/with one or more/CA certificates encoded as PEM
+    minimumtls: minimum tls version to use
+```
 
 ## Logging
 
