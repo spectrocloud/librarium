@@ -307,12 +307,22 @@ You can use the following endpoint to monitor the progress of cluster creation.
 
 Ensure you specify the cluster ID. You can set the cluster ID as an environment variable. 
 
+```shell
+export CLUSTER_ID="Your Cluster ID"
+```
+
 <br />
 
 <Tabs>
 
 <Tabs.TabPane tab="curl" key="cluster-create-status-curl">
 
+```shell
+curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+ --header 'Accept: application/json' \
+ --header "ApiKey: $API_KEY" \
+ | jq -r '.status'
+```
 
 </Tabs.TabPane> 
 
