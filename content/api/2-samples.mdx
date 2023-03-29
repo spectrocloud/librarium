@@ -20,7 +20,17 @@ This workflow demonstrates how to use Spectro Cloud API. You can use the API to 
 
 The API is a RESTful API that uses JSON for serialization and supports HTTP Basic Authentication and token authentication. The API is available at `https://api.spectrocloud.com`.
 
-Use the following examples to familiarize yourself with the API.
+Use the following examples to familiarize yourself with the API. 
+
+<br />
+
+<WarningBox>
+
+The following samples are for demonstration purposes only and may lack all the required payload values. They are not intended for production use.
+We recommend exploring the API using a tool such as [Postman](https://www.postman.com/) and our available Postman collection.
+Check out the [Postman collection](api/v1/overview#postman-collection) resource to learn more about the Palette API Postman collection.
+
+</WarningBox>
 
 <br />
 
@@ -61,9 +71,7 @@ export PROJECT_ID="Your Project UID"
 Some of the endpoints require a cluster ID.
 
 
-```shell
-export CLUSTER_ID="Your Cluster ID"
-```
+
 
 <InfoBox>
 
@@ -78,13 +86,233 @@ You can use the following endpoint to deploy a cluster. The provider value repre
 
 **Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{provider}`
 
+Set the provider as an environment variable. 
+
+```shell
+export PROVIDER="Your Provider"
+```
+
+The payload for creating a host cluster can be lengthy due to the various configurations available for a host cluster. To improve readbility, the payload is condensed in the following examples and lack required values. 
+Check out the [Clusters](/api/v1/clusters) API resource to learn more about the available parameters.
+
+<br />
+
+```shell 
+export PAYLOAD='{
+	"metadata": {
+		"annotations": {},
+		"name": "my-cluster",
+		"labels": {}
+	},
+	"spec": {....}
+}'
+```
+
+
+<Tabs>
+
+<Tabs.TabPane tab="curl" key="cluster-create-curl">
+
+```shell
+curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?ProjectUid=$PROJECT_ID"' \
+ --header 'Content-Type: application/json' \
+ --header 'Accept: application/json' \
+ --header "ApiKey: $API_KEY"
+ --data  "$PAYLOAD"
+```
+
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="JavaScript" key="cluster-create-js">
+
+```js
+const apiKey = process.env.API_KEY;
+const projectID = process.env.PROJECT_ID;
+const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws", "aks", "openstack"
+
+// Build the request URL
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?ProjectUid=${projectID}`;
+
+// Define data payload for the request
+const data = {
+  metadata: {
+    annotations: {},
+    name: "my-cluster",
+    labels: {}
+  },
+  spec: {
+    // ...
+  }
+};
+
+// Define headers for the request
+const headers = new Headers({
+  "Content-Type": "application/json",
+  "Accept": "application/json",
+  "ApiKey": apiKey
+});
+
+// Define async function to send POST request
+async function sendRequest() {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+    const responseData = await response.json();
+    console.log(responseData);
+  } catch (error) {
+    console.error(error);
+  }
+}
+sendRequest();
+```
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="Go" key="cluster-create-go">
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"os"
+)
+
+func main() {
+	apiKey := os.Getenv("API_KEY")
+	projectID := os.Getenv("PROJECT_ID")
+	provider := os.Getenv("PROVIDER")
+
+	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", provider, projectID)
+
+
+	data := map[string]interface{}{
+		"metadata": map[string]interface{}{
+			"annotations": map[string]interface{}{},
+			"name":        "my-cluster",
+			"labels":      map[string]interface{}{},
+		},
+		"spec": map[string]interface{}{
+			// ...
+		},
+	}
+
+	// Convert data payload to JSON
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+
+	// Define headers for the request
+	headers := http.Header{}
+	headers.Set("Content-Type", "application/json")
+	headers.Set("Accept", "application/json")
+	headers.Set("ApiKey", apiKey)
+
+	// Send POST request with data payload
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	// Parse response data as JSON
+	var responseData map[string]interface{}
+	err = json.NewDecoder(resp.Body).Decode(&responseData)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(responseData)
+}
+```
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="Rust" key="cluster-create-rust">
+
+```rust
+use std::collections::HashMap;
+use std::env;
+use std::io::Read;
+
+use reqwest::header::{HeaderMap, HeaderValue, CONTENT_TYPE};
+use serde::{Deserialize, Serialize};
+use serde_json::json;
+
+#[derive(Serialize, Deserialize, Debug)]
+struct ClusterData {
+    metadata: Metadata,
+    spec: HashMap<String, String>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Metadata {
+    annotations: HashMap<String, String>,
+    name: String,
+    labels: HashMap<String, String>,
+}
+
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let api_key = env::var("API_KEY")?;
+    let project_id = env::var("PROJECT_ID")?;
+    let provider = env::var("PROVIDER")?;
+
+    let url = format!(
+        "https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}",
+        provider, project_id
+    );
+
+    let data = ClusterData {
+        metadata: Metadata {
+            annotations: HashMap::new(),
+            name: "my-cluster".to_string(),
+            labels: HashMap::new(),
+        },
+        spec: HashMap::new(),
+    };
+
+    let client = reqwest::Client::new();
+    let mut headers = HeaderMap::new();
+    headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
+    headers.insert("Accept", HeaderValue::from_static("application/json"));
+    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+
+    let resp = client.post(&url).headers(headers).json(&data).send().await?;
+    let mut resp_body = String::new();
+    resp.text().await?.read_to_string(&mut resp_body)?;
+
+    let response_data: HashMap<String, serde_json::Value> = serde_json::from_str(&resp_body)?;
+    println!("{:?}", response_data);
+
+    Ok(())
+}
+```
+</Tabs.TabPane> 
+
+</Tabs>
+
+
+
 
 # Cluster Nodes and Node Status
 
 You can use the following endpoint to retrieve the list of nodes in a cluster and their status.
 
-
 **Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{uid}`
+
+Ensure you specify the cluster ID. You can set the cluster ID as an environment variable. 
+
+```shell
+export CLUSTER_ID="Your Cluster ID"
+```
 
 ## All Cluster Node Data
 
