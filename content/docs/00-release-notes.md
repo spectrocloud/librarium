@@ -214,19 +214,19 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deploy
   * Out-of-the-box application profiles and applications deployment with Palette Virtual Clusters. 
   * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
-* The Palette [Native Edge](/clusters/edge/native) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
+* The Palette [Native Edge](/clusters/edge#edgenative) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
 
 * Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](/clusters/cluster-management/noc-ui). 
 
 * Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
 
-* Palette provisions cluster monitoring with [Kubernetes Dashboard](/knowledgebase/how-to/reverse-proxy-dashboard) exposed to external traffic using [Spectro Proxy](/integrations/frp) pack with RBAC authentication.
+* Palette provisions cluster monitoring with [Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) exposed to external traffic using [Spectro Proxy](/integrations/frp) pack with RBAC authentication.
 
 **Enhancements**
 
 * Palette enables the provisioning of private Azure Kubernetes Clusters (AKS) clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
 
-* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/public-cloud/aks#deployinganakscluster) at any time by editing the `maxPodPerNode` value.
+* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/cluster-management/node-pool) at any time by editing the `maxPodPerNode` value.
 
 * The Kubernetes Packs for [Edge Native](/clusters/edge/deployment/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
@@ -297,7 +297,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 * Palette enables the users to override the [custom folder](/clusters/data-center/vmware#deployingavmwarecluster) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
 * [Regex Expression](/workspace#regexfornamespaces) for mass selection of workspace names for role binding. 
 * Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](/user-management/saml-sso#oidcbasedsso).
-* Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/eks#disableoidcassociateproviderforawsserviceaccount) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
+* Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/aws/eks) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
 * Tenant administrators can now set the [Palette resource limits](/user-management/palette-resource-limits#setresourcelimit) though the Palette console.
 * Palette provisions user's [infrastructure privacy](/clusters/public-cloud/azure#deployinganazurecluster) for the Azure cloud account.
 
@@ -348,9 +348,9 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 
 **Features:**
 * Spectro Cloud Palette has enhanced the import cluster functionality with ["minimal permission"](/clusters/brownfield-clusters#importingabrownfieldcluster) mode and the "full permission" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
-* Palette now supports [Windows worker nodes](/clusters/public-cloud/aks) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
+* Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
-* Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](https://docs-latest.spectrocloud.com/clusters/public-cloud/aks#deployinganakscluster) to meet the dynamic user workloads.
+* Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
 * Palette leverages the Container Storage Interface (CSI) and Container Network Interface (CNI) layers using Helm Chart  in addition to manifest-based deployment.
 * Palette introduces a well-defined [color scheme to monitor](/clusters/cluster-management/pack-monitoring#packmonitoring) the different stages of pack deployment during cluster creation.
 * Palette [Edge Clusters](/clusters/edge) deployed on remote bare metal or virtual machines appliances providing end-to-end support on deployment, scaling, upgrades and reconfiguration.
@@ -374,7 +374,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 * Palette supports multiple [versions](/cluster-profiles/task-define-profile#clusterprofileversioning) of a single-cluster profile under a unique name to allow backward compatibility. 
 
-* Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/public-cloud/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
+* Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/public-cloud/aws/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 
 * Palette covers a long list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for the [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest. 
 
@@ -384,7 +384,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 **Bug Fixes**
 
-* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/public-cloud/aws#awscloudaccountpermissions) and [EKS-AWS](/clusters/public-cloud/eks#awscloudaccountpermissions) cloud account Controller Policy to replace an existing route, within a route table in a Virtual Private Cloud, to facilitate the cluster deletion process.
+* We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/public-cloud/aws/required-iam-policies) and [EKS-AWS](/clusters/public-cloud/aws/required-iam-policies) cloud account Controller Policy to replace an existing route, within a route table in a Virtual Private Cloud, to facilitate the cluster deletion process.
 
 
 # April 26, 2022 - Release 2.5.0
@@ -407,7 +407,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 
 **Bug Fixes:**
 
-- We request our users to please add the `ec2:DeleteNetworkInterface` permission to their AWS cloud account Controller Policy Permissions to detach and delete the network interface for [AWS](/clusters/public-cloud/aws#awscloudaccountpermissions) and [EKS](/clusters/public-cloud/eks) clusters.
+- We request our users to please add the `ec2:DeleteNetworkInterface` permission to their AWS cloud account Controller Policy Permissions to detach and delete the network interface for [AWS](/clusters/public-cloud/aws#awscloudaccountpermissions) and [EKS](/clusters/public-cloud/aws/eks) clusters.
 
 **Packs and Integrations:**
 

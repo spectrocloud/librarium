@@ -19,12 +19,12 @@ Palette offers you different types of services to help you model all the depende
 
 ## Helm
 
-Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/devx/registries/helm-registry#palettehelmregistry).
+Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/registries-and-packs/helm-charts).
 
 
 ## Manifest 
 
-You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require creation of Secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
+You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require the creation of secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
 
 # Out-of-the-box Services
 

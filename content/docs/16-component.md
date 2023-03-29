@@ -151,7 +151,7 @@ This page lists the version details of various Palette components and their resp
 
 - Calico: Refer to the Calico [pack documentation](/integrations/calico).
 
-- Cilium: Refer to the Cilium [pack documentation](integrations/cilium).
+- Cilium: Refer to the Cilium [pack documentation](/integrations/cilium).
 
 
 |Cilium Enterprise|Versions|

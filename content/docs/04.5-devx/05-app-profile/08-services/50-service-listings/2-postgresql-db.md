@@ -44,7 +44,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 You can use the following steps to learn how to add Postgres to your app profile.
 
-1. Log in to [Palette](console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.

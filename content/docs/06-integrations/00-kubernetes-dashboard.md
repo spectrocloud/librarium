@@ -24,7 +24,7 @@ The Kubernetes Dashboard pack you can use to access the dashboard requires the S
 
 <InfoBox>
 
-Palette supports provisioning a [reverse proxy dashboard](/clusters/cluster-management/reverse-proxy-dashboard) that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability. 
+Palette supports provisioning a reverse proxy that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability. 
 
 </InfoBox>
 
