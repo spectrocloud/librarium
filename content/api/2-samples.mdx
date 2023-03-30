@@ -236,6 +236,63 @@ func main() {
 ```
 </Tabs.TabPane> 
 
+
+<Tabs.TabPane tab="Python" key="cluster-create-python">
+
+
+```python
+import os
+import json
+import requests
+
+def send_request():
+    # Get the required environment variables
+    apiKey = os.environ['API_KEY']
+    projectID = os.environ['PROJECT_ID']
+    provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws", "aks", "openstack"
+
+    # Build the request URL
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?ProjectUid={projectID}"
+
+    # Define data payload for the request
+    data = {
+      "metadata": {
+        "annotations": {},
+        "name": "my-cluster",
+        "labels": {}
+      },
+      "spec": {
+        # ...
+      }
+    }
+
+    # Define headers for the request
+    headers = {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "ApiKey": apiKey
+    }
+
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status() # Raise an exception if the response code is not 2xx
+        responseData = response.json()
+        print(responseData)
+    except requests.exceptions.HTTPError as error:
+        print(f"HTTP error {response.status_code}: {error}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+def main():
+    send_request()
+
+if __name__ == '__main__':
+    main()
+```
+
+
+</Tabs.TabPane> 
+
 <Tabs.TabPane tab="Rust" key="cluster-create-rust">
 
 ```rust
@@ -414,6 +471,46 @@ func main() {
 
 </Tabs.TabPane> 
 
+<Tabs.TabPane tab="Python" key="cluster-create-status-python">
+
+```python
+import os
+import requests
+
+def get_cluster_status():
+    # Get the required environment variables
+    apiKey = os.environ['API_KEY']
+    projectID = os.environ['PROJECT_ID']
+    clusterID = os.environ['CLUSTER_ID']
+
+    # Build the request URL
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{clusterID}?ProjectUid={projectID}"
+
+    # Define headers for the request
+    headers = {
+      'Accept': 'application/json',
+      'ApiKey': apiKey,
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status() # Raise an exception if the response code is not 2xx
+        data = response.json()
+        status = data['status']
+        print(status)
+    except requests.exceptions.HTTPError as error:
+        print(f"HTTP error {response.status_code}: {error}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+def main():
+    get_cluster_status()
+
+if __name__ == '__main__':
+    main()
+```
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="Rust" key="cluster-create-status-rust">
 
 ```
@@ -580,30 +677,40 @@ func main() {
 import os
 import requests
 
-# Get API key, project ID, and cluster ID from environment variables
-api_key = os.environ.get("API_KEY")
-project_id = os.environ.get("PROJECT_ID")
-cluster_id = os.environ.get("CLUSTER_ID")
 
-# Build the request URL
-url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
+def get_cluster_info():
+    # Get API key, project ID, and cluster ID from environment variables
+    api_key = os.environ.get("API_KEY")
+    project_id = os.environ.get("PROJECT_ID")
+    cluster_id = os.environ.get("CLUSTER_ID")
 
-# Define headers for the request
-headers = {
-  "Accept": "application/json",
-  "ApiKey": api_key
-}
+    # Build the request URL
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
 
-# Send the HTTP request using the requests library
-response = requests.get(url, headers=headers)
+    # Define headers for the request
+    headers = {
+      "Accept": "application/json",
+      "ApiKey": api_key
+    }
 
-# Check the response status code
-if response.status_code == 200:
-  # Print the response data (JSON format)
-  print("Response data:", response.json())
-else:
-  # Print the error message if the request failed
-  print("Request failed with status code:", response.status_code)
+    # Send the HTTP request using the requests library
+    response = requests.get(url, headers=headers)
+
+    # Check the response status code
+    if response.status_code == 200:
+        # Print the response data (JSON format)
+        print("Response data:", response.json())
+    else:
+        # Print the error message if the request failed
+        print("Request failed with status code:", response.status_code)
+
+
+def main():
+    get_cluster_info()
+
+
+if __name__ == '__main__':
+    main()
 ```
 
 </Tabs.TabPane>
@@ -1044,6 +1151,51 @@ func main() {
 
 </Tabs.TabPane>
 
+<Tabs.TabPane tab="Python" key="cluster-workloads-python">
+
+```python
+import os
+import json
+import requests
+
+def main():
+    api_key = os.getenv("API_KEY")
+    project_id = os.getenv("PROJECT_ID")
+    cluster_id = os.getenv("CLUSTER_ID")
+
+    url = f"https://api.spectrocloud.com/v1/dashboard/spectroclusters/{cluster_id}/workloads"
+
+    filter = {
+        "namespaces": ["default", "myOtherNamespace"]
+    }
+
+    request_body = {
+        "filter": filter
+    }
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "ProjectUid": project_id,
+        "ApiKey": api_key
+    }
+
+    response = requests.post(url, json=request_body, headers=headers)
+
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} {response.text}")
+        return
+
+    data = response.json()
+
+    print(data)
+
+if __name__ == "__main__":
+    main()
+```
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="Rust" key="cluster-workloads-rust">
 
 ```
@@ -1345,6 +1497,8 @@ import requests
 import os
 import json
 
+def main():
+
 url = 'https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20'
 
 filter = {
@@ -1389,6 +1543,9 @@ headers = {
 response = requests.post(url, headers=headers, json=filter)
 
 print(response.json())
+
+if __name__ == "__main__":
+    main()
 ```
 </Tabs.TabPane>
 
@@ -1502,3 +1659,200 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 # Download Cluster Kubeconfig
 
+You can download the kubeconfig file of a host cluster. To download the kubeconfig file, you need to provide the cluster UID.
+
+
+**Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{uid}/assets/kubeconfig`
+
+<br />
+
+```shell
+export CLUSTER_ID="Your Cluster ID"
+```
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="cURL" key="cluster-kubeconfig-curl">
+
+```shell
+ curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig' \
+ --header 'Accept: application/octet-stream' \
+ --header 'ProjectUid: $PROJECT_ID' \
+ --header 'ApiKey: $API_KEY'
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="JavaScript" key="cluster-kubeconfig-js">
+
+```js
+const apiKey = process.env.API_KEY;
+const projectID = process.env.PROJECT_ID;
+const clusterID = process.env.CLUSTER_ID;
+
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}/assets/kubeconfig?frp=true`;
+const headers = {
+  'Accept': 'application/octet-stream',
+  'ProjectUid': projectID,
+  'ApiKey': apiKey
+};
+
+try {
+  const response = await fetch(url, { headers });
+  const data = await response.text();
+  console.log(data);
+} catch (error) {
+  console.error('Error:', error);
+}
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Go" key="cluster-kubeconfig-go">
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    "net/http"
+    "io/ioutil"
+)
+
+func main() {
+    // Get API key and project ID from environment variables
+    apiKey := os.Getenv("API_KEY")
+    projectID := os.Getenv("PROJECT_ID")
+    clusterID := os.Getenv("CLUSTER_ID")
+
+    // Build the request URL
+    url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s/assets/kubeconfig?frp=true", clusterID)
+
+    // Create a new HTTP request
+    req, err := http.NewRequest("GET", url, nil)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+
+    // Set headers for the request
+    req.Header.Set("Accept", "application/octet-stream")
+    req.Header.Set("ProjectUid", projectID)
+    req.Header.Set("ApiKey", apiKey)
+
+    // Send the HTTP request
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    // Check the response status code
+    if resp.StatusCode == http.StatusOK {
+        // Print the response data (as a string)
+        bodyBytes, err := ioutil.ReadAll(resp.Body)
+        if err != nil {
+            fmt.Println("Error:", err)
+            return
+        }
+        fmt.Println(string(bodyBytes))
+    } else {
+        // Print the error message if the request failed
+        fmt.Printf("Request failed with status code: %d\n", resp.StatusCode)
+    }
+}
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Python" key="cluster-kubeconfig-python">
+
+```python
+import os
+import requests
+
+def main():
+    # Get API key and project ID from environment variables
+    api_key = os.environ.get("API_KEY")
+    project_id = os.environ.get("PROJECT_ID")
+    cluster_id = os.environ.get("CLUSTER_ID")
+
+    # Build the request URL
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}/assets/kubeconfig?frp=true"
+
+    # Define headers for the request
+    headers = {
+        "Accept": "application/octet-stream",
+        "ProjectUid": project_id,
+        "ApiKey": api_key
+    }
+
+    try:
+        # Send the HTTP request using the requests library
+        response = requests.get(url, headers=headers)
+        response.raise_for_status() # Raise an exception if the response code is not 2xx
+
+        # Print the response content
+        print(response.content.decode('utf-8'))
+    except requests.exceptions.HTTPError as error:
+        print(f"HTTP error {response.status_code}: {error}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+if __name__ == '__main__':
+    main()
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Rust" key="cluster-kubeconfig-rust">
+
+```
+use std::env;
+use reqwest::header::{HeaderMap, HeaderValue};
+
+#[tokio::main]
+async fn main() -> Result<(), reqwest::Error> {
+    // Get API key and project ID from environment variables
+    let api_key = env::var("API_KEY").unwrap();
+    let project_id = env::var("PROJECT_ID").unwrap();
+    let cluster_id = env::var("CLUSTER_ID").unwrap();
+
+    // Build the request URL
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}/assets/kubeconfig?frp=true", cluster_id);
+
+    // Define headers for the request
+    let mut headers = HeaderMap::new();
+    headers.insert("Accept", HeaderValue::from_static("application/octet-stream"));
+    headers.insert("ProjectUid", HeaderValue::from_str(&project_id).unwrap());
+    headers.insert("ApiKey", HeaderValue::from_str(&api_key).unwrap());
+
+    // Send the HTTP request using the reqwest library
+    let response = reqwest::Client::new()
+        .get(&url)
+        .headers(headers)
+        .send()
+        .await?;
+
+    // Check the response status code
+    if response.status().is_success() {
+        // Print the response data (as a string)
+        let content = response.text().await?;
+        println!("{}", content);
+    } else {
+        // Print the error message if the request failed
+        println!("Request failed with status code: {}", response.status());
+    }
+
+    Ok(())
+}
+```
+
+</Tabs.TabPane>
+
+
+
+</Tabs>
