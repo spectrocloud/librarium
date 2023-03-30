@@ -70,12 +70,12 @@ Some OS require credentials to download the source image, such as Red Hat Enterp
   <br />
 
   ```shell
-  cd pxke-samples/core-images
-  docker build \
-  --tag [your image repository]/rhel8-kairos:1.0 \
-  --build-arg USERNAME=[rhel subscription username]\
-  --build-arg PASSWORD=[rhel subscription password] \
-  --file Dockerfile.rhel8 .
+   cd pxke-samples/core-images
+   docker build \
+   --tag [your image repository]/rhel8-kairos:1.0 \
+   --build-arg USERNAME=[rhel subscription username]\
+   --build-arg PASSWORD=[rhel subscription password] \
+   --file Dockerfile.rhel8 .
   ```
 
 4. Upload the image to your container registry.
