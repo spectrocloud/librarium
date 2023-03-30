@@ -79,7 +79,7 @@ auth:
     path: /etc/spectropaxconfig/htpasswd-basic
 ```
 
-3. Run the container image with the following flags
+3. Start the container image with the following flags.
 
 ```
 docker run  \
@@ -91,12 +91,12 @@ docker run  \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 
-Now you can access the pax registry at `https://yourhost.companydomain.com/v1/`.
+You can now access the pack registry at `https://yourhost.companydomain.com/v1/`.
 You will be prompted to give the user admin and the password of your choice.
 
-# Deploying a Pack Registry Server with self signed certificates
+# Deploy a Pack Registry Server with Self-Signed Certificates
 
-The following steps need to be performed to deploy the pack registry server using self signed certificates:
+The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
 
@@ -132,7 +132,7 @@ Create a directory or mount an external volume to the desired storage location. 
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
     ```bash
-        docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
+ docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
     ```
 
 8. Create the Docker container using the docker `run` command:

@@ -1,7 +1,7 @@
 ---
-title: 'Advanced Registry configuration'
-metaTitle: 'Advanced Registry configuration'
-metaDescription: 'Customizing deployments of Spectro Registry'
+title: 'Advanced Configuration'
+metaTitle: 'Advanced Configuration'
+metaDescription: 'Learn how to apply advanced concepts by customizing the deployments of the Packs registry.'
 icon: ''
 hideToC: true
 fullWidth: false
@@ -14,16 +14,15 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# Advanced Configuration of Spectro Registry
+# Advanced Configuration
 
-You can modify a few deployment options of the Spectro Registy.
-Configuration is done by a YAML file, however you can override 
+You can modify a few deployment options of the pack registry.
+The configuration is applied through a YAML file. However, you can override 
 many options using environment variables.
 
-The YAML file is divided into keys and values, which can have
-embedded keys and values, such as:
+The configuration file is divided into keys and values. The following is an example YAML configuration.
 
-```
+```yaml
 version: 0.1
 log:
   level: info
@@ -32,15 +31,19 @@ log:
 ```
 
 
-The key `version` has number value. The `log` key has value with multiple keys (`level`,
-`fields`), which in turn have more keys.
+The key `version` has a number value. The `log` key has a value with multiple keys, which in turn have more keys.
 
 To override the value of `log.level` you can specify an environment variable named
 `REGISTRY_LOG_LEVEL`.
 
-## The default configuration
+```shell
+export REGISTRY_LOG_LEVEL=debug
 
-The docker image for the registy contains the following configuration:
+## Default Configuration
+
+The docker image for the registry contains the following default configuration values.
+
+<br />
 
 ```yaml
 version: 0.1
@@ -68,10 +71,10 @@ auth:
 ```
 
 The server is started with the command `registy serve /etc/spectro/config.yml`.
-You can override this configuration by overriding specific values via environment
-variables or you can pass your own configuration file.
+You can override the default values with specific values through environment
+variables, or you can use your own configuration file.
 
-For example you can run the docker container image with the following environment
+For example, you can start the docker container image with the following environment
 variables to override the basic auth realm and logging level:
 
 ```bash
@@ -85,8 +88,7 @@ docker run -d \
     gcr.io/spectro-images-public/release/spectro-registry:3.2.0
 ```
 
-Alternatively, you can run the image mounting a directory with a new configuration
-file and pointing the server command to it:
+Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server command to the configuration file.
 
 ```
 docker run -d \
@@ -94,17 +96,17 @@ docker run -d \
     ...
     -v $(pwd)/myconfig.yml:/etc/myconfig.yml
     ...
-    gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
     /registry serve /etc/myconfig.yml
 ```
 ## Storage Backend
 
-The pax registry can store data on a file system through a mounted
-volume or it can use S3 storage (AWS or similar).
+The pack registry can store data on a file system through a mounted
+volume, or you can specify object storage such as AWS S3.
 
-The following shows a file system backend:
+The following is an example of a configuration using a file system backend.
 
-```
+```yaml
 storage:
   cache:
     blobdescriptor: inmemory
@@ -112,7 +114,7 @@ storage:
     rootdirectory: /tmp/registry//data/.spectro-server
 ```
 
-S3 Storage needs to know how to connect to S3:
+If you are using S3 Storage, ensure you specify the required S3 parameters.
 
 ```
 storage:
@@ -130,14 +132,14 @@ storage:
     port: OPTIONAL_MINIO_PORT_IF_USING
 ```
 
-Ephemeral storage for testing purposes is also available:
-```
+You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments should use object storage or a file system.
+```yaml
 storage: inmemory
 ```
 
 ## Authentication
 
-Basic HTTP Auth is supported:
+You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an httppasswd file containing the credentials.
 
 ```yaml
 auth:
