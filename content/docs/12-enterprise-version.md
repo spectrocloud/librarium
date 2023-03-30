@@ -16,15 +16,15 @@ Palette is available as a self-hosted platform offering. You can install the sel
 
 ## VMware Quick Start Mode
 
-Single node installation of the platform, ideal for PoC environments.
+A single node installation of Palette. Ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](/enterprise-version/deploying-the-platform-installer) guide for more details.
 
 ## VMware Enterprise Mode
 
-Highly available multi-node installation typically for production purposes.
+A highly available multi-node Palette installation. Typically used for production purposes. Check out the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster) guide to get started.
 
 ## Helm Chart
 
-Install Palette by using a Helm Chart. Use this to install Palette onto a Kubernetes cluster.
+Install Palette by using a Helm Chart. Use this to install Palette onto a Kubernetes cluster. Review the [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm) guide to learn more.
 
 ## Download Palette Installer
 
@@ -54,6 +54,9 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 
 * [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster)
+
+
+* [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm)
 
 
 * [System Console Dashboard](/enterprise-version/system-console-dashboard)

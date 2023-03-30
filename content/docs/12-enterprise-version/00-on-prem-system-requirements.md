@@ -21,8 +21,8 @@ The Spectro Cloud Palette SaaS platform is available as a self-hosted, on-premis
 | **On-premise Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
 | **VMWare Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
-| **VMWare Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
-| **Helm Chart Mode**  | Install Palette SaaS using helm on an existing Kubernetes cluster. |
+| **VMWare Quick Start Mode**  | A single VM deployment of the platform ideal for Proof of Concept (PoC) purposes. |
+| **Helm Chart Mode**  | Install Palette using a Helm Chart into an existing Kubernetes cluster. |
 
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
 
