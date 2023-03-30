@@ -3,6 +3,26 @@ import styled, { css } from "styled-components";
 import { useLocation } from "@reach/router";
 import { navigate } from "gatsby-link";
 
+const Wrap = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: ${(props) => 20 * (props.count || 0)}px;
+
+  ${(props) =>
+    props.count > 1 &&
+    css`
+      ::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        top: 0;
+        left: 0px;
+        border-left: 1px solid #ddd;
+      }
+    `}
+`;
+
 const ApiButton = styled.button`
   display: flex;
   padding: 12px 0px 12px 12px;
@@ -15,12 +35,14 @@ const ApiButton = styled.button`
   border: none;
   text-align: left;
   flex-grow: 1;
+  margin-left: ${(props) => 10 * (props.count || 0)}px;
 
   :hover {
     color: rgb(32, 108, 209);
   }
 
   span {
+    position: relative;
     font-size: 14px;
     line-height: 16px;
     color: rgb(74, 75, 106);
@@ -58,12 +80,7 @@ function ApiSidebarArray({ operations, count }) {
       </ApiButton>
     );
   }
-
-  return (
-    <div style={{ marginLeft: count * 20, display: "flex", flexDirection: "column" }}>
-      {operations.map(renderOperation)}
-    </div>
-  );
+  return <Wrap count={count}>{operations.map(renderOperation)}</Wrap>;
 }
 
 export default function ApiSidebarTree({ branches, initialCount }) {
@@ -93,9 +110,9 @@ export default function ApiSidebarTree({ branches, initialCount }) {
           return <ApiSidebarArray operations={branches[item]} count={count} isActive={isActive} />;
         }
         return (
-          <div key={index} style={{ display: "flex", flexDirection: "column" }}>
+          <Wrap key={index}>
             <ApiButton
-              style={{ marginLeft: 20 * count }}
+              count={count}
               isActive={isActive}
               onClick={() => {
                 if (count === 0 && !pathname.includes(item)) {
@@ -111,7 +128,7 @@ export default function ApiSidebarTree({ branches, initialCount }) {
             {expandedItems[index] ? (
               <ApiSidebarTree branches={branches[item]} initialCount={count} />
             ) : null}
-          </div>
+          </Wrap>
         );
       })}
     </div>

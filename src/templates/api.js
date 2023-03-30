@@ -55,23 +55,27 @@ export default function MDXLayout({ data = {} }) {
 
   const api = APIS[mdx?.fields?.version || "v1"];
 
-  const apiEndpoints = Object.keys(api.paths).map((path) => {
-    return {
-      path,
-      operations: Object.keys(api.paths[path])
-        .filter((method) => method !== "parameters")
-        .map((method) => {
-          const apiMethod = api.paths[path][method];
-          const parameters = apiMethod?.parameters;
-          return {
-            method,
-            ...apiMethod,
-            parameters: parameters?.filter((parameter) => parameter.name !== "body") || [],
-            pathParameters: api.paths[path]?.parameters || [],
-          };
-        }),
-    };
-  });
+  const apiEndpoints = useMemo(
+    () =>
+      Object.keys(api.paths).map((path) => {
+        return {
+          path,
+          operations: Object.keys(api.paths[path])
+            .filter((method) => method !== "parameters")
+            .map((method) => {
+              const apiMethod = api.paths[path][method];
+              const parameters = apiMethod?.parameters;
+              return {
+                method,
+                ...apiMethod,
+                parameters: parameters?.filter((parameter) => parameter.name !== "body") || [],
+                pathParameters: api.paths[path]?.parameters || [],
+              };
+            }),
+        };
+      }),
+    [api.paths]
+  );
 
   const apiObj = formatApi(apiEndpoints);
 
