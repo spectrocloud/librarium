@@ -68,7 +68,7 @@ Palette cannot manage the cluster its installed onto due to component conflicts.
     ``` 
 
 
-3. Review the the **values.yaml** .You must populate the parameter `env.rootDomain` to the custom domain you will use for the installation. All other parameter values are optional and can be reset or changed with a Helm upgrade operation.
+3. Review the **values.yaml** .You must populate the parameter `env.rootDomain` to the custom domain you will use for the installation. All other parameter values are optional and can be reset or changed with a Helm upgrade operation.
 
 
 4. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the Palette Helm Chart.
