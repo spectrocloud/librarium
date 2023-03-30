@@ -85,14 +85,14 @@ auth:
     path: /etc/spectropaxconfig/htpasswd-basic
 ```
 
-3. Start the container image with the following flags
+3. Start the container image with the following flags.
 
 ```
 docker run  \
     --rm \
-    -p 443:5000 \
+    --port 443:5000 \
     --name spectro-registry \
-    -v $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
+    --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
     gcr.io/spectro-images-public/release/spectro-registry:3.3.0  \
     serve /etc/spectropaxconfig/myconfig.yml
 ```

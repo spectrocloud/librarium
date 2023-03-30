@@ -16,11 +16,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Advanced Configuration
 
-You can modify a few deployment options of the pack registry.
-The configuration is applied through a YAML file. However, you can override 
-many options using environment variables.
+You can modify the deployment of the pack registry by providing a YAML configuration file. You can also override default configuration options through the usage of environment variables.
 
-The configuration file is divided into keys and values. The following is an example YAML configuration.
+The configuration file is divided into keys and values. The following is an example of a YAML configuration.
+
+<br />
 
 ```yaml
 version: 0.1
@@ -36,8 +36,13 @@ The key `version` has a number value. The `log` key has a value with multiple ke
 To override the value of `log.level` you can specify an environment variable named
 `REGISTRY_LOG_LEVEL`.
 
+<br />
+
 ```shell
 export REGISTRY_LOG_LEVEL=debug
+```
+
+<br />
 
 ## Default Configuration
 
@@ -74,30 +79,35 @@ The server is started with the command `registy serve /etc/spectro/config.yml`.
 You can override the default values with specific values through environment
 variables, or you can use your own configuration file.
 
-For example, you can start the docker container image with the following environment
-variables to override the basic auth realm and logging level:
+For example, you can start the docker container image with the following environment by using the
+variables to override the basic auth realm and logging level. In the following example, the `-e` flag is used to provide environment variables to the container.
+
+<br />
 
 ```bash
 docker run -d \
-    -p 443:5000 \
-    ...
+    --rm \
+    --port 443:5000 \
+    --name spectro-registry\
+    --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    ...
     gcr.io/spectro-images-public/release/spectro-registry:3.2.0
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server command to the configuration file.
 
-```
+<br />
+
+```shell
 docker run -d \
-    -p 443:5000 \
-    ...
-    -v $(pwd)/myconfig.yml:/etc/myconfig.yml
-    ...
-    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
-    /registry serve /etc/myconfig.yml
+    --rm \
+    --port 443:5000 \
+    --name spectro-registry \
+    --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0 \
+    serve /etc/spectropaxconfig/myconfig.yml
 ```
 ## Storage Backend
 
@@ -111,12 +121,14 @@ storage:
   cache:
     blobdescriptor: inmemory
   filesystem:
-    rootdirectory: /tmp/registry//data/.spectro-server
+    rootdirectory: /tmp/registry/data/.spectro-server
 ```
 
 If you are using S3 Storage, ensure you specify the required S3 parameters.
 
-```
+<br />
+
+```yaml
 storage:
   cache:
     blobdescriptor: inmemory
@@ -133,6 +145,9 @@ storage:
 ```
 
 You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments should use object storage or a file system.
+
+<br />
+
 ```yaml
 storage: inmemory
 ```
@@ -140,6 +155,8 @@ storage: inmemory
 ## Authentication
 
 You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an httppasswd file containing the credentials.
+
+<br />
 
 ```yaml
 auth:
@@ -156,11 +173,15 @@ The following options are available for modifying HTTP transport:
 
 For serving content on all interfaces on port 5000:
 
+<br />
+
 ```yaml
 http:
     addr: :5000
 ```
 Alternatively, the server can bind to a single IP and different port:
+
+<br />
 
 ```yaml
 http:
@@ -168,7 +189,10 @@ http:
 ```
 ### HTTP Headers
 
-The following headers are the default, and can be overriden:
+The following headers are the default, and can be overridden:
+
+<br />
+
 ```yaml
 http:
   headers:
@@ -181,10 +205,11 @@ http:
 ```
 ### TLS
 
-TLS can be configured using [letsencrypt](https://letsencrypt.org) or custom TLS certificates:
+TLS can be configured using [Let's Encrypt](https://letsencrypt.org) or custom TLS certificates:
 
-For letsencrypt, your registry has to have a public IP address accessible for HTTP based
-validation by the letsencrypt services.
+When using Let's Encrypt, your registry server must be assigned to a public IP address accessible for HTTP-based validation by the Let's Encrypt services.
+
+<br />
 
 ```yaml
 http:
@@ -197,13 +222,15 @@ http:
       - pax-registry.spectrocloud.com
 ```
 
-Note, letsencrypt limits the amount of free certificates issued per domain per amount of time.
-It is therefore, recommended to mount a volume where the certificates are permanently stored.
-This option is `cachefile` which is actually a directory, despite the name.
+Let's Encrypt limits the number of free certificates issued for each domain for a set time.
+We recommend you mount a volume where the certificates are permanently stored. Use the
+option `cachefile` to enable this behavior.
 
-Custom certificates can be specified with:
+You can specify custom certificates by providing the file path to the certificate files.
 
-```
+<br />
+
+```yaml
 http:
   tls:
     certificate: /path/to/x509/certificate/file
