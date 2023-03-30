@@ -18,7 +18,14 @@ The Palette Helm Chart Mode is a multi-node, highly available installation of th
 
 # Requirements
 
-Palette SaaS in Helm Chart mode does not have specific requirements on Kubernetes, beyond requiring a currently supported version of Kubernetes. This cluster can *not* be managed by Palette because some of the components are shared and will conflict. We recommend using a managed Kubernetes offering to reduce the management overhead for the cluster. The Palette Helm Chart does not depend on any specific managed Kubernetes offering. We recommend the cluster consist of at least 3 worker nodes, or 3 control plane nodes without taints, so the application can be deployed across nodes for high availability. The cluster must have a container storage interface configured for persistent data. It is common practice to use this installation method in highly secure environments where firewall rules are restricting access to hosted installations of Palette SaaS. Be sure to consult our [architecture diagrams](/architecture/networking-ports) to ensure the cluster you deploy the Palette Helm Chart has the required connectivity to both resources on the public internet, and to the clusters that your hosted installation of Palette will manage. 
+Palette SaaS in Helm Chart mode does not have specific requirements on Kubernetes, beyond requiring a currently supported version of Kubernetes. This cluster can *not* be managed by Palette because some of the components are shared and will conflict. We recommend using a managed Kubernetes offering to reduce the management overhead for the cluster. The Palette Helm Chart does not depend on any specific managed Kubernetes offering. 
+
+For a production cluster, we recommend configuring and sizing the cluster to these specifications:
+ * The cluster must have a container storage interface configured for persistent data. 
+ * The cluster should have at least 3 worker nodes, or 3 control plane nodes without taints
+ * The cluster should have at least 4 vCPUs and 12GB RAM per node
+
+It is common practice to use this installation method in highly secure environments where firewall rules are restricting access to hosted installations of Palette SaaS. Be sure to consult our [architecture diagrams](/architecture/networking-ports) to ensure the cluster you deploy the Palette Helm Chart has the required connectivity to both resources on the public internet, and to the clusters that your hosted installation of Palette will manage. 
 
 
 # Install Palette via Helm on a Kubernetes cluster
