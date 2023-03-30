@@ -33,7 +33,9 @@ Pack contents are periodically synchronized with Palette.
 * [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signed-certificates) section for more guidance.
 
 <WarningBox>
+
 Please ensure that the ports 443 and 80 are exclusively allocated to the registry server and are not in use by other processes.
+
 </WarningBox>
 
 # Deploy Pack Registry Server with Letsencrypt
@@ -47,6 +49,8 @@ Palette provides a Docker image for the pack registry server.
 
 The following steps need to be performed to deploy the pack registry server using this docker image:
 
+<br />
+
 1. Create a folder that contains an httppasswd file.
 
 ```
@@ -55,9 +59,11 @@ mkdir spectropaxconfig
 
 2. Create the htpasswd file:
 
+```shell
+htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
 ```
-htpasswd -Bbn admin {enter your secure password choice} > spectropaxconfig/htpasswd-basic
-```
+
+
 3. Create a pax registry configuration file titled **myconfig.yml**. This file should be in the **spectropaxconfig** directory.
 
 ```yaml
@@ -79,7 +85,7 @@ auth:
     path: /etc/spectropaxconfig/htpasswd-basic
 ```
 
-3. Run the container image with the following flags
+3. Start the container image with the following flags
 
 ```
 docker run  \
