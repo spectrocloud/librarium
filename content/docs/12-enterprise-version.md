@@ -14,15 +14,15 @@ import WarningBox from 'shared/components/WarningBox';
 
 Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. Palette self-hosted is available in three modes:
 
-## VMWare Quick Start Mode
+## VMware Quick Start Mode
 
 Single node installation of the platform, ideal for PoC environments.
 
-## VMWare Enterprise Mode
+## VMware Enterprise Mode
 
 Highly available multi-node installation typically for production purposes.
 
-## Helm chart
+## Helm Chart
 
 Installation of Palette as a Helm chart on any supported Kubernetes cluster.
 
