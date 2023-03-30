@@ -24,7 +24,7 @@ Highly available multi-node installation typically for production purposes.
 
 ## Helm chart
 
-Installation of Palette as a Helm chart on any conformant Kubernetes cluster.
+Installation of Palette as a Helm chart on any supported Kubernetes cluster.
 
 ## Download Palette Installer
 
