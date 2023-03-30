@@ -22,9 +22,9 @@ Single node installation of the platform, ideal for PoC environments.
 
 Highly available multi-node installation typically for production purposes.
 
-## Helm chart
+## Helm Chart
 
-Installation of Palette as a Helm chart on any supported Kubernetes cluster.
+Install Palette by using a Helm Chart. Use this to install Palette onto a Kubernetes cluster.
 
 ## Download Palette Installer
 
