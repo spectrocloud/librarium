@@ -139,7 +139,7 @@ storage: inmemory
 
 Basic HTTP Auth is supported:
 
-```
+```yaml
 auth:
   htpasswd:
     realm: basic-realm
@@ -154,20 +154,20 @@ The following options are available for modifying HTTP transport:
 
 For serving content on all interfaces on port 5000:
 
-```
+```yaml
 http:
     addr: :5000
 ```
-Alternatively one can bind to a single IP and different port:
+Alternatively, the server can bind to a single IP and different port:
 
-```
+```yaml
 http:
     addr: 192.168.122.77:25000
 ```
 ### HTTP Headers
 
 The following headers are the default, and can be overriden:
-```
+```yaml
 http:
   headers:
     X-Content-Type-Options: [ nosniff ]
@@ -176,15 +176,15 @@ http:
     X-Frame-Options: [ DENY ]
     X-XSS-Protection: [ 1; mode=block ]
     Referrer-Policy: [ same-origin ]
-
+```
 ### TLS
 
 TLS can be configured using [letsencrypt](https://letsencrypt.org) or custom TLS certificates:
 
 For letsencrypt, your registry has to have a public IP address accessible for HTTP based
-validation by letsencrypt services.
+validation by the letsencrypt services.
 
-```
+```yaml
 http:
   addr: :5000
   tls:
