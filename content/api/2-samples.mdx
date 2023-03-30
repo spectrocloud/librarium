@@ -28,7 +28,7 @@ Use the following examples to familiarize yourself with the API.
 
 The following samples are for demonstration purposes only and may lack all the required payload values. They are not intended for production use.
 We recommend exploring the API using a tool such as [Postman](https://www.postman.com/) and our available Postman collection.
-Check out the [Postman collection](api/v1/overview#postman-collection) resource to learn more about the Palette API Postman collection.
+Check out the [Palette Postman collection](api/v1/overview#postman-collection) resource to learn more about the Postman collection.
 
 </WarningBox>
 
@@ -323,6 +323,131 @@ curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?
  --header "ApiKey: $API_KEY" \
  | jq -r '.status'
 ```
+
+</Tabs.TabPane> 
+
+
+<Tabs.TabPane tab="JavaScript" key="cluster-create-status-js">
+
+```js
+const apiKey = process.env.API_KEY;
+const projectID = process.env.PROJECT_ID;
+const clusterID = process.env.CLUSTER_ID;
+
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+const headers = {
+  'Accept': 'application/json',
+  'ApiKey': apiKey,
+};
+
+try {
+  const response = await fetch(url, { headers });
+  const data = await response.json();
+  const status = data.status;
+  console.log(status);
+} catch (error) {
+  console.error('Error:', error);
+}
+```
+
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="Go" key="cluster-create-status-go">
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+)
+
+func main() {
+	clusterID := os.Getenv("CLUSTER_ID")
+	projectID := os.Getenv("PROJECT_ID")
+	apiKey := os.Getenv("API_KEY")
+
+	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		fmt.Println("Error creating request:", err)
+		return
+	}
+
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("ApiKey", apiKey)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Error reading response:", err)
+		return
+	}
+
+	var responseMap map[string]interface{}
+	err = json.Unmarshal(body, &responseMap)
+	if err != nil {
+		fmt.Println("Error unmarshalling JSON:", err)
+		return
+	}
+
+	status := responseMap["status"].(map[string]interface{})
+	prettyStatus, err := json.MarshalIndent(status, "", "  ")
+	if err != nil {
+		fmt.Println("Error marshalling status JSON:", err)
+		return
+	}
+
+	fmt.Println(string(prettyStatus))
+}
+```
+
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="Rust" key="cluster-create-status-rust">
+
+```
+use reqwest::header::{HeaderMap, HeaderValue, ACCEPT};
+use serde_json::Value;
+use std::env;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let cluster_id = env::var("CLUSTER_ID").unwrap();
+    let project_id = env::var("PROJECT_ID").unwrap();
+    let api_key = env::var("API_KEY").unwrap();
+
+    let url = format!(
+        "https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}",
+        cluster_id, project_id
+    );
+
+    let mut headers = HeaderMap::new();
+    headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
+    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+
+    let client = reqwest::Client::new();
+    let resp = client.get(&url).headers(headers).send().await?;
+
+    let data: Value = resp.json().await?;
+    let status = data.get("status").unwrap();
+
+    println!("{:#}", status);
+
+    Ok(())
+}
+```
+
 
 </Tabs.TabPane> 
 
@@ -780,4 +905,600 @@ async fn main() -> Result<(), reqwest::Error> {
 
 
 
+
+# Cluster Workloads
+
+You can retrieve information about the active workloads on a cluster, such as the number of pods, nodes, and containers. 
+Use the namespace filter to retrieve information about workloads in specific namespaces.
+
+**Endpoint**: `https://api.spectrocloud.com/v1/dashboard/spectroclusters/{uid}/workloads/pod`
+
+Ensure you specify the cluster ID. You can set the cluster ID as an environment variable. 
+
+```shell
+export CLUSTER_ID="Your Cluster ID"
+```
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="curl" key="cluster-workloads-curl">
+
+
+
+```shell
+ curl --location "https://api.spectrocloud.com/v1/dashboard/spectroclusters/$CLUSTER_ID/workloads" \
+ --header "Content-Type: application/json" \
+ --header "Accept: application/json" \
+ --header "ProjectUid: $PROJECT_ID" \
+ --header "ApiKey: $API_KEY" \
+ --data '{
+   "filter": {
+     "namespaces": ["default", "myOtherNamespace"]
+   }
+ }'
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="JavaScript" key="cluster-workloads-js">
+
+```js
+const API_KEY = process.env.API_KEY;
+const PROJECT_ID = process.env.PROJECT_ID;
+const CLUSTER_ID = process.env.CLUSTER_ID;
+
+const url = `https://api.spectrocloud.com/v1/dashboard/spectroclusters/${CLUSTER_ID}/workloads`;
+
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'ProjectUid': PROJECT_ID,
+    'ApiKey': API_KEY
+  },
+  body: JSON.stringify({
+    filter: {
+      namespaces: ["default", "myOtherNamespace"]
+    }
+  })
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  return data;
+} catch (error) {
+  console.error(error);
+}
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Go" key="cluster-workloads-go">
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	apiKey := os.Getenv("API_KEY")
+	projectID := os.Getenv("PROJECT_ID")
+	clusterID := os.Getenv("CLUSTER_ID")
+
+	url := fmt.Sprintf("https://api.spectrocloud.com/v1/dashboard/spectroclusters/%s/workloads", clusterID)
+
+	filter := struct {
+		Namespaces []string `json:"namespaces"`
+	}{
+		Namespaces: []string{"default", "myOtherNamespace"},
+	}
+
+	requestBody, err := json.Marshal(struct {
+		Filter interface{} `json:"filter"`
+	}{
+		Filter: filter,
+	})
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(requestBody))
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Accept", "application/json")
+	request.Header.Set("ProjectUid", projectID)
+	request.Header.Set("ApiKey", apiKey)
+
+	client := &http.Client{}
+
+	response, err := client.Do(request)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	defer response.Body.Close()
+
+	var data interface{}
+	if err := json.NewDecoder(response.Body).Decode(&data); err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(data)
+}
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Rust" key="cluster-workloads-rust">
+
+```
+use std::env;
+use std::error::Error;
+use serde::{Serialize, Deserialize};
+use reqwest::header::{HeaderMap, HeaderValue, CONTENT_TYPE, ACCEPT};
+
+#[derive(Serialize)]
+struct Filter {
+    namespaces: Vec<String>,
+}
+
+#[derive(Serialize)]
+struct Request {
+    filter: Filter,
+}
+
+#[derive(Deserialize)]
+struct Response {
+    // Define the response struct based on the API response
+    // The structure of this is assumed and might need to be adjusted
+    // based on the actual response from the API
+    data: Vec<serde_json::Value>,
+}
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+    let cluster_id = env::var("CLUSTER_ID")?;
+    let project_id = env::var("PROJECT_ID")?;
+    let api_key = env::var("API_KEY")?;
+
+    let url = format!(
+        "https://api.spectrocloud.com/v1/dashboard/spectroclusters/{}/workloads",
+        cluster_id
+    );
+
+    let filter = Filter {
+        namespaces: vec!["default".to_string(), "myOtherNamespace".to_string()],
+    };
+
+    let request = Request { filter };
+
+    let request_body = serde_json::to_string(&request)?;
+
+    let mut headers = HeaderMap::new();
+    headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
+    headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
+    headers.insert("ProjectUid", HeaderValue::from_str(&project_id)?);
+    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+
+    let client = reqwest::Client::new();
+    let response = client
+        .post(&url)
+        .headers(headers)
+        .body(request_body)
+        .send()
+        .await?;
+
+    let response_text = response.text().await?;
+
+    let response_data: Response = serde_json::from_str(&response_text)?;
+
+    println!("{:#?}", response_data);
+
+    Ok(())
+}
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+# Filter Clusters
+
+You can filter host clusters by specifying the tags you want to filter on.
+
+**Endpoint**: `https://api.spectrocloud.com/v1/dashboard/spectroclusters/search`
+
+Ensure you specify the cluster ID. You can set the cluster ID as an environment variable. 
+
+```shell
+export CLUSTER_ID="Your Cluster ID"
+```
+
+
+In the following example, a filter for the tags `dev` and `team:bravo-2` is specified.  You can learn more about filters and how to 
+
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="curl" key="cluster-search-curl">
+
+```shell
+ curl --location 'https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20' \
+ --header 'Content-Type: application/json' \
+ --header 'Accept: application/json' \
+ --header "ProjectUid: $PROJECT_ID" \
+ --header "ApiKey: $API_KEY" \
+ --data '{
+   "filter": {
+     "conjunction": "and",
+     "filterGroups": [
+       {
+         "conjunction": "and",
+         "filters": [
+           {
+             "property": "tag",
+             "type": "string",
+             "condition": {
+               "string": {
+                 "operator": "eq", 
+                 "negation": false,
+                 "match": {
+                   "conjunction": "or",
+                   "values": [
+                     "dev",
+                     "team:bravo-2"
+                   ]
+                 },
+                 "ignoreCase": false
+               }
+             }
+           }
+         ]
+       }
+     ]
+   },
+   "sort": []
+ }'
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="JavaScript" key="cluster-search-js">
+
+```js
+async function searchSpectroclusters() {
+  const url = 'https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20';
+  const headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'ProjectUid': process.env.PROJECT_UID,
+    'ApiKey': process.env.API_KEY
+  };
+  const body = JSON.stringify({
+    "filter": {
+      "conjunction": "and",
+      "filterGroups": [
+        {
+          "conjunction": "and",
+          "filters": [
+            {
+              "property": "tag",
+              "type": "string",
+              "condition": {
+                "string": {
+                  "operator": "eq",
+                  "negation": false,
+                  "match": {
+                    "conjunction": "or",
+                    "values": [
+                      "dev",
+                      "team:bravo-2"
+                    ]
+                  },
+                  "ignoreCase": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sort": []
+  });
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: body
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+searchSpectroclusters();
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Go" key="cluster-search-go">
+
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+)
+
+type Filter struct {
+	Conjunction  string `json:"conjunction"`
+	FilterGroups []struct {
+		Conjunction string `json:"conjunction"`
+		Filters     []struct {
+			Property  string `json:"property"`
+			Type      string `json:"type"`
+			Condition struct {
+				String struct {
+					Operator   string `json:"operator"`
+					Negation   bool   `json:"negation"`
+					Match      Match  `json:"match"`
+					IgnoreCase bool   `json:"ignoreCase"`
+				} `json:"string"`
+			} `json:"condition"`
+		} `json:"filters"`
+	} `json:"filterGroups"`
+}
+
+type Match struct {
+	Conjunction string   `json:"conjunction"`
+	Values      []string `json:"values"`
+}
+
+func main() {
+	url := "https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20"
+
+	filter := Filter{
+		Conjunction: "and",
+		FilterGroups: []FilterGroup{
+			{
+				Conjunction: "and",
+				Filters: []Filter{
+					{
+						Property: "tag",
+						Type:     "string",
+						Condition: Condition{
+							String: StringCondition{
+								Operator:   "eq",
+								Negation:   false,
+								Match:      Match{Conjunction: "or", Values: []string{"dev", "team:bravo-2"}},
+								IgnoreCase: false,
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	jsonData, err := json.Marshal(filter)
+	if err != nil {
+		panic(err)
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+	if err != nil {
+		panic(err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("ProjectUid", os.Getenv("PROJECT_UID"))
+	req.Header.Set("ApiKey", os.Getenv("API_KEY"))
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(string(body))
+}
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Python" key="cluster-search-python">
+
+```python
+import requests
+import os
+import json
+
+url = 'https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20'
+
+filter = {
+  "filter": {
+    "conjunction": "and",
+    "filterGroups": [
+      {
+        "conjunction": "and",
+        "filters": [
+          {
+            "property": "tag",
+            "type": "string",
+            "condition": {
+              "string": {
+                "operator": "eq",
+                "negation": False,
+                "match": {
+                  "conjunction": "or",
+                  "values": [
+                    "dev",
+                    "team:bravo-2"
+                  ]
+                },
+                "ignoreCase": False
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sort": []
+}
+
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'ProjectUid': os.getenv('PROJECT_UID'),
+    'ApiKey': os.getenv('API_KEY')
+}
+
+response = requests.post(url, headers=headers, json=filter)
+
+print(response.json())
+```
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Rust" key="cluster-search-rust">
+
+```
+use reqwest::header::{HeaderMap, HeaderValue};
+use std::env;
+
+#[derive(Serialize)]
+struct Filter {
+    conjunction: String,
+    filterGroups: Vec<FilterGroup>,
+}
+
+#[derive(Serialize)]
+struct FilterGroup {
+    conjunction: String,
+    filters: Vec<Filter>,
+}
+
+#[derive(Serialize)]
+struct Filter {
+    property: String,
+    r#type: String,
+    condition: Condition,
+}
+
+#[derive(Serialize)]
+struct Condition {
+    string: StringCondition,
+}
+
+#[derive(Serialize)]
+struct StringCondition {
+    operator: String,
+    negation: bool,
+    r#match: Match,
+    ignoreCase: bool,
+}
+
+#[derive(Serialize)]
+struct Match {
+    conjunction: String,
+    values: Vec<String>,
+}
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let url = "https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20".to_string();
+
+    let filter = Filter {
+        conjunction: "and".to_string(),
+        filterGroups: vec![FilterGroup {
+            conjunction: "and".to_string(),
+            filters: vec![Filter {
+                property: "tag".to_string(),
+                r#type: "string".to_string(),
+                condition: Condition {
+                    string: StringCondition {
+                        operator: "eq".to_string(),
+                        negation: false,
+                        r#match: Match {
+                            conjunction: "or".to_string(),
+                            values: vec!["dev".to_string(), "team:bravo-2".to_string()],
+                        },
+                        ignoreCase: false,
+                    },
+                },
+            }],
+        }],
+    };
+
+    let headers = {
+        let mut headers = HeaderMap::new();
+        headers.insert(
+            "Content-Type",
+            HeaderValue::from_static("application/json"),
+        );
+        headers.insert("Accept", HeaderValue::from_static("application/json"));
+        headers.insert(
+            "ProjectUid",
+            HeaderValue::from_str(&env::var("PROJECT_UID").unwrap()).unwrap(),
+        );
+        headers.insert(
+            "ApiKey",
+            HeaderValue::from_str(&env::var("API_KEY").unwrap()).unwrap(),
+        );
+        headers
+    };
+
+    let client = reqwest::Client::new();
+    let response = client
+        .post(&url)
+        .headers(headers)
+        .json(&filter)
+        .send()
+        .await?
+        .text()
+        .await?;
+
+    println!("{}", response);
+
+    Ok(())
+}
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+# Download Cluster Kubeconfig
 
