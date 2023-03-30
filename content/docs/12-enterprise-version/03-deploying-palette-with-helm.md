@@ -1,5 +1,5 @@
 ---
-title: "Enterprise Mode"
+title: "Helm Chart Mode"
 metaTitle: "Installing Palette with Helm"
 metaDescription: "Using an existing Kubernetes cluster to deploy Palette SaaS"
 icon: ""
