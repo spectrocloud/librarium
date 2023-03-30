@@ -41,7 +41,7 @@ This installation pattern is common in secure environments with restricted netwo
 
 <WarningBox>
 
-Palette cannot manage the cluster its installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart not tied to any particular managed Kubernetes service.
+Palette cannot manage the cluster its installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart is not tied to any particular managed Kubernetes service.
 
 
 </WarningBox>
