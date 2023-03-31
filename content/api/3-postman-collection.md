@@ -10,6 +10,9 @@ hideToCSidebar: true
 ---
 import {Intro, IntroButtons} from "shared/components"
 import InfoBox from "shared/components/InfoBox"
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+
 
 <Intro>
 
@@ -32,7 +35,9 @@ To interact with the API, you will need the following:
 * An authentication credential. 
 
 <InfoBox>
+
 If you're running Palette on a self-hosted server instead of the SaaS version, use your server URL as the base URL in the API request.
+
 </InfoBox>
 
 ## Authentication
