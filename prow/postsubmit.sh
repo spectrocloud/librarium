@@ -8,6 +8,6 @@ set -e
 set -u
 
 source prow/functions.sh
-
-build_docs
-sync_s3
+echo "Postsubmit script triggered by Prow."
+build_release_docs
+sync_s3_release

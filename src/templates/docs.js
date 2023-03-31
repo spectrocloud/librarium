@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 
 import Layout from "shared/layouts/Default";
 import DocsLayout from "shared/layouts/Docs";
+import { Helmet } from "react-helmet";
+import { GenericSeoSchema } from "shared/utils/markupSchemas";
 
 export default function MDXLayout({ data = {}, children, ...rest }) {
   const {
@@ -26,6 +28,7 @@ export default function MDXLayout({ data = {}, children, ...rest }) {
       fullWidth={mdx.frontmatter?.fullWidth}
       hideMenuSidebar={mdx.frontmatter?.hideMenuSidebar}
     >
+      <GenericSeoSchema />
       <DocsLayout
         menu={menu}
         mdx={mdx}

@@ -17,6 +17,15 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster *before* it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
 
+<br />
+
+<InfoBox>
+
+You can find information about the JSON schema for the pack metadata file in the [JSON schema](/registries-and-packs/add-custom-packs#jsonschema) section of the documentation.
+
+</InfoBox>
+
+
 # Pack Values Constraints
 
 A Spectro Pack currently supports various configurations through a configuration file called `values.yaml`. The values defined in the config file are applied while deploying the Kubernetes cluster. The values defined in the pack are default values and can be overridden in the Cluster Profile or during the Cluster deployment.
@@ -260,6 +269,8 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
   }
 }
 ```
+
+
 
 <WarningBox>
 
