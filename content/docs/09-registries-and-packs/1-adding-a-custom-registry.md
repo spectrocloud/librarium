@@ -33,13 +33,76 @@ Pack contents are periodically synchronized with Palette.
 * [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signed-certificates) section for more guidance.
 
 <WarningBox>
+
 Please ensure that the ports 443 and 80 are exclusively allocated to the registry server and are not in use by other processes.
+
 </WarningBox>
 
-# Deploying a Pack Registry Server
+# Deploy Pack Registry Server with Letsencrypt
 
-Palette provides a Docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
+The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 
+Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#self-signedcertificates) section
+for more advanced configuration and deployment with self-signed certificates.
+
+Palette provides a Docker image for the pack registry server.
+
+The following steps need to be performed to deploy the pack registry server using this docker image:
+
+<br />
+
+1. Create a folder that contains an httppasswd file.
+
+```
+mkdir spectropaxconfig
+```
+
+2. Create the htpasswd file:
+
+```shell
+htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
+```
+
+
+3. Create a pax registry configuration file titled **myconfig.yml**. This file should be in the **spectropaxconfig** directory.
+
+```yaml
+version: 0.1
+log:
+  level: debug
+storage: inmemory
+http:
+  addr: :5000
+  tls:
+    letsencrypt:
+      cachefile: /etc/spectropaxconfig/le-cache
+      email: you@companydomain.com
+      hosts: 
+      - yourhost.companydomain.com 
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /etc/spectropaxconfig/htpasswd-basic
+```
+
+3. Start the container image with the following flags.
+
+```
+docker run  \
+    --rm \
+    --port 443:5000 \
+    --name spectro-registry \
+    --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0  \
+    serve /etc/spectropaxconfig/myconfig.yml
+```
+
+You can now access the pack registry at `https://yourhost.companydomain.com/v1/`.
+You will be prompted to give the user admin and the password of your choice.
+
+# Deploy a Pack Registry Server with Self-Signed Certificates
+
+The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
 
@@ -75,7 +138,7 @@ Create a directory or mount an external volume to the desired storage location. 
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
     ```bash
-        docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0
+ docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
     ```
 
 8. Create the Docker container using the docker `run` command:
@@ -96,7 +159,7 @@ Create a directory or mount an external volume to the desired storage location. 
             -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
             -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
             -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-            spectro-registry:3.1.0
+            gcr.io/spectro-images-public/release/spectro-registry:3.3.0
           ```
     
 <br />
@@ -122,7 +185,7 @@ Create a directory or mount an external volume to the desired storage location. 
                 -e  REGISTRY_AUTH=htpasswd \
                 -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
                 -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-                spectro-registry:3.1.0
+                spectro-registry:3.3.0
         ```
 
 <br />
@@ -184,8 +247,6 @@ use these packs in their cluster profiles.
 
 To know more about the use of Spectro CLI to push packs to a custom registry and sync it to Palette [click here..](/registries-and-packs/spectro-cli-reference/?cliCommands=cli_push#push)
 
-
-
 # Self-Signed Certificates
 
 For self-signed certificates, use the following command to generate certificates.
@@ -213,6 +274,5 @@ Provide the appropriate values while ensuring that the Common Name matches the r
   
   Example:
   REGISTRY_HOST_DNS - registry.com
-  ```
 
-  <br />
+<br />
