@@ -38,11 +38,11 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 </WarningBox>
 
-# Deploy Pack Registry Server with Letsencrypt
+# Deploy Pack Registry Server with Let's Encrypt
 
 The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 
-Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#self-signedcertificates) section
+Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#deploypackregistryserverwithlet'sencrypt) section
 for more advanced configuration and deployment with self-signed certificates.
 
 Palette provides a Docker image for the pack registry server.
