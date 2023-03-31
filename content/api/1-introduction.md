@@ -105,12 +105,17 @@ Palette groups resources under either a Tenant or Project scope. When making API
 **Example**:
 
 ```shell
-curl --location --request \
-GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
---header 'Accept: application/json' \
---header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'
+ curl --location --request \
+ GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
+ --header 'Accept: application/json' \
+ --header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'
 ```
 
+<InfoBox>
+
+If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+
+</InfoBox>
 
 # Pagination
 
