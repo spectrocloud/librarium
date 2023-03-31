@@ -37,9 +37,9 @@ Vault is deployed as a single container in the virtual cluster and the container
 
 
 - A Virtual Cluster with at least the following minimum resources.
-    - 8 CPU 
-    - 8 GB of Memory
-    - 8 GB of Storage.
+    - 4 CPU 
+    - 6 GB of Memory
+    - 6 GB of Storage.
 
 
 - Kubernetes 1.6+ or greater.
@@ -94,7 +94,7 @@ You can validate the Vault instance deployed successfully by using the following
 3. Select your application that contains Vault to view its details page.
 
 
-4. Ensure the **Status** is *Deployed* and that the service *vault* has a green dot right next to it.
+4. Ensure the **Status** is *Deployed* and that the service *Vault* has a green dot right next to it.
 
 
 5. Next, click on the **Virtual Cluster** link in the App details page.
