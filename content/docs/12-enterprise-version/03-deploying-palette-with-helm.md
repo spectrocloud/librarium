@@ -11,6 +11,7 @@ import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
+import Tabs from 'shared/components/ui/Tabs';
 
 # Helm Chart Mode
 
@@ -20,6 +21,8 @@ This installation pattern is common in secure environments with restricted netwo
 
 # Prerequisites
 
+
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed.
 
 
 - Configure a Container Storage Interface (CSI) for persistent data.
@@ -31,17 +34,19 @@ This installation pattern is common in secure environments with restricted netwo
 - Allocate a minimum of 4 CPUs and 12 GB Memory per node.
 
 
-- A custom domain and the ability to updated Domain Name System (DNS) records.
+- A custom domain and the ability to update Domain Name System (DNS) records.
 
 
 - Access to the Palette Helm Chart. Contact suppport@spectrocloud.com to gain access to the Helm Chart.
 
 
+- For AWS EKS, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) and the [kubectl CLI](https://github.com/weaveworks/eksctl#installation) installed. 
+
 <br />
 
 <WarningBox>
 
-Palette cannot manage the cluster its installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart is not tied to any particular managed Kubernetes service.
+Palette cannot manage the cluster it's installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart is not tied to any particular managed Kubernetes service.
 
 
 </WarningBox>
@@ -49,6 +54,184 @@ Palette cannot manage the cluster its installed onto due to component conflicts.
 
 # Install Palette
 
+Choose the installation steps for your target environment. The steps in the generic tab apply to all Kubernetes clusters, whereas the other tabs have instructions explicitly tailored to the target environment.
+
+<br />
+
+<Tabs>
+
+
+
+<Tabs.TabPane tab="AWS EKS" key="aws-eks">
+
+1. Ensure the AWS CLI is configured with your credentials. You can use the following command to configure your credentials. Refer to the [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) guide for additional help.
+
+    <br />
+
+    ```shell
+    aws configure
+    ```
+
+2. Next, create an EKS cluster.
+
+    <br />
+
+    ```shell
+    eksctl create cluster \
+     --name palette-selfhost \
+     --node-type m5.xlarge \
+     --nodes 3 \
+     --nodes-min 3 \
+     --nodes-max 4 \
+     --region eu-west-2 \
+     --kubeconfig ~/Downloads/palette-selfhost.kubeconfig
+    ```
+
+    Change `--region` and `--nodes` as required. You can also change the instance size, but keep in mind the required minimum of three nodes [with an instance](https://aws.amazon.com/ec2/instance-types/) with at least 4 CPUs and 12 GB of Memory.
+
+
+3. Once the cluster is available, go ahead and configure the OpenID Connect (OIDC) for the cluster to use Palette as the Identity Provider (IDP).
+
+    <br />
+
+    ```shell
+    eksctl utils associate-iam-oidc-provider --cluster=palette-selfhost --approve
+    ```
+
+4. Next, add the EBS Container Storage Interface (CSI) driver IAM role. Replace the `<AWS_ACCOUNT_ID>` with your AWS account ID.
+
+    <br />
+
+    ```shell
+    eksctl create addon --name aws-ebs-csi-driver \ 
+     --cluster palette-selfhost \ 
+     --service-account-role-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/AmazonEKS_EBS_CSI_DriverRole \
+     --force
+    ```
+
+5. Log in to the [AWS console](console.aws.amazon.com) and navigate to the EKS Dashboard.
+
+
+
+6. Select the cluster **palette-selfhost** to access its details page. 
+
+
+
+7. From the cluster details page, click on **Compute** > **Node Group**. Next, click on **Node IAM role ARN link**. 
+
+    ![A view of the cluster details page with the Node IAM role ARN highlighted](/enterprise-version_deploying-palette-with-helm_aws-iam-role.png)
+
+
+8. From the **Permissions** tab, click on the **Add Permissions** button, and select **Attach Policies**.
+
+
+9. Search for the policy **AmazonEBSCSIDriverPolicy** and add it to the role. 
+
+    <br />
+
+    <InfoBox>
+
+    You can find additional guidance about Amazon EBS CSI drivers and requirements by reviewing the [EBS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) and the [Manage EBS with EKS](https://github.com/awsdocs/amazon-eks-user-guide/blob/master/doc_source/managing-ebs-csi.md) guide.
+
+    </InfoBox>
+
+10. Extract the Helm Chart files from the compressed asset you received from us. Replace the file path as needed, and the version place holder.
+
+    <br />
+
+    ```shell
+    tar xzvf path/to-file/spectro-mgmt-helm-charts-X.X.tar.gz 
+    ```
+
+11. Navigate to the **spectro-mgmt-helm-charts-X.X** folder.
+
+    <br />
+
+    ```shell
+    cd spectro-mgmt-helm-charts-X.X
+    ```
+
+12. Review the **values.yaml** .You must populate the parameter `env.rootDomain` to the custom domain you will use for the installation. In addition, add the same `rootDomain` with port `:4222` to the `natsUrl` in the `nats` section of the YAML. Example: `env.rootDomain: my-domain.com:4222`
+
+    All other parameter values are optional and can be reset or changed with a Helm upgrade operation.
+
+    <br />
+    
+ 13. If you wish to use [AWS ACM for SSL Certs](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html), instead of the default self-signed certificate generated by the NGINX *ingress controller*, you can add it to the `annotations` under `ingress`.
+
+    <br />
+
+    ```yaml
+    ingress:
+      ingress:
+        # Whether to front NGINX Ingress Controller with a cloud
+        # load balancer (internal == false) or use host network
+        internal: false
+
+        # Default SSL certificate and key for NGINX Ingress Controller (Optional)
+        # A wildcard cert for config.env.rootDomain, e.g., *.myfirstpalette.spectrocloud.com
+        # If left blank, the NGINX ingress controller will generate a self-signed cert (when terminating TLS upstream of ingress-nginx-controller)
+        # certificate: ""
+        # key: ""
+
+        annotations:
+        # AWS example
+        service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ARN:ACM>"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+        ingressStaticIP: ""
+    ```
+ 
+ 14. Download the kubeconfig file for the EKS cluster. Ensure you can interact with the target cluster. You can validate by issuing a `kubectl` command. For additional guidance, refer to the [kubeconfig file for an Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) guide.
+
+
+
+15. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the Palette Helm Chart.
+
+  <br />
+
+  ```shell
+  helm install palette /path/to/chart.tgz --file /path/to/values.yaml
+  ```
+
+16. Monitor the deployment using the command below. Palette is ready when the deployments in namespaces `cp-system`, `hubble-system`, `jet-system` , and `ui-system` reach the *Ready* state.
+
+    <br />
+
+    ```shell
+    kubectl get pods --all-namespaces --watch
+    ```
+
+17. Create a DNS record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address.
+
+    <br />
+
+    ```shell
+    kubectl get service ingress-nginx-controller --namespace nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+    ```
+
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster.
+
+<br />
+
+<InfoBox>
+
+To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
+
+  <br />
+
+  ```shell
+  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
+  ```
+
+</InfoBox>
+
+
+
+</Tabs.TabPane> 
+
+<Tabs.TabPane tab="Generic Kubernetes" key="generic-k8s">
 
 1. Download the kubeconfig file for the Kubernetes cluster where you will deploy Palette. Ensure you can interact with the target cluster. You can validate by issuing a `kubectl` command.
 
@@ -104,13 +287,17 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
 To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
 
-<br />
+  <br />
 
-```shell
-helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-```
+  ```shell
+  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
+  ```
 
 </InfoBox>
+
+</Tabs.TabPane> 
+
+</Tabs>
 
 # Validation
 
