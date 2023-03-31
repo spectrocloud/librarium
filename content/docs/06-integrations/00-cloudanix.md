@@ -39,7 +39,7 @@ This helm chart installs 4 Cloudanix services to enable container security capab
 
 - CPUs: 0.5
 - Memory: 256 MiB
-- Kubernetes 1.19 and higher
+- Kubernetes 1.19 to 1.24
 - Kernel version 4.5 and higher
 
 ## Parameters
