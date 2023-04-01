@@ -934,6 +934,46 @@ Finally, apply the modifications there are in the plan to execute them and creat
 $ terraform apply
 ```
 
+
+## Verify the Profile
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="aws-validation-p">
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
+![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="azure-validation-p">
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
+![Terraform Azure profile](deploy-k8s-cluster/terraform/tf_azure_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="gcp-validation-p">
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*:
+![Terraform GCP profile](deploy-k8s-cluster/terraform/tf_gcp_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform GCP profile details](deploy-k8s-cluster/terraform/tf_gcp_profile_details.png)
+
+<br />
+
+</Tabs.TabPane>
+</Tabs>
+
+
 ## Configure the Cluster
 
 <Tabs>
@@ -1303,18 +1343,10 @@ $ terraform apply
 ```
 
 
-## Verify the Profile and the Cluster
+## Verify the Cluster
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-validation">
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
-![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
-
-<br />
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
 
@@ -1329,14 +1361,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-validation">
 
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
-![Terraform Azure profile](deploy-k8s-cluster/terraform/tf_azure_profile.png)
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
-
-<br />
-
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
 
 ![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
@@ -1349,14 +1373,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="GCP" key="gcp-validation">
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*:
-![Terraform GCP profile](deploy-k8s-cluster/terraform/tf_gcp_profile.png)
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform GCP profile details](deploy-k8s-cluster/terraform/tf_gcp_profile_details.png)
-
-<br />
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *gcp-cluster*:
 
