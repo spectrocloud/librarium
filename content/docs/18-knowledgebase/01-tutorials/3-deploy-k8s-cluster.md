@@ -187,7 +187,7 @@ The cluster config section allows to select the Region where to deploy among the
 
 Create an SSH key pair from the AWS dashboard.
 Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2) and, in the navigation panel, under Network & Security, choose Key Pairs.
-Choose Create key pair and enter the information required to create the key pair:  a descriptive name for the key, the type of key pair, and the private key file format. Then, select to Create a key pair.
+Choose Create key pair and enter the information required to create the key pair:  a descriptive name for the key, the type of key pair, and the private key file format. Then, select *Create a key pair*.
 
 ![aws key pair creation](deploy-k8s-cluster/aws/key_pair_create.png)
 
@@ -717,15 +717,12 @@ With Terraform, you will create the cluster and deploy the application. Each clu
 
 <br />
 
-<Tabs>
-<Tabs.TabPane tab="AWS" key="aws-terraform">
-
 ## Configure the Cluster Profile
 
 Create a folder where you will put all the Terraform configuration files and open it:
 ```bash
-$ mkdir terraform-project
-$ cd terraform-project
+$ mkdir terraform-profile
+$ cd terraform-profile
 ```
 
 ### Providers
@@ -735,7 +732,7 @@ Create the file *provider.tf* and insert the content:
 terraform {
   required_providers {
     spectrocloud = {
-      version = ">= 0.11.1"
+      version = "= 0.11.1"
       source  = "spectrocloud/spectrocloud"
     }
   }
@@ -762,13 +759,100 @@ variable "spectrocloud_api_key" {}
 Create the file *terraform.tfvars* and insert the content of the variable:
 
 ```terraform
-spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
+spectrocloud_api_key = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
 
 <br />
 
+### Data
+The data file contains the details, such as name, version, of the stacks that compose the infrastructure.
+
+Create the file data.tf and insert:
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="aws-tf-profile">
+
+```terraform
+data "spectrocloud_pack" "csi" {
+  name    = "csi-aws"
+  version = "1.0.0"
+}
+data "spectrocloud_pack" "cni" {
+  name    = "cni-calico"
+  version = "3.24.5"
+}
+data "spectrocloud_pack" "k8s" {
+  name    = "kubernetes"
+  version = "1.21.14"
+}
+data "spectrocloud_pack" "ubuntu" {
+  name    = "ubuntu-aws"
+  version = "20.04"
+}
+data "spectrocloud_pack" "proxy" {
+  name = "spectro-proxy"
+  version  = "1.2.0"
+}
+```
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="azure-tf-profile">
+
+```terraform
+data "spectrocloud_pack" "csi" {
+  name    = "csi-azure"
+  version = "1.25.0"
+}
+data "spectrocloud_pack" "cni" {
+  name    = "cni-calico-azure"
+  version = "3.24.5"
+}
+data "spectrocloud_pack" "k8s" {
+  name    = "kubernetes"
+  version = "1.24.10"
+}
+data "spectrocloud_pack" "ubuntu" {
+  name    = "ubuntu-azure"
+  version = "20.04"
+}
+data "spectrocloud_pack" "proxy" {
+  name    = "spectro-proxy"
+  version = "1.2.0"
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="gcp-tf-profile">
+
+```terraform
+data "spectrocloud_pack" "csi" {
+  name    = "csi-gcp-driver"
+  version = "1.7.1"
+}
+data "spectrocloud_pack" "cni" {
+  name    = "cni-calico"
+  version = "3.24.5"
+}
+data "spectrocloud_pack" "k8s" {
+  name    = "kubernetes"
+  version = "1.24.10"
+}
+data "spectrocloud_pack" "ubuntu" {
+  name    = "ubuntu-gcp"
+  version = "20.04"
+}
+data "spectrocloud_pack" "proxy" {
+  name    = "spectro-proxy"
+  version = "1.2.0"
+}
+```
+
+</Tabs.TabPane>
+</Tabs>
+
+
+<br />
 
 ### Cluster Profile
 
@@ -778,39 +862,34 @@ Create the file *cluster_profile.tf* and insert:
 
 ```terraform
 resource "spectrocloud_cluster_profile" "profile" {
-  name  = "tf-aws-profile"
-  tags  = ["aws", "tutorial"]
-  cloud = "aws"
+  name  = "tf-profile"
+  tags  = ["tutorial"]
+  cloud = <specify the provider (aws, azure, gcp)>
   type  = "cluster"
-
   pack {
     name   = data.spectrocloud_pack.ubuntu.name
     tag    = data.spectrocloud_pack.ubuntu.version
     uid    = data.spectrocloud_pack.ubuntu.id
     values = data.spectrocloud_pack.ubuntu.values
   }
-
   pack {
     name   = data.spectrocloud_pack.k8s.name
     tag    = data.spectrocloud_pack.k8s.version
     uid    = data.spectrocloud_pack.k8s.id
     values = data.spectrocloud_pack.k8s.values
   }
-
   pack {
     name   = data.spectrocloud_pack.cni.name
     tag    = data.spectrocloud_pack.cni.version
     uid    = data.spectrocloud_pack.cni.id
     values = data.spectrocloud_pack.cni.values
   }
-
   pack {
     name   = data.spectrocloud_pack.csi.name
     tag    = data.spectrocloud_pack.csi.version
     uid    = data.spectrocloud_pack.csi.id
     values = data.spectrocloud_pack.csi.values
   }
-
   pack {
     name   = data.spectrocloud_pack.proxy.name
     tag    = data.spectrocloud_pack.proxy.version
@@ -820,13 +899,53 @@ resource "spectrocloud_cluster_profile" "profile" {
 }
 ```
 
+## Create the Profile
+
+To create the cluster profile on Palette use the Terraform commands to apply the information present into the configuration files.
+
+Open the terminal and enter into the folder where you have the Terraform configuration files
+
+```bash
+$ cd terraform-profile
+```
+
+Initialize the working directory containing Terraform configuration files
+```bash
+$ terraform init
+```
+
+Validate the configuration files in the directory
+```bash
+$ terraform validate 
+```
+
+Create the execution plan with the preview changes your configuration will create on the infrastructure
+```bash
+$ terraform plan
+```
+
+Finally, apply the modifications there are in the plan to execute them and create the infrastructure
+```bash
+$ terraform apply
+```
+
 ## Configure the Cluster
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="aws-tf-cluster">
+
+Create a folder where you will put all the Terraform configuration files and open it:
+```bash
+$ mkdir terraform-cluster
+$ cd terraform-cluster
+```
 
 ### Variables
 
-Edit the file *variables.tf* and insert the list of variables:
+Create the file *variables.tf* and insert the list of variables:
 
 ```terraform
+variable "spectrocloud_api_key" {}
 variable "cluster_profile" {}
 variable "region" {}
 variable "aws_ssh_key_name" {}
@@ -854,54 +973,50 @@ variable "worker_nodes" {
 }
 ```
 
-Then, edit also the file *terraform.tfvars* and append the content of the variables:
+Then, create also the file *terraform.tfvars* and append the content of the variables:
+
 ```terraform
-spectrocloud_api_key    = "j54AsdjnSP2YU9jJF1K5dVYeURWzO4qd"
-aws_ssh_key_name        = "palette-key"
-aws-cloud-account-name  = "aws-palette"
-cluster_profile         = "tf-aws-profile"
+spectrocloud_api_key    = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+aws_ssh_key_name        = "aws-key"
+aws-cloud-account-name  = "82xxxxxxxxxx"
+cluster_profile         = "tf-profile"
 region                  = "us-east-1"
 master_nodes = {
     count           = "1"
     instance_type   = "m5.large"
-    disk_size_gb    = "50"
+    disk_size_gb    = "60"
     availability_zones = ["us-east-1a"]
 }
 worker_nodes = {
-    count           = "1"
+    count           = "2"
     instance_type   = "m5.large"
-    disk_size_gb    = "50"
+    disk_size_gb    = "60"
     availability_zones = ["us-east-1a"]
-} 
+}
 ```
 
-### Cluster Profile
+### Cluster Resources
 
-Create the *cluster.tf* file and insert the cluster resource:
+Create the *cluster.tf* file and insert the cluster resources definition:
 
 ```terraform
 data "spectrocloud_cloudaccount_aws" "account" {
   name = var.aws-cloud-account-name
 }
-
 data "spectrocloud_cluster_profile" "profile" {
   name = var.cluster_profile
 }
-
 resource "spectrocloud_cluster_aws" "cluster" {
   name             = aws-cluster"
   tags             = ["aws", "tutorial"]
   cloud_account_id = data.spectrocloud_cloudaccount_aws.account.id
-
   cloud_config {
     region        = var.region
     ssh_key_name  = var.aws_ssh_key_name
   }
-
   cluster_profile {
     id = data.spectrocloud_cluster_profile.profile.id
   }
-
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
@@ -911,239 +1026,56 @@ resource "spectrocloud_cluster_aws" "cluster" {
     disk_size_gb            = var.master_nodes.disk_size_gb
     azs                     = var.master_nodes.availability_zones
   }
-
   machine_pool {
-    name          = "worker-basic"
-    count         = var.worker_nodes.count
-    instance_type = var.worker_nodes.instance_type
-    disk_size_gb  = var.worker_nodes.disk_size_gb
-    azs           = var.worker_nodes.availability_zones
+    name                    = "worker-basic"
+    count                   = var.worker_nodes.count
+    instance_type           = var.worker_nodes.instance_type
+    disk_size_gb            = var.worker_nodes.disk_size_gb
+    azs                     = var.worker_nodes.availability_zones
   }
 }
 ```
 
-
-## Create the Profile and the Cluster
-
-To create the cluster profile on Palette and the cluster on the cloud provider use the Terraform commands to apply the information present into the configuration files.
-
-Open the terminal and enter into the folder where you have the Terraform configuration files
-
-```bash
-$ cd terraform-project
-```
-
-Initialize the working directory containing Terraform configuration files
-```bash
-$ terraform init
-```
-
-Validate the configuration files in the directory
-```bash
-$ terraform validate 
-```
-
-Create the execution plan with the preview changes your configuration will create on the infrastructure and output them in a file to save it
-```bash
-$ terraform plan -out tutorial.tfplan
-```
-
-Revise the components you are about to apply to the cloud provider
-```bash
-$ terraform show tutorial.tfplan
-```
-
-Finally, apply the modifications there are in the plan to execute them and create the infrastructure
-```bash
-$ terraform apply tutorial.tfplan
-```
-
-
-## Validation
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
-![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
-
-
-To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
-
-![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster.png)
-
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
-
-<br />
-
-
 </Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="azure-terraform">
-
-## Configure the Cluster Profile
+<Tabs.TabPane tab="Azure" key="azure-tf-cluster">
 
 Create a folder where you will put all the Terraform configuration files and open it:
 ```bash
-$ mkdir terraform-project
-$ cd terraform-project
+$ mkdir terraform-cluster
+$ cd terraform-cluster
 ```
-
-### Providers
-
-Create the file *provider.tf* and insert the list of variables:
-```terraform
-terraform {
-  required_providers {
-    spectrocloud = {
-      version = ">= 0.11.1"
-      source  = "spectrocloud/spectrocloud"
-    }
-  }
-}
-provider "spectrocloud" {
-  project_name = "Default"
-  api_key      = var.spectrocloud_api_key
-}
-```
-
-This file will connect to Palette through the Palette's *api_key*.
-
-<br />
-
 
 ### Variables
 
-Create the file *variables.tf* and insert the content:
+Create the file *variables.tf* and insert the list of variables:
 
 ```terraform
-variable "spectrocloud_api_key" {}
+spectrocloud_api_key     = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+azure-cloud-account-name = "azure-palette"
+subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+resource_group           = "palette_rg"
+cluster_profile          = "tf-profile"
+region                   = "eastus"
+cluster_ssh_public_key   = "key"
+master_nodes = {
+    count                = "1"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
+}
+worker_nodes = {
+    count                = "2"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
+}
 ```
-
-Create the file *terraform.tfvars* and insert the content of the variable:
-
-```terraform
-spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
-```
-
-To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
 
 <br />
 
-
-### Data
-
-The *data* file contains the details, such as name, version, of the stacks that compose the infrastructure.
-
-Create the file *data.tf* and insert:
-
-```terraform
-data "spectrocloud_pack" "csi" {
-  name    = "csi-azure"
-  version = "1.25.0"
-}
-
-data "spectrocloud_pack" "cni" {
-  name    = "cni-calico-azure"
-  version = "3.24.5"
-}
-
-data "spectrocloud_pack" "k8s" {
-  name    = "kubernetes"
-  version = "1.24.10"
-}
-
-data "spectrocloud_pack" "ubuntu" {
-  name    = "ubuntu-azure"
-  version = "20.04"
-}
-
-data "spectrocloud_pack" "proxy" {
-  name    = "spectro-proxy"
-  version = "1.2.0"
-}
-```
-
-
-### Cluster Profile
-
-The *cluster profile file* contains the packs that create the profile.
-
-Create the file *cluster_profile.tf* and insert:
-
-```terraform
-resource "spectrocloud_cluster_profile" "profile" {
-  name  = "tf-azure-profile"
-  tags  = ["ms-azure", "tutorial"]
-  cloud = "azure"
-  type  = "cluster"
-
-  pack {
-    name   = data.spectrocloud_pack.ubuntu.name
-    tag    = data.spectrocloud_pack.ubuntu.version
-    uid    = data.spectrocloud_pack.ubuntu.id
-    values = data.spectrocloud_pack.ubuntu.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.k8s.name
-    tag    = data.spectrocloud_pack.k8s.version
-    uid    = data.spectrocloud_pack.k8s.id
-    values = data.spectrocloud_pack.k8s.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.cni.name
-    tag    = data.spectrocloud_pack.cni.version
-    uid    = data.spectrocloud_pack.cni.id
-    values = data.spectrocloud_pack.cni.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.csi.name
-    tag    = data.spectrocloud_pack.csi.version
-    uid    = data.spectrocloud_pack.csi.id
-    values = data.spectrocloud_pack.csi.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.proxy.name
-    tag    = data.spectrocloud_pack.proxy.version
-    uid    = data.spectrocloud_pack.proxy.id
-    values = data.spectrocloud_pack.proxy.values
-  }
-}
-```
-
-## Create the Profile
-
-To create the cluster profile on Palette use the Terraform commands to apply the information present into the configuration files.
-
-Open the terminal, enter into the folder where you have the Terraform configuration files and initialize the working directory containing Terraform configuration files
-```bash
-$ terraform init
-```
-
-Validate the configuration files in the directory
-```bash
-$ terraform validate 
-```
-
-Create the execution plan with the preview changes your configuration will create on the infrastructure
-```bash
-$ terraform plan
-```
-
-Revise the output of the *plan* command to check the profile details and apply the modifications there are in the plan to execute them and create the infrastructure
-```bash
-$ terraform apply
-```
-
-
-## Configure the Cluster
-
-### Variables
-
-Edit the file *variables.tf* and insert the list of variables:
+Then, create also the file terraform.tfvars and append the content of the variables:
 
 ```terraform
 variable "spectrocloud_api_key" {}
@@ -1179,65 +1111,31 @@ variable "worker_nodes" {
     })
     description = "Worker nodes configuration."
 }
-
 ```
 
-Then, edit also the file *terraform.tfvars* and append the content of the variables:
-```terraform
-spectrocloud_api_key     = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-azure-cloud-account-name = "azure-palette"
-subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-resource_group           = "palette_rg"
-cluster_profile          = "tf-azure-profile"
-region                   = "eastus"
-cluster_ssh_public_key   = "key"
-
-master_nodes = {
-    count                = "1"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-
-worker_nodes = {
-    count                = "2"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-```
-
-### Cluster Profile
-
-Create the *cluster.tf* file and insert the cluster resource:
+### Cluster Resources
+Create the cluster.tf file and insert the cluster resources definition:
 
 ```terraform
 data "spectrocloud_cloudaccount_azure" "account" {
   name = var.azure-cloud-account-name
 }
-
 data "spectrocloud_cluster_profile" "profile" {
   name = var.cluster_profile
 }
-
 resource "spectrocloud_cluster_azure" "cluster" {
   name             = "azure-cluster"
   tags             = ["ms-azure", "tutorial"]
   cloud_account_id = data.spectrocloud_cloudaccount_azure.account.id
-
   cloud_config {
     subscription_id = var.subscription_id
     resource_group  = var.resource_group
     region          = var.region
     ssh_key         = var.cluster_ssh_public_key
   }
-
   cluster_profile {
     id = data.spectrocloud_cluster_profile.profile.id
   }
-
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
@@ -1251,7 +1149,6 @@ resource "spectrocloud_cluster_azure" "cluster" {
       type    = "Standard_LRS"
     }
   }
-
   machine_pool {
     name                 = "worker-basic"
     count                = var.worker_nodes.count
@@ -1263,210 +1160,41 @@ resource "spectrocloud_cluster_azure" "cluster" {
 ```
 
 
-## Create the Cluster
-
-To create the cluster on the cloud provider use the Terraform commands to apply the information present into the configuration files.
-
-Open the terminal, enter into the folder where you have the Terraform configuration files and validate the configuration files in the directory
-```bash
-$ terraform validate
-```
-
-Create the execution plan with the preview changes your configuration will create on the infrastructure
-```bash
-$ terraform plan
-```
-
-Revise the output of the *plan* command to check the cluster details and apply the modifications there are in the plan to execute them and create the infrastructure
-```bash
-$ terraform apply
-```
-
-
-## Validation
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
-![Terraform Azure profile](deploy-k8s-cluster/terraform/tf_azure_profile.png)
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
-
-
-To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
-
-![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
-
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
-
-<br />
-
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-terraform">
-
-## Configure the Cluster Profile
+<Tabs.TabPane tab="GCP" key="gcp-tf-cluster">
 
 Create a folder where you will put all the Terraform configuration files and open it:
 ```bash
-$ mkdir terraform-project
-$ cd terraform-project
+$ mkdir terraform-cluster
+$ cd terraform-cluster
 ```
-
-### Providers
-
-Create the file *provider.tf* and insert the list of variables:
-```terraform
-terraform {
-  required_providers {
-    spectrocloud = {
-      version = ">= 0.11.1"
-      source  = "spectrocloud/spectrocloud"
-    }
-  }
-}
-provider "spectrocloud" {
-  project_name = "Default"
-  api_key      = var.spectrocloud_api_key
-}
-```
-
-This file will connect to Palette through the Palette's *api_key*.
-
-<br />
-
 
 ### Variables
 
-Create the file *variables.tf* and insert the content:
+Create the file *variables.tf* and insert the list of variables:
 
 ```terraform
-variable "spectrocloud_api_key" {}
+spectrocloud_api_key    = "j54AsdjnSP2YU9jJF1K5dVYeURWzO4qd"
+cluster_profile         = "tf-gcp-profile"
+region                  = "us-east1"
+gcp-cloud-account-name  = "myproject-379610"
+master_nodes = {
+    count            = "1"
+    instance_type    = "n1-standard-2"
+    disk_size_gb     = "60"
+    availability_zones = ["us-east1-b"]
+}
+worker_nodes = {
+    count            = "2"
+    instance_type    = "n1-standard-2"
+    disk_size_gb     = "60"
+    availability_zones = ["us-east1-b"]
+}
 ```
-
-Create the file *terraform.tfvars* and insert the content of the variable:
-
-```terraform
-spectrocloud_api_key = "j54Asdjnxxxxxxxxxxxxxxxxxxxxxxxx"
-```
-
-To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
 
 <br />
 
-
-### Data
-
-The *data* file contains the details, such as name, version, of the stacks that compose the infrastructure.
-
-Create the file *data.tf* and insert:
-
-```terraform
-data "spectrocloud_pack" "csi" {
-  name    = "csi-gcp-driver"
-  version = "1.7.1"
-}
-
-data "spectrocloud_pack" "cni" {
-  name    = "cni-calico"
-  version = "3.24.5"
-}
-
-data "spectrocloud_pack" "k8s" {
-  name    = "kubernetes"
-  version = "1.24.10"
-}
-
-data "spectrocloud_pack" "ubuntu" {
-  name    = "ubuntu-gcp"
-  version = "20.04"
-}
-
-data "spectrocloud_pack" "proxy" {
-  name    = "spectro-proxy"
-  version = "1.2.0"
-}
-```
-
-
-### Cluster Profile
-
-The *cluster profile file* contains the packs that create the profile.
-
-Create the file *cluster_profile.tf* and insert:
-
-```terraform
-resource "spectrocloud_cluster_profile" "profile" {
-  name  = "tf-gcp-profile"
-  tags  = ["gcp", "tutorial"]
-  cloud = "gcp"
-  type  = "cluster"
-
-  pack {
-    name   = data.spectrocloud_pack.ubuntu.name
-    tag    = data.spectrocloud_pack.ubuntu.version
-    uid    = data.spectrocloud_pack.ubuntu.id
-    values = data.spectrocloud_pack.ubuntu.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.k8s.name
-    tag    = data.spectrocloud_pack.k8s.version
-    uid    = data.spectrocloud_pack.k8s.id
-    values = data.spectrocloud_pack.k8s.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.cni.name
-    tag    = data.spectrocloud_pack.cni.version
-    uid    = data.spectrocloud_pack.cni.id
-    values = data.spectrocloud_pack.cni.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.csi.name
-    tag    = data.spectrocloud_pack.csi.version
-    uid    = data.spectrocloud_pack.csi.id
-    values = data.spectrocloud_pack.csi.values
-  }
-
-  pack {
-    name   = data.spectrocloud_pack.proxy.name
-    tag    = data.spectrocloud_pack.proxy.version
-    uid    = data.spectrocloud_pack.proxy.id
-    values = data.spectrocloud_pack.proxy.values
-  }
-}
-```
-
-
-## Create the Profile
-
-To create the cluster profile on Palette use the Terraform commands to apply the information present into the configuration files.
-
-Open the terminal, enter into the folder where you have the Terraform configuration files and initialize the working directory containing Terraform configuration files
-```bash
-$ terraform init
-```
-
-Validate the configuration files in the directory
-```bash
-$ terraform validate 
-```
-
-Create the execution plan with the preview changes your configuration will create on the infrastructure
-```bash
-$ terraform plan
-```
-
-Revise the output of the *plan* command to check the profile details and apply the modifications there are in the plan to execute them and create the infrastructure
-```bash
-$ terraform apply
-```
-
-## Configure the Cluster
-
-### Variables
-
-Edit the file *variables.tf* and insert the list of variables:
+Then, create also the file terraform.tfvars and append the content of the variables:
 
 ```terraform
 variable "spectrocloud_api_key" {}
@@ -1496,29 +1224,8 @@ variable "worker_nodes" {
 }
 ```
 
-Then, edit also the file *terraform.tfvars* and append the content of the variables:
-```terraform
-spectrocloud_api_key    = "j54AsdjnSP2YU9jJF1K5dVYeURWzO4qd"
-cluster_profile         = "tf-gcp-profile"
-region                  = "us-east1"
-gcp-cloud-account-name  = "myproject-379610"
-master_nodes = {
-    count            = "1"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "50"
-    availability_zones = ["us-east1-b"]
-}
-worker_nodes = {
-    count            = "2"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "50"
-    availability_zones = ["us-east1-b"]
-}
-```
-
-### Cluster Profile
-
-Create the *cluster.tf* file and insert the cluster resource:
+### Cluster Resources
+Create the cluster.tf file and insert the cluster resources definition:
 
 ```terraform
 data "spectrocloud_cloudaccount_gcp" "account" {
@@ -1557,14 +1264,27 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 }
 ```
 
+</Tabs.TabPane>
+</Tabs>
 
 ## Create the Cluster
 
 To create the cluster on the cloud provider use the Terraform commands to apply the information present into the configuration files.
 
-Open the terminal, enter into the folder where you have the Terraform configuration files and validate the configuration files in the directory
+Open the terminal and enter into the folder where you have the Terraform configuration files
+
 ```bash
-$ terraform validate
+$ cd terraform-cluster
+```
+
+Initialize the working directory containing Terraform configuration files
+```bash
+$ terraform init
+```
+
+Validate the configuration files in the directory
+```bash
+$ terraform validate 
 ```
 
 Create the execution plan with the preview changes your configuration will create on the infrastructure
@@ -1572,13 +1292,52 @@ Create the execution plan with the preview changes your configuration will creat
 $ terraform plan
 ```
 
-Revise the output of the *plan* command to check the cluster details and apply the modifications there are in the plan to execute them and create the infrastructure
+Finally, apply the modifications there are in the plan to execute them and create the infrastructure
 ```bash
 $ terraform apply
 ```
 
 
 ## Validation
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="aws-validation">
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
+![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
+
+
+To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
+
+![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster.png)
+
+Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="azure-validation">
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
+![Terraform Azure profile](deploy-k8s-cluster/terraform/tf_azure_profile.png)
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
+
+
+To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
+
+![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
+
+Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="gcp-validation">
 
 To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*:
 ![Terraform GCP profile](deploy-k8s-cluster/terraform/tf_gcp_profile.png)
@@ -1593,11 +1352,12 @@ To check the cluster creation, login to Palette dashboard and, from the left **M
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
-<br />
-
 </Tabs.TabPane>
 </Tabs>
 
+Since the cluster may take several minutes to create, in relation to the packs to install, the type of instances selected, and so forth, it might be useful to check the creation events from the **Events** tab at the top of the page
+
+![Update the cluster](deploy-k8s-cluster/cluster_create_events.png)
 
 <br />
 <br />
@@ -1609,7 +1369,6 @@ The following steps will guide you through deploying the application on the clus
 The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
 
 <br />
-
 
 ### Add the Manifest
 
@@ -1670,6 +1429,11 @@ spec:
 
 <br />
 
+First, check the validation of the configuration files:
+```bash
+$ terraform validate
+```
+
 Create the execution plan with the additional modifications to the already existant configuration:
 ```bash
 $ terraform plan
@@ -1692,13 +1456,20 @@ Open the Palette dashboard and click on **Workloads** on the top of the page:
 ![Workloads](deploy-k8s-cluster/workloads.png)
 
 The tab opens an overview of the Kubernetes components. From there you can check if the application components have been created successfully:
-- select the **Namespace** tab and check for a namespace called *cluster-xxxxxx*
-- select the **Deployment** tab and check for the *hello-universe-deployment* deployment
-- select the **Pods** tab and check for two pods with name *hello-universe-xxxxxx*
+- select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*
+- select the **Deployments** tab and check for the *hello-universe-deployment* deployment
+- select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*
 
-Next to the pods name, check the pods *ready* information to see if the application is fully deployed.
+In the **Deployments** tab, next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
 
-To access the application, select the **Overview** tab at the top pf the page and click on the link next to the **Services** label. It will open a new tab on the browser that prompts the application.
+In the **Pods** tab, next to the pods names, check the status of the pods
+![Pods status](deploy-k8s-cluster/deploy_app/app_update_pods.png)
+
+Remember to update the list of components by clicking button at top right corner to refresh and synchronize the current state of the Kubernetes components.
+
+<br />
+
+To access the application, select the **Overview** tab at the top of the page and click on the link **:8080** that appaers next to the **hello-universe-service** in the **Services** line. It will open a new tab on the browser that prompts the application.
 
 ![Deployed application](deploy-k8s-cluster/app.png)
 
@@ -1747,6 +1518,11 @@ Then delete the components by running the destroy command:
 ```terraform
 $ terraform destroy
 ```
+
+TODO:
+- first destroy the cluster 
+- then destroy the profile
+
 
 </Tabs.TabPane>
 </Tabs>
