@@ -127,6 +127,13 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 
 <br />
 
+## Verify the Cluster Profile
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *aws-profile*.
+
+Click on the profile to see the details of the stacks that compose the profile:
+![AWS cluster profile details](deploy-k8s-cluster/aws/cluster_profile.png)
+
 
 ## Create a New Cluster
 
@@ -310,6 +317,14 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 <br />
 
 
+## Verify the Cluster Profile
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *azure-profile*.
+
+Click on the profile to see the details of the stacks that compose the profile:
+![Azure cluster profile details](deploy-k8s-cluster/azure/cluster_profile.png)
+
+
 ## Create a New Cluster
 
 You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
@@ -452,6 +467,7 @@ Your API should now be enabled.
 
 ![gcp how to enable compute engine api](deploy-k8s-cluster/gcp/computer_engine_api.png)
 
+<br />
 
 ## Create Cluster Profile
 
@@ -466,6 +482,16 @@ Here an example of cluster profile configuration.
 ![gcp cluster profile overview page](deploy-k8s-cluster/gcp/cluster_profile.png)
 
 For this tutorial, we use Ubuntu as OS, Calico as networking component, Amazon Elastic Block Store (EBS) Container Storage Interface (CSI) driver to manage the lifecycle of EBS volumes for persistent volumes, and Spectro-Proxy as reverse proxy to access the web application you are going to deploy later on.
+
+<br />
+
+
+## Verify the Cluster Profile
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *gcp-profile*.
+
+Click on the profile to see the details of the stacks that compose the profile:
+![GCP cluster profile details](deploy-k8s-cluster/gcp/cluster_profile.png)
 
 <br />
 
@@ -612,6 +638,80 @@ To complete this tutorial, you will need the following items.
 - Basic knowledge about containers.
 - Terraform v1.3.6 or greater
 - A Spectro Cloud API key. [To learn how to create an API key](https://docs.spectrocloud.com/user-management/user-authentication/#apikey)
+
+<br />
+
+## Create Provider Account
+
+<Tabs>
+<Tabs.TabPane tab="AWS" key="terraform-aws-account">
+
+Go to [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
+
+When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="terraform-azure-account">
+
+Go to [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+
+When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+
+<br />
+
+When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+
+To create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
+
+To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
+
+![create a subscription](deploy-k8s-cluster/azure/azure_subscription.png)
+
+Select *Add -> Add role assignment* and follow the next steps with the following information:
+- **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
+- **Role** -> Select **Contributor**
+- **Members** -> Click on **Select Members** and select your application name to add it
+
+<br />
+
+Let's now generate an SSH Key. To generate a SSH Key you also need to:
+- [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
+- [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
+
+Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to generate one. 
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="terraform-gcp-account">
+
+
+Go to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
+
+When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+
+When you login in GCP, you need to create a project. To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization. Create a project for this tutorial.
+
+In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: *Cloud Resource Manager API* and *Compute Engine API*.
+
+To enable *Cloud Resource Manager API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
+Search for *Cloud Resource Manager API*, enter into the product details and enable it. 
+
+Your API should now be enabled.
+
+![gcp how to enable cloud resource manager api](deploy-k8s-cluster/gcp/cloud_resource_manager_api.png)
+
+To enable *Compute Engine API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
+Search for *Compute Engine API*, enter into the product details and enable it. 
+
+Your API should now be enabled.
+
+![gcp how to enable compute engine api](deploy-k8s-cluster/gcp/computer_engine_api.png)
+
+<br /> 
+
+</Tabs.TabPane>
+</Tabs>
 
 <br />
 
@@ -1203,7 +1303,7 @@ $ terraform apply
 ```
 
 
-## Validation
+## Verify the Profile and the Cluster
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-validation">
@@ -1214,12 +1314,15 @@ To check the profile creation on Palette, login to Palette dashboard and, from t
 Click on the profile to see the details of the stacks that compose the profile:
 ![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
 
+<br />
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
 
 ![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster-details.png)
 
 <br />
 
@@ -1232,12 +1335,15 @@ To check the profile creation on Palette, login to Palette dashboard and, from t
 Click on the profile to see the details of the stacks that compose the profile:
 ![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
 
+<br />
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
 
 ![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster-details.png)
 
 <br />
 
@@ -1250,12 +1356,15 @@ To check the profile creation on Palette, login to Palette dashboard and, from t
 Click on the profile to see the details of the stacks that compose the profile:
 ![Terraform GCP profile details](deploy-k8s-cluster/terraform/tf_gcp_profile_details.png)
 
+<br />
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *gcp-cluster*:
 
 ![Update the cluster](deploy-k8s-cluster/gcp/gcp_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+![Update the cluster](deploy-k8s-cluster/gcp/gcp_create_cluster-details.png)
 
 </Tabs.TabPane>
 </Tabs>
@@ -1454,7 +1563,7 @@ Click to **Confirm updates** to finalize the modification of the profile and app
 
 <br />
 
-# Validation
+# Verify the Application
 
 From the cluster details page, click on **Workloads** at the top of the page:
 
