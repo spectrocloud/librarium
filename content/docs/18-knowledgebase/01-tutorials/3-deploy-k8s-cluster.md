@@ -242,7 +242,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="Azure" key="azure-ui">
 
 ## Create Azure Account
@@ -427,7 +426,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 <br />
 
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="GCP" key="gcp-ui">
 
 ## Create GCP Account
@@ -593,99 +591,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 </Tabs.TabPane>
 </Tabs>
 
-
-## Deploy the Application
-
-The following steps will guide you through deploying the application on the cluster. You will start with the modification of the cluster profile with the addition of the manifest, then the configuration of the manifest, and the deploy of the application.
-The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
-
-<br />
-
-### Add the Manifest
-
-Return to the *Profiles* tabs on the left panel and open the profile related to the cluster deployed.
-
-Select *Add Manifest* at the top of the page and insert the data:
-- *layer name*: name of the pack to add to the profile stack
-- *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it.
-
-![manifest](deploy-k8s-cluster/manifest.png)
-
-<br />
-
-
-### Customise the Manifest
-
-From the *editor* icon next to the manifest you can switch between the text editor and the overview of the profile stack.
-
-Click on the manifest to prompt a text file on the right side. Here you add the code to deploy the application.
-The manifest example code to deploy the *hello-universe* application is the following.
-
-<br />
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-spec:
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: hello-universe
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-universe
-  template:
-    metadata:
-      labels:
-        app: hello-universe
-    spec:
-      containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.9
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-```
-
-In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
-
-We set 2 replicas to simulate a minimal distributed environment with a redountant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
-
-For more information about the service LoadBalancer component you can refer to the [Kuberntes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
-
-<br />
-
-### Deploy
-
-Select the **Clusters** page from the left panel and click on the cluster to open the details page.
-
-![Cluster details with available updates](deploy-k8s-cluster/deploy_app/updates_available.png)
-
-<br />
-
-On the top right corner you'll see a green button **Updates Available** that shows you have updates to deploy on the cluster.
-Click on it to see the modification of the current profile with the last deployed and revise the application configurations.
-
-![Available updates details](deploy-k8s-cluster/deploy_app/updates_available_details.png)
-
-Click on **Confirm updates** to finalize the modification of the profile and apply the configuration of the application on the cluster.
-
-<br />
-
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="Terraform" key="terraform-cluster">
 
 ##  Terraform
@@ -850,7 +756,6 @@ data "spectrocloud_pack" "proxy" {
 
 </Tabs.TabPane>
 </Tabs>
-
 
 <br />
 
@@ -1363,12 +1268,89 @@ Since the cluster may take several minutes to create, in relation to the packs t
 <br />
 
 
+</Tabs.TabPane>
+</Tabs>
+
 ## Deploy the Application
 
 The following steps will guide you through deploying the application on the cluster. You will start with the modification of the cluster profile with the addition of the manifest, then the configuration of the manifest, and the deploy of the application.
 The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
 
 <br />
+
+<Tabs>
+<Tabs.TabPane tab="UI Workflow" key="ui-application">
+
+
+### Add the Manifest
+
+Return to the *Profiles* tabs on the left panel and open the profile related to the cluster deployed.
+
+Select *Add Manifest* at the top of the page and insert the data:
+- *layer name*: name of the pack to add to the profile stack
+- *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it.
+
+![manifest](deploy-k8s-cluster/manifest.png)
+
+<br />
+
+
+### Customise the Manifest
+
+From the *editor* icon next to the manifest you can switch between the text editor and the overview of the profile stack.
+
+Click on the manifest to prompt a text file on the right side. Here you add the code to deploy the application.
+The manifest example code to deploy the *hello-universe* application is the following.
+
+<br />
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-universe-service
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: hello-universe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-universe-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-universe
+  template:
+    metadata:
+      labels:
+        app: hello-universe
+    spec:
+      containers:
+      - name: hello-universe
+        image: ghcr.io/spectrocloud/hello-universe:1.0.9
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+```
+
+In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
+
+We set 2 replicas to simulate a minimal distributed environment with a redountant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+
+For more information about the service LoadBalancer component you can refer to the [Kuberntes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
+
+<br />
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Terraform" key="terraform-application">
+
 
 ### Add the Manifest
 
@@ -1447,6 +1429,24 @@ $ terraform apply
 </Tabs.TabPane>
 </Tabs>
 
+
+### Deploy
+
+Select the **Clusters** page from the left panel and click on the cluster to open the details page.
+
+![Cluster details with available updates](deploy-k8s-cluster/deploy_app/updates_available.png)
+
+<br />
+
+On the top right corner you'll see a green button **Updates Available** that shows you have updates to deploy on the cluster.
+Click on it to see the modification of the current profile with the last deployed and revise the application configurations.
+
+![Available updates details](deploy-k8s-cluster/deploy_app/updates_available_details.png)
+
+Click on **Confirm updates** to finalize the modification of the profile and apply the configuration of the application on the cluster.
+
+
+
 <br />
 
 # Validation
@@ -1496,17 +1496,15 @@ Click on **Settings**, at the top-right corner of the page, from the details pag
 You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for all the cluster you want to delete.
 
 </Tabs.TabPane>
-
 <Tabs.TabPane tab="Terraform" key="terraform-clean">
 
 ## Terraform
 
 To destroy resources with Terraform, use the destroy command.
 
-First enter into the folder where you have the Terraform configuration
+First enter into the folder where you have the Terraform configuration for the cluster
 ```bash
-$ mkdir terraform-project
-$ cd terraform-project
+$ cd terraform-cluster
 ```
 
 If you want to check the resources you will delete, you can first run: 
@@ -1519,10 +1517,16 @@ Then delete the components by running the destroy command:
 $ terraform destroy
 ```
 
-TODO:
-- first destroy the cluster 
-- then destroy the profile
+Wait until it finishes to delete the cluster.
+Successively, enter into the folder where you have the Terraform configuration for the profileS
+```bash
+$ cd terraform-profile
+```
 
+Then delete the components by running the destroy command:
+```terraform
+$ terraform destroy
+```
 
 </Tabs.TabPane>
 </Tabs>
@@ -1538,7 +1542,6 @@ Click on the cluster to see the details of the components Palette is deleting
 ![deleting cluster details](deploy-k8s-cluster/deleting_cluster_details.png)
 
 <br />
-
 
 # Next Steps
 
