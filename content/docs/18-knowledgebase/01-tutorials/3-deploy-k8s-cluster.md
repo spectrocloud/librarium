@@ -419,7 +419,7 @@ Take a look of the overall se tup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](deploy-k8s-cluster/deploy_app/azure_create_cluster.png)
+![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -1354,7 +1354,12 @@ For more information about the service LoadBalancer component you can refer to t
 
 ### Add the Manifest
 
-Open the file *cluster_profile.tf* and add the manifest pack inside the profile definition:
+Return to the folder where you have the profile configuration
+```bash
+$ cd terraform-profile
+```
+
+Open the file *cluster_profile.tf* and add the manifest pack inside the profile definition
 
 ```terraform
 resource "spectrocloud_cluster_profile" "profile" {
@@ -1371,7 +1376,7 @@ resource "spectrocloud_cluster_profile" "profile" {
 }
 ```
 
-This new manifest pack contains the configurations of the application through the file *manifest.yaml*. So, create the file *manifest.yaml* with the content:
+This new manifest pack contains the configurations of the application through the file *manifest.yaml*. So, create the file *manifest.yaml* with the Kubernetes configuration to deploy the app:
 
 ```yaml
 apiVersion: v1
@@ -1411,7 +1416,9 @@ spec:
 
 <br />
 
-First, check the validation of the configuration files:
+Then, use Terraform to push the modification to Palette and finalize the application deployment.
+
+So, first, check the validation of the configuration files:
 ```bash
 $ terraform validate
 ```
@@ -1434,42 +1441,40 @@ $ terraform apply
 
 Select the **Clusters** page from the left panel and click on the cluster to open the details page.
 
-![Cluster details with available updates](deploy-k8s-cluster/deploy_app/updates_available.png)
+![Cluster details with available updates](deploy-k8s-cluster/deploy_app/app_update_available.png)
 
 <br />
 
-On the top right corner you'll see a green button **Updates Available** that shows you have updates to deploy on the cluster.
+On the top right corner you'll see now a green button **Updates Available** that shows you have updates to deploy on the cluster.
 Click on it to see the modification of the current profile with the last deployed and revise the application configurations.
 
 ![Available updates details](deploy-k8s-cluster/deploy_app/updates_available_details.png)
 
-Click on **Confirm updates** to finalize the modification of the profile and apply the configuration of the application on the cluster.
-
-
+Click to **Confirm updates** to finalize the modification of the profile and apply the configuration of the application to the cluster.
 
 <br />
 
 # Validation
 
-Open the Palette dashboard and click on **Workloads** on the top of the page:
+From the cluster details page, click on **Workloads** at the top of the page:
 
 ![Workloads](deploy-k8s-cluster/workloads.png)
 
-The tab opens an overview of the Kubernetes components. From there you can check if the application components have been created successfully:
+The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully:
 - select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*
-- select the **Deployments** tab and check for the *hello-universe-deployment* deployment
+- select the **Deployments** tab and check the existance of a deployment with name *hello-universe-deployment*
 - select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*
 
-In the **Deployments** tab, next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
+In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
 
 In the **Pods** tab, next to the pods names, check the status of the pods
 ![Pods status](deploy-k8s-cluster/deploy_app/app_update_pods.png)
 
-Remember to update the list of components by clicking button at top right corner to refresh and synchronize the current state of the Kubernetes components.
+Remember to update the list of components by clicking the *sync* button at top right corner to refresh and synchronize the current state of the Kubernetes components.
 
 <br />
 
-To access the application, select the **Overview** tab at the top of the page and click on the link **:8080** that appaers next to the **hello-universe-service** in the **Services** line. It will open a new tab on the browser that prompts the application.
+To access the application, select the **Overview** tab at the top of the page and click on the link (**:8080**) that appears next to the **hello-universe-service** in the **Services** line. It will open a new tab on the browser that open the application.
 
 ![Deployed application](deploy-k8s-cluster/app.png)
 
@@ -1478,7 +1483,7 @@ To access the application, select the **Overview** tab at the top of the page an
 
 # Clean-up
 
-It is a good practice to clean up the cluster used for the tutorial, by removing every resource created on the cloud provider, to avoid unexpected cloud charges.
+It is a good practice to clean up the resouces used for the tutorial from the cloud provider, to avoid unexpected cloud charges.
 
 <br />
 
@@ -1491,7 +1496,7 @@ To remove all resources created in this tutorial, open the Palette Dashboard and
 
 Click on **Settings**, at the top-right corner of the page, from the details page to expand the settings menu and select **Delete Cluster** to delete the cluster.
 
-![Destroy-cluster](destroy-cluster.png)
+![Destroy-cluster](deploy-k8s-cluster/delete-cluster-button.png)
 
 You will be asked to type in the cluster name to confirm the delete action. Go ahead and type the cluster name to proceed with the delete step. Repeat this process for all the cluster you want to delete.
 
@@ -1518,15 +1523,7 @@ $ terraform destroy
 ```
 
 Wait until it finishes to delete the cluster.
-Successively, enter into the folder where you have the Terraform configuration for the profileS
-```bash
-$ cd terraform-profile
-```
 
-Then delete the components by running the destroy command:
-```terraform
-$ terraform destroy
-```
 
 </Tabs.TabPane>
 </Tabs>
@@ -1538,18 +1535,14 @@ To verify the execution of the deletion, open the Palette Dashboard and, from th
 
 <br />
 
-Click on the cluster to see the details of the components Palette is deleting
-![deleting cluster details](deploy-k8s-cluster/deleting_cluster_details.png)
-
-<br />
-
 # Next Steps
 
-In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files. To learn more about Palette Dev Engine and its capabilities.
+In this tutorial, you learned about Palette and Cluster Mode. You created a cluster profile, that is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added configuration of the Hello Universe application and deployed it. To do that you can use either Palette's user interface or Terraform configuration files.
+Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and deployed an application on it.
+To learn more about Palette and its capabilities.
 <br />
 
 - [Palette Modes](/introduction/palette-modes)
-- [App Profiles](/devx/app-profile)
-- [App Services]()
-- [Palette Virtual Clusters](/devx/palette-virtual-clusters) 
+- [Cluster Profiles](/devx/cluster_profile)
+- [Palette Clusters](/devx/clusters) 
 - [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)
