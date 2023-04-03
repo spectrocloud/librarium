@@ -33,6 +33,10 @@ Vault is deployed as a single container in the virtual cluster and the container
 
 # Deploy Vault
 
+Use the following steps to learn how to deploy Vault to your virtual cluster.
+
+## Prerequisites
+
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 
