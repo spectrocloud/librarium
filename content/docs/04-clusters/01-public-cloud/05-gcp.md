@@ -242,5 +242,17 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 
 <WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion.
+
+A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
+
+- Virtual Private Cloud (VPC) Network
+- Static External IP Address
+- Network Interfaces 
+- Cloud NAT
+- Cloud Load Balancing
+- Persistent Disks
+- Cloud Router
+
+Failure in removing provisioned resources can result in unexpected costs. Be sure to carefully review your Google Cloud Platform resources to prevent any unintended charges.
+
 </WarningBox>
