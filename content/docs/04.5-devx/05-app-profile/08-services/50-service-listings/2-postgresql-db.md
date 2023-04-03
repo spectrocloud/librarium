@@ -22,7 +22,7 @@ Palette supports [Postgres](https://www.postgresql.org/) as a database service. 
 
 ## Palette Postgres Requirement
 
-The following are requirements for using Palette Postgres:
+The following are the requirements for using Postgres in Palette:
 
 * Do not use the Postgres user names `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
