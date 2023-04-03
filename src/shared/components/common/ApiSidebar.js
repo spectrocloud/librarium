@@ -99,21 +99,13 @@ export default function ApiSidebar({ allMdx, branches, initialCount }) {
 
     return apiMenu.reduce((acc, curr) => {
       const rootUrl = curr.url.replace("/api/v1/", "");
+      const rootRgx = new RegExp(rootUrl, "gm");
 
-      if (Object.keys(branches).includes(rootUrl)) {
-        let branchName = rootUrl;
+      const branchKey = Object.keys(branches).find((branch) => branch.match(rootRgx));
 
-        if (rootUrl === "cloudconfig") {
-          branchName = "cloudconfigs";
-        }
+      acc[rootUrl] = branches[branchKey];
+      acc[rootUrl].title = curr.title;
 
-        if (rootUrl === "clusters") {
-          branchName = "spectroclusters";
-        }
-
-        acc[rootUrl] = branches[branchName];
-        acc[rootUrl].title = curr.title;
-      }
       return acc;
     }, {});
   }, [allMdx.edges, branches, selectedVersion]);
