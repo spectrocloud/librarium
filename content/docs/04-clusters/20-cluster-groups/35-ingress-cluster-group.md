@@ -64,7 +64,7 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
 3. Either add the ```nginx-ingress``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the 
-[Prerequisites](/devx/cluster-groups/ingress-cluster-group#prerequisites) section. 
+[Prerequisites](/clusters/cluster-groups/ingress-cluster-group/#prerequisites) section. 
   
   <br /> 
 
@@ -156,7 +156,7 @@ If an error message displays, it indicates something is wrong with the configura
 
 # Resources
 
-- [Cluster Groups](/devx/cluster-groups)
+- [Cluster Groups](/clusters/cluster-groups)
 
 
 
