@@ -255,7 +255,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 Go to [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 <br />
 
@@ -447,7 +447,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 Go to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 When you login in GCP, you need to create a project. To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization. Create a project for this tutorial.
 
@@ -648,14 +648,14 @@ To complete this tutorial, you will need the following items.
 
 Go to [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="terraform-azure-account">
 
 Go to [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 <br />
 
@@ -688,7 +688,7 @@ Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en
 
 Go to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 When you login in GCP, you need to create a project. To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization. Create a project for this tutorial.
 
@@ -914,7 +914,7 @@ Open the terminal and enter into the folder where you have the Terraform configu
 $ cd terraform-profile
 ```
 
-Initialize the working directory containing Terraform configuration files
+Initialize the working directory having Terraform configuration files
 ```bash
 $ terraform init
 ```
@@ -1322,7 +1322,7 @@ Open the terminal and enter into the folder where you have the Terraform configu
 $ cd terraform-cluster
 ```
 
-Initialize the working directory containing Terraform configuration files
+Initialize the working directory having Terraform configuration files
 ```bash
 $ terraform init
 ```
@@ -1413,7 +1413,7 @@ Return to the *Profiles* tabs on the left panel and open the profile related to 
 
 Select *Add Manifest* at the top of the page and insert the data:
 - *layer name*: name of the pack to add to the profile stack
-- *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it.
+- *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it
 
 ![manifest](deploy-k8s-cluster/manifest.png)
 
@@ -1467,7 +1467,7 @@ spec:
 
 In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
 
-We set 2 replicas to simulate a minimal distributed environment with a reduntant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+We set 2 replicas to simulate a minimal distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
 
 For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
 
@@ -1570,7 +1570,7 @@ Select the **Clusters** page from the left panel and click on the cluster to ope
 
 <br />
 
-On the top right corner you'll see now a green button **Updates Available** that shows you have updates to deploy on the cluster.
+On the top right corner, there is a green button **Updates Available** that shows you have updates to deploy on the cluster.
 Click on it to see the modification of the current profile with the last deployed and revise the application configurations.
 
 ![Available updates details](deploy-k8s-cluster/deploy_app/updates_available_details.png)
