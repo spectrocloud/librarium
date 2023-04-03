@@ -247,7 +247,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
         service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ARN:ACM>"
         service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
         ingressStaticIP: ""
-        # Used to terminate HTTPS at the load balancer versus passing through the load balancer.
+        # Used to terminate HTTPS traffic at the load balancer versus passing through the load balancer. This parameter is available in Palette 3.3 or greater.
         terminateHTTPSAtLoadBalancer: true
     ```
  
