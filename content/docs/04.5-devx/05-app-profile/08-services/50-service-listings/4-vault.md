@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Vault
 
-Palette Dev Engine (PDE) is leveraging Banzai Cloud's Bank-Vaults. Banzai Cloud Bank-Vaults is a wrapper for the official [Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you manage and protect sensitive information, like passwords, API keys, and encryption keys, securely. The Bank-Vaults client enhances the offical Vault client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider. 
+Palette Dev Engine (PDE) is leveraging Banzai Cloud's Bank-Vaults. Banzai Cloud Bank-Vaults is a wrapper for the official [Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you securely manage and protect sensitive information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider. 
 
 Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them. Vault also tracks who has accessed which secrets and when making it easier to maintain security. You can use Vault to govern access to secrets, automate application delivery, and consume secrets programmatically.
 
