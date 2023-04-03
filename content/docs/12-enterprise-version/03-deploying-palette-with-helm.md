@@ -303,7 +303,7 @@ To upgrade Palette with a new Helm release, or to modify the values used in the 
 # Validation
 
 You can validate that the installation of Palette is successful by visiting the custom domain you assigned to the 
-`env.rootDomain` in the **values.yaml**.
+`env.rootDomain` parameter in the **values.yaml**.
 
 <br />
 
@@ -322,7 +322,7 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
 
 # Next Steps
 
-Start exploring the Palette system dashboard so that you become familiar with the available actions you can make as an administrator. Check out the [System Console Dashboard](/enterprise-version/system-console-dashboard) resource to learn more.
+Start exploring the Palette system dashboard so that you become familiar with the available actions you can take as an administrator. Check out the [System Console Dashboard](/enterprise-version/system-console-dashboard) resource to learn more.
 
 
 <br />
