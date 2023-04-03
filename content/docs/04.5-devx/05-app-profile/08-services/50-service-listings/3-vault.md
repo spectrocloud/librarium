@@ -14,7 +14,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-#  Banzai Cloud Bank-Vaults
+#  Vault
 
 Banzai Cloud Bank-Vaults is a tool that helps you manage and protect sensitive information, like passwords, API keys, and encryption keys, securely. Banzai Cloud Bank-Vaults is a wrapper for the official [Vault](https://www.vaultproject.io/) client with automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider. 
 
