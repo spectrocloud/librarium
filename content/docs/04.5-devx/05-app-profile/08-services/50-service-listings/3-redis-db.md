@@ -91,9 +91,9 @@ The exposed output variables. Use these variables when connecting higher-level s
 
 You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-redis-auth \
- -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
@@ -108,9 +108,12 @@ Example:
 - Service Name: `redis-4`
 
 
-```
+```shell
 kubectl get secret  app-tarfful-redis-4-redis-auth \
- -n app-tarfful-redis-4-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace app-tarfful-redis-4-ns --output jsonpath='{.data.password}' | base64 --decode
+```
+Output:
+```shell
  .Hr1}%DrA2MFf
 ```
 

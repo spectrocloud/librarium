@@ -89,7 +89,7 @@ You can use the default system-generated password. If the default password is us
 
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Postgres is an available service layer.
 
 
 * Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
@@ -118,9 +118,9 @@ The exposed output variables of this service layer that may be used in other ser
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
- -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
@@ -138,8 +138,11 @@ Example:
 
 - Database User: `pguser`
 
-```
+```shell
 kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
- -n app-tarfful-postgresql-3-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace app-tarfful-postgresql-3-ns --output jsonpath='{.data.password}' | base64 --decode
+```
+Output:
+```shell
 zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```

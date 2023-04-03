@@ -100,14 +100,14 @@ The exposed output variables of this service layer may be used in other service 
 
 You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-user \
- -n <app name>-<service name>-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+ --namespace <app name>-<service name>-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
 ```
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app provided during the app creation process.
+  * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
 Example: 
@@ -117,8 +117,11 @@ Example:
 - Service Name: `mysql-2`
 
 
-```
+```shell
 kubectl get secret app-tarfful-mysql-2-user \
- -n app-tarfful-mysql-2-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+ --namespace app-tarfful-mysql-2-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+```
+Output:
+```shell
 ,U31nQ@T2tN4uM
 ```

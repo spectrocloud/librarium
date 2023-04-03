@@ -93,14 +93,14 @@ The exposed output variables of this service layer that may be used in other ser
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the MongoDB database user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-<user-name> \
- -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app provided during the Palette app creation process.
+  * app-name: represents the name of the app provided during the Palette app creation process.
   * service-name: The name of the service layer in the app profile.
   * user-name: The name of the database user.
 
@@ -113,9 +113,12 @@ Example:
 
 - Database User: `myuser`
 
-```
+```shell
 kubectl get secret app-tarfful-mongodb-1-myuser  \
- -n app-tarfful-mongodb-1-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace app-tarfful-mongodb-1-ns --output jsonpath='{.data.password}' | base64 --decode
+```
+Output:
+```shell
 .Hr1}%DrA2MFf
 ```
 
