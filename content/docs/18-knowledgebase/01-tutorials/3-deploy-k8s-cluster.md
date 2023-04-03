@@ -16,20 +16,20 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Deploy a Kubernetes Cluster with Palette
 
-Palette's purpose is to allow you to creating and managing a Kubernetes host cluster to the public cloud providers with minimal effort. Palette makes possibile for software engineers, application developers, or system administrators that want to deploy a containerized application, to interact with Kubernetes clusters with ease.
+Palette's purpose is to allow you to create and manage a Kubernetes host cluster to the public cloud providers with minimal effort. Palette makes possible for software engineers, application developers, or system administrators that want to deploy a containerized application, to interact with Kubernetes clusters with ease.
 
-The *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repetitible way on the main cloud providers.
+The *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repeatable way on the main cloud providers.
 
-This tutorial will teach you how to deploy a cluster with Palette . Yu will learn about *Cluster Mode*, *Cluster Profiles*, *Host Cluster* and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with high degree of customization.
+This tutorial will teach you how to deploy a cluster with Palette. Yu will learn about *Cluster Mode*, *Cluster Profiles*, *Host Cluster* and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with high degree of customization.
 
 <br />
 <br />
 
 # Architecture 
 
-In this tutorial the creation of a Kubernetes infrastructure is totally transparent and hidden because Palette manages it completely. In fact, Palette will save you all the effort to create the overall infrastructure, allowing to deploy a production-ready infrastructure with few clicks, and to deploy the application.
+In this tutorial the creation of a Kubernetes infrastructure is transparent and hidden because Palette manages it completely. In fact, Palette will save you all the effort to create the overall infrastructure, allowing to deploy a production-ready infrastructure with few clicks, and to deploy the application.
 
-This is a semplified architecture overview that shows the infrastructure Palette creates for you into the cloud provider you prefer.
+This is a simplified architecture overview that shows the infrastructure Palette creates for you into the cloud provider you prefer.
 
 ![Infrastructure architecture](deploy-k8s-cluster/architecture_infrastructure.png)
 
@@ -74,7 +74,7 @@ In case, you want to extend the experiments of this tutorial, exceeding the prov
 
 The following steps will guide you through deploying the cluster infrastructure. You will start with the definition of the cluster profile, then you will create the cluster and launch the provision of the cluster.
 
-From Palette, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, i.e. AWS, Azure, GCP, and managed through Palette.
+From Palette, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, such as AWS, Azure, GCP, and managed through Palette.
 
 <div id="providers"></div>
 <br />
@@ -109,7 +109,7 @@ In **Basic Information**, insert the name of the profile such as *aws-profile*, 
 **Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
 Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
 
-The infrastrucutre packs and their *Pack Values* configuration used in this tutorial are the following:
+The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
 - **Operating System (OS)** pack type -> *ubuntu-aws LTS__20.4.x*
 - **Kubernetes** pack type -> *Kubernetes 1.21.x*
 - **Network** pack type -> *cni-calico 3.24.x* (Calico)
@@ -180,7 +180,7 @@ The parameters section resumes the list of infrastructure layers and the list of
 
 For each component, there is a manifest with the deploy configurations.
 
-The default manifest is already suitable for production environment since it already includes a working configuration and the most of the hardening standards recommended for production environments.
+The default manifest is already suitable for production environment since it already includes a working configuration and most of the hardening standards recommended for production environments.
 Despite that, you can edit the default manifest, customizing the deploy configuration.
 
 <br />
@@ -205,13 +205,13 @@ Choose Create key pair and enter the information required to create the key pair
 
 The node config section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
 
-You can find the list and the explaination of all the paramerters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
+You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
 - *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region seleted in the *Cluster config* section.
+- *Availability zones* to use within the Region selected in the *Cluster config* section.
 - *Instance Option* to choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes. 
   - (in case of spot instance) *Maximum spot bid price* to set the bid price threshold to get instances. For this tutorial, you can select spot instance to minimize cost but make sure you check the *Allow worker capability* flag.
 
@@ -299,7 +299,7 @@ In **Basic Information**, insert the name of the profile such as *azure-profile*
 **Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
 Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
 
-The infrastrucutre packs and their *Pack Values* configuration used in this tutorial are the following:
+The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
 - **Operating System (OS)** pack type -> *ubuntu-azure LTS__20.4.x*
 - **Kubernetes** pack type -> *Kubernetes 1.21.x*
 - **Network** pack type -> *cni-calico-azure 3.24.x* (Calico)
@@ -1420,7 +1420,7 @@ Select *Add Manifest* at the top of the page and insert the data:
 <br />
 
 
-### Customise the Manifest
+### Customize the Manifest
 
 From the *editor* icon next to the manifest you can switch between the text editor and the overview of the profile stack.
 
@@ -1467,9 +1467,9 @@ spec:
 
 In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
 
-We set 2 replicas to simulate a minimal distributed environment with a redountant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+We set 2 replicas to simulate a minimal distributed environment with a reduntant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
 
-For more information about the service LoadBalancer component you can refer to the [Kuberntes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
+For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
 
 <br />
 
@@ -1587,7 +1587,7 @@ From the cluster details page, click on **Workloads** at the top of the page:
 
 The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully:
 - select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*
-- select the **Deployments** tab and check the existance of a deployment with name *hello-universe-deployment*
+- select the **Deployments** tab and check the existence of a deployment with name *hello-universe-deployment*
 - select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*
 
 In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
@@ -1608,7 +1608,7 @@ To access the application, select the **Overview** tab at the top of the page an
 
 # Clean-up
 
-It is a good practice to clean up the resouces used for the tutorial from the cloud provider, to avoid unexpected cloud charges.
+It is a good practice to clean up the resources used for the tutorial from the cloud provider, to avoid unexpected cloud charges.
 
 <br />
 
