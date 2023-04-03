@@ -27,3 +27,13 @@ With a focus on strong consistency and horizontal scalability, CockroachDB suppo
 Palette users can deploy CockroachDB to a virtual cluster by using the following steps.
 
 ## Prerequisite
+
+- A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
+
+
+- A Virtual Cluster with at least the following minimum resources.
+    - 4 CPU 
+    - 6 GB of Memory
+    - 6 GB of Storage.
+
+
