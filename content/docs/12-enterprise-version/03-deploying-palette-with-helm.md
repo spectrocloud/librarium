@@ -245,6 +245,8 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
         service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<ARN:ACM>"
         service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
         ingressStaticIP: ""
+        # Used to terminate HTTPS at the load balancer versus passing through the load balancer.
+        terminateHTTPSAtLoadBalancer: true
     ```
  
  14. Download the kubeconfig file for the EKS cluster. Ensure you can interact with the target cluster. You can validate by issuing a `kubectl` command. For additional guidance, refer to the [kubeconfig file for an Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) guide.
