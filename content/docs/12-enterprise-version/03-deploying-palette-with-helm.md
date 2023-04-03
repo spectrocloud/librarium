@@ -1,7 +1,7 @@
 ---
 title: "Helm Chart Mode"
-metaTitle: "Installing Palette with Helm"
-metaDescription: "Using an existing Kubernetes cluster to deploy Palette SaaS"
+metaTitle: "Install Palette with Helm Chart"
+metaDescription: "Learn how to deploy Palette in a Kubernetes cluster using a Helm Chart."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -15,9 +15,9 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Helm Chart Mode
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster that is highly available and suitable for production environments. The installation involves setting up a Kubernetes cluster and using the Helm Chart to install Palette.
+You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
-This installation pattern is common in secure environments with restricted network access that prohibits the usage of the Palette SaaS environment. Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
+This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 
 # Prerequisites
 
@@ -46,7 +46,7 @@ This installation pattern is common in secure environments with restricted netwo
 
 <WarningBox>
 
-Palette cannot manage the cluster it's installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart is not tied to any particular managed Kubernetes service.
+Palette cannot manage the cluster that it is installed onto due to component conflicts. Consider using a managed Kubernetes service to minimize management overhead. The Palette Helm Chart is not tied to any particular managed Kubernetes service.
 
 
 </WarningBox>
@@ -54,7 +54,7 @@ Palette cannot manage the cluster it's installed onto due to component conflicts
 
 # Install Palette
 
-Choose the installation steps for your target environment. The steps in the generic tab apply to all Kubernetes clusters, whereas the other tabs have instructions explicitly tailored to the target environment.
+Choose the installation steps for your target environment. The steps in the generic tab apply to all Kubernetes clusters. Steps in other tabs have instructions explicitly tailored to the target environment.
 
 <br />
 
@@ -80,7 +80,7 @@ Choose the installation steps for your target environment. The steps in the gene
     ``` 
 
 
-3. Review the **values.yaml** .You must populate the parameter `env.rootDomain` to the custom domain you will use for the installation. All other parameter values are optional and can be reset or changed with a Helm upgrade operation.
+3. Review the **values.yaml** . You must populate the `env.rootDomain` parameter to the domain you will use for the installation. All other parameter values are optional, and you can reset or change them with a Helm upgrade operation.
 
 
 4. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the Palette Helm Chart.
@@ -151,10 +151,12 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
      --kubeconfig ~/Downloads/palette-selfhost.kubeconfig
     ```
 
-    Change `--region` and `--nodes` as required. You can also change the instance size, but keep in mind the required minimum of three nodes [with an instance](https://aws.amazon.com/ec2/instance-types/) with at least 4 CPUs and 12 GB of Memory.
+    Change `--region` and `--nodes` as required. You can also change the instance size. 
+    
+    Note that the [minimum instance requirement](https://aws.amazon.com/ec2/instance-types/) is three nodes with a least  4 CPUs and 12 GB of Memory per node. 
 
 
-3. Once the cluster is available, go ahead and configure the OpenID Connect (OIDC) for the cluster to use Palette as the Identity Provider (IDP).
+3. When the cluster is available, go ahead and configure the OpenID Connect (OIDC) for the cluster to use Palette as the Identity Provider (IDP).
 
     <br />
 
@@ -173,11 +175,11 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
      --force
     ```
 
-5. Log in to the [AWS console](console.aws.amazon.com) and navigate to the EKS Dashboard.
+5. Log in to the [AWS console](https://console.aws.amazon.com) and navigate to the EKS Dashboard.
 
 
 
-6. Select the cluster **palette-selfhost** to access its details page. 
+6. Select the **palette-selfhost** cluster to access its details page. 
 
 
 
@@ -189,7 +191,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 8. From the **Permissions** tab, click on the **Add Permissions** button, and select **Attach Policies**.
 
 
-9. Search for the policy **AmazonEBSCSIDriverPolicy** and add it to the role. 
+9. Search for the **AmazonEBSCSIDriverPolicy** policy and add it to the role. 
 
     <br />
 
@@ -199,7 +201,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
     </InfoBox>
 
-10. Extract the Helm Chart files from the compressed asset you received from us. Replace the file path as needed, and the version place holder.
+10. Extract the Helm Chart files from the compressed asset we provided to you. Replace the file path and version place holder as needed.
 
     <br />
 
@@ -215,13 +217,13 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
     cd spectro-mgmt-helm-charts-X.X
     ```
 
-12. Review the **values.yaml** .You must populate the parameter `env.rootDomain` to the custom domain you will use for the installation. In addition, add the same `rootDomain` with port `:4222` to the `natsUrl` in the `nats` section of the YAML. Example: `env.rootDomain: my-domain.com:4222`
+12. Review the **values.yaml** . You must populate the `env.rootDomain` parameter to the domain you will use for the installation. In addition, add the same `rootDomain` with port `:4222` to the `natsUrl` in the `nats` section of the YAML. Example: `env.rootDomain: my-domain.com:4222`.
 
-    All other parameter values are optional and can be reset or changed with a Helm upgrade operation.
+    All other parameter values are optional, and you can reset or change them with a Helm upgrade operation.
 
     <br />
     
- 13. If you wish to use [AWS ACM for SSL Certs](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html), instead of the default self-signed certificate generated by the Nginx *ingress controller*, you can add it to the `annotations` under `ingress`.
+ 13. If you wish to use [AWS ACM for SSL Certs](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html), instead of the default self-signed certificate that the Nginx *ingress controller* generates, you can add it to the `annotations` under `ingress`.
 
     <br />
 
@@ -269,7 +271,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
     kubectl get pods --all-namespaces --watch
     ```
 
-17. Create a DNS record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address.
+17. Create a DNS record mapped to the load balancer created by the Palette service `ingress-nginx-controller` . You can use the following command to retrieve the load balancer IP address.
 
     <br />
 
@@ -300,7 +302,7 @@ To upgrade Palette with a new Helm release, or to modify the values used in the 
 
 # Validation
 
-You can validate that the installation of Palette is successful by visiting the custom domain you assigned to the parameter
+You can validate that the installation of Palette is successful by visiting the custom domain you assigned to the 
 `env.rootDomain` in the **values.yaml**.
 
 <br />
