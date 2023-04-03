@@ -87,7 +87,7 @@ From Palette, you will create the cluster and deploy the application. Each clust
 
 Go to [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-When you create an account, we recommend to create another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 <br />
 
@@ -115,7 +115,7 @@ The infrastructure packs and their *Pack Values* configuration used in this tuto
 - **Network** pack type -> *cni-calico 3.24.x* (Calico)
 - **Storage** pack type -> *csi-aws 1.0.x* (Container Storage Interface - CSI)
 
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later on.
+We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
 Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
 
 
@@ -270,11 +270,11 @@ To assign a role to the application, navigate to the *Subscriptions* page and, r
 Select *Add -> Add role assignment* and follow the next steps with the following information:
 - **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
 - **Role** -> Select **Contributor**
-- **Members** -> Click on **Select Members** and select your application name to add it
+- **Members** -> Click on **Select Members** and select your application name to add it.
 
 <br />
 
-Let's now generate an SSH Key. To generate a SSH Key you also need to:
+Let us now generate an SSH Key. To generate a SSH Key you also need to:
 - [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
 - [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
 
@@ -296,7 +296,7 @@ In **Basic Information**, insert the name of the profile such as *azure-profile*
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
-**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
+**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
 Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
 
 The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
@@ -305,7 +305,7 @@ The infrastructure packs and their *Pack Values* configuration used in this tuto
 - **Network** pack type -> *cni-calico-azure 3.24.x* (Calico)
 - **Storage** pack type -> *csi-azure 1.20.x* (Container Storage Interface - CSI)
 
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later on.
+We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
 Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
 
 The **Review** section gives an overview of the cluster profile configuration created.
@@ -370,7 +370,7 @@ The parameters section resumes the list of infrastructure layers and the list of
 
 For each component, there is a manifest with the deploy configurations.
 
-The default manifest is already suitable for production environment since it already includes a working configuration and the most of the hardening standards recommended for production environments.
+The default manifest is already suitable for production environment since it already includes a working configuration and most of the hardening standards recommended for production environments.
 Despite that, you can edit the default manifest, customizing the deploy configuration.
 
 <br />
@@ -400,13 +400,13 @@ Click on *Add New SSH Key* and insert the name of the key and the content of the
 
 The node config section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
 
-You can find the list and the explaination of all the paramerters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
+You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
 - *Allow worker capability* to allow the master node also to accept workloads.
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region seleted in the *Cluster config* section.
+- *Availability zones* to use within the Region selected in the *Cluster config* section.
 
 ![palette clusters nodes configuration](deploy-k8s-cluster/azure/clusters_nodes_config.png)
 
@@ -428,7 +428,7 @@ The review section resumes the cluster configuration as you have configured it i
 
 ![azure creation of a new cluster overview page](deploy-k8s-cluster/azure/clusters_review.png)
 
-Take a look of the overall se tup and press *Finish Configuration* to deploy it.
+Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 <br />
 
@@ -481,7 +481,7 @@ Here an example of cluster profile configuration.
 
 ![gcp cluster profile overview page](deploy-k8s-cluster/gcp/cluster_profile.png)
 
-For this tutorial, we use Ubuntu as OS, Calico as networking component, Amazon Elastic Block Store (EBS) Container Storage Interface (CSI) driver to manage the lifecycle of EBS volumes for persistent volumes, and Spectro-Proxy as reverse proxy to access the web application you are going to deploy later on.
+For this tutorial, we use Ubuntu as OS, Calico as networking component, Amazon Elastic Block Store (EBS) Container Storage Interface (CSI) driver to manage the lifecycle of EBS volumes for persistent volumes, and Spectro-Proxy as reverse proxy to access the web application you are going to deploy later.
 
 <br />
 
@@ -541,7 +541,7 @@ The parameters section resumes the list of infrastructure layers and the list of
 
 For each component, there is a manifest with the deploy configurations.
 
-The default manifest is already suitable for production environment since it already includes a working configuration and the most of the hardening standards recommended for production environments.
+The default manifest is already suitable for production environment since it already includes a working configuration and most of the hardening standards recommended for production environments.
 Despite that, you can edit the default manifest, customizing the deploy configuration.
 
 <br />
@@ -574,13 +574,13 @@ Click on *Add New SSH Key* and insert the name of the key and the content of the
 
 The node config section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
 
-You can find the list and the explaination of all the paramerters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
+You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
 - *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region seleted in the *Cluster config* section.
+- *Availability zones* to use within the Region selected in the *Cluster config* section.
 
 ![palette clusters nodes configuration](deploy-k8s-cluster/gcp/clusters_nodes_config.png)
 
@@ -674,7 +674,7 @@ Select *Add -> Add role assignment* and follow the next steps with the following
 
 <br />
 
-Let's now generate an SSH Key. To generate a SSH Key you also need to:
+Let us now generate an SSH Key. To generate a SSH Key you also need to:
 - [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
 - [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
 
