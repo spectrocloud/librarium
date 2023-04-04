@@ -202,7 +202,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deployment/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
 **Features**
 
@@ -398,7 +398,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 - Palette displays a well-organized [Product Onboarding](/getting-started/onboarding-workflow#paletteonboardingworkflow) process to streamline user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 - Palette helps out new users in their purchase decision by offering free tier services.
   - [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
-  - [Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
+  - [Free Cloud Credit](/getting-started/palette-freemium) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
 
 **Enhancements:**
 
