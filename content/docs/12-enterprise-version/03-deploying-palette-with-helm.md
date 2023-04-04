@@ -112,18 +112,6 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
   <br />
 
-  <InfoBox>
-
-  To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
-
-  <br />
-
-  ```shell
-  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-  ```
-
-  </InfoBox>
-
 </Tabs.TabPane> 
 
 <Tabs.TabPane tab="AWS EKS" key="aws-eks">
@@ -283,18 +271,6 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
 <br />
 
-<InfoBox>
-
-To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
-
-  <br />
-
-  ```shell
-  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-  ```
-
-</InfoBox>
-
 </Tabs.TabPane> 
 
 
@@ -319,6 +295,15 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
   ```
 
 </WarningBox>
+
+
+# Upgrade Palette
+
+You can upgrade Palette by using the Palette API `/system` endpoint. You must use the API for a successful upgrade otherwise internal system configurations stored in a Kubernetes *configMap* will get missed and result in lost system configurations. Using the Helm upgrade command will not retain critical system configuration values.
+
+The values you specified in the file **values.yaml**, more specifically, all the parameter values that fall under the parameter section `values.config` are stored in a configMap titled `configserver-cm`.
+
+
 
 # Next Steps
 
