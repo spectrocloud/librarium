@@ -175,7 +175,7 @@ docker run -d \
     -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
     -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
     gcr.io/spectro-images-public/release/spectro-registry:3.3.0
-  ```
+```
 
   #### Common Issues 
 
@@ -201,7 +201,7 @@ docker run -d \
     -e  REGISTRY_AUTH=htpasswd \
     -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
     -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-    spectro-registry:3.3.0
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
 ```
 
 <br />
