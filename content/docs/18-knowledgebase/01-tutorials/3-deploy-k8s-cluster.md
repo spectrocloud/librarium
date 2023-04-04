@@ -20,7 +20,7 @@ Palette's purpose is to allow you to create and manage a Kubernetes cluster to t
 
 The *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repeatable way on the main cloud providers, while a *Cluster* uses the cluster profile, as well as the cloud configuration, cluster size and placement configuration to provision a cluster on your preferred cloud provider.
 
-This tutorial will teach you how to deploy a cluster with Palette on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You will learn about *Cluster Mode*, *Cluster Profiles*, *Clusters*, and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with high degree of customization.
+This tutorial will teach you how to deploy a cluster with Palette on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) either from Palette dashboard or with Terraform. You will learn about *Cluster Mode*, *Cluster Profiles*, *Clusters*, and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with high degree of customization.
 
 <br />
 <br />
@@ -61,8 +61,8 @@ Palette supports to create and manage clusters directly from the dashboard, to p
 To complete this tutorial, you will need the following items
 
 - A Spectro Cloud account. You can [sign up to Palette](https://console.spectrocloud.com/auth/signup) 
-- Basic knowledge about containers.
-- Create a Cloud account ([AWS, Azure, GCP ](#providers))
+- Basic knowledge about containers
+- Create a Cloud account ([AWS, Azure, GCP](#providers))
 - Basic knowledge of the main public cloud platforms
 
 In case you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
@@ -230,7 +230,7 @@ Among the multiple configuration you can set, be sure to consider:
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), enable virtual clusters.
+In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
 
 For the purpose of this tutorial, you can use the default settings configuration.
 
@@ -286,7 +286,7 @@ Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-m
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates that are created with preconfigured core layers (Operating System, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
 Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
 
 Start by log in to Palette and open the **Profiles** tab on the left panel. 
@@ -417,7 +417,7 @@ Among the multiple configuration you can set, be sure to consider:
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), enable virtual clusters.
+In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
 
 For the purpose of this tutorial, you can use the default settings configuration.
 
@@ -443,7 +443,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-ui">
+<Tabs.TabPane tab="Google Cloud" key="gcp-ui">
 
 ## Create GCP Account
 
@@ -451,21 +451,17 @@ Open to [GCP home page](https://cloud.google.com) and follow the [page to create
 
 When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
-When you login in GCP, you need to create a project. To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization. Create a project for this tutorial.
+When you login in GCP, you need to [create a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization.
 
-In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: *Cloud Resource Manager API* and *Compute Engine API*.
+In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: **Cloud Resource Manager API** and **Compute Engine API**.
 
 To enable *Cloud Resource Manager API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
 Search for *Cloud Resource Manager API*, enter into the product details and enable it. 
-
-Your API should now be enabled.
 
 ![gcp how to enable cloud resource manager api](deploy-k8s-cluster/gcp/cloud_resource_manager_api.png)
 
 To enable *Compute Engine API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
 Search for *Compute Engine API*, enter into the product details and enable it. 
-
-Your API should now be enabled.
 
 ![gcp how to enable compute engine api](deploy-k8s-cluster/gcp/computer_engine_api.png)
 
@@ -473,17 +469,34 @@ Your API should now be enabled.
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/gcp/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth.
+[Cluster profiles](https://docs.spectrocloud.com/gcp/cluster-profiles) are templates that are created with preconfigured core layers (Operating System, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+Start by log in to Palette and open the **Profiles** tab on the left panel. 
+You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
 
-After the creation of a cluster profile, you can update it in any moment by adding/removing layers, editing the manifests, and so forth.
+Follow the procedure to create a new profile that is composed of the following steps.
 
-Here an example of cluster profile configuration.
+In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief  description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
 
-![gcp cluster profile overview page](deploy-k8s-cluster/gcp/cluster_profile.png)
+**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
-For this tutorial, we use Ubuntu as OS, Calico as networking component, Amazon Elastic Block Store (EBS) Container Storage Interface (CSI) driver to manage the lifecycle of EBS volumes for persistent volumes, and Spectro-Proxy as reverse proxy to access the web application you are going to deploy later.
+**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
+Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
+
+The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
+- **Operating System (OS)** pack type -> *ubuntu-gcp LTS__20.4.x*
+- **Kubernetes** pack type -> *Kubernetes 1.21.x*
+- **Network** pack type -> *cni-calico 3.24.x* (Calico)
+- **Storage** pack type -> *csi-gcp-driver 1.7.x* (Container Storage Interface - CSI)
+
+We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
+Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
+
+The **Review** section gives an overview of the cluster profile configuration created.
+
+![gcp cluster profile overview page](deploy-k8s-cluster/gcp/profile_review.png)
+
+After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
 
 <br />
 
@@ -558,9 +571,7 @@ The **Cluster config** section allows to select the *Region* where to deploy the
 Create an SSH key pair and add to the GCP account.
 Open the [GCP Compute Engine console](https://console.cloud.google.com/compute/instances) and, in the navigation panel, under *Setting*, choose *Metadata*. Open the *SSH Keys* tab and click on *Add SSH Key*.
 
-Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/connect/create-ssh-keys) to create the ssh key on your local machine
-
-Copy and paste the full value of your public key and save it.
+Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/connect/create-ssh-keys) to create the ssh key on your local machine. Then, copy the full value of your public key and paste it on GCP.
 
 ![gcp key pair creation](deploy-k8s-cluster/gcp/gcp_ssh_key_create.png)
 
@@ -580,7 +591,7 @@ You can find the list and the explanation of all the parameters in [Node Pool pa
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
-- *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
+- *Allow worker capability* to allow the master node also to accept workloads.
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 
@@ -591,7 +602,7 @@ Among the multiple configuration you can set, be sure to consider:
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), enable virtual clusters.
+In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
 
 For the purpose of this tutorial, you can use the default settings configuration.
 
@@ -634,10 +645,10 @@ If you need to become more familiar with Terraform, check out the [Terraform exp
 
 ## Prerequisites
 
-To complete this tutorial, you will need the following items.
+To complete this tutorial, you will need the following items
 
 - A Spectro Cloud account
-- Basic knowledge about containers.
+- Basic knowledge about containers
 - Terraform v1.3.6 or greater
 - A Spectro Cloud API key. [To learn how to create an API key](https://docs.spectrocloud.com/user-management/user-authentication/#apikey)
 
@@ -648,19 +659,18 @@ To complete this tutorial, you will need the following items.
 <Tabs>
 <Tabs.TabPane tab="AWS" key="terraform-aws-account">
 
-Open to [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
+Open the [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
 When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="terraform-azure-account">
 
-Open to [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+Open the [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
 When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
 <br />
-
 
 When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
@@ -680,28 +690,23 @@ Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-m
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="terraform-gcp-account">
-
+<Tabs.TabPane tab="Google Cloud" key="terraform-gcp-account">
 
 Open to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
 
 When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
-When you login in GCP, you need to create a project. To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization. Create a project for this tutorial.
+When you login in GCP, you need to [create a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization.
 
-In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: *Cloud Resource Manager API* and *Compute Engine API*.
+In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: **Cloud Resource Manager API** and **Compute Engine API**.
 
 To enable *Cloud Resource Manager API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
 Search for *Cloud Resource Manager API*, enter into the product details and enable it. 
-
-Your API should now be enabled.
 
 ![gcp how to enable cloud resource manager api](deploy-k8s-cluster/gcp/cloud_resource_manager_api.png)
 
 To enable *Compute Engine API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
 Search for *Compute Engine API*, enter into the product details and enable it. 
-
-Your API should now be enabled.
 
 ![gcp how to enable compute engine api](deploy-k8s-cluster/gcp/computer_engine_api.png)
 
@@ -722,7 +727,7 @@ With Terraform, you will create the cluster and deploy the application. Each clu
 
 ## Configure the Cluster Profile
 
-Create a folder where you will put all the Terraform configuration files and open it:
+Create a folder where you will put all the Terraform configuration files:
 ```bash
 $ mkdir terraform-profile
 $ cd terraform-profile
@@ -826,7 +831,7 @@ data "spectrocloud_pack" "proxy" {
 ```
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-tf-profile">
+<Tabs.TabPane tab="Google Cloud" key="gcp-tf-profile">
 
 ```terraform
 data "spectrocloud_pack" "csi" {
@@ -903,7 +908,7 @@ resource "spectrocloud_cluster_profile" "profile" {
 
 ## Create the Profile
 
-To create the cluster profile on Palette use the Terraform commands to apply the information present into the configuration files.
+To create the cluster profile on Palette use the Terraform commands to apply the information present in the configuration files.
 
 Open the terminal and enter into the folder where you have the Terraform configuration files
 
@@ -930,6 +935,7 @@ Finally, apply the modifications there are in the plan to execute them and creat
 ```bash
 $ terraform apply
 ```
+<br />
 
 
 ## Verify the Profile
@@ -938,45 +944,52 @@ $ terraform apply
 <Tabs.TabPane tab="AWS" key="aws-validation-p">
 
 To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
+
 ![Terraform AWS profile](deploy-k8s-cluster/terraform/tf_aws_profile.png)
 
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
-
 <br />
+
+Click on the profile to see the details of the stacks that compose the profile:
+
+![Terraform AWS profile details](deploy-k8s-cluster/terraform/tf_aws_profile_details.png)
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-validation-p">
 
 To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
+
 ![Terraform Azure profile](deploy-k8s-cluster/terraform/tf_azure_profile.png)
 
+<br />
+
 Click on the profile to see the details of the stacks that compose the profile:
+
 ![Terraform Azure profile details](deploy-k8s-cluster/terraform/tf_azure_profile_details.png)
 
-<br />
-
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-validation-p">
+<Tabs.TabPane tab="Google Cloud" key="gcp-validation-p">
 
 To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*:
+
 ![Terraform GCP profile](deploy-k8s-cluster/terraform/tf_gcp_profile.png)
 
-Click on the profile to see the details of the stacks that compose the profile:
-![Terraform GCP profile details](deploy-k8s-cluster/terraform/tf_gcp_profile_details.png)
-
 <br />
+
+Click on the profile to see the details of the stacks that compose the profile:
+
+![Terraform GCP profile details](deploy-k8s-cluster/terraform/tf_gcp_profile_details.png)
 
 </Tabs.TabPane>
 </Tabs>
 
+<br />
 
 ## Configure the Cluster
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files and open it:
+Create a folder where you will put all the Terraform configuration files:
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
@@ -1036,6 +1049,7 @@ worker_nodes = {
     availability_zones = ["us-east-1a"]
 }
 ```
+<br />
 
 ### Cluster Resources
 
@@ -1081,7 +1095,7 @@ resource "spectrocloud_cluster_aws" "cluster" {
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files and open it:
+Create a folder where you will put all the Terraform configuration files:
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
@@ -1154,6 +1168,7 @@ variable "worker_nodes" {
     description = "Worker nodes configuration."
 }
 ```
+<br />
 
 ### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
@@ -1203,9 +1218,9 @@ resource "spectrocloud_cluster_azure" "cluster" {
 
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-tf-cluster">
+<Tabs.TabPane tab="Google Cloud" key="gcp-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files and open it:
+Create a folder where you will put all the Terraform configuration files:
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
@@ -1265,6 +1280,7 @@ variable "worker_nodes" {
     description = "Worker nodes configuration."
 }
 ```
+<br />
 
 ### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
@@ -1309,9 +1325,11 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 </Tabs.TabPane>
 </Tabs>
 
+<br />
+
 ## Create the Cluster
 
-To create the cluster on the cloud provider use the Terraform commands to apply the information present into the configuration files.
+To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
 
 Open the terminal and enter into the folder where you have the Terraform configuration files
 
@@ -1338,6 +1356,7 @@ Finally, apply the modifications there are in the plan to execute them and creat
 ```bash
 $ terraform apply
 ```
+<br />
 
 
 ## Verify the Cluster
@@ -1349,11 +1368,11 @@ To check the cluster creation, login to Palette dashboard and, from the left **M
 
 ![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster.png)
 
+<br />
+
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
-![Update the cluster](deploy-k8s-cluster/aws/aws_create_cluster-details.png)
-
-<br />
+![Update the cluster details](deploy-k8s-cluster/aws/aws_create_cluster_details.png)
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-validation">
@@ -1362,25 +1381,29 @@ To check the cluster creation, login to Palette dashboard and, from the left **M
 
 ![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster.png)
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
-
-![Update the cluster](deploy-k8s-cluster/azure/azure_create_cluster-details.png)
-
 <br />
 
+Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+
+![Update the cluster details](deploy-k8s-cluster/azure/azure_create_cluster_details.png)
+
 </Tabs.TabPane>
-<Tabs.TabPane tab="GCP" key="gcp-validation">
+<Tabs.TabPane tab="Google Cloud" key="gcp-validation">
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *gcp-cluster*:
 
 ![Update the cluster](deploy-k8s-cluster/gcp/gcp_create_cluster.png)
 
+<br />
+
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
-![Update the cluster](deploy-k8s-cluster/gcp/gcp_create_cluster-details.png)
+![Update the cluster details](deploy-k8s-cluster/gcp/gcp_create_cluster_details.png)
 
 </Tabs.TabPane>
 </Tabs>
+
+<br />
 
 Since the cluster may take several minutes to create, in relation to the packs to install, the type of instances selected, and so forth, it might be useful to check the creation events from the **Events** tab at the top of the page
 
