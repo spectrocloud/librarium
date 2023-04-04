@@ -189,20 +189,21 @@ docker run -d \
 
 <Tabs.TabPane tab="HTTP" key="http">
 
-
-```bash
-docker run -d \
-    -p 80:5000 \
-    --restart=always \
-    --name spectro-registry \
-    --mount type=bind,source=/root/auth,target=/auth,readonly \
-    --mount type=bind,source=/root/data,target=/data \
-    -e  REGISTRY_LOG_LEVEL=info \
-    -e  REGISTRY_AUTH=htpasswd \
-    -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
-    -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-    spectro-registry:3.3.0
 ```
+  *    **HTTP mode** (*not recommended*)
+        ```bash
+            docker run -d \
+                -p 80:5000 \
+                --restart=always \
+                --name spectro-registry \
+                --mount type=bind,source=/root/auth,target=/auth,readonly \
+                --mount type=bind,source=/root/data,target=/data \
+                -e  REGISTRY_LOG_LEVEL=info \
+                -e  REGISTRY_AUTH=htpasswd \
+                -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
+                -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
+                gcr.io/spectro-images-public/release/spectro-registry/spectro-registry:3.3.0
+        ```
 
 <br />
 
