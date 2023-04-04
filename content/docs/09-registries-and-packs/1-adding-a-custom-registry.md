@@ -38,11 +38,11 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 </WarningBox>
 
-# Deploy Pack Registry Server with Letsencrypt
+# Deploy Pack Registry Server with Let's Encrypt
 
 The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 
-Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#self-signedcertificates) section
+Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#deploypackregistryserverwithlet'sencrypt) section
 for more advanced configuration and deployment with self-signed certificates.
 
 Palette provides a Docker image for the pack registry server.
@@ -190,7 +190,7 @@ docker run -d \
 <Tabs.TabPane tab="HTTP" key="http">
 
 
-```bash
+```shell
 docker run -d \
     -p 80:5000 \
     --restart=always \
@@ -201,17 +201,23 @@ docker run -d \
     -e  REGISTRY_AUTH=htpasswd \
     -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
     -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
-```
+    gcr.io/spectro-images-public/release/spectro-registry/spectro-registry:3.3.0
+  ```
 
 <br />
 
-<InfoBox>
+<WarningBox>
 
-Spectro Cloud CLI is required to use the insecure option `-i ( --insecure )` in the registry login command if the pack registry is installed in the HTTP mode.
+Registry servers configured in HTTP mode require the `--insecure` CLI flag when using the Spectro Cloud CLI's `login` command.
+
+<br />
+
+```shell
+spectro registry login --insecure http://example.com:5000
+```
 
 
-</InfoBox>
+</WarningBox>
 
 </Tabs.TabPane>
 
