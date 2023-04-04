@@ -99,7 +99,7 @@ When you create an account, we recommend creating another user to execute everyd
 Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
 
 Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click to **Add Cluster Profile** at the top right side.
+You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
 
 Follow the procedure to create a new profile that is composed of the following steps.
 
@@ -107,7 +107,7 @@ In **Basic Information**, insert the name of the profile such as *aws-profile*, 
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *AWS*.
 
-**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
+**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
 Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
 
 The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
@@ -139,9 +139,9 @@ Click on the profile to see the details of the stacks that compose the profile:
 
 ## Create a New Cluster
 
-You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
+Select the **Cluster** tab on the Palette left panel to open the clusters overview.
 
-From the clusters page, you can select **Add New Cluster**
+From the clusters page, select **Add New Cluster**
 
 ![palette clusters overview page](deploy-k8s-cluster/new_cluster.png)
 
@@ -149,14 +149,14 @@ and **Deploy New Cluster** from the pop-up menu.
 
 Choose the cloud provider at your choice, AWS in this case, and **Start AWS Configuration**
 
-This starts the procedure to create configure the cluster on AWS, whose steps are the following.
+This starts the procedure to create the cluster on AWS, whose steps are the following.
 
 <br />
 
 
 ### Basic information
 
-In the **basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, the Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
 
 ![palette clusters basic information](deploy-k8s-cluster/aws/clusters_basic_info.png)
 
@@ -165,7 +165,7 @@ In the **basic information** section, insert the general information about the c
 
 ### Cluster profile
 
-From the **cluster profile** section, you can select the profile you want to deploy on AWS.
+From the **Cluster profile** section, select the profile you want to deploy on AWS.
 
 ![palette cluster profiles](deploy-k8s-cluster/aws/clusters_cluster_profile.png)
 
@@ -176,7 +176,7 @@ On the right side there is a list of available and suitable profile you can choo
 
 ### Parameters
 
-The **parameters** section resumes the list of infrastructure layers and add-on components included in the cluster profile.
+The **Parameters** section resumes the list of infrastructure layers and add-on components included in the cluster profile.
 
 ![palette clusters parameters](deploy-k8s-cluster/aws/clusters_parameters.png)
 
@@ -190,30 +190,35 @@ Despite that, you can edit the default manifest, customizing the deploy configur
 
 ### Cluster config
 
-The **cluster config** section allows to select the *Region* where to deploy the cluster among the ones provided by the cloud providers and the *SSH Key Pair* to use.
+The **Cluster config** section allows to select the *Region* where to deploy the cluster among the ones provided by the cloud providers and the *SSH Key Pair* to use.
 
 ![palette clusters basic information](deploy-k8s-cluster/aws/clusters_cluster_config.png)
 
-To [create an SSH key pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) use the AWS dashboard
+To [create an SSH key pair on AWS](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) use the AWS dashboard
 - open the [Amazon EC2 console](https://console.aws.amazon.com/ec2)
 - in the navigation panel, under *Network & Security*, choose *Key Pairs*.
 - choose *Create key pair* and enter the information required to create the key pair: a descriptive name for the key, the type of key pair, and the private key file format. Then, select *Create a key pair*.
 
 ![aws key pair creation](deploy-k8s-cluster/aws/key_pair_create.png)
 
+To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
+Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
+
+![spectro cloud key pair creation](deploy-k8s-cluster/sp_ssh_key_create.png)
+
 <br />
 
 
 ### Nodes config
 
-The **Nodes config** section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
+The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
 You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
-- *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
+- *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster.
+- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 - *Instance Option* to choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes. 
   - (in case of spot instance) *Maximum spot bid price* to set the bid price threshold to get instances. For this tutorial, you can select spot instance to minimize cost but make sure you check the *Allow worker capability* flag.
@@ -240,7 +245,7 @@ The **Review** section resumes the cluster configuration as you have configured 
 
 Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
-<br />
+<br /> 
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
@@ -256,7 +261,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 ## Create Azure Account
 
-Open to [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+Open the [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
 When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
 
@@ -264,7 +269,7 @@ When you create an account, we recommend creating another user to execute everyd
 
 When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
-To create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
+First, you need to [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) and to [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal). Then, to create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
 
 To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
 
@@ -275,13 +280,7 @@ Select *Add -> Add role assignment* and follow the next steps with the following
 - **Role** -> Select **Contributor**
 - **Members** -> Click on **Select Members** and select your application name to add it.
 
-<br />
-
-Let us now generate an SSH Key. To generate a SSH Key you also need to:
-- [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
-- [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
-
-Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to generate one. 
+Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to add later on Palette.
 
 <br />
 
@@ -291,15 +290,15 @@ Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en
 Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
 
 Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click to **Add Cluster Profile** at the top right side.
+You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
 
-Follow the procedure to create a new profile.
+Follow the procedure to create a new profile that is composed of the following steps.
 
 In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief  description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
-**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are 4 required infrastructure packs and several optional add-on packs you can choose.
+**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
 Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
 
 The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
@@ -330,9 +329,9 @@ Click on the profile to see the details of the stacks that compose the profile:
 
 ## Create a New Cluster
 
-You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
+Select the **Cluster** tab on the Palette left panel to open the clusters overview.
 
-From the clusters page, you can select **Add New Cluster**
+From the clusters page, select **Add New Cluster**
 
 ![palette clusters overview page](deploy-k8s-cluster/new_cluster.png)
 
@@ -340,14 +339,14 @@ and **Deploy New Cluster** from the pop-up menu.
 
 Choose the cloud provider at your choice, Azure in this case, and **Start Azure Configuration**
 
-This starts the procedure to create configure the cluster on Azure, whose steps are the following.
+This starts the procedure to create the cluster on Azure, whose steps are the following.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, the Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
 
 ![palette clusters basic information](deploy-k8s-cluster/azure/clusters_basic_info.png)
 
@@ -356,7 +355,7 @@ In the **Basic information** section, insert the general information about the c
 
 ### Cluster profile
  
-From the **Cluster profile** section, you can select the profile you want to deploy on azure.
+From the **Cluster profile** section, select the profile you want to deploy on Azure.
 
 ![palette clusters basic information](deploy-k8s-cluster/azure/clusters_cluster_profile.png)
 
@@ -391,8 +390,8 @@ For the scope of this tutorial we insert only the mandatory ones:
 - the *Resource Group* 
 - the Palette *SSH Key* to use.
 
-To create a SSH Key on the Palette Console, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
-Click on *Add New SSH Key* and insert the name of the key and the content of the public key. Then confirm it.
+To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
+Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
 
 ![spectro cloud key pair creation](deploy-k8s-cluster/sp_ssh_key_create.png)
 
@@ -401,14 +400,14 @@ Click on *Add New SSH Key* and insert the name of the key and the content of the
 
 ### Nodes config
 
-The **Nodes config** section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
+The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
 You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
 - *Allow worker capability* to allow the master node also to accept workloads.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
+- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 
 ![palette clusters nodes configuration](deploy-k8s-cluster/azure/clusters_nodes_config.png)
@@ -474,7 +473,7 @@ Your API should now be enabled.
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/aws/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth.
+[Cluster profiles](https://docs.spectrocloud.com/gcp/cluster-profiles) are templates that are created with preconfigured core layers (OS, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth.
 
 Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
 
@@ -501,24 +500,24 @@ Click on the profile to see the details of the stacks that compose the profile:
 
 ## Create a New Cluster
 
-You can open the clusters overview by selecting the **Cluster ** tab on the Palette left panel.
+Select the **Cluster** tab on the Palette left panel to open the clusters overview.
 
-From the clusters page, you can select **Add New Cluster**
+From the clusters page, select **Add New Cluster**
 
 ![palette clusters overview page](deploy-k8s-cluster/new_cluster.png)
 
 and **Deploy New Cluster** from the pop-up menu.
 
-Choose the cloud provider at your choice, AWS in this case, and **Start AWS Configuration**
+Choose the cloud provider at your choice, GCP in this case, and **Start Google Cloud Configuration**
 
-This starts the procedure to create configure the cluster on AWS, whose steps are the following.
+This starts the procedure to create the cluster on GCP, whose steps are the following.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, the Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
 
 ![palette clusters basic information](deploy-k8s-cluster/gcp/clusters_basic_info.png)
 
@@ -527,7 +526,7 @@ In the **Basic information** section, insert the general information about the c
 
 ### Cluster profile
 
-From the **Cluster profile** section, you can select the profile you want to deploy on GCP.
+From the **Cluster profile** section, select the profile you want to deploy on GCP.
 
 ![palette clusters basic information](deploy-k8s-cluster/gcp/clusters_cluster_profile.png)
 
@@ -564,9 +563,9 @@ Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/conne
 Copy and paste the full value of your public key and save it.
 
 ![gcp key pair creation](deploy-k8s-cluster/gcp/gcp_ssh_key_create.png)
-a
-On Palette Console, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
-Click on *Add New SSH Key* and insert the name of the key and the content of the public key. Then confirm it.
+
+To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
+Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
 
 ![spectro cloud key pair creation](deploy-k8s-cluster/sp_ssh_key_create.png)
 
@@ -575,14 +574,14 @@ Click on *Add New SSH Key* and insert the name of the key and the content of the
 
 ### Nodes config
 
-The **Nodes config** section allows to configure the type of nodes you will use as master and worker nodes in the Kubernetes configuration.
+The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
 You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
 - *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster. For the tutorial we check it.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of vCPU, RAM and the hourly cost of the instance.
+- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 
 ![palette clusters nodes configuration](deploy-k8s-cluster/gcp/clusters_nodes_config.png)
@@ -662,9 +661,10 @@ When you create an account, we recommend creating another user to execute everyd
 
 <br />
 
+
 When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
-To create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
+First, you need to [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) and to [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal). Then, to create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
 
 To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
 
@@ -673,15 +673,9 @@ To assign a role to the application, navigate to the *Subscriptions* page and, r
 Select *Add -> Add role assignment* and follow the next steps with the following information:
 - **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
 - **Role** -> Select **Contributor**
-- **Members** -> Click on **Select Members** and select your application name to add it
+- **Members** -> Click on **Select Members** and select your application name to add it.
 
-<br />
-
-Let us now generate an SSH Key. To generate a SSH Key you also need to:
-- [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription)
-- [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
-
-Finally, follow the [Azure SSH Key creation page](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to generate one. 
+Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to add later on Palette.
 
 <br />
 
