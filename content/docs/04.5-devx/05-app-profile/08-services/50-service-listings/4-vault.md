@@ -1,7 +1,7 @@
 ---
 title: "Vault"
 metaTitle: "Vault"
-metaDescription: "Learn how to use Vault with Palette Dev Engine"
+metaDescription: "Learn how to use Vault with Palette Dev Engine."
 hideToC: false
 type: "appTier"
 category: ['security']
@@ -18,15 +18,15 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering. Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official [Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you securely manage and protect sensitive information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider. 
 
-Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them. Vault also tracks who has accessed which secrets and when making it easier to maintain security. You can use Vault to govern access to secrets, automate application delivery, and consume secrets programmatically.
+Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them. Vault also tracks who has accessed which secrets and when, making it easier to maintain security. You can use Vault to govern access to secrets, automate application delivery, and consume secrets programmatically.
 
-Vault is deployed behind the scenes through the usage of the [Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
+Vault is deployed behind the scenes through the use of the [Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
 
 <br />
 
 <InfoBox>
 
-Vault is deployed as a single container in the virtual cluster and the container is not tied to any particular node.
+Vault is deployed as a single container in your virtual cluster and is not tied to any particular node.
 
 </InfoBox>
 
@@ -42,21 +42,21 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 
 - A Virtual Cluster with at least the following minimum resources.
     - 4 CPU 
-    - 6 GB of Memory
-    - 6 GB of Storage.
+    - 6 GB Memory
+    - 6 GB Storage
 
 
-- Kubernetes 1.6+ or greater.
+- Kubernetes 1.6.x or greater.
 
 <br />
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 
-2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.
+2. Click on the **User Menu** at top right, and select **Switch to App Mode**.
 
 
 
@@ -65,7 +65,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
 |Application Profile Name | A custom name for the app profile.|
-|Version (optional)       | The default value is 1.0.0. You can create multiple versions of an app profile using the format **`major.minor.patch`**.
+|Version (optional)       | The default value is 1.0.0. You can create multiple versions of an app profile using the format `major.minor.patch`.
 |Description (optional)   | Description of the app profile. | 
 |Tag (optional)           |  Assign tags to the app profile.|
  
@@ -82,7 +82,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 6. Save your changes.
 
 
-7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
+7. Deploy the app profile to a virtual cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance, or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
 
 
 ## Validation
@@ -98,16 +98,16 @@ You can validate the Vault instance deployed successfully by using the following
 3. Select your application that contains Vault to view its details page.
 
 
-4. Ensure the **Status** is *Deployed* and that the service *Vault* has a green dot right next to it.
+4. Ensure the **Status** is **Deployed** and that the **Vault** service has a green dot next to it.
 
 
 5. Next, click on the **Virtual Cluster** link in the App details page.
 
 
-6. Download the **kubeconfig** file by clicking on the url. 
+6. Click the URL to download the **kubeconfig**. 
 
 
-7. Setup your local kubectl environment to use the kubeconfig file you downloaded. Review the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for additional guidance.
+7. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for additional guidance.
 
 
 8. Export the following environment variables to prepare your environment to interact with Vault.
@@ -124,7 +124,7 @@ You can validate the Vault instance deployed successfully by using the following
     export VAULT_SKIP_VERIFY=true
     ```
 
-9. The next step is to configure port forwarding between your local workstation and the pod hosting Vault. Use the following commands to configure the port forward.
+9. Configure port forwarding between your local workstation and the pod hosting Vault. Use the following commands to configure the port forward.
 
     <br />
 
@@ -160,7 +160,7 @@ The exposed output variables. Use these variables when connecting higher-level s
 
 # Vault Credentials
 
-The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve the Vault root token by using the following command.  <br /> <br />
+The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve the Vault root token by following these steps.  <br /> <br />
 
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
@@ -179,10 +179,10 @@ The Vault root token and the unseal keys are stored as a Kubernetes secret insid
 
 
 
-5. Setup your local kubectl environment to use the kubeconfig you downloaded. Review the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for additional guidance. 
+5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for additional guidance. 
 
 
-6. You need get the Vault namespace and application name. Issue the following command to get the unique values.
+6. You need to get the Vault namespace and application name. Issue the following command to get the unique values.
 
     <br />
 
