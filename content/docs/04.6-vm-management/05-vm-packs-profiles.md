@@ -25,10 +25,7 @@ Palette's Virtual Machine (VM) Management solution is provided as a single pack 
 - **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
 
 
-- **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt.
-<br />
-<br />
-KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide virtual machine management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage virtual machine resources similar to the way you manage Kubernetes resources.  
+- **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt. KubeVirt offers feature gates you can enable in the Spectro VM Dashboard manifest. To learn more, refer to [Feature Gates](/vm-management#featuregates).  
 
 
 - **KubeVirt CDI**:  An add-on pack that provides persistent storage for Kubernetes clusters. It enables Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.
