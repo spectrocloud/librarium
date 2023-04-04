@@ -185,7 +185,7 @@ Create a directory or mount an external volume to the desired storage location. 
                 -e  REGISTRY_AUTH=htpasswd \
                 -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
                 -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-                spectro-registry:3.3.0
+                gcr.io/spectro-images-public/release/spectro-registry/spectro-registry:3.3.0
         ```
 
 <br />
