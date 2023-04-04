@@ -1,7 +1,7 @@
 ---
-title: "Air Gapped "
-metaTitle: "Air Gap Repo"
-metaDescription: "Air Gap Repo"
+title: "Air Gap Mode "
+metaTitle: "Air Gap Mode"
+metaDescription: "Learn how to install Palette into an air gap environment."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -14,32 +14,42 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-Palette fully supports the installation of its management platform on VMware environments that have no direct or indirect connectivity to the outside world. The following four artifacts are typically downloaded over the internet during a typical installation and subsequent tenant cluster deployments.
 
-* Palette platform manifests from a publicly hosted artifact repository.
-* Container images for core Palette platform components and 3rd party dependencies from various container image repositories such as gcr.io, docker.io, quay.io, etc.
-* Palette packs from publicly hosted pack registry.
-* VMWare Worker images (OVAs) for various K8s versions publicly hosted in Amazon S3.
+You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an airgap installation.   
 
-To enable installation into an air-gapped environment, Palette provides an air-gapped appliance that contains the first 3 of the four artifacts mentioned above. Due to the size of worker images (OVAs), these are not directly available in the air-gapped appliance. The desired worker images need to be downloaded from Amazon S3 and uploaded to vCenter before installation as a pre-requisite.
+During a standard Palette installation, the following artifacts are, by default, downloaded.
 
-# Pre-Requisites
+* Platform manifests from a publicly hosted artifact repository.
 
-* Minimum specifications for the air-gapped appliance.
-    * 2 (v)CPU
-    * 4 GB RAM
-    * 100 GB Storage
 
-* Incoming access into the air-gapped appliance at following ports:
+* Container images for core platform components and 3rd party dependencies from various public repositories.
+
+
+* Packs from the public pack registry.
+
+
+* VMWare Worker images for various Kubernetes versions.
+
+To address the internet connectivity limitation, we provide an OVA image containing three required installation artifacts mentioned earlier. 
+
+Due to the large size of VMWare worker images,  they are not included in the installer OVA image. Any VMware worker image you may need will require you to download the image from an Amazon S3 bucket and upload the worker images to vCenter before the installation. 
+
+
+
+
+# Prerequisites
+
+* The following minimum resources are required for deploying Palette.
+    * 2 vCPU
+    * 4 GB of Memory
+    * 100 GB of Storage. Storage sizing depends on your intended update frequency and data retention model. <br /> <br />
+
+* Ensure the following ports allow inbound network traffic. 
     * 80
     * 443
     * 5000
     * 8000
 
-
-<InfoBox>
-Storage sizing depends on your intended update frequency and data retention model.
-</InfoBox>
 
 # Deploy Air-Gapped Appliance
 
