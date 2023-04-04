@@ -146,3 +146,21 @@ Output:
 ```shell
 zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```
+
+# Next Steps
+
+Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres documentation has several [tutorials](https://www.postgresql.org/docs/online-resources/) to help you learn more about Postgres and how to leverage Postgres with your applications.
+
+
+# Resources
+
+- [Postgres Documentation](https://www.postgresql.org/docs/)
+
+
+- [Community Postgres Tutorials](https://www.postgresqltutorial.com/)
+
+
+- [Postgres Tutorials](https://www.postgresql.org/docs/online-resources/)
+
+
+- [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html)

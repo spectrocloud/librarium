@@ -39,7 +39,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 

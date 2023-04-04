@@ -125,3 +125,16 @@ Output:
 ```shell
 ,U31nQ@T2tN4uM
 ```
+
+# Next Steps
+
+You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from Oracle.
+
+
+
+# Resources
+
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+
+
+- [MySQL Tutorial](https://dev.mysql.com/doc/refman/8.0/en/tutorial.html)

@@ -123,5 +123,21 @@ Output:
 ```
 
 
+# Next Steps
+
+Palette Dev Engine removes the traditional challenges encountered when deploying a MongoDB instance. You can add MongoDB to your application profile and get started with MongoDB today. Check out the [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/) to learn how to integrate MongoDB with your applications.
+
+
+# Resources
+
+
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+
+
+- [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/)
+
+
+- [MongoDB Libraries](https://www.mongodb.com/docs/drivers/)
+
 
 
