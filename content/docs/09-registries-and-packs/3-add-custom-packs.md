@@ -78,6 +78,7 @@ Follow the steps below to create a custom pack.
 3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. 
 
 <InfoBox>
+
 A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
 
 </InfoBox>
