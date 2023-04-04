@@ -1432,7 +1432,7 @@ The deploy of the application can be done when you create the cluster or, like i
 Return to the *Profiles* tabs on the left panel and open the profile related to the cluster deployed.
 
 Select *Add Manifest* at the top of the page and insert the data:
-- *layer name*: name of the pack to add to the profile stack
+- *Layer name*: name of the pack to add to the profile stack
 - *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it
 
 ![manifest](deploy-k8s-cluster/manifest.png)
@@ -1487,7 +1487,7 @@ spec:
 
 In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
 
-We set 2 replicas to simulate a minimal distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+We set two replicas for the application to simulate a distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
 
 For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
 
@@ -1499,12 +1499,12 @@ For more information about the service LoadBalancer component you can refer to t
 
 ### Add the Manifest
 
-Return to the folder where you have the profile configuration
+Open the folder where you have the profile configuration
 ```bash
 $ cd terraform-profile
 ```
 
-Open the file *cluster_profile.tf* and add the manifest pack inside the profile definition
+Edit the file *cluster_profile.tf* and add the manifest pack inside the profile definition
 
 ```terraform
 resource "spectrocloud_cluster_profile" "profile" {
@@ -1559,6 +1559,12 @@ spec:
         - containerPort: 8080
 ```
 
+In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
+
+We set two replicas for the application to simulate a distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+
+For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
+
 <br />
 
 Then, use Terraform to push the modification to Palette and finalize the application deployment.
@@ -1581,21 +1587,25 @@ $ terraform apply
 </Tabs.TabPane>
 </Tabs>
 
+<br />
+
 
 ### Deploy
 
-Select the **Clusters** page from the left panel and click on the cluster to open the details page.
+Open Palette dashboard, select the **Clusters** page from the left panel and click on the cluster to open the details page
 
 ![Cluster details with available updates](deploy-k8s-cluster/deploy_app/app_update_available.png)
 
 <br />
 
 On the top right corner, there is a green button **Updates Available** that shows you have updates to deploy on the cluster.
-Click on it to see the modification of the current profile with the last deployed and revise the application configurations.
+Click on it to see the modification between the last deployed profile on the cloud provider with the current profile that contains the application.
+
+Revise the application configurations.
 
 ![Available updates details](deploy-k8s-cluster/deploy_app/updates_available_details.png)
 
-Click to **Confirm updates** to finalize the modification of the profile and apply the configuration of the application to the cluster.
+Click to **Confirm updates** to finalize the modification and apply the configuration of the application to the cluster.
 
 <br />
 
@@ -1605,21 +1615,21 @@ From the cluster details page, click on **Workloads** at the top of the page:
 
 ![Workloads](deploy-k8s-cluster/workloads.png)
 
-The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully:
-- select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*
-- select the **Deployments** tab and check the existence of a deployment with name *hello-universe-deployment*
-- select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*
+The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully.
 
-In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
+Select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*.
 
-In the **Pods** tab, next to the pods names, check the status of the pods
+Select the **Deployments** tab and check the existence of a deployment with name *hello-universe-deployment*. In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
+
+Select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*. In the **Pods** tab, next to the pods names, check the status of the pods
+
 ![Pods status](deploy-k8s-cluster/deploy_app/app_update_pods.png)
 
 Remember to update the list of components by clicking the *sync* button at top right corner to refresh and synchronize the current state of the Kubernetes components.
 
 <br />
 
-To access the application, select the **Overview** tab at the top of the page and click on the link (**:8080**) that appears next to the **hello-universe-service** in the **Services** line. It will open a new tab on the browser that open the application.
+To access the application, select the **Overview** tab at the top of the page and click on the link (**:8080**) that appears next to the *hello-universe-service* in the **Services** line. It will open a new tab on the browser that open the application.
 
 ![Deployed application](deploy-k8s-cluster/app.png)
 
@@ -1637,7 +1647,7 @@ It is a good practice to clean up the resources used for the tutorial from the c
 
 ## UI Workflow
 
-To remove all resources created in this tutorial, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. Click on the cluster you want to delete to access its details page.
+To remove the cluster created in this tutorial, open the Palette dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. Select the cluster you want to delete to access its details page.
 
 Click on **Settings**, at the top-right corner of the page, from the details page to expand the settings menu and select **Delete Cluster** to delete the cluster.
 
@@ -1650,7 +1660,7 @@ You will be asked to type in the cluster name to confirm the delete action. Cont
 
 ## Terraform
 
-To destroy resources with Terraform, use the destroy command.
+To destroy the cluster with Terraform, use the destroy command.
 
 First enter into the folder where you have the Terraform configuration for the cluster
 ```bash
@@ -1669,21 +1679,24 @@ $ terraform destroy
 
 Wait until it finishes to delete the cluster.
 
-
 </Tabs.TabPane>
 </Tabs>
 
 <br />
 
 To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
+
 ![Deleting cluster](deploy-k8s-cluster/deleting_cluster.png)
 
 <br />
 
+
 # Next Steps
 
-In this tutorial, you learned about Palette and Cluster Mode. You created a cluster profile, that is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added configuration of the Hello Universe application and deployed it. To do that you can use either Palette's user interface or Terraform configuration files.
-Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and deployed an application on it.
+In this tutorial, you learned about Palette and the Cluster Mode. You created a cluster profile, that is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added the configuration of the *Hello Universe* application and deployed it. To do that you can use either Palette's dashboard or Terraform configuration files.
+
+Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application on it.
+
 To learn more about Palette and its capabilities.
 <br />
 
