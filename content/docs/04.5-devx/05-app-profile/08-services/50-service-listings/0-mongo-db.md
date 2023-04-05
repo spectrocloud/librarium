@@ -64,22 +64,29 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 6. Click **Save Changes**.
 ## Validation
 
-* To validate your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to see the service layers.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* To validate that your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MongoDB is an available service layer.
+2. Navigate to the left **Main Menu** and select **Apps**.
 
+
+
+3. Select the application that contains MongoDB.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
-|Green|Successfully Deployed|
-|Blue |Under Deployment|
-|Red  |Error State|
+|Green| Successfully Deployed|
+|Blue | Under Deployment|
+|Red  | Error State|
 
 
 # Output Variables
 
-The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes.
+The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes.
 
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -93,19 +100,19 @@ The exposed output variables of this service layer that may be used in other ser
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the MongoDB database user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-<user-name> \
- -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app provided during the Palette app creation process.
+  * app-name: represents the name of the app provided during the Palette app creation process.
   * service-name: The name of the service layer in the app profile.
   * user-name: The name of the database user.
 
 
-Example: 
+#### Example: 
 
 - App Name: `app-tarfful`
 
@@ -113,12 +120,31 @@ Example:
 
 - Database User: `myuser`
 
-```
+```shell
 kubectl get secret app-tarfful-mongodb-1-myuser  \
- -n app-tarfful-mongodb-1-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace app-tarfful-mongodb-1-ns --output jsonpath='{.data.password}' | base64 --decode
+```
+#### Output:
+```shell
 .Hr1}%DrA2MFf
 ```
 
+
+# Next Steps
+
+Palette Dev Engine removes the traditional challenges encountered when deploying a MongoDB instance. You can add MongoDB to your application profile and get started with MongoDB today. Check out the [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/) to learn how to integrate MongoDB with your applications.
+
+
+# Resources
+
+
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+
+
+- [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/)
+
+
+- [MongoDB Libraries](https://www.mongodb.com/docs/drivers/)
 
 
 
