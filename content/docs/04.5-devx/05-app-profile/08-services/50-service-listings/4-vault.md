@@ -26,7 +26,7 @@ Vault is deployed behind the scenes through the use of the [Bank-Vaults Vault Op
 
 <InfoBox>
 
-Vault is deployed as a single container in the virtual cluster and the container is not tied to any particular node.
+Vault is deployed as a single container in the virtual cluster, and the container is not tied to any particular node.
 
 </InfoBox>
 

@@ -1,7 +1,7 @@
 ---
 title: "CockroachDB"
 metaTitle: "CockroachDB"
-metaDescription: "Learn how to use CockroachDB with Palette Dev Engine"
+metaDescription: "Learn how to use CockroachDB with Palette Dev Engine."
 hideToC: false
 type: "appTier"
 category: ['databases']
@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # CockroachDB
 
-CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for cloud-native environments, providing a reliable and scalable solution for managing data across multiple nodes and regions. Its architecture automates data replication, sharding, and rebalancing, simplifying operational tasks and enabling developers to concentrate on building their applications.
+CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for cloud-native environments. CockroachDB provides a reliable and scalable solution for managing data across multiple nodes and regions. Its architecture automates data replication, sharding, and rebalancing, By simplifying operational tasks, Cockroach enables developers to concentrate on building their applications.
 
 With a focus on strong consistency and horizontal scalability, CockroachDB supports fast transactions and real-time data insights. Its fault-tolerant and self-healing capabilities help reduce downtime and ensure data accuracy. As a result, CockroachDB offers a stable and efficient database solution for developers looking to build robust applications in today's demanding digital landscape.
 
@@ -31,7 +31,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 
-- A Virtual Cluster with at least the following minimum resources.
+- A Virtual Cluster with the following minimum resources.
     - 8 CPU 
     - 8 GB of Memory
     - 8 GB of Storage.
@@ -47,7 +47,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new app profile. Review [Create an App Profile](/devx/app-profile/create-app-profile/) for more information. Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
@@ -63,6 +63,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 5. Provide the following information to the wizard:
   * **Name**: The application name.
+  
 
   * **Username**: The user name for database access control.
 
@@ -73,7 +74,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
   * **Database Name**: The name of the database to target.
 
 
-  * **PersistentVolumeClaim Size (GiB)**: Select the volume as per the storage volume available in the cluster group and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster. 
+  * **PersistentVolumeClaim Size (GiB)**: Select the volume according to the storage volume available in the cluster group and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster. 
 
 
 6. Save your changes.
@@ -84,7 +85,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure CockroachDB is an available service layer.
+* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The next screen displays the different service layers that make up the app profile. Ensure CockroachDB is an available service layer.
 
 
 * Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
@@ -126,7 +127,7 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-Example: 
+#### Example: 
 
 - App Name: `app-tion-medon`
 
@@ -137,13 +138,13 @@ Example:
 kubectl get secret  app-tion-medon-cockroachdb-1-user \
  --namespace app-tion-medon-cockroachdb-1-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
-Output:
+#### Output:
 ```shell
 .Hr1}%DrA2MFf
 ```
 # Next Steps
 
-To learn more about developing with CockroachDB, be sure to check out the [CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer guide is a great resource for understanding how to get started with CockroachDB and build applications that are scalable, resilient, and secure.
+To learn more about developing with CockroachDB, check out the [CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer guide is a great resource for understanding how to get started with CockroachDB and build applications that are scalable, resilient, and secure.
 
 
 # Resources

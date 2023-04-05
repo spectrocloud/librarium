@@ -89,7 +89,7 @@ You can use the default system-generated password. If the default password is us
 
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Postgres is an available service layer.
+* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The next screen displays the different service layers that make up the app profile. Ensure Postgres is an available service layer.
 
 
 * Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
