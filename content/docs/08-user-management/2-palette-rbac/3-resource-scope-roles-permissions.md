@@ -20,11 +20,11 @@ Palette support two types of resource roles, global resource roles and custom re
 
 <br />
 
-* [Palette Global Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#globalresourceroles) are a set of roles built in and available to you.
+* Global Resource Roles are a set of roles built in and available to you.
 
-* [Palette Custom Resource Roles](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#customroles), are roles you can create in Palette using a set of permissions and operations.
+* Custom Resource Roles, are roles you can create in Palette using a set of permissions and operations.
   
-To learn how to create a custom role. Review the [Create Custom Role](/clusters/cluster-management/cluster-tag-filter/global-cutome-rroles#createcustomroles) guide.
+To learn how to create a custom role. Review the [Create Custom Role](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles) guide.
 
 
 # Palette Global Resource Roles 

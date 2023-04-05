@@ -70,7 +70,7 @@ Palette **also** enables the provisioning of private AKS clusters via a private 
 
 </InfoBox>
 
-# Creating an Azure Cloud Account
+# Create an Azure Cloud Account
 
 `video: title: "Azure-cloud-account": azure.mp4`
 
@@ -99,7 +99,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-# Deploying an AKS Cluster
+# Deploy an AKS Cluster
 
 <br />
 
@@ -133,7 +133,7 @@ The following steps need to be performed to provision a new cluster:
     | **Subscription**   | Select the subscription which is to be used to access Azure Services.                        |
     | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
-    | **SSH Key**        | Public key to configure remote SSH access to the nodes.                                      |
+    | **SSH Key**        | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                     |
     | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Resource Group**: The logical container for grouping related Azure resources.
     || **Virtual Network**: Select the virtual network from dropdown menu.
@@ -141,30 +141,28 @@ The following steps need to be performed to provision a new cluster:
     || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 
-<InfoBox>
+<WarningBox>
 
-If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and with
-**Static Placement** the network informations from user's Azure account will not be imported to palette account. Hence user can manually input the information for the ** <Tooltip trigger={<u>Control Plane Subnet</u>}> <br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** and the ** <Tooltip trigger={<u>Worker Network</u>}> <br /> Name <br /> CIDR Block <br /> Security Group Name</Tooltip>** (no drop down menu will be available).
+If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and the cluster option 
+**Static Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
 
-</InfoBox>
+</WarningBox>
 
 7. Click **Next** to configure the node pools.
 
 
 <br />
 
-<InfoBox>
+The [maximum number](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per node in an AKS cluster is 250. If you don't specify maxPods when creating new node pools, then the default value of 30 is applied. You can edit this value from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
 
-The [maximum number of pods per node in an AKS cluster](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) is 250. If you don't specify maxPods when creating new node pools, you receive a default value of 30. This value can be edited from the Kubernetes configuration file at any time by editing the `maxPodPerNode` value. Refer to the snippet below:
+<br />
 
 ```
 managedMachinePool:
   maxPodPerNode: 30
-
- #NOTE: The recommended minimum value set for maxPodPerNode is 30, setting value less than the recommended one can result in palette system pods in pending state.
 ```
 
-</InfoBox>
+
 
 # Node Pools
 
@@ -181,7 +179,7 @@ A complete AKS cluster contains the following:
 
 <br />
 
-## Creating and Removing Node Pools
+## Create and Remove Node Pools
 
 During cluster creation, you will default to a single pool.
 
@@ -197,7 +195,7 @@ During cluster creation, you will default to a single pool.
 
 <br />
 
-## Creating a System Node Pool
+## Create a System Node Pool
 
 1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled **System Node Pool**.
 <br />
@@ -226,7 +224,7 @@ Identifying a Node Pool as a System Pool will deactivate taints, and the operati
 7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create the next node.
 
 
-## Configuring Node Pools
+## Configure Node Pools
 
 In all types of node pools, configure the following.
 
@@ -275,7 +273,7 @@ A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes
 <br />
 
 
-# Deleting an AKS Cluster
+# Delete an AKS Cluster
 
 The deletion of an AKS cluster results in the removal of all Virtual Machines and associated Storage Disks, created for the cluster. The following tasks need to be performed to delete an AKS cluster:
 
@@ -311,7 +309,7 @@ If there are any cloud resources still on the cloud, you should clean up those r
 </WarningBox>
 
 
-# Configuring an Azure Active Directory
+# Configure an Azure Active Directory
 
 
 The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin *kubeconfig* file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to manually create  the user's *kubeconfig* file to enable AAD completely. The following are the steps to create the custom user *kubeconfig* file:

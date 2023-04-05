@@ -29,7 +29,7 @@ Palette supports integration with AWS Cloud Accounts. This also includes support
 
 <Tabs.TabPane tab="Using the Access Credentials Method" key="Using the Access Credentials Method">
 
-To add an AWS cloud account using access credentials follow the steps below:
+To add an AWS cloud account using static access credentials follow these steps:
 
 ## Prerequisites
 
@@ -147,9 +147,9 @@ You can validate the account is available in Palette by reviewing the list of cl
 Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. To get started with AWS GovClud and Palette, use the following steps.
 <br />
 
-<!-- <Tabs>
+<Tabs>
 
-<Tabs.TabPane tab="Using the Access Credentials Method" key="GovCloud Using the Access Credentials Method"> -->
+<Tabs.TabPane tab="Using the Access Credentials Method" key="GovCloud Using the Access Credentials Method">
 
 ## Prerequisites
 
@@ -193,11 +193,11 @@ Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/gov
 
 ## Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
 
-<!-- </Tabs.TabPane> -->
+</Tabs.TabPane>
 
-<!-- <Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="GovCloud Using the Security Token Service (STS) Method">
+<Tabs.TabPane tab="Using the Security Token Service (STS) Method" key="GovCloud Using the Security Token Service (STS) Method">
 
 To add an AWS GovCloud cloud account using STS credentials follow the steps below:
 
@@ -254,11 +254,10 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections. -->
 
-<!-- </Tabs.TabPane>
-<!-- </Tabs> --->
+</Tabs.TabPane>
+</Tabs>
 
 </Tabs.TabPane> 
-
 
 </Tabs>
 

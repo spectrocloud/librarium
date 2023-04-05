@@ -21,7 +21,7 @@ Palette supports creating and managing Kubernetes clusters deployed to an AWS ac
 The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account 
-- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/create-gov-accounts) for guidance.
+- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
 - An infrastructure cluster profile. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
 - Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
@@ -87,7 +87,7 @@ Use the following steps to provision a new AWS cluster:
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
     ||**Virtual Network**: Select the virtual network from dropdown menu.
-    ||**Control plane Subnet**: Select the control plane network from the dropdown menu.
+    ||**Control plane subnet**: Select the control plane network from the drop-down menu.
     ||**Worker Network**: Select the worker network from the dropdown menu. |
     
 
@@ -139,9 +139,10 @@ You can validate your cluster is up and running by reviewing the cluster details
 
 
 
-# Deleting an AWS IaaS Cluster
+# Delete an AWS IaaS Cluster
 
-The deletion of an AWS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+
+The deletion of an AWS cluster results in removing all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
 
 
 1. Ensure you are in the correct project scope.

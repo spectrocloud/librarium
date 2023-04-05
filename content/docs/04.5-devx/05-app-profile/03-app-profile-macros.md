@@ -76,8 +76,8 @@ The container service type exposes the following output variables. Replace **[se
 | `.spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE` | The Kubernetes namespace of the deployed container.  |
 |`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC`  | The Kubernetes DNS hostname of the service. |
 |`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT`  | The exposed port of the service. |
-| `spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME`| The Kubernetes DNS hostname of the load balancer. This value is available if the service's access level is set to **Public**. |
-|`spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP`| The public URL of the load balancer. This value is available if the service's access is set to **Public**.|
+| `spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME`| The Kubernetes DNS hostname of the load balancer. This value is available if the service's  to **Public** and deployed to a public cloud provider environment. |
+|`spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP`| The public URL of the load balancer. This value is available if the service's access is set to **Public** and deployed to a private cloud provider environment.|
 
 # Database Service Output Variables
 

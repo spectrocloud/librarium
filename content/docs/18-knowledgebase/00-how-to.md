@@ -16,8 +16,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # How To
 
-Learn what Spectro Cloud Palette can do for you. Walk through these quick instructions that will take you through Spectro Cloud Palette, its key functions, and more.<p></p><br />
+Use the following How-tos to learn how to use Palette or enable a feature in your environment.
 
+# User Management
+
+- [Palette SSO with Microsoft AD FS](/knowledgebase/how-to/palette-sso-with-adfs) <
 
 <br />
 <br />

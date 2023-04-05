@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Deploy an Azure Cluster
 
-You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters. 
+You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
 
 Azure clusters can be created under the following scopes:
 
@@ -39,7 +39,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 ## Video Demonstration
 
-`video: title: "azure-cluster-creation": ../cluster-creation-videos/azure.mp4`
+`video: title: "azure-cluster-creation": azure.mp4`
 
 ## Deploy an Azure Cluster with Palette
 
@@ -54,7 +54,7 @@ The following steps need to be performed to provision a new Azure cluster:
 2. In the cluster page click **+ Add New Cluster** button and select **create new cluster**.
 
 
-3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information 
+3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information
 
 
 4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
@@ -84,12 +84,11 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
 | **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases. |
 | **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases.|
-| **SSH Key** | Public key to configure remote SSH access to the nodes.|
+| **SSH Key** | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats. |
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 |**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
 |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
-   
 
 #### Static Placement Table
 
@@ -109,7 +108,7 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Parameter**            | **Description**|
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Private DNS Zone**   | Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
-| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|   
+| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|
 
 ##### IP Allocation Method Table
 
@@ -117,12 +116,12 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Dynamic**              | Use Dynamic Host Configuration Protocol (DHCP) to dynamically allocates IP addresses from the available Virtual Network IP CIDR range.|
 | **Static**               | You can specify a static IP address from the available Virtual Network IP range.|
-  
+
 When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
 
 <br />
 
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. 
+7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page.
 
 <InfoBox>
 
@@ -132,7 +131,7 @@ You can add new worker pools to customize certain worker nodes to run specialize
 
 <br />
 
-    
+
 8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
 
 
@@ -146,7 +145,7 @@ The cluster details page of the cluster contains the status and details of the d
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 # Deleting an Azure IaaS Cluster
 
-The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps.
 
 
 1. Ensure you are in the correct project scope.
@@ -176,17 +175,19 @@ To force delete a cluster follow the same steps outlined in [Deleting an Azure I
 <br />
 
 <WarningBox>
- 
 
-A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
-- VNet
+
+A force delete can result in resources Palette provisioned being missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
+
+- Virtual Network (VNet)
 - Static Public IPs
 - Virtual Network Interfaces
 - Load Balancers
 - VHD
-- Virtual Network NAT
+- Managed Disks
+- Virtual Network Gateway
 
-Failure in removing provisioned resources can result in unexpected costs.   
+Failure in removing provisioned resources can result in unexpected costs.
 
 </WarningBox>
 
@@ -200,8 +201,4 @@ To validate the Azure cluster creation and deletion status
 2. Click on **Cluster** on the left **Main Menu**
 
 
-4. Click on the check box **Deleted only** to view all the clusters deleted in last 72 hours.
-
-
-
-
+4. Click on the check box **Deleted only** to view all the clusters deleted in the last 72 hours.

@@ -35,12 +35,8 @@ The Cluster Profile page displays the list of packs associated with the cluster 
 
 #### Cluster Profiles Pack Status
 
-![Pack_Status](pack_status.png)
+![Pack_Status](/pack_status.png)
 
 
 <br />
 <br />
-
-
-
-

@@ -22,7 +22,7 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account 
-- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/create-gov-accounts) for guidance.
+- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
 - An infrastructure cluster profile for AWS EKS. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
 - Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
@@ -85,7 +85,7 @@ Use the following steps to provision a new AWS EKS cluster:
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
     |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
+    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](/clusters/public-cloud/aws/eks/#eksclustersecretsencryption) for more details.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
     
 
@@ -100,7 +100,7 @@ Use the following steps to provision a new AWS EKS cluster:
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](/clusters/public-cloud/aws/architecture#awsinstancetypeandpodcapacity) documentation for help in determining the proper instance type and size. |
     |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
     |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
-    |**Instance Type** | Select the AWS [instance type](/clusters/public-cloud/eks/#awsinstancetypewithpodcapacity) to be used for all nodes in the node pool.|
+    |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
     
   * Cloud Configuration settings:
 
