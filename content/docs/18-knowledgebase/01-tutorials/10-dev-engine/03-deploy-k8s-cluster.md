@@ -1693,12 +1693,11 @@ To verify the execution of the deletion, open the Palette Dashboard and, from th
 
 # Next Steps
 
-In this tutorial, you learned about Palette and the Cluster Mode. You created a cluster profile, that is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added the configuration of the *Hello Universe* application and deployed it. To do that you can use either Palette's dashboard or Terraform configuration files.
+In this tutorial, you learned about Palette and the Cluster Mode. You created a cluster profile, which is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added the configuration of the *Hello Universe* application and deployed it. To do that you can use either Palette's dashboard or Terraform configuration files.
 
 Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application on it.
 
-To learn more about Palette and its capabilities.
-<br />
+To learn more about Palette and its capabilities, check out the following resources.
 
 - [Palette Modes](/introduction/palette-modes)
 
