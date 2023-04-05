@@ -11,7 +11,7 @@ There are two local development paths available; Docker based, and non-Docker ba
 
 ## Prerequisites
 
-To contribute, we recommende having the following software installed locally on your workstation.
+To contribute, we recommend having the following software installed locally on your workstation.
 
 - Text Editor
 - [Docker](https://docs.docker.com/desktop/)
@@ -198,13 +198,13 @@ To add a Service to the Service List complete the following actions:
 
 #### Images or other assets
 
-You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
+All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
 
 ```md
-![alt text](clusterprofiles.png "cluster profiles example")
+![alt text](/clusterprofiles.png "cluster profiles example")
 ```
 
-The same rules apply though. You can reference it from a different section using urls relative to the root directory
+You can add a directory to to the images folder.
 
 ```md
 ![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
@@ -214,7 +214,7 @@ The same rules apply though. You can reference it from a different section using
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#width=120px")
+![alt text](/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component
@@ -409,6 +409,10 @@ make verify-url-links-local
 
 An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
 
+### Cron Job
+
+Every Monday at 6 AM UTC a GitHub Actions cron job is triggered. The cron job logic can be found in the file [url-checks.yaml](.github/workflows/url-checks.yaml). The core logic resides in [url-checker.sh](/scripts/url-checker.sh). The Slackbot application **Docs bot** is used to post the messages to the `#docs` channel.
+
 ## Approvers/Reviewers
 
 The content in the `docs/` folder require approval from the documentation team. The list of approvers and reviewers can be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this file.
@@ -458,3 +462,19 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 ### Rejected Words
 
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
+
+
+# Release
+
+To create a new release, use the following steps:
+
+1. Create a release branch. Use the following naming pattern `release-X-X`
+2. Create a commit using the following commit message `fix: updating documentation for release-X-X`. Replace x-x with the upcoming release number.
+3. Push up the commit and create a new pull request (PR).
+4. Merge PRs related to the upcoming release into the `release-X-X` branch.
+5. Merge the release branch.
+
+The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
+
+> **Warning**
+> Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.

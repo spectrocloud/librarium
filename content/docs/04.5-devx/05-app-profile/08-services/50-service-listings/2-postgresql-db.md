@@ -14,13 +14,13 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Postgres
+# Deploy Postgres
 
 Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 
 <br />
 
-## Palette Postgres Requirement
+## Prerequisites
 
 The following are requirements for using Palette Postgres:
 
@@ -44,7 +44,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
 
 You can use the following steps to learn how to add Postgres to your app profile.
 
-1. Log in to [Palette](console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
