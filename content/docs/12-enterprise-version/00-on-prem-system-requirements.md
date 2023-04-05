@@ -16,12 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
+The Spectro Cloud Palette SaaS platform is available as a self-hosted, on-prem deployment. The on-prem version is a dedicated instance of the platform hosted in a VMware environment or in an existing Kubernetes cluster. Palette on-prem is available in three modes:
 
 | **On-premise Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
-| **Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
-| **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
+| **VMWare Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
+| **VMWare Quick Start Mode**  | A single VM deployment of the platform that is ideal for use in Proofs of Concept (PoCs). |
+| **Helm Chart Mode**  | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
 
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
 
@@ -41,6 +42,7 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 
 * Install a Private Cloud Gateway for VMware as described in the Creating a VMware Cloud Gateway section. Installing the Private Cloud Gateway automatically registers a cloud account for VMware in Palette. You can register additional VMware cloud accounts in Palette as described in the Creating a VMware Cloud account section.
 
+* Kubernetes version 1.19 minimum when installing Palette in a cluster using a Helm Chart. We recommend using managed Kubernetes, such as Amazon EKS and Azure EKS. 
 
 * Subnet with egress access to the internet (direct or via proxy):
   * For proxy: HTTP_PROXY, HTTPS_PROXY (both are required).
