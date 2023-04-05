@@ -113,7 +113,7 @@ The exposed output variables of this service layer may be used in other service 
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
 | Database Username      | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_USERNAME}}` | The database user name.                         |
 | Database User Password | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_PASSWORD}}`              | The password of the database user name. |
-| Datbase Name           | `{{.spectro.app.$appDeploymentName.<service-name>.COCKROACHDBMSTR_DB_NAME}}`        | The name of the database.
+| Database Name           | `{{.spectro.app.$appDeploymentName.<service-name>.COCKROACHDBMSTR_DB_NAME}}`        | The name of the database.
 | Service Hostname       | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_SVC}}`      | The Kubernetes service hostname for the database.                |
 | Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
 | Service Namespace       | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_SVC_NAMESPACE}}` | The namespace of the service.              |
