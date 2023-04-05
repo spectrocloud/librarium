@@ -21,7 +21,7 @@ Learn what's possible with Spectro Cloud Palette. Use the following tutorials to
 - [Dev Engine](/knowledgebase/tutorials/dev-engine)
 
 
-- [Terraform and Palette Tutorial](/knowledgebase/tutorials/terraform-tutorial) <p></p>
+- [Terraform and Palette Tutorial](/knowledgebase/tutorials/dev-engine/deploy-k8s-cluster)
 
 
 <br />
