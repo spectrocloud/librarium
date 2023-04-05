@@ -60,10 +60,18 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 6. Save your changes.
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure Redis is an available service layer.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* Validate the services from the Apps page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
+2. Navigate to the left **Main Menu** and select **Apps**.
+
+
+
+3. Select the application that contains Redis.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -101,7 +109,7 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-Example: 
+#### Example: 
 
 - App Name: `app-tarfful`
 
@@ -112,7 +120,7 @@ Example:
 kubectl get secret  app-tarfful-redis-4-redis-auth \
  --namespace app-tarfful-redis-4-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
-Output:
+#### Output:
 ```shell
  .Hr1}%DrA2MFf
 ```

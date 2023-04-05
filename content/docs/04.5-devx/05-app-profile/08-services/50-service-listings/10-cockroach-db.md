@@ -85,10 +85,18 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The next screen displays the different service layers that make up the app profile. Ensure CockroachDB is an available service layer.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
+2. Navigate to the left **Main Menu** and select **Apps**.
+
+
+
+3. Select the application that contains CockroachDB.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -150,5 +158,6 @@ To learn more about developing with CockroachDB, check out the [CockroachDB Deve
 # Resources
 
 - [CockroachDB Official Documentation](https://www.cockroachlabs.com/docs/)
+
 
 - [Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html)

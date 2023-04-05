@@ -71,10 +71,18 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 ## Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to display the service layers.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* * To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+2. Navigate to the left **Main Menu** and select **Apps**.
+
+
+
+3. Select the application that contains MySQL.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -110,7 +118,7 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-Example: 
+#### Example: 
 
 - App Name: `app-tarfful`
 
@@ -121,7 +129,7 @@ Example:
 kubectl get secret app-tarfful-mysql-2-user \
  --namespace app-tarfful-mysql-2-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
 ```
-Output:
+#### Output:
 ```shell
 ,U31nQ@T2tN4uM
 ```
