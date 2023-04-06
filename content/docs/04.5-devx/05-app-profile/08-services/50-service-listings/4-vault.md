@@ -26,7 +26,7 @@ Vault is deployed behind the scenes through the use of the [Bank-Vaults Vault Op
 
 <InfoBox>
 
-Vault is deployed as a single container in your virtual cluster and is not tied to any particular node.
+Vault is deployed as a single container in the virtual cluster, and the container is not tied to any particular node.
 
 </InfoBox>
 
@@ -82,7 +82,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 6. Save your changes.
 
 
-7. Deploy the app profile to a virtual cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance, or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
+7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
 
 
 ## Validation
@@ -213,10 +213,14 @@ The Vault root token and the unseal keys are stored as a Kubernetes secret insid
 
 # Next Steps
 
-You can add Vault to your application profile and start integrating Vault with you applications. To learn more about integrating Vault with your applications, check out the [Vault App Integrations](https://developer.hashicorp.com/vault/tutorials/app-integration) tutorials from HashiCorp.
+You can add Vault to your application profile and start integrating Vault with your applications. To learn more about integrating Vault with your applications, check out the [Vault App Integrations](https://developer.hashicorp.com/vault/tutorials/app-integration) tutorials from HashiCorp.
 
 
 # Resources
+
+
+- [Vault Documentation](https://developer.hashicorp.com/vault/docs)
+
 
 - [HashiCorp Vault Tutorial](https://developer.hashicorp.com/vault/tutorials)
 

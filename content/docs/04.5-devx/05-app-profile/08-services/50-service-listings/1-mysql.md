@@ -71,10 +71,18 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 ## Validation
 
-* To validate your database service in App Profile, navigate to the **App Profiles** page, where all your app profiles are listed. Click the **App Profile Name** to display the service layers.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* * To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+2. Navigate to the left **Main Menu** and select **Apps**.
+
+
+
+3. Select the application that contains MySQL.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -100,25 +108,41 @@ The exposed output variables of this service layer may be used in other service 
 
 You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-user \
- -n <app name>-<service name>-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+ --namespace <app name>-<service name>-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
 ```
 
 Replace the values with the respective names.
 
-  * app-name: represents the name of the  app provided during the app creation process.
+  * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-Example: 
+#### Example: 
 
 - App Name: `app-tarfful`
 
 - Service Name: `mysql-2`
 
 
-```
+```shell
 kubectl get secret app-tarfful-mysql-2-user \
- -n app-tarfful-mysql-2-ns -o jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+ --namespace app-tarfful-mysql-2-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
+```
+#### Output:
+```shell
 ,U31nQ@T2tN4uM
 ```
+
+# Next Steps
+
+You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from Oracle.
+
+
+
+# Resources
+
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+
+
+- [MySQL Tutorial](https://dev.mysql.com/doc/refman/8.0/en/tutorial.html)
