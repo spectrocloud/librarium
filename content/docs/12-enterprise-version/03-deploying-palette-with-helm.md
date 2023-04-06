@@ -299,9 +299,23 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
 
 # Upgrade Palette
 
-You can upgrade Palette by using the Palette API `/system` endpoint. You must use the API for a successful upgrade otherwise internal system configurations stored in a Kubernetes *configMap* will get missed and result in lost system configurations. Using the Helm upgrade command will not retain critical system configuration values.
 
-The values you specified in the file **values.yaml**, more specifically, all the parameter values that fall under the parameter section `values.config` are stored in a configMap titled `configserver-cm`.
+
+To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command.
+
+<br />
+
+```shell
+helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
+```
+
+## Post-Install Configuration Values
+
+The values you specified in the file **values.yaml**, more specifically, all the parameter values that fall under the parameter section `values.config` are stored in a configMap titled `configserver-cm`. 
+
+After the installation process, if you need to change any configuration values in the **values.yaml** file, you must use the Palette API to apply the change. You must use the API for Palette to consume the new system configuration values. Otherwise, internal system configurations stored in the Kubernetes configMap `configserver-cm` will not be updated. 
+
+If you find yourself in this scenario, contact our support team by emailing us at support@spectrocloud.com for additional guidance.
 
 
 
