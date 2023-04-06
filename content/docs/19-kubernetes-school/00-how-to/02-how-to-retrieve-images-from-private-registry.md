@@ -30,7 +30,7 @@ In this tutorial, you will log into a private docker registry to pull existing i
 
 ## Prerequisites
 
-- The Kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
+- The kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
 - Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
 - Access to a running Kubernetes cluster. Setting up a Kubernetes cluster can be difficult. You can read about how to [create one from scratch](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6) or on [Spectro Cloud’s console.](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster)
 
@@ -55,7 +55,7 @@ Keeping passwords in plain text is unsafe. Kubernetes automatically encodes pass
 
 ## **Create a Kubernetes Secret from the JSON File Containing the Secrets.**
 
-Use the Kubectl command-line tool to generate a secret from the **registry-creds.json** file:
+Use the kubectl command-line tool to generate a secret from the **registry-creds.json** file:
 
 ```bash
 kubectl create secret generic myregistrykey --from-file=registry-creds.json
@@ -93,7 +93,7 @@ You will decode the secret you created to verify that secrets are not secure.
 kubectl get secret myregistrykey -o jsonpath='{.data.registry-creds\.json}' | base64 --decode
 ```
 
-The output of issuing the command above is the content of the json file you used to create the secret.
+The output of issuing the command above is the content of the JSON file you used to create the secret.
 
 ```json
 {
@@ -166,7 +166,7 @@ $ kubectl patch serviceaccount default \
 
 Replace **`<secret-name>`** with the secret created in the previous step.
 
-Once you are authenticated and have added the secret to your default service account, you can use the Kubectl command to pull images from the registry and deploy them to your Kubernetes cluster like this:
+Once you are authenticated and have added the secret to your default service account, you can use the kubectl command to pull images from the registry and deploy them to your Kubernetes cluster like this:
 
 ```bash
 $ kubectl run <deployment-name> \
