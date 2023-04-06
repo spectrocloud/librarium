@@ -2,7 +2,7 @@
 title: "How to"
 metaTitle: "Get started with a quick Kubernetes How-to"
 metaDescription: "Kubernetes School with How to"
-icon: "laptop"
+icon: "book"
 hideToC: false
 fullWidth: false
 hiddenFromNav: false
@@ -18,4 +18,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.
 
+# Core Kubernetes
+- [How To Retrieve Images from a Private Registry in Kubernetes](/kubernetes-school/how-to/how-to-retrieve-images-from-private-registry)
+
+
+  
+- [Deploy a Stateless Frontend Application on Kubernetes](/kubernetes-school/how-to/deploy-stateless-frontend-app)
+  
 <br />

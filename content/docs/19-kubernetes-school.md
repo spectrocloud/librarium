@@ -2,7 +2,7 @@
 title: "Kubernetes School"
 metaTitle: "kubernetesschool"
 metaDescription: "Kubernetes School Respository"
-icon: "book"
+icon: "bookmark"
 hideToCSidebar: true
 hideToC: true
 fullWidth: true
@@ -16,8 +16,18 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Welcome to the Spectro Cloud Knowledge Portal
 
-Welcome to the Spectro Cloud Kubernetes School. You will find core Kubernetes tutorials, how-tos, and frequently asked questions. 
+Welcome to the Spectro Cloud Kubernetes School. You will find core Kubernetes tutorials, how-tos, frequently asked questions, and community curated resources.
 
 If you have a topic in mind you would like to see, use the Feedback app on the lower-right-hand corner.
+<br />
+
+- [How-To](/kubernetes-school/how-to)
+  
+
+- [Tutorials](/kubernetes-school/tutorials)
+  
+
+- [Community](/kubernetes-school/community)
+  
 
 <br />

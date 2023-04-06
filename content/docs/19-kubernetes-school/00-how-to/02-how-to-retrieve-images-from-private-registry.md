@@ -1,0 +1,185 @@
+---
+title: "Retrieve Images from a Private Registry"
+metaTitle: "Retrieve Images from a Private Registry"
+metaDescription: "Create a Kubernetes Secret"
+icon: ""
+hideToC: false
+fullWidth: false
+hiddenFromNav: false
+---
+
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
+
+# How To Retrieve Images from a Private Registry in Kubernetes
+
+Kubernetes is an open-source container orchestration platform that enables efficient management, deployment, and scaling of containerized applications.
+
+By default, Docker and Kubernetes allow a limited number of unauthenticated pulls from a Docker registry, such as Docker Hub. Once you have exceeded this limit, you will not be able to pull any more images until the limit resets. 
+
+The limit is based on the IP address of the machine making the pulls, so it applies to all containers running on that machine.
+
+To avoid this issue, it's recommended that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry. This will ensure that you have access to the images you need and can pull them without any restrictions or limitations. 
+
+To log into a Docker registry from Kubernetes, you must create a secret containing your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
+
+In this tutorial, you will log into a private docker registry to pull existing images of an application you will deploy in Kubernetes.
+
+## Prerequisites
+
+- The Kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
+- Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
+- Access to a running Kubernetes cluster. Setting up a Kubernetes cluster can be difficult. You can read about how to [create one from scratch](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6) or on [Spectro Cloud’s console.](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster)
+
+Below is an example of how you can create a secret and use it in a Kubernetes deployment:
+
+## **Create a JSON File Containing your Credentials.**
+
+First, create a file called **registry-creds.json** that contains your registry credentials in the following format:
+
+```json
+{
+	"auths": {
+		"example.registry.com": {
+			"username": "username",
+			"password": "password"
+		}
+	}
+}
+```
+
+Keeping passwords in plain text is unsafe. Kubernetes automatically encodes passwords used to create a secret in base64.  Encoding passwords does not mean your passwords cannot be decoded. 
+
+## **Create a Kubernetes Secret from the JSON File Containing the Secrets.**
+
+Use the Kubectl command-line tool to generate a secret from the **registry-creds.json** file:
+
+```bash
+kubectl create secret generic myregistrykey --from-file=registry-creds.json
+```
+
+You can use the command below to view the secret created in detail.
+
+```bash
+kubectl get secret/myregistrykey -o json
+```
+
+The output of the command displays that the content of the **registry-creds.json** file is base 64 encoded.
+
+```json
+{
+    "apiVersion": "v1",
+    "data": {
+        "registry-creds.json": "ewogICJhdXRocyI6IHsKICAgICJleGFtcGxlLnJlZ2lzdHJ5LmNvbSI6IHsKICAgICAgInVzZXJuYW1lIjogInRlc3RfdXNlcm5hbWUiLAogICAgICAicGFzc3dvcmQiOiAidGVzdF9wYXNzd29yZCIKICAgIH0KICB9Cn0K"
+    },
+    "kind": "Secret",
+    "metadata": {
+        "creationTimestamp": "2023-03-22T08:44:26Z",
+        "name": "myregistrykey",
+        "namespace": "default",
+        "resourceVersion": "1552285",
+        "uid": "ccfb047b-67c8-446b-a69a-6eb762c3100f"
+    },
+    "type": "Opaque"
+}
+```
+
+You will decode the secret you created to verify that secrets are not secure.
+
+```bash
+kubectl get secret myregistrykey -o jsonpath='{.data.registry-creds\.json}' | base64 --decode
+```
+
+The output of issuing the command above is the content of the json file you used to create the secret.
+
+```json
+{
+	"auths": {
+		"example.registry.com": {
+			"username": "username",
+			"password": "password"
+		}
+	}
+}
+```
+
+## **Add Secret to Deployment config.**
+
+In your Kubernetes deployment configuration, specify the name of the secret you just created in the imagePullSecrets field:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: registry.example.com/my-image
+          imagePullSecrets:
+            - name: myregistrykey
+```
+
+## Apply the Deployment configuration To your Kubernetes cluster.
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+With this configuration in place, Kubernetes will use the registry credentials in the `myregistrykey` secret to log into the registry and pull the specified image when deploying the application.
+
+## Other Ways To Authenticate To a Docker Registry from Kubernetes
+
+An alternative way to log into a Docker registry from Kubernetes is by using the command line. 
+
+Authenticate to the private registry. Here’s an example of how to do this:
+
+```bash
+$ kubectl create secret docker-registry <secret-name> \
+    --docker-server=<registry-url> \
+    --docker-username=<username> \
+    --docker-password=<password> \
+    --docker-email=<email>
+```
+
+In the snippet above, **`<secret-name>`** refers to a unique name for the secret, **`<registry-url>`** is the URL of the private registry. Replace the **`<username>`** with the username for authentication and **`<password>`** with the password for authentication. Also, replace **`<email>`**
+ with the email associated with the authentication credentials.
+
+Add the secret created in the previous step to the default service account with the following code.
+
+```bash
+$ kubectl patch serviceaccount default \
+    -p '{"imagePullSecrets": [{"name": "<secret-name>"}]}'
+```
+
+Replace **`<secret-name>`** with the secret created in the previous step.
+
+Once you are authenticated and have added the secret to your default service account, you can use the Kubectl command to pull images from the registry and deploy them to your Kubernetes cluster like this:
+
+```bash
+$ kubectl run <deployment-name> \
+    --image=<registry-url>/<image-name>:<tag> \
+    --port=<container-port>
+```
+
+The line above will create a new deployment using the image specified from the private registry.
+
+# Next Steps
+
+In conclusion, accessing images from a private registry in Kubernetes can be challenging due to the need to authenticate with the registry. 
+
+To solve this challenge, you have learned how to create a Kubernetes secret with your Docker registry credentials and use it in a Kubernetes deployment configuration. This allows you to pull images from your private registry without restrictions or limitations. 
+
+To learn more about Kubernetes and how to use it to deploy your application, you can visit [our documentation.](https://docs.spectrocloud.com/) You can also read about [how to deploy a stateless frontend application](https://www.notion.so/How-To-Deploy-A-Stateless-Frontend-App-with-Kubernetes-b885ae2307e94ef191a1b713fe29c81f) on Kubernetes or join our [slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ) to have exciting conversations on Kubernetes with our community members.
