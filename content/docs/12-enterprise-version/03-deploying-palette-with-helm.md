@@ -108,7 +108,7 @@ Choose the installation steps for your target environment. The steps in the gene
     kubectl get service ingress-nginx-controller --namespace nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you will need it for future upgrades.
 
   <br />
 
@@ -267,7 +267,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
     kubectl get service ingress-nginx-controller --namespace nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you will need it for future upgrades.
 
 <br />
 
@@ -301,13 +301,34 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
 
 
 
-To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command.
+To upgrade Palette with a new Helm release, use the following steps. <br /> <br />
 
-<br />
+1. Download the new version of the Helm Chart.
 
-```shell
-helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-```
+
+
+2. Extract the new **values.yaml** file from the Helm Chart with the following command:
+
+    <br />
+
+    ```shell
+    tar xzvf /path/to/chart.tgz spectro-mgmt-plane/values.yaml
+    ```
+
+
+3. Compare the new **values.yaml** against the original **values.yaml** you used for the Palette installation. Address any new parameters added to the values file.
+
+
+
+
+4. Issue the following command to upgrade Palette. Use the same **values.yaml** file you used for the Palette installation. 
+
+    <br />
+
+    ```shell
+    helm upgrade palette /path/to/chart.tgz --file /path/to/orginal_values.yaml
+    ```
+ 
 
 ## Post-Install Configuration Values
 
