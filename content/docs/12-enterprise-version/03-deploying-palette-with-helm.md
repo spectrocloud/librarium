@@ -316,7 +316,7 @@ To upgrade Palette with a new Helm release, use the following steps. <br /> <br 
     ```
 
 
-3. Compare the new **values.yaml** against the original **values.yaml** you used for the Palette installation. Address any new parameters added to the values file.
+3. Compare the new **values.yaml** against the original **values.yaml** you used for the initial Palette installation. Address any new parameters added to the values file.
 
 
 
