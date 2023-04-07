@@ -332,7 +332,7 @@ To upgrade Palette with a new Helm release, use the following steps. <br /> <br 
 
 ## Post-Install Configuration Values
 
-The values you specified in the file **values.yaml**, more specifically, all the parameter values that fall under the parameter section `values.config` are stored in a ConfigMap titled `configserver-cm`. 
+The values you specified in the **values.yaml** file all fall under the parameter section `values.config` and are stored in the `configserver-cm` ConfigMap. 
 
 After the installation, if you need to change any configuration values under `values.config` in the **values.yaml** file, you must use the Palette API.
 When you use the `helm upgrade` command, internal system configurations stored in the Kubernetes ConfigMap `configserver-cm` will display as updated, but Palette will not apply the new values. Palette only accepts changes to these configuration values if they are submitted via API.
