@@ -929,22 +929,22 @@ cd terraform-profile
 
 Initialize the working directory that contains the Terraform configuration files.
 ```bash
-$ terraform init
+terraform init
 ```
 
-Validate the configuration files in the directory
+Validate the Terraform files.
 ```bash
-$ terraform validate 
+terraform validate 
 ```
 
-Create the execution plan with the preview changes your configuration will create on the infrastructure
+You can preview the actions Terraform will take by using the `plan` command.
 ```bash
-$ terraform plan
+terraform plan
 ```
 
-Finally, apply the modifications there are in the plan to execute them and create the infrastructure
+Use the `apply` command to deploy the resources to your target environment.
 ```bash
-$ terraform apply
+terraform apply --auto-approve
 ```
 <br />
 
@@ -980,13 +980,13 @@ Click on the profile to see the details of the stacks that compose the profile:
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-validation-p">
 
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*:
+To check the profile creation in Palette, login to the Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*.
 
 ![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
 
 <br />
 
-Click on the profile to see the details of the stacks that compose the profile:
+Click on the profile to review the details of the stacks that compose the profile.
 
 ![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
 
@@ -1008,7 +1008,7 @@ $ cd terraform-cluster
 
 ### Variables
 
-Create the file *variables.tf* and insert the list of variables:
+Create a file named **variables.tf** and insert the following variables.
 
 ```terraform
 variable "spectrocloud_api_key" {}
@@ -1039,7 +1039,7 @@ variable "worker_nodes" {
 }
 ```
 
-Then, create also the file *terraform.tfvars* and append the content of the variables:
+Next, create a file named *terraform.tfvars* and add the following content.
 
 ```terraform
 spectrocloud_api_key    = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -1064,7 +1064,9 @@ worker_nodes = {
 
 ### Cluster Resources
 
-Create the *cluster.tf* file and insert the cluster resources definition:
+Create the **cluster.tf** file and insert the cluster resources definition.
+
+<br />
 
 ```terraform
 data "spectrocloud_cloudaccount_aws" "account" {
@@ -1375,13 +1377,13 @@ $ terraform apply
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-validation">
 
-To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *aws-cluster*:
+To check the cluster creation, login to the Palette dashboard, and from the left **Main Menu** click on the **Clusters**.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/aws_create_cluster.png)
 
 <br />
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+Select your cluster to review its details page which contains the status, cluster profile, and more.
 
 
 </Tabs.TabPane>
@@ -1426,8 +1428,7 @@ Since the cluster may take several minutes to create, in relation to the packs t
 
 ## Deploy the Application
 
-The following steps will guide you through deploying the application on the cluster. You will start with the modification of the cluster profile with the addition of the manifest, then the configuration of the manifest, and the deploy of the application.
-The deploy of the application can be done when you create the cluster or, like in this tutorial, after the creation of the cluster.
+The following steps will guide you through deploying an application to your host cluster. You begin by modifying the cluster profile you created earlier and adding a custom manifest to the cluster profile. 
 
 <br />
 
@@ -1437,11 +1438,12 @@ The deploy of the application can be done when you create the cluster or, like i
 
 ### Add the Manifest
 
-Return to the *Profiles* tabs on the left panel and open the profile related to the cluster deployed.
+Navigate to the left **Main Menu** and select *Profiles*. Select the cluster profile you created earlier and applied to the host cluster.
 
-Select *Add Manifest* at the top of the page and insert the data:
-- *Layer name*: name of the pack to add to the profile stack
-- *Manifests*: add your manifest by giving it a name and click on the blue tick to confirm it
+Select *Add Manifest* at the top of the page and insert the provide the fill out the following input fields. <br /> <br />
+
+- *Layer name*: name of the layer to add to the profile stack.
+- *Manifests*: add your manifest by giving it a name and clicking the blue circle button. An empty editor will appear on the right side of the screen.
 
 ![manifest](/tutorials/deploy-clusters/manifest.png)
 
@@ -1450,10 +1452,7 @@ Select *Add Manifest* at the top of the page and insert the data:
 
 ### Customize the Manifest
 
-From the *editor* icon next to the manifest you can switch between the text editor and the overview of the profile stack.
-
-Click on the manifest to prompt a text file on the right side. Here you add the code to deploy the application.
-The manifest example code to deploy the *hello-universe* application is the following.
+In the manifest editor, provide the following content.
 
 <br />
 
@@ -1493,9 +1492,9 @@ spec:
         - containerPort: 8080
 ```
 
-In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
+The code snippet will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
 
-We set two replicas for the application to simulate a distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
+The manifest defined two replicas for the application to simulate a distributed environment with a redundant web application deployed to Kubernetes. In front of them, a load balancer service is defined to route requests to both containers. By using a load balancer, you can expose a single access point and distribute the workload to both containers.
 
 For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
 
@@ -1512,7 +1511,7 @@ Open the folder where you have the profile configuration
 $ cd terraform-profile
 ```
 
-Edit the file *cluster_profile.tf* and add the manifest pack inside the profile definition
+Edit the file **cluster_profile.tf** and add the manifest pack inside the profile definition. Make sure you add the new `pack {}` after all the other pack objects.
 
 ```terraform
 resource "spectrocloud_cluster_profile" "profile" {
@@ -1529,7 +1528,9 @@ resource "spectrocloud_cluster_profile" "profile" {
 }
 ```
 
-This new manifest pack contains the configurations of the application through the file *manifest.yaml*. So, create the file *manifest.yaml* with the Kubernetes configuration to deploy the app:
+This new manifest pack contains the application configurations defined in a file named *manifest.yaml*. Create the file **manifest.yaml** and add the following Kubernetes configuration.
+
+<br />
 
 ```yaml
 apiVersion: v1
@@ -1600,20 +1601,18 @@ $ terraform apply
 
 ### Deploy
 
-Open Palette dashboard, select the **Clusters** page from the left panel and click on the cluster to open the details page
+From the left **Main Menu** select the **Clusters**.  Click on the host cluster you deployed to open the details page.
 
 ![Cluster details with available updates](/tutorials/deploy-clusters/deploy_app/app_update_available.png)
 
 <br />
 
-On the top right corner, there is a green button **Updates Available** that shows you have updates to deploy on the cluster.
-Click on it to see the modification between the last deployed profile on the cloud provider with the current profile that contains the application.
+On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. Compare the new changes against the previous cluster profile definition. The only change is the addition of a manifest that will deploy the Hello Universe application.
 
-Revise the application configurations.
 
 ![Available updates details](/tutorials/deploy-clusters/deploy_app/updates_available_details.png)
 
-Click to **Confirm updates** to finalize the modification and apply the configuration of the application to the cluster.
+Click on **Confirm updates** to apply the updates to the host cluster.
 
 <br />
 
