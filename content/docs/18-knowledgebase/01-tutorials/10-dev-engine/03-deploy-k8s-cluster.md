@@ -1636,16 +1636,16 @@ Remember to update the list of components by clicking the *sync* button at top r
 
 <br />
 
-To access the application, select the **Overview** tab at the top of the page and click on the link (**:8080**) that appears next to the *hello-universe-service* in the **Services** line. It will open a new tab on the browser that open the application.
+After a few moments, the application is now ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
 ![Deployed application](/tutorials/deploy-clusters/app.png)
 
 <br />
 
 
-# Clean-up
+# Cleanup
 
-It is a good practice to clean up the resources used for the tutorial from the cloud provider, to avoid unexpected cloud charges.
+Use the following steps to clean up all the resources you created for the tutorial.
 
 <br />
 
@@ -1654,20 +1654,28 @@ It is a good practice to clean up the resources used for the tutorial from the c
 
 ## UI Workflow
 
-To remove the cluster created in this tutorial, open the Palette dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. Select the cluster you want to delete to access its details page.
+To remove the cluster you created in this tutorial, open the Palette dashboard and, from the left **Main Menu**, click on **Clusters** to access the clusters page. Select the cluster you want to delete to access its details page.
 
-Click on **Settings**, at the top-right corner of the page, from the details page to expand the settings menu and select **Delete Cluster** to delete the cluster.
+Click on **Settings**, at the top-right corner of the page, from the details page to expand the **settings Menu** and select **Delete Cluster** to delete the cluster.
 
 ![Destroy-cluster](/tutorials/deploy-clusters/delete-cluster-button.png)
 
-You will be asked to type in the cluster name to confirm the delete action. Continue and type the cluster name to proceed with the delete step. Repeat this process for all the cluster you want to delete.
+You will be asked to type in the cluster name to confirm the delete action. Continue and type in the cluster name to proceed with the delete step. 
+
+<br />
+
+<InfoBox>
+
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+
+</InfoBox>
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Terraform" key="terraform-clean">
 
 ## Terraform
 
-To destroy the cluster with Terraform, use the destroy command.
+Use the destroy command to remove all the resources you created through Terraform.
 
 First enter into the folder where you have the Terraform configuration for the cluster
 ```bash
@@ -1681,10 +1689,10 @@ terraform plan -destroy
 
 Then delete the components by running the destroy command:
 ```terraform
-$ terraform destroy
+terraform destroy --auto-approve
 ```
 
-Wait until it finishes to delete the cluster.
+The deletion process will take a few minutes. 
 
 </Tabs.TabPane>
 </Tabs>
@@ -1698,13 +1706,13 @@ To verify the execution of the deletion, open the Palette Dashboard and, from th
 <br />
 
 
-# Next Steps
+# Wrap-up
 
-In this tutorial, you learned about Palette and the Cluster Mode. You created a cluster profile, which is a template with the layers definition required to deploy the cluster, and then deployed the cluster on your preferred cloud service provider. On top of that cluster, you added the configuration of the *Hello Universe* application and deployed it. To do that you can use either Palette's dashboard or Terraform configuration files.
+In this tutorial, you created a cluster profile, which is a template containing the core layers required to deploy a cluster. You then deployed a host cluster onto your preferred cloud service provider. Once the cluster deployed, you updated the cluster profile and added the application Hello Universe to the profile definition, and applied the updates to the host cluster. 
 
-Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application on it.
+Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application.
 
-To learn more about Palette and its capabilities, check out the following resources.
+We encourage you the check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette and how the Palette Dev Engine can help you deploy applications more quickly. 
 
 - [Palette Modes](/introduction/palette-modes)
 
