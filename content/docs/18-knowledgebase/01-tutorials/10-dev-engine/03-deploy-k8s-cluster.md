@@ -165,7 +165,7 @@ In the **Basic information** section, insert the general information about the c
 
 ### Cluster profile
 
-From the **Cluster profile** section, select the profile you want to deploy on AWS.
+From the **Cluster profile** section, select the profile you want to apply to the host cluster.
 
 ![palette cluster profiles](/tutorials/deploy-clusters/aws/clusters_cluster_profile.png)
 
@@ -211,47 +211,54 @@ Click on *Add New SSH Key* and insert the name of the key and the content of the
 
 ### Nodes config
 
-The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
+The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster. 
 
-You can find the list and the explanation of all the parameters in [Node Pool page](/clusters/cluster-management/node-pool).
 
-Among the multiple configuration you can set, be sure to consider:
-- *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
-- *Allow worker capability* to allow the master node also to accept workloads. This option is particularly useful in case you select *spot instance* as worker nodes in order to guarantee a minimum number of available nodes on the cluster.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region selected in the *Cluster config* section.
-- *Instance Option* to choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes. 
-  - (in case of spot instance) *Maximum spot bid price* to set the bid price threshold to get instances. For this tutorial, you can select spot instance to minimize cost but make sure you check the *Allow worker capability* flag.
+Before you proceed to next section, take the time to review the following parameters. <br /> <br />
+- *Number of nodes in the pool* used to set the right amount of nodes that make up the pool of either the master or worker nodes. Set the count to one for the master pool and two for the worker pool.
+
+
+- *Allow worker capability*. This option allows the master node also to accept workloads. This is useful when spot instances are used as worker nodes.  You can check this box if you want to.
+
+
+- *Instance Type* select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select `m4.2xlarge`.
+
+
+- *Availability zones* specify the availability zones the node pool can place nodes. Select one availability zone.
+
+
+- *Instance Option* Choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes.  Select **On Demand**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_nodes_config.png)
+
+Select **Next* to proceed with the cluster deployment.
 
 <br />
 
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
+In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), and more.
 
-For the purpose of this tutorial, you can use the default settings configuration.
+For this tutorial, you can use the default settings configuration. Click on **Validate** to continue. 
 
 <br />
 
 
 ### Review
 
-The **Review** section resumes the cluster configuration as you have configured it in the previous steps.
+The **Review** section is an opportunity for you to review all the cluster configurations prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
 ![aws creation of a new cluster overview page](/tutorials/deploy-clusters/aws/clusters_review.png)
 
-Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 <br /> 
 
-Now select the **Clusters** page from the left panel and check the created cluster.
+Navigate to the left **Main Menu** and select **Clusters**. 
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/aws_create_cluster.png)
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+Click on your cluster to review details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
 
 <br />
 
@@ -635,7 +642,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 ##  Terraform
 
-Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide consistent CLI workflow support to multiple cloud services.
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
 
@@ -653,7 +659,6 @@ To complete this tutorial, you will need the following items
 
 - Terraform v1.3.6 or greater.
 
-- A Spectro Cloud API key. [To learn how to create an API key](https://docs.spectrocloud.com/user-management/user-authentication/#apikey)
 
 <br />
 
@@ -722,23 +727,25 @@ Search for *Compute Engine API*, enter into the product details and enable it.
 
 ## Deploy the Environment
 
-The following steps will guide you through deploying the cluster infrastructure. You will start with the definition of the cluster profile, then you will create the cluster and launch the provision of the cluster.
+The following steps will guide you through deploying the cluster infrastructure. You will start by creating the cluster profile, then deploy a cluster that uses your cluster profile. 
 
-With Terraform, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, i.e. AWS, Azure, GCP, and managed through Palette.
 
 <br />
 
 ## Configure the Cluster Profile
 
-Create a folder where you will put all the Terraform configuration files:
+Create a folder where you will put all the Terraform configuration files.
+
+<br />
 ```bash
-$ mkdir terraform-profile
-$ cd terraform-profile
+mkdir terraform-profile && cd terraform-profile
 ```
 
 ### Providers
 
-Create the file *provider.tf* and insert the content:
+Create the file **provider.tf** and insert the following content.
+
+<br />
 ```terraform
 terraform {
   required_providers {
@@ -750,7 +757,6 @@ terraform {
 }
 provider "spectrocloud" {
   project_name = "Default"
-  api_key      = var.spectrocloud_api_key
 }
 ```
 
@@ -778,7 +784,7 @@ To find the value of the *spectrocloud_api_key*, open the Palette dashboard and,
 <br />
 
 ### Data
-The data file contains the details, such as name, version, of the stacks that compose the infrastructure.
+The data file contains all of our data query resources. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
 
 Create the file data.tf and insert:
 
@@ -866,7 +872,9 @@ data "spectrocloud_pack" "proxy" {
 
 ### Cluster Profile
 
-The *cluster profile file* contains the packs that create the profile.
+The ** cluster_profile** file contains all the packs that comprise the profile. Go ahead and copy the following content into the file.
+
+<br />
 
 Create the file *cluster_profile.tf* and insert:
 
@@ -911,15 +919,15 @@ resource "spectrocloud_cluster_profile" "profile" {
 
 ## Create the Profile
 
-To create the cluster profile on Palette use the Terraform commands to apply the information present in the configuration files.
+Use the following Terraform commands to create the resources you defined in the previous files in Palette. 
 
-Open the terminal and enter into the folder where you have the Terraform configuration files
+<br />
 
 ```bash
-$ cd terraform-profile
+cd terraform-profile
 ```
 
-Initialize the working directory having Terraform configuration files
+Initialize the working directory that contains the Terraform configuration files.
 ```bash
 $ terraform init
 ```
