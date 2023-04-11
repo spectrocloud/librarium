@@ -51,18 +51,53 @@ Due to the large size of VMWare worker images,  they are not included in the ins
     * 8000
 
 
+* Request the Palette Self-hosted installer image. To request the installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+
+    - Your full name
+    - Organization name (if applicable)
+    - Email address
+    - Phone number (optional)
+    - A brief description of your intended use for the Palette Self-host installer image.
+
+Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image. 
+
+If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
+
+<br />
+
+
 # Deploy Air-Gapped Appliance
 
-* Download Palette's air-gapped appliance (OVA) to your local machine or jump host. Please contact our support (support@spectrocloud.com) for download location.
-* Navigate to the Datacenter and folder you would like to use for the installation. Right-click on the folder and invoke the VM creation wizard by selecting the option to Deploy OVF Template. Choose the location of the downloaded appliance when asked to select the OVF template.
-* Complete all the steps of the OVF deployment wizard. Provide values for various fields as follows.
- * Name: The name to identify the air-gapped appliance
- * Select a location for the VM: Select desired folder
- * Select the desired Datacenter, Storage, and Network for the air gap repo as you proceed through the following steps.
- * Customize the template as follows:
-  * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. This public key will be installed in the appliance and can be used to gain SSH access, as the user ubuntu for troubleshooting.
-* Finish the OVF deployment wizard and wait for the template creation. This will take a few minutes.
-* Power on the VM.
+
+1. Log in to vCenter Server by using the vSphere Client.
+
+
+2. Navigate to the Datacenter and select the cluster you want to use for the installation. Right-click on the cluster and select **Deploy OVF Template**.
+
+
+3. Select the OVA installer image you downloaded after receiving guidance from our support team.
+
+
+4. Select the folder of where you want to install the virtual machine and assign a name to the virtual machine.
+
+
+5. Next, select the compute resource.
+
+
+6. Review the details page. You may get a certificate is not trusted warning, you can ignore this message and select **Next**.
+
+
+7. Select your storage device and storage policy. Click on **Next** to proceed.
+
+
+8. Fill out input fields the wizard presents.
+    * **Name**: The name to identify the air-gapped appliance
+    * *Select* a location for the VM: Select desired folder
+    * Select the desired Datacenter, Storage, and Network for the air gap repo as you proceed through the following steps.
+    * Customize the template as follows:
+    * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. This public key will be installed in the appliance and can be used to gain SSH access, as the user ubuntu for troubleshooting.
+    * Finish the OVF deployment wizard and wait for the template creation. This will take a few minutes.
+    * Power on the VM.
 # Initialize Air-Gapped Appliance
 
 Power on the air-gapped VM to obtain the IP address (repo-IP).
