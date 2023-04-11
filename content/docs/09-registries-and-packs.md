@@ -51,6 +51,6 @@ Users can set up a custom pack registry using a Docker image provided by Spectro
 
 # Spectro CLI
 
-Spectro Cloud Command Line Interface (CLI) is a tool to interact with the Spectro Cloud Pack Registry. You can use the CLI to upload and download Packs. The CLI must authenticate with the pack registry before executing any CLI command. Refer to the  [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference) reference page for download instructions.
+Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud Pack Registry. You can use the CLI to upload and download Packs. The CLI must authenticate with the pack registry before executing any CLI command. Refer to the  [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference) reference page for download instructions.
 
 <br />
