@@ -12,15 +12,19 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Self-Hosted Installation
 
-Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. Palette self-hosted is available in two modes:
+Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. Palette self-hosted is available in three modes:
 
-- **Quick Start Mode**: Single node installation of the platform, ideal for PoC environments.
+## VMware Quick Start Mode
 
+A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](/enterprise-version/deploying-the-platform-installer) guide for more details.
 
-- **Enterprise Mode**: Highly available multi-node installation typically for production purposes.
+## VMware Enterprise Mode
 
+A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster) guide to get started.
 
-The Palette self-hosted installer supports both quick start and enterprise modes. 
+## Helm Chart
+
+Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm) guide to learn more.
 
 ## Download Palette Installer
 
@@ -36,7 +40,6 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
-
 <br />
 
 
@@ -51,6 +54,9 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 
 * [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster)
+
+
+* [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm)
 
 
 * [System Console Dashboard](/enterprise-version/system-console-dashboard)

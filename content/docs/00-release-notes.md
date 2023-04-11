@@ -228,9 +228,9 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Pal
 
 * Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/cluster-management/node-pool) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for [Edge Native](/clusters/edge/deployment/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](/clusters/edge/architecture#kubernetesdefaults) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
-* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
+* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform), support:
   * Native Edge clusters
   * Palette Virtual Clusters
   * Fixes towards [Enhancements](/terraform#changes)
