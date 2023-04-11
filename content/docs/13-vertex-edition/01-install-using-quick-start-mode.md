@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Using Quick-Start Mode
 
-Palette’s On-Prem Quick-Start Mode is a single-node installation of the Palette platform in vCenter vSphere. This installation is typically used for PoC environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode. 
+Palette’s On-Prem Quick-Start Mode is a single-node installation of the Palette platform in vCenter vSphere. This installation is typically used for Proof of Concept (POC) environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode. 
 
 For production environments, you will migrate the single-node cluster you deploy in Quick-Start mode to Enterprise mode, which deploys three nodes in VSphere. For steps on migrating the single-node cluster, refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
 
@@ -31,6 +31,14 @@ For production environments, you will migrate the single-node cluster you deploy
 # Install Palette
 
 The following steps will guide you to deploy the installer for your Palette platform. 
+
+<br />
+
+<InfoBox>
+
+We recommend using the Chrome browser.
+
+</InfoBox>
 
 <br />
 
@@ -56,26 +64,50 @@ The following steps will guide you to deploy the installer for your Palette plat
 
 5. Customize the installer VM by filling out the fields listed in the table.
 
+  <br />
 
-| **Field**               | **Description**                                            |
-|---------------------|--------------------------------------------------------|
-| **Name**                 | Platform installer name. ??Is this the OVA??                          |
-| **SSH Public Keys**| A public key. The public key to provide SSH access, as user ``ubuntu``. This is useful for troubleshooting purposes.                 |
-| **Monitoring Console Password**             | A console you can access after powering on the VM to view details about the installation progress and view logs for troubleshooting. Access the console at https://<vm_ip_address>:5080. The default credentials are:<br /><br />User name: admin<br />Password: admin |
-| **Pod CIDR** (optional)            | IP range for pods. This range should be different than your network CIDR to avoid overlapping IP addresses. |
-| **Service cluster IP range** (optional)            | IP range for service clusters. This range must not overlap with the pod CIDR range or your network CIDR range. |
-| **Static IP Address** (optional)              | VM IP address if you are using static IP allocation. Default: DHCP. |
-| **Static IP subnet prefix**             | Network prefix required only for static IP allocation. |
-| **Static IP gateway**             | Gateway IP address required only for static IP allocation. |
-| **Static IP DNS**             | Comma-separated list of DNS addresses of name servers. Example: 8.8.8.8,192.168.0.8. |
-| **HTTP Proxy** (optional)            | Endpoint for the http proxy server required only if you are using a proxy for outbound connections. Example: http://username:password@proxyip:proxyport.|
-| **HTTPS Proxy** (optional)            | Endpoint for the http proxy server required only if you are using a proxy for outbound connections. Example: http://username:password@proxyip:proxyport. |
-| **No Proxy**             | Comma-separated list of vCenter server, local network CIDR, hostnames, and domain names to exclude from proxying. Example: vcenter.company.com,10.10.0.0/16. |
-| **Spectro Cloud Repository Settings**             |    |
+    | **Field**               | **Description**                                    |
+    |---------------------|--------------------------------------------------------|
+    | **SSH Public Keys**| Your public key. The public key to provide SSH access, as user ``ubuntu``. This is useful for troubleshooting purposes. |
+    | **Name**  | Platform installer name. ??Is this the OVA?? |
+    | **Pod CIDR** (optional) | IP range for pods. This range should be different than your network CIDR to avoid overlapping IP addresses. |
+    | **Service cluster IP range** (optional) | IP range for service clusters. This range must not overlap with the pod CIDR range or your network CIDR range. |
+    | **Monitoring Console Password** | A console you can access after powering on the VM to view details about the installation progress and view logs for troubleshooting. Access the console at https://<vm_ip_address>:5080. The default credentials are:<br /><br />User name: admin<br />Password: admin |
+    | **Static IP gateway**         | Gateway IP address required only for static IP allocation. |
+    | **Static IP DNS**             | Comma-separated list of Domain Name Service (DNS) addresses of name servers. Example: 8.8.8.8,192.168.0.8. |
+    | **Static IP search domains**  | A domain used as part of a domain search list to create a fully qualified domain name (FQDN) from a relative name. |
+    | **Static IP Address** (optional)   | VM IP address if you are using static IP allocation. Default: DHCP. |
+    | **Static IP subnet prefix**        | Network prefix required only for static IP allocation. |
+    | **HTTPS Proxy** (optional)            | Endpoint for the http proxy server required only if you are using a proxy for outbound connections. Example: https://username:password@proxyip:proxyport. |
+    | **NO Proxy**  | Comma-separated list of vCenter server, local network CIDR, hostnames, and domain names to exclude from proxying. Example: vcenter.company.com,10.10.0.0/16. |
+    | **Proxy Certificate**  |
+    | **HTTP Proxy** (optional)            | Endpoint for the http proxy server required only if you are using a proxy for outbound connections. Example: http://username:password@proxyip:proxyport.|
+    | Spectro Cloud Repository Settings | Provide settings for the following:<br /><br /> Password you received to access the Artifact Repository.<br />Username to access the Artifact Repository. <br /> The Artifact Repository location is provided.<br /> Certificate to access the Artifact Repository.|  
 
-6.
+  <br />
+
+  When you have finished providing information, status is displayed for Spectro Cloud artifacts, Kubernetes configuration, and Palette installation. Confirm these have processed, configured, and installed successfully.
+
+  <br />
+
+6. Copy the **On-Prem System Console** URL to a new tab. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
 
 
+7. Enter defaul Palette credentials and click the **Login** button. Default: **Username**: admin, **Password**: admin. 
+
+    <br />
+
+    A form displays to reset the password. Type a new password and click the **Reset Password** button.
+
+
+8. Install Palette: 
+
+  - For an Enterprise installation and for Palette Vertex, click the **Install Now** button under **Enterprise** and follow steps in ...
+
+  - For a POC, click the **Start Now** button under **Quick Start**.
+
+
+9. If you are 
 
 # Validation
 
