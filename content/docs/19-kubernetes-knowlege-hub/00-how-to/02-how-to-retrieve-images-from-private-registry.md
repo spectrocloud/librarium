@@ -36,7 +36,7 @@ In this tutorial, you will log into a private docker registry to pull existing i
 
 The following example explains how you can create a secret and use it in a Kubernetes deployment:
 
-## **Create a JSON File Containing your Credentials.**
+## Create a Credentials JSON File
 
 First, create a file called **registry-creds.json** that contains your registry credentials in the following format:
 
