@@ -89,7 +89,7 @@ Also, create a **.dockerignore** file and add the following lines to it.
 This step packages the application into a portable image. To build the app’s image, run the Docker `build` command as shown:
 
 ```bash
-docker build -t date-suggestions .
+docker build --tag date-suggestions .
 ```
 
 ## Create a Kubernetes Deployment.
