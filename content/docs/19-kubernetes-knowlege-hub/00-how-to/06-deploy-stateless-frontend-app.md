@@ -19,7 +19,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Kubernetes is a container orchestration platform that is widely used for deploying and managing containerized applications. 
 
-One of the key benefits of using Kubernetes is that it provides a consistent and reliable way to deploy applications across different environments, including on-premises data centers and cloud infrastructure. 
+One of the key benefits of using Kubernetes is that it provides a consistent and reliable way to deploy applications across different environments, including on-prem data centers and cloud infrastructure. 
 
 Deploying a stateless frontend application with Kubernetes can be a straightforward process, although it requires an understanding of the key concepts and best practices of Kubernetes. 
 
