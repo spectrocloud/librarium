@@ -201,7 +201,7 @@ This will show you the URL where your app runs, and you can access it in a web b
 
 # Next Steps:
 
-In conclusion, deploying a stateless frontend application with Kubernetes can be a straightforward process if you understand the fundamental concepts of Kubernetes. 
+Deploying a stateless frontend application with Kubernetes can be a straightforward process if you understand the fundamental concepts of Kubernetes. 
 
 In this tutorial, you containerized a stateless React-based app and deployed it with Kubernetes by creating a Dockerfile, building a Docker image, creating a Kubernetes deployment, and creating a Kubernetes service. 
 
