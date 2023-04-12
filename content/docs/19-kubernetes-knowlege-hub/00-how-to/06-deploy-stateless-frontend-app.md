@@ -196,7 +196,7 @@ Once the deployment and service files have been applied, you should be able to a
 kubectl get service
 ```
 
-This will show you the URL where your app runs, and you can access it in a web browser.
+This will display the URL of your app that you can use to can access it in a web browser.
 
 # Next Steps:
 
