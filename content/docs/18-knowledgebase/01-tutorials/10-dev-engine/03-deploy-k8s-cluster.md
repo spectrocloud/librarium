@@ -46,7 +46,7 @@ This is the application architecture you will deploy with this tutorial:
 # Deploy the Cluster and the Application
 
 <Tabs>
-<Tabs.TabPane tab="UI Workflow" key="ui-cluster">
+<Tabs.TabPane tab="UI Workflow" key="ui">
 
 
 ## UI Workflow
@@ -756,7 +756,7 @@ To verify the execution of the deletion, open the Palette Dashboard and, from th
 <br />
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="Terraform" key="terraform-cluster">
+<Tabs.TabPane tab="Terraform" key="terraform">
 
 
 ##  Terraform
@@ -793,7 +793,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials//tutorials/deploy-clusters/create_api_key.png)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
 
@@ -811,7 +811,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 Create a folder where you will put all the Terraform configuration files.
 
 ```bash
-mkdir terraform-profile && cd terraform-profile
+mkdir terraform-config && cd terraform-config
 ```
 
 <br />
@@ -824,6 +824,7 @@ The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectroclo
 ```shell
 export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
+
 <br />
 
 Create the file **provider.tf** and insert the following content.
@@ -877,6 +878,7 @@ data "spectrocloud_pack" "proxy" {
   version  = "1.2.0"
 }
 ```
+
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-tf-profile">
 
@@ -989,29 +991,71 @@ resource "spectrocloud_cluster_profile" "profile" {
 
 Use the following Terraform commands to create the resources you defined in the previous files in Palette. 
 
+Enter into the folder where you created the Terraform configuration files.
+
 ```bash
-cd terraform-profile
+cd terraform-config
 ```
 
 Initialize the working directory that contains the Terraform configuration files.
+
 ```bash
 terraform init
 ```
 
+```
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
+- Installing spectrocloud/spectrocloud v0.11.1...
+- Installed spectrocloud/spectrocloud v0.11.1
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
 Validate the Terraform files.
+
 ```bash
 terraform validate 
 ```
 
+```
+Success! The configuration is valid.
+```
+
 You can preview the actions Terraform will take by using the `plan` command.
+
 ```bash
 terraform plan
 ```
 
+```
+// Output condensed for readability
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
+The output displays the resources Terraform will create in an actual implementation.
+
 Use the `apply` command to deploy the resources to your target environment.
+
 ```bash
 terraform apply --auto-approve
 ```
+
+```
+// Output condensed for readability
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
 <br />
 
 
@@ -1070,11 +1114,10 @@ Click on the profile to review the details of the stacks that compose the profil
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files:
+Open the folder with the Terraform configuration files.
 
 ```bash
-$ mkdir terraform-cluster
-$ cd terraform-cluster
+$ cd terraform-config
 ```
 
 #### Variables
@@ -1123,7 +1166,7 @@ master_nodes = {
     availability_zones = ["us-east-1a"]
 }
 worker_nodes = {
-    count           = "2"
+    count           = "1"
     instance_type   = "m5.large"
     disk_size_gb    = "60"
     availability_zones = ["us-east-1a"]
@@ -1177,11 +1220,10 @@ resource "spectrocloud_cluster_aws" "cluster" {
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files:
+Open the folder with the Terraform configuration files.
 
 ```bash
-$ mkdir terraform-cluster
-$ cd terraform-cluster
+$ cd terraform-config
 ```
 
 #### Variables
@@ -1203,7 +1245,7 @@ master_nodes = {
     is_system_node_pool  = false
 }
 worker_nodes = {
-    count                = "2"
+    count                = "1"
     instance_type        = "Standard_A2_v2"
     disk_size_gb         = "60"
     availability_zones   = []
@@ -1300,11 +1342,10 @@ resource "spectrocloud_cluster_azure" "cluster" {
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-tf-cluster">
 
-Create a folder where you will put all the Terraform configuration files:
+Open the folder with the Terraform configuration files.
 
 ```bash
-$ mkdir terraform-cluster
-$ cd terraform-cluster
+$ cd terraform-config
 ```
 
 #### Variables
@@ -1322,7 +1363,7 @@ master_nodes = {
     availability_zones = ["us-east1-b"]
 }
 worker_nodes = {
-    count            = "2"
+    count            = "1"
     instance_type    = "n1-standard-2"
     disk_size_gb     = "60"
     availability_zones = ["us-east1-b"]
@@ -1411,31 +1452,68 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 
 To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
 
-Open the terminal and enter into the folder where you have the Terraform configuration files
+Open the folder where you have the Terraform configuration files.
 
 ```bash
-$ cd terraform-cluster
+$ cd terraform-config
 ```
 
-Initialize the working directory having Terraform configuration files
+Initialize the working directory having Terraform configuration files.
+
 ```bash
 terraform init
 ```
 
-Validate the configuration files in the directory
+```
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
+- Installing spectrocloud/spectrocloud v0.11.1...
+- Installed spectrocloud/spectrocloud v0.11.1
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+Validate the configuration files in the directory.
+
 ```bash
 terraform validate 
 ```
 
-Create the execution plan with the preview changes your configuration will create on the infrastructure
+```
+Success! The configuration is valid.
+```
+
+Create the execution plan with the preview changes your configuration will create on the infrastructure.
+
 ```bash
 terraform plan
 ```
 
+```
+// Output condensed for readability
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure
 ```bash
-terraform apply
+terraform apply --auto-approve
 ```
+
+```
+// Output condensed for readability
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
 <br />
 
 
@@ -1497,9 +1575,10 @@ The following steps will guide you through deploying an application to your host
 
 ### Add the Manifest
 
-Open the folder where you have the profile configuration
+Open the folder where you have the Terraform configuration files.
+
 ```bash
-$ cd terraform-profile
+$ cd terraform-config
 ```
 
 Edit the file **cluster_profile.tf** and add the manifest pack inside the profile definition. Make sure you add the new `pack {}` after all the other pack objects.
@@ -1569,19 +1648,36 @@ For more information about the service LoadBalancer component you can refer to t
 
 Then, use Terraform to push the modification to Palette and finalize the application deployment.
 
-So, first, check the validation of the configuration files:
+So, first, check the validation of the configuration files.
+
 ```bash
 terraform validate
 ```
 
+```
+Success! The configuration is valid.
+```
+
 Create the execution plan with the additional modifications to the already existant configuration:
+
 ```bash
 terraform plan
 ```
 
+```
+// Output condensed for readability
+Plan: 0 to add, 1 to change, 0 to destroy.
+```
+
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
+
 ```bash
-terraform apply
+terraform apply  --auto-approve
+```
+
+```
+// Output condensed for readability
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
 
 <br />
@@ -1640,22 +1736,33 @@ Use the following steps to clean up all the resources you created for the tutori
 
 Use the destroy command to remove all the resources you created through Terraform.
 
-First enter into the folder where you have the Terraform configuration for the cluster
+First, open the folder where you have the Terraform configuration for the cluster.
+
 ```bash
-$ cd terraform-cluster
+$ cd terraform-config
 ```
 
 If you want to check the resources you will delete, you can first execute: 
+
 ```terraform
 terraform plan -destroy
 ```
 
+```
+// Output condensed for readability
+Plan: 0 to add, 0 to change, 1 to destroy.
+```
+
 Then delete the components by running the destroy command:
+
 ```terraform
 terraform destroy --auto-approve
 ```
 
-The deletion process will take a few minutes. 
+```
+// Output condensed for readability
+Destroy complete! Resources: 1 destroyed.
+```
 
 <br />
 
@@ -1680,12 +1787,6 @@ Palette assures consistency across workload cluster deployments and enables deve
 We encourage you the check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette and how the Palette Dev Engine can help you deploy applications more quickly. 
 
 - [Palette Modes](/introduction/palette-modes)
-
-
 - [Cluster Profiles](/devx/cluster_profile)
-
-
 - [Palette Clusters](/devx/clusters) 
-
-
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
