@@ -1,7 +1,7 @@
 ---
 title: "Retrieve Images from a Private Registry"
 metaTitle: "Retrieve Images from a Private Registry"
-metaDescription: "Create a Kubernetes Secret"
+metaDescription: "Create a Kubernetes Secret to retrieve images from a private registry."
 icon: ""
 hideToC: false
 fullWidth: false
