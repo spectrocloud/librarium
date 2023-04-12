@@ -32,7 +32,7 @@ In this tutorial, you will log into a private docker registry to pull existing i
 
 - The kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
 - Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
-- Access to a running Kubernetes cluster. Setting up a Kubernetes cluster can be difficult. You can read about how to [create one from scratch](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6) or on [Spectro Cloud’s console.](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster)
+- Access to a running Kubernetes cluster. To learn how to create clusters in different environments using Palette, review guides listed under [Clusters](docs.spectrocloud.com/clusters) or visit the [Palette Onboarding Workflow](docs.spectrocloud.com/getting-started/onboarding-workflow#paletteonboardingworkflow) guide. To learn how to create a Kubernetes cluster from scratch, check out the [Create a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/) Kubernetes resource.
 
 Below is an example of how you can create a secret and use it in a Kubernetes deployment:
 
