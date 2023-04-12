@@ -28,7 +28,7 @@ To log into a Docker registry from Kubernetes, you must create a secret that con
 
 In this tutorial, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
 
-## Prerequisites
+# Prerequisites
 
 - The kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
 - Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
