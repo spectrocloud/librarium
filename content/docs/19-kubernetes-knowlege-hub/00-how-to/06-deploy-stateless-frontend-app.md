@@ -133,7 +133,7 @@ You can use the output YAML to create a deployment file. Use the redirect operat
 kubectl create deploy date-suggestions --image=date-suggestions --replicas=2 --port=3000 --dry-run=client --output yaml > deployment.yaml
 ```
 
-Alternatively, you can use the `touch` command to create the `deployment.yaml` file, and then copy the YAML output from the command to create a deployment to it.
+Alternatively, you can use the `touch` command to create the **deployment.yaml** file, and then copy the YAML output from the command to create a deployment to it.
 
 ```bash
 touch deployment.yaml
