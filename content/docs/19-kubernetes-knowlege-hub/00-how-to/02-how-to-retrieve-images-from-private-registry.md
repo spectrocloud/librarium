@@ -135,7 +135,7 @@ spec:
 ## Apply the Deployment configuration To your Kubernetes cluster.
 
 ```bash
-kubectl apply -f deployment.yaml
+kubectl apply --file deployment.yaml
 ```
 
 With this configuration in place, Kubernetes will use the registry credentials in the `myregistrykey` secret to log into the registry and pull the specified image when deploying the application.
