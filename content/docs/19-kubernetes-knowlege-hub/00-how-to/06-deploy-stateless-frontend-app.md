@@ -166,7 +166,7 @@ spec:
       targetPort: 3000
 ```
 
-If everything looks good, modify the command to expose the deployment, to add a command to add the output to a file `service.yaml`.
+If everything looks good, modify the command to redirect the output YAML to the file **service.yaml**.
 
 ```bash
 kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client --output yaml > service.yaml
