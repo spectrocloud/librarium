@@ -50,10 +50,10 @@ We recommend using the Chrome browser.
 
 3. Complete the steps of the OVA deployment wizard. Fill out fields listed in the table.
 
-| **Field**               | **Description**                                            |
+| **Field**               | **Description**                                        |
 |---------------------|--------------------------------------------------------|
-| **URL**                 | Platform installer location.                            |
-| **Virtual Machine Name**| A custom name for your virtual machine.                 |
+| **URL**                 | Platform installer location.                           |
+| **Virtual Machine Name**| A custom name for your virtual machine.                |
 | **Folder**             | The name of the folder that contains the OVA.           |
 
 4. Select the desired Datacenter, Storage, and Network for the platform installer VM. ??what is the the installer VM??
@@ -102,12 +102,12 @@ We recommend using the Chrome browser.
 
 8. Install Palette: 
 
-  - For an Enterprise installation and for Palette Vertex, click the **Install Now** button under **Enterprise** and follow steps in ...
+     - For an Enterprise installation and for Palette Vertex, click the **Install Now** button under **Enterprise** and follow steps in ...
 
-  - For a POC, click the **Start Now** button under **Quick Start**.
+     - For a POC, click the **Start Now** button under **Quick Start**.
 
 
-9. If you are 
+
 
 # Validation
 
