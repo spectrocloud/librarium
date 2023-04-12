@@ -56,7 +56,7 @@ We recommend using the Chrome browser.
 | **Virtual Machine Name**| A custom name for your virtual machine.                |
 | **Folder**             | The name of the folder that contains the OVA.           |
 
-4. Select the desired Datacenter, Storage, and Network for the platform installer VM. ??what is the the installer VM??
+4. Select the desired Datacenter, Storage, and Network for the platform installer VM.
 
     The Platform installer VM requires an outgoing internet connection. Select a network that provides this access directly or via a proxy.
 
@@ -72,7 +72,7 @@ We recommend using the Chrome browser.
     | **Name**  | Platform installer name. ??Is this the OVA?? |
     | **Pod CIDR** (optional) | IP range for pods. This range should be different than your network CIDR to avoid overlapping IP addresses. |
     | **Service cluster IP range** (optional) | IP range for service clusters. This range must not overlap with the pod CIDR range or your network CIDR range. |
-    | **Monitoring Console Password** | A console you can access after powering on the VM to view details about the installation progress and view logs for troubleshooting. Access the console at https://<vm_ip_address>:5080. The default credentials are:<br /><br />User name: admin<br />Password: admin |
+    | **Monitoring Console Password** | A console you can access after powering on the VM to view details about the installation progress and view logs for troubleshooting. Access the console at https://<vm_ip_address>:5080. The default credentials are:<br /><br />**User name:** admin<br />**Password:** admin |
     | **Static IP gateway**         | Gateway IP address required only for static IP allocation. |
     | **Static IP DNS**             | Comma-separated list of Domain Name Service (DNS) addresses of name servers. Example: 8.8.8.8,192.168.0.8. |
     | **Static IP search domains**  | A domain used as part of a domain search list to create a fully qualified domain name (FQDN) from a relative name. |
@@ -82,18 +82,18 @@ We recommend using the Chrome browser.
     | **NO Proxy**  | Comma-separated list of vCenter server, local network CIDR, hostnames, and domain names to exclude from proxying. Example: vcenter.company.com,10.10.0.0/16. |
     | **Proxy Certificate**  |
     | **HTTP Proxy** (optional)            | Endpoint for the http proxy server required only if you are using a proxy for outbound connections. Example: http://username:password@proxyip:proxyport.|
-    | Spectro Cloud Repository Settings | Provide settings for the following:<br /><br /> Password you received to access the Artifact Repository.<br />Username to access the Artifact Repository. <br /> The Artifact Repository location is provided.<br /> Certificate to access the Artifact Repository.|  
+    | Spectro Cloud Repository Settings | Provide settings for the following:<br /><br />- Password you received to access the Artifact Repository.<br />- Username to access the Artifact Repository. <br />- The Artifact Repository URL is auto-filled.<br />- Certificate to access the Artifact Repository.|  
 
   <br />
 
-  When you have finished providing information, status is displayed for Spectro Cloud artifacts, Kubernetes configuration, and Palette installation. Confirm these have processed, configured, and installed successfully.
+  When you have finished providing information, status is displayed for Spectro Cloud artifacts, Kubernetes configuration, and Palette installation. Confirm these have processed successfully. It may take a few minutes.
 
   <br />
 
 6. Copy the **On-Prem System Console** URL to a new tab. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
 
 
-7. Enter defaul Palette credentials and click the **Login** button. Default: **Username**: admin, **Password**: admin. 
+7. Enter default Palette credentials and click the **Login** button. Default: **Username**: admin, **Password**: admin. 
 
     <br />
 
@@ -102,9 +102,9 @@ We recommend using the Chrome browser.
 
 8. Install Palette: 
 
-     - For an Enterprise installation and for Palette Vertex, click the **Install Now** button under **Enterprise** and follow steps in ...
+     - To install Palette Enterprise or Palette VerteX, click the **Install Now** button displayed under **Enterprise** and follow steps in the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
 
-     - For a POC, click the **Start Now** button under **Quick Start**.
+     - To install for a POC, click the **Start Now** button under **Quick Start**.
 
 
 
