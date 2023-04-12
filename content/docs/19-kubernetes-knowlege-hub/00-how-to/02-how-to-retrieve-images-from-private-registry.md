@@ -53,7 +53,7 @@ First, create a file called **registry-creds.json** that contains your registry 
 
 Keeping passwords in plain text is unsafe. Kubernetes automatically encodes passwords used to create a secret in base64.  Encoding passwords does not mean your passwords cannot be decoded. 
 
-## **Create a Kubernetes Secret from the JSON File Containing the Secrets.**
+## Create a Kubernetes Secret 
 
 Use the kubectl command-line tool to generate a secret from the **registry-creds.json** file:
 
