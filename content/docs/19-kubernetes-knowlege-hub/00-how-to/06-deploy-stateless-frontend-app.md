@@ -146,7 +146,7 @@ Create and populate a Kubernetes Service file in the app's root directory. By de
 To create a service, use the `kubectl expose` command as shown below:
 
 ```bash
-kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client -o yaml
+kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client --output yaml
 ```
 
 The output of running the command will be similar to the YAML below:
