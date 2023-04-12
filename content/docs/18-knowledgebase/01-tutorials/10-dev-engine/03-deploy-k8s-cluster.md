@@ -787,6 +787,19 @@ Check how to create a Palette account for [AWS](/clusters/public-cloud/aws/add-a
 <br />
 
 
+## Create an API Key
+
+Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
+
+To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
+
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.png)
+
+Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
+
+<br />
+
+
 ## Deploy the Environment
 
 The following steps will guide you through deploying the cluster infrastructure. You will start by creating the cluster profile, then deploy a cluster that uses your cluster profile. 
@@ -806,6 +819,13 @@ mkdir terraform-profile && cd terraform-profile
 
 #### Providers
 
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
+
+```shell
+export SPECTROCLOUD_APIKEY=YourAPIKeyHere
+```
+<br />
+
 Create the file **provider.tf** and insert the following content.
 
 ```terraform
@@ -822,29 +842,10 @@ provider "spectrocloud" {
 }
 ```
 
-
 This file will connect to Palette through the Palette's *api_key*.
 
 <br />
 
-
-#### Variables
-
-Create the file *variables.tf* and insert the content:
-
-```terraform
-variable "spectrocloud_api_key" {}
-```
-
-Create the file *terraform.tfvars* and insert the content of the variable:
-
-```terraform
-spectrocloud_api_key = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-```
-
-To find the value of the *spectrocloud_api_key*, open the Palette dashboard and, from the left **Main Menu** click on the **Tenant Settings** panel and select **API Keys**.
-
-<br />
 
 #### Data
 The data file contains all of our data query resources. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
@@ -1081,7 +1082,6 @@ $ cd terraform-cluster
 Create a file named **variables.tf** and insert the following variables.
 
 ```terraform
-variable "spectrocloud_api_key" {}
 variable "cluster_profile" {}
 variable "region" {}
 variable "aws_ssh_key_name" {}
@@ -1112,7 +1112,6 @@ variable "worker_nodes" {
 Next, create a file named *terraform.tfvars* and add the following content.
 
 ```terraform
-spectrocloud_api_key    = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 aws_ssh_key_name        = "aws-key"
 aws-cloud-account-name  = "82xxxxxxxxxx"
 cluster_profile         = "tf-profile"
@@ -1190,7 +1189,6 @@ $ cd terraform-cluster
 Create the file *variables.tf* and insert the list of variables:
 
 ```terraform
-spectrocloud_api_key     = "j54xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 azure-cloud-account-name = "azure-palette"
 subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 resource_group           = "palette_rg"
@@ -1218,7 +1216,6 @@ worker_nodes = {
 Then, create also the file terraform.tfvars and append the content of the variables:
 
 ```terraform
-variable "spectrocloud_api_key" {}
 variable "subscription_id" {}
 variable "resource_group" {}
 variable "region" {}
@@ -1315,7 +1312,6 @@ $ cd terraform-cluster
 Create the file *variables.tf* and insert the list of variables:
 
 ```terraform
-spectrocloud_api_key    = "j54AsdjnSP2YU9jJF1K5dVYeURWzO4qd"
 cluster_profile         = "tf-gcp-profile"
 region                  = "us-east1"
 gcp-cloud-account-name  = "myproject-379610"
@@ -1338,7 +1334,6 @@ worker_nodes = {
 Then, create also the file terraform.tfvars and append the content of the variables:
 
 ```terraform
-variable "spectrocloud_api_key" {}
 variable "cluster_profile" {}
 variable "region" {}
 variable "gcp-cloud-account-name" {
