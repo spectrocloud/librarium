@@ -17,13 +17,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Prerequisites
 
-- Completed Quick-Start Mode and have a working cluster.
+- Completed deploying the Open Virtualization Format (OVF) installation and have a working cluster.
 
 
 - A valid cloud account.
 
 
-- An IP pool with a minimum of 6 unused IPs.
+- An IP pool with a minimum of six unused IPs.
 
 
 - vSphere placement settings.
@@ -42,10 +42,22 @@ Follow these steps to migrate the single-node cluster you deployed using Quick-S
 2. Click the **Validate account** button to verify the cloud account connects successfully, then click **Next**.
 
 
-3. Configure the IP pool. For **Range**, enter the start and end of the range. The range should have at least five IP addresses for the installation and ongoing management. Alternatively, choose **Subnet** and enter the subnet address.
+3. Configure the IP pool. For **Range**, enter the start and end of the range. The range should have at least six IP addresses for the installation and ongoing management. Alternatively, choose **Subnet** and enter the subnet address.
 
 
 4. For **Subnet Prefix**, enter ``18``. 
 
 
-5. Enter the **Gateway** IP address, **Nameserver** addresses, and an optional **Nameserver search suffix**, and click **Next**. Example: spectrocloud.dev.
+5. Enter the **Gateway** IP address, **Nameserver** addresses, and an optional **Nameserver search suffix**, and click **Next**.
+
+
+<br />
+
+
+<br />
+
+
+<br />
+
+
+<br />
