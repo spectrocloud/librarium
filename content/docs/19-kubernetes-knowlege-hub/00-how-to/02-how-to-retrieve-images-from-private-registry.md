@@ -22,7 +22,7 @@ By default, Docker and Kubernetes allow a limited number of unauthenticated pull
 
 The limit is based on the IP address of the machine making the pulls, so it applies to all containers running on that machine.
 
-To avoid this issue, it's recommended that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry. This will ensure that you have access to the images you need and can pull them without any restrictions or limitations. 
+To avoid this issue, we recommend that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry. This ensures you have access to the images you need and can pull them without restrictions or limitations. 
 
 To log into a Docker registry from Kubernetes, you must create a secret containing your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
 
