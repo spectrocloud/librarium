@@ -166,7 +166,7 @@ $ kubectl patch serviceaccount default \
 
 Replace **`<secret-name>`** with the secret created in the previous step.
 
-Once you are authenticated and have added the secret to your default service account, you can use the kubectl command to pull images from the registry and deploy them to your Kubernetes cluster like this:
+Once you are authenticated and have added the secret to your default service account, you can use the kubectl command to pull images from the registry and deploy them to your Kubernetes cluster as follows.
 
 ```bash
 $ kubectl run <deployment-name> \
