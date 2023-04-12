@@ -22,7 +22,7 @@ Palette supports [Postgres](https://www.postgresql.org/) as a database service. 
 
 ## Prerequisites
 
-The following are requirements for using Palette Postgres:
+The following are the requirements for using Postgres in Palette:
 
 * Do not use the Postgres user names `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
 
@@ -89,10 +89,18 @@ You can use the default system-generated password. If the default password is us
 
 ## Validation
 
-* To verify your database service is in the app profile, navigate to the **App Profiles** page, where all your app profiles are listed. Select the app profile to review the service layers. The following screen displays the different service layers that make up the app profile. Ensure MySQL is an available service layer.
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 
-* Validate the services from the App page after app deployment. First, navigate to the **Apps** page, where all your apps are listed. Then, select the app to display the service layers. The color code in the app profile box shows the status of the service deployment.
+2. Navigate to the left **Main Menu** and select **Apps**.
+
+
+
+3. Select the application that contains Postgres.
+
+
+
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
 
 |**Color Code**| **Description**|
 |--------------|--------------|
@@ -101,10 +109,9 @@ You can use the default system-generated password. If the default password is us
 |Red  | Error State|
 
 
-
 # Output Variables
 
-The exposed output variables of this service layer that may be used in other service layers. These output variables are typically used for connectivity purposes:
+The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
 
 | Parameter              | Output Variable                                                                     | Description                                     |
 |------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -118,9 +125,9 @@ The exposed output variables of this service layer that may be used in other ser
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
 
-```
+```shell
 kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
- -n <app-name>-<service-name>-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace <app-name>-<service-name>-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 
 Replace the values with the respective names.
@@ -130,7 +137,7 @@ Replace the values with the respective names.
   * user-name: The name of the database user.
 
 
-Example: 
+#### Example: 
 
 - App Name: `app-tarfful`
 
@@ -138,8 +145,29 @@ Example:
 
 - Database User: `pguser`
 
-```
+```shell
 kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
- -n app-tarfful-postgresql-3-ns -o jsonpath='{.data.password}' | base64 --decode
+ --namespace app-tarfful-postgresql-3-ns --output jsonpath='{.data.password}' | base64 --decode
+```
+#### Output:
+```shell
 zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```
+
+# Next Steps
+
+Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres documentation has several [tutorials](https://www.postgresql.org/docs/online-resources/) to help you learn more about Postgres and how to leverage Postgres with your applications.
+
+
+# Resources
+
+- [Postgres Documentation](https://www.postgresql.org/docs/)
+
+
+- [Community Postgres Tutorials](https://www.postgresqltutorial.com/)
+
+
+- [Postgres Tutorials](https://www.postgresql.org/docs/online-resources/)
+
+
+- [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html)
