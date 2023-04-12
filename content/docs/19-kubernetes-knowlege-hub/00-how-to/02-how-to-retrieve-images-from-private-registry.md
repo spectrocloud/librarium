@@ -67,7 +67,7 @@ You can use the command below to view the secret created in detail.
 kubectl get secret/myregistrykey -o json
 ```
 
-The output of the command displays that the content of the **registry-creds.json** file is base 64 encoded.
+The command output displays the content of the **registry-creds.json** file as base 64 encoded.
 
 ```json
 {
