@@ -127,7 +127,7 @@ spec:
 ```
 
  
-modify the command to create the deployment, to add a command to pipe the output into a `deployment.yaml` file.
+You can use the output YAML to create a deployment file. Use the redirect operator `>` to turn the command output into a **deployment.yaml** file.
 
 ```bash
 kubectl create deploy date-suggestions --image=date-suggestions --replicas=2 --port=3000 --dry-run=client -o yaml > deployment.yaml
