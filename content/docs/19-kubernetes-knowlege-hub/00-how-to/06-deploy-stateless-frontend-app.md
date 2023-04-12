@@ -28,9 +28,17 @@ In this tutorial, you will containerize a date suggester app built in React and 
 # Requirements
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine. Node is a Javascript runtime environment and will enable React to run on your machine.
+
+
 - A clone of the application from the [date suggestions app](https://github.com/Princesso/date-buddy.git) on GitHub. Cloning the application will enable you to follow this tutorial step by step.
+
+
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
+
+
 - A running Kubernetes cluster. You can create one on [Spectro Cloud’s Palette](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster) or [use other methods to create a cluster](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6).
+
+
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on your machine and connected to your cluster.
 
 ## About the Application
