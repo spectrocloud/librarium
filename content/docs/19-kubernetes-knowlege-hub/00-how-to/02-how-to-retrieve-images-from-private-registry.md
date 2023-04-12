@@ -26,7 +26,7 @@ To avoid this issue, we recommend that you authenticate with the Docker registry
 
 To log into a Docker registry from Kubernetes, you must create a secret containing your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
 
-In this tutorial, you will log into a private docker registry to pull existing images of an application you will deploy in Kubernetes.
+In this tutorial, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
 
 ## Prerequisites
 
