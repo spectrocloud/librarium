@@ -32,7 +32,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Migrate Cluster
 
-Follow these steps to migrate the single-node cluster you deployed using Quick-Start mode to a three-node cluster for your production environment.
+Follow these steps to migrate the single-node cluster you deployed using Quick-Start mode to a three-node cluster for High Availability (HA) in your production environment.
 
 <br />
 
