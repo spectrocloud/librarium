@@ -106,7 +106,7 @@ The output of issuing the command above is the content of the JSON file you used
 }
 ```
 
-## **Add Secret to Deployment config.**
+##  Add Secret to Deployment Config
 
 In your Kubernetes deployment configuration, specify the name of the secret you just created for the imagePullSecrets parameter:
 
