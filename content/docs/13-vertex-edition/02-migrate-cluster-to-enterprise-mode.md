@@ -45,7 +45,7 @@ Follow these steps to migrate the single-node cluster you deployed using Quick-S
 3. Configure the IP pool. For **Range**, enter the start and end of the range. The range should have at least six IP addresses for the installation and ongoing management. Alternatively, choose **Subnet** and enter the subnet address.
 
 
-4. For **Subnet Prefix**, enter ``18``. 
+4. For **Subnet Prefix**, enter `18`. 
 
 
 5. Enter the **Gateway** IP address, **Nameserver** addresses, and an optional **Nameserver search suffix**, and click **Next**.
