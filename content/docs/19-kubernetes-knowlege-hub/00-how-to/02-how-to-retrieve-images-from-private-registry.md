@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Kubernetes is an open-source container orchestration platform that enables efficient management, deployment, and scaling of containerized applications.
 
-By default, Docker and Kubernetes allow a limited number of unauthenticated pulls from a Docker registry, such as Docker Hub. Once you have exceeded this limit, you will not be able to pull any more images until the limit resets. 
+By default, Docker and Kubernetes allow a limited number of unauthenticated pulls from a Docker registry, such as Docker Hub. When you exceed this limit, you will not be able to pull any more images until the limit resets. 
 
 The limit is based on the IP address of the machine making the pulls, so it applies to all containers running on that machine.
 
