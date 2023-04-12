@@ -3,10 +3,11 @@ title: "Deploy a Kubernetes Cluster with Palette"
 metaTitle: "Deploy a Kubernetes Cluster with Palette"
 metaDescription: "Learn how to deploy an application on a Kubernetes cluster with Palette. Experience a streamlined approach to creating and managing multiple Kubernetes clusters, on different public cloud providers, through Palette's optimized process."
 icon: ""
+category: ["tutorial"]
 hideToC: false
 fullWidth: false
-hideToCSidebar: false
-hiddenFromNav: false
+#hideToCSidebar: false
+#hiddenFromNav: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -48,6 +49,7 @@ This is the application architecture you will deploy with this tutorial:
 
 <Tabs>
 <Tabs.TabPane tab="UI Workflow" key="ui-cluster">
+
 
 ## UI Workflow
 
@@ -637,11 +639,161 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 </Tabs.TabPane>
 </Tabs>
 
+## Deploy the Application
+
+The following steps will guide you through deploying an application to your host cluster. You begin by modifying the cluster profile you created earlier and adding a custom manifest to the cluster profile. 
+
+<br />
+
+
+
+### Add the Manifest
+
+Navigate to the left **Main Menu** and select *Profiles*. Select the cluster profile you created earlier and applied to the host cluster.
+
+Select *Add Manifest* at the top of the page and insert the provide the fill out the following input fields. <br /> <br />
+
+- *Layer name*: name of the layer to add to the profile stack.
+- *Manifests*: add your manifest by giving it a name and clicking the blue circle button. An empty editor will appear on the right side of the screen.
+
+![manifest](/tutorials/deploy-clusters/manifest.png)
+
+<br />
+
+
+### Customize the Manifest
+
+In the manifest editor, provide the following content.
+
+<br />
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-universe-service
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: hello-universe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-universe-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-universe
+  template:
+    metadata:
+      labels:
+        app: hello-universe
+    spec:
+      containers:
+      - name: hello-universe
+        image: ghcr.io/spectrocloud/hello-universe:1.0.9
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+```
+
+The code snippet will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
+
+The manifest defined two replicas for the application to simulate a distributed environment with a redundant web application deployed to Kubernetes. In front of them, a load balancer service is defined to route requests to both containers. By using a load balancer, you can expose a single access point and distribute the workload to both containers.
+
+For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
+
+
+<br />
+
+
+### Deploy
+
+From the left **Main Menu** select the **Clusters**.  Click on the host cluster you deployed to open the details page.
+
+![Cluster details with available updates](/tutorials/deploy-clusters/deploy_app/app_update_available.png)
+
+<br />
+
+On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. Compare the new changes against the previous cluster profile definition. The only change is the addition of a manifest that will deploy the Hello Universe application.
+
+
+![Available updates details](/tutorials/deploy-clusters/deploy_app/updates_available_details.png)
+
+Click on **Confirm updates** to apply the updates to the host cluster.
+
+<br />
+
+
+# Verify the Application
+
+From the cluster details page, click on **Workloads** at the top of the page:
+
+![Workloads](/tutorials/deploy-clusters/workloads.png)
+
+The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully.
+
+Select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*.
+
+Select the **Deployments** tab and check the existence of a deployment with name *hello-universe-deployment*. In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
+
+Select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*. In the **Pods** tab, next to the pods names, check the status of the pods
+
+![Pods status](/tutorials/deploy-clusters/deploy_app/app_update_pods.png)
+
+Remember to update the list of components by clicking the *sync* button at top right corner to refresh and synchronize the current state of the Kubernetes components.
+
+<br />
+
+After a few moments, the application is now ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
+
+![Deployed application](/tutorials/deploy-clusters/app.png)
+
+<br />
+
+
+# Cleanup
+
+Use the following steps to clean up all the resources you created for the tutorial.
+
+<br />
+
+To remove the cluster you created in this tutorial, open the Palette dashboard and, from the left **Main Menu**, click on **Clusters** to access the clusters page. Select the cluster you want to delete to access its details page.
+
+Click on **Settings**, at the top-right corner of the page, from the details page to expand the **settings Menu** and select **Delete Cluster** to delete the cluster.
+
+![Destroy-cluster](/tutorials/deploy-clusters/delete-cluster-button.png)
+
+You will be asked to type in the cluster name to confirm the delete action. Continue and type in the cluster name to proceed with the delete step. 
+
+<br />
+
+<InfoBox>
+
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+
+</InfoBox>
+
+
+<br />
+
+To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
+
+![Deleting cluster](/tutorials/deploy-clusters/deleting_cluster.png)
+
+<br />
+
 </Tabs.TabPane>
 <Tabs.TabPane tab="Terraform" key="terraform-cluster">
 
-##  Terraform
 
+##  Terraform
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
 
@@ -723,6 +875,7 @@ Search for *Compute Engine API*, enter into the product details and enable it.
 </Tabs.TabPane>
 </Tabs>
 
+
 <br />
 
 ## Deploy the Environment
@@ -741,11 +894,13 @@ Create a folder where you will put all the Terraform configuration files.
 mkdir terraform-profile && cd terraform-profile
 ```
 
+
 ### Providers
 
 Create the file **provider.tf** and insert the following content.
 
 <br />
+
 ```terraform
 terraform {
   required_providers {
@@ -759,6 +914,7 @@ provider "spectrocloud" {
   project_name = "Default"
 }
 ```
+
 
 This file will connect to Palette through the Palette's *api_key*.
 
@@ -787,6 +943,8 @@ To find the value of the *spectrocloud_api_key*, open the Palette dashboard and,
 The data file contains all of our data query resources. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
 
 Create the file data.tf and insert:
+
+<br />
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-profile">
@@ -869,6 +1027,7 @@ data "spectrocloud_pack" "proxy" {
 </Tabs>
 
 <br />
+
 
 ### Cluster Profile
 
@@ -996,6 +1155,7 @@ Click on the profile to review the details of the stacks that compose the profil
 <br />
 
 ## Configure the Cluster
+
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-cluster">
@@ -1340,6 +1500,7 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 
 <br />
 
+
 ## Create the Cluster
 
 To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
@@ -1352,22 +1513,22 @@ $ cd terraform-cluster
 
 Initialize the working directory having Terraform configuration files
 ```bash
-$ terraform init
+terraform init
 ```
 
 Validate the configuration files in the directory
 ```bash
-$ terraform validate 
+terraform validate 
 ```
 
 Create the execution plan with the preview changes your configuration will create on the infrastructure
 ```bash
-$ terraform plan
+terraform plan
 ```
 
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure
 ```bash
-$ terraform apply
+terraform apply
 ```
 <br />
 
@@ -1422,86 +1583,11 @@ Since the cluster may take several minutes to create, in relation to the packs t
 <br />
 <br />
 
-
-</Tabs.TabPane>
-</Tabs>
-
 ## Deploy the Application
 
 The following steps will guide you through deploying an application to your host cluster. You begin by modifying the cluster profile you created earlier and adding a custom manifest to the cluster profile. 
 
 <br />
-
-<Tabs>
-<Tabs.TabPane tab="UI Workflow" key="ui-application">
-
-
-### Add the Manifest
-
-Navigate to the left **Main Menu** and select *Profiles*. Select the cluster profile you created earlier and applied to the host cluster.
-
-Select *Add Manifest* at the top of the page and insert the provide the fill out the following input fields. <br /> <br />
-
-- *Layer name*: name of the layer to add to the profile stack.
-- *Manifests*: add your manifest by giving it a name and clicking the blue circle button. An empty editor will appear on the right side of the screen.
-
-![manifest](/tutorials/deploy-clusters/manifest.png)
-
-<br />
-
-
-### Customize the Manifest
-
-In the manifest editor, provide the following content.
-
-<br />
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-spec:
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: hello-universe
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-universe
-  template:
-    metadata:
-      labels:
-        app: hello-universe
-    spec:
-      containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.9
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-```
-
-The code snippet will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
-
-The manifest defined two replicas for the application to simulate a distributed environment with a redundant web application deployed to Kubernetes. In front of them, a load balancer service is defined to route requests to both containers. By using a load balancer, you can expose a single access point and distribute the workload to both containers.
-
-For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
-
-<br />
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Terraform" key="terraform-application">
 
 
 ### Add the Manifest
@@ -1593,8 +1679,6 @@ Finally, apply the modifications there are in the plan to execute them and creat
 $ terraform apply
 ```
 
-</Tabs.TabPane>
-</Tabs>
 
 <br />
 
@@ -1649,31 +1733,6 @@ Use the following steps to clean up all the resources you created for the tutori
 
 <br />
 
-<Tabs>
-<Tabs.TabPane tab="UI Workflow" key="ui-clean">
-
-## UI Workflow
-
-To remove the cluster you created in this tutorial, open the Palette dashboard and, from the left **Main Menu**, click on **Clusters** to access the clusters page. Select the cluster you want to delete to access its details page.
-
-Click on **Settings**, at the top-right corner of the page, from the details page to expand the **settings Menu** and select **Delete Cluster** to delete the cluster.
-
-![Destroy-cluster](/tutorials/deploy-clusters/delete-cluster-button.png)
-
-You will be asked to type in the cluster name to confirm the delete action. Continue and type in the cluster name to proceed with the delete step. 
-
-<br />
-
-<InfoBox>
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
-
-</InfoBox>
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Terraform" key="terraform-clean">
-
-## Terraform
 
 Use the destroy command to remove all the resources you created through Terraform.
 
@@ -1694,14 +1753,16 @@ terraform destroy --auto-approve
 
 The deletion process will take a few minutes. 
 
-</Tabs.TabPane>
-</Tabs>
-
 <br />
 
 To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
 
 ![Deleting cluster](/tutorials/deploy-clusters/deleting_cluster.png)
+
+<br />
+
+</Tabs.TabPane>
+</Tabs>
 
 <br />
 
