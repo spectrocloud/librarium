@@ -11,3 +11,4 @@ hiddenFromNav: false
 # Apps
 
 [Deploy an Application using Palette Dev Engine](/knowledgebase/tutorials/dev-engine/deploy-app)
+
