@@ -36,7 +36,16 @@ Follow these steps to migrate the single-node cluster you deployed using Quick-S
 
 <br />
 
-1. Enter the IP address of your Vcenter Server, username and password, and ensure the **Use self-signed certificate** setting is enabled.
+1. Enter the IP address of your Vcenter server, username and password, and ensure the **Use self-signed certificate** setting is enabled. The server will launch the enterprise cluster.
 
 
-2. 
+2. Click the **Validate account** button to verify the cloud account connects successfully, then click **Next**.
+
+
+3. Configure the IP pool. For **Range**, enter the start and end of the range. The range should have at least five IP addresses for the installation and ongoing management. Alternatively, choose **Subnet** and enter the subnet address.
+
+
+4. For **Subnet Prefix**, enter ``18``. 
+
+
+5. Enter the **Gateway** IP address, **Nameserver** addresses, and an optional **Nameserver search suffix**, and click **Next**. Example: spectrocloud.dev.
