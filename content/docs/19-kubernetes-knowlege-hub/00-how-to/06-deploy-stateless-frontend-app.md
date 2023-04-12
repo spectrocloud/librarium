@@ -169,7 +169,7 @@ spec:
 If everything looks good, modify the command to expose the deployment, to add a command to add the output to a file `service.yaml`.
 
 ```bash
-kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client -o yaml > service.yaml
+kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client --output yaml > service.yaml
 ```
 
 You can also create a YAML file with the `touch` command and add the output of the `kubectl expose` command to it.
