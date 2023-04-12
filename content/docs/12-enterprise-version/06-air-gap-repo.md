@@ -78,7 +78,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 3. Select the OVA installer image you downloaded after receiving guidance from our support team.
 
 
-4. Select the folder of where you want to install the virtual machine and assign a name to the virtual machine.
+4. Select the folder of where you want to install the Virtual Machine (VM) and assign a name to the virtual machine.
 
 
 5. Next, select the compute resource.
@@ -89,6 +89,8 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 7. Select your storage device and storage policy. Click on **Next** to proceed.
 
+8. Fill out the template configuration. You can modify the following input fields.
+
 
 8. Fill out input fields the wizard presents.
     * **Name**: The name to identify the air-gapped appliance
@@ -96,8 +98,12 @@ If you have any questions or concerns, please feel free to contact support@spect
     * Select the desired Datacenter, Storage, and Network for the air gap repo as you proceed through the following steps.
     * Customize the template as follows:
     * SSH Public Keys: Create a new SSH key pair (or pick an existing one). Enter the public key in this field. This public key will be installed in the appliance and can be used to gain SSH access, as the user ubuntu for troubleshooting.
-    * Finish the OVF deployment wizard and wait for the template creation. This will take a few minutes.
-    * Power on the VM.
+
+
+9. Finish the OVF deployment wizard and wait for the template creation to complete. This will take a few minutes.
+
+
+10. Power on the VM.
 # Initialize Air-Gapped Appliance
 
 Power on the air-gapped VM to obtain the IP address (repo-IP).
