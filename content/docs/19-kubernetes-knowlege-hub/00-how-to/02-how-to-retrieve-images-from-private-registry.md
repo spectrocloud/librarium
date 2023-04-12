@@ -90,7 +90,7 @@ The command output displays the content of the **registry-creds.json** file as b
 You will decode the secret you created to verify that secrets are not secure.
 
 ```bash
-kubectl get secret myregistrykey -o jsonpath='{.data.registry-creds\.json}' | base64 --decode
+kubectl get secret myregistrykey --output jsonpath='{.data.registry-creds\.json}' | base64 --decode
 ```
 
 The output of issuing the command above is the content of the JSON file you used to create the secret.
