@@ -64,7 +64,7 @@ kubectl create secret generic myregistrykey --from-file=registry-creds.json
 You can use the command below to view the secret created in detail.
 
 ```bash
-kubectl get secret/myregistrykey -o json
+kubectl get secret/myregistrykey --output json
 ```
 
 The command output displays the content of the **registry-creds.json** file as base 64 encoded.
