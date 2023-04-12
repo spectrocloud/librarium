@@ -51,7 +51,7 @@ If you prefer to use a different stateless frontend app, you can do so. You may,
 
 ## Create a Dockerfile on the App’s Root Directory.
 
-Before continuing this step, you must ensure that Docker runs on your machine. In the root directory of the app, create a file named **Dockerfile**.
+Before continuing this step, ensure Docker is installed on your machine. In the app's root directory, create a file named **Dockerfile**.
 
 ```bash
 touch Dockerfile
