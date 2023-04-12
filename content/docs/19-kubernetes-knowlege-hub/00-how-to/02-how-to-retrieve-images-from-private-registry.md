@@ -24,7 +24,7 @@ The limit is based on the IP address of the machine that is making the pulls, so
 
 To avoid this issue, we recommend that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry. This ensures you have access to the images you need and can pull them without restrictions or limitations. 
 
-To log into a Docker registry from Kubernetes, you must create a secret containing your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
+To log into a Docker registry from Kubernetes, you must create a secret that contains your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
 
 In this tutorial, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
 
