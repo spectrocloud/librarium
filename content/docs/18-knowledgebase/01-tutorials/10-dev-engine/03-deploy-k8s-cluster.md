@@ -6,8 +6,6 @@ icon: ""
 category: ["tutorial"]
 hideToC: false
 fullWidth: false
-#hideToCSidebar: false
-#hiddenFromNav: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -64,7 +62,7 @@ To complete this tutorial, you will need the following items
 
 - A Spectro Cloud account. You can [sign up to Palette](https://console.spectrocloud.com/auth/signup) 
 - Basic knowledge about containers
-- Create a Cloud account ([AWS, Azure, GCP](#providers))
+- Create a Cloud account ([AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account), [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account), [GCP](https://cloud.google.com/docs/get-started))
 - Basic knowledge of the main public cloud platforms
 
 In case you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
@@ -78,19 +76,16 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 From the Palette user-interface, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, such as AWS, Azure, GCP, and managed through Palette.
 
-<div id="providers"></div>
-<br />
-<br />
 <br />
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-ui">
 
-## Create AWS Account
+## Register a Palette Account
 
-Open the [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
+Palette supports integration with AWS Cloud Accounts. 
 
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+Check how to create a [Palette account for AWS](/clusters/public-cloud/aws/add-aws-accounts)
 
 <br />
 
@@ -105,7 +100,7 @@ You can see the list of available default profiles. For now, we create our own p
 
 Follow the procedure to create a new profile that is composed of the following steps.
 
-In **Basic Information**, insert the name of the profile such as *aws-profile*, a brief  description of the profile, the type as *Full*, and tags as *aws*. You can leave version empty since the version defaults to 1.0.0.
+In **Basic Information**, insert the name of the profile such as *aws-profile*, a brief description of the profile, the type as *Full*, and tags as *aws*. You can leave version empty since the version defaults to 1.0.0.
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *AWS*.
 
@@ -268,30 +263,14 @@ Click on your cluster to review details such as deployment status, event logs, c
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-ui">
 
-## Create Azure Account
+## Register a Palette Account
 
-Open the [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+Palette supports integration with Azure Cloud Accounts. 
 
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
-
-<br />
-
-When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
-
-First, you need to [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) and to [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal). Then, to create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
-
-To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
-
-![create a subscription](/tutorials/deploy-clusters/azure/azure_subscription.png)
-
-Select *Add -> Add role assignment* and follow the next steps with the following information:
-- **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
-- **Role** -> Select **Contributor**
-- **Members** -> Click on **Select Members** and select your application name to add it.
-
-Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to add later on Palette.
+Check how to create a [Palette account for Azure](/clusters/public-cloud/azure/azure-cloud)
 
 <br />
+
 
 ## Create Cluster Profile
 
@@ -303,7 +282,7 @@ You can see the list of available default profiles. For now, we create our own p
 
 Follow the procedure to create a new profile that is composed of the following steps.
 
-In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief  description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
+In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
@@ -454,25 +433,12 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-ui">
 
-## Create GCP Account
+## Register a Palette Account
 
-Open to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
+Palette supports integration with GCP Cloud Accounts. 
 
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+Check how to create a [Palette account for GCP](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
 
-When you login in GCP, you need to [create a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization.
-
-In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: **Cloud Resource Manager API** and **Compute Engine API**.
-
-To enable *Cloud Resource Manager API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
-Search for *Cloud Resource Manager API*, enter into the product details and enable it. 
-
-![gcp how to enable cloud resource manager api](/tutorials/deploy-clusters/gcp/cloud_resource_manager_api.png)
-
-To enable *Compute Engine API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
-Search for *Compute Engine API*, enter into the product details and enable it. 
-
-![gcp how to enable compute engine api](/tutorials/deploy-clusters/gcp/computer_engine_api.png)
 
 <br />
 
@@ -485,7 +451,7 @@ You can see the list of available default profiles. For now, we create our own p
 
 Follow the procedure to create a new profile that is composed of the following steps.
 
-In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief  description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
+In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
@@ -806,100 +772,41 @@ If you need to become more familiar with Terraform, check out the [Terraform exp
 To complete this tutorial, you will need the following items
 
 - A Spectro Cloud account.
-
 - Basic knowledge of containers.
-
 - Terraform v1.3.6 or greater.
-
-
-<br />
-
-## Create Provider Account
-
-<Tabs>
-<Tabs.TabPane tab="AWS" key="terraform-aws-account">
-
-Open the [AWS home page](https://aws.amazon.com) and follow the [page to create and activate a AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
-
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="terraform-azure-account">
-
-Open the [Azure home page](https://azure.microsoft.com/free) and follow the [page to create an Azure account](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
-
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
+- Create a Cloud account ([AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account), [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account), [GCP](https://cloud.google.com/docs/get-started))
 
 <br />
 
-When you login in Azure, you need to [create an application and assign a role to it](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+## Register a Palette Account
 
-First, you need to [create a subscription](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) and to [create a resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal). Then, to create the application, navigate to the *Azure Active Directory* section and select *App registrations* from the left-side menu. Click on *New registration* at the top of the page and add the application name and required parameters. Then, click on *Register* to create it.
+Palette supports integration with the major cloud platforms.
 
-To assign a role to the application, navigate to the *Subscriptions* page and, referring to your Subscription, select *Access control (IAM)*. 
-
-![create a subscription](/tutorials/deploy-clusters/azure/azure_subscription.png)
-
-Select *Add -> Add role assignment* and follow the next steps with the following information:
-- **Assignment type** -> Select **Privileged administrator roles. Grant privileged administrator access, such as the ability to assign roles to other users.**
-- **Role** -> Select **Contributor**
-- **Members** -> Click on **Select Members** and select your application name to add it.
-
-Finally, [generate an SSH Key](https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-portal) to add later on Palette.
+Check how to create a Palette account for [AWS](/clusters/public-cloud/aws/add-aws-accounts), [Azure](/clusters/public-cloud/azure/azure-cloud), and [GCP](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
 
 <br />
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google Cloud" key="terraform-gcp-account">
-
-Open to [GCP home page](https://cloud.google.com) and follow the [page to create an GCP account](https://cloud.google.com/docs/get-started).
-
-When you create an account, we recommend creating another user to execute everyday tasks and give to that user sufficient rights to create the cluster, avoiding to use the root user credentials to perform it.
-
-When you login in GCP, you need to [create a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). To do that navigate to the *IAM & Admin* section and select *manage Resources* to enter into the page to manage the project, the folder and the organization. From there you can crate a folder, create or edit a project, and assign a project to an organization.
-
-In order to allow Palette to manage the cloud resource for you, you need to grant the access to the two management API: **Cloud Resource Manager API** and **Compute Engine API**.
-
-To enable *Cloud Resource Manager API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
-Search for *Cloud Resource Manager API*, enter into the product details and enable it. 
-
-![gcp how to enable cloud resource manager api](/tutorials/deploy-clusters/gcp/cloud_resource_manager_api.png)
-
-To enable *Compute Engine API*, enter in *APIs & Services* section, select *Enable APIs & Services* from the panel on the left, and click on *+ Enable APIs and Services* on the top of the page. 
-Search for *Compute Engine API*, enter into the product details and enable it. 
-
-![gcp how to enable compute engine api](/tutorials/deploy-clusters/gcp/computer_engine_api.png)
-
-<br /> 
-
-</Tabs.TabPane>
-</Tabs>
-
-
-<br />
 
 ## Deploy the Environment
 
 The following steps will guide you through deploying the cluster infrastructure. You will start by creating the cluster profile, then deploy a cluster that uses your cluster profile. 
 
-
 <br />
 
-## Configure the Cluster Profile
+### Configure the Cluster Profile
 
 Create a folder where you will put all the Terraform configuration files.
 
-<br />
 ```bash
 mkdir terraform-profile && cd terraform-profile
 ```
 
+<br />
 
-### Providers
+
+#### Providers
 
 Create the file **provider.tf** and insert the following content.
-
-<br />
 
 ```terraform
 terraform {
@@ -921,7 +828,7 @@ This file will connect to Palette through the Palette's *api_key*.
 <br />
 
 
-### Variables
+#### Variables
 
 Create the file *variables.tf* and insert the content:
 
@@ -939,12 +846,10 @@ To find the value of the *spectrocloud_api_key*, open the Palette dashboard and,
 
 <br />
 
-### Data
+#### Data
 The data file contains all of our data query resources. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
 
 Create the file data.tf and insert:
-
-<br />
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-profile">
@@ -1029,7 +934,7 @@ data "spectrocloud_pack" "proxy" {
 <br />
 
 
-### Cluster Profile
+#### Cluster Profile
 
 The ** cluster_profile** file contains all the packs that comprise the profile. Go ahead and copy the following content into the file.
 
@@ -1076,11 +981,12 @@ resource "spectrocloud_cluster_profile" "profile" {
 }
 ```
 
-## Create the Profile
+<br />
+
+
+### Create the Profile
 
 Use the following Terraform commands to create the resources you defined in the previous files in Palette. 
-
-<br />
 
 ```bash
 cd terraform-profile
@@ -1108,7 +1014,9 @@ terraform apply --auto-approve
 <br />
 
 
-## Verify the Profile
+### Verify the Profile
+
+<br />
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-validation-p">
@@ -1154,19 +1062,21 @@ Click on the profile to review the details of the stacks that compose the profil
 
 <br />
 
-## Configure the Cluster
+### Configure the Cluster
 
+<br />
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-cluster">
 
 Create a folder where you will put all the Terraform configuration files:
+
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
 ```
 
-### Variables
+#### Variables
 
 Create a file named **variables.tf** and insert the following variables.
 
@@ -1222,7 +1132,7 @@ worker_nodes = {
 ```
 <br />
 
-### Cluster Resources
+#### Cluster Resources
 
 Create the **cluster.tf** file and insert the cluster resources definition.
 
@@ -1269,12 +1179,13 @@ resource "spectrocloud_cluster_aws" "cluster" {
 <Tabs.TabPane tab="Azure" key="azure-tf-cluster">
 
 Create a folder where you will put all the Terraform configuration files:
+
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
 ```
 
-### Variables
+#### Variables
 
 Create the file *variables.tf* and insert the list of variables:
 
@@ -1343,7 +1254,7 @@ variable "worker_nodes" {
 ```
 <br />
 
-### Cluster Resources
+#### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
 
 ```terraform
@@ -1389,17 +1300,17 @@ resource "spectrocloud_cluster_azure" "cluster" {
 }
 ```
 
-
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-tf-cluster">
 
 Create a folder where you will put all the Terraform configuration files:
+
 ```bash
 $ mkdir terraform-cluster
 $ cd terraform-cluster
 ```
 
-### Variables
+#### Variables
 
 Create the file *variables.tf* and insert the list of variables:
 
@@ -1455,7 +1366,7 @@ variable "worker_nodes" {
 ```
 <br />
 
-### Cluster Resources
+#### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
 
 ```terraform
@@ -1501,7 +1412,7 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 <br />
 
 
-## Create the Cluster
+### Create the Cluster
 
 To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
 
@@ -1533,7 +1444,7 @@ terraform apply
 <br />
 
 
-## Verify the Cluster
+### Verify the Cluster
 
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-validation">
@@ -1545,7 +1456,6 @@ To check the cluster creation, login to the Palette dashboard, and from the left
 <br />
 
 Select your cluster to review its details page which contains the status, cluster profile, and more.
-
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-validation">
@@ -1666,19 +1576,18 @@ Then, use Terraform to push the modification to Palette and finalize the applica
 
 So, first, check the validation of the configuration files:
 ```bash
-$ terraform validate
+terraform validate
 ```
 
 Create the execution plan with the additional modifications to the already existant configuration:
 ```bash
-$ terraform plan
+terraform plan
 ```
 
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
 ```bash
-$ terraform apply
+terraform apply
 ```
-
 
 <br />
 
