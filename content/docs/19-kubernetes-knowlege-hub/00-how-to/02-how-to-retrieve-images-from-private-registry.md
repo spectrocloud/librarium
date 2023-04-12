@@ -20,7 +20,7 @@ Kubernetes is an open-source container orchestration platform that enables effic
 
 By default, Docker and Kubernetes allow a limited number of unauthenticated pulls from a Docker registry, such as Docker Hub. When you exceed this limit, you will not be able to pull any more images until the limit resets. 
 
-The limit is based on the IP address of the machine making the pulls, so it applies to all containers running on that machine.
+The limit is based on the IP address of the machine that is making the pulls, so it applies to all containers running on that machine.
 
 To avoid this issue, we recommend that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry. This ensures you have access to the images you need and can pull them without restrictions or limitations. 
 
