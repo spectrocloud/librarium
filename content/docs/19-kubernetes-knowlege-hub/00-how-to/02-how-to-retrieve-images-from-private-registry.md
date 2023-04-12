@@ -108,7 +108,7 @@ The output of issuing the command above is the content of the JSON file you used
 
 ## **Add Secret to Deployment config.**
 
-In your Kubernetes deployment configuration, specify the name of the secret you just created in the imagePullSecrets field:
+In your Kubernetes deployment configuration, specify the name of the secret you just created for the imagePullSecrets parameter:
 
 ```yaml
 apiVersion: apps/v1
