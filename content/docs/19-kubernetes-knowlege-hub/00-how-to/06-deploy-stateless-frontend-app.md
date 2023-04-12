@@ -141,7 +141,7 @@ touch deployment.yaml
 
 ## Create a Kubernetes Service.
 
-Create and populate a Kubernetes Service file in the app's root directory. As the default, your application will only be accessible within the cluster. You'll need to create a Kubernetes service resource to expose it to the outside world. A service resource creates an abstraction over a set of pods that provides discovery and routing between them.
+Create and populate a Kubernetes Service file in the app's root directory. By default, your application will only be accessible within the cluster. You'll need to create a Kubernetes service resource to expose the application to resources outside the Kubernetes cluster. A service resource creates an abstraction over a set of pods that provides discovery and routing between them.
 
 To create a service, use the `kubectl expose` command as shown:
 
