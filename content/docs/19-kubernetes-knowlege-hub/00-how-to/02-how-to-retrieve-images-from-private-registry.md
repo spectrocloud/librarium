@@ -161,7 +161,7 @@ Add the secret created in the previous step to the default service account with 
 
 ```bash
 $ kubectl patch serviceaccount default \
-    -p '{"imagePullSecrets": [{"name": "<secret-name>"}]}'
+    --port '{"imagePullSecrets": [{"name": "<secret-name>"}]}'
 ```
 
 Replace **`<secret-name>`** with the secret created in the previous step.
