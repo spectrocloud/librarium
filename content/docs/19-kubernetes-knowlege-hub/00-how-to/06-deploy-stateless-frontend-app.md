@@ -28,10 +28,11 @@ In this tutorial, you will containerize a date suggester app built in React and 
 # Requirements
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine. Node is a Javascript runtime environment and will enable React to run on your machine.
-- A clone of the application from the [date suggestions app](https://github.com/Princesso/date-buddy.git) on GitHub. Cloning the application will enable you to follow this tutorial step by step.
+- A clone of the application from the [date suggestions app](https://github.com/spectrocloud/date-buddy) on GitHub. Cloning the application will enable you to follow this tutorial step by step.
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
 - A running Kubernetes cluster. You can create one on [Spectro Cloud’s Palette](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster) or [use other methods to create a cluster](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6).
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on your machine and connected to your cluster.
+- A LoadBalancer. You can [create a LoadBanlacer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) with a public cloud provider, or use the [minikube tunnel](https://minikube.sigs.k8s.io/docs/commands/tunnel/) to trick a local cluster into exposing a resource.
 
 ## About the Application
 
@@ -44,7 +45,7 @@ The app data comes from a JSON file that lives on the frontend app.
 Use the command shown below to clone the application from GitHub.
 
 ```bash
-git clone https://github.com/Princesso/date-buddy.git
+git clone https://github.com/spectrocloud/date-buddy
 ```
 
 If you prefer to use a different stateless frontend app, you can do so. You may, however, get different results than in this tutorial. This tutorial only serves as a guide.
@@ -181,8 +182,7 @@ touch service.yaml
 Copy and paste the following line of code to the service file.
 
 ## Deploy the Application.
-
-Use the `Kubectl` command line connected to the cluster you created earlier, deploy the application by applying the file's content to Kubernetes.
+Use the kubectl command line connected to the cluster you created earlier, and deploy the application by applying the file's content to Kubernetes.
 
 ```bash
 kubectl apply --file deployment.yaml --file service.yaml
@@ -193,7 +193,7 @@ kubectl apply --file deployment.yaml --file service.yaml
 Once the deployment and service files have been applied, you should be able to access your app by issuing the following command:
 
 ```bash
-kubectl get service
+kubectl get service date-suggestions-service --output=jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 This will display the URL of your app that you can use to can access it in a web browser.
