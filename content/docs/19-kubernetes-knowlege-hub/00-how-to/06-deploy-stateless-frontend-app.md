@@ -102,7 +102,7 @@ In the application's root directory, create a Kubernetes Deployment file using t
 kubectl create deploy date-suggestions --image=date-suggestions --replicas=2 --port=3000 --dry-run=client --output yaml
 ```
 
-The output of running the command above is a YAML representation of the deployment, likely similar to the lines below:
+The command output is a YAML representation of the deployment, similar to the lines below.
 
 ```yaml
 apiVersion: apps/v1
