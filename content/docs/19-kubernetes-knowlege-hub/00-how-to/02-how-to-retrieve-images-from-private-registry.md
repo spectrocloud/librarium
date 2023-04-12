@@ -178,7 +178,7 @@ The line above will create a new deployment using the image specified from the p
 
 # Next Steps
 
-In conclusion, accessing images from a private registry in Kubernetes can be challenging due to the need to authenticate with the registry. 
+Accessing images from a private registry in Kubernetes can be challenging due to the need to authenticate with the registry. 
 
 To solve this challenge, you have learned how to create a Kubernetes secret with your Docker registry credentials and use it in a Kubernetes deployment configuration. This allows you to pull images from your private registry without restrictions or limitations. 
 
