@@ -140,7 +140,7 @@ kubectl apply -f deployment.yaml
 
 With this configuration in place, Kubernetes will use the registry credentials in the `myregistrykey` secret to log into the registry and pull the specified image when deploying the application.
 
-## Other Ways To Authenticate To a Docker Registry from Kubernetes
+## Other Docker Registry Authentication Methods
 
 An alternative way to log into a Docker registry from Kubernetes is by using the command line. 
 
