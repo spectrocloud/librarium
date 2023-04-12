@@ -132,7 +132,7 @@ spec:
             - name: myregistrykey
 ```
 
-## Apply the Deployment configuration To your Kubernetes cluster.
+## Apply the Deployment Configuration
 
 ```bash
 kubectl apply --file deployment.yaml
