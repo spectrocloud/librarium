@@ -185,7 +185,7 @@ Copy and paste the following line of code to the service file.
 Use the `Kubectl` command line connected to the cluster you created earlier, deploy the application by applying the file's content to Kubernetes.
 
 ```bash
-kubectl apply -f deployment.yaml -f service.yaml
+kubectl apply --file deployment.yaml --file service.yaml
 ```
 
 ## Confirm that deployment was successful.
