@@ -190,7 +190,7 @@ kubectl apply --file deployment.yaml --file service.yaml
 
 ## Confirm that deployment was successful.
 
-Once the deployment and service files have been applied, you should be able to access your app by running the following command:
+Once the deployment and service files have been applied, you should be able to access your app by issuing the following command:
 
 ```bash
 kubectl get service
