@@ -14,19 +14,19 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Using Quick-Start Mode
 
-Palette’s On-Prem Quick-Start Mode is a single-node installation of the Palette platform in vCenter vSphere. This installation is typically used for Proof of Concept (POC) environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode. 
+Palette’s On-Prem Quick-Start Mode is a single-node installation of the Palette platform in vCenter. This installation is typically used for Proof of Concept (POC) deployments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode. 
 
-For production environments, you will migrate the single-node cluster you deploy in Quick-Start mode to Enterprise mode. Enterprise mode deploys three nodes for High Availability (HA). For steps on migrating the single-node cluster, refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+For production environments, you will migrate the single-node cluster you deploy in Quick-Start mode to Enterprise mode. Enterprise mode deploys two additional nodes to create a three-node cluster for High Availability (HA). For steps on migrating the single-node cluster to Enterprise Mode, refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
 
 # Prerequisites
 
-- Downloaded platform installer Open Virtualization Application/Appliance (OVA) file using the link provided, and upload it into vCenter.
+- Downloaded platform installer Open Virtualization Appliance (OVA) file using the link provided, and upload it into vCenter.
 
 
-- Added port permissions to Inbound rules for Security groups for Palette connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication. 
+- Added port permissions to inbound rules for security groups to provide Palette connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication. 
 
 
-- A new or existing SSH key pair to access the installer VM for any troubleshooting.  
+- A new or existing SSH key pair to access the platform installer for any troubleshooting.  
  
 # Install Palette
 
@@ -42,7 +42,7 @@ We recommend using the Chrome browser.
 
 <br />
 
-1. Log in to the vSphere console and navigate in the left navigation pane to **Datacenter** and the folder you will use for your installation.
+1. Log in to the vSphere console and navigate in the left **Main Menu** to **Datacenter** and the folder you will use for your installation.
 
 
 2. Right-click on the folder and select **Deploy OVF Template**.
@@ -117,11 +117,11 @@ We recommend using the Chrome browser.
   | Location | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for air gapped environments.  | - |
 
 
-  When you have finished filling out options, status is displayed for **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm these have processed successfully. Processing may take a few minutes.
+6. When you are done filling out options, click the **Finish** button. Status is displayed for **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm these have processed successfully. Processing may take a few minutes. URLs for the Monitoring Console and the on-prem System Console will be displayed when processing is complete.
 
   <br />
 
-6. Copy the **On-Prem System Console** URL to a new tab. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
+6. Copy the URL for the **On-Prem System Console** to a new tab. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
 
 
 7. Enter default Palette credentials and click the **Login** button. Default: **Username**: admin, **Password**: admin. 
