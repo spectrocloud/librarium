@@ -793,7 +793,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials//tutorials/deploy-clusters/create_api_key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/create_api_key.png)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
 
@@ -1063,47 +1063,15 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 <br />
 
-<Tabs>
-<Tabs.TabPane tab="AWS" key="aws-validation-p">
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-aws-profile*:
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the profile specified in the terraform file.
 
 ![Terraform AWS profile](/tutorials/deploy-clusters/terraform/tf_aws_profile.png)
 
 <br />
 
-Click on the profile to see the details of the stacks that compose the profile:
+Click on the profile to see the details of the stacks that compose the profile.
 
 ![Terraform AWS profile details](/tutorials/deploy-clusters/terraform/tf_aws_profile_details.png)
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="azure-validation-p">
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-azure-profile*:
-
-![Terraform Azure profile](/tutorials/deploy-clusters/terraform/tf_azure_profile.png)
-
-<br />
-
-Click on the profile to see the details of the stacks that compose the profile:
-
-![Terraform Azure profile details](/tutorials/deploy-clusters/terraform/tf_azure_profile_details.png)
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google Cloud" key="gcp-validation-p">
-
-To check the profile creation in Palette, login to the Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *tf-gcp-profile*.
-
-![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
-
-<br />
-
-Click on the profile to review the details of the stacks that compose the profile.
-
-![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
-
-</Tabs.TabPane>
-</Tabs>
 
 <br />
 
