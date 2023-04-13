@@ -51,6 +51,33 @@ Follow these steps to migrate the single-node cluster you deployed using Quick-S
 5. Enter the **Gateway** IP address, **Nameserver** addresses, and an optional **Nameserver search suffix**, and click **Next**.
 
 
+6. Choose where to deploy the three control plane nodes. Select **Datacenter** in the **Datacenter drop-down Menu**, then select the folder you are using for your installation in the **Folder drop-down Menu**.
+
+
+7. Select your cluster ?? (**Cluster1**) from the **Compute Cluster drop-down menu**, and select **Default** from the **Resource Pool drop-down Menu**.
+
+
+8. Select **vsanDatastore** in the **Datastore drop-down menu**, and select **VM Network** from the **Network drop-down Menu**.
+
+
+9. We recommend **Large** **Installer size** for production environments. 
+
+
+10. Copy your SSH key into the **SSH Keys** field, and click **Done**.
+
+
+11. The 
+
+
+
+# Validation
+
+
+
+# Next Steps
+
+Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. Need a link here to Clusters docs. Create more tenants??
+
 <br />
 
 
