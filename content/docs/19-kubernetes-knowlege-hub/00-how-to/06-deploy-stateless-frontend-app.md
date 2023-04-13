@@ -212,4 +212,4 @@ Deploying a stateless frontend application with Kubernetes can be a straightforw
 
 In this tutorial, you containerized a stateless React-based app and deployed it with Kubernetes by creating a Dockerfile, building a Docker image, creating a Kubernetes deployment, and creating a Kubernetes service. 
 
-To learn more about Kubernetes, you can check in the communities section of [our documentation](https://docs.spectrocloud.com/) or join our [slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ) to have exciting conversations on Kubernetes with our community members.
+To learn more about Kubernetes, you can join our [slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ). Learn from other Kubernetes users and get to know fellow community members.

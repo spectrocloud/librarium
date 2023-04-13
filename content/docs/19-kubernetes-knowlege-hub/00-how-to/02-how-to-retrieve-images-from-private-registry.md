@@ -160,7 +160,7 @@ In the snippet above, **`<secret-name>`** refers to a unique name for the secret
 Add the secret created in the previous step to the default service account with the following code.
 
 ```bash
-$ kubectl patch serviceaccount default \
+kubectl patch serviceaccount default \
     --port '{"imagePullSecrets": [{"name": "<secret-name>"}]}'
 ```
 
@@ -169,7 +169,7 @@ Replace **`<secret-name>`** with the secret created in the previous step.
 Once you are authenticated and have added the secret to your default service account, you can use the kubectl command to pull images from the registry and deploy them to your Kubernetes cluster as follows.
 
 ```bash
-$ kubectl run <deployment-name> \
+kubectl run <deployment-name> \
     --image=<registry-url>/<image-name>:<tag> \
     --port=<container-port>
 ```
