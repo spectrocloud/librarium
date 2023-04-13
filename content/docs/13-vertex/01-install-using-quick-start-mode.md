@@ -63,7 +63,7 @@ We recommend using the Chrome browser.
 7. Select a destination network. The installer requires an outgoing internet connection. Select a network that provides this access directly or via a proxy. When you have made your selection, click **Next** to continue.
 
 
-8. Fill out template customization options. If needed, you can modify the following input fields at a later time. <br /><br />
+8. Fill out template customization options. Scroll to view all the options. If needed, you can modify the following input fields at a later time. <br /><br />
 
   ### General Settings
 
@@ -91,21 +91,28 @@ We recommend using the Chrome browser.
 
   | Parameter | Description | Default Values |
   | --- | --- | ---|
-  | Static IP gateway | Gateway IP address, such as 192.168.0.1, required only for static IP allocation. | - |
-  | Static IP DNS | Comma-separated DNS addresses, required only for static IP allocation. | - |
-  | Static IP search domains | Comma-separated search domains, required only for static IP allocation. | - |
-  | Static IP Address | Configure settings below to assign a static IP address. Leave all fields blank for DHCP. | - |
+  | **Static IP gateway** | Gateway IP address, such as 192.168.0.1, required only for static IP allocation. | - |
+  | **Static IP DNS** | Comma-separated DNS addresses, required only for static IP allocation. | - |
+  | **Static IP search domains** | Comma-separated search domains, required only for static IP allocation. | - |
+  | **Static IP Address** | VM IP address to use only if you are using static IP allocation. If you are using default DHCP, leave fields blank. | DHCP |
 
   <br />
 
   ### Proxy Settings
 
+  
+  <InfoBox>
+  
+  VerteX installations do not use a proxy.
+
+  </InfoBox>
+
   | Parameter | Description | Default Values |
   | --- | --- | ---|
-  | HTTPS Proxy | Optional HTTPS proxy endpoint. | - |
+  | HTTPS Proxy | Optional HTTPS proxy endpoint for outbound connections. | - |
   | NO Proxy | Optional comma-separated list of vCenter server, local network CIDR, hostnames, and domain names that should be excluded from proxying. | - |
-  | Proxy Certificate | Optional certificate used by proxy for encryption encoded in base64. | - |
-  | HTTP Proxy | Optional HTTP proxy endpoint. | - |
+  | Proxy Certificate | Optional certificate used by the proxy for encryption encoded in base64. | - |
+  | HTTP Proxy | Optional HTTP proxy endpoint for outbound connections. | - |
 
   <br />
 
@@ -113,12 +120,15 @@ We recommend using the Chrome browser.
 
   | Parameter | Description | Default Values |
   | --- | --- | --- |
-  | Password | Repository password. | - |
-  | User Name | Repository user name. | - |
-  | Location | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for air gapped environments.  | - |
+  | **Password** | Repository password. If you used the default earlier, type `admin`. | - |
+  | **User Name** | Repository user name. If you used the default earlier, type `admin`. | - |
+  | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for air gapped environments.  | - |
 
 
-6. When you are done filling out options, click the **Finish** button. Status is displayed for **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm these have processed successfully. Processing may take a few minutes. URLs for the Monitoring Console and the on-prem System Console will be displayed when processing is complete.
+6. When you are done filling out options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the  **Back** button. Click **Finish** when you are done.
+
+
+7. Status is displayed for **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm these have processed successfully. Processing may take a few minutes. URLs for the Monitoring Console and the on-prem System Console will be displayed when processing is complete.
 
   <br />
 
