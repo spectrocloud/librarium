@@ -1,5 +1,5 @@
 ---
-title: "Air Gap Mode "
+title: "Install in an Air Gap Environment"
 metaTitle: "Air Gap Mode"
 metaDescription: "Learn how to install Palette into an air gap environment."
 icon: ""
@@ -14,26 +14,47 @@ import Tabs from 'shared/components/ui/Tabs';
 # Overview
 
 
-You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an airgap installation.   
+You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an airgap installation. 
 
-During a standard Palette installation, the following artifacts are, by default, downloaded.
+In a standard Palette installation, the following artifacts are downloaded by default from the public Palette repository.
 
-* Platform manifests from a publicly hosted artifact repository.
-
-
-* Container images for core platform components and 3rd party dependencies from various public repositories.
+* Palette platform manifests.
 
 
-* Packs from the public pack registry.
+* Container images for core platform components and 3rd party dependencies.
 
 
-* VMWare Worker images for various Kubernetes versions.
-
-To address the internet connectivity limitation, we provide an OVA image containing three required installation artifacts mentioned earlier. 
-
-Due to the large size of VMWare worker images,  they are not included in the installer OVA image. Any VMware worker image you may need will require you to download the image from an Amazon S3 bucket and upload the worker images to vCenter before the installation. 
+* Palette Packs.
 
 
+The installation process changes a bit in an airgap environment due to the lack of internet access. Before the primary Palette installation step, you must download the three required Palette artifacts mentioned above. The other significant change is that Palette's default public repository is not used. Instead, a private repository supports all Palette operations pertaining to storing images and packages. 
+
+The following diagram is a high-level overview of the order of operations required to deploy a self-hosted instance of Palette in an airgap environment.
+
+
+![An architecture diagram outlining the five different event milestons](/enterprise-version_air-gap-repo_overview-order-diagram.png)
+
+
+The airgap installation can be simplified into five major milestones. 
+
+<br />
+
+1. The first milestone is to download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository supporting the airgap environment.
+
+
+2. The private Spectro Cloud repository is initialized, and all the Palette-required artifacts are downloaded and available.
+
+
+3. The Palette Install OVA is deployed, configured, and initialized.
+
+
+4. The scale-up process to a highly available three-node installation begins.
+
+
+5. Palette is ready for usage.
+
+
+This guide will focus on the first two milestones as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
 
 
 # Prerequisites
@@ -50,7 +71,7 @@ Due to the large size of VMWare worker images,  they are not included in the ins
     * 8000
 
 
-* Request the Palette Self-hosted installer image. To request the installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+* Request the Palette self-hosted installer image and the Palette airgap installer image. To request the installer images, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
 
     - Your full name
     - Organization name (if applicable)
@@ -74,7 +95,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 2. Navigate to the Datacenter and select the cluster you want to use for the installation. Right-click on the cluster and select **Deploy OVF Template**.
 
 
-3. Select the OVA installer image you downloaded after receiving guidance from our support team.
+3. Select the airgap OVA installer image you downloaded after receiving guidance from our support team.
 
 
 4. Select the folder where you want to install the Virtual Machine (VM) and assign a name to the virtual machine.
@@ -135,7 +156,7 @@ If you have any questions or concerns, please feel free to contact support@spect
             addresses: [10.10.128.8] # your DNS nameserver IP address.
   ```
 
-  Press the **ESC** key and type `:q!`, followed by the **Enter** key to exit Vi. <br /> <br />
+  To exit Vi, press the **ESC** key and type `:wq`, followed by the **Enter** key. <br /> <br />
 
 13. Issue the `netplan` command to update the network settings.  
 
@@ -634,7 +655,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   <br />
 
   ```shell
-  curl -k https://10.1.1.1:5000/health
+  curl --insecure https://10.1.1.1:5000/health
   ```
 
   Output:
@@ -647,7 +668,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   <br />
 
   ```shell
-  curl -ku admin:admin@airgap https://10.1.1.1:5000/v1/_catalog
+  curl --insecure --user admin:admin@airgap https://10.1.1.1:5000/v1/_catalog
   ```
 
   Output:
