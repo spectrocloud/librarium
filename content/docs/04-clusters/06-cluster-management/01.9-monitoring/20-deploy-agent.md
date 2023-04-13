@@ -77,6 +77,16 @@ charts:
 8. Confirm your changes by selecting **Confirm & Create**.
 
 
+9. Click on **Add New Pack**.
+
+
+10. Use the following information to find the Prometheus Operator pack.
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Cluster Metrics
+    - **Pack Version**: 3.3.X or newer.
+
+
 9. Click on **Next** to review the cluster profile. Save the cluster profile.
 
 
