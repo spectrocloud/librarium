@@ -1,5 +1,5 @@
 ---
-title: "Install Using a Helm Chart"
+title: "Install Using Helm Chart"
 metaTitle: "Install Palette Using a Helm Chart"
 metaDescription: "Install Palette Using a Helm Chart."
 icon: " "

@@ -63,7 +63,7 @@ We recommend using the Chrome browser.
 7. Select a destination network. The installer requires an outgoing internet connection. Select a network that provides this access directly or via a proxy. When you have made your selection, click **Next** to continue.
 
 
-8. Fill out template customization options. Scroll to view all the options. If needed, you can modify the following input fields at a later time. <br /><br />
+8. Fill out template customization options. Scroll to view all the options. If needed, you can modify the following input fields before completing the setup. <br /><br />
 
   ### General Settings
 
@@ -149,20 +149,46 @@ We recommend using the Chrome browser.
 
     You will be prompted to reset the password.
 
+
+8. After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Enterprise Mode" key="Enterprise">
+
+
+  To install Palette Enterprise or Palette VerteX, do the following.
+
+<br />
+
+ 
+- Click the **Install Now** button displayed under **Enterprise**. The **Summary** window displays.  
+
+
+- Click the **Migrate to Enterprise** button.  
+  
+
+- Follow steps in the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Quick-Start Mode" key="Quick-Start">
+
+To install for a POC, click the **Start Now** button under **Quick Start**.
+
+</Tabs.TabPane>
+</Tabs>
+
 # Validation
 
-After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
-
-  - To install Palette Enterprise or Palette VerteX, click the **Install Now** button displayed under **Enterprise** and follow steps in the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
-
-  - To install for a POC, click the **Start Now** button under **Quick Start**.
-
+Validate your setup... 
 
 # Next Steps
 
 If you are using the installation as a POC, you can now create gateways, cloud accounts, cluster profiles, and launch clusters using the management console. [Need a link here to Clusters docs].
 
-If you are installing for a production environment, you are ready to migrate the initial appliance you deployed to Enterprise mode. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+If you are installing for a production environment, you are ready to migrate the initial appliance you deployed to Enterprise mode. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide. 
 
 
 
