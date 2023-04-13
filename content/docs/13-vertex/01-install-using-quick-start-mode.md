@@ -128,37 +128,41 @@ We recommend using the Chrome browser.
 6. When you are done filling out options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the  **Back** button. Click **Finish** when you are done.
 
 
-7. Status is displayed for **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm these have processed successfully. Processing may take a few minutes. URLs for the Monitoring Console and the on-prem System Console will be displayed when processing is complete.
+  The OVF begins downloading and the virtual appliance is deployed. 
+
+
+7. When deployment status displays **Completed** in the bottom panel of the vSphere Client, power on the appliance in the **Summary** tab.
+
+
+8. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`.
+
+  The On-prem supervisor console displays a **Status** tab. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm all of these have processed successfully. This may take a few minutes. When processing is complete and **Status** displays **Done**, URLs for the On-Prem System Console and the Management Console are displayed.
 
   <br />
 
-6. Copy the URL for the **On-Prem System Console** to a new tab. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
+6. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
 
 
-7. Enter default Palette credentials and click the **Login** button. Default: **Username**: admin, **Password**: admin. 
+7. Enter default Palette credentials and click **Login**. Default: **admin/ admin**. 
 
     <br />
 
-    A form displays to reset the password. Type a new password and click the **Reset Password** button.
-
-
-8. Install Palette: 
-
-     - To install Palette Enterprise or Palette VerteX, click the **Install Now** button displayed under **Enterprise** and follow steps in the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
-
-     - To install for a POC, click the **Start Now** button under **Quick Start**.
-
+    You will be prompted to reset the password.
 
 # Validation
 
+After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
 
+  - To install Palette Enterprise or Palette VerteX, click the **Install Now** button displayed under **Enterprise** and follow steps in the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+
+  - To install for a POC, click the **Start Now** button under **Quick Start**.
 
 
 # Next Steps
 
 If you are using the installation as a POC, you can now create gateways, cloud accounts, cluster profiles, and launch clusters using the management console. [Need a link here to Clusters docs].
 
-If you are installing for a production environment, you are ready to migrate the initial cluster you deployed to Enterprise mode. [Link here to Enterprise Mode doc].
+If you are installing for a production environment, you are ready to migrate the initial appliance you deployed to Enterprise mode. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
 
 
 
