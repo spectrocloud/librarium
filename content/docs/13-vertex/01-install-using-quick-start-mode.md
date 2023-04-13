@@ -48,41 +48,42 @@ We recommend using the Chrome browser.
 2. Right-click on the folder and select **Deploy OVF Template**.
 
 
-3. Fill out the fields listed in the table.
+3. Provide the URL for the platform installer. ?? Does user receive this URL from Spectro Support ??
 
-| **Field**               | **Description**                                    |
-|---------------------|--------------------------------------------------------|
-| **URL**                 | The location of the platform installer.            |
-| **Virtual Machine Name**| A custom name for your virtual machine.            |
-| **Folder**              | The name of the folder that contains the OVF.      |
 
-4. Select the desired Datacenter, Storage, and Network for the platform installer.
+4. Type a custom name for your Virtual Machine (VM) in the **Virtual machine name** field, and select the folder that contains the OVF.
 
-    The installer requires an outgoing internet connection. Select a network that provides this access directly or via a proxy.
 
-    <br />
+5. Select a compute resource and click **Next**. Template details will be displayed. Review the details. You can click **Ignore** in the warning box about an untrusted certificate. 
 
-5. Fill out the remaining template customization options. You can modify the following input fields. <br /><br />
+
+6. Select the storage option and click **Next**.
+
+
+7. Select a destination network. The installer requires an outgoing internet connection. Select a network that provides this access directly or via a proxy. When you have made your selection, click **Next** to continue.
+
+
+8. Fill out template customization options. If needed, you can modify the following input fields at a later time. <br /><br />
 
   ### General Settings
 
   | Parameter | Description |  Default Value |
   | --- | --- | -- |
-  | SSH Public Key | The key to enable ssh for the default user. | - |
-  | Name | The name to identify the platform installer. | `spectro1`|
+  | **SSH Public Key** | The key to enable ssh for the default user. You can create a new public key or use an existing one. The public key will be installed in the installer VM to provide SSH access as user ``ubuntu``, which is useful for troubleshooting purposes. | - |
+  | **Name** | A name to identify the platform installer. | `spectro1`|
 
   ### Kubernetes Cluster Settings
 
   | Parameter | Description | Default Value |
   | --- | --- | --- |
-  | Pod CIDR | CIDR Range for Pods in the cluster. This must not overlap with any of the host or service network. |` 192.168.0.0/16` |
-  | Service cluster IP range | CIDR notation IP range from which to assign service cluster IPs. This must not overlap with any IP ranges assigned to nodes or pods. | `10.96.0.0/12` |
+  | **Pod CIDR** | CIDR range for pods in the cluster. This must not overlap with the host or service network. |`192.168.0.0/16` |
+  | **Service cluster IP range** | CIDR notation IP range from which to assign service cluster IPs. This must not overlap with IP ranges assigned to nodes or pods. | `10.96.0.0/12` |
 
   ### Monitoring Console
 
   | Parameter | Description | Default Value |
   | --- | --- | ---|
-  | Monitoring Console Password | Installation status and system logs can be accessed from the monitoring console at `https://[ip address]:5080`.   Username: `admin`. Password can be configured below. Default password - `admin`.  | `admin:admin` |
+  | **Monitoring Console Password** | A password that gives access to the monitoring console after you power on the VM to view installation status and system logs. Access the console at https://<vm_ip_address>:5080. You must append port ``5080`` to the VM IP address. Username: `admin`. You can configure the password or use the default password `admin`.  | `admin:admin` |
 
   <br />
 
