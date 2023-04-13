@@ -713,11 +713,15 @@ Select the **Pods** tab and check for two pods with name *hello-universe-deploym
 
 ![Pods status](/tutorials/deploy-clusters/deploy_app/app_update_pods.png)
 
-Remember to update the list of components by clicking the *sync* button at top right corner to refresh and synchronize the current state of the Kubernetes components.
-
 <br />
 
-After a few moments, the application is now ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
+<WarningBox>
+  
+It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+The application will be, then, ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
 ![Deployed application](/tutorials/deploy-clusters/app.png)
 
@@ -849,7 +853,8 @@ This file will connect to Palette through the Palette's *api_key*.
 
 
 #### Data
-The data file contains all of our data query resources. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
+
+The data file contains all of our data query resources that will compose the profile. You will use the data resources to query the information about available Packs. These packs make up the core layers of the cluster profile you will create.
 
 Create the file data.tf and insert:
 
@@ -939,7 +944,7 @@ data "spectrocloud_pack" "proxy" {
 
 #### Cluster Profile
 
-The ** cluster_profile** file contains all the packs that comprise the profile. Go ahead and copy the following content into the file.
+The ** cluster_profile** file contains all the packs included in the profile.
 
 <br />
 
@@ -986,94 +991,6 @@ resource "spectrocloud_cluster_profile" "profile" {
 
 <br />
 
-
-### Create the Profile
-
-Use the following Terraform commands to create the resources you defined in the previous files in Palette. 
-
-Enter into the folder where you created the Terraform configuration files.
-
-```bash
-cd terraform-config
-```
-
-Initialize the working directory that contains the Terraform configuration files.
-
-```bash
-terraform init
-```
-
-```
-Initializing the backend...
-
-Initializing provider plugins...
-- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
-- Installing spectrocloud/spectrocloud v0.11.1...
-- Installed spectrocloud/spectrocloud v0.11.1
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-```
-
-Validate the Terraform files.
-
-```bash
-terraform validate 
-```
-
-```
-Success! The configuration is valid.
-```
-
-You can preview the actions Terraform will take by using the `plan` command.
-
-```bash
-terraform plan
-```
-
-```
-// Output condensed for readability
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
-
-The output displays the resources Terraform will create in an actual implementation.
-
-Use the `apply` command to deploy the resources to your target environment.
-
-```bash
-terraform apply --auto-approve
-```
-
-```
-// Output condensed for readability
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
-<br />
-
-
-### Verify the Profile
-
-<br />
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the previously created profile.
-
-![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
-
-<br />
-
-Click on the profile to see the details of the stacks that compose the profile.
-
-![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
-
-<br />
 
 ### Configure the Cluster
 
@@ -1324,6 +1241,7 @@ Follow the Azure documentation to find the [tenant id](https://learn.microsoft.c
 
 
 #### Cluster Resources
+
 Create the cluster.tf file and insert the cluster resources definition:
 
 ```terraform
@@ -1377,7 +1295,6 @@ resource "spectrocloud_cluster_azure" "cluster" {
 In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
 
 ```terraform
-variable "cluster_profile" {}
 variable "region" {}
 variable "gcp-cloud-account-name" {
     type = string
@@ -1409,7 +1326,6 @@ Then, create also the file terraform.tfvars and append the content of the variab
 
 ```terraform
 gcp-cloud-account-name  = <insert here the name of your gcp account on palette>
-cluster_profile         = "tf-gcp-profile"
 region                  = "us-east1"
 master_nodes = {
     count            = "1"
@@ -1434,9 +1350,6 @@ Create the cluster.tf file and insert the cluster resources definition:
 data "spectrocloud_cloudaccount_gcp" "account" {
   name = var.gcp-cloud-account-name
 }
-data "spectrocloud_cluster_profile" "profile" {
-  name = var.cluster_profile
-}
 resource "spectrocloud_cluster_gcp" "cluster" {
   name             = "gcp-cluster"
   tags             = ["gcp", "tutorial"]
@@ -1446,7 +1359,7 @@ resource "spectrocloud_cluster_gcp" "cluster" {
     region  = var.region
   }
   cluster_profile {
-    id = data.spectrocloud_cluster_profile.profile.id
+    id = spectrocloud_cluster_profile.profile.name
   }
   machine_pool {
     control_plane           = true
@@ -1473,11 +1386,17 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 <br />
 
 
-### Create the Cluster
+### Create the Profile and the Cluster
 
-To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
+Use the following Terraform commands to create the profile and cluster you defined in the previous steps. 
 
-Re-initialize the working directory that contains the Terraform configuration files to add the providers module.
+Enter into the folder where you created the Terraform configuration files.
+
+```bash
+cd terraform-config
+```
+
+Initialize the working directory that contains the Terraform configuration files.
 
 ```bash
 terraform init
@@ -1487,11 +1406,9 @@ terraform init
 Initializing the backend...
 
 Initializing provider plugins...
-- Reusing previous version of spectrocloud/spectrocloud from the dependency lock file
-- Finding latest version of hashicorp/<provider-name>...
-- Using previously-installed spectrocloud/spectrocloud v0.11.1
-- Installing hashicorp/<provider-name> <version>...
-- Installed hashicorp/<provider-name> <version> (signed by HashiCorp)
+- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
+- Installing spectrocloud/spectrocloud v0.11.1...
+- Installed spectrocloud/spectrocloud v0.11.1
 
 Terraform has been successfully initialized!
 
@@ -1504,17 +1421,17 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Re-vallidate the configuration files.
+Validate the Terraform files.
 
 ```bash
-terraform validate
+terraform validate 
 ```
 
 ```
 Success! The configuration is valid.
 ```
 
-Create the execution plan with the preview changes your configuration will create on the infrastructure.
+You can preview the actions Terraform will take by using the `plan` command.
 
 ```bash
 terraform plan
@@ -1522,18 +1439,38 @@ terraform plan
 
 ```
 // Output condensed for readability
-Plan: 2 to add, 0 to change, 0 to destroy.
+Plan: 3 to add, 0 to change, 0 to destroy.
 ```
 
-Apply the modifications there are in the plan to execute them and create the infrastructure
+The output displays the resources Terraform will create in an actual implementation.
+
+Use the `apply` command to deploy the resources to your target environment.
+
 ```bash
 terraform apply --auto-approve
 ```
 
 ```
 // Output condensed for readability
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 ```
+
+<br />
+
+
+### Verify the Profile
+
+<br />
+
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the previously created profile.
+
+![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
+
+<br />
+
+Click on the profile to see the details of the stacks that compose the profile.
+
+![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
 
 <br />
 
@@ -1586,6 +1523,7 @@ Since the cluster may take several minutes to create, in relation to the packs t
 
 <br />
 <br />
+
 
 ## Deploy the Application
 
@@ -1704,23 +1642,6 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 <br />
 
 
-### Deploy
-
-From the left **Main Menu** select the **Clusters**.  Click on the host cluster you deployed to open the details page.
-
-![Cluster details with available updates](/tutorials/deploy-clusters/deploy_app/app_update_available.png)
-
-<br />
-
-On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. Compare the new changes against the previous cluster profile definition. The only change is the addition of a manifest that will deploy the Hello Universe application.
-
-
-![Available updates details](/tutorials/deploy-clusters/deploy_app/updates_available_details.png)
-
-Click on **Confirm updates** to apply the updates to the host cluster.
-
-<br />
-
 # Verify the Application
 
 From the cluster details page, click on **Workloads** at the top of the page:
@@ -1737,11 +1658,15 @@ Select the **Pods** tab and check for two pods with name *hello-universe-deploym
 
 ![Pods status](/tutorials/deploy-clusters/deploy_app/app_update_pods.png)
 
-Remember to update the list of components by clicking the *sync* button at top right corner to refresh and synchronize the current state of the Kubernetes components.
-
 <br />
 
-After a few moments, the application is now ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
+<WarningBox>
+  
+It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+The application will be, then, ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
 ![Deployed application](/tutorials/deploy-clusters/app.png)
 
@@ -1771,7 +1696,7 @@ terraform plan -destroy
 
 ```
 // Output condensed for readability
-Plan: 0 to add, 0 to change, 1 to destroy.
+Plan: 0 to add, 0 to change, 3 to destroy.
 ```
 
 Then delete the components by running the destroy command:
@@ -1782,7 +1707,7 @@ terraform destroy --auto-approve
 
 ```
 // Output condensed for readability
-Destroy complete! Resources: 1 destroyed.
+Destroy complete! Resources: 3 destroyed.
 ```
 
 <br />
