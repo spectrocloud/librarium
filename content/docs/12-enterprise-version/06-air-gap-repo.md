@@ -135,6 +135,8 @@ If you have any questions or concerns, please feel free to contact support@spect
             addresses: [10.10.128.8] # your DNS nameserver IP address.
   ```
 
+  Press the **ESC** key and type `:q!`, followed by the **Enter** key to exit Vi. <br /> <br />
+
 13. Issue the `netplan` command to update the network settings.  
 
   <br />
@@ -153,7 +155,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   Record the output of the setup command as you will use it when deploying the Quick Start appliance later on in the installation process.
 
-  **Example Output**: 
+  Example Output: 
   ```shell
   Setting up Manifests
   Setting up Manifests
@@ -191,8 +193,8 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   <WarningBox>
 
-  You must download all three required assets. The credentials and download URL will be provided to you by the support team.
-  Click on each tab to learn more.
+  You must download the three following resources. The credentials and download URL will be provided to you by the support team.
+  Click on each tab to learn more about each resource and steps for downloading.
 
   </WarningBox>
 
@@ -335,7 +337,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <br />
 
-17. If you will be using Edge deployments then go ahead and download the required packages, otherwise skip to step 23. Click on the `...` tab for additional options.
+17. If you will be using Edge deployments then go ahead and download the packages you believe you will need. If you are not planning on using Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
 
 
 <br />
@@ -590,6 +592,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 
 </Tabs>
+
+<br />
+
+----
+
+<br />
 
 
 The next step of the installation process is to begin the deployment of an appliance using the instructions in the [Migrate Cluster to Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster). If you need to review the Spectro Cloud Repository details, issue the following command for detailed output.
