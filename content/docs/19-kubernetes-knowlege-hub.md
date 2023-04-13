@@ -24,10 +24,4 @@ If you have a topic in mind you would like to see, use the Feedback app on the l
 - [How-To](/kubernetes-knowlege-hub/how-to)
   
 
-- [Tutorials](/kubernetes-knowlege-hub/tutorials)
-  
-
-- [Community](/kubernetes-knowlege-hub/community)
-  
-
 <br />
