@@ -1063,15 +1063,15 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 <br />
 
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the profile specified in the terraform file.
+To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the previously created profile.
 
-![Terraform AWS profile](/tutorials/deploy-clusters/terraform/tf_aws_profile.png)
+![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
 
 <br />
 
 Click on the profile to see the details of the stacks that compose the profile.
 
-![Terraform AWS profile details](/tutorials/deploy-clusters/terraform/tf_aws_profile_details.png)
+![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
 
 <br />
 
@@ -1082,20 +1082,13 @@ Click on the profile to see the details of the stacks that compose the profile.
 <Tabs>
 <Tabs.TabPane tab="AWS" key="aws-tf-cluster">
 
-Open the folder with the Terraform configuration files.
-
-```bash
-$ cd terraform-config
-```
-
 #### Variables
 
-Create a file named **variables.tf** and insert the following variables.
+In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
 
 ```terraform
 variable "cluster_profile" {}
 variable "region" {}
-variable "aws_ssh_key_name" {}
 variable "aws-cloud-account-name" {
     type = string
     description = "The name of your AWS account as assigned in Palette"
@@ -1123,8 +1116,7 @@ variable "worker_nodes" {
 Next, create a file named *terraform.tfvars* and add the following content.
 
 ```terraform
-aws_ssh_key_name        = "aws-key"
-aws-cloud-account-name  = "82xxxxxxxxxx"
+aws-cloud-account-name  = <insert here the name of your aws account on palette> 
 cluster_profile         = "tf-profile"
 region                  = "us-east-1"
 master_nodes = {
@@ -1141,6 +1133,43 @@ worker_nodes = {
 }
 ```
 <br />
+
+
+#### Create an SSH Key
+
+Open the terminal and create the ssh key.
+
+```bash
+ssh-keygen -f ~/.ssh/ssh-key
+```
+
+Retrieve the content of the public key just created.
+
+```bash
+cat ~/.ssh/ssh-key.pub
+```
+
+Create a file named *ssh_key.tf* and add the [resource with the ssh key information](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair).
+```terraform
+resource "aws_key_pair" "tutorial-key" {
+  key_name   = "aws-key"
+  public_key = <insert here the content of the public key>
+}
+```
+
+Edit the *provider.tf* file and insert the AWS credentials to access it.
+```terraform
+provider "aws" {
+  region = var.region
+  access_key = <insert here your access key>
+  secret_key = <insert here your secret key>
+}
+```
+
+Follow the AWS documentation to [create the access key and the secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
+
+<br />
+
 
 #### Cluster Resources
 
@@ -1161,7 +1190,7 @@ resource "spectrocloud_cluster_aws" "cluster" {
   cloud_account_id = data.spectrocloud_cloudaccount_aws.account.id
   cloud_config {
     region        = var.region
-    ssh_key_name  = var.aws_ssh_key_name
+    ssh_key_name  = aws_key_pair.tutorial-key.key_name
   }
   cluster_profile {
     id = data.spectrocloud_cluster_profile.profile.id
@@ -1188,48 +1217,14 @@ resource "spectrocloud_cluster_aws" "cluster" {
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-tf-cluster">
 
-Open the folder with the Terraform configuration files.
-
-```bash
-$ cd terraform-config
-```
-
 #### Variables
 
-Create the file *variables.tf* and insert the list of variables:
-
-```terraform
-azure-cloud-account-name = "azure-palette"
-subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-resource_group           = "palette_rg"
-cluster_profile          = "tf-profile"
-region                   = "eastus"
-cluster_ssh_public_key   = "key"
-master_nodes = {
-    count                = "1"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-worker_nodes = {
-    count                = "1"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-```
-
-<br />
-
-Then, create also the file terraform.tfvars and append the content of the variables:
+In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
 
 ```terraform
 variable "subscription_id" {}
 variable "resource_group" {}
 variable "region" {}
-variable "cluster_ssh_public_key" {}
 variable "cluster_profile" {}
 
 variable "azure-cloud-account-name" {
@@ -1259,7 +1254,74 @@ variable "worker_nodes" {
     description = "Worker nodes configuration."
 }
 ```
+
 <br />
+
+Then, create also the file terraform.tfvars and append the content of the variables:
+
+```terraform
+azure-cloud-account-name = <insert here the name of your azure account on palette>
+subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+resource_group           = "palette_rg"
+cluster_profile          = "tf-profile"
+region                   = "eastus"
+master_nodes = {
+    count                = "1"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
+}
+worker_nodes = {
+    count                = "1"
+    instance_type        = "Standard_A2_v2"
+    disk_size_gb         = "60"
+    availability_zones   = []
+    is_system_node_pool  = false
+}
+```
+<br />
+
+
+#### Create an SSH Key
+
+Open the terminal and create the ssh key.
+
+```bash
+ssh-keygen -f ~/.ssh/ssh-key
+```
+
+Retrieve the content of the public key just created.
+
+```bash
+cat ~/.ssh/ssh-key.pub
+```
+
+Create a file named *ssh_key.tf* and add the [resource with the ssh key information](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/ssh_public_key).
+```terraform
+resource "azurerm_ssh_public_key" "tutorial-key" {
+  name                = "azure-key"
+  resource_group_name = var.resource_group
+  location            = var.region
+  public_key          = <insert here the content of the public key>
+}
+```
+
+Edit the *provider.tf* file and insert the Azure credentials to access it.
+```terraform
+provider "azurerm" {
+  features {}
+  tenant_id       = <insert here the tenant id>
+  client_id       = <insert here the client id>
+  client_secret   = <insert here the client secret>
+  subscription_id = <insert here the subscritpion id>
+}
+```
+
+Follow the Azure documentation to find the [tenant id](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant), [subscription id](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription), [client id, and client secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in)
+
+<br />
+
 
 #### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
@@ -1279,7 +1341,7 @@ resource "spectrocloud_cluster_azure" "cluster" {
     subscription_id = var.subscription_id
     resource_group  = var.resource_group
     region          = var.region
-    ssh_key         = var.cluster_ssh_public_key
+    ssh_key         = azurerm_ssh_public_key.tutorial-key.name
   }
   cluster_profile {
     id = data.spectrocloud_cluster_profile.profile.id
@@ -1310,37 +1372,9 @@ resource "spectrocloud_cluster_azure" "cluster" {
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-tf-cluster">
 
-Open the folder with the Terraform configuration files.
-
-```bash
-$ cd terraform-config
-```
-
 #### Variables
 
-Create the file *variables.tf* and insert the list of variables:
-
-```terraform
-cluster_profile         = "tf-gcp-profile"
-region                  = "us-east1"
-gcp-cloud-account-name  = "myproject-379610"
-master_nodes = {
-    count            = "1"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "60"
-    availability_zones = ["us-east1-b"]
-}
-worker_nodes = {
-    count            = "1"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "60"
-    availability_zones = ["us-east1-b"]
-}
-```
-
-<br />
-
-Then, create also the file terraform.tfvars and append the content of the variables:
+In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
 
 ```terraform
 variable "cluster_profile" {}
@@ -1368,7 +1402,30 @@ variable "worker_nodes" {
     description = "Worker nodes configuration."
 }
 ```
+
 <br />
+
+Then, create also the file terraform.tfvars and append the content of the variables:
+
+```terraform
+gcp-cloud-account-name  = <insert here the name of your gcp account on palette>
+cluster_profile         = "tf-gcp-profile"
+region                  = "us-east1"
+master_nodes = {
+    count            = "1"
+    instance_type    = "n1-standard-2"
+    disk_size_gb     = "60"
+    availability_zones = ["us-east1-b"]
+}
+worker_nodes = {
+    count            = "1"
+    instance_type    = "n1-standard-2"
+    disk_size_gb     = "60"
+    availability_zones = ["us-east1-b"]
+}
+```
+<br />
+
 
 #### Cluster Resources
 Create the cluster.tf file and insert the cluster resources definition:
@@ -1420,13 +1477,7 @@ resource "spectrocloud_cluster_gcp" "cluster" {
 
 To create the cluster on the cloud provider use the Terraform commands to apply the information present in the configuration files.
 
-Open the folder where you have the Terraform configuration files.
-
-```bash
-$ cd terraform-config
-```
-
-Initialize the working directory having Terraform configuration files.
+Re-initialize the working directory that contains the Terraform configuration files to add the providers module.
 
 ```bash
 terraform init
@@ -1436,9 +1487,11 @@ terraform init
 Initializing the backend...
 
 Initializing provider plugins...
-- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
-- Installing spectrocloud/spectrocloud v0.11.1...
-- Installed spectrocloud/spectrocloud v0.11.1
+- Reusing previous version of spectrocloud/spectrocloud from the dependency lock file
+- Finding latest version of hashicorp/<provider-name>...
+- Using previously-installed spectrocloud/spectrocloud v0.11.1
+- Installing hashicorp/<provider-name> <version>...
+- Installed hashicorp/<provider-name> <version> (signed by HashiCorp)
 
 Terraform has been successfully initialized!
 
@@ -1451,10 +1504,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Validate the configuration files in the directory.
+Re-vallidate the configuration files.
 
 ```bash
-terraform validate 
+terraform validate
 ```
 
 ```
@@ -1469,17 +1522,17 @@ terraform plan
 
 ```
 // Output condensed for readability
-Plan: 1 to add, 0 to change, 0 to destroy.
+Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
-Finally, apply the modifications there are in the plan to execute them and create the infrastructure
+Apply the modifications there are in the plan to execute them and create the infrastructure
 ```bash
 terraform apply --auto-approve
 ```
 
 ```
 // Output condensed for readability
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
 <br />
