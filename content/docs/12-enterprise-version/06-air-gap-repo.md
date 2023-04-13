@@ -151,7 +151,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   sudo /bin/airgap-setup.sh X.X.X.X
   ```
 
-  Record the output of the setup command for later use.
+  Record the output of the setup command as you will use it when deploying the Quick Start appliance later on in the installation process.
 
   **Example Output**: 
   ```shell
@@ -175,17 +175,17 @@ If you have any questions or concerns, please feel free to contact support@spect
   Password: admin@airgap
   ```
 
-16. If you need to configure the instance with proxy settings, go ahead and do so now. You can configure proxy settings by using environment variables. Replace the values with your environment's respective values.
+15. If you need to configure the instance with proxy settings, go ahead and do so now. You can configure proxy settings by using environment variables. Replace the values with your environment's respective values.
 
   <br />
 
   ```shell
-  export https_proxy=http://10.1.1.1:8888
-  export https_proxy=http://10.1.1.1:8888
+  export http_proxy=http://10.1.1.1:8888
+  export https_proxy=https://10.1.1.1:8888
   export no_proxy=.example.dev,10.0.0.0/8
   ```
 
-17. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and Kubeadm pages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
+16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and Kubeadm pages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
 
   <br />
 
@@ -202,12 +202,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Palette Installer" key="palette-installer">
 
-18. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+  Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-k8s-v3.3.15.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/airgap-k8s-v3.3.15.bin \
    --output airgap-k8s-v3.3.15.bin
   ```
 
@@ -217,7 +217,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   
   </InfoBox>
 
-19. Assign the proper permissions and start the download script.
+  Assign the proper permissions and start the download script.
 
   <br />
 
@@ -247,12 +247,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Kubernetes Packages" key="k8s-packages">
 
-18. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-k8s-v3.3.15.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/airgap-k8s-v3.3.15.bin \
    --output airgap-k8s-v3.3.15.bin
   ```
 
@@ -262,7 +262,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   
   </InfoBox>
 
-19. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
 
   <br />
 
@@ -290,12 +290,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Kubeadm Packages" key="kubeadm-packages">
 
-18. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-kubeadm.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-kubeadm.bin \
    --output airgap-edge-kubeadm.bin
   ```
 
@@ -305,7 +305,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   
   </InfoBox>
 
-19. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
 
   <br />
 
@@ -333,18 +333,23 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 </Tabs>
 
-20. If you will be using Edge deployments then go ahead and download the required packages, otherwise skip to step 23. Click on the `...` tab for additional options.
+<br />
+
+17. If you will be using Edge deployments then go ahead and download the required packages, otherwise skip to step 23. Click on the `...` tab for additional options.
+
+
+<br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Ubuntu 22.04 - K3s " key="ubuntu-22-k3s">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+  Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu22-k3s.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu22-k3s.bin \
    --output airgap-edge-ubuntu22-k3s.bin
   ```
 
@@ -354,7 +359,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+ Assign the proper permissions and start the download script.
 
   <br />
 
@@ -368,12 +373,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Ubuntu 22.04 - RKE " key="ubuntu-22-rke">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu22-rke.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu22-rke.bin \
    --output airgap-edge-ubuntu22-rke.bin
   ```
 
@@ -383,7 +388,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
 
   <br />
 
@@ -395,12 +400,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Ubuntu 22.04 - Kubeadm" key="ubuntu-22-kubeadm">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu22-kubeadm.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu22-kubeadm.bin \
    --output airgap-edge-ubuntu22-kubeadm.bin
   ```
 
@@ -410,7 +415,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -422,12 +427,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Ubuntu 20.04 - K3s" key="ubuntu-20-k3s">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu20-k3s.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu20-k3s.bin \
    --output airgap-edge-ubuntu20-k3s.bin
   ```
 
@@ -437,7 +442,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -449,12 +454,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Ubuntu 20.04 - RKE" key="ubuntu-20-rke">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu20-rke.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu20-rke.bin \
    --output airgap-edge-ubuntu20-rke.bin
   ```
 
@@ -464,7 +469,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -477,12 +482,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="Ubuntu 20.04 - Kubeadm" key="ubuntu-20-kubeadm">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-ubuntu20-kubeadm.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-ubuntu20-kubeadm.bin \
    --output airgap-edge-ubuntu20-kubeadm.bin
   ```
 
@@ -492,7 +497,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -504,12 +509,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="OpenSuse - K3s" key="opensuse-k3s">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-opensuse-k3s.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-opensuse-k3s.bin \
    --output airgap-edge-opensuse-k3s.bin
   ```
 
@@ -519,7 +524,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -531,12 +536,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="OpenSuse - RKE" key="opensuse-rke">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-opensuse-rke.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-opensuse-rke.bin \
    --output airgap-edge-opensuse-rke.bin
   ```
 
@@ -546,7 +551,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -558,12 +563,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <Tabs.TabPane tab="OpenSuse - Kubeadm" key="opensuse-kubeadm">
 
-21. Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
+   Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap-edge-opensuse-kubeadm.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/3.3/airgap-edge-opensuse-kubeadm.bin \
    --output airgap-edge-opensuse-kubeadm.bin
   ```
 
@@ -573,7 +578,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   </InfoBox>
 
-22. Assign the proper permissions and start the download script.
+   Assign the proper permissions and start the download script.
   
   <br />
 
@@ -586,7 +591,61 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 </Tabs>
 
-23. The nest of the installation process is to begin the deployment of an appliance that using the 
+
+The next step of the installation process is to begin the deployment of an appliance using the instructions in the [Migrate Cluster to Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster). If you need to review the Spectro Cloud Repository details, issue the following command for detailed output.
+
+<br />
+
+```shell
+sudo /bin/airgap-setup.sh
+```
+
+
+
+# Validate
+
+You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance an SSH key then you can skip to step six.
+
+1. Log in to vCenter Server by using the vSphere Client.
+
+
+2. Navigate to your Datacenter and locate your VM. Click on the VM to access its details page.
+
+
+3. Power on the VM.
+
+
+4. Click on **Launch Web Console** to access the terminal.
+
+
+5. Log in with the user `ubuntu` and the user password you specified during the installation.
+
+
+6. Verify the registry server is up and available. Replace the `10.1.1.1` value with your appliance's IP address.
+
+  <br />
+
+  ```shell
+  curl -k https://10.1.1.1:5000/health
+  ```
+
+  Output:
+  ```shell
+  {"status":"UP"}
+  ```
+
+7. Ensure you can log into your registry server. Use the default credentials `admin:admin@airgap`. Replace the `10.1.1.1` value with your appliance's IP address.
+
+  <br />
+
+  ```shell
+  curl -ku admin:admin@airgap https://10.1.1.1:5000/v1/_catalog
+  ```
+
+  Output:
+  ```
+  {"metadata":{"lastUpdatedTime":"2023-04-11T21:12:09.647295105Z"},"repositories":[{"name":"amazon-linux-eks","tags":[]},{"name":"aws-efs","tags":[]},{"name":"centos-aws","tags":[]},{"name":"centos-azure","tags":[]},{"name":"centos-gcp","tags":[]},{"name":"centos-libvirt","tags":[]},{"name":"centos-vsphere","tags":[]},{"name":"cni-aws-vpc-eks","tags":[]},{"name":"cni-aws-vpc-eks-helm","tags":[]},{"name":"cni-azure","tags":[]},{"name":"cni-calico","tags":[]},{"name":"cni-calico-azure","tags":[]},{"name":"cni-cilium-oss","tags":[]},{"name":"cni-custom","tags":[]},{"name":"cni-kubenet","tags":[]},{"name":"cni-tke-global-router","tags":[]},{"name":"csi-aws","tags":[]},{"name":"csi-aws-ebs","tags":[]},{"name":"csi-aws-efs","tags":[]},{"name":"csi-azure","tags":[]},{"name":"csi-gcp","tags":[]},{"name":"csi-gcp-driver","tags":[]},{"name":"csi-longhorn","tags":[]},{"name":"csi-longhorn-addon","tags":[]},{"name":"csi-maas-volume","tags":[]},{"name":"csi-nfs-subdir-external","tags":[]},{"name":"csi-openstack-cinder","tags":[]},{"name":"csi-portworx-aws","tags":[]},{"name":"csi-portworx-gcp","tags":[]},{"name":"csi-portworx-generic","tags":[]},{"name":"csi-portworx-vsphere","tags":[]},{"name":"csi-rook-ceph","tags":[]},{"name":"csi-rook-ceph-addon","tags":[]},{"name":"csi-tke","tags":[]},{"name":"csi-topolvm-addon","tags":[]},{"name":"csi-vsphere-csi","tags":[]},{"name":"csi-vsphere-volume","tags":[]},{"name":"edge-k3s","tags":[]},{"name":"edge-k8s","tags":[]},{"name":"edge-microk8s","tags":[]},{"name":"edge-native-byoi","tags":[]},{"name":"edge-native-opensuse","tags":[]},{"name":"edge-native-ubuntu","tags":[]},{"name":"edge-rke2","tags":[]},{"name":"external-snapshotter","tags":[]},{"name":"generic-byoi","tags":[]},{"name":"kubernetes","tags":[]},{"name":"kubernetes-aks","tags":[]},{"name":"kubernetes-coxedge","tags":[]},{"name":"kubernetes-eks","tags":[]},{"name":"kubernetes-eksd","tags":[]},{"name":"kubernetes-konvoy","tags":[]},{"name":"kubernetes-microk8s","tags":[]},{"name":"kubernetes-rke2","tags":[]},{"name":"kubernetes-tke","tags":[]},{"name":"portworx-add-on","tags":[]},{"name":"spectro-mgmt","tags":[]},{"name":"tke-managed-os","tags":[]},{"name":"ubuntu-aks","tags":[]},{"name":"ubuntu-aws","tags":[]},{"name":"ubuntu-azure","tags":[]},{"name":"ubuntu-coxedge","tags":[]},{"name":"ubuntu-edge","tags":[]},{"name":"ubuntu-gcp","tags":[]},{"name":"ubuntu-libvirt","tags":[]},{"name":"ubuntu-maas","tags":[]},{"name":"ubuntu-openstack","tags":[]},{"name":"ubuntu-vsphere","tags":[]},{"name":"volume-snapshot-controller","tags":[]}],"listMeta":{"continue":""}}
+  ```
 
 
 <br />
