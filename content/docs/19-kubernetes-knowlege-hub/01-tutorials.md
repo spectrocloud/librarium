@@ -5,7 +5,7 @@ metaDescription: "Kubernetes School with How to"
 icon: "book"
 hideToC: false
 fullWidth: false
-hiddenFromNav: false
+hiddenFromNav: true
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
