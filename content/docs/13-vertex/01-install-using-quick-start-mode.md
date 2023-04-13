@@ -138,46 +138,9 @@ We recommend using the Chrome browser.
      - To install for a POC, click the **Start Now** button under **Quick Start**.
 
 
-
-
 # Validation
 
-The platform installer contains a web application called the Supervisor, to provide detailed progress of the installation. After you power on the VM, follow the steps below to ensure the installation completed successfully.
 
-1. Open the Supervisor application in a browser window by navigating to https://<VM IP Address>:5080.
-
-
-2. Click the **Status** tab to view the installation progress. The page auto-refreshes to provide updated installation progress.
-
-3. When the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console.
-
-  - On-Prem System Console: Initial login: admin/admin
-
-  - Management Console: Tenant credentials to be created and used Configure System for First Time.
-
-
-4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like SMTP setup and certificate management can also be performed from the On-Prem System Console. Most of these are optional and can be performed at any later time.
-
-
-5. To create and activate your first tenant, open the On-Prem System Console application in a browser window by navigating to https://<VM IP Address>/system.
-
-
-6. Log in using username ``admin`` and password ``admin``.
-
-
-7. Reset the default password.
-
-
-8. When prompted, choose Quick Start for the startup mode. 
-
-
-9. Navigate to the Tenant Management section and create your first tenant.
-
-
-10. Copy the tenant activation link and invoke it in a browser window to activate the newly created tenant.
-
-
-11. Enter the desired password and proceed and log in as a tenant into the Management Console.
 
 
 # Next Steps
