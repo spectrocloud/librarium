@@ -1,0 +1,26 @@
+---
+title: "Helm Chart Install References"
+metaTitle: "Helm Chart Install References"
+metaDescription: "Reference page for Pallete Helm chart self-installation values.yaml file parameters."
+icon: ""
+hideToC: true
+fullWidth: true
+---
+
+# Helm Chart Install References
+
+## Overview
+
+ Palette allows installation of multi-node Kubernetes cluster using the Helm chart.
+
+## Prerequisites 
+
+* kubectl is installed.
+* Configure a Container Storage Interface (CSI) for persistent data.
+* Have at least three worker nodes or three untainted control plane nodes.
+* Allocate a minimum of 4 CPUs and 12 GB Memory per node.
+* A custom domain and the ability to update Domain Name System (DNS) records.
+* Access to the Palette Helm Chart. Contact suppport@spectrocloud.com to gain access to the Helm Chart.
+* For AWS EKS, ensure you have the AWS CLI and the kubectl CLI installed.
+
+## YAML Parameters
