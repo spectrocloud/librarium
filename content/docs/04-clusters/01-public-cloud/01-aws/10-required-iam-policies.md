@@ -13,10 +13,17 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Required IAM Policies
 
-Palette requires proper Amazon Web Services (AWS) permissions in order to operate and perform actions on your behalf.
-The following four policies include all the required permissions for provisioning clusters through Palette:
+Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
+The following four policies include all the required permissions for provisioning clusters through Palette.
 
 <br />
+
+<WarningBox>
+
+You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies into a custom-managed policy.
+You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
+
+</WarningBox>
 
 <Tabs>
 
