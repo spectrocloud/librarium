@@ -118,23 +118,22 @@ For production environments, you will migrate the single-node cluster you deploy
   | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for FIPS-enabled Palette and air gapped environments.  | - |
 
 
-6. When you have completed filling out template options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the **Back** button. Click **Finish** when you are done. <br />
+9. When you have completed filling out template options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the **Back** button. Click **Finish** when you are done. <br />
 
   The vSphere Client dashboard is displayed as the OVF begins downloading and the virtual appliance is deployed. The process takes a few minutes to complete.
 
 
-7. To view deployment progress, select the cluster in the Datacenter. 
+10. To view deployment progress, select the cluster in the Datacenter. 
 
 
-8. When deployment status displays **Completed**, power on the appliance.
+11. When deployment status displays **Completed**, power on the appliance.
 
 
-9. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`. <br /><br />
+12. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`. <br /><br />
 
-![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip.png)
+  ![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip.png)
 
-<br /><br />
-
+  <br />
 
   You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
   
@@ -142,31 +141,37 @@ For production environments, you will migrate the single-node cluster you deploy
 
   <br />
 
-6. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the link to proceed.
+13. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the link to proceed.
 
 
-7. Enter default Palette credentials and click **Login**. Default: **admin/ admin**. 
+14. Enter default Palette credentials and click **Login**. Default: **admin/ admin**. 
 
-    <br />
+  <br />
 
-    You will be prompted to reset the password.
+  You will be prompted to reset the password.
 
 
-8. After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
+15. After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
 
 <br />
 
 <Tabs>
 <Tabs.TabPane tab="Enterprise Mode" key="Enterprise">
 
+<br />
 
-  To install Palette Enterprise or Palette VerteX, do the following.
+
+To install Palette Enterprise or Palette VerteX, do the following.
 
 <br />
 
  
-- Click the **Install Now** button displayed under **Enterprise**. The **Summary** window displays.  
+- Click the **Install Now** button displayed under **Enterprise**. The **Summary** window displays. 
 
+<br />
+
+
+![Arrow pointing to the Install Now button for Enterprise mode.](/vertex_enterprise-install-button.png) <br />
 
 - Click the **Migrate to Enterprise** button. 
 
@@ -196,7 +201,7 @@ Validate your setup...
 
 If you are using the installation as a POC, you can now create gateways, cloud accounts, cluster profiles, and launch clusters using the management console. [Need a link here to Clusters docs].
 
-If you are installing for a production environment, you are ready to migrate the initial appliance you deployed to Enterprise mode. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide. 
+If you are installing for a production environment, you are ready to convert the self-hosted single node cluster to a highly available three-node cluster. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide. 
 
 
 
@@ -205,3 +210,8 @@ If you are installing for a production environment, you are ready to migrate the
 
 <br />
 
+
+<br />
+
+
+<br />
