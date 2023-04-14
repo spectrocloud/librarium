@@ -25,5 +25,3 @@ fullWidth: true
 * For AWS EKS, ensure you have the AWS CLI and the kubectl CLI installed.
 
 ## YAML Parameters
-
-##
