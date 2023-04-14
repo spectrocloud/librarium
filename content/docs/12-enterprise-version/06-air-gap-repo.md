@@ -629,6 +629,13 @@ The next step of the installation process is to begin the deployment of an appli
 sudo /bin/airgap-setup.sh
 ```
 
+<br />
+
+<InfoBox>
+
+You can review all the logs related to the setup of the private Spectro repository in  **/tmp/airgap-setup.log**.
+
+</InfoBox>
 
 
 # Validate
@@ -682,5 +689,42 @@ You can validate that the Spectro Repository you deployed is available and ready
   {"metadata":{"lastUpdatedTime":"2023-04-11T21:12:09.647295105Z"},"repositories":[{"name":"amazon-linux-eks","tags":[]},{"name":"aws-efs","tags":[]},{"name":"centos-aws","tags":[]},{"name":"centos-azure","tags":[]},{"name":"centos-gcp","tags":[]},{"name":"centos-libvirt","tags":[]},{"name":"centos-vsphere","tags":[]},{"name":"cni-aws-vpc-eks","tags":[]},{"name":"cni-aws-vpc-eks-helm","tags":[]},{"name":"cni-azure","tags":[]},{"name":"cni-calico","tags":[]},{"name":"cni-calico-azure","tags":[]},{"name":"cni-cilium-oss","tags":[]},{"name":"cni-custom","tags":[]},{"name":"cni-kubenet","tags":[]},{"name":"cni-tke-global-router","tags":[]},{"name":"csi-aws","tags":[]},{"name":"csi-aws-ebs","tags":[]},{"name":"csi-aws-efs","tags":[]},{"name":"csi-azure","tags":[]},{"name":"csi-gcp","tags":[]},{"name":"csi-gcp-driver","tags":[]},{"name":"csi-longhorn","tags":[]},{"name":"csi-longhorn-addon","tags":[]},{"name":"csi-maas-volume","tags":[]},{"name":"csi-nfs-subdir-external","tags":[]},{"name":"csi-openstack-cinder","tags":[]},{"name":"csi-portworx-aws","tags":[]},{"name":"csi-portworx-gcp","tags":[]},{"name":"csi-portworx-generic","tags":[]},{"name":"csi-portworx-vsphere","tags":[]},{"name":"csi-rook-ceph","tags":[]},{"name":"csi-rook-ceph-addon","tags":[]},{"name":"csi-tke","tags":[]},{"name":"csi-topolvm-addon","tags":[]},{"name":"csi-vsphere-csi","tags":[]},{"name":"csi-vsphere-volume","tags":[]},{"name":"edge-k3s","tags":[]},{"name":"edge-k8s","tags":[]},{"name":"edge-microk8s","tags":[]},{"name":"edge-native-byoi","tags":[]},{"name":"edge-native-opensuse","tags":[]},{"name":"edge-native-ubuntu","tags":[]},{"name":"edge-rke2","tags":[]},{"name":"external-snapshotter","tags":[]},{"name":"generic-byoi","tags":[]},{"name":"kubernetes","tags":[]},{"name":"kubernetes-aks","tags":[]},{"name":"kubernetes-coxedge","tags":[]},{"name":"kubernetes-eks","tags":[]},{"name":"kubernetes-eksd","tags":[]},{"name":"kubernetes-konvoy","tags":[]},{"name":"kubernetes-microk8s","tags":[]},{"name":"kubernetes-rke2","tags":[]},{"name":"kubernetes-tke","tags":[]},{"name":"portworx-add-on","tags":[]},{"name":"spectro-mgmt","tags":[]},{"name":"tke-managed-os","tags":[]},{"name":"ubuntu-aks","tags":[]},{"name":"ubuntu-aws","tags":[]},{"name":"ubuntu-azure","tags":[]},{"name":"ubuntu-coxedge","tags":[]},{"name":"ubuntu-edge","tags":[]},{"name":"ubuntu-gcp","tags":[]},{"name":"ubuntu-libvirt","tags":[]},{"name":"ubuntu-maas","tags":[]},{"name":"ubuntu-openstack","tags":[]},{"name":"ubuntu-vsphere","tags":[]},{"name":"volume-snapshot-controller","tags":[]}],"listMeta":{"continue":""}}
   ```
 
+
+8. Next, validate the Spectro repository is available. Replace the IP with your appliance's IP address.
+
+  <br />
+
+  ```shell
+  curl --insecure --user spectro:admin@airgap https://10.1.1.1
+  ```
+
+  Output:
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <title>Welcome to nginx!</title>
+  <style>
+      body {
+          width: 35em;
+          margin: 0 auto;
+          font-family: Tahoma, Verdana, Arial, sans-serif;
+      }
+  </style>
+  </head>
+  <body>
+  <h1>Welcome to nginx!</h1>
+  <p>If you see this page, the nginx web server is successfully installed and
+  working. Further configuration is required.</p>
+
+  <p>For online documentation and support please refer to
+  <a href="http://nginx.org/">nginx.org</a>.<br/>
+  Commercial support is available at
+  <a href="http://nginx.com/">nginx.com</a>.</p>
+
+  <p><em>Thank you for using nginx.</em></p>
+  </body>
+  </html>
+  ```
 
 <br />
