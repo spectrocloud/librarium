@@ -14,53 +14,45 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Using Quick-Start Mode
 
-Palette’s On-Prem Quick-Start Mode is a single-node installation of the Palette platform in vCenter. This installation is typically used for Proof of Concept (POC) deployments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode. 
+Palette’s On-Prem Quick-Start mode is a single-node deployment of a self-hosted Palette instance in vCenter. This single-node installation is typically used for Proof of Concept (POC) deployments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments but serves as a precursory installation for Enterprise mode.  
 
-For production environments, you will migrate the single-node cluster you deploy in Quick-Start mode to Enterprise mode. Enterprise mode deploys two additional nodes to create a three-node cluster for High Availability (HA). For steps on migrating the single-node cluster to Enterprise Mode, refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+For production environments, you will migrate the single-node cluster you deploy in Quick-Start mode to Enterprise mode. Enterprise mode deploys two additional nodes to create a three-node highly available cluster. For steps on how to migrate the single-node cluster to Enterprise mode, refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
 
 # Prerequisites
 
-- Downloaded platform installer Open Virtualization Appliance (OVA) file using the link provided, and upload it into vCenter.
+- Downloaded platform installer Open Virtualization Appliance (OVA) file using the link provided.
 
 
 - Added port permissions to inbound rules for security groups to provide Palette connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication. 
 
+??Do users do this in the FIPS-enabled pack when the profile is created. If so, this doesn't seem to be a prerequisite.??
 
 - A new or existing SSH key pair to access the platform installer for any troubleshooting.  
  
 # Install Palette
 
-The following steps will guide you to deploy the installer for your Palette platform. 
 
-<br />
-
-<InfoBox>
-
-We recommend using the Chrome browser.
-
-</InfoBox>
-
-<br />
-
-1. Log in to the vSphere console and navigate in the left **Main Menu** to **Datacenter** and the folder you will use for your installation.
+1. Log in to vCenter Server by using the vSphere Client.
 
 
-2. Right-click on the folder and select **Deploy OVF Template**.
+2. Navigate to the Datacenter and select the cluster you want to use for the installation. Right-click on the cluster and select **Deploy OVF Template**.
 
 
-3. Provide the URL for the platform installer. ?? Does user receive this URL from Spectro Support ??
+3. Provide the platform installer URL you received from our support team and click on **Next** to proceed.
+
+  You may get a warning message stating the certificate is not trusted. You can ignore this message and select **Next**.
 
 
-4. Type a custom name for your Virtual Machine (VM) in the **Virtual machine name** field, and select the folder that contains the OVF.
+4. Type a custom name for your Virtual Machine (VM) in the **Virtual machine name** field, and select a location for the virtual machine.
 
 
 5. Select a compute resource and click **Next**. Template details will be displayed. Review the details. You can click **Ignore** in the warning box about an untrusted certificate. 
 
 
-6. Select the storage option and click **Next**.
+6. Select your storage device and click **Next**.
 
 
-7. Select a destination network. The installer requires an outgoing internet connection. Select a network that provides this access directly or via a proxy. When you have made your selection, click **Next** to continue.
+7. Choose a network for your appliance. The installer requires an outgoing internet connection. Select a network that provides this access either directly or via a proxy. Click **Next** to proceed.
 
 
 8. Fill out template customization options. Scroll to view all the options. If needed, you can modify the following input fields before completing the setup. <br /><br />
@@ -69,7 +61,7 @@ We recommend using the Chrome browser.
 
   | Parameter | Description |  Default Value |
   | --- | --- | -- |
-  | **SSH Public Key** | The key to enable ssh for the default user. You can create a new public key or use an existing one. The public key will be installed in the installer VM to provide SSH access as user ``ubuntu``, which is useful for troubleshooting purposes. | - |
+  | **SSH Public Key** | The key to enable Secure Shell (SSH) for the default user. You can create a new public key or use an existing one. The public key will be installed in the installer VM to provide SSH access as user ``ubuntu``. This is useful for troubleshooting purposes. | - |
   | **Name** | A name to identify the platform installer. | `spectro1`|
 
   ### Kubernetes Cluster Settings
@@ -83,7 +75,7 @@ We recommend using the Chrome browser.
 
   | Parameter | Description | Default Value |
   | --- | --- | ---|
-  | **Monitoring Console Password** | A password that gives access to the monitoring console after you power on the VM to view installation status and system logs. Access the console at https://<vm_ip_address>:5080. You must append port ``5080`` to the VM IP address. Username: `admin`. You can configure the password or use the default password `admin`.  | `admin:admin` |
+  | **Monitoring Console Password** | A password that gives access to the monitoring console after you power on the VM to view installation status and system logs. You can configure the password or use the default password `admin`, default username: `admin`. After powering on the VM, you can access the console at `https://<vm_ip_address>:5080`. You must append port ``5080`` to the VM IP address. | `admin:admin` |
 
   <br />
 
@@ -95,6 +87,7 @@ We recommend using the Chrome browser.
   | **Static IP DNS** | Comma-separated DNS addresses, required only for static IP allocation. | - |
   | **Static IP search domains** | Comma-separated search domains, required only for static IP allocation. | - |
   | **Static IP Address** | VM IP address to use only if you are using static IP allocation. If you are using default DHCP, leave fields blank. | DHCP |
+  | **Static IP subnet prefix** | Static IP subnet prefix to use only if you are using static IP allocation. For example, `18`. | - |
 
   <br />
 
@@ -103,7 +96,7 @@ We recommend using the Chrome browser.
   
   <InfoBox>
   
-  VerteX installations do not use a proxy.
+  Palette VerteX installations do not use a proxy. You can skip proxy configuration.
 
   </InfoBox>
 
@@ -122,27 +115,34 @@ We recommend using the Chrome browser.
   | --- | --- | --- |
   | **Password** | Repository password. If you used the default earlier, type `admin`. | - |
   | **User Name** | Repository user name. If you used the default earlier, type `admin`. | - |
-  | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for air gapped environments.  | - |
+  | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for FIPS-enabled Palette and air gapped environments.  | - |
 
 
-6. When you are done filling out options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the  **Back** button. Click **Finish** when you are done.
+6. When you have completed filling out template options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the **Back** button. Click **Finish** when you are done. <br />
+
+  The vSphere Client dashboard is displayed as the OVF begins downloading and the virtual appliance is deployed. The process takes a few minutes to complete.
 
 
-  The OVF begins downloading and the virtual appliance is deployed. 
+7. To view deployment progress, select the cluster in the Datacenter. 
 
 
-7. When deployment status displays **Completed** in the bottom panel of the vSphere Client, power on the appliance in the **Summary** tab.
+8. When deployment status displays **Completed**, power on the appliance.
 
 
-8. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`.
+9. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`. <br /><br />
 
 ![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip.png)
 
-  The On-prem supervisor console displays a **Status** tab. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm all of these have processed successfully. This may take a few minutes. When processing is complete and **Status** displays **Done**, URLs for the On-Prem System Console and the Management Console are displayed.
+<br /><br />
+
+
+  You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
+  
+  The On-prem supervisor console displays a **Status** tab. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm all of these have processed successfully. This will take about 45 minutes. When processing is complete and **Status** displays **Done**, URLs for the On-Prem System Console and the Management Console are displayed.
 
   <br />
 
-6. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the **Proceed** link.
+6. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the link to proceed.
 
 
 7. Enter default Palette credentials and click **Login**. Default: **admin/ admin**. 
