@@ -44,6 +44,7 @@ Follow these steps to migrate the single-node cluster you deployed to a three-no
 
   The server launches the enterprise cluster. This process adds two nodes to the cluster, making it a three-node cluster.<br /><br />
 
+
 2. Configure the IP pool. You can choose **Range** and enter the start and end of the IP address range. The address range should have at least six IP addresses for the installation and ongoing management. Alternatively, you can choose **Subnet** and enter the subnet address.
 
 
@@ -70,7 +71,9 @@ Follow these steps to migrate the single-node cluster you deployed to a three-no
 
 10. The Enterprise Cluster Migration dashboard displays the Cluster Status **Provisioning**. Provisioning takes about 45 minutes.
 
-  If you are installing VerteX, note that the Kubernetes layer in the cluster profile displays **(Fips). 
+  If you are installing VerteX, note that the Kubernetes layer in the cluster profile displays **(Fips).
+
+  ![Screenshot of a FIPS-enabled cluster profile.](/vertex_cluster-profile-k8s-fips.png) 
 
 
 
