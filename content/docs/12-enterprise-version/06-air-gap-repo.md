@@ -1,6 +1,6 @@
 ---
 title: "Install in an Air Gap Environment"
-metaTitle: "Air Gap Mode"
+metaTitle: "Install in an Air Gap Environment"
 metaDescription: "Learn how to install Palette into an air gap environment."
 icon: ""
 hideToC: false
@@ -14,11 +14,11 @@ import Tabs from 'shared/components/ui/Tabs';
 # Overview
 
 
-You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an airgap installation. 
+You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an *air gap* installation. 
 
 In a standard Palette installation, the following artifacts are downloaded by default from the public Palette repository.
 
-* Palette platform manifests.
+* Palette platform manifests and required platform packages.
 
 
 * Container images for core platform components and 3rd party dependencies.
@@ -27,7 +27,7 @@ In a standard Palette installation, the following artifacts are downloaded by de
 * Palette Packs.
 
 
-The installation process changes a bit in an airgap environment due to the lack of internet access. Before the primary Palette installation step, you must download the three required Palette artifacts mentioned above. The other significant change is that Palette's default public repository is not used. Instead, a private repository supports all Palette operations pertaining to storing images and packages. 
+The installation process changes a bit in an air gap environment due to the lack of internet access. Before the primary Palette installation step, you must download the three required Palette artifacts mentioned above. The other significant change is that Palette's default public repository is not used. Instead, a private repository supports all Palette operations pertaining to storing images and packages. 
 
 The following diagram is a high-level overview of the order of operations required to deploy a self-hosted instance of Palette in an airgap environment.
 
@@ -71,7 +71,7 @@ This guide will focus on the first two milestones as the remaining ones are cove
     * 8000
 
 
-* Request the Palette self-hosted installer image and the Palette airgap installer image. To request the installer images, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+* Request the Palette self-hosted installer image and the Palette air gap installer image. To request the installer images, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
 
     - Your full name
     - Organization name (if applicable)
@@ -86,7 +86,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 <br />
 
 
-# Deploy Air-Gapped Appliance
+# Deploy Air Gapped Appliance
 
 
 1. Log in to vCenter Server by using the vSphere Client.
@@ -98,7 +98,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 3. Select the airgap OVA installer image you downloaded after receiving guidance from our support team.
 
 
-4. Select the folder where you want to install the Virtual Machine (VM) and assign a name to the virtual machine.
+4. Select the folder where you want to install the Virtual Machine (VM) and assign a name to the VM.
 
 
 5. Next, select the compute resource.
@@ -110,7 +110,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 7. Select your storage device and storage policy. Click on **Next** to proceed.
 
 
-8. Choose the network your appliance should use and select **Next**.
+8. Choose a network for your appliance and select **Next**.
 
 
 9. Fill out the remaining template customization options. You can modify the following input fields. <br /><br />
@@ -156,7 +156,7 @@ If you have any questions or concerns, please feel free to contact support@spect
             addresses: [10.10.128.8] # your DNS nameserver IP address.
   ```
 
-  To exit Vi, press the **ESC** key and type `:wq`, followed by the **Enter** key. <br /> <br />
+  To exit Vi, press the **ESC** key and type `:wq` followed by the **Enter** key. <br /> <br />
 
 13. Issue the `netplan` command to update the network settings.  
 
@@ -185,7 +185,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   Details:
     -------
-  Spectro Cloud Repostory
+  Spectro Cloud Repository
   UserName: spectro
   Password: admin@airgap
   Location: https://10.10.249.12
@@ -358,7 +358,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <br />
 
-17. If you will be using Edge deployments then go ahead and download the packages you believe you will need. If you are not planning on using Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
+17. If you will be using Edge deployments then go ahead and download the packages your Edge deployments will need. If you are not planning on using Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
 
 
 <br />
@@ -633,7 +633,7 @@ sudo /bin/airgap-setup.sh
 
 # Validate
 
-You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance an SSH key then you can skip to step six.
+You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 
 1. Log in to vCenter Server by using the vSphere Client.
 
@@ -647,7 +647,13 @@ You can validate that the Spectro Repository you deployed is available and ready
 4. Click on **Launch Web Console** to access the terminal.
 
 
-5. Log in with the user `ubuntu` and the user password you specified during the installation.
+5. Log in with the user `ubuntu` and the user password you specified during the installation. If you are using SSH, use the following command but ensure you specify the path to your SSH private key and replace the IP address with your appliance's static IP.
+
+  <br />
+
+  ```shell
+  ssh --identity_file ~/path/to/your/file ubuntu@10.1.1.1
+  ```
 
 
 6. Verify the registry server is up and available. Replace the `10.1.1.1` value with your appliance's IP address.
