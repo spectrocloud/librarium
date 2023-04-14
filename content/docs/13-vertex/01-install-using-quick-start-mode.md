@@ -136,7 +136,7 @@ We recommend using the Chrome browser.
 
 8. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`.
 
-![Arrow pointing to location of VM IP address in vSphere](/vertex_virtual-machine-ip.png)
+![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip.png)
 
   The On-prem supervisor console displays a **Status** tab. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm all of these have processed successfully. This may take a few minutes. When processing is complete and **Status** displays **Done**, URLs for the On-Prem System Console and the Management Console are displayed.
 
@@ -172,7 +172,7 @@ We recommend using the Chrome browser.
 
 <br />
 
-![Arrow pointing to Migrate to Enterprise button.](/vertex_migrate-to-enterprise.png)
+![Arrow pointing to the Migrate to Enterprise button.](/vertex_migrate-to-enterprise.png)
 
 <br />
   
