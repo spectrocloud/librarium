@@ -146,6 +146,8 @@ For production environments, you will migrate the single-node cluster you deploy
 
   ![The supervisor console shows VM deployment status and URLs for the On-prem System Console and Management Console.](/vertex_vertex-successful-vm-deploy-and-urls.png)
 
+  <br />
+
 13. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the link to proceed.
 
 
@@ -156,12 +158,12 @@ For production environments, you will migrate the single-node cluster you deploy
   You will be prompted to reset the password.
 
 
-15. After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or **Quick Start** mode.
+15. After you successfully reset the Palette password, the **Choose Installation Mode** window displays. You can install Palette in **Enterprise** mode or in **Quick Start** mode. Quick Start is best for Proof of Concept (POC) installations.
 
 <br />
 
 <Tabs>
-<Tabs.TabPane tab="Enterprise Mode" key="Enterprise">
+<Tabs.TabPane tab="VerteX and Enterprise Mode" key="Enterprise">
 
 <br />
 
@@ -204,9 +206,13 @@ Validate your setup...
 
 # Next Steps
 
+If you are installing for a production environment, you are ready to convert the self-hosted single node cluster to a highly available three-node cluster. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide.
+
 If you are using the installation as a POC, you can now create gateways, cloud accounts, cluster profiles, and launch clusters using the management console. [Need a link here to Clusters docs].
 
-If you are installing for a production environment, you are ready to convert the self-hosted single node cluster to a highly available three-node cluster. Refer to the [Migrate Cluster to Enterprise Mode](/vertex-edition/migrate-cluster-to-enterprise-mode) guide. 
+# Resources
+
+- [Migrate Cluster to Enterprise Mode](/vertex/migrate-cluster-to-enterprise-mode)
 
 
 

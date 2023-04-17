@@ -13,11 +13,18 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Migrate Cluster to Enterprise Mode
 
-...Enterprise mode stands up two additional virtual appliance instances to provide High Availability (HA)...
+When you installed Palette using steps in [Install Using Quick-Start Mode](/vertex/install-using-quick-start-mode), a single-node cluster was deployed. Enterprise mode stands up two additional virtual appliance instances to provide High Availability (HA) for your production environment.  
+
+Data from the installer VM is migrated to the newly created enterprise cluster. If any tenants were created prior to the enterprise cluster migration, which may be the case if the system was initially used in Quick-Start mode for a POC, those tenants are migrated to the enterprise cluster.
+
+Follow steps below to migrate the single-node cluster to a three-node cluster. 
 
 # Prerequisites
 
-- Completed deploying the Open Virtualization Format (OVF) installation and have a working single-node cluster.
+- Completed deploying the Open Virtualization Format (OVF) installation.
+
+
+- Configured vSphere settings.
 
 
 - A valid cloud account.
@@ -26,64 +33,68 @@ import InfoBox from 'shared/components/InfoBox';
 - An IP pool with a minimum of six unused IPs.
 
 
-- Configured vSphere settings.
-
-
-
 # Migrate Cluster
 
-Follow these steps to migrate the single-node cluster you deployed to a three-node cluster for High Availability (HA) in your production environment.
+1. Enter your vCenter IP address and credentials, and ensure the **Use self-signed certificate** setting is enabled, then click the **Validate Account** button. 
 
-<br />
-
-1. Enter your vCenter IP address and credentials, and ensure the **Use self-signed certificate** setting is enabled, then click the **Validate** button. 
-
-  When **The cloud account is valid!** displays, click **Next**.  
-
-  ??Had to do ``nslookup``. Does it have to be an IP address??<br />   
+  When your account is validated, click **Next**.     
 
   The server launches the enterprise cluster. This process adds two nodes to the cluster, making it a three-node cluster.<br /><br />
 
 
-2. Configure the IP pool. You can choose **Range** and enter the start and end of the IP address range. The address range should have at least six IP addresses for the installation and ongoing management. Alternatively, you can choose **Subnet** and enter the subnet address.
+2. Configure the IP pool. You can enter the IPs to be used for Enterprise cluster VMs as a `Range` or a `Subnet`. The address range should have at least six IP addresses for the installation and ongoing management.
 
 
-3. Enter `18` as the **Subnet Prefix**. 
+3. Enter the **Subnet Prefix**. For example `18`.
 
 
-4. Enter the **Gateway** IP address, **Nameserver** addresses, and click **Next**.
+4. Enter the **Gateway** IP and **Nameserver** addresses and click **Next**.
 
 
-5. Choose where to deploy the three control plane nodes. Select **Datacenter** in the **Datacenter drop-down Menu**. Select the folder you are using for your installation in the **Folder drop-down Menu**.
+5. Choose where to deploy the three control plane nodes. Use drop-down menus to select **Datacenter** and the folder that contains your VM deployment.
 
 
-6. Select your compute cluster from the **Compute Cluster drop-down menu**, and select your resource pool from the **Resource Pool drop-down Menu**.
+6. Select your compute cluster, resource pool, datastore, and network. For high availability, you may choose to distribute the three VMs across multiple compute clusters. If this is desired, click **Add Domain** to enter multiple sets of these properties.
 
 
-7. Select **vsanDatastore** in the **Datastore drop-down menu**, and select your network from the **Network drop-down Menu**.
+7. Select an installer size. 
 
 
-8. Select an installer size. We recommend **Large** for production environments. 
+8. Add your SSH key and optional NTP servers, then click **Done**.
 
 
-9. Copy your SSH key into the **SSH Keys** field, and click **Done**.
+9. The Enterprise Cluster Migration dashboard displays the Cluster Status **Provisioning**. Provisioning takes about 10 minutes. You can view the progress in the **Events** tab. The **Nodes** tab displays the three nodes. 
 
-
-10. The Enterprise Cluster Migration dashboard displays the Cluster Status **Provisioning**. Provisioning takes about 45 minutes.
-
-  If you are installing VerteX, note that the Kubernetes layer in the cluster profile displays **(Fips).
+  If you are installing VerteX, note that the Kubernetes layer in the cluster profile displays **Kubernetes (Fips)**.
 
   ![Screenshot of a FIPS-enabled cluster profile.](/vertex_cluster-profile-k8s-fips.png) 
 
-
-
 # Validation
 
+You can validate that a three-node Kubernetes cluster is launched and Palette Platform is deployed on it. 
+
+<br />
+
+1. Log in to vCenter Server by using the vSphere Client.
+
+
+2. Navigate to your Datacenter and locate your VM. Click on the VM to access its details page. 
+
+
+3. Power on the VM. ??Is this correct??
+
+
+4. Click on **Launch Web Console** to access the terminal. ??Is this correct??
 
 
 # Next Steps
 
-Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. Need a link here to Clusters docs. Create more tenants??
+Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. To learn how to create profiles and apply them clusters, check out [Cluster profiles](/cluster-profiles/task-define-profile) and [Clusters](/clusters)guides. 
+
+If you are deploying a FIPS-enabled cluster, refer to ... 
+
+
+# Resources 
 
 <br />
 
