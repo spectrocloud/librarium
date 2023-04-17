@@ -32,7 +32,7 @@ The installation process changes a bit in an air gap environment due to the lack
 The following diagram is a high-level overview of the order of operations required to deploy a self-hosted instance of Palette in an airgap environment.
 
 
-![An architecture diagram outlining the five different event milestons](/enterprise-version_air-gap-repo_overview-order-diagram.png)
+![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.png)
 
 
 The airgap installation can be simplified into five major phases. 
@@ -117,12 +117,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   | Parameter | Description |  Default Value |
   | --- | --- | -- |
-  | Encoded user-data | In order to fit into an XML attribute, this value is base64 encoded. This value will be decoded, and then processed normally as user-data. | - |
-  | ssh public keys | This field is optional but indicates that the instance should populate the default user's `authorized_keys` with the provided public key. | -|
-  | Default User's password|  Setting this value allows password-based login. The password will be good for only a single login.  If set to the string `RANDOM` then a random password will be generated, and written to the console. | - |
-  | A Unique Instance ID for this instance|  Specifies the instance id. This is required and used to determine if the machine should take "first boot" actions| `id-ovf`|
-  |hostname| Specifies the hostname for the appliance. | `ubuntuguest` |
-  |URL to seed instance data from| This field is optional but indicates that the instance should 'seed' user-data and meta-data from the given URL.| -|
+  | **Encoded user-data** | In order to fit into an XML attribute, this value is base64 encoded. This value will be decoded, and then processed normally as user-data. | - |
+  | **ssh public keys** | This field is optional but indicates that the instance should populate the default user's `authorized_keys` with the provided public key. | -|
+  | **Default User's password** |  Setting this value allows password-based login. The password will be good for only a single login.  If set to the string `RANDOM` then a random password will be generated, and written to the console. | - |
+  | **A Unique Instance ID for this instance** |  Specifies the instance id. This is required and used to determine if the machine should take "first boot" actions| `id-ovf`|
+  | **Hostname** | Specifies the hostname for the appliance. | `ubuntuguest` |
+  | **URL to seed instance data from** | This field is optional but indicates that the instance should 'seed' user-data and meta-data from the given URL.| -|
 
 10. Click on **Next** to complete the deployment wizard. Upon completion, the cloning process will begin. The cloning process takes a few minutes to complete.
 
@@ -208,7 +208,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   export no_proxy=.example.dev,10.0.0.0/8
   ```
 
-16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and Kubeadm pages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
+16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and kubeadm pages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
 
   <br />
 
