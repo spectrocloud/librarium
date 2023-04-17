@@ -257,10 +257,13 @@ To validate that the Prometheus agent is successfully installed and sending metr
 7. In the Grafana dashboard, click on the left **Main Menu** and click on **Dashboards**. Palette exposes a set of Grafana dashboards by default.
 
 
-8. Select the **Spectro Cloud/ Kubernetes / Views / Global** dashboard.
+8. Select the **Spectro Cloud/ Spectro Clusters** dashboard.
 
 
 9. Use the **cluster** filter and review the list of available clusters. Select your newly deployed cluster to review its metrics.
+
+
+![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
 
 
 Use the other dashboard created by Palette to learn more about your environment.
