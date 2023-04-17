@@ -37,7 +37,7 @@ This installation method is common in secure environments with restricted networ
 - A custom domain and the ability to update Domain Name System (DNS) records.
 
 
-- Access to the Palette Helm Chart. Contact suppport@spectrocloud.com to gain access to the Helm Chart.
+- Access to the Palette Helm Chart. Contact support@spectrocloud.com to gain access to the Helm Chart.
 
 
 - For AWS EKS, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) and the [kubectl CLI](https://github.com/weaveworks/eksctl#installation) installed. 
@@ -108,21 +108,9 @@ Choose the installation steps for your target environment. The steps in the gene
     kubectl get service ingress-nginx-controller --namespace nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you will need it for future upgrades.
 
   <br />
-
-  <InfoBox>
-
-  To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
-
-  <br />
-
-  ```shell
-  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-  ```
-
-  </InfoBox>
 
 </Tabs.TabPane> 
 
@@ -279,21 +267,9 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
     kubectl get service ingress-nginx-controller --namespace nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you will need it for future upgrades.
 
 <br />
-
-<InfoBox>
-
-To upgrade Palette with a new Helm release, or to modify the values used in the installation, use the following command. 
-
-  <br />
-
-  ```shell
-  helm upgrade palette /path/to/chart.tgz --file /path/to/values.yaml
-  ```
-
-</InfoBox>
 
 </Tabs.TabPane> 
 
@@ -319,6 +295,51 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
   ```
 
 </WarningBox>
+
+
+# Upgrade Palette
+
+
+
+To upgrade Palette with a new Helm release, use the following steps. <br /> <br />
+
+1. Download the new version of the Helm Chart.
+
+
+
+2. Extract the new **values.yaml** file from the Helm Chart with the following command:
+
+    <br />
+
+    ```shell
+    tar xzvf /path/to/chart.tgz spectro-mgmt-plane/values.yaml
+    ```
+
+
+3. Compare the new **values.yaml** against the original **values.yaml** you used for the initial Palette installation. Address any new parameters added to the values file.
+
+
+
+
+4. Issue the following command to upgrade Palette. Use the same **values.yaml** file you used for the Palette installation. 
+
+    <br />
+
+    ```shell
+    helm upgrade palette /path/to/chart.tgz --file /path/to/orginal_values.yaml
+    ```
+ 
+
+## Post-Install Configuration Values
+
+The values you specified in the **values.yaml** file all fall under the parameter section `values.config` and are stored in the `configserver-cm` ConfigMap. 
+
+After the installation, if you need to change any configuration values under `values.config` in the **values.yaml** file, you must use the Palette API.
+When you use the `helm upgrade` command, internal system configurations stored in the Kubernetes ConfigMap `configserver-cm` will display as updated, but Palette will not apply the new values. Palette only accepts changes to these configuration values if they are submitted via API.
+
+If you find yourself in this scenario, contact our support team by emailing us at support@spectrocloud.com for additional guidance.
+
+
 
 # Next Steps
 
