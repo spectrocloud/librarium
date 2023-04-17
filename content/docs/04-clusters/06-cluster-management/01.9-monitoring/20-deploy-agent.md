@@ -42,7 +42,7 @@ The steps below will teach you how to create a Prometheus agent cluster add-on p
 5. In the following screen, select **Add New Pack**.
 
 
-6. Use the following information to find the Prometheus Operator pack.
+6. Use the following information to find the Prometheus Agent pack.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Agent
@@ -137,7 +137,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 5. In the following screen, select **Add New Pack**.
 
 
-6. Use the following information to find the Prometheus Operator pack.
+6. Use the following information to find the Prometheus Agent pack.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Agent

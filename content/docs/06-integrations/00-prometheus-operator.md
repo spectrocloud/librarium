@@ -36,6 +36,165 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
 ## Versions Supported
 <Tabs>
 
+<Tabs.TabPane tab="45.4.x" key="45.4.x">
+
+## Prerequisites
+
+* Kubernetes v1.16 or greater.
+
+
+* The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
+
+  Recommended size:
+  - 8 CPU 
+  - 16 GB Memory
+  - 20 GB Storage. 
+ 
+ 
+  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:
+
+  Each added agent:
+    - 0.1 CPU
+    - 250 MiB Memory
+    - 1 GB Storage.
+
+  Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+
+## Parameters
+
+The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn) documentation for details.
+
+The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
+
+<br />
+
+```yaml
+charts:
+  kube-prometheus-stack:
+    grafana:
+      adminPassword: ""
+```
+
+Use the `grafana.adminPassword` parameter to assign a password to the Grafana admin user `admin`. 
+
+Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
+
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+
+Review the usage section below to learn more about each preset option.
+
+<br />
+
+## Usage
+
+Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+
+<br />
+
+#### Email Alerts
+
+You can configure the Prometheus server to send email alerts to a set of contacts. Toggle the **Email Alerts** button to enable email alerting. Update the `alertmanager.config.receivers` settings with all the required email setting values.
+
+<br />
+
+```yaml
+charts:
+  kube-prometheus-stack:
+    alertmanager:
+      config:
+        receivers:
+          - name: email-alert
+            email_configs:
+              - to: <reciever>@<domainname>.com
+                send_resolved: true
+                from: <sender>@<domainname>.com
+                smarthost: smtp.<domainname>.com:587
+                auth_username: <sender>@<domainname>.com
+                auth_identity: <sender>@<domainname>.com
+                auth_password: <sender_passwd>
+```
+
+Refer to the [Prometheus Alertmanager Configuration](https://prometheus.io/docs/alerting/latest/configuration/) documentation to learn more about Alertmanager.
+
+<br />
+
+#### Grafana Ingress
+
+You can enable an ingress endpoint for Grafana that will deploy an NGINX ingress controller. This feature can be used to enable HTTPS and require authentication for all Prometheus API requests. 
+
+If you do not enable the ingress option, then by default a service with a load balancer will be created that exposes port 80. 
+
+
+Toggle the **Enable** button to enable the use of Ingress.
+
+<br />
+
+
+#### Thanos SideCar
+
+[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale, distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale horizontally without the risk of using up local storage space.
+
+
+Toggle the **Enable** button to enable the use of Thanos.
+
+<br />
+
+#### Object Store
+
+Select the Thanos object storage type you will use. Review the `thanos.objstoreConfig` parameters to configure the use of object storage with Thanos. Refer to the [Thanos Object Storage](https://github.com/thanos-io/thanos/blob/main/docs/storage.md) documentation to learn more about how to configure each object storage.
+
+<br />
+
+```yaml
+charts:
+  kube-prometheus-stack:
+    prometheus:
+      prometheusSpec:
+        thanos:
+          objstoreConfig:
+```
+
+#### Thanos Ruler Object Store
+
+By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different object storage for event data.  Refer to the [Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+
+
+<br />
+
+#### Remote Monitoring
+
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
+
+
+The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine-tune settings for your environment.
+
+Refer to the [Prometheus Remote Write](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
+
+To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
+
+<br />
+
+#### Palette Resources Monitoring
+
+You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/) guide to learn more.
+
+<br />
+
+### Dependencies
+
+The Prometheus Operator pack installs the following dependencies: 
+
+* [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+* [Prometheus](https://prometheus.io/)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
+* [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
+* [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
+* and the service monitors to scrape internal Kubernetes components.
+
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="44.3.x" key="44.3.x">
 
 ## Prerequisites
@@ -629,7 +788,7 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "pack-info" {
   name         = "prometheus-opeartor"
-  version      = "44.3.0"
+  version      = "45.4.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
@@ -639,10 +798,17 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 - [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
 
+
 - [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
+
 
 - [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/)
 
+
 - [Thanos & Prometheus](https://prometheus-operator.dev/docs/operator/thanos/)
 
+
 - [Prometheus FAQ](https://prometheus.io/docs/introduction/faq)
+
+
+- [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics)
