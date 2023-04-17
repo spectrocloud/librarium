@@ -109,9 +109,9 @@ Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *
 
 The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
 - **Operating System (OS)** pack type -> *ubuntu-aws LTS__20.4.x*
-- **Kubernetes** pack type -> *Kubernetes 1.21.x*
+- **Kubernetes** pack type -> *Kubernetes 1.24.x*
 - **Network** pack type -> *cni-calico 3.24.x* (Calico)
-- **Storage** pack type -> *csi-aws 1.0.x* (Container Storage Interface - CSI)
+- **Storage** pack type -> *csi-aws-ebs 1.16.x* (Amazon Elastic Block Store Container Storage Interface)
 
 We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
 Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
@@ -863,8 +863,8 @@ Create the file data.tf and insert:
 
 ```terraform
 data "spectrocloud_pack" "csi" {
-  name    = "csi-aws"
-  version = "1.0.0"
+  name    = "csi-aws-ebs"
+  version = "1.16.0"
 }
 data "spectrocloud_pack" "cni" {
   name    = "cni-calico"
@@ -872,7 +872,7 @@ data "spectrocloud_pack" "cni" {
 }
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes"
-  version = "1.21.14"
+  version = "1.24.10"
 }
 data "spectrocloud_pack" "ubuntu" {
   name    = "ubuntu-aws"
