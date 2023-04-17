@@ -101,7 +101,7 @@ function generateHeadingId(children) {
     }, "");
   }
 
-  return title.replace(/\s+/g, "").toLowerCase();
+  return title?.replace?.(/\s+/g, "")?.toLowerCase?.();
 }
 
 function Pre(props) {
