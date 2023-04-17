@@ -35,11 +35,11 @@ The following diagram is a high-level overview of the order of operations requir
 ![An architecture diagram outlining the five different event milestons](/enterprise-version_air-gap-repo_overview-order-diagram.png)
 
 
-The airgap installation can be simplified into five major milestones. 
+The airgap installation can be simplified into five major phases. 
 
 <br />
 
-1. The first phase of installation is to download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository that supports the airgap environment.
+1. Download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository that supports the airgap environment.
 
 
 2. The private Spectro Cloud repository is initialized, and all the Palette-required artifacts are downloaded and available.
@@ -54,7 +54,7 @@ The airgap installation can be simplified into five major milestones.
 5. Palette is ready for usage.
 
 
-This guide focuses on the first installation phase, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
+This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
 
 
 # Prerequisites
@@ -358,7 +358,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <br />
 
-17. If you will be using Edge deployments then go ahead and download the packages your Edge deployments will need. If you are not planning on using Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
+17. If you will be using Edge deployments, go ahead and download the packages your Edge deployments will need. If you are not planning to use Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
 
 
 <br />
