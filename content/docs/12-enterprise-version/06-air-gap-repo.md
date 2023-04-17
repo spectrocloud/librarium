@@ -39,7 +39,7 @@ The airgap installation can be simplified into five major milestones.
 
 <br />
 
-1. The first milestone is to download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository supporting the airgap environment.
+1. The first phase of installation is to download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository that supports the airgap environment.
 
 
 2. The private Spectro Cloud repository is initialized, and all the Palette-required artifacts are downloaded and available.
@@ -54,12 +54,12 @@ The airgap installation can be simplified into five major milestones.
 5. Palette is ready for usage.
 
 
-This guide will focus on the first two milestones as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
+This guide focuses on the first installation phase, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
 
 
 # Prerequisites
 
-* The following minimum resources are required for deploying Palette.
+* The following minimum resources are required to deploy Palette.
     * 2 vCPU
     * 4 GB of Memory
     * 100 GB of Storage. Storage sizing depends on your intended update frequency and data retention model. <br /> <br />
@@ -104,7 +104,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 5. Next, select the compute resource.
 
 
-6. Review the details page. You may get a warning message stating the certificate is not trusted, you can ignore this message and select **Next**.
+6. Review the details page. You may get a warning message stating the certificate is not trusted. You can ignore the message and click **Next**.
 
 
 7. Select your storage device and storage policy. Click on **Next** to proceed.
@@ -117,12 +117,12 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   | Parameter | Description |  Default Value |
   | --- | --- | -- |
-  | Encoded user-data | In order to fit into a xml attribute, this value is base64 encoded . This value will be decoded, and then processed normally as user-data. | - |
-  | ssh public keys | This field is optional, but indicates that the instance should populate the default user's `authorized_keys` with this publick key provided | -|
-  | Default User's password|  If set, the default user's password will be set to this value to allow password based login.  The password will be good for only a single login.  If set to the string `RANDOM` then a random password will be generated, and written to the console. | - |
+  | Encoded user-data | In order to fit into an XML attribute, this value is base64 encoded. This value will be decoded, and then processed normally as user-data. | - |
+  | ssh public keys | This field is optional but indicates that the instance should populate the default user's `authorized_keys` with the provided public key. | -|
+  | Default User's password|  Setting this value allows password-based login. The password will be good for only a single login.  If set to the string `RANDOM` then a random password will be generated, and written to the console. | - |
   | A Unique Instance ID for this instance|  Specifies the instance id. This is required and used to determine if the machine should take "first boot" actions| `id-ovf`|
   |hostname| Specifies the hostname for the appliance. | `ubuntuguest` |
-  |Url to seed instance data from| This field is optional, but indicates that the instance should 'seed' user-data and meta-data from the given url.| -|
+  |URL to seed instance data from| This field is optional but indicates that the instance should 'seed' user-data and meta-data from the given URL.| -|
 
 10. Click on **Next** to complete the deployment wizard. Upon completion, the cloning process will begin. The cloning process takes a few minutes to complete.
 
@@ -214,7 +214,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   <WarningBox>
 
-  You must download the three following resources. The credentials and download URL will be provided to you by the support team.
+  You must download the following three resources. Our support team will provide you with the credentials and download URL.
   Click on each tab to learn more about each resource and steps for downloading.
 
   </WarningBox>
@@ -638,10 +638,11 @@ You can review all the logs related to the setup of the private Spectro reposito
 </InfoBox>
 
 
-# Validate
+# Validation
 
 You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 
+<br />
 1. Log in to vCenter Server by using the vSphere Client.
 
 
@@ -654,7 +655,7 @@ You can validate that the Spectro Repository you deployed is available and ready
 4. Click on **Launch Web Console** to access the terminal.
 
 
-5. Log in with the user `ubuntu` and the user password you specified during the installation. If you are using SSH, use the following command but ensure you specify the path to your SSH private key and replace the IP address with your appliance's static IP.
+5. Log in with the user `ubuntu` and the user password you specified during the installation. If you are using SSH, use the following command, and ensure you specify the path to your SSH private key and replace the IP address with your appliance's static IP.
 
   <br />
 
@@ -671,7 +672,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   curl --insecure https://10.1.1.1:5000/health
   ```
 
-  Output:
+  Example Output:
   ```shell
   {"status":"UP"}
   ```
@@ -684,7 +685,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   curl --insecure --user admin:admin@airgap https://10.1.1.1:5000/v1/_catalog
   ```
 
-  Output:
+  Example Output:
   ```
   {"metadata":{"lastUpdatedTime":"2023-04-11T21:12:09.647295105Z"},"repositories":[{"name":"amazon-linux-eks","tags":[]},{"name":"aws-efs","tags":[]},{"name":"centos-aws","tags":[]},{"name":"centos-azure","tags":[]},{"name":"centos-gcp","tags":[]},{"name":"centos-libvirt","tags":[]},{"name":"centos-vsphere","tags":[]},{"name":"cni-aws-vpc-eks","tags":[]},{"name":"cni-aws-vpc-eks-helm","tags":[]},{"name":"cni-azure","tags":[]},{"name":"cni-calico","tags":[]},{"name":"cni-calico-azure","tags":[]},{"name":"cni-cilium-oss","tags":[]},{"name":"cni-custom","tags":[]},{"name":"cni-kubenet","tags":[]},{"name":"cni-tke-global-router","tags":[]},{"name":"csi-aws","tags":[]},{"name":"csi-aws-ebs","tags":[]},{"name":"csi-aws-efs","tags":[]},{"name":"csi-azure","tags":[]},{"name":"csi-gcp","tags":[]},{"name":"csi-gcp-driver","tags":[]},{"name":"csi-longhorn","tags":[]},{"name":"csi-longhorn-addon","tags":[]},{"name":"csi-maas-volume","tags":[]},{"name":"csi-nfs-subdir-external","tags":[]},{"name":"csi-openstack-cinder","tags":[]},{"name":"csi-portworx-aws","tags":[]},{"name":"csi-portworx-gcp","tags":[]},{"name":"csi-portworx-generic","tags":[]},{"name":"csi-portworx-vsphere","tags":[]},{"name":"csi-rook-ceph","tags":[]},{"name":"csi-rook-ceph-addon","tags":[]},{"name":"csi-tke","tags":[]},{"name":"csi-topolvm-addon","tags":[]},{"name":"csi-vsphere-csi","tags":[]},{"name":"csi-vsphere-volume","tags":[]},{"name":"edge-k3s","tags":[]},{"name":"edge-k8s","tags":[]},{"name":"edge-microk8s","tags":[]},{"name":"edge-native-byoi","tags":[]},{"name":"edge-native-opensuse","tags":[]},{"name":"edge-native-ubuntu","tags":[]},{"name":"edge-rke2","tags":[]},{"name":"external-snapshotter","tags":[]},{"name":"generic-byoi","tags":[]},{"name":"kubernetes","tags":[]},{"name":"kubernetes-aks","tags":[]},{"name":"kubernetes-coxedge","tags":[]},{"name":"kubernetes-eks","tags":[]},{"name":"kubernetes-eksd","tags":[]},{"name":"kubernetes-konvoy","tags":[]},{"name":"kubernetes-microk8s","tags":[]},{"name":"kubernetes-rke2","tags":[]},{"name":"kubernetes-tke","tags":[]},{"name":"portworx-add-on","tags":[]},{"name":"spectro-mgmt","tags":[]},{"name":"tke-managed-os","tags":[]},{"name":"ubuntu-aks","tags":[]},{"name":"ubuntu-aws","tags":[]},{"name":"ubuntu-azure","tags":[]},{"name":"ubuntu-coxedge","tags":[]},{"name":"ubuntu-edge","tags":[]},{"name":"ubuntu-gcp","tags":[]},{"name":"ubuntu-libvirt","tags":[]},{"name":"ubuntu-maas","tags":[]},{"name":"ubuntu-openstack","tags":[]},{"name":"ubuntu-vsphere","tags":[]},{"name":"volume-snapshot-controller","tags":[]}],"listMeta":{"continue":""}}
   ```
