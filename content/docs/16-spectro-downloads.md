@@ -90,7 +90,7 @@ v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linu
 
 |Version|Docker Image| Optical Disk Image (ISO) |
 |---|---|--|
-|3.3.2     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.2/stylus-v3.2.0-amd64.iso) |
+|3.3.2     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.2/stylus-v3.3.2-amd64.iso) |
 |3.3.0     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
 
 
