@@ -38,15 +38,19 @@ For production environments, you will migrate the single-node cluster you deploy
 2. Navigate to the Datacenter and select the cluster you want to use for the installation. Right-click on the cluster and select **Deploy OVF Template**.
 
 
-3. Provide the platform installer URL you received from our support team and click on **Next** to proceed.
+3. Provide the OVA installer URL you received from our support team and click **Next**.
 
   You may get a warning message stating the certificate is not trusted. You can ignore this message and select **Next**.
 
 
-4. Type a custom name for your Virtual Machine (VM) in the **Virtual machine name** field, and select a location for the virtual machine.
+4. Assign a name to the Virtual Machine (VM) and select the folder where you want to install the VM. 
 
 
-5. Select a compute resource and click **Next**. Template details will be displayed. Review the details. You can click **Ignore** in the warning box about an untrusted certificate. 
+5. Select a compute resource and click **Next**. 
+
+
+
+6. Review the details page. You can click **Ignore** in the warning box about an untrusted certificate. Click **Next** when you are done.
 
 
 6. Select your storage device and click **Next**.
@@ -55,7 +59,7 @@ For production environments, you will migrate the single-node cluster you deploy
 7. Choose a network for your appliance. The installer requires an outgoing internet connection. Select a network that provides this access either directly or via a proxy. Click **Next** to proceed.
 
 
-8. Fill out template customization options. Scroll to view all the options. If needed, you can modify the following input fields before completing the setup. <br /><br />
+8. Fill out the remaining template customization options. Scroll to view all the options. If needed, you can modify input fields before completing the setup. <br /><br />
 
   ### General Settings
 
@@ -96,7 +100,7 @@ For production environments, you will migrate the single-node cluster you deploy
   
   <InfoBox>
   
-  Palette VerteX installations do not use a proxy. You can skip proxy configuration.
+  Palette VerteX installations do not use a proxy. If you are installing VerteX, you can skip proxy configuration.
 
   </InfoBox>
 
@@ -116,14 +120,13 @@ For production environments, you will migrate the single-node cluster you deploy
   | **Password** | Repository password. If you used the default earlier, type `admin`. | - |
   | **User Name** | Repository user name. If you used the default earlier, type `admin`. | - |
   | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for FIPS-enabled Palette and air gapped environments.  | - |
+  | **Artifact Repo Certificate ** | Skip this for VerteX installations. This is optional certaificate for AirGap Environments. | - |
 
 
-9. When you have completed filling out template options, click **Next**. Configuration details will be displayed. Review the details. If you need to make any changes, you can click the **Back** button. Click **Finish** when you are done. <br />
+9. Click **Next** to complete the deployment wizard, review details, and click **Finish**. Upon completion, the The vSphere Client dashboard displays and the cloning process begins. Cloning takes just a few minutes to complete.  <br />
 
-  The vSphere Client dashboard is displayed as the OVF begins downloading and the virtual appliance is deployed. The process takes a few minutes to complete.
-
-
-10. To view deployment progress, select the cluster in the Datacenter. 
+  
+10. In the vSphere Client dashboard, select the folder that contains the VM to view cloning progress.
 
 
 11. When deployment status displays **Completed**, power on the appliance.
@@ -137,9 +140,11 @@ For production environments, you will migrate the single-node cluster you deploy
 
   You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
   
-  The On-prem supervisor console displays a **Status** tab. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Palette installation**. Confirm all of these have processed successfully. This will take about 45 minutes. When processing is complete and **Status** displays **Done**, URLs for the On-Prem System Console and the Management Console are displayed.
+  The On-prem supervisor console displays VM deployment status. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Spectro Cloud Installation**. This will take about 45 minutes. When processing is complete and status displays as successful, URLs for the On-Prem System Console and the Management Console are displayed.
 
   <br />
+
+  ![The supervisor console shows VM deployment status and URLs for the On-prem System Console and Management Console.](/vertex_vertex-successful-vm-deploy-and-urls.png)
 
 13. Click the **On-Prem System Console** URL. A privacy notification displays. Click the **Advanced** button, then click the link to proceed.
 
