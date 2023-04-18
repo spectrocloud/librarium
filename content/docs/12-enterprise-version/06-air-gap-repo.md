@@ -186,16 +186,16 @@ If you have any questions or concerns, please feel free to contact support@spect
   Details:
     -------
   Spectro Cloud Repository
-  UserName: spectro
-  Password: admin@airgap
+  UserName: XXXXXXXXX
+  Password: XXXXXXXXXX
   Location: https://10.10.249.12
   Artifact Repo Certificate:
   LS0tLS1CRUdJ.............<condensed>
 
   Pack Registry
   URL: https://10.10.249.12:5000
-  Username: admin
-  Password: admin@airgap
+  Username: XXXXXXXXX
+  Password: XXXXXXXXX
   ```
 
 15. If you need to configure the instance with proxy settings, go ahead and do so now. You can configure proxy settings by using environment variables. Replace the values with your environment's respective values.
@@ -208,7 +208,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   export no_proxy=.example.dev,10.0.0.0/8
   ```
 
-16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and kubeadm pages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
+16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette Installer, required Kubernetes packages, and kubeadm packages. You can download these artifacts from the instance, or externally and transfer them to the instance. Click on each tab for further guidance.
 
   <br />
 
@@ -230,7 +230,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   <br />
 
   ```shell
-  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/airgap-k8s-v3.3.15.bin \
+  curl --user XXXX:YYYYY https://<provided-by-support>/airgap/packs/airgap-v3.3.15.bin \
    --output airgap-k8s-v3.3.15.bin
   ```
 
@@ -677,7 +677,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   {"status":"UP"}
   ```
 
-7. Ensure you can log into your registry server. Use the default credentials `admin:admin@airgap`. Replace the `10.1.1.1` value with your appliance's IP address.
+7. Ensure you can log into your registry server. Use the credentials provided to you by the `airgap-setup.sh` script. Replace the `10.1.1.1` value with your appliance's IP address.
 
   <br />
 
