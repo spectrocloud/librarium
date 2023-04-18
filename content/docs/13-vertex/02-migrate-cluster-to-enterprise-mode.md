@@ -91,12 +91,15 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Pl
 
 Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. To learn how to create profiles and apply them clusters, check out [Cluster profiles](/cluster-profiles/task-define-profile) and [Clusters](/clusters) guides. 
 
-If you will be deploying a FIPS-enabled cluster, you need to enable FIPS in both the cluster and the cluster profile. Learn how in [Create a FIPS-Enabled Cluster](...). 
+If you are deploying a FIPS-enabled cluster, you need to enable FIPS in both the cluster and the cluster profile. Review [Create a FIPS-Enabled Cluster Profile](/vertex/migrate-cluster-to-enterprise-mode/create-profile) and [Create a FIPS-Enabled Cluster](/vertex/migrate-cluster-to-enterprise-mode/create-cluster). 
 
 
 # Resources 
 
-[Create a FIPS-Enabled Cluster](...)
+[Create a FIPS-Enabled Cluster Profile](/vertex/migrate-cluster-to-enterprise-mode/create-profile)
+
+
+[Create a FIPS-Enabled Cluster](/vertex/migrate-cluster-to-enterprise-mode/create-cluster)
 
 <br />
 
