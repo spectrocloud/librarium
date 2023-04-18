@@ -48,7 +48,7 @@ Enabling audit logging increases the memory consumption of the API server becaus
 
 # Enable Auditing
 
-The Kubernetes API Audit policies contain rules about what events are captured and the level of detail to include.
+The Kubernetes API Audit policies define the rules for capturing events and specifying the level of detail to include.
 The audit policy you create will capture all requests at the *metadata* level. To learn more about the various audit levels, visit the Kubernetes API [Audit Policy](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy) documentation.
 
 <br />
@@ -56,10 +56,10 @@ The audit policy you create will capture all requests at the *metadata* level. T
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Identify one of your cluster contro-plane nodes. You find a cluster node by navigating to the left **Main Menu** and selecting **Clusters**. Click on your cluster to access the details pages and click on the **Nodes** tab. The tab contains information about each pool, select a node from the **Master Pool** to view its IP address.
+2. Identify one of your cluster contro-plane nodes. You can find a cluster node by navigating to the left **Main Menu** and selecting **Clusters**. Click on your cluster to access the details pages and click on the **Nodes** tab. The tab contains information about each pool, select a node from the **Master Pool** to view its IP address.
 
 
-3. SSH into one of your control-plane nodes by using its IP address and the SSH key you specified during the cluster creation process. 
+3. SSH into one of your control-plane nodes using its IP address and the SSH key you specified during the cluster creation process.
 
 
 
@@ -82,7 +82,7 @@ The audit policy you create will capture all requests at the *metadata* level. T
 <br />
 
 5. Next, you will update the Kubernetes API server manifest file. The manifest file is located in the **/etc/kubernetes/manifests** folder. 
-Before modifying the manifest file, create a backup copy. 
+Before you modify the manifest file, create a backup copy.
 
   <br />
 
@@ -122,7 +122,7 @@ Before modifying the manifest file, create a backup copy.
   ```
 
 7. The next step is to update the Kubernetes API parameters with audit settings. 
-The Kubernetes API parameters are located toward the top of the file. The code snippet below showcases where in the file to place the parameters.
+The top of the file contains the Kubernetes API parameters. Refer to the code snippet below to determine where to place these parameters.
 
   <br />
 
@@ -179,7 +179,7 @@ You can validate that audit logs are captured by navigating to the specified aud
 2. Identify one of your cluster contro-plane nodes. You find a cluster node by navigating to the left **Main Menu** and selecting **Clusters**. Click on your cluster to access the details pages and click on the **Nodes** tab. The tab contains information about each pool, select a node from the **Master Pool** to view its IP address.
 
 
-3. SSH into one of your control-plane nodes by using its IP address and the SSH key you specified during the cluster creation process. 
+3. SSH into one of your control-plane nodes using its IP address and the SSH key you specified during the cluster creation process. 
 
 
 
