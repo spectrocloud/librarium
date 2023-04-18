@@ -31,13 +31,14 @@ Every API's URI has the prefix of the version and the Palette resource, such as:
 Palette supports two types of user authentication methods: 
 
 ### Using Authorization Token
-  * All requests must be authenticated with an API token that are passed using the HTTP request header `Authorization`. 
+  * All requests must be authenticated with an API token that is passed using the HTTP request header `Authorization`. 
   * Activated users can use the `/auth/authenticate` API to authenticate and obtain the Authorization token. 
   * Every authorization token is valid for 15 min. 
   * To refresh the token use [this GET call](https://docs.spectrocloud.com/api/v1/auth/): `GET /v1/auth/refresh/{token}` 
   
 ### Using the API Key
-Palette enables secure authentication and authorization for API with the help of API Keys. This is the method of accessing the API without referring to the actual user credentials. The API key will be part of individual API requests to identify and authorize the request. This is a relatively more straight forward method of authentication. The API Key is passed using HTTP request header in the following format:
+
+Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests in order to authenticate and authorize the request. The API Key is passed as part of the HTTP request header and in the following format:
   * Key: ApiKey
   * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
 
@@ -51,7 +52,7 @@ All requests are in the `JSON` format. In general, the request payload has three
 * *Status* contains the status information of the resource. The API does not support creating or modifying the status section. 
 
 <InfoBox>
-Certain update request schema have restricted spec resource definition and certain fields like uid, creation timestamp are not allowed to be modified post creation.
+Certain update request schemas have restricted spec resource definitions, and specific fields like uid and creation timestamp cannot be modified post-creation.
 </InfoBox>
 
 | HTTP Method | Documentation |
@@ -67,7 +68,7 @@ The API returns standard HTTP response codes:
 
 | HTTP Code | Description |
 | --- | --- |
-| 200 | For a successful response. The response payload will vary depending upon the API. Refer the respective API response schema. |
+| 200 | For a successful response. The response payload will vary depending upon the API. Refer to the respective API response schema. |
 | 201 | For a successful resource creation. The response payload contains the uid of the created resource. |
 | 204 | Response without any content for a successful operation. These operations include update, delete and the other actions on the resource. |
 | 400 | Bad request. The request does not adhere to the API request payload schema. |
@@ -77,29 +78,45 @@ The API returns standard HTTP response codes:
 | 500 | Operational error. For 500 error code, the server responds with an explicit error code and an error message. |
 
 # Palette API Lifecycle
-Palette API will remain backward compatible indefinitely until deprecation. To keep up with the API lifecycle, we expose the state or phase the API is in—*Production*, *Sunsetting* or *Deprecated*. 
+Palette APIs maintain backward compatibility until deprecation. The three API phases in the lifecycle are *Production*, *Sunset*, and *Deprecated*. Spectro Cloud will inform users when APIs transition through this lifecycle.
 ### Production
-While in the Production stage, the Palette and Terraform APIs will work as intended and expected. 
-### Sunsetting
-As the API moves toward retirement, whether being replaced or no longer being supported, a notice is included in the documentation with the intent and a cut-off date. A notice is shared within three months to the date of deprecation as a countdown till the end date along with the recommendation of what API to use instead.
+The Palette APIs are designed to work as intended and expected.
+### Sunset
+As the API approaches deprecation because it is being replaced or will no longer be supported, a notice will be provided in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, a notice will be shared that counts down to the end date and recommends the API to use instead.
 ### Deprecated
-When an API is no longer supported nor recommended to use, we indicate its state and include a tag as deprecated. The API documentation will continue to be available as a subsection of deprecated APIs.
+We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to indicate its state. The API documentation will remain available as a subsection of deprecated APIs.
 
-**Note**: This API lifecycle also applies to external-facing tools such as Terraform and will be managed, accordingly.
+<br />
+
+<InfoBox>
+
+The API lifecycle also applies to external-facing tools such as Terraform.
+
+</InfoBox>
 
 # Versioning
 
-The version information is part of the API URI like `v1alpha1`, `v1`. Future APIs will increment the version, leaving the earlier version API intact. The existing API request and response schema will undergo changes like adding new attributes or query parameters with backward compatibility of earlier schema. While advancing to the next version, ample notice to migrate to the new API will be provided.
+The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version, leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backward compatibility with earlier schemas. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
 
 # Scope
 
-Palette supports applications to operate under [**Tenant** and **Project**](/user-management/palette-rbac#accessmodes) scope. The resources can be logically grouped as projects and the API requests. These resources within a project should carry the ProjectUid in the context. The project scope can be specified in the API request as an HTTP header with the key as `ProjectUid` and value as the &lt;Project Uid&gt; The `ProjectUid` needs to be specified for a request to be applied under the project scope.
+Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging to a project, the project scope should be specified. To specify the project scope, use the HTTP header key `ProjectUid` with the value `<Project Uid>` in the API request. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
 
 **Example**:
 
-While creating a cloud account under a specific project, the request should have the `ProjectUid in the http header.` If the request is submitted without the `ProjectUid` by default, it will be considered a Tenant Scope request.
+```shell
+ curl --location --request \
+ GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
+ --header 'Accept: application/json' \
+ --header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'
+```
 
+<InfoBox>
+
+If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+
+</InfoBox>
 
 # Pagination
 
-The resources list APIs are limited to 50 items and pagination has to be performed to retrieve the complete resources list. The list API response contains `listMeta` with the `continue` token. The pagination can be performed based on the presence of the `continue` token value, and the subsequent request can be performed with the `continue` token as query parameter to paginate the rest of the resource items.
+The resources list APIs are limited to 50 items, and therefore pagination is required to retrieve the complete resources list. The list API response includes listMeta with the continue token. To perform pagination, check the presence of the continue token value in the API response. For subsequent requests, use the continue token as a query parameter to paginate the remaining resource items.

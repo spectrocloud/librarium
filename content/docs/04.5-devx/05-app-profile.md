@@ -1,5 +1,5 @@
 ---
-title: "App Profile"
+title: "App Profiles"
 metaTitle: "Palette Dev Engine for Enterprise Developers"
 metaDescription: "Explore Palette Dev Engine as Free Developers"
 hideToC: false
@@ -16,23 +16,20 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # App Profiles
 
-App Profiles are templates created with preconfigured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. 
+App Profiles are templates created with pre-configured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. 
 
-You can create as many app profiles as required. An App Profile can be created to meet specific types of workloads on Palette Virtual Clusters. For example, you may create a development app profile with Helm Charts, Manifest, different database applications, etc.
+You create App Profiles to meet specific types of workloads on your Palette [Virtual Clusters](/devx/palette-virtual-clusters). You can use containers, Helm Charts, custom manifest, containers, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](/devx/app-profile/services) documentation to learn more about the available services.  
 
-To learn more about App Profiles and its capabilities checkout the following resources.
+You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/services).
 
-<br />
+# Next Steps
 
+Get started today by learning how to create your [App Profile](/devx/app-profile/create-app-profile).
+
+# Resources
 - [Create an App Profile](/devx/app-profile/create-app-profile)
 - [Container Deployment](/devx/app-profile/container-deployment)
 - [App Profile Macros](/devx/app-profile/app-profile-macros)
 - [App Profile Cloning](/devx/app-profile/app-profile-cloning)
 - [App Profile Versioning](/devx/app-profile/versioning-app-profile)
-
-
-
-
-
-	
 

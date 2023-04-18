@@ -26,7 +26,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 ## Add Container to App Profile
 
-1. Login to the [Palette](/devx#quickstartwithpaletteappmode).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 

@@ -28,9 +28,9 @@ Palette has a well-organized product onboarding process to streamline user-produ
 Upon a successful sign in to our platform, we start the onboarding process with a product tour—an introduction to the platform, to familiarize the users with our Palette features.
 
 
-## Start your Palette Experience 
+## Start your Palette Experience
 
-![user-experience.png](user-experience.png)
+![user-experience.png](/user-experience.png)
 
 
 The product tour is followed by a Palette experience session.  Here we make sure that our users are guided through a successful deployment pipeline in their first use, instead of them just figuring things out along the way towards cluster creation.  The major components of this session are as follows:
@@ -39,7 +39,7 @@ The product tour is followed by a Palette experience session.  Here we make sure
 
   * Create a new cluster from scratch using any cloud environment or bare metal.
 
-  * A system-level cluster profile is included for the users to explore the Palette functionalities easier and faster. 
+  * A system-level cluster profile is included for the users to explore the Palette functionalities easier and faster.
 
 * [Import Cluster](/clusters/brownfield-clusters#overview)
   * Bring your own cluster into Palette in two easy steps.
@@ -60,17 +60,19 @@ Once the user experience session is finished, the user will be familiar with Pal
 
 # Palette Workflow
 
-Palette mandates the creation of a cluster profile, before a workload cluster can be created. This is because the <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated
-templates that are created with preconfigured layers/components needed for cluster deployments.</Tooltip> contain
-the configurations required for your cluster. The cluster profile helps you prepare a ready-made configuration of the
-OS, the Kubernetes layer, the network layer, and the storage layers. These four are the mandatory layers, without
-which a cluster profile cannot be created. There are a host of other layers and components available to add in the
-cluster profile (load balancers, authentication, monitoring, and logging) which are detailed in the cluster
-profile section. Palette provides several cluster profiles out-of-the-box.
+Palette requires the creation of a cluster profile before a workload cluster can be created. This is because [cluster profiles](/cluster-profiles) are
+templates created with preconfigured layers that define the required dependencies, such as the Operating System (OS) and Kubernetes version for your cluster.  The cluster profile is a core component of Palette. You can learn more about cluster profiles by reviewing the [cluster profile](/cluster-profiles) reference page.
 
-| |
-|--|
-|[Create your Cluster Profile](/cluster-profiles/task-define-profile/#creatingclusterprofiles)|
-|[Create your Cluster](/clusters)|
-|[Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)|
-|[Cluster Management](/clusters/cluster-management/#managecl)|
+# Resources
+
+* [Create your Cluster Profile](/cluster-profiles/task-define-profile/#creatingclusterprofiles)
+
+
+* [Create your Cluster](/clusters)
+
+
+* [Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)
+
+
+* [Cluster Management](/clusters/cluster-management/#managecl)
+

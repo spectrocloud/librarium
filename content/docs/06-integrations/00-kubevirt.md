@@ -3,7 +3,7 @@ title: 'KubeVirt'
 metaTitle: 'KubeVirt'
 metaDescription: 'Choosing KubeVirt within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/kubevirt/blobs/sha256:185e7a7658c05ab478f2822b080a7e21da9113b4a8bf5fb7fb3338d9a5796eed?type=image/png'
 ---
@@ -67,4 +67,3 @@ manifests:
 [Installing KubeVirt on Kubernetes](https://KubeVirt.io/user-guide/operations/installation/#installing-KubeVirt-on-kubernetes)
 
 [Github KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)
-

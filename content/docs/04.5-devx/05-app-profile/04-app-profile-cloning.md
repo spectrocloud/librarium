@@ -22,11 +22,11 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 
 * Share App Profiles amongst different projects.
 
-## Prerequisites
+# Prerequisites
 
 * An App Profile created in Palette. Check out the [Create an App Profile](/devx/app-profile/create-app-profile) for guidance.
 
-## Clone an App Profile
+# Clone an App Profile
 
 To clone an App Profile follow the steps below:
 
@@ -48,7 +48,7 @@ To clone an App Profile follow the steps below:
 In the target project specified during the clone process, you can now use the App Profile for app deployments.
 
 
-## Validation
+# Validation
 
 To validate the App Profile is cloned and available in the target project conduct the following steps:
 

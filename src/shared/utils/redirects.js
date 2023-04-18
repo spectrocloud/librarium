@@ -12,13 +12,13 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
+    fromPath: `/clusters/nested-clusters`,
+    toPath: `/clusters/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/sandbox-clusters/`,
+    fromPath: `/clusters/sandbox-clusters`,
     toPath: `/clusters/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
@@ -77,6 +77,126 @@ const redirects = [
     redirectInBrowser: true,
     isPermanent: true,
   },
+  {
+    fromPath: `/devx/registries/helm-registry`,
+    toPath: `/registries-and-packs/helm-charts`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/registries/oci-registry`,
+    toPath: `/registries-and-packs/oci-registry`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
+    toPath: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/introduction/architecture-overview`,
+    toPath: `/architecture/architecture-overview`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/introduction/what-is`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+
+    fromPath: `/getting-started/free-cloud-credit`,
+    toPath: `/getting-started/palette-freemium`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/public-cloud/eks`,
+    toPath: `/clusters/public-cloud/aws/eks`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/public-cloud/aks`,
+    toPath: `/clusters/public-cloud/azure/eks`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/minio-operator`,
+    toPath: `/integrations/minio`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/how-to/reverse-proxy-dashboard`,
+    toPath: `/clusters/cluster-management/kubernetes-dashboard`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups`,
+    toPath: `/clusters/cluster-groups`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/cluster-groups/ingress-cluster-group`,
+    toPath: `/clusters/cluster-groups/ingress-cluster-group`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/dev-land-explore`,
+    toPath: `/devx`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/cluster-management/.ssh`,
+    toPath: `/clusters/cluster-management/ssh-keys`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/installer-image`,
+    toPath: `/clusters/edge/install/installer-image`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/native`,
+    toPath: `/clusters/edge/site-deployment`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/installer-image`,
+    toPath: `/clusters/edge/site-deployment/installer`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/native`,
+    toPath: `/clusters/edge/site-deployment/installer`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/knowledgebase/tutorials/terraform-tutorial`,
+    toPath: `/terraform`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/cks-tutorial`,
+    toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  }
 ];
 
 module.exports = redirects;

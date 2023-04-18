@@ -1,6 +1,6 @@
 ---
-title: "Adding a Custom Pack"
-metaTitle: "Adding a Custom Pack"
+title: "Add a Custom Pack"
+metaTitle: "Add a Custom Pack"
 metaDescription: "How to create and use custom made packs and registries in Spectro Cloud"
 icon: ""
 hideToC: false
@@ -11,7 +11,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Add Custom Packs
+# Add a Custom Pack
 
 Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](/registries-and-packs/spectro-cli-reference).
 
@@ -35,7 +35,7 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 | layer | String | True | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon |
 | addonType | String | False | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version | String | True | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4. |
-| cloudTypes | Array | True | Supported cloud types are AWS, Azure, VMware. One or more types can be provided for a pack. |
+| cloudTypes | Array | True | You can provide one or more types for a pack. Supported values are as follows: <br /><br />**all**, **aws**, **azure**, **gcp**, **tencent**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**,  **tke**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).
 | group | String | False | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs. |
 | annotations | Array | False | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id. |
 | eol | String | False | End of life date for integration. |
@@ -78,6 +78,7 @@ Follow the steps below to create a custom pack.
 3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. 
 
 <InfoBox>
+
 A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
 
 </InfoBox>
@@ -209,7 +210,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 <Tabs.TabPane tab="VMware Custom OS Pack" key="vmware_custom_os_pack">
 
-### VMWare Custom OS Pack - Local Image
+### VMware Custom OS Pack - Local Image
 
 ```yaml
 {
@@ -236,7 +237,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 }
 ```
 
-### VMWare Custom OS Pack - Remote Image
+### VMware Custom OS Pack - Remote Image
 
 ```yaml
 {
