@@ -30,7 +30,7 @@ The guidance on this page is based on the upstream Kubernetes documentation and 
 
 <WarningBox>
 
-Enabling audit logging increases the memory consumption of the API server because some context required for auditing is stored for each request. Memory consumption depends on the audit logging configuration.
+Enabling audit logging causes the API server to consume more memory, as it needs to store additional context for each request to facilitate auditing. Memory consumption depends on the audit logging configuration.
 
 </WarningBox>
 
