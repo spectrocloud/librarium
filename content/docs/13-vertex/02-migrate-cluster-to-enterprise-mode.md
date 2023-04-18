@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Migrate Cluster to Enterprise Mode
 
-When you installed Palette using steps in [Install Using Quick-Start Mode](/vertex/install-using-quick-start-mode), a single-node cluster was deployed. Enterprise mode stands up two additional virtual appliance instances to provide High Availability (HA) for your production environment.  
+When you install Palette using steps in [Install Using Quick-Start Mode](/vertex/install-using-quick-start-mode), a single-node cluster is deployed as a self-hosted Palette instance in vCenter. Enterprise mode stands up two additional virtual appliance instances to provide High Availability (HA) for your production environment.  
 
 Data from the installer VM is migrated to the newly created enterprise cluster. If any tenants were created prior to the enterprise cluster migration, which may be the case if the system was initially used in Quick-Start mode for a POC, those tenants are migrated to the enterprise cluster.
 
@@ -89,12 +89,14 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Pl
 
 # Next Steps
 
-Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. To learn how to create profiles and apply them clusters, check out [Cluster profiles](/cluster-profiles/task-define-profile) and [Clusters](/clusters)guides. 
+Next, continue to perform various tasks as desired from the management console. You can create gateways, cloud accounts, cluster profiles, and launch clusters. To learn how to create profiles and apply them clusters, check out [Cluster profiles](/cluster-profiles/task-define-profile) and [Clusters](/clusters) guides. 
 
-If you are deploying a FIPS-enabled cluster, refer to ... 
+If you will be deploying a FIPS-enabled cluster, you need to enable FIPS in both the cluster and the cluster profile. Learn how in [Create a FIPS-Enabled Cluster](...). 
 
 
 # Resources 
+
+[Create a FIPS-Enabled Cluster](...)
 
 <br />
 
