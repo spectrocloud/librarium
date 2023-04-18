@@ -84,7 +84,7 @@ charts:
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Cluster Metrics
-    - **Pack Version**: 3.3.X or newer.
+    - **Pack Version**: 3.3.X or newer
 
 
 11. Use the default values. Confirm your changes by selecting **Confirm & Create**.
