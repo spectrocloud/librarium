@@ -181,7 +181,7 @@ To get started with remote monitoring, check out the [Deploy Monitoring Stack](/
 
 #### Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/) guide to learn more.
+You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) guide to learn more.
 
 <br />
 
@@ -765,8 +765,8 @@ Toggle the **Enable** button to enable the use of Ingress.
 The Prometheus Operator pack installs the following dependencies: 
 
 * [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
-* [Prometheus](https://prometheus.io/)
-* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus](https://prometheus.io)
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager).
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
 * [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
@@ -809,10 +809,10 @@ data "spectrocloud_pack_simple" "pack-info" {
 - [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
 
 
-- [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/)
+- [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write)
 
 
-- [Thanos & Prometheus](https://prometheus-operator.dev/docs/operator/thanos/)
+- [Thanos & Prometheus](https://prometheus-operator.dev/docs/operator/thanos)
 
 
 - [Prometheus FAQ](https://prometheus.io/docs/introduction/faq)
