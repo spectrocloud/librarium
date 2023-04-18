@@ -102,13 +102,13 @@ charts:
 15. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-16. Go ahead and assign a name to the host cluster and select the registered account you wish to deploy the host cluster to.  Click on **Next**.
+16. Assign a name to the host cluster and select the registered account that will deploy it.  Click on **Next**.
 
 
-17. Pick a cluster profile for your cluster. Click on **Next**.
+17. Select a cluster profile to apply to your cluster. Click on **Next**.
 
 
-18. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
+18. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above the cluster profile layers.
 
 
 19. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
@@ -193,7 +193,7 @@ charts:
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Spectro Cluster Metrics
-    - **Pack Version**: 3.3.X or newer.
+    - **Pack Version**: 3.3.X or newer
 
 
 11. Use the default values. Confirm your changes by selecting **Confirm & Create**.
@@ -211,13 +211,13 @@ charts:
 15. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-16. Go ahead and assign a name to the host cluster and select the registered account you wish to deploy the host cluster to.  Click on **Next**.
+16. Assign a name to the host cluster and select the registered account that will deploy it.  Click on **Next**.
 
 
-17. Pick a cluster profile for your cluster. Click on **Next**.
+17. Select a cluster profile to apply to your cluster. Click on **Next**.
 
 
-18. The following screens will display all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
+18. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above the cluster profile layers.
 
 
 19. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.

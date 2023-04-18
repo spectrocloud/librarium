@@ -1,7 +1,7 @@
 ---
 title: 'Prometheus Cluster Metrics'
 metaTitle: 'Prometheus Cluster Metrics'
-metaDescription: "Use the Prometheus Cluster Metrics addon pack to expose Palette resources' metrics"
+metaDescription: "Use the Prometheus Cluster Metrics addon pack to expose Palette resource metrics"
 hiddenFromNav: true
 type: "integration"
 hideToC: false
@@ -22,7 +22,7 @@ The Prometheus Cluster Metrics is an addon pack that exposes internal cluster re
 - Status of all cluster profile layers.
 
 
-- CPU and Memory usage of the cluster and of all the pods in the cluster.
+- CPU and Memory usage of the cluster and all the pods in the cluster.
 
 
 - Cluster health status.

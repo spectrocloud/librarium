@@ -48,7 +48,8 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
   Recommended size:
   - 8 CPU 
   - 16 GB Memory
-  - 20 GB Storage. 
+  - 20 GB Storage
+
  
  
   As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:
@@ -56,13 +57,15 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
   Each added agent:
     - 0.1 CPU
     - 250 MiB Memory
-    - 1 GB Storage.
+    - 1 GB Storage
+
 
   Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
 
 ## Parameters
 
-The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn) documentation for details.
+The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) documentation for details.
+
 
 The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
 
@@ -163,12 +166,14 @@ By default, Thanos Ruler event data is saved in object storage specified for Tha
 
 #### Remote Monitoring
 
-You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the installed [Prometheus Agent](/integrations/prometheus-agent) so that cluster metrics can be forwarded to the Prometheus server. 
+
 
 
 The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine-tune settings for your environment.
 
-Refer to the [Prometheus Remote Write](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
+Refer to the [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
+
 
 To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
 
@@ -186,11 +191,13 @@ The Prometheus Operator pack installs the following dependencies:
 
 * [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
 * [Prometheus](https://prometheus.io/)
-* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/).
+* [Prometheus Alertmanager](https://www.prometheus.io/docs/alerting/latest/alertmanager/)
+
 * [node-exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter)
 * [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics)
 * [Grafana](https://github.com/helm/charts/tree/master/stable/grafana)
-* and the service monitors to scrape internal Kubernetes components.
+* Service monitors to scrape internal Kubernetes components
+
 
 
 </Tabs.TabPane>
