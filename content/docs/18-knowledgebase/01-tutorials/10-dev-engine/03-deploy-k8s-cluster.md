@@ -15,28 +15,26 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Deploy a Kubernetes Cluster with Palette
 
-Palette's purpose is to allow you to create and manage a Kubernetes cluster to the public cloud providers with minimal effort. Palette makes possible for software engineers, application developers, or system administrators that want to deploy a containerized application, to interact with Kubernetes clusters with ease.
+Palette is designed with the intention to allow you to create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors, application developers, and system administrators that want to deploy a containerized application to a Kubernetes environment.
 
-The *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repeatable way on the main cloud providers, while a *Cluster* uses the cluster profile, as well as the cloud configuration, cluster size and placement configuration to provision a cluster on your preferred cloud provider.
+Palette's *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repeatable way.  Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a cluster based on your preferred cloud provider.
 
-This tutorial will teach you how to deploy a cluster with Palette on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) either from Palette dashboard or with Terraform. You will learn about *Cluster Mode*, *Cluster Profiles*, *Clusters*, and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with high degree of customization.
+This tutorial will teach you how to deploy a host cluster through Palette in the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy the cluster from the Palette console or use Infrastructure as Code (IaC) through Terraform. You will learn about *Cluster Mode*, *and Cluster Profiles*,  and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with a high degree of customization.
 
 <br />
 <br />
 
 # Architecture 
 
-In this tutorial the creation of a Kubernetes infrastructure is transparent for the user because, given the basic configuration information, Palette manages it completely. In fact, Palette will save you all the effort to create the overall infrastructure, allowing to deploy a production-ready infrastructure with few steps, and to deploy the application on top of it.
+In this user-friendly tutorial, you'll discover how Palette streamlines the creation of a Kubernetes infrastructure. With just the basic configuration information, Palette manages the entire process, saving you time and effort. In a few straightforward steps, you'll have a production-ready infrastructure and your application deployed on top of it.
 
-This is a simplified architecture overview that shows the infrastructure Palette creates for you into the cloud provider you prefer.
+The following is an architecture overview that displays the infrastructure you will deploy through Palette to the cloud provider of your choice.
 
 ![Infrastructure architecture](/tutorials/deploy-clusters/architecture_infrastructure.png)
 
 <br />
 
-Palette also makes very easy to deploy an application on Kubernetes because it offer all the support to deploy the application from the yaml templates, with no needs to execute commands towards the cluster.
-
-This is the application architecture you will deploy with this tutorial:
+This is the application architecture you will deploy with this tutorial. A container application with a *replicaSet*.
 
 ![Application architecture](/tutorials/deploy-clusters/architecture_application.png)
 
@@ -51,7 +49,7 @@ This is the application architecture you will deploy with this tutorial:
 
 ## UI Workflow
 
-Palette supports to create and manage clusters directly from the dashboard, to provide an easy to use way to manage deploys to multiple cloud providers.
+You can create and manage clusters directly from the Palette dashboard. Use the following steps to learn how to deploy a host cluster to multiple cloud providers.
 
 <br />
 
@@ -60,21 +58,23 @@ Palette supports to create and manage clusters directly from the dashboard, to p
 
 To complete this tutorial, you will need the following items
 
-- A Spectro Cloud account. You can [sign up to Palette](https://console.spectrocloud.com/auth/signup) 
-- Basic knowledge about containers
-- Create a Cloud account ([AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account), [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account), [GCP](https://cloud.google.com/docs/get-started))
-- Basic knowledge of the main public cloud platforms
-
-In case you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
+- Basic knowledge about containers.
+- Basic knowledge of how public cloud platforms operate.
+- Create a Cloud account from one of the following providers.
+  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
+  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
+  - [GCP](https://cloud.google.com/docs/get-started).
+- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource for additional guidance.
+  - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
+  - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
+  - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
 
 <br />
 
 
 ## Deploy the Environment
 
-The following steps will guide you through deploying the cluster infrastructure. You will start with the definition of the cluster profile, then you will create the cluster and, finally, provision the cluster.
-
-From the Palette user-interface, you will create the cluster and deploy the application. Each cluster will be hosted on a cloud service provider, such as AWS, Azure, GCP, and managed through Palette.
+The following steps will guide you through deploying the cluster infrastructure. You will start by creating a cluster profile and deploying the host cluster using your cluster profile.
 
 <br />
 
@@ -92,121 +92,109 @@ Check how to create a [Palette account for AWS](/clusters/public-cloud/aws/add-a
 
 ## Create Cluster Profile
 
-[Cluster profiles](/cluster-profiles) are templates that are created with preconfigured core layers (Operating System, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
-Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
+ - Operating System
+ - Kubernetes distribution and version 
+ - Network Container Interface (CNI) 
+ - Storage Container Interface (CSI)
+ 
+A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth.  
 
-Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
+Cluster profiles allow you to create infrastructural stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Follow the procedure to create a new profile that is composed of the following steps.
+Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
+You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
 
-In **Basic Information**, insert the name of the profile such as *aws-profile*, a brief description of the profile, the type as *Full*, and tags as *aws*. You can leave version empty since the version defaults to 1.0.0.
+Follow the wizard to create a new profile. The wizard is made up of the following steps.
 
-**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *AWS*.
+In the **Basic Information**, insert the profile's name, such as *aws-profile*, a brief description of the profile, the type as *Full*, and tags as *aws*. You can leave the version empty if you want to. Just be aware that the version defaults to 1.0.0.
 
-**Profile Layers** is the main configuration steps when you create a profile and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
-Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
+**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select *AWS*.
 
-The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
-- **Operating System (OS)** pack type -> *ubuntu-aws LTS__20.4.x*
-- **Kubernetes** pack type -> *Kubernetes 1.24.x*
-- **Network** pack type -> *cni-calico 3.24.x* (Calico)
-- **Storage** pack type -> *csi-aws-ebs 1.16.x* (Amazon Elastic Block Store Container Storage Interface)
+**Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
+Every pack requires the **Pack Type**, **Registry**, **Pack Name**, **Chart version**, **Manifests** options that compose the **Pack Values** string.
 
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
-Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
+For this tutorial, use the following packs:
+- **Operating System (OS)** -> *ubuntu-aws LTS__20.4.x*
+- **Kubernetes** -> *Kubernetes 1.24.x*
+- **Network** -> *cni-calico 3.24.x* (Calico)
+- **Storage** -> *csi-aws-ebs 1.16.x* (Amazon Elastic Block Store Container Storage Interface)
 
+You will also include an add-on pack, a reverse proxy to access the host cluster you will deploy later.
+Click on **Add New Pack**, choose **Authentication** as pack type, and select the latest version of the **Spectro Proxy** pack.  Click on the **Confirm & Create** button to proceed wit the final stages of the cluster profile creation wizard. 
 
-The **Review** section gives an overview of the cluster profile configuration created.
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
 ![aws cluster profile overview page](/tutorials/deploy-clusters/aws/profile_review.png)
 
-After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
+You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
 
 <br />
 
-## Verify the Cluster Profile
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the newly created *aws-profile*.
-
-Click on the profile to see the details of the stacks that compose the profile:
-![AWS cluster profile details](/tutorials/deploy-clusters/aws/cluster_profile.png)
-
-<br />
 
 ## Create a New Cluster
 
-Select the **Cluster** tab on the Palette left panel to open the clusters overview.
+Navigate to **Main Menu** and select the **Cluster**.
 
-From the clusters page, select **Add New Cluster**
+From the clusters page, click on the **Add New Cluster** button.
 
 ![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
 
-and **Deploy New Cluster** from the pop-up menu.
+Select **Deploy New Cluster** from the **pop-up Menu**.
 
-Choose the cloud provider at your choice, AWS in this case, and **Start AWS Configuration**
+Select **AWS** and click the ** Start AWS Configuration** button.
 
-This starts the procedure to create the cluster on AWS, whose steps are the following.
+Use the following steps to create a host cluster on AWS.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_basic_info.png)
 
 <br />
 
 
-### Cluster profile
+### Cluster Profile
 
-From the **Cluster profile** section, select the profile you want to apply to the host cluster.
+On the right side, there is a list of available cluster profiles you can choose to deploy to AWS. Select the cluster profile you created earlier and click on **Next**.
 
 ![palette cluster profiles](/tutorials/deploy-clusters/aws/clusters_cluster_profile.png)
-
-On the right side there is a list of available and suitable profile you can choose to deploy on the selected cloud provider.
 
 <br />
 
 
 ### Parameters
 
-The **Parameters** section resumes the list of infrastructure layers and add-on components included in the cluster profile.
+The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
 ![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_parameters.png)
 
-For each component, there is a manifest file with the deploy configurations.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
-The default manifest is already suitable for production since it already includes a working configuration and most of the hardening standards recommended for production environments.
-Despite that, you can edit the default manifest, customizing the deploy configuration.
+Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
 
 <br />
 
 
-### Cluster config
+### Cluster Configuration
 
-The **Cluster config** section allows to select the *Region* where to deploy the cluster among the ones provided by the cloud providers and the *SSH Key Pair* to use.
+The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as FIPS and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_cluster_config.png)
 
-To [create an SSH key pair on AWS](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) use the AWS dashboard
-- open the [Amazon EC2 console](https://console.aws.amazon.com/ec2)
-- in the navigation panel, under *Network & Security*, choose *Key Pairs*.
-- choose *Create key pair* and enter the information required to create the key pair: a descriptive name for the key, the type of key pair, and the private key file format. Then, select *Create a key pair*.
+To create an SSH key pair in AWS login into the AWS dashboard.
+Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2). In the navigation panel, under **Network & Security**, choose **Key Pairs**. Choose **Create key pair** and enter the information required to create the key pair. Click on the **Create a key pair**. Review the [Create an SSH key pair on AWS](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) guide for additional information.
 
 ![aws key pair creation](/tutorials/deploy-clusters/aws/key_pair_create.png)
-
-To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
-Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
-
-![spectro cloud key pair creation](/tutorials/deploy-clusters/sp_ssh_key_create.png)
 
 <br />
 
 
-### Nodes config
+### Nodes Configuration
 
 The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster. 
 
@@ -274,31 +262,38 @@ Check how to create a [Palette account for Azure](/clusters/public-cloud/azure/a
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates that are created with preconfigured core layers (Operating System, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. 
-Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
+ - Operating System
+ - Kubernetes distribution and version 
+ - Network Container Interface (CNI) 
+ - Storage Container Interface (CSI)
+ 
+A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth. 
 
-Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
+Cluster profiles allow you to create infrastructural stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Follow the procedure to create a new profile that is composed of the following steps.
+Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
+You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
+
+Follow the wizard to create a new profile. The wizard is made up of the following steps.
 
 In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
 
 **Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
 
-**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
-Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
+**Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
+Every pack requires the **Pack Type**, **Registry**, **Pack Name**, **Chart version**, **Manifests** options that compose the **Pack Values** string.
 
-The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
-- **Operating System (OS)** pack type -> *ubuntu-azure LTS__20.4.x*
-- **Kubernetes** pack type -> *Kubernetes 1.21.x*
-- **Network** pack type -> *cni-calico-azure 3.24.x* (Calico)
-- **Storage** pack type -> *csi-azure 1.20.x* (Container Storage Interface - CSI)
+For this tutorial, use the following packs:
+- **Operating System (OS)** -> *ubuntu-azure LTS__20.4.x*
+- **Kubernetes** -> *Kubernetes 1.21.x*
+- **Network** -> *cni-calico-azure 3.24.x* (Calico)
+- **Storage** -> *csi-azure 1.20.x* (Container Storage Interface - CSI)
 
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
-Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
+You will also include an add-on pack, a reverse proxy to access the host cluster you will deploy later.
+Click on **Add New Pack**, choose **Authentication** as pack type, and select the latest version of the **Spectro Proxy** pack.  Click on the **Confirm & Create** button to proceed wit the final stages of the cluster profile creation wizard. 
 
-The **Review** section gives an overview of the cluster profile configuration created.
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
 ![azure cluster profile overview page](/tutorials/deploy-clusters/azure/profile_review.png)
 
@@ -307,68 +302,57 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 <br />
 
 
-## Verify the Cluster Profile
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *azure-profile*.
-
-Click on the profile to see the details of the stacks that compose the profile:
-![Azure cluster profile details](/tutorials/deploy-clusters/azure/cluster_profile.png)
-
-
 ## Create a New Cluster
 
-Select the **Cluster** tab on the Palette left panel to open the clusters overview.
+Navigate to **Main Menu** and select the **Cluster**.
 
-From the clusters page, select **Add New Cluster**
+From the clusters page, click on the **Add New Cluster** button.
 
 ![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
 
-and **Deploy New Cluster** from the pop-up menu.
+Select **Deploy New Cluster** from the **pop-up Menu**.
 
-Choose the cloud provider at your choice, Azure in this case, and **Start Azure Configuration**
+Select **Azure** and click the ** Start Azure Configuration** button.
 
-This starts the procedure to create the cluster on Azure, whose steps are the following.
+Use the following steps to create a host cluster on Azure.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_basic_info.png)
 
 <br />
 
 
-### Cluster profile
- 
-From the **Cluster profile** section, select the profile you want to deploy on Azure.
+### Cluster Profile
+
+On the right side, there is a list of available cluster profiles you can choose to deploy to Azure. Select the cluster profile you created earlier and click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_cluster_profile.png)
-
-On the right side there is a list of available and suitable profile you can choose to deploy on the selected cloud provider.
 
 <br />
 
 
 ### Parameters
 
-The **Parameters** section resumes the list of infrastructure layers and add-on components included in the cluster profile.
+The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_parameters.png)
 
-For each component, there is a manifest file with the deploy configurations.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
-The default manifest is already suitable for production since it already includes a working configuration and most of the hardening standards recommended for production environments.
-Despite that, you can edit the default manifest, customizing the deploy configuration.
+Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
 
 <br />
 
 
-### Cluster config
+### Cluster Configuration
 
-The **Cluster config** section allows to select multiple parameters to deploy of the cluster.
+The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as Resource Group, Storage account, Storage container, and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
 ![palette cluster configuration](/tutorials/deploy-clusters/azure/clusters_cluster_config.png)
 
@@ -378,15 +362,10 @@ For the scope of this tutorial we insert only the mandatory ones:
 - the *Resource Group* 
 - the Palette *SSH Key* to use.
 
-To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
-Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
-
-![spectro cloud key pair creation](/tutorials/deploy-clusters/sp_ssh_key_create.png)
-
 <br />
 
 
-### Nodes config
+### Nodes Configuration
 
 The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
@@ -444,30 +423,38 @@ Check how to create a [Palette account for GCP](/clusters/public-cloud/gcp#creat
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/gcp/cluster-profiles) are templates that are created with preconfigured core layers (Operating System, Kubernetes orchestrator, Network, Storage) with the possibility to add several available add-on layers, such as security, monitoring, logging, and so forth. Cluster profiles allows to create infrastructural stacks that can be customized in terms of number of layers, type of components, and version and offer a reproducible way to create clusters.
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
+ - Operating System
+ - Kubernetes distribution and version 
+ - Network Container Interface (CNI) 
+ - Storage Container Interface (CSI)
+ 
+A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth. 
 
-Start by log in to Palette and open the **Profiles** tab on the left panel. 
-You can see the list of available default profiles. For now, we create our own profile, so click on **Add Cluster Profile** at the top right side.
+Cluster profiles allow you to create infrastructural stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Follow the procedure to create a new profile that is composed of the following steps.
+Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page. 
+You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
 
-In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
+Follow the wizard to create a new profile. The wizard is made up of the following steps.
 
-**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
+In the **Basic Information**, insert the profile's name, such as *gcp-profile*, a brief description of the profile, the type as *Full*, and tags as *gcp*. You can leave the version empty if you want to. Just be aware that the version defaults to 1.0.0.
 
-**Profile Layers** is the main configuration steps when you create a profile, and you need to specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose.
-Every pack requires the *Pack Type*, *Registry*, *Pack Name*, *Chart version*, *Manifests* options that compose the *Pack Values* string.
+**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select *Google Cloud*.
 
-The infrastructure packs and their *Pack Values* configuration used in this tutorial are the following:
-- **Operating System (OS)** pack type -> *ubuntu-gcp LTS__20.4.x*
-- **Kubernetes** pack type -> *Kubernetes 1.21.x*
-- **Network** pack type -> *cni-calico 3.24.x* (Calico)
-- **Storage** pack type -> *csi-gcp-driver 1.7.x* (Container Storage Interface - CSI)
+**Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
+Every pack requires the **Pack Type**, **Registry**, **Pack Name**, **Chart version**, **Manifests** options that compose the **Pack Values** string.
 
-We also add, as add-on pack, a reverse proxy to access the web application you are going to deploy later.
-Click on **Add New Pack**, choose **Authentication** as pack type and select the latest version of **Spectro Proxy** pack name with its default manifest.
+For this tutorial, use the following packs:
+- **Operating System (OS)** -> *ubuntu-gcp LTS__20.4.x*
+- **Kubernetes** -> *Kubernetes 1.21.x*
+- **Network** -> *cni-calico 3.24.x* (Calico)
+- **Storage** -> *csi-gcp-driver 1.7.x* (Container Storage Interface - CSI)
 
-The **Review** section gives an overview of the cluster profile configuration created.
+You will also include an add-on pack, a reverse proxy to access the host cluster you will deploy later.
+Click on **Add New Pack**, choose **Authentication** as pack type, and select the latest version of the **Spectro Proxy** pack.  Click on the **Confirm & Create** button to proceed wit the final stages of the cluster profile creation wizard. 
+
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
 ![gcp cluster profile overview page](/tutorials/deploy-clusters/gcp/profile_review.png)
 
@@ -476,70 +463,57 @@ After the creation of a cluster profile, you can update it by adding, removing, 
 <br />
 
 
-## Verify the Cluster Profile
-
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the *gcp-profile*.
-
-Click on the profile to see the details of the stacks that compose the profile:
-![GCP cluster profile details](/tutorials/deploy-clusters/gcp/cluster_profile.png)
-
-<br />
-
-
 ## Create a New Cluster
 
-Select the **Cluster** tab on the Palette left panel to open the clusters overview.
+Navigate to **Main Menu** and select the **Cluster**.
 
-From the clusters page, select **Add New Cluster**
+From the clusters page, click on the **Add New Cluster** button.
 
 ![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
 
-and **Deploy New Cluster** from the pop-up menu.
+Select **Deploy New Cluster** from the **pop-up Menu**.
 
-Choose the cloud provider at your choice, GCP in this case, and **Start Google Cloud Configuration**
+Select **Google Cloud** and click the ** Start Google Cloud Configuration** button.
 
-This starts the procedure to create the cluster on GCP, whose steps are the following.
+Use the following steps to create a host cluster on GCP.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account.
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_basic_info.png)
 
 <br />
 
 
-### Cluster profile
+### Cluster Profile
 
-From the **Cluster profile** section, select the profile you want to deploy on GCP.
+On the right side, there is a list of available cluster profiles you can choose to deploy to GCP. Select the cluster profile you created earlier and click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_cluster_profile.png)
-
-On the right side there is a list of available and suitable profile you can choose to deploy on the selected cloud provider.
 
 <br />
 
 
 ### Parameters
 
-The **Parameters** section resumes the list of infrastructure layers and add-on components included in the cluster profile.
+The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_parameters.png)
 
-For each component, there is a manifest file with the deploy configurations.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
-The default manifest is already suitable for production since it already includes a working configuration and most of the hardening standards recommended for production environments.
-Despite that, you can edit the default manifest, customizing the deploy configuration.
+Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
 
 <br />
 
 
-### Cluster config
+### Cluster Configuration
 
-The **Cluster config** section allows to select the *Region* where to deploy the cluster among the ones provided by the cloud providers and the *SSH Key Pair* to use.
+The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as the Project Name and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
 ![palette cluster configuration](/tutorials/deploy-clusters/gcp/clusters_cluster_config.png)
 
@@ -550,15 +524,10 @@ Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/conne
 
 ![gcp key pair creation](/tutorials/deploy-clusters/gcp/gcp_ssh_key_create.png)
 
-To create a SSH Key on Palette, browse *Project Settings* on the left panel and select *SSH Keys* from the secondary panel.
-Click on *Add New SSH Key* and insert the name of the key and the content of the public key from the cloud provider. Then confirm it.
-
-![spectro cloud key pair creation](/tutorials/deploy-clusters/sp_ssh_key_create.png)
-
 <br />
 
 
-### Nodes config
+### Nodes Configuration
 
 The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
@@ -775,10 +744,16 @@ If you need to become more familiar with Terraform, check out the [Terraform exp
 
 To complete this tutorial, you will need the following items
 
-- A Spectro Cloud account.
 - Basic knowledge of containers.
 - Terraform v1.3.6 or greater.
-- Create a Cloud account ([AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account), [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account), [GCP](https://cloud.google.com/docs/get-started))
+- Create a Cloud account from one of the following providers.
+  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
+  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
+  - [GCP](https://cloud.google.com/docs/get-started).
+- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource for additional guidance.
+  - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
+  - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
+  - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
 
 <br />
 
@@ -1631,7 +1606,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
 
 ```bash
-terraform apply  --auto-approve
+terraform apply --auto-approve
 ```
 
 ```
@@ -1731,6 +1706,8 @@ In this tutorial, you created a cluster profile, which is a template containing 
 Palette assures consistency across workload cluster deployments and enables developers to quickly deploy applications into a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application.
 
 We encourage you the check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette and how the Palette Dev Engine can help you deploy applications more quickly. 
+
+In case you want to extend the experiments of this tutorial, exceeding the providers free tier threshold, you can request an authorization to the [Spectro Cloud Free Cloud Credit program](https://docs.spectrocloud.com/getting-started/palette-freemium#requestafreecloudaccount)
 
 - [Palette Modes](/introduction/palette-modes)
 - [Cluster Profiles](/devx/cluster_profile)
