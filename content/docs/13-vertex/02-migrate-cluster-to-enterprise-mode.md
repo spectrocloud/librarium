@@ -75,7 +75,7 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Pl
 
 <br />
 
-1. Log in to vCenter Server by using the vSphere Client.
+1. Log in to vCenter Server using the vSphere Client.
 
 
 2. Navigate to your Datacenter and locate your VM. Click on the VM to access its details page. 

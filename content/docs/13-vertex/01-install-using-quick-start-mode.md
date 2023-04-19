@@ -162,7 +162,7 @@ For production environments, you will migrate the single-node cluster you deploy
 <br />
 
 <Tabs>
-<Tabs.TabPane tab="VerteX and Enterprise Mode" key="Enterprise">
+<Tabs.TabPane tab="Enterprise Mode and VerteX" key="Enterprise">
 
 <br />
 
@@ -199,9 +199,21 @@ To install for a POC, click the **Start Now** button under **Quick Start**.
 </Tabs.TabPane>
 </Tabs>
 
+
 # Validation
 
-Validate your setup... 
+You can validate that a three-node Kubernetes cluster is launched and Palette Platform is deployed on it. 
+
+<br />
+
+1. Log in to vCenter Server using the vSphere Client.
+
+
+2. Navigate to your Datacenter and locate your VM. Click on the VM to access its details page. 
+
+
+3. Power on the VM.
+
 
 # Next Steps
 
