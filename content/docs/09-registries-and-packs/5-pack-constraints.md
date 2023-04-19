@@ -582,9 +582,9 @@ user:
 | `{{.spectro.system.kubernetes.version}}`  | The version of Kubernetes currently running on the cluster. |
 | `{{.spectro.system.reverseproxy.server}}`  | The IP address or hostname of the reverse proxy server. |
 | `{{.spectro.system.reverseproxy.port}}`  | The port number of the reverse proxy server. |
-| `{{.spectro.system.reverseproxy.protocol}}`  | The protocol used by the reverse proxy server (e.g. HTTP or HTTPS). |
+| `{{.spectro.system.reverseproxy.protocol}}`  | The protocol used by the reverse proxy server, either HTTP or HTTPS. |
 | `{{.spectro.system.reverseproxy.vhostport}}`  | The port number used by the virtual host on the reverse proxy server. |
-| `{{.spectro.system.cloud.type }}`  | The type of cloud provider being used (e.g. AWS, GCP, or Azure). |
+| `{{.spectro.system.cloud.type }}`  | The type of cloud provider being used, such as AWS, GCP, Azure or other providers. |
 | `{{.spectro.system.cloud.region }}`   | The region where the cloud resources are located. |
 | `{{.spectro.system.clusterprofile.infra.name}}`    | The name of the cluster profile. |
 | `{{.spectro.system.clusterprofile.infra.uid}}`   | The unique identifier of the cluster profile. |
