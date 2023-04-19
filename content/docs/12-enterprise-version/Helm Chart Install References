@@ -1,0 +1,161 @@
+---
+title: "Helm Chart Install References"
+metaTitle: "Helm Chart Install References"
+metaDescription: "Reference page for Pallete Helm chart self-installation values.yaml file parameters."
+icon: ""
+hideToC: true
+fullWidth: true
+---
+
+# Helm Chart Install Reference Guide
+You can install the Palette Helm Chart in a multi-node Kubernetes cluster for use in production environments. The [Self-hosted Palette installation using Helm](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm) allows users to customize as per their needs by specifying user-defined values in the **values.yaml file.**
+This reference guide explains the parameters available in the **values.yaml** file from the Helm Chart for your installation.
+
+## Mandatory parameters
+
+The following parameters are mandatory for the self-hosted Palette installation using Helm. 
+
+- **env.rootDomain**- Used to configure the domain for the Palette installation. **Note:** You should create a DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [environment parameters](#environment-parameters) to learn more. 
+
+- **natsUrl**- The URL format specifies configuring the NATS server(s) to the IP address and port. Review the [Network Address Translation (NATS) parameters](#network-address-translationnats-parameters) to learn more. 
+ 
+- Refer to the [Registry and Scar parameters](#registry-and-scar-parameters) used to specify the Docker registry where the chart images are stored and the Spectro Cloud Admission Registrar (SCAR), respectively.
+
+## MongoDB parameters
+
+The below table outlines the values.yaml parameters for configuring a **MongoDB** deployment. 
+
+| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| --- | --- | --- | --- | --- |
+| `internal` | N/A | Boolean | Specifies the **MongoDB** deployment either in-cluster or using **Mongo Atlas**. | Required |
+| `databaseUrl` | `mongo-0.mongo,mongo-1.mongo,mongo-2.mongo` | String | **MongoDB** URL. Change if using **Mongo Atlas**.| Required|
+| `databasePassword` | "" | String | **Mongo Atlas** database password, base64-encoded. | Optional |
+| `replicas` | `3` | Integer | Specifies the number of **MongoDB** replicas to run.| Required |
+| `cpu.limit` | `2000m` | String | Specifies the CPU limit for each **MongoDB** replica.| Optional |
+| `memorylimit` | `4Gi` | String |Specifies the memory limit for each **MongoDB** replica.| Optional |
+| `pvcSize` | `20Gi` | String | Specifies the **persistent volume claim (PVC**) size for each **MongoDB** replica.|Optional |
+| `storageClass` | "" | String | Storage class for the **PVC**. Leave empty to use the default storage class. |Optional |
+
+## Config parameters
+
+The **SSO SAML** configuration is optional for the Pallette self-hosted installation. 
+
+### SSO parameters
+
+The below table outlines the different values.yaml parameters for configuring SSO SAML authentication in Palette.
+
+| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| --- | --- | --- | --- | --- |
+| `saml.enabled` | `False` | Boolean | Specifies whether to enable **SSO SAML** configuration by setting it to true. | Optional|
+| `saml.acsUrlRoot` | `myfirstpalette.spectrocloud.com` | String | Root URL of the Assertion Consumer Service (ACS).| Optional|
+| `saml.acsUrlScheme` | `https` | String | URL scheme of the ACS (e.g., http or https). | Optional |
+| `saml.audienceUrl` | `https://www.spectrocloud.com` | String | URL of the intended audience for the SAML response.| Optional|
+| `saml.entityID` | `https://www.spectrocloud.com` | String | Entity ID of the Service Provider.| Optional |
+| `saml.apiVersion` | `v1` | String |SSO SAML API version to use.| Optional |
+
+### Email parameters
+
+The below table provides a reference for the available **values.yaml** parameters for configuring email settings in Palette's self-hosted mode. 
+
+| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| --- | --- | --- | --- | --- |
+| `enabled` | `False` | Boolean | Specifies whether to enable email configuration. | Optional|
+| `emailID ` | "" | String | Email ID for sending mail.| Optional|
+| `smtpServer` | `smtp.gmail.com` | String | SMTP server used for sending mail. | Optional |
+| `smtpPort` | `587` | Integer | SMTP port used for sending mail.| Optional|
+| `insecureSkipVerifyTIs` | `True` | Boolean | Specifies whether to skip TLS verification for the SMTP connection.| Optional |
+| `fromEmailID` | `noreply@spectrocloud.com` | String |SEmail ID used from From address.| Optional |
+| `password` | `YmFzZTY0X2VtYWlsX3Bhc3N3b3Jk` | String |Base64-encoded SMTP password when sending emails.| Optional |
+
+
+### Environment parameters
+
+The below table outlines the **values.yaml** parameters for configuring a **MongoDB** deployment. 
+
+| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| --- | --- | --- | --- | --- |
+| `env.rootDomain` | "" | String | Specifies the default DNS record mapped to the ingress-nginx-controller load balancer. It is mandatory if false; otherwise, leave it empty. | Required|
+| `env.installerMode` | `self-hosted` | String | Installer mode specified, do not modify the value.| Required|
+| `env.installerCloud` | "" | String | Cloud platform unspecified, leave empty. | Optional |
+
+
+
+### Cluster parameters
+
+Cluster parameters are used to specify the Kubernetes cluster configuration.
+
+
+| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| --- | --- | --- | --- | --- |
+| `stableEndpointAccess` | `False` | Boolean | Specifies whether EKS cluster is deployed in private network access through a stable private endpoint, if true, through a public endpoint. | Optional|
+
+## Registry and SCAR parameters
+
+**Registry and SCAR (Spectro Cloud Admission Registrar)** parameters are mandatory parameters in the **values.yaml** for installing **Palette** using Helm Chart.
+
+| **Parameters**       | **Type**   | **Description**                                             | **Required/Optional** |
+| ----------------- | ------ | -------------------------------------------------------- | ------------------ |
+| `registry.endpoint` | String | The endpoint URL for the registry.                      | Required           |
+| `registry.name`     | String | The name of the registry.                                | Required           |
+| `registry.password` | String | The password for the registry.                           | Required           |
+| `registry.username` | String | The username for the registry.                           | Required           |
+| `scar.endpoint`     | String | The endpoint URL of the Spectro Cloud Admission Registrar (SCAR). | Required           |
+| `scar.username`     | String | The username for the SCAR.                               | Required           |
+| `scar.password`     | String | The password for the SCAR.                               | Required           |
+
+To learn about the default values of the parameters, please contact Spectro Cloud sales.
+
+## Network Address Translation(NATS) parameters
+
+This section explains the parameters for the configuration file containing settings related to the **Network Address Translation (NATS)** messaging system. 
+
+| **Parameters **  | **Default Value** | **Type **   | **Description**                                                                                                               | **Required/Optional** |
+| ------------ | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `internal`   | `true`        | Boolean | Specifies if NATS shares the ingress load balancer or uses hostNetwork if true otherwise with a cloud load balancer.      | Optional           |
+| `natsUrl`    | `True`        | String  | Comma-separated list of <dns_name:port> mappings for nats load balancer service. Mandatory if nats.internal == false.     | Required           |
+| `Annotations`| `{}`          | Map     | NATS load balancer annotations.                                                                                           | Optional           |
+| `routes`     | `[]`          | List    | NATS routes & credentials. It is required only if the system is in HA mode.                                               | Optional           |
+| `natsStaticIP`| `""`         | String  | Static IP for the NATS load balancer service. If empty, a dynamic IP will be generated.                                   | Optional           |
+
+
+## Ingress parameters
+
+The **Ingress** block in the YAML configuration file is used for configuring the **NGINX Ingress** Controller, which provides an external HTTP(S) load balancer for **Kubernetes** services. 
+
+| **Parameters**                     | **Default Value** | **Type**    | **Description**                                                                                                                                       | **Required/Optional** |
+|--------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `Internal`                     | `False`       | Boolean | Whether to front NGINX Ingress Controller with a cloud load balancer (`internal==false`) or use host network (`internal==true`).                   | Required           |
+| `certificate`                  | `“”`          | String  | Default SSL certificate for NGINX Ingress Controller. If left blank, the NGINX ingress controller will generate a self-signed cert.                  | Optional           |
+| `key`                          | `“”`          | String  | Default SSL certificate key for NGINX Ingress Controller.                                                                                        | Optional           |
+| `annotations`                  | `{}`          | Map     | NGINX Ingress Controller annotations for configuring cloud load balancers.                                                                       | Optional           |
+| `ingressStaticIP`              | `“”`          | String  | Static IP for the Ingress load balancer service. If empty, a dynamic IP will be generated.                                                        | Optional           |
+| `terminateHTTPSAtLoadBalancer` | `False`       | Boolean | Whether to terminate HTTPS at the NGINX Ingress Controller (`false`) or at the load balancer for a service like AWS Load (`true`).                 | Optional           |
+
+
+
+## FRPS parameters
+
+“Frps” is a section of the configuration file for the FRP server-side proxy.
+
+| **Parameters**          | **Default Value**                | **Type**    | **Description**                                                   | **Required/Optional** |
+|---------------------|------------------------------|---------|---------------------------------------------------------------|--------------------|
+| `frps.enabled`      | `False`                      | Boolean | Set to `true` to enable the frp server.                        | Optional           |
+| `frps.frpHostURL`   | `proxy.sample.spectrocloud.com` | String  | The URL for the frp server.                                   | Optional           |
+| `frps.server.crt`   |                               | String  | Specifies the certificate file for the frp server.             | Optional           |
+| `frps.server.key`   |                               | String  | Specifies the private key file for the frp server.             | Optional           |
+| `frps.ca`           |                               | String  | Specifies the certificate authority (CA) for the frp server.  | Optional           |
+| `frps.ca.crt`       |                               | String  | Specifies the CA certificate file for the frp server.         | Optional           |
+
+
+## UI System parameters
+
+This is a user interface (UI) system configuration file and specifies a setting for a UI called "**nocUI**". 
+
+| **Parameters **          | **Default Value** | **Type**    | **Description**                                          | **Required/Optional** |
+|---------------------|---------------|---------|------------------------------------------------------|--------------------|
+| `enabled`           | `False`       | Boolean | Specifies if UI is enabled (set to `true`).          | Optional           |
+| `mapBoxAccessToken` | `""`          | String  | Access token for MapBox API.                          | Optional           |
+| `mapBoxStyledLayerID`| `""`          | String  | ID for MapBox style layer.                            | Optional           |
+
+
+
