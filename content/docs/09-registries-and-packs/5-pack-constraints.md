@@ -580,7 +580,7 @@ user:
 | `{{.spectro.system.cloudaccount.name}}`  | The name of the cloud account associated with the current project. |
 | `{{.spectro.system.cloudaccount.uid}}`  | The unique identifier of the cloud account associated with the current project. |
 | `{{.spectro.system.kubernetes.version}}`  | The version of Kubernetes currently running on the cluster. |
-| `{{.spectro.system.reverseproxy.server}}`  | The IP address or hostname of the reverse proxy server. |
+| `{{.spectro.system.reverseproxy.server}}`  | The hostname of the reverse proxy server. |
 | `{{.spectro.system.reverseproxy.port}}`  | The port number of the reverse proxy server. |
 | `{{.spectro.system.reverseproxy.protocol}}`  | The protocol used by the reverse proxy server, either HTTP or HTTPS. |
 | `{{.spectro.system.reverseproxy.vhostport}}`  | The port number used by the virtual host on the reverse proxy server. |
