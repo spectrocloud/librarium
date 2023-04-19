@@ -36,7 +36,7 @@ If you created tenants to use for a POC prior to enterprise cluster migration, y
 4. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-5. Add the FIPS Artifact Repository to Palette by invoking the command below. ??Or does customer use an API??
+5. Add the FIPS Artifact Repository to Palette by invoking the command below. ??Or will customer use an API or UI setting??
 
     ``./update-scar.sh <Palette_URL> <system_admin_username> <system_admin_password>``
 
@@ -48,7 +48,7 @@ If you created tenants to use for a POC prior to enterprise cluster migration, y
 7. Click on **Add Cluster Profile**.
 
 
-8. Enter a cluster profile name and select the type ??. Click on **Next**.
+8. Enter a cluster profile name and select the type. Click on **Next**.
 
 
 9. In the next screen that displays, select **Full** or **Infrastructure**
@@ -57,7 +57,7 @@ If you created tenants to use for a POC prior to enterprise cluster migration, y
 10. Select cloud type **AWS**.
 
 
-11. Use the following information to find the FIPS-enabled Operating System (OS) and Kubernetes packs.
+11. Use the following information to find the FIPS-enabled Operating System (OS) pack.
     - **Pack Type**: OS
     - **Registry**: Public Repo
     - **Pack Name**: Ubuntu
@@ -65,13 +65,13 @@ If you created tenants to use for a POC prior to enterprise cluster migration, y
 
     <br />
 
-12. Click **Presets** to the right of the YAML file, enable the **Ubuntu Advantage** option, and provide your user authorization key in the **Token** field. 
+12. Click **Presets** to the right of the YAML file, enable the **Ubuntu Pro** option, and provide your user authorization key in the **Token** field. 
 
 
 13. Toggle on the **fips** and **fips-updates** options.
 
 
-14. Use the following information to find the FIPS-enabled Operating System (OS) and Kubernetes packs.
+14. Use the following information to find the FIPS-enabled Kubernetes pack.
     - **Pack Type**: Kubernetes
     - **Registry**: Public Repo
     - **Pack Name**: Kubernetes (Fips)

@@ -14,9 +14,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 import Tabs from 'shared/components/ui/Tabs';
 
-# Helm Chart Mode
+# Helm Chart Mode (Not yet modified for VerteX)
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
+You can use the Palette Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment.
 
 This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 

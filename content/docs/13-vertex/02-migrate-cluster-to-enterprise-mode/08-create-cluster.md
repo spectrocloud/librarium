@@ -48,7 +48,7 @@ import InfoBox from 'shared/components/InfoBox';
 8. Configure the master-pool and worker-pool.
 
 
-9. Enable settings for **Patch OS on boot** and **Reboot if required**. Click ??
+9. Enable settings for **Patch OS on boot** and **Reboot if required**. Click **Next**.
 
 
 10. Review cluster details and click **Finish Configuration**. The Cluster Overview page displays Cluster Status as **Provisioning**.

@@ -81,10 +81,7 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Pl
 2. Navigate to your Datacenter and locate your VM. Click on the VM to access its details page. 
 
 
-3. Power on the VM. ??Is this correct??
-
-
-4. Click on **Launch Web Console** to access the terminal. ??Is this correct??
+3. Power on the VM.
 
 
 # Next Steps

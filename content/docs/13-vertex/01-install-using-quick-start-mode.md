@@ -25,7 +25,6 @@ For production environments, you will migrate the single-node cluster you deploy
 
 - Added port permissions to inbound rules for security groups to provide Palette connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication. 
 
-??Do users do this in the FIPS-enabled pack when the profile is created. If so, this doesn't seem to be a prerequisite.??
 
 - A new or existing SSH key pair to access the platform installer for any troubleshooting.  
  
@@ -119,7 +118,7 @@ For production environments, you will migrate the single-node cluster you deploy
   | --- | --- | --- |
   | **Password** | Repository password. If you used the default earlier, type `admin`. | - |
   | **User Name** | Repository user name. If you used the default earlier, type `admin`. | - |
-  | **Location** | Artifacts for spectro cloud platform are retrieved from a public repository by default. As an alternative, a dedicated artifact repository can be configured below. This is typically done for FIPS-enabled Palette and air gapped environments.  | - |
+  | **Location** | Palette artifacts are retrieved from a public repository by default. If you are installing VerteX or in an AirGap environment, specify the dedicated artifact repository URL you received from our Support team. | - |
   | **Artifact Repo Certificate ** | Skip this for VerteX installations. This is optional certaificate for AirGap Environments. | - |
 
 
