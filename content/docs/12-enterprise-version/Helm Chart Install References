@@ -91,7 +91,7 @@ Cluster parameters are used to specify the Kubernetes cluster configuration.
 
 ## Registry and SCAR parameters
 
-**Registry and SCAR (Spectro Cloud Admission Registrar)** parameters are mandatory parameters in the **values.yaml** for installing **Palette** using Helm Chart.
+**Registry and SCAR (Spectro Cloud Admission Registrar)** parameters are required.
 
 | **Parameters**       | **Type**   | **Description**                                             | **Required/Optional** |
 | ----------------- | ------ | -------------------------------------------------------- | ------------------ |
