@@ -13,7 +13,7 @@ import Tabs from "shared/components/ui/Tabs";
 # Packs
 
 
-A **Cluster Profile** comprises preconfigured layers, each of which is called a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorised into two types:
+A **Cluster Profile** is made up of preconfigured layers, each of which is called a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorized into two types:
 
 - **Core** packs - These packs model the core layers to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these core packs for updates. 
 
@@ -102,19 +102,6 @@ Users can set up a custom pack registry using a Docker image provided by Spectro
 
 # Spectro CLI
 
+The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands. Review the  [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference) reference page for usage instructions.
 
-
-Spectro Cloud CLI is a Command Line Interface to interact with the Spectro Cloud Pack Registry server for uploads and downloads of packs. CLI must authenticate with the pack registry before executing any CLI command.
-
-## Downloads
-
-Spectro CLI is currently available in two platforms - OSX & Linux:
-
-
-
-
-
-|**OS**  |**Download Site**  |
-|---------|---------|
-|OSX     |   https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro     |
-|Linux   |   https://spectro-cli.s3.amazonaws.com/v3.1.0/linux/spectro      |
+<br />

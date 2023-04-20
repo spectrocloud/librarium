@@ -15,56 +15,45 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-This page lists the version details of various Palette components with respect to Palette releases. 
+This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](/spectro-downloads) resource to access the download URLs.
 
 # Palette CLI Versions
 
-|Palette Release|Recommended CLI Version|
+|Palette Release| Recommended CLI Version|
+|---------------------------|----|
+|Release 3.3.0     |3.3.0 |
+|Release 3.2.0     |3.2.0 |
+|Release 3.1.0     |3.1.0 |
+|Release 3.0.0     |3.0.0 |
+|Release 2.8.0     |2.8.0 |
+|Release 2.7.0     |2.7.0 |
+|Release 2.6.0     |2.6.0 |
+
+# Edge Installer CLI Versions
+
+|Palette Release|CLI Version| 
 |---|-------|
-|Release 3.2.0 |Download for CLI v3.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.2.0/osx/spectro)|
-|              |Download for CLI v3.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.2.0/linux/spectro)|
-|Release 3.1.0 |Download for CLI v3.1.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.1.0/osx/spectro)|
-|              |Download for CLI v3.1.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.1.0/linux/spectro)|
-|Release 3.0.0 |Download for CLI v3.0.0 [OSX](https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro)|
-|              |Download for CLI v3.0.0 [Linux](https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro)|
-|Release 2.8.0 |Download for CLI v2.8.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.8.0/osx/spectro)|
-|              |Download for CLI v2.8.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.8.0/linux/spectro)|
-|Release 2.7.0 |Download for CLI v2.7.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.7.0/osx/spectro)|
-|              |Download for CLI v2.7.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.7.0/linux/spectro)|
-|Release 2.6.0 |Download for CLI v2.6.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.6.0/osx/spectro)|
-|              |Download for CLI v2.6.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.6.0/linux/spectro)|
-|Release 2.5.0 |Download for CLI v2.5.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.5.0/osx/spectro)|
-|              |Download for CLI v2.5.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.5.0/linux/spectro)|
-|Release 2.3.0|Download for CLI v2.3.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.3.0/osx/spectro) |
-|              |Download for CLI v2.3.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.3.0/linux/spectro) |
-|Release 2.2.0|Download for CLI v2.2.0 [OSX](https://spectro-cli.s3.amazonaws.com/v2.2.0/osx/spectro)|
-|              |Download for CLI v2.2.0 [Linux](https://spectro-cli.s3.amazonaws.com/v2.2.0/linux/spectro)|
+|Release 3.3.0 |v3.3.0 |
+|Release 3.2.0 |v3.2.0 | 
 
 
-# Stylus CLI Versions
+<br />
 
-|Palette Release|CLI Version| Operating System | Optical Disk Image (ISO) 
-|---|-------|---|--|
-|Release 3.2.0 |v3.2.1 | [Darwin-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-darwin-amd64), [Linux-amd64](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/spectro-cli-linux-amd64) |[ISO](https://stylus-spectro.s3.us-west-2.amazonaws.com/v3.2.1/stylus-v3.2.1-amd64.iso) |
-
- #  Palette Docker Image Version
-
-|Palette Release|Spectro Cloud Pack Registry Docker Image|
-|---------------------------|----------------------------------------|
-|Release 3.2.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.2.0`</p> |
-|Release 3.1.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0`</p> |
-|Release 3.0.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:3.0.0`</p> |
-|Release 2.8.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.8.0`</p> |
-|Release 2.7.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.7.0`</p> |
-|Release 2.6.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.6.0`</p> |
-|Release 2.5.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.5.0`</p> |
-|Release 2.3.0     |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.3.0`</p> |
-|Release 2.2.0 |Pull the latest Docker image using the Docker CLI.<p>`docker pull gcr.io/spectro-images-public/release/spectro-registry:2.2.0`</p> | 
+|Palette Release| Docker Image Version|
+|---------------------------|----|
+|Release 3.3.0     | 3.3.0 |
+|Release 3.2.0     |3.2.0 |
+|Release 3.1.0     |3.1.0 |
+|Release 3.0.0     |3.0.0 |
+|Release 2.8.0     |2.8.0 |
+|Release 2.7.0     |2.7.0 |
+|Release 2.6.0     |2.6.0 |
 
 # On-Premises Installer Version
 
 |Palette Release|On-Prem Installer Version|
 |--|---|
+|3.3|2.6.0|
 |3.2|2.4.0|
 |3.1|2.4.0|
 |3.0|2.1.0|
@@ -78,7 +67,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|Air Gapped Version|
 |--|---|
-|3.2|2.0.1|
+|3.3|2.6.0|
+|3.2|2.4.0|
 |3.1|2.0.1|
 |3.0|2.0.1|
 |2.8|2.0.1|
@@ -93,7 +83,8 @@ This page lists the version details of various Palette components with respect t
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|3.2|1.2.0|
+|3.3|1.6.0|
+|3.2|1.4.0|
 |3.1|1.2.0|
 |3.0|1.2.0|
 |2.8|1.2.0|
@@ -132,10 +123,11 @@ This page lists the version details of various Palette components with respect t
 -------
 
 
-# Stylus Edge Installer Image Version
+# Edge Installer Image Version
 
 |Palette Release|Stylus Version|
 |--|---|
+|3.3|2.2.23|
 |3.2|2.1.0|
 |3.1|2.0.7|
 |3.0|2.0.6|
@@ -159,7 +151,7 @@ This page lists the version details of various Palette components with respect t
 
 - Calico: Refer to the Calico [pack documentation](/integrations/calico).
 
-- Cilium: Refer to the Cilium [pack documentation](integrations/cilium).
+- Cilium: Refer to the Cilium [pack documentation](/integrations/cilium).
 
 
 |Cilium Enterprise|Versions|

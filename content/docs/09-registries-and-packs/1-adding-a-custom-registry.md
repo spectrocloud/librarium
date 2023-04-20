@@ -33,73 +33,149 @@ Pack contents are periodically synchronized with Palette.
 * [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signed-certificates) section for more guidance.
 
 <WarningBox>
+
 Please ensure that the ports 443 and 80 are exclusively allocated to the registry server and are not in use by other processes.
+
 </WarningBox>
 
-# Deploying a Pack Registry Server
+# Deploy Pack Registry Server with Let's Encrypt
 
-Palette provides a Docker image for the pack registry server. The following steps need to be performed to deploy the pack registry server using this docker image:
+The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 
+Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#deploypackregistryserverwithlet'sencrypt) section
+for more advanced configuration and deployment with self-signed certificates.
+
+Palette provides a Docker image for the pack registry server.
+
+The following steps need to be performed to deploy the pack registry server using this docker image:
+
+<br />
+
+1. Create a folder that contains an httppasswd file.
+
+```
+mkdir spectropaxconfig
+```
+
+2. Create the htpasswd file:
+
+```shell
+htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
+```
+
+
+3. Create a pax registry configuration file titled **myconfig.yml**. This file should be in the **spectropaxconfig** directory.
+
+```yaml
+version: 0.1
+log:
+  level: debug
+storage: inmemory
+http:
+  addr: :5000
+  tls:
+    letsencrypt:
+      cachefile: /etc/spectropaxconfig/le-cache
+      email: you@companydomain.com
+      hosts: 
+      - yourhost.companydomain.com 
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /etc/spectropaxconfig/htpasswd-basic
+```
+
+3. Start the container image with the following flags.
+
+```
+docker run  \
+    --rm \
+    --port 443:5000 \
+    --name spectro-registry \
+    --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0  \
+    serve /etc/spectropaxconfig/myconfig.yml
+```
+
+You can now access the pack registry at `https://yourhost.companydomain.com/v1/`.
+You will be prompted to give the user admin and the password of your choice.
+
+# Deploy a Pack Registry Server with Self-Signed Certificates
+
+The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
+
+    <br />
 
     ```bash
     mkdir -p /root/auth
     ```
 
-2. For Admin Users: The command-line below has a placeholder to specify your unique, secure password for admin users.
+2. For admin users, the command below has a placeholder to specify your unique secure password for admin users.
+
+    <br />
 
     ```bash
-    htpasswd -Bbn admin {enter your secure password choice} > /root/auth/htpasswd-basic
+    htpasswd -Bbn admin "yourPasswordHere" > /root/auth/htpasswd-basic
     ```
 
-3. For Other Users: The command-line following has the placeholder to specify your unique, secure password for read-only users.
+3. For other users. The following command has the placeholder to specify your unique secure password for read-only users.
+
+    <br />
 
     ```bash
-    htpasswd -Bbn spectro {enter your secure password choice} >> /root/auth/htpasswd-basic
+    htpasswd -Bbn spectro "yourPasswordHere" >> /root/auth/htpasswd-basic
     ```
 
-4. If HTTPS mode is being used, create a directory called `certs`.
+4. If HTTPS mode is used, create a directory called `certs`.
 
-    ```bash
+    <br />
+
+    ```shell
     mkdir -p /root/certs
     ```
 
 5. Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container. 
+
 
 6. Pack contents in a pack registry can be stored locally on the host or an external file system.
 An external file system is recommended so that the pack contents can be mounted on another pack
 registry instance in the event of restarts and failures.
 Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 
+
 7. Pull the latest Palette pack registry Docker image using the docker CLI.
 
-    ```bash
-        docker pull gcr.io/spectro-images-public/release/spectro-registry:3.1.0
+    <br />
+
+    ```shell
+    docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
     ```
 
 8. Create the Docker container using the docker `run` command:
 
-      * **HTTPS mode**
+<Tabs>
+
+<Tabs.TabPane tab="HTTPS" key="https">
+
     
-        ```bash
-        docker run -d \
-            -p 443:5000 \
-            --restart=always \
-            --name spectro-registry \
-            --mount type=bind,source=/root/auth,target=/auth,readonly \
-            --mount type=bind,source=/root/data,target=/data \
-            --mount type=bind,source=/root/certs,target=/certs,readonly \
-            -e REGISTRY_LOG_LEVEL=info \
-            -e REGISTRY_AUTH=htpasswd \
-            -e REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
-            -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-            -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
-            -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-            spectro-registry:3.1.0
-          ```
-    
-<br />
+```bash
+docker run -d \
+    -p 443:5000 \
+    --restart=always \
+    --name spectro-registry \
+    --mount type=bind,source=/root/auth,target=/auth,readonly \
+    --mount type=bind,source=/root/data,target=/data \
+    --mount type=bind,source=/root/certs,target=/certs,readonly \
+    -e REGISTRY_LOG_LEVEL=info \
+    -e REGISTRY_AUTH=htpasswd \
+    -e REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
+    -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
+    -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
+    -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
+    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
+```
 
   #### Common Issues 
 
@@ -109,28 +185,49 @@ Create a directory or mount an external volume to the desired storage location. 
 
   * Spectro Cloud CLI registry login command fails with the error message in case of self-signed certificates or if the certificate is invalid. `x509: certificate signed by unknown authority`. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
 
+</Tabs.TabPane>
 
-  *    **HTTP mode** (*not recommended*)
-        ```bash
-            docker run -d \
-                -p 80:5000 \
-                --restart=always \
-                --name spectro-registry \
-                --mount type=bind,source=/root/auth,target=/auth,readonly \
-                --mount type=bind,source=/root/data,target=/data \
-                -e  REGISTRY_LOG_LEVEL=info \
-                -e  REGISTRY_AUTH=htpasswd \
-                -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
-                -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-                spectro-registry:3.1.0
-        ```
+<Tabs.TabPane tab="HTTP" key="http">
+
+
+```shell
+docker run -d \
+    -p 80:5000 \
+    --restart=always \
+    --name spectro-registry \
+    --mount type=bind,source=/root/auth,target=/auth,readonly \
+    --mount type=bind,source=/root/data,target=/data \
+    -e  REGISTRY_LOG_LEVEL=info \
+    -e  REGISTRY_AUTH=htpasswd \
+    -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
+    -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
+    gcr.io/spectro-images-public/release/spectro-registry/spectro-registry:3.3.0
+  ```
 
 <br />
 
-<InfoBox>
-Spectro Cloud CLI is required to use the insecure option `-i ( --insecure )` in the registry login command if the pack registry is installed in the HTTP mode.
-</InfoBox>
+<WarningBox>
+
+Registry servers configured in HTTP mode require the `--insecure` CLI flag when using the Spectro Cloud CLI's `login` command.
+
 <br />
+
+```shell
+spectro registry login --insecure http://example.com:5000
+```
+
+
+</WarningBox>
+
+</Tabs.TabPane>
+
+
+</Tabs> 
+
+    
+<br />
+
+
 
 9. Expose the container host's port publicly to allow the console to interact with the pack registry.
    This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
@@ -184,8 +281,6 @@ use these packs in their cluster profiles.
 
 To know more about the use of Spectro CLI to push packs to a custom registry and sync it to Palette [click here..](/registries-and-packs/spectro-cli-reference/?cliCommands=cli_push#push)
 
-
-
 # Self-Signed Certificates
 
 For self-signed certificates, use the following command to generate certificates.
@@ -213,6 +308,5 @@ Provide the appropriate values while ensuring that the Common Name matches the r
   
   Example:
   REGISTRY_HOST_DNS - registry.com
-  ```
 
-  <br />
+<br />

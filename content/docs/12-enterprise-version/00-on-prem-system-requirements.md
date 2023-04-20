@@ -4,7 +4,7 @@ metaTitle: "On-premise System Requirements"
 metaDescription: "An overview of On-premise System Requirements"
 icon: ""
 hideToC: true
-fullWidth: true
+fullWidth: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -16,12 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # System Requirements
 
-The Spectro Cloud Palette SaaS platform is also available as a self-hosted, on-premise deployment. The on-premise version is a dedicated instance of the platform hosted in the customer's VMware environment. Palette on-premise is available in two modes:
+The Spectro Cloud Palette SaaS platform is available as a self-hosted, on-prem deployment. The on-prem version is a dedicated instance of the platform hosted in a VMware environment or in an existing Kubernetes cluster. Palette on-prem is available in three modes:
 
 | **On-premise Modes** | **Description**                                                                   |
 | --------------------- | --------------------------------------------------------------------------------- |
-| **Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
-| **Quick Start Mode**  | A single VM deployment of the platform ideal for proof-of-concept (PoC) purposes. |
+| **VMWare Enterprise Mode**   | A multi-node, highly available version for production purposes.                    |
+| **VMWare Quick Start Mode**  | A single VM deployment of the platform that is ideal for use in Proofs of Concept (PoCs). |
+| **Helm Chart Mode**  | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
 
 The sections below describe the standard requirements and highlight specific requirements for both deployment modes.
 
@@ -41,6 +42,7 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 
 * Install a Private Cloud Gateway for VMware as described in the Creating a VMware Cloud Gateway section. Installing the Private Cloud Gateway automatically registers a cloud account for VMware in Palette. You can register additional VMware cloud accounts in Palette as described in the Creating a VMware Cloud account section.
 
+* Kubernetes version 1.19 minimum when installing Palette in a cluster using a Helm Chart. We recommend using managed Kubernetes, such as Amazon EKS and Azure EKS. 
 
 * Subnet with egress access to the internet (direct or via proxy):
   * For proxy: HTTP_PROXY, HTTPS_PROXY (both are required).
@@ -85,8 +87,6 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 **Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
-<InfoBox>
-
 ### Naming conventions for vSphere Region and Zone Tags
 The following points needs to be taken care while creating the Tags:
 * A valid tag must consist of alphanumeric characters
@@ -98,7 +98,7 @@ The following points needs to be taken care while creating the Tags:
 * my_value
 * 12345
 
-</InfoBox>
+
 
 
 
@@ -341,7 +341,7 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 
 
 ##  Proxy Requirements
-*   If a proxy is used for outgoing connections, it should support both HTTP and HTTPS traffic.
+*  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
 
 *   Connectivity to the following domains and ports should be allowed:
