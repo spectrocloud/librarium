@@ -53,6 +53,14 @@ The Prometheus Cluster Metrics requires no additional configuration and is desig
 
 You can learn how to add the Prometheus Cluster Metrics to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
 
+<br />
+
+<WarningBox>
+
+Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box dashboards.
+
+</WarningBox>
+
 
 # Terraform
 
