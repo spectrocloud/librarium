@@ -21,7 +21,7 @@ The following parameters are mandatory for the self-hosted Palette installation 
  
 - Refer to the [Registry and Scar parameters](#registry-and-scar-parameters) used to specify the Docker registry where the chart images are stored and the Spectro Cloud Admission Registrar (SCAR), respectively.
 
-## MongoDB parameters
+## MongoDB
 
 The below table outlines the values.yaml parameters for configuring a **MongoDB** deployment. 
 
