@@ -1,7 +1,7 @@
 ---
 title: "Security Bulletins"
 metaTitle: "Security Bulletins"
-metaDescription: "Security bulletins for Palette Common Vulnerabilities and Exposures (CVEs)"
+metaDescription: "Security bulletins for Palette Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
 hideToC: false
 fullWidth: false

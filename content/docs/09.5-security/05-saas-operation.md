@@ -1,7 +1,7 @@
 ---
 title: "SaaS Operation"
 metaTitle: "SaaS Operation"
-metaDescription: "SaaS security for platform, tenant clusters, control plane, and worker nodes"
+metaDescription: "Learn about Palette security in a SaaS environment environment."
 icon: ""
 hideToC: false
 fullWidth: false

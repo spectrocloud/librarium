@@ -1,7 +1,7 @@
 ---
 title: "Infrastructure Security"
 metaTitle: "Infrastructure"
-metaDescription: "Infrastructure security for platform, tenant clusters, control plane, and worker nodes"
+metaDescription: "Learn how Palette provides Infrastructure security."
 icon: ""
 hideToC: false
 fullWidth: false
