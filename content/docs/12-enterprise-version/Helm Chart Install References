@@ -118,7 +118,7 @@ This section explains the parameters for the configuration file containing setti
 | `natsStaticIP`| `""`         | String  |Used to specify a static IP address for the NATS load balancer service. If empty, a dynamic IP address will be generated.                                   | Optional           |
 
 
-## Ingress parameters
+## Ingress
 
 The **Ingress** block in the YAML configuration file is used for configuring the **NGINX Ingress** Controller, which provides an external HTTP(S) load balancer for **Kubernetes** services. 
 
