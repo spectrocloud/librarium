@@ -103,7 +103,7 @@ Cluster parameters are used to specify the Kubernetes cluster configuration.
 | `scar.username`     | String | The username for the SCAR.                               | Required           |
 | `scar.password`     | String | The password for the SCAR.                               | Required           |
 
-To learn about the default values of the parameters, please contact Spectro Cloud sales.
+Please contact the Spectro Cloud support team at support@spectroclud.com to receive the required values and credentials for SCAR. 
 
 ## Network Address Translation(NATS) parameters
 
