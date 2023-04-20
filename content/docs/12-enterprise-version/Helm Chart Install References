@@ -15,7 +15,7 @@ This reference guide explains the parameters in the Palette Helm Chart's **value
 
 The following parameters are mandatory for the self-hosted Palette installation using Helm. 
 
-- **env.rootDomain**- Used to configure the domain for the Palette installation. **Note:** You should create a DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [environment parameters](#environment-parameters) to learn more. 
+- **env.rootDomain** - Used to configure the domain for the Palette installation.  You should create a separate A Canonical Name (CNAME) Domain Name Server (DNS) record pointing to the specified domain. The CNAME should contain a wildcard to account for Organization prefixes. Review the [environment parameters](#environment-parameters) to learn more. 
 
 - **natsUrl**- The URL format specifies configuring the NATS server(s) to the IP address and port. Review the [Network Address Translation (NATS) parameters](#network-address-translationnats-parameters) to learn more. 
  
