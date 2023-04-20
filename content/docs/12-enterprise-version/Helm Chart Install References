@@ -115,7 +115,7 @@ This section explains the parameters for the configuration file containing setti
 | `natsUrl`    | `True`        | String  | A comma-separated list of <dns_name:port> mappings for the NATS load balancer service. Mandatory if `nats.internal` is set to `false`.     | Required           |
 | `Annotations`| `{}`          | Map     | Used to specify all the annotations applicable to the NATS load balancer service.                                                                                           | Optional           |
 | `routes`     | `[]`          | List    | NATS routes & credentials. It is required only if the system is in HA mode.                                               | Optional           |
-| `natsStaticIP`| `""`         | String  | Static IP for the NATS load balancer service. If empty, a dynamic IP will be generated.                                   | Optional           |
+| `natsStaticIP`| `""`         | String  |Used to specify a static IP address for the NATS load balancer service. If empty, a dynamic IP address will be generated.                                   | Optional           |
 
 
 ## Ingress parameters
