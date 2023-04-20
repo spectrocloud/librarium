@@ -34,7 +34,7 @@ The below table outlines the values.yaml parameters for configuring a **MongoDB*
 | `cpu.limit` | `2000m` | String | Specifies the CPU limit for each **MongoDB** replica.| Optional |
 | `memorylimit` | `4Gi` | String |Specifies the memory limit for each **MongoDB** replica.| Optional |
 | `pvcSize` | `20Gi` | String | Specifies the **persistent volume claim (PVC**) size for each **MongoDB** replica.|Optional |
-| `storageClass` | "" | String | Storage class for the **PVC**. Leave empty to use the default storage class. |Optional |
+| `storageClass` | "" | String | Storage class for the PVC. Leave empty to use the default storage class. |Optional |
 
 ## Config parameters
 
