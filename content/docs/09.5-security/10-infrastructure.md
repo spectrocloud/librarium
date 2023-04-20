@@ -3,7 +3,7 @@ title: "Infrastructure Security"
 metaTitle: "Infrastructure"
 metaDescription: "Infrastructure security for platform, tenant clusters, control plane, and worker nodes"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

@@ -3,7 +3,7 @@ title: "Self-Managed Operation"
 metaTitle: "Self-Managed Operation"
 metaDescription: "Self-Managed operation security"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 

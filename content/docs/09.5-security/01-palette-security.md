@@ -3,7 +3,7 @@ title: "Palette Security"
 metaTitle: "Palette Security"
 metaDescription: "Palette security introduction"
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
