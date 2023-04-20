@@ -8,7 +8,7 @@ fullWidth: true
 ---
 
 # Helm Chart Install Reference Guide
-You can install the Palette Helm Chart in a multi-node Kubernetes cluster for use in production environments. The [Self-hosted Palette installation using Helm](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm) allows users to customize as per their needs by specifying user-defined values in the **values.yaml file.**
+You can install the Palette Helm Chart in a multi-node Kubernetes cluster for use in production environments. The [Self-hosted Palette installation using Helm](/enterprise-version/deploying-palette-with-helm) allows you to customize the self-hosted Palette install by specifying user-defined values in the **values.yaml file.**
 This reference guide explains the parameters available in the **values.yaml** file from the Helm Chart for your installation.
 
 ## Mandatory parameters
