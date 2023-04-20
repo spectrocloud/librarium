@@ -17,7 +17,7 @@ The following parameters are mandatory for the self-hosted Palette installation 
 
 - **env.rootDomain** - Used to configure the domain for the Palette installation.  You should create a separate A Canonical Name (CNAME) Domain Name Server (DNS) record pointing to the specified domain. The CNAME should contain a wildcard to account for Organization prefixes. Review the [environment parameters](#environment-parameters) to learn more. 
 
-- **natsUrl**- The URL format specifies configuring the NATS server(s) to the IP address and port. Review the [Network Address Translation (NATS) parameters](#network-address-translationnats-parameters) to learn more. 
+- **natsUrl** - The URL format specifies configuring the Network Address Translation servers to the IP address and port. Review the [ NATS parameters](#network-address-translationnats-parameters) to learn more. 
  
 - Refer to the [Registry and Scar parameters](#registry-and-scar-parameters) used to specify the Docker registry where the chart images are stored and the Spectro Cloud Admission Registrar (SCAR), respectively.
 
