@@ -1,7 +1,7 @@
 ---
 title: "Security Bulletins"
 metaTitle: "Security Bulletins"
-metaDescription: "Security bulletins for Common Vulnerabilities and Exposures (CVEs)"
+metaDescription: "Security bulletins for Palette Common Vulnerabilities and Exposures (CVEs)"
 icon: ""
 hideToC: false
 fullWidth: false
@@ -22,3 +22,12 @@ Our security advisories follow the [CVSS standards](https://www.first.org/cvss/v
 | Critical | 9.0 - 10.0 |
 
 # Security Bulletins
+
+
+<br />
+
+<br />
+
+<br />
+
+<br />

@@ -22,6 +22,8 @@ In public clouds like AWS, Azure, and GCP, Palette interacts directly with a clo
 This allows the SaaS controller to do the following: 
 
 - Dynamically query cloud resources.
+
+
 - Act as an orchestrator to initiate SaaS controller requests for deployments.
 
 In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component is deployed in the on-prem environment as a virtual appliance (OVA). The PCG component automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using static network address translation (NATS) with transport layer security (TLS). More details about OVA operation are provided in [Self-Hosted Operation](/security/self-hosted-operation). 
@@ -47,6 +49,21 @@ The following design principles ensure tenant isolation:
 
 ## Control Plane and Worker Nodes
 
-Control plane nodes and worker nodes in the Kubernetes cluster that hosts Palette are launched in private subnets. All ports on the nodes are protected from external access.
+Control plane nodes and worker nodes in the Kubernetes cluster that hosts Palette are launched in private subnets. All ports on the nodes are protected from external access. 
 
-The Spectro Cloud SaaS Ops team maintains the SSH public key deployed in the nodes.
+In self-hosted Palette installations, customers manage their own SSH public keys unless an agreement is in place for Spectro Cloud to maintain their environment.
+
+<br />
+
+# Resources
+
+[Self-Hosted Operation](/security/self-hosted-operation)
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
