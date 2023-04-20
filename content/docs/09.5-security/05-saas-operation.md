@@ -50,33 +50,3 @@ The following design principles ensure tenant isolation:
 Control plane nodes and worker nodes in the Kubernetes cluster that hosts Palette are launched in private subnets. All ports on the nodes are protected from external access.
 
 The Spectro Cloud SaaS Ops team maintains the SSH public key deployed in the nodes.
-
-<br />
-Control plane nodes have the following security group rules:
-<br />
-
-|**Type** | **Protocol** | **Port Range** | **Source** | **Description** |
-|---------|------------|---------|-----------------|--------------------|
-|Custom TCP Rule | TCP | 6443 | 0.0.0.0/0 | Kubernetes API |
-|SSH | TCP | 22 | bastion | SSH |
-|Custom TCP Rule | TCP | 2379 | control plane | etcd |
-|Custom TCP Rule | TCP | 2380 | control plane | etcd peer |
-|Custom TCP Rule | TCP | 179 | control plane | etcd (calico)|
-|Custom TCP Rule | TCP | 179 | worker node | bgp (calico)|
-|Custom Protocol | IPv4 (4) | All | control plane | IP-in-IP (calico)|
-|Custom Protocol | IPv4 (4) | All | worker node | IP-in-IP (calico)|
-
-<br />
-Worker nodes have the following security group rules: 
-<br />
-
-|**Type** | **Protocol** | **Port Range** | **Source** | **Description** |
-|---------|------------|---------|-----------------|--------------------|
-|SSH | TCP | 22 | bastion | SSH |
-|Custom TCP Rule | TCP | 10250 | control plane | Kubelet API |
-|Custom TCP Rule | TCP | 10250 | worker node | Kubelet API |
-|Custom TCP Rule | TCP | 179 | control plane | bgp (calico)|
-|Custom TCP Rule | TCP | 179 | worker node | bgp (calico)|
-|Custom Protocol | IPv4 (4) | All | control plane | IP-in-IP (calico)|
-|Custom Protocol | IPv4 (4) | All | worker node | IP-in-IP (calico)|
-<br />
