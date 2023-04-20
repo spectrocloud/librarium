@@ -1,7 +1,7 @@
 ---
-title: "Quick Start Mode"
-metaTitle: "Quick Start Mode"
-metaDescription: "A quick start to Spectro Cloud Palette Platform for PoC purposes."
+title: "Install Using Quick-Start Mode"
+metaTitle: "Install Using Quick-Start Mode"
+metaDescription: "Learn how to install self-hosted Palette by deploying a single node instance."
 icon: ""
 hideToC: false
 fullWidth: false

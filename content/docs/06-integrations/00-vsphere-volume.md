@@ -3,7 +3,7 @@ title: 'vSphere-Volume'
 metaTitle: 'vSphere volume  Integration with Spectro Cloud'
 metaDescription: 'vSphere volume storage add on into Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['storage']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-vsphere-volume/blobs/sha256:2cd106b353cb492d4647a1562fe59db6a1aeb792333900fe4e15237f899298b5?type=image/png'
 ---
@@ -26,7 +26,7 @@ vSphere volume virtualizes SAN/NAS arrays, enabling an efficient operational mod
 <Tabs.TabPane tab="1.0.x" key="1.0.x">
 
 * **1.0.0**
- 
+
 </Tabs.TabPane>
 </Tabs>
 

@@ -25,7 +25,7 @@ The first step towards adopting Palette to your organization is to create a logi
 
 [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree)
 
-[Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette)
+[Free Cloud Credit](/getting-started/palette-freemium#freecloudcreditwithpalette)
 
 
 After successful account creation, Palette presents a well-organized Product Onboarding Workflow to streamline the user product adoption. The onboarding process consists of explaining our product features, followed by a Palette experience session. Here we furnish an easy-to-follow deployment pipeline for our users to launch their first cluster successfully. Explore more about the feature:

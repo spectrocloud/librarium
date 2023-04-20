@@ -3,7 +3,7 @@ title: 'Outcold Solutions'
 metaTitle: 'Outcold Solutions'
 metaDescription: 'Outcold Solutions - Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['monitoring']
 logoUrl: 'https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3140960d1f39649ad821cfc59450d3c164079b03d15387b2e638eae07442af41?type=image/png'
@@ -25,7 +25,7 @@ Integration provides Kubernetes monitoring solution that includes log aggregatio
 <Tabs>
 <Tabs.TabPane tab="5.0.x" key="5.0.x">
 
-* **5.0.0** 
+* **5.0.0**
 
 </Tabs.TabPane>
 </Tabs>
@@ -34,7 +34,7 @@ Integration provides Kubernetes monitoring solution that includes log aggregatio
 
 This integration forwards logs and metrics to [Splunk](https://www.splunk.com/). Pre-requisites for Splunk are
 1. [Install Kubernetes Monitoring application](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation/#install-monitoring-kubernetes-application)
-2. [Enable HTTP Event Collector (HEC) in Splunk](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation/#enable-http-event-collector-in-splunk) 
+2. [Enable HTTP Event Collector (HEC) in Splunk](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation/#enable-http-event-collector-in-splunk)
 3. Make sure to configure the forwarder settings below while setting up the pack
 
 ```YAML
@@ -78,15 +78,3 @@ The following workloads gets deployed on collectorforkubernetes namespace, by de
 
 * https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/
 * https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation/
-
- 
-
-
- 
-
-
-
-
-
-
-

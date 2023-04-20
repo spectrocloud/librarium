@@ -1,0 +1,39 @@
+on:
+  schedule:
+    # Every Monday at 6 am
+    - cron: '0 6 * * 1'
+  
+  
+concurrency:
+  group: url-${{ github.ref }}
+  cancel-in-progress: true
+  
+name: Broken URL check
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: URL Checker
+        run: make verify-url-links-ci
+  
+      - name: Post Comment
+        run: |
+          cd scripts
+          ./url-checker.sh
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

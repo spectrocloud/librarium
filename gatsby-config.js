@@ -75,12 +75,20 @@ const plugins = [
     resolve: "gatsby-plugin-mdx",
     options: {
       plugins: [
+        `gatsby-remark-relative-images`,
         `gatsby-remark-video`,
         `gatsby-remark-images`,
         `gatsby-remark-images-medium-zoom`,
         "gatsby-remark-image-attributes",
+        "gatsby-remark-copy-linked-files",
       ],
       gatsbyRemarkPlugins: [
+        {
+          resolve: `gatsby-remark-relative-images`,
+          options: {
+            staticFolderName: "./assets/docs/images/",
+          },
+        },
         {
           resolve: "gatsby-remark-video",
           options: {
@@ -94,22 +102,21 @@ const plugins = [
             loop: false,
           },
         },
+
         {
           resolve: "gatsby-remark-images",
           options: {
             maxWidth: 1035,
             quality: 100,
             linkImagesToOriginal: false,
+            disableBgImageOnAlpha: true,
           },
         },
         {
-          resolve: "gatsby-remark-copy-linked-files",
-        },
-        {
-          resolve: "gatsby-remark-images-medium-zoom",
-        },
-        {
           resolve: "gatsby-remark-image-attributes",
+        },
+        {
+          resolve: "gatsby-remark-copy-linked-files",
         },
       ],
       extensions: [".mdx", ".md"],

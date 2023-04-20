@@ -1,7 +1,7 @@
 ---
-title: "Registries and packs"
-metaTitle: "Registries and packs"
-metaDescription: "Pack management options for Kubernetes on Spectro Cloud. Use the built-in packs or BYO packs to make Kubernetes truly yours."
+title: "Registries and Packs"
+metaTitle: "Registries and Packs"
+metaDescription: "Learn about Packs, how to use and combine Packs, and how to create your Pack ."
 icon: "nodes"
 hideToC: false
 fullWidth: false
@@ -12,11 +12,19 @@ import WarningBox from 'shared/components/WarningBox';
 # Packs
 
 
-A Pack is a collection of files such as Manifests, Helm charts, Ansible roles, Configuration files, etc. It is the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons.  Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment.
+A **Cluster Profile** is made up of preconfigured layers, each of which is called a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorized into two types:
+
+- **Core** packs - These packs model the core layers to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these core packs for updates. 
+
+
+- **Add-On** packs - These packs model the infrastructure integrations and applications that exist on top of the core packs. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
+
+Both the core and add-on packs described above are customizable, and you can define new custom add-on packs as well. The use case for defining new custom add-on packs is to have desired consistent governance across your profile deployments. 
+  
 
 ## Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. The following is a typical structure of a pack:
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. Each Pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, etc. Ansible roles, if provided, are used to customize cluster virtual machine images, whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical structure of a pack:
 
 
 | **Pack Name** |**Requirement** | **Pack Directory Name** |
@@ -43,19 +51,6 @@ Users can set up a custom pack registry using a Docker image provided by Spectro
 
 # Spectro CLI
 
+The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands. Review the  [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference) reference page for usage instructions.
 
-
-Spectro Cloud CLI is a Command Line Interface to interact with the Spectro Cloud Pack Registry server for uploads and downloads of packs. CLI must authenticate with the pack registry before executing any CLI command.
-
-## Downloads
-
-Spectro CLI is currently available in two platforms - OSX & Linux:
-
-
-
-
-
-|**OS**  |**Download Site**  |
-|---------|---------|
-|OSX     |   https://spectro-cli.s3.amazonaws.com/v3.0.0/osx/spectro     |
-|Linux   |   https://spectro-cli.s3.amazonaws.com/v3.0.0/linux/spectro      |
+<br />
