@@ -8,6 +8,7 @@ fullWidth: false
 ---
 
 import WarningBox from 'shared/components/WarningBox';
+import Tabs from "shared/components/ui/Tabs";
 
 # Packs
 
@@ -30,16 +31,61 @@ Palette provides a rich collection of out-of-the-box packs for various integrati
 | **Pack Name** |**Requirement** | **Description** |
 |-|-|-|
 | `pack.json` | mandatory| Pack metadata.|
-| `values.yaml`| mandatory| Pack configuration, params exposed from the underlying charts, <br /> and templated params from ansible-roles|
-|`README.md`|The pack description|
+| `values.yaml`| mandatory| Pack configuration, params exposed from the underlying charts, and templated params from ansible-roles|
+| `charts/`| mandatory| Mandatory for Helm chart-based pack. Contains the Helm charts to be deployed for the pack. |
+| `manifests/`| mandatory| Mandatory for Manifest-based pack. Contains the manifest files.|
+| `ansible-roles`| optional| Ansible roles used to install the pack.|
 | `logo.png`| optional| pack logo|
-| `manifests/`| optional| Directory containing the manifest files|
-| `ansible-roles`| optional| Ansible roles used to install the pack|
-| `charts/`| optional| Directory containing the Helm charts to be deployed for the pack. <br>A pack can support multiple charts underneath. Note that each chart, in turn, also has a `values.yaml` file and can have nested charts.|
+| `README.md`|optional| The pack description|
 
 
-![Pack structure](/pack_structure.png)
+Let's look at the examples below to understand the pack structure better. <br/> <br/> 
 
+
+
+<Tabs>
+
+<Tabs.TabPane tab="Helm chart based pack" key="helm-chart-pack">
+
+The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, made up of two charts: `istio-controlplane` and `istio-operator`; each chart, in turn, has its `values.yaml` file. In this example, we have pack-level `values.yaml` file and individual chart-level `values.yaml` files.  <br/> <br/> 
+
+```bash
+.
+├── charts/
+│   ├── istio-controlplane.tgz
+│   ├── istio-controlplane
+│   │   ├── Chart.yaml
+│   │   ├── templates/
+│   │   └── values.yaml
+│   ├── istio-operator.tgz
+│   └── istio-operator
+│       ├── Chart.yaml
+│       ├── templates/
+│       └── values.yaml
+├── logo.png
+├── pack.json
+└── values.yaml
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Manifest based pack" key="manifest-pack">
+
+This example shows the structure of a Manifest-based pack, **kubeflow-1.2.0**, made up of `kubeflow-kfdef.yaml` and `kubeflow-operator.yaml` manifests.
+
+```bash
+.
+├── manifests/
+│   ├── kubeflow-kfdef.yaml
+│   └── kubeflow-operator.yaml
+├── logo.png    
+├── pack.json
+└── values.yaml
+```  
+
+</Tabs.TabPane>
+
+</Tabs>
 
 # Registries
 
