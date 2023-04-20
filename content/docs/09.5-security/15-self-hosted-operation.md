@@ -1,13 +1,13 @@
 ---
-title: "Self-Managed Operation"
-metaTitle: "Self-Managed Operation"
-metaDescription: "Self-Managed operation security"
+title: "Self-Hosted Operation"
+metaTitle: "Self-Hosted Operation"
+metaDescription: "Self-Hosted operation security"
 icon: ""
 hideToC: false
 fullWidth: false
 ---
 
-# Self-Managed Operation
+# Self-Hosted Operation
 
 In self-managed operation, where Palette is typically deployed on-prem behind the firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster fully qualified domain name (FQDN). Palette supports enabling disk encryption policies for management cluster VMs if required. 
 
