@@ -269,7 +269,7 @@ To validate that the Prometheus agent is successfully installed and sending metr
 
 <WarningBox>
 
-Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box dashboards.
+Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
 
 </WarningBox>
 
