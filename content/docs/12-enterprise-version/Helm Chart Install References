@@ -105,7 +105,7 @@ Cluster parameters are used to specify the Kubernetes cluster configuration.
 
 Please contact the Spectro Cloud support team at support@spectroclud.com to receive the required values and credentials for SCAR. 
 
-## Network Address Translation(NATS) parameters
+## Network Address Translation (NATS)
 
 This section explains the parameters for the configuration file containing settings related to the **Network Address Translation (NATS)** messaging system. 
 
