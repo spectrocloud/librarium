@@ -30,7 +30,7 @@ The below table outlines the values.yaml parameters for configuring a **MongoDB*
 | `internal` | N/A | Boolean | Specifies the **MongoDB** deployment either in-cluster or using **Mongo Atlas**. | Required |
 | `databaseUrl` | `mongo-0.mongo,mongo-1.mongo,mongo-2.mongo` | String | **MongoDB** URL. Change if using **Mongo Atlas**.| Required|
 | `databasePassword` | "" | String | **Mongo Atlas** database password, base64-encoded. | Optional |
-| `replicas` | `3` | Integer | Specifies the number of **MongoDB** replicas to run.| Required |
+| `replicas` | `3` | Integer | Specifies the number of **MongoDB** replicas to start.| Required |
 | `cpu.limit` | `2000m` | String | Specifies the CPU limit for each **MongoDB** replica.| Optional |
 | `memorylimit` | `4Gi` | String |Specifies the memory limit for each **MongoDB** replica.| Optional |
 | `pvcSize` | `20Gi` | String | Specifies the **persistent volume claim (PVC**) size for each **MongoDB** replica.|Optional |
