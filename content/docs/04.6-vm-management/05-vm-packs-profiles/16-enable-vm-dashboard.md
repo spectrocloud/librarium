@@ -43,7 +43,7 @@ Apply the profile with the Spectro VM Dashboard integration pack to your cluster
 - Assigned permissions to access Palette clusters. 
 
 
-# Enablement
+# Enable the VM Dashboard
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -54,7 +54,7 @@ Apply the profile with the Spectro VM Dashboard integration pack to your cluster
 3. Go to the **Profiles** tab and click **+** next to **Addon Layers**, then select the profile you created.
 
 
-4. Add role bindings from the **Settings** menu. Click **RBAC**. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance on creating a role binding. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+4. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
 
 
 5. Click **Confirm** to update the cluster.

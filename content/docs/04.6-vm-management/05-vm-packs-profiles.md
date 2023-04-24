@@ -1,6 +1,6 @@
 ---
-title: "Packs and Profiles"
-metaTitle: "Packs and Profiles"
+title: "VM Packs and Profiles"
+metaTitle: "VM Packs and Profiles"
 metaDescription: "Learn about components of the Spectro VM Dashboard integrated pack"
 icon: " "
 hideToC: false
@@ -19,7 +19,7 @@ Palette's Virtual Machine (VM) Management solution is provided as a single pack 
 
 <br />
 
-- **Spectro VM Dashboard**: An add-on pack that enables access to a web console in so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Management is enabled. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
+- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Management is enabled. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
 
 
 - **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 

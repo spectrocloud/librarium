@@ -1,6 +1,6 @@
 ---
-title: "Migrate VM to a Different Node"
-metaTitle: "Migrate VM to a Different Node"
+title: "Migrate a VM"
+metaTitle: "Migrate a VM to a Different Node"
 metaDescription: "Learn how to migrate a VM from node to node using Palette."
 icon: " "
 hideToC: false
@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Live migration is a process in which a running virtual machine (VM) moves to another cluster node while the guest workload continues to run. During live migration, the VM remains accessible.
+Live migration is a process in which a running virtual machine (VM) is moved to another cluster node while the guest workload continues to run. During live migration, the VM remains accessible. Live migration is used for rolling upgrades. By default, ``spec.template.spec.evictionStrategy`` is set to ``LiveMigrate``.
 
 Successful live migrations rely on appropriately configured storage and networking and must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` field of the kubevirt configuration file in the Spectro VM Dashboard pack. Refer to [Feature Gates](/vm-management#featuregates).
 
@@ -29,12 +29,15 @@ Consider the following when migrating a VM node:
 - Other interfaces, such as those that Multus grants, may use a bridge interface for the purposes of live migration.
 
 
+- All VM instances must have an evictionStrategy
+
+
 # Prerequisites
 
 - VMs that use a Persistent Volume Claim (PVC) must have a shared ReadWriteMany (RWX) access mode. 
 
 
-- A VM’s pod network cannot use a bridge interface. Disable the bridge interface on the pod network.
+- A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network.
 
 
 <InfoBox>
@@ -44,18 +47,20 @@ The default network interface type is a Bridge interface.
 </InfoBox>
 
 
-# Enablement
+# Migrate VM to a Different Node
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
+2. From the left **Main Menu**, choose **Clusters** and click on your cluster. 
 
 
 3. Click the **Virtual Machines** tab.
 
 
-4. From the **three-dotMenu** or the **Actions drop-down Menu** for a selected VM, click **Migrate Node to Node**.
+4. From the **three-dotMenu** or the **Actions drop-down Menu** for a selected VM, click **Migrate Node to Node**. 
+
+<br />
 
 
 # Validation

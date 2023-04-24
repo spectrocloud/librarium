@@ -37,7 +37,7 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 * Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
-# Enablement
+# Create the VM Dashbaoard
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -100,4 +100,4 @@ You can validate the profile is created by navigating to **Profiles** from the l
 
 # Next Steps
 
-You can now apply the profile to your cluster. The [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard) guides you in applying the profile so you can access the dashboard.
+You can now apply the profile to your cluster. [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard) guides you in applying the profile so you can access the dashboard.
