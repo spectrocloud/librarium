@@ -14,7 +14,20 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 # Required IAM Policies
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
-The following four policies include all the required permissions for provisioning clusters through Palette.
+The following four policies include all the required permissions for common provisioning clusters through Palette. <br /><br />
+
+* Controllers Policy
+
+
+* Control Plane Policy
+
+
+* Nodes Policy
+
+
+* Deployment Policy 
+
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *Controllers EKS Policy*.
 
 <br />
 
@@ -29,7 +42,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 <Tabs.TabPane tab="Controllers Policy" key="Controllers Policy">
 
-### Controllers Policy 
 
 **Last Update**: April 20, 2023
 
@@ -216,7 +228,8 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Controllers EKS Policy" key="Controllers EKS Policy">
-** Last Update**: April 20th, 2023
+
+**Last Update**: April 20, 2023
 
 ```json
 {
@@ -392,8 +405,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 <Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
 
-### Control Plane Policy 
-
 **Last Update**: April 20, 2023
 
 ``` json
@@ -469,7 +480,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 <Tabs.TabPane tab="Nodes Policy" key="Nodes Policy">
 
-### Nodes Policy 
 
 **Last Update**: May 2, 2021
 
@@ -524,7 +534,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Deployment Policy" key="Deployment Policy">
-### Deployment Policy 
 
 **Last Update**: April 20, 2023
 
@@ -571,7 +580,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 # Restricting Palette VPC Permissions
 
-You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette operate but restricts its access to the [Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the [Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
 
 <br />
