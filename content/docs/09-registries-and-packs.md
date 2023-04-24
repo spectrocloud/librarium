@@ -47,7 +47,7 @@ Let's look at the examples below to understand the pack structure better. <br/> 
 
 <Tabs.TabPane tab="Helm chart based pack" key="helm-chart-pack">
 
-The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, made up of two charts: `istio-controlplane` and `istio-operator`; each chart, in turn, has its `values.yaml` file. In this example, we have pack-level `values.yaml` file and individual chart-level `values.yaml` files.  <br/> <br/> 
+The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, made up of two charts: *istio-controlplane* and *istio-operator*.  Each chart, in turn, has its **values.yaml** file. In this example, we have pack-level **values.yaml** file and individual chart-level **values.yaml** files.  <br/> <br/> 
 
 ```bash
 .
@@ -71,7 +71,7 @@ The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, mad
 
 <Tabs.TabPane tab="Manifest based pack" key="manifest-pack">
 
-This example shows the structure of a Manifest-based pack, **kubeflow-1.2.0**, made up of `kubeflow-kfdef.yaml` and `kubeflow-operator.yaml` manifests.
+This example shows the structure of a Manifest-based pack, *kubeflow-1.2.0*, made up of **kubeflow-kfdef.yaml** and **kubeflow-operator.yaml** manifests.
 
 ```bash
 .
