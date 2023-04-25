@@ -1,7 +1,7 @@
 ---
-title: "VM Packs and Profiles"
-metaTitle: "VM Packs and Profiles"
-metaDescription: "Learn about components of the Spectro VM Dashboard integrated pack"
+title: "Pack and Profile"
+metaTitle: "Pack and Profile"
+metaDescription: "Components of the Spectro VM Dashboard integrated pack."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -22,7 +22,7 @@ Palette's Virtual Machine (VM) Management solution is provided as a single pack 
 - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Management is enabled. It provides an easy-to-use web interface to create and manage VMs in your Kubernetes cluster. This pack is an essential component.
 
 
-- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster.This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
+- **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
 
 
 - **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt. KubeVirt offers feature gates you can enable in the Spectro VM Dashboard manifest. To learn more, refer to [Feature Gates](/vm-management#featuregates).  
@@ -34,14 +34,13 @@ Palette's Virtual Machine (VM) Management solution is provided as a single pack 
 - **Volume Snapshot Controller**: A Kubernetes plug-in that watches VolumeSnapshot CRD objects and manages the creation and deletion of volume snapshots. A snapshot represents a point-in-time copy of a volume.
 
 
-- **Multus CNI**: A CNI plugin that enables multiple network interfaces to attach to Kubernetes pods. In this context, it is used to attach VM networks to the launched VM.
+- **Multus CNI**: A Controller Network Interface (CNI) plugin that enables multiple network interfaces to attach to Kubernetes pods. In this context, it is used to attach VM networks to the launched VM.
 
 
 Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
 
-# Next Steps
 
-When you receive credentials and an endpoint URL from Spectro Cloud, register the Spectro VM Dashboard pack in your Palette environment. Follow steps in [Configure a Custom Pack Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry#configureacustompackregistryonthepaletteconsole) and provide the URL as the endpoint.
+
 
 
 <br />
