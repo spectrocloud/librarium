@@ -37,7 +37,7 @@ Below are benefits of deploying VMs in different namespaces:
 
 The dashboard allows you to perform standard VM actions from the **three-dot Menu** at the right of each listed VM. You can select a VM from the list to view details about the machine. An **Actions drop-down menu** lists the same standard VM actions. 
 
-When you click on a VM in the list, the following tabs display, which are specific to the selected VM:
+When you click on a VM in the list, the following tabs display. Tabs are specific to the selected VM:
 
 <br />
 
