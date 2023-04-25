@@ -28,7 +28,7 @@ Below are benefits of deploying VMs in different namespaces:
 
 * Namespaces provide a way to isolate groups of resources within a single cluster.
 * RBAC can be configured based on namespaces, for example:
-  * User A has permissions to manage VMs in alpha namespace only.
+  * User A has permission to manage VMs only in the alpha namespace.
   * User B can see VMs in all namespaces.
 * Resource names need to be unique within a namespace but not across namespaces.
 * Namespaces are a way to divide cluster resources among multiple users via resource quota.
@@ -37,7 +37,7 @@ Below are benefits of deploying VMs in different namespaces:
 
 The dashboard allows you to perform standard VM actions from the **three-dot Menu** at the right of each listed VM. You can select a VM from the list to view details about the machine. An **Actions drop-down menu** lists the same standard VM actions. 
 
-When you click on a VM in the list, the following tabs display. Tabs are specific to the selected VM:
+When you click on a VM in the list, the following tabs display. Tabs are specific to the selected VM.
 
 <br />
 
