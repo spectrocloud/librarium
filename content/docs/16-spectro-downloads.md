@@ -82,7 +82,6 @@ The following Edge CLIs and Edge Installer images are available to help you depl
 CLI Version| Operating System |  
 -------|---|
 v3.3.2 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.2/cli/linux/palette-edge-installer) |
-v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-installer) |
 
 
 ## Edge Installer Image
@@ -91,7 +90,6 @@ v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linu
 |Version|Docker Image| Optical Disk Image (ISO) |
 |---|---|--|
 |3.3.2     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.2/stylus-v3.3.2-amd64.iso) |
-|3.3.0     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.0/stylus-v3.3.0-amd64.iso) |
 
 
 ## Edge Content CLI
@@ -99,4 +97,3 @@ v3.3.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linu
 CLI Version| Operating System |
 -------|---|
 v3.3.2 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.2/cli/linux/palette-edge-content) |
-v3.3.0 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.0/cli/linux/palette-edge-content) |
