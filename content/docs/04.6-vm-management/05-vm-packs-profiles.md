@@ -1,6 +1,6 @@
 ---
-title: "VM Management Pack and Profile"
-metaTitle: "VM Management Pack and Profile"
+title: "Dashboard Pack and Profile"
+metaTitle: "Dashboard Pack and Profile"
 metaDescription: "Components of the Spectro VM Dashboard integrated pack."
 icon: " "
 hideToC: false
@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette's Virtual Machine (VM) Management solution is provided as a single-pack experience that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. Its components are described below. Two essential components of the VM Management solution are the **Spectro VM Dashboard** pack and **Spectro Proxy** pack.
+Palette's Virtual Machine (VM) Management solution is provided as a single-pack experience that consolidates all the dependencies needed to run and manage virtual machines in your Kubernetes host cluster. The components of the pack are described below. Two essential components are the **Spectro VM Dashboard** pack and **Spectro Proxy** pack.
 
 <br />
 
@@ -38,8 +38,6 @@ Palette's Virtual Machine (VM) Management solution is provided as a single-pack 
 
 
 Administrators can configure out-of-the-box add-on packs, cluster profiles, and virtual machine templates that include commonly used operating systems, or they can define their own VM templates to share with users.
-
-
 
 
 
