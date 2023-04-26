@@ -16,9 +16,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 The Spectro VM Dashboard offers a web console accessible from the **Virtual Machines** tab that appears on the cluster overview page when VM Management is enabled. 
 
-When the dashboard is enabled, the default view displays a list of the Virtual Machines (VMs) deployed in the Kubernetes namespace you select from the **Namespace drop-down Menu**. The first time you see this view, it will appear blank. As you add VMs, they will be listed on the page. You can filter on VM status and search for VMs by their name or label.
+The first time you enable the dashboard, the default view will appear blank. Although you can deploy Virtual Machines (VMs) from the default namespace, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Create a Namespace](). Namespaces will be listed in the **Namespace drop-down Menu** at the top of the dashboard. As you deploy VMs within a namespace, the VMs within the selected Namespace will be listed on the dashboard. 
 
-At the top of the Spectro VM Dashboard, the **Namespace drop-down Menu** allows you to select a namespace. Although you can deploy virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs.
+You can select a VM from the list to view its details and perform actions on it. You can access standard VM operations from the **three-dot Menu** at the right of each listed VM, or from the **Actions drop-down Menu** that displays when you view VM details.
 
 <br />
 
