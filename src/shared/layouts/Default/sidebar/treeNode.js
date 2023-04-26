@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import SidebarIcon from "shared/components/styles/SidebarIcon";
 import { useLocation } from "@reach/router";
@@ -118,7 +118,6 @@ const TreeNode = ({
   level = 0,
 }) => {
   let isActive = false;
-  const nodeRef = useRef(null);
   const location = useLocation();
   const [state, dispatch] = useSetupContext();
   const isVisited = state.visitedRoutes.find((route) => route === url);
@@ -140,15 +139,6 @@ const TreeNode = ({
     }
   }, []);
 
-  useEffect(() => {
-    if (!nodeRef.current) return;
-    if (!isActive) return;
-    nodeRef.current.scrollIntoView({
-      behavior: "instant",
-      block: "center",
-    });
-  }, [isActive, nodeRef]);
-
   if (url === "/" && location && location.pathname === "/") {
     isActive = false;
   }
@@ -160,13 +150,7 @@ const TreeNode = ({
   }
 
   return (
-    <MenuNode
-      isActive={isActive}
-      expanded={expanded}
-      level={level}
-      data-level={level}
-      ref={nodeRef}
-    >
+    <MenuNode isActive={isActive} expanded={expanded} level={level} data-level={level}>
       {title && (
         <Link to={url} className="menu-link">
           <MenuItem isActive={isActive}>

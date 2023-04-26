@@ -1,4 +1,5 @@
 import React from "react";
+import Persistent from "./src/shared/layouts/Persistent";
 
 const fsScript = `
 window['_fs_debug'] = false;
@@ -40,4 +41,8 @@ const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(HeadComponents);
 };
 
-export { onRenderBody };
+const wrapRootElement = ({ element, props }) => {
+  return <Persistent {...props}>{element}</Persistent>;
+};
+
+export { onRenderBody, wrapRootElement };
