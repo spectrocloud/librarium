@@ -14,7 +14,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
-The on-prem system console enables an initial setup and onboarding, administration, as well as upgrade management of the Palette Platform. The on-prem system console is available in a "quick start" mode and an "enterprise" mode.
+The self-hosted system console enables an initial setup and onboarding, administration, as well as upgrade management of the Palette Platform. The on-prem system console is available in a "quick start" mode and an "enterprise" mode.
 
 Platform administrators can use this console to perform the following operations:
 
