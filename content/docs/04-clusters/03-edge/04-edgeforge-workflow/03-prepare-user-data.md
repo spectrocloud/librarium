@@ -158,7 +158,7 @@ stylus:
   poweroff: true
 ```
 
-**Site** - supplied at the edge location through a bootable USB drive. `projectName` if specified, will override project information specified in stage user-data's edge host registration token. Optionally, additional tags can also be specified. If edge site requires proxy for outbound connection then it must be provided in site user-data.
+**Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides project information specified in the `edgeHostToken` parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
 
 ```yaml
 stylus:
