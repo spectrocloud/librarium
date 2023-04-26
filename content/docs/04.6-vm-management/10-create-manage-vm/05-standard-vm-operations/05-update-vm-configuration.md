@@ -26,7 +26,7 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 
 - A deployed VM.
 
-## Enablement
+## Add a Disk
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -45,7 +45,11 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 
     - **virtio**: Optimized for best performance, but the operating system may require additional Virtio drivers.
 
+    <br />
+
     - **sata**: Most operating systems support Serial ATA (SATA). However it offers lower performance.
+
+    <br />
 
     - **scsi**: A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme.
 
@@ -71,7 +75,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 - A deployed VM.
 
-## Enablement
+## Add an Interface
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 

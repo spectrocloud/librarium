@@ -34,7 +34,7 @@ Consider the following when migrating a VM node:
 
 # Prerequisites
 
-- VMs that use a Persistent Volume Claim (PVC) must have a shared ReadWriteMany (RWX) access mode. 
+- VMs that use a Persistent Volume Claim (PVC) must have a shared ``ReadWriteMany`` (``RWX``) access mode. 
 
 
 - A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network.

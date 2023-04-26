@@ -22,7 +22,7 @@ You can deploy a VM using Palette's out-of-the-box templates or templates that y
 
     Review [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile) to configure the dashboard. To learn how to access the dashboard, refer to [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard).
 
-# Enablement
+# Deploy VM from a Template
 
 These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-box VM template.
 

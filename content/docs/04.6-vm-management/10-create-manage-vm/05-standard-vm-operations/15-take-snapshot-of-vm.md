@@ -36,7 +36,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 - A deployed VM.
 
 
-# Enablement
+# Take a Snapshot
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
