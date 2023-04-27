@@ -18,11 +18,9 @@ The virtctl command-line interface (CLI) tool facilitates some of the VM operati
 
 # Prerequisites
 
-[Any? Do they need to do this at a particular time?] 
+(Any?)
 
 # Download and Connect virtctl
-
-(Are they already logged in to Palette at this point?? If so, see STEP 3.)
 
 1. Download the virtctl artifact based on your machine type from [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the Assets section.
 
