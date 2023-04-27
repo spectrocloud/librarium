@@ -18,7 +18,9 @@ The virtctl command-line interface (CLI) tool facilitates some of the VM operati
 
 # Prerequisites
 
-(Any?)
+- A running virtual cluster and access to it.
+
+
 
 # Download and Connect virtctl
 
@@ -52,6 +54,13 @@ The virtctl command-line interface (CLI) tool facilitates some of the VM operati
     Example:
   ```shell
   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
+  ```
+
+9. Issue the `virtctl ssh <machinename>` or `virtctl vnc <machinename>` command to display the login screen.
+
+    Example:
+  ```shell
+  virtctl ssh ubuntu 
   ```
 
 You can now issue virtctl commands against your host cluster.
