@@ -1,6 +1,6 @@
 ---
-title: "Dashboard Pack and Profile"
-metaTitle: "Dashboard Pack and Profile"
+title: "VM Dashboard Pack and Profile"
+metaTitle: "VM Dashboard Pack and Profile"
 metaDescription: "Components of the Spectro VM Dashboard integrated pack."
 icon: " "
 hideToC: false
