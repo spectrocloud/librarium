@@ -21,6 +21,7 @@ const Wrap = styled.div`
 `;
 
 const ApiButton = styled.button`
+  position: relative;
   display: flex;
   padding: 12px 0px 12px 20px;
   font-size: 12px;
@@ -32,25 +33,36 @@ const ApiButton = styled.button`
   border: none;
   text-align: left;
   flex-grow: 1;
-  margin-left: ${(props) => 10 * (props.count || 0)}px;
-
-  :hover,
-  :hover span {
-    color: rgb(32, 108, 209);
-  }
+  margin-left: ${(props) => 20 * (props.count || 0)}px;
 
   span {
     position: relative;
     font-size: 14px;
     line-height: 16px;
     color: rgb(74, 75, 106);
-    margin-left: 10px;
-    margin-left: ${(props) => 10 * (props.count || 0)}px;
 
     :hover {
       color: rgb(32, 108, 209);
     }
   }
+
+  :hover,
+  :hover span {
+    color: rgb(32, 108, 209);
+  }
+
+  ${(props) =>
+    props.count &&
+    css`
+      ::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        top: 0;
+        left: 0px;
+        border-left: 1px solid #ddd;
+      }
+    `}
 
   ${(props) =>
     props.isActive &&
@@ -104,17 +116,10 @@ export default function ApiSidebarTree({ root = null, route = null, branches, in
   useEffect(() => {
     const pathRoutes = pathname.split("/");
     const item = pathRoutes[pathRoutes.length - 2];
-    // ##### first level #######
+    // ##### open first level #######
     if (branches[item] && !isVisitedRoute(item)) {
       dispatch({ type: "ADD_VISITED_ROUTE", value: route || item });
     }
-
-    // ###### nested levels ########
-    // const nestedItems = hash.split(/(?=[A-Z])/).map((str) => str.toLowerCase());
-    // const nestedItem = Object.keys(branches).find((key) => nestedItems.includes(key));
-    // if (nestedItem && !isVisitedRoute(item)) {
-    //   dispatch({ type: "ADD_VISITED_ROUTE", value: nestedItem });
-    // }
   }, []);
 
   const onClickItem = (item) => () => {
