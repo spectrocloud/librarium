@@ -22,7 +22,7 @@ const Wrap = styled.div`
 
 const ApiButton = styled.button`
   display: flex;
-  padding: 12px 0px 12px 12px;
+  padding: 12px 0px 12px 20px;
   font-size: 12px;
   line-height: 16px;
   color: rgb(150, 152, 169);
