@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette records audit logs that monitor user interactions with application resources over time. In addition, for specific resources, it also captures system-level modifications.
 
-Audit logs include information about the resource and the user who executed the action. Actions on resources, performed by either users or the system, are categorized as *Create*, *Update*, or *Delete*. Each resource is classified by type, allowing users to easily filter and focus on relevant audit logs.
+Audit logs include information about the resource and the user who executed the action. Actions on resources, performed by either users or the system, are categorized as *Create*, *Update*, or *Delete*. Each resource is classified by type, allowing users to filter and focus on relevant audit logs.
 
 Audit logs are retained for the last one year.
 
@@ -26,7 +26,7 @@ The following Palette resources are captured in an audit log.
 
 | Resource Name     | Resource Kind   | Description |
 |-------------------|-----------------|-------------|
-| Api Key           | `apiKey`        |             |
+| API Key           | `apiKey`        |             |
 | App Deployment    | `appdeployment` |             |
 | App Profile       | `appprofile`    |             |
 | Cloud Account     | `cloudaccount`  |             |
