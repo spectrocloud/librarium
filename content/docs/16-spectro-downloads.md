@@ -81,7 +81,7 @@ The following Edge CLIs and Edge Installer images are available to help you depl
 
 CLI Version| Operating System |  
 -------|---|
-v3.3.2 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.2/cli/linux/palette-edge-installer) |
+v3.3.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.3/cli/linux/palette-edge-installer) |
 
 
 ## Edge Installer Image
