@@ -52,7 +52,7 @@ const redirects = [
     toPath: `/clusters/edge`,
     redirectInBrowser: true,
     isPermanent: true,
-  },  
+  },
   {
     fromPath: `/troubleshooting/palette-namespaces-podes`,
     toPath: `/architecture/palette-namespaces-podes`,

@@ -13,6 +13,11 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+
+# April 28, 2023 - Rlease 3.4.0
+
+
+
 # March 19, 2023 - Release 3.3.0
 
 This release contains several security fixes and new features for Edge. The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.

@@ -43,14 +43,9 @@ You can create additional roles based on the permissions granularity that Palett
 <br />
 
 
-You can configure namespaces and RBAC from within a cluster or from a Palette workspace that contains a cluster group. In a cluster group all RoleBindings must occur at the namespace level. For details, review the [Cluster RBAC](/clusters/cluster-management/cluster-rbac/) and [workspace RBAC](/workspace/#rolebasedaccesscontrol(rbac)) guides.  
+You can configure namespaces and RBAC from within a cluster or from a Palette workspace that contains a cluster group. In a cluster group, all RoleBindings must occur at the namespace level. For details, review the [Cluster RBAC](/clusters/cluster-management/cluster-rbac/) and [workspace RBAC](/workspace/#rolebasedaccesscontrol(rbac)) guides.  
 
 Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role bindings. Check out [Regex for Namespaces](/workspace/workload-features) to learn more.
-
-
-<br />
-
-<br />
 
 <br />
 

@@ -1,5 +1,4 @@
 import React from "react";
-import _ from "underscore";
 import styled from "styled-components";
 
 import CodeHighlight from "./CodeHighlight";
@@ -21,6 +20,12 @@ const Button = styled.button`
   margin-right: 16px;
   padding: 0;
 `;
+
+const Anchor = styled.div`
+  position: absolute;
+  top: -150px;
+`;
+
 const Signature = styled.div`
   display: flex;
   flex-direction: row;
@@ -150,7 +155,7 @@ function Parameters({ parameters, method, path, title }) {
 
   function renderParameter(parameter, index) {
     return (
-      <tr key={index} key={path + method + parameter.name + parameter.paramType}>
+      <tr key={path + method + parameter.name + parameter.paramType}>
         <td>{parameter.name}</td>
         <td>{parameter.type}</td>
         <td>{parameter.description}</td>
@@ -217,6 +222,7 @@ export default function Swagger(props) {
       {props.documentation.apis.map((api) =>
         api.operations.map((operation) => (
           <Operation key={operation.method + api.path}>
+            <Anchor id={operation.operationId} />
             <Signature>
               {operation?.description?.includes("Deprecated") && <StyledDeprecatedTag />}
               <Button color={colors[operation.method]}>{operation.method}</Button>&#8594;
