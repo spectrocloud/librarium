@@ -44,7 +44,9 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 | | | | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
 
-Here is the **pack-schema.json** file for reference. 
+The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly. 
+
+<br />
 ```json
 {
   "type": "object",
