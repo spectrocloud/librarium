@@ -47,6 +47,8 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly. 
 
 <br />
+
+
 ```json
 {
   "type": "object",
