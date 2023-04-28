@@ -89,11 +89,11 @@ v3.3.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.3/cli/linu
 
 |Version|Docker Image| Optical Disk Image (ISO) |
 |---|---|--|
-|3.3.2     | `gcr.io/spectro-images-public/stylus:v3.3.2`| [ISO](https://software.spectrocloud.com/stylus/v3.3.2/stylus-v3.3.2-amd64.iso) |
+|3.3.3     | `gcr.io/spectro-images-public/stylus:v3.3.3`| [ISO](https://software.spectrocloud.com/stylus/v3.3.3/stylus-v3.3.3-amd64.iso) |
 
 
 ## Edge Content CLI
 
 CLI Version| Operating System |
 -------|---|
-v3.3.2 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.2/cli/linux/palette-edge-content) |
+v3.3.3 | [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.3/cli/linux/palette-edge-content) |
