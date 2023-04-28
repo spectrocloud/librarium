@@ -1,7 +1,7 @@
 ---
-title: "Deploy a Kubernetes Cluster with Palette"
-metaTitle: "Deploy a Kubernetes Cluster with Palette"
-metaDescription: "Learn how to deploy an application on a Kubernetes cluster with Palette. Experience a streamlined approach to creating and managing multiple Kubernetes clusters, on different public cloud providers, through Palette's optimized process."
+title: "Deploy a Cluster with Palette"
+metaTitle: "Deploy a Cluster with Palette"
+metaDescription: "Learn how to deploy an application to a Kubernetes cluster with Palette. Experience a streamlined approach to creating and managing multiple Kubernetes clusters, on different public cloud providers, through Palette's optimized process."
 icon: ""
 category: ["tutorial"]
 hideToC: false
@@ -13,7 +13,7 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-# Deploy a Kubernetes Cluster with Palette
+# Deploy a Cluster with Palette
 
 Palette is designed with the intention to allow you to create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors, application developers, and system administrators that want to deploy a containerized application to a Kubernetes environment.
 
