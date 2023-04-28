@@ -7,15 +7,60 @@ hideToC: false
 fullWidth: false
 ---
 
+
+import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
 
 # About Audit Logs
 
-The Spectro Cloud management platform application captures audit logs to track the user interaction with the application resources along with the timeline. For certain resources, the system-level modifications are also captured in the audit logs.
+Palette records audit logs that monitor user interactions with application resources over time. In addition, for specific resources, it also captures system-level modifications.
 
-The audit log contains information about the resource and the user who performed the action. The user or the system action on the resource is classified as *Create*, *Update*, and *Delete*. Every resource is categorized as a type that helps the user to scope down the audit logs.
+Audit logs include information about the resource and the user who executed the action. Actions on resources, performed by either users or the system, are categorized as *Create*, *Update*, or *Delete*. Each resource is classified by type, allowing users to easily filter and focus on relevant audit logs.
 
 Audit logs are retained for the last one year.
+
+## Audit Resource Types
+
+The following Palette resources are captured in an audit log.
+
+| Resource Name     | Resource Kind   | Description |
+|-------------------|-----------------|-------------|
+| Api Key           | `apiKey`        |             |
+| App Deployment    | `appdeployment` |             |
+| App Profile       | `appprofile`    |             |
+| Cloud Account     | `cloudaccount`  |             |
+| Cluster Group     | `clustergroup`  |             |
+| Profile           | `clusterprofile`|             |
+| EdgeHost          | `edgehost`      |             |
+| EdgeToken         | `edgetoken`     |             |
+| Filter            | `filter`        |             |
+| Location          | `location`      |             |
+| Plan              | `plan`          |             |
+| Private Gateway   | `privategateway`|             |
+| Project           | `project`       |             |
+| Registry          | `registry`      |             |
+| Role              | `role`          |             |
+| Cluster           | `spectrocluster`|             |
+| SSH Key           | `sshkey`        |             |
+| Team              | `team`          |             |
+| User              | `user`          |             |
+| Virtual Cluster   | `virtualCluster`|             |
+| Workspace         | `workspace`     |             |
+
+
+ The resource kind value is used when interacting with Palette's API audit endpoint `https://api.spectrocloud.com/v1/audits` and you need to filter for a specific set of resources. The following code snippet is an example request using `curl` that queries the audit endpoint and applies a filter for a specific date range and resource kind.
+
+<br />
+
+```shell
+curl "https://api.spectrocloud.com/v1/audits?startTime=2023-03-28T00:00:00%2B05:30&endTime=2023-04-28T23:59:59%2B05:30&resourceKind=project" \
+ --header 'Content-Type: application/json' \
+ --header 'Accept: application/json' \
+ --header "ApiKey: $API_KEY"
+```
+
+
 
 # Accessing Audit Logs
 
