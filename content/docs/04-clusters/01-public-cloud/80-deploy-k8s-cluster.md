@@ -1,6 +1,6 @@
 ---
-title: "Deploy a Cluster with Palette"
-metaTitle: "Deploy a Cluster with Palette"
+title: "Deploy a Cluster"
+metaTitle: "Deploy a Cluster"
 metaDescription: "Learn how to deploy an application to a Kubernetes cluster with Palette. Experience a streamlined approach to creating and managing multiple Kubernetes clusters, on different public cloud providers, through Palette's optimized process."
 icon: ""
 category: ["tutorial"]
@@ -13,11 +13,11 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-# Deploy a Cluster with Palette
+# Deploy a Cluster
 
-Palette is designed with the intention to allow you to create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors, application developers, and system administrators that want to deploy a containerized application to a Kubernetes environment.
+Palette is designed to help you create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors and system administrators that want to deploy a containerized application to a Kubernetes environment.
 
-Palette's *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer in a reusable and repeatable way.  Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a cluster based on your preferred cloud provider.
+Palette's *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer into a declerative and reusable manner.  Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a host cluster based on your preferred infrastructure provider.
 
 This tutorial will teach you how to deploy a host cluster through Palette in the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy the cluster from the Palette console or use Infrastructure as Code (IaC) through Terraform. You will learn about *Cluster Mode*, *and Cluster Profiles*,  and understand how they enable you to deploy applications to Kubernetes quickly with minimal effort but with a high degree of customization.
 
@@ -30,13 +30,13 @@ In this user-friendly tutorial, you'll discover how Palette streamlines the crea
 
 The following is an architecture overview that displays the infrastructure you will deploy through Palette to the cloud provider of your choice.
 
-![Infrastructure architecture](/tutorials/deploy-clusters/architecture_infrastructure.png)
+![Infrastructure architecture overview part 1](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_infrastructure.png)
 
 <br />
 
 This is the application architecture you will deploy with this tutorial. A container application with a *replicaSet*.
 
-![Application architecture](/tutorials/deploy-clusters/architecture_application.png)
+![Application architecture part 2](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
 <br />
 <br />
@@ -125,7 +125,6 @@ Click on **Add New Pack**, choose **Authentication** as pack type, and select th
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
-![aws cluster profile overview page](/tutorials/deploy-clusters/aws/profile_review.png)
 
 You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
 
@@ -138,7 +137,7 @@ Navigate to **Main Menu** and select the **Cluster**.
 
 From the clusters page, click on the **Add New Cluster** button.
 
-![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
+![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Select **Deploy New Cluster** from the **pop-up Menu**.
 
@@ -153,7 +152,7 @@ Use the following steps to create a host cluster on AWS.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_basic_info.png)
+![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_basic_info.png)
 
 <br />
 
@@ -162,8 +161,6 @@ In the **Basic information** section, insert the general information about the c
 
 On the right side, there is a list of available cluster profiles you can choose to deploy to AWS. Select the cluster profile you created earlier and click on **Next**.
 
-![palette cluster profiles](/tutorials/deploy-clusters/aws/clusters_cluster_profile.png)
-
 <br />
 
 
@@ -171,7 +168,7 @@ On the right side, there is a list of available cluster profiles you can choose 
 
 The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
-![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_parameters.png)
+![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
@@ -184,12 +181,11 @@ Each pack contains a set of default values. You can change the manifest values i
 
 The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as FIPS and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
-![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_cluster_config.png)
 
 To create an SSH key pair in AWS login into the AWS dashboard.
 Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2). In the navigation panel, under **Network & Security**, choose **Key Pairs**. Choose **Create key pair** and enter the information required to create the key pair. Click on the **Create a key pair**. Review the [Create an SSH key pair on AWS](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) guide for additional information.
 
-![aws key pair creation](/tutorials/deploy-clusters/aws/key_pair_create.png)
+![aws key pair creation](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_key_pair_create.png)
 
 <br />
 
@@ -214,7 +210,7 @@ Before you proceed to next section, take the time to review the following parame
 
 - *Instance Option* Choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worder nodes.  Select **On Demand**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_nodes_config.png)
+![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 Select **Next* to proceed with the cluster deployment.
 
@@ -234,14 +230,14 @@ For this tutorial, you can use the default settings configuration. Click on **Va
 
 The **Review** section is an opportunity for you to review all the cluster configurations prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
-![aws creation of a new cluster overview page](/tutorials/deploy-clusters/aws/clusters_review.png)
+![aws creation of a new cluster overview page](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_profile_cluster_profile_review.png)
 
 
 <br /> 
 
 Navigate to the left **Main Menu** and select **Clusters**. 
 
-![Update the cluster](/tutorials/deploy-clusters/aws/aws_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_aws_create_cluster.png)
 
 Click on your cluster to review details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
 
@@ -295,7 +291,7 @@ Click on **Add New Pack**, choose **Authentication** as pack type, and select th
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
-![azure cluster profile overview page](/tutorials/deploy-clusters/azure/profile_review.png)
+![azure cluster profile overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
 After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
 
@@ -308,7 +304,7 @@ Navigate to **Main Menu** and select the **Cluster**.
 
 From the clusters page, click on the **Add New Cluster** button.
 
-![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
+![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Select **Deploy New Cluster** from the **pop-up Menu**.
 
@@ -323,7 +319,7 @@ Use the following steps to create a host cluster on Azure.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_basic_info.png)
+![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_clusters_basic_info.png)
 
 <br />
 
@@ -332,7 +328,7 @@ In the **Basic information** section, insert the general information about the c
 
 On the right side, there is a list of available cluster profiles you can choose to deploy to Azure. Select the cluster profile you created earlier and click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_cluster_profile.png)
+![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_profile.png)
 
 <br />
 
@@ -341,7 +337,7 @@ On the right side, there is a list of available cluster profiles you can choose 
 
 The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
-![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_parameters.png)
+![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_parameters.png)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
@@ -354,7 +350,6 @@ Each pack contains a set of default values. You can change the manifest values i
 
 The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as Resource Group, Storage account, Storage container, and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
-![palette cluster configuration](/tutorials/deploy-clusters/azure/clusters_cluster_config.png)
 
 For the scope of this tutorial we insert only the mandatory ones:
 - the *Subscription* associated to your Azure account
@@ -377,7 +372,7 @@ Among the multiple configuration you can set, be sure to consider:
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 
-![palette clusters nodes configuration](/tutorials/deploy-clusters/azure/clusters_nodes_config.png)
+![palette clusters nodes configuration](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 <br />
 
@@ -395,7 +390,7 @@ For the purpose of this tutorial, you can use the default settings configuration
 
 The **Review** section resumes the cluster configuration as you have configured it in the previous steps.
 
-![azure creation of a new cluster overview page](/tutorials/deploy-clusters/azure/clusters_review.png)
+![azure creation of a new cluster overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
 Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
@@ -403,7 +398,7 @@ Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](/tutorials/deploy-clusters/azure/azure_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -423,7 +418,7 @@ Check how to create a [Palette account for GCP](/clusters/public-cloud/gcp#creat
 
 ## Create Cluster Profile
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
+[Cluster profiles](/cluster-profiles) are templates created with the following core layers.
  - Operating System
  - Kubernetes distribution and version 
  - Network Container Interface (CNI) 
@@ -456,7 +451,7 @@ Click on **Add New Pack**, choose **Authentication** as pack type, and select th
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
-![gcp cluster profile overview page](/tutorials/deploy-clusters/gcp/profile_review.png)
+![gcp cluster profile overview page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
 After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
 
@@ -469,7 +464,7 @@ Navigate to **Main Menu** and select the **Cluster**.
 
 From the clusters page, click on the **Add New Cluster** button.
 
-![palette clusters overview page](/tutorials/deploy-clusters/new_cluster.png)
+![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Select **Deploy New Cluster** from the **pop-up Menu**.
 
@@ -484,7 +479,7 @@ Use the following steps to create a host cluster on GCP.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_basic_info.png)
+![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_basic_info.png)
 
 <br />
 
@@ -493,7 +488,7 @@ In the **Basic information** section, insert the general information about the c
 
 On the right side, there is a list of available cluster profiles you can choose to deploy to GCP. Select the cluster profile you created earlier and click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_cluster_profile.png)
+![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_gcp_profile.png)
 
 <br />
 
@@ -502,7 +497,7 @@ On the right side, there is a list of available cluster profiles you can choose 
 
 The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_parameters.png)
+![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
 
@@ -515,14 +510,12 @@ Each pack contains a set of default values. You can change the manifest values i
 
 The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as the Project Name and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
-![palette cluster configuration](/tutorials/deploy-clusters/gcp/clusters_cluster_config.png)
-
 Create an SSH key pair and add to the GCP account.
 Open the [GCP Compute Engine console](https://console.cloud.google.com/compute/instances) and, in the navigation panel, under *Setting*, choose *Metadata*. Open the *SSH Keys* tab and click on *Add SSH Key*.
 
 Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/connect/create-ssh-keys) to create the ssh key on your local machine. Then, copy the full value of your public key and paste it on GCP.
 
-![gcp key pair creation](/tutorials/deploy-clusters/gcp/gcp_ssh_key_create.png)
+![gcp key pair creation](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_gcp_ssh_key_create.png)
 
 <br />
 
@@ -531,7 +524,7 @@ Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/conne
 
 The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
-You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
+You can find the list and the explanation of all the parameters in [Node Pool page](/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
 - *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
@@ -539,7 +532,7 @@ Among the multiple configuration you can set, be sure to consider:
 - *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
 - *Availability zones* to use within the Region selected in the *Cluster config* section.
 
-![palette clusters nodes configuration](/tutorials/deploy-clusters/gcp/clusters_nodes_config.png)
+![palette clusters nodes configuration](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 <br />
 
@@ -557,7 +550,7 @@ For the purpose of this tutorial, you can use the default settings configuration
 
 The **Review** section resumes the cluster configuration as you have configured it in the previous steps.
 
-![gcp creation of a new cluster overview page](/tutorials/deploy-clusters/gcp/clusters_review.png)
+![gcp creation of a new cluster overview page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
 Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
@@ -565,7 +558,7 @@ Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 Now select the **Clusters** page from the left panel and check the created cluster.
 
-![Update the cluster](/tutorials/deploy-clusters/gcp/gcp_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
@@ -591,7 +584,7 @@ Select *Add Manifest* at the top of the page and insert the provide the fill out
 - *Layer name*: name of the layer to add to the profile stack.
 - *Manifests*: add your manifest by giving it a name and clicking the blue circle button. An empty editor will appear on the right side of the screen.
 
-![manifest](/tutorials/deploy-clusters/manifest.png)
+![manifest](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
 
 <br />
 
@@ -652,14 +645,14 @@ For more information about the service LoadBalancer component you can refer to t
 
 From the left **Main Menu** select the **Clusters**.  Click on the host cluster you deployed to open the details page.
 
-![Cluster details with available updates](/tutorials/deploy-clusters/deploy_app/app_update_available.png)
+![Cluster details with available updates](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_update_details_compare.png)
 
 <br />
 
 On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. Compare the new changes against the previous cluster profile definition. The only change is the addition of a manifest that will deploy the Hello Universe application.
 
 
-![Available updates details](/tutorials/deploy-clusters/deploy_app/updates_available_details.png)
+![Available updates details](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_update_details_compare.png)
 
 Click on **Confirm updates** to apply the updates to the host cluster.
 
@@ -670,7 +663,7 @@ Click on **Confirm updates** to apply the updates to the host cluster.
 
 From the cluster details page, click on **Workloads** at the top of the page:
 
-![Workloads](/tutorials/deploy-clusters/workloads.png)
+![Workloads](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_workloads.png)
 
 The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully.
 
@@ -680,7 +673,7 @@ Select the **Deployments** tab and check the existence of a deployment with name
 
 Select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*. In the **Pods** tab, next to the pods names, check the status of the pods
 
-![Pods status](/tutorials/deploy-clusters/deploy_app/app_update_pods.png)
+![Pods status](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_app_update_pods.png)
 
 <br />
 
@@ -692,7 +685,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 The application will be, then, ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
-![Deployed application](/tutorials/deploy-clusters/app.png)
+![Deployed application](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
 
 <br />
 
@@ -707,7 +700,7 @@ To remove the cluster you created in this tutorial, open the Palette dashboard a
 
 Click on **Settings**, at the top-right corner of the page, from the details page to expand the **settings Menu** and select **Delete Cluster** to delete the cluster.
 
-![Destroy-cluster](/tutorials/deploy-clusters/delete-cluster-button.png)
+![Destroy-cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_delete-cluster-button.png)
 
 You will be asked to type in the cluster name to confirm the delete action. Continue and type in the cluster name to proceed with the delete step. 
 
@@ -724,7 +717,7 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
 
-![Deleting cluster](/tutorials/deploy-clusters/deleting_cluster.png)
+![Deleting cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_deleting_details.png)
 
 <br />
 
@@ -772,7 +765,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/create_api_key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.png)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
 
@@ -1172,6 +1165,7 @@ worker_nodes = {
     is_system_node_pool  = false
 }
 ```
+
 <br />
 
 
@@ -1412,7 +1406,7 @@ You can preview the actions Terraform will take by using the `plan` command.
 terraform plan
 ```
 
-```
+```shell
 // Output condensed for readability
 Plan: 3 to add, 0 to change, 0 to destroy.
 ```
@@ -1425,7 +1419,7 @@ Use the `apply` command to deploy the resources to your target environment.
 terraform apply --auto-approve
 ```
 
-```
+```shell
 // Output condensed for readability
 Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 ```
@@ -1439,13 +1433,13 @@ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the previously created profile.
 
-![Terraform GCP profile](/tutorials/deploy-clusters/terraform/tf_gcp_profile.png)
+![Terraform GCP profile](/tutorials/deploy-clusters/terraform/clusters_public-cloud_deploy-k8s-cluster_details.png)
 
 <br />
 
 Click on the profile to see the details of the stacks that compose the profile.
 
-![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/tf_gcp_profile_details.png)
+![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/clusters_public-cloud_deploy-k8s-cluster_profile.png)
 
 <br />
 
@@ -1457,7 +1451,7 @@ Click on the profile to see the details of the stacks that compose the profile.
 
 To check the cluster creation, login to the Palette dashboard, and from the left **Main Menu** click on the **Clusters**.
 
-![Update the cluster](/tutorials/deploy-clusters/aws/aws_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_aws_create_cluster.png)
 
 <br />
 
@@ -1468,20 +1462,20 @@ Select your cluster to review its details page which contains the status, cluste
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
 
-![Update the cluster](/tutorials/deploy-clusters/azure/azure_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster.png)
 
 <br />
 
 Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
 
-![Update the cluster details](/tutorials/deploy-clusters/azure/azure_create_cluster_details.png)
+![Update the cluster details](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster_details.png)
 
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-validation">
 
 To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *gcp-cluster*:
 
-![Update the cluster](/tutorials/deploy-clusters/gcp/gcp_create_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 <br />
 
@@ -1494,7 +1488,7 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 
 Since the cluster may take several minutes to create, in relation to the packs to install, the type of instances selected, and so forth, it might be useful to check the creation events from the **Events** tab at the top of the page
 
-![Update the cluster](/tutorials/deploy-clusters/cluster_create_events.png)
+![Update the cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_events.png)
 
 <br />
 <br />
@@ -1594,22 +1588,22 @@ Success! The configuration is valid.
 
 Create the execution plan with the additional modifications to the already existant configuration:
 
-```bash
+```shell
 terraform plan
 ```
 
-```
+```shell
 // Output condensed for readability
 Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 
 Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
 
-```bash
+```shell
 terraform apply --auto-approve
 ```
 
-```
+```shell
 // Output condensed for readability
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
@@ -1621,7 +1615,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
 From the cluster details page, click on **Workloads** at the top of the page:
 
-![Workloads](/tutorials/deploy-clusters/workloads.png)
+![Workloads](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_workloads.png)
 
 The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully.
 
@@ -1631,7 +1625,7 @@ Select the **Deployments** tab and check the existence of a deployment with name
 
 Select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*. In the **Pods** tab, next to the pods names, check the status of the pods
 
-![Pods status](/tutorials/deploy-clusters/deploy_app/app_update_pods.png)
+![Pods status](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_app_update_pods.png)
 
 <br />
 
@@ -1643,7 +1637,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 The application will be, then, ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
-![Deployed application](/tutorials/deploy-clusters/app.png)
+![Deployed application](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
 
 <br />
 
@@ -1659,28 +1653,28 @@ Use the destroy command to remove all the resources you created through Terrafor
 
 First, open the folder where you have the Terraform configuration for the cluster.
 
-```bash
+```shell
 $ cd terraform-config
 ```
 
 If you want to check the resources you will delete, you can first execute: 
 
-```terraform
+```shell
 terraform plan -destroy
 ```
 
-```
+```shell
 // Output condensed for readability
 Plan: 0 to add, 0 to change, 3 to destroy.
 ```
 
 Then delete the components by running the destroy command:
 
-```terraform
+```shell
 terraform destroy --auto-approve
 ```
 
-```
+```shell
 // Output condensed for readability
 Destroy complete! Resources: 3 destroyed.
 ```
@@ -1689,7 +1683,7 @@ Destroy complete! Resources: 3 destroyed.
 
 To verify the execution of the deletion, open the Palette Dashboard and, from the left **Main Menu** click on the **Cluster** panel to access the clusters page. From there, you can see the cluster is deleting
 
-![Deleting cluster](/tutorials/deploy-clusters/deleting_cluster.png)
+![Deleting cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_deleting_details.png)
 
 <br />
 
