@@ -1,4 +1,5 @@
 import React from "react";
+import Persistent from "./src/shared/layouts/Persistent";
 
 const fsScript = `
 window['_fs_debug'] = false;
@@ -36,10 +37,12 @@ const HeadComponents = [
   process.env.GATSBY_FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
 ].filter(Boolean);
 
-console.log(HeadComponents);
-
 const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(HeadComponents);
 };
 
-export { onRenderBody };
+const wrapRootElement = ({ element, props }) => {
+  return <Persistent {...props}>{element}</Persistent>;
+};
+
+export { onRenderBody, wrapRootElement };

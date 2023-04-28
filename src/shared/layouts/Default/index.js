@@ -39,7 +39,7 @@ export const Content = styled.main`
 `;
 
 const LeftSideBarWidth = styled.div`
-  max-width: 323px;
+  max-width: 380px;
   width: 100%;
 
   ${(props) =>
