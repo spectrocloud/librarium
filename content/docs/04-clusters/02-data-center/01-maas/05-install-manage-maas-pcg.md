@@ -24,7 +24,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 
 <WarningBox>
 
-The installer does not currently work on Apple Mac operating systems with Apple silicon chips.
+The installer does not work on Apple Mac operating systems with Apple silicon chips.
 
 </WarningBox>
 
