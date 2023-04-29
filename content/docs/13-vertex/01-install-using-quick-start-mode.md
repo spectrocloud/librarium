@@ -67,12 +67,16 @@ For production environments, you will migrate the single-node cluster you deploy
   | **SSH Public Key** | The key to enable Secure Shell (SSH) for the default user. You can create a new public key or use an existing one. The public key will be installed in the installer VM to provide SSH access as user ``ubuntu``. This is useful for troubleshooting purposes. | - |
   | **Name** | A name to identify the platform installer. | `spectro1`|
 
+  <br />
+
   ### Kubernetes Cluster Settings
 
   | Parameter | Description | Default Value |
   | --- | --- | --- |
   | **Pod CIDR** | CIDR range for pods in the cluster. This must not overlap with the host or service network. |`192.168.0.0/16` |
   | **Service cluster IP range** | CIDR notation IP range from which to assign service cluster IPs. This must not overlap with IP ranges assigned to nodes or pods. | `10.96.0.0/12` |
+
+  <br />
 
   ### Monitoring Console
 
@@ -135,7 +139,7 @@ For production environments, you will migrate the single-node cluster you deploy
 
   ![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip1.png)
 
-  <br />vertex_virtual-machine-ip1
+  <br />
 
   You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
   
