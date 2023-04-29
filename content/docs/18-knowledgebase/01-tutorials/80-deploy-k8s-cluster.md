@@ -17,20 +17,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Palette is designed to help you create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors and system administrators that want to deploy a containerized application to a Kubernetes environment.
 
-Palette's *Cluster Profile* component allows you to customize the cluster infrastructure stack you prefer into a declerative and reusable manner.  Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a host cluster based on your preferred infrastructure provider.
+Palette's [*Cluster Profile*](/clusters) component allows you to customize the cluster infrastructure stack you prefer into a declerative and reusable manner.  Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a host cluster based on your preferred infrastructure provider.
 
 This tutorial will teach you how to deploy a host cluster with Palette by using the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy the cluster from the Palette console or use Infrastructure as Code (IaC) through Terraform. You will learn about *Cluster Mode*, *and Cluster Profiles*, and learn how both components enable you to deploy applications to Kubernetes quickly with minimal effort but with a high degree of customization.
-
-<br />
-<br />
 
 # Architecture 
 
 In this tutorial, you will discover how Palette simplifies the creation of a Kubernetes cluster. With some basic configuration information, Palette manages the entire deploymet and mangement process, saving you time and effort. In a few steps, you will have a Kubernetes cluster  and your application deployed on top of it.
-
-<!-- The following is an architecture overview that displays the infrastructure you will deploy through Palette to the cloud provider of your choice. -->
-
-<!-- ![Infrastructure architecture overview part 1](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_infrastructure.png) -->
 
 <br />
 
@@ -38,7 +31,6 @@ This is the application architecture you will deploy, a containerized applicatio
 
 ![Application architecture part 2](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
-<br />
 <br />
 
 # Deploy the Cluster and the Application
@@ -53,9 +45,6 @@ Select the tab representing the workflow you want to learn more about.
 
 You can create and manage clusters directly from the Palette dashboard. Use the following steps to learn how to deploy a host cluster to multiple cloud providers.
 
-<br />
-
-
 ## Prerequisites
 
 To complete this tutorial, you will need the following items
@@ -68,10 +57,6 @@ To complete this tutorial, you will need the following items
   - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
   - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
   - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
-
-<br />
-
-
 ## Deploy the Environment
 
 The following steps will guide you through deploying the cluster infrastructure. You will start by creating a cluster profile and deploying the host cluster using your cluster profile.
@@ -116,7 +101,7 @@ For this tutorial, use the following packs:
 
 As you fill out the information for a layer, click on **Next layer** to proceed.
 
-Click on the **Confirm** after you have completed filling out all the core layers.
+Click on **Confirm** after you have completed filling out all the core layers.
 
 ![A view of the cluster profile stack](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
@@ -134,7 +119,7 @@ Navigate to the left **Main Menu** and select **Cluster**. From the clusters pag
 
 ![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
-Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following steps to create a host cluster on AWS.
+Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following steps to create a host cluster in AWS.
 
 <br />
 
@@ -161,7 +146,7 @@ The **Profile Layers** section displays all the layers and add-on components in 
 
 ![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
 
 <br />
 
@@ -239,75 +224,66 @@ Click on your cluster to review details such as deployment status, event logs, c
 </Tabs.TabPane>
 <Tabs.TabPane tab="Azure" key="azure-ui">
 
-## Register a Palette Account
-
-Palette supports integration with Azure Cloud Accounts. 
-
-Check how to create a [Palette account for Azure](/clusters/public-cloud/azure/azure-cloud)
-
-<br />
-
-
-## Create Cluster Profile
+### Create Cluster Profile
 
 [Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
- - Operating System
- - Kubernetes distribution and version 
- - Network Container Interface (CNI) 
- - Storage Container Interface (CSI)
+ - Operating System (OS).
+ - Kubernetes distribution and version. 
+ - Network Container Interface (CNI). 
+ - Storage Container Interface (CSI).
  
-A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth. 
+A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth.  
 
-Cluster profiles allow you to create infrastructural stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
+Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
 Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
 You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
 
-Follow the wizard to create a new profile. The wizard is made up of the following steps.
+![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
 
-In **Basic Information**, insert the name of the profile such as *azure-profile*, a brief description of the profile, the type as *Full*, and tags as *azure*. You can leave version empty since the version defaults to 1.0.0.
+Follow the wizard to create a new profile.
 
-**Cloud Type** allows you to choose the infrastructure provider this profile is associated to. Select *Azure*.
+In the **Basic Information** section, assign the name **azure-profile**, a brief description of the profile, select the type as **Full**, and assign the tas  **aws***. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
+
+**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select **AWS** and click on **Next**.
 
 **Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
-Every pack requires the **Pack Type**, **Registry**, **Pack Name**, **Chart version**, **Manifests** options that compose the **Pack Values** string.
+Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Name**.
 
 For this tutorial, use the following packs:
 - **Operating System (OS)** -> *ubuntu-azure LTS__20.4.x*
-- **Kubernetes** -> *Kubernetes 1.21.x*
+- **Kubernetes** -> *Kubernetes 1.24.x*
 - **Network** -> *cni-calico-azure 3.24.x* (Calico)
-- **Storage** -> *csi-azure 1.20.x* (Container Storage Interface - CSI)
+- **Storage** -> *Azure Disk 1.25.x* (Container Storage Interface - CSI)
 
-You will also include an add-on pack, a reverse proxy to access the host cluster you will deploy later.
-Click on **Add New Pack**, choose **Authentication** as pack type, and select the latest version of the **Spectro Proxy** pack.  Click on the **Confirm & Create** button to proceed wit the final stages of the cluster profile creation wizard. 
+As you fill out the information for a layer, click on **Next** layer to proceed.
+
+Click on **Confirm** after you have completed filling out all the core layers.
+
+![azure cluster profile overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_stack.png)
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
 
-![azure cluster profile overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
-After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
+You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
 
 <br />
 
 
 ## Create a New Cluster
 
-Navigate to **Main Menu** and select the **Cluster**.
-
-From the clusters page, click on the **Add New Cluster** button.
+Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on the **Add New Cluster** button.
 
 ![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
-Select **Deploy New Cluster** from the **pop-up Menu**.
-
-Select **Azure** and click the ** Start Azure Configuration** button.
-
-Use the following steps to create a host cluster on Azure.
+Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Azure** and click the **Start Azure Configuration** button. Use the following steps to create a host cluster in Azure.
 
 <br />
 
 
 ### Basic information
+
+In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
@@ -320,36 +296,26 @@ In the **Basic information** section, insert the general information about the c
 
 On the right side, there is a list of available cluster profiles you can choose to deploy to Azure. Select the cluster profile you created earlier and click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_profile.png)
+### Profile Layers
 
-<br />
-
-
-### Parameters
-
-The **Parameters** section displays all the layers and add-on components in the cluster profile.
+The **Profile Layers** section displays all the layers and add-on components in the cluster profile.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_parameters.png)
 
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
-
-Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
 
 <br />
 
 
 ### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as Resource Group, Storage account, Storage container, and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
 
+The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage accoun** and **SSH Key**  to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for guidance on how to upload an SSH key.
 
-For the scope of this tutorial we insert only the mandatory ones:
-- the *Subscription* associated to your Azure account
-- the *Region* where to deploy among the ones provided by the cloud provider
-- the *Resource Group* 
-- the Palette *SSH Key* to use.
 
 <br />
+
+After you have selected a **Subscription**, **Region**, **Resource Group**, **Storage accoun** and **SSH Key**, click on **Next**. 
 
 
 ### Nodes Configuration
@@ -359,10 +325,18 @@ The **Nodes config** section allows to configure the nodes that will compose the
 You can find the list and the explanation of all the parameters in [Node Pool page](https://docs.spectrocloud.com/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
-- *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
-- *Allow worker capability* to allow the master node also to accept workloads.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region selected in the *Cluster config* section.
+- **Number of nodes in the pool** - Used to set the right amount of nodes that make up the pool of either the master or worker nodes. Set the count to one for the master pool and two for the worker pool.
+
+- **Allow worker capability** - This option allows the master node also to accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
+
+
+- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select **Standard_A8_v2**.
+
+
+- **Managed disk** - Used to select the storage class. Select **Standard LRS** and set the disk size to **60**.
+
+
+- **Availability zones** -  Used to specify the availability zones the node pool can place nodes. Pick one availability zone.
 
 ![palette clusters nodes configuration](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
@@ -371,28 +345,31 @@ Among the multiple configuration you can set, be sure to consider:
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
+In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC) bindings, and more.
 
-For the purpose of this tutorial, you can use the default settings configuration.
+For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 <br />
 
 
 ### Review
 
-The **Review** section resumes the cluster configuration as you have configured it in the previous steps.
+The Review section is an opportunity for you to review all the cluster configurations prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
 ![azure creation of a new cluster overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
-Take a look of the overall setup and press *Finish Configuration* to deploy it.
 
 <br />
 
-Now select the **Clusters** page from the left panel and check the created cluster.
+Navigate to the left **Main Menu** and select **Clusters**.
 
 ![Update the cluster](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster.png)
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+Click on your cluster to review details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
+
+<br />
+
+![View of the cluster details page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster_details.png)
 
 <br />
 
