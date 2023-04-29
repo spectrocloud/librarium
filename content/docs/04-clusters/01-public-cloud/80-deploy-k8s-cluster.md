@@ -52,7 +52,7 @@ To complete this tutorial, you will need the following items
 - A public cloud account from one of the following providers.
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-  - [GCP](https://cloud.google.com/docs/get-started).
+  - [GCP](https://cloud.google.com/docs/get-started)
 - Register the cloud account in Palette. Use the following resource for additional guidance.
   - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
   - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
@@ -99,7 +99,7 @@ For this tutorial, use the following packs:
 - **Network** -> *cni-calico 3.24.x* (Calico)
 - **Storage** -> *csi-aws-ebs 1.16.x* (Amazon Elastic Block Store Container Storage Interface)
 
-As you fill out the information for a layer, click on **Next layer** to proceed.
+As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
 Click on **Confirm** after you have completed filling out all the core layers.
 
@@ -140,11 +140,11 @@ On the right side, there is a list of available cluster profiles you can choose 
 <br />
 
 
-### Profile Layers
+### Parameters
 
-The **Profile Layers** section displays all the layers and add-on components in the cluster profile.
+The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
-![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
+![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_creation_parameters.png)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
 
@@ -243,9 +243,9 @@ You can view the list of available cluster profiles. To create a cluster profile
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **azure-profile**, a brief description of the profile, select the type as **Full**, and assign the tas  **aws***. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
+In the **Basic Information** section, assign the name **azure-profile**, a brief description of the profile, select the type as **Full**, and assign the tas  **azure***. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
 
-**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select **AWS** and click on **Next**.
+**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select **Azure** and click on **Next**.
 
 **Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
 Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Name**.
@@ -256,7 +256,7 @@ For this tutorial, use the following packs:
 - **Network** -> *cni-calico-azure 3.24.x* (Calico)
 - **Storage** -> *Azure Disk 1.25.x* (Container Storage Interface - CSI)
 
-As you fill out the information for a layer, click on **Next** layer to proceed.
+As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
 Click on **Confirm** after you have completed filling out all the core layers.
 
@@ -282,8 +282,6 @@ Click on **Deploy New Cluster** to access the cluster deployment wizard. Select 
 
 
 ### Basic information
-
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
@@ -376,77 +374,62 @@ Click on your cluster to review details such as deployment status, event logs, c
 </Tabs.TabPane>
 <Tabs.TabPane tab="Google Cloud" key="gcp-ui">
 
-## Register a Palette Account
+### Create Cluster Profile
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
 
-Palette supports integration with GCP Cloud Accounts. 
-
-Check how to create a [Palette account for GCP](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
-
-
-<br />
-
-## Create Cluster Profile
-
-[Cluster profiles](/cluster-profiles) are templates created with the following core layers.
- - Operating System
- - Kubernetes distribution and version 
- - Network Container Interface (CNI) 
- - Storage Container Interface (CSI)
+ - Operating System (OS).
+ - Kubernetes distribution and version.
+ - Network Container Interface (CNI).
+ - Storage Container Interface (CSI).
  
-A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth. 
+A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, and so forth.  
 
-Cluster profiles allow you to create infrastructural stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
+Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page. 
+Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
 You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
 
-Follow the wizard to create a new profile. The wizard is made up of the following steps.
+![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
 
-In the **Basic Information**, insert the profile's name, such as *gcp-profile*, a brief description of the profile, the type as *Full*, and tags as *gcp*. You can leave the version empty if you want to. Just be aware that the version defaults to 1.0.0.
+Follow the wizard to create a new profile.
 
-**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select *Google Cloud*.
+In the **Basic Information** section, assign the name **gcp-profile**, a brief description of the profile, select the type as **Full**, and assign the tas **gcp**. You can leave the version empty if you want to. Just be aware that the version defaults to 1.0.0. Click on **Next**.
 
-**Profile Layers**, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from.
-Every pack requires the **Pack Type**, **Registry**, **Pack Name**, **Chart version**, **Manifests** options that compose the **Pack Values** string.
+Cloud Type allows you to choose the infrastructure provider with which this cluster profile is associated. Select **Google Cloud** and click on **Next**.
+
+Profile Layers, this is the main configuration step where you specify the packs that compose the profile. There are four required infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the Pack Type, Registry, and Pack Name.
+
 
 For this tutorial, use the following packs:
 - **Operating System (OS)** -> *ubuntu-gcp LTS__20.4.x*
-- **Kubernetes** -> *Kubernetes 1.21.x*
-- **Network** -> *cni-calico 3.24.x* (Calico)
-- **Storage** -> *csi-gcp-driver 1.7.x* (Container Storage Interface - CSI)
+- **Kubernetes** -> *Kubernetes 1.24.x*
+- **Network** -> *cni-calico 3.24.x*
+- **Storage** -> *csi-gcp-driver 1.7.x* 
 
-You will also include an add-on pack, a reverse proxy to access the host cluster you will deploy later.
-Click on **Add New Pack**, choose **Authentication** as pack type, and select the latest version of the **Spectro Proxy** pack.  Click on the **Confirm & Create** button to proceed wit the final stages of the cluster profile creation wizard. 
+As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
+Click on **Confirm** after you have completed filling out all the core layers.
 
-![gcp cluster profile overview page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
+![gcp cluster profile view](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_gcp_cluster_profile_stack_view.png)
 
-After the creation of a cluster profile, you can update it by adding, removing, or editing layers, in any moment.
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile.
+
+You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
 
 <br />
 
-
-## Create a New Cluster
-
-Navigate to **Main Menu** and select the **Cluster**.
-
-From the clusters page, click on the **Add New Cluster** button.
+Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on the **Add New Cluster** button.
 
 ![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
-Select **Deploy New Cluster** from the **pop-up Menu**.
-
-Select **Google Cloud** and click the ** Start Google Cloud Configuration** button.
-
-Use the following steps to create a host cluster on GCP.
+Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Google Cloud** and click the **Start Google Cloud Configuration** button. Use the following steps to create a host cluster in Google Cloud.
 
 <br />
 
 
 ### Basic information
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
+In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**, **Description**, **Tags**, and **Cloud account**. Click on **Next**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_basic_info.png)
 
@@ -468,27 +451,19 @@ The **Parameters** section displays all the layers and add-on components in the 
 
 ![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format.
-
-Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next*** to proceed.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
 
 <br />
 
 
 ### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as the Project Name and specifying the *SSH Key Pair* to assign to the cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/content/docs/04-clusters/06-cluster-management/0-ssh-keys) guide for additional guidance.
+The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for guidance on how to upload an SSH key.
 
-Create an SSH key pair and add to the GCP account.
-Open the [GCP Compute Engine console](https://console.cloud.google.com/compute/instances) and, in the navigation panel, under *Setting*, choose *Metadata*. Open the *SSH Keys* tab and click on *Add SSH Key*.
-
-Refer to the [create SSH keys guide](https://cloud.google.com/compute/docs/connect/create-ssh-keys) to create the ssh key on your local machine. Then, copy the full value of your public key and paste it on GCP.
-
-![gcp key pair creation](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_gcp_ssh_key_create.png)
 
 <br />
 
-
+After you have selected a **Project**, **Region**, and **SSH Key**, click on **Next**. 
 ### Nodes Configuration
 
 The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
