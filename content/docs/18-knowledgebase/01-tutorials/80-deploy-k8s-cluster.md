@@ -183,6 +183,9 @@ Before you proceed to next section, take the time to review the following parame
 - **Availability zones** - Used to specify the availability zones the node pool can place nodes. Pick one availability zone.
 
 
+- **Disk size** - set the disk size to **60**.
+
+
 - **Instance Option** -  Choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worker nodes. Select **On Demand**.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
@@ -466,47 +469,58 @@ The **Cluster config** section allows you to select the **Project**, **Region**,
 After you have selected a **Project**, **Region**, and **SSH Key**, click on **Next**. 
 ### Nodes Configuration
 
-The **Nodes config** section allows to configure the nodes that will compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
+The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster.
+
+Before you proceed to next section, take the time to review the following parameters
 
 You can find the list and the explanation of all the parameters in [Node Pool page](/clusters/cluster-management/node-pool).
 
 Among the multiple configuration you can set, be sure to consider:
-- *Number of nodes in the pool* to set the right amount of nodes that compose the pool of either the master or worker nodes. For the tutorial we set 1 for the master pool and 2 for the worker pool
-- *Allow worker capability* to allow the master node also to accept workloads.
-- *Instance Type* to select the amount of resources each node must have. Each instance type shows the amount of CPU, RAM and the hourly cost of the instance.
-- *Availability zones* to use within the Region selected in the *Cluster config* section.
+- **Number of nodes in the pool** - Used to set the right amount of nodes that make up the pool of either the master or worker nodes. Set the count to one for the master pool and two for the worker pool.
+
+- **Allow worker capability** - This option allows the master node also to accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
+
+
+- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select **n1-standard-4**.
+
+`
+- **Disk size** - set the disk size to **60**.
+
+
+- **Availability zones** -  Used to specify the availability zones the node pool can place nodes. Pick one availability zone.
 
 ![palette clusters nodes configuration](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 <br />
 
+Select **Next** to proceed with the cluster deployment.
+
 
 ### Settings
 
-In the **Settings** section you can select advanced configurations about the management of the instances, such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC), or enable virtual clusters.
+In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC) bindings, and more.
 
-For the purpose of this tutorial, you can use the default settings configuration.
-
-<br />
-
+For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 ### Review
 
-The **Review** section resumes the cluster configuration as you have configured it in the previous steps.
+The **Review** section is an opportunity for you to review all the cluster configurations prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
 ![gcp creation of a new cluster overview page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
-Take a look of the overall setup and press *Finish Configuration* to deploy it.
-
 <br />
 
-Now select the **Clusters** page from the left panel and check the created cluster.
+Navigate to the left **Main Menu** and select **Clusters**.
+
+<br />
 
 ![Update the cluster](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+Click on your cluster to review details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
 
 <br />
+
+![View of the cluster details page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_details.png)
 
 </Tabs.TabPane>
 </Tabs>
@@ -516,8 +530,6 @@ Click on the cluster to see the details, such as status, pack layers, monitoring
 The following steps will guide you through deploying an application to your host cluster. You will learn how you can update cluster profiles after a host cluster is deployed. In this scenario, you will add a new layer to cluster profile that contains the application. 
 
 <br />
-
-
 
 ### Add a Manifest
 
