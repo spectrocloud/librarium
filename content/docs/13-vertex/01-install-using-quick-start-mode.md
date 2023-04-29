@@ -133,9 +133,9 @@ For production environments, you will migrate the single-node cluster you deploy
 
 12. When the virtual appliance IP address displays next to the VM instance, copy it to a new tab. In the new tab, add prefix `https://` and append port number `:5080`. For example: `https://10.10.189.125:5080`. <br /><br />
 
-  ![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip.png)
+  ![Arrow pointing to the location of the VM IP address in vSphere](/vertex_virtual-machine-ip1.png)
 
-  <br />
+  <br />vertex_virtual-machine-ip1
 
   You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
   
@@ -143,7 +143,7 @@ For production environments, you will migrate the single-node cluster you deploy
 
   <br />
 
-  ![The supervisor console shows VM deployment status and URLs for the On-prem System Console and Management Console.](/vertex_vertex-successful-vm-deploy-and-urls.png)
+  ![The supervisor console shows VM deployment status and URLs for the On-prem System Console and Management Console.](/vertex_vertex-successful-vm-deploy-and-urls1.png)
 
   <br />
 
@@ -177,13 +177,13 @@ To install Palette Enterprise or Palette VerteX, do the following.
 <br />
 
 
-![Arrow pointing to the Install Now button for Enterprise mode.](/vertex_enterprise-install-button.png) <br />
+![Arrow pointing to the Install Now button for Enterprise mode.](/vertex_enterprise-install-button1.png) <br />
 
 - Click the **Migrate to Enterprise** button. 
 
 <br />
 
-![Arrow pointing to the Migrate to Enterprise button.](/vertex_migrate-to-enterprise.png)
+![Arrow pointing to the Migrate to Enterprise button.](/vertex_migrate-to-enterprise1.png)
 
 <br />
   

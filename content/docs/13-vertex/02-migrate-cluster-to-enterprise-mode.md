@@ -67,7 +67,7 @@ Follow steps below to migrate the single-node cluster to a three-node cluster.
 
   If you are installing VerteX, note that the Kubernetes layer in the cluster profile displays **Kubernetes (Fips)**.
 
-  ![Screenshot of a FIPS-enabled cluster profile.](/vertex_cluster-profile-k8s-fips.png) 
+  ![Screenshot of a FIPS-enabled cluster profile.](/vertex_cluster-profile-k8s-fips1.png) 
 
 # Validation
 
