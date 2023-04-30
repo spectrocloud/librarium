@@ -1,8 +1,8 @@
 ---
 title: "Building Edge Native Artifacts"
 metaTitle: "Build Your Palette Edge Native Images with CanvOS"
-metaDescription: "Learn how to build your installer and provider images using our CanvOS Github Repository"
-icon: ""
+metaDescription: "Learn how to build your installer and provider images using our CanvOS GitHub Repository"
+icon: "nodes"
 category: ["how-to", "edge", "edge-native"]
 hideToC: false
 fullWidth: false
@@ -19,12 +19,12 @@ import InfoBox from 'shared/components/InfoBox';
 # Prerequisites
 
 x86 Based Platform  
-[Github Cli](https://cli.github.com/manual/installation)  
+[Github cli](https://cli.github.com/manual/installation)  
 [Docker](https://docs.docker.com/engine/install/)  
 
 <InfoBox>
 
-The ability to run priveleged containers is required.
+The ability to run privileged containers is required.
 
 </InfoBox>
 
@@ -49,7 +49,7 @@ Codename:       jammy
 Docker version 23.0.1, build a5ee5b1
 ```
 
-**Github Cli**
+**Github cli**
 
 ```shell
 git version 2.34.1
@@ -57,7 +57,7 @@ git version 2.34.1
 
 # Enablement
 
-## The Github Repo
+## The GitHub Repo
 
 1. Clone the repo at [CanvOS](https://github.com/spectrocloud/CanvOS.git)
 
@@ -89,9 +89,7 @@ cd CanvOS
 vi .arg
 ```
 
-Depending on your editor the way you save may be different.  This lab is using VIM.  
-
-To enable editting in VIM press `i`.  Modify the value.
+Depending on your editor the way you save may be different.  This lab is using VIM. To enable editing in VIM press `i`.  Modify the value.
 
 ```shell
 IMAGE_REPOSITORY=ttl.sh
@@ -102,9 +100,9 @@ ISO_NAME=palette-edge-installer
 MY_ENVIRONMENT=demo
 ```
 
-2. Depending on your editor the way you save may be different.  This lab is using VIM.  To save with VIM, `esc` then `:q` `enter`.
+2. Depending on your editor the way you save may be different.  This lab is using VIM.  To save with VIM, `esc` then`:q` `enter`.
 
-By default, we do not provide a username or password for the images that are being created.  In order to create a username and password for lab/demo purposes we will create a `user-data` file with the attributes that are needed.  A sample, more intricate `user-data` file is located in this repo called `user-data.template`.
+By default, we do not provide a username or password for the images that are being created.  To create a username and password for lab/demo purposes we will create a `user-data` file with the attributes that are needed.  A sample, more intricate `user-data` file is located in this repo called `user-data.template`.
 
 3. Create `user-data` file
 
@@ -174,7 +172,7 @@ drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
 This step is not used when you continue to the next tutorial [Getting Started with Edge Native](/knowledgebase/tutorials/edge-native/edge-native-do)  
 These images will be used in that tutorial.
 
-To cleanup what you created you can use `docker rmi <image id>`
+To clean up what you created you can use `docker rmi <image id>`
 
 ```shell
 docker rmi fe5c03df75a9
