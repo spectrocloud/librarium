@@ -42,7 +42,7 @@ The steps below will teach you how to create a Prometheus agent cluster add-on p
 5. In the following screen, select **Add New Pack**.
 
 
-6. Use the following information to find the Prometheus Operator pack.
+6. Use the following information to find the Prometheus Agent pack.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Agent
@@ -77,37 +77,50 @@ charts:
 8. Confirm your changes by selecting **Confirm & Create**.
 
 
-9. Click on **Next** to review the cluster profile. Save the cluster profile.
+9. Click on **Add New Pack**.
 
 
-10. Navigate to the left **Main Menu** and select **Clusters**.
+10. Use the following information to find the Spectro Cluster Metrics pack.
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Cluster Metrics
+    - **Pack Version**: 3.3.X or newer
 
 
-11. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+11. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 
 
-12. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
+12. Click on **Next** to review the cluster profile. Save the cluster profile.
 
 
-13. Go ahead and assign a name to the host cluster and select the registered account you wish to deploy the host cluster to.  Click on **Next**.
+13. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-14. Pick a cluster profile for your cluster. Click on **Next**.
+14. Click on **Add New Cluster**. Select **Deploy New Cluster**.
 
 
-15. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
+15. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-16. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+16. Assign a name to the host cluster and select the registered account that will deploy it.  Click on **Next**.
 
 
-17. Complete the remainder of the cluster creation process.
+17. Select a cluster profile to apply to your cluster. Click on **Next**.
+
+
+18. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above the cluster profile layers.
+
+
+19. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+
+
+20. Complete the remainder of the cluster creation process.
 
 After the cluster deployment process, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="With Authentication" key="with-auth-agent">
+<Tabs.TabPane tab="With Authentication and Encryption" key="with-auth-agent">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -124,7 +137,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 5. In the following screen, select **Add New Pack**.
 
 
-6. Use the following information to find the Prometheus Operator pack.
+6. Use the following information to find the Prometheus Agent pack.
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
     - **Pack Name**: Prometheus Agent
@@ -142,7 +155,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 <WarningBox>
 
 The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
-Example: `http://example.custom.myCompany.com:9090/api/v1/write`
+Example: `https://metrics.example.com:9090/api/v1/write`
 
 </WarningBox>
 
@@ -151,7 +164,7 @@ Example: `http://example.custom.myCompany.com:9090/api/v1/write`
     prometheus:
       server:
         remoteWrite:
-          - url: "http://example.custom.myCompany.com:9090/api/v1/write"
+          - url: "https://metrics.example.com:9090/api/v1/write"
   ```
 
 8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack#deployamonitoringstack) with authentication guide, then the username is `agent`.
@@ -163,7 +176,7 @@ charts:
   prometheus:
     server:
       remoteWrite:
-        - url: "http://example.custom.myCompany.com:9090/api/v1/write"
+        - url: "http://metrics.example.com:9090/api/v1/write"
           remote_timeout: "5s"
           basic_auth:
             username: "<USERNAME>"
@@ -173,31 +186,44 @@ charts:
 8. Confirm your changes.
 
 
-9. Click on **Next** to review the cluster profile. Save the cluster profile.
+9. Click on **Add New Pack**.
 
 
-10. Navigate to the left **Main Menu** and select **Clusters**.
+10. Use the following information to find the Spectro Cluster Metrics pack.
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Cluster Metrics
+    - **Pack Version**: 3.3.X or newer
 
 
-11. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+11. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 
 
-12. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
+12. Click on **Next** to review the cluster profile. Save the cluster profile.
 
 
-13. Go ahead and assign a name to the host cluster and select the registered account you wish to deploy the host cluster to.  Click on **Next**.
+13. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-14. Pick a cluster profile for your cluster. Click on **Next**.
+14. Click on **Add New Cluster**. Select **Deploy New Cluster**.
 
 
-15. The following screens will display all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above all the cluster profile layers.
+15. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-16. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+16. Assign a name to the host cluster and select the registered account that will deploy it.  Click on **Next**.
 
 
-17. Complete the remainder of the cluster creation process.
+17. Select a cluster profile to apply to your cluster. Click on **Next**.
+
+
+18. The next screen displays all the layers of your cluster profile. You need to apply your add-on profile to this cluster profile. Click on the **+** button above the cluster profile layers.
+
+
+19. Select the add-on profile you created earlier. Selecting the add-on profile ensures the Prometheus agent is installed with the correct configuration. Click on **Next** to proceed.
+
+
+20. Complete the remainder of the cluster creation process.
 
 When you deploy the cluster deployment, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
 
@@ -231,15 +257,26 @@ To validate that the Prometheus agent is successfully installed and sending metr
 7. In the Grafana dashboard, click on the left **Main Menu** and click on **Dashboards**. Palette exposes a set of Grafana dashboards by default.
 
 
-8. Select the **Spectro Cloud/ Kubernetes / Views / Global** dashboard.
+8. Select the **Spectro Cloud/ Spectro Clusters** dashboard.
 
 
 9. Use the **cluster** filter and review the list of available clusters. Select your newly deployed cluster to review its metrics.
 
 
-Use the other dashboard created by Platte to learn more about your environment.
+![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
+
+<br />
+
+<WarningBox>
+
+Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
+
+</WarningBox>
+
+
+Use the other dashboard created by Palette to learn more about your environment.
 
 
 # Next Steps
 
-Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To  learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).
+Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).

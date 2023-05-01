@@ -94,3 +94,9 @@ ClusterRoleBindings
 RoleBindings
 RoleBinding
 kubeconfig
+Nginx
+Repo
+datastore
+uxp
+wodim
+Letsencrypt

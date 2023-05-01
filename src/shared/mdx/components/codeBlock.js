@@ -43,7 +43,17 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
     return (
       <Highlight {...defaultProps} code={exampleCode} language={language} theme={prismTheme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className + " pre"} style={style} p={3}>
+          <pre
+            className={className + " pre"}
+            style={{
+              ...style,
+              borderRadius: "6px",
+              boxShadow: "0 1px 3px rgba(0, 0, 0, 0.2)",
+              padding: "16px",
+              fontSize: "14px",
+            }}
+            p={3}
+          >
             {cleanTokens(tokens).map((line, i) => {
               let lineClass = {
                 padding: "5px",

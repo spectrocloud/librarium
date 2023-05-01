@@ -53,13 +53,20 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "react-instantsearch-dom": "^6.39.0",
+    "react-instantsearch-dom": "^6.39.1",
     "react-live": "^2.4.0",
     "react-loadable": "^5.5.0",
     "sharp": "^0.30.5",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "latest",
+    "@semantic-release/github": "latest",
+    "@semantic-release/npm": "latest",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^8.3.0",
@@ -71,19 +78,12 @@
     "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-react-router-scroll": "^4.0.0",
+    "husky": "^8.0.0",
     "linkinator": "^4.1.0",
     "prettier": "^2.4.1",
-    "start-server-and-test": "^1.14.0",
     "semantic-release": "^19.0.5",
     "standard-version": "^9.5.0",
-    "husky": "^8.0.0",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/exec": "^6.0.3",
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@semantic-release/github": "latest",
-    "@semantic-release/git": "latest",
-    "@semantic-release/npm": "latest"
+    "start-server-and-test": "^1.14.0"
   },
   "scripts": {
     "build": "gatsby build",
@@ -92,7 +92,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve -p 9000",
     "clean": "gatsby clean",
-    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --format csv >> link_report.csv",
+    "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --retry --retry-errors-count 3 --skip '^http(?!.*spectrocloud\\.com).*$' --format csv >> link_report.csv",
     "test-links": "start-server-and-test serve http://localhost:9000 linkinator",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }

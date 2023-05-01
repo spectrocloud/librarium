@@ -1,7 +1,7 @@
 ---
-title: "On-Premises Installation"
-metaTitle: "On-Premises Installation"
-metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise (on-premise) variant."
+title: "Self-Hosted Installation"
+metaTitle: "Self-Hosted Installation"
+metaDescription: "Understanding, installing and operating Spectro Cloud's Enterprise Self-Hosted variant."
 icon: "warehouse"
 hideToC: false
 fullWidth: false
@@ -10,21 +10,35 @@ fullWidth: false
 import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 
-# On-Premises Installation
+# Self-Hosted Installation
 
-The Palette SaaS platform is also available as an entirely on-prem and customer managed offering. The on-prem version can be installed in customer data centers to manage Kubernetes clusters. Palette on-prem is available in two modes:
+Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. Palette self-hosted is available in three modes:
 
-## Quick Start Mode
+## VMware Quick Start Mode
 
-Single node installation of the platform, ideal for PoC environments.
+A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](/enterprise-version/deploying-the-platform-installer) guide for more details.
 
-## Enterprise Mode
+## VMware Enterprise Mode
 
-Highly available multi-node installation typically for production purposes.
+A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster) guide to get started.
 
+## Helm Chart
 
-Palette provides the platform installer to enable quick start mode and enterprise mode. 
-To obtain the platform installer, please contact our Sales team by completing [the form here](https://www.spectrocloud.com/contact/).
+Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm) guide to learn more.
+
+## Download Palette Installer
+
+To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+
+- Your full name
+- Organization name (if applicable)
+- Email address
+- Phone number (optional)
+- A brief description of your intended use for the Palette Self-host installer image.
+
+Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image. 
+
+If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
 <br />
 
@@ -40,6 +54,9 @@ To obtain the platform installer, please contact our Sales team by completing [t
 
 
 * [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster)
+
+
+* [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm)
 
 
 * [System Console Dashboard](/enterprise-version/system-console-dashboard)

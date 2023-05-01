@@ -44,6 +44,233 @@ Each pack contains a metadata file named `pack.json`. The table below explains i
 | | | | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc. |
 | charts | Array | False | Relative path to the helm chart archives. |
 
+The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly. 
+
+<br />
+
+
+```json
+{
+  "type": "object",
+  "required": [
+    "name",
+    "displayName",
+    "version",
+    "layer"
+  ],
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/nonEmptyString"
+    },
+    "displayName": {
+      "$ref": "#/definitions/nonEmptyString"
+    },
+    "version": {
+      "$ref": "#/definitions/nonEmptyString"
+    },
+    "layer": {
+      "$ref": "#/definitions/layer"
+    },
+    "group": {
+      "type": "string"
+    },
+    "cloudTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "all",
+          "aws",
+          "azure",
+          "gcp",
+          "vsphere",
+          "openstack",
+          "baremetal",
+          "maas",
+          "aks",
+          "eks",
+          "tencent",
+          "tke",
+          "edge",
+          "libvirt",
+          "edge-native",
+          "coxedge"
+        ]
+      }
+    },
+    "cloudType": {
+      "type": "string",
+      "enum": [
+        "all",
+        "aws",
+        "azure",
+        "gcp",
+        "vsphere",
+        "openstack",
+        "baremetal",
+        "maas",
+        "aks",
+        "eks",
+        "tencent",
+        "tke",
+        "edge",
+        "libvirt",
+        "edge-native",
+        "coxedge"
+      ]
+    },
+    "eol": {
+      "type": "string"
+    },
+    "addonType": {
+      "type": "string"
+    },
+    "addonSubType": {
+      "type": "string"
+    },
+    "ansibleRoles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "charts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "kubeManifests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "annotations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "$ref": "#/definitions/constraints"
+    }
+  },
+  "definitions": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "kernel",
+        "os",
+        "k8s",
+        "cni",
+        "csi",
+        "addon"
+      ]
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dependency"
+          }
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/resource"
+          }
+        }
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "required": [
+        "packName",
+        "layer",
+        "type"
+      ],
+      "properties": {
+        "packName": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "layer": {
+          "$ref": "#/definitions/layer"
+        },
+        "minVersion": {
+          "type": "string"
+        },
+        "maxVersion": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "required",
+            "optional",
+            "notSupported",
+            "upgrade"
+          ]
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "cpu",
+            "memory",
+            "diskSize"
+          ]
+        },
+        "minLimit": {
+          "type": "number"
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/component"
+          }
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": [
+        "scheduleType"
+      ],
+      "properties": {
+        "scheduleType": {
+          "type": "string",
+          "enum": [
+            "all",
+            "master",
+            "worker"
+          ]
+        },
+        "resourceRequestParamRef": {
+          "type": "string"
+        },
+        "replicaCountParamRef": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
 # Create a Custom Pack
 
 Follow the steps below to create a custom pack.
@@ -78,6 +305,7 @@ Follow the steps below to create a custom pack.
 3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile. 
 
 <InfoBox>
+
 A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
 
 </InfoBox>
