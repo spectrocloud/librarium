@@ -18,9 +18,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Use the following How-tos to learn how to use Palette or enable a feature in your environment.
 
+# Edge Native
+
+- [Edge Native](/knowledgebase/how-to/edge-native)
 # User Management
 
-- [Palette SSO with Microsoft AD FS](/knowledgebase/how-to/palette-sso-with-adfs) <
+- [Palette SSO with Microsoft AD FS](/knowledgebase/how-to/palette-sso-with-adfs)  
 
 <br />
 <br />

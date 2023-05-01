@@ -14,21 +14,41 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Build Edge Native Artifacts
+## Build Edge Native Artifacts
 
-# Prerequisites
+Palette Edge Native is modeled on an immutable operating system.  It is not another linux distribution, but rather a method to consume the distribution of your choice in an immutable way.  Palette Edge Native leverages the open source project, [Kairos](kairos.io/) to create these artifacts.
 
-x86 Based Platform  
-[Github cli](https://cli.github.com/manual/installation)  
-[Docker](https://docs.docker.com/engine/install/)  
+This How-To will walk you through the basics of creating base Ubuntu images:
+
+* Installer Image - Used to install or "Flash" a device or virtual machine.
+* Provider Images - Used to provision new Kubernetes clusters and used to provide upgrades.
+
+In this how-to we will create three images.
+
+* 1 x Installer ISO
+* 2 x Provider images (For both K3s 1.24.7 and K3s 1.25.2)
+
+We will customize the installer image to support auto registration giving you a low touch feeling when we actually deploy edge nodes in later [Edge](/knowledgebase/tutorials/edge-native) tutorials.
+
+## Prerequisites
+
+**Software**  
+
+* [Github cli](https://cli.github.com/manual/installation)  
+* [Docker](https://docs.docker.com/engine/install/)  
 
 <InfoBox>
-
 The ability to run privileged containers is required.
-
 </InfoBox>
 
-This how-to was written with the following versions:
+**Hardware**  
+
+* x86 Based Platform
+* 4CPU
+* 8GB Memory
+* 50GB HD
+
+**This how-to was written with the following versions:**
 
 **Ubuntu**
 
@@ -55,7 +75,7 @@ Docker version 23.0.1, build a5ee5b1
 git version 2.34.1
 ```
 
-# Enablement
+## Enablement
 
 ## The GitHub Repo
 
@@ -110,7 +130,11 @@ ISO_NAME=palette-edge-installer
 MY_ENVIRONMENT=demo
 ```
 
-2. Depending on your editor the way you save may be different.  To save with VIM, press `esc` then type `:wq!` and press `enter`.
+* To save with VIM, press `esc` then type `:wq!` and press `enter`
+
+<InfoBox>
+Depending on your editor the way you save may be different.
+</InfoBox>
 
 **Sample Output**
 
@@ -128,17 +152,46 @@ MY_ENVIRONMENT=jb
 :wq!
 ```
 
-By default, we do not provide a username or password for the images that are being created.  To create a username and password for lab/demo purposes we will create a `user-data` file with the attributes that are needed.  A sample, more intricate `user-data` file is located in this repo called `user-data.template`.
+By default, we do not provide a username or password for the images that are being created.  To create a username and password for lab/demo purposes we will create a `user-data` file with the attributes that are needed.  Additionally, to aid in auto-registration of the nodes that we will create and use in later tutorials, we are going to add a `edgeHostToken` to the user-data file.  This will enable the nodes to automatically register with your Palette Tenant without user intervention.  
+
+<br />
+
+## Create the Registration Token in Palette.
+
+1. Open a browser window and navigate to the [Palette Console](https://console.spectrocloud.com/)
+
+* Login to your organization  
+If you have not signed up you can sign up for a free trial [Here](https://www.spectrocloud.com/free-tier/)
+
+2. Navigate `Tenant Settings` on the left hand menu.
+
+* Select `Registration Tokens`
+* Click `Add New Registration Token`
+* Set `Token Name` as `Demo`
+* Set the `Default Project` as `Default`
+* Set the Expiration Date for `7 Days`
+
+[Registration Token](/tutorials/edgeforge/add_token.png)
+
+* Click `Confirm`
+* Copy the newly created token to Clipboard
 
 <InfoBox>
-This sample user-data.template is here for reference only and is NOT used as part of this How-To. 
+Save this token to a note file as we will use it later.
 </InfoBox>
 
-3. Create a `user-data` file.
+![Registration Token](/tutorials/edgeforge/registration_token.png)
+
+## Create a user-data file
+
+1. Copy and paste the contents below.
 
 ```shell
 cat <<'EOF' > user-data
 #cloud-config
+stylus:
+  site:
+    edgeHostToken: aUAxxxxxxxxx0ChYCrO
 install:
   poweroff: true
 users:
@@ -147,7 +200,34 @@ users:
 EOF
 ```
 
-This creates a `user-data` file that will be used by our agent to inject the values when the images are created.  This sets the password for the user `kairos` to `kairos` and instructs the installer to turn the machine off once the installation is complete.
+5. Edit the `edgeHostToken` value with the registration token we created above.
+
+* Type `vi user-data`
+
+**Sample Output**
+
+```shell
+#cloud-config
+stylus:
+  site:
+    edgeHostToken: aUAxxxxxxxxx0ChYCrO
+install:
+  poweroff: true
+users:
+  - name: kairos
+    passwd: kairos
+```
+
+* Press `i` to enable editing.
+* Replace the value of `edgeHostToken` variable with the value of the registration token you saved to the note file.
+
+* To save with VIM, press `esc` then type `:wq!` and press `enter`
+
+<InfoBox>
+Depending on your editor the way you save may be different.
+</InfoBox>
+
+This creates a `user-data` file that will be used by our agent to inject the values when the images are created.  This sets the password for the user `kairos` to `kairos` and instructs the installer to turn the machine off once the installation is complete.  It also tells the agent to use the auto-registration functionality and authenticate with the token we provided.
 
 ## Create Edge Artifacts
 
@@ -194,7 +274,7 @@ Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev
 ```
 
-# Validation
+## Validation
 
 1. Validate that the Docker Images are created.
 
@@ -227,18 +307,19 @@ drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
 -rw-r--r-- 1 root root         93 Apr 16  2020 palette-edge-installer.iso.sha256
 ```
 
-# Cleanup
+## Cleanup
 
-This step is not used when you continue to the next tutorial [Getting Started with Edge Native](/knowledgebase/tutorials/edge-native/edge-native-do)  
-These images will be used in that tutorial.  
+* Cleanup or Skip to [Next Steps](/knowledgebase/how-to/edge-native/edgeforge#nextsteps)
 
 1. Cleanup the artifacts that were created.  
 
-To clean up what you created use `docker rmi <image id>`.  
+* To clean up what you created use `docker rmi <image id>`.  
 Repeat this for as many images as were created in the previous steps.
 
-Change the image ids to match the images in your environment.  You can get the ids from the output provided by running `docker images`.
+Change the image ids to match the images in your environment.  You can get the ids from the output provided by running `docker images`.  
+
 **Sample Output**
+
 ```shell
 docker rmi fe5c03df75a9
 docker rmi 51bddf269545
@@ -246,9 +327,11 @@ docker rmi 51bddf269545
 
 2. Delete the ISO image and ISO checksum.  
 
-You will also want to delete the `.iso` files.
-
 ```shell
 rm build/palette-edge-installer.iso
 rm build/palette-edge-installer.iso.sha256
 ```
+
+## Next Steps
+
+Complete one of the [Edge Native Tutorials](/knowledgebase/tutorials/edge-native)
