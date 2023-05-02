@@ -51,7 +51,7 @@ If you are installing on Kubernetes 1.25 and higher follow the below steps
 - Select the type as ``Add-on``
 - Add profile and select ``Pack Name`` as ``Spectro Namespace Labeler``
 - The ``yaml`` should look like this:
-  ``
+  ```
   pack:
   namespace: cluster-{{ .spectro.system.cluster.uid }}
 
@@ -61,10 +61,19 @@ If you are installing on Kubernetes 1.25 and higher follow the below steps
 
       labels:
         cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
-  ``
+  ```
 - When adding the Cloudanix pack add the above labels pack also to the cluster
 
-## Parameters
+## Parameterspack:
+  namespace: cluster-{{ .spectro.system.cluster.uid }}
+
+charts:
+  spectro-namespace-labeler:
+    namespace: cluster-{{ .spectro.system.cluster.uid }}
+
+    # key in labels corresponds to namespace name and value is comma seperated labels and values in label=value format
+    labels:
+      cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
 
 The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
 
