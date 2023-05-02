@@ -71,6 +71,8 @@ To complete this tutorial, you will need the following items
 
 ## Setup Local Environment
 
+You can clone the tutorials repository locally or follow along by downloading a Docker image that contains the tutorial code and all dependencies. 
+
 <Tabs>
 <Tabs.TabPane tab="Git" key="git">
 
@@ -153,7 +155,7 @@ cd /terraform/iaas-cluster-deployment-tf
 
 Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
 
-To create an API key, log in to Palette and click on the user **User Menu** and select **My API Keys**. 
+To create an API key, log in to [Palette](https://console.spectrocloud.com) and click on the user **User Menu** and select **My API Keys**. 
 
 ![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.png)
 
@@ -161,29 +163,7 @@ Next, click on **Add New API Key**. Fill out the required input field, **API Key
 
 <br />
 
-
-## Deploy the Environment
-
-The following steps will guide you through deploying the cluster infrastructure. You will start by creating the cluster profile, then deploy a cluster that uses your cluster profile. 
-
-<br />
-
-### Configure the Cluster Profile
-
-Create a folder where you will put all the Terraform configuration files.
-
-<br />
-
-```shell
-mkdir terraform-config && cd terraform-config
-```
-
-<br />
-
-
-#### Providers
-
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API. Export the API key as an environment variable so that the Spectro Cloud provider can authenticate with the Palette API. 
+In your terminal session, issue the following command to export the API key as an environment variable.
 
 <br />
 
@@ -191,11 +171,48 @@ The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectroclo
 export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
 
+
+
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API.
+The Spectro Cloud Terraform provider will use the environment variable to authenticate with the Spectro Cloud API endpoint. 
+
+
+## Resources Review
+
+To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either Azure, GCP, or AWS. Before you deploy a host cluster to your target provider, take a few moments to review the following files in the folder structure.
+
 <br />
 
-Create the file named **provider.tf** and insert the following content.
+- **providers.tf** - this file contains the Terraform providers that are used to support the deployment of the cluster.
+
+
+- **inputs.tf** - a file containing all the Terraform variables for the deployment logic.
+
+
+- **data.tf** - contains all the query resources that perform read actions.
+
+
+- **cluster_profiles.tf** - this file contains the cluster profile definitions. Each cloud provider has its own cluser profile.
+
+
+- **cluster.tf** - this file has all the required cluster configurations to deploy a host cluster to one of the cloud providers.
+
+
+- **terraform.tfvars** - use this file to customize the deployment and to target the deployment environment. This is the primary file you will make modifications to.
+
+
+- **outputs.tf** - contains content that will be outputed upon a succesfull Terraform `apply` action.
+
+In the following section, you will have an opportunity to review the core resources more closely.
 
 <br />
+
+### Provider
+
+The **provider.tf** file contains the Terraform providers and their respective version. In the tutorial, two providers are used, the Spectro Cloud Terraform provider, and the TLS Terraform provider. Take note of how in in the `provider "spectrocloud" {}` provider block, the project name is specified. You can change the target project by changing the value specified to the `project_name` parameter.
+
+<br />
+
 
 ```terraform
 terraform {
@@ -204,646 +221,164 @@ terraform {
       version = ">= 0.13.1"
       source  = "spectrocloud/spectrocloud"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "4.0.4"
+    }
   }
 }
+
 provider "spectrocloud" {
   project_name = "Default"
 }
 ```
 
-The `terraform` block configuration is used by Terraform to identify what providers to download and what version to use. The `provider "spectrocloud" {}` block is used to customize the Spectro Cloud provider. In this scenario, the provider is configured to use the project named "Default".
+The next file you should become familiar with is the **cluster-profiles.tf** file.
+
+### Cluster Profile
+
+The Spectro Cloud Terraform provider has several resources available for use. When it comes to creating a cluster profile, you need to use the `spectrocloud_cluster_profile`.
+This resource can be used to customize all layers of a cluster profile. You can specify all the different packs and versions to use, as well as adding a manifest or Helm chart.
+
+
+In the **cluster-profiles.tf**  file, you will find the cluster profile resource declared three times. Each instance of the resources is for a specific cloud provider. Using the AWS cluster profile as an example, notice how the cluster profile uses `pack {}` blocks to soecify each layer of the cluster profile. The order you arrange the  `pack {}` play an important role, so ensure you start with the bottom layer of the cluster profile first.
 
 <br />
-
-
-#### Data
-
-The data file contains all of our data query resources that will compose the cluster profile. You will use the data resources to query Palette for information about available packs. These packs make up the core layers of the cluster profile that you will create.
-
-Create the file **data.tf**.
-
-<br />
-
-```shell
-touch data.tf
-```
-
-<br />
-
-Using the tabs below, select the cloud provider you want to deploy the resource to and copy the code snippet into the file **data.tf**.
-
-<br />
-
-<Tabs>
-<Tabs.TabPane tab="AWS" key="aws-tf-profile">
 
 ```terraform
-data "spectrocloud_pack" "csi" {
-  name    = "csi-aws-ebs"
-  version = "1.16.0"
+resource "spectrocloud_cluster_profile" "aws-profile" {
+  name        = "tf-aws-profile"
+  description = "A basic cluster profile for AWS"
+  tags        = concat(var.tags, ["env:aws"])
+  cloud       = "aws"
+  type        = "cluster"
+
+  pack {
+    name   = data.spectrocloud_pack.aws_ubuntu.name
+    tag    = data.spectrocloud_pack.aws_ubuntu.version
+    uid    = data.spectrocloud_pack.aws_ubuntu.id
+    values = data.spectrocloud_pack.aws_ubuntu.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_k8s.name
+    tag    = data.spectrocloud_pack.aws_k8s.version
+    uid    = data.spectrocloud_pack.aws_k8s.id
+    values = data.spectrocloud_pack.aws_k8s.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_cni.name
+    tag    = data.spectrocloud_pack.aws_cni.version
+    uid    = data.spectrocloud_pack.aws_cni.id
+    values = data.spectrocloud_pack.aws_cni.values
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.aws_csi.name
+    tag    = data.spectrocloud_pack.aws_csi.version
+    uid    = data.spectrocloud_pack.aws_csi.id
+    values = data.spectrocloud_pack.aws_csi.values
+  }
+
+  pack {
+    name   = "hello-universe"
+    type   = "manifest"
+    tag    = "1.0.0"
+    values = ""
+    manifest {
+      name    = "hello-universe"
+      content = file("manifests/hello-universe.yaml")
+    }
+  }
 }
-data "spectrocloud_pack" "cni" {
-  name    = "cni-calico"
-  version = "3.24.5"
-}
-data "spectrocloud_pack" "k8s" {
+```
+
+The last `pack {}` block contains a manifest file that contains all the Kubernetes configurations for the [Hello Universe](https://github.com/spectrocloud/hello-universe) application. By including the application in the cluster profile, you ensure the application is installed during the cluster deployment process.  If you are wondering what all the data resources are for, head on to the next section where data resources are discussed.
+
+
+### Data Resources
+
+You may have noticed that each `pack {}` block contains references to a data resource. 
+
+<br />
+
+
+```terraform
+  pack {
+    name   = data.spectrocloud_pack.aws_csi.name
+    tag    = data.spectrocloud_pack.aws_csi.version
+    uid    = data.spectrocloud_pack.aws_csi.id
+    values = data.spectrocloud_pack.aws_csi.values
+  }
+```
+
+[Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic in nature. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific. By using the data resource, you can get information about the pack such as unique ID, registry ID, version available, and its YAML values.
+
+Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.24.10`.
+
+<br />
+
+```terraform
+data "spectrocloud_pack" "aws_k8s" {
   name    = "kubernetes"
   version = "1.24.10"
 }
-data "spectrocloud_pack" "ubuntu" {
-  name    = "ubuntu-aws"
-  version = "20.04"
-}
-data "spectrocloud_pack" "proxy" {
-  name = "spectro-proxy"
-  version  = "1.2.0"
-}
 ```
 
+By using the data resource, you avoid having to manualy type in the values required by the cluster profile's `pack {}` block.
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="azure-tf-profile">
+### Cluster
 
-```terraform
-data "spectrocloud_pack" "csi" {
-  name    = "csi-azure"
-  version = "1.25.0"
-}
-data "spectrocloud_pack" "cni" {
-  name    = "cni-calico-azure"
-  version = "3.24.5"
-}
-data "spectrocloud_pack" "k8s" {
-  name    = "kubernetes"
-  version = "1.24.10"
-}
-data "spectrocloud_pack" "ubuntu" {
-  name    = "ubuntu-azure"
-  version = "20.04"
-}
-data "spectrocloud_pack" "proxy" {
-  name    = "spectro-proxy"
-  version = "1.2.0"
-}
-```
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google Cloud" key="gcp-tf-profile">
-
-```terraform
-data "spectrocloud_pack" "csi" {
-  name    = "csi-gcp-driver"
-  version = "1.7.1"
-}
-data "spectrocloud_pack" "cni" {
-  name    = "cni-calico"
-  version = "3.24.5"
-}
-data "spectrocloud_pack" "k8s" {
-  name    = "kubernetes"
-  version = "1.24.10"
-}
-data "spectrocloud_pack" "ubuntu" {
-  name    = "ubuntu-gcp"
-  version = "20.04"
-}
-data "spectrocloud_pack" "proxy" {
-  name    = "spectro-proxy"
-  version = "1.2.0"
-}
-```
-
-</Tabs.TabPane>
-</Tabs>
-
-<br />
-
-
----
-
-#### Cluster Profile
-
-Next, create a file name **cluster_profile**.
-
-<br />
-
-```shell
-touch cluster_profile.tf
-```
-
-
-The **cluster_profile** file will use the resource `spectrocloud_cluster_profile` to create and define the cluster profile. Go ahead and copy the content, depending on your cloud provider of choice.
+The file **clusters.tf** contain the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you
 
 <br />
 
 ```terraform
-resource "spectrocloud_cluster_profile" "profile" {
-  name  = "tf-profile"
-  tags  = 
-  cloud = <specify the provider (aws, azure, gcp)>
-  type  = "cluster"
-  pack {
-    name   = data.spectrocloud_pack.ubuntu.name
-    tag    = data.spectrocloud_pack.ubuntu.version
-    uid    = data.spectrocloud_pack.ubuntu.id
-    values = data.spectrocloud_pack.ubuntu.values
-  }
-  pack {
-    name   = data.spectrocloud_pack.k8s.name
-    tag    = data.spectrocloud_pack.k8s.version
-    uid    = data.spectrocloud_pack.k8s.id
-    values = data.spectrocloud_pack.k8s.values
-  }
-  pack {
-    name   = data.spectrocloud_pack.cni.name
-    tag    = data.spectrocloud_pack.cni.version
-    uid    = data.spectrocloud_pack.cni.id
-    values = data.spectrocloud_pack.cni.values
-  }
-  pack {
-    name   = data.spectrocloud_pack.csi.name
-    tag    = data.spectrocloud_pack.csi.version
-    uid    = data.spectrocloud_pack.csi.id
-    values = data.spectrocloud_pack.csi.values
-  }
-  pack {
-    name   = data.spectrocloud_pack.proxy.name
-    tag    = data.spectrocloud_pack.proxy.version
-    uid    = data.spectrocloud_pack.proxy.id
-    values = data.spectrocloud_pack.proxy.values
-  }
-}
-```
-
-<br />
-
-
-### Configure the Cluster
-
-<br />
-
-<Tabs>
-<Tabs.TabPane tab="AWS" key="aws-tf-cluster">
-
-#### Variables
-
-In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
-
-```terraform
-variable "cluster_profile" {}
-variable "region" {}
-variable "aws-cloud-account-name" {
-    type = string
-    description = "The name of your AWS account as assigned in Palette"
-}
-variable "master_nodes" {
-    type = object({
-        count           = string
-        instance_type   = string
-        disk_size_gb    = string
-        availability_zones = list(string)
-    })
-    description = "Master nodes configuration."
-}
-variable "worker_nodes" {
-    type = object({
-        count           = string
-        instance_type   = string
-        disk_size_gb    = string
-        availability_zones = list(string)
-    })
-    description = "Worker nodes configuration."
-}
-```
-
-Next, create a file named *terraform.tfvars* and add the following content.
-
-```terraform
-aws-cloud-account-name  = <insert here the name of your aws account on palette> 
-cluster_profile         = "tf-profile"
-region                  = "us-east-1"
-master_nodes = {
-    count           = "1"
-    instance_type   = "m5.large"
-    disk_size_gb    = "60"
-    availability_zones = ["us-east-1a"]
-}
-worker_nodes = {
-    count           = "1"
-    instance_type   = "m5.large"
-    disk_size_gb    = "60"
-    availability_zones = ["us-east-1a"]
-}
-```
-<br />
-
-
-#### Create an SSH Key
-
-Open the terminal and create the ssh key.
-
-```bash
-ssh-keygen -f ~/.ssh/ssh-key
-```
-
-Retrieve the content of the public key just created.
-
-```bash
-cat ~/.ssh/ssh-key.pub
-```
-
-Create a file named *ssh_key.tf* and add the [resource with the ssh key information](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair).
-```terraform
-resource "aws_key_pair" "tutorial-key" {
-  key_name   = "aws-key"
-  public_key = <insert here the content of the public key>
-}
-```
-
-Edit the *provider.tf* file and insert the AWS credentials to access it.
-```terraform
-provider "aws" {
-  region = var.region
-  access_key = <insert here your access key>
-  secret_key = <insert here your secret key>
-}
-```
-
-Follow the AWS documentation to [create the access key and the secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
-
-<br />
-
-
-#### Cluster Resources
-
-Create the **cluster.tf** file and insert the cluster resources definition.
-
-<br />
-
-```terraform
-data "spectrocloud_cloudaccount_aws" "account" {
-  name = var.aws-cloud-account-name
-}
-data "spectrocloud_cluster_profile" "profile" {
-  name = var.cluster_profile
-}
-resource "spectrocloud_cluster_aws" "cluster" {
-  name             = aws-cluster"
-  tags             = ["aws", "tutorial"]
-  cloud_account_id = data.spectrocloud_cloudaccount_aws.account.id
-  cloud_config {
-    region        = var.region
-    ssh_key_name  = aws_key_pair.tutorial-key.key_name
-  }
-  cluster_profile {
-    id = data.spectrocloud_cluster_profile.profile.id
-  }
-  machine_pool {
-    control_plane           = true
-    control_plane_as_worker = true
-    name                    = "master-pool"
-    count                   = var.master_nodes.count
-    instance_type           = var.master_nodes.instance_type
-    disk_size_gb            = var.master_nodes.disk_size_gb
-    azs                     = var.master_nodes.availability_zones
-  }
-  machine_pool {
-    name                    = "worker-basic"
-    count                   = var.worker_nodes.count
-    instance_type           = var.worker_nodes.instance_type
-    disk_size_gb            = var.worker_nodes.disk_size_gb
-    azs                     = var.worker_nodes.availability_zones
-  }
-}
-```
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="azure-tf-cluster">
-
-#### Variables
-
-In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
-
-```terraform
-variable "subscription_id" {}
-variable "resource_group" {}
-variable "region" {}
-variable "cluster_profile" {}
-
-variable "azure-cloud-account-name" {
-    type = string
-    description = "The name of your Azure account as assigned in Palette"
-}
-
-variable "master_nodes" {
-    type = object({
-        count               = string
-        instance_type       = string
-        disk_size_gb        = string
-        availability_zones  = list(string)
-        is_system_node_pool = bool
-    })
-    description = "Master nodes configuration."
-}
-
-variable "worker_nodes" {
-    type = object({
-        count           = string
-        instance_type   = string
-        disk_size_gb    = string
-        availability_zones = list(string)
-        is_system_node_pool = bool
-    })
-    description = "Worker nodes configuration."
-}
-```
-
-<br />
-
-Then, create also the file terraform.tfvars and append the content of the variables:
-
-```terraform
-azure-cloud-account-name = <insert here the name of your azure account on palette>
-subscription_id          = "03axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-resource_group           = "palette_rg"
-cluster_profile          = "tf-profile"
-region                   = "eastus"
-master_nodes = {
-    count                = "1"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-worker_nodes = {
-    count                = "1"
-    instance_type        = "Standard_A2_v2"
-    disk_size_gb         = "60"
-    availability_zones   = []
-    is_system_node_pool  = false
-}
-```
-
-<br />
-
-
-#### Create an SSH Key
-
-Open the terminal and create the ssh key.
-
-```bash
-ssh-keygen -f ~/.ssh/ssh-key
-```
-
-Retrieve the content of the public key just created.
-
-```bash
-cat ~/.ssh/ssh-key.pub
-```
-
-Create a file named *ssh_key.tf* and add the [resource with the ssh key information](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/ssh_public_key).
-```terraform
-resource "azurerm_ssh_public_key" "tutorial-key" {
-  name                = "azure-key"
-  resource_group_name = var.resource_group
-  location            = var.region
-  public_key          = <insert here the content of the public key>
-}
-```
-
-Edit the *provider.tf* file and insert the Azure credentials to access it.
-```terraform
-provider "azurerm" {
-  features {}
-  tenant_id       = <insert here the tenant id>
-  client_id       = <insert here the client id>
-  client_secret   = <insert here the client secret>
-  subscription_id = <insert here the subscritpion id>
-}
-```
-
-Follow the Azure documentation to find the [tenant id](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-to-find-tenant), [subscription id](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription), [client id, and client secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in)
-
-<br />
-
-
-#### Cluster Resources
-
-Create the cluster.tf file and insert the cluster resources definition:
-
-```terraform
-data "spectrocloud_cloudaccount_azure" "account" {
-  name = var.azure-cloud-account-name
-}
-data "spectrocloud_cluster_profile" "profile" {
-  name = var.cluster_profile
-}
 resource "spectrocloud_cluster_azure" "cluster" {
   name             = "azure-cluster"
-  tags             = ["ms-azure", "tutorial"]
-  cloud_account_id = data.spectrocloud_cloudaccount_azure.account.id
+  tags             = concat(var.tags, ["env:azure"])
+  cloud_account_id = data.spectrocloud_cloudaccount_azure.account[0].id
+
   cloud_config {
-    subscription_id = var.subscription_id
-    resource_group  = var.resource_group
-    region          = var.region
-    ssh_key         = azurerm_ssh_public_key.tutorial-key.name
+    subscription_id = var.azure_subscription_id
+    resource_group  = var.azure_resource_group
+    region          = var.azure-region
+    ssh_key         = tls_private_key.tutorial_ssh_key[0].public_key_openssh
   }
+
   cluster_profile {
-    id = data.spectrocloud_cluster_profile.profile.id
+    id = spectrocloud_cluster_profile.azure-profile[0].id
   }
+
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
     name                    = "master-pool"
-    count                   = var.master_nodes.count
-    instance_type           = var.master_nodes.instance_type
-    azs                     = var.master_nodes.availability_zones
-    is_system_node_pool     = var.master_nodes.is_system_node_pool
+    count                   = var.azure_master_nodes.count
+    instance_type           = var.azure_master_nodes.instance_type
+    azs                     = var.azure_master_nodes.azs
+    is_system_node_pool     = var.azure_master_nodes.is_system_node_pool
     disk {
-      size_gb = var.master_nodes.disk_size_gb
+      size_gb = var.azure_master_nodes.disk_size_gb
       type    = "Standard_LRS"
     }
   }
+
   machine_pool {
-    name                 = "worker-basic"
-    count                = var.worker_nodes.count
-    instance_type        = var.worker_nodes.instance_type
-    azs                  = var.worker_nodes.availability_zones
-    is_system_node_pool  = var.worker_nodes.is_system_node_pool
+    name                = "worker-basic"
+    count               = var.azure_worker_nodes.count
+    instance_type       = var.azure_worker_nodes.instance_type
+    azs                 = var.azure_worker_nodes.azs
+    is_system_node_pool = var.azure_worker_nodes.is_system_node_pool
+  }
+
+  timeouts {
+    create = "30m"
+    delete = "15m"
   }
 }
 ```
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google Cloud" key="gcp-tf-cluster">
-
-#### Variables
-
-In the same folder where you have the Terraform configuration files, create a file named **variables.tf** and insert the following variables.
-
-```terraform
-variable "region" {}
-variable "gcp-cloud-account-name" {
-    type = string
-    description = "The name of your GCP account as assigned in Palette"
-}
-variable "master_nodes" {
-    type = object({
-        count           = string
-        instance_type   = string
-        disk_size_gb    = string
-        availability_zones = list(string)
-    })
-    description = "Master nodes configuration."
-}
-variable "worker_nodes" {
-    type = object({
-        count           = string
-        instance_type   = string
-        disk_size_gb    = string
-        availability_zones = list(string)
-    })
-    description = "Worker nodes configuration."
-}
-```
-
-<br />
-
-Then, create also the file terraform.tfvars and append the content of the variables:
-
-```terraform
-gcp-cloud-account-name  = <insert here the name of your gcp account on palette>
-region                  = "us-east1"
-master_nodes = {
-    count            = "1"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "60"
-    availability_zones = ["us-east1-b"]
-}
-worker_nodes = {
-    count            = "1"
-    instance_type    = "n1-standard-2"
-    disk_size_gb     = "60"
-    availability_zones = ["us-east1-b"]
-}
-```
-<br />
-
-
-#### Cluster Resources
-Create the cluster.tf file and insert the cluster resources definition:
-
-```terraform
-data "spectrocloud_cloudaccount_gcp" "account" {
-  name = var.gcp-cloud-account-name
-}
-resource "spectrocloud_cluster_gcp" "cluster" {
-  name             = "gcp-cluster"
-  tags             = ["gcp", "tutorial"]
-  cloud_account_id = data.spectrocloud_cloudaccount_gcp.account.id
-  cloud_config {
-    project = "Default"
-    region  = var.region
-  }
-  cluster_profile {
-    id = spectrocloud_cluster_profile.profile.name
-  }
-  machine_pool {
-    control_plane           = true
-    control_plane_as_worker = true
-    name                    = "master-pool"
-    count                   = var.master_nodes.count
-    instance_type           = var.master_nodes.instance_type
-    disk_size_gb            = var.master_nodes.disk_size_gb
-    azs                     = var.master_nodes.availability_zones
-  }
-  machine_pool {
-    name          = "worker-basic"
-    count         = var.worker_nodes.count
-    instance_type = var.worker_nodes.instance_type
-    disk_size_gb  = var.worker_nodes.disk_size_gb
-    azs           = var.worker_nodes.availability_zones
-  }
-}
-```
-
-</Tabs.TabPane>
-</Tabs>
-
-<br />
-
-
-### Create the Profile and the Cluster
-
-Use the following Terraform commands to create the profile and cluster you defined in the previous steps. 
-
-Enter into the folder where you created the Terraform configuration files.
-
-```bash
-cd terraform-config
-```
-
-Initialize the working directory that contains the Terraform configuration files.
-
-```bash
-terraform init
-```
-
-```
-Initializing the backend...
-
-Initializing provider plugins...
-- Finding spectrocloud/spectrocloud versions matching "0.11.1"...
-- Installing spectrocloud/spectrocloud v0.11.1...
-- Installed spectrocloud/spectrocloud v0.11.1
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-```
-
-Validate the Terraform files.
-
-```bash
-terraform validate 
-```
-
-```
-Success! The configuration is valid.
-```
-
-You can preview the actions Terraform will take by using the `plan` command.
-
-```bash
-terraform plan
-```
-
-```shell
-// Output condensed for readability
-Plan: 3 to add, 0 to change, 0 to destroy.
-```
-
-The output displays the resources Terraform will create in an actual implementation.
-
-Use the `apply` command to deploy the resources to your target environment.
-
-```bash
-terraform apply --auto-approve
-```
-
-```shell
-// Output condensed for readability
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
-```
-
-<br />
-
 
 ### Verify the Profile
 
