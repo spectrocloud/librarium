@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG "dials home" to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
-- use a PCG installer docker image that you will run on a laptop, workstation, or jump box
+- Run a PCG installer Docker image on a laptop, workstation, or jump box.
 - provide information to the installer so that it can connect both to a local MAAS installation and to a Palette account
 - the installer will use MAAS to obtain machine(s), and then install a PCG on them
 - the PCG will now facilitate all communication between Palette and MAAS, enabling Palette to create new clusters on machines provided by MAAS
