@@ -56,6 +56,7 @@ If want to become more familiar with Terraform, we recommend you check out the [
 To complete this tutorial, you will need the following items
 
 - Basic knowledge of containers.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
 - Terraform v1.4.0 or greater.
 - Create a Cloud account from one of the following providers.
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
@@ -67,6 +68,86 @@ To complete this tutorial, you will need the following items
   - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
 
 <br />
+
+## Setup Local Environment
+
+<Tabs>
+<Tabs.TabPane tab="Git" key="git">
+
+Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+
+<br />
+
+```shell
+git@github.com:spectrocloud/tutorials.git
+```
+
+Change directory to the tutorial folder.
+
+<br />
+
+```shell
+cd tutorials/
+```
+
+Check out the following git tag.
+
+<br />
+
+```shell
+git checkout v1.0.4
+```
+
+Change directory to the tutorial code.
+
+<br />
+
+```shell
+cd terraform/iaas-cluster-deployment-tf/
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Docker" key="docker">
+
+
+Ensure Docker Desktop on your local machine is available. Use the following command and ensure you receive an output displaying the version number.
+
+<br />
+
+```bash
+docker version
+```
+
+Download the tutorial image to your local machine.
+<br />
+
+```bash
+docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+```
+
+Next, start the container, and open a bash session into it.
+<br />
+
+```shell
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+```
+
+Navigate to the tutorial code.
+
+<br />
+
+```shell
+cd /terraform/iaas-cluster-deployment-tf
+```
+
+
+</Tabs.TabPane>
+
+
+</Tabs>
+
+---
 
 ## Create an API Key
 
