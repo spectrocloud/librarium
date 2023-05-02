@@ -29,15 +29,17 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 # Prerequisites
 
-* Registered Spectro VM Dashboard pack registry.
+- Registered Spectro VM Dashboard pack registry.
 
 
-* Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
-* Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
-# Create the VM Dashbaoard
+- Although you can deploy virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [RBAC and Namespaces](/clusters/cluster-management/cluster-rb). 
+
+# Create the VM Dashboard
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
