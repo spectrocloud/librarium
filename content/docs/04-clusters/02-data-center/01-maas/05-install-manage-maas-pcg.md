@@ -18,7 +18,7 @@ The Private Cloud Gateway (PCG) enables support for private cloud or data center
 At a high level, the following occurs during a successful MAAS PCG installation:
 - Run a PCG installer Docker image on a laptop, workstation, or jump box.
 - Provide information to the installer so that it can connect both to a local MAAS installation and to a Palette account.
-- the installer will use MAAS to obtain machine(s), and then install a PCG on them
+- The installer uses MAAS to obtain machines and install a PCG on them.
 - the PCG will now facilitate all communication between Palette and MAAS, enabling Palette to create new clusters on machines provided by MAAS
 
 You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
