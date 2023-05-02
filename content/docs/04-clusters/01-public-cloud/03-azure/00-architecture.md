@@ -77,7 +77,13 @@ You can assign tags to clusters deployed to Azure. Tags can help you with user a
 
 The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value-pair format: `department:finance`.
 
-The following tags are reserved and not available for usage.
+
+### Reserved Tags
+
+The following tags are reserved for internal purposes and are not available for usage. Palette will return an error if you use any of the following tags.
+
+<br />
+
 
 - `azure`
 
