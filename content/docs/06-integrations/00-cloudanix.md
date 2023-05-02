@@ -49,7 +49,10 @@ Additionally, you can start Jira workflows and target specific workloads from th
 If you are installing on Kubernetes 1.25 and higher follow the below steps
 - In palette create a cluster profile
 - Select the type as ``Add-on``
-- Add profile and select ``Pack Name`` as ``Spectro Namespace Labeler``
+- Click ``Add New Pack``
+- Select ``Pack Type`` as ``System App``
+- Select``Registry`` as ``Public Repo``
+- Select ``Pack Name`` as ``Spectro Namespace Labeler``
 - The ``yaml`` should look like this:
   ```
   pack:
@@ -64,16 +67,7 @@ If you are installing on Kubernetes 1.25 and higher follow the below steps
   ```
 - When adding the Cloudanix pack add the above labels pack also to the cluster
 
-## Parameterspack:
-  namespace: cluster-{{ .spectro.system.cluster.uid }}
-
-charts:
-  spectro-namespace-labeler:
-    namespace: cluster-{{ .spectro.system.cluster.uid }}
-
-    # key in labels corresponds to namespace name and value is comma seperated labels and values in label=value format
-    labels:
-      cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
+## Parameters:
 
 The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
 
