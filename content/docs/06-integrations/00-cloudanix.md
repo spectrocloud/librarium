@@ -41,8 +41,18 @@ Additionally, you can start Jira workflows and target specific workloads from th
 
 - CPUs: 0.5
 - Memory: 256 MiB
-- Kubernetes 1.19.x to 1.24.x
+- Kubernetes 1.19.x and higher
 - Kernel version 4.5 and higher
+
+## Installing on Kubernetes 1.25 and higher 
+
+If you are installing on Kubernetes 1.25 and higher follow the below steps
+- In palette create a cluster profile
+- Select the type as ``Add-on``
+- Add profile and select ``Pack Name`` as ``Spectro Namespace Labeler``
+- In the ``labels`` add the following:
+  ``cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26``
+- When adding the Cloudanix pack add the above labels pack also to the cluster
 
 ## Parameters
 
