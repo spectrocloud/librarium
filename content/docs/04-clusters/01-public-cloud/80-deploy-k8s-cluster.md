@@ -491,19 +491,14 @@ The cluster deployment may take several minutes depending on the cloud provider,
 
   <br />
 
+While you wait for the cluster deployment process to complete, feel free to check out a video where we discuss the growing pains of using Kubernetes and how Palette can help your address these pain points.
+
+<br />
 
 <div style="text-align: center; padding: 1em; position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
   <iframe src="https://www.youtube.com/embed/wM3hcrHbAC0" width="560" height="315"
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen></iframe>
 </div>
-
-<style>
-  @media (max-width: 768px) {
-    div[style*='padding'] {
-      padding: 0.5em;
-    }
-  }
-</style>
 
 <br />
 
