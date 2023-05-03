@@ -118,6 +118,13 @@ const plugins = [
         {
           resolve: "gatsby-remark-copy-linked-files",
         },
+        {
+          resolve: `gatsby-remark-embed-video`,
+          options: {
+            noIframeBorder: true,
+            loadingStrategy: "lazy"
+          },
+        }
       ],
       extensions: [".mdx", ".md"],
     },

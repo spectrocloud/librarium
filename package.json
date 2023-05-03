@@ -38,6 +38,7 @@
     "gatsby-plugin-styled-components": "^4.0.0",
     "gatsby-plugin-webfonts": "^2.3.2",
     "gatsby-remark-copy-linked-files": "^4.0.0",
+    "gatsby-remark-embed-video": "^3.2.1",
     "gatsby-remark-image-attributes": "^1.1.0",
     "gatsby-remark-images": "^4.2.0",
     "gatsby-remark-images-medium-zoom": "^1.7.0",
