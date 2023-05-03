@@ -37,7 +37,8 @@ We recommend using the pack defaults. Default settings provide best practices fo
 
 - Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
 
-- Although you can deploy virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [RBAC and Namespaces](/clusters/cluster-management/cluster-rb). 
+
+- A namespace for virtual machines. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out the [RBAC and NS Support](/clusters/cluster-management/cluster-rb) resource. 
 
 # Create the VM Dashboard
 

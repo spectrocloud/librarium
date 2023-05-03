@@ -17,11 +17,11 @@ A snapshot is a copy of a virtual machine's (VM) disk file at a given point in t
 
 You can take a snapshot of a VM that is online (**Running** state) or offline (**Stopped** state). When you take a snapshot of an active VM, the controller checks for the QEMU guest agent in the VM. If the guest agent is present, the controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This provides for crash consistency.
 
-For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the guest agent is not installed, a best effort snapshot is taken.
-
 <br />
 
 <InfoBox>
+
+For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the guest agent is not installed, a best effort snapshot is taken.
 
 To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentConnected`` in **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will display if the snapshot was taken online and with or without guest agent participation.
 
@@ -29,11 +29,14 @@ To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentCon
 
 <br />
 
-You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the snapshot action is not possible.
+You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the Snapshot action is not possible.
 
 # Prerequisites
 
 - A deployed VM.
+
+
+- On VMs that use a Fedora-based VM template, disable Security-Enhanced Linux (SELinux) by running the  `setenforce 0` command as the root user: 
 
 
 # Take a Snapshot
