@@ -202,7 +202,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 # October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deployment/native), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
 **Features**
 
@@ -228,9 +228,9 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge/deploy
 
 * Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/cluster-management/node-pool) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for [Edge Native](/clusters/edge/deployment/native) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](/clusters/edge/architecture#kubernetesdefaults) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
-* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform#moduletoprovidercompatibilitymatrix), support:
+* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform), support:
   * Native Edge clusters
   * Palette Virtual Clusters
   * Fixes towards [Enhancements](/terraform#changes)
@@ -398,7 +398,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 - Palette displays a well-organized [Product Onboarding](/getting-started/onboarding-workflow#paletteonboardingworkflow) process to streamline user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 - Palette helps out new users in their purchase decision by offering free tier services.
   - [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
-  - [Free Cloud Credit](/getting-started/free-cloud-credit#freecloudcreditwithpalette) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
+  - [Free Cloud Credit](/getting-started/palette-freemium) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
 
 **Enhancements:**
 

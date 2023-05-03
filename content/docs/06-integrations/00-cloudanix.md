@@ -41,7 +41,7 @@ Additionally, you can start Jira workflows and target specific workloads from th
 
 - CPUs: 0.5
 - Memory: 256 MiB
-- Kubernetes 1.19.x and higher
+- Kubernetes 1.19.x to 1.24.x
 - Kernel version 4.5 and higher
 
 ## Installing on Kubernetes 1.25 and higher.

@@ -116,7 +116,7 @@ Click on the **New App Profile** button to start creating your first app profile
 
   
 
-Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.10`. Change the network access to **Public** and add the port `8080`.
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.12`. Change the network access to **Public** and add the port `8080`.
 
   
 
@@ -327,7 +327,7 @@ Provide the UI container with the following information.
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe:1.0.10`
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.12`
 
 - Network Access: Public
 
@@ -513,7 +513,7 @@ Next, initialize the Terraform provider by issuing the following command.
 terraform init
 ```
 
-```
+```shell
 Initializing the backend...
 
 Initializing provider plugins...
@@ -533,7 +533,7 @@ The `init` command downloads all the required plugins and providers specified in
 
 <br />
 
-```tf
+```hcl
 terraform {
   required_providers {
     spectrocloud = {
@@ -552,7 +552,7 @@ To deploy the first scenario, a single application container, you must first cre
 
 <br />
 
-```tf
+```hcl
 resource "spectrocloud_virtual_cluster" "cluster-1" {
   name              = var.scenario-one-cluster-name
   cluster_group_uid = data.spectrocloud_cluster_group.beehive.id
@@ -573,14 +573,13 @@ resource "spectrocloud_virtual_cluster" "cluster-1" {
     delete = "15m"
   }
 }
-
 ```
 
 The cluster group id is retrieved from the data resource `spectrocloud_cluster_group.beehive`. The data resource will query the Palette API and retrieve information about the specified cluster group, which is the *beehive* cluster group made available for all Palette users. This resource will create a new virtual cluster that is hosted in the *beehive* cluster group.
 
 <br />
 
-```tf
+```hcl
 data "spectrocloud_cluster_group" "beehive" {
   name    = var.cluster-group-name
   context = "system"
@@ -645,7 +644,7 @@ Next, take a look at the **application-profiles.tf** file. The resource `spectro
   ]}
 >
 
-```tf
+```hcl
 resource "spectrocloud_application_profile" "hello-universe-ui" {
   name        = "hello-universe-ui"
   description = "Hello Universe as a single UI instance"
@@ -760,7 +759,7 @@ The last Terraform resource to review before deploying the application is locate
 >
 
 
-```tf
+```hcl
 resource "spectrocloud_application" "scenario-1" {
   name                    = "single-scenario"
   application_profile_uid = spectrocloud_application_profile.hello-universe-ui.id
@@ -784,7 +783,6 @@ terraform plan
 ```
 // Output condensed for readability
 Plan: 3 to add, 0 to change, 0 to destroy.
-
 ```
 
 The output displays the resources Terraform will create in an actual implementation. If you review the output, you will find the three resources previously discussed in great detail.
@@ -844,7 +842,7 @@ To deploy the second scenario, you will again deploy the same three resource typ
 
 You can review all the resources for the second scenario in the respective Terraform files. You can find the second scenario code after the comment block in all of the files that have resources specific to the second scenario.
 
-```tf
+```hcl
 ##########################################
 # Scenario 2: Multiple Applications
 ##########################################
@@ -857,7 +855,7 @@ You can add multiple services to an app profile, but you must add a `pack {}` bl
 
 <br />
 
-```
+```hcl
 resource "spectrocloud_application_profile" "hello-universe-complete" {
   count       = var.enable-second-scenario == true ? 1 : 0
   name        = "hello-universe-complete"
@@ -1063,7 +1061,7 @@ Inside the `pack {}` block, the database services uses the `properties` attribut
 
 <br />
 
-```
+```hcl
  pack {
     name            = "postgres-db"
     type            = data.spectrocloud_pack_simple.postgres_service.type
@@ -1083,7 +1081,7 @@ The `env` section uses the output variables exposed by the Postgres service. Oth
 
 <br />
 
-```
+```hcl
 pack {
     name            = "api"
     type            = data.spectrocloud_pack_simple.container_pack.type
@@ -1128,7 +1126,7 @@ The last `pack {}` block in the app profile resource `spectrocloud_application_p
 
 <br />
 
-```
+```hcl
 pack {
     name            = "ui"
     type            = data.spectrocloud_pack_simple.container_pack.type
@@ -1152,7 +1150,6 @@ pack {
             serviceType: load balancer
     EOT   
   }
-
 ```
 
 
@@ -1220,7 +1217,7 @@ To remove all resources created in this tutorial, issue the `terraform destroy` 
 terraform destroy -var="token=931A3B02-8DCC-543F-A1B2-69423D1A0B94" -auto-approve
 ```
 
-```
+```shell
 Destroy complete! Resources: 6 destroyed.
 ```
 
