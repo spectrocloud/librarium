@@ -44,14 +44,14 @@ Additionally, you can start Jira workflows and target specific workloads from th
 - Kubernetes 1.19.x and higher
 - Kernel version 4.5 and higher
 
-## Installing on Kubernetes 1.25 and higher 
+## Installing on Kubernetes 1.25 and higher.
 
-If you are installing on Kubernetes 1.25 and higher follow the below steps
+Installing on Kubernetes 1.25 and higher requires an additional pack called Spectro Namespace Labeler to be installed. Here are the steps to install.
 - In palette create a cluster profile
 - Select the type as ``Add-on``
 - Click ``Add New Pack``
 - Select ``Pack Type`` as ``System App``
-- Select``Registry`` as ``Public Repo``
+- Select ``Registry`` as ``Public Repo``
 - Select ``Pack Name`` as ``Spectro Namespace Labeler``
 - The ``yaml`` should look like this:
   ```
