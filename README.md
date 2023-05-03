@@ -1,18 +1,63 @@
-# Prerequisites
+<!-- vale off -->
+# Overview
 
-- an text editor (I recommend [vscode](https://code.visualstudio.com/))
+![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
+
+Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
+
+For internal Spectro Cloud users, please review the [contributions](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765572627/Contribution) section of the Documentation & Education's teams home page. 
+
+There are two local development paths available; Docker based, and non-Docker based. To reduce complexities, we recommended the Docker based development approach. 
+
+## Prerequisites
+
+To contribute, we recommend having the following software installed locally on your workstation.
+
+- Text Editor
+- [Docker](https://docs.docker.com/desktop/)
 - git configured and access to github repository
+- node and npm (optional)
 
-```sh
-git config --global user.name "Sam Smith"
-git config --global user.email sam@example.com
+## Local Development (Docker)
+
+To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+
+Next, issue the following command to build the Docker image.
+
+**Note**: The first time issuing the command may take several minutes.
+
+```shell
+make docker-image
 ```
 
-- node and npm
-  - install https://brew.sh/
-  - `brew install node`
+To start the Dockererized local development server, issue the command:
 
-# Setup (one time)
+```
+make docker-start
+```
+
+The local development server is ready when the following output is displayed in your terminal.
+
+```shell
+You can now view root in the browser.
+⠀
+  Local:            http://localhost:9000/
+  On Your Network:  http://172.17.0.2:9000/
+⠀
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+⠀
+  Local:            http://localhost:9000/___graphql
+  On Your Network:  http://172.17.0.2:9000/___graphql
+⠀
+Note that the development build is not optimized.
+To create a production build, use gatsby build
+```
+
+Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
+
+To exit from the local development Docker container. Press `Ctrl + Z`.
+
+## Local Development Setup (Non-Docker)
 
 Make a folder somewhere you can easily find
 
@@ -114,15 +159,52 @@ In markdown you can reference this page relatively to the root of the domain usi
 [Go to introduction](/introduction/what-is)
 ```
 
-#### Images or other assets
-
-You can add documents in the same directory where they are used. Adding an image in the `introduction` directory can be referenced locally using:
+You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
 
 ```md
-![alt text](clusterprofiles.png "cluster profiles example")
+[Go to Dev Enging](/devx)
+```
+### Redirects
+
+To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
+
+```js
+  {
+    fromPath: `/clusters/nested-clusters/`,
+    toPath: `/clusters/sandbox-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
 ```
 
-The same rules apply though. You can reference it from a different section using urls relative to the root directory
+#### Multi Object Selector
+
+The Packs integration page and the Service Listings page use a component to display the various offerings. 
+Packs intergations use the `<Packs />` component, whereas the Service Tiers from App Mode use the `<AppTiers />` component.
+
+To add a Pack to the list complete the following actions:
+
+- Add a new markdown page for the Pack.
+- In the frontmatter set the type to the following value: `type: "integration"`.
+- Populate the page with content.
+
+
+To add a Service to the Service List complete the following actions:
+
+- Add a new markdown page for the App Mode Service.
+- In the frontmatter set the type to the following value: `type: "appTier"`.
+- Populate the page with content.
+
+
+#### Images or other assets
+
+All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
+
+```md
+![alt text](/clusterprofiles.png "cluster profiles example")
+```
+
+You can add a directory to to the images folder.
 
 ```md
 ![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
@@ -132,7 +214,7 @@ The same rules apply though. You can reference it from a different section using
 Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#width=120px")
+![alt text](/clusterprofiles.png "#width=120px")
 ```
 
 #### Tabs component
@@ -299,3 +381,100 @@ Example:
 
   </WarningBox>
 ```
+### Video
+
+To add a video, use the following syntax:
+
+```
+`video: title: "<video title>": <path/to/video`
+```
+
+
+```
+`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
+```
+## Check for Broken URLs
+
+To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
+
+```shell
+make verify-url-links
+```
+
+If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
+
+```shell
+make verify-url-links-local
+```
+
+An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
+
+### Cron Job
+
+Every Monday at 6 AM UTC a GitHub Actions cron job is triggered. The cron job logic can be found in the file [url-checks.yaml](.github/workflows/url-checks.yaml). The core logic resides in [url-checker.sh](/scripts/url-checker.sh). The Slackbot application **Docs bot** is used to post the messages to the `#docs` channel.
+
+## Approvers/Reviewers
+
+The content in the `docs/` folder require approval from the documentation team. The list of approvers and reviewers can be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this file.
+
+# Check Writing
+
+We leverage [Vale](https://vale.sh/) to help us enforce our writing style programmatically and to avoid common writing mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the Vale CLI. Follow the steps below to install the Vale CLI and execute the writing checks.
+
+Start by installing Vale by following the [installation steps](https://vale.sh/docs/vale-cli/installation/) in the Vale documentation.
+
+Next, download the required Vale plugins.
+
+```
+make sync-vale
+```
+
+To execute the writing check, issue the command below. The command below will identify files that are modified by comparing the current git branch against the `master` branch. Ensure your local `master` branch is up to date for accurate results.
+
+```
+make check-writing 
+```
+
+You may also use the Vale CLI to directly scan a file and receive feedback. 
+
+Example: 
+
+```shell
+vale content/docs/08-user-management.md
+```
+
+## Modify Writing Rules
+
+The [vale.ini](vale.ini) file contains the configuration for Vale. Changes to [vale.ini](vale.ini), [accept.txt](/vale/styles/Vocab/Internal/accept.txt), and [reject.txt](/vale/styles/Vocab/Internal/reject.txt) require approval by the [docs-education](https://github.com/orgs/spectrocloud/teams/docs-education) team.
+
+### Disable Rule
+To disable a specific rule, add the rule name and the word "NO" to the  vale.ini](vale.ini) file.
+
+Example:
+```
+Google.Headings = NO
+```
+
+### Approved Words
+
+Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/accept.txt) file. You can add or remove words from the list by modifying the file.
+
+### Rejected Words
+
+Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
+
+
+# Release
+
+To create a new release, use the following steps:
+
+1. Create a release branch. Use the following naming pattern `release-X-X`
+2. Create a commit using the following commit message `fix: updating documentation for release-X-X`. Replace x-x with the upcoming release number.
+3. Push up the commit and create a new pull request (PR).
+4. Merge PRs related to the upcoming release into the `release-X-X` branch.
+5. Merge the release branch.
+
+The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
+
+> **Warning**
+> Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.

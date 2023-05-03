@@ -3,7 +3,7 @@ title: 'Dex'
 metaTitle: 'Dex'
 metaDescription: 'Dex Authentication pack in Spectro Cloud'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 hideToC: false
 category: ['authentication']
 logoUrl: 'https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image/png'
@@ -24,15 +24,22 @@ Dex is an identity service to drive authentication for Kubernetes API Server thr
 ## Versions Supported
 
 <Tabs>
+
+<Tabs.TabPane tab="2.35.x" key="2.35.x">
+
+* **2.35.1**
+
+</Tabs.TabPane>
+
 <Tabs.TabPane tab="2.30.x" key="2.30.x">
 
-* **2.30.0** 
+* **2.30.0**
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="2.28.x" key="2.28.x">
 
-* **2.28.0** 
+* **2.28.0**
 
 </Tabs.TabPane>
 
@@ -79,6 +86,6 @@ With these config changes, you can access Dex, Dex Client service(s) on the Ingr
 
 ## References
 
-https://github.com/dexidp/dex
-https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md
-https://github.com/mintel/dex-k8s-authenticator
+- [Dex](https://github.com/dexidp/dex)
+- [Dex Documentation](https://dexidp.io/docs/)
+- [Dex K8s Authenticator](https://github.com/mintel/dex-k8s-authenticator)

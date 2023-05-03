@@ -3,7 +3,7 @@ title: 'Ubuntu'
 metaTitle: 'Ubuntu Operating System'
 metaDescription: 'Choosing Ubuntu as an Operating System within the Palette console'
 hiddenFromNav: true
-isIntegration: true
+type: "integration"
 category: ['operating system']
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image/png'
 ---
@@ -14,7 +14,7 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Ubuntu Operating System
 
-Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms. 
+Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms.
 
 Palette supports the following Ubuntu versions to run clusters at scale.
 <br />
@@ -83,15 +83,16 @@ Palette supports the following Ubuntu versions to run clusters at scale.
 </Tabs>
 
 
-## Customize Your Image File 
+## Customize Your Image File
 
-Spectro Golden images include most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute list of commands before or after`kubeadm init`/`join` is executed.
+Spectro Golden images include most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute the list of commands before or after `kubeadm init`/`join` is executed.
 
 <br />
 <br />
 
-```yml
- kubeadmconfig:
+```yaml
+
+kubeadmconfig:
   preKubeadmCommands:
   - echo "Executing pre kube admin config commands"
   - update-ca-certificates
@@ -102,7 +103,7 @@ Spectro Golden images include most of the hardening standards recommended by CIS
   files:
   - targetPath: /usr/local/share/ca-certificates/mycom.crt
     targetOwner: "root:root"
-    targetPermissions: "0644""
+    targetPermissions: "0644"
     content: |
       -----BEGIN CERTIFICATE-----
       MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
@@ -125,7 +126,7 @@ Spectro Golden images include most of the hardening standards recommended by CIS
 
 # Ubuntu Advantage
 
-Canonical Ubuntu Advantage extends your infrastructure's security, certified compliance, and 24x7 support. With Palette, enable the UA services when modifying the Pack Values. See below for steps on how to modify the Preset options.
+Ubuntu Advantage services extend your infrastructure's security, compliance, and productivity requirements. Enable the UA services when modifying the Pack Values in Palette. See below for steps on how to modify the Preset options.
 
 **Benefits with UA**:
 
@@ -141,22 +142,23 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 ## Modifying the Presets
 
-1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile. 
+
+1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile.
 
 
 2. Give the new Pack a **Name**, **Version number**, **Description**, **Type**, and **Tags** and click the **Next** button.
 
 
-3. Choose the cloud provider as the **Infrastructure provider** and click the **Next** button.
+3. Choose the cloud provider as the **Infrastructure provider** and click **Next**.
 
 
 4. Edit the Packs with the following parameters:
     -  **Pack Type** - *OS*
-  
+
     -  **Registry** - *Public Repo*
-  
+
     -  **Pack Name** - *Ubuntu*
-  
+
     -  **Pack Version** - *LTS_ _18.4.x or LTS-HWE__18.04 or LTS_ _20.4.x*
 
 
@@ -166,7 +168,7 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 6. Click the **Ubuntu Advantage** checkbox to include the UA parameters listed below in the configuration file.
 
 
-7. Toggle on or off to enable or disable the UA services of your choice.
+7. Toggle on or off to enable or disable the UA services of your choice. See below for an explanation of the notable parameters that are available to use with Palette.
 
 
 8. Once the file is updated, click the **Next layer** button to continue to the next layer.
@@ -174,13 +176,21 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 ## Notable Parameters
 
-| **Services**  | **Options**    |                                             **Values** | **Description**                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------- | -------------- | -----------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Token**     |                |                                                        | Enter the token key in the text box. <br /> e.g.: C13RaHQDqgvvG3Ys                                                                                                                                                                                                                                                                                                                                |
-| **CIS**       | enable/disable |                true <br /> <br /> <br /> <br /> false | Get access to OpenSCAP-based tooling that automates both <br /> hardening and auditing with certified content based off of the published <br /> CIS benchmarks. <br /> <br /> Do not access OpenSCAP-based tooling.                                                                                                                                                                            |
-| **ESM-infra** | enable/disable | true <br /> <br /> <br /> <br /> <br /> <br /> false | Continue to receive security updates for the Ubuntu base OS, <br /> critical software packages and infrastructure components with <br /> Extended Security Maintenance (ESM).  ESM provides five additional <br /> years of security maintenance, enabling an organization's <br /> continuous vulnerability management. <br /> <br /> Do not receive security updates for Ubuntu Base OS etc. |
-| **FIPS**      | enable/disable |                              true <br /> <br /> <br /> false | Federal Information Processing Standards (FIPS) 140 validated <br /> cryptography for Linux workloads on Ubuntu. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.                                                                                                                                                                                        |
-| **Livepatch** | enable/disable |               true <br /> <br /> <br /> <br /> false | Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by <br /> patching the Linux kernel while the system runs. <br /> <br /> Do not activate Livepatch.                                                                                                                                                               |
+
+| **Service**  | **Options**    |  **Description**                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------- | -------------- | ------------------------------------------------------------------ | ------------------------------ |
+|  **Token**      |                                    | Enter the token key in the text box. <br /> e.g.: C13RaHQDqgvvG3Ys|
+| **ESM-infra** | enable <br /> <br /> <br /> <br /> <br /> disable | Continue to receive security updates for the Ubuntu base OS, critical software <br /> packages and infrastructure components with Extended Security Maintenance (ESM). <br /> ESM provides five additional years of security maintenance, enabling an organization's <br />continuous vulnerability management. <br /> <br /> Disable the ESM repository. Do not receive security updates for Ubuntu Base OS etc. |
+|||||
+|**Livepatch**| enable <br /> <br /> <br /> <br /> disable| Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by patching the Linux <br /> kernel while the system runs. <br /> <br /> Do not enable/manage live kernel patching. The Livepatch service will be disabled. |
+|||||
+| **FIPS** | enable <br /> <br /> <br /> <br /> disable | Federal Information Processing Standards (FIPS) 140 validated cryptography for <br /> Linux workloads on Ubuntu. Install, configure, and enable <br /> FIPS 140 certified modules. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
+|||||
+| **FIPS-updates** | enable <br /> <br /> <br /> disable | The option enables the FIPS-UPDATES. It installs the updated FIPS modules sets <br />it in FIPS mode. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
+|||||
+| **CC-EAL** | enable <br /> <br /> <br /> <br /> <br /> disable | After the completion of a Common Criteria (CC) security evaluation, a grade is given <br /> indicating the level the system was tested. Common Criteria evaluated <br /> configuration is currently available for Ubuntu 16.04.4 LTS (Server) and <br /> Ubuntu 18.04.4 LTS (Server). The option shows as disabled for Ubuntu 20 & 20+. <br /> <br /> Do not install the CC artifacts. |
+|||||
+| **CIS**       | enable <br /> <br /> <br /> disable | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with <br /> certified content based off of the published CIS benchmarks. <br /> <br /> Do not access OpenSCAP-based tooling.|
 
 
 # References
@@ -193,3 +203,5 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage)
 
+
+[Common Criteria for Ubuntu](https://ubuntu.com/security/certifications/docs/16-18/cc)

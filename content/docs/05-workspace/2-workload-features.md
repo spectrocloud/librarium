@@ -92,11 +92,13 @@ Palette leverages the BackUps to the following locations:
 
 <br />
 
-#### Amazon Web Services (AWS) S3 Buckets
+#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](/workspace/workload-features#foranamazonwebservices(aws)bucketasbackuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupinawss3)
 
-#### Google Cloud Platform (GCP) Buckets
+#### Google Cloud Platform (GCP) Buckets: [Prerequisites](/workspace/workload-features#foragooglecloudplatform(gcp)backuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupingcpbucket)
 
-#### MinIO S3 Buckets
+#### MinIO S3 Buckets: [Prerequisites](/workspace/workload-features#forminios3backup), [Configure your Backup](/workspace/workload-features#configureyourbackupinminio)
+
+#### Azure Blob: [Prerequisites](/workspace/workload-features#forazureblobbackup), [Configure your Backup](/workspace/workload-features#configureyourbackupinazure:azureblob)
 
 # Prerequisites
 
@@ -120,6 +122,21 @@ Palette leverages the BackUps to the following locations:
 
 * Service provider certificate (Optional)
 
+## For Azure Blob Backup
+
+* An active Azure cloud account with the following pieces of information noted down:
+  * Tenant Id
+  * Client Id
+  * Subscription Id
+  * Client Secret created
+
+
+* An [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) created with the following information to be noted down for Palette use:
+  * Storage Name: Custom name given to the Azure storage created.
+  * Stock-keeping unit
+
+
+* A container to be created in the Azure Storage account
 
 # Backup Locations
 
@@ -262,6 +279,41 @@ The following details are required to configure a backup location in AWS:
 
 9. Click **Create** to complete the location creation wizard. 
 
+## Configure your Backup in Azure: Azure Blob
+
+The following details are required to configure a backup location in Azure:
+
+1. **Location Name**: A custom name for the storage location getting created.
+
+
+2. **Location Provider:** Select **Azure** from the drop-down.
+
+
+3. **Container Name:** The container created in Azure Storage.
+
+
+4. **Storage Name**: Name of the Azure storage created.
+
+
+5. **Stock-Keeping Unit**: Information from the Azure storage.
+
+
+6. **Resource Group:** Azure Resource Group name
+
+
+7. **Tenant ID:** Azure Account Credential.
+
+
+8. **Client ID:** Azure Account Credential.
+
+
+9. **Subscription ID**: Azure Account Credential.
+
+
+10. **Client Secret:** Secret created in the Azure console needs to be validated.
+
+
+11. Click **Create** to complete the location creation wizard.
 
 
 ## Add a Backup Location
@@ -390,6 +442,103 @@ Palette enables the users to limit resource usage within the workspace optionall
    * If -1 is set as the quota for a cluster, then we cannot set a quota for the workspace to which the cluster belongs.
    * If -1 is set as the quota for a Workspace, then we cannot set a quota for the clusters belonging that Workspace.
    
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Regex for Namespaces" key="Regex for Namespaces">
+
+# Regex for Namespaces
+
+Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the namespaces matching the given Regex pattern to be selected together for role binding. 
+
+## Use Cases
+
+1. A Regex pattern that start and end with " / ", will select all the workspace names matching the given Regex pattern.
+
+   **Example:** `/^palette-ns/`
+<br />
+
+2. A Regex pattern that starts with `negation symbol(~)`, will select all the namespaces that *does not match* with the regex expression given.
+
+   **Example:** `~/^(kube|cluster|capi|jet|cert)[-].+/`
+
+**Note**: No spaces to be added between the `~` operator and the `expression`.
+ 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Workspace Role Binding" key="Workspace Role Binding">
+
+# Workspace Role Binding
+
+Workspace Role Binding is a Project scope operation. There are two available options for setting up Roll Binding for a Workspace:
+
+* **Cluster** to create a RoleBinding with cluster-wide scope (ClusterRoleBinding).
+
+
+* **Namespaces** to create a RoleBinding within namespaces scope (RoleBinding).
+
+Palette users can choose role creation based on their resource requirements.
+
+## Configure cluster role bindings
+
+* Login to Palette as Project admin and select the Workspace to which the Role Binding need to configured.
+
+
+* Select Settings -> Cluster
+
+
+* Select the clusters from the workspace to Role Bind.
+
+
+* Click on “Add new binding” to open the “Add Cluster Role Binding” wizard. Fill in the following details:
+  * Role Name: Define a custom role name to identify the cluster role
+  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or a team can perform. There are three types of subjects:
+    * Subject Type:
+      * Users: These are global and meant for humans or processes living outside the cluster.
+      * Groups: Set of users.
+      * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
+  * Subject Name: Custom name to identify a subject.
+A single RoleBinding can have multiple subjects.
+
+
+* “Confirm” the information to complete the creation of the ClusterRoleBinding.
+
+## Configure role bindings: Namespace Scope
+
+Users can now allocate CPU and Memory [quotas](/workspace/workload-features#workspacequota) for each **namespace** at the cluster level.
+
+* Login to Palette as Project admin and select the Workspace to which the Role Binding need to be configured.
+
+
+* Select Cluster Settings -> Namespace.
+
+
+* Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”.
+
+
+* [Allocate resources](/workspace/workload-features#workspacequota) to the created namespace (CPU and Memory).
+
+
+* Click on “Add new binding” to open the “Add ClusterRoleBinding” wizard. Fill in the following details:
+  * Namespace: Select the namespace from the drop-down (the list will display the namespaces created during the previous step.
+  * Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
+
+<InfoBox>
+A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding.
+</InfoBox>
+
+* Role Name: Define a custom role name to identify the cluster role
+
+
+* Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. It defines the operations a user, service, or group can perform. There are three types of subjects:
+  * Subject Type:
+    * Users: These are global, and meant for humans or processes living outside the cluster.
+    * Groups: Set of users.
+    * Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are name spaced and meant for intra-cluster processes running inside pods.
+  * Subject Name: Custom name to identify a subject.
+A single RoleBinding can have multiple subjects. 
+
+
+* “Confirm” the information to complete the creation of the RoleBinding.
 
 </Tabs.TabPane>
 
