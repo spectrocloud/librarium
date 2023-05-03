@@ -27,9 +27,9 @@ In this tutorial, you will discover how Palette simplifies the creation of a Kub
 
 <br />
 
-This is the application architecture you will deploy, a containerized application with a *replicaSet*.
+This is the application architecture you will deploy, a containerized application with a *replicaSet*. The result is a Kubernetes infrastructure stack managed by Palette.
 
-![Application architecture part 2](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
+![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
 <br />
 
@@ -326,11 +326,24 @@ data "spectrocloud_pack" "aws_k8s" {
 }
 ```
 
-By using the data resource, you avoid having to manualy type in the values required by the cluster profile's `pack {}` block.
+By using the data resource, you avoid having to manually type in the values required by the cluster profile's `pack {}` block.
 
 ### Cluster
 
-The file **clusters.tf** contain the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you
+The file **clusters.tf** contains the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you need to use one of the cluster resources specific to the cloud provider you want to target. 
+
+In this tutorial, the following Terraform cluster resources are used.
+
+<br />
+
+| Terraform Resource | Platform | Documentation |
+|---|---|---|
+| `spectrocloud_cluster_aws` | AWS | [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) |
+| `spectrocloud_cluster_azure` | Azure | [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure)|
+| `spectrocloud_cluster_gcp` | GCP |  [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)|
+
+
+Using the `spectrocloud_cluster_azure` resource used in the tutorial as an example, notice how the resource accepts a set of parameters. These are the same parameters you have the option to change through the Palette User Interface (UI) when deploying a cluster. You can learn more about each parameter by reviewing the resource's documentation page hosted in the Terraform registry. 
 
 <br />
 
@@ -379,192 +392,110 @@ resource "spectrocloud_cluster_azure" "cluster" {
   }
 }
 ```
+## Deploy Cluster
+
+To deploy your cluster with Terraform, you first need to make changes to the **terraform.tfvars** file. Go ahead and open **terraform.tfvars** and focus your attention on the cloud provider you want to deploy a host cluster.
+
+In this Terraform template, to help make things simpler for you, we have added a toggle variable that you can use to select the deployment environment. Each cloud provier has its own section containing all the variables you must populate. If a variable, under your selected cloud provider, has the value `REPLACE_ME` it must be replaced.
+
+As an example, review the AWS section. To deploy to AWS, you would change `deploy-aws = false` to `deploy-aws = true`. Additionally you would replace all the variables with a value `REPLACE_ME`. You can also change the nodes in either the master pool or worker pool by updating the values.
+
+```terraform
+###########################
+# AWS Deployment Settings
+############################
+deploy-aws = false # Set to true to deploy to AWS
+
+aws-cloud-account-name = "REPLACE_ME"
+aws-region             = "REPLACE_ME"
+aws-key-pair-name      = "REPLACE_ME"
+
+aws_master_nodes = {
+  count              = "1"
+  control_plane      = true
+  instance_type      = "m4.2xlarge"
+  disk_size_gb       = "60"
+  availability_zones = ["REPLACE_ME"] # If you want to deploy to multiple AZs, add them here
+}
+
+aws_worker_nodes = {
+  count              = "1"
+  control_plane      = false
+  instance_type      = "m4.2xlarge"
+  disk_size_gb       = "60"
+  availability_zones = ["REPLACE_ME"] # If you want to deploy to multiple AZs, add them here
+}
+```
+
+After you have made all the required changes, issue the following command to initialize Terraform.
+
+<br />
+
+```shell
+terraform init
+```
+
+Next, issue the plan command to preview the changes.
+
+<br />
+
+```shell
+terraform plan
+```
+
+
+Output:
+```shell
+Plan: 2 to add, 0 to change, 0 to destroy.
+```
+
+If you changed the desired cloud providers toggle variable to `true`, you will receive an output stating two new resources will be created. The two resources are your cluster profile, and the host cluster.
+
+
+To deploy all the resources, use the apply command.
+
+<br />
+
+```shell
+terraform apply -auto-approve
+```
+
 
 ### Verify the Profile
 
-<br />
 
-To check the profile creation on Palette, login to Palette dashboard and, from the left **Main Menu** click on the **Profiles** panel to access the profile page. At the top of the list you can find the previously created profile.
+To check out the cluster profile creation in Palette, login to [Palette](https://console.spectrocloud.com) and from the left **Main Menu** click on **Profiles** to access the profile page. Scan the list and look for a cluster profile with the following name pattern `tf-[cloud provier]-profile`. Click on the cluster profile to review its details such as layers, packs, and versions.
 
-![Terraform GCP profile](/tutorials/deploy-clusters/terraform/clusters_public-cloud_deploy-k8s-cluster_details.png)
+![A view of the cluster profile](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_view.png)
 
-<br />
-
-Click on the profile to see the details of the stacks that compose the profile.
-
-![Terraform GCP profile details](/tutorials/deploy-clusters/terraform/clusters_public-cloud_deploy-k8s-cluster_profile.png)
 
 <br />
 
 
 ### Verify the Cluster
 
-<Tabs>
-<Tabs.TabPane tab="AWS" key="aws-validation">
 
-To check the cluster creation, login to the Palette dashboard, and from the left **Main Menu** click on the **Clusters**.
+You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_aws_create_cluster.png)
 
 <br />
 
-Select your cluster to review its details page which contains the status, cluster profile, and more.
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Azure" key="azure-validation">
-
-To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *azure-cluster*:
-
-![Update the cluster](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster.png)
+Select your cluster to review its details page which contains the status, cluster profile, event logs and more.
 
 <br />
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+The cluster deployment may take several minutes depending on the cloud provider, node count, node sizes used, and the cluster profile.  You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to review the event log.
 
-![Update the cluster details](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_azure_create_cluster_details.png)
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Google Cloud" key="gcp-validation">
-
-To check the cluster creation, login to Palette dashboard and, from the left **Main Menu** click on the **Clusters** panel from the left panel and check the created cluster. At the top of the list you can find the *gcp-cluster*:
-
-![Update the cluster](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
+![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
 
 <br />
 
-Click on the cluster to see the details, such as status, pack layers, monitoring data, and many other information.
+`youtube: https://www.youtube.com/watch?v=wM3hcrHbAC0`
 
-</Tabs.TabPane>
-</Tabs>
+<!-- ![VIDEo](https://www.youtube.com/watch?v=wM3hcrHbAC0) -->
 
-<br />
-
-Since the cluster may take several minutes to create, in relation to the packs to install, the type of instances selected, and so forth, it might be useful to check the creation events from the **Events** tab at the top of the page
-
-![Update the cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_events.png)
-
-<br />
-<br />
-
-
-## Deploy the Application
-
-The following steps will guide you through deploying an application to your host cluster. You begin by modifying the cluster profile you created earlier and adding a custom manifest to the cluster profile. 
-
-<br />
-
-
-### Add the Manifest
-
-Open the folder where you have the Terraform configuration files.
-
-```bash
-$ cd terraform-config
-```
-
-Edit the file **cluster_profile.tf** and add the manifest pack inside the profile definition. Make sure you add the new `pack {}` after all the other pack objects.
-
-```terraform
-resource "spectrocloud_cluster_profile" "profile" {
-  ...
-  pack {
-    name = "hello-universe"
-    type = "manifest"
-    tag  = "1.0.0"
-    manifest {
-      name    = "hello-universe"
-      content = file("manifest.yaml")
-    }
-  }
-}
-```
-
-This new manifest pack contains the application configurations defined in a file named *manifest.yaml*. Create the file **manifest.yaml** and add the following Kubernetes configuration.
-
-<br />
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: hello-universe
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-universe
-  template:
-    metadata:
-      labels:
-        app: hello-universe
-    spec:
-      containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.10
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-```
-
-In this code example, we deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) demo application.
-
-We set two replicas for the application to simulate a distributed environment with a redundant web application deployed on Kubernetes. In front of them, we add a load balancer service to route requests across all replica containers as best practice to maximize the workload and to expose a single access point to the web application.
-
-For more information about the service LoadBalancer component you can refer to the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer).
-
-<br />
-
-Then, use Terraform to push the modification to Palette and finalize the application deployment.
-
-So, first, check the validation of the configuration files.
-
-```bash
-terraform validate
-```
-
-```
-Success! The configuration is valid.
-```
-
-Create the execution plan with the additional modifications to the already existant configuration:
-
-```shell
-terraform plan
-```
-
-```shell
-// Output condensed for readability
-Plan: 0 to add, 1 to change, 0 to destroy.
-```
-
-Finally, apply the modifications there are in the plan to execute them and create the infrastructure:
-
-```shell
-terraform apply --auto-approve
-```
-
-```shell
-// Output condensed for readability
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-```
-
-<br />
-
-
-## Verify the Application
+## Validation
 
 From the cluster details page, click on **Workloads** at the top of the page:
 
