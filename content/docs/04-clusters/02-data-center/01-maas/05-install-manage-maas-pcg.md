@@ -158,7 +158,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 4. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
 
-5. Note the pairing code displayed in the Instructions section of the page. You will input this code when you use the installer. 
+5. Note the pairing code displayed in the Instructions section of the page. You will input this code when you use the installer. This pairing code is valid for 24 hours.
 
 
 6. To invoke the installer, copy the following code snippet to your terminal.
