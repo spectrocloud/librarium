@@ -21,7 +21,7 @@ Palette groups clusters for logical separation into [Projects](/projects). Users
 
 # Prerequisites
 
-* Acces to a terminal window.
+* Access to a terminal window.
 
 
 * The utility ssh-keygen or similar SSH key generator software.
