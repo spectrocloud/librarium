@@ -192,16 +192,16 @@ To help you get started with Terraform, the tutorial code is structured to suppo
 - **data.tf** - contains all the query resources that perform read actions.
 
 
-- **cluster_profiles.tf** - this file contains the cluster profile definitions. Each cloud provider has its own cluser profile.
+- **cluster_profiles.tf** - this file contains the cluster profile definitions. Each cloud provider has its own cluster profile definition.
 
 
 - **cluster.tf** - this file has all the required cluster configurations to deploy a host cluster to one of the cloud providers.
 
 
-- **terraform.tfvars** - use this file to customize the deployment and to target the deployment environment. This is the primary file you will make modifications to.
+- **terraform.tfvars** - use this file to customize the deployment and target a specific cloud provider. This is the primary file you will make modifications to.
 
 
-- **outputs.tf** - contains content that will be outputed upon a succesfull Terraform `apply` action.
+- **outputs.tf** - contains content that will be output upon a successful Terraform `apply`` action.
 
 In the following section, you will have an opportunity to review the core resources more closely.
 
@@ -209,7 +209,7 @@ In the following section, you will have an opportunity to review the core resour
 
 ### Provider
 
-The **provider.tf** file contains the Terraform providers and their respective version. In the tutorial, two providers are used, the Spectro Cloud Terraform provider, and the TLS Terraform provider. Take note of how in in the `provider "spectrocloud" {}` provider block, the project name is specified. You can change the target project by changing the value specified to the `project_name` parameter.
+The **provider.tf** file contains the Terraform providers and their respective versions. In the tutorial, two providers are used, the Spectro Cloud Terraform provider, and the TLS Terraform provider. Take note of how in the `provider "spectrocloud" {}` provider block, the project name is specified. You can change the target project by changing the value specified to the `project_name` parameter.
 
 <br />
 
@@ -241,7 +241,7 @@ The Spectro Cloud Terraform provider has several resources available for use. Wh
 This resource can be used to customize all layers of a cluster profile. You can specify all the different packs and versions to use, as well as adding a manifest or Helm chart.
 
 
-In the **cluster-profiles.tf**  file, you will find the cluster profile resource declared three times. Each instance of the resources is for a specific cloud provider. Using the AWS cluster profile as an example, notice how the cluster profile uses `pack {}` blocks to soecify each layer of the cluster profile. The order you arrange the  `pack {}` play an important role, so ensure you start with the bottom layer of the cluster profile first.
+In the **cluster-profiles.tf** file, you will find the cluster profile resource declared three times. Each instance of the resources is for a specific cloud provider. Using the AWS cluster profile as an example, notice how the cluster profile uses `pack {}` blocks to soecify each layer of the cluster profile. The order you arrange the `pack {}` play an important role, so ensure you start with the bottom layer of the cluster profile first.
 
 <br />
 
@@ -504,73 +504,59 @@ While you wait for the cluster deployment process to complete, feel free to chec
 
 ## Validation
 
-From the cluster details page, click on **Workloads** at the top of the page:
-
-![Workloads](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_workloads.png)
-
-The tab opens an overview of the Kubernetes components. From there, you can check if the application components have been created successfully.
-
-Select the **Namespaces** tab and check for a namespace called *cluster-xxxxxx*.
-
-Select the **Deployments** tab and check the existence of a deployment with name *hello-universe-deployment*. In the **Deployments** tab you can verify the status of the deployment: next to the deployment name, check the number of Pods ready and the number of replicas to know if the application is fully deployed.
-
-Select the **Pods** tab and check for two pods with name *hello-universe-deployment-xxxxxx*. In the **Pods** tab, next to the pods names, check the status of the pods
-
-![Pods status](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_app_update_pods.png)
+Once the cluster is deployed and in the status of **Running** you can access the deployed application Hello Universe.
+From the cluster's **Overview** page, click on the URL for port **:8080** next to the **hello-universe-service** in the **Services** row. 
 
 <br />
 
+
 <WarningBox>
-  
+
 It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
 </WarningBox>
 
-The application will be, then, ready to accept user traffic. From the **Overview**  page, click on the URL for port  **:8080** next to the *hello-universe-service* in the **Services** row. 
 
 ![Deployed application](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
 
 <br />
 
+Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the counter and for a fun image change.
+
+You have deployed your first application to a cluster managed by Palette. Your first application is a single container application with no upstream dependencies.
+
 
 ## Cleanup
 
-Use the following steps to clean up all the resources you created for the tutorial.
+Use the following steps to clean up all the resources you created for the tutorial. Use the destroy command to remove all the resources you created through Terraform.
 
 <br />
-
-
-Use the destroy command to remove all the resources you created through Terraform.
-
-First, open the folder where you have the Terraform configuration for the cluster.
-
-```shell
-$ cd terraform-config
-```
-
-If you want to check the resources you will delete, you can first execute: 
-
-```shell
-terraform plan -destroy
-```
-
-```shell
-// Output condensed for readability
-Plan: 0 to add, 0 to change, 3 to destroy.
-```
-
-Then delete the components by running the destroy command:
 
 ```shell
 terraform destroy --auto-approve
 ```
 
+Output:
 ```shell
-// Output condensed for readability
-Destroy complete! Resources: 3 destroyed.
+Destroy complete! Resources: 2 destroyed.
 ```
 
 <br />
+
+<InfoBox>
+
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+
+</InfoBox>
+
+
+If you are using the tutorial container and want to exit the container, type `exit` in your terminal session and press the **Enter** key. Next, issue the following command to stop the container.
+
+<br />
+
+```shell
+docker stop tutorialContainer
+```
 
 
 </Tabs.TabPane>
