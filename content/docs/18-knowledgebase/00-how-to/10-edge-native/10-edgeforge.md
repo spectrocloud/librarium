@@ -34,7 +34,7 @@ We will customize the installer image to support auto registration giving you a 
 
 **Software**  
 
-* [Github cli](https://cli.github.com/manual/installation)  
+* [Git cli](https://cli.github.com/manual/installation)  
 * [Docker](https://docs.docker.com/engine/install/)  
 
 <InfoBox>
@@ -69,7 +69,7 @@ Codename:       jammy
 Docker version 23.0.1, build a5ee5b1
 ```
 
-**Github cli**
+**Git cli**
 
 ```shell
 git version 2.34.1
@@ -82,7 +82,7 @@ git version 2.34.1
 1. Clone the repo at [CanvOS](https://github.com/spectrocloud/CanvOS.git)
 
 ```shell
-git clone git@github.com:spectrocloud/CanvOS.git
+git https://github.com/spectrocloud/CanvOS.git
 ```
 
 **Sample Output**
@@ -101,6 +101,32 @@ remote: Total 133 (delta 60), reused 101 (delta 32), pack-reused 0
 
 ```shell
 cd CanvOS
+```
+
+3. View Available tags
+
+```shell
+git tag
+```
+
+4. Checkout the desired tag
+
+```shell
+git checkout <tag version>
+```
+
+**Sample Output**
+
+```shell
+git checkout v3.3.3
+Note: switching to 'v3.3.3'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
 ```
 
 ## Update Variables
@@ -122,12 +148,23 @@ Depending on your editor the way you save may be different.  This lab was writte
 **Sample Output**
 
 ```shell
-IMAGE_REPOSITORY=ttl.sh
-OS_DISTRIBUTION=ubuntu
-OS_VERSION=22
-K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
-MY_ENVIRONMENT=demo
+MY_ENVIRONMENT=demo   # Environment name for provider image naming
+IMAGE_REGISTRY=ttl.sh    # Image Registry Name
+OS_DISTRIBUTION=ubuntu    # OS Distribution (ubuntu, opensuse-leap)
+IMAGE_REPOSITORY=$OS_DISTRIBUTION   # Image Repository Name
+OS_VERSION=22   # OS Version, only applies to Ubuntu (20, 22)
+K8S_DISTRIBUTION=k3s   # Kubernetes Distribution (K3s, RKE2, Kubeadm)
+ISO_NAME=palette-edge-installer   # ISO Name
+# Image path to tag images.  By default the path is:
+### # IMAGE_TAG=$K8S_DISTRIBUTION-$K8S_VERSION-$STYLUS_VERSION
+### # IMAGE_PATH=$IMAGE_REGISTRY/$IMAGE_REPOSITORY-$MY_ENVIRONMENT:$IMAGE_TAG
+# Which would translate to the below based on the variables in this file.  This is an example and can be overridden by 
+# commenting the below "IMAGE_TAG" and "IMAGE_PATH" variables out and providing your custom path
+
+
+#### EXAMPLE #######
+### IMAGE_PATH=ttl.sh/ubuntu-demo:k3s-1.25.2-v3.3.3
+####################
 ```
 
 * To save with VIM, press `esc` then type `:wq!` and press `enter`
@@ -139,13 +176,23 @@ Depending on your editor the way you save may be different.
 **Sample Output**
 
 ```shell
-IMAGE_REPOSITORY=ttl.sh
-OS_DISTRIBUTION=ubuntu
-OS_VERSION=22
-K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
-MY_ENVIRONMENT=jb
-~
+MY_ENVIRONMENT=jb   # Environment name for provider image naming
+IMAGE_REGISTRY=ttl.sh    # Image Registry Name
+OS_DISTRIBUTION=ubuntu    # OS Distribution (ubuntu, opensuse-leap)
+IMAGE_REPOSITORY=$OS_DISTRIBUTION   # Image Repository Name
+OS_VERSION=22   # OS Version, only applies to Ubuntu (20, 22)
+K8S_DISTRIBUTION=k3s   # Kubernetes Distribution (K3s, RKE2, Kubeadm)
+ISO_NAME=palette-edge-installer   # ISO Name
+# Image path to tag images.  By default the path is:
+### # IMAGE_TAG=$K8S_DISTRIBUTION-$K8S_VERSION-$STYLUS_VERSION
+### # IMAGE_PATH=$IMAGE_REGISTRY/$IMAGE_REPOSITORY-$MY_ENVIRONMENT:$IMAGE_TAG
+# Which would translate to the below based on the variables in this file.  This is an example and can be overridden by
+# commenting the below "IMAGE_TAG" and "IMAGE_PATH" variables out and providing your custom path
+
+
+#### EXAMPLE #######
+### IMAGE_PATH=ttl.sh/ubuntu-demo:k3s-1.25.2-v3.3.3
+####################
 ~
 ~
 ~
@@ -163,15 +210,15 @@ By default, we do not provide a username or password for the images that are bei
 * Login to your organization  
 If you have not signed up you can sign up for a free trial [Here](https://www.spectrocloud.com/free-tier/)
 
-2. Navigate `Tenant Settings` on the left hand menu.
+2. Navigate `Tenant Settings` on the left hand menu (Bottom Left).
 
 * Select `Registration Tokens`
 * Click `Add New Registration Token`
 * Set `Token Name` as `Demo`
-* Set the `Default Project` as `Default`
+* Set the `Default Project` as `default`
 * Set the Expiration Date for `7 Days`
 
-[Registration Token](/tutorials/edgeforge/add_token.png)
+![Registration Token](/tutorials/edgeforge/add_token.png)
 
 * Click `Confirm`
 * Copy the newly created token to Clipboard
@@ -257,7 +304,7 @@ output | [----------] 100% transferring (via tar) ttl.sh/ubuntu-demo:k3s-v1.24.7
 ————————————————————————————————————————————————————————————————————————————————
 
 To enable pushing use earthly --push
-Did not push image ttl.sh/ubuntu-demo:k3s-v1.24.7-v3.3.3
+Did not push image ttl.sh/ubuntu-demo:k3s-v1.24.6-v3.3.3
 Did not push image ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
 
  Local Output Summary 🎁
@@ -285,6 +332,7 @@ docker images
 **Sample Output**
 
 ```shell
+docker images
 REPOSITORY              TAG                  IMAGE ID       CREATED         SIZE
 ttl.sh/ubuntu-jb-demo   k3s-v1.25.2-v3.3.3   fe5c03df75a9   3 minutes ago   2.49GB
 ttl.sh/ubuntu-jb-demo   k3s-v1.24.7-v3.3.3   51bddf269545   3 minutes ago   2.49GB
@@ -300,6 +348,7 @@ ls -al build/
 **Sample Output**
 
 ```shell
+ls -al build/
 total 998544
 drwxr-xr-x 2 root root       4096 Apr 29 15:42 .
 drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
