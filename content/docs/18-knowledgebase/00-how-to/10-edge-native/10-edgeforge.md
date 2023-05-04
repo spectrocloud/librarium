@@ -107,6 +107,8 @@ cd CanvOS
 
 ```shell
 git tag
+
+v3.3.3
 ```
 
 4. Checkout the desired tag
