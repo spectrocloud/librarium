@@ -23,7 +23,7 @@ You can take a snapshot of a VM that is online (**Running** state) or offline (*
 
 For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the guest agent is not installed, a best effort snapshot is taken.
 
-To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentConnected`` in **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will display if the snapshot was taken online and with or without guest agent participation.
+To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentConnected`` in the **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will display if the snapshot was taken online and with or without guest agent participation.
 
 </InfoBox>
 
@@ -33,10 +33,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 # Prerequisites
 
-- A deployed VM.
-
-
-- On VMs that use a Fedora-based VM template, disable Security-Enhanced Linux (SELinux) by running the  `setenforce 0` command as the root user: 
+- A deployed VM. 
 
 
 # Take a Snapshot
@@ -44,10 +41,23 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
+2. From the left **Main Menu**, click **Clusters** and click on your cluster.
 
 
-3. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
+3. Due to a known issue with taking snapshots on VMs that run the Fedora operating system when SELinux is in default **Enforcing** mode, we recommend you turn off **Enforcing** mode by issuing the following command as the root user.
+
+    ```bash
+    setenforce 0
+    ```
+
+4. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
+
+
+5. Turn **Enforcing** mode back on.
+
+  ```bash
+    setenforce 1
+    ```
 
 The **Snapshots** tab displays the ``vmSnapshot Status`` parameter with snapshot phases for the VM: **InProgress**, **Succeeded**, or **Failed**.
 
