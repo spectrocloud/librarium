@@ -1,7 +1,7 @@
 ---
 title: "SSH Keys"
-metaTitle: "Create and Manage SSH Keys"
-metaDescription: "Create and Manage SSH keys for a Spectro User Account"
+metaTitle: "SSH Keys"
+metaDescription: "Learn how tp create and manage SSH keys in Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -41,7 +41,7 @@ Follow these steps to create an SSH key using the terminal and upload it to Pale
 	```shell
     ls -la ~/.ssh
     ```
-   If you see files named `id_rsa` and `id_rsa.pub`, you already have an SSH key pair and can skip to step 8. If not, proceed to step 3.
+   If you see files named **id_rsa** and **id_rsa.pub**, you already have an SSH key pair and can skip to step 8. If not, proceed to step 3.
 
 
 3. Generate a new SSH key pair by issuing the following command.
@@ -80,6 +80,8 @@ Follow these steps to create an SSH key using the terminal and upload it to Pale
 
 9. Open the **Add New SSH Key** tab and complete the **Add Key** input form:
    * **Name**: Provide a unique name for the SSH key.
+
+
    * **SSH Key**: Paste the SSH public key contents from the key pair generated earlier.
 
 
@@ -93,9 +95,9 @@ You can edit or delete SSH keys later by using the **three-dot Menu** to the rig
 
 </InfoBox>
 
-During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a in a project, but only one key can be assigned to an individual cluster.
+During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a project, but only one key can be assigned to an individual cluster.
 
 # Validation
 
-You can validate the SSH key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
+You can validate the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
 
