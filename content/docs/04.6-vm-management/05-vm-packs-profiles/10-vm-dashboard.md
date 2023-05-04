@@ -16,24 +16,10 @@ import InfoBox from 'shared/components/InfoBox';
 
 The Spectro VM Dashboard offers a web console accessible from the **Virtual Machines** tab that appears on the cluster overview page when VM Management is enabled. 
 
-The first time you enable the dashboard, the default view will appear blank. Although you can deploy Virtual Machines (VMs) from the default namespace, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Create a Namespace](). Namespaces will be listed in the **Namespace drop-down Menu** at the top of the dashboard. As you deploy VMs within a namespace, the VMs within the selected Namespace will be listed on the dashboard. 
+The first time you enable the dashboard, the default view will appear blank. As a best practice, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Namespace Management](/clusters/cluster-management/namespace-management). As you create namespaces they will be listed in the **Namespace drop-down Menu** at the top of the dashboard. VMs that you deploy within a namespace are listed on the dashboard. 
 
-You can select a VM from the list to view its details and perform actions on it. You can access standard VM operations from the **three-dot Menu** at the right of each listed VM, or from the **Actions drop-down Menu** that displays when you view VM details.
+You can select a VM from the list to view its details and perform actions on it. Standard VM operations are accessible from the **three-dot Menu** at the right of each listed VM, or from the **Actions drop-down Menu** that displays when you view VM details.
 
-<br />
-
-<InfoBox>
-
-Below are benefits of deploying VMs in different namespaces:
-
-* Namespaces provide a way to isolate groups of resources within a single cluster.
-* RBAC can be configured based on namespaces, for example:
-  * User A has permission to manage VMs only in the alpha namespace.
-  * User B can see VMs in all namespaces.
-* Resource names need to be unique within a namespace but not across namespaces.
-* Namespaces are a way to divide cluster resources among multiple users via resource quota.
-
-</InfoBox>
 
 The dashboard allows you to perform standard VM actions from the **three-dot Menu** at the right of each listed VM. You can select a VM from the list to view details about the machine. An **Actions drop-down menu** lists the same standard VM actions. 
 
