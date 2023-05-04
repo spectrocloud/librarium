@@ -26,9 +26,9 @@ This How-To will walk you through the basics of creating base Ubuntu images:
 In this how-to we will create three images.
 
 * 1 x Installer ISO
-* 2 x Provider images (For both K3s 1.24.7 and K3s 1.25.2)
+* 2 x Provider images (For both K3s 6 and K3s 1.25.2)
 
-We will customize the installer image to support auto registration giving you a low touch feeling when we actually deploy edge nodes in later [Edge](/knowledgebase/tutorials/edge-native) tutorials.
+We will customize the installer image to support auto registration giving you a low touch feeling when we deploy edge nodes in later [Edge](/knowledgebase/tutorials/edge-native) tutorials.
 
 ## Prerequisites
 
@@ -300,7 +300,7 @@ This will create two `docker images` and an `iso` that can/will be used in the E
 ```shell
 ....truncated for brevity
 
-output | [----------] 100% transferring (via tar) ttl.sh/ubuntu-demo:k3s-v1.24.7-v3.3.3
+output | [----------] 100% transferring (via tar) ttl.sh/ubuntu-demo:k3s-v6-v3.3.3
 
  Push Summary ⏫ (disabled)
 ————————————————————————————————————————————————————————————————————————————————
@@ -314,7 +314,7 @@ Did not push image ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
 
 Artifact +build-iso/palette-edge-installer.iso output as build/palette-edge-installer.iso
 Artifact +build-iso/palette-edge-installer.iso.sha256 output as build/palette-edge-installer.iso.sha256
-Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.24.7-v3.3.3
+Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.24.6-v3.3.3
 Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
 
 
@@ -337,7 +337,7 @@ docker images
 docker images
 REPOSITORY              TAG                  IMAGE ID       CREATED         SIZE
 ttl.sh/ubuntu-jb-demo   k3s-v1.25.2-v3.3.3   fe5c03df75a9   3 minutes ago   2.49GB
-ttl.sh/ubuntu-jb-demo   k3s-v1.24.7-v3.3.3   51bddf269545   3 minutes ago   2.49GB
+ttl.sh/ubuntu-jb-demo   k3s-v1.24.6-v3.3.3   51bddf269545   3 minutes ago   2.49GB
 earthly/earthly         v0.7.4               d771cc8edc38   2 weeks ago     333MB
 ```
 
