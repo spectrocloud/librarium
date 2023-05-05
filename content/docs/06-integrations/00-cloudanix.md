@@ -44,29 +44,6 @@ Additionally, you can start Jira workflows and target specific workloads from th
 - Kubernetes 1.19.x to 1.24.x
 - Kernel version 4.5 and higher
 
-## Installing on Kubernetes 1.25 and higher.
-
-Installing on Kubernetes 1.25 and higher requires an additional pack called Spectro Namespace Labeler to be installed. Here are the steps to install.
-- In palette create a cluster profile
-- Select the type as ``Add-on``
-- Click ``Add New Pack``
-- Select ``Pack Type`` as ``System App``
-- Select ``Registry`` as ``Public Repo``
-- Select ``Pack Name`` as ``Spectro Namespace Labeler``
-- The ``yaml`` should look like this:
-  ```
-  pack:
-  namespace: cluster-{{ .spectro.system.cluster.uid }}
-
-  charts:
-    spectro-namespace-labeler:
-      namespace: cluster-{{ .spectro.system.cluster.uid }}
-
-      labels:
-        cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
-  ```
-- When adding the Cloudanix pack add the above labels pack also to the cluster
-
 ## Parameters:
 
 The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
@@ -98,6 +75,29 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 
 
 From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
+
+### Use with Kubernetes 1.25 and higher
+
+When you use the Cloudanix pack with Kubernetes 1.25 and higher, you must add the Spectro Namespace Labeler. Follow the steps below to add .
+- In palette create a cluster profile
+- Select the type as ``Add-on``
+- Click ``Add New Pack``
+- Select ``Pack Type`` as ``System App``
+- Select ``Registry`` as ``Public Repo``
+- Select ``Pack Name`` as ``Spectro Namespace Labeler``
+- The ``yaml`` should look like this:
+  ```
+  pack:
+  namespace: cluster-{{ .spectro.system.cluster.uid }}
+
+  charts:
+    spectro-namespace-labeler:
+      namespace: cluster-{{ .spectro.system.cluster.uid }}
+
+      labels:
+        cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
+  ```
+- When adding the Cloudanix pack add the above labels pack also to the cluster
 
 </Tabs.TabPane>
 
