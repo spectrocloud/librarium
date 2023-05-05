@@ -78,7 +78,7 @@ From the **Workloads** page, click the **Risks** tab to view a list of failed th
 
 <br />
 
-### Use Cloudanix with Kubernetes 1.25 and higher
+### Kubernetes 1.25 and higher
 
 When you use the Cloudanix 1.0.x pack with Kubernetes 1.25 and higher, you need to add the **Spectro Namespace Labeler** add-on pack to your cluster profile. After you create the cluster profile, you then apply it to your cluster. 
 
