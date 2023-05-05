@@ -22,9 +22,6 @@ To learn more about BYOOS, use the following resources to learn more.
 
 # Resources
 
-- [Create Images with Image Builder]()
-
-
-- [Deploy Host Clusters with BYOOS]()
+- [Create Images with Image Builder](/cluster-profiles/byoos/image-builder)
 
 <br />
