@@ -44,7 +44,7 @@ You can also start Jira workflows and target specific workloads from the Cloudan
 - Kubernetes 1.19.x to 1.25.x
 - Kernel version 4.5 and higher
 
-## Parameters:
+## Parameters
 
 The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
 
