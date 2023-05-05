@@ -150,23 +150,32 @@ Depending on your editor the way you save may be different.  This lab was writte
 **Sample Output**
 
 ```shell
-MY_ENVIRONMENT=demo   # Environment name for provider image naming
-IMAGE_REGISTRY=ttl.sh    # Image Registry Name
-OS_DISTRIBUTION=ubuntu    # OS Distribution (ubuntu, opensuse-leap)
-IMAGE_REPOSITORY=$OS_DISTRIBUTION   # Image Repository Name
-OS_VERSION=22   # OS Version, only applies to Ubuntu (20, 22)
-K8S_DISTRIBUTION=k3s   # Kubernetes Distribution (K3s, RKE2, Kubeadm)
-ISO_NAME=palette-edge-installer   # ISO Name
-# Image path to tag images.  By default the path is:
-### # IMAGE_TAG=$K8S_DISTRIBUTION-$K8S_VERSION-$STYLUS_VERSION
-### # IMAGE_PATH=$IMAGE_REGISTRY/$IMAGE_REPOSITORY-$MY_ENVIRONMENT:$IMAGE_TAG
-# Which would translate to the below based on the variables in this file.  This is an example and can be overridden by 
-# commenting the below "IMAGE_TAG" and "IMAGE_PATH" variables out and providing your custom path
+MY_ENVIRONMENT=demo
+IMAGE_REGISTRY=ttl.sh
+OS_DISTRIBUTION=ubuntu
+IMAGE_REPOSITORY=$OS_DISTRIBUTION
+OS_VERSION=22   
+K8S_DISTRIBUTION=k3s
+ISO_NAME=palette-edge-installer
+
+
+# MY_ENVIRONMENT-------------------- Environment name for provider image naming
+# IMAGE_REGISTRY---------------------Image Registry Name
+# OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
+# IMAGE_REPOSITORY-------------------Image Repository Name
+# OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
+# K8S_DISTRIBUTION-------------------Kubernetes Distribution (K3s, RKE2, Kubeadm)
+# ISO Name---------------------------Name of the Installer ISO
 
 
 #### EXAMPLE #######
 ### IMAGE_PATH=ttl.sh/ubuntu-demo:k3s-1.25.2-v3.3.3
 ####################
+
+
+
+
+
 ```
 
 * To save with VIM, press `esc` then type `:wq!` and press `enter`
@@ -178,18 +187,22 @@ Depending on your editor the way you save may be different.
 **Sample Output**
 
 ```shell
-MY_ENVIRONMENT=jb   # Environment name for provider image naming
-IMAGE_REGISTRY=ttl.sh    # Image Registry Name
-OS_DISTRIBUTION=ubuntu    # OS Distribution (ubuntu, opensuse-leap)
-IMAGE_REPOSITORY=$OS_DISTRIBUTION   # Image Repository Name
-OS_VERSION=22   # OS Version, only applies to Ubuntu (20, 22)
-K8S_DISTRIBUTION=k3s   # Kubernetes Distribution (K3s, RKE2, Kubeadm)
-ISO_NAME=palette-edge-installer   # ISO Name
-# Image path to tag images.  By default the path is:
-### # IMAGE_TAG=$K8S_DISTRIBUTION-$K8S_VERSION-$STYLUS_VERSION
-### # IMAGE_PATH=$IMAGE_REGISTRY/$IMAGE_REPOSITORY-$MY_ENVIRONMENT:$IMAGE_TAG
-# Which would translate to the below based on the variables in this file.  This is an example and can be overridden by
-# commenting the below "IMAGE_TAG" and "IMAGE_PATH" variables out and providing your custom path
+MY_ENVIRONMENT=jb
+IMAGE_REGISTRY=ttl.sh
+OS_DISTRIBUTION=ubuntu
+IMAGE_REPOSITORY=$OS_DISTRIBUTION
+OS_VERSION=22   
+K8S_DISTRIBUTION=k3s
+ISO_NAME=palette-edge-installer
+
+
+# MY_ENVIRONMENT-------------------- Environment name for provider image naming
+# IMAGE_REGISTRY---------------------Image Registry Name
+# OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
+# IMAGE_REPOSITORY-------------------Image Repository Name
+# OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
+# K8S_DISTRIBUTION-------------------Kubernetes Distribution (K3s, RKE2, Kubeadm)
+# ISO Name---------------------------Name of the Installer ISO
 
 
 #### EXAMPLE #######
