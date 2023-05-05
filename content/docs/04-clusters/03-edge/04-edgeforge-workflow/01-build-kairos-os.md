@@ -88,6 +88,9 @@ Some OS require credentials to download the source image, such as Red Hat Enterp
 
 Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) and become part of your Edge artifact.
 
+<br />
+
+
 # Next Steps
 
 
