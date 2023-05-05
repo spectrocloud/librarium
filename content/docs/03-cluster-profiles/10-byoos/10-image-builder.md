@@ -90,8 +90,16 @@ The following steps will guide you through creating your image. You will create 
     <br />
 
     ```shell
-    RHSM_USER=REPLACE_ME 
-    RHSM_PASS=REPLACE_ME
+    export RHSM_USER=REPLACE_ME 
+    export RHSM_PASS=REPLACE_ME
+    ```
+
+    If you want to debug the Packer compute instance in case of an error, set the following environment variable. This will allow you to remote connect to the instance versus Packer's default behavior of terminating the instance.
+
+    <br />
+
+    ```shell
+    export PACKER_FLAGS=-on-error=ask
     ```
 
 5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider.  Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You should make your changes in the `variables` section of the file. To improve the reader experience, the `variables` object below is condensed and only used for example purposes. 
@@ -257,7 +265,7 @@ To successfully launch a cluster using a custom image in a cluster profile, choo
 
 Use the following steps to validate your custom image.
 
-1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you create the image in using the custom image. If you encounter any issues, review the compute instance logs to learn more about the issues.
+1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you created the image in using the custom image. If you encounter any issues, review the compute instance logs to learn more about the issues.
 
 
 2. Next, deploy a host cluster that uses the cluster profile you created containing the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the event logs of the cluster to gain more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial for additional guidance on deploying a host cluster.
