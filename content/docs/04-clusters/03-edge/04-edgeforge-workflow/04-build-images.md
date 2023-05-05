@@ -23,7 +23,6 @@ You can use the Edge Installer CLI to create an Edge artifact. The Edge artifact
 * Content Bundle
 
 
-
 * User Data
 
 
@@ -77,27 +76,27 @@ Choose the workflow that fits your needs.
 
 
 
-    | Parameter                | Description                                                                                         |
-    |--------------------------|-----------------------------------------------------------------------------------------------------|
-    | `--os-flavor`             | OS flavor                                                                                           |
-    | `--k8s-flavor`            | Kubernetes flavor.                                                                                  |
-    | `--output`                 | Directory for generating build files.                                                              |
-    | `--push-image-repository`  | Repository for generated container images.                                                         |
-    | `--content-path`           | Optional location of the content bundle if preloading content.                                     |
-    | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
-    | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
+  | Parameter                | Description                                                                                         |
+|--------------------------|-----------------------------------------------------------------------------------------------------|
+| `--os-flavor`             | OS flavor                                                                                           |
+| `--k8s-flavor`            | Kubernetes flavor.                                                                                  |
+| `--output`                 | Directory for generating build files.                                                              |
+| `--push-image-repository`  | Repository for generated container images.                                                         |
+| `--content-path`           | Optional location of the content bundle if preloading content.                                     |
+| `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
+| `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
 
-  <InfoBox>
-  
-  When generating a BYOOS pack, it's essential to keep in mind that the registry specified with the generate command is the registry that will be used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
-  To verify the registry, users can use tools such as docker login or docker pull to test the connection to the registry. 
-  
-  </InfoBox>
+
+When generating a BYOOS pack, it's essential to keep in mind that the registry specified with the `generate` command is the registry that will be used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
+To verify the registry, users can use tools such as `docker login` or `docker pull` to test the connection to the registry. 
+
 
 
 
   <br />
+  
+
 
   ```shell
    ./palette-edge-installer generate --os-flavor [pick-os] \
@@ -170,7 +169,7 @@ Choose the workflow that fits your needs.
   | Use case | Description |
   | --- | --- |
   | Modifying/controlling Kubernetes versions and flavors | You can update the .versions.env file or specify the versions and flavors as arguments to the build command. |
-  | Adding custom packages to target OS images | Edit the respective images' **Dockerfile** to add the install commands using `apt-get` or `zypper`. |
+  | Adding custom packages to target OS images | Edit the respective images **Dockerfile** to add the install commands using `apt-get` or `zypper`. |
   | Adding custom files or directories into Kubernetes provider container images | Add the custom files or directories in the **overlay/files/** folder. The files directory is copied directly under the */* folder in the target image. |
   | Adding custom content to Edge Install installer ISO | Place the custom content in the **overlay/files-iso** directory. To embed a content bundle, place it under the **overlay/files-iso/opt/spectrocloud/content** folder. This limits the scope to only the Edge Install installer ISO. |
 
