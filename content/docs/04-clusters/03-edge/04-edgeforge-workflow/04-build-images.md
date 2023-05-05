@@ -75,6 +75,8 @@ Choose the workflow that fits your needs.
 
 3. Use the `generate` command to create an image scaffolding by providing your choice of OS and Kubernetes distribution. There are several CLI flags you can specify to the `generate` command. The following flags are the most common.
 
+
+
     | Parameter                | Description                                                                                         |
     |--------------------------|-----------------------------------------------------------------------------------------------------|
     | `--os-flavor`             | OS flavor                                                                                           |
@@ -84,6 +86,16 @@ Choose the workflow that fits your needs.
     | `--content-path`           | Optional location of the content bundle if preloading content.                                     |
     | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
     | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
+
+
+  <InfoBox>
+  
+  When generating a BYOOS pack, it's essential to keep in mind that the registry specified with the generate command is the registry that will be used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
+  To verify the registry, users can use tools such as docker login or docker pull to test the connection to the registry. 
+  
+  </InfoBox>
+
+
 
   <br />
 
