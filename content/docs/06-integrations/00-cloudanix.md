@@ -17,19 +17,19 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Some examples of Cloudanix detection capabilities are:
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Cloudanix detects:
 
-<br/>
+<br />
 
-- Detects files added or modified in sensitive directories.
-- SSH into a container. 
-- Modifications to shell configuration files.
-- Attempts to read sensitive files that contain credential information.
-- Crypto mining detection.
+- Files added or modified in sensitive directories
+- SSH into a container 
+- Modifications to shell configuration files
+- Attempts to read sensitive files that contain credential information
+- Crypto mining
 
-The Cloudanix dashboard also provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used, plus much more.
+The Cloudanix dashboard provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used.
 
-Additionally, you can start Jira workflows and target specific workloads from the Cloudanix dashboard. 
+You can also start Jira workflows and target specific workloads from the Cloudanix dashboard. 
 
 # Versions Supported
 
@@ -41,7 +41,7 @@ Additionally, you can start Jira workflows and target specific workloads from th
 
 - CPUs: 0.5
 - Memory: 256 MiB
-- Kubernetes 1.19.x to 1.24.x
+- Kubernetes 1.19.x to 1.25.x
 - Kernel version 4.5 and higher
 
 ## Parameters:
@@ -70,23 +70,29 @@ This Helm Chart installs four Cloudanix services to enable container security ca
 - **config-cron**: A job that runs periodically in a Kubernetes cluster to maintain the configuration of Cloudanix inventory and threat services.
 - **misconfig-cron**: A job that captures Kubernetes misconfigurations and displays them on the Cloudanix dashboard.
 - **inventory-service**: An inventory service that detects any new Kubernetes resources and displays them on the Cloudanix dashboard.
-- **threat-service**: A threat service that exports threat events and affected Kubernetes resources which are visible on the Cloudanix dashboard.
+- **threat-service**: A threat service that exports threat events and affected Kubernetes resources, which are visible on the Cloudanix dashboard.
 
 
 
 From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
 
-### Use with Kubernetes 1.25 and higher
+<br />
 
-When you use the Cloudanix pack with Kubernetes 1.25 and higher, you must add the Spectro Namespace Labeler. Follow the steps below to add .
-- In palette create a cluster profile
-- Select the type as ``Add-on``
-- Click ``Add New Pack``
-- Select ``Pack Type`` as ``System App``
-- Select ``Registry`` as ``Public Repo``
-- Select ``Pack Name`` as ``Spectro Namespace Labeler``
-- The ``yaml`` should look like this:
-  ```
+### Use Cloudanix with Kubernetes 1.25 and higher
+
+When you use the Cloudanix 1.0.x pack with Kubernetes 1.25 and higher, you need to add the **Spectro Namespace Labeler** add-on pack to your cluster profile. After you create the cluster profile, you then apply it to your cluster. 
+
+Use the following information to find the **Spectro Namespace Labeler** add-on pack.
+
+- **Pack Type**: System App
+- **Registry**: Public Repo
+- **Pack Name**: Spectro Namespace Labeler
+- **Pack Version**: 1.0.x or higher
+
+
+Below is the YAML file.
+
+  ```yaml
   pack:
   namespace: cluster-{{ .spectro.system.cluster.uid }}
 
@@ -97,7 +103,8 @@ When you use the Cloudanix pack with Kubernetes 1.25 and higher, you must add th
       labels:
         cloudanix: pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.26
   ```
-- When adding the Cloudanix pack add the above labels pack also to the cluster
+
+As a final step, apply the cluster profile to your cluster.
 
 </Tabs.TabPane>
 
