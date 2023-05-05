@@ -17,14 +17,22 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Cloudanix
 
-The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Cloudanix detects:
+The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Cloudanix detects the following.
 
 <br />
 
 - Files added or modified in sensitive directories
+
+
 - SSH into a container 
+
+
 - Modifications to shell configuration files
+
+
 - Attempts to read sensitive files that contain credential information
+
+
 - Crypto mining
 
 The Cloudanix dashboard provides an interactive interface that displays the mapping between threat events and associated container, pod, and node workloads. Additionally, Cloudanix identifies the user who initiated an activity  identified as a threat and the command that was used.
@@ -90,7 +98,8 @@ Use the following information to find the **Spectro Namespace Labeler** add-on p
 - **Pack Version**: 1.0.x or higher
 
 
-Below is the YAML file.
+Below is the YAML file for the **Spectro Namespace Labeler** add-on pack. No action is required.
+<br />
 
   ```yaml
   pack:
