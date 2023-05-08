@@ -34,9 +34,11 @@ Select the registration method that best fits your organizational needs and revi
 
 ## Auto Registration
 
-You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. If a default project was selected for the registration token, that is the project the Edge host will be registered under. You can override the default project by providing a project ID in the user data.
-
-
+Use the mandatory auto-registration tokens to automate the registration process by providing the registration token in the user data. The device registers and appears on the **Edge** hosts page when the `autoRegister` attribute is true.
+**Note**: Providing the auto-registration token for all **Edge** host registration methods is mandatory.  
+The **Edge** host will be registered under the default project selected for the registration token. You can override the default project by providing a project ID in the user data. 
+**Note**: It is mandatory to assign a project when creating a registration token to complete the auto-registration process.
+ 
 <br />
 
 ```yaml
