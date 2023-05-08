@@ -18,7 +18,7 @@ import YouTube from 'shared/components/Video';
 
 Palette helps you create and manage Kubernetes clusters in various cloud environments with minimal overhead.
 
-Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to define the cluster infrastructure stack you prefer in a declarative and reusable manner. It allows you to define *customizable*  infrastructure stacks using desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI), and additional add-on application layers. 
+Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to define the cluster infrastructure stack you prefer in a declarative and reusable manner. It allows you to define *customizable* infrastructure stacks using desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI), and additional add-on application layers. 
 
 After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
 
@@ -26,11 +26,7 @@ This tutorial will teach you how to deploy a host cluster with Palette by using 
 
 # Architecture 
 
-In this tutorial, you will discover how Palette simplifies the creation of a Kubernetes cluster. With some basic configuration information, Palette manages the entire deployment and management process, saving you time and effort. In a few steps, you will have a Kubernetes cluster and your application deployed on top of it.
-
-<br />
-
-This is the application architecture you will deploy. The result is a Kubernetes infrastructure stack managed by Palette.
+As you navigate through the tutorial, use this diagram as a reference point when trying to understand how a cluster profile is used when deploying a host cluster. Palette uses the cluster profile as a blueprint when deploying the cluster. Clusters deployed by Palette have the same node pools you may be familiar with, control plane nodes, often called *master nodes* and the *worker nodes* where you will deploy applications. The result is a host cluster managed by Palette.
 
 ![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
@@ -97,10 +93,14 @@ In the **Basic Information** section, assign the name **aws-profile**, a brief p
 Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Name**.
 
 For this tutorial, use the following packs:
-- **Operating System (OS)** -> *ubuntu-aws LTS__20.4.x*
-- **Kubernetes** -> *Kubernetes 1.24.x*
-- **Network** -> *cni-calico 3.24.x* (Calico)
-- **Storage** -> *csi-aws-ebs 1.16.x* (Amazon Elastic Block Store Container Storage Interface)
+
+| Pack Name          | Version   | Layer              |
+|--------------------|-----------|--------------------|
+| ubuntu-aws LTS     | 20.4.x    | Operating System   |
+| Kubernetes         | 1.24.x  | Kubernetes         |
+| cni-calico         | 3.24.x    | Network            |
+| csi-aws-ebs        | 1.16.x | Storage            |
+
 
 As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
@@ -257,10 +257,14 @@ In the **Basic Information** section, assign the name **azure-profile**, a brief
 Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Name**.
 
 For this tutorial, use the following packs:
-- **Operating System (OS)** -> *ubuntu-azure LTS__20.4.x*
-- **Kubernetes** -> *Kubernetes 1.24.x*
-- **Network** -> *cni-calico-azure 3.24.x* (Calico)
-- **Storage** -> *Azure Disk 1.25.x* (Container Storage Interface - CSI)
+
+| Pack Name          | Version                                          | Layer              |
+|--------------------|--------------------------------------------------|--------------------|
+| ubuntu-azure LTS   | 20.4.x    | Operating System   |
+| Kubernetes         | 1.24.x     | Kubernetes         |
+| cni-calico-azure   | 3.24.x                                 | Network            |
+| Azure Disk         | 1.25.x       | Storage            |
+
 
 As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
@@ -407,10 +411,14 @@ Profile Layers, this is the main configuration step where you specify the packs 
 
 
 For this tutorial, use the following packs:
-- **Operating System (OS)** -> *ubuntu-gcp LTS__20.4.x*
-- **Kubernetes** -> *Kubernetes 1.24.x*
-- **Network** -> *cni-calico 3.24.x*
-- **Storage** -> *csi-gcp-driver 1.7.x* 
+
+| Pack Name          | Version                  | Layer              |
+|--------------------|--------------------------|--------------------|
+| ubuntu-gcp LTS     | 20.4.x                   | Operating System   |
+| Kubernetes         | 1.24.x                   | Kubernetes         |
+| cni-calico         | 3.24.x                   | Network            |
+| csi-gcp-driver     | 1.7.x                    | Storage            |
+
 
 As you fill out the information for a layer, click on **Next** to proceed to the following layer.
 
@@ -539,7 +547,7 @@ While you wait for the cluster deployment process to complete, feel free to chec
 <br />
 
 
-<YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
+<!-- <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" /> -->
 
 ---
 
