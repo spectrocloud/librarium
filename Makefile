@@ -14,12 +14,14 @@ clean: ## Clean build artifacts
 ##@ npm Targets
 
 initialize: ## Initialize npm dependencies
+	@echo "initializing npm dependencies"
 	npm ci
 
 start: ## Start a local development server
 	npm run start
 
 build: ## Run npm build
+	@echo "building site"
 	npm run clean
 	rm -rf public
 	npm run build

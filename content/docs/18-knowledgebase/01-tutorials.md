@@ -19,7 +19,7 @@ Learn what's possible with Spectro Cloud Palette. Use the following tutorials to
 
 # Clusters
 
-<!-- - [Deploy a Cluster with Palette](knowledgebase/tutorials/deploy-k8s-cluster) -->
+- [Deploy a Cluster with Palette](knowledgebase/tutorials/deploy-k8s-cluster)
 
 # Palette Dev Engine 
 - [Deploy an Application using Palette Dev Engine](/knowledgebase/tutorials/deploy-app)
