@@ -568,7 +568,7 @@ Click on **Add Manifest** at the top of the page and fill out the following inpu
 
 - **Manifests**  - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button  An empty editor will appear on the right side of the screen.
 
-![Image of the blue button](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.pmg)
+![Image of the blue button](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.png)
 
 <br />
 
