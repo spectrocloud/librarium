@@ -16,11 +16,13 @@ import YouTube from 'shared/components/Video';
 
 # Deploy a Cluster
 
-Palette is designed to help you create and manage Kubernetes clusters in any environment with minimal overhead. Palette makes this possible for application authors and system administrators that want to deploy a containerized application to a Kubernetes environment.
+Palette helps you create and manage Kubernetes clusters in various cloud environments with minimal overhead.
 
-Palette's [*Cluster Profile*](/clusters) component allows you to customize the cluster infrastructure stack you prefer in a declarative and reusable manner. Palette uses a cluster profile when creating a host cluster. The cluster profile is combined with infrastructure configurations such as cluster size and placement configuration to create a final manifest to provision a host cluster based on your preferred infrastructure provider
+Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to define the cluster infrastructure stack you prefer in a declarative and reusable manner. It allows you to define *customizable*  infrastructure stacks using desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI), and additional add-on application layers. 
 
-This tutorial will teach you how to deploy a host cluster with Palette by using the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy the cluster from the Palette console or use Infrastructure as Code (IaC) through Terraform. You will learn about *Cluster Mode*, *and Cluster Profiles*, and learn how both components enable you to deploy applications to Kubernetes quickly with minimal effort but with a high degree of customization.
+After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
+
+This tutorial will teach you how to deploy a host cluster with Palette by using the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy a cluster using either Palette or Terraform. You will learn about *Cluster Mode* and *Cluster Profiles* and how these components enable you to deploy applications to Kubernetes quickly with minimal effort but with high customization.
 
 # Architecture 
 
@@ -28,7 +30,7 @@ In this tutorial, you will discover how Palette simplifies the creation of a Kub
 
 <br />
 
-This is the application architecture you will deploy, a containerized application with a *replicaSet*. The result is a Kubernetes infrastructure stack managed by Palette.
+This is the application architecture you will deploy. The result is a Kubernetes infrastructure stack managed by Palette.
 
 ![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
@@ -72,7 +74,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 [Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
 
  - Operating System (OS).
- - Kubernetes distribution and version.
+ - Kubernetes distribution.
  - Network Container Interface (CNI).
  - Storage Container Interface (CSI).
  
@@ -106,10 +108,10 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 ![A view of the cluster profile stack](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to create the cluster profile. 
 
 
-You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
+Cluster profiles are mutable, meaning you can modify them when you desire. You can add, remove, or edit the existing layers during modification. 
 
 <br />
 
@@ -120,7 +122,7 @@ Navigate to the left **Main Menu** and select **Cluster**. From the clusters pag
 
 ![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
-Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following steps to create a host cluster in AWS.
+Palette will prompt you to either deploy a new cluster or import an existing one. Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following steps to create a host cluster in AWS.
 
 <br />
 
@@ -143,7 +145,7 @@ On the right side, there is a list of available cluster profiles you can choose 
 
 ### Parameters
 
-The **Parameters** section displays all the layers and add-on components in the cluster profile.
+The **Parameters** section displays all the core and add-on layers in the cluster profile.
 
 ![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_creation_parameters.png)
 
@@ -184,7 +186,7 @@ Before you proceed to next section, take the time to review the following parame
 - **Availability zones** - Used to specify the availability zones the node pool can place nodes. Pick one availability zone.
 
 
-- **Disk size** - set the disk size to **60**.
+- **Disk size** - Set the disk size to **60 GiB**.
 
 
 - **Instance Option** -  Choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worker nodes. Select **On Demand**.
@@ -240,7 +242,7 @@ A cluster profile contains these core and additional add-on layers, such as secu
 
 Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
+Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
 You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
 
 ![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
@@ -266,7 +268,7 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 ![azure cluster profile overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_stack.png)
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile. 
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to finish creating the cluster profile. 
 
 
 You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
@@ -416,7 +418,7 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 ![gcp cluster profile view](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_gcp_cluster_profile_stack_view.png)
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finishing Configuration** to create the cluster profile.
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to create the cluster profile.
 
 You can update cluster profiles after the creation process. You can modify cluster profiles by adding, removing, or editing layers at any moment.
 
@@ -1028,7 +1030,7 @@ resource "spectrocloud_cluster_azure" "cluster" {
 ```
 ## Deploy Cluster
 
-You must first change the **terraform to deploy your cluster with Terraform.tfvars** file. Open **terraform.tfvars** and focus on the cloud provider you want to deploy a host cluster.
+You must first make changes to the **terraform.tfvars** file. Open the **terraform.tfvars** file in any editor of your choice, and focus on the cloud provider you want to deploy a host cluster.
 
 In this Terraform template, to help simplify things, we have added a toggle variable that you can use to select the deployment environment. Each cloud provider has its section containing all the variables you must populate. If a variable under your chosen cloud provider has the value `REPLACE_ME`, it must be replaced.
 
