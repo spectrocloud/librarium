@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 With Palette’s VM Management feature, you can run and manage Virtual Machines (VMs) alongside containerized applications.
 
-You can create a new VM three different ways:
+You can create a new VM in three different ways:
 
 <br />
 

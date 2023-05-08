@@ -177,13 +177,15 @@ To force delete a cluster follow the same steps outlined in [Deleting an Azure I
 <WarningBox>
 
 
-A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
-- VNet
+A force delete can result in resources Palette provisioned being missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
+
+- Virtual Network (VNet)
 - Static Public IPs
 - Virtual Network Interfaces
 - Load Balancers
 - VHD
-- Virtual Network NAT
+- Managed Disks
+- Virtual Network Gateway
 
 Failure in removing provisioned resources can result in unexpected costs.
 
@@ -199,4 +201,4 @@ To validate the Azure cluster creation and deletion status
 2. Click on **Cluster** on the left **Main Menu**
 
 
-4. Click on the check box **Deleted only** to view all the clusters deleted in last 72 hours.
+4. Click on the check box **Deleted only** to view all the clusters deleted in the last 72 hours.
