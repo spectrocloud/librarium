@@ -49,7 +49,7 @@ You can also start Jira workflows and target specific workloads from the Cloudan
 
 - CPUs: 0.5
 - Memory: 256 MiB
-- Kubernetes 1.19.x to 1.25.x
+- Kubernetes 1.19.x and higher
 - Kernel version 4.5 and higher
 
 ## Installing on Kubernetes 1.25 and higher.
