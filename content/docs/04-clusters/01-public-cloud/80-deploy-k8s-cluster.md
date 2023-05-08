@@ -52,10 +52,20 @@ To complete this tutorial, you will need the following items
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
   - [GCP](https://cloud.google.com/docs/get-started)
+
+  <br />
+
 - Register the cloud account in Palette. Use the following resource for additional guidance.
   - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
   - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
   - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
+
+  <br />
+
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload it to Palette.
+
+  - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) tutorial.
+
 ## Deploy the Environment
 
 The following steps will guide you through deploying the cluster infrastructure. You will start by creating a cluster profile and deploying the host cluster using your cluster profile.
@@ -78,7 +88,7 @@ A cluster profile contains these core layers and additional add-on layers, such 
 
 Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
+Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
 You can view the list of available cluster profiles. To create a cluster profile, click the **Add Cluster Profile** button at the top right.
 
 ![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
@@ -156,17 +166,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 
 ### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as FIPS and specifying the **SSH Key Pair** to assign to the cluster. All clusters require you to assign an SSH key.
-
-
-To create an SSH key pair in AWS login into the AWS dashboard. Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2). In the navigation panel, under **Network & Security**, choose **Key Pairs**. Choose **Create key pair** and enter the information required to create the key pair. Click on the **Create a key pair**. Review the [Create an SSH key pair on AWS](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) guide for additional information.
-
-![aws key pair creation](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_key_pair_create.png)
-
-<br />
-
-After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**. 
-
+The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as FIPS and specifying the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**. 
 
 ### Nodes Configuration
 
@@ -318,7 +318,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 ### Cluster Configuration
 
 
-The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account** ,and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for uploading an SSH key.
+The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key**** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for uploading an SSH key.
 
 
 <br />
@@ -396,7 +396,7 @@ A cluster profile contains these core and additional add-on layers, such as secu
 
 Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
-Start by logging in to Palette and navigating to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
+Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
 You can view the list of available cluster profiles. To create a cluster profile, click the **Add Cluster Profile** button at the top right.
 
 ![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
@@ -566,9 +566,9 @@ Click on **Add Manifest** at the top of the page and fill out the following inpu
 - **Layer name** - The name of the layer. Assign the name **application**.
 
 
-- **Manifests**  - Add your manifest by giving it a name and clicking the blue circle button. An empty editor will appear on the right side of the screen.
+- **Manifests**  - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button  An empty editor will appear on the right side of the screen.
 
-![manifest](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
+![Image of the blue button](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.pmg)
 
 <br />
 
@@ -613,6 +613,8 @@ spec:
 ```
 
 The code snippet you added will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. You may have noticed that the code snippet you added is a Kubernetes configuration. Manifest files are a method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes configuration to a manifest file.
+
+![manifest](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
 
 The manifest defined a replica set for the application to simulate a distributed environment with a web application deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single access point and distribute the workload to both containers.
 
