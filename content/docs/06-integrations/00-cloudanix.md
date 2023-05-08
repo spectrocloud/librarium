@@ -140,47 +140,6 @@ As a final step, apply the cluster profile to your cluster.
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="0.0.x" key="0.0.x">
-
-## Prerequisites
-
-- CPUs: 0.5
-- Memory: 256 MiB
-- Kubernetes 1.19.x to 1.24.x
-- Kernel version 4.5 and higher
-
-## Parameters
-
-The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
-
-| Name | Description |
-| --- | --- |
-| ``userEmail`` | The email address of the user who created the cluster and cluster profile. |
-| ``partnerIdentifier`` | A Cloudanix unique identifier for Spectro Cloud. |
-| ``organizationId`` | The organization tenant ID in Palette. |
-| ``userName`` | Palette user name. |
-| ``accountName`` | Palette cloud account name. |
-| ``accountType`` | Cloud account type such as AWS or GCP, Azure, or others. |
-| ``accountId`` | The user's cloud account ID. |
-| ``clusterName`` | The name of the cluster. |
-| ``clusterIdentifier`` | The cluster's unique identifier. |
-| ``clusterDomain`` | The Palette cloud account type such as AWS, GCP, Azure, or others. |
-
-## Usage
-
-This Helm Chart installs four Cloudanix services to enable container security capabilities:
-
-<br/>
-
-- **config-cron**: A job that runs periodically in a Kubernetes cluster to maintain the configuration of Cloudanix inventory and threat services.
-- **misconfig-cron**: A job that captures Kubernetes misconfigurations and displays them on the Cloudanix dashboard.
-- **inventory-service**: An inventory service that detects any new Kubernetes resources and displays them on the Cloudanix dashboard.
-- **threat-service**: A threat service that exports threat events and affected Kubernetes resources which are visible on the Cloudanix dashboard.
-
-From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
-
-</Tabs.TabPane>
-
 </Tabs>
 
 # Terraform
