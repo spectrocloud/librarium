@@ -53,7 +53,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 4. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
 
 
-5. Turn **Enforcing** mode back on.
+5. To avoid security issues, be sure to turn **Enforcing** mode back on.
 
   ```bash
     setenforce 1

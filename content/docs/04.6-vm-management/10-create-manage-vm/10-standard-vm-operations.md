@@ -29,6 +29,8 @@ The Spectro VM Dashboard supports standard power operations for virtual machines
 - **Restart** 
  
 
+Live migration, snapshots, and cloning are also supported.
+
 You can access standard VM operations in two ways:
 
 - From the **Virtual Machines** tab, click the **three-dot Menu** in the row of the VM you want to perform actions on.
