@@ -44,20 +44,18 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 2. From the left **Main Menu**, click **Clusters** and click on your cluster.
 
 
-3. Due to a known issue with taking snapshots on VMs that run the Fedora operating system when SELinux is in default **Enforcing** mode, we recommend you turn off **Enforcing** mode by issuing the following command as the root user.
-
-    ```bash
-    setenforce 0
-    ```
-
-4. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
+3. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
 
 
-5. To avoid security issues, be sure to turn **Enforcing** mode back on.
+<InfoBox>
 
-  ```bash
-    setenforce 1
-    ```
+In some situations (e.g., with Fedora operating system), SElinux (on the guest) is preventing the QEMU guest agent from quiescing the target filesystem. As workaround, you can either:
+
+- Generate an appropriate local security module that permis `qemu-ga` to operate correctly (preferred).
+- Turn off SElinux **Enforcing** mode before the snapshot by issuing the following command as the root user `setenforce 0`. Enforcing can be turned on again after the snapshot.
+
+</InfoBox>
+
 
 The **Snapshots** tab displays the ``vmSnapshot Status`` parameter with snapshot phases for the VM: **InProgress**, **Succeeded**, or **Failed**.
 
