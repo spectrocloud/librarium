@@ -45,3 +45,6 @@ To learn more about Palette and AWS clusters, check out the following resources:
 
 
 - [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies)
+
+
+- [Cluster Removal](/clusters/cluster-management/remove-clusters)

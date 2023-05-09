@@ -222,7 +222,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
    * Select **STS** authentication for validation:
 
 
-4. You will be provided with information on the right hand-side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists out the information provided by the wizard after your selects **STS**.
+4. You will be provided with information on the right hand-side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists out the information provided by the wizard after you selects **STS**.
 
     |**Parameter**|**Description**|
     |---------|---------------|

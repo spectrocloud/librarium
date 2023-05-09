@@ -39,3 +39,6 @@ To learn more about Palette and GCP clusters, check out the following resources:
 
 
 - [Required IAM Permissions](/clusters/public-cloud/gcp/required-permissions)
+
+
+- [Cluster Removal](/clusters/cluster-management/remove-clusters)
