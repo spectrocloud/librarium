@@ -41,7 +41,7 @@
     "gatsby-remark-image-attributes": "^1.1.0",
     "gatsby-remark-images": "^4.2.0",
     "gatsby-remark-images-medium-zoom": "^1.7.0",
-    "gatsby-remark-relative-images": "^2.0.2",
+    "gatsby-remark-relative-images": "^2.0.4",
     "gatsby-remark-video": "^1.2.5",
     "gatsby-source-filesystem": "^3.15.0",
     "gatsby-transformer-sharp": "^3.15.0",
