@@ -536,7 +536,8 @@ Click on your cluster to review details such as deployment status, event logs, c
 </Tabs.TabPane>
 </Tabs>
 
-The cluster deployment may take several minutes depending on the cloud provider, node count, node sizes used, and the cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to check the event log.
+
+The cluster deployment process can take several minutes, approximately 15 to 30 min. The deployment time is affected by the selected cloud provider, cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to check the event log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
 
@@ -628,7 +629,7 @@ Click on **Confirm & Create** to save your changes.
 Navigate to the left **Main Menu** and select **Clusters**. Click on the host cluster you deployed to open its details page.
 
 
-On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. 
+On the top right-hand corner is a blue button **Updates Available**. Click on the button to review the available updates. 
 
 ![The cluster details page with a view of pending updates](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_update_available.png)
 
