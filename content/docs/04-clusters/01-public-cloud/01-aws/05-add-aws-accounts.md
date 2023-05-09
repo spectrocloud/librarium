@@ -254,7 +254,12 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
 
+</Tabs.TabPane>
+</Tabs>
 
+</Tabs.TabPane> 
+
+</Tabs>
 
 # Next Steps
 
