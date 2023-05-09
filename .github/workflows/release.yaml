@@ -8,8 +8,36 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build
+        run: |
+          make build
+
+      - name: Upload to AWS
+        run: |
+          rm -f public/robots.txt
+          aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs.spectrocloud.com --delete
+          aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs.spectrocloud.com --delete
+          aws cloudfront create-invalidation --distribution-id E1LK6TRNPR90DX --paths "/*"
+
   release:
     name: "Release"
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -23,6 +51,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
