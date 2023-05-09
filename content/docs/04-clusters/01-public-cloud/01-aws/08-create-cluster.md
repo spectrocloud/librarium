@@ -4,7 +4,6 @@ metaTitle: "Create and Manage AWS Cluster"
 metaDescription: "Learn how to add and manage a cluster deployed to AWS."
 hideToC: false
 fullWidth: false
-category: ["how-to"]
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
