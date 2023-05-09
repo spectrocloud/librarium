@@ -6,7 +6,6 @@ on:
     branches-ignore: [ main ]
 env:
   GITHUB_TOKEN: ${{ github.token }}
-  LINT_VERSION: "1.25.1"
 
 
 jobs:
@@ -34,6 +33,7 @@ jobs:
         with:
           name: public
           path: public
+          retention-days: 1
 
   update-site:
     name: Update Site
@@ -51,7 +51,5 @@ jobs:
 
       - name: Upload to AWS
         run: |
-          ls -la
-          aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete
-          aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs-latest.spectrocloud.com --delete
-          aws cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
+          ls -la public/
+          

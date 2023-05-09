@@ -28,6 +28,28 @@ jobs:
         run: |
           make build
 
+      - name: Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: public
+          retention-days: 1
+
+
+  update-site:
+    name: Update Site
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Download my-folder
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: public
+
       - name: Upload to AWS
         run: |
           rm -f public/robots.txt
@@ -37,7 +59,6 @@ jobs:
 
   release:
     name: "Release"
-    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - id: checkout
