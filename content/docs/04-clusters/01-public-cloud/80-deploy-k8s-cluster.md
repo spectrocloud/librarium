@@ -243,7 +243,7 @@ A cluster profile contains these core and additional add-on layers, such as secu
 Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
 
 Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
-You can view the list of available cluster profiles. To create a cluster profile, click on the **Add Cluster Profile** button at the top right side.
+You can view the list of available cluster profiles. To create a cluster profile, click the **Add Cluster Profile** button at the top right.
 
 ![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
 
@@ -628,7 +628,12 @@ Click on **Confirm & Create** to save your changes.
 Navigate to the left **Main Menu** and select **Clusters**. Click on the host cluster you deployed to open its details page.
 
 
-On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. Compare the new changes against the previous cluster profile definition. The only difference is the addition of a manifest that will deploy the Hello Universe application.
+On the top right-hand corner is a green button **Updates Available**. Click on the button to review the available updates. 
+
+![The cluster details page with a view of pending updates](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_update_available.png)
+
+
+Compare the new changes against the previous cluster profile definition. The only difference is the addition of a manifest that will deploy the Hello Universe application.
 
 
 ![Available updates details](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_update_details_compare.png)
@@ -642,7 +647,8 @@ Click on **Confirm updates** to apply the updates to the host cluster. Depending
 
 Navigate to the cluster's details page and verify you are in the **Overview** tab. Once the application is deployed and ready for network traffic, in the **Services** row, Palette will expose the service URL. Click on the URL for port **:8080** to access the Hello Universe application. 
 
-![Deployed application](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
+![Cluster details page with service URL highlighted](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_service_url.png)
+
 
 <br />
 
@@ -653,6 +659,10 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 
 
 </WarningBox>
+
+<br />
+
+![Deployed application landing page with counter displayed](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
 
 <br />
 
@@ -705,7 +715,6 @@ To complete this tutorial, you will need the following items
 
 - Basic knowledge of containers.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
-- Terraform v1.4.0 or greater.
 - Create a Cloud account from one of the following providers.
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
@@ -721,42 +730,18 @@ To complete this tutorial, you will need the following items
 
 You can clone the tutorials repository locally or follow along by downloading a Docker image that contains the tutorial code and all dependencies. 
 
+<br />
+
+<WarningBox>
+
+If you choose to clone the repository instead of using the tutorial container make sure you have Terraform v1.4.0 or greater installed.
+
+
+</WarningBox>
+
+<br />
+
 <Tabs>
-<Tabs.TabPane tab="Git" key="git">
-
-Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
-
-<br />
-
-```shell
-git@github.com:spectrocloud/tutorials.git
-```
-
-Change directory to the tutorial folder.
-
-<br />
-
-```shell
-cd tutorials/
-```
-
-Check out the following git tag.
-
-<br />
-
-```shell
-git checkout v1.0.4
-```
-
-Change the directory to the tutorial code.
-
-<br />
-
-```shell
-cd terraform/iaas-cluster-deployment-tf/
-```
-
-</Tabs.TabPane>
 
 <Tabs.TabPane tab="Docker" key="docker">
 
@@ -791,6 +776,41 @@ Navigate to the tutorial code.
 cd /terraform/iaas-cluster-deployment-tf
 ```
 
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Git" key="git">
+
+Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+
+<br />
+
+```shell
+git@github.com:spectrocloud/tutorials.git
+```
+
+Change directory to the tutorial folder.
+
+<br />
+
+```shell
+cd tutorials/
+```
+
+Check out the following git tag.
+
+<br />
+
+```shell
+git checkout v1.0.4
+```
+
+Change the directory to the tutorial code.
+
+<br />
+
+```shell
+cd terraform/iaas-cluster-deployment-tf/
+```
 
 </Tabs.TabPane>
 
@@ -1198,7 +1218,8 @@ If you are using the tutorial container and want to exit the container, type `ex
 <br />
 
 ```shell
-docker stop tutorialContainer
+docker stop tutorialContainer && \
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
 ```
 
 
