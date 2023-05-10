@@ -14,8 +14,8 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# April 28, 2023 - Rlease 3.4.0
-
+# May 15, 2023 - Release 3.4.0
+[New release notes goes here]
 
 
 # March 19, 2023 - Release 3.3.0
