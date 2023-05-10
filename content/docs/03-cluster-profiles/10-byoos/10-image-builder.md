@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Using various tools, you can create and deploy custom images to most infrastructure providers. Many infrastructure providers have their own tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project.
+You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project.
 
 
 ## Kubernetes Image Builder
@@ -33,7 +33,7 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 3. The custom image is created and distributed to the target regions you specified in the `packer.json` file.
 
 
-4. Create a cluster profile that points to the custom image you created.
+4. Create a cluster profile pointing to your custom image.
 
 
 5. Deploy a host cluster using your cluster profile containing the custom image.
@@ -46,7 +46,10 @@ This guide will teach you how to use the Kubernetes Image Builder to create imag
 * [Git](https://git-scm.com/downloads) v2.39.1 or greater.
 
 
-* Access credentials to the target infrastructure provider. KBI through the help of Packer, deploys a compute instance to the target environment during the image creation process.
+* Access credentials to the target infrastructure provider. KBI, through the help of Packer, deploys a compute instance to the target environment during the image creation process.
+
+
+* The cloud provider you choose may have different requirements. Review the KIB [documentation](https://image-builder.sigs.k8s.io/capi/capi.html) for your provider to learn more about the provider prerequisites.
 
 
 * [HashiCorp Packer](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli) installed v1.8.6 or greater. 
@@ -55,7 +58,7 @@ This guide will teach you how to use the Kubernetes Image Builder to create imag
 
 <WarningBox>
 
-If you want to use a commercial OS, you must provide the license before starting the image creation process.
+To use a commercial OS, you must provide the license before starting the image creation process.
 
 </WarningBox>
 
@@ -85,7 +88,7 @@ The following steps will guide you through creating your image. You will create 
 
 
 
-4. If you are using a commercial OS such as RHEL, set the required environment variables required per the KIB documentation. For RHEL, the following environment variables are required. Replace the placeholder values with your actual credentials.
+4. If you are using a commercial OS such as RHEL, set the required environment variables per the KIB documentation. For RHEL, the following environment variables are required. Replace the placeholder values with your actual credentials.
 
     <br />
 
@@ -94,7 +97,7 @@ The following steps will guide you through creating your image. You will create 
     export RHSM_PASS=REPLACE_ME
     ```
 
-    If you want to debug the Packer compute instance in case of an error, set the following environment variable. This will allow you to remote connect to the instance versus Packer's default behavior of terminating the instance.
+    If you want to debug the Packer compute instance in case of an error, set the following environment variable. The Packer flag will allow you to remote connect to the instance versus Packer's default behavior of terminating the instance.
 
     <br />
 
@@ -102,7 +105,7 @@ The following steps will guide you through creating your image. You will create 
     export PACKER_FLAGS=-on-error=ask
     ```
 
-5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider.  Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You should make your changes in the `variables` section of the file. To improve the reader experience, the `variables` object below is condensed and only used for example purposes. 
+5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. To enhance the reader's experience, only a condensed version of the 'variables' object below is being used for illustrative purposes.
 
     <br />
 
@@ -138,7 +141,7 @@ The following steps will guide you through creating your image. You will create 
 
 
 
-6. Set the credentials for your infrastructure provider. Each infrastructure provider supports different methods for providing credentials to Packer. You can review each infrastructure provider's authentication section by vising the [Packer plugins site](https://developer.hashicorp.com/packer/plugins) and selecting your provider on the left **Main Menu**.
+6. Set the credentials for your infrastructure provider. Each infrastructure provider supports different methods for providing credentials to Packer. You can review each infrastructure provider's authentication section by visiting the [Packer plugins site](https://developer.hashicorp.com/packer/plugins) and selecting your provider on the left **Main Menu**.
 
 
 
@@ -160,7 +163,7 @@ The following steps will guide you through creating your image. You will create 
     ... 
     ```
 
-8. Issue the `make` command that aligns with the provider you are targeting. In this example, `build-ami-rhel-8 ` is the correct command for an RHEL AWS AMI.
+8. Issue the `make` command that aligns with your target provider. In this example, `build-ami-rhel-8 ` is the correct command for an RHEL AWS AMI creation.
 
     <br />
 
@@ -183,7 +186,7 @@ The following steps will guide you through creating your image. You will create 
     ....
     ```
 
-9. Once the build process is complete, make a note of the image ID.
+9. Once the build process is complete, note the image ID.
 
     <br />
 
@@ -227,19 +230,37 @@ The following steps will guide you through creating your image. You will create 
 * Pack Name: Bring Your Own OS (BYO-OS)
 * Pack Version: 1.0.x or higher
 
-16. Update the pack YAML to point to your custom image. Use the table below to learn more about each variable. In this example, the YAML is updated to point to the RHEL image created earlier.
+16. Update the pack YAML to point to your custom image. You can use the tag values Packer assigns to the image to help you identify the correct value to provide the pack YAML. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.
+
+    <br />
+
+    ```
+    ==> amazon-ebs.{{user `build_name`}}: Creating AMI tags
+    amazon-ebs.{{user `build_name`}}: Adding tag: "build_date": "2023-05-10T17:19:37Z"
+    amazon-ebs.{{user `build_name`}}: Adding tag: "build_timestamp": "1683739177"
+    amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_cni_version": "v1.2.0"
+    amazon-ebs.{{user `build_name`}}: Adding tag: "source_ami": ""
+    amazon-ebs.{{user `build_name`}}: Adding tag: "containerd_version": "1.6.20"
+    amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_release": "Enterprise"
+    + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution": "rhel"
+    amazon-ebs.{{user `build_name`}}: Adding tag: "image_builder_version": ""
+    amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_version": "v1.24.11"
+    + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_version": "8
+    ```
+
+    In this example, the YAML is updated to point to the RHEL image created earlier. Use the table below to learn more about each variable.
 
     <br />
 
     | Parameter | Description | Type | 
     |---|----|----|
-    | `osImageOverride` | The ID of the image to use as the base OS layer. This is the ID of the image as assigned in the infrastructure environment it belongs to. | string|
-    | `osName` | The name of the OS. | string |
-    | `osVersion`| The version of the OS.| string|
+    | `osImageOverride` | The ID of the image to use as the base OS layer. This is the ID of the image as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string|
+    | `osName` | The name of the OS distribution. Example: `rhel`. | string |
+    | `osVersion`| The version of the OS distribution. Example: `8` | string|
 
     <br />
 
-    ```
+    ```yaml
     pack:
       osImageOverride: "ami-0f4804aff4cf9c5a2"
       osName: "rhel"
@@ -251,13 +272,13 @@ The following steps will guide you through creating your image. You will create 
 
 17. Complete the remainder of the cluster profile creation wizard by selecting the next set of cluster profile layers.
 
-You now have a cluster profile that is using the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
+You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
 
 <br />
 
 <WarningBox>
 
-To successfully launch a cluster using a custom image in a cluster profile, choosing the appropriate cloud provider and region where the image was distributed is important. Failure to do so may result in Palette's inability to launch a cluster.
+When deploying a host cluster, choosing the appropriate cloud provider and region where the image was distributed is critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do so may result in Palette's inability to launch a cluster.
 
 </WarningBox>
 
@@ -265,7 +286,7 @@ To successfully launch a cluster using a custom image in a cluster profile, choo
 
 Use the following steps to validate your custom image.
 
-1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you created the image in using the custom image. If you encounter any issues, review the compute instance logs to learn more about the issues.
+1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you created the image in using the custom image. Review the compute instance logs to learn more about the problems if you encounter any issues.
 
 
 2. Next, deploy a host cluster that uses the cluster profile you created containing the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the event logs of the cluster to gain more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial for additional guidance on deploying a host cluster.
