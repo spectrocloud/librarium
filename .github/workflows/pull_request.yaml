@@ -1,4 +1,4 @@
-name: style_check
+name: Pre-merge Checks
 on: [pull_request]
 
 concurrency:
