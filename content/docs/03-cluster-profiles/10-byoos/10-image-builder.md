@@ -270,6 +270,12 @@ The following steps will guide you through creating your image. You will create 
 
   ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
 
+
+17. Click on **Next** to add the Kubernetes layer.
+
+
+18. 
+
 17. Complete the remainder of the cluster profile creation wizard by selecting the next set of cluster profile layers.
 
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
