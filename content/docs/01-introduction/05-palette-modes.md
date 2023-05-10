@@ -30,7 +30,7 @@ Virtual clusters are powerful and beneficial to teams due to their characteristi
 - Removes the infrastructure overhead for downstream consumers
 - Reduces the need to set up or manage complicated Kubernetes namespaces and roles. Teams can instead receive their own virtual cluster without worrying about permissions or affecting other teams’ resources.
 
-Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing cost. App mode heavily leverages virtual clusters. 
+Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing costs. App mode heavily leverages virtual clusters. 
 
 
 # What is App Mode?
