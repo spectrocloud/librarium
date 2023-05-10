@@ -87,9 +87,11 @@ Choose the workflow that fits your needs.
 | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
 
+<InfoBox>
+When generating a BYOOS pack, the registry specified with the generate command is the registry used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
+To verify the registry, users can use tools such as docker login or docker pull to test the connection to the registry.
+</InfoBox>
 
-When generating a BYOOS pack, it's essential to keep in mind that the registry specified with the `generate` command is the registry that will be used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
-To verify the registry, users can use tools such as `docker login` or `docker pull` to test the connection to the registry. 
 
 
 
