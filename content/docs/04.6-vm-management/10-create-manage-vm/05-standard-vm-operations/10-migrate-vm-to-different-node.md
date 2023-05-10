@@ -14,14 +14,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette supports seamless virtual machine (VM) migration, known as live migration. During live migration, the VM and its memory, storage, and CPU resources are moved from one physical host to another without any noticeable downtime. 
+Palette supports seamless virtual machine (VM) migration to another physical host in the cluster. This is known as *live migration*. During live migration, the VM and its memory, storage, and CPU resources are moved from one cluster compute node to another without any noticeable downtime. 
 
 Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` section of the KubeVirt configuration file that is part of the Spectro VM Dashboard pack. For more information, review the [Feature Gates](/vm-management#featuregates) section.
 
-Successful live migrations also require all VM instances to have an eviction strategy.
-Eviction strategy is the process of deciding which VM instances to move from one physical host to another during live migration. By default, the ``spec.template.spec.evictionStrategy`` parameter is set to ``LiveMigrate`` in the KubeVirt configuration file.
-
-Live migration is used with rolling Kubernetes upgrades and workload balancing. 
+Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node is placed into maintenance or upgraded, all VM instances require a ``LiveMigrate`` eviction strategy. By default, the ``spec.template.spec.evictionStrategy`` parameter is set to ``LiveMigrate`` in the KubeVirt configuration file. 
 
 
 # Prerequisites
@@ -29,7 +26,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing.
 - Live migration must be enabled as a feature gate. Keep this default in the KubeVirt configuration file.
 
 
-- All VM instances must have an eviction strategy set as `evictionStrategy: LiveMigrate`. This is configured automatically in the KubeVirt configuration file. If needed, you can override the default setting by configuring `spec.template.spec.evictionStrategy`.
+- All VM instances must have an eviction strategy set as `evictionStrategy: LiveMigrate` to ensure that a VM is not interrupted if the node is placed into maintenance. This is configured automatically in the KubeVirt configuration file. If needed, you can override the default setting by configuring `spec.template.spec.evictionStrategy`.
 
 
 - VMs that use Persistent Volumes must have shared ``ReadWriteMany`` (``RWX``) access mode. For more information, refer to the [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) Kubernetes resource. VMs that do not use persistent storage, such as containerDisks, do not require modifications for live migration.
