@@ -100,3 +100,4 @@ datastore
 uxp
 wodim
 Letsencrypt
+Bitnami
