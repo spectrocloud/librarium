@@ -67,14 +67,16 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 4. Click the **Details** tab, and verify that the name and IP address of the new node is changed.
 
 
-# Migrate VM Manually
+# Maintain a Node
+
+Compute nodes can be placed into maintenance mode using the `cordon` and `evict` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node such as replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. 
 
 If you need to perform a manual migration to change a disk or network interface card (NIC), perform memory maintenance, or if there is an issue with the node that needs to be resolved, you can override the default `evictionStrategy: LiveMigrate` parameter setting.
 
 
 ## Prerequisites
 
-- Remove live migration as the eviction strategy.
+- For seamless migration when the host is put in maintenance mode, ensure `LiveMigrate` is set as the eviction strategy for all concerned VMs.  
 
 
 ## Manually Migrate the VM
@@ -97,22 +99,21 @@ If you need to perform a manual migration to change a disk or network interface 
     **node-name**: The name of the node that should be marked as *un-schedulable*.
 
 
-4. Issue the following command to gracefully remove a pod from a node. When you evict a pod, the Kubernetes scheduler attempts to reschedule the pod onto another node in the cluster. If the pod cannot be rescheduled onto another node, it remains in a pending state until a suitable node becomes available.
+4. Issue the following command to gracefully remove all pods from the node that is undergoing maintenance. When you drain a node, all pods and VMs will be safely evicted from the node.
 
     ```bash
-    kubectl evict <pod-name> --namespace=<namespace-name>
+    kubectl drain <node-name>
     
     ```
     <br />
 
-    **pod-name**: The name of the pod that should be evicted.
+    **node-name**: The name of the node that you wish to drain.
     
-    **namespace-name**: The namespace where the pod is running.
     <br />
     
     <InfoBox>
 
-    The `evict` command only works on pods managed by a controller. If you try to use the command on a pod that is not managed by a controller, you will receive an error message.
+    The kubectl `drain` command should only be issued to a single node at a time.
 
     </InfoBox>
 
@@ -120,10 +121,10 @@ If you need to perform a manual migration to change a disk or network interface 
 ## Validation
 
 
-1. Log in to the migrated VM from a terminal window. 
+1. Using kubectl, log in to a machine that has access to the kubernetes cluster. 
 
 
-2. Issue the following command to verify the pod is rescheduled on a different node by verifying the name and IP address of the new node changed.
+2. Issue the following command to verify the pods are rescheduled on a different node by verifying the name and IP address of the new node changed.
 
     
     ```bash
