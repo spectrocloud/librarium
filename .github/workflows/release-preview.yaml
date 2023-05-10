@@ -1,0 +1,49 @@
+name: Release Branch Preview
+
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
+  AWS_DEFAULT_REGION: us-east-1
+  GATSBY_APPZI_TOKEN: ${{ secrets.GATSBY_APPZI_TOKEN }}
+  GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.DEV_GATSBY_ALGOLIA_SEARCH_KEY }}
+  GATSBY_ALGOLIA_APP_ID: ${{ secrets.DEV_GATSBY_ALGOLIA_APP_ID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.DEV_ALGOLIA_ADMIN_KEY }}
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - 'release-*'
+
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - run: npm ci
+
+    - name: Build
+      run: |
+        make build
+
+    - name: Deploy Preview
+      run: |
+        aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs-latest.spectrocloud.com --delete
+        aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs-latest.spectrocloud.com --delete
+        aws cloudfront create-invalidation --distribution-id EV0DH5A7CFZBY --paths "/*"
