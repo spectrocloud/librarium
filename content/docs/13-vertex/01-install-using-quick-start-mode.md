@@ -143,7 +143,7 @@ For production environments, you will migrate the single-node cluster you deploy
 
   You may get a warning message stating your connection is not private. You can ignore this message and select **Advanced**, then click the link to proceed.
   
-  The On-prem supervisor console displays VM deployment status. Take note of status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Spectro Cloud Installation**. This will take about 45 minutes. When processing is complete and status displays as successful, URLs for the On-Prem System Console and the Management Console are displayed.
+  The On-prem supervisor console displays VM deployment status. Take note of the status for  **Spectro Cloud artifacts**, **Kubernetes configuration**, and **Spectro Cloud Installation**. This will take about 45 minutes. When processing is complete and status displays as successful, URLs for the On-Prem System Console and the Management Console are displayed.
 
   <br />
 
