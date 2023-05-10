@@ -68,14 +68,14 @@ To restrict the user access to the storage resource, apply custom policies, or l
 
 ## Network Access
 
-Clusters that use a Palette self hosted [Private Cloud Gateway](/clusters/public-cloud/azure/gateways/) (PCG), should use a custom storage account and container that is restricted to the VNet that PCG and the cluster is located in. Ensure you disable public access and use private access for the Azure storage account.
+Clusters that use a Palette self-hosted [Private Cloud Gateway](/clusters/public-cloud/azure/gateways/) (PCG), should use a custom storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access and use private access for the Azure storage account.
 
 
 # Tags
 
 You can assign tags to clusters deployed to Azure. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the [Resource Filters](/clusters/cluster-management/cluster-tag-filter/create-add-filter) documentation page to learn more about using tags to restrict resource access. 
 
-The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value-pair format: `department:finance`.
+The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value pair format: `department:finance`.
 
 
 ### Reserved Tags

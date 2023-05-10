@@ -25,29 +25,31 @@ Both the core and add-on packs described above are configurable, and you can def
 
 ## Pack Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing pack (core or add-on) or to define a new add-on custom pack from scratch, it is essential to understand the pack structure. Each Pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, etc. Ansible roles, if provided, are used to customize cluster VM images whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical structure of a pack:
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing pack (core or add-on) or to define a new add-on custom pack from scratch, it is essential to understand the pack structure. 
+
+Each pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, and more. Ansible roles, if provided, are used to customize cluster VM images, whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical pack structure:
 
 
 | **Pack Name** |**Requirement** | **Description** |
 |-|-|-|
 | `pack.json` | mandatory| Pack metadata.|
 | `values.yaml`| mandatory| Pack configuration, params exposed from the underlying charts, and templated params from ansible-roles|
-| `charts/`| mandatory| Mandatory for Helm chart-based pack. Contains the Helm charts to be deployed for the pack. |
-| `manifests/`| mandatory| Mandatory for Manifest-based pack. Contains the manifest files.|
+| `charts/`| mandatory| Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack. |
+| `manifests/`| mandatory| Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack.
 | `ansible-roles`| optional| Ansible roles used to install the pack.|
-| `logo.png`| optional| pack logo|
-| `README.md`|optional| The pack description|
+| `logo.png`| optional| Contains the pack logo. |
+| `README.md`|optional| The pack description. |
 
 
-Let's look at the examples below to understand the pack structure better. <br/> <br/> 
+Let's look at the examples below to better understand pack structure. <br/> <br/> 
 
 
 
 <Tabs>
 
-<Tabs.TabPane tab="Helm chart based pack" key="helm-chart-pack">
+<Tabs.TabPane tab="Helm chart-based pack" key="helm-chart-pack">
 
-The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, made up of two charts: *istio-controlplane* and *istio-operator*.  Each chart, in turn, has its **values.yaml** file. In this example, we have pack-level **values.yaml** file and individual chart-level **values.yaml** files.  <br/> <br/> 
+The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, which is made up of two charts: *istio-controlplane* and *istio-operator*.  Each chart has its **values.yaml** file. In this example, we have a pack-level **values.yaml** file and individual chart-level **values.yaml** files.  <br/> <br/> 
 
 ```bash
 .
@@ -69,7 +71,7 @@ The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, mad
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Manifest based pack" key="manifest-pack">
+<Tabs.TabPane tab="Manifest-based pack" key="manifest-pack">
 
 This example shows the structure of a Manifest-based pack, *kubeflow-1.2.0*, made up of **kubeflow-kfdef.yaml** and **kubeflow-operator.yaml** manifests.
 
