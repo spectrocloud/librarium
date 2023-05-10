@@ -69,7 +69,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Maintain a Node
 
-Compute nodes can be placed into maintenance mode using the `cordon` and `evict` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node such as replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. 
+Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node such as replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. 
 
 If you need to perform a manual migration to change a disk or network interface card (NIC), perform memory maintenance, or if there is an issue with the node that needs to be resolved, you can override the default `evictionStrategy: LiveMigrate` parameter setting.
 
@@ -83,8 +83,16 @@ If you need to perform a manual migration to change a disk or network interface 
 
 <br />
 
-1. In the KubeVirt configuration file, set `spec.template.spec.evictionStrategy: “ “`.
+1. ?? Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+
+2. ?? From the left **Main Menu**, choose **Clusters** and click on your cluster. 
+
+
+3. ?? Click the **Virtual Machines** tab.
+
+
+4. ?? Select the VM to migrate and use either the **three-dot Menu** or the **Actions drop-down Menu**, and click **Open Console**. 
 
 2. Log in to the VM from a terminal window.
 
