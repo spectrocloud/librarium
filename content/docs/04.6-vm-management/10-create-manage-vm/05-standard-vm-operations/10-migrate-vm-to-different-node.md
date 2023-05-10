@@ -69,9 +69,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Maintain a Node
 
-Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node such as replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. 
-
-If you need to perform a manual migration to change a disk or network interface card (NIC), perform memory maintenance, or if there is an issue with the node that needs to be resolved, you can override the default `evictionStrategy: LiveMigrate` parameter setting.
+Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
 
 
 ## Prerequisites
@@ -142,7 +140,10 @@ If you need to perform a manual migration to change a disk or network interface 
 
 # Resources
 
-[Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+- [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+
+
+- [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 
 
 <br />
