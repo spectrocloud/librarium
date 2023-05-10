@@ -271,12 +271,30 @@ The following steps will guide you through creating your image. You will create 
   ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
 
 
-17. Click on **Next** to add the Kubernetes layer.
+17. Click on **Next layer** to add the Kubernetes layer.
 
 
-18. 
+18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to reveal the YAML editor.
 
-17. Complete the remainder of the cluster profile creation wizard by selecting the next set of cluster profile layers.
+
+19. If you use a commercial OS, such as RHEL, you must activate the subscription. You can use the `preKubeadmCommands` section of the Kubernetes layer to issue commands before Kubernetes is started. In this example, the [RHEL Subscription Manager CLI](https://access.redhat.com/solutions/253273) is used to register the compute instance. Other OS may have different activation methods. Review the respective OS's documentation to learn more about activation methods.
+
+  <br />
+
+
+  ```yaml
+  preKubeadmCommands:
+   -  subscription-manager register --username=REPLACE_ME --password=REPLACE_ME
+  ```
+
+  <br />
+
+
+  ![A view of the Kubernetes layer's YAML with a custom preKubeadmCommand](/cluster-profiles_byoos_image-builder_kubernetes-layer-example.png)
+
+  <br />
+
+17. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
 
