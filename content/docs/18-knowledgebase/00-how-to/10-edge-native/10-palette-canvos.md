@@ -218,7 +218,11 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 * Set the `Default Project` as `default`
 * Set the Expiration Date for `7 Days`
 
+<<<<<<< HEAD
 ![Registration Token](/tutorials/edgeforge/add_token.png)
+=======
+![Registration Token](/tutorials/canvos/add_token.png)
+>>>>>>> 1f653944 (updated file layout and fixed naming)
 
 * Click `Confirm`
 * Copy the newly created token to Clipboard
@@ -227,7 +231,11 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 Save this token to a note file as we will use it later.
 </InfoBox>
 
+<<<<<<< HEAD
 ![Registration Token](/tutorials/edgeforge/registration_token.png)
+=======
+![Registration Token](/tutorials/canvos/registration_token.png)
+>>>>>>> 1f653944 (updated file layout and fixed naming)
 
 ## Create a user-data file
 
@@ -354,7 +362,11 @@ drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
 
 ## Cleanup
 
+<<<<<<< HEAD
 * Cleanup or Skip to [Next Steps](/knowledgebase/how-to/edge-native/edgeforge#nextsteps)
+=======
+* Cleanup or Skip to [Next Steps](/knowledgebase/how-to/edge-native/canvos#nextsteps)
+>>>>>>> 1f653944 (updated file layout and fixed naming)
 
 1. Cleanup the artifacts that were created.  
 
