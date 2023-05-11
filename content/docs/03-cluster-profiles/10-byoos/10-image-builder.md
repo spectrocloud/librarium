@@ -64,7 +64,7 @@ To use a commercial OS, you must provide the license before starting the image c
 
 # Create an Image
 
-The following steps will guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL) for Amazon Web Services (AWS). RHEL is a commercial product so you will need license subscription credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to create the image. 
+The following steps will guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL) for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to create the image. 
 
 <br />
 
@@ -105,7 +105,7 @@ The following steps will guide you through creating your image. You will create 
     export PACKER_FLAGS=-on-error=ask
     ```
 
-5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. To enhance the reader's experience, only a condensed version of the 'variables' object below is being used for illustrative purposes.
+5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. Only a condensed version of the 'variables' object below is used for illustrative purposes to enhance the reader's experience. 
 
     <br />
 
@@ -254,7 +254,7 @@ The following steps will guide you through creating your image. You will create 
 
     | Parameter | Description | Type | 
     |---|----|----|
-    | `osImageOverride` | The ID of the image to use as the base OS layer. This is the ID of the image as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string|
+    | `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string|
     | `osName` | The name of the OS distribution. Example: `rhel`. | string |
     | `osVersion`| The version of the OS distribution. Example: `8` | string|
 
@@ -277,7 +277,7 @@ The following steps will guide you through creating your image. You will create 
 18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to reveal the YAML editor.
 
 
-19. If you use a commercial OS, such as RHEL, you must activate the subscription. You can use the `preKubeadmCommands` section of the Kubernetes layer to issue commands before Kubernetes is started. In this example, the [RHEL Subscription Manager CLI](https://access.redhat.com/solutions/253273) is used to register the compute instance. Other OS may have different activation methods. Review the respective OS's documentation to learn more about activation methods.
+19. If you use a commercial OS such as RHEL, you may have to activate the subscription. You can use the `preKubeadmCommands` section of the Kubernetes layer to issue commands before Kubernetes is started. In this example, the [RHEL Subscription Manager CLI](https://access.redhat.com/solutions/253273) is used to register the compute instance. Other OS may have different activation methods. Review the respective OS's documentation to learn more about activation methods.
 
   <br />
 

@@ -15,7 +15,7 @@ Bringing your own operating system provides several benefits, including the abil
 
 The BYOOS feature is especially useful for enterprises and organizations that have strict requirements around security, compliance, or specific hardware configurations. With the ability to bring your own OS, you can ensure that your Kubernetes clusters meet these requirements, without compromising on performance or functionality.
 
-Overall, BYOOS in Palette gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. You can tailor your OS to your specific needs, ensuring that your clusters perform optimally and meet your organization's unique requirements.
+BYOOS in Palette gives you greater flexibility, control, and customization options when managing your Kubernetes clusters. You can tailor your OS to your specific needs, ensuring your clusters perform optimally and meet your organization's unique requirements.
 
 To learn more about BYOOS, use the following resources to learn more.
 
