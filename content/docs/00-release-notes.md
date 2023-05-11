@@ -153,7 +153,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
 * Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
 * Palette leverages [Helm and OCI registries](/devx/registries#custompackregistry) for custom pack management. 
-* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 ### Enhancements:
@@ -197,7 +197,6 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * csi-longhorn version 1.3.1 
 * csi-longhorn-addon version 1.3.1 
 * kafka-operator version 0.32.0 
-* minio-operator version 4.5.4 
 * mysql-operator version 0.6.2 
 * nats-operator version 0.18.2 
 * palette-upgrader version 3.0.70 
