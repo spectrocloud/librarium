@@ -24,13 +24,13 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 
 ![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.png) <br />
 
-1. You will download the KIB project and configure the image builder's `packer.json` file.
+1. You will download the KIB project and configure the image builder's **packer.json** file.
 
 
 2. Use the `make` command to create a custom image containing a specific Operating System (OS) version and flavor.
 
 
-3. The custom image is created and distributed to the target regions you specified in the `packer.json` file.
+3. The custom image is created and distributed to the target regions you specified in the **packer.json** file.
 
 
 4. Create a cluster profile pointing to your custom image.
