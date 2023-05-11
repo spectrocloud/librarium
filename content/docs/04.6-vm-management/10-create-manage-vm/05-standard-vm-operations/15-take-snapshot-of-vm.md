@@ -49,7 +49,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 <InfoBox>
 
-In some situations such as with the Fedora operating system, SElinux on the guest prevents the QEMU guest agent from quiescing the target filesystem. As workaround, you can do one of the following:
+In some situations such as with the Fedora operating system, SELinux on the guest prevents the QEMU guest agent from quiescing the target filesystem. As workaround, you can do one of the following:
 
 - Generate an appropriate local security module that permits `qemu-ga` to operate correctly. This is the preferred workaround.
 
