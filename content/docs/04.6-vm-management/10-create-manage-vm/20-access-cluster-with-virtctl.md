@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform by providing convenience commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
+The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
 
 # Prerequisites
 
