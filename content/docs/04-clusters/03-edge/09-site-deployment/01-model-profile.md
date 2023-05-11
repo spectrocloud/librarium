@@ -68,7 +68,7 @@ No prerequisites.
 
 <InfoBox>
 
-You can select the *Bring Your Own OS (BYOOS)* if you build your enterprise Edge artifacts. Specify the registry hosting your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack's YAML values to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
+You can select the *Bring Your Own OS (BYOOS)* if you build your enterprise Edge artifacts. Specify the registry hosting your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack's YAML values to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about the cloud-init stages.
 
 </InfoBox>
 
