@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 # May 15, 2023 - Release 3.4.0
-This release contains several security fixes and new features for Edge, enhanced support for several cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and a few new and upgraded packs.
+This release contains several security fixes and new features for Edge, enhanced support for different cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and a few new and upgraded packs.
 
 
 ## Edge
@@ -27,7 +27,7 @@ The Edge installation process has been improved to allow users greater flexibili
             
 - **Customized device ID**: Users can customize Edge device ID by reading the ID from the list of files; whichever file returns non-empty content and does not contain special characters will be considered a valid ID. 
 
-- **Edge-native cluster IP**: Users can use FQDN instead of IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
+- **Edge-native cluster IP**: Users can use a Fully Qualified Domain Name (FQDN) instead of an IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
 
 - **Edge Forge workflow**: Users must build OS images using [Edge Forge workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow) to provision edge-native clusters.
  
@@ -90,19 +90,19 @@ Palette now supports the following new features and enhancements for various clo
 
 - Introduces a command line interface (CLI) for PDE. It will allow users to create, list, delete, resize, pause, and resume Virtual Clusters. Kubeconfig download is also supported.
 
-- Added a new dashboard for Palette Dev Engine.
+- Adds a new dashboard for Palette Dev Engine.
 
 - **Container service enhancements**: Users can increase or decrease service replicas, added ingress support for the container service, and enhance the UI with pack attributes.
 
 
 ## Packs
-Added the following new packs:
+Adds the following new packs:
 - Nvidia GPU support
 - Community repository
 - AVI AKO support
 
  ### Updated Packs:
- Upgraded the following packs:
+ Upgrades the following packs:
 
 |**Pack name**|**Old version**|**New version**|
 |---|---|---|
