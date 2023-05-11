@@ -13,9 +13,7 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# How To Deploy a Stateless Frontend App with Kubernetes
-
-## Introduction
+# Deploy a Stateless Frontend App with Kubernetes
 
 Kubernetes is a container orchestration platform that is widely used for deploying and managing containerized applications. 
 
@@ -52,6 +50,8 @@ The app data comes from a JSON file that lives on the frontend app.
 
 Use the command shown below to clone the application from GitHub.
 
+<br />
+
 ```bash
 git clone https://github.com/spectrocloud/date-buddy
 ```
@@ -62,11 +62,15 @@ If you prefer to use a different stateless frontend app, you can do so. You may,
 
 Before continuing this step, ensure Docker is installed on your machine. In the app's root directory, create a file named **Dockerfile**.
 
+<br />
+
 ```bash
 touch Dockerfile
 ```
 
 In a text editor, add the lines below to the Dockerfile.
+
+<br />
 
 ```bash
 FROM node:12
@@ -95,7 +99,9 @@ Also, create a **.dockerignore** file and add the following lines to it.
 
 ## Build a Docker Image of the Application.
 
-This step packages the application into a portable image. To build the app’s image, run the Docker `build` command as shown:
+This step packages the application into a portable image. To build the app’s image, run the Docker `build` command as shown.
+
+<br />
 
 ```bash
 docker build --tag date-suggestions .
@@ -105,13 +111,17 @@ docker build --tag date-suggestions .
 
 Before continuing with this step, ensure that you have access to a Kubernetes cluster, as explained in the [prerequisites](https://www.notion.so/How-To-Deploy-A-Stateless-Frontend-App-with-Kubernetes-b885ae2307e94ef191a1b713fe29c81f). 
 
-In the application's root directory, create a Kubernetes Deployment file using the `kubectl` command below:
+In the application's root directory, create a Kubernetes Deployment file using the `kubectl` command below.
+
+<br />
 
 ```bash
 kubectl create deploy date-suggestions --image=date-suggestions --replicas=2 --port=3000 --dry-run=client --output yaml
 ```
 
 The command output is a YAML representation of the deployment, similar to the lines below.
+
+<br />
 
 ```yaml
 apiVersion: apps/v1
@@ -138,11 +148,15 @@ spec:
  
 You can use the output YAML to create a deployment file. Use the redirect operator `>` to turn the command output into a **deployment.yaml** file.
 
+<br />
+
 ```bash
 kubectl create deploy date-suggestions --image=date-suggestions --replicas=2 --port=3000 --dry-run=client --output yaml > deployment.yaml
 ```
 
 Alternatively, you can use the `touch` command to create the **deployment.yaml** file, and then copy the YAML output from the command to create a deployment to it.
+
+<br />
 
 ```bash
 touch deployment.yaml
@@ -152,13 +166,15 @@ touch deployment.yaml
 
 Create and populate a Kubernetes Service file in the app's root directory. By default, your application will only be accessible within the cluster. You'll need to create a Kubernetes service resource to expose the application to resources outside the Kubernetes cluster. A service resource creates an abstraction over a set of pods that provides discovery and routing between them.
 
-To create a service, use the `kubectl expose` command as shown below:
+To create a service, use the `kubectl expose` command as shown below.
+
+<br />
 
 ```bash
 kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --target-port=3000 --name=date-suggestion-service --dry-run=client --output yaml
 ```
 
-The output of running the command will be similar to the YAML below:
+The output of running the command will be similar to the YAML below.
 
 ```yaml
 apiVersion: v1
@@ -183,6 +199,8 @@ kubectl expose deployment date-suggestions --type=LoadBalancer --port=80 --targe
 
 You can also create a YAML file with the `touch` command and add the output of the `kubectl expose` command to it.
 
+<br />
+
 ```bash
 touch service.yaml
 ```
@@ -190,7 +208,9 @@ touch service.yaml
 Copy and paste the following line of code to the service file.
 
 ## Deploy the Application.
-Use the kubectl command line connected to the cluster you created earlier, and deploy the application by applying the file's content to Kubernetes.
+Use the kubectl command-line connected to the cluster you created earlier, and deploy the application by applying the file's content to Kubernetes.
+
+<br />
 
 ```bash
 kubectl apply --file deployment.yaml --file service.yaml
@@ -198,7 +218,9 @@ kubectl apply --file deployment.yaml --file service.yaml
 
 ## Confirm that deployment was successful.
 
-Once the deployment and service files have been applied, you should be able to access your app by issuing the following command:
+Once the deployment and service files have been applied, you should be able to access your app by issuing the following command.
+
+<br />
 
 ```bash
 kubectl get service date-suggestions-service --output=jsonpath='{.status.loadBalancer.ingress[0].ip}'

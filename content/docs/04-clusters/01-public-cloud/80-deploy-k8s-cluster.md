@@ -80,7 +80,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 [Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
- - Kubernetes distribution
+ - Kubernetes distribution and version
  - Network Container Interface (CNI)
  - Storage Container Interface (CSI)
  
@@ -185,10 +185,14 @@ Before you proceed to next section, review the following parameters. <br /> <br 
 - **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
 
 
+
 - **Disk size** - Set the disk size to **60 GiB**.
 
+<br />
 
 - **Instance Option** -  This option allows you to choose [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) or [spot instance](https://aws.amazon.com/ec2/spot/) for worker nodes. Select **On Demand**.
+
+<br />
 
 ![Palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
@@ -231,7 +235,7 @@ Click on your cluster to review its details such as deployment status, event log
 
 ### Create Cluster Profile (Azure)
 
-[Cluster profiles page](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
  - Operating System (OS)
  - Kubernetes distribution and version 
  - Network Container Interface (CNI)
@@ -303,17 +307,15 @@ In the **Basic information** section, insert the general information about the c
 
 A list is displayed of available profiles you can choose to deploy to Azure. Select the cluster profile you created earlier and click on **Next**.
 
-### Profile Layers
+### Parameters
 
-The **Profile Layers** section displays all the layers and add-on components in the cluster profile.
+The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_parameters.png)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
-.
 
 <br />
-
 
 ### Cluster Configuration
 
@@ -333,7 +335,10 @@ The **Nodes config** section allows you to configure the nodes that compose the 
 Refer to the [Node Pool](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) guide for a list and description of parameters.
 
 Before you proceed to next section, review the following parameters.
+
 <br />
+
+
 **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for both the master and worker pools.
 
 **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
@@ -1004,7 +1009,9 @@ data "spectrocloud_pack" "aws_k8s" {
 ```
 
 Using the data resource, you avoid manually typing in the parameter values required by the cluster profile's `pack {}` block.
+
 <br />
+
 ### Cluster
 
 The **clusters.tf** file contains the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you must use a cluster resource for the cloud provider you are targeting.
@@ -1013,12 +1020,11 @@ In this tutorial, the following Terraform cluster resources are used.
 
 <br />
 
-| Terraform Resource | Platform | Documentation |
-|---|---|---|
-| `spectrocloud_cluster_aws` | AWS | [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) |
-| `spectrocloud_cluster_azure` | Azure | [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure)|
-| `spectrocloud_cluster_gcp` | GCP |  [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)|
-
+| Terraform Resource | Platform |
+|---|---|
+| [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) | AWS | 
+| [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure |
+| [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
 
 Using the `spectrocloud_cluster_azure` resource in this tutorial as an example, note how the resource accepts a set of parameters. When deploying a cluster, you can change the same parameters in the Palette user interface (UI). You can learn more about each parameter by reviewing the resource documentation page hosted in the Terraform registry.
 
@@ -1076,6 +1082,8 @@ To deploy a cluster using Terraform, you must first modify the **terraform.tfvar
 To simplify the process, we added a toggle variable in the Terraform template, that you can use to select the deployment environment. Each cloud provider has a section in the template that contains all the variables you must populate. Variables to populate are identified with `REPLACE_ME`.
 
 In the example AWS section below, you would change `deploy-aws = false` to `deploy-aws = true` to deploy to AWS. Additionally, you would replace all the variables with a value `REPLACE_ME`. You can also update the values for nodes in the master pool or worker pool.
+
+<br />
 
 ```terraform
 ###########################
