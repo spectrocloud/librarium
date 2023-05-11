@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 # May 15, 2023 - Release 3.4.0
-This release contains several security fixes and new features for Edge, enhanced support for several cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and several new packs.
+This release contains several security fixes and new features for Edge, enhanced support for several cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and a few new and upgraded packs.
 
 
 ## Edge
@@ -62,7 +62,7 @@ Palette now supports the following new features and enhancements for various clo
 
 - Optimize node reconciliation for *Metal as a Service* (MAAS) provider for cases where machine Intelligent Platform Management Interface (IPMI) is powered off; we turn the machine on instead of new node provisioning.
 
-- Fix the issue where Palette did not handle the attach-manifest deletion.
+- Fixes the issue where Palette did not handle the attach-manifest deletion.
 
 - Palette now cleans up the namespace and additional namespaces from the pack on deletion.  
 
@@ -90,7 +90,7 @@ Palette now supports the following new features and enhancements for various clo
 
 - Introduces a command line interface (CLI) for PDE. It will allow users to create, list, delete, resize, pause, and resume Virtual Clusters. Kubeconfig download is also supported.
 
-- Added Palette Dev Engine dashboard.
+- Added a new dashboard for Palette Dev Engine.
 
 - **Container service enhancements**: Users can increase or decrease service replicas, added ingress support for the container service, and enhance the UI with pack attributes.
 
@@ -102,12 +102,14 @@ Added the following new packs:
 - AVI AKO support
 
  ### Updated Packs:
+ Upgraded the following packs:
+
 |**Pack name**|**Old version**|**New version**|
 |---|---|---|
 |AWS EBS CSI | 1.16.0 | 1.17.0 |
 |Istio | 1.14.3 | 1.17.2 |
 |Portworx | 2.12.0 | 2.13.0 |
-| Kong ingress |  2.13.1 | 2.17.0 |
+|Kong ingress |  2.13.1 | 2.17.0 |
 
 
 
