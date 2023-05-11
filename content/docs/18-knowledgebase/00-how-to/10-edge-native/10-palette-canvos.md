@@ -218,11 +218,7 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 * Set the `Default Project` as `default`
 * Set the Expiration Date for `7 Days`
 
-<<<<<<< HEAD
-![Registration Token](/tutorials/edgeforge/add_token.png)
-=======
 ![Registration Token](/tutorials/canvos/add_token.png)
->>>>>>> 1f653944 (updated file layout and fixed naming)
 
 * Click `Confirm`
 * Copy the newly created token to Clipboard
@@ -231,11 +227,7 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 Save this token to a note file as we will use it later.
 </InfoBox>
 
-<<<<<<< HEAD
-![Registration Token](/tutorials/edgeforge/registration_token.png)
-=======
 ![Registration Token](/tutorials/canvos/registration_token.png)
->>>>>>> 1f653944 (updated file layout and fixed naming)
 
 ## Create a user-data file
 
@@ -307,14 +299,10 @@ This will create two `docker images` and an `iso` that can/will be used in the E
 
 ```shell
 ###################################################################################################
-
 PASTE THE CONTENTS BELOW INTO YOUR CLUSTER PROFILE IN PALETTE BELOW THE "OPTIONS" ATTRIBUTE
-
 ###################################################################################################
 
-
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-
 
   system.registry: ttl.sh
   system.repo: ubuntu
@@ -362,11 +350,7 @@ drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
 
 ## Cleanup
 
-<<<<<<< HEAD
-* Cleanup or Skip to [Next Steps](/knowledgebase/how-to/edge-native/edgeforge#nextsteps)
-=======
 * Cleanup or Skip to [Next Steps](/knowledgebase/how-to/edge-native/canvos#nextsteps)
->>>>>>> 1f653944 (updated file layout and fixed naming)
 
 1. Cleanup the artifacts that were created.  
 
