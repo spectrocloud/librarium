@@ -472,6 +472,7 @@ docker pull ghcr.io/spectrocloud/tutorials:1.0.4
 ```
 
 Next, start the container, and open a bash session into it.
+
 <br />
 
 ```shell
@@ -493,11 +494,15 @@ cd terraform/hello-universe-tf/
 
 Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
 
+<br />
+
 ```shell
 git@github.com:spectrocloud/tutorials.git
 ```
 
 Change directory to the tutorial folder.
+
+<br />
 
 ```shell
 cd tutorials/
@@ -505,11 +510,15 @@ cd tutorials/
 
 Check out the following git tag.
 
+<br />
+
 ```shell
 git checkout v1.0.4
 ```
 
 Change directory to the tutorial code.
+
+<br />
 
 ```shell
 cd terraform/hello-universe-tf/
