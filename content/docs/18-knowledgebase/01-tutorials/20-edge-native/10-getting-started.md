@@ -15,7 +15,6 @@ import InfoBox from 'shared/components/InfoBox';
 
 Imagine that you’re the IT administrator for a retail company that has just been tasked with deploying to 1000 new locations this year. Your job is to deploy single-node Kubernetes clusters at the edge for each of these new stores. You’ve decided Palette will be your tool of choice and for this exercise, you’ll use VMs to test the ease of use for consistent deployments.  
 
-
 ### Prerequisites
 
 Completion of [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)  
@@ -431,7 +430,8 @@ This makes deployments touchless from the perspective of the end user as no moni
 ## Validate images
 
 You should see the VMs registered with Palette automatically.
-![Registered](/tutorials/edge-native/registered_nodes.png)
+
+<!-- ![Registered](/tutorials/edge-native/registered_nodes.png) -->
 
 <InfoBox>
 These steps should be done on the machine used to complete the Building Edge Native Artifacts How To
