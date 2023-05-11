@@ -15,7 +15,100 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 
 # May 15, 2023 - Release 3.4.0
-[New release notes goes here]
+This release contains several security fixes and new features for Edge, enhanced support for several cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and several new packs.
+
+
+## Edge
+The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
+### Features:
+- **Display edge hosts' events in Palette**: Edge hosts will bump up audit messages and critical errors in Palette's events console.
+
+- **Static IP support for edge hosts**: Users can now add a static IP for the edge host while deploying edge native clusters. This feature will allow users to assign static IP using the standard tooling, e.g., UI, Terraform, or API, to create clusters; instead of assigning static IP to each edge host via *user-data*.
+            
+- **Customized device ID**: Users can customize Edge device ID by reading the ID from the list of files; whichever file returns non-empty content and does not contain special characters will be considered a valid ID. 
+
+- **Edge-native cluster IP**: Users can use FQDN instead of IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
+
+- **Edge Forge workflow**: Users must build OS images using [Edge Forge workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow) to provision edge-native clusters.
+ 
+- **Edge host registration token**: Registration token is now *mandatory* to pair the edge host with Palette console.
+
+
+### Improvements:
+- Edge-native cluster's upgrade process (either OS or k8s version upgrade) is optimized to avoid additional reboots of the edge appliance.
+
+- Appends Kairos release information in **/etc/os-release** instead of replacing OS's **/etc/os-release** information, which is used in some open-source tools like Nvidia's GPU Operator.
+ 
+- Shows upgrade status on the cluster dashboard when an edge-native cluster is upgrading. 
+
+
+## Cloud Providers
+Palette now supports the following new features and enhancements for various cloud providers:
+
+### Features:
+- **Launch Template** support for Amazon Elastic Kubernetes Service (Amazon EKS). Users can use custom Amazon Machine Image (AMI) for EKS nodes and customize EBS root volumes.
+
+- **IAM roles for service accounts*** (IRSA) support for AWS infrastructure clusters. It will allow users to leverage IAM role-based access to the pods' service account.
+ 
+- Google Kubernetes Engine (GKE) support.  
+
+- **Custom registry** support using *ImageSwap* from Palette allows users to enable ImageSwap and its configuration from the k8s pack, and Palette manages ImageSwap for users without needing an add-on layer.
+
+- Cox Edge Provider upgrade to 0.5.4. It brings support for worker load balancer and customizable volume mounts for VMs.
+
+- Red Hat Enterprise Linux (RHEL) support for AWS  using *Bring Your Own Operating System* (BYOOS) pack.
+
+### Improvements:
+
+- Optimize node reconciliation for *Metal as a Service* (MAAS) provider for cases where machine Intelligent Platform Management Interface (IPMI) is powered off; we turn the machine on instead of new node provisioning.
+
+- Fix the issue where Palette did not handle the attach-manifest deletion.
+
+- Palette now cleans up the namespace and additional namespaces from the pack on deletion.  
+
+
+## Palette Management
+
+- **OIDC identity provider configuration**: OpenID Connect (OIDC) identity provider configuration is moved to the Kubernetes layer, which is used for the Kubernetes apps such as Kubernetes dashboard authentication.
+
+- **Customizable login banner**: Palette shows a login banner with system & tenant-level customization.
+
+- **Tenant scoped clusters in dashboard**: The Tenant admin dashboard now includes the tenant scope clusters usage and cost information.
+
+- **Macros enhancements**: Added infrastructure cluster profile macros such as name, uid, and version variables and enhanced the current macro resolution to support profile macros if a cluster has multiple cluster profiles. 
+
+- **Cox Edge pop list**: Cox Edge uses a dynamic pop list based on the cloud account instead of a static file.
+
+- **Aggregate edge hosts in Tenant admin view**: Tenant admin view will aggregate the Edge hosts across the projects.
+
+- **Cluster profile filter**: Profiles can be filtered by context/scope, and the profile context information will be shown in the cluster details. 
+
+
+## Palette Dev Engine (PDE)
+
+- Palette PDE is now supported in an on-prem installation.
+
+- Introduces a command line interface (CLI) for PDE. It will allow users to create, list, delete, resize, pause, and resume Virtual Clusters. Kubeconfig download is also supported.
+
+- Added Palette Dev Engine dashboard.
+
+- **Container service enhancements**: Users can increase or decrease service replicas, added ingress support for the container service, and enhance the UI with pack attributes.
+
+
+## Packs
+Added the following new packs:
+- Nvidia GPU support
+- Community repository
+- AVI AKO support
+
+ ### Updated Packs:
+|**Pack name**|**Old version**|**New version**|
+|---|---|---|
+|AWS EBS CSI | 1.16.0 | 1.17.0 |
+|Istio | 1.14.3 | 1.17.2 |
+|Portworx | 2.12.0 | 2.13.0 |
+| Kong ingress |  2.13.1 | 2.17.0 |
+
 
 
 # March 19, 2023 - Release 3.3.0
