@@ -988,6 +988,7 @@ You may have noticed that each `pack {}` block contains references to a data res
     values = data.spectrocloud_pack.aws_csi.values
   }
 ```
+<br />
 
 [Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific pack. You can get information about the pack using the data resource such as unique ID, registry ID, available versions, and the pack's YAML values.
 
@@ -1166,7 +1167,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 
   <br />
 
-While you wait for the cluster deployment process to complete, feel free to check out a video where we discuss the growing pains of using Kubernetes and how Palette can help your address these pain points.
+While you wait for the cluster deployment process to complete, feel free to check out the following video where we discuss the growing pains of using Kubernetes and how Palette can help you address these pain points.
 
 <br />
 
