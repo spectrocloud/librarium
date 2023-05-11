@@ -15,8 +15,24 @@ import InfoBox from 'shared/components/InfoBox';
 
 Imagine that you’re the IT administrator for a retail company that has just been tasked with deploying to 1000 new locations this year. Your job is to deploy single-node Kubernetes clusters at the edge for each of these new stores. You’ve decided Palette will be your tool of choice and for this exercise, you’ll use VMs to test the ease of use for consistent deployments.  
 
+
+### Prerequisites
+
+Completion of [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)  
+
+**Hardware**  
+
+**Edge Host Node**
+
+* x86 Based Platform
+* 4CPU
+* 8GB Memory
+* 50GB HD
+* DHCP Enabled on the network
+
 ## Testing Environment
-First,  we need to setup our testing enviornment
+
+First,  we need to set up our testing environment.
 <InfoBox>
 Pick your testing environment below
 </InfoBox>
@@ -27,11 +43,51 @@ Pick your testing environment below
 
 ### Edge Native - VMware
 
-### Prerequisites
+### Additional Prerequisites
+
+**Software**  
+
+* [Git cli](https://cli.github.com/manual/installation)  
+* [Docker](https://docs.docker.com/engine/install/)  
+
+**Jump Host**
+
+* x86 Based Platform
+* 4-vCPU  
+* 8GB Memory  
+* 100GB Hard Disk
+
+**This tutorial was written with the following versions:**
+
+**Ubuntu**
+
+```shell
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 22.04.2 LTS
+Release:        22.04
+Codename:       jammy
+```
+
+**Docker CE**
+
+```shell
+Docker version 23.0.1, build a5ee5b1
+```
+
+**Git cli**
+
+```shell
+git version 2.34.1
+```
+
+<WarningBox>
+This tutorial assumes that vSphere is functioning with enough capacity to support the number of nodes you are testing on.  Configuration of vSphere and ESXi is out of scope.
+</WarningBox>
 
 ### Create the Virtual Machine Template
 
-1. Clone the Github Repo
+1. From your Jump Host, Clone the Github Repo
 
 ```shell
 git clone https://github.com/spectrocloud/tutorials.git
@@ -54,7 +110,7 @@ Resolving deltas: 100% (252/252), done.
 If you used the "Building Edge Native Artifacts" How-To then the installation ISO needed will be in the CanvOS folder.  We will use the path of this folder to mount when we create the Docker image.
 </InfoBox>
 
-**For reference: [Building Edge Native Artifacts](https://docs.spectrocloud.com/knowledgebase/how-to/edge-native/edgeforge)**  
+**For reference: [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)**  
 
 < br />
 
@@ -63,10 +119,17 @@ If you used the "Building Edge Native Artifacts" How-To then the installation IS
 ```shell
 cd tutorials
 ```
+3. Build Docker Image Locally
 
-3. Mount the Directory with your ISO and run the Docker Image
+```shell
+make build-docker VERSION=3.3.0
+```
 
-The Folder structure tested in this environment looks like this.
+4. Mount the Directory with your ISO and run the Docker Image
+
+The Folder structure tested in this environment looks like this:
+
+**EXAMPLE**
 
 ```shell
 .
@@ -86,19 +149,19 @@ This tutorial assumes the path of your ISO is in the following path.  Adjustment
 docker run -it -v "${HOME}/git/CanvOS/build:/edge-native/vmware/packer/build" tutorials
 ```
 
-4. Change into the Packer directory
+5. Change into the Packer directory
 
 ```shell
 cd edge-native/vmware/packer/
 ```
 
-5. Copy the `vsphere.hcl.template` to `vsphere.hcl`
+6. Copy the `vsphere.hcl.template` to `vsphere.hcl`
 
 ```shell
 cp vsphere.hcl.template vsphere.hcl
 ```
 
-6. Modify the vsphere.hcl file to meet your environment needs.  Edit only the "Custom Variables"
+7. Modify the vsphere.hcl file to meet your environment needs.  Edit only the "Custom Variables"
 
 <InfoBox>
 This tutorial is using VIM as the editor.  Depending upon your editor the edit and save options may be different.
@@ -121,11 +184,10 @@ vcenter_cluster         = ""
 vcenter_network         = ""
 ```
 
-* Press `i` to enable editing.  
-* Replace the value of `edgeHostToken` variable with the value of the registration token you saved to the note file.  
+* Press `i` to enable editing.    
 * To save with VIM, press `esc` then type `:wq!` and press `enter` 
 
-7. Run the `packer build` command to create the template.
+8. Run the `packer build` command to create the template.
 
 ```shell
 packer build --var-file=vsphere.hcl build.pkr.hcl
@@ -135,9 +197,94 @@ packer build --var-file=vsphere.hcl build.pkr.hcl
 This build process can take 7-10 minutes depending on your network configuration and capabilities.  Be patient.  The Packer Builder will finish on its own.
 </InfoBox>
 
+**SAMPLE OUTPUT**
+
+```shell
+==> vsphere-iso.edge-template: Power on VM...
+    vsphere-iso.edge-template: Please shutdown virtual machine within 10m0s.
+==> vsphere-iso.edge-template: Deleting Floppy drives...
+==> vsphere-iso.edge-template: Eject CD-ROM drives...
+==> vsphere-iso.edge-template: Deleting CD-ROM drives...
+==> vsphere-iso.edge-template: Convert VM into template...
+Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
+
+==> Wait completed after 7 minutes 13 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> vsphere-iso.edge-template: palette-edge-template
+```
+
+### Clone the VM Template
+
 Now that we have the template built we can create our actual edge host images.  To do this, we will clone the template.
 
-These next steps will use the GOVC tool built into the Docker image.  You will need to add your environment information to the 
+These next steps will use the `GOVC` tool built into the Docker image.  You will need to add your environment information to the `setenv.sh` file to proceed.
+
+< br />
+
+1. Change into the `clone_vm_template` directory
+
+```shell
+cd ../clone_vm_template/
+```
+
+2. Rename the `setenv.sh.template`
+
+```shell
+mv setenv.sh.template setenv.sh
+```
+
+3. Modify the values for your environment.  Make sure to provide a **VM_PREFIX**.
+
+```shell
+vi setenv.sh
+```
+
+**SAMPLE**
+
+```shell
+#!/bin/bash
+
+#GOVC Properties
+#VCenter Endpoint
+export GOVC_URL=                # https://vcenter.company.com
+export GOVC_USERNAME=
+export GOVC_PASSWORD=
+export GOVC_INSECURE=1 #1 if insecure
+export GOVC_DATACENTER=
+export GOVC_DATASTORE=
+export GOVC_NETWORK=
+export GOVC_RESOURCE_POOL=
+export GOVC_FOLDER=
+
+export NO_OF_VMS=3
+export VM_PREFIX=
+export INSTALLER_TEMPLATE="palette-edge-template"
+```
+
+* Press `i` to enable editing.   
+* To save with VIM, press `esc` then type `:wq!` and press `enter`
+
+<InfoBox>
+The default is to create 3 VMs, if you are limited on resources then a single node is sufficient to complete this tutorial.
+</InfoBox>
+
+4. Create the VMS
+
+```shell
+./deploy-edge-host.sh
+```
+
+**SAMPLE OUTPUT**
+
+```shell
+Cloned VM jb-test-3
+Powering on VM jb-test-3
+Powering on VirtualMachine:vm-6627... OK
+Getting UUID jb-test-3
+Edge Host ID   VM jb-test-3 : edge-c3653842efa8744fce4eb874489dc8ce
+```
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="VirtualBox " key="virtualBox">
@@ -167,7 +314,7 @@ Virtual Machine Resources (x86 ONLY)
 * 4GB Memory  
 * 50GB HD (this will not all be allocated)  
 
-Completion of the [Building Edge Native Artifacts How To](/knowledgebase/how-to/edge-native/edgeforge)
+Completion of the [Building Edge Native Artifacts How To](/knowledgebase/how-to/edge-native/canvos)
 
 * **This is a prerequisite as it creates the provider and installer images used in this tutorial.**
 
@@ -175,7 +322,7 @@ Completion of the [Building Edge Native Artifacts How To](/knowledgebase/how-to/
 
 1. Get installer ISO
 
-* Download the installer ISO that was created in the [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/edgeforge)
+* Download the installer ISO that was created in the [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)
 
 2. Launch the Virtual Box Application.
 3. Create a New Virtual Machine.
@@ -195,7 +342,7 @@ Completion of the [Building Edge Native Artifacts How To](/knowledgebase/how-to/
 These are the minimums.  In a production environment these would vary by requirements.
 </InfoBox>
 
-![HW Settings Image](/tutorials/edge-native-virtualbox/hw_settings.png)
+![HW Settings Image](/tutorials/edge-native/hw_settings.png)
 
 * Click `Next`
 
@@ -207,7 +354,7 @@ These are the minimums.  In a production environment these would vary by require
     Make sure the `Pre-Allocate Full Size` is NOT checked.
 </InfoBox>
 
-![VM Disk](/tutorials/edge-native-virtualbox/vm_disk.png)
+![VM Disk](/tutorials/edge-native/vm_disk.png)
 
 * Click `Next`  
 
@@ -223,7 +370,7 @@ These are the minimums.  In a production environment these would vary by require
 
 * Change the `Attached to:` from `NAT` to `Bridged Adapter`
 
-![VM Network Default](/tutorials/edge-native-virtualbox/vm_network.png)
+![VM Network Default](/tutorials/edge-native/vm_network.png)
 
 * Click `OK`
 
@@ -245,7 +392,7 @@ When the device shuts down, the provisioning is complete.
 * Highlight the ISO we connected earlier `palette-edge-installer.iso`
 * Select the `Remove Attachment` icon
 
-![VM Network Update](/tutorials/edge-native-virtualbox/vm_iso_remove.png)
+![VM Network Update](/tutorials/edge-native/vm_iso_remove.png)
 
 * Confirm with the pop up by selecting `Remove`
 * Select `Ok` to close the settings
@@ -261,26 +408,30 @@ The device will boot and get an IP address from the bridged network of the host 
 
 You should have a screen similar to this.  The IP address of the machine is printed at the top.
 
-![Registration Mode Screen](/tutorials/edge-native-virtualbox/registration.png)
+![Registration Mode Screen](/tutorials/edge-native/registration.png)
 
 The device is now ready to be provisioned.
 
 ## Upload images to registry
 
-
 </Tabs.TabPane>
 
 </Tabs>
 
-<br />
+### Confirm the VM Registration
 
-<WarningBox>
-The rest of this tutorial relies upon using container images that have already been created using our Edge Forge.  If you have not created these please complete the Building Edge Native Artifacts How To before continuing.
-</WarningBox>
+If you completed the [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos) How-To guide, the VMs will auto-register because of the token provided in that Guide.  
 
-**[Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)**
+This makes deployments touchless from the perspective of the end user as no monitor or keyboard is required.  We can confirm this after a few minutes by logging into Palette.
+
+1. Log into [Palette](https://console.spectrocloud.com)
+
+2. Navigate to `Cluster - Edge Hosts` to view the hosts registered.  Make sure you are in the correct project for the auto-registration token you built the installer image with.
 
 ## Validate images
+
+You should see the VMs registered with Palette automatically.
+![Registered](/tutorials/edge-native/registered_nodes.png)
 
 <InfoBox>
 These steps should be done on the machine used to complete the Building Edge Native Artifacts How To
@@ -329,7 +480,7 @@ As a reminder, ttl.sh is a short lived registry.  By default these images have a
 If you have not signed up you can sign up for a free trial [Here](https://www.spectrocloud.com/free-tier/)
 * Once you are logged in navigate to the `Default` Project
 
-![Default Project Image](/tutorials/edge-native-virtualbox/default_project.png)
+![Default Project Image](/tutorials/edge-native/default_project.png)
 
 * Select `Clusters` from the left hand side.
 * Select `Edge Hosts`
@@ -379,7 +530,7 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 
 * Once you are logged in navigate to the `Default` Project
 
-![Default Project Image](/tutorials/edge-native-virtualbox/default_project.png)
+![Default Project Image](/tutorials/edge-native/default_project.png)
 
 Select `Profiles` from the left hand menu
 
