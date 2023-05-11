@@ -1,7 +1,7 @@
 ---
 title: "Deploy a Cluster"
 metaTitle: "Deploy a Cluster"
-metaDescription: "Learn how to deploy an application to a Kubernetes cluster with Palette. Experience a streamlined approach to creating and managing multiple Kubernetes clusters, on different public cloud providers, through Palette's optimized process."
+metaDescription: "Learn how to deploy a Kubernetes cluster to a public cloud provider with Palette. "
 icon: ""
 category: ["tutorial"]
 hideToC: false
@@ -18,15 +18,15 @@ import YouTube from 'shared/components/Video';
 
 Palette helps you create and manage Kubernetes clusters in various cloud environments with minimal overhead.
 
-Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to define the cluster infrastructure stack you prefer in a declarative and reusable manner. It allows you to define *customizable* infrastructure stacks using desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI), and additional add-on application layers. 
+Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI). You can further customize the stack with add-on application layers. 
 
 After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
 
-This tutorial will teach you how to deploy a host cluster with Palette by using the following public cloud providers - Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP). You can deploy a cluster using either Palette or Terraform. You will learn about *Cluster Mode* and *Cluster Profiles* and how these components enable you to deploy applications to Kubernetes quickly with minimal effort but with high customization.
+This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You can deploy a cluster using either Palette or Terraform. You will learn about *Cluster Mode* and *Cluster Profiles* and how these components enable you to deploy customized applications to Kubernetes with minimal effort.
 
 # Architecture 
 
-As you navigate through the tutorial, use this diagram as a reference point when trying to understand how a cluster profile is used when deploying a host cluster. Palette uses the cluster profile as a blueprint when deploying the cluster. Clusters deployed by Palette have the same node pools you may be familiar with, control plane nodes, often called *master nodes* and the *worker nodes* where you will deploy applications. The result is a host cluster managed by Palette.
+As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: control plane nodes, often called *master nodes*, and *worker nodes* where you will deploy applications. The result is a host cluster that Palette manages.
 
 ![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
@@ -34,7 +34,7 @@ As you navigate through the tutorial, use this diagram as a reference point when
 
 # Deploy the Cluster and the Application
 
-Select the tab representing the workflow you want to learn more about.
+Select the tab for the workflow you want to learn more about.
 
 <br />
 
@@ -46,16 +46,16 @@ You can create and manage clusters directly from the Palette dashboard. Use the 
 
 ## Prerequisites
 
-To complete this tutorial, you will need the following items
+To complete this tutorial, you will need the following.
 
-- A public cloud account from one of the following providers.
+- A public cloud account from one of these providers:
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
   - [GCP](https://cloud.google.com/docs/get-started)
 
   <br />
 
-- Register the cloud account in Palette. Use the following resource for additional guidance.
+- Register the cloud account in Palette. The following resources provide additional guidance.
   - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
   - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
   - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
@@ -68,7 +68,7 @@ To complete this tutorial, you will need the following items
 
 ## Deploy the Environment
 
-The following steps will guide you through deploying the cluster infrastructure. You will start by creating a cluster profile and deploying the host cluster using your cluster profile.
+The following steps will guide you through deploying the cluster infrastructure. You will start by creating a cluster profile that you apply to the host cluster.
 
 <br />
 
@@ -77,21 +77,20 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 ### Create Cluster Profile (AWS)
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
+[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
- - Operating System (OS).
- - Kubernetes distribution.
- - Network Container Interface (CNI).
- - Storage Container Interface (CSI).
+ - Operating System (OS)
+ - Kubernetes distribution
+ - Network Container Interface (CNI)
+ - Storage Container Interface (CSI)
  
-A cluster profile contains these core layers and additional add-on layers, such as security, monitoring, logging, etc.  
 
-Cluster profiles enable you to create infrastructure stacks that can be customized in terms of the number of layers, type of components, and version and offer a reproducible way to create clusters.
+You customize profiles by choosing the type of component and version. In this way, profiles offer a reproducible way to create clusters.
 
 Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page.
-You can view the list of available cluster profiles. To create a cluster profile, click the **Add Cluster Profile** button at the top right.
+You can view the list of available cluster profiles. To create a cluster profile, click the **Add Cluster Profile** button.
 
-![View of the cluster view page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
+![View of the cluster Profiles page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_profile_list_view.png)
 
 Follow the wizard to create a new profile.
 
@@ -112,7 +111,7 @@ For this tutorial, use the following packs:
 | csi-aws-ebs        | 1.16.x | Storage            |
 
 
-As you fill out the information for a layer, click on **Next** to proceed to the following layer.
+As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
 Click on **Confirm** after you have completed filling out all the core layers.
 
@@ -121,7 +120,7 @@ Click on **Confirm** after you have completed filling out all the core layers.
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to create the cluster profile. 
 
 
-Cluster profiles are mutable, meaning you can modify them when you desire. You can add, remove, or edit the existing layers during modification. 
+You can modify cluster profiles after you create them by adding, removing, or editing the layers. 
 
 <br />
 
@@ -130,7 +129,7 @@ Cluster profiles are mutable, meaning you can modify them when you desire. You c
 
 Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on the **Add New Cluster** button.
 
-![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
+![Palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Palette will prompt you to either deploy a new cluster or import an existing one. Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following steps to create a host cluster in AWS.
 
@@ -141,57 +140,57 @@ Palette will prompt you to either deploy a new cluster or import an existing one
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_basic_info.png)
+![Palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_basic_info.png)
 
 <br />
 
 
 ### Cluster Profile
 
-On the right side, there is a list of available cluster profiles you can choose to deploy to AWS. Select the cluster profile you created earlier and click on **Next**.
+A list is displayed of available profiles you can choose to deploy to AWS. Select the cluster profile you created earlier and click on **Next**.
 
 <br />
 
 
 ### Parameters
 
-The **Parameters** section displays all the core and add-on layers in the cluster profile.
+The **Parameters** section displays the core and add-on layers in the cluster profile.
 
-![palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_creation_parameters.png)
+![Palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_creation_parameters.png)
 
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
 <br />
 
 
 ### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Region** of where to deploy the host cluster and other options such as FIPS and specifying the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**. 
+The **Cluster config** section allows you to select the **Region** in which to deploy the host cluster and specify other options such as the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**. 
 
 ### Nodes Configuration
 
 The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster. 
 
 
-Before you proceed to next section, take the time to review the following parameters. <br /> <br />
-- **Number of nodes in the pool** - Used to set the right amount of nodes that make up the pool of either the master or worker nodes. Set the count to one for the master pool and two for the worker pool.
+Before you proceed to next section, review the following parameters. <br /> <br />
+- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
 
 
-- **Allow worker capability** - This option allows the master node also to accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
+- **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
 
 
 - **Instance Type** -  Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select `m4.2xlarge`.
 
 
-- **Availability zones** - Used to specify the availability zones the node pool can place nodes. Pick one availability zone.
+- **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
 
 
 - **Disk size** - Set the disk size to **60 GiB**.
 
 
-- **Instance Option** -  Choose between [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) and [spot instance](https://aws.amazon.com/ec2/spot/) as worker nodes. Select **On Demand**.
+- **Instance Option** -  This option allows you to choose [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) or [spot instance](https://aws.amazon.com/ec2/spot/) for worker nodes. Select **On Demand**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
+![Palette clusters basic information](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 Select **Next** to proceed with the cluster deployment.
 
@@ -209,9 +208,9 @@ For this tutorial, you can use the default settings. Click on **Validate** to co
 
 ### Review
 
-The **Review** section is an opportunity for you to review all the cluster configurations prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
+The **Review** section allows you to review the cluster configuration prior to deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
-![aws creation of a new cluster overview page](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_profile_cluster_profile_review.png)
+![Configuration overview of newly created AWS cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_profile_cluster_profile_review.png)
 
 
 <br /> 
@@ -220,7 +219,7 @@ Navigate to the left **Main Menu** and select **Clusters**.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_aws_create_cluster.png)
 
-Click on your cluster to review details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
+Click on your cluster to review its details such as deployment status, event logs, cluster profile, monitoring data, and other information about the cluster.
 
 <br />
 
@@ -232,11 +231,11 @@ Click on your cluster to review details such as deployment status, event logs, c
 
 ### Create Cluster Profile (Azure)
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates created with the following core layers.
- - Operating System (OS).
- - Kubernetes distribution and version. 
- - Network Container Interface (CNI). 
- - Storage Container Interface (CSI).
+[Cluster profiles page](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+ - Operating System (OS)
+ - Kubernetes distribution and version 
+ - Network Container Interface (CNI)
+ - Storage Container Interface (CSI)
  
 A cluster profile contains these core and additional add-on layers, such as security, monitoring, logging, etc.  
 

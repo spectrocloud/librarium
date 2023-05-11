@@ -33,7 +33,7 @@ Each pack is a collection of files such as manifests, helm charts, Ansible roles
 | **Pack Name** |**Requirement** | **Description** |
 |-|-|-|
 | `pack.json` | mandatory| Pack metadata.|
-| `values.yaml`| mandatory| Pack configuration, params exposed from the underlying charts, and templated params from ansible-roles|
+| `values.yaml`| mandatory| Pack configuration, parameters exposed from the underlying charts, and templated parameters from Ansible roles. |
 | `charts/`| mandatory| Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack. |
 | `manifests/`| mandatory| Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack.
 | `ansible-roles`| optional| Ansible roles used to install the pack.|
