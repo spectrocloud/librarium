@@ -18,15 +18,14 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette Edge Native is modeled on an immutable operating system.  It is not another linux distribution, but rather a method to consume the distribution of your choice in an immutable way.  Palette Edge Native leverages the open source project, [Kairos](kairos.io/) to create these artifacts.
 
-This How-To will walk you through the basics of creating base Ubuntu images:
+This how-to-guide will walk you through the basics of creating base Ubuntu images:
 
 * Installer Image - Used to install or "Flash" a device or virtual machine.
 * Provider Images - Used to provision new Kubernetes clusters and used to provide upgrades.
-
-In this how-to we will create three images.
+In this how-to guide we will create three images.
 
 * 1 x Installer ISO
-* 2 x Provider images (For both K3s 6 and K3s 1.25.2)
+* 2 x Provider images
 
 We will customize the installer image to support auto registration giving you a low touch feeling when we deploy edge nodes in later [Edge](/knowledgebase/tutorials/edge-native) tutorials.
 
@@ -48,7 +47,7 @@ The ability to run privileged containers is required.
 * 8GB Memory
 * 50GB HD
 
-**This how-to was written with the following versions:**
+**This how-to guide was written with the following versions:**
 
 **Ubuntu**
 
@@ -62,6 +61,7 @@ Codename:       jammy
 
 4-vCPU  
 8GB Memory  
+100GB Hard Disk  
 
 **Docker CE**
 
@@ -145,37 +145,27 @@ The MY_ENVIRONMENT variable should adhere to standard image naming conventions w
 vi .arg
 ```
 
-Depending on your editor the way you save may be different.  This lab was written using VIM. To enable editing in VIM press `i`.  Use the arrow keys to scroll to the value of the `MY_ENVIRONMENT` variable.  Delete the value `demo` and replace it with your initials in lowercase.
+Depending on your editor the way you save may be different.  This lab was written using VIM. To enable editing in VIM press `i`.  Use the arrow keys to scroll to the value of the `CUSTOM_TAG` variable.  Delete the value `demo` and replace it with your initials in lowercase.
 
 **Sample Output**
 
 ```shell
-MY_ENVIRONMENT=demo
+CUSTOM_TAG=demo
 IMAGE_REGISTRY=ttl.sh
 OS_DISTRIBUTION=ubuntu
-IMAGE_REPOSITORY=$OS_DISTRIBUTION
-OS_VERSION=22   
+IMAGE_REPO=$OS_DISTRIBUTION
+OS_VERSION=22
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-edge-installer
 
 
-# MY_ENVIRONMENT-------------------- Environment name for provider image naming
+# CUSTOM_TAG-------------------------Environment name for provider image naming
 # IMAGE_REGISTRY---------------------Image Registry Name
 # OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
-# IMAGE_REPOSITORY-------------------Image Repository Name
+# IMAGE_REPO-------------------------Image Repository Name
 # OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
-# K8S_DISTRIBUTION-------------------Kubernetes Distribution (K3s, RKE2, Kubeadm)
+# K8S_DISTRIBUTION-------------------Kubernetes Distribution (k3s, rke2, kubeadm)
 # ISO Name---------------------------Name of the Installer ISO
-
-
-#### EXAMPLE #######
-### IMAGE_PATH=ttl.sh/ubuntu-demo:k3s-1.25.2-v3.3.3
-####################
-
-
-
-
-
 ```
 
 * To save with VIM, press `esc` then type `:wq!` and press `enter`
@@ -187,27 +177,22 @@ Depending on your editor the way you save may be different.
 **Sample Output**
 
 ```shell
-MY_ENVIRONMENT=jb
+CUSTOM_TAG=jb
 IMAGE_REGISTRY=ttl.sh
 OS_DISTRIBUTION=ubuntu
-IMAGE_REPOSITORY=$OS_DISTRIBUTION
-OS_VERSION=22   
+IMAGE_REPO=$OS_DISTRIBUTION
+OS_VERSION=22
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-edge-installer
 
 
-# MY_ENVIRONMENT-------------------- Environment name for provider image naming
+# CUSTOM_TAG-------------------------Environment name for provider image naming
 # IMAGE_REGISTRY---------------------Image Registry Name
 # OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
-# IMAGE_REPOSITORY-------------------Image Repository Name
+# IMAGE_REPO-------------------------Image Repository Name
 # OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
-# K8S_DISTRIBUTION-------------------Kubernetes Distribution (K3s, RKE2, Kubeadm)
+# K8S_DISTRIBUTION-------------------Kubernetes Distribution (k3s, rke2, kubeadm)
 # ISO Name---------------------------Name of the Installer ISO
-
-
-#### EXAMPLE #######
-### IMAGE_PATH=ttl.sh/ubuntu-demo:k3s-1.25.2-v3.3.3
-####################
 ~
 ~
 ~
@@ -295,7 +280,7 @@ This creates a `user-data` file that will be used by our agent to inject the val
 
 <InfoBox>
 
-The settings shown above point the image registry to `ttl.sh`.  This is an ephemeral registry where the images live for a maximum of 24 hours (this is the default).  If you wish to use your registry to make the artifacts exist longer than 24 hours you can modify the value of the `IMAGE_REPOSITORY` to match your needs.  
+The settings shown above point the image registry to `ttl.sh`.  This is an ephemeral registry where the images live for a maximum of 24 hours (this is the default).  If you wish to use your registry to make the artifacts exist longer than 24 hours you can modify the value of the `IMAGE_REPO` to match your needs.  
 
 This is outside the scope of this quickstart.
 
@@ -305,35 +290,31 @@ This is outside the scope of this quickstart.
 1. Build the artifacts.
 
 ```shell
-./earthly.sh +build-all-images
+./earthly.sh +build-all-images --PE_VERSION=$(git describe --abbrev=0 --tags)
 ```
 
 This will create two `docker images` and an `iso` that can/will be used in the Edge Native Tutorials.
 
+**SAMPLE OUTPU**  
+
 ```shell
-....truncated for brevity
+###################################################################################################
 
-output | [----------] 100% transferring (via tar) ttl.sh/ubuntu-demo:k3s-v6-v3.3.3
+PASTE THE CONTENTS BELOW INTO YOUR CLUSTER PROFILE IN PALETTE BELOW THE "OPTIONS" ATTRIBUTE
 
- Push Summary ⏫ (disabled)
-————————————————————————————————————————————————————————————————————————————————
-
-To enable pushing use earthly --push
-Did not push image ttl.sh/ubuntu-demo:k3s-v1.24.6-v3.3.3
-Did not push image ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
-
- Local Output Summary 🎁
-————————————————————————————————————————————————————————————————————————————————
-
-Artifact +build-iso/palette-edge-installer.iso output as build/palette-edge-installer.iso
-Artifact +build-iso/palette-edge-installer.iso.sha256 output as build/palette-edge-installer.iso.sha256
-Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.24.6-v3.3.3
-Image +provider-image output as ttl.sh/ubuntu-demo:k3s-v1.25.2-v3.3.3
+###################################################################################################
 
 
-========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev
+
+  system.registry: ttl.sh
+  system.repo: ubuntu
+  system.k8sDistribution: k3s
+  system.osName: ubuntu
+  system.peVersion: v3.3.3
+  system.customTag: jb
+  system.osVersion: 22
 ```
 
 ## Validation
@@ -348,10 +329,10 @@ docker images
 
 ```shell
 docker images
-REPOSITORY              TAG                  IMAGE ID       CREATED         SIZE
-ttl.sh/ubuntu-jb-demo   k3s-v1.25.2-v3.3.3   fe5c03df75a9   3 minutes ago   2.49GB
-ttl.sh/ubuntu-jb-demo   k3s-v1.24.6-v3.3.3   51bddf269545   3 minutes ago   2.49GB
-earthly/earthly         v0.7.4               d771cc8edc38   2 weeks ago     333MB
+REPOSITORY        TAG                       IMAGE ID       CREATED         SIZE
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    32b869a17579   9 minutes ago   2.55GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    a2596b8bef84   9 minutes ago   2.55GB
+earthly/earthly   v0.7.4                    d771cc8edc38   2 weeks ago     333MB
 ```
 
 2. Validate the iso image and checksum are created.
@@ -385,8 +366,8 @@ Change the image ids to match the images in your environment.  You can get the i
 **Sample Output**
 
 ```shell
-docker rmi fe5c03df75a9
-docker rmi 51bddf269545
+docker rmi 32b869a17579
+docker rmi a2596b8bef84
 ```
 
 2. Delete the ISO image and ISO checksum.  
@@ -398,4 +379,4 @@ rm build/palette-edge-installer.iso.sha256
 
 ## Next Steps
 
-Complete one of the [Edge Native Tutorials](/knowledgebase/tutorials/edge-native)
+[Edge Native Tutorials](/knowledgebase/tutorials/edge-native)

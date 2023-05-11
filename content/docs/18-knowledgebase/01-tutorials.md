@@ -19,7 +19,6 @@ Learn what's possible with Spectro Cloud Palette. Use the following tutorials to
 
 - [Dev Engine](/knowledgebase/tutorials/dev-engine)
 
-- [Edge Native](/knowledgebase/tutorials/edge-native)
 
 <br />
 <br />
