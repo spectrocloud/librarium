@@ -19,7 +19,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 Use the following steps to create and deploy an app to a virtual cluster.
 
 
-# Prerequsites 
+# Prerequisite 
 
 - An application profile. Use the guide [Create an App Profile](/devx/app-profile/create-app-profile) to learn how to create an app profile.
 
