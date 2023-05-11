@@ -215,7 +215,7 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 * Select `Registration Tokens`
 * Click `Add New Registration Token`
 * Set `Token Name` as `Demo`
-* Set the `Default Project` as `default`
+* Set the `Default Project` as `Default`
 * Set the Expiration Date for `7 Days`
 
 ![Registration Token](/tutorials/canvos/add_token.png)
@@ -286,7 +286,6 @@ This is outside the scope of this quickstart.
 
 </InfoBox>
 
-
 1. Build the artifacts.
 
 ```shell
@@ -313,6 +312,8 @@ PASTE THE CONTENTS BELOW INTO YOUR CLUSTER PROFILE IN PALETTE BELOW THE "OPTIONS
   system.osVersion: 22
 ```
 
+2. Copy and save this output and formatting to a notepad, it will be used later for building the cluster profile.
+
 ## Validation
 
 1. Validate that the Docker Images are created.
@@ -326,8 +327,8 @@ docker images
 ```shell
 docker images
 REPOSITORY        TAG                       IMAGE ID       CREATED         SIZE
-ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    32b869a17579   9 minutes ago   2.55GB
-ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    a2596b8bef84   9 minutes ago   2.55GB
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-jb      32b869a17579   9 minutes ago   2.55GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-jb      a2596b8bef84   9 minutes ago   2.55GB
 earthly/earthly   v0.7.4                    d771cc8edc38   2 weeks ago     333MB
 ```
 
@@ -347,6 +348,104 @@ drwxrwxr-x 6 jb   jb         4096 Apr 29 15:42 ..
 -rw-r--r-- 1 root root 1022492672 Apr 16  2020 palette-edge-installer.iso
 -rw-r--r-- 1 root root         93 Apr 16  2020 palette-edge-installer.iso.sha256
 ```
+
+## Create a Cluster Profile in Palette
+
+Cluster Profiles are what define the desired configuration of our Kubernetes Clusters.  They are reusable abstractions of the manual configuration elements that would be done to provide consistency and repeatability.  
+A Cluster Profile can be reused across many clusters.  For these next steps, we will build a Cluster Profile to define our OS, Kubernetes, and CNI layers.
+
+
+1. Login to [Palette](https://console.spectrocloud.com)
+
+2. Navigate to the `Default` project.
+
+![Default Project](/tutorials/canvos/default_project.png)
+
+3. Navigate to `Profiles` and select `Add Cluster Profile`
+
+4. Provide a name and select `Full` as the Type
+
+![Cluster Profile](/tutorials/canvos/cluster_profile.png)
+
+* For the name we often suggest making it something that describes the deployment type such as `ubuntu-k3s`
+
+Click `Next`
+
+5. Choose `Edge Native` as the Infrastructure Provider
+
+![Cluster Type](/tutorials/canvos/cluster_type.png)
+
+Click `Next`
+
+6. Select `Public Repo` from the Registry dropdown and set the Pack Type to `BYOS Edge OS`
+
+![OS Layer](/tutorials/canvos/os_layer.png)
+
+7. Copy and paste the output you saved earlier replacing ALL of the contents beneath line 9.
+
+<WarningBox>
+This is YAML and it is very particular about the formatting.  Our inline YAML validation should notify you of any abnormalities.  They would need to be addressed before continuing.  If you copied directly from the CLI from earlier, the formatting should be correct.
+</WarningBox>
+
+Click `Next Layer`
+
+8. Select `Public Repo` from the Registry dropdown, the Pack Type to `Palette Optimized K3S`, and the Pack Version to `1.24.6`
+
+<WarningBox>
+The cluster-cidr and service-cidr should be changed if needed should they overlap with your network.  This is to prevent any routing conflicts in the internal pod networking.
+</WarningBox>
+
+![Kubernetes Layer](/tutorials/canvos/k8s_layer.png)
+
+Click `Next Layer`
+
+9. Select `Public Repo` from the Registry dropdown, the Pack Type to `Calico`, and the Pack Version to `3.25.0`
+
+<InfoBox>
+If you changed the cluster-cidr in the previous step, line 23 should be un-commented (remove the #) and the IP Address should be changed to match your cluster-cidr address pool.  If you made no changes in the previous step, nothing is required to be changed here.
+</InfoBox>
+
+![CNI Layer](/tutorials/canvos/cni_layer.png)
+
+![CNI Layer](/tutorials/canvos/cni_layer.png)
+
+Click `Confirm`  
+Click `Next`  
+Click `Finish Configuration`
+
+![Finish](/tutorials/canvos/finish.png)
+
+## Push the Provider Images to Public Registry
+
+The Cluster Profile we just built references the provider image which will be installed onto the devices.  We need to push those images to a public registry.  The settings we were using have the registry set to `ttl.sh` which is a free public registry requiring no registration.
+
+<WarningBox>
+If you use the ttl.sh registry, please note the images will only be present for 24 hours after the image is pushed.  After that, the images are deleted from that registry.  It is adviseable that you use your registry and push the images there, but if that is not available, the ttl.sh registry will provide a temporary environment to work with.
+</WarningBox>
+
+1. On your jump host verify the images.
+
+```shell
+docker images
+```
+
+**SAMPLE OUTPUT**
+
+```shell
+docker images
+REPOSITORY        TAG                       IMAGE ID       CREATED         SIZE
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-jb      32b869a17579   9 minutes ago   2.55GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-jb      a2596b8bef84   9 minutes ago   2.55GB
+earthly/earthly   v0.7.4                    d771cc8edc38   2 weeks ago     333MB
+```
+
+2. Push the images
+
+```shell
+docker push ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-jb
+docker push ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-jb
+```
+
 
 ## Cleanup
 
