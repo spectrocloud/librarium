@@ -18,7 +18,7 @@ Palette supports creating and managing Kubernetes clusters using Google Kubernet
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a cluster to GKE:
+Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
 
 - Access to a GCP cloud account 
 
@@ -56,7 +56,7 @@ The following prerequisites must be met before deploying a cluster to GKE:
 5. Select **GCP** and click on **Start GCP Configuration**
 
 
-6. Populate the wizard page with the following information: name, description, tags, and select GCP account. Tags on a cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after completing all the required information.
+6. Populate the wizard page with the following information: name, description, tags, and select GCP account. Tags assigned to a cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after completing all the required information.
 
 
 
@@ -74,10 +74,10 @@ The following prerequisites must be met before deploying a cluster to GKE:
   |Parameter|Description|
   |---|---|
   |**Project**|The project to which the cluster belongs.|
-  |**Region**|Choose the desired GCP region where you would like the clusters to be provisioned.|
+  |**Region**|Choose the desired GCP region to deploy the cluster.|
 
 
-10. Configure worker node pool. This is the section where you can specify the instance types, disk size, and the number of nodes. 
+10. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the number of nodes. Configure worker node pool.
 
   <br />
 

@@ -14,11 +14,11 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 # Create and Manage GCP IaaS Cluster
 
 
-Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This section guides you on how to create an IaaS Kubernetes cluster in GCP that Palette manages.
+Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This section guides you on creating an IaaS Kubernetes cluster in GCP that Palette manages.
 
 # Prerequisites
 
-The following prerequisites must be met before deploying a cluster to GCP:
+Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
 
 - Access to a GCP cloud account 
 
@@ -59,7 +59,7 @@ The following prerequisites must be met before deploying a cluster to GCP:
 5. Select **GCP** and click on **Start GCP Configuration**
 
 
-6. Populate the wizard page with the following information: name, description, tags, and select GCP account. Tags on a cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after completing all the required information.
+6. Populate the wizard page with the following information: name, description, tags, and select GCP account. Tags assigned to a cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after completing all the required information.
 
 
 
@@ -77,9 +77,9 @@ The following prerequisites must be met before deploying a cluster to GCP:
   |Parameter|Description|
   |---|---|
   |**Project**|The project to which the cluster belongs.|
-  |**Region**|Choose the desired GCP region where you would like the clusters to be provisioned.|
+  |**Region**|Choose the desired GCP region to deploy the cluster.|
   |**SSH Key**|Choose the desired SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload the public key to Palette.|
-  |**Static Placement** | Check the **Static Placement** box if you wan to deploy resources into preexisting VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/gcp/create-gcp-iaas-cluster#staticplacement) table below to learn more about the required input fields.|
+  |**Static Placement** | Check the **Static Placement** box to deploy resources into preexisting VPC. Review the [Static Placement](/clusters/public-cloud/gcp/create-gcp-iaas-cluster#staticplacement) table below to learn more about the required input fields.|
 
   #### Static Placement
   
@@ -92,7 +92,7 @@ The following prerequisites must be met before deploying a cluster to GCP:
 
   
 
-10. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, disk size, and the number of nodes. 
+10. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the number of nodes. Configure the master and worker node pools. A master and a worker node pool are configured by default.  
 
   <br />
 

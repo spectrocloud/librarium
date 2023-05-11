@@ -18,11 +18,11 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
 # Prerequisites
 
-* You must have a GCP service account available for use with Palette. For detailed instructions on creating a service account refers to [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
+* You must have a GCP service account available for use with Palette. For detailed instructions on creating a service account, refer to [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
 
 
-* The service account must at a minimum have the following roles assigned. 
+* The service account must, at a minimum, have the following roles. 
     - Compute Admin
     - Service Account User
     - Storage Object Viewer
@@ -38,7 +38,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
 
 
-* Ensure you have access to the JSON credential file for your service account. Refer to the [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation for additional guidance.
+* Ensure you have access to the JSON credential file for your service account. For additional guidance, refer to the [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation.
 
 # Create Account
 
@@ -52,7 +52,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 3. Select **Cloud Accounts** and click on **Add GCP Account**.
 
 
-4. In the cloud account creation wizard provide the following information:
+4. In the cloud account creation wizard, provide the following information:
    * **Account Name:** Custom name for the cloud account.
 
    * **JSON Credentials:** The JSON credentials object.
@@ -78,7 +78,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 
-2. To review the list of cloud accounts navigate to the left **Main Menu** and click on **Tenant Settings**. 
+2. To review the list of cloud accounts, navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
 
 3. Next, click on **Cloud Accounts**. Your newly added GCP account is listed under the GCP section
@@ -87,4 +87,4 @@ You can validate the account is available in Palette by reviewing the list of cl
 # Next Steps
 
 
-Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, check out the [Create and Manage GCP IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS GKE Cluster](/clusters/public-cloud/aws/eks) guide.
+Now that you have added an AWS account to Palette, you deploy clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, check out the [Create and Manage GCP IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS GKE Cluster](/clusters/public-cloud/aws/eks) guide.
