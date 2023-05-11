@@ -14,4 +14,4 @@ hiddenFromNav: false
  -->
 ## Basic
 
-- [Edge Native on Virtual Box](/knowledgebase/tutorials/edge-native/edge-native-virtualbox)
+- [Getting Started with Edge Native](/knowledgebase/tutorials/edge-native/edge-native-getting-started)

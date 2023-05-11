@@ -10,4 +10,4 @@ hiddenFromNav: false
 
 # Basic
 
-[Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/edgeforge)
+[Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)

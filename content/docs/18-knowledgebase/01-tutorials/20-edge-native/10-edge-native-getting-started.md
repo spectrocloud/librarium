@@ -1,20 +1,148 @@
 ---
-title: "Getting Started with Edge Native on Virtual Box"
-metaTitle: "Edge Native - Virtual Box"
-metaDescription: "Learn how to get started with edge native on virtual box."
+title: "Getting Started with Edge Native"
+metaTitle: "CanvOS"
+metaDescription: "Learn how to use your installer to build or flash edge devices."
 icon: "nodes"
-category: ["how-to"]
+category: ["tutorial"]
 hideToC: false
 fullWidth: false
 ---
-
-# Edge Native on VirtualBox
-
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-## Prerequisites
+## What are we Trying to Achieve
+
+Imagine that you’re the IT administrator for a retail company that has just been tasked with deploying to 1000 new locations this year. Your job is to deploy single-node Kubernetes clusters at the edge for each of these new stores. You’ve decided Palette will be your tool of choice and for this exercise, you’ll use VMs to test the ease of use for consistent deployments.  
+
+## Testing Environment
+First,  we need to setup our testing enviornment
+<InfoBox>
+Pick your testing environment below
+</InfoBox>
+
+<Tabs>
+
+<Tabs.TabPane tab="vSphere" key="vsphere">
+
+### Edge Native - VMware
+
+### Prerequisites
+
+### Create the Virtual Machine Template
+
+1. Clone the Github Repo
+
+```shell
+git clone https://github.com/spectrocloud/tutorials.git
+```
+
+**Sample Output**
+
+```shell
+git clone https://github.com/spectrocloud/tutorials.git
+Cloning into 'tutorials'...
+remote: Enumerating objects: 523, done.
+remote: Counting objects: 100% (119/119), done.
+remote: Compressing objects: 100% (62/62), done.
+remote: Total 523 (delta 65), reused 73 (delta 54), pack-reused 404
+Receiving objects: 100% (523/523), 7.31 MiB | 2.06 MiB/s, done.
+Resolving deltas: 100% (252/252), done.
+```
+
+<InfoBox>
+If you used the "Building Edge Native Artifacts" How-To then the installation ISO needed will be in the CanvOS folder.  We will use the path of this folder to mount when we create the Docker image.
+</InfoBox>
+
+**For reference: [Building Edge Native Artifacts](https://docs.spectrocloud.com/knowledgebase/how-to/edge-native/edgeforge)**  
+
+< br />
+
+2. Change into the `tutorials` directory
+
+```shell
+cd tutorials
+```
+
+3. Mount the Directory with your ISO and run the Docker Image
+
+The Folder structure tested in this environment looks like this.
+
+```shell
+.
+├── CanvOS
+└── tutorials
+```
+
+< br />
+
+<InfoBox>
+This tutorial assumes the path of your ISO is in the following path.  Adjustments may be needed depending on your environment.
+</InfoBox>
+
+**Path= $HOME/git/CanvOS/build**
+
+```shell
+docker run -it -v "${HOME}/git/CanvOS/build:/edge-native/vmware/packer/build" tutorials
+```
+
+4. Change into the Packer directory
+
+```shell
+cd edge-native/vmware/packer/
+```
+
+5. Copy the `vsphere.hcl.template` to `vsphere.hcl`
+
+```shell
+cp vsphere.hcl.template vsphere.hcl
+```
+
+6. Modify the vsphere.hcl file to meet your environment needs.  Edit only the "Custom Variables"
+
+<InfoBox>
+This tutorial is using VIM as the editor.  Depending upon your editor the edit and save options may be different.
+</InfoBox> 
+
+```shell
+vi vsphere.hcl
+```
+
+```shell
+# Custom Variables
+vcenter_server   = ""
+vcenter_username = ""
+vcenter_password = ""
+vcenter_datacenter      = ""
+vcenter_datastore       = ""
+vcenter_resource_pool   = ""
+vcenter_folder          = ""
+vcenter_cluster         = ""
+vcenter_network         = ""
+```
+
+* Press `i` to enable editing.  
+* Replace the value of `edgeHostToken` variable with the value of the registration token you saved to the note file.  
+* To save with VIM, press `esc` then type `:wq!` and press `enter` 
+
+7. Run the `packer build` command to create the template.
+
+```shell
+packer build --var-file=vsphere.hcl build.pkr.hcl
+```
+
+<InfoBox>
+This build process can take 7-10 minutes depending on your network configuration and capabilities.  Be patient.  The Packer Builder will finish on its own.
+</InfoBox>
+
+Now that we have the template built we can create our actual edge host images.  To do this, we will clone the template.
+
+These next steps will use the GOVC tool built into the Docker image.  You will need to add your environment information to the 
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="VirtualBox " key="virtualBox">
+
+### Prerequisites
 
 **Installed Software**  
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads)  
@@ -43,13 +171,13 @@ Completion of the [Building Edge Native Artifacts How To](/knowledgebase/how-to/
 
 * **This is a prerequisite as it creates the provider and installer images used in this tutorial.**
 
-## Build the VirtualBox VM
+### Build the VirtualBox VM
 
 1. Get installer ISO
 
-* Download the installer ISO that ws created in the [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/edgeforge)
+* Download the installer ISO that was created in the [Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/edgeforge)
 
-2. Launch th Virtual Box Application.
+2. Launch the Virtual Box Application.
 3. Create a New Virtual Machine.
 
 * `Click` New Virtual Machine  
@@ -139,11 +267,18 @@ The device is now ready to be provisioned.
 
 ## Upload images to registry
 
+
+</Tabs.TabPane>
+
+</Tabs>
+
+<br />
+
 <WarningBox>
 The rest of this tutorial relies upon using container images that have already been created using our Edge Forge.  If you have not created these please complete the Building Edge Native Artifacts How To before continuing.
 </WarningBox>
 
-**[Building Edge Native Artifacts How To](/knowledgebase/how-to/edge-native/edgeforge)**
+**[Building Edge Native Artifacts](/knowledgebase/how-to/edge-native/canvos)**
 
 ## Validate images
 
@@ -250,7 +385,6 @@ Select `Profiles` from the left hand menu
 
 * Click `Add New Profile`
 * Give the Profile a name
-
 
 ```yaml
 system.uri: 'ttl.sh/{{ .spectro.system.clusterprofile.infra.name }}:k3s-{{ .spectro.system.clusterprofile.infra.version}}'
