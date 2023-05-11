@@ -703,7 +703,15 @@ Once the cluster is deleted, navigate to the left **Main Menu** and click on **P
 
 ##  Terraform
 
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. 
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). Some notable reasons why you would want to utilize IaC are: 
+
+- The ability to automate infrastructure.
+
+- Improved collaboration in making infrastructure changes.
+
+- Self-documentation of infrastructure through code.
+
+- Allows tracking all infrastructure in a single source of truth. 
 
 If want to become more familiar with Terraform, we recommend you check out the [Terraform](https://developer.hashicorp.com/terraform/intro) learning resources from HashiCorp. 
 
@@ -726,7 +734,7 @@ To complete this tutorial, you will need the following items
 
 <br />
 
-## Setup Local Environment
+## Set Up Local Environment
 
 You can clone the tutorials repository locally or follow along by downloading a Docker image that contains the tutorial code and all dependencies. 
 
@@ -780,7 +788,7 @@ cd /terraform/iaas-cluster-deployment-tf
 </Tabs.TabPane>
 <Tabs.TabPane tab="Git" key="git">
 
-Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+Open a terminal window and download the tutorial code from GitHub. 
 
 <br />
 
@@ -788,7 +796,7 @@ Open a terminal window to begin the tutorial and download the tutorial code from
 git@github.com:spectrocloud/tutorials.git
 ```
 
-Change directory to the tutorial folder.
+Change the directory to the tutorial folder.
 
 <br />
 
@@ -849,33 +857,33 @@ To help you get started with Terraform, the tutorial code is structured to suppo
 
 <br />
 
-- **providers.tf** - this file contains the Terraform providers that are used to support the deployment of the cluster.
+- **providers.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
 
 
-- **inputs.tf** - a file containing all the Terraform variables for the deployment logic.
+- **inputs.tf** - This file contains all the Terraform variables for the deployment logic.
 
 
-- **data.tf** - contains all the query resources that perform read actions.
+- **data.tf** - This file contains all the query resources that perform read actions.
 
 
-- **cluster_profiles.tf** - this file contains the cluster profile definitions. Each cloud provider has its own cluster profile definition.
+- **cluster_profiles.tf** - This file contains the cluster profile definitions for each cloud provider.
 
 
-- **cluster.tf** - this file has all the required cluster configurations to deploy a host cluster to one of the cloud providers.
+- **cluster.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud providers.
 
 
-- **terraform.tfvars** - use this file to customize the deployment and target a specific cloud provider. This is the primary file you will make modifications to.
+- **terraform.tfvars** - Use this file to customize the deployment and target a specific cloud provider. This is the primary file you will modify.
 
 
-- **outputs.tf** - contains content that will be output in the terminal session upon a successful Terraform `apply` action.
+- **outputs.tf** - This file contains content that will be output in the terminal session upon a successful Terraform `apply` action.
 
-In the following section, you will be able to review the core terraform resources more closely.
+The following section allows you to review the core Terraform resources more closely.
 
 <br />
 
 ### Provider
 
-The **provider.tf** file contains the Terraform providers and their respective versions. The tutorial uses two providers - the Spectro Cloud Terraform provider and the TLS Terraform provider. Take note of how the project name is specified in the `provider "spectrocloud" {}` block. You can change the target project by changing the value specified to the `project_name` parameter.
+The **provider.tf** file contains the Terraform providers and their respective versions. The tutorial uses two providers - the Spectro Cloud Terraform provider and the TLS Terraform provider. Note how the project name is specified in the `provider "spectrocloud" {}` block. You can change the target project by changing the value specified in the `project_name` parameter.
 
 <br />
 
@@ -903,11 +911,13 @@ The next file you should become familiar with is the **cluster-profiles.tf** fil
 
 ### Cluster Profile
 
-The Spectro Cloud Terraform provider has several resources available for use. When creating a cluster profile, use the `spectrocloud_cluster_profile`.
+The Spectro Cloud Terraform provider has several resources available for use. When creating a cluster profile, use `spectrocloud_cluster_profile`.
 This resource can be used to customize all layers of a cluster profile. You can specify all the different packs and versions to use and add a manifest or Helm chart.
 
 
-In the **cluster-profiles.tf** file, the cluster profile resource is declared three times. Each instance of the resources is for a specific cloud provider. Using the AWS cluster profile as an example, notice how the cluster profile uses `pack {}` blocks to specify each layer of the cluster profile. The order you arrange the `pack {}` plays an important role, as each layer maps to the core infrastructure in a cluster profile. The first layer must be the OS, followed by Kubernetes, the container network interface, the container storage interface, etc. Ensure you define the bottom layer of the cluster profile first.
+In the **cluster-profiles.tf** file, the cluster profile resource is declared three times. Each instance of the resource is for a specific cloud provider. Using the AWS cluster profile as an example, note how the **cluster-profiles.tf** file uses `pack {}` blocks to specify each layer of the profile. The order in which you arrange contents of the `pack {}` blocks plays an important role, as each layer maps to the core infrastructure in a cluster profile. 
+
+The first listed `pack {}` block must be the OS, followed by Kubernetes, the container network interface, and the container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile. Ensure you define the bottom layer of the cluster profile - the OS layer -  first in the list of `pack {}` blocks.
 
 <br />
 
@@ -960,7 +970,7 @@ resource "spectrocloud_cluster_profile" "aws-profile" {
 }
 ```
 
-The last `pack {}` block contains a manifest file that contains all the Kubernetes configurations for the [Hello Universe](https://github.com/spectrocloud/hello-universe) application. Including the application in the cluster profile ensures the application is installed during the cluster deployment process. If you are wondering what all the data resources are for, head on to the next section, where data resources are reviewed.
+The last `pack {}` block contains a manifest file with all the Kubernetes configurations for the [Hello Universe](https://github.com/spectrocloud/hello-universe) application. Including the application in the profile ensures the application is installed during cluster deployment. If you wonder what all the data resources are for, head to the next section to review them.
 
 
 ### Data Resources
@@ -979,7 +989,7 @@ You may have noticed that each `pack {}` block contains references to a data res
   }
 ```
 
-[Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific. You can get information about the pack using the data resource, such as unique ID, registry ID, version available, and YAML values.
+[Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific pack. You can get information about the pack using the data resource such as unique ID, registry ID, available versions, and the pack's YAML values.
 
 Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.24.10`.
 
@@ -993,10 +1003,10 @@ data "spectrocloud_pack" "aws_k8s" {
 ```
 
 Using the data resource, you avoid manually typing in the parameter values required by the cluster profile's `pack {}` block.
-
+<br />
 ### Cluster
 
-The file **clusters.tf** contains the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you must use one of the cluster resources specific to the cloud provider you want to target.
+The **clusters.tf** file contains the definitions for deploying a host cluster to one of the cloud providers. To create a host cluster, you must use a cluster resource for the cloud provider you are targeting.
 
 In this tutorial, the following Terraform cluster resources are used.
 
@@ -1009,7 +1019,7 @@ In this tutorial, the following Terraform cluster resources are used.
 | `spectrocloud_cluster_gcp` | GCP |  [Link](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)|
 
 
-Using the `spectrocloud_cluster_azure` resource used in the tutorial as an example, notice how the resource accepts a set of parameters.When deploying a cluster, you can change the same parameters through the Palette User Interface (UI). You can learn more about each parameter by reviewing the resource's documentation page hosted in the Terraform registry.
+Using the `spectrocloud_cluster_azure` resource in this tutorial as an example, note how the resource accepts a set of parameters. When deploying a cluster, you can change the same parameters in the Palette user interface (UI). You can learn more about each parameter by reviewing the resource documentation page hosted in the Terraform registry.
 
 <br />
 
@@ -1060,11 +1070,11 @@ resource "spectrocloud_cluster_azure" "cluster" {
 ```
 ## Deploy Cluster
 
-You must first make changes to the **terraform.tfvars** file. Open the **terraform.tfvars** file in any editor of your choice, and focus on the cloud provider you want to deploy a host cluster.
+To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open the **terraform.tfvars** file in the editor of your choice, and locate the cloud provider you will use to deploy a host cluster.
 
-In this Terraform template, to help simplify things, we have added a toggle variable that you can use to select the deployment environment. Each cloud provider has its section containing all the variables you must populate. If a variable under your chosen cloud provider has the value `REPLACE_ME`, it must be replaced.
+To simplify the process, we added a toggle variable in the Terraform template, that you can use to select the deployment environment. Each cloud provider has a section in the template that contains all the variables you must populate. Variables to populate are identified with `REPLACE_ME`.
 
-As an example, review the AWS section. To deploy to AWS, you would change `deploy-aws = false` to `deploy-aws = true`. Additionally, you would replace all the variables with a value `REPLACE_ME`. You can also change the nodes in either the master pool or worker pool by updating the values.
+In the example AWS section below, you would change `deploy-aws = false` to `deploy-aws = true` to deploy to AWS. Additionally, you would replace all the variables with a value `REPLACE_ME`. You can also update the values for nodes in the master pool or worker pool.
 
 ```terraform
 ###########################
@@ -1093,7 +1103,7 @@ aws_worker_nodes = {
 }
 ```
 
-After you have made all the required changes, issue the following command to initialize Terraform.
+When you are done making the required changes, issue the following command to initialize Terraform.
 
 <br />
 
@@ -1101,7 +1111,7 @@ After you have made all the required changes, issue the following command to ini
 terraform init
 ```
 
-Next, issue the plan command to preview the changes.
+Next, issue the `plan` command to preview the changes.
 
 <br />
 
@@ -1115,9 +1125,9 @@ Output:
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
-If you change the desired cloud provider's toggle variable to `true,` you will receive an output stating two new resources will be created. The two resources are your cluster profile and the host cluster.
+If you change the desired cloud provider's toggle variable to `true,` you will receive an output message that two new resources will be created. The two resources are your cluster profile and the host cluster.
 
-To deploy all the resources, use the apply command.
+To deploy all the resources, use the `apply` command.
 
 <br />
 
@@ -1129,7 +1139,7 @@ terraform apply -auto-approve
 ### Verify the Profile
 
 
-To check out the cluster profile creation in Palette, login to [Palette](https://console.spectrocloud.com), and from the left **Main Menu** click on **Profiles** to access the profile page. Scan the list and look for a cluster profile with the following name pattern `tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
+To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern `tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
 
 ![A view of the cluster profile](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_view.png)
 
@@ -1167,7 +1177,7 @@ While you wait for the cluster deployment process to complete, feel free to chec
 
 ## Validation
 
-Once the cluster is deployed and ready, you can access the deployed application Hello Universe.
+When the cluster deploys, you can access the Hello Universe application.
 From the cluster's **Overview** page, click on the URL for port **:8080** next to the **hello-universe-service** in the **Services** row. This URL will take you to the application landing page. 
 
 <br />
@@ -1175,7 +1185,7 @@ From the cluster's **Overview** page, click on the URL for port **:8080** next t
 
 <WarningBox>
 
-It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
 </WarningBox>
 
@@ -1191,7 +1201,7 @@ You have deployed your first application to a cluster managed by Palette through
 
 ## Cleanup
 
-Use the following steps to clean up all the resources you created for the tutorial. Use the destroy command to remove all the resources you created through Terraform.
+Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all the resources you created through Terraform.
 
 <br />
 
@@ -1208,7 +1218,7 @@ Destroy complete! Resources: 2 destroyed.
 
 <InfoBox>
 
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force delete, navigate to the cluster’s details page and click on **Settings**. Click on **Force Delete Cluster** to delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 </InfoBox>
 
@@ -1228,7 +1238,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
 
 # Wrap-up
 
-In this tutorial, you created a cluster profile, which is a template containing the core layers required to deploy a host cluster. You then deployed a host cluster onto your preferred cloud service provider. Once the cluster deployed, you updated the cluster profile and added the application Hello Universe to the profile definition, and applied the updates to the host cluster.
+In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a host cluster. You then deployed a host cluster onto your preferred cloud service provider. After the cluster deployed, you updated the profile by adding the Hello Universe application and applied the updates to the host cluster.
 
 Palette assures consistency across cluster deployments through cluster profiles. Palette also enables you to quickly deploy applications to a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application.
 
