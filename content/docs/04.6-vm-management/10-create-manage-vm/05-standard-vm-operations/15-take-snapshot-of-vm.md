@@ -29,7 +29,7 @@ To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentCon
 
 <br />
 
-You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the Snapshot action is not possible.
+You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the **Snapshot** action is not possible.
 
 # Prerequisites
 
@@ -49,10 +49,12 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 <InfoBox>
 
-In some situations (e.g., with Fedora operating system), SElinux (on the guest) is preventing the QEMU guest agent from quiescing the target filesystem. As workaround, you can either:
+In some situations such as with the Fedora operating system, SElinux on the guest prevents the QEMU guest agent from quiescing the target filesystem. As workaround, you can do one of the following:
 
-- Generate an appropriate local security module that permis `qemu-ga` to operate correctly (preferred).
-- Turn off SElinux **Enforcing** mode before the snapshot by issuing the following command as the root user `setenforce 0`. Enforcing can be turned on again after the snapshot.
+- Generate an appropriate local security module that permits `qemu-ga` to operate correctly. This is the preferred workaround.
+
+
+- Turn off SElinux **Enforcing** mode before the snapshot by issuing the `setenforce 0` command as the root user. Enforcing can be turned on again after the snapshot using the `setenforce 1` command.
 
 </InfoBox>
 

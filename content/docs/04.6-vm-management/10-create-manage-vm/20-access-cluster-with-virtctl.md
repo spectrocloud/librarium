@@ -14,17 +14,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform, such as copying and pasting into the virtual console.
+The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform by providing convenience commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
 
 # Prerequisites
 
-- A running virtual cluster and access to it.
+- A running virtual cluster with Palette VM Management and access to it.
 
 
 
 # Download and Connect virtctl
 
-1. Download the virtctl artifact based on your machine type from [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the Assets section.
+1. Download the most recent virtctl artifact based on your machine type from the official [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the Assets section.
 
 
 2. Give execute permission to the virtctl command.
@@ -40,7 +40,7 @@ The virtctl command-line interface (CLI) tool facilitates some of the VM operati
 4. Navigate to the left **Main Menu** and select **Clusters**. 
 
 
-5. Select the host cluster you want to connect.
+5. Select the cluster you want to connect to.
 
 
 6. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
@@ -56,7 +56,7 @@ The virtctl command-line interface (CLI) tool facilitates some of the VM operati
   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
   ```
 
-9. Issue the `virtctl ssh <machinename>` or `virtctl vnc <machinename>` command to display the login screen.
+9. Issue the `virtctl ssh <virtual_machinename>` or `virtctl vnc <virtual_machinename>` command to display the login screen.
 
     Example:
   ```shell
@@ -67,4 +67,4 @@ You can now issue virtctl commands against your host cluster.
 
 # Validation
 
-Verify you have access to your host cluster by issuing virtctl commands against it.
+Verify you have access to your virtual machine by issuing virtctl commands against it.
