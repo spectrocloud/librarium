@@ -432,9 +432,9 @@ You can modify cluster profiles after you create them by adding, removing, or ed
 
 <br />
 
-Navigate to the left **Main Menu** and select **Cluster**. Click the **Add New Cluster** button from the clusters page.
+Navigate to the left **Main Menu** and select **Cluster**. Click the **Add New Cluster** button.
 
-![palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
+![Palette clusters overview page](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_new_cluster.png)
 
 Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Google Cloud** and click the **Start Google Cloud Configuration** button. Use the following steps to create a host cluster in Google Cloud.
 
@@ -445,16 +445,16 @@ Click on **Deploy New Cluster** to access the cluster deployment wizard. Select 
 
 In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**, **Description**, **Tags**, and **Cloud account**. Click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_basic_info.png)
+![Palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_basic_info.png)
 
 <br />
 
 
 ### Cluster Profile
 
-On the right side is a list of available cluster profiles you can choose to deploy to GCP. Select the cluster profile you created earlier and click on **Next**.
+A list is displayed of available profiles you can choose to deploy to GCP. Select the cluster profile you created earlier and click on **Next**.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_gcp_profile.png)
+![Palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_gcp_profile.png)
 
 <br />
 
@@ -463,16 +463,16 @@ On the right side is a list of available cluster profiles you can choose to depl
 
 The **Parameters** section displays all the layers and add-on components in the cluster profile.
 
-![palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
+![Palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if you don't want to use the default values of the cluster profile. Click on **Next** to proceed.
+Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
 <br />
 
 
 ### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for uploading an SSH key.
+The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for information about uploading an SSH key.
 
 
 <br />
@@ -482,25 +482,24 @@ After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
 
 The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster.
 
-Before you proceed to the next section, take the time to review the following parameters.
+Before you proceed to the next section, review the following parameters.
 
-The list and parameters' explanation are found on the [Node Pool](/clusters/cluster-management/node-pool) documentation page.
+Refer to the [Node Pool](/clusters/cluster-management/node-pool) guide for a list and description of parameters.
 
-Among the multiple configurations you can set, be sure to consider the following:
-- **Number of nodes in the pool** - Used to set the right amount of nodes that make up the pool of either the master or worker nodes. Set the count to one for the master pool and two for the worker pool.
+Before you proceed to next section, review the following parameters.
+- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
 
-- **Allow worker capability** - This option allows the master node also to accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
+- **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
 
 
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select **n1-standard-4**.
 
-`
-- **Disk size** - set the disk size to **60**.
+- **Disk size** - Set the disk size to **60**.
 
 
-- **Availability zones** -  Used to specify the availability zones node pool nodes can be placed. Pick one availability zone.
+- **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
 
-![palette clusters nodes configuration](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
+![Palette clusters nodes configuration](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 <br />
 
@@ -509,15 +508,15 @@ Select **Next** to proceed with the cluster deployment.
 
 ### Settings
 
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC) bindings, and more.
+In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add Role-Based Access Control (RBAC) bindings, and more.
 
 For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 ### Review
 
-The **Review** section allows you to review all the cluster configurations before deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
+The **Review** section allows you to review the cluster configuration before deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
-![gcp creation of a new cluster overview page](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
+![Newly created GCP cluster](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
 
 <br />
 
@@ -537,7 +536,7 @@ Click on your cluster to review details such as deployment status, event logs, c
 </Tabs>
 
 
-The cluster deployment process can take several minutes, approximately 15 to 30 min. The deployment time is affected by the selected cloud provider, cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to check the event log.
+The cluster deployment process can take 15 to 30 min. The deployment time varies depending on the cloud provider, cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to view the log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
 
@@ -554,22 +553,22 @@ While you wait for the cluster deployment process to complete, feel free to chec
 
 ## Update Cluster Profile
 
-Once the cluster is deployed and ready you are ready for the next steps. In the following steps, you will learn how to update cluster profiles after deploying a host cluster. In this scenario, you will add a new layer to the cluster profile that contains the application.
+In the following steps, you will learn how to update a cluster profile by adding a new layer to it that contains the application.
 
 <br />
 
 ### Add a Manifest
 
-Navigate to the left **Main Menu** and select **Profiles**. Select the cluster profile you created earlier and applied to the host cluster.
+Navigate to the left **Main Menu** and select **Profiles**. Select the cluster profile you created earlier and which you applied to the host cluster.
 
 Click on **Add Manifest** at the top of the page and fill out the following input fields. <br /> <br />
 
 - **Layer name** - The name of the layer. Assign the name **application**.
 
 
-- **Manifests**  - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button  An empty editor will appear on the right side of the screen.
+- **Manifests**  - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button  An empty editor will be displayed on the right side of the screen.
 
-![Image of the blue button](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.png)
+![Screenshot of unopened manifest editor](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.png)
 
 <br />
 
@@ -615,16 +614,16 @@ spec:
 
 The code snippet you added will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. You may have noticed that the code snippet you added is a Kubernetes configuration. Manifest files are a method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes configuration to a manifest file.
 
-![manifest](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
+![Screenshot of manifest in the editor](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
 
-The manifest defined a replica set for the application to simulate a distributed environment with a web application deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single access point and distribute the workload to both containers.
+The manifest defines a replica set for the application to simulate a distributed environment with a web application deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single access point and distribute the workload to both containers.
 
 Click on **Confirm & Create** to save your changes.
 
 <br />
 
 
-### Deploy
+### Deployment
 
 Navigate to the left **Main Menu** and select **Clusters**. Click on the host cluster you deployed to open its details page.
 
@@ -646,7 +645,7 @@ Click on **Confirm updates** to apply the updates to the host cluster. Depending
 
 ## Verify the Application
 
-Navigate to the cluster's details page and verify you are in the **Overview** tab. Once the application is deployed and ready for network traffic, in the **Services** row, Palette will expose the service URL. Click on the URL for port **:8080** to access the Hello Universe application. 
+Navigate to the cluster's details page and verify you are in the **Overview** tab. When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the Hello Universe application. 
 
 ![Cluster details page with service URL highlighted](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_service_url.png)
 
@@ -656,7 +655,7 @@ Navigate to the cluster's details page and verify you are in the **Overview** ta
 
 <WarningBox>
 
-It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
+It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
 
 </WarningBox>
@@ -676,19 +675,19 @@ You have deployed your first application to a cluster managed by Palette. Your f
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, navigate to the left **Main Menu** and click on **Clusters** to access the clusters page. Select the cluster you want to delete to access its details page.
+To remove the cluster, navigate to the left **Main Menu** and click on **Clusters**. Select the cluster you want to delete to access its details page.
 
-Click on **Settings**. In the top-right-hand corner of the page, expand the **settings Menu** and select **Delete Cluster** to delete the cluster.
+Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Destroy-cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_delete-cluster-button.png)
+![Delete cluster](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_delete-cluster-button.png)
 
-You will be asked to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with the delete step. The deletion process will take several minutes to complete.
+You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with the delete step. The deletion process takes several minutes to complete.
 
 <br />
 
 <InfoBox>
 
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for Force Delete. To trigger a force delete, navigate to the respective cluster’s details page and click on Settings. Click on the Force Delete Cluster to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force delete, navigate to the cluster’s details page, click on **Settings**, then select **Force Delete Cluster**. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 </InfoBox>
 
