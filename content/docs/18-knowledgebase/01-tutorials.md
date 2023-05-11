@@ -17,11 +17,21 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Learn what's possible with Spectro Cloud Palette. Use the following tutorials to help expand your knowledge and become proficient with Palette. Choose a topic to review the tutorials available.
 
+# Clusters
 
-[Dev Engine](/knowledgebase/tutorials/dev-engine)
+- [Deploy a Cluster with Palette](/knowledgebase/tutorials/deploy-k8s-cluster)
+
+
+# Packs
+
+- [Create and Deploy a Custom Add-On Pack](/knowledgebase/tutorials/deploy-pack)
+
+
+# Palette Dev Engine (PDE)
+
+- [Deploy an Application using Palette Dev Engine](/knowledgebase/tutorials/deploy-app)
 
 
 
-<br />
 
 <br />
