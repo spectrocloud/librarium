@@ -21,17 +21,17 @@ This release contains several security fixes and new features for Edge, enhanced
 ## Edge
 The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
 ### Features:
-- **Display edge hosts' events in Palette**: Edge hosts will bump up audit messages and critical errors in Palette's events console.
+- Edge hosts will display up audit messages and critical errors in Palette's **Events** console.
 
-- **Static IP support for edge hosts**: Users can now add a static IP for the edge host while deploying edge native clusters. This feature will allow users to assign static IP using the standard tooling, e.g., UI, Terraform, or API, to create clusters; instead of assigning static IP to each edge host via *user-data*.
+- Users can now add a static IP for the edge host while deploying edge native clusters. This feature will allow users to assign static IP using the standard tooling, e.g., UI, Terraform, or API, to create clusters; instead of assigning static IP to each edge host via *user-data*.
             
-- **Customized device ID**: Users can customize Edge device ID by reading the ID from the list of files; whichever file returns non-empty content and does not contain special characters will be considered a valid ID. 
+- Users can customize Edge device ID by reading the ID from the list of files; whichever file returns non-empty content and does not contain special characters will be considered a valid ID. 
 
-- **Edge-native cluster IP**: Users can use a Fully Qualified Domain Name (FQDN) instead of an IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
+- Users can use a Fully Qualified Domain Name (FQDN) instead of an IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
 
-- **Edge Forge workflow**: Users must build OS images using [Edge Forge workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow) to provision edge-native clusters.
+- Users must build OS images using [Edge Forge workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow) to provision edge-native clusters.
  
-- **Edge host registration token**: Registration token is now *mandatory* to pair the edge host with Palette console.
+- Registration token is now *mandatory* to pair the edge host with Palette console.
 
 
 ### Improvements:
@@ -46,13 +46,13 @@ The Edge installation process has been improved to allow users greater flexibili
 Palette now supports the following new features and enhancements for various cloud providers:
 
 ### Features:
-- **Launch Template** support for Amazon Elastic Kubernetes Service (Amazon EKS). Users can use custom Amazon Machine Image (AMI) for EKS nodes and customize EBS root volumes.
+- Launch Template support for Amazon Elastic Kubernetes Service (Amazon EKS). Users can use custom Amazon Machine Image (AMI) for EKS nodes and customize EBS root volumes.
 
-- **IAM roles for service accounts*** (IRSA) support for AWS infrastructure clusters. It will allow users to leverage IAM role-based access to the pods' service account.
+- IAM roles for service accounts (IRSA) support for AWS infrastructure clusters. It will allow users to leverage IAM role-based access to the pods' service account.
  
-- Google Kubernetes Engine (GKE) support.  
+- GKE support. Users can now deploy clusters to Google Kubernetes Engine (GKE).  
 
-- **Custom registry** support using *ImageSwap* from Palette allows users to enable ImageSwap and its configuration from the k8s pack, and Palette manages ImageSwap for users without needing an add-on layer.
+- Custom registry support using *ImageSwap* from Palette allows users to enable ImageSwap and its configuration from the k8s pack, and Palette manages ImageSwap for users without needing an add-on layer.
 
 - Cox Edge Provider upgrade to 0.5.4. It brings support for worker load balancer and customizable volume mounts for VMs.
 
@@ -69,20 +69,21 @@ Palette now supports the following new features and enhancements for various clo
 
 ## Palette Management
 
-- **OIDC identity provider configuration**: OpenID Connect (OIDC) identity provider configuration is moved to the Kubernetes layer, which is used for the Kubernetes apps such as Kubernetes dashboard authentication.
+- OIDC identity provider configuration: OpenID Connect (OIDC) identity provider configuration is moved to the Kubernetes layer, which is used for the Kubernetes apps such as Kubernetes dashboard authentication.
 
-- **Customizable login banner**: Palette shows a login banner with system & tenant-level customization.
+- Customizable login banner: Palette shows a login banner with system & tenant-level customization.
 
-- **Tenant scoped clusters in dashboard**: The Tenant admin dashboard now includes the tenant scope clusters usage and cost information.
+- Tenant scoped clusters in dashboard: The Tenant admin dashboard now includes the tenant scope clusters usage and cost information.
 
-- **Macros enhancements**: Added infrastructure cluster profile macros such as name, uid, and version variables and enhanced the current macro resolution to support profile macros if a cluster has multiple cluster profiles. 
+- Macros enhancements: Added infrastructure cluster profile macros such as name, uid, and version variables and enhanced the current macro resolution to support profile macros if a cluster has multiple cluster profiles. 
 
-- **Cox Edge pop list**: Cox Edge uses a dynamic pop list based on the cloud account instead of a static file.
+- Cox Edge pop list: Cox Edge now uses a dynamic pop list based on the cloud account instead of a static file.
 
-- **Aggregate edge hosts in Tenant admin view**: Tenant admin view will aggregate the Edge hosts across the projects.
+- Aggregate edge hosts in Tenant admin view: Tenant admin view will aggregate the Edge hosts across the projects.
 
-- **Cluster profile filter**: Profiles can be filtered by context/scope, and the profile context information will be shown in the cluster details. 
+- Cluster profile filter: Profiles can be filtered by context/scope, and the profile context information will be shown in the cluster details.
 
+- Mandatory cert-manager for self-hosted Palette: Installing self-hosted Palette to a Kubernetes cluster using the Helm Chart will require the installation of a cert-manager to enforce encrypted communication by leveraging  Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
 
 ## Palette Dev Engine (PDE)
 
@@ -96,20 +97,53 @@ Palette now supports the following new features and enhancements for various clo
 
 
 ## Packs
-Adds the following new packs:
-- Nvidia GPU support
-- Community repository
-- AVI AKO support
+* OS packs:
+  * COS  GKE	1.0.0
+  * Edge Native BYOI	1.0.0
+  * SLES Libvirt	15.4.1
+  * SLES vSphere	15.4.1
+  * Ubuntu OpenStack	22.04
 
- ### Updated Packs:
- Upgrades the following packs:
+* K8s packs:
+  * Edge k3s	1.25.2
+  * Edge k8s	1.25.2
+  * Edge microk8s	1.25
+  * Edge RKE2	1.25.2
+  * Kubernetes	1.26.3
+  * Kubernetes EKS	1.26
+  * Kubernetes  GKE	1.25.8
 
-|**Pack name**|**Old version**|**New version**|
-|---|---|---|
-|AWS EBS CSI | 1.16.0 | 1.17.0 |
-|Istio | 1.14.3 | 1.17.2 |
-|Portworx | 2.12.0 | 2.13.0 |
-|Kong ingress |  2.13.1 | 2.17.0 |
+* CNI Packs:
+  * CNI Calico	3.25.1
+  * CNI Calico Azure	3.25.1
+  * CNI Cilium	1.13.2
+  * CNI VPC Native GKE	1.0.0
+
+* CSI Packs:
+  * CSI AWS EBS	1.17.0
+  * CSI GCP Driver	1.10.1
+  * CSI Longhorn	1.4.1
+  * CSI OpenStack Cinder	1.26
+  * CSI Portworx Generic	2.12.0
+  * GKE CSI GCP Driver	1.0.0
+
+* Add on Packs:
+  * Avi Kubernetes Operator 1.9.2
+  * CSI Longhorn	1.4.1
+  * CSI Topolvm	11.1.1
+  * External DNS	0.13.4
+  * Flux CD	2.6.0
+  * Kong	2.17.0
+  * Nginx	1.7.0
+  * Nvidia GPU Operator	22.9.2
+  * Palette Upgrader	3.3.16
+  * Portworx	2.12.0
+  * Prometheus Agent	19.0.2
+  * Prometheus Operator	45.4.0
+  * Reloader	1.0.24
+  * Spectro k8s Dashboard	2.7.1
+
+
 
 
 
