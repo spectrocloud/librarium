@@ -32,7 +32,8 @@ For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts]
 
 ## Bring Your Own Operating System (BYOOS)
 
-A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can upload your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYOOS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYOOS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+
 ## Chart Repositories
 
 Chart Repositories are web servers, either public or private, that host Helm Charts. By default, Palette includes several popular chart registries such as Bitnami. As an administrator, you can add additional public or private chart repositories to leverage charts from those sources. This feature provides greater flexibility in managing and deploying applications, allowing you to access and use Helm Charts from various sources in your Palette environment
