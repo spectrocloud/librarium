@@ -60,18 +60,18 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 6. Populate the wizard page with the cluster name, description, and tags. Tags assigned to a cluster are propagated to the VMs deployed to the computing environments. 
 
-7. Select GCP account, and click on **Next**.
+7. Select a GCP account, and click on **Next**.
 
 
 
-7. Select the **Managed Kubernetes** row and select one of your GKE cluster profiles. Click on **Next**.
+8. Select the **Managed Kubernetes** row and select one of your GKE cluster profiles. Click on **Next**.
 
 
 
-8. Review and customize pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile. Click on **Next** to continue.
+9. Review and customize pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile. Click on **Next** to continue.
 
 
-9. Fill out the following parameters, and click on **Next** when you are done. 
+10. Fill out the following parameters, and click on **Next** when you are done. 
 
   <br />
 
@@ -81,7 +81,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   |**Region**|Choose the desired GCP region in which to deploy the cluster.|
 
 
-10. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the number of nodes. Configure the worker node pool.
+11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the number of nodes. Configure the worker node pool.
 
   <br />
 
@@ -92,10 +92,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   </InfoBox>
 
 
-11. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on existing clusters. Review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label. 
+12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on existing clusters. Review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label. 
 
 
-12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters.
+
+13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters.
     
     |**Parameter**| **Description**|
     |-------------|---------------|
@@ -111,14 +112,14 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     | **PreferNoSchedule**| The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
     | **NoExecute**|  New pods will not be scheduled on the node, and existing pods on the node will be evicted if they do not tolerate the taint. |
 
-13. Click on **Next** after configuring the node pool.
+14. Click on **Next** after configuring the node pool.
 
 
 
-14. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review cluster settings and make changes if needed. Click on **Validate**.
+15. The **Settings** page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review cluster settings and make changes if needed. Click on **Validate**.
 
 
-15. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning GKE clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 You can monitor cluster deployment progress on the cluster details page.
 
@@ -134,6 +135,7 @@ You can validate that your cluster is up and available by reviewing the cluster 
 
 
 2. Navigate to the left **Main Menu** and click on **Clusters**. 
+
 
 
 3. The **Clusters** page lists the available clusters that Palette manages. Select your cluster to view its details page. 
