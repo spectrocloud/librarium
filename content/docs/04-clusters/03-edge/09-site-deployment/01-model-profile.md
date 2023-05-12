@@ -90,12 +90,15 @@ Optionally, add additional Helm or OCI registries and include applications hoste
 # Build Custom Cluster Profile With BYOOS Pack
 
 The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
+BYOOS in Palette gives you more flexibility and control with your OS and helps manage Kubernetes clusters. The BYOOS Edge OS supports commercial and open-source distribution OS to perform optimally and meet unique requirements when building cluster profiles. 
+
 
 Use the following steps to deploy Edge clusters using your cluster profile with the BYOOS Edge OS.
 
 # Prerequisites
 
 - Provider images are built.
+
 
 - ` system.uri`should be constrcuted. 
 
@@ -111,29 +114,43 @@ Use the following steps to deploy Edge clusters using your cluster profile with 
 3. Click on **Add Cluster Profile**. 
 
 
-4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**.
-  
-   Refer to the [Creating Cluster Profiles](/https://docs.spectrocloud.com/cluster-profiles/task-define-profile) resource to learn about creating a new cluster profile.
+4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**. <br /> <br />
+
+    <InfoBox>
+
+    Refer to the [Creating Cluster Profiles](/https://docs.spectrocloud.com/cluster-profiles/task-define-profile) resource to learn about creating a new cluster profile.
+
+    </InfoBox>
+
+5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
 
 
-5. Select Edge Native as the Cloud Type and click on Next.
-
-
-6. Select Public Repo in the Registry field.
+6. Select **Public Repo** in the **Registry field**.
 
 
 7. Select **BYOOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
-8. The pack editor displays on the right section of the dashboard where you can customise the BYOOS pack. Refer to the  [BYOS Pack](/) resource to learn more about the pack details.
+8. The pack editor displays on the right section of the dashboard where you can customise the BYOOS pack. 
 
+## Installer Parameters
 
 | Parameter            | Description                                            |
 |----------------------|--------------------------------------------------------|
-| `domain` | The domain of the registry. You can use an IP address plus the port or a domain name. |
-| `username` | The username to authenticate with the registry. |
-| `password` | The password to authenticate with the registry. |
-| `insecure` | Whether to allow insecure connections to the registry. Default value is `false`. |
+| `pack:content:` | Specifies the content of the BYOOS pack. |
+| `pack.content.images` | Specifies the list of images to use for the OS pack. |
+| `pack.content.images.-  images` | Specifies an image to use for the OS pack. |
+
+
+## User Data Parameters
+
+| Parameter            | Description                                            |
+|----------------------|--------------------------------------------------------|
+| `options.system.uri:` | The system URI specifying the location of the BYOOS image. |
+| `image.registry` | The domain of the registry where the BYOOS image is stored. |
+| `image.repo` | The name of the BYOOS image repository. |
+| `image.palette.edge.version` | The Palette Edge software version used in the BYOOS container image. |
+| `image.client.tag` |  The tag given to the image used for the BYOOS, specifying its version. |
 
 
 Example BYOOS Pack Customization File
@@ -141,14 +158,22 @@ Example BYOOS Pack Customization File
 <br />
 
 ```yaml
-stylus:
-  registryCredentials:
-    domain: 10.10.254.254:8000/spectro-images
-    username: ubuntu
-    password: <yourPassword>
-    insecure: true
+pack:
+ content:
+   images: 
+    - image: ‘{{.spectro.pack.edge-native-byoi.options.system.uri}}’
+options: 
+		system.uri: “{{.spectro.pack.edge-native-byoi.image.registry}}/{{.spectro.pack.edge-native-byoi.image.repo}}:{{.spectro.system.kunernetes.version}}-{{.spectro.pack.edge-native-byoi.image.version}}_{{.spectro.pack.edge-native-byoi.image.client.tag}}”
+image: 
+	registry: "" 
+	repo: ""
+	palette.edge.version: ""
+	client.tag: ""
 ```
 
+<br />
+
+Refer to the  [BYOOS Pack](/) resource to learn more about the pack details.
 <br />
 
 9. Review your own custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
