@@ -61,7 +61,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 6. Populate the wizard page with the cluster name, description, and tags. Tags assigned to a cluster are propagated to the VMs deployed to the computing environments.
 
-7. Select GCP account, and Click on **Next**.
+
+7. Select a GCP account, and Click on **Next**.
 
 
 
@@ -108,6 +109,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on existing clusters. Review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label. 
 
 
+
 13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:
     
     |**Parameter**| **Description**|
@@ -128,11 +130,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 
 
-14. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
 
 
 
-15. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take approximately 15 - 30 min depending on the cluster profile and the node pool configuration.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take approximately 15 - 30 min depending on the cluster profile and the node pool configuration.
 
 You can monitor cluster deployment progress on the cluster details page.
 
