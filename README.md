@@ -245,6 +245,21 @@ After that, you can use it like this
 - the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
 
+#### YouTube Video
+
+To use a Youtube video us the YouTube component.
+
+First import the component.
+
+```js
+import YouTube from 'shared/components/Video';
+```
+
+Next, in your markdown file, use the component and ensure you specify a URL.
+
+```js
+<YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
+```
 ### Points of interest component
 
 To use this components you will have to import if from the _shared_ folder

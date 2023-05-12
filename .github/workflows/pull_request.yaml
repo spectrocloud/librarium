@@ -1,4 +1,4 @@
-name: style_check
+name: Pre-merge Checks
 on: [pull_request]
 
 concurrency:
@@ -37,3 +37,24 @@ jobs:
           fail_on_error: false
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  build:
+    name: Build
+    needs: [run-ci]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build
+        run: |
+          make build
