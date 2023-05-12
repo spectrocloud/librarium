@@ -43,7 +43,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. 
 
 
-- Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the *imageSwap* section of the Kubernetes pack YAML to point to a custom registry. 
+- Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a custom registry. 
 
 
 - Deploying a host cluster to AWS with Red Hat Enterprise Linux (RHEL) as the Operating System (OS) is now possible. This can be done by utilizing the *Bring Your Own Operating System* (BYOOS) pack, which allows for the creation of a custom AMI based on RHEL.
@@ -127,7 +127,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette PDE is now available in self-hosted installation of Palette.
 
 
-- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources such as Virtual Clusters. Users can perform actions such as create, list, delete, resize, pause, and resume. You can alsow down the Kubeconfig file of a virtual cluster with the CLI.
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI.
 
 
 ## Improvements
@@ -158,7 +158,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | Ubuntu OpenStack   | 22.04    |
 
 
-### Kuberetes Packs
+### Kubernetes Packs
 
 | Pack               | New Version |
 |--------------------|----------|
@@ -224,9 +224,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - The CNI Calico pack version 3.25.1 is now available which contains support for IPV6 CIDR support has been added.
 
-- The Nvidia GPU Operator pack is available and can can be used to install Nvidia GPU drivers on Nvidia hardware. 
+- The Nvidia GPU Operator pack is available and can be used to install Nvidia GPU drivers on Nvidia hardware. 
 
--  The AVI Kubernetes Operator (AKO) pack is now available. You can use this pack to provide L4-L7 load balancing for applications deployed in a Kubernetes cluster for north-south traffic network traffic. This pack is only avaiable for VMware vSphere.
+-  The AVI Kubernetes Operator (AKO) pack is now available. You can use this pack to provide L4-L7 load balancing for applications deployed in a Kubernetes cluster for north-south traffic network traffic. This pack is only available for VMware vSphere.
 
 - The vSphere CSI pack version 3.0.0 is available. This versions supports the usage of custom images for vSphere pods.
 
