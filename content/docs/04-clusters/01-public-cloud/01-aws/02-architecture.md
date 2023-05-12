@@ -106,7 +106,7 @@ In addition to the custom tags provided by you, Palette-provisioned AWS resource
 # Automatic Network Discovery
 
 
-To enable automatic subnet discovery for integration with the AWS load balancer service. Add the following tags Virtual Private Network (VPC) public subnets. Replace the value `yourClusterName` with your cluster's name.
+You must add a set of specific tags to enable automatic subnet discovery by Palette for integration with the AWS load balancer service. Add the following tags Virtual Private Network (VPC) public subnets. Replace the value `yourClusterName` with your cluster's name.
 
 <br />
 

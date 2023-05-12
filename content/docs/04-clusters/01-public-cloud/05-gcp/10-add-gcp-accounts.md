@@ -31,7 +31,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
     <InfoBox>
 
-    Alternatively, you can create a custom role and assign the Palette required GCP permissions. Check out the [Required IAM Permission](/clusters/public-cloud/gcp/required-permissions) for a detailed list of all permissions.
+    Alternatively, you can create a custom role and assign Palette the required GCP permissions. Check out the [Required IAM Permission](/clusters/public-cloud/gcp/required-permissions) for a detailed list of all permissions.
 
     </InfoBox>
 
@@ -66,14 +66,16 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
    </InfoBox>
 
 
-6. Click the **Validate** button to validate the credentials. 
+5. Click the **Validate** button to validate the credentials. 
 
 
-7. Once the credentials are validated, click on **Confirm** to save your changes.
+6. When the credentials are validated, click on **Confirm** to save your changes.
 
 # Validation
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. 
+
+<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
@@ -81,7 +83,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 2. To review the list of cloud accounts, navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
 
-3. Next, click on **Cloud Accounts**. Your newly added GCP account is listed under the GCP section
+3. Next, click on **Cloud Accounts**. Your newly added GCP account is listed under the GCP section.
 
 
 # Next Steps

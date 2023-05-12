@@ -20,7 +20,8 @@ Palette supports integration with [Amazon Web Services](https://aws.amazon.com/)
 
 # Get Started
 
-Learn how to deploy a cluster to an AWS by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+Learn how to deploy a cluster to AWS by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+
 
 
 <br />
