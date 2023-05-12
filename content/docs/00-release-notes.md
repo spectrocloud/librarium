@@ -40,7 +40,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette now supports using IAM Roles for Service Accounts (IRSA) for AWS clusters. Enable the Palette managed policy *Controllers EKS Policy* to enable this feature. Refer to the [AWS Required Policies](/clusters/public-cloud/aws/required-iam-policies) for more information about the managed policy.
 
 
-- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. 
+- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
 
 
 - Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a custom registry. 
