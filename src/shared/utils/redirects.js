@@ -196,6 +196,24 @@ const redirects = [
     toPath: `/introduction`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine/deploy-app`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
+    toPath: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
