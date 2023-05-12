@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # May 20, 2023 - Release 3.4.0
 
-This release contains several security fixes and new features for Edge, enhanced support for different cloud providers, improved Palette management, new features for Palette Dev Engine (PDE), and a few new and upgraded packs.
+Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). 
 
 
 ## Palette
@@ -24,6 +24,10 @@ This release contains several security fixes and new features for Edge, enhanced
 ## Breaking Changes
 
 - Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
+
+
+- Kubernetes versions before 1.24 are no longer supported for host clusters targeting Azure Kubernetes Service (AKS). This deprecation is due to Azure's  Kubernetes support policy. You can learn more about Azure-supported Kubernetes versions [here](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli).
+
 
 ### Features
 
@@ -85,27 +89,34 @@ This release contains several security fixes and new features for Edge, enhanced
 - To enhance the security of Edge deployments, a registration token created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
 ### Features
-- Edge hosts will display up audit messages and critical errors in Palette's **Events** console.
 
-- Users can now add a static IP for the edge host while deploying edge native clusters. This feature will allow users to assign static IP using the standard tooling, e.g., UI, Terraform, or API, to create clusters; instead of assigning static IP to each edge host via *user-data*.
-            
-- Users can customize Edge device ID by reading the ID from the list of files; whichever file returns non-empty content and does not contain special characters will be considered a valid ID. 
 
-- Users can use a Fully Qualified Domain Name (FQDN) instead of an IP for the **Virtual IP** field in Palette while deploying an edge-native cluster.
 
-- Users must build OS images using [Edge Forge workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow) to provision edge-native clusters.
- 
+- You can now assign a static IP address to an Edge host during deployment. Previously, you could only assign a static IP address through the user-data configuration file. You can now set a static IP address by using the user-data configuration file, the Palette API, Terraform, or the Palette dashboard during the Edge host cluster creation wizard.  
+
+
+- An Edge host ID can now be sourced directly from system files exposed by the BIOS or firmware via the [Desktop Management Interface](https://www.dmtf.org/standards/dmi) (DMI). Ensure that the system file is not empty and does not contain special characters, and the Edge installer will use the value in the file as the Edge host ID. This is an advanced feature and is not required for setting a device ID.
+
+
+
+- To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
 
 
 
 ### Improvements
-- Edge-native cluster's upgrade process (either OS or k8s version upgrade) is optimized to avoid additional reboots of the edge appliance.
-
-- Appends Kairos release information in **/etc/os-release** instead of replacing OS's **/etc/os-release** information, which is used in some open-source tools like Nvidia's GPU Operator.
- 
-- Shows upgrade status on the cluster dashboard when an edge-native cluster is upgrading. 
 
 
+- The events log stream for the Edge host cluster now includes audit messages and critical errors.
+
+
+- The upgrade process for Edge cluster has been optimized to avoid extra reboots of the Edge host, whether it's for upgrading the OS or the Kubernetes version.
+
+
+
+- The latest Kairos release information is now appended to the **/etc/os-release** file. Unlike previous versions of Pallette, the Kairos release information no longer replaces the entire content of the OS's release file. This change prevents any issues that may arise with tools like Nvidia's GPU Operator due to the previous overwrite behavior.
+
+
+- The Palette dashboard now displays Edge host clusters undergoing an upgrade process.. 
 
 
 ## Palette Dev Engine (PDE)
@@ -129,6 +140,10 @@ This release contains several security fixes and new features for Edge, enhanced
 
 - You can now increase or decrease the number of replicated instances of a container service.  
  
+
+## Terraform
+
+- Version 0.13.2 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
 
 ## Packs
 
@@ -187,8 +202,9 @@ This release contains several security fixes and new features for Edge, enhanced
 | Pack                   | New Version |
 |------------------------|----------|
 | Nvidia GPU Operator    | 22.9.2   |
-| Avi Kubernetes Operator | 1.9.2    |
+| AVI Kubernetes Operator| 1.9.2    |
 | Istio                  | 1.17.2   |
+| Cloudanix              | 1.0.0    |
 | CSI Longhorn           | 1.4.1    |
 | CSI Topolvm            | 11.1.1   |
 | External DNS           | 0.13.4   |
@@ -217,11 +233,16 @@ This release contains several security fixes and new features for Edge, enhanced
 
 - The CNCF Kubernetes pack is renamed to Palette eXtended Kubernetes.
 
-### Deprecation
 
- - Kubernetes 1.23 is no longer supported in Azure Kubernetes Service (AKS).
+## Education
+
+-  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) tutorial.
 
 
+- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started
+
+
+ 
 
 # March 19, 2023 - Release 3.3.0
 
@@ -262,7 +283,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ## Palette
 
-### Features:
+### Features
 
 * Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
@@ -279,7 +300,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Virtual clusters now support the ability to [back up all disk volumes](/clusters/cluster-groups/cluster-group-backups) within the cluster.
 * A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
 
-### Enhancements:
+### Enhancements
 
 * [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
@@ -294,7 +315,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ## Edge
 
-### Features:
+### Features
 
 * Palette provides the ability to automatically register edge hosts for a specific project when a host authentication token is specified in **Tenant Settings > Registration Tokens**. 
 
