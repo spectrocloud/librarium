@@ -102,7 +102,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     |-------------|---------------|
     |**Key**      |Custom key for the taint.|
     |**Value**    | Custom value for the taint key.|
-    | **Effect**  | Make the choice of effect from the drop-down Menu. Review the [Effect Table](/clusters/public-cloud/gcp/create-gcp-iaas-cluster#effecttable) below for more details. |
+    | **Effect**  | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](/clusters/public-cloud/gcp/create-gcp-iaas-cluster#effecttable) below for more details. |
   
     #### Effect Table
     
