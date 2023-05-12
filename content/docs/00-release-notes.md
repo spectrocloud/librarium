@@ -114,10 +114,11 @@ Palette now supports the following new features and enhancements for various clo
   * Kubernetes  GKE	1.25.8
 
 * CNI Packs:
-  * CNI Calico	3.25.1
+  * CNI Calico\*\*	3.25.1
   * CNI Calico Azure	3.25.1
   * CNI Cilium	1.13.2
   * CNI VPC Native GKE	1.0.0
+  * CNI Flannel 0.21.4
 
 * CSI Packs:
   * CSI AWS EBS	1.17.0
@@ -130,6 +131,7 @@ Palette now supports the following new features and enhancements for various clo
 * Add on Packs:
   * Nvidia GPU Operator\*\*	22.9.2
   * Avi Kubernetes Operator\*\* 1.9.2
+  * Istio 1.17.2
   * CSI Longhorn	1.4.1
   * CSI Topolvm	11.1.1
   * External DNS	0.13.4
@@ -137,13 +139,14 @@ Palette now supports the following new features and enhancements for various clo
   * Kong	2.17.0
   * Nginx	1.7.0
   * Palette Upgrader	3.3.16
-  * Portworx	2.12.0
+  * Portworx	2.13.0
   * Prometheus Agent	19.0.2
   * Prometheus Operator	45.4.0
   * Reloader	1.0.24
   * Spectro k8s Dashboard	2.7.1
 
 ### Special mention\*\* : 
+- CNI Calico pack upgraded from 3.25.0 to 3.25.1. IPV6 CIDR support has been added.
 - Nvidia GPU Operator support - This pack can be used to install Nvidia GPU drivers on the Nvidia hardware, running as k8s worker nodes. 
 - AVI AKO support - The Avi Kubernetes Operator (AKO) pack is used to provide L4-L7 load balancing for applications deployed in a Kubernetes cluster for north-south traffic. Currently, this is supported on vSphere.
 
