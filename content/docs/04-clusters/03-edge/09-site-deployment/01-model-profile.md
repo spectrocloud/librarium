@@ -87,6 +87,74 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
+# Build Custom Cluster Profile With BYOOS Pack
+
+The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
+
+Use the following steps to deploy Edge clusters using your cluster profile with the BYOOS Edge OS.
+
+# Prerequisites
+
+- Provider images are built.
+
+- ` system.uri`should be constrcuted. 
+
+# Enablement
+
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
+
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+3. Click on **Add Cluster Profile**. 
+
+
+4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**.
+  
+   Refer to the [Creating Cluster Profiles](/https://docs.spectrocloud.com/cluster-profiles/task-define-profile) resource to learn about creating a new cluster profile.
+
+
+5. Select Edge Native as the Cloud Type and click on Next.
+
+
+6. Select Public Repo in the Registry field.
+
+
+7. Select **BYOOS Edge OS** in the **Pack Name** field and the pack version. 
+
+
+8. The pack editor displays on the right section of the dashboard where you can customise the BYOOS pack. Refer to the  [BYOS Pack](/) resource to learn more about the pack details.
+
+
+| Parameter            | Description                                            |
+|----------------------|--------------------------------------------------------|
+| `domain` | The domain of the registry. You can use an IP address plus the port or a domain name. |
+| `username` | The username to authenticate with the registry. |
+| `password` | The password to authenticate with the registry. |
+| `insecure` | Whether to allow insecure connections to the registry. Default value is `false`. |
+
+
+Example BYOOS Pack Customization File
+
+<br />
+
+```yaml
+stylus:
+  registryCredentials:
+    domain: 10.10.254.254:8000/spectro-images
+    username: ubuntu
+    password: <yourPassword>
+    insecure: true
+```
+
+<br />
+
+9. Review your own custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
+
+You have successfully configured the BYOOS pack to update your custom images to build the Edge cluster profile. 
+
 # Validation
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
