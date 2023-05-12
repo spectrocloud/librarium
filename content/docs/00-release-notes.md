@@ -128,14 +128,14 @@ Palette now supports the following new features and enhancements for various clo
   * GKE CSI GCP Driver	1.0.0
 
 * Add on Packs:
-  * Avi Kubernetes Operator 1.9.2
+  * Nvidia GPU Operator\*\*	22.9.2
+  * Avi Kubernetes Operator\*\* 1.9.2
   * CSI Longhorn	1.4.1
   * CSI Topolvm	11.1.1
   * External DNS	0.13.4
   * Flux CD	2.6.0
   * Kong	2.17.0
   * Nginx	1.7.0
-  * Nvidia GPU Operator	22.9.2
   * Palette Upgrader	3.3.16
   * Portworx	2.12.0
   * Prometheus Agent	19.0.2
@@ -143,6 +143,9 @@ Palette now supports the following new features and enhancements for various clo
   * Reloader	1.0.24
   * Spectro k8s Dashboard	2.7.1
 
+### Special mention\*\* : 
+- Nvidia GPU Operator support - This pack can be used to install Nvidia GPU drivers on the Nvidia hardware, running as k8s worker nodes. 
+- AVI AKO support - The Avi Kubernetes Operator (AKO) pack is used to provide L4-L7 load balancing for applications deployed in a Kubernetes cluster for north-south traffic. Currently, this is supported on vSphere.
 
 
 
