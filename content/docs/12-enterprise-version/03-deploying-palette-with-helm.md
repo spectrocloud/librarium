@@ -1,7 +1,7 @@
 ---
-title: "Helm Chart Mode"
-metaTitle: "Install Palette with Helm Chart"
-metaDescription: "Learn how to deploy Palette in a Kubernetes cluster using a Helm Chart."
+title: "Install using Helm Chart"
+metaTitle: "Install using Helm Chart"
+metaDescription: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -37,7 +37,7 @@ This installation method is common in secure environments with restricted networ
 - A custom domain and the ability to update Domain Name System (DNS) records.
 
 
-- Access to the Palette Helm Chart. Contact suppport@spectrocloud.com to gain access to the Helm Chart.
+- Access to the Palette Helm Chart. Contact support@spectrocloud.com to gain access to the Helm Chart.
 
 
 - For AWS EKS, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) and the [kubectl CLI](https://github.com/weaveworks/eksctl#installation) installed. 

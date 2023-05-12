@@ -1,7 +1,7 @@
 ---
-title: "Enterprise Mode"
-metaTitle: "Palette On-Prem Enterprise Mode"
-metaDescription: "Deploying a cluster in Palette Enterprise cluster."
+title: "Migrate Cluster to Enterprise Mode"
+metaTitle: "Migrate Cluster to Enterprise Mode"
+metaDescription: "Learn how to convert a self-hosted single node cluster to a highly available three node cluster."
 icon: ""
 hideToC: false
 fullWidth: false

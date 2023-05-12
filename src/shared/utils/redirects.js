@@ -196,6 +196,12 @@ const redirects = [
     toPath: `/introduction`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/minio`,
+    toPath: `/integrations`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
