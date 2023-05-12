@@ -101,7 +101,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
   <InfoBox>
 
-  You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the default worker pool may be configured with the c2.standarnd-4 instance types for general-purpose workloads. Another worker pool with instance type g2-standard-4 can be configured to run GPU workloads.
+  You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the default worker pool may be configured with the c2.standarnd-4 instance types for general-purpose workloads. You can configure another worker pool with instance type g2-standard-4 to leverage GPU workloads.
 
   </InfoBox>
 
@@ -110,7 +110,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 
 
-13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:
+13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters.
     
     |**Parameter**| **Description**|
     |-------------|---------------|

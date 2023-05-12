@@ -1,7 +1,7 @@
 ---
 title: "Cluster Removal"
 metaTitle: "Remove Cluster"
-metaDescription: "Learn how to remove a cluster deployed and managed by Palette"
+metaDescription: "Learn how to remove a cluster deployed and managed by Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Delete a Cluster
 
-When you delete a cluster it results in the removal of all compute instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+When you delete a cluster it results in the removal of all compute instances and associated resources created for the cluster. Use the following steps to delete a cluster. 
 
 # Prerequisites
 
@@ -25,24 +25,24 @@ When you delete a cluster it results in the removal of all compute instances and
 
 # Removal
 
-1. Log into [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
+1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
+2. Navigate to the left **Main Menu** and click on **Clusters**.
 
 
-3. Click on the cluster that you want to remove.
+3. Click on the cluster you want to delete.
 
 
-4. Click on the **Settings** drop-down menu.
+4. Click on the **Settings drop-down Menu**.
 
 
-5. Click on **Delete Cluster**
+5. Click on **Delete Cluster**.
 
 
-6. Type in the name of the cluster and click on **OK**
+6. Type the cluster name and click on **OK**.
 
-The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and removed from the list of clusters.
+The cluster status is updated to **Deleting** while cluster resources are removed. When all resources are successfully deleted, the cluster status is updated to **Deleted**, and the cluster is removed from the cluster list.
 
 
 # Validation
@@ -55,7 +55,7 @@ To validate the host cluster is deleted, use the following steps.
 2. Navigate to the left **Main Menu** and click on **Cluster**.
 
 
-4. Click on the check box **Deleted only** to view all the clusters deleted in the last 72 hours.
+4. Check the box labeled **Deleted only** to view all the clusters deleted in the last 72 hours.
 
 The cluster you deleted is now listed along with other previously deleted clusters.
 
@@ -63,14 +63,14 @@ The cluster you deleted is now listed along with other previously deleted cluste
 
 # Force Delete a Cluster
 
-If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+If a cluster is stuck in the **Deleting** state for a minimum of 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
 
-To force delete a cluster follow the same steps outlined above. However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available.
+To force delete a cluster, follow the same steps outlined above. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down Menu**. The drop-down menu will provide you with an estimated remaining time left before the force deletion becomes available.
 
 <br />
 
 
-A force delete can result in resources Palette provisioned being missed in the removal process. Verify there are no remaining Palette-provisioned resources. Use the following list to help you identify resources to remove.
+A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources. Use the following list to help you identify resources to remove.
 
 <br />
 
