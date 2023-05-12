@@ -81,37 +81,41 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
 
 <br />
 
-1. ?? Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. ?? From the left **Main Menu**, choose **Clusters** and click on your cluster. 
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-3. ?? Click the **Virtual Machines** tab.
+3. Select the cluster you want to access.
 
 
-4. ?? Select the VM to migrate and use either the **three-dot Menu** or the **Actions drop-down Menu**, and click **Open Console**. 
-
-2. Log in to the VM from a terminal window.
+4. Click the kubeconfig link to download the file.
 
 
-3. Issue the following command to mark the node as *un-schedulable*. This alerts the Kubernetes scheduler not to schedule any new pods on that node, but allows existing pods running on the node to continue to run.
+5. Open a terminal window and set the KUBECONFIG environment variable to the file path of the **kubeconfig** file.
+
+  Example:
+  ```shell
+  export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
+  ```
+
+6. Issue the following command to mark the node as *un-schedulable*. This alerts the Kubernetes scheduler not to schedule any new pods on that node but allows existing pods running on the node to continue to run.
     
+   Example:
     ```bash
     kubectl cordon <node-name>
     ``` 
-    <br />
     
     **node-name**: The name of the node that should be marked as *un-schedulable*.
 
 
-4. Issue the following command to gracefully remove all pods from the node that is undergoing maintenance. When you drain a node, all pods and VMs will be safely evicted from the node.
+7. Issue the following command to gracefully remove all pods from the node that is undergoing maintenance. When you drain a node, all pods and VMs will be safely evicted from the node.
 
+    Example:
     ```bash
     kubectl drain <node-name>
-    
     ```
-    <br />
 
     **node-name**: The name of the node that you wish to drain.
     
