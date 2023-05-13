@@ -40,7 +40,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette now supports using IAM Roles for Service Accounts (IRSA) for AWS clusters. Enable the Palette managed policy *Controllers EKS Policy* to enable this feature. Refer to the [AWS Required Policies](/clusters/public-cloud/aws/required-iam-policies) for more information about the managed policy.
 
 
-- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. 
+- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
 
 
 - Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a custom registry. 
@@ -54,7 +54,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - OpenID Connect (OIDC) identity provider configuration has now moved to the Kubernetes layer. You can now select the desired OIDC setting when selecting a Kubernetes distribution and version during a cluster profile creation.
 
 
-- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Maros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
+- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Macros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
 
 
 - Cluster profiles can now be filtered by scope such as Tenant and project.
