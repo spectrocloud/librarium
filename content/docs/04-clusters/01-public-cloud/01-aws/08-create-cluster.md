@@ -90,9 +90,9 @@ Use the following steps to provision a new AWS cluster:
   |**Parameter**| **Description**|
   |-------------|---------------|
   |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
-  |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-  |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-  |**Static Placement** | Check the **Static Placement** box if you wanto deploy resources into a preexisting VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/aws/create-cluster#staticplacement) table below to learn more about the required input fields.|
+  |**Region** | Choose the preferred AWS region where you would like to provision clusters.|
+  |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.|
+  |**Static Placement** | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/aws/create-cluster#staticplacement) table below to learn more about the required input fields.|
   
   <br />
 
@@ -124,7 +124,7 @@ Use the following steps to provision a new AWS cluster:
 12. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
 
 
-13. Enable or disable node pool taints. If tainting is enabled then you need to provide values for the following parameters:
+13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:
     
     |**Parameter**| **Description**|
     |-------------|---------------|
@@ -142,9 +142,9 @@ Use the following steps to provision a new AWS cluster:
 
 14. Click on **Next**.  
     
-15. The settings page is where you can configure the patching schedule, security scans, backup settings, and setup Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take approximately 15 - 30 min depending on the cluster profile and the node pool configuration.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
@@ -160,11 +160,11 @@ You can validate that your cluster is up and available by reviewing the cluster 
 2. Navigate to the left **Main Menu** and click on **Clusters**. 
 
 
-3. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. 
+3. The **Clusters** page contains a list of the available clusters Palette manages. Click on the row for the cluster you wish to review its details page. 
 
 
 
-4. From the cluster details page, verify the **Cluster Status** field contains the value **Running**.
+4. From the cluster details page, verify the **Cluster Status** field displays **Running**.
 
 
 # Next Steps
