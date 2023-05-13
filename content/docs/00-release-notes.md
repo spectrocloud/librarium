@@ -54,7 +54,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - OpenID Connect (OIDC) identity provider configuration has now moved to the Kubernetes layer. You can now select the desired OIDC setting when selecting a Kubernetes distribution and version during a cluster profile creation.
 
 
-- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Maros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
+- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Macros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
 
 
 - Cluster profiles can now be filtered by scope such as Tenant and project.
