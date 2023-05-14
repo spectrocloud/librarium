@@ -74,33 +74,17 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
 
 ## Prerequisites
 
-- For seamless migration when the host is put in maintenance mode, ensure `LiveMigrate` is set as the eviction strategy for all concerned VMs.  
+- Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. This provides seamless migration when the host is put in maintenance mode.   
 
 
 ## Manually Migrate the VM
 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Obtain the kubeconfig file from Palette, and set the KUBECONFIG environment variable to access it so you can issue kubectl commands to the cluster. To learn how, refer to [Set up Kubectl](https://docs.spectrocloud.com/clusters/cluster-management/palette-webctl/#setupkubectl).
 
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
-
-
-3. Select the cluster you want to access.
-
-
-4. Click the kubeconfig link to download the file.
-
-
-5. Open a terminal window and set the KUBECONFIG environment variable to the file path of the **kubeconfig** file.
-
-  Example:
-  ```shell
-  export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
-  ```
-
-6. Issue the following command to mark the node as *un-schedulable*. This alerts the Kubernetes scheduler not to schedule any new pods on that node but allows existing pods running on the node to continue to run.
+2. Issue the following command to mark the node as *un-schedulable*. This alerts the Kubernetes scheduler not to schedule any new pods on that node but allows existing pods running on the node to continue to run.
     
    Example:
     ```bash
@@ -110,7 +94,7 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
     **node-name**: The name of the node that should be marked as *un-schedulable*.
 
 
-7. Issue the following command to gracefully remove all pods from the node that is undergoing maintenance. When you drain a node, all pods and VMs will be safely evicted from the node.
+3. Issue the following command to gracefully remove all pods from the node that is undergoing maintenance. When you drain a node, all pods and VMs will be safely evicted from the node.
 
     Example:
     ```bash
