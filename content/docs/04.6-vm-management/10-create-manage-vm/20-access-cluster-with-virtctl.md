@@ -16,6 +16,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
 
+The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client with the `virtctl scp` command, which you can use to transfer files to and from a virtual machine. Its usage is similar to the ssh command.
+
+
 # Prerequisites
 
 - A running virtual cluster with Palette VM Management and access to it.
