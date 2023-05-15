@@ -1,8 +1,8 @@
 ---
-title: "Building Edge Native Artifacts"
-metaTitle: "Build Your Palette Edge Native Images with CanvOS"
-metaDescription: "Learn how to build your installer and provider images using our CanvOS GitHub Repository"
-icon: "nodes"
+title: "Build Edge Native Artifacts"
+metaTitle: "Build Edge Native Images using CanvOS"
+metaDescription: "Learn how to build your installer and provider images using CanvOS GitHub repository."
+icon: "cubes"
 category: ["how-to", "edge", "edge-native", "CanvOS"]
 hideToC: false
 fullWidth: false
@@ -14,224 +14,166 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-## Build Edge Native Artifacts
+# Build Edge Native Images using CanvOS
+	
+Palette's Edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice in an immutable way. 
 
-Palette Edge Native is modeled on an immutable operating system.  It is not another linux distribution, but rather a method to consume the distribution of your choice in an immutable way.  Palette Edge Native leverages the open source project, [Kairos](kairos.io/) to create these artifacts.
+In this how-to guide, you will leverage the open-source project [Kairos](kairos.io/) to create the following Ubuntu-based artifacts:
+<br/>
 
-This how-to-guide will walk you through the basics of creating base Ubuntu images:
+* **An edge installer ISO image** - This ISO image can install or "Flash" an edge device. You will customize the installer image to allow the new Edge nodes automatically register themselves with Palette. 
 
-* Installer Image - Used to install or "Flash" a device or virtual machine.
-* Provider Images - Used to provision new Kubernetes clusters and used to provide upgrades.
-In this how-to guide we will create three images.
 
-* 1 x Installer ISO
-* 2 x Provider images
+* **Two provider images** - These provider images can provision new Kubernetes clusters and are used to provide upgrades.
 
-We will customize the installer image to support auto registration giving you a low touch feeling when we deploy edge nodes in later [Edge](/knowledgebase/tutorials/edge-native) tutorials.
+These artifacts will help you provision as many edge hosts as you desire. 
 
-## Prerequisites
+# Prerequisites
 
-**Software**  
+This how-to guide can only be followed in an Ubuntu environment having *x86_64* processor architecture. You can issue either of the following command in the terminal to check your processor architecture. 
+<br/>
 
-* [Git cli](https://cli.github.com/manual/installation)  
-* [Docker](https://docs.docker.com/engine/install/)  
-
-<InfoBox>
-The ability to run privileged containers is required.
-</InfoBox>
-
-**Hardware**  
-
-* x86 Based Platform
-* 4CPU
-* 8GB Memory
-* 50GB HD
-
-**This how-to guide was written with the following versions:**
-
-**Ubuntu**
-
-```shell
-No LSB modules are available.
-Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.2 LTS
-Release:        22.04
-Codename:       jammy
+```bash
+uname -m
 ```
 
-4-vCPU  
-8GB Memory  
-100GB Hard Disk  
+To complete the tutorial, you will need the following items:
+<br/>
 
-**Docker CE**
+* Operating system: Ubuntu 22.04 or later. 
 
-```shell
-Docker version 23.0.1, build a5ee5b1
-```
 
-**Git cli**
+* Hardware: A (virtual) machine with x86_64 processor architecture and the following *minimum* hardware configuration:
+	* 4 CPU
+	* 8 GiB memory
+	* 50 GiB storage
 
-```shell
-git version 2.34.1
-```
 
-## Enablement
+* Software: [Git CLI](https://cli.github.com/manual/installation) and [Docker](https://docs.docker.com/engine/install/) installed in the Ubuntu (virtual) machine. 
 
-## The GitHub Repo
+  <InfoBox>
+  Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on the Ubuntu machine.
+  </InfoBox>
+
+* A Spectro Cloud account. Visit [https://console.spectrocloud.com](https://console.spectrocloud.com) to create an account. If you have not signed up, you can sign up for a [free trial](https://www.spectrocloud.com/free-tier/).
+
+
+
+* Tenant admin access to Palette for the purpose of generating a new registration token for edge hosts.
+
+
+# Instructions
+
+## Check out the Starter Code
+Follow the steps below to check out the GitHub repository containing the starter code for generating the image artifacts. 
+<br />
 
 1. Clone the repo at [CanvOS](https://github.com/spectrocloud/CanvOS.git)
+<br />
 
-```shell
-git https://github.com/spectrocloud/CanvOS.git
+  ```shell
+  git clone https://github.com/spectrocloud/CanvOS.git
+  ```
+
+2. Change into the `CanvOS` directory.
+<br />
+
+  ```shell
+  cd CanvOS
+  ```
+
+3. View available tags. The files relevant for this guide are present in the **v3.3.3** tag. 
+<br />
+
+  ```shell
+  git tag
+  ```
+
+4. Checkout the desired **v3.3.3** tag.
+<br />
+
+  ```shell
+  git checkout v3.3.3
+  ```
+  You can check the HEAD symbolic reference by issuing `git status` command, and expect the following output.
+  <br />
+
+  ```bash coloredLines=1-1|#666666
+  HEAD detached at v3.3.3
+  ```
+
+5. View the files *relevant* for this how-to guide. 
+<br />
+
+  ```bash
+  .
+├── .arg          # Defines the variables 
+├── Dockerfile    # Bakes the arguments to use in the image
+├── Earthfile     # Series of commands for creating target images
+├── earthly.sh    # Script to invoke the Earthfile, and generate target images
+└── user-data.template  # A sample user-data file
+  ```
+
+
+## Edit the Image Tag
+
+Start with editing the **.arg** file that contains the following variables:
+<br />
+
+```bash
+CUSTOM_TAG        # Environment name for provider image naming
+IMAGE_REGISTRY    # Image Registry Name
+OS_DISTRIBUTION   # OS Distribution (ubuntu, opensuse-leap)
+IMAGE_REPO        # Image Repository Name
+OS_VERSION        # OS Version, only applies to Ubuntu (20, 22)
+K8S_DISTRIBUTION  # Kubernetes Distribution (k3s, rke2, kubeadm)
+ISO_NAME          # Name of the Installer ISO
 ```
 
-**Sample Output**
-
-```shell
-Cloning into 'CanvOS'...
-remote: Enumerating objects: 133, done.
-remote: Counting objects: 100% (133/133), done.
-remote: Compressing objects: 100% (88/88), done.
-Receiving objects: 100% (133/133), 40.16 KiB | 5.02 MiB/s, done.
-Resolving deltas: 100% (60/60), done.
-remote: Total 133 (delta 60), reused 101 (delta 32), pack-reused 0
-```
-
-2. Change into the `CanvOS` directory that was created.
-
-```shell
-cd CanvOS
-```
-
-3. View Available tags
-
-```shell
-git tag
-
-v3.3.3
-```
-
-4. Checkout the desired tag
-
-```shell
-git checkout <tag version>
-```
-
-**Sample Output**
-
-```shell
-git checkout v3.3.3
-Note: switching to 'v3.3.3'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by switching back to a branch.
-
-If you want to create a new branch to retain commits you create, you may
-do so (now or later) by using -c with the switch command. Example:
-```
-
-## Update Variables
-
-1. Edit the `.arg` file.  Only modify the `MY_ENVIRONMENT` value.  Make it your initials in lowercase.  Everything else can stay the same.
-
-<WarningBox>
-
-The MY_ENVIRONMENT variable should adhere to standard image naming conventions which require it to be all lowercase.  We use this variable to name the images as unique for the purposes of this documentation.
-
-</WarningBox>
-
-```shell
-vi .arg
-```
-
-Depending on your editor the way you save may be different.  This lab was written using VIM. To enable editing in VIM press `i`.  Use the arrow keys to scroll to the value of the `CUSTOM_TAG` variable.  Delete the value `demo` and replace it with your initials in lowercase.
-
-**Sample Output**
-
-```shell
-CUSTOM_TAG=demo
-IMAGE_REGISTRY=ttl.sh
-OS_DISTRIBUTION=ubuntu
-IMAGE_REPO=$OS_DISTRIBUTION
-OS_VERSION=22
-K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
-
-
-# CUSTOM_TAG-------------------------Environment name for provider image naming
-# IMAGE_REGISTRY---------------------Image Registry Name
-# OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
-# IMAGE_REPO-------------------------Image Repository Name
-# OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
-# K8S_DISTRIBUTION-------------------Kubernetes Distribution (k3s, rke2, kubeadm)
-# ISO Name---------------------------Name of the Installer ISO
-```
-
-* To save with VIM, press `esc` then type `:wq!` and press `enter`
-
-<InfoBox>
-Depending on your editor the way you save may be different.
-</InfoBox>
-
-**Sample Output**
-
-```shell
-CUSTOM_TAG=jb
-IMAGE_REGISTRY=ttl.sh
-OS_DISTRIBUTION=ubuntu
-IMAGE_REPO=$OS_DISTRIBUTION
-OS_VERSION=22
-K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
-
-
-# CUSTOM_TAG-------------------------Environment name for provider image naming
-# IMAGE_REGISTRY---------------------Image Registry Name
-# OS_DISTRIBUTION--------------------OS Distribution (ubuntu, opensuse-leap)
-# IMAGE_REPO-------------------------Image Repository Name
-# OS_VERSION-------------------------OS Version, only applies to Ubuntu (20, 22)
-# K8S_DISTRIBUTION-------------------Kubernetes Distribution (k3s, rke2, kubeadm)
-# ISO Name---------------------------Name of the Installer ISO
-~
-~
-~
-:wq!
-```
-
-By default, we do not provide a username or password for the images that are being created.  To create a username and password for lab/demo purposes we will create a `user-data` file with the attributes that are needed.  Additionally, to aid in auto-registration of the nodes that we will create and use in later tutorials, we are going to add a `edgeHostToken` to the user-data file.  This will enable the nodes to automatically register with your Palette Tenant without user intervention.  
+Open the **.arg** file in any editor of your choice, and edit the value for `CUSTOM_TAG` variable. You can enter your initials as the value. Ensure that it is made up of all lower case alphanumeric characters. You will use this variable as a prefix in the provider image names. The current example uses the following value:
 
 <br />
 
-## Create the Registration Token in Palette.
+```bash
+CUSTOM_TAG=demo
+```
+Ensure to save the **.arg** file after your edits. 
 
-1. Open a browser window and navigate to the [Palette Console](https://console.spectrocloud.com/)
 
-* Login to your organization  
-If you have not signed up you can sign up for a free trial [Here](https://www.spectrocloud.com/free-tier/)
+By default, the provider images you create will have no username or password. To create a username and password for demo purposes and enable Edge nodes to register themselves with Palette automatically, you can create a **user-data** file. The next sections will guide you through creating an auto-registration token and a **user-data** file. 
 
-2. Navigate `Tenant Settings` on the left hand menu (Bottom Left).
 
-* Select `Registration Tokens`
-* Click `Add New Registration Token`
-* Set `Token Name` as `Demo`
-* Set the `Default Project` as `default`
-* Set the Expiration Date for `7 Days`
+## Create a Registration Token
 
-![Registration Token](/tutorials/canvos/add_token.png)
+Log in to [Palette](https://console.spectrocloud.com), and switch to the Tenant Admin view.
+<br />
 
-* Click `Confirm`
-* Copy the newly created token to Clipboard
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
 
-<InfoBox>
-Save this token to a note file as we will use it later.
-</InfoBox>
+<br />
+
+Navigate to **Tenant Settings** > **Registration Tokens**. Click on **Add New Registration Token** and enter the following values.
+
+|**Field**|**Value**|
+|----|----|
+| Registration Token Name | Demo |
+| Description | Token for Edge host how-to/tutorial |
+| Default Project | Default |
+| Expiration Date | 7 days |
+
+Click on **Confirm** button at the bottom, and Palette will generate a token. Copy the newly created token to a clipboard or notepad file to use later in this guide. 
+
+
+<br />
 
 ![Registration Token](/tutorials/canvos/registration_token.png)
 
-## Create a user-data file
+## Create User Data File
 
-1. Copy and paste the contents below.
+In this section, you will create a **user-data** file, a script that runs when you provision an Edge host. You can use this file to configure the host and install software or packages. Refer to this guide, [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference), outlining possible parameters to use and configure. In the next section, the agent will inject the parameters defined in the **user-data** file into the edge installer ISO image.
+
+To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above in Palette. 
+<br />
 
 ```shell
 cat <<'EOF' > user-data
@@ -247,34 +189,15 @@ users:
 EOF
 ```
 
-5. Edit the `edgeHostToken` value with the registration token we created above.
+Ensure to save the **user-data** file after you update your registration token. This **user-data** file configures the following: 
 
-* Type `vi user-data`
+* Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.
 
-**Sample Output**
+* Instructs the installer to turn the machine off once the installation is complete
 
-```shell
-#cloud-config
-stylus:
-  site:
-    edgeHostToken: aUAxxxxxxxxx0ChYCrO
-install:
-  poweroff: true
-users:
-  - name: kairos
-    passwd: kairos
-```
+* Sets the login credentials for Edge hosts, `{name: kairos, passwd: kairos}`. The login credentials will allow you to SSH log into the Edge host for debugging purposes. 
 
-* Press `i` to enable editing.
-* Replace the value of `edgeHostToken` variable with the value of the registration token you saved to the note file.
 
-* To save with VIM, press `esc` then type `:wq!` and press `enter`
-
-<InfoBox>
-Depending on your editor the way you save may be different.
-</InfoBox>
-
-This creates a `user-data` file that will be used by our agent to inject the values when the images are created.  This sets the password for the user `kairos` to `kairos` and instructs the installer to turn the machine off once the installation is complete.  It also tells the agent to use the auto-registration functionality and authenticate with the token we provided.
 
 ## Create Edge Artifacts
 
