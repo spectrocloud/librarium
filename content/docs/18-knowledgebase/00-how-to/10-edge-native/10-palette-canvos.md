@@ -82,7 +82,7 @@ git version 2.34.1
 1. Clone the repo at [CanvOS](https://github.com/spectrocloud/CanvOS.git)
 
 ```shell
-git https://github.com/spectrocloud/CanvOS.git
+git clone https://github.com/spectrocloud/CanvOS.git
 ```
 
 **Sample Output**
