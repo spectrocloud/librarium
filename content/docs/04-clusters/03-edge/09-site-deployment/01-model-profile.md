@@ -131,7 +131,7 @@ The following steps will guide you to deploy an Edge cluster using the **BYOS Ed
 7. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
-8. The pack editor displays on the right section of the dashboard where you can customise the BYOOS pack. 
+8. The pack editor is displayed, and you can customize the **BYOS Edge OS** pack as needed. 
 
 ## Installer Parameters
 
