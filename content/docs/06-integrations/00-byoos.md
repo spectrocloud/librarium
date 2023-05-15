@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Bring Your Own Operating System (BYOOS) 
 
-Bring Your Own Operating System (BYOOS) is a deployment option that allows you to customize the operating system of their environment. 
+Bring Your Own Operating System (BYOOS) allows you to deploy and customize the OS in your environment, giving you greater flexibility and control over your infrastructure. 
 This BYOOS feature optimizes infrastructure and streamlines workflow by enabling users to specify a host runtime operating system (OS), providing greater flexibility and control over their infrastructure. 
 
 BYOOS empowers you to deploy your preferred OS to your environments and tailor them to your specific needs using various customization tools. 
