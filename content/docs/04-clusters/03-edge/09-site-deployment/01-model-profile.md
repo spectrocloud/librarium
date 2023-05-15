@@ -128,7 +128,7 @@ Use the following steps to deploy Edge clusters using your cluster profile with 
 6. Select **Public Repo** in the **Registry field**.
 
 
-7. Select **BYOOS Edge OS** in the **Pack Name** field and the pack version. 
+7. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
 8. The pack editor displays on the right section of the dashboard where you can customise the BYOOS pack. 
