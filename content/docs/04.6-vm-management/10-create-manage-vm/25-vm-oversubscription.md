@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette Virtual Machine Management utilizes oversubscription, also called overcommitment, to tune performance in your virtual environment. This allows administrators to oversubscribe the physical resources on a host in order to maximize the number of workloads that can run on a host. 
+Palette Virtual Machine Management allows administrators to oversubscribe the physical resources on a host to maximize the number of active workloads. 
 
 VM workloads typically have varying resource demands and peak utilization patterns. By oversubscribing resources, it is possible to allocate them flexibly and take advantage of the fact that not all VMs will require their maximum allocation simultaneously. 
 
@@ -46,7 +46,7 @@ Consider the following before overcommitting CPU:
 - It is not advisable to overcommit CPUs in a production environment without extensive testing. Applications that use 100 percent of processing resources may become unstable in overcommitted environments.
 
 
-- Take care not to overcommit guest VMs on more than the physical number of processing cores. For example, a guest VM with four vCPUs should only be run on a host physical machine with a quad-core processor, as opposed to a dual-core processor. 
+- Ensure you don't overcommit guest VMs on more than the physical number of processing cores. For example, a guest VM with four vCPUs should only be deployed on a host physical machine with a quad-core processor instead of a dual-core processor. 
 
     We recommend no more than 10 total allocated vCPUs per physical processor core.
     
@@ -60,7 +60,7 @@ KubeVirt allows you to assign more or less memory to a VM than a VM requests to 
 
 To learn about options for memory overcommitment, refer to [Node Overcommit](https://kubevirt.io/user-guide/operations/node_overcommit/) KubeVirt resource.
 
-When overcommitting memory, set the following parameters as shown. 
+You can make several changes to reduce the memory footprint and overcommit the per-VMI memory overhead.
 
 - Disable the graphic device by setting `spec.domain.devices.autoattachGraphicsDevice` to false.
 
@@ -70,7 +70,7 @@ When overcommitting memory, set the following parameters as shown.
 
 - Enable guest memory by setting `spec.domain.memory.guest` to a value higher than `spec.domain.resources.requests.memory`, as shown in the example.
 
-```
+```yaml
     apiVersion: kubevirt.io/v1alpha3
     kind: VirtualMachineInstance
     metadata:

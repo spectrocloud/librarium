@@ -21,7 +21,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 
 # Prerequisites
 
-- A running virtual cluster with Palette VM Management and access to it.
+- An active virtual cluster with Palette VM Management and access to it.
 
 
 
@@ -30,14 +30,14 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 1. Download the most recent virtctl artifact based on your machine type from the official [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the Assets section.
 
 
-2. Give execute permission to the virtctl command.
+2. Assign the execute permission to the virtctl command.
 
   ```shell
   chmod +x virtctl 
   ```
 
 
-3. Next, log in to Palette as a tenant admin to connect your host cluster with the virtctl CLI.
+3. Next, log in to [Palette](https://console.spectrocloud.com) as a tenant admin to connect your host cluster with the virtctl CLI.
 
 
 4. Navigate to the left **Main Menu** and select **Clusters**. 
@@ -66,7 +66,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
   virtctl ssh ubuntu 
   ```
 
-You can now issue virtctl commands against your host cluster.
+You can now issue virtctl commands against the VM in your Kubernetes cluster.
 
 # Validation
 
