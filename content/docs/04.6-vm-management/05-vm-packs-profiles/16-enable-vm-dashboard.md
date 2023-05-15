@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-To enable the Specrto VM Dashboard, apply the profile you created to your cluster. 
+To enable the Spectro VM Dashboard, apply the profile you created to your cluster. 
 
 
 # Prerequisites
