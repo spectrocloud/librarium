@@ -90,7 +90,7 @@ Optionally, add additional Helm or OCI registries and include applications hoste
 # Create a Custom Cluster Profile With BYOOS Pack
 
 The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
-BYOOS in Palette gives you more flexibility and control with your OS and helps manage Kubernetes clusters. The BYOOS Edge OS supports commercial and open-source distribution OS to perform optimally and meet unique requirements when building cluster profiles. 
+The BYOOS feature gives you flexibility and control over your OS and helps manage Kubernetes clusters. The **BYOS Edge OS** pack supports commercial and open-source distribution OS to perform optimally and meet unique requirements as you build cluster profiles. 
 
 
 The following steps will guide you to deploy an Edge cluster using the **BYOS Edge OS** pack in your cluster profile.
