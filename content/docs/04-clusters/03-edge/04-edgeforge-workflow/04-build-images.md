@@ -173,7 +173,7 @@ To verify the registry, users can use tools such as docker login or docker pull 
   | Use case | Description |
   | --- | --- |
   | Modifying/controlling Kubernetes versions and flavors | You can update the .versions.env file or specify the versions and flavors as arguments to the build command. |
-  | Adding custom packages to target OS images | Edit the respective images **Dockerfile** to add the install commands using `apt-get` or `zypper`. |
+  | Adding custom packages to target OS images | Edit the **Dockerfile** of the respective OS images to add the install commands using `apt-get` or `zypper`. |
   | Adding custom files or directories into Kubernetes provider container images | Add the custom files or directories in the **overlay/files/** folder. The files directory is copied directly under the */* folder in the target image. |
   | Adding custom content to Edge Install installer ISO | Place the custom content in the **overlay/files-iso** directory. To embed a content bundle, place it under the **overlay/files-iso/opt/spectrocloud/content** folder. This limits the scope to only the Edge Install installer ISO. |
 
