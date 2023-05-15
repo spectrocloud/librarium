@@ -91,7 +91,7 @@ Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/
 <br />
 
 
-# Using BYOOS in Palette
+# Customize OS with BYOOS
 
 The BYOOS (Bring Your Own OS) feature allows you to upload and customize the operating system images used to build the Edge cluster profile. With BYOOS, you can configure cluster profiles by updating the pack. 
 
