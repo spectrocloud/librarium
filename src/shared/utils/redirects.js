@@ -220,6 +220,11 @@ const redirects = [
     toPath: `/devx/manage-dev-engine/resource-quota`,
     redirectInBrowser: true,
     isPermanent: true,
+  },{
+    fromPath: `/devx/registries`,
+    toPath: `/devx/manage-dev-engine/registries`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
