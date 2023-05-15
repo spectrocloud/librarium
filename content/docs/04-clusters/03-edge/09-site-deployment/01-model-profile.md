@@ -178,7 +178,7 @@ image:
 Refer to the  [BYOOS Pack](/) resource to learn more about the pack details.
 <br />
 
-9. Review your own custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
+9. Review your custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
 
 You have successfully configured the BYOOS pack to update your custom images to build the Edge cluster profile. 
 
