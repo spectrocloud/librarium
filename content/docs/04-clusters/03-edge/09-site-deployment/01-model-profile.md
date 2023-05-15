@@ -138,7 +138,7 @@ The following steps will guide you to deploy an Edge cluster using the **BYOS Ed
 | Parameter            | Description                                            |
 |----------------------|--------------------------------------------------------|
 | `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. |
-| `pack.content.images` | Specifies the list of images to use for the OS pack. |
+| `pack.content.images` | Specifies the list of OS images to use for the pack. |
 | `pack.content.images.-  images` | Specifies an image to use for the OS pack. |
 
 
