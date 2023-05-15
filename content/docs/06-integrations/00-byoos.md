@@ -19,7 +19,7 @@ This BYOOS feature optimizes infrastructure and streamlines workflow by enabling
 
 BYOOS empowers you to deploy your preferred OS to your environments and tailor them to your specific needs using various customization tools. 
 
-Spectro Cloud offers BYOOS support for both Edge and non-Edge environments, allowing you to customize your environment's operating system (OS). You can reference the BYOOS pack in Terraform using a data resource, which can help optimize their workflow. 
+Spectro Cloud offers BYOOS support for both Edge and non-Edge environments.
 
 To learn how to use BYOOS in Edge and non-Edge environments, check out the []() and [] () guides.
 
