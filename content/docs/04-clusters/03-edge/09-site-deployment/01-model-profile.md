@@ -93,7 +93,7 @@ The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/clu
 BYOOS in Palette gives you more flexibility and control with your OS and helps manage Kubernetes clusters. The BYOOS Edge OS supports commercial and open-source distribution OS to perform optimally and meet unique requirements when building cluster profiles. 
 
 
-Use the following steps to deploy Edge clusters using your cluster profile with the BYOOS Edge OS.
+The following steps will guide you to deploy an Edge cluster using the **BYOS Edge OS** pack in your cluster profile.
 
 # Prerequisites
 
