@@ -214,7 +214,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | Palette Upgrader       | 3.3.16   |
 | Portworx               | 2.13.0   |
 | Prometheus Agent       | 19.0.2   |
-| Prometheus Operator    | 45.4.0   |
+| Prometheus Operator    | 45.25.0 |
 | Reloader               | 1.0.24   |
 | Spectro k8s Dashboard  | 2.7.1    |
 | HashiCorp Vault        | 0.24.1   |
