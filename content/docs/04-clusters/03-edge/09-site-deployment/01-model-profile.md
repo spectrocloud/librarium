@@ -87,7 +87,7 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
-# Build Custom Cluster Profile With BYOOS Pack
+# Create a Custom Cluster Profile With BYOOS Pack
 
 The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
 BYOOS in Palette gives you more flexibility and control with your OS and helps manage Kubernetes clusters. The BYOOS Edge OS supports commercial and open-source distribution OS to perform optimally and meet unique requirements when building cluster profiles. 
