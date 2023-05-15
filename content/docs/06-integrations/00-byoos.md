@@ -31,4 +31,4 @@ To learn how to use BYOOS in Edge and non-Edge environments, check out the []() 
 
 To use the non-Edge BYOOS pack, you must have the following:
 <br />
-- Access to a Non-Edge repository that contains the generic-byoi pack
+- Access to a non-Edge repository that contains the generic BYOOS pack.
