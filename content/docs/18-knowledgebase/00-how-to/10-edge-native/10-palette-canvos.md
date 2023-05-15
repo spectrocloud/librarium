@@ -276,6 +276,12 @@ Depending on your editor the way you save may be different.
 
 This creates a `user-data` file that will be used by our agent to inject the values when the images are created.  This sets the password for the user `kairos` to `kairos` and instructs the installer to turn the machine off once the installation is complete.  It also tells the agent to use the auto-registration functionality and authenticate with the token we provided.
 
+6. Validate the `user-data` format is valid cloud-init formatting.  We leverage [YIP](https://github.com/mudler/yip) to apply stages and configuration attributes.  The formatting is cloud-init style and therefore should be validated before deployment.
+
+```shell
+cloud-init schema --config-file user-data
+```
+
 ## Create Edge Artifacts
 
 <InfoBox>
