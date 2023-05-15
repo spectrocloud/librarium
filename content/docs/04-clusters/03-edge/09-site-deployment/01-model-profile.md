@@ -100,7 +100,7 @@ Use the following steps to deploy Edge clusters using your cluster profile with 
 - Provider images are built.
 
 
-- ` system.uri`should be constrcuted. 
+- A constructed `system.uri`. 
 
 # Enablement
 
