@@ -54,7 +54,7 @@ In some situations, such as with the Fedora operating system, SELinux on the gue
 - Generate an appropriate local security module that permits `qemu-ga` to operate correctly. This is the preferred workaround.
 
 
-- Turn off SElinux **Enforcing** mode before the snapshot by issuing the `setenforce 0` command as the root user. Enforcing can be re-enabled after the snapshot using the `setenforce 1` command.
+- Turn off SELinux **Enforcing** mode before the snapshot by issuing the `setenforce 0` command as the root user. Enforcing can be re-enabled after the snapshot using the `setenforce 1` command.
 
 </WarningBox>
 
