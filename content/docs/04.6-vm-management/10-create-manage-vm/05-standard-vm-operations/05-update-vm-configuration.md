@@ -20,7 +20,7 @@ You can add storage and additional network interfaces to your virtual machines (
 
 # Add Disk Storage
 
-KubeVirt allows hotplugging additional storage into a running VM. Both block and file system volume types are supported.
+KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are supported.
 
 ## Prerequisites
 
@@ -96,7 +96,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 <InfoBox>
 
-Multus allows hotplugging network interfaces only when interfaces use the **virtio** model connected through bridge binding.
+Multus allows hot plugging network interfaces only when interfaces use the **virtio** model connected through bridge binding.
 
 </InfoBox>
 
