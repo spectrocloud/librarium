@@ -90,7 +90,7 @@ Choose the workflow that fits your needs.
 <InfoBox>
 
 When generating a BYOOS pack, the registry specified with the `generate` command is the registry used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
-To verify the registry, users can use tools such as docker login or docker pull to test the connection to the registry.
+To verify the registry, users can use tools such as `docker login` or `docker pull` to test the connection to the registry.
 
 </InfoBox>
 
