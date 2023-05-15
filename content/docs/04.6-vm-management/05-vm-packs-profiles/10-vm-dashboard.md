@@ -50,3 +50,18 @@ When you click on a VM in the list, the following tabs display. Tabs are specifi
 
 - **Snapshots**: Allows you to take a new snapshot and manage existing ones. 
 
+
+# Resources
+
+[Namespace Management](/clusters/cluster-management/namespace-management)
+
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
+

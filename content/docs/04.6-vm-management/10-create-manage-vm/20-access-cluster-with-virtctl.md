@@ -32,10 +32,12 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 
 2. Assign the execute permission to the virtctl command.
 
+<br />
+
   ```shell
   chmod +x virtctl 
   ```
-
+<br />
 
 3. Next, log in to [Palette](https://console.spectrocloud.com) as a tenant admin to connect your host cluster with the virtctl CLI.
 
@@ -59,6 +61,8 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig 
   ```
 
+  <br />
+
 9. Issue the `virtctl ssh <virtual_machinename>` or `virtctl vnc <virtual_machinename>` command to display the login screen.
 
     Example:
@@ -66,8 +70,16 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
   virtctl ssh ubuntu 
   ```
 
+  <br />
+
 You can now issue virtctl commands against the VM in your Kubernetes cluster.
 
 # Validation
 
-Verify you have access to your virtual machine by issuing virtctl commands against it.
+Verify you have access to your virtual machine by issuing virtctl commands against it, as shown in the example below.
+
+<br />
+
+```bash
+virtctl guestosinfo
+```

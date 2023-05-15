@@ -30,20 +30,14 @@ Using the following algorithm, when `cpuAllocationRatio` is set to 1, the full a
 
 The `cpuAllocationRatio` is global, so setting it to greater than 1 has the effect of requesting less CPU from Kubernetes for each VM.
 
-Consider the following before overcommitting CPU:
+Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer to [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/dedicated_cpu_resources/) and [Resources Requests and Limits](https://kubevirt.io/user-guide/virtual_machines/virtual_hardware/#resources-requests-and-limits) Kubevirt documentation.
 
-<br />
-
-- Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer to [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/dedicated_cpu_resources/) and [Resources Requests and Limits](https://kubevirt.io/user-guide/virtual_machines/virtual_hardware/#resources-requests-and-limits) Kubevirt documentation.
-
-
-- Virtualized CPUs (vCPUs) are best overcommitted when a single host physical machine has multiple guest VMs that do not share the same vCPU. A Kernel-based Virtual Machine (KVM) should safely support guest VMs with loads under 100 percent at a ratio of five VCPUs on five VMs to one physical CPU on a single host physical machine.
 
 <br />
 
 <WarningBox>
 
-- It is not advisable to overcommit CPUs in a production environment without extensive testing. Applications that use 100 percent of processing resources may become unstable in overcommitted environments.
+- We do not recommend overcommitting CPUs in a production environment without extensive testing. Applications that use 100 percent of processing resources may become unstable in overcommitted environments.
 
 
 - Ensure you don't overcommit guest VMs on more than the physical number of processing cores. For example, a guest VM with four vCPUs should only be deployed on a host physical machine with a quad-core processor instead of a dual-core processor. 
@@ -62,8 +56,7 @@ To learn about options for memory overcommitment, refer to [Node Overcommit](htt
 
 You can make several changes to reduce the memory footprint and overcommit the per-VMI memory overhead.
 
-- Disable the graphic device by setting `spec.domain.devices.autoattachGraphicsDevice` to false.
-
+<br />
 
 - Enable guest overhead overcommit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
 

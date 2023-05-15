@@ -29,9 +29,7 @@ The components of the pack are described below. Two essential components are the
 
 - **KubeVirt**: An add-on pack that allows you to create virtual machines within a Kubernetes cluster using open-source KubeVirt. KubeVirt provides feature gates you can enable in the Spectro VM Dashboard manifest. To learn which feature gates Palette enables by default and how you can enable additonal feature gates, check out the [Feature Gates](/vm-management#featuregates) section.
 
-    KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide VM management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage VM resources similar to the way you manage Kubernetes resources.   
-
-    KubeVirt provides the ``virtctl`` tool, which we recommend downloading and connecting to your VM to facilitate copy/paste in the virtual console. For steps to download and connect virtctl, refer to [Access VM Cluster with virtctl](/vm-management/create-manage-vm/access-cluster-with-virtctl).   
+    KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide VM management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage VM resources similar to the way you manage Kubernetes resources.     
 
 
 - **KubeVirt CDI**: An add-on pack that provides persistent storage for Kubernetes clusters. It enables Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs.

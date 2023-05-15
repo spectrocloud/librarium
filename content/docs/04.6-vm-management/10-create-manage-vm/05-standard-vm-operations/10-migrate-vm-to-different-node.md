@@ -23,7 +23,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Prerequisites
 
-- Live migration must be enabled as a feature gate. Keep this default in the KubeVirt configuration file.
+- Live migration must be enabled as a feature gate. Ensure the default ``spec.template.spec.evictionStrategy`` parameter is set to ``LiveMigrate`` in the KubeVirt configuration file. 
 
 
 - All VM instances must have an eviction strategy set as `evictionStrategy: LiveMigrate` to ensure that a VM is not interrupted if the node is placed into maintenance. This is configured automatically in the KubeVirt configuration file. If needed, you can override the default setting by configuring `spec.template.spec.evictionStrategy`.
