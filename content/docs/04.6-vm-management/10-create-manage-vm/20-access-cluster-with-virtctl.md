@@ -14,9 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The virtctl command-line interface (CLI) tool facilitates some of the VM operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
+The virtctl command-line interface (CLI) tool facilitates some of the virtual machine (VM) operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
 
-The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client with the `virtctl scp` command, which you can use to transfer files to and from a virtual machine. Its usage is similar to the ssh command.
+The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client with the `virtctl scp` command, which you can use to transfer files to and from a VM. Its usage is similar to the ssh command.
 
 
 # Prerequisites
@@ -27,7 +27,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 
 # Download and Connect virtctl
 
-1. Download the most recent virtctl artifact based on your machine type from the official [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the Assets section.
+1. Download the most recent virtctl artifact based on your machine type from the official [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the **Assets** section.
 
 
 2. Assign the execute permission to the virtctl command.

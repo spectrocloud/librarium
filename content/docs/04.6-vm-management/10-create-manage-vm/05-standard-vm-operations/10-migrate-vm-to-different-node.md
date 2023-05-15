@@ -16,20 +16,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette supports virtual machine (VM) migration to another physical host in the cluster. This is known as *live migration*. During live migration, the VM and its memory, storage, and CPU resources are moved from one cluster compute node to another without any noticeable downtime. 
 
-Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` section of the KubeVirt configuration file that is part of the Spectro VM Dashboard pack. For more information, review the [Feature Gates](/vm-management#featuregates) section.
+Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` section of the KubeVirt configuration file that is part of the **Spectro VM Dashboard** pack. Refer to [Feature Gates](/vm-management#featuregates) for more information.
 
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node is placed into maintenance or upgraded, all VM instances require a ``LiveMigrate`` eviction strategy.
 
 
 # Prerequisites
 
-- Live migration must be enabled as a feature gate. Ensure the default ``spec.template.spec.evictionStrategy`` parameter is set to ``LiveMigrate`` in the KubeVirt configuration file. 
-
-
 - All VM instances must have an eviction strategy set as `evictionStrategy: LiveMigrate` to ensure that a VM is not interrupted if the node is placed into maintenance. This is configured automatically in the KubeVirt configuration file. If needed, you can override the default setting by configuring `spec.template.spec.evictionStrategy`.
 
 
-- VMs that use Persistent Volumes must have shared ``ReadWriteMany`` (``RWX``) access mode. For more information, refer to the [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) Kubernetes resource. VMs that do not use persistent storage, such as containerDisks, do not require modifications for live migration.
+- VMs that use Persistent Volumes must have shared ``ReadWriteMany`` (``RWX``) access. For more information, refer to the [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) Kubernetes resource. VMs that do not use persistent storage, such as containerDisks, do not require modifications for live migration.
 
 
 - A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network. However, other interfaces such as those that Multus grants, may use a bridge interface for live migration.
@@ -45,7 +42,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 2. From the left **Main Menu**, choose **Clusters** and click on your cluster. 
 
 
-3. Click the **Virtual Machines** tab.
+3. Click on the **Virtual Machines** tab.
 
 
 4. Select the VM to migrate and use either the **three-dot Menu** or the **Actions drop-down Menu**, and click **Migrate Node to Node**.  
@@ -69,7 +66,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Evacuate a Host
 
-Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. These commands mark the node as un-schedulable and drains all the virtual machines and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
+Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
 
 
 ## Prerequisites
@@ -85,6 +82,9 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
 
 
 2. Issue the following command to mark the node as *un-schedulable*. This alerts the Kubernetes scheduler not to schedule any new pods on that node but allows existing pods on the node to continue to operate.
+
+    <br />
+
     
    Example:
     ```bash
@@ -120,6 +120,7 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
 
 2. Issue the following command to verify the pods are rescheduled on a different node by verifying the name and IP address of the new node changed.
 
+    <br />
     
     ```bash
     kubectl get pods --output wide

@@ -1,7 +1,7 @@
 ---
-title: "VM Oversubscription"
-metaTitle: "VM Oversubscription"
-metaDescription: "Learn about oversubscribing virtual machine CPU and Memory in Palette to maximize resource allocation."
+title: "VM Performance"
+metaTitle: "VM Performance"
+metaDescription: "Learn how to improve VM performance by maximizing virtual machine CPU and Memory using Palette."
 icon: " "
 hideToC: false
 fullWidth: false
