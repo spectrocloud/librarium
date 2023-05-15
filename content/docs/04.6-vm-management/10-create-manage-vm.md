@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette’s VM Management solution allows you to run and manage Virtual Machines (VMs) alongside containerized applications.
+Palette’s VM Management solution allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
 
 
 There are three ways you can create a new VM:
@@ -42,7 +42,7 @@ We recommend installing ``qemu-guest-agent`` to improve manageability of virtual
 
 </WarningBox>
 
-Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
+Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is deployed in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
 
 
 <br />
