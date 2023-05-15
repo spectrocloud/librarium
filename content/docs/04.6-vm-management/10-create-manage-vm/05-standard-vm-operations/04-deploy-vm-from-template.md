@@ -14,17 +14,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can deploy a VM using Palette's out-of-the-box templates or templates that your organization's administrator provides.
+You can deploy a virtual machine (VM) using Palette's out-of-the-box templates or templates that your organization's administrator provides.
 
 # Prerequisites
 
-- Configured Spectro VM Dashboard applied to your cluster. 
+- Configured Spectro VM Dashboard profile applied to your cluster. 
 
     Review [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile) to configure the dashboard. To learn how to access the dashboard, refer to [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard).
 
 # Deploy VM from a Template
 
-These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-box VM template.
+These steps will help guide you to deploy a VM from an out-of-the-box VM template.
 
 <br />
 
@@ -62,7 +62,7 @@ These steps will guide you to deploy a Virtual Machine (VM) from an out-of-the-b
 9. Optionally, you can enable the checkbox to start the VM automatically after creation.
 
 
-7. Click the **Next** button, which displays the YAML file. Tooltip help is available when you hover over lines in the file. 
+10. Click the **Next** button, which displays the YAML file. Tooltip help is available when you hover over lines in the file. 
 
 
 11. Review the YAML file and click the **Next** button when you are done. 

@@ -1,7 +1,7 @@
 ---
 title: "Update VM Configuration"
 metaTitle: "Update VM Configuration"
-metaDescription: "Learn about updates you can make to a VM configuration using Spectro VM Dashboard."
+metaDescription: "Learn how to add disk storage and network interfaces to a VM using Palette."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -15,12 +15,12 @@ import InfoBox from 'shared/components/InfoBox';
 # Overview
 
 
-You can add storage and additional network interfaces to your Virtual Machines (VMs).
+You can add storage and additional network interfaces to your virtual machines (VMs).
 
 
 # Add Disk Storage
 
-KubeVirt allows hotplugging additional storage into a running virtual machine. Both block and file system volume types are supported.
+KubeVirt allows hotplugging additional storage into a running VM. Both block and file system volume types are supported.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
-3. Navigate to **Virtual Machines > Disks** tabs and click the **Add disk** button.
+3. Navigate to **Virtual Machines** > **Disks** tabs and click the **Add disk** button.
 
 
 4. Review the parameters and update as needed. You can specify the disk size, disk type (Disk, CD-ROM, or LUN), and network interface.
@@ -103,3 +103,7 @@ Multus allows hotplugging network interfaces only when interfaces use the **virt
 ## Validation
 
 The **Network Interfaces** tab lists the newly added interface.
+
+# Resources
+
+- [Multus CNI](/integrations/multus-cni)
