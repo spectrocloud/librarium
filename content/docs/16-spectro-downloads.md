@@ -73,9 +73,9 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 # Palette CLI
 
-The Palette Command Line Interface(CLI) is a tool that you can use to interact with Palette programmatically. 
+The Palette Command Line Interface(CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/devx/manage-dev-engine/install-palette-cli) for installation guidance.  
 
-|Version|URL|
+|Version|Operating System | 
 |---|---|
 |3.4| TBD|
 

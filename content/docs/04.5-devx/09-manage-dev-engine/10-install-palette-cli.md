@@ -124,4 +124,4 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI he
 
   # Next Steps
 
-Start exploring the Palette CLI by using the --help command with the various commands. The Palette CLI will continue to receive more functionality in the future, so keep it updated.
+Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality in the future, so keep it updated.
