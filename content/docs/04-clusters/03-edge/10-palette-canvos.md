@@ -48,7 +48,7 @@ To complete this how-to guide, you will need the following items:
 <br /> 
   <InfoBox>
 
-  This how-to guide can only be followed in an Ubuntu environment having *x86_64* processor architecture.
+  You can follow this guide only in a Ubuntu environment with *x86_64* processor architecture. To use this guide in an openSUSE Leap environment, you must make relevant changes in the **.arg** file discussed later in this guide.
 
   </InfoBox>
 
@@ -147,16 +147,16 @@ Here is an overview of all variables in the **.arg** file:
 * `IMAGE_REGISTRY` - Image registry name that will store the image artifacts. The default value points to the *ttl.sh* image registry, an anonymous and ephemeral Docker image registry where images live for a maximum of 24 hours by default. If you wish to make the artifacts exist longer than 24 hours, you can use any other image registry to suit your needs. 
 <br />
 
-* `OS_DISTRIBUTION` - OS distribution of your choice. For example, it can be `ubuntu`, `opensuse-leap`, or any other distribution. This example uses `ubuntu` distribution.
+* `OS_DISTRIBUTION` - OS distribution of your choice. For example, it can be `ubuntu` or `opensuse-leap`. This example uses `ubuntu` distribution.
 <br />
 
 * `IMAGE_REPO` - Image repository name in your chosen registry. 
 <br />
 
-* `OS_VERSION` - OS version. This variable applies only to Ubuntu. Possible values are `20`, and `22`.
+* `OS_VERSION` - OS version. For Ubuntu, the possible values are `20`, and `22`. Whereas for openSUSE Leap, the possible value is `15.4`. This example uses `22` for Ubuntu. 
 <br />
 
-* `K8S_DISTRIBUTION` - Kubernetes distribution name. It can be one of these: k3s, rke2, or kubeadm.
+* `K8S_DISTRIBUTION` - Kubernetes distribution name. It can be one of these: `k3s`, `rke2`, or `kubeadm`.
 <br />
 
 * `ISO_NAME` - Name of the Edge installer ISO image. In this example, the name is *palette-edge-installer*. 
