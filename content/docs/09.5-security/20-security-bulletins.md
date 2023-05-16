@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+
 # Overview
 
 The following are security advisories for Palette and other related Spectro Cloud related resources.

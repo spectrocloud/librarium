@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+
 # SaaS Operation
 
 Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.

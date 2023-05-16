@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+
 # Self-Hosted Operation
 
 In self-hosted operation, where Palette is typically deployed on-prem behind a firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN). Palette supports enabling disk encryption policies for management cluster VMs if required. 

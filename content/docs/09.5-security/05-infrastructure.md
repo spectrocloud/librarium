@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+
 # Infrastructure Security
 
 Palette has security controls for the operating system, containers, and Kubernetes. Data is also protected with secure keys, encryption, secure communication, standard authentication/authorization, and API security. Audit logs record actions taken on the platform.
