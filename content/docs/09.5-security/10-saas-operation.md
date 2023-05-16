@@ -11,10 +11,27 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# SaaS Operation
+# Overview
 
-Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
+Palette is a multi-tenant SaaS system in which every tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
+
+We ensure tenant isolation through the following design principles and techniques.
+
 <br />
+
+- **Network Isolation**: Tenant clusters are created in the tenant’s public cloud accounts or in private data centers. Customers cannot intercept network traffic in other tenant clusters. Access to tenant cluster APIs through the cluster’s kubeconfig file is restricted to the tenant.
+
+
+- **Data isolation**: Palette applies a tenant filter to every operation to ensure user access is restricted to the user's tenant.
+
+
+- **Tenant Data Encryption**: Tenant data is encrypted, and all message communication uses tenant-specific channels.
+
+
+- **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
+
+
+- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants from utilizing the platform.
 
 
 ## Platform Security
@@ -24,6 +41,8 @@ Palette uses a micro services-based architecture to ensure its platform security
 In public clouds like AWS, Azure, and GCP, Palette interacts directly with a cloud’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private network (VPC) in the cloud, as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
 
 This allows the SaaS controller to do the following: 
+
+<br />
 
 - Dynamically query cloud resources.
 
