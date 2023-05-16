@@ -43,6 +43,10 @@ This guide will teach you how to use the Kubernetes Image Builder to create imag
 
 # Prerequisites
 
+
+* Palette v3.4.0 or greater.
+
+
 * [Git](https://git-scm.com/downloads) v2.39.1 or greater.
 
 

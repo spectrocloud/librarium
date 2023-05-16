@@ -43,7 +43,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
 
 
-- Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a custom registry. 
+
+- Palette now supports the ability for you to use image swap and override specific registries, images or a combination of both. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
+
 
 
 - Deploying a host cluster to AWS with Red Hat Enterprise Linux (RHEL) as the Operating System (OS) is now possible. This can be done by utilizing the *Bring Your Own Operating System* (BYOOS) pack, which allows for the creation of a custom AMI based on RHEL.
