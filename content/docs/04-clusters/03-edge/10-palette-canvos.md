@@ -24,7 +24,7 @@ In this how-to guide, you will leverage the open-source project [Kairos](kairos.
 * **An Edge installer ISO image** - This ISO image can install or "Flash" an edge device. In this how-to guide, you will customize the installer image to automatically allow the new Edge nodes to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a VM template, you can provision as many edge hosts as you desire. 
 
 
-* **Two provider images** - These provider images can be used in a Cluster profile to deploy new Kubernetes clusters or to provide upgrades.
+* **Two provider images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
 
 
 
@@ -71,6 +71,7 @@ The instructions are split into the following subsections:
 - Create a user data file
 - Create Edge artifacts
 
+
 ## Check out the Starter Code
 Follow the steps below to check out the GitHub repository containing the starter code for generating the image artifacts. 
 <br />
@@ -109,7 +110,7 @@ Follow the steps below to check out the GitHub repository containing the starter
   HEAD detached at v3.3.3
   ```
 
-5. View the files *relevant* for this how-to guide. 
+5. Here are the files *relevant* for the current how-to guide. 
 <br />
 
   ```bash
@@ -193,14 +194,13 @@ Click on **Confirm** button at the bottom to finish generating a token.
 
 <br />
 
-
 Copy the newly created token to a clipboard or notepad file to use later in this guide. 
 
+
 ## Create User Data File
+In this section, you will create a **user-data** file, a script in YAML format that executes when you provision an Edge host. You can use this file to configure the host and install software or packages. Refer to this guide, [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference), outlining possible parameters to use and configure. In the next section, the agent will inject the parameters defined in the **user-data** file into the Edge installer ISO image.
 
-In this section, you will create a **user-data** file, a script that executes when you provision an Edge host. You can use this file to configure the host and install software or packages. Refer to this guide, [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference), outlining possible parameters to use and configure. In the next section, the agent will inject the parameters defined in the **user-data** file into the Edge installer ISO image.
-
-To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above in Palette. 
+To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above. 
 <br />
 
 ```shell
@@ -217,7 +217,7 @@ users:
 EOF
 ```
 
-Ensure to save the **user-data** file after you update your registration token. This **user-data** file configures the following: 
+This **user-data** file configures the following: 
 
 * Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.
 
@@ -226,10 +226,7 @@ Ensure to save the **user-data** file after you update your registration token. 
 * Sets the login credentials for Edge hosts, `{name: kairos, passwd: kairos}`. The login credentials will allow you to SSH log into the Edge host for debugging purposes. 
 
 
-
 ## Create Edge Artifacts
-
-
 Issue the following command to build the artifacts. 
 <br />
 
@@ -244,13 +241,14 @@ Here is the sample output:
 ===================== Earthly Build SUCCESS ===================== 
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
-This command will generate an Edge installer ISO image and two Ubuntu-based provider (Docker) images. 
+This command will take up to 15-20 minutes to finish and generate an Edge installer ISO image and two Ubuntu-based provider (Docker) images. 
 <br />
 
 * **An Edge installer ISO image** - This command will create an Edge installer ISO image that you can later transfer to your Datacenter, and build a VM template. Once you provision Edge hosts (VMs) using this VM template, it will automatically allow new Edge hosts to register themselves with Palette. This artifact will help you provision as many Edge hosts as you desire. 
 
 
-* **Two provider images** - This command will push the Ubuntu-based provider (Docker) images to the *ttl.sh* image registry. You can use them by adding the following custom content within the `options` attribute of your **Cluster profile** > **OS layer**. 
+* **Two provider images** - This command will push the Ubuntu-based provider (Docker) images to the *ttl.sh* image registry. You can use them by adding the following custom content within the `options` attribute of the **OS layer** in
+your cluster profile. 
 <br />
 
   ```yaml
@@ -264,18 +262,18 @@ This command will generate an Edge installer ISO image and two Ubuntu-based prov
     system.osVersion: 22
   ```
 
-  The screenshot below shows custom content added to the OS layer of a Cluster profile.
+  The screenshot below shows custom content added to the OS layer of a cluster profile.
   <br />
 
-  ![Screenshot of k3s OS layer in a Cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
+  ![Screenshot of k3s OS layer in a cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
 
   <br />
 
-  <InfoBox>
+  <WarningBox>
 
-  Note that if you are using *ttl.sh* image registry, your images will live for a maximum of 24 hours by default.
+  Note that if you are using *ttl.sh* image registry, your images will be available for a maximum of 24 hours.
 
-  </InfoBox>
+  </WarningBox>
 
 
 
@@ -291,8 +289,8 @@ Here is the sample output:
 <br />
 
 ```shell
--rw-r--r-- 1 root root 1022492672 Apr 16  2020 palette-edge-installer.iso
--rw-r--r-- 1 root root         93 Apr 16  2020 palette-edge-installer.iso.sha256
+-rw-r--r-- 1 root root 1022492672 Apr 16  2023 palette-edge-installer.iso
+-rw-r--r-- 1 root root         93 Apr 16  2023 palette-edge-installer.iso.sha256
 ```
 
 List the images to validate that the agent has successfully created the Ubuntu-based provider (Docker) images.
@@ -322,11 +320,14 @@ List all images in your current development environment.
 ```bash
 docker images
 ```
-Use `docker rmi <image id>` command to remove the select images.
+
+Use `docker image rm -f <image repository name>:<tag>` syntax to remove an individual image.
 <br />
+
 ```bash
 docker image rm -f ttl.sh/ubuntu-demo:k3s-1.24.6-v3.3.3
 ```
+
 Change the image name and tag to match the images in your environment, and repeat this command for all individual images created in the previous steps.
 
 You can delete the Edge installer ISO image and its checksum by executing the following commands from the **CanvOS** directory.
@@ -337,6 +338,45 @@ rm build/palette-edge-installer.iso
 rm build/palette-edge-installer.iso.sha256
 ```
 
+
 # Research
 
-Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
+- Palette offers three registration methods: auto, manual, and QR code. Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge host registration methods.
+
+
+- In this guide, you set up the user credentials for the Edge host. You can further customize the **user-data** file to suit your needs. For example, you can customize the product ID location using the following syntax:
+  <br />
+
+  ```yaml
+  stylus:
+  debug: true
+  site:
+    insecureSkipVerify: false
+    paletteEndpoint: api.dev.spectrocloud.com   # Host for hubble api to register device
+
+    # Name of the device, this may also be referred to as the Edge id or Edge host id.  
+    # If no Edge host name is specified, one will be generated from the device serial number.  
+    # If stylus cannot generate the device serial number a random id will be used instead. 
+    # In the case of hardware that does not have a serial number, it is highly recommended to specify the device name because a random name is not deterministic and may lead to a device being registered twice under different names.
+    name: $random
+
+    deviceUIDPaths:
+      - name: /etc/palette/metadata-regex
+        regex: "edge.*"
+  ```
+  In addition, you can do these additional customizations: 
+    - Add an SSH key for the user
+    - Assign the user to a group 
+    - Configure a registry mirror
+    - Erase partitions
+    - Install tools
+    - Configure network settings
+    - Add SSL certificates
+
+  The sample code snippet for all these use cases are present in [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) documentation.
+
+
+- Refer to [User Data Parameters](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference#userdataparameters) documentation to learn more about different parameters you can configure in the **user-data** file. 
+
+
+- Next step - Tutorial on [Creating Edge native cluster](/clusters/edge/create-cluster).
