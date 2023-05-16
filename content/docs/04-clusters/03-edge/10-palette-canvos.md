@@ -44,12 +44,12 @@ To complete this how-to guide, you will need the following items:
   uname -m
   ```
 
-* *Operating system* - Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4 is supported.
+* *Operating system* - Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4.
 <br /> 
 
   <InfoBox>
 
-  You can follow this guide only in a Ubuntu 22.04 environment with *x86_64* processor architecture. To use this guide in an openSUSE Leap 15.4 environment, you must make relevant changes in the **.arg** file discussed later in this guide.
+  This guide uses Ubuntu 22.04 environment as an example. To use this guide in Ubuntu 20.04 or openSUSE Leap 15.4 environment, you must make relevant changes in the **.arg** file discussed later in this guide.
 
   </InfoBox>
 
