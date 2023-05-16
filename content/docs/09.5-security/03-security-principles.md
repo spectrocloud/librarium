@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Our security vision is grounded in the following core security principles that guide our decision-making and actions.
+Our security phylosophy is grounded in the following principles.
 
 <br />
 
