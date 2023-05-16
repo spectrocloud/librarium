@@ -37,16 +37,16 @@ Use the following steps to install and set up the Palette CLI.
 2. Open up a local terminal session on your local system.
 
 
-3. Navigate to your defaults download folder. For Mac and Linux environments the default location is `~/Downloads` for Windows it's `C:\Users<Username>\Downloads`. Replace `Username` with the name of the user account.
+3. Navigate to your defaults download folder. For Mac and Linux environments the default location is **~/Downloads** for Windows it's **C:\Users\YourUserNameHere\Downloads**. Replace `YourUserNameHere` with the name of the user account.
 
 
-4. Move the binary to a folder that is part of your system's `PATH` variable.
+4. Move the binary to a folder that is part of your system's `PATH` environment variable.
 
 
 <Tabs>
 <Tabs.TabPane tab="MacOS/Linux" key="linux-mac">
 
-Move the binary to the `/usr/local/bin` folder. Replace the download file with the name of your download file.
+Move the binary to the **/usr/local/bin** folder. Replace the download file with the name of your download file.
 
 <br />
 
