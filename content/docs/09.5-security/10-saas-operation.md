@@ -67,7 +67,24 @@ The following design principles ensure tenant isolation:
 - **Data isolation**: Palette applies a tenant filter to every operation to ensure user access is restricted to their own tenant.
 
 
-- **Data encryption**: Tenant data is encrypted, and all message communication uses tenant-specific channels.
+- **Data encryption** 
+
+    <br />
+    
+    - **At Rest**: Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. A unique tenant key is generated for each tenant in the system. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd.  In additon, all message communication uses tenant-specific channels. 
+
+    - **In Transit**: Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.
+    
+    - End User Communication: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
+    
+    - Inter-Service Communication: Services in the management cluster communicate over HTTPS with self-signed certificates and an RSA 2048-bit key.
+    
+    - Database Communication: The database connection from application services running in the management cluster to MongoDB is protected by Transport Layer Security (TLS) with Authentication enabled.
+    
+    - Message Bus: NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
+
+
+ 
 
 
 ## Control Plane and Worker Nodes
