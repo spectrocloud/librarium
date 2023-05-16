@@ -44,7 +44,7 @@ To complete this how-to guide, you will need the following items:
   uname -m
   ```
 
-* *Operating system* - Ubuntu 22.04 or later.
+* *Operating system* - Ubuntu 22.04 or openSUSE Leap 15.4.
 <br /> 
   <InfoBox>
 
@@ -236,19 +236,19 @@ Issue the following command to build the artifacts.
 Here is the sample output:
 <br />
 
-```bash coloredLines=2-2|#25be3c
+```bash coloredLines=2-2|#027313
 # Output condensed for readability
 ===================== Earthly Build SUCCESS ===================== 
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
-This command will take up to 15-20 minutes to finish and generate an Edge installer ISO image and two Ubuntu-based provider (Docker) images. 
+This command will take up to 15-20 minutes to finish and generate the following image artifacts.  
 <br />
 
-* **An Edge installer ISO image** - This command will create an Edge installer ISO image that you can later transfer to your Datacenter, and build a VM template. Once you provision Edge hosts (VMs) using this VM template, it will automatically allow new Edge hosts to register themselves with Palette. This artifact will help you provision as many Edge hosts as you desire. 
+* **An Edge installer ISO image** - The command will create an Edge installer ISO image that you can later transfer to your Datacenter, and build a VM template. Once you provision Edge hosts (VMs) using this VM template, it will automatically allow new Edge hosts to register themselves with Palette. This artifact will help you provision as many Edge hosts as you desire. 
 
 
-* **Two provider images** - This command will push the Ubuntu-based provider (Docker) images to the *ttl.sh* image registry. You can use them by adding the following custom content within the `options` attribute of the **OS layer** in
-your cluster profile. 
+* **Two provider images** - The command will push the Ubuntu-based provider (Docker) images to the *ttl.sh* image registry, and output the custom content to add to your cluster profile. In this example, you can add the following custom content within the `options` attribute of the **OS layer** in
+your cluster profile to use the newly built images.  
 <br />
 
   ```yaml
