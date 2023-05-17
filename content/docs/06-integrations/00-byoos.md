@@ -14,11 +14,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Bring Your Own Operating System (BYOOS) 
 
-BYOOS (Bring Your Own Operating System) enables you to deploy and customize the operating system in your environment, offering greater flexibility and control over the infrastructure. BYOOS feature optimizes infrastructure and streamlines workflows, allowing users to specify a host runtime operating system, thus providing customization options to meet specific needs.
+The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) offers greate flexibility and control over your infrastructure. BYOOS feature optimizes infrastructure and streamlines workflows. This allows you to specify a host runtime operating system, and  customize to meet your specific needs.
 
-Spectro Cloud offers BYOOS support for both Edge and non-Edge environments.
+The BYOOS pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. Spectro Cloud offers BYOOS support for both Edge and non-Edge environments. 
 
-To learn how to use BYOOS in Edge and non-Edge environments, check out the []() and [] () guides.
+To learn how to use BYOOS in Edge, check out the [Create a Custom Cluster Profile with BYOOS Pack](https://docs.spectrocloud.com/clusters/edge/site-deployment/model-profile) and  for  non-Edge environments, check out the [Create Cluster Profiles)](https://docs.spectrocloud.com/cluster-profiles/task-update-profile) and  for  non-Edge environments guides.
 
 # Versions Supported
 
@@ -38,6 +38,8 @@ To use the Edge BYOOS pack, you must have the following:
 - Construct the system.uri
 
 ## Parameters
+
+The BYOS Edge 
 
 ### Installer Parameters
 
@@ -60,6 +62,22 @@ To use the Edge BYOOS pack, you must have the following:
 
 
 ## Usage
+
+```yaml
+pack:
+ content:
+   images: 
+    - image: ‘{{.spectro.pack.edge-native-byoi.options.system.uri}}’
+    
+options: 
+ system.uri: “{{.spectro.pack.edge-native-byoi.image.registry}}/{{.spectro.pack.edge-native-byoi.image.repo}}:{{.spectro.system.kunernetes.version}}-{{.spectro.pack.edge-native-byoi.image.version}}_{{.spectro.pack.edge-native-byoi.image.client.tag}}”
+
+image: 
+ registry: "" 
+ repo: ""
+ palette.edge.version: ""
+ client.tag: ""
+```
 
 # Terraform
 
@@ -99,7 +117,16 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 ## Usage
 
+```yaml
+pack:
+  osImageOverride: "ami-0f4804aff4cf9c5a2"
+  osName: "rhel"
+  osVersion: "8"
+```
+
 # Terraform
+
+You can retrieve details about the BYOOS Edge OS agent pack by using the following Terraform code.
 
 ```yaml
 data "spectrocloud_registry" "public_registry" {
