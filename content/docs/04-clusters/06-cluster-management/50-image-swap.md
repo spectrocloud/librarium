@@ -1,7 +1,7 @@
 ---
 title: "Image Swap"
 metaTitle: "Image Swap"
-metaDescription: "Learn how to swap out images and registries through the image swamp webkhook exposed by Palette."
+metaDescription: "Learn how to swap out images and registries through the image swamp webhook exposed by Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -12,7 +12,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are a few common use cases the image swamp feature is a good fit. <br /> <br />
+Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are a few common use cases the image swamp feature is a good fit: <br /> <br />
 
 - Avoid rate limit issues encountered with public images by pointing to an alternate image registry that caches public images. This is more common in an Enterprise setting.
 
@@ -23,7 +23,7 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
 - Support air-gapped environments by redirecting public image requests to an internal registry.
  
 
- To use the image swap, specify an image swap configuration in the Kubernetes's pack YAML. The `imageSwap` block must be under the `pack` section.
+ To use the image swap, specify an image swap configuration in the Kubernetes's pack YAML. The `imageSwap` block must be under the `pack` section's scope.
 
  <br />
 
@@ -106,14 +106,25 @@ pack:
     imageChange: |-
       default::
       [REPLACE]ghcr.io/example*::example.private.io
-```    
+``` 
+
+
+<br />
+
+
+<InfoBox>
+
+ If the registry or image mentioned in the image swamp configuration cannot be located, Kubernetes will try to obtain the image from the source mentioned in the deployment configuration.
+
+</InfoBox>
+
 
 The examples provided are intended to help you get started. Refer to the official [Image Swap configuration](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md#configuration) for more examples and information.
 
 
 # Image Swap with Palette
 
-Use the following steps to learn how you can use the image swap functionality in Palette.
+Use the following steps to learn how to use Palette's image swap functionality.
 
 ## Prerequisites
 
@@ -131,7 +142,7 @@ Use the following steps to learn how you can use the image swap functionality in
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-3. Click on the **Add Cluster Profile** button.
+3. Click on **Add Cluster Profile**.
 
 
 4. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
@@ -143,16 +154,23 @@ Use the following steps to learn how you can use the image swap functionality in
 6. Complete the Operating System (OS) layer by selecting **Registry**, **Pack Name**, and **Pack Version**. Click on **Next layer** to continue.
 
 
-7. Select a Kubernetes Kubernetes distribution and version.
+7. Select a Kubernetes distribution and version.
 
 
-8. Next, select the code editor button **</\>** to edit the pack YAML configuration. Within the `pack` section, go ahead and add your `imageSwap` configuration block. Click on **Next layer** to continue.
+8. Next, select the code editor button **</\>** to edit the pack YAML configuration. Within the `pack` section's scope, add your `imageSwap` configuration block. Click on **Next layer** to continue.
+
+  <br />
+
+  ![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.png)
 
 
-![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.png)
 
 
 9. Complete the remainder of the cluster profile creation wizard. 
+
+
+
+10. Deploy a host cluster and use the cluster profile containing the image swap functionality. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance in deploying a host cluster.
 
 
 ## Validation
@@ -163,9 +181,25 @@ You can validate that the image swap is functioning correctly by using the follo
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-```shell
-kubectl get deployment hello-universe-deployment --namespace cluster-6464219d28ab6f6b597d8188 -o=jsonpath='{.spec.template.spec.containers[0].image}'
-ttl.sh/hello-universe:24h
-```
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the host cluster you deployed with the image swap functionality.
+
+
+4. Download the kubeconfig file to access the cluster. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for detailed steps.
+
+
+5. Review the deployment configuration of a workload using a registry or image impacted by the image swap configuration. Verify the image or registry is swapped to the expected configuration value you provided in the image swap configuration block.  
+
+  <br />
+
+  You can use the following command to verify the correct image and registry of the deployment. Change the `REPLACE_ME` value with the correct values from your environment.
+
+  <br />
+
+  ```shell
+  kubectl get deployment REPLACE_ME --namespace REPLACE_ME -o=jsonpath='{.spec.template.spec.containers[0].image}'
+  ```
 
 <br />

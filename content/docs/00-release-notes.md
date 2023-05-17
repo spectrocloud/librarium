@@ -44,7 +44,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-- Palette now supports the ability for you to use image swap and override specific registries, images or a combination of both. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
+- Palette now supports the ability for you to use image swap and override specific registries, images or a combination of both. You can add an `imageSwap` configuration to the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
 
 
 
