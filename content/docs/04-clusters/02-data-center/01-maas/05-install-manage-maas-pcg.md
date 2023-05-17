@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG "dials home" to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
-- Run a PCG installer Docker image on a laptop, workstation, or jump box.
+- Start the PCG installer on a laptop, workstation, or bastion host.
 - Provide information to the installer so that it can connect both to a local MAAS installation and to a Palette account.
 - The installer uses MAAS to obtain machines and install a PCG on them.
 - The PCG then facilitates all communication between Palette and MAAS, enabling Palette to create new clusters on machines that MAAS provides.
@@ -125,7 +125,7 @@ If you have already installed the PCG and are experiencing issues that you want 
     The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
     <br />
 
-5. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application.
+5. The installer installs the MAAS machines and uses the configuration file to build a new cluster to host the PCG application.
 
 <br />
 
@@ -220,11 +220,14 @@ The installer does not work with SSO or Social sign on credentials. You must use
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
-<WarningBox>
+  <br />
+  
+  <WarningBox>
 
-Ensure the MAAS server has one or more machines in the **Ready** state for the chosen Availability Zone and Resource Pool combination.
+   Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone 
+   and resource pool combination.
 
-</WarningBox>
+  </WarningBox>
 
 When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
@@ -234,7 +237,7 @@ When you have entered all the configuration values, the installer saves the gate
 
 <InfoBox>
 
-The ``/opt/spectrocloud`` folder is volume mapped to the ``/tmp`` folder on the installer.
+The **/opt/spectrocloud** folder is volume mapped to the installer's **/tmp** folder.
 
 </InfoBox>
 
@@ -385,6 +388,9 @@ Follow these steps to resize a single-node gateway to three nodes.
 4. Change the number of nodes to 3.
 
 Two new nodes will be added to the PCG cluster.
+
+<br />
+
 
 <WarningBox>
 
