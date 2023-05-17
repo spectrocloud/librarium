@@ -114,7 +114,7 @@ The following steps will guide you to deploy an Edge cluster using the **BYOS Ed
 3. Click on **Add Cluster Profile**. 
 
 
-4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**. <br /> <br />
+4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**.
 
 
 5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
