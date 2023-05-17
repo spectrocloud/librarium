@@ -33,7 +33,10 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
 
-# Create Edge Native Cluster Profile
+<Tabs>
+
+<Tabs.TabPane tab="Create Edge Native Cluster Profile" key="Create Edge Native Cluster Profile">
+
 
 Use the following steps to create a cluster profile for Edge hosts.
 
@@ -47,7 +50,6 @@ No prerequisites.
 
 
 2. Choose the desired scope, project or **Tenant Admin**.
-
 
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
@@ -85,7 +87,10 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
-# Create a Custom Cluster Profile With BYOOS Pack
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Create a Custom Cluster Profile With BYOOS Pack" key="Create a Custom Cluster Profile With BYOOS Pack">
 
 The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
 The BYOOS feature gives you flexibility and control over your OS and helps manage Kubernetes clusters. The **BYOS Edge OS** pack supports commercial and open-source distribution OS to perform optimally and meet unique requirements as you build cluster profiles. 
@@ -193,6 +198,9 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
 
+</Tabs.TabPane>
+
+</Tabs>
 
 # Next Steps
 
