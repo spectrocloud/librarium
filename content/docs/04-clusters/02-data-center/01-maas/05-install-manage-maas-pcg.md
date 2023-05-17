@@ -17,12 +17,14 @@ The Private Cloud Gateway (PCG) enables support for private cloud or data center
 
 Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
+![An architecture diagram of MaaS with PCG](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
+
 <br />
 
 
 <WarningBox>
 
-The installer does not currently work on MacOS running on Apple Silicon.
+The installer does not work on Apple Mac operating systems with Apple silicon chips.
 
 </WarningBox>
 

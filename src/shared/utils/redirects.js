@@ -52,7 +52,7 @@ const redirects = [
     toPath: `/clusters/edge`,
     redirectInBrowser: true,
     isPermanent: true,
-  },  
+  },
   {
     fromPath: `/troubleshooting/palette-namespaces-podes`,
     toPath: `/architecture/palette-namespaces-podes`,
@@ -198,8 +198,20 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/integrations/minio`,
-    toPath: `/integrations`,
+    fromPath: `/knowledgebase/tutorials/dev-engine`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine/deploy-app`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
+    toPath: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app`,
     redirectInBrowser: true,
     isPermanent: true,
   }

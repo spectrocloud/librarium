@@ -19,6 +19,16 @@ You can create as many App Profiles as needed to fit various types of workloads 
 Use the following steps to create an App Profile.
 
 
+<br />
+
+
+  <InfoBox>
+
+  A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) to get started with Palette Dev Engine.
+
+  </InfoBox>
+
+
 # Prerequisites
 
 * A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).

@@ -574,7 +574,8 @@ user:
 | `{{.spectro.system.project.name}}`  | The name of the project. |
 | `{{.spectro.system.project.uid}}`  | The unique identifier of the project. |
 | `{{.spectro.system.clusterprofile.name}}`| The name of the cluster profile associated with the current project. |
-| `{{.spectro.system.clusterprofile.uid}}` | The unique identifier of the cluster profile associated with the current project. |
+| `{{.spectro.system.clusterprofile.uid}}` | The unique identifier of the cluster profile the pack is part of. |
+| `{{.spectro.system.clusterprofile.version}}`| The current version of the cluster profile the pack is part of.|
 | `{{.spectro.system.cluster.name}}`  | The name of the cluster. |
 | `{{.spectro.system.cluster.uid}}`  | The unique identifier of the cluster. |
 | `{{.spectro.system.cloudaccount.name}}`  | The name of the cloud account associated with the current project. |
