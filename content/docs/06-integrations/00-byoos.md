@@ -1,11 +1,11 @@
 ---
-title: "BYOOS"
-metaTitle: "Bring your own OS"
+title: "Bring Your Own OS (BYOOS)"
+metaTitle: "Bring your own OS (BYOOS)"
 metaDescription: "Customize your Edge host deployment with your own Operating System."
 hiddenFromNav: true
 type: "integration"
-category: ["byoos"]
-logoUrl: ""
+category: ['operating system']
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png"
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
