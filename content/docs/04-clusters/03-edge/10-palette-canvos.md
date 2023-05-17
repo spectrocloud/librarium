@@ -18,7 +18,7 @@ import InfoBox from 'shared/components/InfoBox';
 	
 Palette's Edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice in an immutable way. 
 
-In this how-to guide, you will leverage the open-source project [Kairos](kairos.io/) to create the following Ubuntu-based immutable and bootable Kubernetes and OS images:
+In this how-to guide, you will leverage the open-source project [Kairos](kairos.io/) to create the following Ubuntu-based immutable and bootable OS images:
 <br/>
 
 * **An Edge installer ISO image** - This ISO image can install or "Flash" an edge device. In this how-to guide, you will customize the installer image to automatically allow the new Edge nodes to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a VM template, you can provision as many edge hosts as you desire. 
@@ -32,7 +32,7 @@ In this how-to guide, you will leverage the open-source project [Kairos](kairos.
 To complete this how-to guide, you will need the following items:
 <br/>
 
-* *Hardware* - A physical or virtual machine with x86_64 processor architecture and the following *minimum* hardware configuration:
+* **Hardware** - A physical or virtual machine with **x86_64** processor architecture and the following minimum hardware configuration:
 	* 4 CPU
 	* 8 GiB memory
 	* 50 GiB storage
@@ -44,17 +44,11 @@ To complete this how-to guide, you will need the following items:
   uname -m
   ```
 
-* *Operating system* - Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4.
+* **Operating system** - Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4. This guide uses Ubuntu 22.04 environment as an example. 
 <br /> 
 
-  <InfoBox>
 
-  This guide uses Ubuntu 22.04 environment as an example. To use this guide in Ubuntu 20.04 or openSUSE Leap 15.4 environment, you must make relevant changes in the **.arg** file discussed later in this guide.
-
-  </InfoBox>
-
-
-* *Software* - [Git CLI](https://cli.github.com/manual/installation) and [Docker](https://docs.docker.com/engine/install/) installed. Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on the Ubuntu machine.
+* **Softwares** - [Git CLI](https://cli.github.com/manual/installation) and [Docker](https://docs.docker.com/engine/install/) installed. Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on the Ubuntu machine.
 
 
 * A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a [free trial](https://www.spectrocloud.com/free-tier/).
@@ -130,7 +124,7 @@ The **.arg** file contains the following variables:
 <br />
 
 ```bash
-CUSTOM_TAG        # Environment name for provider image naming
+CUSTOM_TAG        # Environment name for provider image tagging
 IMAGE_REGISTRY    # Image Registry Name
 OS_DISTRIBUTION   # OS Distribution (ubuntu, opensuse-leap)
 IMAGE_REPO        # Image Repository Name
@@ -142,7 +136,7 @@ ISO_NAME          # Name of the Installer ISO
 Here is an overview of all variables in the **.arg** file:
 <br />
 
-* `CUSTOM_TAG` - Environment name for provider image naming.
+* `CUSTOM_TAG` - Environment name for provider image tagging. The default value is `demo`. 
 <br />
 
 * `IMAGE_REGISTRY` - Image registry name that will store the image artifacts. The default value points to the *ttl.sh* image registry, an anonymous and ephemeral Docker image registry where images live for a maximum of 24 hours by default. If you wish to make the artifacts exist longer than 24 hours, you can use any other image registry to suit your needs. 
@@ -163,7 +157,7 @@ Here is an overview of all variables in the **.arg** file:
 * `ISO_NAME` - Name of the Edge installer ISO image. In this example, the name is *palette-edge-installer*. 
 
 
-Open the **.arg** file in any editor of your choice, and edit the value for `CUSTOM_TAG` variable. You can enter your initials as the value. Ensure that it is made up of all lower case alphanumeric characters. You will use this variable as a suffix in the provider images. The current example uses the following value:
+Open the **.arg** file in any editor of your choice, and edit the value for `CUSTOM_TAG` variable. You can enter your initials as the value. Ensure that it is made up of all lower case alphanumeric characters. Agent will use this variable as a suffix in the provider image tags. The current example uses the following value:
 
 <br />
 
@@ -248,8 +242,14 @@ This command will take up to 15-20 minutes to finish and generate the following 
 * **An Edge installer ISO image** - The command will create an Edge installer ISO image that you can later transfer to your Datacenter, and build a VM template. Once you provision Edge hosts (VMs) using this VM template, it will automatically allow new Edge hosts to register themselves with Palette. This artifact will help you provision as many Edge hosts as you desire. 
 
 
-* **Two provider images** - The command will push the Ubuntu-based provider (Docker) images to the *ttl.sh* image registry, and output the custom content to add to your cluster profile. In this example, you can add the following custom content within the `options` attribute of the **OS layer** in
-your cluster profile to use the newly built images.  
+* **Two provider images** - The command will generate two provider OS images, one compatible with lightweight Kubernetes (K3s) v1.24.6 and another with K3s v1.25.2.
+<br />
+
+  * **ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-demo**
+
+  * **ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo** 
+  
+Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute of the **OS layer** in your cluster profile to use those images.    
 <br />
 
   ```yaml
@@ -262,8 +262,7 @@ your cluster profile to use the newly built images.
     system.customTag: demo
     system.osVersion: 22
   ```
-
-  The screenshot below shows custom content added to the OS layer of a cluster profile.
+  You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile. The screenshot below shows custom content added to the OS layer of a cluster profile.
   <br />
 
   ![Screenshot of k3s OS layer in a cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
@@ -306,8 +305,8 @@ Here is the sample output:
 ```bash
 # Output condensed for readability
 REPOSITORY                                              TAG                 IMAGE ID       CREATED       SIZE
-ttl.sh/ubuntu-demo                                 k3s-1.25.2-v3.3.3   b3c4956ccc0a   6 minutes ago    2.49GB
-ttl.sh/ubuntu-demo                                 k3s-1.24.6-v3.3.3   fe1486da25df   6 minutes ago    2.49GB
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo   b3c4956ccc0a   6 minutes ago    2.49GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo   fe1486da25df   6 minutes ago    2.49GB
 earthly/earthly                                         v0.7.4              d771cc8edc38   2 weeks ago   333MB
 ```
 
