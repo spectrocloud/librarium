@@ -27,26 +27,102 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 You define these components in an Edge Native Infrastructure profile. As with any other environment in Palette, you can define additional add-on cluster profiles. You can use add-on profiles to define integrations or applications that must be included when Palette deploys the cluster.
 
-<br/>
 
-## Profile Scope
 
-You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
+The following steps will guide you on how to create a cluster profile for Edge.
+
+## Prerequisites
+
+- Provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for guidance.
+
+
+## Enablement
+
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+3. Click on **Add Cluster Profile**. 
+
+
+4. Provide **Basic Information**, such as profile name, description, and tags. Select **Full** and click on **Next**.
+
+
+5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
+
+
+6. Select **Public Repo** in the **Registry field**.
+
+
+7. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
+
+
+8. Click on the code editor button  **</\>** to open up the editor
+
+
+8. The pack editor is displayed, and you can customize the **BYOS Edge OS** pack as needed. 
+
+
+Example BYOOS Pack Customization File
 
 <br />
 
-<Tabs>
+```yaml
+pack:
+ content:
+   images: 
+    - image: custom-image:v1.3.5
+    
+options: 
+ system.uri: example.com/images/custom-image:v1.3.5
+```
 
-<Tabs.TabPane tab="Create Edge Native Cluster Profile" key="Create Edge Native Cluster Profile">
+
+<br />
+
+Refer to the [BYOOS Pack](/) resource to learn more about the pack details.
+<br />
+
+9. Review your custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
+
+You have successfully configured the BYOOS pack to update your custom images to build the Edge cluster profile. 
+
+## Validation
+
+Verify you created a cluster profile for Edge hosts by using the following steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Choose the desired scope, project or **Tenant Admin**.
+
+
+3. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+
+
+5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
+
+<!-- </Tabs.TabPane> -->
+
+
+<!-- 
+
+<Tabs.TabPane tab="Without Custom OS" key="without-os">
 
 
 Use the following steps to create a cluster profile for Edge hosts.
 
-# Prerequisites
+## Prerequisites
 
 No prerequisites.
 
-# Enablement
+## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -89,7 +165,7 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
-# Validation
+## Validation
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
@@ -111,117 +187,7 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Create a Custom Cluster Profile With BYOOS Pack" key="Create a Custom Cluster Profile With BYOOS Pack">
-
-The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet specific requirements for your environment.
-The BYOOS feature gives you flexibility and control over your OS and helps manage Kubernetes clusters. The **BYOS Edge OS** pack supports commercial and open-source distribution OS to perform optimally and meet unique requirements as you build cluster profiles. 
-
-
-The following steps will guide you to deploy an Edge cluster using the **BYOS Edge OS** pack in your cluster profile.
-
-# Prerequisites
-
-- Provider images are built.
-
-
-- A constructed `system.uri`. 
-
-# Enablement
-
-
-1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
-
-
-2. Navigate to the left **Main Menu** and select **Profiles**.
-
-
-3. Click on **Add Cluster Profile**. 
-
-
-4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**.
-
-
-5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
-
-
-6. Select **Public Repo** in the **Registry field**.
-
-
-7. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
-
-
-8. The pack editor is displayed, and you can customize the **BYOS Edge OS** pack as needed. 
-
-## Installer Parameters
-
-| Parameter            | Description                                            |
-|----------------------|--------------------------------------------------------|
-| `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. |
-| `pack.content.images` | Specifies the list of OS images to use for the pack. |
-| `pack.content.images.-  images` | Specifies a specific OS image to use for the pack. |
-
-
-## User Data Parameters
-
-| Parameter            | Description                                            |
-|----------------------|--------------------------------------------------------|
-| `options.system.uri:` | The system URI specifying the location of the BYOOS image. |
-| `image.registry` | The domain of the registry where the BYOOS image is stored. |
-| `image.repo` | The name of the BYOOS image repository. |
-| `image.palette.edge.version` | The Palette Edge software version used in the BYOOS container image. |
-| `image.client.tag` |  The tag given to the image used for the BYOOS, specifying its version. |
-
-
-Example BYOOS Pack Customization File
-
-<br />
-
-```yaml
-pack:
- content:
-   images: 
-    - image: ‘{{.spectro.pack.edge-native-byoi.options.system.uri}}’
-    
-options: 
- system.uri: “{{.spectro.pack.edge-native-byoi.image.registry}}/{{.spectro.pack.edge-native-byoi.image.repo}}:{{.spectro.system.kunernetes.version}}-{{.spectro.pack.edge-native-byoi.image.version}}_{{.spectro.pack.edge-native-byoi.image.client.tag}}”
-
-image: 
- registry: "" 
- repo: ""
- palette.edge.version: ""
- client.tag: ""
-```
-
-<br />
-
-Refer to the [BYOOS Pack](/) resource to learn more about the pack details.
-<br />
-
-9. Review your custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
-
-You have successfully configured the BYOOS pack to update your custom images to build the Edge cluster profile. 
-
-# Validation
-
-Verify you created a cluster profile for Edge hosts by using the following steps.
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-
-2. Choose the desired scope, project or **Tenant Admin**.
-
-
-3. Navigate to the left **Main Menu** and select **Profiles**.
-
-
-4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
-
-
-5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
-
-</Tabs.TabPane>
-
-</Tabs>
+</Tabs> -->
 
 # Next Steps
 
