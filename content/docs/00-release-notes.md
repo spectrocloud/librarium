@@ -127,18 +127,18 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette PDE is now available in self-hosted installation of Palette.
 
 
-- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI.
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
 
 
 ## Improvements
 
-- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box.
+- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
 
 
-- You can now access a new dashboard to view better your active virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
+- You can now access a [new dashboard](/devx#manageresources) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
 
 
-- You can now increase or decrease the number of replicated instances of a container service.  
+- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
  
 
 ## Terraform
@@ -378,7 +378,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
 * Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
 * Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages [Helm and OCI registries](/devx/registries#custompackregistry) for custom pack management. 
+* Palette leverages [Helm and OCI registries](/devx/manage-dev-engine/registries) for custom pack management. 
 * Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
