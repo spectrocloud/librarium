@@ -183,13 +183,18 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
 2. Choose the desired scope, project or **Tenant Admin**.
+
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
+
 4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
 
+
 5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
+
 
 # Next Steps
 
