@@ -13,7 +13,22 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Our security phylosophy is grounded in the following principles.
+Our security philosophy is grounded in:
+
+<br />
+
+- **Confidentiality**: Authorized restrictions on information access, including personal privacy and proprietary information. This includes confirming identity and access rights to resources.
+
+
+- **Integrity**: Protecting data against unauthorized modification - both accidental and deliberate.
+
+
+- **Availability**: Protecting the services that provide access to the data.
+
+
+- **Auditing**: Tracking implementation-level events and domain-level events to ensure that particular actions have been performed. 
+
+The following core principles guide our our decision-making and actions. 
 
 <br />
 

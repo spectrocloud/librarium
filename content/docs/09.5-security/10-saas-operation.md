@@ -1,7 +1,7 @@
 ---
 title: "SaaS Operation"
 metaTitle: "SaaS Operation"
-metaDescription: "Learn about Palette security in a SaaS environment environment."
+metaDescription: "Learn about Palette security in a SaaS environment."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,26 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette is a multi-tenant SaaS system in which every tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
-
-We ensure tenant isolation through the following design principles and techniques.
+Palette is a multi-tenant SaaS system in which each tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
 
 <br />
-
-- **Network Isolation**: Tenant clusters are created in the tenant’s public cloud accounts or in private data centers. Customers cannot intercept network traffic in other tenant clusters. Access to tenant cluster APIs through the cluster’s kubeconfig file is restricted to the tenant.
-
-
-- **Data isolation**: Palette applies a tenant filter to every operation to ensure user access is restricted to the user's tenant.
-
-
-- **Tenant Data Encryption**: Tenant data is encrypted, and all message communication uses tenant-specific channels.
-
-
-- **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
-
-
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants from utilizing the platform.
-
 
 ## Platform Security
 
@@ -55,9 +38,9 @@ In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component i
 
 ## Tenant Cluster Security
 
-Tenant clusters can be deployed in a virtual private network in the cloud (VPC). Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using static network address translation (NATS) with transport layer security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
+Tenant clusters can be deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using static network address translation (NATS) with transport layer security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
-The following design principles ensure tenant isolation:
+We us the following design principles ensure tenant isolation:
 
 <br />
 
@@ -67,25 +50,42 @@ The following design principles ensure tenant isolation:
 - **Data isolation**: Palette applies a tenant filter to every operation to ensure user access is restricted to their own tenant.
 
 
-- **Data encryption** 
+- **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
+
+
+- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants from utilizing the platform.
+
+
+- **Data encryption**: Palette ensures security for data at rest and data in transit as follows.
+
+    <br />
+
+    #### Data At Rest Encryption
+
+    Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd key-value store. In additon, all message communication uses tenant-specific channels.
+
+    <br />
+
+    #### Data In Transit Encryption
+
+   Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.<br /><br />
+
+   - **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
 
     <br />
     
-    - **At Rest**: Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. A unique tenant key is generated for each tenant in the system. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd.  In additon, all message communication uses tenant-specific channels. 
+    - **Inter-Service Communication**: Services in the management cluster communicate over HTTPS with self-signed certificates and an RSA 2048-bit key.
 
-    - **In Transit**: Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.
+    <br />
     
-    - End User Communication: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
+    - **Database Communication**: The database connection from application services running in the management cluster to MongoDB is protected by Transport Layer Security (TLS) with Authentication enabled.
+
+    <br />
     
-    - Inter-Service Communication: Services in the management cluster communicate over HTTPS with self-signed certificates and an RSA 2048-bit key.
-    
-    - Database Communication: The database connection from application services running in the management cluster to MongoDB is protected by Transport Layer Security (TLS) with Authentication enabled.
-    
-    - Message Bus: NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
+    - **Message Bus**: NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
 
 
- 
-
+<br />
 
 ## Control Plane and Worker Nodes
 

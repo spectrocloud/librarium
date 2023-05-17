@@ -53,7 +53,7 @@ A major Kubernetes version generally runs more rigorous compatibility tests and 
 
 Kubernetes run-time security support is done through a variety of add-on packages such as Sysdig Falco and Twistlock.
 
-Kubernetes cluster authentication can be optionally integrated with Kubelogin with OpenID Connect (OIDC) authentication/authorization against an external Identity Provider (IDP).
+Kubernetes cluster authentication can be optionally integrated with Kubelogin using OpenID Connect (OIDC) authentication/authorization against an external Identity Provider (IDP).
 
 You can set a schedule to run Kubernetes conformance and compliance tests with Kubebench, Kubehunter, Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
 
@@ -94,9 +94,9 @@ In self-managed deployments, the keys are generated during installation and stor
 
 ## Data Encryption
 
-In SaaS deployments, backup snapshots of MongoDB cluster storage volumes are encrypted to secure cluster data on disk.
+In SaaS deployments, backup snapshots of MongoDB cluster storage volumes are encrypted to secure cluster data on disk. In tenant clusters, Palette ensures security for data at rest and data in transit. Refer to [Tenant Cluster Security](/security/saas-operation#tenantclustersecurity) for details.
 
-In self-managed deployments, the administrator can set up a disk encryption policy for management cluster VMs if required.
+In self-hosted deployments, the administrator can set up a disk encryption policy for management cluster VMs if required. Refer to [Self-Hosted Operation](/security/self-hosted-operation) for details.
 
 <br />
 
@@ -116,7 +116,7 @@ NATS messages are exchanged using TLS protocol, and each tenant cluster uses ded
 
 ## Authentication and Authorization
 
-Palette fully supports role based access control (RBAC) and two authentication modes:
+Palette fully supports Role-Based Access Control (RBAC) and two authentication modes:
 
 <br />
 
@@ -125,7 +125,7 @@ Palette fully supports role based access control (RBAC) and two authentication m
     In this mode, a user email serves as the ID and a password is compared with the one-way hash stored in the database to authenticate users to a tenant. The platform administrator can set password policy to control the requirements for password length, rule, and expiration.
 
 
-- **Single sign-on (SSO) and multi-factor authentication (MFA)** <br />
+- **Single Sign-On (SSO) and Multi-Factor Authentication (MFA)** <br />
 
     In this mode, the tenant is configured to have security assertion markup language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you will be redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
 
