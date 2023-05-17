@@ -29,7 +29,13 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 
 
-The following steps will guide you on how to create a cluster profile for Edge.
+The following steps will guide you on how to create a cluster profile for Edge. Choose the tab that matches your use case.
+
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Custom OS" key="custom-os">
 
 ## Prerequisites
 
@@ -39,56 +45,71 @@ The following steps will guide you on how to create a cluster profile for Edge.
 ## Enablement
 
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2. Choose the desired scope, project or **Tenant Admin**.
 
 
-3. Click on **Add Cluster Profile**. 
+3. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-4. Provide **Basic Information**, such as profile name, description, and tags. Select **Full** and click on **Next**.
+4. Click on **Add Cluster Profile**. 
 
 
-5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
+5. Provide **Basic Information**, such as profile name, description, and tags. Select **Full** and click on **Next**.
 
 
-6. Select **Public Repo** in the **Registry field**.
+6. Select **Edge Native** as the **Cloud Type** and click on **Next**.
 
 
-7. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
+7. Select **Public Repo** in the **Registry field**.
 
 
-8. Click on the code editor button  **</\>** to open up the editor
+8. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
-8. The pack editor is displayed, and you can customize the **BYOS Edge OS** pack as needed. 
+9. Click on the code editor button  **</\>** to open up the editor
+
+  <br />
+
+  ![A view of the Kubernetes pack editior with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
 
 
-Example BYOOS Pack Customization File
-
-<br />
-
-```yaml
-pack:
- content:
-   images: 
-    - image: custom-image:v1.3.5
-    
-options: 
- system.uri: example.com/images/custom-image:v1.3.5
-```
+10. In the pack editor, you must update the `system.uri` parameter. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
 
 
-<br />
+  <br />
 
-Refer to the [BYOOS Pack](/) resource to learn more about the pack details.
-<br />
+  ```yaml
+  pack:
+  content:
+    images: 
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+      # - image: example.io/my-other-images/example:v1.0.0 
+      # - image: example.io/my-super-other-images/example:v1.0.0 
+      
+  options: 
+  system.uri: example.io/my-images/example-custom-os:v1.4.5
+  ```
 
-9. Review your custom BYOOS pack, and close the updated pack editor. Click on the **Next layer** to configure the Kubernetes layer. 
+  <br />
 
-You have successfully configured the BYOOS pack to update your custom images to build the Edge cluster profile. 
+  <InfoBox>
+
+   You can specify additional images that you may have created that are part of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an `- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](/integrations/byoos) resource to learn more about the pack details.
+
+  </InfoBox>
+
+
+11. Click on the **Next layer** to continue.
+
+
+
+12. Complete the remainder of the cluster profile creation process by filling out the remaining layers.
+
+
+You have successfully created a cluster profile that you can use to deploy Edge clusters. 
 
 ## Validation
 
@@ -103,20 +124,16 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+4. Use the **Cloud Types** **drop-down Menu** and select **Edge Native**.
 
 
 5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
 
-<!-- </Tabs.TabPane> -->
 
+</Tabs.TabPane>
 
-<!-- 
 
 <Tabs.TabPane tab="Without Custom OS" key="without-os">
-
-
-Use the following steps to create a cluster profile for Edge hosts.
 
 ## Prerequisites
 
@@ -187,7 +204,10 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 </Tabs.TabPane>
 
-</Tabs> -->
+</Tabs>
+
+
+
 
 # Next Steps
 

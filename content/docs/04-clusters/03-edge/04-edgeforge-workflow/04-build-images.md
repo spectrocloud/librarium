@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-You can use the Edge Installer CLI to create an Edge artifact. The Edge artifacts will include everything you may have created up to this point.
+You can use the Palette Edge CLI to create an Edge artifact. The Edge artifacts will include everything you may have created up to this point.
 
 <br />
 
@@ -26,7 +26,7 @@ You can use the Edge Installer CLI to create an Edge artifact. The Edge artifact
 * User Data
 
 
-![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Edge Installer CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.png)
+![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Palette Edge CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.png)
 
 Use the following steps to create an Edge artifact for your Edge host.
 # Prerequisites
@@ -46,14 +46,14 @@ Choose the workflow that fits your needs.
 <br />
 
 
-1. Download Palette Edge Installer CLI and assign the executable bit.
+1. Download the Palette Edge CLI and assign the executable bit.
    
    <br />
 
     ```shell
-    VERSION=3.3.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-installer
-    chmod +x palette-edge-installer
+    VERSION=3.4.0
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-cli
+    chmod +x palette-edge-cli-linux-amd64
     ```
 
 2. Issue the `show` command to review the list of options for Operating System (OS) distribution and versions, Kubernetes distributions and versions, the Spectro Agent Version, and Kairos version.
@@ -61,7 +61,7 @@ Choose the workflow that fits your needs.
     <br />
 
     ```shell
-    ./palette-edge-installer show
+    ./palette-edge-cli-linux-amd64 show
     ```
 
     ![CLI example output from the show command](/clusters_edge-forge-workflow_build-images_edge-cli-show.png)
@@ -95,7 +95,7 @@ Choose the workflow that fits your needs.
 
 
   ```shell
-   ./palette-edge-installer generate --os-flavor [pick-os] \
+   ./palette-edge-cli-linux-amd64 generate --os-flavor [pick-os] \
    --k8s-flavor [pick-k8s] \
    --output [output directory] \
    --push-image-repository [your registry path] \
@@ -107,7 +107,7 @@ Choose the workflow that fits your needs.
 
   Example:
   ```shell
-   ./palette-edge-installer generate --os-flavor opensuse-leap \
+   ./palette-edge-cli-linux-amd64 generate --os-flavor opensuse-leap \
    --k8s-flavor k3s \
    --output opensuse-k3s \
    --push-image-repository gcr.io/my-registry \
@@ -141,7 +141,7 @@ Choose the workflow that fits your needs.
   Example:
 
   ```shell
-   ./palette-edge-installer generate \
+   ./palette-edge-cli-linux-amd64 generate \
    --base-image-uri quay.io/kairos/core-rockylinux:v1.5.0 \
    --k8s-flavor k3s \ 
    --output rockylinux-k3s \

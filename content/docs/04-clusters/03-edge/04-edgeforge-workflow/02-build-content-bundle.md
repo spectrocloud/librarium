@@ -44,9 +44,9 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
     <br />
 
     ```shell
-    VERSION=3.3.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-content
-    chmod +x palette-edge-content
+    VERSION=3.4.0
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-cli-linux-amd64
+    chmod +x palette-edge-cli-linux-amd64
     ```
 
 2. Log in to [Palette](https://console.spectrocloud.com).
@@ -86,7 +86,7 @@ You can find the project id at the top right side corner of the landing page bel
     <br />
 
     ```shell
-    ./palette-edge-content build --api-key <API_KEY> \
+    ./palette-edge-cli-linux-amd64 build --api-key <API_KEY> \
      --project-id <PROJECT_ID> \ 
      --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
      --palette-endpoint <Palette API Endpoint> \
@@ -115,7 +115,7 @@ You can find the project id at the top right side corner of the landing page bel
     INFO[0144] ISO file created successfully
     ```
 
-The result is a content bundle that you can use to preload into your installer. Alternately, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of edge host installation.
+The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of edge host installation.
 
 # Validation
 

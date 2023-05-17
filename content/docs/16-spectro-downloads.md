@@ -77,7 +77,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 The following Edge CLIs and Edge Installer images are available to help you deploy an Edge host. Check out the [Edge](/clusters/edge) page to learn more about deploying an Edge Host
 
 
-## Edge Installer CLI
+## Palette Edge CLI
 
 CLI Version| Operating System |  
 -------|---|
