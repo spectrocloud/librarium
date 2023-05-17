@@ -81,7 +81,7 @@
     "husky": "^8.0.0",
     "linkinator": "^4.1.0",
     "prettier": "^2.4.1",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^20.1.0",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^1.14.0"
   },
