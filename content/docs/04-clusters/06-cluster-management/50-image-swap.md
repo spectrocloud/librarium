@@ -23,15 +23,16 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
 - Support air-gapped environments by redirecting public image requests to an internal registry.
  
 
- To use the image swap, specify an image swap configuration in the Kubernetes's pack YAML. 
+ To use the image swap, specify an image swap configuration in the Kubernetes's pack YAML. The `imageSwap` block must be under the `pack` section.
 
  <br />
 
  ```yaml
- imageSwap:
-    imageChange: |-
-        default:
-        # your custom configuration goes here
+ pack:
+  imageSwap:
+      imageChange: |-
+          default:
+          # your custom configuration goes here
  ```
 
 
@@ -54,10 +55,11 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
  <br />
 
  ```yaml
-imageSwap:
-  imageChange: |-
-      default::
-      example.private.io::harbor.internal.example.com
+ pack:
+  imageSwap:
+    imageChange: |-
+        default::
+        example.private.io::harbor.internal.example.com
  ```
 
 ### Apply a Global Swap with an Exception
@@ -67,10 +69,11 @@ Enable image swapping for all registries except `example.private.io`. All image 
 <br />
 
 ```yaml
-imageSwap:
-  imageChange: |-
-    default::harbor.internal.example.com
-    example.private.io::
+pack:
+  imageSwap:
+    imageChange: |-
+      default::harbor.internal.example.com
+      example.private.io::
 ```
 
 ### Swap a Specific Image
@@ -81,10 +84,11 @@ Swamp out a specific image. The image `example.private.io/demo:v1.0.0` will be s
 
 
 ```yaml
-imageSwap:
-  imageChange: |-
-    default::
-    [EXACT]example.private.io/demo:v1.0.0::gcr.io/google-samples/hello-app:1.0
+pack:
+  imageSwap:
+    imageChange: |-
+      default::
+      [EXACT]example.private.io/demo:v1.0.0::gcr.io/google-samples/hello-app:1.0
 ```
 
 
@@ -97,10 +101,11 @@ Replace an image path with a custom registry. All image requests that start with
 
 
 ```yaml
-imageSwap:
-  imageChange: |-
-    default::
-    [REPLACE]ghcr.io/example*::example.private.io
+pack:
+  imageSwap:
+    imageChange: |-
+      default::
+      [REPLACE]ghcr.io/example*::example.private.io
 ```    
 
 The examples provided are intended to help you get started. Refer to the official [Image Swap configuration](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md#configuration) for more examples and information.
@@ -110,7 +115,7 @@ The examples provided are intended to help you get started. Refer to the officia
 
 Use the following steps to learn how you can use the image swap functionality in Palette.
 
-# Prerequisites
+## Prerequisites
 
 * Kubernetes 1.19.0 or greater.
 
@@ -118,7 +123,7 @@ Use the following steps to learn how you can use the image swap functionality in
 * Palette v3.4.0 or greater.
 
 
-# Swap Image
+## Swap Image
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -126,9 +131,35 @@ Use the following steps to learn how you can use the image swap functionality in
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-3. 
+3. Click on the **Add Cluster Profile** button.
 
 
-# Validation
+4. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
+
+
+5. Select your infrastructure provider and click on **Next**.
+
+
+6. Complete the Operating System (OS) layer by selecting **Registry**, **Pack Name**, and **Pack Version**. Click on **Next layer** to continue.
+
+
+7. Select a Kubernetes Kubernetes distribution and version.
+
+
+8. Next, select the code editor button **</\>** to edit the pack YAML configuration. Within the `pack` section, go ahead and add your `imageSwap` configuration block. Click on **Next layer** to continue.
+
+
+![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.png)
+
+
+9. Complete the remainder of the cluster profile creation wizard. 
+
+
+## Validation
+
+You can validate that the image swap is functioning correctly by using the following steps.
+
+
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 <br />
