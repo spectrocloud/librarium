@@ -33,6 +33,8 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
 
+<br />
+
 <Tabs>
 
 <Tabs.TabPane tab="Create Edge Native Cluster Profile" key="Create Edge Native Cluster Profile">
@@ -86,6 +88,25 @@ You now have a cluster profile you can use for deploying Edge hosts.
 Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If you need remote access to the cluster, consider adding the [Spectro Proxy](/integrations/frp) pack to one of the add-on profiles.
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
+
+# Validation
+
+Verify you created a cluster profile for Edge hosts by using the following steps.
+
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Choose the desired scope, project or **Tenant Admin**.
+
+
+3. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+
+
+5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
 
 
 </Tabs.TabPane>
