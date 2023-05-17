@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Our security philosophy is grounded in:
+Our security philosophy is grounded in the following.
 
 <br />
 
@@ -26,9 +26,9 @@ Our security philosophy is grounded in:
 - **Availability**: Protecting the services that provide access to the data.
 
 
-- **Auditing**: Tracking implementation-level events and domain-level events to ensure that particular actions have been performed. 
+- **Auditing**: Tracking implementation-level and domain-level events to ensure that certain actions have been performed in the product. 
 
-The following core principles guide our our decision-making and actions. 
+We apply the core security principles described below to our decision-making and product. 
 
 <br />
 
