@@ -14,10 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Bring Your Own Operating System (BYOOS) 
 
-Bring Your Own Operating System (BYOOS) allows you to deploy and customize the OS in your environment, giving you greater flexibility and control over your infrastructure. 
-This BYOOS feature optimizes infrastructure and streamlines workflow by enabling users to specify a host runtime operating system (OS), providing greater flexibility and control over their infrastructure. 
-
-BYOOS empowers you to deploy your preferred OS to your environments and tailor them to your specific needs using various customization tools. 
+BYOOS (Bring Your Own Operating System) enables you to deploy and customize the operating system in your environment, offering greater flexibility and control over the infrastructure. BYOOS feature optimizes infrastructure and streamlines workflows, allowing users to specify a host runtime operating system, thus providing customization options to meet specific needs.
 
 Spectro Cloud offers BYOOS support for both Edge and non-Edge environments.
 
