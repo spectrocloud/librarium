@@ -47,10 +47,10 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 
 5. Provide the following information to the wizard:
-  * **Container Name**: An unique name for the container deployment.
-  * **Registry**: Select the registry from which the image will be downloaded from. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.
+  * **Container Name**: A unique name for the container deployment.
+  * **Registry**: Select the registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.
   * **Image**: Image of the container to be deployed.
-  * **Replicas**: The number of instances of the application to be deployed. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in Kubernetes configuration file.
+  * **Replicas**: The number of application instances to be deployed. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file.
  
   <br />
 
@@ -63,9 +63,9 @@ Palette App Mode supports the use of containers, a standard unit of software tha
   </InfoBox>
   
   * Network Access:
-    * **Private**: To establish connectivity to container service through private network.
-    * **Public**: To establish connectivity to container service through public network.
-    * **Port number**: Used to expose the container for external communication. 
+    * **Private**: To establish connectivity to a container service through a private network.
+    * **Public**: To establish connectivity to a container service through the public network.
+    * **Port number**: Exposes the container for external communication. 
 
   * **Environment Variables:** Environment variables can be specified as **Key-Value** pairs during the container deployment.  
      Example: <br />

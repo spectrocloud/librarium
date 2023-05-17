@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Palette Dev Engine (PDE)
 
-Use the following content to help you troubleshoot issues you may encounter when using Palette Dev Engine (PDE)
+Use the following content to help you troubleshoot issues you may encounter when using Palette Dev Engine (PDE).
 
 <br />
 

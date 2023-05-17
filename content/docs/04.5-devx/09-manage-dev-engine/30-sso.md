@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers such as Google and GitHub. You can choose to enable or disable this feature. Use the following steps to either enable or disable the feature. 
+Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers, such as Google and GitHub. Use the following steps to either enable or disable the feature. 
 
 # Enable SSO
 
@@ -39,19 +39,18 @@ To learn more about the Sign-In Flow, refer to the [User Authentication](/user-m
 1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
 
 
-2. Navigate to the left **Main Menu**, select **Tenant Settings**, and select **SSO** from the left Settings **Main Menu**.
+2. Navigate to the left **Main Menu**, select **Tenant Settings**, and select **SSO**.
 
 
-3. Next, click the **Auth Providers** tab and toggle the **Enable Provider Login** button.
+3. Next, click the **Auth Providers** tab and toggle the **Enable Provider Login** button on.
 
 
   ![The Auth providers tenant settings page with an arrow toward the toggle button.](/devx_manage-dev-engine_sso_display-oidc-page.png)
 
 
-4. Select one of the supported Social Sign-In providers.
+4. Select one of the supported Social Sign-In providers, and confirm your change.
 
 
-5. Log out of Palette.
 
 
 ## Validation
@@ -64,7 +63,7 @@ You can validate SSO is enabled by attempting to log into your Palette tenant th
 
 # Disable SSO
 
-Palette provides the flexibility to disable SSO  to restrict this capability. Use the following steps to disable SSO for Palette.
+Palette provides the flexibility to disable SSO to restrict this capability. Use the following steps to disable SSO for Palette.
 
 
 ## Prerequisites
@@ -78,10 +77,10 @@ Palette provides the flexibility to disable SSO  to restrict this capability. Us
 1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
 
 
-2. Navigate to the left **Main Menu**, select **Tenant Settings**, and select **SSO** from the left Settings **Main Menu**.
+2. Navigate to the left **Main Menu**, select **Tenant Settings**, and select **SSO**.
 
 
-3. Next, click the **Auth Providers** tab and toggle the **Enable Provider Login** button.
+3. Next, click the **Auth Providers** tab and toggle the **Enable Provider Login** button off.
 
 
 4. Log out of Palette.

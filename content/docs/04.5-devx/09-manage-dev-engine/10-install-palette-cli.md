@@ -13,7 +13,7 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Overview
 
-The Palette CLI contains various functionalities that you can use to interact with Palette and manage resources. The Palette CLI is well suited for Continuous Delivery/Continuous Deployment (CI/CD) pipelines and recommended for automation tasks where Terraform or directly querying the API is not an ideal fit.
+The Palette CLI contains various functionalities that you can use to interact with Palette and manage resources. The Palette CLI is well suited for Continuous Delivery/Continuous Deployment (CI/CD) pipelines and recommended for automation tasks, where Terraform or direct API queries are not ideal.
 
 # Installation
 
@@ -31,7 +31,7 @@ Use the following steps to install and set up the Palette CLI.
 
 ## Download and Setup
 
-1. Visit the [Download](/spectro-downloads#palettecli) and download the Palette CLI by using the download URL.
+1. Visit the [Downloads](/spectro-downloads#palettecli) page and download the Palette CLI by using the URL provided.
 
 
 2. Open up a local terminal session on your local system.
@@ -58,9 +58,9 @@ mv ~/Downloads/spectro-cli-darwin-amd64 /usr/local/bin/palette
 
 <Tabs.TabPane tab="Windows" key="windows">
 
-Move the binary to a folder on your system. If you want to access Palette CLI from the command-line, ensure place the binary in a folder that is part of your system `PATH`. Check out the [Add Tool Locations to the PATH Environment Variable](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) for detailed steps.
+Move the binary to a folder on your system. If you want to access the Palette CLI from the command-line, ensure you place the binary in a folder that is part of your system `PATH`. Check out the [Add Tool Locations to the PATH Environment Variable](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) for detailed steps.
 
-Open up Command Prompt and move the file to a target folder that is part of your system `PATH`. The following command is for example purposes. 
+Open up Command Prompt and move the file to a target folder that is part of your system `PATH`, as shown in the following command example. 
 
 <br />
 
@@ -124,4 +124,4 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI he
 
   # Next Steps
 
-Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality in the future, so keep it updated.
+Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality in the future, so you will want to keep it updated by downloading the newest version and replacing the current binary.

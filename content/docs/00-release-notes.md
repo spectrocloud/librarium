@@ -132,10 +132,10 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 ## Improvements
 
-- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means that exposed service URLs automatically default to HTTPS.
+- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
 
 
-- You can now access a [new dashboard](/devx#manageresources) to understand better your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
+- You can now access a [new dashboard](/devx#manageresources) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
 
 
 - You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
