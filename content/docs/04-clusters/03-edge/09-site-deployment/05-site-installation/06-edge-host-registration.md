@@ -24,7 +24,7 @@ To use an Edge host with a host cluster, you must first register it with Palette
 
 # Registration Method
 
-To register with the Palette Edge host, you are required to use a registration token for all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project ID in your user data.
+To register with the Palette Edge host, you are required to use a registration token for all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in your user data.
 
 
 
@@ -40,7 +40,9 @@ Select the registration method that best fits your organizational needs and revi
 
 ## Auto Registration
 
-You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. It is mandatory to assign a project when creating a registration token to complete the auto-registration process. If a default project was selected for the registration token, that is the project the Edge host will be registered under. You can override the default project by providing a project ID in the user data. 
+You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. It is mandatory to assign a project when creating a registration token to complete the auto-registration process. 
+
+If a default project was selected for the registration token, that is the project the Edge host will be registered under. You can override the default project by providing a `project ID` in the user data. 
 
  
 <br />
@@ -109,7 +111,10 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 ## Manual Registration
 
-In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. The registration token is mandatory for device registration. Optionally, you can specify a project ID to associate the Edge host with a particular project.  Use the following steps to manually register an Edge host in Palette.
+In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. The registration token is mandatory for device registration. Optionally, you can specify a `project ID` to associate the Edge host with a particular project. 
+
+
+Use the following steps to manually register an Edge host in Palette.
 
 ## Prerequisites
 
@@ -181,7 +186,14 @@ Site operators scan the QR code to visit the registration page. This web page pr
 
 Site operators can select a site and submit a registration request. The web application automatically creates the Edge host entry in Palette and defines a cluster with that Edge host. This workflow also supports adding Edge hosts to an existing host cluster.
 
-To ensure a smooth and hassle-free registration process, it's important to specify your `project ID` when creating your token. If you generated a token without specifying a `project ID` and your user data is also missing the project ID, then add the device through the QR code flow and the registration will be completed. This approach ensures error-free registration experience. 
+<br />
+
+
+<InfoBox>
+
+To ensure a smooth registration process, we recommend that you specify your `project ID` when creating the registration token. If your `project ID` is not specified in your token or user data, you can easily complete registration using the QR code flow. 
+
+</InfoBox>
 
 ## Prerequisites
 
