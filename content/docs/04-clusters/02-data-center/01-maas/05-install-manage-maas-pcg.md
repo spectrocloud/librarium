@@ -13,12 +13,20 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG "dials home" to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
+The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG connects to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
+
+PCG is a Kubernetes cluster responsible for supporting Palette in a private network environment. All host clusters deployed through Palette will communicate with PCG.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
-- Start the PCG installer on a laptop, workstation, or bastion host.
-- Provide information to the installer so that it can connect both to a local MAAS installation and to a Palette account.
+- Start the PCG installer on a laptop, workstation, or Bastion host. 
+
+
+- Provide information to the installer so that it can connect both to a local MAAS installation and a Palette account.
+
+
 - The installer uses MAAS to obtain machines and install a PCG on them.
+
+
 - The PCG then facilitates all communication between Palette and MAAS, enabling Palette to create new clusters on machines that MAAS provides.
 
 You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
@@ -44,19 +52,19 @@ The installer does not currently work on MacOS running on Apple Silicon.
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
-- Private cloud gateway IP requirements: <br /><br /> 
+-  PCG IP address requirements: <br /><br /> 
     
-    - For a single-node gateway, one IP address available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
+    - For a single-node gateway, one IP address must be available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
     <br />
 
-    - One IP address available in the MAAS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
+    - One IP address must be available in the MAAS subnet for the Kubernetes api-server endpoint when deploying a three-node gateway.
 
 
 - Sufficient available IPs within the configured MAAS subnets.
 
 <WarningBox>
 
-By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by the bare metal machines that MAAS manages.
 
 </WarningBox>
 
@@ -195,8 +203,8 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
 | **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server.  Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
 | **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
 | **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
