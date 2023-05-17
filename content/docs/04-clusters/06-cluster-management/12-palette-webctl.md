@@ -22,6 +22,14 @@ You can access your Kubernetes cluster by using the [kubectl CLI](https://kubern
 
 Use the following steps to connect to your host cluster with the kubectl CLI.
 
+<br />
+
+<InfoBox>
+
+If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines with the [virtctl CLI](https://kubevirt.io/user-guide/operations/virtctl_client_tool/) in the [Access VM Cluster with virtctl](/vm-management/create-manage-vm/access-cluster-with-virtctl) guide. The virtctl CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring files to and from a virtual machine using Secure Copy Protocol (SCP).
+
+</InfoBox>
+
 # Prerequisites
 
 - Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional guidance.
