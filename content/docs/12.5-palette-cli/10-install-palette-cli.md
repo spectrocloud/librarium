@@ -30,7 +30,7 @@ Use the following steps to install and set up the Palette CLI.
 1. Visit the [Downloads](/spectro-downloads#palettecli) page and download the Palette CLI by using the URL provided.
 
 
-2. Open up a local terminal session on your local system.
+2. Open up a terminal session on your local system.
 
 
 3. Navigate to your defaults download folder. For Mac and Linux environments the default location is **~/Downloads** for Windows it's **C:\Users\YourUserNameHere\Downloads**. Replace `YourUserNameHere` with the name of the user account.
@@ -42,7 +42,7 @@ Use the following steps to install and set up the Palette CLI.
 <Tabs>
 <Tabs.TabPane tab="MacOS/Linux" key="linux-mac">
 
-Move the binary to the **/usr/local/bin** folder. Replace the download file with the name of your download file.
+Use the following command to move the binary to the **/usr/local/bin** folder.
 
 <br />
 
@@ -54,9 +54,9 @@ sudo mv ~/Downloads/spectro-cli-darwin-amd64 /usr/local/bin/palette
 
 <Tabs.TabPane tab="Windows" key="windows">
 
-Move the binary to a folder on your system. If you want to access the Palette CLI from the command-line, ensure you place the binary in a folder that is part of your system `PATH`. Check out the [Add Tool Locations to the PATH Environment Variable](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) for detailed steps.
+Move the binary to a folder on your system. If you want to access the Palette CLI from the command line, ensure you place the binary in a folder that is part of your system `PATH`. Check out the [Add Tool Locations to the PATH Environment Variable](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) for detailed steps.
 
-Open up Command Prompt and move the file to a target folder that is part of your system `PATH`, as shown in the following command example. 
+Open the Command Prompt and move the file to a target folder that is part of your system `PATH`, as shown in the following command example. 
 
 <br />
 
@@ -75,7 +75,7 @@ move C:\Users\johndoe\Downloads\spectro-cli-darwin-amd64 C:\Users\johndoes\tools
 <br />
    
 
-5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to the validation section. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
+5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to [Validation](/palette-cli/install-palette-cli/#validation). Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
 
   <br />
 
@@ -85,7 +85,7 @@ move C:\Users\johndoe\Downloads\spectro-cli-darwin-amd64 C:\Users\johndoes\tools
 
 ## Validation
 
-Verify the Palette CLI is part of your system path by issuing the Palette CLI help command.
+Verify the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
 
   <br />
 
@@ -101,4 +101,6 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI he
 
   # Next Steps
 
-Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality in the future, so you will want to keep it updated by downloading the newest version and replacing the current binary.
+Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality, so you will want to keep it updated by downloading the newest version and replacing the current binary.
+
+<br />

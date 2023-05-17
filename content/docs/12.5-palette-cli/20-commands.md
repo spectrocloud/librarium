@@ -13,9 +13,9 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Overview
 
-You start the Palette CLI with a single command, `palette`. The CLI accepts various subcommands such as `pde`, `help`, and more. The Palette CLI will return a non-zero exit status during error scenarios. You can use the CLI flag `-h` and `--help` to learn more about each subcommand.
+You start the Palette CLI with a single command, `palette`. The CLI accepts various subcommands such as `pde`, `help`, and more. The Palette CLI will return a non-zero exit status during error scenarios. You can use the CLI flags `-h` and `--help` to learn more about each subcommand.
 
-The complete list of subcommands is in the following list.
+The complete list of subcommands is:
 
 <br />
 
@@ -35,7 +35,7 @@ Palette CLI supports the following global flags.
 
 | Short Flag | Long Flag              | Description                                                              | Type    |
 |------------|------------------------|--------------------------------------------------------------------------|---------|
-| `-c`       | `--config`      | Config file location                                                     | string  |
+| `-c`       | `--config`      | Config file location.                                                     | string  |
 | `-h`       | `--help`               | Help with any command.                                                         | N/A     |
 | `-l`       | `--log-level`   | Log level. Allowed values: `panic` `fatal` `error` `warn` `info` `debug` `trace` (default `info`) | string |
 | `-w`       | `--workspace`   | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`) |   string      |      
@@ -51,7 +51,7 @@ The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and it
   * `cluster-group` -   Manage Palette Cluster Groups.
 
 
-  * `login`         -   Login to Spectro Cloud Palette. 
+  * `login`         -   Log in to Spectro Cloud Palette. 
 
 
   * `project`       -   Manage Palette Projects. 
@@ -82,10 +82,10 @@ Use this command to authenticate with Palette. This command requires a [Palette 
 
   | Flag                    | Description                                          | Type | Required |
   |-------------------------|------------------------------------------------------|------|----------|
-  | `--api-key`             | The Palette API key                                  |  string    | Yes |
-  | `--cluster-group-name`  | The Palette Cluster Group name                        |  string    |   No       |
-  | `--cluster-group-scope` | Palette Cluster Group scope                           |   string   | No |
-  | `--console-url`         | The Palette log in URL.                              |  string    | Yes |
+  | `--api-key`             | The Palette API key.                                  |  string    | Yes |
+  | `--cluster-group-name`  | The Palette Cluster Group name.                        |  string    |   No       |
+  | `--cluster-group-scope` | Palette Cluster Group scope.                           |   string   | No |
+  | `--console-url`         | The Palette login URL.                              |  string    | Yes |
   | `--project`             | The Palette Project name. Defaults to `Default`.    |    string  |     No     |
 
 
@@ -106,7 +106,7 @@ Use this command to change the project scope and list all available projects. Yo
   * `deactivate` -  Deactivate your active Palette project and switch to the tenant admin scope.
 
 
-  * `list`   -      List Palette Projects.
+  * `list`   -      List Palette projects.
 
 
   * `switch` -      Switch your active Palette project.
