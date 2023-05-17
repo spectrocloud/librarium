@@ -1,7 +1,7 @@
 ---
 title: "Image Swap"
 metaTitle: "Image Swap"
-metaDescription: "Learn how to swap out images and registries through the image swamp webhook exposed by Palette."
+metaDescription: "Learn how to swap out images and registries through the image swap webhook exposed by Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -12,7 +12,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are a few common use cases the image swamp feature is a good fit: <br /> <br />
+Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are a few common use cases the image swap feature is a good fit: <br /> <br />
 
 - Avoid rate limit issues encountered with public images by pointing to an alternate image registry that caches public images. This is more common in an Enterprise setting.
 
@@ -23,7 +23,7 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
 - Support air-gapped environments by redirecting public image requests to an internal registry.
  
 
- To use the image swap, specify an image swap configuration in the Kubernetes's pack YAML. The `imageSwap` block must be under the `pack` section's scope.
+ To use the image swap, specify an image swap configuration in the Kubernetes pack YAML. The `imageSwap` block must be under the `pack` section's scope.
 
  <br />
 
@@ -50,7 +50,7 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
 
  ### Override a Specific Registry
 
- Disable image swapping for all registries except `example.private.io`. All image requests for `example.private.io` will be swapped for `harbor.internal.example.com`.
+ In this example, image swapping is disabled for all registries except for `example.private.io`. All image requests for `example.private.io` will be swapped for `harbor.internal.example.com`.
 
  <br />
 
@@ -78,7 +78,7 @@ pack:
 
 ### Swap a Specific Image
 
-Swamp out a specific image. The image `example.private.io/demo:v1.0.0` will be swapped with `gcr.io/google-samples/hello-app:1.0`. The syntax format is `[EXACT]<source-image>::<target-image>`.
+Swap out a specific image. The image `example.private.io/demo:v1.0.0` will be swapped with `gcr.io/google-samples/hello-app:1.0`. The syntax format is `[EXACT]<source-image>::<target-image>`.
 
 <br />
 
@@ -95,7 +95,7 @@ pack:
 ### Replace Image Path
 
 
-Replace an image path with a custom registry. All image requests that start with `ghcr.io/example*` will get swamped with `example.private.io`.
+Replace an image path with a custom registry. All image requests that start with `ghcr.io/example*` will get swapped with `example.private.io`.
 
 <br />
 
@@ -114,7 +114,7 @@ pack:
 
 <InfoBox>
 
- If the registry or image mentioned in the image swamp configuration cannot be located, Kubernetes will try to obtain the image from the source mentioned in the deployment configuration.
+ If the registry or image mentioned in the image swap configuration cannot be located, Kubernetes will try to obtain the image from the source mentioned in the deployment configuration.
 
 </InfoBox>
 
