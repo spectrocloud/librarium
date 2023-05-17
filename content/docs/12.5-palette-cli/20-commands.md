@@ -85,7 +85,7 @@ Use this command to authenticate with Palette. This command requires a [Palette 
   | `--api-key`             | The Palette API key                                  |  string    | Yes |
   | `--cluster-group-name`  | The Palette Cluster Group name                        |  string    |   No       |
   | `--cluster-group-scope` | Palette Cluster Group scope                           |   string   | No |
-  | `--console-url`         | The Palette console URL                              |  string    | Yes |
+  | `--console-url`         | The Palette log in URL.                              |  string    | Yes |
   | `--project`             | The Palette Project name. Defaults to `Default`.    |    string  |     No     |
 
 
@@ -93,7 +93,7 @@ Use this command to authenticate with Palette. This command requires a [Palette 
   Example:
 
   ```shell
-  palette pde login --api-key yourApiKeyHere --console-url https://console.spectrocloud.com/
+  palette pde login --api-key yourApiKeyHere --console-url https://console.spectrocloud.com
   ```
 
 ## `project`
@@ -103,13 +103,13 @@ Use this command to change the project scope and list all available projects. Yo
 
   <br />
 
-  * `deactivate` -  Deactivate your active Palette Project & switch to TenantAdmin scope
+  * `deactivate` -  Deactivate your active Palette project and switch to the tenant admin scope.
 
 
-  * `list`   -      List Palette Projects
+  * `list`   -      List Palette Projects.
 
 
-  * `switch` -      Switch your active Palette Project
+  * `switch` -      Switch your active Palette project.
 
 
 ## `virtual-cluster`

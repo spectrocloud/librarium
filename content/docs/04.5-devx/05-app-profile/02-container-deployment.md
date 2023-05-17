@@ -38,7 +38,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
   |-------------------------------|-----------------|
   |**Application Profile Name** | A custom name for the App Profile|
   |**Description (optional)**   | Description of the App Profile, if any | 
-  |**Tag (optional)**               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+  |**Tag (optional)**               | Tags on a cluster group are propagated to the infrastructure environment environments.|
 
 
 4. Next, select **Container Deployment** from the available services list.
@@ -102,7 +102,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
  
 6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
 
-Once the container is added as a tier to the App Profle continue with the remaining steps of [App Profile creation](/devx/app-profile/create-app-profile). You can add more services as tiers to the app profile per use case. 
+Once the container is added as a layer to the App Profile, continue with the remaining steps of the [App Profile creation](/devx/app-profile/create-app-profile) wizard. You can add more services as layers if needed.
 
 
 
