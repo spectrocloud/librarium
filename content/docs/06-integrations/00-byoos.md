@@ -35,7 +35,6 @@ To learn how to use BYOOS in Edge, check out the [Create a Custom Cluster Profil
 To use the Edge BYOOS pack, you must have the following:
 
 - Provider images needs to be built
-- Construct the system.uri
 
 ## Parameters
 
