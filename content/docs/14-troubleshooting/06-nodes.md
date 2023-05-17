@@ -50,17 +50,17 @@ watch ip -statistics neighbour
 
 ## Scenario - EKS Cluster Worker Pool Failures
 
-If your EKS cluster  worker pool ends up in `Failed` or `Create Failed` or `Error nodes failed to join` state, please refer to this [Amazon provided Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
-)
+If your EKS cluster worker pool ends up in `Failed`, `Create Failed` or `Error nodes failed to join` state, refer to the Amazon EKS [Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
+) for troubleshooting guidance. 
 
 <br />
 
 ## Palette Agents Workload Payload Size Issue
 
 
-A cluster comprising many nodes can create a situation where the workload data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload deliveries, the agent container may transition into a  *CrashLoopBackOff* state. 
+A cluster comprising many nodes can create a situation where the workload report data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload report deliveries, the agent container may transition into a  *CrashLoopBackOff* state. 
 
-If you encounter this scenario, you can configure the cluster to stop sending workloads to Palette. To disable the workload feature, create a *configMap* with the following configuration. Use a cluster profile manifest layer to make this configMap.
+If you encounter this scenario, you can configure the cluster to stop sending workload reports to Palette. To disable the workload report feature, create a *configMap* with the following configuration. Use a cluster profile manifest layer to make this configMap.
 
 <br />
 
