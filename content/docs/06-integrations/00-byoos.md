@@ -24,16 +24,22 @@ To learn how to use BYOOS in Edge and non-Edge environments, check out the []() 
 
 **1.0.x**
 
-## Prerequisites 
-
-To use the non-Edge BYOOS pack, you must have the following:
 <br />
 
-- Access to a non-Edge repository that contains the generic BYOOS pack.
+<Tabs>
+
+<Tabs.TabPane tab="Edge" key="edge">
+
+## Prerequisites 
+
+To use the Edge BYOOS pack, you must have the following:
+
+- Provider images needs to be built
+- Construct the system.uri
 
 ## Parameters
 
-## Installer Parameters
+### Installer Parameters
 
 | Parameter            | Description                                            |
 |----------------------|--------------------------------------------------------|
@@ -42,7 +48,7 @@ To use the non-Edge BYOOS pack, you must have the following:
 | `pack.content.images.-  images` | Specifies a specific OS image to use for the pack. |
 
 
-## User Data Parameters
+### User Data Parameters
 
 | Parameter            | Description                                            |
 |----------------------|--------------------------------------------------------|
@@ -52,10 +58,65 @@ To use the non-Edge BYOOS pack, you must have the following:
 | `image.palette.edge.version` | The Palette Edge software version used in the BYOOS container image. |
 | `image.client.tag` |  The tag given to the image used for the BYOOS, specifying its version. |
 
-## Usage
 
-# Troubleshooting
+## Usage
 
 # Terraform
 
+```yaml
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "byoos" {
+  name         = "edge-native-byoi"
+  version      = "1.0.0"
+  type         = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+```
+
+
+
 # References
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Non-Edge" key="Non-Edge">
+
+## Prerequisites 
+
+To use the non-Edge BYOOS pack, you must have the following:
+
+- Access to a non-Edge repository that contains the generic BYOOS pack.
+
+## Parameters
+
+| Parameter            | Description                                            |
+|----------------------|--------------------------------------------------------|
+| `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2` |
+| `osName` | The name of the OS distribution. Example: `rhel`. |
+| `osVersion` | The version of the OS distribution. Example: `8` |
+
+## Usage
+
+# Terraform
+
+```yaml
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "byoos" {
+  name         = "generic-byoi"
+  version      = "1.0.0"
+  type         = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+```
+
+# References
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
