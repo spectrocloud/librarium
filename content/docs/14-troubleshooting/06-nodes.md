@@ -29,25 +29,49 @@ Logs are provided in Palette for traceability. However, these logs may be lost w
 
 For detailed information, review the cluster upgrades [page](/clusters/#clusterupgradedetails).
 
-
+<br />
 
 # Clusters
 
 ## Scenario -  vSphere Cluster and Stale ARP Table
-Sometimes certain vSphere clusters run into issues where non-VIP nodes are unable to contact the VIP node, primarly because non-VIP nodes' ARP entries became stale.
 
-To minimize this situation, vSphere clusters deployed from Palette now come equiped with a daemonset that cleans the ARP entry cache every 5 minutes. The cleaning process will force the nodes to re-request an ARP entry of the VIP node periodically. This is done automatically without any user action.
+Sometimes vSphere clusters encounter issues where nodes with an assigned Virtual IP Address (VIP) cannot contact the node with a VIP. The problem is caused by non-VIP nodes' Address Resolution Protocol (ARP) entries becoming stale.
 
-You can verify the cleaning process by running the following command on non-VIP nodes and observe that ARP cache is never older than 300 seconds:
+To minimize this situation, vSphere clusters deployed through Palette now have a daemon set that cleans the ARP entry cache every five minutes. The cleaning process will force the nodes to re-request an ARP entry of the VIP node periodically. This is done automatically without any user action.
 
-```
+You can verify the cleaning process by issuing the following command on non-VIP nodes and observing that the ARP cache is never older than 300 seconds.
+
+<br />
+
+```shell
 watch ip -statistics neighbour
 ```
 
 
-## Secnario - EKS Cluster Worker Pool Failures
+## Scenario - EKS Cluster Worker Pool Failures
 
 If your EKS cluster  worker pool ends up in `Failed` or `Create Failed` or `Error nodes failed to join` state, please refer to this [Amazon provided Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
 )
+
+<br />
+
+## Palette Agents Workload Payload Size Issue
+
+
+A cluster comprising many nodes can create a situation where the workload data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload deliveries, the agent container may transition into a  *CrashLoopBackOff* state. 
+
+If you encounter this scenario, you can configure the cluster to stop sending workloads to Palette. To disable the workload feature, create a *configMap* with the following configuration. Use a cluster profile manifest layer to make this configMap.
+
+<br />
+
+```shell
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: palette-agent-config
+  namespace: "cluster-{{ .spectro.system.cluster.uid }}"
+data:
+  feature.workloads: disable 
+```
 
 <br />
