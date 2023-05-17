@@ -37,8 +37,7 @@ Use the following steps to create an Edge artifact for your Edge host.
 - 12 Gib of storage or more. The size requirements may change depending on the size of the content bundle and image sizes of the selected OS and Kubernetes distribution.
 
 
-- Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
-
+- Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in. With docker, use the `docker login` command to log in to the registry.
 
 # Create Artifact
 
@@ -86,20 +85,13 @@ Choose the workflow that fits your needs.
 | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
 | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
-
-<InfoBox>
-
-When generating a BYOOS pack, the registry specified with the `generate` command is the registry used to install the pack. Users should verify that the specified registry is correct and available before moving on to the next step. 
-To verify the registry, users can use tools such as `docker login` or `docker pull` to test the connection to the registry.
-
-</InfoBox>
-
-
-
-
-
   <br />
   
+  <InfoBox>
+
+  When using the generate command, the specified registry is where Edge artifacts will be uploaded.
+
+  </InfoBox>
 
 
   ```shell

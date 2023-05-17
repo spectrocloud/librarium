@@ -48,9 +48,7 @@ No prerequisites.
 
 2. Choose the desired scope, project or **Tenant Admin**.
 
-![Select the scope by using the drop-down Menu.  Either project or tenant admin are the displayed values in the screenshot.](/clusters_site_deployment_mode-profile_scope-selector.png)
 
-<br />
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
