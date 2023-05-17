@@ -41,25 +41,14 @@ To use the Edge BYOOS pack, you must have the following:
 
 The BYOS Edge 
 
-### Installer Parameters
+### Parameters
 
 | Parameter            | Description                                            |
 |----------------------|--------------------------------------------------------|
 | `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. |
 | `pack.content.images` | Specifies the list of OS images to use for the pack. |
 | `pack.content.images.-  images` | Specifies a specific OS image to use for the pack. |
-
-
-### User Data Parameters
-
-| Parameter            | Description                                            |
-|----------------------|--------------------------------------------------------|
-| `options.system.uri:` | The system URI specifying the location of the BYOOS image. |
-| `image.registry` | The domain of the registry where the BYOOS image is stored. |
-| `image.repo` | The name of the BYOOS image repository. |
-| `image.palette.edge.version` | The Palette Edge software version used in the BYOOS container image. |
-| `image.client.tag` |  The tag given to the image used for the BYOOS, specifying its version. |
-
+| `system.uri` | The system URI specifying the location of the BYOOS image. 
 
 ## Usage
 
@@ -72,11 +61,6 @@ pack:
 options: 
  system.uri: “{{.spectro.pack.edge-native-byoi.image.registry}}/{{.spectro.pack.edge-native-byoi.image.repo}}:{{.spectro.system.kunernetes.version}}-{{.spectro.pack.edge-native-byoi.image.version}}_{{.spectro.pack.edge-native-byoi.image.client.tag}}”
 
-image: 
- registry: "" 
- repo: ""
- palette.edge.version: ""
- client.tag: ""
 ```
 
 # Terraform
@@ -94,8 +78,6 @@ data "spectrocloud_pack_simple" "byoos" {
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 ```
-
-
 
 # References
 
@@ -127,7 +109,6 @@ pack:
 ```
 
 # Terraform
-
 
 ```yaml
 data "spectrocloud_registry" "public_registry" {
