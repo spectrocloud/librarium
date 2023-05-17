@@ -94,31 +94,12 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI he
   <br />
 
   ```shell
-  palette --help
+  palette version
   ```
 
   Output:
   ```shell
-  Use 'palette help <sub-command>' to explore all of the functionality the Spectro Cloud Palette CLI has to offer.
-
-  Usage:
-    palette [command]
-
-  Available Commands:
-    completion  Generate the autocompletion script for the specified shell
-    ec          Enterprise Cluster installation & pre-validation
-    help        Help about any command
-    pcg         Private Cloud Gateway installation & pre-validation
-    pde         Palette Developer Experience
-    vm          Virtual Machine lifecycle management and migration
-
-  Flags:
-    -c, --config string      Config file location
-    -h, --help               help for palette
-    -l, --log-level string   Log level. One of: [panic fatal error warn info debug trace] (default "info")
-    -w, --workspace string   Workspace location for staging runtime configurations and logs (default "$HOME/.palette")
-
-  Use "palette [command] --help" for more information about a command.
+  Palette CLI version: 3.4.0
   ```
 
 

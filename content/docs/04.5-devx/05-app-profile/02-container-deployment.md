@@ -32,26 +32,29 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 
 
 
-3. Provide the wizard with the following information and click on the **Next** button after you have filled out the information.
+3. Provide the wizard with the following information and click on **Next** after you have filled out the following basic information.
 
-**Basic Information: **
-
-|         Parameter           | Description  |
-|-------------------------------|-----------------|
-|Application Profile Name | A custom name for the App Profile|
-|Description (optional)   | Description of the App Profile, if any | 
-|Tag (optional)               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
+  |         Parameter           | Description  |
+  |-------------------------------|-----------------|
+  |**Application Profile Name** | A custom name for the App Profile|
+  |**Description (optional)**   | Description of the App Profile, if any | 
+  |**Tag (optional)**               | Tags on a cluster group are propagated to the cloud/datacenter environments.|
 
 
-4. **Add Service**: From the available services list, select **Container Deployment**. [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, runtime, libraries, and all the dependencies required by a containerized workload. Container deployment deploys containers to their target environment. Review the [Palette Container Deployment](/devx/app-profile/container-deployment) to learn more about container deployment.
+4. Next, select **Container Deployment** from the available services list.
 
 
-5. Provide the following information to the wizard:
-  * **Container Name**: A unique name for the container deployment.
-  * **Registry**: Select the registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.
-  * **Image**: Image of the container to be deployed.
-  * **Replicas**: The number of application instances to be deployed. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file.
- 
+5. Provide the following information to the wizard.
+
+  **General Settings**:
+
+  | Parameter        | Description                                                                                            |
+  | ---------------- | ------------------------------------------------------------------------------------------------------ |
+  | **Container Name**  | A unique name for the container deployment.                                                            |
+  | **Registry**       | Select the registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image. |
+  | **Image**           | Image of the container to be deployed.                                                                 |
+  | **Replicas** | The number of application instances to be deployed. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file. A max of 10 replicas is supported.
+
   <br />
 
   <InfoBox>
@@ -61,29 +64,41 @@ Palette App Mode supports the use of containers, a standard unit of software tha
   When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the provisioning process.
 
   </InfoBox>
+
+  <br />
+
+  **Network Access**:
   
-  * Network Access:
-    * **Private**: To establish connectivity to a container service through a private network.
-    * **Public**: To establish connectivity to a container service through the public network.
-    * **Port number**: Exposes the container for external communication. 
+  | Parameter      | Description                                                                                                   |
+  | -------------- | ------------------------------------------------------------------------------------------------------------- |
+  | **Private**        | To establish connectivity to a container service through a private network.                                    |
+  | **Public**         | To establish connectivity to a container service through the public network.                                   |
+  | **Port number**   | Exposes the container for external communication.                                                            |
 
-  * **Environment Variables:** Environment variables can be specified as **Key-Value** pairs during the container deployment.  
-     Example: <br />
-       name: DEMO_GREETING <br />
-       value: Hello from the environment 
+  <br />
 
-  * **Volume:** To persist the data generated by and used by the container.
-    * Name: Volume name
-    * Size: The size of the volume in GiB
-    * Mount Path:  The path to the volume <br />
-     Example: <br />
-    **/var/local/spectro-docs**
+  **Environment Variables**:
 
-  * **Runtime Settings**: The command and arguments you define here will override the default command and arguments provided by the container image. <br />
-    Example: <br />
-       command: printenv <br />
-       argument: HOSTNAME
- 
+  | Parameter          | Description                                                                                       |
+  | ----------------------- | ------------------------------------------------------------------------------------------------------ |
+  | **Environment Variables**  | Environment variables can be specified as **Key-Value** pairs during the container deployment.         |
+
+  <br />
+
+  **Volume**:
+
+  | Parameter | Description                                                 |
+  | ------------- | --------------------------------------------------------------- |
+  | **Volume**        | To persist the data generated by and used by the container.     |
+  | **Name**          | Volume name.                                                    |
+  | **Size**          | The size of the volume in GiB.                                   |
+  | **Mount Path**    | The path to the volume.                                         |
+
+
+  <br />
+
+  * **Runtime Settings**: The command and arguments you define here will override the default command and arguments provided by the container image. 
+
  
 6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
 
