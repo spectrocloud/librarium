@@ -81,6 +81,8 @@ image:
 
 # Terraform
 
+You can retrieve details about the BYOOS Edge OS agent pack by using the following Terraform code.
+
 ```yaml
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
@@ -126,7 +128,6 @@ pack:
 
 # Terraform
 
-You can retrieve details about the BYOOS Edge OS agent pack by using the following Terraform code.
 
 ```yaml
 data "spectrocloud_registry" "public_registry" {
