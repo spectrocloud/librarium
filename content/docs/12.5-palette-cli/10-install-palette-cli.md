@@ -1,6 +1,6 @@
 ---
-title: "Palette CLI"
-metaTitle: "Palette CLI"
+title: "Install"
+metaTitle: "Install"
 metaDescription: "Learn how to install the Palette CLI and how you can use the CLI with Palette Dev Engine."
 hideToC: false
 fullWidth: false
@@ -10,10 +10,6 @@ import Tabs from 'shared/components/ui/Tabs';
 import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
 
-
-# Overview
-
-The Palette CLI contains various functionalities that you can use to interact with Palette and manage resources. The Palette CLI is well suited for Continuous Delivery/Continuous Deployment (CI/CD) pipelines and recommended for automation tasks, where Terraform or direct API queries are not ideal.
 
 # Installation
 
@@ -51,7 +47,7 @@ Move the binary to the **/usr/local/bin** folder. Replace the download file with
 <br />
 
 ```shell
-mv ~/Downloads/spectro-cli-darwin-amd64 /usr/local/bin/palette
+sudo mv ~/Downloads/spectro-cli-darwin-amd64 /usr/local/bin/palette
 ```
 
 </Tabs.TabPane>
@@ -79,7 +75,7 @@ move C:\Users\johndoe\Downloads\spectro-cli-darwin-amd64 C:\Users\johndoes\tools
 <br />
    
 
-5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
+5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to the validation section. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
 
   <br />
 

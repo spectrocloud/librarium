@@ -127,7 +127,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette PDE is now available in self-hosted installation of Palette.
 
 
-- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/devx/manage-dev-engine/install-palette-cli) documentation page to learn more.
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
 
 
 ## Improvements

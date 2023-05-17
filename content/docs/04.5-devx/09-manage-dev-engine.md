@@ -27,9 +27,6 @@ You manage Palette Dev Engine (PDE) primarily through the [Cluster Group's Virtu
 - [Dev Engine Registries](/devx/manage-dev-engine/registries)
 
 
-- [Palette CLI](/devx/manage-dev-engine/install-palette-cli)
-
-
 - [Manage Single Sign-On (SSO)](/devx/manage-dev-engine/sso)
 
 
