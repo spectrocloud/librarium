@@ -85,7 +85,7 @@ Use this command to authenticate with Palette. This command requires a [Palette 
   | `--api-key`             | The Palette API key.                                  |  string    | Yes |
   | `--cluster-group-name`  | The Palette Cluster Group name.                        |  string    |   No       |
   | `--cluster-group-scope` | Palette Cluster Group scope.                           |   string   | No |
-  | `--console-url`         | The Palette login URL.                              |  string    | Yes |
+  | `--console-url`         | The Palette login URL. The default value is `https://console.spectrocloud.com`                             |  string    | No |
   | `--project`             | The Palette Project name. Defaults to `Default`.    |    string  |     No     |
 
 
