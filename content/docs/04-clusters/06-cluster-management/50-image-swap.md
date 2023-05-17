@@ -162,4 +162,10 @@ You can validate that the image swap is functioning correctly by using the follo
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+
+```shell
+kubectl get deployment hello-universe-deployment --namespace cluster-6464219d28ab6f6b597d8188 -o=jsonpath='{.spec.template.spec.containers[0].image}'
+ttl.sh/hello-universe:24h
+```
+
 <br />
