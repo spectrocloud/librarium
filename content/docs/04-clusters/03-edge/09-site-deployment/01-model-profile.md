@@ -116,11 +116,6 @@ The following steps will guide you to deploy an Edge cluster using the **BYOS Ed
 
 4. Provide **Basic Information**, such as profile name and description. Select **Full** and click on **Next**. <br /> <br />
 
-    <InfoBox>
-
-    Refer to the [Creating Cluster Profiles](/https://docs.spectrocloud.com/cluster-profiles/task-define-profile) resource to learn about creating a new cluster profile.
-
-    </InfoBox>
 
 5. Select **Edge Native** as the **Cloud Type** and click on **Next**.
 
