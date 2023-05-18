@@ -85,7 +85,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
+- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
 ## Edge
 
 ## Breaking Changes

@@ -35,9 +35,9 @@ For detailed information, review the cluster upgrades [page](/clusters/#clusteru
 
 ## Scenario -  vSphere Cluster and Stale ARP Table
 
-Sometimes vSphere clusters encounter issues where nodes with an assigned Virtual IP Address (VIP) cannot contact the node with a VIP. The problem is caused by non-VIP nodes' Address Resolution Protocol (ARP) entries becoming stale.
+Sometimes vSphere clusters encounter issues where nodes with an assigned Virtual IP Address (VIP) cannot contact the node with a VIP. The problem is caused by Address Resolution Protocol (ARP) entries becoming stale on non-VIP nodes.
 
-To minimize this situation, vSphere clusters deployed through Palette now have a daemon set that cleans the ARP entry cache every five minutes. The cleaning process will force the nodes to re-request an ARP entry of the VIP node periodically. This is done automatically without any user action.
+To minimize this situation, vSphere clusters deployed through Palette now have a daemon set that cleans the ARP entry cache every five minutes. The cleaning process forces the nodes to periodically re-request an ARP entry of the VIP node. This is done automatically without any user action.
 
 You can verify the cleaning process by issuing the following command on non-VIP nodes and observing that the ARP cache is never older than 300 seconds.
 
@@ -58,9 +58,9 @@ If your EKS cluster worker pool ends up in `Failed`, `Create Failed` or `Error n
 ## Palette Agents Workload Payload Size Issue
 
 
-A cluster comprising many nodes can create a situation where the workload report data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload report deliveries, the agent container may transition into a  *CrashLoopBackOff* state. 
+A cluster comprised of many nodes can create a situation where the workload report data the agent sends to Palette exceeds the 1 MB threshold and fails to deliver the messages. If the agent encounters too many workload report deliveries, the agent container may transition into a  *CrashLoopBackOff* state. 
 
-If you encounter this scenario, you can configure the cluster to stop sending workload reports to Palette. To disable the workload report feature, create a *configMap* with the following configuration. Use a cluster profile manifest layer to make this configMap.
+If you encounter this scenario, you can configure the cluster to stop sending workload reports to Palette. To disable the workload report feature, create a *configMap* with the following configuration. Use a cluster profile manifest layer to create the configMap.
 
 <br />
 
