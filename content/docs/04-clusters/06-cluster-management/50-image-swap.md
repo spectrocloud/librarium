@@ -12,18 +12,18 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are a few common use cases the image swap feature is a good fit: <br /> <br />
+Palette supports swapping out images and registries at the Kubernetes layer. Palette uses the *ImageSwap* webhook that is exposed by the [ImageSwap Mutating Admission Controller for Kubernetes](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md). You can use this feature to override a specific number of container image registries or particular images. The following are some common use cases for image swapping: <br /> <br />
 
 - Avoid rate limit issues encountered with public images by pointing to an alternate image registry that caches public images. This is more common in an Enterprise setting.
 
 
-- Changing the URL of a container registry, whether internal or external.
+- Changing the URL of an internal or external container registry.
 
 
 - Support air-gapped environments by redirecting public image requests to an internal registry.
  
 
- To use the image swap, specify an image swap configuration in the Kubernetes pack YAML. The `imageSwap` block must be under the `pack` section's scope.
+ To use the image swap feature, specify an image swap configuration in the Kubernetes pack YAML. The `imageSwap` block must be under the `pack` section.
 
  <br />
 
@@ -36,7 +36,7 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
  ```
 
 
- You can add the `imageSwap` section during the cluster profile creation process or at the cluster deployment. You can customize the image swap functionality in multiple ways. We recommend you review the official [Image Swap configuration](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md#configuration) documentation to learn more. To help you get started, the following are some common configuration patterns.
+ You can add the `imageSwap` section when you create the cluster profile or at cluster deployment. You can customize the image swap functionality several ways. We recommend you review the official [Image Swap configuration](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md#configuration) documentation to learn more. To help you get started, the following are some common configuration patterns.
 
   <br />
 
@@ -145,7 +145,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 3. Click on **Add Cluster Profile**.
 
 
-4. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
+4. Fill out the input fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
 
 
 5. Select your infrastructure provider and click on **Next**.
