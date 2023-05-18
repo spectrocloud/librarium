@@ -20,7 +20,7 @@ Although Palette provides out-of-the box templates, we recommend that you create
 
 - Valid YAML that defines your VM template.
 
-# Enablement
+# Create a VM Template
 
 Create a template by adding a YAML file as a manifest in an add-on profile.
 
