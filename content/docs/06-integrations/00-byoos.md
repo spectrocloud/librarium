@@ -65,7 +65,7 @@ The Edge Native cluster profile requires the following components:
 * Container network interfce (CNI) 
 * Container storage interface (CSI) 
 
- You can define the cluster profile components in Palette using the **Add Cluster Profile** feature in the **Profiles** page. The cluster profile has the following profile layers:
+You can define the cluster profile components in Palette using the **Add Cluster Profile** feature in the **Profiles** page. The cluster profile has the following profile layers:
  * Basic Information
  * Cloud Type 
  * Profile Layers 
