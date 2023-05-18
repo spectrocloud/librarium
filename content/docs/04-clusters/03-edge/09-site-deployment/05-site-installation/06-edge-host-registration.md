@@ -13,13 +13,21 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-To use an Edge host with a host cluster, you must first register it with Palette. You have three options to register the Edge host with Palette.
+To use an Edge host with a host cluster, you must first register it with Palette. You have three options to register the Edge host with Palette. You must include a registration token in user data for streamlined device registration and management.
 
 | Method | Description | Set up Effort |
 |---|---|---|
 | Auto Registration | Edge hosts can automatically register with Palette by using a *Registration Token*. This method requires you to specify the registration token in the user data.  | Low |
 | Manual Registration | You can manually enter a unique Edge host ID into Palette. | Low |
 | QR Code |  Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry.| High |
+
+
+<WarningBox>
+
+A registration token is required for the edge registration process. Without the registration token, the registration process will be unable to complete.
+
+</WarningBox>
+
 
 
 # Registration Method
