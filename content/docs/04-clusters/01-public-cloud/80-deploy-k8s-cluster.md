@@ -1184,7 +1184,7 @@ While you wait for the cluster deployment process to complete, feel free to chec
 
 <br />
 
-## Validation
+## Validate
 
 When the cluster deploys, you can access the Hello Universe application.
 From the cluster's **Overview** page, click on the URL for port **:8080** next to the **hello-universe-service** in the **Services** row. This URL will take you to the application landing page. 

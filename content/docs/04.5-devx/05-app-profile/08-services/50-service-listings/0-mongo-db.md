@@ -62,7 +62,7 @@ You can use the following steps to learn how to add MongoDB to your app profile.
   * **Version:** Select the version from the **Version** drop-down. 
 
 6. Click **Save Changes**.
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 

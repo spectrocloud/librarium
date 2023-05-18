@@ -173,7 +173,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 10. Deploy a host cluster and use the cluster profile containing the image swap functionality. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance in deploying a host cluster.
 
 
-## Validation
+## Validate
 
 You can validate that the image swap is functioning correctly by using the following steps.
 

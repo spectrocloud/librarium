@@ -91,7 +91,7 @@ IDP options are as follows:
 
 - **Specified on Kubernetes layer**: This setting requires you to configure OIDC manually in the Kubernetes pack. Refer to [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) for more information.
 
-# Validation
+# Validate
 
 You can validate the profile is created. 
 
