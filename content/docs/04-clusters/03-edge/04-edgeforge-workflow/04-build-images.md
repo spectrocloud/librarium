@@ -35,7 +35,15 @@ Use the following steps to create an Edge artifact for your Edge host.
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
 
-- 12 Gib of storage or more. The size requirements may change depending on the size of the content bundle and image sizes of the selected OS and Kubernetes distribution.
+- 8 CPU
+
+
+- 16 GB Memory
+
+
+- 150 GB Storage 
+
+  If you experience disk space constraints on the machine where images are built, you can remove unnecessary Docker images and volumes. Or start the process on a machine with more storage allocated.
 
 
 - Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
