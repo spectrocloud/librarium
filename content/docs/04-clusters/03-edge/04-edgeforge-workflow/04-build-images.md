@@ -41,7 +41,8 @@ Use the following steps to create an Edge artifact for your Edge host.
 - 16 GB Memory
 
 
-- 150 GB Storage <br />
+- 150 GB Storage 
+
 If you experience disk space constraints on the machine where images are built, you can remove unnecessary Docker images and volumes. Or start the process on a machine with more storage allocated.
 
 
