@@ -72,7 +72,7 @@ The application will begin the deployment process. This may take a few minutes, 
 
 
 
-# Validation
+# Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

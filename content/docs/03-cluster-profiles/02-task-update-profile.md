@@ -49,7 +49,7 @@ The following steps will guide you in updating basic profile information.
 5. Save your changes.
 
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -116,7 +116,7 @@ The following steps will guide you in making updates to a layer in the profile.
 Clusters that use the updated profile are notified of the changes. You can update clusters to use the latest profile definition at any time.
 
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -247,7 +247,7 @@ We do not recommend downgrading packs to the previous version.
 10. Confirm your updates.
 
 
-# Validation
+# Validate
 
  
 

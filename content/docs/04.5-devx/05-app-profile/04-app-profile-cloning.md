@@ -48,7 +48,7 @@ To clone an App Profile follow the steps below:
 In the target project specified during the clone process, you can now use the App Profile for app deployments.
 
 
-# Validation
+# Validate
 
 To validate the App Profile is cloned and available in the target project conduct the following steps:
 

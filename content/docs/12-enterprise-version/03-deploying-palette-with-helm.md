@@ -280,7 +280,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
 </Tabs>
 
-# Validation
+# Validate
 
 You can validate that the installation of Palette is successful by visiting the custom domain you assigned to the 
 `env.rootDomain` parameter in the **values.yaml**.

@@ -199,7 +199,7 @@ You can use several software tools to create a bootable USB drive, such as [bale
 </InfoBox>
 
 
-# Validation
+# Validate
 
 1. In the build server, validate the output directory containing the ISO file.
 

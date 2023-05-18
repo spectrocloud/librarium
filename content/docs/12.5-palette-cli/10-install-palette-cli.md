@@ -83,7 +83,7 @@ move C:\Users\johndoe\Downloads\spectro-cli-darwin-amd64 C:\Users\johndoes\tools
   palette pde login --api-key <YOUR-API-KEY> --console-url https://console.spectrocloud.com/
   ```
 
-## Validation
+## Validate
 
 Verify the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
 

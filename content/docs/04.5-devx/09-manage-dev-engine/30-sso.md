@@ -53,7 +53,7 @@ To learn more about the Sign-In Flow, refer to the [User Authentication](/user-m
 
 
 
-## Validation
+## Validate
 
 You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party provider you enabled for SSO.
 
@@ -86,7 +86,7 @@ Palette provides the flexibility to disable SSO to restrict this capability. Use
 4. Log out of Palette.
 
 
-## Validation
+## Validate
 
 You can validate SSO is disabled by attempting to log into your Palette tenant through SSO. Any SSO attempts will fail due to SSO being disabled at the tenant level.
 

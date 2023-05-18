@@ -107,7 +107,7 @@ Once the container is added as a layer to the App Profile, continue with the rem
 
 
 
-## Validation
+## Validate
 
 1. Login to [Palette](/devx#quickstartwithpaletteappmode).
 

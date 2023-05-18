@@ -308,7 +308,7 @@ When deploying a host cluster, choosing the appropriate cloud provider and regio
 
 </WarningBox>
 
-# Validation
+# Validate
 
 Use the following steps to validate your custom image.
 

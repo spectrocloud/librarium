@@ -262,7 +262,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 <br />
 
-## Validation
+## Validate
 
 Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways** and ensure the gateway is listed on the **Manage Private Cloud Gateways** page. 
 
@@ -412,7 +412,7 @@ Ensure the MAAS server has two more machines in the **Ready** state in the same 
 </WarningBox>
 
 
-## Validation
+## Validate
 
 You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
 
