@@ -189,11 +189,6 @@ Site operators can select a site and submit a registration request. The web appl
 <br />
 
 
-<InfoBox>
-
-To ensure a smooth registration process, we recommend that you specify your `project ID` when creating the registration token. If your `project ID` is not specified in your token or user data, you can complete registration using the QR code flow. 
-
-</InfoBox>
 
 ## Prerequisites
 
