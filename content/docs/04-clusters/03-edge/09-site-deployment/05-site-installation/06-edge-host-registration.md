@@ -99,7 +99,7 @@ To create a registration token, use the following steps.
 
 Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data/) resource to learn more about creating site-specific user data.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -172,7 +172,7 @@ Use the following steps to manually register an Edge host in Palette.
 
 7. Confirm your changes to register the Edge host.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -272,7 +272,7 @@ Use the following steps to enable this workflow.
 
 11. Fill out the required information in the web application and submit the registration request.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

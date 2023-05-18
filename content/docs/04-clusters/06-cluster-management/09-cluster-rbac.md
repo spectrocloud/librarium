@@ -165,7 +165,7 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Assigne a Namespace Role" key="roleBinding">
+<Tabs.TabPane tab="Assign a Namespace Role" key="roleBinding">
 
 1. From the cluster settings view, select the **RBAC** tab.
 
@@ -203,7 +203,7 @@ A role binding will be created in the listed namespaces. Keep in mind that you c
 
 </Tabs>
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

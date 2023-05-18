@@ -1,7 +1,7 @@
 ---
 title: "Update VM Configuration"
 metaTitle: "Update VM Configuration"
-metaDescription: "Learn about updates you can make to a VM configuration using Spectro VM Dashboard."
+metaDescription: "Learn how to add disk storage and network interfaces to a VM using Palette."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -15,18 +15,18 @@ import InfoBox from 'shared/components/InfoBox';
 # Overview
 
 
-You can add storage and additional network interfaces to your Virtual Machines (VMs).
+You can add storage and additional network interfaces to your virtual machines (VMs).
 
 
 # Add Disk Storage
 
-KubeVirt allows hotplugging additional storage into a running virtual machine. Both block and file system volume types are supported.
+KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are supported.
 
 ## Prerequisites
 
 - A deployed VM.
 
-## Enablement
+## Add a Disk
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -34,7 +34,7 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
-3. Navigate to **Virtual Machines > Disks** tabs and click the **Add disk** button.
+3. Navigate to **Virtual Machines** > **Disks** tabs and click the **Add disk** button.
 
 
 4. Review the parameters and update as needed. You can specify the disk size, disk type (Disk, CD-ROM, or LUN), and network interface.
@@ -45,14 +45,18 @@ KubeVirt allows hotplugging additional storage into a running virtual machine. B
 
     - **virtio**: Optimized for best performance, but the operating system may require additional Virtio drivers.
 
+    <br />
+
     - **sata**: Most operating systems support Serial ATA (SATA). However it offers lower performance.
+
+    <br />
 
     - **scsi**: A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme.
 
 
 5. Click **Add** when you are done.
 
-## Validation
+## Validate
 
 The **Disks** tab lists the newly added disk as ``PersistingHotplug``. 
 
@@ -71,7 +75,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 - A deployed VM.
 
-## Enablement
+## Add an Interface
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -92,10 +96,14 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 <InfoBox>
 
-Multus allows hotplugging network interfaces only when interfaces use the **virtio** model connected through bridge binding.
+Multus allows hot plugging network interfaces only when interfaces use the **virtio** model connected through bridge binding.
 
 </InfoBox>
 
-## Validation
+## Validate
 
 The **Network Interfaces** tab lists the newly added interface.
+
+# Resources
+
+- [Multus CNI](/integrations/multus-cni)

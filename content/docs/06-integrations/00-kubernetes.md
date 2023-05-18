@@ -685,5 +685,10 @@ data "spectrocloud_pack_simple" "k8s" {
 - [Kubernetes](https://kubernetes.io/)
 
 
+
 - [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
+
+
+
+- [Image Swap with Palette](/clusters/cluster-management/image-swap)
 

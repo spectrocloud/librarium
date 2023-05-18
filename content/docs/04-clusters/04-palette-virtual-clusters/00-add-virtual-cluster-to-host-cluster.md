@@ -155,7 +155,7 @@ To deploy a new virtual cluster in an existing Host Cluster:
 
    - Load Balancer Source Ranges: Limits which client IPs can access the load balancer. Inputs must be a comma-separated list of CIDR ranges in `a.b.c.d/x` format. [Network Load Balancer support on AWS](https://kubernetes.io/docs/concepts/services-networking/service/#aws-nlb-support) provides additional details.
 
-# Validation
+# Validate
 To validate your virtual cluster is available and ready for use, navigate to **Clusters > Virtual Clusters**, which lists all your virtual clusters.
 
 

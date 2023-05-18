@@ -26,7 +26,7 @@ To avoid this issue, we recommend that you authenticate with the Docker registry
 
 To log into a Docker registry from Kubernetes, you must create a secret that contains your registry credentials. You can use this secret in a Kubernetes deployment configuration to pull images from the registry.
 
-In this tutorial, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
+In this how-to guide, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
 
 # Prerequisites
 
@@ -34,11 +34,13 @@ In this tutorial, you will log into a private docker registry to pull existing i
 - Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
 - Access to a running Kubernetes cluster. To learn how to create clusters in different environments using Palette, review guides listed under [Clusters](/clusters) or visit the [Palette Onboarding Workflow](/getting-started/onboarding-workflow#paletteonboardingworkflow) guide. To learn how to create a Kubernetes cluster from scratch, check out the [Create a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/) Kubernetes resource.
 
-The following example explains how you can create a secret and use it in a Kubernetes deployment:
+The following example explains how you can create a secret and use it in a Kubernetes deployment.
 
 ## Create a Credentials JSON File
 
-First, create a file called **registry-creds.json** that contains your registry credentials in the following format:
+First, create a file called **registry-creds.json** that contains your registry credentials in the following format.
+
+<br />
 
 ```json
 {
@@ -55,7 +57,9 @@ Keeping passwords in plain text is unsafe. Kubernetes automatically encodes pass
 
 ## Create a Kubernetes Secret 
 
-Use the kubectl command-line tool to generate a secret from the **registry-creds.json** file:
+Use the `kubectl` command-line tool to generate a secret from the **registry-creds.json** file.
+
+<br />
 
 ```bash
 kubectl create secret generic myregistrykey --from-file=registry-creds.json
@@ -63,11 +67,15 @@ kubectl create secret generic myregistrykey --from-file=registry-creds.json
 
 You can use the command below to view the secret created in detail.
 
+<br />
+
 ```bash
 kubectl get secret/myregistrykey --output json
 ```
 
 The command output displays the content of the **registry-creds.json** file as base 64 encoded.
+
+<br />
 
 ```json
 {
@@ -89,11 +97,15 @@ The command output displays the content of the **registry-creds.json** file as b
 
 Invoke the following command to decode the secret you created to verify that secrets are not secure.
 
+<br />
+
 ```bash
 kubectl get secret myregistrykey --output jsonpath='{.data.registry-creds\.json}' | base64 --decode
 ```
 
 The output of issuing the command above is the content of the JSON file you used to create the secret.
+
+<br />
 
 ```json
 {
@@ -108,7 +120,9 @@ The output of issuing the command above is the content of the JSON file you used
 
 ##  Add Secret to Deployment Config
 
-In your Kubernetes deployment configuration, specify the name of the secret you just created for the imagePullSecrets parameter:
+In your Kubernetes deployment configuration, specify the name of the secret you just created for the imagePullSecrets parameter.
+
+<br />
 
 ```yaml
 apiVersion: apps/v1
@@ -134,6 +148,8 @@ spec:
 
 ## Apply the Deployment Configuration
 
+<br />
+
 ```bash
 kubectl apply --file deployment.yaml
 ```
@@ -144,7 +160,9 @@ With this configuration in place, Kubernetes will use the registry credentials i
 
 An alternative way to log into a Docker registry from Kubernetes is by using the command line. 
 
-Authenticate to the private registry. Here’s an example of how to do this:
+Authenticate to the private registry. Here’s an example of how to do this.
+
+<br />
 
 ```bash
 $ kubectl create secret docker-registry <secret-name> \
@@ -159,6 +177,8 @@ In the snippet above, **`<secret-name>`** refers to a unique name for the secret
 
 Add the secret created in the previous step to the default service account with the following code.
 
+<br />
+
 ```bash
 kubectl patch serviceaccount default \
     --port '{"imagePullSecrets": [{"name": "<secret-name>"}]}'
@@ -166,7 +186,9 @@ kubectl patch serviceaccount default \
 
 Replace **`<secret-name>`** with the secret created in the previous step.
 
-Once you are authenticated and have added the secret to your default service account, you can use the kubectl command to pull images from the registry and deploy them to your Kubernetes cluster as follows.
+Once you are authenticated and have added the secret to your default service account, you can use the `kubectl` command to pull images from the registry and deploy them to your Kubernetes cluster as follows.
+
+<br />
 
 ```bash
 kubectl run <deployment-name> \

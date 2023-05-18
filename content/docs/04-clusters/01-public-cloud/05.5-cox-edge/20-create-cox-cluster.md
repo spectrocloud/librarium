@@ -118,7 +118,7 @@ charts:
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
-## Validation
+## Validate
 
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page contains a list of all available clusters Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 

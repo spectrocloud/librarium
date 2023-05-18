@@ -71,6 +71,14 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 |1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 -------
 
+# Palette CLI
+
+The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
+
+|Version|Operating System | 
+|---|---|
+|3.4| TBD|
+
 
 # Edge CLIs
 

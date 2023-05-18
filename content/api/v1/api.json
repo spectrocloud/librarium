@@ -172,6 +172,18 @@
       },
       "type": "object"
     },
+    "v1AWSVolumeTypes": {
+      "description": "AWS Volume Types",
+      "properties": {
+        "volumeTypes": {
+          "items": {
+            "$ref": "#/definitions/v1AwsVolumeType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1AclMeta": {
       "description": "Resource access control information",
       "properties": {
@@ -1839,32 +1851,33 @@
       ],
       "type": "object"
     },
-    "v1AuthKeyRequest": {
+    "v1AuthAllyTokenRequest": {
       "properties": {
+        "edgeAuthToken": {
+          "type": "string"
+        },
         "edgeHostUid": {
           "type": "string"
         },
-        "hostClusterUid": {
-          "type": "string"
-        },
-        "jetUid": {
-          "type": "string"
-        },
-        "overlordUid": {
-          "type": "string"
-        },
-        "secret": {
+        "spectroClusterUid": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1AuthKeyResponse": {
+    "v1AuthJetKeyRequest": {
       "properties": {
-        "authKey": {
+        "allyAuthToken": {
+          "type": "string"
+        },
+        "hostClusterUid": {
           "type": "string"
         }
       },
+      "required": [
+        "allyAuthToken",
+        "hostClusterUid"
+      ],
       "type": "object"
     },
     "v1AuthLogin": {
@@ -2049,6 +2062,24 @@
       "required": [
         "items"
       ],
+      "type": "object"
+    },
+    "v1AwsAmiReference": {
+      "description": "AMI is the reference to the AMI from which to create the machine instance",
+      "properties": {
+        "eksOptimizedLookupType": {
+          "description": "EKSOptimizedLookupType If specified, will look up an EKS Optimized image in SSM Parameter store",
+          "enum": [
+            "AmazonLinux",
+            "AmazonLinuxGPU"
+          ],
+          "type": "string"
+        },
+        "id": {
+          "description": "ID of resource",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "v1AwsAvailabilityZone": {
@@ -2475,6 +2506,38 @@
       ],
       "type": "object"
     },
+    "v1AwsLaunchTemplate": {
+      "description": "AWSLaunchTemplate specifies the launch template to use to create the managed node group",
+      "properties": {
+        "additionalSecurityGroups": {
+          "description": "AdditionalSecurityGroups is an array of references to security groups that should be applied to the instances",
+          "items": {
+            "$ref": "#/definitions/v1AwsResourceReference"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "ami": {
+          "$ref": "#/definitions/v1AwsAmiReference"
+        },
+        "imageLookupBaseOS": {
+          "description": "ImageLookupBaseOS is the name of the base operating system to use for image lookup the AMI is not set",
+          "type": "string"
+        },
+        "imageLookupFormat": {
+          "description": "ImageLookupFormat is the AMI naming format to look up the image",
+          "type": "string"
+        },
+        "imageLookupOrg": {
+          "description": "ImageLookupOrg is the AWS Organization ID to use for image lookup if AMI is not set",
+          "type": "string"
+        },
+        "rootVolume": {
+          "$ref": "#/definitions/v1AwsRootVolume"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsLoginCredentials": {
       "properties": {
         "iamUser": {
@@ -2845,6 +2908,78 @@
       ],
       "type": "object"
     },
+    "v1AwsResourceFilter": {
+      "description": "Filter is a filter used to identify an AWS resource",
+      "properties": {
+        "name": {
+          "description": "Name of the filter. Filter names are case-sensitive",
+          "type": "string"
+        },
+        "values": {
+          "description": "Values includes one or more filter values. Filter values are case-sensitive",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsResourceReference": {
+      "description": "AWSResourceReference is a reference to a specific AWS resource by ID or filters",
+      "properties": {
+        "arn": {
+          "description": "ARN of resource",
+          "type": "string"
+        },
+        "filters": {
+          "description": "Filters is a set of key/value pairs used to identify a resource",
+          "items": {
+            "$ref": "#/definitions/v1AwsResourceFilter"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "id": {
+          "description": "ID of resource",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsRootVolume": {
+      "description": "Volume encapsulates the configuration options for the storage device.",
+      "properties": {
+        "deviceName": {
+          "description": "Device name",
+          "type": "string"
+        },
+        "encrypted": {
+          "description": "EncryptionKey is the KMS key to use to encrypt the volume. Can be either a KMS key ID or ARN",
+          "type": "boolean"
+        },
+        "encryptionKey": {
+          "description": "EncryptionKey is the KMS key to use to encrypt the volume. Can be either a KMS key ID or ARN",
+          "type": "string"
+        },
+        "iops": {
+          "description": "IOPS is the number of IOPS requested for the disk. Not applicable to all types",
+          "format": "int64",
+          "type": "integer"
+        },
+        "throughput": {
+          "description": "Throughput to provision in MiB/s supported for the volume type. Not applicable to all types.",
+          "format": "int64",
+          "type": "integer"
+        },
+        "type": {
+          "description": "Type is the type of the volume (e.g. gp2, io1, etc...)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsS3BucketCredentials": {
       "description": "AWS S3 Bucket credentials",
       "properties": {
@@ -2937,6 +3072,38 @@
           "$ref": "#/definitions/v1AwsCloudAccount"
         }
       }
+    },
+    "v1AwsVolumeSize": {
+      "description": "AWS Volume Size entity",
+      "properties": {
+        "sizeGB": {
+          "description": "AWS volume size",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsVolumeType": {
+      "description": "AWS Volume Type entity",
+      "properties": {
+        "id": {
+          "description": "AWS volume type id",
+          "type": "string"
+        },
+        "maxIops": {
+          "description": "Iops through put of volume type",
+          "type": "string"
+        },
+        "maxThroughPut": {
+          "description": "Max through put of volume type",
+          "type": "string"
+        },
+        "name": {
+          "description": "AWS Volume Type Name",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1AwsVpc": {
       "description": "A virtual network dedicated to a AWS account",
@@ -4473,7 +4640,8 @@
         "tencent",
         "tke",
         "coxedge",
-        "generic"
+        "generic",
+        "gke"
       ],
       "type": "string"
     },
@@ -8157,6 +8325,9 @@
         "coxEdgeLoadBalancerConfig": {
           "$ref": "#/definitions/v1CoxEdgeLoadBalancerConfig"
         },
+        "coxEdgeWorkerLoadBalancerConfig": {
+          "$ref": "#/definitions/v1CoxEdgeLoadBalancerConfig"
+        },
         "environment": {
           "type": "string"
         },
@@ -8294,6 +8465,21 @@
       },
       "type": "object"
     },
+    "v1CoxEdgeLoadPersistentStorage": {
+      "description": "CoxEdge load persistent storage",
+      "properties": {
+        "path": {
+          "description": "Coxedge load persistent storage path",
+          "type": "string"
+        },
+        "size": {
+          "description": "Coxedge load persistent storage size",
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1CoxEdgeMachine": {
       "description": "CoxEdge cloud VM definition",
       "properties": {
@@ -8322,6 +8508,14 @@
             "$ref": "#/definitions/v1CoxEdgeDeployment"
           },
           "type": "array"
+        },
+        "persistentStorages": {
+          "description": "Array of coxedge load persistent storages",
+          "items": {
+            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "securityGroupRules": {
           "items": {
@@ -8391,6 +8585,14 @@
         },
         "name": {
           "type": "string"
+        },
+        "persistentStorages": {
+          "description": "Array of coxedge load persistent storages",
+          "items": {
+            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "securityGroupRules": {
           "items": {
@@ -8462,7 +8664,7 @@
         },
         "persistentStorages": {
           "items": {
-            "$ref": "#/definitions/v1CoxEdgePersistentStorage"
+            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
           },
           "type": "array"
         },
@@ -8537,18 +8739,6 @@
       "required": [
         "organizations"
       ],
-      "type": "object"
-    },
-    "v1CoxEdgePersistentStorage": {
-      "description": "CoxEdge network persistent storage",
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "size": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "v1CoxEdgePort": {
@@ -8664,21 +8854,6 @@
       "required": [
         "services"
       ],
-      "type": "object"
-    },
-    "v1CrypticResponse": {
-      "description": "Cryptic Response",
-      "properties": {
-        "encryptedText": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "plainText": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "v1DashboardWorkspace": {
@@ -10121,6 +10296,10 @@
           "description": "HostUid is the ID of the EdgeHost",
           "type": "string"
         },
+        "nicName": {
+          "description": "Edge host nic name",
+          "type": "string"
+        },
         "staticIP": {
           "description": "Edge host static IP",
           "type": "string"
@@ -10296,6 +10475,10 @@
       "properties": {
         "hostUid": {
           "description": "Edge host id",
+          "type": "string"
+        },
+        "nicName": {
+          "description": "Edge host nic name",
           "type": "string"
         },
         "staticIP": {
@@ -10681,6 +10864,9 @@
     },
     "v1EksMachineCloudConfigEntity": {
       "properties": {
+        "awsLaunchTemplate": {
+          "$ref": "#/definitions/v1AwsLaunchTemplate"
+        },
         "azs": {
           "items": {
             "type": "string"
@@ -10695,6 +10881,10 @@
             "spot"
           ],
           "type": "string"
+        },
+        "enableAwsLaunchTemplate": {
+          "description": "flag to know if aws launch template is enabled",
+          "type": "boolean"
         },
         "instanceType": {
           "description": "instance type",
@@ -10735,6 +10925,9 @@
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
         },
+        "awsLaunchTemplate": {
+          "$ref": "#/definitions/v1AwsLaunchTemplate"
+        },
         "azs": {
           "description": "AZs is only used for dynamic placement",
           "items": {
@@ -10750,6 +10943,10 @@
             "spot"
           ],
           "type": "string"
+        },
+        "enableAwsLaunchTemplate": {
+          "description": "flag to know if aws launch template is enabled",
+          "type": "boolean"
         },
         "infraProfileRef": {
           "$ref": "#/definitions/v1ObjectReference",
@@ -10964,6 +11161,22 @@
       },
       "required": [
         "items"
+      ],
+      "type": "object"
+    },
+    "v1EventsRelatedObjectsEntity": {
+      "properties": {
+        "relatedObjectUids": {
+          "description": "List of uids of the related object",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "relatedObjectUids"
       ],
       "type": "object"
     },
@@ -11542,7 +11755,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "this map will be for ansible roles present in eack pack",
+          "description": "this map will be for ansible roles present in each pack",
           "type": "object"
         },
         "sourceImageId": {
@@ -11559,6 +11772,9 @@
     "v1GcpClusterConfig": {
       "description": "Cluster level configuration for gcp cloud and applicable for all the machine pools",
       "properties": {
+        "managedClusterConfig": {
+          "$ref": "#/definitions/v1GcpManagedClusterConfig"
+        },
         "network": {
           "description": "NetworkName if empty would create VPC Network in auto mode. If provided, custom VPC network will be used",
           "type": "string"
@@ -11579,7 +11795,7 @@
       "type": "object"
     },
     "v1GcpImage": {
-      "description": "Refers to Gcp image",
+      "description": "Refers to GCP image",
       "properties": {
         "name": {
           "type": "string"
@@ -11855,6 +12071,20 @@
       "required": [
         "items"
       ],
+      "type": "object"
+    },
+    "v1GcpManagedClusterConfig": {
+      "description": "GCP managed cluster config",
+      "properties": {
+        "enableAutoPilot": {
+          "description": "EnableAutopilot indicates whether to enable autopilot for this GKE cluster",
+          "type": "boolean"
+        },
+        "location": {
+          "description": "Can be Region or Zone",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "v1GcpNetwork": {
@@ -12291,17 +12521,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1Hash": {
-      "properties": {
-        "hash": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "hash"
-      ],
       "type": "object"
     },
     "v1HealthCheck": {
@@ -13320,6 +13539,22 @@
             "$ref": "#/definitions/v1JWKResponse"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1JetAuthKey": {
+      "properties": {
+        "authKey": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1JetAuthKeyResponse": {
+      "properties": {
+        "authKey": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -14391,6 +14626,20 @@
         }
       },
       "type": "object"
+    },
+    "v1LoginBannerSettings": {
+      "properties": {
+        "Message": {
+          "description": "Login banner message displayed to the user",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "isEnabled": {
+          "description": "Set to 'true' if login banner has to be displayed for user",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
     },
     "v1LoginResponse": {
       "description": "Returns the allowed login method and information with the organization details",
@@ -17080,7 +17329,13 @@
         "ip": {
           "type": "string"
         },
+        "isDefault": {
+          "type": "boolean"
+        },
         "macAddr": {
+          "type": "string"
+        },
+        "nicName": {
           "type": "string"
         },
         "subnet": {
@@ -17089,7 +17344,7 @@
       },
       "type": "object"
     },
-    "v1NodesAutoRemediationSetting": {
+    "v1NodesAutoRemediationSettings": {
       "properties": {
         "disableNodesAutoRemediation": {
           "type": "boolean",
@@ -18569,6 +18824,10 @@
         },
         "tenantUid": {
           "type": "string"
+        },
+        "useQualifiedNetworkName": {
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -18749,6 +19008,10 @@
         "shareWithProjects": {
           "type": "boolean",
           "x-omitempty": false
+        },
+        "useQualifiedNetworkName": {
+          "type": "boolean",
+          "x-omitempty": false
         }
       }
     },
@@ -18758,6 +19021,10 @@
           "$ref": "#/definitions/v1VsphereCloudAccount"
         },
         "shareWithProjects": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "useQualifiedNetworkName": {
           "type": "boolean",
           "x-omitempty": false
         }
@@ -19925,6 +20192,9 @@
           },
           "type": "array"
         },
+        "template": {
+          "$ref": "#/definitions/v1PackTemplate"
+        },
         "type": {
           "$ref": "#/definitions/v1PackType"
         },
@@ -20026,7 +20296,7 @@
       "type": "object"
     },
     "v1PackTemplate": {
-      "description": "Pack template",
+      "description": "Pack template configuration",
       "properties": {
         "manifest": {
           "description": "Pack template manifest content",
@@ -21257,7 +21527,7 @@
           "$ref": "#/definitions/v1FipsConfig"
         },
         "nodesAutoRemediationSetting": {
-          "$ref": "#/definitions/v1NodesAutoRemediationSetting"
+          "$ref": "#/definitions/v1NodesAutoRemediationSettings"
         },
         "tenantClusterSettings": {
           "$ref": "#/definitions/v1TenantClusterSettings"
@@ -21805,6 +22075,10 @@
           },
           "description": "Pack annotations is used to allow pack to add more arbitrary configurations",
           "type": "object"
+        },
+        "latestVersion": {
+          "description": "Pack latest version",
+          "type": "string"
         },
         "logoUrl": {
           "description": "Pack logo url",
@@ -23314,6 +23588,16 @@
       "description": "Service version information",
       "properties": {
         "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ServiceEncryptionKey": {
+      "description": "Returns the data encryption key for the session",
+      "properties": {
+        "encryptionKey": {
+          "description": "Encryption key to be used to decrypt the encrypted data in the response",
           "type": "string"
         }
       },
@@ -28329,7 +28613,7 @@
           "$ref": "#/definitions/v1FipsConfig"
         },
         "nodesAutoRemediationSetting": {
-          "$ref": "#/definitions/v1NodesAutoRemediationSetting"
+          "$ref": "#/definitions/v1NodesAutoRemediationSettings"
         }
       }
     },
@@ -30706,6 +30990,26 @@
       },
       "type": "object"
     },
+    "v1VMAddVolumeEntity": {
+      "properties": {
+        "addVolumeOptions": {
+          "$ref": "#/definitions/v1VmAddVolumeOptions",
+          "description": "Parameters required to add volume to virtual machine/virtual machine instance"
+        },
+        "dataVolumeTemplate": {
+          "$ref": "#/definitions/v1VmDataVolumeTemplateSpec",
+          "description": "dataVolumeTemplates is a list of dataVolumes that the VirtualMachineInstance template can reference. DataVolumes in this list are dynamically created for the VirtualMachine and are tied to the VirtualMachine's life-cycle."
+        },
+        "persist": {
+          "description": "If 'true' add the disk to the Virtual Machine \u0026 Virtual Machine Instance, else add the disk to the Virtual Machine Instance only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "addVolumeOptions"
+      ],
+      "type": "object"
+    },
     "v1VMCluster": {
       "description": "VM Dashboard enabled Spectro cluster",
       "properties": {
@@ -30754,6 +31058,22 @@
       },
       "required": [
         "items"
+      ],
+      "type": "object"
+    },
+    "v1VMRemoveVolumeEntity": {
+      "properties": {
+        "persist": {
+          "description": "If 'true' remove the disk from the Virtual Machine \u0026 Virtual Machine Instance, else remove the disk from the Virtual Machine Instance only",
+          "type": "boolean"
+        },
+        "removeVolumeOptions": {
+          "$ref": "#/definitions/v1VmRemoveVolumeOptions",
+          "description": "Parameters required to remove volume from virtual machine/virtual machine instance"
+        }
+      },
+      "required": [
+        "removeVolumeOptions"
       ],
       "type": "object"
     },
@@ -36176,7 +36496,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 3.3",
+    "title": "Palette APIs - 3.4",
     "version": "v1"
   },
   "paths": {
@@ -36897,7 +37217,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -37625,7 +37945,7 @@
         "operationId": "V1OidcLogout",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -37737,7 +38057,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -38019,7 +38339,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -38059,7 +38379,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -39694,6 +40014,11 @@
           "name": "computecluster",
           "required": true,
           "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "useQualifiedNetworkName",
+          "type": "boolean"
         }
       ]
     },
@@ -42649,6 +42974,333 @@
         ]
       }
     },
+    "/v1/cloudconfigs/gke/{configUid}": {
+      "get": {
+        "operationId": "v1CloudConfigsGkeGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GcpCloudConfig"
+            }
+          }
+        },
+        "summary": "Returns the specified GKE cloud config",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/cloudconfigs/gke/{configUid}/clusterConfig": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsGkeUidClusterConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1GcpCloudClusterConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the cluster configuration information",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/gke/{configUid}/machinePools": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsGkeMachinePoolCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates an GKE cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/gke/{configUid}/machinePools/{machinePoolName}": {
+      "delete": {
+        "operationId": "v1CloudConfigsGkeMachinePoolDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the specified machine pool",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsGkeMachinePoolUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachinePoolConfigEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified GKE cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/gke/{configUid}/machinePools/{machinePoolName}/machines": {
+      "get": {
+        "operationId": "v1CloudConfigsGkePoolMachinesList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of GKE machine items",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachines"
+            }
+          }
+        },
+        "summary": "Retrieves a list of GKE machines",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1CloudConfigsGkePoolMachinesAdd",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Adds the machine to cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/gke/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
+      "delete": {
+        "operationId": "v1CloudConfigsGkePoolMachinesUidDelete",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the specified Gcp machine",
+        "tags": [
+          "v1"
+        ]
+      },
+      "get": {
+        "operationId": "v1CloudConfigsGkePoolMachinesUidGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachine"
+            }
+          }
+        },
+        "summary": "Returns the specified GKE machine",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine uid",
+          "in": "path",
+          "name": "machineUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsGkePoolMachinesUidUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1GcpMachine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified machine to the cloud config's machine pool",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/cloudconfigs/libvirt/{configUid}": {
       "get": {
         "operationId": "v1CloudConfigsLibvirtGet",
@@ -44633,7 +45285,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -44665,7 +45317,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -44703,6 +45355,47 @@
           }
         },
         "summary": "Retrieves AWS cloud account usage cost from cost explorer.",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/aws/imageIds/{imageId}/volumeSize": {
+      "get": {
+        "description": "Get AWS Volume Size",
+        "operationId": "V1AwsVolumeSizeGet",
+        "parameters": [
+          {
+            "description": "Specific AWS Region",
+            "in": "query",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Uid for the specific AWS cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "AWS image id",
+            "in": "path",
+            "name": "imageId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsVolumeSize"
+            }
+          }
+        },
+        "summary": "Get AWS Volume Size",
         "tags": [
           "v1"
         ]
@@ -44764,7 +45457,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -44901,7 +45594,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45064,7 +45757,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45140,7 +45833,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45230,7 +45923,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45240,6 +45933,33 @@
           }
         },
         "summary": "Validate the AWS S3 bucket",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/aws/volumeTypes": {
+      "get": {
+        "description": "List all AWS Volume Types",
+        "operationId": "V1AwsVolumeTypesGet",
+        "parameters": [
+          {
+            "description": "Specific AWS Region",
+            "in": "query",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AWSVolumeTypes"
+            }
+          }
+        },
+        "summary": "Get all AWS Volume Types",
         "tags": [
           "v1"
         ]
@@ -45262,7 +45982,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45449,7 +46169,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -45799,7 +46519,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46086,7 +46806,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46117,7 +46837,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46153,7 +46873,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46327,6 +47047,39 @@
             }
           }
         },
+        "summary": "Retrieves a list of GCP zones for the specified account and region",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/gcp/projects/{project}/zones": {
+      "get": {
+        "operationId": "V1GcpAvailabilityZones",
+        "parameters": [
+          {
+            "description": "Uid for the specific GCP cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Project Name for which GCP zones are requested",
+            "in": "path",
+            "name": "project",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1GcpZones"
+            }
+          }
+        },
         "summary": "Retrieves a list of GCP zones for the specified account",
         "tags": [
           "v1"
@@ -46423,7 +47176,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46555,7 +47308,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -46808,7 +47561,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -47092,7 +47845,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -47437,7 +48190,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -47882,7 +48635,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -47918,71 +48671,6 @@
           }
         },
         "summary": "Validates cluster profile packs",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clusterprofiles/{uid}": {
-      "delete": {
-        "operationId": "v1ClusterProfilesDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Deletes the specified cluster profile",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "v1ClusterProfilesGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfile"
-            }
-          }
-        },
-        "summary": "Returns a specified cluster profile",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster profile uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Comma seperated pack meta such as schema, presets",
-          "in": "query",
-          "name": "includePackMeta",
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1ClusterProfilesUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfileUpdateEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified cluster profile",
         "tags": [
           "v1"
         ]
@@ -48053,7 +48741,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -48850,7 +49538,8 @@
               "tencent",
               "tke",
               "coxedge",
-              "generic"
+              "generic",
+              "gke"
             ],
             "in": "query",
             "name": "environment",
@@ -50596,7 +51285,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -51658,195 +52347,6 @@
         ]
       }
     },
-    "/v1/installers/spectro": {
-      "get": {
-        "operationId": "V1SpectroInstallers",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroInstallers"
-            }
-          }
-        },
-        "summary": "Lists spectro installers",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/installers/spectro/openstack/{uid}/cloudaccount": {
-      "delete": {
-        "operationId": "V1SpectroInstallerOpenStackCloudAccountDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Delete a OpenStack cloud account for specified installer uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1SpectroInstallerOpenStackCloudAccountGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1OpenStackAccount"
-            }
-          }
-        },
-        "summary": "Get a OpenStack cloud account for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "V1SpectroInstallerOpenStackCloudAccountCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1OpenStackAccount"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Create a OpenStack cloud account for spectroinstaller uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "put": {
-        "operationId": "V1SpectroInstallerOpenStackCloudAccountUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1OpenStackAccount"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Update a OpenStack cloud account for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/installers/spectro/openstack/{uid}/spectrocluster": {
-      "delete": {
-        "operationId": "V1SpectroInstallerOpenStackSpectroClusterDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Delete a OpenStack spectro cluster for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1SpectroInstallerOpenStackSpectroClusterGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCluster"
-            }
-          }
-        },
-        "summary": "Get a OpenStack spectro cluster for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "V1SpectroInstallerOpenStackSpectroClusterCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroOpenStackClusterEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Create a OpenStack spectro cluster for spectroinstaller uid",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/installers/spectro/status": {
-      "get": {
-        "operationId": "V1SpectroInstallerStatus",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroInstallerStatus"
-            }
-          }
-        },
-        "summary": "Get the spectro installer status",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/installers/spectro/vsphere/{uid}": {
       "delete": {
         "description": "Deprecated: please use the generic api",
@@ -51857,223 +52357,6 @@
           }
         },
         "summary": "Deletes the spectroinstaller entity",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/installers/spectro/vsphere/{uid}/cloudaccount": {
-      "delete": {
-        "operationId": "V1SpectroInstallerCloudAccountDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Delete a vSphere cloud account for specified installer uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1SpectroInstallerCloudAccountGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1VsphereAccount"
-            }
-          }
-        },
-        "summary": "Get a vSphere cloud account for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "V1SpectroInstallerCloudAccountCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1VsphereAccount"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Create a vSphere cloud account for spectroinstaller uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "put": {
-        "operationId": "V1SpectroInstallerCloudAccountUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1VsphereAccount"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Update a vSphere cloud account for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/installers/spectro/vsphere/{uid}/spectrocluster": {
-      "delete": {
-        "operationId": "V1SpectroInstallerSpectroClusterDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Delete a vSphere spectro cluster for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1SpectroInstallerSpectroClusterGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCluster"
-            }
-          }
-        },
-        "summary": "Get a vSphere spectro cluster for spectrocluster uid",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "V1SpectroInstallerSpectroClusterCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroVsphereClusterEntity"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "summary": "Create a vSphere spectro cluster for spectroinstaller uid",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/installers/spectro/{uid}": {
-      "delete": {
-        "operationId": "v1SpectroInstallerDelete",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Deletes the spectroinstaller entity",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "v1SpectroInstallerGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroInstallerEntity"
-            }
-          }
-        },
-        "summary": "Returns the spectro installer",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/installers/spectro/{uid}/clusterprofile": {
-      "get": {
-        "operationId": "v1SpectroInstallerClusterProfileGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfile"
-            }
-          }
-        },
-        "summary": "Get a vSphere spectro installer cluster profile",
         "tags": [
           "v1"
         ]
@@ -52435,7 +52718,8 @@
           "description": "Describes the related object kind for which notifications have to be fetched",
           "enum": [
             "spectrocluster",
-            "clusterprofile"
+            "clusterprofile",
+            "appdeployment"
           ],
           "in": "path",
           "name": "objectKind",
@@ -52641,7 +52925,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -52852,7 +53136,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -53086,7 +53370,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -53300,6 +53584,11 @@
           "name": "computecluster",
           "required": true,
           "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "useQualifiedNetworkName",
+          "type": "boolean"
         }
       ]
     },
@@ -53624,55 +53913,6 @@
         }
       ]
     },
-    "/v1/payments/stripe/paymentMethods": {
-      "get": {
-        "operationId": "v1PaymentMethodsList",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1PaymentMethods"
-            }
-          }
-        },
-        "summary": "Retrieves the list of payment method",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/payments/stripe/subscriptions/{subscriptionUid}": {
-      "parameters": [
-        {
-          "description": "Specify the subscription uid",
-          "in": "path",
-          "name": "subscriptionUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1PaymentSubscriptionUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1PaymentSubscription"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Update the payment subscription",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/pcg/selfHosted": {
       "post": {
         "operationId": "v1PcgSelfHosted",
@@ -53719,7 +53959,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -54346,7 +54586,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -54377,13 +54617,13 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/v1NodesAutoRemediationSetting"
+              "$ref": "#/definitions/v1NodesAutoRemediationSettings"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -54673,7 +54913,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -54760,7 +55000,7 @@
         "operationId": "v1RegistriesHelmUidSync",
         "responses": {
           "202": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -55252,7 +55492,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -55339,7 +55579,7 @@
         "operationId": "v1RegistriesPackUidSync",
         "responses": {
           "202": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -55825,7 +56065,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -56770,7 +57010,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -56977,6 +57217,101 @@
           }
         },
         "summary": "Get generic cluster estimated rate information",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/gke": {
+      "post": {
+        "operationId": "v1SpectroClustersGkeCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroGcpClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "summary": "Creates an GKE cluster",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/gke/rate": {
+      "post": {
+        "operationId": "v1SpectroClustersGkeRate",
+        "parameters": [
+          {
+            "default": "hourly",
+            "enum": [
+              "hourly",
+              "monthly",
+              "yearly"
+            ],
+            "in": "query",
+            "name": "periodType",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroGcpClusterRateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gke Cluster estimated rate response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterRate"
+            }
+          }
+        },
+        "summary": "Get GKE cluster estimated rate information",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/gke/validate": {
+      "post": {
+        "operationId": "v1SpectroClustersGkeValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroGcpClusterEntity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gke Cluster validation response",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
+            }
+          }
+        },
+        "summary": "Validates GKE cluster create operation",
         "tags": [
           "v1"
         ]
@@ -57488,7 +57823,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -57848,7 +58183,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -59626,7 +59961,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -60331,7 +60666,7 @@
         "operationId": "V1SpectroClustersUidReset",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -60529,7 +60864,7 @@
         "operationId": "v1SpectroClustersUidStatusSpcApply",
         "responses": {
           "202": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -60860,6 +61195,58 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/vms/{vmName}/addVolume": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Virtual Machine name",
+          "in": "path",
+          "name": "vmName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Namespace name",
+          "in": "query",
+          "name": "namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1SpectroClustersVMAddVolume",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VMAddVolumeEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Add volume to the virtual machine instance",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/spectroclusters/{uid}/vms/{vmName}/clone": {
       "parameters": [
         {
@@ -60937,7 +61324,7 @@
         "operationId": "v1SpectroClustersVMMigrate",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -60980,7 +61367,7 @@
         "operationId": "v1SpectroClustersVMPause",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -60990,6 +61377,58 @@
           }
         },
         "summary": "Pause the virtual machine instance",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/vms/{vmName}/removeVolume": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Virtual Machine name",
+          "in": "path",
+          "name": "vmName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Namespace name",
+          "in": "query",
+          "name": "namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1SpectroClustersVMRemoveVolume",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1VMRemoveVolumeEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Remove volume from the virtual machine instance",
         "tags": [
           "v1"
         ]
@@ -61023,7 +61462,7 @@
         "operationId": "v1SpectroClustersVMRestart",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -61066,7 +61505,7 @@
         "operationId": "v1SpectroClustersVMResume",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -61241,7 +61680,7 @@
         "operationId": "v1SpectroClustersVMStart",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -61284,7 +61723,7 @@
         "operationId": "v1SpectroClustersVMStop",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -61313,7 +61752,7 @@
         "operationId": "v1SpectroClustersUidWorkloadsSync",
         "responses": {
           "202": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -61360,7 +61799,7 @@
         "operationId": "v1SpectroClustersUidWorkloadsKindSync",
         "responses": {
           "202": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -62071,7 +62510,7 @@
         "operationId": "v1TenantsUidContractAccept",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -62723,7 +63162,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -62754,13 +63193,13 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "#/definitions/v1NodesAutoRemediationSetting"
+              "$ref": "#/definitions/v1NodesAutoRemediationSettings"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -63004,91 +63443,6 @@
           "v1"
         ]
       }
-    },
-    "/v1/userprofiles": {
-      "get": {
-        "description": "Lists user profiles",
-        "operationId": "v1UserProfilesList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UserProfiles"
-            }
-          }
-        },
-        "summary": "Lists user profiles",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/userprofiles/{emailId}": {
-      "get": {
-        "description": "Get user profile by email id",
-        "operationId": "V1UserProfilesGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UserProfile"
-            }
-          }
-        },
-        "summary": "Get user profile by email id",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "emailId",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/users": {
       "get": {
@@ -63972,7 +64326,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -64011,7 +64365,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -64311,7 +64665,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -64340,7 +64694,7 @@
         "operationId": "v1UsersUidPasswordReset",
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",
@@ -64725,7 +65079,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Ok reponse without content",
+            "description": "Ok response without content",
             "headers": {
               "AuditUid": {
                 "description": "Audit uid for the request",

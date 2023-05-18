@@ -45,7 +45,7 @@ You must create a Resource Filter in Palette to establish user-based access rest
 
 **Note:** The tags are case-sensitive.
 
-## Validation
+## Validate
 
 Upon creating a filter, a display message will pop up to confirm the successful creation of the tag. You can also use the following steps to review the filter is available for use.
 
@@ -104,7 +104,7 @@ To remove or edit an attached role:
 
 4. Click **Edit** or **Remove** option from the drop-down menu.
 
-## Validation
+## Validate
 
 Upon creating a filter, a display message will pop up to confirm the successful role assignment. You can also use the following steps to review the roles created:
 

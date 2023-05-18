@@ -21,7 +21,6 @@ This installation method is common in secure environments with restricted networ
 
 # Prerequisites
 
-
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed.
 
 
@@ -31,10 +30,15 @@ This installation method is common in secure environments with restricted networ
 - Have at least three worker nodes or three untainted control plane nodes.
 
 
-- Allocate a minimum of 4 CPUs and 12 GB Memory per node.
+- [Cert Manager](https://cert-manager.io/docs) v1.11.0 or greater installed in the Kubernetes cluster. Use the official Cert Manager [installation guide](https://cert-manager.io/docs/installation/) for additional guidance.
+
+
+
+- Allocate a minimum of 4 CPUs and 12 GB of Memory per node.
 
 
 - A custom domain and the ability to update Domain Name System (DNS) records.
+
 
 
 - Access to the Palette Helm Chart. Contact support@spectrocloud.com to gain access to the Helm Chart.
@@ -276,7 +280,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
 </Tabs>
 
-# Validation
+# Validate
 
 You can validate that the installation of Palette is successful by visiting the custom domain you assigned to the 
 `env.rootDomain` parameter in the **values.yaml**.
