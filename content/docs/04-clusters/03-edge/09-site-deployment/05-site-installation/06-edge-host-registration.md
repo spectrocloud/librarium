@@ -66,6 +66,7 @@ stylus:
 
 - Tenant admin access.
 
+
 - Registration token required.
 
 ## Create Registration Token
@@ -129,6 +130,7 @@ Use the following steps to manually register an Edge host in Palette.
 ## Prerequisites
 
 - Tenant admin access
+
 
 - Registration token required.
 
@@ -205,6 +207,7 @@ Site operators can select a site and submit a registration request. The web appl
 ## Prerequisites
 
 - Registration token required.
+
 
 - Access to the Spectro Cloud GitHub repository that hosts the Palette Edge Registration App. Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
 
