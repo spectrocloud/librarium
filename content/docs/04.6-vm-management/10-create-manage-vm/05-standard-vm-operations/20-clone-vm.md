@@ -30,7 +30,7 @@ Cloning is a quick way to create a new virtual machine that shares the same prop
 
 There are no requirements.
 
-# Enablement
+# Clone a VM
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
