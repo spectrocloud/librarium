@@ -13,12 +13,12 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project.
+You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KBI) project.
 
 
 ## Kubernetes Image Builder
 
-The Kubernetes Image Builder (KIB) is a project designed to help users create images for various platforms. The project is a consolidation of multiple tools that together work to create an artifact, or in simpler terms, a custom image. 
+KIB is a project designed to help users create images for various platforms. The project is a consolidation of multiple tools that together work to create an artifact, or in simpler terms, a custom image. 
 
 You can use the custom images created by KIB with Palette, assuming the infrastructure provider is supported in Palette. Use the following diagram to understand how you can use KIB to create custom images that you can use with Palette.
 
@@ -42,6 +42,10 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 This guide will teach you how to use the Kubernetes Image Builder to create images for your infrastructure provider so that you can use the custom image in a cluster profile.
 
 # Prerequisites
+
+
+* Palette v3.4.0 or greater.
+
 
 * [Git](https://git-scm.com/downloads) v2.39.1 or greater.
 

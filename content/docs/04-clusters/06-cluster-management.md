@@ -60,6 +60,9 @@ The following sections describe these capabilities in detail:
 * [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespace resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette can also define new namespaces for the cluster and manage the namespaces, such as removing them and assigning quotas and role bindings to them.
 
 
+* [Namespace Management](/clusters/cluster-management/namespace-management) - use Kubernetes namespaces to partition resources among multiple users without having to set up multiple physical clusters, configure Role-Based Access Control (RBAC) based on namespaces, and more.
+
+
 
 * [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring) - Palette displays the status and installation progress of add-on packs associated with the cluster you are monitoring. Pack status appears gray during initial onboarding and before deployment, blue when the pack is in the process of being installed, and green to indicate successful installation. Red indicates a failed installation and requires attention.
 
@@ -73,10 +76,10 @@ The following sections describe these capabilities in detail:
 
 * [NOC UI](/clusters/cluster-management/palette-lock-cluster) - Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
 
-[Palette Access Control](/clusters/cluster-management/cluster-tag-filter) - Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing users' and roles' access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag rather than to each cluster, user, or role, reducing the overhead of managing access controls for individual users and clusters.
+* [Palette Access Control](/clusters/cluster-management/cluster-tag-filter) - Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing user and role access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag rather than to each cluster, user, or role. This reduces the overhead of managing access controls for individual users and clusters.
 
-<InfoBox>
-Palette supports new and existing clusters across public and private clouds. Furthermore, in public clouds, Palette supports managed Kubernetes cluster services such as EKS, AKS, etc. The capabilities described above may not be available for all cluster types or may work slightly different in some cluster types. Relevant sections will highlight these exceptions.
-</InfoBox>
+
+
+* [Image Swap](/clusters/cluster-management/image-swap) - Learn how to use image swap capabilities with Palette. 
 
 <br />
