@@ -24,7 +24,7 @@ To use an Edge host with a host cluster, you must first register it with Palette
 
 # Registration Method
 
-To register with the Palette Edge host, you are required to use a registration token for all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in your user data.
+To register the Edge host, you are required to use a registration token with all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in the Edge Installer [user data](/clusters/edge/edge-configuration/installer-reference) configuration file.
 
 
 
