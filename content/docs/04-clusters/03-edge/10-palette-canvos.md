@@ -2,7 +2,7 @@
 title: "Build Edge Native Artifacts"
 metaTitle: "Build Edge Native Image Artifacts using CanvOS"
 metaDescription: "Learn how to build your installer and provider images using CanvOS GitHub repository."
-icon: "cubes"
+icon: ""
 category: ["how-to", "edge", "edge-native", "CanvOS"]
 hideToC: false
 fullWidth: false
@@ -14,17 +14,15 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Build Edge Native Image Artifacts using CanvOS
+# Build Edge Native Image Artifacts
 	
-Palette's Edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice in an immutable way. 
-
-In this how-to guide, you will leverage the open-source project [Kairos](kairos.io/) to create the following Ubuntu-based immutable and bootable OS images:
+Palette's Edge native solution requires Edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will leverage Kairos to create the following immutable and bootable OS images:
 <br/>
 
-* **An Edge installer ISO image** - This ISO image can install or "Flash" an edge device. In this how-to guide, you will customize the installer image to automatically allow the new Edge nodes to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a VM template, you can provision as many edge hosts as you desire. 
+* **An Edge installer ISO image** - This ISO image can install or "Flash" an Edge device. In this how-to guide, you will customize the installer image to automatically allow the new Edge nodes to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a Virtual Machine (VM) template, you can provision as many Edge hosts as you desire. 
 
 
-* **Two provider images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
+* **Two provider OS images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
 
 
 
@@ -32,30 +30,29 @@ In this how-to guide, you will leverage the open-source project [Kairos](kairos.
 To complete this how-to guide, you will need the following items:
 <br/>
 
-* **Hardware** - A physical or virtual machine with **x86_64** processor architecture and the following minimum hardware configuration:
-	* 4 CPU
-	* 8 GiB memory
-	* 50 GiB storage
-
-  You can issue the following command in the terminal to check your processor architecture. 
+* A physical or virtual machine with **x86** or **x86_64** (also know as **amd64**) processor architecture. You can issue the following command in the terminal to check your processor architecture. 
   <br/>
 
   ```bash
   uname -m
   ```
 
-* **Operating system** - Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4. This guide uses Ubuntu 22.04 environment as an example. 
-<br /> 
+* Minimum hardware configuration - 4 CPU, 8 GB memory, and 50 GB storage.
 
 
-* **Softwares** - [Git CLI](https://cli.github.com/manual/installation) and [Docker](https://docs.docker.com/engine/install/) installed. Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on the Ubuntu machine.
+* Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4 operating system (OS). This guide uses Ubuntu 22.04 as an example. 
+ 
+
+* [Git CLI](https://cli.github.com/manual/installation) 2.30.x or later. You can check Git CLI version using `git --version` command.
+
+
+* [Docker Engine](https://docs.docker.com/engine/install/) 20.10.x or later. You can check Docker Engine version using `docker version` command. Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on your machine.
 
 
 * A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a [free trial](https://www.spectrocloud.com/free-tier/).
 
 
-
-* Tenant Admin access to Palette to generate a new registration token for Edge hosts.
+* Tenant admin access to Palette to generate a new registration token for Edge hosts.
 
 
 # Instructions
@@ -68,78 +65,62 @@ The instructions are split into the following subsections:
 
 
 ## Check out the Starter Code
-Follow the steps below to check out the GitHub repository containing the starter code for generating the image artifacts. 
+Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code. 
 <br />
 
-1. Clone the repo at [CanvOS](https://github.com/spectrocloud/CanvOS.git)
+```shell
+git clone https://github.com/spectrocloud/CanvOS.git
+```
+CanvOS repository follows [EdgeForge workflow](clusters/edge/edgeforge-workflow) and leverages [Earthly](https://earthly.dev/) and Kairos to build all artifacts. Change into the `CanvOS` directory.
 <br />
 
-  ```shell
-  git clone https://github.com/spectrocloud/CanvOS.git
-  ```
+```shell
+cd CanvOS
+```
 
-2. Change into the `CanvOS` directory.
+View available tags. The files relevant for this guide are present in the **v3.3.3** tag. 
 <br />
 
-  ```shell
-  cd CanvOS
-  ```
+```shell
+git tag
+```
 
-3. View available tags. The files relevant for this guide are present in the **v3.3.3** tag. 
+Checkout the desired **v3.3.3** tag.
 <br />
 
-  ```shell
-  git tag
-  ```
+```shell
+git checkout v3.3.3
+```
 
-4. Checkout the desired **v3.3.3** tag.
+You can check the HEAD symbolic reference by issuing `git status` command, and expect the following output.
 <br />
 
-  ```shell
-  git checkout v3.3.3
-  ```
-  You can check the HEAD symbolic reference by issuing `git status` command, and expect the following output.
-  <br />
+```bash coloredLines=1-1|#666666
+HEAD detached at v3.3.3
+```
 
-  ```bash coloredLines=1-1|#666666
-  HEAD detached at v3.3.3
-  ```
-
-5. Here are the files *relevant* for the current how-to guide. 
+Here are the files *relevant* for the current guide. 
 <br />
 
-  ```bash
-  .
+```bash
+.
 ├── .arg          # Defines the variables 
 ├── Dockerfile    # Bakes the arguments to use in the image
 ├── Earthfile     # Series of commands for creating target images
 ├── earthly.sh    # Script to invoke the Earthfile, and generate target images
 └── user-data.template  # A sample user-data file
-  ```
-
+```
+Next, edit the **.arg** file and create a new **user-data** file. 
 
 ## Edit the Image Tag
 
-The **.arg** file contains the following variables:
-<br />
-
-```bash
-CUSTOM_TAG        # Environment name for provider image tagging
-IMAGE_REGISTRY    # Image Registry Name
-OS_DISTRIBUTION   # OS Distribution (ubuntu, opensuse-leap)
-IMAGE_REPO        # Image Repository Name
-OS_VERSION        # OS Version, only applies to Ubuntu (20, 22)
-K8S_DISTRIBUTION  # Kubernetes Distribution (k3s, rke2, kubeadm)
-ISO_NAME          # Name of the Installer ISO
-```
-
-Here is an overview of all variables in the **.arg** file:
+The **.arg** file defines the following variables:
 <br />
 
 * `CUSTOM_TAG` - Environment name for provider image tagging. The default value is `demo`. 
 <br />
 
-* `IMAGE_REGISTRY` - Image registry name that will store the image artifacts. The default value points to the *ttl.sh* image registry, an anonymous and ephemeral Docker image registry where images live for a maximum of 24 hours by default. If you wish to make the artifacts exist longer than 24 hours, you can use any other image registry to suit your needs. 
+* `IMAGE_REGISTRY` - Image registry name that will store the image artifacts. The default value points to the *ttl.sh* image registry, an anonymous and ephemeral Docker image registry where images live for a maximum of 24 hours by default. If you wish to make the images exist longer than 24 hours, you can use any other image registry to suit your needs. 
 <br />
 
 * `OS_DISTRIBUTION` - OS distribution of your choice. For example, it can be `ubuntu` or `opensuse-leap`. This example uses `ubuntu` distribution.
@@ -167,17 +148,19 @@ CUSTOM_TAG=demo
 Ensure to save the **.arg** file after your edits. 
 
 
-By default, the provider images you create will have no username or password. To create a username and password for demo purposes and enable Edge nodes to register themselves with Palette automatically, you can create a **user-data** file. The next sections will guide you through creating an auto-registration token and a **user-data** file. 
-
+Next, create a **user-data** file containing the login credentials for Edge hosts and a token to allow Edge hosts to register themselves with Palette automatically. 
 
 ## Create a Registration Token
-Palette 3.4 onwards, a registration token created by the Tenant Admin, is now *required* for pairing an Edge host with Palette. Log in to [Palette](https://console.spectrocloud.com), and switch to the Tenant Admin view.
+Palette 3.4 onwards, a registration token created by the Tenant admin, is now *required* for pairing an Edge host with Palette. Palette offers three registration methods: auto, manual, and QR code. Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation for more details.
+
+
+Log in to [Palette](https://console.spectrocloud.com), and switch to the Tenant admin view.
 
 Navigate to **Tenant Settings** > **Registration Tokens**. Click on **Add New Registration Token** and enter the following values.
 
 |**Field**|**Value**|
 |----|----|
-| Registration Token Name | Demo |
+| Registration Token Name | DemoToken |
 | Description | Token for Edge host how-to/tutorial |
 | Default Project | Default |
 | Expiration Date | 7 days |
@@ -193,9 +176,10 @@ Copy the newly created token to a clipboard or notepad file to use later in this
 
 
 ## Create User Data File
-In this section, you will create a **user-data** file, a script in YAML format that executes when you provision an Edge host. You can use this file to configure the host and install software or packages. Refer to this guide, [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference), outlining possible parameters to use and configure. In the next section, the agent will inject the parameters defined in the **user-data** file into the Edge installer ISO image.
+Create a **user-data** file to configure the Edge host's login credentials and auto-registration token. If you want further customization, refer to the [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) and [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference) documents outlining different other stages and possible parameters you can configure respectively in the **user-data** file. 
 
-To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above. 
+
+To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above.  
 <br />
 
 ```shell
@@ -221,114 +205,92 @@ This **user-data** file configures the following:
 * Sets the login credentials for Edge hosts, `{name: kairos, passwd: kairos}`. The login credentials will allow you to SSH log into the Edge host for debugging purposes. 
 
 
-## Create Edge Artifacts
+## Build Edge Native Image Artifacts
 Issue the following command to build the artifacts. 
 <br />
 
 ```shell
 ./earthly.sh +build-all-images --PE_VERSION=$(git describe --abbrev=0 --tags)
 ```
-Here is the sample output:
-<br />
 
-```bash coloredLines=2-2|#027313
+```bash coloredLines=2-2|#006622
 # Output condensed for readability
 ===================== Earthly Build SUCCESS ===================== 
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
-This command will take up to 15-20 minutes to finish and generate the following image artifacts.  
+This command will take up to 15-20 minutes to finish.
 <br />
-
-* **An Edge installer ISO image** - The command will create an Edge installer ISO image that you can later transfer to your Datacenter, and build a VM template. Once you provision Edge hosts (VMs) using this VM template, it will automatically allow new Edge hosts to register themselves with Palette. This artifact will help you provision as many Edge hosts as you desire. 
-
-
-* **Two provider images** - The command will generate two provider OS images, one compatible with lightweight Kubernetes (K3s) v1.24.6 and another with K3s v1.25.2.
-<br />
-
-  * **ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-demo**
-
-  * **ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo** 
-  
-Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute of the **OS layer** in your cluster profile to use those images.    
-<br />
-
-  ```yaml
-    system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-    system.registry: ttl.sh
-    system.repo: ubuntu
-    system.k8sDistribution: k3s
-    system.osName: ubuntu
-    system.peVersion: v3.3.3
-    system.customTag: demo
-    system.osVersion: 22
-  ```
-  You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile. The screenshot below shows custom content added to the OS layer of a cluster profile.
-  <br />
-
-  ![Screenshot of k3s OS layer in a cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
-
-  <br />
-
-  <WarningBox>
-
-  Note that if you are using *ttl.sh* image registry, your images will be available for a maximum of 24 hours.
-
-  </WarningBox>
-
-
 
 # Validation
-List the Edge installer ISO image and checksum by issuing the following command.
+List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
 <br />
 
 ```shell
-ls -l build/
+ls build/
 ```
 
-Here is the sample output:
-<br />
-
-```shell
--rw-r--r-- 1 root root 1022492672 Apr 16  2023 palette-edge-installer.iso
--rw-r--r-- 1 root root         93 Apr 16  2023 palette-edge-installer.iso.sha256
+```shell coloredLines=2-3|#666666
+# Output
+palette-edge-installer.iso      
+palette-edge-installer.iso.sha256
 ```
 
-List the images to validate that the agent has successfully created the Ubuntu-based provider (Docker) images.
+List the Docker images to show two provider OS images, one compatible with lightweight Kubernetes (K3s) v1.24.6 and another with K3s v1.25.2.
 <br />
 
 ```shell
 docker images
 ```
-Here is the sample output:
+
+```shell coloredLines=3-4|#666666
+# Output
+REPOSITORY        TAG                       IMAGE ID        CREATED         SIZE
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    b3c4956ccc0a    6 minutes ago   2.49GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    fe1486da25df    6 minutes ago   2.49GB
+earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
+```
+
+Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute of the **OS layer** in your cluster profile.    
 <br />
 
-```bash
-# Output condensed for readability
-REPOSITORY                                              TAG                 IMAGE ID       CREATED       SIZE
-ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo   b3c4956ccc0a   6 minutes ago    2.49GB
-ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo   fe1486da25df   6 minutes ago    2.49GB
-earthly/earthly                                         v0.7.4              d771cc8edc38   2 weeks ago   333MB
+```yaml
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+  system.registry: ttl.sh
+  system.repo: ubuntu
+  system.k8sDistribution: k3s
+  system.osName: ubuntu
+  system.peVersion: v3.3.3
+  system.customTag: demo
+  system.osVersion: 22
 ```
+You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile. 
+<br />
+
+<WarningBox>
+
+If you are using *ttl.sh* image registry, your images will be available for a maximum of 24 hours.
+
+</WarningBox>
+
+The screenshot below shows custom content added to the OS layer of a cluster profile.
+<br />
+
+![Screenshot of k3s OS layer in a cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
+
 
 
 # Cleanup
-You can skip cleaning up if you continue practicing the [Create Edge Native Cluster](/clusters/edge/create-cluster) tutorial next. Otherwise, clean up the artifacts you created in this guide. 
+Clean up the artifacts you created in this guide. You can skip cleaning up if you continue to the [Create Edge Native Cluster](/clusters/edge/create-cluster) tutorial next.  
 
-List all images in your current development environment.
+Issue `docker images` to list all images in your current development environment, and use the following command syntax to remove provider OS images.
 <br />
 
 ```bash
-docker images
+docker image rm -f [image repository name]:[tag]
 ```
 
-Use `docker image rm -f <image repository name>:<tag>` syntax to remove an individual image.
-<br />
+Change the image name and tag to match the images in your environment, and repeat this command for all individual images created in the previous steps. 
 
-```bash
-docker image rm -f ttl.sh/ubuntu-demo:k3s-1.24.6-v3.3.3
-```
-
-Change the image name and tag to match the images in your environment, and repeat this command for all individual images created in the previous steps.
 
 You can delete the Edge installer ISO image and its checksum by executing the following commands from the **CanvOS** directory.
 <br />
@@ -337,46 +299,3 @@ You can delete the Edge installer ISO image and its checksum by executing the fo
 rm build/palette-edge-installer.iso
 rm build/palette-edge-installer.iso.sha256
 ```
-
-
-# Research
-
-- Palette offers three registration methods: auto, manual, and QR code. Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge host registration methods.
-
-
-- In this guide, you set up the user credentials for the Edge host. You can further customize the **user-data** file to suit your needs. For example, you can customize the product ID location using the following syntax:
-  <br />
-
-  ```yaml
-  stylus:
-  debug: true
-  site:
-    insecureSkipVerify: false
-    paletteEndpoint: api.dev.spectrocloud.com   # Host for hubble api to register device
-
-    # Name of the device, this may also be referred to as the Edge id or Edge host id.  
-    # If no Edge host name is specified, one will be generated from the device serial number.  
-    # If stylus cannot generate the device serial number a random id will be used instead. 
-    # In the case of hardware that does not have a serial number, it is highly recommended to specify the device name because a random name is not deterministic and may lead to a device being registered twice under different names.
-    name: $random
-
-    deviceUIDPaths:
-      - name: /etc/palette/metadata-regex
-        regex: "edge.*"
-  ```
-  In addition, you can do these additional customizations: 
-    - Add an SSH key for the user
-    - Assign the user to a group 
-    - Configure a registry mirror
-    - Erase partitions
-    - Install tools
-    - Configure network settings
-    - Add SSL certificates
-
-  The sample code snippet for all these use cases are present in [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) documentation.
-
-
-- Refer to [User Data Parameters](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference#userdataparameters) documentation to learn more about different parameters you can configure in the **user-data** file. 
-
-
-- Next step - Tutorial on [Creating Edge native cluster](/clusters/edge/create-cluster).
