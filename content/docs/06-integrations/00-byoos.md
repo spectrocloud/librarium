@@ -62,7 +62,7 @@ To manage the custom OS and optimally meet your environment needs, you are requi
 The Edge Native cluster profile requires the following components: 
 * The Kubernetes flavor and version
 * Operating system (OS) 
-* Container network interfce (CNI) 
+* Container network interface (CNI) 
 * Container storage interface (CSI) 
 
 You can define the cluster profile components in Palette using the **Add Cluster Profile** feature in the **Profiles** page. The cluster profile has the following profile layers:
@@ -79,7 +79,7 @@ You can define the cluster profile components in Palette using the **Add Cluster
 You can edit your custom BYOS Edge OS image after defining the pack type, registry, pack name and version in **Profile Layers**. In the pack editor, you must update the `system.uri` parameter using the custom OS image built in the EdgeFroge process. This parameter is a macro updating the `image.registry:`, `image.repo:`, `kubernetes.version:`, `image.version:` and the `client.tag:` parameters. 
 
 
-The `images:` section contains the meta data detials about the OS image. Within the BYOS Edge OS pack, the installer image can be updated if you want to add additonal images as part of your content bundle. The `-image:` parameter specifies the entry for an additonal image. 
+The `images:` section contains the meta data details about the OS image. Within the BYOS Edge OS pack, the installer image can be updated if you want to add additional images as part of your content bundle. The `-image:` parameter specifies the entry for an additional image. 
 
 
 ```yaml
@@ -97,6 +97,8 @@ options:
 
 You can retrieve details about the BYOOS Edge OS agent pack by using the following Terraform code.
 
+<br />
+
 
 ```yaml
 data "spectrocloud_registry" "public_registry" {
@@ -112,7 +114,9 @@ data "spectrocloud_pack_simple" "byoos" {
 
 # References
 * [Model Edge Native Cluster Profile](https://docs.spectrocloud.com/clusters/edge/site-deployment/model-profile)
+
 <br />
+
 * [Containered](https://containerd.io/)
 
 
