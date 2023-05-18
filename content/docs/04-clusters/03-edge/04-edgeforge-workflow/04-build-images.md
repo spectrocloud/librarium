@@ -42,7 +42,7 @@ Use the following steps to create an Edge artifact for your Edge host.
 
 
 - 150 GB Storage <br />
-  If you experience disk space constraints on the machine where installer images are built, you can remove unnecessary Docker images and volumes.
+If you experience disk space constraints on the machine where images are built, you can remove unnecessary Docker images and volumes. Or start the process on a machine with more storage allocated.
 
 
 - Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
