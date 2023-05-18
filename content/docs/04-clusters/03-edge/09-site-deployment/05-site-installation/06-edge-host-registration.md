@@ -111,7 +111,7 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 ## Manual Registration
 
-In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. The registration token is mandatory for device registration. Optionally, you can specify a `project ID` to associate the Edge host with a particular project. 
+In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. Optionally, you can specify a project name to associate the Edge host with a particular project. 
 
 
 Use the following steps to manually register an Edge host in Palette.
