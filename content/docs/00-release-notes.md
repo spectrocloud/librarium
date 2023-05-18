@@ -77,6 +77,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - The Metal as a Service (MAAS) provider has been updated to improve the node reconciliation behavior. In scenarios where the Machine Intelligent Platform Management Interface (IPMI) is powered off, the machine is powered on instead of provisioning a new node.
 
 
+
 ### Bug Fixes
 
 - A bug that caused issues with the deletion of a cluster's profile manifest has been successfully fixed. Manifests are now correctly deleted when removed from a cluster profile.
@@ -84,6 +85,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - The problem with Palette not removing namespaces when removing a layer from a cluster profile has been resolved.
 
+
+
+- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
 ## Edge
 
 ## Breaking Changes
