@@ -39,7 +39,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 ## Prerequisites
 
-- Provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for guidance.
+- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for guidance.
 
 
 ## Enablement
@@ -90,7 +90,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
       # - image: example.io/my-super-other-images/example:v1.0.0 
       
   options: 
-  system.uri: example.io/my-images/example-custom-os:v1.4.5
+    system.uri: example.io/my-images/example-custom-os:v1.4.5
   ```
 
   <br />
@@ -111,14 +111,14 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 You have successfully created a cluster profile that you can use to deploy Edge clusters. 
 
-## Validation
+## Validate
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Choose the desired scope, project or **Tenant Admin**.
+2. Choose the desired scope, project or tenant admin.
 
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
@@ -144,13 +144,13 @@ No prerequisites.
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Choose the desired scope, project or **Tenant Admin**.
+2. Choose the desired scope, project or tenant admin.
 
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-4. Click the **Add new Profile** button.
+4. Click the **Add New Profile** button.
 
 
 5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on **Next**.

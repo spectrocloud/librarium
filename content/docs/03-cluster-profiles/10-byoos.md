@@ -24,4 +24,7 @@ To learn more about BYOOS, use the following resources to learn more.
 
 - [Create Images with Image Builder](/cluster-profiles/byoos/image-builder)
 
+
+- [BYOOS Pack](/integrations/byoos)
+
 <br />
