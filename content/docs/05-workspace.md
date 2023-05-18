@@ -18,7 +18,7 @@ Palette extends its multi-cluster management and governance capabilities by intr
 
 # Namespace Management
 
-Workspaces automate the creation/deletion of namespaces common to all clusters within the workspace. A workspace can hold a set of namespaces. Spectro Cloud Palette will periodically reconcile the workspace definition and add/remove namespaces if required from all clusters part of the workspace.
+Workspaces automate the creation and deletion of namespaces common to all clusters within the workspace. A workspace can hold a set of namespaces. Spectro Cloud Palette will periodically reconcile the workspace definition and add/remove namespaces if required from all clusters part of the workspace.
 
 # Quota Control
 
