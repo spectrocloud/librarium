@@ -60,6 +60,9 @@ The following sections describe these capabilities in detail:
 * [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources as well as namespace resources. Palette provides the ability to specify these bindings to configure granular RBAC rules. Palette can also define new namespaces for the cluster and manage the namespaces, such as removing them and assigning quotas and role bindings to them.
 
 
+* [Namespace Management](/clusters/cluster-management/namespace-management) - use Kubernetes namespaces to partition resources among multiple users without having to set up multiple physical clusters, configure Role-Based Access Control (RBAC) based on namespaces, and more.
+
+
 
 * [Add-on Pack Status and Monitoring](/clusters/cluster-management/pack-monitoring) - Palette displays the status and installation progress of add-on packs associated with the cluster you are monitoring. Pack status appears gray during initial onboarding and before deployment, blue when the pack is in the process of being installed, and green to indicate successful installation. Red indicates a failed installation and requires attention.
 
