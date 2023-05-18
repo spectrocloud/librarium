@@ -3,7 +3,6 @@ title: "Deploy an Application using Palette Dev Engine"
 metaTitle: "Deploy an Application using Palette Dev Engine"
 metaDescription: "Learn how to deploy applications to a Kubernetes cluster without the traditional overhead accompanied by Kubernetes. Palette’s App Mode reduces the deployment time and complexity when deploying applications to Kubernetes. Learn how to get started with Palette’s App Mode in this tutorial. Get started with the free tier of Palette App Mode"
 icon: ""
-category: ["tutorial"]
 hideToC: false
 fullWidth: false
 ---
@@ -92,7 +91,7 @@ In the following screen, you will be prompted for the cluster group, virtual clu
 
   
 
-Palette’s Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/resource-quota) documentation to learn more about limits.
+Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/manage-dev-engine/resource-quota) documentation to learn more about limits.
 
   
 

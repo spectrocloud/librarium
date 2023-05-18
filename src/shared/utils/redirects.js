@@ -214,6 +214,17 @@ const redirects = [
     toPath: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/devx/resource-quota`,
+    toPath: `/devx/manage-dev-engine/resource-quota`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/devx/registries`,
+    toPath: `/devx/manage-dev-engine/registries`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

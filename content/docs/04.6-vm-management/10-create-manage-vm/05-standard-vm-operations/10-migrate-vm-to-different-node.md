@@ -50,7 +50,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 <br />
 
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -112,7 +112,7 @@ Compute nodes can be placed into maintenance mode using the `cordon` and `drain`
     </InfoBox>
 
 
-## Validation
+## Validate
 
 
 1. Using kubectl, log in to a machine that has access to the kubernetes cluster. 

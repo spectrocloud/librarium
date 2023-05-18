@@ -66,6 +66,35 @@ To create an App Profile:
 
 7. When you've provided the required configuration information for services, click **Review**. Your App Profile is now created and can be deployed.  
 
-# Validation
+# Validate
 
-To validate your App Profile is available and ready for use, navigate to the **App Profiles** page, where you'll find all your app profiles listed. From this page, you can also edit and delete App Profiles in **Settings**.
+To validate your App Profile is available and ready for use, use the following steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
+
+
+2. Navigate to the left **Main Menu** and click on **App Profiles**.
+
+
+3. Select the cluster profile you created to review its details.
+
+
+4. Hover your cursor over each app layer to learn more about the layers, including the pack name, version, and registry.
+
+
+  ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
+
+  <br />
+
+  <InfoBox>
+
+  Use the pop-up information box for each layer to help you gather the required information when creating Terraform templates for [app profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
+
+  </InfoBox>
+
+
+5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review the [Create and Manage Apps](/devx/apps/create-app) to learn how to deploy an app to a virtual cluster. Check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial for a more in-depth guide.
+
+# Next Steps
+
+Start exploring the various [out-of-the-box](/devx/app-profile/services) services Palette exposes to application authors. Use these services to quickly deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.

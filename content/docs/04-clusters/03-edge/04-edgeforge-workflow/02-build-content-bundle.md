@@ -117,6 +117,6 @@ You can find the project id at the top right side corner of the landing page bel
 
 The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of edge host installation.
 
-# Validation
+# Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.

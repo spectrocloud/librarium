@@ -97,7 +97,7 @@ You can edit or delete SSH keys later by using the **three-dot Menu** to the rig
 
 During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a project, but only one key can be assigned to an individual cluster.
 
-# Validation
+# Validate
 
 You can validate the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
 

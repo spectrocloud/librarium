@@ -121,7 +121,7 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
 
 
-## Validation
+## Validate
 
 To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
 
@@ -441,7 +441,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 Your monitoring stack is now enabled with authentication and network encryption. 
 
 
-## Validation
+## Validate
 
 To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
 

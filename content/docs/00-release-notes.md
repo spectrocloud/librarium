@@ -43,7 +43,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
 
 
-- Palette now supports the ability for you to enable the usage of a custom registry and configure it directly from the Kubernetes pack. You can use the `imageSwap` section of the Kubernetes pack YAML to point to a custom registry. 
+
+- Palette now supports the ability for you to use image swap to override specific registries, images, or a combination of both. You can add an `imageSwap` configuration to the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
+
 
 
 - Deploying a host cluster to AWS with Red Hat Enterprise Linux (RHEL) as the Operating System (OS) is now possible. This can be done by utilizing the *Bring Your Own Operating System* (BYOOS) pack, which allows for the creation of a custom AMI based on RHEL.
@@ -75,6 +77,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - The Metal as a Service (MAAS) provider has been updated to improve the node reconciliation behavior. In scenarios where the Machine Intelligent Platform Management Interface (IPMI) is powered off, the machine is powered on instead of provisioning a new node.
 
 
+
 ### Bug Fixes
 
 - A bug that caused issues with the deletion of a cluster's profile manifest has been successfully fixed. Manifests are now correctly deleted when removed from a cluster profile.
@@ -82,11 +85,14 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - The problem with Palette not removing namespaces when removing a layer from a cluster profile has been resolved.
 
+
+
+- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
 ## Edge
 
 ## Breaking Changes
 
-- To enhance the security of Edge deployments, a registration token created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
+- To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
 ### Features
 
@@ -102,11 +108,14 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
 
 
+- You can now use a [Harbor Registry](https://goharbor.io/) when deploying an Edge host cluster. You can enable the usage of Harbor Registry in the Edge Install [user data configuration](/clusters/edge/edge-configuration/installer-reference) file by setting the parameter `installHarbor` to `true`.
+
+
 
 ### Improvements
 
 
-- The events log stream for the Edge host cluster now includes audit messages and critical errors.
+- The events log stream for the Edge host cluster now includes audit messages and critical errors. Logs for an individual Edge host are now also accessible. The Edge host logs are helpful in debugging and monitoring the deployment process of an Edge host.
 
 
 - The upgrade process for Edge cluster has been optimized to avoid extra reboots of the Edge host, whether it's for upgrading the OS or the Kubernetes version.
@@ -127,23 +136,23 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette PDE is now available in self-hosted installation of Palette.
 
 
-- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI.
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
 
 
 ## Improvements
 
-- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box.
+- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
 
 
-- You can now access a new dashboard to view better your active virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
+- You can now access a [new dashboard](/devx#manageresources) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
 
 
-- You can now increase or decrease the number of replicated instances of a container service.  
+- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
  
 
 ## Terraform
 
-- Version 0.13.2 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
+- Version 0.14.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
 
 ## Packs
 
@@ -378,7 +387,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
 * Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
 * Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages [Helm and OCI registries](/devx/registries#custompackregistry) for custom pack management. 
+* Palette leverages [Helm and OCI registries](/devx/manage-dev-engine/registries) for custom pack management. 
 * Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 

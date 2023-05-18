@@ -71,7 +71,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
 6. When the credentials are validated, click on **Confirm** to save your changes.
 
-# Validation
+# Validate
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. 
 
