@@ -13,11 +13,31 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. You can set up the cloud gateway as a single-node or three-node cluster based on your requirements for high availability (HA).  
+The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG connects to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
+
+PCG is a Kubernetes cluster responsible for supporting Palette in a private network environment. All host clusters deployed through Palette will communicate with PCG.
+
+At a high level, the following occurs during a successful MAAS PCG installation:
+- Start the PCG installer on a laptop, workstation, or Bastion host. 
+
+
+- Provide information to the installer so that it can connect both to a local MAAS installation and a Palette account.
+
+
+- The installer uses MAAS to obtain machines and install a PCG on them.
+
+
+- The PCG then facilitates all communication between Palette and MAAS, enabling Palette to create new clusters on machines that MAAS provides.
+
+You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
 
 Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
-![An architecture diagram of MaaS with PCG](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
+<br />
+
+
+![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
+
 
 <br />
 
@@ -37,19 +57,19 @@ The installer does not work on Apple Mac operating systems with Apple silicon ch
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
-- Private cloud gateway IP requirements: <br /><br /> 
+-  PCG IP address requirements: <br /><br /> 
     
-    - For a single-node gateway, one IP address available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
+    - For a single-node gateway, one IP address must be available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
     <br />
 
-    - One IP address available in the MAAS subnet for the Kubernetes api-server endpoint, when deploying a three-node gateway.
+    - One IP address must be available in the MAAS subnet for the Kubernetes api-server endpoint when deploying a three-node gateway.
 
 
 - Sufficient available IPs within the configured MAAS subnets.
 
 <WarningBox>
 
-By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG do not overlap with the network used by the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by the bare metal machines that MAAS manages.
 
 </WarningBox>
 
@@ -58,7 +78,7 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
     <br />
 
     - CPU: 4
-    - Memory: 8192 MiB 
+    - Memory: 8192 MiB
     - Storage: 60 GiB
 
     For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
@@ -108,17 +128,17 @@ If you have already installed the PCG and are experiencing issues that you want 
 2. Use the Docker image to start the installation on the installer host.
 
 
-3. The installer prompts you for information, including the pairing code you obtained in step **1**. 
+3. The installer prompts you for information, including the pairing code you obtained in step **1**.
 
 
 4. The installer generates the PCG configuration file from information you provide in step **3**.
 
     <br />
 
-    The installer needs access to your Palette account and to one (no HA) or three (HA) machines in your MAAS cluster. If you select one machine in Palette, then you need one in MAAS. Likewise, if you select three machines in Palette, you need three in MAAS. The MAAS machines must have internet access and be in a ready state.
+    The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
     <br />
 
-5. The installer installs to the MAAS machine(s) and uses the configuration file to build a new cluster to host the PCG application. 
+5. The installer installs the MAAS machines and uses the configuration file to build a new cluster to host the PCG application.
 
 <br />
 
@@ -151,7 +171,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 4. Click the **Create Private Cloud Gateway** button and select **MAAS**. Private Gateway installation instructions are displayed.
 
 
-5. Note the pairing code displayed in the Instructions section of the page. You will input this code when you use the installer. 
+5. Note the pairing code displayed in the Instructions section of the page. You will input this code when you use the installer. This pairing code is valid for 24 hours.
 
 
 6. To invoke the installer, copy the following code snippet to your terminal.
@@ -162,7 +182,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
     --net=host \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume /tmp:/opt/spectrocloud \
-    gcr.io/spectro-images-public/release/spectro-installer:1.0.12
+    gcr.io/spectro-images-public/release/spectro-installer:v1.0.12
     ```
 
 7. When prompted, enter the pairing code and information listed in each of the following tables. The installer will generate the gateway configuration file. 
@@ -188,11 +208,11 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all subsequent cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**HTTPS Proxy (--https_proxy)**| Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+| **HTTP Proxy(--http_proxy)**| Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
 | **No Proxy(--no_proxy)**| The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server.  Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
-| **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the cluster. The pod IP addresses should be unique and should not overlap with any machine IPs in the environment.|
-| **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in Kubernetes clusters. The service IP addresses should be unique and not overlap with any virtual machine IPs in the environment.|
+| **Pod CIDR (--pod_cidr)**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+| **Service IP Range (--svc_ip_range)**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 <br />
 
@@ -201,19 +221,26 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
+| **API Endpoint** |Enter the MAAS API endpoint (syntax is important). This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
 | **API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
 
-8. When the installer prompts you, select the appropriate option for each of the following items to define which machines should be selected on the MAAS server for deployment as a PCG:
+1. When the installer prompts you, select the appropriate option for each of the following items to define which machines should be selected on the MAAS server for deployment as a PCG:
 
-    - Availability Zone
     - Domain
+    - Availability Zone
     - Resource Pool
     - One node (no HA) or three nodes (HA)
 
-9. Ensure the MAAS server has one or more machines in the **Ready** state for the chosen Availability Zone and Resource Pool combination.
+  <br />
+  
+  <WarningBox>
+
+   Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone 
+   and resource pool combination.
+
+  </WarningBox>
 
 When you have entered all the configuration values, the installer saves the gateway configuration file to disk and prints its location before proceeding with the installation. For example:
 
@@ -223,7 +250,7 @@ When you have entered all the configuration values, the installer saves the gate
 
 <InfoBox>
 
-The ``/opt/spectrocloud`` folder is volume mapped to the ``/tmp`` folder on the host machine.
+The **/opt/spectrocloud** folder is volume mapped to the installer's **/tmp** folder.
 
 </InfoBox>
 
@@ -373,7 +400,16 @@ Follow these steps to resize a single-node gateway to three nodes.
 
 4. Change the number of nodes to 3.
 
-Two new nodes will be created in the cluster.
+Two new nodes will be added to the PCG cluster.
+
+<br />
+
+
+<WarningBox>
+
+Ensure the MAAS server has two more machines in the **Ready** state in the same Availability Zone and Resource Pool combination.
+
+</WarningBox>
 
 
 ## Validation
@@ -391,12 +427,15 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 
 <br />
 
-# References 
+# Resources 
 
  - [Install MAAS](https://maas.io/)
+ 
+ 
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
+
+
  - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
 
-<br />
 
 <br />
