@@ -67,7 +67,7 @@ stylus:
 - Tenant admin access.
 
 
-- A tenant registration token is required. Refer to the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
+- A tenant registration token is required. Refer to the [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
 ## Create Registration Token
 
 To create a registration token, use the following steps.
@@ -131,7 +131,7 @@ Use the following steps to manually register an Edge host in Palette.
 - Tenant admin access
 
 
-- A tenant registration token is required. Refer to the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
+- A tenant registration token is required. Refer to the [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
 
 
 - Access to the Edge host's unique identifier. You can get the unique identifier or machine ID from the console output as the Edge host powers on. The Edge host unique identifier has the default prefix `edge-`.
@@ -205,7 +205,7 @@ Site operators can select a site and submit a registration request. The web appl
 
 ## Prerequisites
 
-- A tenant registration token is required. Refer to the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
+- A tenant registration token is required. Refer to the [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
 
 
 - Access to the Spectro Cloud GitHub repository that hosts the Palette Edge Registration App. Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
