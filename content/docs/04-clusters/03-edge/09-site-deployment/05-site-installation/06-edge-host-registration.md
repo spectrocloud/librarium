@@ -40,7 +40,7 @@ Select the registration method that best fits your organizational needs and revi
 
 ## Auto Registration
 
-You can automate the registration process by using registration tokens. This method requires providing the registration token in the user data. To complete the auto-registration process, it is mandatory to assign a project when creating a registration token. 
+You can automate the registration process by using registration tokens.  
 
 If you selected a default project for the registration token, that is the project the Edge host will be registered under. You can override the default project by providing a project name in the user data. 
 
