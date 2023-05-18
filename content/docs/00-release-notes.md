@@ -108,6 +108,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
 
 
+- You can now use a [Harbor Registry](https://goharbor.io/) when deploying an Edge host cluster. You can enable the usage of Harbor Registry in the Edge Install [user data configuration](/clusters/edge/edge-configuration/installer-reference) file by setting the parameter `installHarbor` to `true`.
+
+
 
 ### Improvements
 
