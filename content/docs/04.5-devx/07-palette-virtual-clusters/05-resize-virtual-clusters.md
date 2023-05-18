@@ -43,7 +43,7 @@ Use the following steps to resize a virtual cluster.
 5. Save your changes.
 
 
-# Validation
+# Validate
 
 To verify your changes, click **Virtual Clusters** in the left **Main Menu** and select the resized cluster. The virtual cluster Overview page displays the new **Allocated Quota** for the cluster.
 

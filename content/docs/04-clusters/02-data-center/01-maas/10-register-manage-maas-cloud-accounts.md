@@ -53,7 +53,7 @@ Follow these steps to create additional MAAS cloud accounts.
 | API Key | The MAAS API key. |
 
 
-# Validation
+# Validate
 
 You can validate your MAAS cloud account is registered by reviewing the **Cloud Accounts** page. Ensure your account is listed under **MAAS**. 
 

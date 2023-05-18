@@ -45,7 +45,7 @@ When you delete a cluster it results in the removal of all compute instances and
 The cluster status is updated to **Deleting** while cluster resources are removed. When all resources are successfully deleted, the cluster status is updated to **Deleted**, and the cluster is removed from the cluster list.
 
 
-# Validation
+# Validate
 
 To validate the host cluster is deleted, use the following steps.
 

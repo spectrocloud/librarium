@@ -66,7 +66,7 @@ To create an App Profile:
 
 7. When you've provided the required configuration information for services, click **Review**. Your App Profile is now created and can be deployed.  
 
-# Validation
+# Validate
 
 To validate your App Profile is available and ready for use, use the following steps.
 

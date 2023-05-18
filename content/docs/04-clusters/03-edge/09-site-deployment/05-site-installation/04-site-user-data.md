@@ -77,7 +77,7 @@ Use the following steps to create an ISO file containing the additional user dat
 
 
 
-## Validation
+## Validate
 
 You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 

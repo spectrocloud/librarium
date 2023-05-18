@@ -62,7 +62,7 @@ To enable the Spectro VM Dashboard, apply the profile you created to your cluste
 The cluster status displays as **Upgrading** on the cluster overview page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
-# Validation
+# Validate
 
 When the cluster is finished upgrading, ensure the cluster status displays as **Running** and that a new tab labeled **Virtual Machines** appears on the Cluster's page. 
 
