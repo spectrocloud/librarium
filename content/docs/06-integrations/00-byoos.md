@@ -40,7 +40,7 @@ To use the Edge BYOOS pack, you must have the following:
 
 ## Parameters
 
-The BYOS Edge 
+The BYOS Edge OS pack supports the following parameters. 
 
 ### Parameters
 
@@ -52,6 +52,35 @@ The BYOS Edge
 | `system.uri` | The system URI specifying the location of the BYOOS image. 
 
 ## Usage
+
+BYOOS enables you to build a custom OS for your Edge host runtime with the model Edge Native Infrastructure profile. This Palette feature offers flexibility to customize the desired specifications of your OS layer in the Kubernetes cluster Edge host.
+
+
+To manage the custom OS and optimally meet your environment needs, you are required to build your own custom OS image. It is important to create your Edge artifact containing the user data file. This file contains the `system.uri` parameter specifying the location of the BYOOS image, which is required later to customize your BYOS Edge OS pack. Refer to the [EdgeForge Build Images](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/build-images/) guide if you are missing a custom OS image.
+
+
+The Edge Native cluster profile requires the following components: 
+* The Kubernetes flavor and version
+* Operating system (OS) 
+* Container network interfce (CNI) 
+* Container storage interface (CSI) 
+
+ You can define the cluster profile components in Palette using the **Add Cluster Profile** feature in the **Profiles** page. The cluster profile has the following profile layers:
+ * Basic Information
+ * Cloud Type 
+ * Profile Layers 
+
+
+<br />
+
+![A view of the Kubernetes pack editior with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
+
+
+You can edit your custom BYOS Edge OS image after defining the pack type, registry, pack name and version in **Profile Layers**. In the pack editor, you must update the `system.uri` parameter using the custom OS image built in the EdgeFroge process. This parameter is a macro updating the `image.registry:`, `image.repo:`, `kubernetes.version:`, `image.version:` and the `client.tag:` parameters. 
+
+
+The `images:` section contains the meta data detials about the OS image. Within the BYOS Edge OS pack, the installer image can be updated if you want to add additonal images as part of your content bundle. The `-image:` parameter specifies the entry for an additonal image. 
+
 
 ```yaml
 pack:
@@ -82,6 +111,10 @@ data "spectrocloud_pack_simple" "byoos" {
 ```
 
 # References
+* [Model Edge Native Cluster Profile](https://docs.spectrocloud.com/clusters/edge/site-deployment/model-profile)
+<br />
+* [Containered](https://containerd.io/)
+
 
 </Tabs.TabPane>
 
@@ -122,7 +155,7 @@ You can use the following:
 You are required to create a custom Red Hat Enterprise Linux (RHEL) for Amazon Web Services (AWS) to create custom images that you can use with Palette using KIB. Check out the [Create Images with Image Builder](https://docs.spectrocloud.com/cluster-profiles/byoos/image-builder/) to learn how to create custom images with KIB. 
 <br/>
 
-After completing your build process and generating the `imageID`, you have to log in to Palette. In Palette, you can create a cluster profile using  **Add Cluster Profile**. After filling out the input fields and the infrastructure type, you can customize the BYOS pack. 
+After completing your build process and generating the `image ID`, you have to log in to Palette. In Palette, you can create a cluster profile using  **Add Cluster Profile**. After filling out the input fields and the infrastructure type, you can customize the BYOS pack. 
 
 
 Use the following information to find the BYOOS pack.
@@ -162,6 +195,7 @@ data "spectrocloud_pack_simple" "byoos" {
 
 # References
 * [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html)
+<br />
 * [Bring Your Own OS (BYOOS)](https://docs.spectrocloud.com/cluster-profiles/byoos/)
 
 </Tabs.TabPane>
