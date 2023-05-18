@@ -174,6 +174,8 @@ Check out the [Create Images with Image Builder](https://docs.spectrocloud.com/c
 
 
 You can custom the BYOOS pack list by using the following YAML code: 
+
+
 ```yaml
 pack:
   osImageOverride: "ami-0f4804aff4cf9c5a2"
@@ -184,6 +186,8 @@ pack:
 # Terraform
 
 You can retrieve details about the BYOOS pack by using the following Terraform code.
+
+<br />
 
 ```yaml
 data "spectrocloud_registry" "public_registry" {
@@ -199,7 +203,9 @@ data "spectrocloud_pack_simple" "byoos" {
 
 # References
 * [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html)
+
 <br />
+
 * [Bring Your Own OS (BYOOS)](https://docs.spectrocloud.com/cluster-profiles/byoos/)
 
 </Tabs.TabPane>
