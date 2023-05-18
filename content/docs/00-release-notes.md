@@ -115,7 +115,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 ### Improvements
 
 
-- The events log stream for the Edge host cluster now includes audit messages and critical errors.
+- The events log stream for the Edge host cluster now includes audit messages and critical errors. Logs for for an individual Edge host is now also accessible.
 
 
 - The upgrade process for Edge cluster has been optimized to avoid extra reboots of the Edge host, whether it's for upgrading the OS or the Kubernetes version.
