@@ -13,21 +13,21 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 # Deploy Edge Native K3s Cluster
-Deploying an edge native Kubernetes cluster requires all edge hosts to be provisioned already with Kairos based immutable operating system. In cases where multiple edge hosts require the same configuration, it is challenging for the IT/Site/Operations team to ensure scale consistency in terms of OS and other configurations, such as networking, proxy, security certificates, tooling, partitioning, and user privileges. 
+Deploying an Edge native Kubernetes cluster requires all Edge hosts to be provisioned already with Kairos based immutable operating system. In cases where multiple edge hosts require the same configuration, it is challenging for the IT/Site operations team to ensure scale consistency in terms of OS and other configurations, such as networking, proxy, security, tooling, and user privileges. 
 
-Here are primary use cases for setting up VMs as edge hosts and deploying the edge native K3s cluster on those VMs: 
+Setting up VMs as Edge hosts and deploying the Edge native K3s cluster on those VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge device. Here are the primary phases of deploying an Edge native Kubernetes cluster in production:  
 
-- IT administrators to prepare and test the desired edge installer ISO image for a consistent deployment at scale.
+- IT administrators prepare and test the edge installer ISO image for a consistent deployment at scale.
 
-- Site operators to provision edge hosts and identify the additional user-data to install on a set of edge hosts.
+- Site operators provision edge hosts and identify the additional user-data to install on a set of edge hosts.
 
-- Infrastructure team to prepare a cluster profile using the provider OS image and deploy cloud native clusters.
-
-
-As an example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. Your job is to deploy single-node Kubernetes clusters at the edge for each new store. Assuming all edge hosts have the same configuration, you must prepare an edge installer image and provision edge hosts so that the infrastructure team can prepare a cluster profile and deploy a Kubernetes cluster on all those edge hosts.
+- Development team prepares a cluster profile using the provider OS image and the Infrastructure team deploys cloud native clusters.
 
 
-In this tutorial, you will generate edge installer artifacts using Kairos-based immutable OS, create a VM template, and provision VMs. You will then use the VMs as edge hosts to test the installer image's ease of use for consistent deployments and deploy the edge native K3s cluster.   
+As an example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. Your job is to deploy single-node Kubernetes clusters at the edge for each new store. Assuming all edge hosts have the same configuration, you must prepare an edge installer image and provision edge hosts so that the Development team can prepare a cluster profile and the Infrastructure team deploy a Kubernetes cluster on all those edge hosts.
+
+
+In this tutorial, you will generate edge installer artifacts, create a VM template, and provision VMs. You will then use the VMs as edge hosts to test the installer image's ease of use for consistent deployments and deploy the edge native K3s cluster.   
 
 # Prerequisites
 To complete this tutorial, you will need the following items:

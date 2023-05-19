@@ -17,14 +17,12 @@ import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Build Edge Native Image Artifacts
 	
-Palette's edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will leverage Kairos to create the following immutable and bootable OS images:
+Palette's edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will create the following images for edge hosts:
 <br/>
 
-* **An Edge installer ISO image** - This ISO image can "Flash" or install the operating system in edge devices. In this how-to guide, you will customize the installer image to automatically allow the new edge hosts to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a Virtual Machine (VM) template, you can provision as many edge hosts as you desire. 
+* **An Edge installer ISO image** - This ISO image can "Flash" or install  Kairos-based immutable Linux operating system on edge hosts. 
 
-
-* **Two provider OS images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
-
+* **Provider OS images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
 
 
 # Prerequisites
@@ -177,7 +175,7 @@ Copy the newly created token to a clipboard or notepad file to use later in this
 
 
 ## Create User Data File
-Create a **user-data** file to configure the edge host's login credentials and auto-registration token. If you want further customization, refer to the [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) and [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference) documents outlining different other stages and possible parameters, respectively, you can configure in the **user-data** file. 
+Create a **user-data** file to configure the edge host's login credentials and auto-registration token to automatically allow the new edge hosts to register themselves with Palette. If you want further customization, refer to the [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) and [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference) documents outlining different other stages and possible parameters, respectively, you can configure in the **user-data** file. 
 
 
 To create a minimalistic **user-data** file for the current example, copy and issue the command below. Before you issue this command, ensure to edit the `edgeHostToken` parameter value with the registration token you created above. You can click on the *Points of Interest* numbers below to learn more about each attribute. 
@@ -254,6 +252,7 @@ ls build/
 palette-edge-installer.iso      
 palette-edge-installer.iso.sha256
 ```
+You can provision as many edge hosts using this ISO image as you desire.
 
 List the Docker images to show two provider OS images, one compatible with lightweight Kubernetes (K3s) v1.24.6 and another with K3s v1.25.2.
 <br />
