@@ -27,35 +27,130 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 You define these components in an Edge Native Infrastructure profile. As with any other environment in Palette, you can define additional add-on cluster profiles. You can use add-on profiles to define integrations or applications that must be included when Palette deploys the cluster.
 
-<br/>
 
-## Profile Scope
 
-You can create a profile in the tenant scope or the project scope. The choice depends on how you would like to organize your Edge deployments. If all your Edge deployments are organized within a single project, you can define the cluster profile in the project scope. However, if you would like to use projects to group related sites or have one site per project, then define the cluster profile in the tenant scope. You can share cluster profiles that you define in the tenant scope among all the projects in your tenant.
+The following steps will guide you on how to create a cluster profile for Edge. Choose the tab that matches your use case.
 
-# Create Edge Native Cluster Profile
 
-Use the following steps to create a cluster profile for Edge hosts.
+<br />
 
-# Prerequisites
+<Tabs>
+<Tabs.TabPane tab="Custom OS" key="custom-os">
 
-No prerequisites.
+## Prerequisites
 
-# Enablement
+- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for details.
+
+
+## Enablement
+
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Choose the desired scope, project or **Tenant Admin**.
 
-![Select the scope by using the drop-down Menu.  Either project or tenant admin are the displayed values in the screenshot.](/clusters_site_deployment_mode-profile_scope-selector.png)
-
-<br />
 
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-4. Click the **Add new Profile** button.
+4. Click on **Add Cluster Profile**. 
+
+
+5. Provide **Basic Information**, such as profile name, description, and tags. Select **Full** and click on **Next**.
+
+
+6. Select **Edge Native** as the **Cloud Type** and click on **Next**.
+
+
+7. Select **Public Repo** in the **Registry field**.
+
+
+8. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
+
+
+9. Click on the code editor button  **</\>** to open up the editor
+
+  <br />
+
+  ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
+
+
+10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
+
+
+  <br />
+
+  ```yaml
+  pack:
+  content:
+    images: 
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+      # - image: example.io/my-other-images/example:v1.0.0 
+      # - image: example.io/my-super-other-images/example:v1.0.0 
+      
+  options: 
+    system.uri: example.io/my-images/example-custom-os:v1.4.5
+  ```
+
+  <br />
+
+  <InfoBox>
+
+   You can specify additional images that you may have created that are part of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an `- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](/integrations/byoos) resource to learn more about the pack details.
+
+  </InfoBox>
+
+
+11. Click on the **Next layer** button to continue.
+
+
+
+12. Complete the cluster profile creation process by filling out the remaining layers.
+
+
+You have successfully created a cluster profile that you can use to deploy Edge clusters. 
+
+## Validate
+
+Verify you created a cluster profile for Edge hosts by using the following steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Choose the desired scope, project or **Tenant Admin**.
+
+
+3. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+4. Use the **Cloud Types** **drop-down Menu** and select **Edge Native**.
+
+
+5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
+
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Without Custom OS" key="without-os">
+
+## Prerequisites
+
+No prerequisites.
+
+## Enablement
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Choose the desired scope, project or **Tenant Admin**.
+
+
+3. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+4. Click the **Add New Profile** button.
 
 
 5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on **Next**.
@@ -68,7 +163,7 @@ No prerequisites.
 
 <InfoBox>
 
-You can select the *Bring Your Own OS (BYOOS)* if you build your enterprise Edge artifacts. Specify the registry hosting your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack's YAML values to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about cloud-init stages.
+You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge artifacts. Specify the registry that hosts your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack YAML file to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about the cloud-init stages.
 
 </InfoBox>
 
@@ -91,15 +186,28 @@ Optionally, add additional Helm or OCI registries and include applications hoste
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
+
 1. Log in to [Palette](https://console.spectrocloud.com).
+
 
 2. Choose the desired scope, project or **Tenant Admin**.
 
+
 3. Navigate to the left **Main Menu** and select **Profiles**.
 
-4. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
 
-5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
+4. Select **Edge Native** as the cloud type.
+
+
+You can view your newly created cluster profile on the **Cluster Profiles** page.
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+
 
 # Next Steps
 

@@ -59,7 +59,7 @@ You can specify the mode the Edge Installer should prepare the installation for.
 - Connected: The site has internet connectivity and the installation is initiated through Palette.
 
 
-- Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Edge Installer CLI.
+- Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Palette Edge CLI.
 
 
 | Parameter | Description | 

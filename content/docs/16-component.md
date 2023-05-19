@@ -29,7 +29,7 @@ This page lists the version details of various Palette components and their resp
 |Release 2.7.0     |2.7.0 |
 |Release 2.6.0     |2.6.0 |
 
-# Edge Installer CLI Versions
+# Palette Edge CLI Versions
 
 |Palette Release|CLI Version| 
 |---|-------|
