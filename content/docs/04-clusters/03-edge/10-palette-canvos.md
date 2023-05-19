@@ -13,13 +13,14 @@ hiddenFromNav: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Build Edge Native Image Artifacts
 	
-Palette's Edge native solution requires Edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will leverage Kairos to create the following immutable and bootable OS images:
+Palette's edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will leverage Kairos to create the following immutable and bootable OS images:
 <br/>
 
-* **An Edge installer ISO image** - This ISO image can install or "Flash" an Edge device. In this how-to guide, you will customize the installer image to automatically allow the new Edge nodes to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a Virtual Machine (VM) template, you can provision as many Edge hosts as you desire. 
+* **An Edge installer ISO image** - This ISO image can "Flash" or install the operating system in edge devices. In this how-to guide, you will customize the installer image to automatically allow the new edge hosts to register themselves with Palette. Once you transfer the ISO to your Datacenter, and convert it into a Virtual Machine (VM) template, you can provision as many edge hosts as you desire. 
 
 
 * **Two provider OS images** - These provider images can be used in a cluster profile to deploy new Kubernetes clusters or to provide upgrades.
@@ -30,7 +31,7 @@ Palette's Edge native solution requires Edge hosts with [Kairos](https://kairos.
 To complete this how-to guide, you will need the following items:
 <br/>
 
-* A physical or virtual machine with **x86** or **x86_64** (also know as **amd64**) processor architecture. You can issue the following command in the terminal to check your processor architecture. 
+* A physical or virtual machine as a *Development Environment*  to generate edge installation artifacts. The machine should have **x86** or **x86_64** (also know as **amd64**) processor architecture. You can issue the following command in the terminal to check your processor architecture. 
   <br/>
 
   ```bash
@@ -61,7 +62,7 @@ The instructions are split into the following subsections:
 - Edit the image tag for the provider images
 - Create a registration token in Palette
 - Create a user data file
-- Create Edge artifacts
+- Create edge artifacts
 
 
 ## Check out the Starter Code
@@ -71,7 +72,7 @@ Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub reposi
 ```shell
 git clone https://github.com/spectrocloud/CanvOS.git
 ```
-CanvOS repository follows [EdgeForge workflow](clusters/edge/edgeforge-workflow) and leverages [Earthly](https://earthly.dev/) and Kairos to build all artifacts. Change into the `CanvOS` directory.
+CanvOS repository follows [EdgeForge workflow](clusters/edge/edgeforge-workflow) and leverages [Earthly](https://earthly.dev/) and Kairos to build all artifacts. Change into the **CanvOS** directory.
 <br />
 
 ```shell
@@ -135,7 +136,7 @@ The **.arg** file defines the following variables:
 * `K8S_DISTRIBUTION` - Kubernetes distribution name. It can be one of these: `k3s`, `rke2`, or `kubeadm`.
 <br />
 
-* `ISO_NAME` - Name of the Edge installer ISO image. In this example, the name is *palette-edge-installer*. 
+* `ISO_NAME` - Name of the edge installer ISO image. In this example, the name is *palette-edge-installer*. 
 
 
 Open the **.arg** file in any editor of your choice, and edit the value for `CUSTOM_TAG` variable. You can enter your initials as the value. Ensure that it is made up of all lower case alphanumeric characters. Agent will use this variable as a suffix in the provider image tags. The current example uses the following value:
@@ -148,10 +149,10 @@ CUSTOM_TAG=demo
 Ensure to save the **.arg** file after your edits. 
 
 
-Next, create a **user-data** file containing the login credentials for Edge hosts and a token to allow Edge hosts to register themselves with Palette automatically. 
+Next, create a **user-data** file containing the login credentials for edge hosts and a token to allow edge hosts to register themselves with Palette automatically. 
 
 ## Create a Registration Token
-Palette 3.4 onwards, a registration token created by the Tenant admin, is now *required* for pairing an Edge host with Palette. Palette offers three registration methods: auto, manual, and QR code. Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation for more details.
+Palette 3.4 onwards, a registration token created by the Tenant admin, is now *required* for pairing an edge host with Palette. Palette offers three registration methods: auto, manual, and QR code. This guide uses the auto-registration method. Refer to the [Register Edge Host](https://docs.spectrocloud.com/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation for more details.
 
 
 Log in to [Palette](https://console.spectrocloud.com), and switch to the Tenant admin view.
@@ -161,7 +162,7 @@ Navigate to **Tenant Settings** > **Registration Tokens**. Click on **Add New Re
 |**Field**|**Value**|
 |----|----|
 | Registration Token Name | DemoToken |
-| Description | Token for Edge host how-to/tutorial |
+| Description | Token for Build Edge Native Image Artifacts how-to/tutorial |
 | Default Project | Default |
 | Expiration Date | 7 days |
 
@@ -176,11 +177,37 @@ Copy the newly created token to a clipboard or notepad file to use later in this
 
 
 ## Create User Data File
-Create a **user-data** file to configure the Edge host's login credentials and auto-registration token. If you want further customization, refer to the [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) and [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference) documents outlining different other stages and possible parameters you can configure respectively in the **user-data** file. 
+Create a **user-data** file to configure the edge host's login credentials and auto-registration token. If you want further customization, refer to the [Edge Configuration Stages](https://docs.spectrocloud.com/clusters/edge/edge-configuration/cloud-init#edgeconfigurationstages) and [User Data Parameters](https://docs-latest.spectrocloud.com/clusters/edge/edge-configuration/installer-reference) documents outlining different other stages and possible parameters, respectively, you can configure in the **user-data** file. 
 
 
-To create a minimalistic **user-data** file for the current example, copy and issue the command below. However, before you issue this command, edit the `edgeHostToken` parameter value with the registration token you created above.  
+To create a minimalistic **user-data** file for the current example, copy and issue the command below. Before you issue this command, ensure to edit the `edgeHostToken` parameter value with the registration token you created above. You can click on the *Points of Interest* numbers below to learn more about each attribute. 
 <br />
+
+<PointsOfInterest
+  points={[
+    {
+      x: 370,
+      y: 160,
+      label: 1,
+      description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 190,
+      y: 224,
+      label: 2,
+      description: "Instructs the installer to turn the host machine off once the installation is complete.",
+    },
+    {
+      x: 190,
+      y: 300,
+      label: 3,
+      description: "Sets the login credentials for edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
 
 ```shell
 cat <<'EOF' > user-data
@@ -196,14 +223,7 @@ users:
 EOF
 ```
 
-This **user-data** file configures the following: 
-
-* Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.
-
-* Instructs the installer to turn the machine off once the installation is complete
-
-* Sets the login credentials for Edge hosts, `{name: kairos, passwd: kairos}`. The login credentials will allow you to SSH log into the Edge host for debugging purposes. 
-
+</PointsOfInterest>
 
 ## Build Edge Native Image Artifacts
 Issue the following command to build the artifacts. 
@@ -221,8 +241,8 @@ Share your logs with an Earthly account (experimental)! Register for one at http
 This command will take up to 15-20 minutes to finish.
 <br />
 
-# Validation
-List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
+# Validate
+List the edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
 <br />
 
 ```shell
@@ -242,7 +262,7 @@ List the Docker images to show two provider OS images, one compatible with light
 docker images
 ```
 
-```shell coloredLines=3-4|#666666
+```bash coloredLines=3-4|#666666
 # Output
 REPOSITORY        TAG                       IMAGE ID        CREATED         SIZE
 ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    b3c4956ccc0a    6 minutes ago   2.49GB
@@ -250,7 +270,7 @@ ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    fe1486da25df    6 minutes ago   2.49
 earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
 ```
 
-Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute of the **OS layer** in your cluster profile.    
+Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute if the **OS layer** of your cluster profile.    
 <br />
 
 ```yaml
@@ -280,7 +300,7 @@ The screenshot below shows custom content added to the OS layer of a cluster pro
 
 
 # Cleanup
-Clean up the artifacts you created in this guide. You can skip cleaning up if you continue to the [Create Edge Native Cluster](/clusters/edge/create-cluster) tutorial next.  
+Clean up the artifacts you created in this guide. You can skip cleaning up if you continue to the [Deploy Edge Native Cluster](/clusters/edge/deploy-cluster) tutorial next.  
 
 Issue `docker images` to list all images in your current development environment, and use the following command syntax to remove provider OS images.
 <br />
@@ -292,7 +312,7 @@ docker image rm -f [image repository name]:[tag]
 Change the image name and tag to match the images in your environment, and repeat this command for all individual images created in the previous steps. 
 
 
-You can delete the Edge installer ISO image and its checksum by executing the following commands from the **CanvOS** directory.
+You can delete the edge installer ISO image and its checksum by executing the following commands from the **CanvOS** directory.
 <br />
 
 ```bash
