@@ -33,44 +33,17 @@ Use the following steps to install and set up the Palette CLI.
 2. Open up a terminal session on your local system.
 
 
-3. Navigate to your defaults download folder. For Mac and Linux environments the default location is **~/Downloads** for Windows it's **C:\Users\YourUserNameHere\Downloads**. Replace `YourUserNameHere` with the name of the user account.
+3. Navigate to your default download folder. For Mac and Linux environments the default location is **~/Downloads**.
 
 
-4. Move the binary to a folder that is part of your system's `PATH` environment variable.
+4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to move the binary to the **/usr/local/bin** folder.
 
+  <br />
 
-<Tabs>
-<Tabs.TabPane tab="MacOS/Linux" key="linux-mac">
-
-Use the following command to move the binary to the **/usr/local/bin** folder.
-
-<br />
-
-```shell
-sudo mv ~/Downloads/spectro-cli-darwin-amd64 /usr/local/bin/palette
-```
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Windows" key="windows">
-
-Move the binary to a folder on your system. If you want to access the Palette CLI from the command line, ensure you place the binary in a folder that is part of your system `PATH`. Check out the [Add Tool Locations to the PATH Environment Variable](https://learn.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee537574(v=office.14)) for detailed steps.
-
-Open the Command Prompt and move the file to a target folder that is part of your system `PATH`, as shown in the following command example. 
-
-<br />
-
-```shell
-move C:\Users\johndoe\Downloads\spectro-cli-darwin-amd64 C:\Users\johndoes\tools\palette
-```
-
-
-
-</Tabs.TabPane>
-
-</Tabs>
-
----
+  ```shell
+  sudo mv ~/Downloads/palette /usr/local/bin/palette && \
+  chmod +x /usr/local/bin/palette
+  ``` 
 
 <br />
    
