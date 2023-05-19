@@ -81,7 +81,7 @@ To learn how to create content bundles, check out the [Build Content Bundle](/cl
 
 ## Image Builder
 
-The Palette Edge CLI can also be used for creating custom Edge artifacts. You can use the CLI to address common deployment concerns about required packages, software restrictions, bandwidth concerns, and more. By using your Edge artifacts, you gain complete control over the deployment, and you can manage the software in your Edge clusters to best suit your organization's needs.
+The Palette Edge CLI can also be used to create custom Edge artifacts. You can use the CLI to address common deployment concerns about required packages, software restrictions, bandwidth concerns, and more. By using your Edge artifacts, you gain complete control over the deployment, and you can manage the software in your Edge clusters to best suit your organization's needs.
 
 Follow the instructions in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn more about creating custom Edge artifacts.
 
