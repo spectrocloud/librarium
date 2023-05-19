@@ -88,7 +88,7 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 |Version| Operating System | 
 |---|---|
-|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/amd64/palette) <br />  [Darwin-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/arm64/palette)|
+|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette) <br />  [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)|
 
 
 
@@ -96,6 +96,6 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 CLI Version| Operating System |  
 -------|---|
-v3.4.1 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.1/cli/linux/palette-edge-installer) |
+v3.4.1 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.1/cli/linux/palette-edge) |
 
 

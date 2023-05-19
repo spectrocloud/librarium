@@ -21,7 +21,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 ## Palette
 
-## Breaking Changes
+### Breaking Changes
 
 - Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
 
@@ -90,7 +90,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
 ## Edge
 
-## Breaking Changes
+### Breaking Changes
 
 - To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
@@ -106,10 +106,6 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 - To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
-
-
-- You can now use a [Harbor Registry](https://goharbor.io/) when deploying an Edge host cluster. You can enable the usage of Harbor Registry in the Edge Install [user data configuration](/clusters/edge/edge-configuration/installer-reference) file by setting the parameter `installHarbor` to `true`.
-
 
 
 ### Improvements
