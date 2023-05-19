@@ -32,15 +32,15 @@ This allows the SaaS controller to do the following:
 
 - Act as an orchestrator to initiate SaaS controller requests for deployments.
 
-In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component is deployed in the on-prem environment as a virtual appliance (OVA). The PCG component automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using static network address translation (NATS) with transport layer security (TLS). More details about OVA operation are provided in [Self-Hosted Operation](/security/self-hosted-operation). 
+In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component is deployed in the on-prem environment as a virtual appliance (OVA). The PCG component automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS). More details about OVA operation are provided in [Self-Hosted Operation](/security/self-hosted-operation). 
 
 <br />
 
 ## Tenant Cluster Security
 
-Tenant clusters can be deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using static network address translation (NATS) with transport layer security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
+Tenant clusters can be deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
-We us the following design principles ensure tenant isolation:
+We use the following design principles ensure tenant isolation:
 
 <br />
 
@@ -53,7 +53,7 @@ We us the following design principles ensure tenant isolation:
 - **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
 
 
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants from utilizing the platform.
+- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants use of the platform.
 
 
 - **Data encryption**: Palette ensures security for data at rest and data in transit as follows.
@@ -68,21 +68,21 @@ We us the following design principles ensure tenant isolation:
 
     #### Data In Transit Encryption
 
-   Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.<br /><br />
+   Palette secures data in motion using an encrypted TLS communication channel for all internal and external interactions.<br /><br />
 
    - **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
 
     <br />
     
-    - **Inter-Service Communication**: Services in the management cluster communicate over HTTPS with self-signed certificates and an RSA 2048-bit key.
+    - **Inter-Service Communication**: Services in the management cluster communicate over HTTPS with self-signed certificates and an Rivest–Shamir–Adleman (RSA) 2048-bit key.
 
     <br />
     
-    - **Database Communication**: The database connection from application services running in the management cluster to MongoDB is protected by Transport Layer Security (TLS) with Authentication enabled.
+    - **Database Communication**: The database connection from application services running in the management cluster to MongoDB is protected by TLS with Authentication enabled.
 
     <br />
     
-    - **Message Bus**: NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
+    - **Message Bus**: A NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
 
 
 <br />

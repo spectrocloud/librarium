@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Self-Hosted Operation
 
-In self-hosted operation, where Palette is typically deployed on-prem behind a firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN). Palette supports enabling disk encryption policies for management cluster VMs if required. 
+In self-hosted operation, where Palette is typically deployed on-prem behind a firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN). Palette supports enabling disk encryption policies for management cluster virtual machines (VMs) if required. 
 
 In on-prem deployments, the OVA can operate in stand-alone mode for quick Proof of Concept (POC) or in enterprise mode, which launches a three-node High Availability (HA) cluster as the Palette management cluster. The management cluster provides a browser-based web interface that allows you to set up a tenant and provision and manage tenant clusters. 
 
