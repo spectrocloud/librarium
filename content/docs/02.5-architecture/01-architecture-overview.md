@@ -19,6 +19,13 @@ Palette is available in three flexible deployment models:
 
 * **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
 
+<br />
+
+## Product Security
+
+In addition to our security principles and secure development lifecycle, we also provide a cohesive security architecture for Palette, which addresses the CIA triad core principles: confidentiality, integrity, and availability. To learn more, refer to [Palette Security](/security/security-principles). 
+
+<br />
 
 ## SaaS Architecture and Data Flow
 
