@@ -39,7 +39,7 @@ To learn how to use your own OS images with an Edge cluster profile, refer to th
 
 <WarningBox>
 
-Some OS require credentials to download the source image, such as RHEL. An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) for building the Edge provider image. Ensure you have the credentials necessary to download the OS source image.
+Some operating systems require credentials to download the source image, such as RHEL. An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) needed to build the Edge provider image. Ensure you have the necessary credentials to download the OS source image.
 
 
 </WarningBox>

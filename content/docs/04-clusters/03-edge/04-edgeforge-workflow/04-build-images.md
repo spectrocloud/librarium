@@ -45,7 +45,7 @@ Use the following steps to create an Edge artifact for your Edge host.
   If you experience disk space constraints on the machine where images are built, you can remove unnecessary Docker images and volumes. Or start the process on a machine with more storage allocated.
 
 
-- Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in. With docker, use the `docker login` command to log in to the registry.
+- Access to a container registry with permission to push container images. For guidance on logging in, review the registry login instructions for your respective registry. With docker, use the `docker login` command to log in to the registry.
 
 # Create Artifact
 
@@ -85,11 +85,11 @@ Choose the workflow that fits your needs.
 
   | Parameter                | Description                                                                                         |
 |--------------------------|-----------------------------------------------------------------------------------------------------|
-| `--os-flavor`             | OS flavor                                                                                           |
+| `--os-flavor`             | OS flavor.                                                                                           |
 | `--k8s-flavor`            | Kubernetes flavor.                                                                                  |
 | `--output`                 | Directory for generating build files.                                                              |
 | `--push-image-repository`  | Repository for generated container images.                                                         |
-| `--content-path`           | Optional location of the content bundle if preloading content.                                     |
+| `--content-path`           | Optional location of the content bundle if you preload content.                                     |
 | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
 | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
@@ -97,7 +97,7 @@ Choose the workflow that fits your needs.
   
   <InfoBox>
 
-  When using the generate command, the specified registry is where Edge artifacts will be uploaded.
+  When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.
 
   </InfoBox>
 

@@ -1,7 +1,7 @@
 ---
 title: "Bring Your Own OS (BYOOS)"
 metaTitle: "Bring your own OS (BYOOS)"
-metaDescription: "Learn how to use a custom Operating System with a cluster profile."
+metaDescription: "Bring Your Own OS (BYOOS) pack in Palette."
 hiddenFromNav: true
 type: "integration"
 category: ['operating system']
@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Bring Your Own Operating System (BYOOS) 
 
-The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) enables the ability for you to use a custom Operating System (OS) with Palette. Palette comes with several OS out-of-the-box, but for some users, the existing list of OS may not meet their needs. 
+The [Bring Your Own Operating System (BYOOS)](/https://docs.spectrocloud.com/cluster-profiles/byoos) enables you to use a custom Operating System (OS) with Palette. Palette comes with several operating systems out-of-the-box, but the existing OS list may not meet all users' needs. 
 
 Using your custom OS provides several benefits, including the ability to control your own dependencies, improve performance, and ensure compatibility with your existing applications. With BYOOS, you can choose the OS that best fits your needs, whether it's a commercial or open-source distribution, and integrate it with your Kubernetes clusters. The BYOOS pack can be used with both Edge and non-Edge environments. 
 
@@ -34,7 +34,7 @@ To use the Edge BYOOS pack, you must have the following:
 
 <br />
 
-- The Edge Provider images are created and uploaded to a container registry. Refer to the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn how to create a custom OS. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for steps on how to create the Edge artifacts and how to upload your custom OS to a registry.
+- Edge Provider images you have created and uploaded to a container registry. Refer to the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn how to create a custom OS. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for steps on how to create the Edge artifacts and how to upload your custom OS to a registry.
 
 
 - Palette 3.3.0 or greater.
@@ -50,7 +50,7 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. | map |
 | `pack.content.images` | Specifies a list of OS images to use with the pack. | list |
 | `pack.content.images.image` | An OS image to use with the pack. | string|
-| `system.uri` | The system URI specifies the BYOOS image's location. | string|  
+| `system.uri` | The system URI specifies the location of BYOOS image. | string|  
 
 
 
@@ -89,7 +89,7 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 <br />
 
-- A custom OS you created is available. Refer to the [Create Images with Image Builder](/cluster-profiles/byoos/image-builder) guide to learn how to create a custom OS for Palette.
+- A custom OS that you created. Refer to the [Create Images with Image Builder](/cluster-profiles/byoos/image-builder) guide to learn how to create a custom OS for Palette.
 
 ## Parameters
 
@@ -99,8 +99,8 @@ The following is a list of parameters required when using the BYOOS pack.
 
 | Parameter            | Description                                            | Type |
 |----------------------|--------------------------------------------------------|---|
-| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2` | string|
-| `osName` | The name of the OS distribution. Example: `rhel`. | string |
+| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment the image belongs to. Example: `ami-0f4804aff4cf9c5a2` | string|
+| `osName` | The name of the OS distribution. Example: `rhel` | string |
 | `osVersion` | The version of the OS distribution. Example: `"8"` | string |
 
 ## Usage
@@ -122,7 +122,7 @@ Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile/) g
 <br/>
 
 
-Fill out the required parameters with information about your custom OS, such as the ID, OS distribution and version.
+Fill out the required parameters with information about your custom OS, such as the ID, OS distribution, and version.
 
 <br />
 
@@ -151,7 +151,7 @@ Check out the [Create Images with Image Builder](/cluster-profiles/byoos/image-b
 
 <br />
 
-You can create custom OS images for the infrastructure provider you are using by using image creation tools. The following is a list of commonly used tools for creating a custom OS:
+Image creation tools are available to help you create custom OS images for the infrastructure provider you are using. The following is a list of commonly used tools for creating a custom OS:
 
 <br />
 
