@@ -16,7 +16,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 Edge supports the ability for you to specify a custom Operating System (OS) for your Edge host runtime. Building a system using your custom OS requires creating a [Kairos-base](https://kairos.io/) image with your custom OS. The Palette feature, [Bring Your Own OS (BYOOS)](/integrations/byoos) allows you to use a custom OS in a cluster profile. 
 
 
-As an example, the following steps will guide you through the procedure to build a Kairos-based Red Hat Enterprise Linux (RHEL) image. Use the same steps for any other operating system.
+As an example, the following steps will guide you on how to build a Kairos-based Red Hat Enterprise Linux (RHEL) image. Use the same steps for any other operating system.
 
 <br />
 
