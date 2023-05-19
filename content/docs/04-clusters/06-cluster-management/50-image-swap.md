@@ -23,16 +23,15 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
 - Support air-gapped environments by redirecting public image requests to an internal registry.
  
 
- To use the image swap feature, specify an image swap configuration in the Kubernetes pack YAML. The `imageSwap` block must be under the `pack` section.
+ To use the image swap feature, specify an image swap configuration in the Kubernetes pack YAML. The `imageSwap` block must be its own node, meaning that it's a standalone block at the root level of the YAML.
 
  <br />
 
  ```yaml
- pack:
-  imageSwap:
-      imageChange: |-
-          default:
-          # your custom configuration goes here
+imageSwap:
+    imageChange: |-
+        default:
+        # your custom configuration goes here
  ```
 
 
@@ -55,11 +54,10 @@ Palette supports swapping out images and registries at the Kubernetes layer. Pal
  <br />
 
  ```yaml
- pack:
-  imageSwap:
-    imageChange: |-
-        default::
-        example.private.io::harbor.internal.example.com
+imageSwap:
+  imageChange: |-
+      default::
+      example.private.io::harbor.internal.example.com
  ```
 
 ### Apply a Global Swap with an Exception
@@ -69,11 +67,10 @@ Enable image swapping for all registries except `example.private.io`. All image 
 <br />
 
 ```yaml
-pack:
-  imageSwap:
-    imageChange: |-
-      default::harbor.internal.example.com
-      example.private.io::
+imageSwap:
+  imageChange: |-
+    default::harbor.internal.example.com
+    example.private.io::
 ```
 
 ### Swap a Specific Image
@@ -84,11 +81,10 @@ Swap out a specific image. The image `example.private.io/demo:v1.0.0` will be sw
 
 
 ```yaml
-pack:
-  imageSwap:
-    imageChange: |-
-      default::
-      [EXACT]example.private.io/demo:v1.0.0::gcr.io/google-samples/hello-app:1.0
+imageSwap:
+  imageChange: |-
+    default::
+    [EXACT]example.private.io/demo:v1.0.0::gcr.io/google-samples/hello-app:1.0
 ```
 
 
@@ -101,11 +97,10 @@ Replace an image path with a custom registry. All image requests that start with
 
 
 ```yaml
-pack:
-  imageSwap:
-    imageChange: |-
-      default::
-      [REPLACE]ghcr.io/example*::example.private.io
+imageSwap:
+  imageChange: |-
+    default::
+    [REPLACE]ghcr.io/example*::example.private.io
 ``` 
 
 
