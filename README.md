@@ -484,7 +484,7 @@ Rejected words automatically get flagged by Vale. To modify the list of rejected
 To create a new release, use the following steps:
 
 1. Create a release branch. Use the following naming pattern `release-X-X`
-2. Create a commit using the following commit message `fix: updating documentation for release-X-X`. Replace x-x with the upcoming release number.
+2. Create a commit using the following commit message `feat: updating documentation for release-X-X`. Replace x-x with the upcoming release number.
 3. Push up the commit and create a new pull request (PR).
 4. Merge PRs related to the upcoming release into the `release-X-X` branch.
 5. Merge the release branch.
