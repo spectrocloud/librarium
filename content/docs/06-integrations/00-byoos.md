@@ -30,7 +30,6 @@ Using your custom OS provides several benefits, including the ability to control
 
 ## Prerequisites 
 
-To use the Edge BYOOS pack, you must have the following:
 
 <br />
 
