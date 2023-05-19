@@ -146,8 +146,9 @@ This page lists the version details of various Palette components and their resp
 
 |Operating System |Versions|
 |--|--|
-|Ubuntu| 22.4|
-|Ubuntu| 20.4|
+|Ubuntu| 22.04|
+|Ubuntu| 20.04|
+|Ubuntu| 18.04|
 |CentOS| 7.7|
 |CentOS| 7.9|
 |CentOS| 8.0|
