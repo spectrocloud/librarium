@@ -53,6 +53,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|URL|
 |---|---|
+|1.7.0|https://software.spectrocloud.com/pcg/installer/v1.7.0/gateway-installer-v1.7.0.ova|
 |1.6.0|https://software.spectrocloud.com/pcg/installer/v1.6.0/gateway-installer-v1.6.0.ova|
 |1.4.0|https://software.spectrocloud.com/pcg/installer/v1.4.0/gateway-installer-v1.4.0.ova|
 ------
@@ -71,30 +72,30 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 |1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
 -------
 
-# Palette CLI
-
-The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
-
-|Version|Operating System | 
-|---|---|
-|3.4| TBD|
-
-
-# Edge CLIs
-
-The following Edge CLIs and Edge Installer images are available to help you deploy an Edge host. Check out the [Edge](/clusters/edge) page to learn more about deploying an Edge Host
-
-
-## Palette Edge CLI
-
-CLI Version| Operating System |  
--------|---|
-v3.3.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.3.3/cli/linux/palette-edge-installer) |
-
 
 ## Edge Installer Image
 
 
-|Version|Docker Image| Optical Disk Image (ISO) |
+|Version|Docker Image URL| Optical Disk Image (ISO) |
 |---|---|--|
-|3.3.3     | `gcr.io/spectro-images-public/stylus:v3.3.3`| [ISO](https://software.spectrocloud.com/stylus/v3.3.3/stylus-v3.3.3-amd64.iso) |
+|3.4.1     | `gcr.io/spectro-images-public/stylus:v3.4.1`| [ISO](https://software.spectrocloud.com/stylus/v3.4.1/stylus-v3.4.1-amd64.iso) |
+
+---
+
+# Palette CLI
+
+The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
+
+|Version| Operating System | 
+|---|---|
+|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/amd64/palette) <br />  [Darwin-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/arm64/palette)|
+
+
+
+# Palette Edge CLI
+
+CLI Version| Operating System |  
+-------|---|
+v3.4.1 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.1/cli/linux/palette-edge-installer) |
+
+
