@@ -53,7 +53,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|URL|
 |---|---|
-|1.7.0|https://software.spectrocloud.com/pcg/installer/v1.7.0/gateway-installer-v1.7.0.ova|
+|1.8.0|https://software.spectrocloud.com/pcg/installer/v1.8.0/gateway-installer-v1.8.0.ova|
 |1.6.0|https://software.spectrocloud.com/pcg/installer/v1.6.0/gateway-installer-v1.6.0.ova|
 |1.4.0|https://software.spectrocloud.com/pcg/installer/v1.4.0/gateway-installer-v1.4.0.ova|
 ------

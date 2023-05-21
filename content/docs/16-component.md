@@ -82,7 +82,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|vSphere PCG Version|
 |--|---|
-|3.4|1.7.0|
+|3.4|1.8.0|
 |3.3|1.6.0|
 |3.2|1.4.0|
 |3.1|1.2.0|
