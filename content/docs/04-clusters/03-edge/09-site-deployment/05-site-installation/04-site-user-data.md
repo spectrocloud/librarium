@@ -32,7 +32,7 @@ Use the following steps to create an ISO file containing the additional user dat
     <br />
 
   ```shell
-  touch user data
+  touch user-data
   ```
 
 2. Create an empty **meta-data** file:
@@ -54,7 +54,7 @@ Use the following steps to create an ISO file containing the additional user dat
   Windows:
 
   ```shell
-  genisoimage -output site-user data.iso -volid cidata -joliet -rock user data meta-data
+  genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
   ```
 
   This generates an ISO file called site-user-data.iso in the current directory.
