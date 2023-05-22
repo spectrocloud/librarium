@@ -29,7 +29,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|CLI Version| 
 |---|-------|
-|Release 3.4.0 |v3.4.0 |
+|Release 3.4.0 |v3.4.2 |
 |Release 3.3.0 |v3.3.0 |
 |Release 3.2.0 |v3.2.0 | 
 

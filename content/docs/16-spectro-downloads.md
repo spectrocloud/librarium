@@ -78,7 +78,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|Docker Image URL| Optical Disk Image (ISO) |
 |---|---|--|
-|3.4.1     | `gcr.io/spectro-images-public/stylus:v3.4.1`| [ISO](https://software.spectrocloud.com/stylus/v3.4.1/stylus-v3.4.1-amd64.iso) |
+|3.4.2     | `gcr.io/spectro-images-public/stylus:v3.4.2`| [ISO](https://software.spectrocloud.com/stylus/v3.4.1/stylus-v3.4.2-amd64.iso) |
 
 ---
 
