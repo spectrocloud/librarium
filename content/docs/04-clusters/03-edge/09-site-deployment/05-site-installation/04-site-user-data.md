@@ -57,7 +57,7 @@ Use the following steps to create an ISO file containing the additional user dat
   genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
   ```
 
-  This generates an ISO file called site-user data.iso in the current directory.
+  This generates an ISO file called site-user-data.iso in the current directory.
   <br />
 
 4. Copy the ISO to a bootable device such as a USB drive. 
