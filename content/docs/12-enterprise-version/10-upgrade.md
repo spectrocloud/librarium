@@ -1,7 +1,7 @@
 ---
 title: "Upgrade Notes"
 metaTitle: "Upgrade Notes"
-metaDescription: "Spectro Cloud release notes for Palette and its sub-components."
+metaDescription: "Spectro Cloud upgrades notes for specific Palette versions."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -16,7 +16,7 @@ This page is a reference resource to help you better prepare for a Palette upgra
 
 # Palette 3.4
 
-Prior versions of Palette installed internal Palette component's ingress resources in the default namespace. The new version of the Helm Chart ensures all Palette required ingress resources are installed in the correct namespace. Self-hosted Palette instances deployed to Kubernetes and upgrading from Palette versions 3.3.X or older must complete the following action.
+Prior versions of Palette installed internal Palette components' ingress resources in the default namespace. The new version of the Helm Chart ensures all Palette required ingress resources are installed in the correct namespace. Self-hosted Palette instances deployed to Kubernetes and upgrading from Palette versions 3.3.X or older must complete the following action.
 
 <br />
 

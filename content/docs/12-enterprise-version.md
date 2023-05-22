@@ -42,7 +42,7 @@ Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm C
 
 ## Airgap Install
 
-Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, 3rd party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
+Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, third-party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
 
 # Download Palette Installer
 

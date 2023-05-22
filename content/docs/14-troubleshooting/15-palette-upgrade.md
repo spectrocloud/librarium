@@ -19,7 +19,7 @@ We recommend you review the [Release Notes](/release-notes) and the [Upgrade Not
 
 # Ingress Errors
 
-If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in a Kubernetes environment.
+If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in a Kubernetes environment, use the debugging steps to address the issue.
 
 <br />
 
@@ -27,7 +27,6 @@ If you receive the following error message when attempting to upgrade to Palette
 Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "_" and path "/v1/oidc" is already defined in ingress default/hubble-auth-oidc-ingress-resource
 ```
 
-Use the following steps to address the issue.
 
 ## Debugging Steps
 
