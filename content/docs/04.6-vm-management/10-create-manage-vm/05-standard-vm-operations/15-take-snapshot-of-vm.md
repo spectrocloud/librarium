@@ -38,7 +38,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 # Take a Snapshot
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster.

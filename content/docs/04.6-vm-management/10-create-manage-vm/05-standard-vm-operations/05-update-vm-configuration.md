@@ -28,7 +28,7 @@ KubeVirt allows hot plugging additional storage into a running VM. Both block an
 
 ## Add a Disk
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 

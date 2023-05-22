@@ -36,7 +36,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, choose **Clusters** and click on your cluster. 

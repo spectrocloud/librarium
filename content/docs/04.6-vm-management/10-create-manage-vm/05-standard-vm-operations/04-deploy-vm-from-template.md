@@ -28,7 +28,7 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and select the cluster you used to enable the Spectro VM Dashboard.

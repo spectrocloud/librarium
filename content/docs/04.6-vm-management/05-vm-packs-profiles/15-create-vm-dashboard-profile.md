@@ -34,7 +34,7 @@ Create a cluster profile with the **Spectro VM Dashboard** add-on pack and apply
 
 # Create the VM Dashboard
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
