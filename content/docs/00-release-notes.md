@@ -14,9 +14,9 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
 
-# May 21, 2023 - Release 3.4.0
+# May 22, 2023 - Release 3.4.0
 
-Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). 
+Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) documentation.
 
 
 ## Palette
@@ -26,7 +26,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
 
 
-- Kubernetes versions before 1.24 are no longer supported for host clusters targeting Azure Kubernetes Service (AKS). This deprecation is due to Azure's  Kubernetes support policy. You can learn more about Azure-supported Kubernetes versions [here](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli).
+- Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) to learn more about this change and how to upgrade.
 
 
 ### Features
@@ -88,6 +88,8 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 - You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
+
+
 ## Edge
 
 ### Breaking Changes
@@ -239,6 +241,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - The CNCF Kubernetes pack is renamed to Palette eXtended Kubernetes.
 
 
+- Kubernetes versions before 1.24 are no longer supported for host clusters targeting Azure Kubernetes Service (AKS). This deprecation is due to Azure's  Kubernetes support policy. You can learn more about Azure-supported Kubernetes versions [here](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli).
+
+
 ## Education
 
 -  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) tutorial.
@@ -246,8 +251,6 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started
 
-
- 
 
 # March 19, 2023 - Release 3.3.0
 

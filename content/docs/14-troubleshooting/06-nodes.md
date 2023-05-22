@@ -48,7 +48,7 @@ watch ip -statistics neighbour
 ```
 
 
-## Scenario - EKS Cluster Worker Pool Failures
+## EKS Cluster Worker Pool Failures
 
 If your EKS cluster worker pool ends up in `Failed`, `Create Failed` or `Error nodes failed to join` state, refer to the Amazon EKS [Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html
 ) for troubleshooting guidance. 
