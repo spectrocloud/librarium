@@ -1,6 +1,6 @@
 ---
-title: "Security Principles"
-metaTitle: "Security Principles"
+title: "Core Principles"
+metaTitle: "Core Principles"
 metaDescription: "Learn about Spectro Cloud security principles for Palette."
 icon: ""
 hideToC: false
@@ -17,22 +17,22 @@ Our security philosophy is grounded in the following.
 
 <br />
 
-- **Confidentiality**: Preserving authorized restrictions on information access and disclosure to protect personal privacy and proprietary data. This includes confirming identity and access rights to resources.
+- **Confidentiality**: Preserve authorized restrictions on information access and disclosure to protect personal privacy and proprietary data. This includes confirming identity and access rights to resources.
 
 
-- **Integrity**: Protecting data against unauthorized modification - either accidental or deliberate.
+- **Integrity**: Protect data against unauthorized modification - either accidental or deliberate.
 
 
-- **Availability**: Protecting the services that provide data access.
+- **Availability**: Protect the services that provide data access.
 
 
-- **Authorization**: Applying access rights through privileges or access levels to secure resources such as data, services, files, applications, and more.
+- **Authorization**: Apply access rights through privileges or access levels to secure resources such as data, services, files, applications, and more.
 
 
-- **Authentication**: Confirming the identity of the entity that wants to interact with a secure system.
+- **Authentication**: Confirm the identity of the entity that wants access to a secure system.
 
 
-- **Auditing**: Tracking implementation-level and domain-level events to ensure that certain actions have been performed in the product. 
+- **Auditing**: Track implementation-level and domain-level events to ensure certain actions have been performed in the product. 
 
 We apply the core security principles described below to our decision-making and product. 
 
@@ -40,21 +40,21 @@ We apply the core security principles described below to our decision-making and
 
 ## Secure by Design
 
-Your data security is a core business requirement, not just a technical feature. This principle is implemented during the design phase of our product feature development lifecycle to dramatically reduce the number of exploitable flaws and prevent them from being introduced in a release.
+Your data security is a core business requirement, not just a technical feature. We apply this principle during the design phase of our product feature development lifecycle to dramatically reduce the number of exploitable flaws and prevent them from being introduced in a release.
 
 <br />
 
 ## Secure by Default
 
-We believe that security should be the default setting for all of our systems and software. Our products are secure to use out-of-the-box with little or no configuration needed and at no additional cost – such as multi-factor authentication (MFA), audit logs, and access control for sensitive information.
+We believe that security should be the default setting for all of our systems and software. Our products are secure to use out-of-the-box with little or no configuration needed and at no additional cost – such as Multi-Factor authentication (MFA), audit logs, and access control for sensitive information.
 
 <br />
 
-## Never Rely on Obscurity
+## Never Rely Just on Obscurity
 
-We believe that using security through obscurity is essentially the absence of a security strategy. STO is a concept that some organizations use to secure their network and applications by enforcing secrecy as the main security method. However, if developers use STO as their sole security method, everything on the network is at risk if an attacker gains access to the network. 
+We believe that using security through obscurity by itself is the absence of a security strategy. While some organizations use this method as their main security method, it puts their network at risk if an attacker gains access to it. 
 
-Determined attackers can employ various methods to discover or deduce the hidden details of a system. Discovery will eventually happen, either accidentally or on purpose. We believe that while obscurity alone is not a robust security strategy, it can be layered with security policies and controls. This is the principle of Defense in Depth.
+Determined attackers use various methods to discover the hidden details of a system, and discovery eventually happens - either accidentally or deliberately. We believe that while obscurity alone is not a robust security strategy, it can be layered with security policies and controls. This is the principle of Defense in Depth.
 
 <br />
 
@@ -68,7 +68,7 @@ We believe security should be layered and redundant with multiple defenses in pl
 
 This principle encourages system designers and implementers to allow running code with only the permissions needed to complete the required tasks and no more. 
 
-We use the principle of least privilege to ensure that all users have only the necessary access rights to fulfill their job roles. Mechanisms that we use include defined access rights, regular reviews, restricted privileges, and system monitoring to ensure the security of our users and systems.
+We use the principle of least privilege to ensure that all users have only the necessary access rights to fulfill their job roles. To ensure the security of our users and systems, we use mechanisms such as defined access rights, regular reviews, restricted privileges, and system monitoring.
 
 <br />
 
@@ -78,21 +78,21 @@ We use the following methods for secrets handling, which contribute to a robust 
 
 <br />
 
-- A secure password manager. 
+- Secure password manager. 
 
 
-- Dynamic secret retrieval to reduce the risk of unauthorized access, limits the exposure of sensitive data, and automates the secret rotation process.
+- Dynamic secret retrieval, which automates the secret rotation process to reduce the risk of unauthorized access and limit sensitive data exposure.
 
 
-- Multi-Factor Authentication (MFA) & Single Sign-On (SSO).
-
-Regular internal reviews and audits of our setup ensure our employees have access to the tools they need while maintaining strong security standards.
+- MFA and Single Sign-On (SSO).
 
 <br />
 
 ## Continuous Improvement
 
 We believe security is an ongoing process and are committed to constantly improving our security posture through regular assessment and testing.
+
+We review and audit our internal setup regularly to ensure our employees have access to the tools they need while maintaining strong security standards.
 
 <br />
 
