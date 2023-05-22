@@ -1,6 +1,6 @@
 ---
 title: "Lifecycle"
-metaTitle: "Lifecycle"
+metaTitle: "Spectro Cloud Secure Development Lifecycle"
 metaDescription: "Learn how Spectro Cloud applies security throughout its development lifecycle."
 icon: ""
 hideToC: false
@@ -24,10 +24,10 @@ Our Security team reviews early in the design process and identifies real and po
 
 # Resources
 
-- [Secure Development](/security/security-internals/secure-development)
+- [Secure Development](/security/lifecycle/secure-development)
 
 
-- [Release Process](/security/security-internals/release-procedures)
+- [Release Process](/security/lifecycle/release-process)
 
 
 <br />

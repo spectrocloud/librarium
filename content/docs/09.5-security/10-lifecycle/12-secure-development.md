@@ -1,7 +1,7 @@
 ---
 title: "Secure Development"
 metaTitle: "Secure Development"
-metaDescription: "Learn how Spectro Cloud applies security throughout its development lifecycle."
+metaDescription: "Learn about Spectro Cloud's secure product development."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -22,3 +22,9 @@ We also employ a comprehensive suite of security scans that cover various aspect
 
 We connect the results of our security scans directly to our ticketing system. This seamless integration ensures we promptly address any identified vulnerabilities or issues and validate them during our release checklist activities.
 In addition, we continually evaluate and adopt new security tools and practices to stay ahead of evolving threats. Our investment in security automation and tools demonstrates our commitment to safeguarding your data and maintaining the highest standards of software quality and security.
+
+<br />
+
+<br />
+
+<br />

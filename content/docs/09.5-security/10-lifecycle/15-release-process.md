@@ -1,7 +1,7 @@
 ---
 title: "Release Process"
 metaTitle: "Release Process"
-metaDescription: "Learn about Spectro Cloud's release procedures for Palette."
+metaDescription: "Learn about Spectro Cloud's release process for Palette."
 icon: ""
 hideToC: false
 fullWidth: false

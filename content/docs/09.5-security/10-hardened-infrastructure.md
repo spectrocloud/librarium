@@ -1,7 +1,7 @@
 ---
 title: "Hardened Infrastructure"
-metaTitle: "Hardened Infrastructure"
-metaDescription: "Learn how Palette provides Infrastructure security."
+metaTitle: "Infrastructure Security"
+metaDescription: "Learn how Palette provides infrastructure security."
 icon: ""
 hideToC: false
 fullWidth: false
