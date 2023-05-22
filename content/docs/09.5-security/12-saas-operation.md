@@ -17,9 +17,7 @@ Palette is a multi-tenant SaaS system in which each tenant represents a customer
 
 <br />
 
-## Platform Security
-
-Palette uses a micro services-based architecture to ensure its platform security. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment. 
+## Platform Security 
 
 In public clouds like AWS, Azure, and GCP, Palette interacts directly with a cloud’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
 

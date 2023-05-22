@@ -34,23 +34,26 @@ Our security philosophy is grounded in the following.
 
 - **Auditing**: Track implementation-level and domain-level events to ensure certain actions have been performed in the product. 
 
-We apply the core security principles described below to our decision-making and product. 
+
+## Core Principles
+
+We apply the following core security principles to our decision-making and product. 
 
 <br />
 
-## Secure by Design
+### Secure by Design
 
 Your data security is a core business requirement, not just a technical feature. We apply this principle during the design phase of our product feature development lifecycle to dramatically reduce the number of exploitable flaws and prevent them from being introduced in a release.
 
 <br />
 
-## Secure by Default
+### Secure by Default
 
 We believe that security should be the default setting for all of our systems and software. Our products are secure to use out-of-the-box with little or no configuration needed and at no additional cost – such as Multi-Factor authentication (MFA), audit logs, and access control for sensitive information.
 
 <br />
 
-## Never Rely Just on Obscurity
+### Never Rely Just on Obscurity
 
 We believe that using security through obscurity by itself is the absence of a security strategy. While some organizations use this method as their main security method, it puts their network at risk if an attacker gains access to it. 
 
@@ -58,13 +61,13 @@ Determined attackers use various methods to discover the hidden details of a sys
 
 <br />
 
-## Defense in Depth
+### Defense in Depth
 
 We believe security should be layered and redundant with multiple defenses in place to protect against different types of attack. The intent is to provide redundancy in the event a security control fails or a vulnerability is exploited.
 
 <br />
 
-## Least Privilege
+### Least Privilege
 
 This principle encourages system designers and implementers to allow running code with only the permissions needed to complete the required tasks and no more. 
 
@@ -72,7 +75,7 @@ We use the principle of least privilege to ensure that all users have only the n
 
 <br />
 
-## Secrets Handling
+### Secrets Handling
 
 We use the following methods for secrets handling, which contribute to a robust and resilient security infrastructure.
 
@@ -88,7 +91,7 @@ We use the following methods for secrets handling, which contribute to a robust 
 
 <br />
 
-## Continuous Improvement
+### Continuous Improvement
 
 We believe security is an ongoing process and are committed to constantly improving our security posture through regular assessment and testing.
 
