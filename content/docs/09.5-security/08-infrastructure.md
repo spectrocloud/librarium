@@ -11,9 +11,9 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
-# Infrastructure Security
+# Overview
 
-Palette has security controls for the operating system, containers, and Kubernetes. Data is also protected with secure keys, encryption, secure communication, standard authentication/authorization, and API security. Audit logs record actions taken on the platform.
+Palette has security controls for the operating system, containers, and Kubernetes. Data is protected with secure keys, encryption, secure communication, standard authentication and authorization, and API security. Audit logs record actions taken on the platform.
 
 <br />
 
@@ -51,11 +51,11 @@ Spectro Cloud has a fully automated Kubernetes verification system that adds the
 
 A major Kubernetes version generally runs more rigorous compatibility tests and is available after 30 days from its release.
 
-Kubernetes run-time security support is done through a variety of add-on packages such as Sysdig Falco and Twistlock.
+Kubernetes run-time security support is achieved through a variety of add-on packages, such as Sysdig Falco and Twistlock.
 
-Kubernetes cluster authentication can be optionally integrated with Kubelogin using OpenID Connect (OIDC) authentication/authorization against an external Identity Provider (IDP).
+Kubernetes cluster authentication can be optionally integrated with Kubelogin using OpenID Connect (OIDC) authentication and authorization against an external Identity Provider (IDP).
 
-You can set a schedule to run Kubernetes conformance and compliance tests with Kubebench, Kubehunter, Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
+You can set a schedule to run Kubernetes conformance and compliance tests using kube-bench, kube-hunter, and Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
 
 <br />
 
@@ -96,7 +96,7 @@ In self-managed deployments, keys are generated during installation and stored a
 
 ## Data Encryption
 
-In SaaS deployments, backup snapshots of MongoDB cluster storage volumes are encrypted to secure cluster data on disk. In tenant clusters, Palette ensures security for data at rest and data in transit. Refer to [Tenant Cluster Security](/security/saas-operation#tenantclustersecurity) to learn how Palette applies security to data at rest.
+In SaaS deployments, backup snapshots of MongoDB cluster storage volumes are encrypted to secure cluster data on disk. In tenant clusters, Palette ensures security for data at rest and data in transit. Refer to [Tenant Cluster Security](/security/saas-operation#tenantclustersecurity) to learn how Palette applies data security.
 
 In self-hosted deployments, the administrator can set up a disk encryption policy for management cluster VMs if required. Refer to [Self-Hosted Operation](/security/self-hosted-operation) for details.
 
@@ -122,25 +122,27 @@ Palette fully supports Role-Based Access Control (RBAC) and two authentication m
 
 <br />
 
-- **Local authentication** and **password policy** <br />
+- *Local authentication* and *password policy* <br />
 
-    In this mode, a user email serves as the ID and a password is compared with the one-way hash stored in the database to authenticate users to a tenant. The platform administrator can set password policy to control the requirements for password length, rule, and expiration.
+    With local authentication, a user email serves as the ID, and a password is compared with the one-way hash stored in the database to authenticate users to a tenant. The platform administrator can set password policy to control the requirements for password length, rule, and expiration.
 
 
-- **Single Sign-On (SSO)** and **Multi-Factor Authentication (MFA)** <br />
+- *Single Sign-On (SSO)* and *Multi-Factor Authentication (MFA)* <br />
 
-    In this mode, the tenant is configured to have security assertion markup language (SAML) 2.0 Identify Provider (IDP) integrations. If the IDP requires MFA, you will be redirected to the IDP’s authentication page. SSO can also map a user to one or more user groups in the tenant automatically.
+    In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also map a user to one or more user groups in the tenant automatically.
 
 
 ## API Security
 
-Palette uses JWT-based authentication/authorization for REST API access over HTTPS.  Refer to the [API Authentication](https://docs.spectrocloud.com/api/v1/auth/) guide for details.
+Palette uses JWT-based authentication and authorization for REST API access over HTTPS. 
 
 The authentication token is valid for 15 minutes. If the token is about to expire, you can request a token refresh before making other API calls. 
 
 Palette has a common API gateway validation service that ensures there are no incorrect parameter values or potential vulnerabilities, such as SQL injection or cross-site scripting.
 
 You can use the gateway validation service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid revealing unnecessary information, all UIDs are 48-bit random hex strings.
+
+Refer to the [API Authentication](https://docs.spectrocloud.com/api/v1/auth/) guide for details.
 
 <br />
 

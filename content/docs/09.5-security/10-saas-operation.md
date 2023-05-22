@@ -19,9 +19,9 @@ Palette is a multi-tenant SaaS system in which each tenant represents a customer
 
 ## Platform Security
 
-Palette uses a micro services-based architecture to ensure its platform security. Product functionality is broken down logically into isolated services within containers. These containers are deployed in a Kubernetes cluster called a management cluster that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment. 
+Palette uses a micro services-based architecture to ensure its platform security. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment. 
 
-In public clouds like AWS, Azure, and GCP, Palette interacts directly with a cloud’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private network (VPC) in the cloud, as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
+In public clouds like AWS, Azure, and GCP, Palette interacts directly with a cloud’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
 
 This allows the SaaS controller to do the following: 
 
@@ -38,22 +38,22 @@ In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component i
 
 ## Tenant Cluster Security
 
-Tenant clusters can be deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
+Tenant clusters are deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
-We use the following design principles ensure tenant isolation:
+We use the following design principles to ensure tenant isolation:
 
 <br />
 
 - **Network isolation**: Tenant clusters are created in the tenant’s public cloud accounts or in private data centers. Customers cannot intercept network traffic in other tenant clusters. Access to tenant cluster APIs through the cluster’s kubeconfig file is restricted to the tenant.
 
 
-- **Data isolation**: Palette applies a tenant filter to every operation to ensure user access is restricted to their own tenant.
+- **Data isolation**: Palette applies a tenant filter to every operation to ensure users' access is restricted to their own tenant.
 
 
 - **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
 
 
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures excessive calls from a tenant do not adversely affect other tenants use of the platform.
+- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
 
 
 - **Data encryption**: Palette ensures security for data at rest and data in transit as follows.
@@ -82,7 +82,7 @@ We use the following design principles ensure tenant isolation:
 
     <br />
     
-    - **Message Bus**: A NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
+    - **Message Bus**: A NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
 
 
 <br />
