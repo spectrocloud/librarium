@@ -86,13 +86,21 @@ Choose the installation steps for your target environment. The steps in the gene
 
 3. Review the **values.yaml** . You must populate the `env.rootDomain` parameter to the domain you will use for the installation. All other parameter values are optional, and you can reset or change them with a Helm upgrade operation.
 
+    <br />
+
+    <WarningBox>
+
+      Do not use a wildcard in the root domain value for the `env.rootDomain` parameter. Use a complete domain name when assigning a root domain name value.
+
+    </WarningBox>
+
 
 4. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the Palette Helm Chart.
 
     <br />
 
     ```shell
-    helm install palette /path/to/chart.tgz --file /path/to/values.yaml
+    helm install palette /path/to/chart.tgz -f /path/to/values.yaml
     ```
 
 
@@ -193,7 +201,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 
     </InfoBox>
 
-10. Extract the Helm Chart files from the compressed asset we provided to you. Replace the file path and version place holder as needed.
+10. Extract the Helm Chart files from the compressed asset we provided to you. Replace the file path and version placeholder as needed.
 
     <br />
 
@@ -209,11 +217,15 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
     cd spectro-mgmt-helm-charts-X.X
     ```
 
-12. Review the **values.yaml** . You must populate the `env.rootDomain` parameter to the domain you will use for the installation. In addition, add the same `rootDomain` with port `:4222` to the `natsUrl` in the `nats` section of the YAML. Example: `env.rootDomain: my-domain.com:4222`.
-
-    All other parameter values are optional, and you can reset or change them with a Helm upgrade operation.
+12. Review the **values.yaml** . You must populate the `env.rootDomain` parameter to the domain you will use for the installation. In addition, add the same `rootDomain` with port `:4222` to the `natsUrl` in the `nats` section of the YAML. Example: `env.rootDomain: my-domain.com:4222`. All other parameter values are optional, and you can reset or change them with the Palette API.
 
     <br />
+
+    <WarningBox>
+
+      Do not use a wildcard in the root domain value for the `env.rootDomain` parameter. Use a complete domain name when assigning a root domain name value.
+
+    </WarningBox>
     
  13. If you wish to use [AWS ACM for SSL Certs](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html), instead of the default self-signed certificate that the Nginx *ingress controller* generates, you can add it to the `annotations` under `ingress`.
 
@@ -252,7 +264,7 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
   <br />
 
   ```shell
-  helm install palette /path/to/chart.tgz --file /path/to/values.yaml
+  helm install palette /path/to/chart.tgz -f /path/to/values.yaml
   ```
 
 16. Monitor the deployment using the command below. Palette is ready when the deployments in namespaces `cp-system`, `hubble-system`, `jet-system` , and `ui-system` reach the *Ready* state.

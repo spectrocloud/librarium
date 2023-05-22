@@ -12,21 +12,39 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Self-Hosted Installation
 
-Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. Palette self-hosted is available in three modes:
+Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. You can install Palette by using the following four methods:
 
-## VMware Quick Start Mode
+<br />
+
+- [VMware Quick Start](/enterprise-version#vmwarequickstart)
+
+
+- [VMware Enterprise](/enterprise-version#vmwareenterprise)
+
+
+- [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)
+
+
+- [AirGap Install](/enterprise-version#airgapinstall)
+
+## VMware Quick Start
 
 A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](/enterprise-version/deploying-the-platform-installer) guide for more details.
 
-## VMware Enterprise Mode
+## VMware Enterprise
 
 A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster) guide to get started.
 
-## Helm Chart
+## Kubernetes Install Helm Chart
 
 Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm) guide to learn more.
 
-## Download Palette Installer
+
+## Airgap Install
+
+Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, third-party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
+
+# Download Palette Installer
 
 To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
 
@@ -40,9 +58,16 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
+
+# Upgrade Notes
+
+Review the [Upgrade Notes](/enterprise-version/upgrade) before attempting to upgrade Palette.
+
+
 <br />
 
 
+---
 
 # Resources 
 
@@ -72,6 +97,9 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 
 * [Troubleshooting](/clusters/data-center/vmware#troubleshooting)
+
+
+* [Upgrade Notes](/enterprise-version/upgrade)
 
 
 <br />
