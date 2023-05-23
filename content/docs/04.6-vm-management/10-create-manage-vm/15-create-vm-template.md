@@ -26,7 +26,7 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button. 
@@ -116,7 +116,7 @@ spec:
 ```
 
 
-# Validation
+# Validate
 
 1. Navigate to the left **Main Menu** and click **Profiles**. 
 

@@ -237,17 +237,17 @@ stylus:
               nameserver: 10.10.128.8
           enp0s4:
               type: dhcp 
-      caCerts:
+    caCerts:
       - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE------
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
       - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE-----
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
 ```
 
 ## Load Content From External Registry

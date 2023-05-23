@@ -87,7 +87,7 @@ You can use the default system-generated password. If the default password is us
    
 6. Save your changes.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 

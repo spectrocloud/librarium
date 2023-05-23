@@ -119,7 +119,7 @@ The CNAME record is also known as the host cluster DNS pattern.
 If you haven’t yet created a Cluster Group, you can configure each host cluster as described and add them to a new Cluster Group later.
 </InfoBox>
 
-# Validation
+# Validate
 
 To validate that ingress is functioning as expected, do the following: 
 

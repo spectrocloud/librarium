@@ -28,7 +28,7 @@ KubeVirt allows hot plugging additional storage into a running VM. Both block an
 
 ## Add a Disk
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
@@ -56,7 +56,7 @@ KubeVirt allows hot plugging additional storage into a running VM. Both block an
 
 5. Click **Add** when you are done.
 
-## Validation
+## Validate
 
 The **Disks** tab lists the newly added disk as ``PersistingHotplug``. 
 
@@ -77,7 +77,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 ## Add an Interface
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
@@ -100,7 +100,7 @@ Multus allows hot plugging network interfaces only when interfaces use the **vir
 
 </InfoBox>
 
-## Validation
+## Validate
 
 The **Network Interfaces** tab lists the newly added interface.
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import SidebarIcon from "shared/components/styles/SidebarIcon";
 import { useLocation } from "@reach/router";
+import { useSetupContext } from "shared/layouts/Persistent/provider";
 import Link from "shared/components/Link";
 
 const ChildrenItems = styled.div``;
@@ -116,17 +117,27 @@ const TreeNode = ({
   config = { gatsby: {} },
   level = 0,
 }) => {
-  const location = useLocation();
   let isActive = false;
+  const location = useLocation();
+  const [state, dispatch] = useSetupContext();
+  const isVisited = state.visitedRoutes.find((route) => route === url);
+  const hasChildren = items.length !== 0;
   const expanded = React.useMemo(() => {
     return (
       !url ||
+      isVisited ||
       (location &&
         (location.pathname.startsWith(url) ||
           location.pathname.startsWith(config.gatsby.pathPrefix + url)) &&
         !!items.length)
     );
   }, [url]);
+
+  useEffect(() => {
+    if (hasChildren && !isVisited && expanded) {
+      dispatch({ type: "ADD_VISITED_ROUTE", value: url });
+    }
+  }, []);
 
   if (url === "/" && location && location.pathname === "/") {
     isActive = false;
@@ -137,7 +148,6 @@ const TreeNode = ({
   if (hiddenFromNav) {
     return null;
   }
-  const hasChildren = items.length !== 0;
 
   return (
     <MenuNode isActive={isActive} expanded={expanded} level={level} data-level={level}>

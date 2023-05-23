@@ -78,7 +78,7 @@ If you are using [OIDC](/clusters/cluster-management/cluster-rbac#userbacwithoid
 You can now issue kubectl commands against your host cluster.
 
 
-# Validation
+# Validate
 
 Verify you have access to your host cluster by issuing kubectl commands against it. 
 

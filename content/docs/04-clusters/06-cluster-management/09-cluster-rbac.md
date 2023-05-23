@@ -203,7 +203,7 @@ A role binding will be created in the listed namespaces. Keep in mind that you c
 
 </Tabs>
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
