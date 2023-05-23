@@ -77,10 +77,10 @@ Use the following steps to create an ISO file containing the additional user dat
 
 
 
-## Validation
+## Validate
 
 You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 
 # Next Steps
 
-The next stage in the Edge host site installation process is registering the Edge host. Go ahead and review the instructions in the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide.
+Before you register your Edge host with Palette you must have a tenant registration token. Review the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for steps on how to create a tenant registration token.

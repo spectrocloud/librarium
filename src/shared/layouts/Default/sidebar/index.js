@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Tree from "./tree";
 import styled from "styled-components";
 import Logo from "shared/components/Logo";
 import Link from "shared/components/Link";
+import { useSetupContext } from "shared/layouts/Persistent/provider";
 import { DEFAULT_MENU } from "../../Default/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "@reach/router";
@@ -94,6 +95,8 @@ const SidebarLayout = ({
     />
   ),
 }) => {
+  const [state, dispatch] = useSetupContext();
+  const contentRef = useRef(null);
   const location = useLocation();
   function renderMenuItem({ link, title, icon, isActive = () => false }, index) {
     return (
@@ -104,6 +107,17 @@ const SidebarLayout = ({
     );
   }
 
+  useEffect(() => {
+    contentRef.current.scrollTop = state.prevScrollPosition;
+  }, [state.prevScrollPosition]);
+
+  useEffect(() => {
+    return () => {
+      const scrollPosition = contentRef.current.scrollTop;
+      dispatch({ type: "SET_PREVIOUS_SCROLL_POSITION", value: scrollPosition });
+    };
+  }, []);
+
   return (
     <Sidebar>
       <LogoWrap>
@@ -111,7 +125,7 @@ const SidebarLayout = ({
           <Logo>{subLogo}</Logo>
         </Link>
       </LogoWrap>
-      <Content>
+      <Content ref={contentRef}>
         <MenuWrap>
           <Tree menu={menu} />
         </MenuWrap>

@@ -232,7 +232,7 @@ When you deploy the cluster deployment, you will have a host cluster with the Pr
 
 </Tabs>
 
-# Validation
+# Validate
 
 To validate that the Prometheus agent is successfully installed and sending metrics to the monitoring stack, use the following steps.
 
