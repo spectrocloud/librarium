@@ -50,7 +50,7 @@ There are no requirements.
 6. Optionally, you can enable the checkbox to start the cloned VM automatically when cloning is complete.
 
 
-# Validation
+# Validate
 
 From the **Virtual Machines** tab, verify the cloned VM is listed and displays **Running** status.  
 

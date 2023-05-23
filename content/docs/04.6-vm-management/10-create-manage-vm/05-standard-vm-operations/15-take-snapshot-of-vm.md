@@ -71,7 +71,7 @@ Snapshots should not be used as a backup method, as running a VM on a snapshot f
 
 </WarningBox>
 
-# Validation
+# Validate
 
 1. From the **Snapshots** tab, verify the ``vmSnapshot Status`` parameter displays **Succeeded**.
 

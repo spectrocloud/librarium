@@ -83,7 +83,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 </WarningBox>
 
 
-# Validation
+# Validate
 
 1. Log in to [Palette](https://console.spectroloud.com).
 

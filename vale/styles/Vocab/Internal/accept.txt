@@ -100,4 +100,13 @@ datastore
 uxp
 wodim
 Letsencrypt
+Bitnami
 GCP
+Ansible
+Nvidia
+Portworx
+Topolvm
+Palette Upgrader
+imageSwap
+subcommand
+subcommands

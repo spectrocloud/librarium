@@ -1,5 +1,8 @@
 name: Pre-merge Checks
-on: [pull_request]
+
+on: 
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
 
 concurrency:
   group: ci-${{ github.ref }}

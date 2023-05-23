@@ -40,5 +40,5 @@ To learn more about Palette and Azure cluster creation and its capabilities chec
 - [Azure Architecture](/clusters/public-cloud/azure/architecture)
 
 
-
+- [Cluster Removal](/clusters/cluster-management/remove-clusters)
 

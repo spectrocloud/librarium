@@ -116,7 +116,7 @@ spec:
 ```
 
 
-# Validation
+# Validate
 
 1. Navigate to the left **Main Menu** and click **Profiles**. 
 

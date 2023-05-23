@@ -53,7 +53,7 @@ You can associate users and teams with a project. Check out the [Project Associa
 
 3. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -101,7 +101,7 @@ You can delete projects with force as long as there are no active clusters. Forc
 </WarningBox>
 
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

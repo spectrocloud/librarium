@@ -21,18 +21,15 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release| Recommended CLI Version|
 |---------------------------|----|
+|Release 3.4.0     |3.4.0 |
 |Release 3.3.0     |3.3.0 |
-|Release 3.2.0     |3.2.0 |
-|Release 3.1.0     |3.1.0 |
-|Release 3.0.0     |3.0.0 |
-|Release 2.8.0     |2.8.0 |
-|Release 2.7.0     |2.7.0 |
-|Release 2.6.0     |2.6.0 |
 
-# Edge Installer CLI Versions
+
+# Palette Edge CLI Versions
 
 |Palette Release|CLI Version| 
 |---|-------|
+|Release 3.4.0 |v3.4.2 |
 |Release 3.3.0 |v3.3.0 |
 |Release 3.2.0 |v3.2.0 | 
 
@@ -41,6 +38,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release| Docker Image Version|
 |---------------------------|----|
+|Release 3.3.0     | 3.4.0 |
 |Release 3.3.0     | 3.3.0 |
 |Release 3.2.0     |3.2.0 |
 |Release 3.1.0     |3.1.0 |
@@ -53,6 +51,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|On-Prem Installer Version|
 |--|---|
+|3.4|2.8.0|
 |3.3|2.6.0|
 |3.2|2.4.0|
 |3.1|2.4.0|
@@ -67,7 +66,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|Air Gapped Version|
 |--|---|
-|3.3|2.6.0|
+|3.3|2.8.0|
 |3.2|2.4.0|
 |3.1|2.0.1|
 |3.0|2.0.1|
@@ -83,6 +82,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|vSphere PCG Version|
 |--|---|
+|3.4|1.8.0|
 |3.3|1.6.0|
 |3.2|1.4.0|
 |3.1|1.2.0|
@@ -98,6 +98,8 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|MAAS PCG Version|
 |--|---|
+|3.4|1.0.12|
+|3.3|1.0.12|
 |3.2|1.0.12|
 |3.1|1.0.11|
 |3.0|1.0.11|
@@ -112,6 +114,8 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|OpenStack PCG Version|
 |--|---|
+|3.4|1.0.12|
+|3.3|1.0.12|
 |3.2|1.0.12|
 |3.1|1.0.11|
 |3.0|1.0.11|
@@ -125,12 +129,10 @@ This page lists the version details of various Palette components and their resp
 
 # Edge Installer Image Version
 
-|Palette Release|Stylus Version|
+|Palette Release| Version|
 |--|---|
-|3.3|2.2.23|
-|3.2|2.1.0|
-|3.1|2.0.7|
-|3.0|2.0.6|
+|3.4|3.4.1|
+|3.|3.3.3|
 -------
 
 
@@ -144,8 +146,14 @@ This page lists the version details of various Palette components and their resp
 
 |Operating System |Versions|
 |--|--|
-|Ubuntu|Ubuntu 18.4|
-|centOS|CentOS 7.7|
+|Ubuntu| 22.04|
+|Ubuntu| 20.04|
+|Ubuntu| 18.04|
+|CentOS| 7.7|
+|CentOS| 7.9|
+|CentOS| 8.0|
+|OpenSuSE|14.4|
+
 
 # Network Layer Versions
 

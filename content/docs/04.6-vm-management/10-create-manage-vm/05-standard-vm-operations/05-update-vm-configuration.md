@@ -56,7 +56,7 @@ KubeVirt allows hot plugging additional storage into a running VM. Both block an
 
 5. Click **Add** when you are done.
 
-## Validation
+## Validate
 
 The **Disks** tab lists the newly added disk as ``PersistingHotplug``. 
 
@@ -100,7 +100,7 @@ Multus allows hot plugging network interfaces only when interfaces use the **vir
 
 </InfoBox>
 
-## Validation
+## Validate
 
 The **Network Interfaces** tab lists the newly added interface.
 
