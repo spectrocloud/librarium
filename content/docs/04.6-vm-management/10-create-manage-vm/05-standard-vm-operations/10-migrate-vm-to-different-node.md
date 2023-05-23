@@ -36,7 +36,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, choose **Clusters** and click on your cluster. 
@@ -45,14 +45,16 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 3. Click on the **Virtual Machines** tab.
 
 
-4. Select the VM to migrate and use either the **three-dot Menu** or the **Actions drop-down Menu**, and click **Migrate Node to Node**.  
+4. Select the VM to migrate and click either the **three-dot Menu** or **Actions**.
+
+5. Click **Migrate Node to Node**.  
 
 <br />
 
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and select the cluster. 

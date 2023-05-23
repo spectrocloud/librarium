@@ -32,16 +32,19 @@ There are no requirements.
 
 # Clone a VM
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 
 
 
-3. From the **three-dot Menu** or the **Actions drop-down Menu** when you select the VM, power off the parent VM and click **Clone**. If you forget to power it off, the parent VM will automatically be powered off while cloning is in progress.
+3. Select the VM to clone and click either the **three-dot Menu** or **Actions**
 
 
-4. Give the clone a name, give an optional description, and select a namespace.  
+4. Power off the parent VM and click **Clone**. If you forget to power it off, the parent VM will automatically be powered off while cloning is in progress.
+
+
+5. Give the clone a name, give an optional description, and select a namespace.  
 
 
 6. Optionally, you can enable the checkbox to start the cloned VM automatically when cloning is complete.
