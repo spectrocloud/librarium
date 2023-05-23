@@ -96,6 +96,9 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
+
+- Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](/spectro-downloads#edgeinstallerimage) when creating Edge artifacts and deploying new Edge clusters.
+
 ### Features
 
 
