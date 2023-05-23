@@ -77,7 +77,7 @@ Multus is a secondary network that uses Multus-CNI. Multus allows you to attach 
 
 ## Add an Interface
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and click on your cluster. 

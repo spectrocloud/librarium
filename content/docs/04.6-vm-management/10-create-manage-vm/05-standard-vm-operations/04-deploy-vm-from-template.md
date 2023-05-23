@@ -85,7 +85,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 
 # Validation
 
-1. Log in to [Palette](https://console.spectroloud.com)
+1. Log in to [Palette](https://console.spectroloud.com).
 
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
