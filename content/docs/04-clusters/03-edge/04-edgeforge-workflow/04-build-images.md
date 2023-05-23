@@ -61,7 +61,7 @@ Choose the workflow that fits your needs.
     ```shell
     VERSION=3.4.0
     wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-cli
-    chmod +x palette-edge-cli-linux-amd64
+    chmod +x palette-edge
     ```
 
 2. Issue the `show` command to review the list of options for Operating System (OS) distribution and versions, Kubernetes distributions and versions, the Spectro Agent Version, and Kairos version.
@@ -69,7 +69,7 @@ Choose the workflow that fits your needs.
     <br />
 
     ```shell
-    ./palette-edge-cli-linux-amd64 show
+    ./palette-edge show
     ```
 
     ![CLI example output from the show command](/clusters_edge-forge-workflow_build-images_edge-cli-show.png)
@@ -103,7 +103,7 @@ Choose the workflow that fits your needs.
 
 
   ```shell
-   ./palette-edge-cli-linux-amd64 generate --os-flavor [pick-os] \
+   ./palette-edge generate --os-flavor [pick-os] \
    --k8s-flavor [pick-k8s] \
    --output [output directory] \
    --push-image-repository [your registry path] \
@@ -115,7 +115,7 @@ Choose the workflow that fits your needs.
 
   Example:
   ```shell
-   ./palette-edge-cli-linux-amd64 generate --os-flavor opensuse-leap \
+   ./palette-edge generate --os-flavor opensuse-leap \
    --k8s-flavor k3s \
    --output opensuse-k3s \
    --push-image-repository gcr.io/my-registry \
@@ -149,7 +149,7 @@ Choose the workflow that fits your needs.
   Example:
 
   ```shell
-   ./palette-edge-cli-linux-amd64 generate \
+   ./palette-edge generate \
    --base-image-uri quay.io/kairos/core-rockylinux:v1.5.0 \
    --k8s-flavor k3s \ 
    --output rockylinux-k3s \

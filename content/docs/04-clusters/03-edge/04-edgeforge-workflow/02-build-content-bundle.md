@@ -44,9 +44,9 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
     <br />
 
     ```shell
-    VERSION=3.4.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-cli-linux-amd64
-    chmod +x palette-edge-cli-linux-amd64
+    VERSION=3.4.3
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
+    chmod +x palette-edge
     ```
 
 2. Log in to [Palette](https://console.spectrocloud.com).
@@ -79,14 +79,14 @@ You can find the project id at the top right side corner of the landing page bel
 
     <InfoBox>
 
-    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command `./palette-edge-content build --help` to learn more about the available flags.
+    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command `./palette-edge build --help` to learn more about the available flags.
 
     </InfoBox>
 
     <br />
 
     ```shell
-    ./palette-edge-cli-linux-amd64 build --api-key <API_KEY> \
+    ./palette-edge build --api-key <API_KEY> \
      --project-id <PROJECT_ID> \ 
      --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
      --palette-endpoint <Palette API Endpoint> \
@@ -95,14 +95,15 @@ You can find the project id at the top right side corner of the landing page bel
     ```
 
     ```shell
+    # Output
     INFO[0000] getting hubble export for build
     INFO[0000] Fetching latest version for service 'stylus'
-    INFO[0000] stylus version: 3.3.0
-    INFO[0000] Fetching manifest for service stylus and version 3.3.0 for action resources
-    INFO[0000] Fetching manifest of service stylus and version '3.3.0' for action resources
-    INFO[0000] Fetching manifest from service stylus and version '3.3.0' for action resources with file name images.yaml
+    INFO[0000] stylus version: 3.4.3
+    INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
+    INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
+    INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
     INFO[0000] Get manifest with file name: images.yaml
-    INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.3.0
+    INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
     INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
     ...
     ...
