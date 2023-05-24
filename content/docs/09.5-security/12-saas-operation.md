@@ -19,7 +19,7 @@ Palette is a multi-tenant SaaS system in which each tenant represents a customer
 
 ## Platform Security 
 
-In public clouds like AWS, Azure, and GCP, Palette interacts directly with a cloud’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
+In public cloud environments like AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
 
 This allows the SaaS controller to do the following: 
 
@@ -30,13 +30,13 @@ This allows the SaaS controller to do the following:
 
 - Act as an orchestrator to initiate SaaS controller requests for deployments.
 
-In private clouds like VMware vSphere, a Private Cloud Gateway (PCG) component is deployed in the on-prem environment as a virtual appliance (OVA). The PCG component automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS). More details about OVA operation are provided in [Self-Hosted Operation](/security/self-hosted-operation). 
+In private cloud environments like VMware vSphere, a Private Cloud Gateway (PCG) component is deployed in the self-hosted environment as a virtual appliance (OVA). The PCG component automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS). More details about OVA operation are provided in [Self-Hosted Operation](/security/self-hosted-operation). 
 
 <br />
 
 ## Tenant Cluster Security
 
-Tenant clusters are deployed in a VPC. Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
+[Tenant](/glossary-all#tenant) clusters are deployed in a VPC. Each tenant cluster has a management agent that is deployed as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
 We use the following design principles to ensure tenant isolation:
 
@@ -51,7 +51,7 @@ We use the following design principles to ensure tenant isolation:
 - **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
 
 
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These frameworks benefit from the protections of AWS Shield Standard which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
+- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
 
 
 - **Data encryption**: Palette ensures security for data at rest and data in transit as follows.
@@ -76,7 +76,7 @@ We use the following design principles to ensure tenant isolation:
 
     <br />
     
-    - **Database Communication**: The database connection from application services running in the management cluster to MongoDB is protected by TLS with Authentication enabled.
+    - **Database Communication**: The database connection from Palette internal services active in the management cluster to MongoDB is protected by TLS with Authentication enabled.
 
     <br />
     
@@ -87,7 +87,7 @@ We use the following design principles to ensure tenant isolation:
 
 ## Control Plane and Worker Nodes
 
-Control plane nodes and worker nodes in the Kubernetes cluster that hosts Palette are launched in private subnets. All ports on the nodes are protected from external access. 
+Control plane nodes and worker nodes in the Kubernetes cluster that hosts the Palette SaaS platform are launched in private subnets. All ports on the nodes are protected from external access. 
 
 In self-hosted Palette installations, customers manage their own SSH public keys unless an agreement is in place for Spectro Cloud to maintain their environment.
 
