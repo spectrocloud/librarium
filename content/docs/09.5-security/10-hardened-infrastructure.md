@@ -49,7 +49,7 @@ All container images are scanned for vulnerability using Palo Alto Networks Pris
 
 Spectro Cloud has a fully automated Kubernetes verification system that adds the newest patch version of Kubernetes to its public repository. All Kubernetes packs are hardened according to CIS Benchmarks.
 
-A major Kubernetes version generally runs more rigorous compatibility tests and is available after 30 days from its release.
+We assess major Kubernetes versions based on the extent of changes.
 
 Kubernetes run-time security support is achieved through a variety of add-on packages, such as Sysdig Falco and Twistlock.
 
@@ -74,19 +74,7 @@ The following encryption keys are unique and generated for each installation:
 - **Hash Salt**: Used to hash the user password and email ID.
 
 
-- **Tenant key**: A 64-bit cryptographically secure tenant key encrypts tenant data. A unique tenant key is generated for each tenant and encrypts the following: <br /><br />
-
-    
-    - User account name and email ID.
-    
-    
-    - Tenant's cloud credentials.
-
-    
-    - Tenant's private registry password.
-
-    
-    - Tenant's GitHub access token.
+- **Tenant key**: A 64-bit cryptographically secure tenant key encrypts tenant data.
 
 
 In self-managed deployments, keys are generated during installation and stored as secrets in the management cluster’s etcd key-value store.
