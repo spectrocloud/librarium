@@ -146,15 +146,17 @@ stylus:
       tags:
         city: chicago
         building: building-1
-  stages:
+
+install:
+  poweroff: true
+
+stages:
   initramfs:
       - users:
           kairos:
           groups:
               - sudo
           passwd: kairos
-  install:
-  poweroff: true
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides project information specified in the `edgeHostToken` parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
@@ -184,15 +186,17 @@ stylus:
         city: chicago
         building: building-1
         zip-code: 95135
-  stages:
-    initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
-  install:
-    poweroff: true
+
+install:
+  poweroff: true
+
+stages:
+  initramfs:
+    - users:
+        kairos:
+        groups:
+            - sudo
+        passwd: kairos
 ```
 
 ## Apply Proxy & Certificate Settings 
@@ -209,16 +213,6 @@ stylus:
         city: chicago
         building: building-1
         zip-code: 95135
-  stages:
-  initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
-  install:
-  poweroff: true
-
   network:
       httpProxy: http://proxy.example.com
       httpsProxy: https://proxy.example.com
@@ -248,6 +242,17 @@ stylus:
         *****************************
         *****************************
         ------END CERTIFICATE------
+
+install:
+  poweroff: true
+
+stages:
+  initramfs:
+      - users:
+          kairos:
+          groups:
+              - sudo
+          passwd: kairos
 ```
 
 ## Load Content From External Registry
@@ -271,6 +276,10 @@ stylus:
         -----BEGIN CERTIFICATE-----
         
         -----END CERTIFICATE-----
+
+install:
+  poweroff: false
+
 stages:
   initramfs:
     - users:
@@ -278,8 +287,6 @@ stages:
           groups:
             - sudo
           passwd: kairos
-install:
-  poweroff: false
 ```
 
 # Next Steps
