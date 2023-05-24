@@ -1,7 +1,7 @@
 ---
 title: "Maintenance Policy"
 metaTitle: "Packs Maintenance Policy"
-metaDescription: "Learn about packs that Palette offers and choose from Pallette packs."
+metaDescription: "Learn about Palette pack update and deprecation schedules."
 icon: ""
 hideToC: false
 fullWidth: true
@@ -49,6 +49,7 @@ Add-on packs provide additional functionality that you can add to your cluster p
 
 Check out the [Packs List](/integrations) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
 
+<br />
 
 ## Pack Updates
 
@@ -171,4 +172,13 @@ A minor Kubernetes version is deprecated in Palette when the Kubernetes communit
 ### CNI / CSI / Add-on Packs
 
 Palette supports a minor version of CNI, CSI, and add-on packs until two newer versions are available. At that time, packs in these categories are deprecated.
+
+
+<br />
+
+<br />
+
+<br />
+
+<br />
 
