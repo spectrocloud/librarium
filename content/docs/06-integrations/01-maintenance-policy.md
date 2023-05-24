@@ -82,7 +82,7 @@ We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
 - **Major versions** - Added within 8 weeks of release.
 
 
-- **Patch / Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.
+- **Patch and Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.
 
 
 ### CNI Packs
