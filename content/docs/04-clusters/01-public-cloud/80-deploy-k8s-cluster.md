@@ -1259,10 +1259,10 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 - [Palette Modes](/introduction/palette-modes)
 
 
-- [Cluster Profiles](/devx/cluster_profile)
+- [Cluster Profiles](/cluster_profile)
 
 
-- [Palette Clusters](/devx/clusters) 
+- [Palette Clusters](/clusters) 
 
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)

@@ -225,6 +225,11 @@ const redirects = [
     toPath: `/devx/manage-dev-engine/registries`,
     redirectInBrowser: true,
     isPermanent: true,
+  },{
+    fromPath: `/devx/virtual-clusters`,
+    toPath: `/devx/palette-virtual-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

@@ -59,8 +59,8 @@ Choose the workflow that fits your needs.
    <br />
 
     ```shell
-    VERSION=3.4.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-cli
+    VERSION=3.4.3
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
     chmod +x palette-edge
     ```
 
