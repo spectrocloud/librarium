@@ -33,7 +33,7 @@ Palette's OS hardening utility performs the following tasks:
 
 - Removes legacy services and graphical user interface (GUI) packages.
 
-Palette allows you to set up OS patching policies. You can patch the base OS when you deploy the cluster.
+Palette allows you to set up OS patching policies. You can patch the base OS when you deploy the cluster. Refer to the [OS Patching](/clusters/cluster-management/os-patching) documentation to learn more.
 
 <br />
 
@@ -55,7 +55,7 @@ Kubernetes run-time security support is achieved through a variety of add-on pac
 
 Kubernetes cluster authentication can be optionally integrated with Kubelogin using OpenID Connect (OIDC) authentication and authorization against an external Identity Provider (IDP).
 
-You can set a schedule to run Kubernetes conformance and compliance tests using kube-bench, kube-hunter, and Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
+You can set a schedule to start Kubernetes conformance and compliance tests using kube-bench, kube-hunter, and Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
 
 <br />
 
@@ -68,7 +68,7 @@ The following encryption keys are unique and generated for each installation:
 - **Root Key**: Encrypts the tenant-specific encryption key.
 
 
-- **JSON web token (JWT) signature key**: Used to sign the JWT token.
+- **JSON Web Token (JWT) signature key**: Used to sign the JWT token.
 
 
 - **Hash Salt**: Used to hash the user password and email ID.
@@ -106,13 +106,13 @@ In self-hosted deployments, the administrator can set up a disk encryption polic
 
 Palette secures data in transit using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions. Review [Tenant Cluster Security](/security/saas-operation#tenantclustersecurity) to learn how Palette applies security to data in transit.
 
-Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
+Public certificates are created using a certificate manager for external API and UI communication. For self-hosted deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
 
-Services in the management cluster communicate over HTTPS with self-signed certificates and Rivest–Shamir–Adleman (RSA) 2048-bit key.
+Services in the management cluster communicate over HTTPS with self-signed certificates and are signed using a Rivest–Shamir–Adleman (RSA) 2048-bit key.
 
-The database connection from application services running in the management cluster to MongoDB is protected by TLS with Authentication enabled. 
+The database connection from Palette internal services active in the management cluster to MongoDB is protected by TLS with Authentication enabled. 
 
-Static Network Address Translation (NATS) messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants. 
+Static Network Address Translation (NATS) messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect a message bus facilitated and managed by Palette. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants. 
 
 <br />
 
