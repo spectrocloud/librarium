@@ -16,9 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes
 
-The Kubernetes pack defines the default properties that we use to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
+The Kubernetes pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
 
- Review [Maintenance Policy](/integrations/maintenance-policy/maintenance-policy) to learn about pack update and deprecation schedules.
+We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
+
+We offer Cloud Native Computing Foundation (CNCF) Kubernetes as a core pack in Palette. 
+
+Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
 # Versions Supported
 
