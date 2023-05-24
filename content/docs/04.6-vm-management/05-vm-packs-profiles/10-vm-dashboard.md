@@ -16,28 +16,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 The Spectro VM Dashboard offers a web console accessible from the **Virtual Machines** tab that appears on the cluster overview page when VM Management is enabled. 
 
-When the dashboard is enabled, the default view displays a list of the Virtual Machines (VMs) deployed in the Kubernetes namespace you select from the **Namespace drop-down Menu**. The first time you see this view, it will appear blank. As you add VMs, they will be listed on the page. You can filter on VM status and search for VMs by their name or label.
+The first time you enable the dashboard, the default view will appear blank. As a best practice, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Namespace Management](/clusters/cluster-management/namespace-management). Namespaces you create will be listed in the **drop-down Menu** at the top of the dashboard. VMs that you deploy within a namespace are listed on the dashboard. 
 
-At the top of the Spectro VM Dashboard, the **Namespace drop-down Menu** allows you to select a namespace. Although you can deploy virtual machines from the default namespace, we recommend creating at least one namespace dedicated to VMs.
+You can select a VM to view its details and perform standard VM operations. VM operations are accessible from the **three-dot Menu** at the right of each listed VM or when you click **Actions** from the VM details page.
 
-<br />
-
-<InfoBox>
-
-Below are benefits of deploying VMs in different namespaces:
-
-* Namespaces provide a way to isolate groups of resources within a single cluster.
-* RBAC can be configured based on namespaces, for example:
-  * User A has permissions to manage VMs in alpha namespace only.
-  * User B can see VMs in all namespaces.
-* Resource names need to be unique within a namespace but not across namespaces.
-* Namespaces are a way to divide cluster resources among multiple users via resource quota.
-
-</InfoBox>
-
-The dashboard allows you to perform standard VM actions from the **three-dot Menu** at the right of each listed VM. You can select a VM from the list to view details about the machine. An **Actions drop-down menu** lists the same standard VM actions. 
-
-When you click on a VM in the list, the following tabs display, which are specific to the selected VM:
+When you click on a VM in the list, the following tabs display. Tabs are specific to the selected VM.
 
 <br />
 
@@ -63,4 +46,19 @@ When you click on a VM in the list, the following tabs display, which are specif
 
 
 - **Snapshots**: Allows you to take a new snapshot and manage existing ones. 
+
+
+# Resources
+
+[Namespace Management](/clusters/cluster-management/namespace-management)
+
+
+<br />
+
+<br />
+
+<br />
+
+<br />
+
 

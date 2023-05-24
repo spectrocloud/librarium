@@ -1,7 +1,7 @@
 ---
-title: "Pause and Resume Palette Virtual Clusters"
-metaTitle: "Palette Dev Engine Pause and Restore Palette Virtual Clusters"
-metaDescription: "Pause and Restore Palette Virtual Clusters"
+title: "Pause and Resume Virtual Clusters"
+metaTitle: "Pause and Resume Virtual Clusters"
+metaDescription: "Learn how to pause and resume Palette Virtual Clusters."
 hideToC: false
 fullWidth: false
 ---

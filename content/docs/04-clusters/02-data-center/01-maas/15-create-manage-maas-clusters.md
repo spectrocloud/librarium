@@ -89,7 +89,7 @@ To deploy a new MAAS cluster:
 12. Review settings and deploy the cluster. 
 
 
-## Validation
+## Validate
 
 You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page lists all available clusters that Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 

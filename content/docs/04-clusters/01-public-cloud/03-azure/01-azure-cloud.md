@@ -89,7 +89,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 <br />
 
-# Validation
+# Validate
 
 To validate the Azure Cloud account creation in Palette console:
 

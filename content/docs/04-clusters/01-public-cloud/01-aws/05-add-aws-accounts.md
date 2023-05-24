@@ -222,7 +222,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
    * Select **STS** authentication for validation:
 
 
-4. You will be provided with information on the right hand-side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists out the information provided by the wizard after your selects **STS**.
+4. You will be provided with information on the right hand-side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists out the information provided by the wizard after you selects **STS**.
 
     |**Parameter**|**Description**|
     |---------|---------------|
@@ -252,7 +252,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 ## Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections. -->
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
 
 </Tabs.TabPane>
 </Tabs>
@@ -260,7 +260,6 @@ You can validate the account is available in Palette by reviewing the list of cl
 </Tabs.TabPane> 
 
 </Tabs>
-
 
 # Next Steps
 

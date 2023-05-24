@@ -22,6 +22,20 @@ You create App Profiles to meet specific types of workloads on your Palette [Vir
 
 You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/services).
 
+
+<br />
+
+<WarningBox>
+
+When adding a manifest-type layer to an App profile, make sure to specify a namespace. Otherwise the manifest deployment will get deployed to the `Default` namespace.
+
+<br />
+
+```yaml
+namespace: yourNameHere
+```
+</WarningBox>
+
 # Next Steps
 
 Get started today by learning how to create your [App Profile](/devx/app-profile/create-app-profile).
