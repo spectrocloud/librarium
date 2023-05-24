@@ -218,7 +218,7 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 * Set the `Default Project` as `default`
 * Set the Expiration Date for `7 Days`
 
-![Registration Token](/tutorials/canvos/add_token.png)
+
 
 * Click `Confirm`
 * Copy the newly created token to Clipboard
@@ -227,7 +227,6 @@ If you have not signed up you can sign up for a free trial [Here](https://www.sp
 Save this token to a note file as we will use it later.
 </InfoBox>
 
-![Registration Token](/tutorials/canvos/registration_token.png)
 
 ## Create a user-data file
 

@@ -167,11 +167,14 @@ cp vsphere.hcl.template vsphere.hcl
 This tutorial is using VIM as the editor.  Depending upon your editor the edit and save options may be different.
 </InfoBox> 
 
-```shell
+Edit only the following custom variables to define the vCenter details. 
+<br />
+
+```bash
 vi vsphere.hcl
 ```
 
-```shell
+```bash
 # Custom Variables
 vcenter_server   = ""
 vcenter_username = ""

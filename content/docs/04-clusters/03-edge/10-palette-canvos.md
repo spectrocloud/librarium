@@ -1,6 +1,6 @@
 ---
 title: "Build Edge Native Artifacts"
-metaTitle: "Build Edge Native Image Artifacts using CanvOS"
+metaTitle: "Build Edge Native Artifacts using CanvOS"
 metaDescription: "Learn how to build your installer and provider images using CanvOS GitHub repository."
 icon: ""
 category: ["how-to", "edge", "edge-native", "CanvOS"]
@@ -15,7 +15,7 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from "shared/components/common/PointOfInterest";
 
-# Build Edge Native Image Artifacts
+# Build Edge Native Artifacts
 	
 Palette's edge native solution requires edge hosts with [Kairos](https://kairos.io/) installed, allowing you to use the Linux distribution of your choice. In this how-to guide, you will create the following images for edge hosts:
 <br/>
@@ -160,7 +160,7 @@ Navigate to **Tenant Settings** > **Registration Tokens**. Click on **Add New Re
 |**Field**|**Value**|
 |----|----|
 | Registration Token Name | DemoToken |
-| Description | Token for Build Edge Native Image Artifacts how-to/tutorial |
+| Description | Token for Build Edge Native Artifacts how-to/tutorial |
 | Default Project | Default |
 | Expiration Date | 7 days |
 
@@ -223,7 +223,7 @@ EOF
 
 </PointsOfInterest>
 
-## Build Edge Native Image Artifacts
+## Build Edge Native Artifacts
 Issue the following command to build the artifacts. 
 <br />
 
@@ -269,7 +269,7 @@ ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    fe1486da25df    6 minutes ago   2.49
 earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
 ```
 
-Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute if the **OS layer** of your cluster profile.    
+Suppose you want to use these provider images in your cluster profile. In that case, you can push them to the *ttl.sh* or any other image registry and add the following custom content within the `options` attribute of the **OS layer** of your cluster profile.    
 <br />
 
 ```yaml
